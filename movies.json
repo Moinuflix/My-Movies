@@ -10,8 +10,35 @@
     "genre": [
       "Drama"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=12%20O%27Clock%202021%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=12%20O%27Clock%202021%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=uUb2CfHbP0o",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=uUb2CfHbP0o",
+    "songs_list": [
+      {
+        "name": "Love Pannu (Oru Punnagai Poove) Video Song | 12B | Harris Jayaraj | Shaam, Simran, Jyothika | Jeeva",
+        "url": "https://www.youtube.com/watch?v=ZBhC3YGu0BA",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=ZBhC3YGu0BA"
+      },
+      {
+        "name": "NIGHT AANA 12 O CLOCK VEETUKU VARUVA|2021|PALLAVARAM GANA HARI NEW SONG | 1080P |",
+        "url": "https://www.youtube.com/watch?v=HwzzGvKc3c0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=HwzzGvKc3c0"
+      },
+      {
+        "name": "Kalyana Virundhu | DOROTHY | Full Lyrical Video | Maestro Ilaiyaraaja | Karthik Subbaraj",
+        "url": "https://www.youtube.com/watch?v=1mGbLGB6qx8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=1mGbLGB6qx8"
+      },
+      {
+        "name": "Poove Vai Pesum Pothu Video Song | 12B | Harris Jayaraj | Shaam, Simran, Jyothika | Jeeva",
+        "url": "https://www.youtube.com/watch?v=N0KfiOTSpxs",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=N0KfiOTSpxs"
+      },
+      {
+        "name": "Modha Rathri Title Song (Video)| Rishikanth | Anishma AnilKumar | Raja Karuppasamy | Bharath Sankar",
+        "url": "https://www.youtube.com/watch?v=Eg-SuOZP_VM",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=Eg-SuOZP_VM"
+      }
+    ],
     "original_filename": "12 O’CLOCK (2021).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/7uf24cyaquzfpjktvhnwz/12-o-CLOCK-2021-WEBDL-1080p-EN-h264-EAC3-HI-EN.mkv?rlkey=k1rh6vvacs2oa18rpdildu6c9&st=tyihrcdk&dl=1"
   },
@@ -28,8 +55,35 @@
       "Science Fiction",
       "Thriller"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=7Aum%20Arivu%202011%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=7Aum%20Arivu%202011%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=ikbXIYXG1ow",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=ikbXIYXG1ow",
+    "songs_list": [
+      {
+        "name": "7_Am Arivu Innum Enna Tozha Tamil 1080p HD Video Song Suriya Movie Song ",
+        "url": "https://www.youtube.com/watch?v=uqj-gCCTlOc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=uqj-gCCTlOc"
+      },
+      {
+        "name": "7 Aum Arivu - Mun Andhi Video | Suriya, Shruti | Harris Jayaraj",
+        "url": "https://www.youtube.com/watch?v=IjbxEc9W2Ww",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=IjbxEc9W2Ww"
+      },
+      {
+        "name": "7 Aum Arivu - Yellae Lama Video | Suriya, Shruti | Harris Jayaraj",
+        "url": "https://www.youtube.com/watch?v=7fFFbFp8nOg",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=7fFFbFp8nOg"
+      },
+      {
+        "name": "Oh Ringa Ringa 8K/4K Video Song | 7 Aum Arivu | Suriya, Shruti | Harris Jayaraj",
+        "url": "https://www.youtube.com/watch?v=B122I8dNEtU",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=B122I8dNEtU"
+      },
+      {
+        "name": "7 Aum Arivu - Innum Enna Thozha Tamil Lyric | Suriya | Harris",
+        "url": "https://www.youtube.com/watch?v=KqTA1gMBdRg",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=KqTA1gMBdRg"
+      }
+    ],
     "original_filename": "7aum Arivu (2011).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/5m3oqka7y2x8bzxi43d2m/7aum-Arivu-2011-Tamil-TRUE-WEB-DL-1080p-AVC-UNTOUCHED-DD-5.1-640Kbps-AAC-2.0-9.6GB-v20250824164122.mkv?rlkey=5hnritxnrdfrgx81fp5mbgf7p&st=e6j17y9f&dl=1"
   },
@@ -47,8 +101,35 @@
       "Adventure",
       "War"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Amaran%202024%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Amaran%202024%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=hylIXfZeB4c",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=hylIXfZeB4c",
+    "songs_list": [
+      {
+        "name": "Hey Minnale - Video Song | Amaran | Sivakarthikeyan, Sai Pallavi | GV Prakash | Rajkumar Periasamy",
+        "url": "https://www.youtube.com/watch?v=AY3Yea6hBbI",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=AY3Yea6hBbI"
+      },
+      {
+        "name": "Uyirey - Video Song | Amaran | Sivakarthikeyan, Sai Pallavi | GV Prakash | Rajkumar | Kamal Haasan",
+        "url": "https://www.youtube.com/watch?v=2g9zQp0jruM",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=2g9zQp0jruM"
+      },
+      {
+        "name": "Vaane Vaane - Video Song | Amaran | Sivakarthikeyan, Sai Pallavi | GV Prakash | Rajkumar Periasamy",
+        "url": "https://www.youtube.com/watch?v=OIRWdkPMrh0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=OIRWdkPMrh0"
+      },
+      {
+        "name": "Vennilavu Saaral - 8K Video | Amaran | Sivakarthikeyan, Sai Pallavi | GV Prakash | Rajkumar",
+        "url": "https://www.youtube.com/watch?v=uLfzcMceO1A",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=uLfzcMceO1A"
+      },
+      {
+        "name": "Amaran - Video Jukebox | Sivakarthikeyan, Sai Pallavi | GV Prakash Kumar | Rajkumar Periasamy",
+        "url": "https://www.youtube.com/watch?v=j0pZ5Hk6tO0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=j0pZ5Hk6tO0"
+      }
+    ],
     "original_filename": "Amaran (SK21) (2024).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/6s70q1dcb53z7jzhw4ouc/Amaran.a.k.a.SK21.2024.1080p.NF.WEB-DL.HIN-TAM-TEL-KAN-MAL.DDP5.1.H264-Telly.mkv?rlkey=5n65x165lmdv2k0tvosz08snh&st=sbbcok3q&dl=1"
   },
@@ -65,8 +146,35 @@
       "Fantasy",
       "Thriller"
     ],
-    "trailer": "https://www.youtube.com/watch?v=Jde0Ip7YBRQ",
-    "songs": "https://www.youtube.com/results?search_query=Arundhati%202009%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=Jde0Ip7YBRQ",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=Jde0Ip7YBRQ",
+    "songs_list": [
+      {
+        "name": "Tamil Hit Songs | Arundhati Tamil Movie | Gummiruttin Video Song | Anushka Shetty",
+        "url": "https://www.youtube.com/watch?v=dVLJhmNNYwE",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=dVLJhmNNYwE"
+      },
+      {
+        "name": "Tamil Hit Songs | Bhoomi Kothikkum Video Song | Arundhati Tamil Movie | Anushka Shetty | Sonu Sood",
+        "url": "https://www.youtube.com/watch?v=I9PVBikuMH8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=I9PVBikuMH8"
+      },
+      {
+        "name": "Arundhati Tamil Movie Songs | Enna Viratham Video Song | Anushka Shetty | Sonu Sood",
+        "url": "https://www.youtube.com/watch?v=JwN7aOUIOos",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=JwN7aOUIOos"
+      },
+      {
+        "name": "Arundhati Movie Songs | Back to Back Tamil Hit Songs | Video Jukebox | Anushka Shetty | Sonu Sood",
+        "url": "https://www.youtube.com/watch?v=eVkMmTB3QAE",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=eVkMmTB3QAE"
+      },
+      {
+        "name": "Arundhati (2009) Tamil Full Movie HD | 4K | Anushka Shetty | Sonu Sood | Manorama | Vicky Cinemas",
+        "url": "https://www.youtube.com/watch?v=uNljAOUMI-o",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=uNljAOUMI-o"
+      }
+    ],
     "original_filename": "Arundhati (2009).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/fbpkyw5rdou3bclnj8qr6/Arundhati-2009-BDRip-1080p-Telugu-Tamil-Hindi-AVC-UNTOUCHED-DD-5.1-192Kbps-x264-3.3GB.mkv?rlkey=2qw6nwevnc9ocdluczz8luym3&st=pcrwjhb1&dl=1"
   },
@@ -81,8 +189,35 @@
     "genre": [
       "Action"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Baasha%201995%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Baasha%201995%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=1g-yZ3BDDK0",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=1g-yZ3BDDK0",
+    "songs_list": [
+      {
+        "name": "Basha - Naa Autokaran Autokaran HD Video Song | Rajinikanth | S.P.Balasubrahmanyam | Deva",
+        "url": "https://www.youtube.com/watch?v=EgiXWd2arnI",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=EgiXWd2arnI"
+      },
+      {
+        "name": "Baashha",
+        "url": "https://www.youtube.com/watch?v=MSSUNGc-KKw",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=MSSUNGc-KKw"
+      },
+      {
+        "name": "Sign in to YouTube",
+        "url": "https://www.youtube.com/watch?v=xg-H4uXyhcc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=xg-H4uXyhcc"
+      },
+      {
+        "name": "Ra Ra Raara Ramayya",
+        "url": "https://www.youtube.com/watch?v=dL_WmhEwzvw",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=dL_WmhEwzvw"
+      },
+      {
+        "name": "Baasha Rajinikanth Super Hit Songs High Quality Mp3-2023",
+        "url": "https://www.youtube.com/watch?v=OX9rb-ZMQe4",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=OX9rb-ZMQe4"
+      }
+    ],
     "original_filename": "Baasha (1995).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/kxcfrb8kk9jnp0iqnu91g/Baasha-1995-REMASTERED-TRUE-WEB-DL-4K-2160p.mkv?rlkey=j4vl2i9bagbaa03blwposry3w&st=n9c3ahj2&dl=0"
   },
@@ -97,8 +232,35 @@
     "genre": [
       "Action"
     ],
-    "trailer": "https://www.youtube.com/watch?v=moARYJlgkaA",
-    "songs": "https://www.youtube.com/results?search_query=Bheema%202008%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=moARYJlgkaA",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=moARYJlgkaA",
+    "songs_list": [
+      {
+        "name": "முதல் மழை - Mudhal Mazhai HD Video Song | Bheemaa | Vikram | Trisha | Linguswamy | Harris Jayaraj",
+        "url": "https://www.youtube.com/watch?v=wwxxQj_oig8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=wwxxQj_oig8"
+      },
+      {
+        "name": "Bheemaa",
+        "url": "https://www.youtube.com/watch?v=BrMRNaIuU7A",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=BrMRNaIuU7A"
+      },
+      {
+        "name": "Sign in to YouTube",
+        "url": "https://www.youtube.com/watch?v=SNpO1oEUKoQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=SNpO1oEUKoQ"
+      },
+      {
+        "name": "Bheema Tamil Movie Video Songs | Rangu Rangamma Full Video Song | Vikram | Trisha | Harris Jayaraj",
+        "url": "https://www.youtube.com/watch?v=x_HZ-ga1oWo",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=x_HZ-ga1oWo"
+      },
+      {
+        "name": "Dheema Video Song (Tamil) | Love Insurance Kompany | Pradeep Ranganathan | Anirudh | Vignesh Shivan",
+        "url": "https://www.youtube.com/watch?v=qEpIxKZjzIA",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=qEpIxKZjzIA"
+      }
+    ],
     "original_filename": "Bheema (2008).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/uheqjnbuuxpywnzux8mo4/Bheema-2008-Tamil-AYN-DVD-1080p-AVC-UNTOUCHED.mkv?rlkey=kahwmlj8e37182qnutf1j1c11&st=jxfir08x&dl=0"
   },
@@ -116,8 +278,35 @@
       "Crime",
       "Drama"
     ],
-    "trailer": "https://www.youtube.com/watch?v=bYopWaT8Sr0",
-    "songs": "https://www.youtube.com/results?search_query=Bullet%20Train%20Explosion%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=bYopWaT8Sr0",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=bYopWaT8Sr0",
+    "songs_list": [
+      {
+        "name": "I put deja vu over bullet train explosion",
+        "url": "https://www.youtube.com/watch?v=gK9kvoclDc4",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=gK9kvoclDc4"
+      },
+      {
+        "name": "10 Endrathukulla - Vroom Vroom Video | Vikram, Samantha | D. Imman",
+        "url": "https://www.youtube.com/watch?v=MXJzud_HcgI",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=MXJzud_HcgI"
+      },
+      {
+        "name": "THE BULLET TRAIN 'The near miss with 'Down' train 109\\",
+        "url": "https://www.youtube.com/watch?v=F_U8ugiqBNo",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=F_U8ugiqBNo"
+      },
+      {
+        "name": "There’s A Bomb On This Train | Bullet Train Explosion | Netflix Philippines",
+        "url": "https://www.youtube.com/watch?v=8JtjSA54ZTA",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=8JtjSA54ZTA"
+      },
+      {
+        "name": "Bullet Full Video Song (Tamil) | Ram Pothineni, Krithi Shetty | Simbu | Lingusamy | DSP",
+        "url": "https://www.youtube.com/watch?v=OV5l7fBpEi4",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=OV5l7fBpEi4"
+      }
+    ],
     "original_filename": "Bullet Train Explosion 2025.strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/02hxj9ltn24328b8sn740/Bullet-Train-Explosion-2025.mkv?rlkey=i2ed5vrkavv6y8bbvdm31ihct&st=v6rfjnjt&dl=1"
   },
@@ -134,8 +323,35 @@
       "Thriller",
       "Crime"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Coolie%202025%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Coolie%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=qeVfT2iLiu0",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=qeVfT2iLiu0",
+    "songs_list": [
+      {
+        "name": "Monica - Video Song | COOLIE | Superstar Rajinikanth | Sun Pictures | Lokesh | Anirudh | Pooja Hegde",
+        "url": "https://www.youtube.com/watch?v=neOasLBWoy0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=neOasLBWoy0"
+      },
+      {
+        "name": "Chikitu Official Video Song | COOLIE | Superstar Rajinikanth | Sun Pictures | Lokesh | Anirudh",
+        "url": "https://www.youtube.com/watch?v=EBa6OoMxAag",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=EBa6OoMxAag"
+      },
+      {
+        "name": "#COOLIE - Video Songs Jukebox | Superstar Rajinikanth | Sun Pictures | Lokesh | Anirudh",
+        "url": "https://www.youtube.com/watch?v=AQ65yLt8MtM",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=AQ65yLt8MtM"
+      },
+      {
+        "name": "I Am The Danger -Video Song | Coolie| Superstar Rajinikanth| Nagarjuna| Lokesh| Anirudh|Sun Pictures",
+        "url": "https://www.youtube.com/watch?v=zjpdFYOcLBw",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=zjpdFYOcLBw"
+      },
+      {
+        "name": "Powerhouse - Official Lyric Video | Coolie | Superstar Rajinikanth | Sun Pictures | Lokesh | Anirudh",
+        "url": "https://www.youtube.com/watch?v=1G6ERZkk8So",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=1G6ERZkk8So"
+      }
+    ],
     "original_filename": "Coolie 2025.Strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/mx2er2rww0kie4vv5ii0p/Coolie.2025.1080p.AMZN.WEB-DL.TAM-TEL-KAN-MAL.DDP5.1.H.264-Telly.mkv?rlkey=p0qrxpuarawz9wj9cjp9d7uof&st=wp7ar55e&dl=1"
   },
@@ -150,8 +366,35 @@
     "genre": [
       "Drama"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=DNA%202025%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=DNA%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=edb1pY9BoVg",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=edb1pY9BoVg",
+    "songs_list": [
+      {
+        "name": "Kanne Kanave Video Song | DNA | Atharvaa, Nimisha Sajayan | Nelson Venkatesan | Sreekanth Hariharan",
+        "url": "https://www.youtube.com/watch?v=km6g9YPDHqE",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=km6g9YPDHqE"
+      },
+      {
+        "name": "Feelingu Paatu - Video Song | DNA | Atharvaa | Nelson Venkatesan | Sahi Siva | Olympia Movies",
+        "url": "https://www.youtube.com/watch?v=09ZDeYIq0lQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=09ZDeYIq0lQ"
+      },
+      {
+        "name": "Vaa En Uyir Poove -  Video Song | DNA | Atharvaa |Nimisha Sajayan |Nelson Venkatesan |Sathya Prakash",
+        "url": "https://www.youtube.com/watch?v=05N9zpvb8J4",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=05N9zpvb8J4"
+      },
+      {
+        "name": "En Vaanile Video Song | DNA | Atharvaa, Nimisha | Pravin Saivi | Shweta Mohan | Nelson Venkatesan",
+        "url": "https://www.youtube.com/watch?v=_F-v8m_4ruo",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=_F-v8m_4ruo"
+      },
+      {
+        "name": "Un Nenjukulle Video Song | Madura Veeran | Shanmugapandiyan, Santhosh Dhayanidhi | TrendMusic",
+        "url": "https://www.youtube.com/watch?v=p7K4pT54Zz8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=p7K4pT54Zz8"
+      }
+    ],
     "original_filename": "DNA-(2025).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/q0j7dcsor97gd67itgs0t/DNA.2160p.JIOHS.WEB-DL.Multi.Audio.DDP.5.1.SDR.H265-JeRi.mkv?rlkey=h76ho7q83cdupy8intbt7cqn1&st=jun2kfs6&dl=0"
   },
@@ -167,8 +410,35 @@
       "Horror",
       "Thriller"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Demonte%20Colony%202%202024%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Demonte%20Colony%202%202024%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=NlWgTUFwpIk",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=NlWgTUFwpIk",
+    "songs_list": [
+      {
+        "name": "Naan Kaanum Kana | Demonte Colony 2 | Arulnithi, Priya Bhavani Shankar | Ajay R Gnanamuthu | Sam CS",
+        "url": "https://www.youtube.com/watch?v=6wxWnN2LxkY",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=6wxWnN2LxkY"
+      },
+      {
+        "name": "Naan Kaanum Kana",
+        "url": "https://www.youtube.com/watch?v=Uv0oGghIwj8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=Uv0oGghIwj8"
+      },
+      {
+        "name": "Nodigaley |Demonte Colony 2 |Arulnithi,Priya Bhavani Shankar |Ajay R Gnanamuthu |Sam CS |Iykki Berry",
+        "url": "https://www.youtube.com/watch?v=0_m2G4A30mM",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=0_m2G4A30mM"
+      },
+      {
+        "name": "Nodigaley |Demonte Colony 2 |Arulnithi,Priya Bhavani Shankar |Ajay R Gnanamuthu |Sam CS |Iykki Berry",
+        "url": "https://www.youtube.com/watch?v=oZS86GELhEQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=oZS86GELhEQ"
+      },
+      {
+        "name": "Rathatha Thaa (Lyrical Video): Demonte Colony 3 | Arulnithi, Priya Bhavani Shankar | Sam CS",
+        "url": "https://www.youtube.com/watch?v=fPHNbsFeNyk",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=fPHNbsFeNyk"
+      }
+    ],
     "original_filename": "Demonte Colony 2-(2024).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/8cces4av8pz2twsuo2qhq/Demonte.Colony.2.2024.1080p.AMZN.WEB-DL.Hindi-Tamil.mkv?rlkey=5xr1ionrjzguq723ctwrn8hxc&st=u9j2gerp&dl=0"
   },
@@ -184,8 +454,35 @@
       "Horror",
       "Comedy"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Devil%27s%20Double%20Next%20Level%202025%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Devil%27s%20Double%20Next%20Level%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=OmMsc2l6pM4",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=OmMsc2l6pM4",
+    "songs_list": [
+      {
+        "name": "Kissa 47 - 4K Video Song I Devil's Double Next Level Movie I Santhanam I Arya I OfRo Music",
+        "url": "https://www.youtube.com/watch?v=QQ6MoD0swXU",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=QQ6MoD0swXU"
+      },
+      {
+        "name": "Kissa 47 - Video Song | Santhanam | Deleted Song | From \\",
+        "url": "https://www.youtube.com/watch?v=Ui5Taq1baU8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=Ui5Taq1baU8"
+      },
+      {
+        "name": "Kissa 47 - Song Lyrics | Santhanam | Deleted Song | From DD Next Level | Tamil Song |",
+        "url": "https://www.youtube.com/watch?v=a0YAxw98PMQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=a0YAxw98PMQ"
+      },
+      {
+        "name": "Cinemakaran Lyric Video | Devil's Double Next Level | Santhanam, Geethika | Arya| ofRO| S.Prem Anand",
+        "url": "https://www.youtube.com/watch?v=W-tLtJNeoZc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=W-tLtJNeoZc"
+      },
+      {
+        "name": "Devil's Double Next Level | Coming Soon | Vinayagar Chathurthi Special | Zee Tamil",
+        "url": "https://www.youtube.com/watch?v=zu9KCEtTnG0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=zu9KCEtTnG0"
+      }
+    ],
     "original_filename": "Devil's Double Next Level (2025).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/9zuus4a5asp82ehgcq98u/Devil-s-Double-Next-Level-2025-Extended-Cut-WEB-DL-Hindi-Tamil-1080p-x264-AVC-DDP-5.1-CineVood.mkv?rlkey=7dumrdlwsbnmswkhha1izkv7a&st=kybtkkyn&dl=1"
   },
@@ -201,8 +498,35 @@
       "Romance",
       "Drama"
     ],
-    "trailer": "https://www.youtube.com/watch?v=2MFMwvJd12k",
-    "songs": "https://www.youtube.com/results?search_query=Dhadak%202%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=2MFMwvJd12k",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=2MFMwvJd12k",
+    "songs_list": [
+      {
+        "name": "Bas Ek Dhadak | Dhadak 2 |Siddhant C,Triptii D|Shreya Ghoshal, Jubin Nautiyal Javed-Mohsin, Rashmi V",
+        "url": "https://www.youtube.com/watch?v=iUqPfGlg9GQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=iUqPfGlg9GQ"
+      },
+      {
+        "name": "Preet Re | Dhadak 2 | Siddhant Chaturvedi, Triptii Dimri | Darshan R, Jonita G, Rochak K, Gurpreet S",
+        "url": "https://www.youtube.com/watch?v=0ttXMfckx1c",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=0ttXMfckx1c"
+      },
+      {
+        "name": "Dhadak - Title Track | Dhadak | Ishaan \\u0026 Janhvi | Ajay Gogavale \\u0026 Shreya Ghoshal | Ajay-Atul",
+        "url": "https://www.youtube.com/watch?v=k6q4lENp434",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=k6q4lENp434"
+      },
+      {
+        "name": "Dhadak - Title Track | Full Video | | Dhadak | Ishaan \\u0026 Janhvi | Shreya Ghoshal | Ajay-Atul",
+        "url": "https://www.youtube.com/watch?v=qWnzMwT6SKo",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=qWnzMwT6SKo"
+      },
+      {
+        "name": "Duniya Alag | Dhadak 2 | Siddhant C, Triptii Dimri | Arijit Singh, Shreyas P, Siddharth-Garima",
+        "url": "https://www.youtube.com/watch?v=WJzO_ZYW3AQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=WJzO_ZYW3AQ"
+      }
+    ],
     "original_filename": "Dhadak 2 (2025).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/ox9j6xj8o71asd0f381en/Dhadak-2-2025-HQ-Proper-HDTC-1080p-Hindi-ORG-DDP-2.0-AVC-CineVood.mkv?rlkey=17qggpqozh7rc2b1xiv2xxj4a&st=e6gi63bb&dl=1"
   },
@@ -220,8 +544,35 @@
       "Action",
       "Adventure"
     ],
-    "trailer": "https://www.youtube.com/watch?v=kby-mkUTu58",
-    "songs": "https://www.youtube.com/results?search_query=How%20to%20Train%20Your%20Dragon%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=kby-mkUTu58",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=kby-mkUTu58",
+    "songs_list": [
+      {
+        "name": "Vazhithunaiye - Video Song | Dragon | Pradeep Ranganathan, Kayadu | Ashwath Marimuthu | Leon James",
+        "url": "https://www.youtube.com/watch?v=bF5X521c4PI",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=bF5X521c4PI"
+      },
+      {
+        "name": "Yendi Vittu Pona - Video | Dragon | STR | Pradeep, Anupama | Ashwath Marimuthu | Leon James | AGS",
+        "url": "https://www.youtube.com/watch?v=U1JLtpJTe84",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=U1JLtpJTe84"
+      },
+      {
+        "name": "How To Train Your Dragon",
+        "url": "https://www.youtube.com/watch?v=V8Yv8F6KiG0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=V8Yv8F6KiG0"
+      },
+      {
+        "name": "Sign in to YouTube",
+        "url": "https://www.youtube.com/watch?v=qhxBcwBfbAo",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=qhxBcwBfbAo"
+      },
+      {
+        "name": "How to Train Your Dragon 2 - Toothless Found (Tamil)",
+        "url": "https://www.youtube.com/watch?v=OK-NuMth8Fc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=OK-NuMth8Fc"
+      }
+    ],
     "original_filename": "Dragon (2025).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/1o2jez1jnt2aad0bk4zsb/Dragon.2025.2160p.NF.WEB-DL.HIN-TAM-TEL-KAN-MAL.DDP5.1.H.265-VAATHI.mkv?rlkey=4rva3gts9znk7kaym4ujt4fti&st=e8eftbiq&dl=1"
   },
@@ -238,8 +589,35 @@
       "Science Fiction",
       "Adventure"
     ],
-    "trailer": "https://www.youtube.com/watch?v=fYKLIjpfuwQ",
-    "songs": "https://www.youtube.com/results?search_query=Enthiran%202010%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=fYKLIjpfuwQ",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=fYKLIjpfuwQ",
+    "songs_list": [
+      {
+        "name": "Kilimanjaro Official Video Song | Enthiran | Rajinikanth | Aishwarya Rai | A.R.Rahman",
+        "url": "https://www.youtube.com/watch?v=E21CJi7R9JM",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=E21CJi7R9JM"
+      },
+      {
+        "name": "Puthiya Manidha Video Song - Enthiran | Superstar Rajinikanth | Aishwarya Rai | A.R. Rahman| Shankar",
+        "url": "https://www.youtube.com/watch?v=tR3PbDt5Q4Q",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=tR3PbDt5Q4Q"
+      },
+      {
+        "name": "Arima Arima Official Video Song 8K | Enthiran | Rajinikanth | Aishwarya Rai | A.R.Rahman",
+        "url": "https://www.youtube.com/watch?v=IdveDKCYtI8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=IdveDKCYtI8"
+      },
+      {
+        "name": "Arima Arima Official Video Song | Enthiran | Rajinikanth | Aishwarya Rai | A.R.Rahman",
+        "url": "https://www.youtube.com/watch?v=9PE2nv3ffyQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=9PE2nv3ffyQ"
+      },
+      {
+        "name": "Kadhal Anukkal Official Video Song | Enthiran | Rajinikanth | Aishwarya Rai | A.R.Rahman",
+        "url": "https://www.youtube.com/watch?v=5F3H9_pYpYg",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=5F3H9_pYpYg"
+      }
+    ],
     "original_filename": "Enthiran (2010).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/9aucgjg7tuxmsj03mpe3s/Enthiran.2010.Tamil.1080p.JIO.WEB-DL.DDP5.1.H.264-FINIX.mkv?rlkey=pjwbwy5xm61g3rs2fz5ziqsyo&st=yos4rxyl&dl=1"
   },
@@ -257,8 +635,35 @@
       "Romance",
       "Thriller"
     ],
-    "trailer": "https://www.youtube.com/watch?v=eFrpA44fZvk",
-    "songs": "https://www.youtube.com/results?search_query=Fanaa%202006%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=eFrpA44fZvk",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=eFrpA44fZvk",
+    "songs_list": [
+      {
+        "name": "Ennulle Vaani Nee ( Chand Shifarish New Tamil Unplugged Cover Song ) official - 2018",
+        "url": "https://www.youtube.com/watch?v=kzek78Vf2sk",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=kzek78Vf2sk"
+      },
+      {
+        "name": "Chand Sifarish | Full Song | Fanaa | Aamir Khan, Kajol | Shaan, Kailash Kher | Jatin-Lalit | Prasoon",
+        "url": "https://www.youtube.com/watch?v=25Iw-T87JLo",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=25Iw-T87JLo"
+      },
+      {
+        "name": "Mere Haath Mein | Full Song | Fanaa | Aamir Khan, Kajol | Sonu Nigam, Sunidhi Chauhan | Jatin-Lalit",
+        "url": "https://www.youtube.com/watch?v=zWEOx7TSM6I",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=zWEOx7TSM6I"
+      },
+      {
+        "name": "Chand Sifarish | Fanaa | 1080p HD Song | Aamir Khan | Kajol | Kailash Kher, Shaan",
+        "url": "https://www.youtube.com/watch?v=qtz5mpvgAM0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=qtz5mpvgAM0"
+      },
+      {
+        "name": "Fanaa Movie All Songs || Audio Jukebox || Aamir khan \\u0026 Kajol || Music For Soul",
+        "url": "https://www.youtube.com/watch?v=F0YuilHoyCk",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=F0YuilHoyCk"
+      }
+    ],
     "original_filename": "Fanaa (2006).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/78m8ty0sbdsyjn7qjr4kh/Fanaa-2006-BluRay-Hindi-1080p-10bit-HEVC-AAC-5.1-ESub-CineVood.mkv?rlkey=gaw1bnybtlxym8pndmbszywwc&st=66xjuh4m&dl=1"
   },
@@ -274,8 +679,35 @@
       "Comedy",
       "Horror"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Geethanjali%20Malli%20Vachindi%202024%20official%20trailer%20Hindi",
-    "songs": "https://www.youtube.com/results?search_query=Geethanjali%20Malli%20Vachindi%202024%20Hindi%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=JnFYROI30s4",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=JnFYROI30s4",
+    "songs_list": [
+      {
+        "name": "Geethanjali Malli Vachindhi Movie | Shambhoo Shambhoo Video Song | Dinker | Anjali | Kona Venkat",
+        "url": "https://www.youtube.com/watch?v=gLqhB67g_f4",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=gLqhB67g_f4"
+      },
+      {
+        "name": "Geethanjali Malli Vachindhi Movie 2024 | Geethanjali Vai Video Song | Keertana Sesh | Anjali",
+        "url": "https://www.youtube.com/watch?v=GKKhEbQwhkU",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=GKKhEbQwhkU"
+      },
+      {
+        "name": "Geethanjali Malli Vachindhi Movie 2024 | Geethanjali Vai Lyrical Video | Keertana Sesh | Anjali",
+        "url": "https://www.youtube.com/watch?v=pX9DKzKHBbE",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=pX9DKzKHBbE"
+      },
+      {
+        "name": "Geethanjali Malli Vachindhi Movie | Nuvvee Raavaa Raavaa Lyrical | Ramya Behara | Aditya Iyengar",
+        "url": "https://www.youtube.com/watch?v=nnYZCnEkVfo",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=nnYZCnEkVfo"
+      },
+      {
+        "name": "Geethanjali Malli Vachindhi Movie | Shambhoo Shambhoo Lyrical Video | Dinker | Anjali | Kona Venkat",
+        "url": "https://www.youtube.com/watch?v=KjWfdr9CtSA",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=KjWfdr9CtSA"
+      }
+    ],
     "original_filename": "Geethanjali Malli Vachindi (2024).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/hoynyiuym52vyni61300w/Geethanjali.Malli.Vachindi.2024.2160p.JC.WEB-DL.Hindi.DDP5.1.H.264-Archie.mkv?rlkey=n8sw84jvi9yoi1esdqvy9getu&st=667ga30h&dl=1"
   },
@@ -291,8 +723,35 @@
       "Comedy",
       "Horror"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Ghosty%202023%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Ghosty%202023%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=KHeRGZJLp7k",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=KHeRGZJLp7k",
+    "songs_list": [
+      {
+        "name": "Bramman Video Song | Ghosty | Kajal Aggarwal, Yogi Babu | Kalyaan | Sam CS | Seed Pictures",
+        "url": "https://www.youtube.com/watch?v=2i_oxQ1VqYg",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=2i_oxQ1VqYg"
+      },
+      {
+        "name": "Grandma Song - Lyric Video | Sabdham (Tamil) |  Aadhi | Lakshmi Menon | Thaman.S | Arivazhagan",
+        "url": "https://www.youtube.com/watch?v=gZI43Rk3Zwk",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=gZI43Rk3Zwk"
+      },
+      {
+        "name": "Ghosty - Tamil 𝐂𝐨𝐦𝐞𝐝𝐲 𝐇𝐨𝐫𝐫𝐨𝐫 Full Movie - Kajal Aggarwal, Yogi Babu, K. S. Ravikumar, Redin Kingsley",
+        "url": "https://www.youtube.com/watch?v=BI7i260ZGy0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=BI7i260ZGy0"
+      },
+      {
+        "name": "Party With The Pei Song Promo Video | Aranmanai 2 | Siddharth | Trisha | Hansika | Hiphop Tamizha",
+        "url": "https://www.youtube.com/watch?v=eABIt34aWYQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=eABIt34aWYQ"
+      },
+      {
+        "name": "Kodiavanin Kathaya Video Song | Kanchana Movie Songs | Raghava Lawrence | Sarathkumar | Thaman Hits",
+        "url": "https://www.youtube.com/watch?v=mLaVG3hf5Wg",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=mLaVG3hf5Wg"
+      }
+    ],
     "original_filename": "Ghosty (2023).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/6pg9aehva31fzlt9r9g7z/Ghosty.2160p.ZEE5.WEB-DL.Tamil.DDP.5.1.H265-JeRi.mkv?rlkey=7huwxqqz9ybjms7fj7sa7hzlj&st=mm2qmby8&dl=1"
   },
@@ -309,8 +768,35 @@
       "Crime",
       "Comedy"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Good%20Bad%20Ugly%202025%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Good%20Bad%20Ugly%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=bJbZAXbF3Xo",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=bJbZAXbF3Xo",
+    "songs_list": [
+      {
+        "name": "Full Video: God Bless U | Good Bad Ugly | Ajith | Anirudh | GV Prakash | Adhik Ravichandran",
+        "url": "https://www.youtube.com/watch?v=0z2bwlJvPbo",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=0z2bwlJvPbo"
+      },
+      {
+        "name": "God Bless U 8K Video | Good Bad Ugly | Ajith | Anirudh | GV Prakash | Adhik Ravichandran",
+        "url": "https://www.youtube.com/watch?v=5_pNYak1_Tg",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=5_pNYak1_Tg"
+      },
+      {
+        "name": "Aaluma Doluma (Good Bad Ugly Version) | Ajith | Trisha | Anirudh Ravichander",
+        "url": "https://www.youtube.com/watch?v=3qk6Imu0Agw",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=3qk6Imu0Agw"
+      },
+      {
+        "name": "Good Bad Ugly: AK - The Tiger (Full Video) | Ajith Kumar | Trisha | G V Prakash, Darkkey | Bhushan K",
+        "url": "https://www.youtube.com/watch?v=WfffScB6ktA",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=WfffScB6ktA"
+      },
+      {
+        "name": "Full Video: Ranagalam | Good Bad Ugly | Ajith | Trisha | G V Prakash | Adhik Ravichandran",
+        "url": "https://www.youtube.com/watch?v=TUKrYm500jM",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=TUKrYm500jM"
+      }
+    ],
     "original_filename": "Good Bad Ugly (2025).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/y8rgykgzequym0e9g4ut4/OlaMovies-Good.Bad.Ugly.2025.2160p.NF.WEB-DL.HIN-TAM-TEL-KAN-MAL.DDP5.1.H.265-Telly.mkv?rlkey=83efj9ylvy1k39pr721rf2qg5&st=gd1xw5a6&dl=1"
   },
@@ -326,8 +812,35 @@
       "Action",
       "Drama"
     ],
-    "trailer": "https://www.youtube.com/watch?v=q8M6Ybjr2Wc",
-    "songs": "https://www.youtube.com/results?search_query=Guntur%20Kaaram%202024%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=q8M6Ybjr2Wc",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=q8M6Ybjr2Wc",
+    "songs_list": [
+      {
+        "name": "Kurchi Madathapetti (Tamil) Full Video Song | Guntur Kaaram |Mahesh Babu|Sreeleela|Trivikram |Thaman",
+        "url": "https://www.youtube.com/watch?v=qSc_sjKBdX0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=qSc_sjKBdX0"
+      },
+      {
+        "name": "Oh My Baby Full Video Song (Tamil) | Guntur Kaaram | Mahesh Babu, Sreeleela | Trivikram | Thaman S",
+        "url": "https://www.youtube.com/watch?v=wjzTF7m50Es",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=wjzTF7m50Es"
+      },
+      {
+        "name": "Dum Masala Full Video Song (Tamil) | Guntur Kaaram | Mahesh Babu | Sreeleela | Trivikram | Thaman S",
+        "url": "https://www.youtube.com/watch?v=OBJbtB76WvU",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=OBJbtB76WvU"
+      },
+      {
+        "name": "Kurchi Madathapetti Full Video Song | Guntur Kaaram | Mahesh Babu | Sreeleela | Trivikram | Thaman S",
+        "url": "https://www.youtube.com/watch?v=QphlnFF3oAc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=QphlnFF3oAc"
+      },
+      {
+        "name": "Ramana Hey Full Video (Tamil) | Guntur Kaaram | Mahesh Babu | Sreeleela | Trivikram | Thaman S",
+        "url": "https://www.youtube.com/watch?v=gh3FyLT7WVg",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=gh3FyLT7WVg"
+      }
+    ],
     "original_filename": "Guntur Kaaram (2024).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/wzjwzbszme3rxgsv2dkr2/Guntur.Kaaram.2024.1080p.-60FPS-.10bit.NF.WEBRip.MULTi.DDP5.1.H.265.ESub.Homelander.mkv?rlkey=uy5zxwqg7w4lmkgbta080jzyr&st=qmppd5qq&dl=1"
   },
@@ -344,8 +857,35 @@
       "Family",
       "Romance"
     ],
-    "trailer": "https://www.youtube.com/watch?v=3Ld05Om2UWs",
-    "songs": "https://www.youtube.com/results?search_query=Hi%20Nanna%202023%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=3Ld05Om2UWs",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=3Ld05Om2UWs",
+    "songs_list": [
+      {
+        "name": "Hi Nanna: Amizhdhe Nee (Full Video) | Nani,Mrunal Thakur | Hesham Abdul Wahab | Vivek | Shouryuv",
+        "url": "https://www.youtube.com/watch?v=ze4hjQx00Rw",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=ze4hjQx00Rw"
+      },
+      {
+        "name": "Full Video: Nee Maaya Nizhal | Hi Nanna | Nani,Mrunal,Baby Kiara | Hesham Abdul Wahab | Shouryuv",
+        "url": "https://www.youtube.com/watch?v=EmnRvAC_N2Y",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=EmnRvAC_N2Y"
+      },
+      {
+        "name": "Full Video: Maiyal | Hi Nanna | Nani, Mrunal Thakur | Baby Kiara K | Shouryuv | Hesham Abdul Wahab",
+        "url": "https://www.youtube.com/watch?v=DAwAewlvQyY",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=DAwAewlvQyY"
+      },
+      {
+        "name": "Full Video: Nizhaliyae | Hi Nanna | Nani, Mrunal Thakur | Shouryuv | Hesham Abdul Wahab",
+        "url": "https://www.youtube.com/watch?v=x6MTfQ0qkOA",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=x6MTfQ0qkOA"
+      },
+      {
+        "name": "Full Video: Kannaadi Kannaadi | Hi Nanna | Nani,Mrunal T,Baby Kiara K | Shouryuv |Hesham Abdul Wahab",
+        "url": "https://www.youtube.com/watch?v=ZHt4PkkC1qc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=ZHt4PkkC1qc"
+      }
+    ],
     "original_filename": "Hi Papa (2023).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/qpi0ntv6jr074xhkqiz9i/Hi.Papa.2023.1080p.NF.WEB-DL.Multi.DDP5.1.H.264-TheBiscuitMan.mkv?rlkey=6gopxjax1l2li3nrjgs613i2m&st=qogrm6qo&dl=1"
   },
@@ -362,8 +902,35 @@
       "Mystery",
       "Thriller"
     ],
-    "trailer": "https://www.youtube.com/watch?v=e2eX1HGeBFE",
-    "songs": "https://www.youtube.com/results?search_query=Housefull%205%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=e2eX1HGeBFE",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=e2eX1HGeBFE",
+    "songs_list": [
+      {
+        "name": "Housefull 5: Laal Pari (Full Video) | Yo Yo Honey Singh | Sajid Nadiadwala | Tarun Mansukhani",
+        "url": "https://www.youtube.com/watch?v=rcPuG_PkAf8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=rcPuG_PkAf8"
+      },
+      {
+        "name": "Housefull 5: Qayamat (Full Video) | Akshay,Abhishek,Riteish,Jacqueline,Sonam,Nargis | Sajid N",
+        "url": "https://www.youtube.com/watch?v=hzyGIxqgDHA",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=hzyGIxqgDHA"
+      },
+      {
+        "name": "Housefull 5 (Video Jukebox): Akshay,Abhishek,Riteish,Jacqueline,Sonam,Nargis | Sajid N | Tarun M",
+        "url": "https://www.youtube.com/watch?v=aRHnBnqul5Q",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=aRHnBnqul5Q"
+      },
+      {
+        "name": "Laal Pari",
+        "url": "https://www.youtube.com/watch?v=ShYU-86rhT4",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=ShYU-86rhT4"
+      },
+      {
+        "name": "Housefull 5 | The Phoogdi Dance (Full Video) | Sajid Nadiadwala | Tarun Mansukhani",
+        "url": "https://www.youtube.com/watch?v=s06y3qa3fEQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=s06y3qa3fEQ"
+      }
+    ],
     "original_filename": "Housefull 5-(2025).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/m2vgrljf0enr7pkf1tdrf/Housefull.5.A.2025.2160p.AMZN.WEB-DL.DDP5.1.H.265-Telly.mkv?rlkey=4fdlvm5of5g4vkfdxuya9k3xh&st=5cd1sd8d&dl=0"
   },
@@ -378,8 +945,35 @@
     "genre": [
       "Drama"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=The%20Idiot%202023%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=The%20Idiot%202023%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=aaJx1m8zcnI",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=aaJx1m8zcnI",
+    "songs_list": [
+      {
+        "name": "Kiss me idiot Tamil movie video song viraat sreeleela ap arjun",
+        "url": "https://www.youtube.com/watch?v=6zX7aOw7k-k",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=6zX7aOw7k-k"
+      },
+      {
+        "name": "Idiot Banna - Full Video | Dangal | Aamir Khan | Jyoti Nooran \\u0026 Sultana Nooran",
+        "url": "https://www.youtube.com/watch?v=TuXtvKcmK4s",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=TuXtvKcmK4s"
+      },
+      {
+        "name": "I Love You Idiot - Pilla Pillaga Video Song Telugu | Viraat, SreeLeela| Swaraag, AP Arjun, Sai Kiran",
+        "url": "https://www.youtube.com/watch?v=PnY8-VPh1yE",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=PnY8-VPh1yE"
+      },
+      {
+        "name": "Choopultho Video Song - Idiot Movie || Ravi Teja, Rakshita || Shankar Mahadevan || Chakri",
+        "url": "https://www.youtube.com/watch?v=4xVnMF9fLAQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=4xVnMF9fLAQ"
+      },
+      {
+        "name": "Juliet Lover of Idiot Movie Songs | Neekai Vechey Full Video Song | Naveen Chandra | Nivetha Thomas",
+        "url": "https://www.youtube.com/watch?v=2YnThwhSfFg",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=2YnThwhSfFg"
+      }
+    ],
     "original_filename": "Idiot (2023).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/9d5lvdvrltmk09qv39y68/Idiot-2023-2160p-TK-WEB-DL-265-eng-DD-5.1-448kbps-Esubs-JeRi.mkv?rlkey=nyhsa6p8c65kh9ophpkejnkoz&st=2kjb8f1m&dl=1"
   },
@@ -395,8 +989,35 @@
       "Action",
       "Thriller"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Irumbu%20Thirai%202018%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Irumbu%20Thirai%202018%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=3n3L428I8MQ",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=3n3L428I8MQ",
+    "songs_list": [
+      {
+        "name": "Kaiyile Vaanginen Paiyile Podalai - Irumbu Thirai | Thiruchi Loganathan | 4K Video Song #4kvideosong",
+        "url": "https://www.youtube.com/watch?v=VOeAnFajdso",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=VOeAnFajdso"
+      },
+      {
+        "name": "Irumbuthirai | Mudhal Murai Video Song | Vishal, Samantha | Yuvan Shankar Raja | P. S. Mithran",
+        "url": "https://www.youtube.com/watch?v=Ut8FGRsCZI8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=Ut8FGRsCZI8"
+      },
+      {
+        "name": "Irumbuthirai | Athiradi Video Song | Vishal, Arjun, Samantha | Yuvan Shankar Raja | P. S. Mithran",
+        "url": "https://www.youtube.com/watch?v=1CRMB-tIAQ8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=1CRMB-tIAQ8"
+      },
+      {
+        "name": "Irumbuthirai | Yaar Ivan Video Song | Vishal, Arjun, Samantha | Yuvan Shankar Raja | P.S. Mithran",
+        "url": "https://www.youtube.com/watch?v=gDanRKv3qls",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=gDanRKv3qls"
+      },
+      {
+        "name": "Aasai Konda Nenju Rendu - Irumbu Thirai | P Leela | Pattukkottai Kalyanasundaram | 4K Video Song #4k",
+        "url": "https://www.youtube.com/watch?v=Ds5fu8AxqqY",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=Ds5fu8AxqqY"
+      }
+    ],
     "original_filename": "Irumbu Thirai (2018).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/pibzddjktp08m56a0665j/Irumbu-Thirai-2018-WEBRip-Hindi-1080p-AVC-DDP-5.1-ESub-CineVood.mkv?rlkey=g9s5xzoylpxj7jnu4jniu4tma&st=hmz8zbbo&dl=1"
   },
@@ -413,8 +1034,35 @@
       "Adventure",
       "Action"
     ],
-    "trailer": "https://www.youtube.com/watch?v=NJ0fzQzKOfg",
-    "songs": "https://www.youtube.com/results?search_query=Jurassic%20World%20Rebirth%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=NJ0fzQzKOfg",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=NJ0fzQzKOfg",
+    "songs_list": [
+      {
+        "name": "JURASSIC WORLD: REBIRTH \\",
+        "url": "https://www.youtube.com/watch?v=ef-lpE74EEc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=ef-lpE74EEc"
+      },
+      {
+        "name": "Jurassic World Rebirth | T. rex Attack on the River",
+        "url": "https://www.youtube.com/watch?v=o02xaNRZ5bc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=o02xaNRZ5bc"
+      },
+      {
+        "name": "Jurassic World Rebirth",
+        "url": "https://www.youtube.com/watch?v=twq9qQBkvMc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=twq9qQBkvMc"
+      },
+      {
+        "name": "Sign in to YouTube",
+        "url": "https://www.youtube.com/watch?v=XK1X-tBZ-kU",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=XK1X-tBZ-kU"
+      },
+      {
+        "name": "The Jurassic World Movies, but ONLY the Best DINOSAURS ⚡ 4K",
+        "url": "https://www.youtube.com/watch?v=QZxoBsgcLKA",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=QZxoBsgcLKA"
+      }
+    ],
     "original_filename": "Jurassic World Rebirth (2025).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/zlek5v2ido9d731k10pjm/Jurassic-World-Rebirth-2025-AMZN.WEB-DL-Hindi-En-Ta-Te-2160p-HEVC-DDP-5.1-ESub-CineVood.mkv?rlkey=pn7he5yr797tgxxr1u97ro998&st=urjgx3ve&dl=1"
   },
@@ -430,8 +1078,35 @@
       "Drama",
       "Romance"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Kadhalar%20Dhinam%201999%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Kadhalar%20Dhinam%201999%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=dz3NyI1uZJU",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=dz3NyI1uZJU",
+    "songs_list": [
+      {
+        "name": "Enna Vilai Azhage 4K Video Song | Kadhalar Dhinam Songs | Kunal | Sonali Bendre | A. R. Rahman",
+        "url": "https://www.youtube.com/watch?v=0PZwLmcSKKQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=0PZwLmcSKKQ"
+      },
+      {
+        "name": "Kadhalar Dhinam",
+        "url": "https://www.youtube.com/watch?v=vgUPZ85cZs8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=vgUPZ85cZs8"
+      },
+      {
+        "name": "Sign in to YouTube",
+        "url": "https://www.youtube.com/watch?v=S6MwPa9Hrg0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=S6MwPa9Hrg0"
+      },
+      {
+        "name": "Dandiya Aatamum Aada 4K Video Song | Kadhalar Dhinam Songs | Kunal | Sonali Bendre | A. R. Rahman",
+        "url": "https://www.youtube.com/watch?v=vYdp-b0fms0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=vYdp-b0fms0"
+      },
+      {
+        "name": "Kadhalar Dhinam Tamil Movie Songs | Nenachapadi Video Song | Kunal | Sonali Bendre | AR Rahman",
+        "url": "https://www.youtube.com/watch?v=TLPo0tSWRFU",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=TLPo0tSWRFU"
+      }
+    ],
     "original_filename": "Kadhalar Dhinam (1999).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/b1fqj04j8ww6app1ovtg5/KADHALAR-DHINAM-1999-API-DVD9-UNTOUCHED-REMUXED-s-TAMIL-DD5.1-DTS.5.1.mkv?rlkey=i2t1lv5ji97kd1estsad661so&st=oao302ge&dl=1"
   },
@@ -448,8 +1123,35 @@
       "Thriller",
       "Fantasy"
     ],
-    "trailer": "https://www.youtube.com/watch?v=ByCDEmNig7Q",
-    "songs": "https://www.youtube.com/results?search_query=Kanguva%202024%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=ByCDEmNig7Q",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=ByCDEmNig7Q",
+    "songs_list": [
+      {
+        "name": "Fire Song (Tamil) - Video | Kanguva | Suriya | Devi Sri Prasad | Siva | Viveka",
+        "url": "https://www.youtube.com/watch?v=4IQYs8Qurz4",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=4IQYs8Qurz4"
+      },
+      {
+        "name": "Yolo - Video Song | Kanguva | Suriya, Disha Patani | Devi Sri Prasad | Siva | Lavita Lobo | Viveka",
+        "url": "https://www.youtube.com/watch?v=mo-Q-vCn_AQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=mo-Q-vCn_AQ"
+      },
+      {
+        "name": "Thalaivane - Video Song | Kanguva | Suriya, Disha Patani | Bobby Deol | Devi Sri Prasad | Siva",
+        "url": "https://www.youtube.com/watch?v=kp8copt-zJY",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=kp8copt-zJY"
+      },
+      {
+        "name": "Kanga Kanguva - Video Song | Kanguva | Suriya, Disha Patani | Devi Sri Prasad | Siva",
+        "url": "https://www.youtube.com/watch?v=8KFNu0lC_WI",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=8KFNu0lC_WI"
+      },
+      {
+        "name": "Kanguva - Video Jukebox | Suriya, Disha Patani | Bobby Deol | Devi Sri Prasad | Siva",
+        "url": "https://www.youtube.com/watch?v=f3R4tqf6GZ4",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=f3R4tqf6GZ4"
+      }
+    ],
     "original_filename": "Kanguva (2024).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/xa6n4x3nag3ks2t7l1c3v/Kanguva.mkv?rlkey=0waloctnn64wk1aabnrhzvp5j&st=6f6i0n35&dl=1"
   },
@@ -466,8 +1168,35 @@
       "Drama",
       "Crime"
     ],
-    "trailer": "https://www.youtube.com/watch?v=ViuGKPazWWw",
-    "songs": "https://www.youtube.com/results?search_query=King%20of%20Kotha%202023%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=ViuGKPazWWw",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=ViuGKPazWWw",
+    "songs_list": [
+      {
+        "name": "King of Kotha (Tamil) - Kalaattaakaaran Video | Dulquer Salmaan | Abhilash Joshiy, Jakes Bejoy",
+        "url": "https://www.youtube.com/watch?v=MXtM4XxbjIg",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=MXtM4XxbjIg"
+      },
+      {
+        "name": "King of Kotha (Tamil) - En Uyire Video | Dulquer Salmaan | Abhilash Joshiy | Shaan Rahman",
+        "url": "https://www.youtube.com/watch?v=X-MZXIXPwFw",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=X-MZXIXPwFw"
+      },
+      {
+        "name": "King of Kotha - Kalapakkaara 8K 60FPS Video Song | Dulquer Salmaan | Jakes Bejoy",
+        "url": "https://www.youtube.com/watch?v=o1EBzcGrOMU",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=o1EBzcGrOMU"
+      },
+      {
+        "name": "King of Kotha (Tamil) - Kalaattaakaaran Lyric Video | Dulquer Salmaan | Abhilash Joshiy, Jakes Bejoy",
+        "url": "https://www.youtube.com/watch?v=dmjp2bM346M",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=dmjp2bM346M"
+      },
+      {
+        "name": "Dulquer Salmaan X King of Kotha | People Of Kotha Video | Abhilash Joshiy | Jakes Bejoy",
+        "url": "https://www.youtube.com/watch?v=0NO6meqFWBE",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=0NO6meqFWBE"
+      }
+    ],
     "original_filename": "King of Kotha (2023).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/ccq0lplhtwuqyha6vetm3/King.of.Kotha.2023.HQ.2160p.DSNP.WEB.DL.HEVC.HIN-Multi.DDP5.1.Atmos.768k-DDH.mkv?rlkey=0vpsba0hzzj5ynwz6x8evyjy3&st=20qww4qu&dl=1"
   },
@@ -484,8 +1213,35 @@
       "Crime",
       "Drama"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Krack%202021%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Krack%202021%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=EAvpSWmoPSA",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=EAvpSWmoPSA",
+    "songs_list": [
+      {
+        "name": "Dhool Parakka Tamil Full Video Song | #Krack | Raviteja, Apsara Rani | Thaman S | Tamil Only",
+        "url": "https://www.youtube.com/watch?v=pF3UyD7uDpg",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=pF3UyD7uDpg"
+      },
+      {
+        "name": "Korameesam Polisoda Video Song [4K] | #Krack | Raviteja,Shruti Haasan | Gopichand Malineni |Thaman S",
+        "url": "https://www.youtube.com/watch?v=h4SwSQG74cI",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=h4SwSQG74cI"
+      },
+      {
+        "name": "Balega Tagilavey Bangaram Video Song 4K| #Krack | Raviteja,ShrutiHaasan|Anirudh Ravichander|Thaman S",
+        "url": "https://www.youtube.com/watch?v=t-UXozzpGRg",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=t-UXozzpGRg"
+      },
+      {
+        "name": "Mass Biriyani Tamil Full Video Song | #Krack | Raviteja,Shruti Haasan | Thaman S | Tamil Only",
+        "url": "https://www.youtube.com/watch?v=-m3qK_vhdV8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=-m3qK_vhdV8"
+      },
+      {
+        "name": "Paaynthaale Ambaaga Nenjoram Video Song | #Krack| Raviteja,ShrutiHaasan|Anirudh Ravichander|Thaman S",
+        "url": "https://www.youtube.com/watch?v=Uk0c4BXwr4w",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=Uk0c4BXwr4w"
+      }
+    ],
     "original_filename": "Krack (2021).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/28t9ek8f5yg3stx4b9rxc/Krack-2021-1080p-AMZN-CBR-WEB-DL-AVC-Telugu.mkv?rlkey=wfb5z2976swsqvmodieqp8oxv&st=ahcn76dz&dl=0"
   },
@@ -501,8 +1257,35 @@
       "Drama",
       "Romance"
     ],
-    "trailer": "https://www.youtube.com/watch?v=cH4mYC91omg",
-    "songs": "https://www.youtube.com/results?search_query=Lust%20Stories%202018%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=cH4mYC91omg",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=cH4mYC91omg",
+    "songs_list": [
+      {
+        "name": "Marijuana Movie Songs | En Edhal Oram Video | Rishi Rithvik | Asha Parthalom | Karthick Guru",
+        "url": "https://www.youtube.com/watch?v=4aanxonXWiM",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=4aanxonXWiM"
+      },
+      {
+        "name": "Thamanna Bhatia  l Lust Stories l lip lock scene l hotl Hindi l",
+        "url": "https://www.youtube.com/watch?v=U-BAhcRqihw",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=U-BAhcRqihw"
+      },
+      {
+        "name": "Lust Stories 2 - Tamil || Promo Clip - 08 || Tamanna || Vijay Varma || Netflix India",
+        "url": "https://www.youtube.com/watch?v=hYHxkQ8oGkc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=hYHxkQ8oGkc"
+      },
+      {
+        "name": "Lust Stories 2 / Kiss Scenes — (Tamannaah Bhatia and Vijay Varma)",
+        "url": "https://www.youtube.com/watch?v=optYTl73rMo",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=optYTl73rMo"
+      },
+      {
+        "name": "Lust story 2 | kissing scene #vijayverma #Tamanna Bhatia #kissing",
+        "url": "https://www.youtube.com/watch?v=zBpK1EIZgPk",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=zBpK1EIZgPk"
+      }
+    ],
     "original_filename": "Lust Stories (2018).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/bz1li46lyahfr8iprz5so/Lust-Stories-2018-NF-WEB-DL-Hi-Ta-Te-En-1080p.mkv?rlkey=xzyjjhxszfaj6zatfmfu80p53&st=0clmrbbt&dl=0"
   },
@@ -515,8 +1298,35 @@
     "rating": "",
     "year": "2025",
     "genre": [],
-    "trailer": "https://www.youtube.com/results?search_query=MI%20The%20Final%20Reckoning%202025%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=MI%20The%20Final%20Reckoning%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=P5VsMQ8uZ6g",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=P5VsMQ8uZ6g",
+    "songs_list": [
+      {
+        "name": "Mission: Impossible | The Final Reckoning | Epic Trailer Version | Extended",
+        "url": "https://www.youtube.com/watch?v=YfvtBoc2FQI",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=YfvtBoc2FQI"
+      },
+      {
+        "name": "Mission Impossible-The Final Reckoning Full Movie 2025। Tom Cruise । PNC production ।",
+        "url": "https://www.youtube.com/watch?v=znR7zZl2TN8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=znR7zZl2TN8"
+      },
+      {
+        "name": "Mission Impossible 8 The Final Reckoning FULL ENDING 🌀 4K",
+        "url": "https://www.youtube.com/watch?v=u50-qITrE-s",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=u50-qITrE-s"
+      },
+      {
+        "name": "Mission: Impossible – The Final Reckoning | Out of Your Mind Clip (2025 Movie) - Tom Cruise",
+        "url": "https://www.youtube.com/watch?v=OEVg2R4UGio",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=OEVg2R4UGio"
+      },
+      {
+        "name": "Mission: Impossible – The Final Reckoning | Tamil Official Trailer - Tom Cruise | In Cinemas 23 May",
+        "url": "https://www.youtube.com/watch?v=AP81nzJLS-c",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=AP81nzJLS-c"
+      }
+    ],
     "original_filename": "MI The Final Reckoning (2025).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/biis8vqkmhr8ac41ynaiv/MI-The-Final-Reckoning-2025-HDTC-1080p-Tamil-x265-No-Ads-HC-ESub-CineVood.mkv?rlkey=1qz7pzmdp4zq0zq7apfkkpzl8&st=nwdcuorh&dl=1"
   },
@@ -533,8 +1343,35 @@
       "Drama",
       "Action"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Maareesan%202025%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Maareesan%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=a8zKHSKHThY",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=a8zKHSKHThY",
+    "songs_list": [
+      {
+        "name": "Maareesan - Nethu Oruthara Oruthara | Song Video | Ilayaraaja | Vadivelu | Fahad Faasil",
+        "url": "https://www.youtube.com/watch?v=Mq0KoRPeZwg",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=Mq0KoRPeZwg"
+      },
+      {
+        "name": "FaFa Song - Video | Maareesan | Vadivelu, Fahadh Faasil | Sudheesh Sankar | Yuvan Shankar Raja",
+        "url": "https://www.youtube.com/watch?v=bPIPHmrTwNU",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=bPIPHmrTwNU"
+      },
+      {
+        "name": "Maareesa - Video Song | Maareesan | Vadivelu, Fahadh Faasil | Sudheesh Sankar | Yuvan Shankar Raja",
+        "url": "https://www.youtube.com/watch?v=2EqWbGRhsYo",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=2EqWbGRhsYo"
+      },
+      {
+        "name": "நேத்து ஒருத்தர ஒருத்தரப் பாத்தோம் | Nethu Oruthara Oruthar Paathom Video Song 4k | Ilayaraja Melodys",
+        "url": "https://www.youtube.com/watch?v=-mibr8igqGI",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=-mibr8igqGI"
+      },
+      {
+        "name": "Theekkoluthi Video Song | Bison Kaalamaadan | Dhruv, Anupama | Mari Selvaraj | Nivas K Prasanna",
+        "url": "https://www.youtube.com/watch?v=LyI8RWQcl78",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=LyI8RWQcl78"
+      }
+    ],
     "original_filename": "Maareesan (2025).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/vytzma6nbsxfvcfgk0hty/Maareesan-2025-NF.WEB-DL-Hindi-Ta-Te-Kn-Ml-2160p-10bit-HEVC-DDP-5.1-ESub-CineVood.mkv?rlkey=pj0p2rij91ito8m21dcwa65ca&st=2c38jgzb&dl=1"
   },
@@ -550,8 +1387,35 @@
       "Action",
       "Comedy"
     ],
-    "trailer": "https://www.youtube.com/watch?v=ORZltL9glEA",
-    "songs": "https://www.youtube.com/results?search_query=Maari%202%202018%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=ORZltL9glEA",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=ORZltL9glEA",
+    "songs_list": [
+      {
+        "name": "Maari 2 - Maari's Aanandhi (Video Song) | Dhanush, Sai Pallavi | Yuvan Shankar Raja | Balaji Mohan",
+        "url": "https://www.youtube.com/watch?v=AGiVsZGmkJU",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=AGiVsZGmkJU"
+      },
+      {
+        "name": "Maari 2 - Maari Gethu (Video Song) | Dhanush | Yuvan Shankar Raja | Balaji Mohan",
+        "url": "https://www.youtube.com/watch?v=x6Q7c9RyMzk",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=x6Q7c9RyMzk"
+      },
+      {
+        "name": "Maari - Don’u Don’u Don’u Video | Dhanush, Kajal | Anirudh | Super Hit Song",
+        "url": "https://www.youtube.com/watch?v=_Z-wletdIEw",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=_Z-wletdIEw"
+      },
+      {
+        "name": "Maari - Thappa Dhaan Theriyum Video | Dhanush, Kajal Agarwal | Anirudh",
+        "url": "https://www.youtube.com/watch?v=A_z5g0_hJN8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=A_z5g0_hJN8"
+      },
+      {
+        "name": "Maari 2 - Maari's Aanandhi (Lyric Video) | Dhanush | Ilaiyaraaja | Yuvan Shankar Raja | Balaji Mohan",
+        "url": "https://www.youtube.com/watch?v=cvm8kMCSBAc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=cvm8kMCSBAc"
+      }
+    ],
     "original_filename": "Maari 2 (2018).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/cgi0go44u2i9q9toem7ml/Maari-2-2018-AMZN-WEB-DL-Hindi-Tamil-1080p-HEVC-DDP-5.1-ESub-CineVood.mkv?rlkey=3rq7m8aurbkz2e1v8e03uhuth&st=hdibw7cd&dl=1"
   },
@@ -567,8 +1431,35 @@
       "Action",
       "Thriller"
     ],
-    "trailer": "https://www.youtube.com/watch?v=vHESM8iR1JE",
-    "songs": "https://www.youtube.com/results?search_query=Mankatha%202011%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=vHESM8iR1JE",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=vHESM8iR1JE",
+    "songs_list": [
+      {
+        "name": "Balle Lakka 8K 60 FPS Video Song | Mankatha | Ajith, Trisha | Yuvanshankar Raja",
+        "url": "https://www.youtube.com/watch?v=6436X3QNXLE",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=6436X3QNXLE"
+      },
+      {
+        "name": "Mankatha - Vilayadu Mankatha Video Song | Ajith, Trisha | Yuvan Shankar Raja",
+        "url": "https://www.youtube.com/watch?v=68ixlbMQaY0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=68ixlbMQaY0"
+      },
+      {
+        "name": "Mankatha - Nanbane Video | Ajith, Trisha | Yuvan",
+        "url": "https://www.youtube.com/watch?v=fhdLTvl9a74",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=fhdLTvl9a74"
+      },
+      {
+        "name": "Mankatha - Vaada Bin Laada Video | Ajith, Trisha | Yuvan",
+        "url": "https://www.youtube.com/watch?v=vlzqE-JbLcw",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=vlzqE-JbLcw"
+      },
+      {
+        "name": "Mankatha Theme Music Video | Ajith Kumar, Trisha | Yuvanshankar Raja",
+        "url": "https://www.youtube.com/watch?v=TAv0fApr1js",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=TAv0fApr1js"
+      }
+    ],
     "original_filename": "Mankatha (2011).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/f5eo43qnie3kc7ze6x1vx/MANKATHA-AYN-DVD9-REMUX-DTS.DD-5.1.mkv?rlkey=oervb1wgfcv4req8gdqkn6and&st=yq80lc61&dl=1"
   },
@@ -585,8 +1476,35 @@
       "Crime",
       "Thriller"
     ],
-    "trailer": "https://www.youtube.com/watch?v=AdwGOloQcAs",
-    "songs": "https://www.youtube.com/results?search_query=Marco%202024%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=AdwGOloQcAs",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=AdwGOloQcAs",
+    "songs_list": [
+      {
+        "name": "Marco (Tamil) Jukebox | Unni Mukundan | Shareef Muhammed | Haneef Adeni | Ravi Basrur",
+        "url": "https://www.youtube.com/watch?v=IcfNCiN7kao",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=IcfNCiN7kao"
+      },
+      {
+        "name": "Marco - Asuran Video Song | Unni Mukundan | Shareef Muhammed | Haneef Adeni | Ravi Basrur",
+        "url": "https://www.youtube.com/watch?v=66cxIz8mglY",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=66cxIz8mglY"
+      },
+      {
+        "name": "Marco - Tony's Mayhem Theme Video Song | Unni Mukundan | Shareef Muhammed | Haneef | Ravi Basrur",
+        "url": "https://www.youtube.com/watch?v=514eLasC7iA",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=514eLasC7iA"
+      },
+      {
+        "name": "Marco - First Blood | Unni Mukundan | Shareef Muhammed | Haneef Adeni | Santhosh Venky | Sony Music",
+        "url": "https://www.youtube.com/watch?v=9pEX2Zh6X_k",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=9pEX2Zh6X_k"
+      },
+      {
+        "name": "MARCO Church Entry Theme | UNNIMUKUNDAN | RAVI BASURUR | Marco movie | World wide storm | Haneef",
+        "url": "https://www.youtube.com/watch?v=NP8hZM7d-oI",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=NP8hZM7d-oI"
+      }
+    ],
     "original_filename": "Marco (2024).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/wlgoxjbieq1y90fyhuzww/Marco.2024.1080p.DS4K.60FPS.SLIV.WEBRip.HIN-TAM-TEL-KAN-MAL.DDP5.1.Atmos.H.265.Homelander.mkv?rlkey=eq050lh0budq5f6e3b171w4sd&st=ipsolbb0&dl=1"
   },
@@ -603,8 +1521,35 @@
       "Thriller",
       "Adventure"
     ],
-    "trailer": "https://www.youtube.com/watch?v=Wd3fzHu1UlY",
-    "songs": "https://www.youtube.com/results?search_query=Mission%3A%20Impossible%20-%20The%20Final%20Reckoning%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=Wd3fzHu1UlY",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=Wd3fzHu1UlY",
+    "songs_list": [
+      {
+        "name": "Mission: Impossible - The Final Reckoning",
+        "url": "https://www.youtube.com/watch?v=F8p-wcABblw",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=F8p-wcABblw"
+      },
+      {
+        "name": "Sign in to YouTube",
+        "url": "https://www.youtube.com/watch?v=6tdMkcZ1tVQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=6tdMkcZ1tVQ"
+      },
+      {
+        "name": "Tamil Dubbed TomCruise Mission Impossible 02",
+        "url": "https://www.youtube.com/watch?v=AP81nzJLS-c",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=AP81nzJLS-c"
+      },
+      {
+        "name": "Mission Impossible-The Final Reckoning Full Movie 2025। Tom Cruise । PNC production ।",
+        "url": "https://www.youtube.com/watch?v=POoFhKx7txY",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=POoFhKx7txY"
+      },
+      {
+        "name": "Tom Cruise | Mission Impossible - Friction Edit",
+        "url": "https://www.youtube.com/watch?v=u50-qITrE-s",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=u50-qITrE-s"
+      }
+    ],
     "original_filename": "Mission Impossible The Final Reckoning (2025).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/5gmbthlk76tkh5vusepn9/Mission-Impossible-The-Final-Reckoning-2025-IMAX-2160p-AMZN-WEB-DL-HIN-ENG-TAM-TEL-DDP5-1-Atmos-H-265-Falix.mkv?rlkey=15cmgj7r2su47ldklyffhltsg&st=pxo8fgor&dl=1"
   },
@@ -621,8 +1566,35 @@
       "Drama",
       "Action"
     ],
-    "trailer": "https://www.youtube.com/watch?v=Rlmp4vy-Jas",
-    "songs": "https://www.youtube.com/results?search_query=Muthu%201995%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=Rlmp4vy-Jas",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=Rlmp4vy-Jas",
+    "songs_list": [
+      {
+        "name": "Oruvan Oruvan - 4K Video Song | Superstar Rajinikanth | A R Rahman | Muthu | Tamil Song | Sun Music",
+        "url": "https://www.youtube.com/watch?v=p7_GDN6r2OY",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=p7_GDN6r2OY"
+      },
+      {
+        "name": "Muthu",
+        "url": "https://www.youtube.com/watch?v=5NEK2JSIHOs",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=5NEK2JSIHOs"
+      },
+      {
+        "name": "Sign in to YouTube",
+        "url": "https://www.youtube.com/watch?v=ut6FwklQUCg",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=ut6FwklQUCg"
+      },
+      {
+        "name": "Kuluvalilae - 4K Video Song | Superstar Rajinikanth | A R Rahman | Muthu | Tamil Song | Sun Music",
+        "url": "https://www.youtube.com/watch?v=4um9usMjMm0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=4um9usMjMm0"
+      },
+      {
+        "name": "Vidukadhaiya - 4K Video Song | Superstar Rajinikanth | A R Rahman | Muthu | Sun Music",
+        "url": "https://www.youtube.com/watch?v=XQURTqjxShI",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=XQURTqjxShI"
+      }
+    ],
     "original_filename": "Muthu (1995).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/vnrbkqdrf68dlf765hdqu/Muthu-1995-BluRay-Tamil-1080p-x264-AVC-DDP-5.1-CineVood.mkv?rlkey=j9rqoy9rtek66h6rz568ee77p&st=zb83dl88&dl=1"
   },
@@ -635,8 +1607,35 @@
     "rating": "",
     "year": "2025",
     "genre": [],
-    "trailer": "https://www.youtube.com/results?search_query=Oru%20Yamanin%20Kadhal%20Kadhai%202025%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Oru%20Yamanin%20Kadhal%20Kadhai%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=qP55Yn-K05E",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=qP55Yn-K05E",
+    "songs_list": [
+      {
+        "name": "oru yemanin kadhal full movi HD tamil",
+        "url": "https://www.youtube.com/watch?v=MRJzFAcDB50",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=MRJzFAcDB50"
+      },
+      {
+        "name": "Oru Yamandan Premakadha | Kanno Nilakayal Video Song | Dulquer Salman | Nadirsha | Najim Arshad",
+        "url": "https://www.youtube.com/watch?v=WD7MvxFIJIw",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=WD7MvxFIJIw"
+      },
+      {
+        "name": "Oru Yamandan Premakadha | Muttathekombile Video Song | Dulquer Salman | Nadirsha",
+        "url": "https://www.youtube.com/watch?v=oVWADrtJj4c",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=oVWADrtJj4c"
+      },
+      {
+        "name": "Oru Yamandan Premakadha | Kothiyoorum Balyam Video Song | Dulquer | Vineeth Sreenivasan | Nadirsha",
+        "url": "https://www.youtube.com/watch?v=VcAuerrqTH4",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=VcAuerrqTH4"
+      },
+      {
+        "name": "Oru Yamandan Premakadha Song | Vandhipin Malore | Dulquer Salman | Nadirsha",
+        "url": "https://www.youtube.com/watch?v=a2zYLtXRtsE",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=a2zYLtXRtsE"
+      }
+    ],
     "original_filename": "Oru Yamanin Kadhal Kadhai (2025).Strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/pzfcvlislidwfjutmm3hq/Oru.Yamanin.Kadhal.Kadhai.2160p.AHA.WEB-DL.English.DDP.5.1.H265-JeRi.mkv?rlkey=azd72bda7u8flnjxop08ewndz&st=cv17oh9d&dl=1"
   },
@@ -652,8 +1651,35 @@
       "Drama",
       "Romance"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Pardes%201997%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Pardes%201997%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=-14Odg9IvHo",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=-14Odg9IvHo",
+    "songs_list": [
+      {
+        "name": "Paradesi Movie Video Songs | Avatha Paiya | Adharvaa | Vedhika |GV Prakash Kumar",
+        "url": "https://www.youtube.com/watch?v=NFp_Qj2lRr4",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=NFp_Qj2lRr4"
+      },
+      {
+        "name": "Sign in to YouTube",
+        "url": "https://www.youtube.com/watch?v=fStY9YlGACs",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=fStY9YlGACs"
+      },
+      {
+        "name": "Paradesi  Thannai Thaane Video Song",
+        "url": "https://www.youtube.com/watch?v=wePpKrD-sbQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=wePpKrD-sbQ"
+      },
+      {
+        "name": "Meri Mehbooba | Kumar Sanu | Alka Yagnik | Pardes (1997) | Shahrukh Khan \\u0026 Mahima",
+        "url": "https://www.youtube.com/watch?v=VHQ0w-9ITBI",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=VHQ0w-9ITBI"
+      },
+      {
+        "name": "\\",
+        "url": "https://www.youtube.com/watch?v=k2CuG5E4OAo",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=k2CuG5E4OAo"
+      }
+    ],
     "original_filename": "Pardes (1997).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/2lfai2j2jpy2pisr0d8qb/Pardes-1997-WEB-DL-Hindi-Bn-Kn-Ml-Ta-Te-1080p.mkv?rlkey=llcr8hgsqenshhbamiv75wdpu&st=fr467bhb&dl=0"
   },
@@ -668,8 +1694,35 @@
     "genre": [
       "Horror"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Pechi%202024%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Pechi%202024%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=a5R4qsAxIOM",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=a5R4qsAxIOM",
+    "songs_list": [
+      {
+        "name": "Paechi Paechi - HD Video Song | பேச்சி பேச்சி | Enga Ooru Pattukaran | Rmarajan |  Ilaiyaraaja",
+        "url": "https://www.youtube.com/watch?v=Ia-xgZYzi1E",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=Ia-xgZYzi1E"
+      },
+      {
+        "name": "Pechi Pechi Song | Ramarajan | Mano  | Enga Ooru Paatukaran",
+        "url": "https://www.youtube.com/watch?v=b73cgCS2ip8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=b73cgCS2ip8"
+      },
+      {
+        "name": "எங்க  பேச்சியம்மா   II   ENGA PECHIYAMMA IIALBUM -MUTHARAMMAN UDUKKAI PAMBAI II SRE BAKTHI",
+        "url": "https://www.youtube.com/watch?v=CE3sbvFClZY",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=CE3sbvFClZY"
+      },
+      {
+        "name": "Grandma Song - Lyric Video | Sabdham (Tamil) |  Aadhi | Lakshmi Menon | Thaman.S | Arivazhagan",
+        "url": "https://www.youtube.com/watch?v=TMynSPPbtiQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=TMynSPPbtiQ"
+      },
+      {
+        "name": "Nana Buluku - Video Song | Pichaikkaran 2 | Vijay Antony | Kavya Thapar | Kharesma Ravichandran",
+        "url": "https://www.youtube.com/watch?v=BI7i260ZGy0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=BI7i260ZGy0"
+      }
+    ],
     "original_filename": "Pechi (2024).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/tcdxrl7k977451pieutrd/Pechi-2024-AMZN-WEB-DL-Hi-Ta-Kn-Ml-Te-1080p-AVC-DDP-5.1-ESub-CineVood.mkv?rlkey=ntil95gnlyj9bezh1w7or5dps&st=usekl1d6&dl=1"
   },
@@ -682,8 +1735,35 @@
     "rating": "",
     "year": "2025",
     "genre": [],
-    "trailer": "https://www.youtube.com/results?search_query=Pushpa%202%20The%20Rule%20Reloaded%201%202025%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Pushpa%202%20The%20Rule%20Reloaded%201%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=HtmlDoXttNg",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=HtmlDoXttNg",
+    "songs_list": [
+      {
+        "name": "Full Video: SOODAANA | Pushpa 2 The Rule | Allu Arjun | Rashmika | Shreya Ghoshal | Sukumar | DSP",
+        "url": "https://www.youtube.com/watch?v=rLRCaXV79M4",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=rLRCaXV79M4"
+      },
+      {
+        "name": "Full Video: PUSHPA PUSHPA (Tamil) - Pushpa 2 The Rule | Allu Arjun | Sukumar | DSP",
+        "url": "https://www.youtube.com/watch?v=ietprsshiSs",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=ietprsshiSs"
+      },
+      {
+        "name": "PUSHPA PUSHPA Tamil Film Version - Pushpa 2 The Rule | Allu Arjun | Sukumar | DSP",
+        "url": "https://www.youtube.com/watch?v=D2F6ZK5ydJ0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=D2F6ZK5ydJ0"
+      },
+      {
+        "name": "Full Video: KISSIK (Tamil) | Pushpa 2 The Rule | Allu Arjun | Sukumar | Sreeleela | DSP",
+        "url": "https://www.youtube.com/watch?v=3_RdHs3Sofs",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=3_RdHs3Sofs"
+      },
+      {
+        "name": "Full Video: Ganga Gangamma Thaaye (Jathara) | Pushpa 2 The Rule | Allu Arjun |Rashmika |Sukumar |DSP",
+        "url": "https://www.youtube.com/watch?v=7HZrale7Ijw",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=7HZrale7Ijw"
+      }
+    ],
     "original_filename": "Pushpa 2 The Rule Reloaded (2025)(1).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/y55g8mhlj287cxin8z7c7/Pushpa.2.The.Rule.Reloaded.Version.2025.1080p.DS4K.60FPS.NF.WEB-DL.HIN-TAM-TEL-KAN-MAL.DDP5.1.SDR.H265-Homelander.mkv?rlkey=8o5ggh2kjn9qhhhm6za0zdqap&st=h2gt017b&dl=1"
   },
@@ -701,8 +1781,35 @@
       "Thriller",
       "Crime"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Pushpa%202%20-%20The%20Rule%202024%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Pushpa%202%20-%20The%20Rule%202024%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=HtmlDoXttNg",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=HtmlDoXttNg",
+    "songs_list": [
+      {
+        "name": "Full Video: SOODAANA | Pushpa 2 The Rule | Allu Arjun | Rashmika | Shreya Ghoshal | Sukumar | DSP",
+        "url": "https://www.youtube.com/watch?v=rLRCaXV79M4",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=rLRCaXV79M4"
+      },
+      {
+        "name": "Full Video: KISSIK (Tamil) | Pushpa 2 The Rule | Allu Arjun | Sukumar | Sreeleela | DSP",
+        "url": "https://www.youtube.com/watch?v=ietprsshiSs",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=ietprsshiSs"
+      },
+      {
+        "name": "Full Video: PUSHPA PUSHPA (Tamil) - Pushpa 2 The Rule | Allu Arjun | Sukumar | DSP",
+        "url": "https://www.youtube.com/watch?v=7HZrale7Ijw",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=7HZrale7Ijw"
+      },
+      {
+        "name": "Full Video: Ganga Gangamma Thaaye (Jathara) | Pushpa 2 The Rule | Allu Arjun |Rashmika |Sukumar |DSP",
+        "url": "https://www.youtube.com/watch?v=D2F6ZK5ydJ0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=D2F6ZK5ydJ0"
+      },
+      {
+        "name": "PUSHPA PUSHPA Tamil Film Version - Pushpa 2 The Rule | Allu Arjun | Sukumar | DSP",
+        "url": "https://www.youtube.com/watch?v=B-jHcH8zOjs",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=B-jHcH8zOjs"
+      }
+    ],
     "original_filename": "Pushpa 2 The Rule Reloaded (2025).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/8q4iay0o8nmxw88aacjde/Pushpa.2.The.Rule.Reloaded.Version.2025.1080p.NF.WEB-DL.HIN-TAM-TEL-KAN-MAL.DDP5.1.DV.H265-Telly.mkv?rlkey=g1rxpu4cxm2iu418sym2h8fn3&st=2v4clgtk&dl=1"
   },
@@ -719,8 +1826,35 @@
       "Drama",
       "Thriller"
     ],
-    "trailer": "https://www.youtube.com/watch?v=ou6h-22tMnA",
-    "songs": "https://www.youtube.com/results?search_query=Pushpa%3A%20The%20Rise%202021%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=ou6h-22tMnA",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=ou6h-22tMnA",
+    "songs_list": [
+      {
+        "name": "Oo Solriya (Tamil) Full Video Song |Pushpa Songs |Allu Arjun, Rashmika |DSP |Sukumar | Andrea",
+        "url": "https://www.youtube.com/watch?v=w78XpGt-IPQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=w78XpGt-IPQ"
+      },
+      {
+        "name": "Eyy Beta Idhu En Patta (Tamil) Full Video Song | Pushpa  | Allu Arjun, Rashmika | DSP | Sukumar",
+        "url": "https://www.youtube.com/watch?v=E7IqglHfpQg",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=E7IqglHfpQg"
+      },
+      {
+        "name": "Odu Odu Aadu (Tamil) Full Video Song | Pushpa Songs |Allu Arjun, Rashmika |DSP |Benny Dayal |Sukumar",
+        "url": "https://www.youtube.com/watch?v=xs52MuNuLa0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=xs52MuNuLa0"
+      },
+      {
+        "name": "Full Video: PUSHPA PUSHPA (Tamil) - Pushpa 2 The Rule | Allu Arjun | Sukumar | DSP",
+        "url": "https://www.youtube.com/watch?v=hp3WmuacYD8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=hp3WmuacYD8"
+      },
+      {
+        "name": "Saami Saami (Tamil) Full Video Song | Pushpa Songs | Allu Arjun, Rashmika | DSP | Sukumar",
+        "url": "https://www.youtube.com/watch?v=D2F6ZK5ydJ0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=D2F6ZK5ydJ0"
+      }
+    ],
     "original_filename": "Pushpa The Rise (2021).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/g85pon2a81uyw0q13v3ky/Pushpa-The-Rise-2021-Tamil-1080p-HD-AVC-UNTOUCHED-x264-DDP5.1-640-Kbps-AAC-11.4GB-ESubs.mkv?rlkey=3aty924cbvxc1tfvmtfma7inz&st=owoj0z7f&dl=1"
   },
@@ -737,8 +1871,35 @@
       "History",
       "Drama"
     ],
-    "trailer": "https://www.youtube.com/watch?v=i4pjiLGUTtk",
-    "songs": "https://www.youtube.com/results?search_query=RRR%202022%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=i4pjiLGUTtk",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=i4pjiLGUTtk",
+    "songs_list": [
+      {
+        "name": "Full Video: Naattu Koothu Song (Tamil) - RRR | NTR, Ram Charan | MM Keeravaani | SS Rajamouli",
+        "url": "https://www.youtube.com/watch?v=PsRka-zMTqo",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=PsRka-zMTqo"
+      },
+      {
+        "name": "Full Video: Koelae (Tamil) | RRR | NTR, Ram Charan,Alia,Ajay Devgn | Maragadhamani |SS Rajamouli",
+        "url": "https://www.youtube.com/watch?v=-dLe9C7z9dI",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=-dLe9C7z9dI"
+      },
+      {
+        "name": "Kombaa Un Kaada Full Video Song(Tamil) [4K] | RRR Songs | NTR,Ram Charan|Maragadhamani|SS Rajamouli",
+        "url": "https://www.youtube.com/watch?v=CcTIJTGD99E",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=CcTIJTGD99E"
+      },
+      {
+        "name": "Natpu Music Video (Tamil) - RRR - Anirudh, Maragathamani | NTR, Ram Charan | SS Rajamouli",
+        "url": "https://www.youtube.com/watch?v=WeZr-jBZfuY",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=WeZr-jBZfuY"
+      },
+      {
+        "name": "RRR Songs Jukebox (Tamil) | NTR, Ram Charan | Maragadhamani | SS Rajamouli",
+        "url": "https://www.youtube.com/watch?v=8Rzgp1TOcN0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=8Rzgp1TOcN0"
+      }
+    ],
     "original_filename": "RRR (2022).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/7grpsr4jlppzpkqym47w7/RRR-2022-1080p-BluRay-x264-AVC-Org-NF-Hindi-DDP-5.1-640Kbps-Telugu-DTS-HDMA-5.1-ESub-OlaM.mkv?rlkey=cvnvnytksa8wmyk1brwa81gvt&st=hfsrwhkj&dl=1"
   },
@@ -754,8 +1915,35 @@
       "Crime",
       "Thriller"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Ratham%202023%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Ratham%202023%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=pElVzYZ7pQ4",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=pElVzYZ7pQ4",
+    "songs_list": [
+      {
+        "name": "Endha Uyiraiyum Video Song  (Tamil) | Rathnam | Vishal, Priya Bhavani Shankar | Hari | Dsp",
+        "url": "https://www.youtube.com/watch?v=a6Hsex0hJRI",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=a6Hsex0hJRI"
+      },
+      {
+        "name": "AAA►Ratham En Ratham Full Video Song || STR, Shriya Saran, Tamannaah, Yuvan Shankar || Tamil Songs",
+        "url": "https://www.youtube.com/watch?v=RvqQseQqt1g",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=RvqQseQqt1g"
+      },
+      {
+        "name": "Ethanaala Male Version Video Song (Tamil) | Rathnam | Vishal, Priya Bhavani Shankar | Hari | DSP",
+        "url": "https://www.youtube.com/watch?v=BP-lvWzhFSI",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=BP-lvWzhFSI"
+      },
+      {
+        "name": "Raattinam - Asathum Azhagu Song Video | Manu Ramesan",
+        "url": "https://www.youtube.com/watch?v=j_fBIx19Pj4",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=j_fBIx19Pj4"
+      },
+      {
+        "name": "Uyire En Uyire Lyrical (Tamil) | Rathnam | Vishal, Priya Bhavani Shankar | Hari | Devi Sri Prasad",
+        "url": "https://www.youtube.com/watch?v=Pezd9-HmfzI",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=Pezd9-HmfzI"
+      }
+    ],
     "original_filename": "Raththam (2023).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/643mhheijt7wju4ml51ho/Raththam.2023.1080p.AMZN.WEB-DL.HIN-DDP2.0.TAM-DDP5.1.H.264-BeAsT.mkv?rlkey=9ark6lpdglgqwnsr3xnq6e2hd&st=7agowrb7&dl=1"
   },
@@ -771,8 +1959,35 @@
       "Comedy",
       "Romance"
     ],
-    "trailer": "https://www.youtube.com/watch?v=GEB4qrrWIgs",
-    "songs": "https://www.youtube.com/results?search_query=Remo%202016%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=GEB4qrrWIgs",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=GEB4qrrWIgs",
+    "songs_list": [
+      {
+        "name": "Remo - Senjitaley Video | Sivakarthikeyan | Anirudh | Latest Hit Song",
+        "url": "https://www.youtube.com/watch?v=EThWWliR63w",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=EThWWliR63w"
+      },
+      {
+        "name": "Remo - Sirikkadhey 8K/4K Video Song  | Sivakarthikeyan | Anirudh Ravichander",
+        "url": "https://www.youtube.com/watch?v=PAhTLB1LBR0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=PAhTLB1LBR0"
+      },
+      {
+        "name": "Remo - Daavuya Tamil Video | Sivakarthikeyan | Anirudh Ravichander",
+        "url": "https://www.youtube.com/watch?v=hoT1YWN3djg",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=hoT1YWN3djg"
+      },
+      {
+        "name": "Remo - Remo Nee Kadhalan Video | Sivakarthikeyan | Anirudh Ravichander",
+        "url": "https://www.youtube.com/watch?v=GRKyx31fqjE",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=GRKyx31fqjE"
+      },
+      {
+        "name": "Remo - Meesa Beauty Video Song | Sivakarthikeyan | Anirudh Ravichander | Keerthi Suresh",
+        "url": "https://www.youtube.com/watch?v=tiLsbtU6KLo",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=tiLsbtU6KLo"
+      }
+    ],
     "original_filename": "Remo (2016).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/za0maus9uozwdkun66sbi/Remo-2016-Tamil-2160p-4K-UHD-TK-WEB-DL-HEVC-x265-UNTOUCHED-DD5.1-512kbps-12.8GB-ESub-TmG-P-L-W-lK-r.mkv?rlkey=u8v0ghkfcck1yuz91bscun1w9&st=t9wghzu6&dl=1"
   },
@@ -789,8 +2004,35 @@
       "Drama",
       "Music"
     ],
-    "trailer": "https://www.youtube.com/watch?v=nF31d_f4n_A",
-    "songs": "https://www.youtube.com/results?search_query=Saiyaara%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=nF31d_f4n_A",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=nF31d_f4n_A",
+    "songs_list": [
+      {
+        "name": "Saiyaara Full Song | Ahaan Panday, Aneet Padda | Tanishk Bagchi, Faheem A, Arslan N | Irshad Kamil",
+        "url": "https://www.youtube.com/watch?v=EZbhLuLyHKA",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=EZbhLuLyHKA"
+      },
+      {
+        "name": "Saiyaara Reprise - Female | Full Song | Ahaan, Aneet | Tanishk, Faheem, Arslan | Shreya | Irshad",
+        "url": "https://www.youtube.com/watch?v=MQoColHyGzQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=MQoColHyGzQ"
+      },
+      {
+        "name": "Saiyaara - Tamil Reprise | Alwin Aashiqui | Soulful Cover",
+        "url": "https://www.youtube.com/watch?v=asG7cwxi1sA",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=asG7cwxi1sA"
+      },
+      {
+        "name": "Humsafar Song | Saiyaara | Ahaan Panday | Aneet Padda| Sachet Tandon, Parampara Tandon, Irshad Kamil",
+        "url": "https://www.youtube.com/watch?v=4lfY7Lal3BQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=4lfY7Lal3BQ"
+      },
+      {
+        "name": "Saiyaara Title Song | Ahaan Panday, Aneet Padda | Tanishk Bagchi, Faheem A, Arslan N | Irshad Kamil",
+        "url": "https://www.youtube.com/watch?v=D9DiMnlpFK8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=D9DiMnlpFK8"
+      }
+    ],
     "original_filename": "Saiyaara (2025).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/jpi0llvft7aixis4pk0f4/Saiyaara-2025-Hindi-HQ-HDTS-1080p-x264-AAC-CineVood.mkv?rlkey=2f0ob2igxfm7frgr4r1b77lr9&st=nu465w84&dl=1"
   },
@@ -807,8 +2049,35 @@
       "Drama",
       "Music"
     ],
-    "trailer": "https://www.youtube.com/watch?v=nF31d_f4n_A",
-    "songs": "https://www.youtube.com/results?search_query=Saiyaara%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=nF31d_f4n_A",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=nF31d_f4n_A",
+    "songs_list": [
+      {
+        "name": "Saiyaara Full Song | Ahaan Panday, Aneet Padda | Tanishk Bagchi, Faheem A, Arslan N | Irshad Kamil",
+        "url": "https://www.youtube.com/watch?v=PBg-9etLkFo",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=PBg-9etLkFo"
+      },
+      {
+        "name": "Saiyaara Reprise - Female | Full Song | Ahaan, Aneet | Tanishk, Faheem, Arslan | Shreya | Irshad",
+        "url": "https://www.youtube.com/watch?v=MQoColHyGzQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=MQoColHyGzQ"
+      },
+      {
+        "name": "Saiyaara Title Song | Ahaan Panday, Aneet Padda | Tanishk Bagchi, Faheem A, Arslan N | Irshad Kamil",
+        "url": "https://www.youtube.com/watch?v=asG7cwxi1sA",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=asG7cwxi1sA"
+      },
+      {
+        "name": "Saiyaara - Tamil Reprise | Alwin Aashiqui | Soulful Cover",
+        "url": "https://www.youtube.com/watch?v=BSJa1UytM8w",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=BSJa1UytM8w"
+      },
+      {
+        "name": "Humsafar Song | Saiyaara | Ahaan Panday | Aneet Padda| Sachet Tandon, Parampara Tandon, Irshad Kamil",
+        "url": "https://www.youtube.com/watch?v=4lfY7Lal3BQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=4lfY7Lal3BQ"
+      }
+    ],
     "original_filename": "Saiyaara.strm",
     "url": "https://www.dropbox.com/scl/fi/2hxo4znm6i12gubyp72xq/Saiyaara-2025-NF.WEB-DL-Hindi-2160p-10bit-HEVC-DDP-5.1-ESub-CineVood.mkv?rlkey=pqw32yeg8cv6exb7jfstihnzn&st=kq2gg19y&dl=1"
   },
@@ -826,8 +2095,35 @@
       "Action",
       "Mystery"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Sarzameen%202025%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Sarzameen%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=EK51EFZIR6Q",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=EK51EFZIR6Q",
+    "songs_list": [
+      {
+        "name": "Mere Murshid Mere Yaara | Sarzameen | Prithviraj S, Kajol, Ibrahim Ali Khan, Vishal Mishra, Jaani",
+        "url": "https://www.youtube.com/watch?v=fURbgg9XsXA",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=fURbgg9XsXA"
+      },
+      {
+        "name": "Watna Ve | Sarzameen | Prithviraj S, Kajol, Ibrahim Ali Khan, Javed Ali, Vishal Khurana K, Kausar M",
+        "url": "https://www.youtube.com/watch?v=Db5PpWOH7Z8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=Db5PpWOH7Z8"
+      },
+      {
+        "name": "Aaj Ruk Jaa - Female Version | Sarzameen | Kajol, Prithviraj, Ibrahim, Shreya G, Vishal K, Kausar M",
+        "url": "https://www.youtube.com/watch?v=jCdSvysQ8hg",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=jCdSvysQ8hg"
+      },
+      {
+        "name": "Watna Ve - Full Video | Sarzameen | Prithviraj, Kajol, Ibrahim Ali Khan, Javed Ali,Vishal K,Kausar M",
+        "url": "https://www.youtube.com/watch?v=e31_jkMjAPc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=e31_jkMjAPc"
+      },
+      {
+        "name": "Ve Mahiya | Sarzameen | Prithviraj S, Kajol, Ibrahim Ali Khan, B Praak, Vishal K, Kausar M,25th July",
+        "url": "https://www.youtube.com/watch?v=sUqBtC2KBJ8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=sUqBtC2KBJ8"
+      }
+    ],
     "original_filename": "Sarzameen (2025).Strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/2i23ruujjcs7ddmwb3p8l/Sarzameen.2025.2160p.HS.WEB-DL.MULTI.DDP5.1.Atmos.DV.H.265-Telly.mkv?rlkey=n7nb1yllzl2bdlfc8yl4f87mo&st=z70eetav&dl=1"
   },
@@ -842,8 +2138,15 @@
     "genre": [
       "Drama"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Memory%20Of%20The%20Devil%202024%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Memory%20Of%20The%20Devil%202024%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=0n_HQwQU8ls",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=0n_HQwQU8ls",
+    "songs_list": [
+      {
+        "name": "Kick (2009) Boss Memory Loss HD 720p Video Song",
+        "url": "https://www.youtube.com/watch?v=5KtCRrJHUQk",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=5KtCRrJHUQk"
+      }
+    ],
     "original_filename": "Shaitan-2024.strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/bs3parqu15uer2hbguiyc/Shaitaan-2024-WEB-DL-Hindi-1080p-x264-AVC-DDP-5.1-MSub-CineVood.mkv?rlkey=hf44h936wg2qvqfo55ntuxj51&st=uta01833&dl=1"
   },
@@ -860,8 +2163,35 @@
       "Adventure",
       "Action"
     ],
-    "trailer": "https://www.youtube.com/watch?v=MikgqM0LXr4",
-    "songs": "https://www.youtube.com/results?search_query=Superman%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=MikgqM0LXr4",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=MikgqM0LXr4",
+    "songs_list": [
+      {
+        "name": "Subbamma - HD Video Song | Roja Koottam | Srikanth | Bhumika | Bharathwaj | Star Music Spot",
+        "url": "https://www.youtube.com/watch?v=0v5Jr9JalRA",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=0v5Jr9JalRA"
+      },
+      {
+        "name": "SUPER MAN X AAYA SHER (THE PARADISE) || DC || BLASTER EDITZ",
+        "url": "https://www.youtube.com/watch?v=rbbnbKIBAvc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=rbbnbKIBAvc"
+      },
+      {
+        "name": "Superman returns mass scene in tamil",
+        "url": "https://www.youtube.com/watch?v=_i6ghb63ZcQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=_i6ghb63ZcQ"
+      },
+      {
+        "name": "Gangsta | Superman | Tamil Full Song | HD | Thunivu | Anirudh Ravichandar",
+        "url": "https://www.youtube.com/watch?v=V5lx79NEdc4",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=V5lx79NEdc4"
+      },
+      {
+        "name": "Imagine dragons- \\",
+        "url": "https://www.youtube.com/watch?v=tx8pov8THFs",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=tx8pov8THFs"
+      }
+    ],
     "original_filename": "Superman (2025).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/gj2hsfbii5d4s2dfml7bs/Superman.2025.IMAX.1080p.DS4K.-60FPS-.MA.WEBRip.HIN-ENG-TAM-TEL.DDP5.1.Atmos.H.265.ESub.Homelander.mkv?rlkey=qz4rhpm3escra9lov7kll4xwd&st=6i96ux4f&dl=1"
   },
@@ -877,8 +2207,35 @@
       "Action",
       "Romance"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Takkar%202023%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Takkar%202023%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=fm0k8kNivW8",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=fm0k8kNivW8",
+    "songs_list": [
+      {
+        "name": "Maragadha Maalai Video Song | Takkar (Tamil) | Siddharth | Karthik G Krish | Nivas K Prasanna",
+        "url": "https://www.youtube.com/watch?v=bXDh71GIbTI",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=bXDh71GIbTI"
+      },
+      {
+        "name": "Nira Video Song | Takkar (Tamil) | Siddharth | Karthik G Krish | Nivas K Prasanna",
+        "url": "https://www.youtube.com/watch?v=ohnVWZjSejE",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=ohnVWZjSejE"
+      },
+      {
+        "name": "Maragadha Maalai Lyric Video | Takkar (Tamil) | Siddharth | Karthik G Krish | Nivas K Prasanna",
+        "url": "https://www.youtube.com/watch?v=Vwa6Py0D-RI",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=Vwa6Py0D-RI"
+      },
+      {
+        "name": "Saagiren Video Song | Takkar (Tamil) | Siddharth | Karthik G Krish | Nivas K Prasanna",
+        "url": "https://www.youtube.com/watch?v=qwB37xfE6H4",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=qwB37xfE6H4"
+      },
+      {
+        "name": "Rainbow Thiralil Video Song | Takkar | Siddharth | STR | Nivas K Prasanna | Karthik G Krish",
+        "url": "https://www.youtube.com/watch?v=Vr9jtx5Nr8Y",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=Vr9jtx5Nr8Y"
+      }
+    ],
     "original_filename": "Takkar (2023).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/cmc9rxicpcobjmz9dcb1l/Takkar-2023-2160p-TK-WEB-DL-265-eng.mkv?rlkey=mnq50s7gr4nlecety65dvt59d&st=r0oxfmrl&dl=0"
   },
@@ -895,8 +2252,35 @@
       "Comedy",
       "Drama"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Thalaivan%20Thalaivii%202025%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Thalaivan%20Thalaivii%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=nyURE5vmj2I",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=nyURE5vmj2I",
+    "songs_list": [
+      {
+        "name": "Pottala Muttaye | Thalaivan Thalaivii | Vijay Sethupathi,Nithya Menen |Pandiraaj |Santhosh Narayanan",
+        "url": "https://www.youtube.com/watch?v=sWT7S6T0Qzw",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=sWT7S6T0Qzw"
+      },
+      {
+        "name": "Aagasa Veeran | Thalaivan Thalaivii | Vijay Sethupathi, Nithya Menen| Pandiraaj | Santhosh Narayanan",
+        "url": "https://www.youtube.com/watch?v=WAPbsPfAsY8",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=WAPbsPfAsY8"
+      },
+      {
+        "name": "Mannichiru | Thalaivan Thalaivii | Vijay Sethupathi, Nithya Menen| Pandiraaj | Santhosh Narayanan",
+        "url": "https://www.youtube.com/watch?v=FeH0EG9eTJw",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=FeH0EG9eTJw"
+      },
+      {
+        "name": "Pottala Muttaye | Thalaivan Thalaivii | Vijay Sethupathi,Nithya Menen |Pandiraaj |Santhosh Narayanan",
+        "url": "https://www.youtube.com/watch?v=gqgYL_DwA2M",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=gqgYL_DwA2M"
+      },
+      {
+        "name": "Sella Kolarey | Thalaivan Thalaivii | Vijay Sethupathi, Nithya Menen| Pandiraaj | Santhosh Narayanan",
+        "url": "https://www.youtube.com/watch?v=zVjVqKoS9QU",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=zVjVqKoS9QU"
+      }
+    ],
     "original_filename": "Thalaivan Thalaivii (2025).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/e7ycgj179iwjufcx7oa5g/Thalaivan-Thalaivii-2025-AMZN.WEB-DL-Hindi-Ta-Te-2160p-HEVC-DDP-5.1-ESub-CineVood.mkv?rlkey=ivf6lz1i7qjr6218oe72vvqdg&st=21pf0kx8&dl=1"
   },
@@ -912,8 +2296,35 @@
       "Action",
       "Drama"
     ],
-    "trailer": "https://www.youtube.com/watch?v=N5FySaqlvv8",
-    "songs": "https://www.youtube.com/results?search_query=Thammudu%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=N5FySaqlvv8",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=N5FySaqlvv8",
+    "songs_list": [
+      {
+        "name": "Thammudu Telugu Movie Songs | Vayyari Bhama Video Song | Pawan Kalyan | Preeti Jhangiani",
+        "url": "https://www.youtube.com/watch?v=gWmc6YA4XJM",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=gWmc6YA4XJM"
+      },
+      {
+        "name": "Vayyari Bhama Video Song | Thammudu Telugu Movie | Pawan Kalyan | Aditi Govitrikar | Mango Music",
+        "url": "https://www.youtube.com/watch?v=kSeTH64Cm4w",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=kSeTH64Cm4w"
+      },
+      {
+        "name": "Thammudu Telugu Movie Songs | Pedavi Datani Music Video | Pawan Kalyan | Preeti | Mango Music",
+        "url": "https://www.youtube.com/watch?v=-KH7IZjCkSk",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=-KH7IZjCkSk"
+      },
+      {
+        "name": "Ennoda Laila Video Song | Badri Tamil Movie | Vijay | Bhumika Chawla | Monal | Ramana Gogula",
+        "url": "https://www.youtube.com/watch?v=Mzx7rBUaTeY",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=Mzx7rBUaTeY"
+      },
+      {
+        "name": "Thalapathy Vijay Hit Song | Travelling Soldier Video Song | Badri Movie Songs | Vijay |Pyramid Music",
+        "url": "https://www.youtube.com/watch?v=dlC6A3MplMo",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=dlC6A3MplMo"
+      }
+    ],
     "original_filename": "Thammudu.strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/89a4w7fsvlzpvahlagcpt/Thammudu.2025.1080p.NF.WEB-DL.TAM-TEL-KAN-MAL.DDP5.1.H.264-PrimeFix.mkv?rlkey=pddzlw774hj9lzs6q125jk2av&dl=1"
   },
@@ -930,8 +2341,35 @@
       "Science Fiction",
       "Adventure"
     ],
-    "trailer": "https://www.youtube.com/watch?v=tyMhqYy9F7g",
-    "songs": "https://www.youtube.com/results?search_query=Thunderbolts%2A%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=tyMhqYy9F7g",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=tyMhqYy9F7g",
+    "songs_list": [
+      {
+        "name": "Bucky Entry Scene | Thunderbolts* (2025) aka *The New Avengers 4K Clip",
+        "url": "https://www.youtube.com/watch?v=j_caLQyCo6I",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=j_caLQyCo6I"
+      },
+      {
+        "name": "What If Thunderbolts Was a Tamil Movie? (Pista Song Edit)",
+        "url": "https://www.youtube.com/watch?v=XraoMd-TpB0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=XraoMd-TpB0"
+      },
+      {
+        "name": "Thunderbolts* - Kollywood Version.",
+        "url": "https://www.youtube.com/watch?v=BaVGV8w8OIA",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=BaVGV8w8OIA"
+      },
+      {
+        "name": "Marvel Studios' Thunderbolts* | Official Tamil Trailer | In Cinemas May 1",
+        "url": "https://www.youtube.com/watch?v=Gdsv1r1i2Aw",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=Gdsv1r1i2Aw"
+      },
+      {
+        "name": "Thunderbolts* Tamil Movie Breakdown - Part 1 (தமிழ்)",
+        "url": "https://www.youtube.com/watch?v=x52MYc8brac",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=x52MYc8brac"
+      }
+    ],
     "original_filename": "Thunderbolts The New Avengers (2025).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/9vjk7ujt3tcodgge0gloj/Thunderbolts.The.New.Avengers.2025.1080p.DS4K.-60FPS-.MA.WEBRip.HIN-ENG-TAM-TEL.DDP5.1.Atmos.H.265.Homelander.mkv?rlkey=1qtvli84mvbja49vdfteeg336&st=r1rmw10j&dl=1"
   },
@@ -947,8 +2385,35 @@
       "History",
       "Action"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Tiger%20Nageswara%20Rao%202023%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Tiger%20Nageswara%20Rao%202023%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=7WH4GdVOtWY",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=7WH4GdVOtWY",
+    "songs_list": [
+      {
+        "name": "Tiger Nageswara Rao (Tamil) - Video Jukebox | Ravi Teja | Nupur Sanon | Vamsee | GV Prakash Kumar",
+        "url": "https://www.youtube.com/watch?v=WKrroa99aqE",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=WKrroa99aqE"
+      },
+      {
+        "name": "Ek Dum Ek Dum - Video Song | Tiger Nageswara Rao | Ravi Teja | Nupur Sanon| Vamsee| GV Prakash Kumar",
+        "url": "https://www.youtube.com/watch?v=gdlFsiz3wpU",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=gdlFsiz3wpU"
+      },
+      {
+        "name": "Ek Dum Ek Dum - Lyrical | Tiger Nageswara Rao (Tamil) | Ravi Teja ,Nupur S | Vamsee | GV Prakash",
+        "url": "https://www.youtube.com/watch?v=vG21D96u4Pc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=vG21D96u4Pc"
+      },
+      {
+        "name": "Ivan - Lyrical Video | Tiger Nageswara Rao (Tamil) | Ravi Teja | Vamsee | GV Prakash Kumar",
+        "url": "https://www.youtube.com/watch?v=SWmYkA4VXQE",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=SWmYkA4VXQE"
+      },
+      {
+        "name": "Machaane Unnaala - Lyrical Video | Tiger Nageswara Rao (Tamil) | Ravi Teja, Gayatri | GV Prakash",
+        "url": "https://www.youtube.com/watch?v=uEKcskFboQU",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=uEKcskFboQU"
+      }
+    ],
     "original_filename": "Tiger Nageswara Rao (2023).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/t0njfqwlkimn2xvjvg79i/Tiger.Nageswara.Rao.2023.1080p.AMZN.WEB-DL.HIN-TAM-TEL-KAN-MAL.DDP5.1.H.264-Telly.mkv?rlkey=txlrjuye2x2sjf4anv3gqw6o1&st=aied26uj&dl=1"
   },
@@ -965,8 +2430,35 @@
       "Crime",
       "Drama"
     ],
-    "trailer": "https://www.youtube.com/watch?v=NQXE3iJCWNI",
-    "songs": "https://www.youtube.com/results?search_query=Vettaiyan%202024%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=NQXE3iJCWNI",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=NQXE3iJCWNI",
+    "songs_list": [
+      {
+        "name": "Manasilaayo Video | Vettaiyan | Rajinikanth | Anirudh Ravichander | Manju Warrier | T.J. Gnanavel",
+        "url": "https://www.youtube.com/watch?v=5WsUIeNAtbM",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=5WsUIeNAtbM"
+      },
+      {
+        "name": "Vaazh Veesum Video | Vettaiyan | Rajinikanth | Anirudh Ravichander | Manju Warrier | T.J. Gnanavel",
+        "url": "https://www.youtube.com/watch?v=lIwhaTfqwzc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=lIwhaTfqwzc"
+      },
+      {
+        "name": "Vettaiyan Theme Video | Rajinikanth | Anirudh Ravichander | T.J.Gnanavel",
+        "url": "https://www.youtube.com/watch?v=cCezJXzf1V0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=cCezJXzf1V0"
+      },
+      {
+        "name": "Vettaiyan - Clean Shot Video | Rajinikanth | Anirudh Ravichander | T.J.Gnanavel",
+        "url": "https://www.youtube.com/watch?v=-gb5ZB5Pe0s",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=-gb5ZB5Pe0s"
+      },
+      {
+        "name": "Vettaiyan - Uchathila Video | Rajinikanth | Anirudh Ravichander | T.J.Gnanavel",
+        "url": "https://www.youtube.com/watch?v=pmCxMGSKMp4",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=pmCxMGSKMp4"
+      }
+    ],
     "original_filename": "Vettaiyan (2024).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/i0c9of91f3i0f8kwfq65o/Vettaiyan-2024-TRUE-WEB-DL-1080p-AVC-Tam-Tel-Hin-Mal-Kan-DD-5.1-640Kbps-13GB-ESub-v20250824163657.mkv?rlkey=xp41u49ob21y5jvn2fyhif1j0&st=086ltn2j&dl=1"
   },
@@ -983,8 +2475,35 @@
       "Crime",
       "Thriller"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=Vikram%202022%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=Vikram%202022%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=OKBMCL-frPU",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=OKBMCL-frPU",
+    "songs_list": [
+      {
+        "name": "Pathala Pathala Video | VIKRAM | Kamal Haasan | Anirudh Ravichander | Lokesh Kanagaraj",
+        "url": "https://www.youtube.com/watch?v=xP-AQco4Otw",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=xP-AQco4Otw"
+      },
+      {
+        "name": "Minikki Minikki - Video Song (Tamil) | Thangalaan | Chiyaan Vikram | Pa Ranjith | GV Prakash Kumar",
+        "url": "https://www.youtube.com/watch?v=1OjZnGZjOA0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=1OjZnGZjOA0"
+      },
+      {
+        "name": "Thaandavam - Oru Paadhi Kadhavu Video | Vikram, Anushka",
+        "url": "https://www.youtube.com/watch?v=qcR0sXL7AII",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=qcR0sXL7AII"
+      },
+      {
+        "name": "Vikram - Porkanda Singam (EDM Version) Video with Lyrics | Kamal | Anirudh",
+        "url": "https://www.youtube.com/watch?v=Cer5pnvBkcA",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=Cer5pnvBkcA"
+      },
+      {
+        "name": "Cobra - Thumbi Thullal Video | Chiyaan Vikram, Srinidhi Shetty | @A. R. Rahman",
+        "url": "https://www.youtube.com/watch?v=fegX2mDTmTY",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=fegX2mDTmTY"
+      }
+    ],
     "original_filename": "Vikram (2022).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/8e9h20bqq2c0x4fppc55z/Vikram.2022.1080p.10bit.DSNP.WEBRip.Multi.DDP5.1.H.265.Homelander.mkv?rlkey=jcto8z72tze8ys9vqa0ccydyu&st=4hwigz9z&dl=1"
   },
@@ -1000,8 +2519,35 @@
       "Action",
       "Thriller"
     ],
-    "trailer": "https://www.youtube.com/watch?v=dK1W-AViQ-M",
-    "songs": "https://www.youtube.com/results?search_query=War%202%202025%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=dK1W-AViQ-M",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=dK1W-AViQ-M",
+    "songs_list": [
+      {
+        "name": "Ulagena Uruveduthaay Song | WAR 2 | Hrithik Roshan, Kiara Advani | Pritam, Shashwat, Nikhita |Madhan",
+        "url": "https://www.youtube.com/watch?v=gCJ858P57K0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=gCJ858P57K0"
+      },
+      {
+        "name": "Tamil: Jai Jai Siva Sankaraa Song | War | Hrithik | Tiger | Vishal and Shekhar ft, Benny D, Nakash A",
+        "url": "https://www.youtube.com/watch?v=or5R0MMbPTM",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=or5R0MMbPTM"
+      },
+      {
+        "name": "Janaab-e-Aali | Full Song | WAR 2 | Hrithik Roshan, NTR | Pritam, Sachet Tandon, Saaj Bhatt, Amitabh",
+        "url": "https://www.youtube.com/watch?v=v7N9HEtdnYs",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=v7N9HEtdnYs"
+      },
+      {
+        "name": "#BREAKING: ஜெயிலர் 2 படத்தின் முதல் பாடல் வெளியீடு | Jailer 2",
+        "url": "https://www.youtube.com/watch?v=9l5QY7BJmHQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=9l5QY7BJmHQ"
+      },
+      {
+        "name": "Tamil: Salangaigal Song - War | Hrithik Roshan, Vaani Kapoor, Vishal \\u0026 Shekhar ft, Rahul V, Anusha M",
+        "url": "https://www.youtube.com/watch?v=ZEoWBfPjuLc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=ZEoWBfPjuLc"
+      }
+    ],
     "original_filename": "War 2 (2025).Strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/2o1psxaoefkakdcssk23g/War-2-2025-PRE-HD-Tamil-1080p-AVC-2.0-CineVood.mkv?rlkey=zad15qmjc40gur5ubt3slqybn&st=kfibgvfs&dl=1"
   },
@@ -1018,8 +2564,35 @@
       "Thriller",
       "Adventure"
     ],
-    "trailer": "https://www.youtube.com/results?search_query=War%202019%20official%20trailer%20Tamil",
-    "songs": "https://www.youtube.com/results?search_query=War%202019%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=vPHb8qMZlmI",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=vPHb8qMZlmI",
+    "songs_list": [
+      {
+        "name": "Tamil: Jai Jai Siva Sankaraa Song | War | Hrithik | Tiger | Vishal and Shekhar ft, Benny D, Nakash A",
+        "url": "https://www.youtube.com/watch?v=v7N9HEtdnYs",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=v7N9HEtdnYs"
+      },
+      {
+        "name": "Ulagena Uruveduthaay Song | WAR 2 | Hrithik Roshan, Kiara Advani | Pritam, Shashwat, Nikhita |Madhan",
+        "url": "https://www.youtube.com/watch?v=8DkQl0yfWwY",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=8DkQl0yfWwY"
+      },
+      {
+        "name": "Kalaaba | Full Song | WAR 2 | Hrithik Roshan, NTR | Pritam | Nakash Aziz, Yazin Nizar | Madhan Karky",
+        "url": "https://www.youtube.com/watch?v=gCJ858P57K0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=gCJ858P57K0"
+      },
+      {
+        "name": "Raavana Mavandaa (Full Video) | Hon’ble CM Vijay | Jana Nayagan | Pooja Hegde | H Vinoth | Anirudh",
+        "url": "https://www.youtube.com/watch?v=or5R0MMbPTM",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=or5R0MMbPTM"
+      },
+      {
+        "name": "Jai Jai Shivshankar Full Song | War | Hrithik Roshan, Tiger Shroff | Vishal \\u0026 Shekhar, Vishal, Benny",
+        "url": "https://www.youtube.com/watch?v=ZL9HgvQZe8k",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=ZL9HgvQZe8k"
+      }
+    ],
     "original_filename": "War 2019.strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/zivzegqbr0c9v88yq4bqv/War-2019-AMZN-WEB-DL-Hindi-2160p-HEVC-DDP-5.1-MSub-CineVood.mkv?rlkey=px5ne5gcbxzyanf83047lr12n&st=hc73ud69&dl=1"
   },
@@ -1035,8 +2608,35 @@
       "Mystery",
       "Horror"
     ],
-    "trailer": "https://www.youtube.com/watch?v=VSrhCiHFiGU",
-    "songs": "https://www.youtube.com/results?search_query=Yavarum%20Nalam%202009%20Tamil%20songs%20jukebox",
+    "trailer_url": "https://www.youtube.com/watch?v=VSrhCiHFiGU",
+    "trailer_kodi": "plugin://plugin.video.youtube/play/?video_id=VSrhCiHFiGU",
+    "songs_list": [
+      {
+        "name": "Kaatrile Vaasame | Yaavarum Nalam deleted song | 13B tamil song | Shankar Ehsaan Loy Tamil hits",
+        "url": "https://www.youtube.com/watch?v=TWLJRFpvfbc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=TWLJRFpvfbc"
+      },
+      {
+        "name": "13B: Fear Has a New Address",
+        "url": "https://www.youtube.com/watch?v=sP16oeb59CQ",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=sP16oeb59CQ"
+      },
+      {
+        "name": "Sign in to YouTube",
+        "url": "https://www.youtube.com/watch?v=MomUNqtRQfc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=MomUNqtRQfc"
+      },
+      {
+        "name": "Kaatrile Vaasame Lyrical Song | Yaavarum Nalam Movie | Madhavan, Neetu Chandra | Shankar-Ehsaan-Loy",
+        "url": "https://www.youtube.com/watch?v=BMByxNSBcKc",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=BMByxNSBcKc"
+      },
+      {
+        "name": "Oh Sexy Mama",
+        "url": "https://www.youtube.com/watch?v=Z6eOX7VRpa0",
+        "kodi_plugin": "plugin://plugin.video.youtube/play/?video_id=Z6eOX7VRpa0"
+      }
+    ],
     "original_filename": "Yavarum Nalam (2009).strm",
     "url": "https://dl.dropboxusercontent.com/scl/fi/p1a08rgu2bls9ibm3tesb/Yavarum-Nalam-2009-Tamil-BluRay-1080p-AVC-DTS5.1-1509kbps-12.3GB-ESub.mkv?rlkey=1zk77sfa6eozolz3g1cyg8p97&st=3k1z91ww&dl=1"
   }
