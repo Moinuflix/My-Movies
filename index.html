@@ -6,6 +6,9 @@
   <title>MoinuFlix</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  </style>
 </head>
 <body class="bg-[#0b0f19] text-slate-100 min-h-screen">
 
@@ -13,7 +16,7 @@
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
       <h1 class="text-2xl sm:text-3xl font-black tracking-wider text-red-600">MOINU<span class="text-white">FLIX</span></h1>
       <div class="flex-1 max-w-md">
-        <input type="text" id="search" placeholder="Search movies..." class="w-full bg-slate-900 border border-slate-700/70 rounded-full px-5 py-2 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-red-500">
+        <input type="text" id="search" placeholder="Search movies, genres..." class="w-full bg-slate-900 border border-slate-700/70 rounded-full px-5 py-2 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-red-500 transition-all">
       </div>
       <span id="total-count" class="text-xs bg-red-500/10 text-red-400 border border-red-500/20 px-3 py-1.5 rounded-full font-medium">Loading...</span>
     </div>
@@ -24,99 +27,52 @@
   </main>
 
   <script>
-    const TMDB_API_KEY = "8414459f230d744b7d383fb4f3014aef";
     let allMovies = [];
     const grid = document.getElementById('movie-grid');
     const search = document.getElementById('search');
     const count = document.getElementById('total-count');
 
-    function parseMovieTitle(raw) {
-      let title = raw.replace(/\.[a-zA-Z0-9]+$/, '').replace(/\./g, ' ');
-      const yearMatch = title.match(/\b(19\d\d|20\d\d)\b/);
-      const year = yearMatch ? yearMatch[0] : '';
-      title = title.replace(/\(?(19\d\d|20\d\d)\)?/g, '')
-                   .replace(/\(SK\d+\)/gi, '')
-                   .replace(/trailer/gi, '')
-                   .replace(/Reloaded/gi, '')
-                   .replace(/[-_()]/g, ' ')
-                   .replace(/\s+/g, ' ')
-                   .trim();
-      return { title, year };
-    }
-
-    async function getPoster(name, year) {
-      try {
-        let url = `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(name)}`;
-        if (year) url += `&year=${year}`;
-        let res = await fetch(url);
-        let data = await res.json();
-        
-        if (!data.results || data.results.length === 0) {
-          res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(name)}`);
-          data = await res.json();
-        }
-
-        if (data.results && data.results.length > 0) {
-          const item = data.results[0];
-          return {
-            poster: item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : null,
-            rating: item.vote_average ? item.vote_average.toFixed(1) : null,
-            year: item.release_date ? item.release_date.split('-')[0] : year
-          };
-        }
-      } catch (e) {}
-      return { poster: null, rating: null, year: year };
-    }
-
     function render(list) {
       grid.innerHTML = '';
       count.innerText = `${list.length} Movies`;
 
-      list.forEach((m, idx) => {
-        const { title: cleanName, year: cleanYear } = parseMovieTitle(m.title);
-        const cardId = `movie-card-${idx}`;
+      list.forEach(m => {
+        const posterImg = m.poster 
+          ? `<img src="${m.poster}" alt="${m.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">`
+          : `<div class="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-slate-800 text-slate-500"><i class="fa-solid fa-film text-3xl mb-2"></i><span class="text-xs font-semibold">${m.title}</span></div>`;
+
+        const logoDisplay = m.clearlogo
+          ? `<img src="${m.clearlogo}" alt="${m.title}" class="max-h-10 max-w-[80%] object-contain drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)] mb-1">`
+          : `<h3 class="font-bold text-sm text-white line-clamp-2 leading-tight drop-shadow">${m.title}</h3>`;
+
+        const ratingBadge = (m.rating && m.rating !== "0.0")
+          ? `<div class="absolute top-2 right-2 bg-black/75 backdrop-blur-md text-yellow-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-yellow-400/30 flex items-center gap-1 shadow"><i class="fa-solid fa-star text-[9px]"></i> ${m.rating}</div>`
+          : '';
+
+        const trailerBtn = m.trailer
+          ? `<a href="${m.trailer}" target="_blank" class="w-9 h-9 flex items-center justify-center bg-slate-800 hover:bg-red-600/20 text-red-500 rounded-xl transition-all border border-slate-700" title="Watch Trailer"><i class="fa-brands fa-youtube text-base"></i></a>`
+          : '';
 
         const card = document.createElement('div');
         card.className = "group relative bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-600 transition-all duration-300 shadow-xl flex flex-col justify-between";
         card.innerHTML = `
-          <div class="relative aspect-[2/3] bg-slate-800 overflow-hidden flex items-center justify-center">
-            <div id="${cardId}-img" class="w-full h-full flex items-center justify-center text-slate-600">
-              <i class="fa-solid fa-film text-3xl animate-pulse"></i>
-            </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-85 pointer-events-none"></div>
-            <div id="${cardId}-rating" class="absolute top-2 right-2"></div>
+          <div class="relative aspect-[2/3] bg-slate-800 overflow-hidden">
+            ${posterImg}
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-transparent to-transparent opacity-90 pointer-events-none"></div>
+            ${ratingBadge}
             <div class="absolute bottom-3 left-3 right-3 pointer-events-none">
-              <h3 class="font-bold text-sm text-white line-clamp-2 leading-tight">${m.title}</h3>
-              <p id="${cardId}-year" class="text-[11px] text-slate-400 mt-1 font-medium">${cleanYear}</p>
+              ${logoDisplay}
+              <p class="text-[11px] text-slate-400 mt-1 font-medium">${m.year || ''}</p>
             </div>
           </div>
-          <div class="p-3 bg-slate-900">
-            <a href="${m.url}" target="_blank" class="w-full flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 active:scale-95 text-white font-semibold py-2 px-3 rounded-xl text-xs transition-all shadow-md">
-              <i class="fa-solid fa-play text-[10px]"></i> Play Stream
+          <div class="p-3 bg-slate-900 flex gap-2">
+            <a href="${m.url}" target="_blank" class="flex-1 flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 active:scale-95 text-white font-semibold py-2 px-3 rounded-xl text-xs transition-all shadow-md">
+              <i class="fa-solid fa-play text-[10px]"></i> Play
             </a>
+            ${trailerBtn}
           </div>
         `;
         grid.appendChild(card);
-
-        getPoster(cleanName, cleanYear).then(data => {
-          const imgElem = document.getElementById(`${cardId}-img`);
-          const ratingElem = document.getElementById(`${cardId}-rating`);
-          const yearElem = document.getElementById(`${cardId}-year`);
-
-          if (data.poster) {
-            imgElem.innerHTML = `<img src="${data.poster}" alt="${m.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">`;
-          } else {
-            imgElem.innerHTML = `<div class="p-4 text-center text-xs text-slate-500 font-medium">${m.title}</div>`;
-          }
-
-          if (data.rating && data.rating > 0) {
-            ratingElem.innerHTML = `<span class="bg-black/70 backdrop-blur-sm text-yellow-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-yellow-400/30 flex items-center gap-1"><i class="fa-solid fa-star text-[9px]"></i> ${data.rating}</span>`;
-          }
-
-          if (data.year) {
-            yearElem.innerText = data.year;
-          }
-        });
       });
     }
 
@@ -132,7 +88,11 @@
 
     search.addEventListener('input', (e) => {
       const term = e.target.value.toLowerCase();
-      const filtered = allMovies.filter(m => m.title.toLowerCase().includes(term));
+      const filtered = allMovies.filter(m => 
+        m.title.toLowerCase().includes(term) || 
+        (m.year && m.year.includes(term)) ||
+        (m.genre && m.genre.some(g => g.toLowerCase().includes(term)))
+      );
       render(filtered);
     });
   </script>
