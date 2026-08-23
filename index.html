@@ -13,11 +13,11 @@
 <body class="bg-[#0b0f19] text-slate-100 min-h-screen">
 
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-[#0b0f19]/95 backdrop-blur-md border-b border-slate-800 px-4 sm:px-8 py-4">
+  <header class="sticky top-0 z-40 bg-[#0b0f19]/95 backdrop-blur-md border-b border-slate-800 px-4 sm:px-8 py-4">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
       <h1 class="text-2xl sm:text-3xl font-black tracking-wider text-red-600">MOINU<span class="text-white">FLIX</span></h1>
       <div class="flex-1 max-w-md">
-        <input type="text" id="search" placeholder="Search movies, genres..." class="w-full bg-slate-900 border border-slate-700/70 rounded-full px-5 py-2 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-red-500 transition-all">
+        <input type="text" id="search" placeholder="Search movies, genres, year..." class="w-full bg-slate-900 border border-slate-700/70 rounded-full px-5 py-2 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-red-500 transition-all">
       </div>
       <span id="total-count" class="text-xs bg-red-500/10 text-red-400 border border-red-500/20 px-3 py-1.5 rounded-full font-medium">Loading...</span>
     </div>
@@ -28,39 +28,96 @@
     <div id="movie-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"></div>
   </main>
 
+  <!-- Stream Selection Modal -->
+  <div id="stream-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">✕</button>
+      <h3 id="modal-title" class="text-lg font-bold text-white mb-1">Select Quality</h3>
+      <p id="modal-plot" class="text-xs text-slate-400 mb-4 line-clamp-2"></p>
+      
+      <div id="stream-buttons" class="flex flex-col gap-2.5"></div>
+    </div>
+  </div>
+
   <script>
     let allMovies = [];
     const grid = document.getElementById('movie-grid');
     const search = document.getElementById('search');
     const count = document.getElementById('total-count');
+    const modal = document.getElementById('stream-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalPlot = document.getElementById('modal-plot');
+    const streamButtons = document.getElementById('stream-buttons');
+
+    function formatTrailerUrl(url) {
+      if (!url) return '';
+      if (url.includes('video_id=')) {
+        const id = url.split('video_id=')[1];
+        return `https://www.youtube.com/watch?v=${id}`;
+      }
+      return url;
+    }
+
+    function openModal(movie) {
+      modalTitle.innerText = `${movie.title} (${movie.year || ''})`;
+      modalPlot.innerText = movie.plot || 'No overview available.';
+      streamButtons.innerHTML = '';
+
+      if (movie.streams && Object.keys(movie.streams).length > 0) {
+        Object.entries(movie.streams).forEach(([quality, link]) => {
+          const btn = document.createElement('a');
+          btn.href = link;
+          btn.target = "_blank";
+          btn.className = "flex items-center justify-between bg-slate-800 hover:bg-red-600 text-white font-semibold py-2.5 px-4 rounded-xl text-sm transition-all border border-slate-700";
+          btn.innerHTML = `<span><i class="fa-solid fa-circle-play mr-2 text-red-400"></i> ${quality}</span> <span class="text-[11px] bg-slate-900/60 px-2 py-0.5 rounded text-slate-300">Play</span>`;
+          streamButtons.appendChild(btn);
+        });
+      } else if (movie.url) {
+        const btn = document.createElement('a');
+        btn.href = movie.url;
+        btn.target = "_blank";
+        btn.className = "flex items-center justify-between bg-slate-800 hover:bg-red-600 text-white font-semibold py-2.5 px-4 rounded-xl text-sm transition-all border border-slate-700";
+        btn.innerHTML = `<span><i class="fa-solid fa-circle-play mr-2 text-red-400"></i> Direct Stream</span> <span class="text-[11px] bg-slate-900/60 px-2 py-0.5 rounded text-slate-300">Play</span>`;
+        streamButtons.appendChild(btn);
+      } else {
+        streamButtons.innerHTML = '<p class="text-xs text-red-400">No active streams found.</p>';
+      }
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
 
     function render(list) {
       grid.innerHTML = '';
       count.innerText = `${list.length} Movies`;
 
-      list.forEach(m => {
-        // Poster check
+      list.forEach((m, idx) => {
         const posterImg = m.poster 
           ? `<img src="${m.poster}" alt="${m.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">`
           : `<div class="w-full h-full flex flex-col items-center justify-center p-3 text-center bg-slate-800 text-slate-500"><i class="fa-solid fa-film text-3xl mb-2"></i><span class="text-xs font-semibold">${m.title}</span></div>`;
 
-        // Clearlogo or Title text
         const logoDisplay = m.clearlogo
           ? `<img src="${m.clearlogo}" alt="${m.title}" class="max-h-10 max-w-[80%] object-contain drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)] mb-1">`
           : `<h3 class="font-bold text-sm text-white line-clamp-2 leading-tight drop-shadow">${m.title}</h3>`;
 
-        // Rating Badge
         const ratingBadge = (m.rating && m.rating !== "0.0" && m.rating !== "N/A")
           ? `<div class="absolute top-2 right-2 bg-black/75 backdrop-blur-md text-yellow-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-yellow-400/30 flex items-center gap-1 shadow"><i class="fa-solid fa-star text-[9px]"></i> ${m.rating}</div>`
           : '';
 
-        // Trailer Link (Handles both m.trailer_url and m.trailer)
-        const trailerTarget = m.trailer_url || m.trailer || '';
-        const trailerBtn = trailerTarget
-          ? `<a href="${trailerTarget}" target="_blank" class="w-8 h-8 flex items-center justify-center bg-slate-800 hover:bg-red-600/30 text-red-500 rounded-lg transition-all border border-slate-700" title="Watch Trailer"><i class="fa-brands fa-youtube text-sm"></i></a>`
+        const trailerUrl = formatTrailerUrl(m.trailer_url || m.trailer || '');
+        const trailerBtn = trailerUrl
+          ? `<a href="${trailerUrl}" target="_blank" class="w-8 h-8 flex items-center justify-center bg-slate-800 hover:bg-red-600/30 text-red-500 rounded-lg transition-all border border-slate-700" title="Watch Trailer"><i class="fa-brands fa-youtube text-sm"></i></a>`
           : '';
 
-        // Songs Jukebox Link (Handles both songs_list and single songs string)
         let songsTarget = '';
         if (Array.isArray(m.songs_list) && m.songs_list.length > 0) {
           songsTarget = m.songs_list[0].url;
@@ -75,7 +132,7 @@
         const card = document.createElement('div');
         card.className = "group relative bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-600 transition-all duration-300 shadow-xl flex flex-col justify-between";
         card.innerHTML = `
-          <div class="relative aspect-[2/3] bg-slate-800 overflow-hidden">
+          <div class="relative aspect-[2/3] bg-slate-800 overflow-hidden cursor-pointer" onclick="openModal(allMovies[${idx}])">
             ${posterImg}
             <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-transparent to-transparent opacity-90 pointer-events-none"></div>
             ${ratingBadge}
@@ -85,9 +142,9 @@
             </div>
           </div>
           <div class="p-3 bg-slate-900 flex items-center gap-1.5">
-            <a href="${m.url}" target="_blank" class="flex-1 flex items-center justify-center gap-1.5 bg-red-600 hover:bg-red-700 active:scale-95 text-white font-semibold py-2 px-2 rounded-lg text-xs transition-all shadow-md">
+            <button onclick="openModal(allMovies[${idx}])" class="flex-1 flex items-center justify-center gap-1.5 bg-red-600 hover:bg-red-700 active:scale-95 text-white font-semibold py-2 px-2 rounded-lg text-xs transition-all shadow-md">
               <i class="fa-solid fa-play text-[10px]"></i> Play
-            </a>
+            </button>
             ${trailerBtn}
             ${songsBtn}
           </div>
