@@ -1,0 +1,11 @@
+{
+  "vault_name": "Moinu TV Media Vault",
+  "version": "1.0.0",
+  "worker_base": "https://gdrive-stream.moinudeentv.workers.dev",
+  "security_mode": "Header-Locked (Kodi-MoinuTV-PrivatePlayer/1.0)",
+  "catalogs": {
+    "movies": "./Json/movies_catalog.json",
+    "series": "./Json/series_catalog.json",
+    "songs": "./Json/songs_catalog.json"
+  }
+}
