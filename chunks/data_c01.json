@@ -1,27 +1,19 @@
 [
   {
+    "id": "1DV-5FIRuWDsNgswYmxHc9lCR0w9GI7gT",
+    "name": "The.Dark.Knight.2008.1080p.AMZN.WEB-DL.DDP2.0.English-Hindi-Tamil-Telugu.H.264-MSD4K.mkv",
     "title": "The Dark Knight",
     "year": 2008,
     "tmdb_id": 155,
     "imdb_id": "tt0468569",
     "imdb_url": "https://www.imdb.com/title/tt0468569/",
     "rating": 9.0,
-    "genre": [
-      "Action",
-      "Crime",
-      "Drama"
-    ],
-    "languages": [
-      "English",
-      "Hindi",
-      "Tamil",
-      "Telugu"
-    ],
     "plot": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
     "poster": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/nMKdUUepR0i5zn0y1T4CsSB5chy.jpg",
     "logo": "https://image.tmdb.org/t/p/original/4u3u4t7f9K8d7v6K5g8d9v8e7f6.png",
     "trailer": "plugin://plugin.video.youtube/play/?video_id=EXeTwQWrcwY",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1DV-5FIRuWDsNgswYmxHc9lCR0w9GI7gT|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "badges": {
       "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
       "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web.png",
@@ -34,41 +26,23 @@
       "codec": "H.264",
       "audio": "Dolby Digital Plus",
       "channels": "2.0"
-    },
-    "sources": [
-      {
-        "quality": "1080p",
-        "resolution": "1080p",
-        "codec": "x264",
-        "audio": "DDP 2.0",
-        "filename": "The Dark Knight (2008) [Multi] [1080p] [x264] [DDP 2.0].mkv",
-        "playback": {
-          "source": "gdrive",
-          "file_id": "1DV-5FIRuWDsNgswYmxHc9lCR0w9GI7gT",
-          "url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1DV-5FIRuWDsNgswYmxHc9lCR0w9GI7gT|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-        }
-      }
-    ]
+    }
   },
   {
+    "id": "1vMBY0tcOmUzve5wLpGiED_yBOqWIeFjl",
+    "name": "Mersal (2017) [TAMIL UHD 2160p [4K] x265 HEVC DTS+DD5.1 MSubs 10GB].mkv",
     "title": "Mersal",
     "year": 2017,
     "tmdb_id": 456287,
     "imdb_id": "tt6485666",
     "imdb_url": "https://www.imdb.com/title/tt6485666/",
     "rating": 7.5,
-    "genre": [
-      "Action",
-      "Thriller"
-    ],
-    "languages": [
-      "Tamil"
-    ],
     "plot": "A magician and a doctor, who are identical twins, seek revenge against a corrupt medical system and the unethical health professionals who killed their father.",
     "poster": "https://image.tmdb.org/t/p/w500/z0T0o8fR2b86r64d3v1K7aL3qf6.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/9r8kQ7qQ8b5Qv3c6Y4z5v7b8w0E.jpg",
     "logo": "https://image.tmdb.org/t/p/original/4u3u4t7f9K8d7v6K5g8d9v8e7f6.png",
     "trailer": "plugin://plugin.video.youtube/play/?video_id=gQKCPWyM_P8",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vMBY0tcOmUzve5wLpGiED_yBOqWIeFjl|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "badges": {
       "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/4k.png",
       "hdr": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/hdr/hdr.png",
@@ -82,41 +56,23 @@
       "codec": "HEVC",
       "audio": "DTS-HD MA",
       "channels": "5.1"
-    },
-    "sources": [
-      {
-        "quality": "2160p",
-        "resolution": "2160p",
-        "codec": "x265",
-        "audio": "DTS-HD 5.1",
-        "filename": "Mersal (2017) [Tamil] [2160p] [x265] [DTS 5.1].mkv",
-        "playback": {
-          "source": "gdrive",
-          "file_id": "1vMBY0tcOmUzve5wLpGiED_yBOqWIeFjl",
-          "url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vMBY0tcOmUzve5wLpGiED_yBOqWIeFjl|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-        }
-      }
-    ]
+    }
   },
   {
+    "id": "1PfF9Arp4byCVlg_a7_549LCgXaPJuCRK",
+    "name": "Jana Nayagan (2026) 2160p ZEE5 WEB-DL HDR HEVC x265 [Tamil (DD+ 5.1 - 192kbps)] ESub.mkv",
     "title": "Jana Nayagan",
     "year": 2026,
     "tmdb_id": 1235877,
     "imdb_id": "tt33379543",
     "imdb_url": "https://www.imdb.com/title/tt33379543/",
     "rating": 5.56,
-    "genre": [
-      "Action",
-      "Drama"
-    ],
-    "languages": [
-      "Tamil"
-    ],
     "plot": "A clash of ideologies. One stands for the people, the other feeds on control. Their paths collided once before. Years later, a child’s silent fear ignites the past, drawing a former police officer into a battle far bigger than personal revenge.",
     "poster": "https://image.tmdb.org/t/p/w500/jt8pfSIdi47YpFMMWVRr8w5u2S0.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/v3lNH2gCojWYXVuXcT9FZLBxcSq.jpg",
     "logo": "https://image.tmdb.org/t/p/original/fDOECszTh7wpI0d4JOVPTAOjvZg.png",
     "trailer": "plugin://plugin.video.youtube/play/?video_id=fJaAYcERf3Y",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1PfF9Arp4byCVlg_a7_549LCgXaPJuCRK|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "badges": {
       "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/4k.png",
       "hdr": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/hdr/hdr.png",
@@ -130,42 +86,23 @@
       "codec": "H.265",
       "audio": "Dolby Digital Plus",
       "channels": "5.1"
-    },
-    "sources": [
-      {
-        "quality": "2160p",
-        "resolution": "2160p",
-        "codec": "x265",
-        "audio": "DD+ 5.1",
-        "filename": "Jana Nayagan (2026) [Tamil] [2160p] [x265] [DD+ 5.1].mkv",
-        "playback": {
-          "source": "gdrive",
-          "file_id": "1PfF9Arp4byCVlg_a7_549LCgXaPJuCRK",
-          "url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1PfF9Arp4byCVlg_a7_549LCgXaPJuCRK|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-        }
-      }
-    ]
+    }
   },
   {
+    "id": "1ow8jA4ltQuwj4VHm76lq5wnCUea7WgUD",
+    "name": "Thodari.2016.1080p.AMZN.WEB-DL.DD+5.1.H.264-TR.mkv",
     "title": "Thodari",
     "year": 2016,
     "tmdb_id": 376446,
     "imdb_id": "tt5959700",
     "imdb_url": "https://www.imdb.com/title/tt5959700/",
     "rating": 4.45,
-    "genre": [
-      "Action",
-      "Romance",
-      "Thriller"
-    ],
-    "languages": [
-      "Tamil"
-    ],
     "plot": "A pantry boy falls in love with the touch-up girl of an actress travelling on his train, but an incident turns the train into an unstoppable force posing a threat to the passengers, and the romance.",
     "poster": "https://image.tmdb.org/t/p/w500/bUCE3kTWr80lYCNiJpV1IonPNCX.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/stD9ZDLBcoawB8tG5VtcaJn60qH.jpg",
     "logo": "https://image.tmdb.org/t/p/original/m7Fb8CTzAR0BFlyWSTfsY2wW5D0.png",
     "trailer": "plugin://plugin.video.youtube/play/?video_id=LJfiUuxgREQ",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ow8jA4ltQuwj4VHm76lq5wnCUea7WgUD|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "badges": {
       "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
       "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web.png",
@@ -178,41 +115,23 @@
       "codec": "H.264",
       "audio": "Dolby Digital Plus",
       "channels": "5.1"
-    },
-    "sources": [
-      {
-        "quality": "1080p",
-        "resolution": "1080p",
-        "codec": "x264",
-        "audio": "DD+ 5.1",
-        "filename": "Thodari (2016) [Tamil] [1080p] [x264] [DD+ 5.1].mkv",
-        "playback": {
-          "source": "gdrive",
-          "file_id": "1ow8jA4ltQuwj4VHm76lq5wnCUea7WgUD",
-          "url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ow8jA4ltQuwj4VHm76lq5wnCUea7WgUD|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-        }
-      }
-    ]
+    }
   },
   {
+    "id": "1gYQQp06PkdO6z9mw52KSVvGrGFvlGWNb",
+    "name": "Velayudham.2011.2160p.SS.WEB-DL.DD+5.1.x264-[JACK ~Edition].mkv",
     "title": "Velayudham",
     "year": 2011,
     "tmdb_id": 63634,
     "imdb_id": "tt1965272",
     "imdb_url": "https://www.imdb.com/title/tt1965272/",
     "rating": 5.2,
-    "genre": [
-      "Action",
-      "Comedy"
-    ],
-    "languages": [
-      "Tamil"
-    ],
     "plot": "An ordinary milkman is forced to become the fictional character Velayudham who takes on the scum of the earth.",
     "poster": "https://image.tmdb.org/t/p/w500/3AMmKdLbeGr8KxbsOwERzRM3xdy.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/ubIosvCXH23T4KU8zZsIfgc8AqB.jpg",
     "logo": null,
     "trailer": "plugin://plugin.video.youtube/play/?video_id=dELfiJiCei0",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1gYQQp06PkdO6z9mw52KSVvGrGFvlGWNb|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "badges": {
       "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/4k.png",
       "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web.png",
@@ -225,21 +144,7 @@
       "codec": "H.264",
       "audio": "Dolby Digital Plus",
       "channels": "5.1"
-    },
-    "sources": [
-      {
-        "quality": "2160p",
-        "resolution": "2160p",
-        "codec": "x264",
-        "audio": "DD+ 5.1",
-        "filename": "Velayudham (2011) [Tamil] [2160p] [x264] [DD+ 5.1].mkv",
-        "playback": {
-          "source": "gdrive",
-          "file_id": "1gYQQp06PkdO6z9mw52KSVvGrGFvlGWNb",
-          "url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1gYQQp06PkdO6z9mw52KSVvGrGFvlGWNb|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-        }
-      }
-    ]
+    }
   },
   {
     "id": "1TEEWyc19TsWviX5z-r-81rmIQ1sIdojq",
