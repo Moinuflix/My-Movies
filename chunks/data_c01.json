@@ -1,34 +1,88 @@
 [
- {
-  "title": "Mersal",
-  "year": "2017",
-  "rating": "7.5",
-  "genre": [
-    "Action",
-    "Thriller"
-  ],
-  "plot": "A magician and a doctor, who are identical twins, seek revenge against a corrupt medical system and the unethical health professionals who killed their father.",
-  "poster": "https://image.tmdb.org/t/p/w500/z0T0o8fR2b86r64d3v1K7aL3qf6.jpg",
-  "fanart": "https://image.tmdb.org/t/p/original/9r8kQ7qQ8b5Qv3c6Y4z5v7b8w0E.jpg",
-  "clearlogo": "https://image.tmdb.org/t/p/original/4u3u4t7f9K8d7v6K5g8d9v8e7f6.png",
-  "original_filename": "Mersal (2017) [TAMIL UHD 2160p [4K] x265 HEVC DTS+DD5.1 MSubs 10GB] -.strm",
-  "url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vMBY0tcOmUzve5wLpGiED_yBOqWIeFjl|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+  {
+    "title": "The Dark Knight",
+    "year": "2008",
+    "tmdb_id": 155,
+    "rating": "9.0",
+    "genre": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "languages": [
+      "English",
+      "Hindi",
+      "Tamil",
+      "Telugu"
+    ],
+    "plot": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
+    "poster": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/nMKdUUepR0i5zn0y1T4CsSB5chy.jpg",
+    "sources": [
+      {
+        "quality": "1080p",
+        "resolution": "1080p",
+        "codec": "x264",
+        "audio": "DDP 2.0",
+        "filename": "The Dark Knight (2008) [Multi] [1080p] [x264] [DDP 2.0].mkv",
+        "playback": {
+          "source": "gdrive",
+          "file_id": "1DV-5FIRuWDsNgswYmxHc9lCR0w9GI7gT",
+          "url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1DV-5FIRuWDsNgswYmxHc9lCR0w9GI7gT|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      }
+    ]
   },
   {
-    "id": "1PfF9Arp4byCVlg_a7_549LCgXaPJuCRK",
-    "name": "Jana Nayagan (2026) 2160p ZEE5 WEB-DL HDR HEVC x265 [Tamil (DD+ 5.1 - 192kbps)] ESub.mkv",
+    "title": "Mersal",
+    "year": "2017",
+    "tmdb_id": 456287,
+    "rating": "7.5",
+    "genre": [
+      "Action",
+      "Thriller"
+    ],
+    "languages": [
+      "Tamil"
+    ],
+    "plot": "A magician and a doctor, who are identical twins, seek revenge against a corrupt medical system and the unethical health professionals who killed their father.",
+    "poster": "https://image.tmdb.org/t/p/w500/z0T0o8fR2b86r64d3v1K7aL3qf6.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/9r8kQ7qQ8b5Qv3c6Y4z5v7b8w0E.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/4u3u4t7f9K8d7v6K5g8d9v8e7f6.png",
+    "sources": [
+      {
+        "quality": "2160p",
+        "resolution": "2160p",
+        "codec": "x265",
+        "audio": "DTS-HD 5.1",
+        "filename": "Mersal (2017) [Tamil] [2160p] [x265] [DTS 5.1].mkv",
+        "playback": {
+          "source": "gdrive",
+          "file_id": "1vMBY0tcOmUzve5wLpGiED_yBOqWIeFjl",
+          "url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vMBY0tcOmUzve5wLpGiED_yBOqWIeFjl|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      }
+    ]
+  },
+  {
     "title": "Jana Nayagan",
-    "year": 2026,
+    "year": "2026",
     "tmdb_id": 1235877,
     "imdb_id": "tt33379543",
     "imdb_url": "https://www.imdb.com/title/tt33379543/",
-    "rating": 5.563,
+    "rating": "5.6",
+    "genre": [
+      "Action",
+      "Drama"
+    ],
+    "languages": [
+      "Tamil"
+    ],
     "plot": "A clash of ideologies. One stands for the people, the other feeds on control. Their paths collided once before. Years later, a child’s silent fear ignites the past, drawing a former police officer into a battle far bigger than personal revenge.",
     "poster": "https://image.tmdb.org/t/p/w500/jt8pfSIdi47YpFMMWVRr8w5u2S0.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/v3lNH2gCojWYXVuXcT9FZLBxcSq.jpg",
     "logo": "https://image.tmdb.org/t/p/original/fDOECszTh7wpI0d4JOVPTAOjvZg.png",
     "trailer": "plugin://plugin.video.youtube/play/?video_id=fJaAYcERf3Y",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1PfF9Arp4byCVlg_a7_549LCgXaPJuCRK|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "badges": {
       "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/4k.png",
       "hdr": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/hdr/hdr.png",
@@ -39,10 +93,26 @@
     "specs": {
       "resolution": "4K Ultra HD",
       "source": "WEB-DL",
-      "codec": "H.264",
-      "audio": "Dolby Digital",
+      "codec": "x265",
+      "audio": "Dolby Digital Plus",
       "channels": "5.1"
-    }
+    },
+    "sources": [
+      {
+        "quality": "2160p",
+        "resolution": "2160p",
+        "codec": "x265",
+        "audio": "DD+ 5.1",
+        "filename": "Jana Nayagan (2026) [Tamil] [2160p] [x265] [DD+ 5.1].mkv",
+        "playback": {
+          "source": "gdrive",
+          "file_id": "1PfF9Arp4byCVlg_a7_549LCgXaPJuCRK",
+          "url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1PfF9Arp4byCVlg_a7_549LCgXaPJuCRK|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      }
+    ]
+  }
+]
   },
   {
     "id": "1ow8jA4ltQuwj4VHm76lq5wnCUea7WgUD",
