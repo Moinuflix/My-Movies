@@ -772,7 +772,7 @@
       <div class="movies-grid" id="series-grid"></div>
     </section>
 
-    <!-- VIEW: 3. 5.1 SONGS (iTunes Engine) -->
+    <!-- VIEW: 3. 5.1 SONGS (iTunes Engine with Action Buttons) -->
     <section id="view-existing-songs" class="view-panel">
       <header>
         <div>
@@ -839,12 +839,12 @@
       <div class="movies-grid" id="songs-grid"></div>
     </section>
 
-    <!-- VIEW: 4. YOUTUBE VAULT -->
+    <!-- VIEW: 4. YOUTUBE VAULT (Auto Name on Link Paste) -->
     <section id="view-existing-vault" class="view-panel">
       <header>
         <div>
           <h1>YouTube Video Vault (data_c04.json)</h1>
-          <p class="section-desc">Add Comedy scenes, Action blocks, 4K Video Songs & Best moments with direct YouTube thumbnails</p>
+          <p class="section-desc">Add Comedy scenes, Action blocks, 4K Video Songs & Best moments. Video title auto-fetches on paste!</p>
         </div>
         <button type="button" class="btn-download-json" onclick="downloadChunk('c04')">Download data_c04.json</button>
       </header>
@@ -854,11 +854,12 @@
           <div class="form-grid">
             <div class="form-group full-width">
               <label>YouTube Link or Video ID</label>
-              <input type="text" id="yt_url" placeholder="https://www.youtube.com/watch?v=OKBMCL-frPU" required>
+              <input type="text" id="yt_url" placeholder="https://www.youtube.com/watch?v=Glgu8oFFXxo" required oninput="autoFetchYTMetadata()">
+              <div class="input-hint" id="yt_fetch_hint">Auto-fetches official YouTube Title & HD Thumbnail</div>
             </div>
             <div class="form-group">
-              <label>Title</label>
-              <input type="text" id="yt_title" placeholder="e.g. Vikram Interval Fight Scene" required>
+              <label>Title (Auto-Fetched / Editable)</label>
+              <input type="text" id="yt_title" placeholder="Auto-fetching video title..." required>
             </div>
             <div class="form-group">
               <label>Category</label>
@@ -908,6 +909,7 @@
     let targetExistingMovie = null;
     let fetchedTmdbMetadata = null;
     let tmdbDebounceTimeout = null;
+    let ytDebounceTimeout = null;
 
     let pendingCommit = null;
     let activeStreamUrl = '';
@@ -1008,11 +1010,11 @@
 
       renderMoviesGrid(moviesData);
       renderGenericGrid('series-grid', seriesData);
-      renderGenericGrid('songs-grid', songsData);
+      renderSongsGrid(songsData);
       renderVaultGrid(vaultData);
     }
 
-    /* RENDER MOVIES GRID (Identical to Screenshot) */
+    /* RENDER MOVIES GRID */
     function renderMoviesGrid(list) {
       const container = document.getElementById('movies-grid-container');
       container.innerHTML = '';
@@ -1075,16 +1077,68 @@
       });
     }
 
-    function handleMovieSearch() {
-      const query = document.getElementById('movie-search-input').value.toLowerCase().trim();
-      if (!query) return renderMoviesGrid(moviesData);
-      const filtered = moviesData.filter(m => {
-        const tMatch = m.title && String(m.title).toLowerCase().includes(query);
-        const idMatch = m.tmdb_id && String(m.tmdb_id).includes(query);
-        const yMatch = m.year && String(m.year).includes(query);
-        return tMatch || idMatch || yMatch;
+    /* RENDER SONGS GRID WITH ACTION BUTTONS */
+    function renderSongsGrid(list) {
+      const container = document.getElementById('songs-grid');
+      container.innerHTML = '';
+      if (!list || list.length === 0) {
+        container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--text-dim); padding: 2rem;">No songs in database yet.</div>';
+        return;
+      }
+
+      list.forEach((song, index) => {
+        const title = song.title || song.name || 'Untitled Track';
+        const poster = song.poster || '';
+        const year = song.year || 'N/A';
+        const audioFormat = song.specs && song.specs.audio ? song.specs.audio : 'Dolby Digital';
+        const tmdbId = song.tmdb_id || 0;
+
+        let versionsHtml = '';
+        if (Array.isArray(song.versions) && song.versions.length > 0) {
+          song.versions.forEach(v => {
+            const q = escapeHtml(v.audio || v.quality || 'Audio');
+            const details = [v.codec, v.channels].filter(Boolean).map(escapeHtml).join(' • ');
+            versionsHtml += `
+              <div class="version-tag">
+                <span class="version-tag-spec">${q}</span>
+                <span class="version-tag-detail">${details}</span>
+              </div>
+            `;
+          });
+        } else {
+          versionsHtml = '<div class="version-tag"><span>1 Stream</span></div>';
+        }
+
+        const card = document.createElement('div');
+        card.className = 'movie-card';
+        card.innerHTML = `
+          <div class="poster-wrap">
+            ${poster ? `<img src="${poster}" class="poster-img" loading="lazy" onerror="this.style.display='none'">` : '<div class="poster-placeholder">No Cover</div>'}
+          </div>
+          <div class="movie-card-body">
+            <div>
+              <div class="movie-title" title="${escapeHtml(title)}">${escapeHtml(title)}</div>
+              <div class="movie-meta-row">
+                <span>${escapeHtml(year)}</span>
+                ${tmdbId ? `<span>•</span><span class="badge-tmdb">TMDB: ${escapeHtml(tmdbId)}</span>` : ''}
+                <span class="badge-tmdb">${escapeHtml(audioFormat)}</span>
+              </div>
+              <div class="existing-versions-list">
+                ${versionsHtml}
+              </div>
+            </div>
+            <div class="card-actions-row">
+              <button type="button" class="btn-add-version" onclick="prepareAddSongVersion(${index})">
+                + ADD VERSION
+              </button>
+              <button type="button" class="btn-fix-tmdb" onclick="promptFixSong(${index})">
+                ✏️ Fix Metadata
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
       });
-      renderMoviesGrid(filtered);
     }
 
     function renderGenericGrid(containerId, list) {
@@ -1141,7 +1195,51 @@
       });
     }
 
-    /* 1. MOVIE TMDB AUTO-FETCH & MERGE ENGINE */
+    function handleMovieSearch() {
+      const query = document.getElementById('movie-search-input').value.toLowerCase().trim();
+      if (!query) return renderMoviesGrid(moviesData);
+      const filtered = moviesData.filter(m => {
+        const tMatch = m.title && String(m.title).toLowerCase().includes(query);
+        const idMatch = m.tmdb_id && String(m.tmdb_id).includes(query);
+        const yMatch = m.year && String(m.year).includes(query);
+        return tMatch || idMatch || yMatch;
+      });
+      renderMoviesGrid(filtered);
+    }
+
+    /* AUTO-FETCH YOUTUBE TITLE VIA OEMBED */
+    function autoFetchYTMetadata() {
+      clearTimeout(ytDebounceTimeout);
+      const val = document.getElementById('yt_url').value.trim();
+      const hint = document.getElementById('yt_fetch_hint');
+      const ytId = extractYTId(val);
+
+      if (!ytId) {
+        hint.textContent = 'Auto-fetches official YouTube Title & HD Thumbnail';
+        hint.style.color = 'var(--text-dim)';
+        return;
+      }
+
+      hint.textContent = 'Fetching official YouTube Title...';
+      hint.style.color = 'var(--accent-yellow)';
+
+      ytDebounceTimeout = setTimeout(async () => {
+        try {
+          const res = await fetch(`https://noembed.com/embed?url=https://www.youtube.com/watch?v=${ytId}`);
+          const data = await res.json();
+          if (data && data.title) {
+            document.getElementById('yt_title').value = data.title;
+            hint.textContent = `Auto-Fetched: "${data.title}"`;
+            hint.style.color = 'var(--accent-green)';
+          }
+        } catch(e) {
+          hint.textContent = 'Could not auto-fetch title. You can type manually.';
+          hint.style.color = 'var(--text-dim)';
+        }
+      }, 300);
+    }
+
+    /* TMDB MOVIE HELPERS */
     async function fetchTmdbMetadata(tmdbId) {
       if (!tmdbId || parseInt(tmdbId) <= 0) return null;
       try {
@@ -1259,6 +1357,46 @@
       movie.fanart = meta.fanart;
 
       openPreviewModal('chunks/data_c01.json', movie, movie.stream_url, `Fix TMDB: ${meta.title}`, moviesData, true);
+    }
+
+    /* SONGS FIX & ADD VERSION PROMPTS */
+    function prepareAddSongVersion(songIndex) {
+      const song = songsData[songIndex];
+      if (!song) return;
+      const gId = prompt(`Enter new Google Drive File ID for additional stream version of "${song.title}":`);
+      if (!gId) return;
+      const cleanGId = extractGDriveId(gId);
+      const stream = `${WORKER_BASE}${cleanGId}${USER_AGENT}`;
+
+      const newVersion = {
+        id: cleanGId,
+        name: `${song.title} (Lossless Surround)`,
+        quality: "Lossless",
+        source: "Master",
+        codec: "FLAC/EAC3",
+        resolution: "Audio",
+        audio: "5.1 Surround",
+        channels: "5.1",
+        stream_url: stream,
+        specs: { resolution: "Audio", source: "Master", codec: "FLAC/EAC3", audio: "5.1 Surround", channels: "5.1" }
+      };
+
+      song.versions = song.versions || [];
+      song.versions.push(newVersion);
+      openPreviewModal('chunks/data_c03.json', song, stream, `Add Version to ${song.title}`, songsData, true);
+    }
+
+    function promptFixSong(songIndex) {
+      const song = songsData[songIndex];
+      if (!song) return;
+      const newTitle = prompt(`Edit Track Title for "${song.title}":`, song.title);
+      if (newTitle === null) return;
+      const newPoster = prompt(`Edit Poster / Album Art URL:`, song.poster || '');
+
+      song.title = newTitle.trim() || song.title;
+      if (newPoster !== null) song.poster = newPoster.trim();
+
+      openPreviewModal('chunks/data_c03.json', song, song.stream_url, `Fix Metadata: ${song.title}`, songsData, true);
     }
 
     async function handleMovieSubmit(e) {
@@ -1469,7 +1607,7 @@
       openPreviewModal('chunks/data_c04.json', entry, stream, title, vaultData, false);
     }
 
-    /* DIRECT COMMIT ENGINE */
+    /* DIRECT COMMIT ENGINE (WITH 404 AUTO-CREATE FIX) */
     function openPreviewModal(targetChunk, newEntry, streamUrl, title, activeDataArray, isUpdate = false) {
       activeStreamUrl = streamUrl;
       pendingCommit = { targetChunk, newEntry, activeDataArray, title, isUpdate };
@@ -1548,20 +1686,47 @@
         }
 
         const url = `https://api.github.com/repos/${GH_REPO}/contents/${targetChunk}`;
-        const getRes = await fetch(url, { headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' } });
-        if (!getRes.ok) throw new Error(`Could not access repository (Status ${getRes.status})`);
+        const getRes = await fetch(url, { 
+          headers: { 
+            'Authorization': `Bearer ${token}`, 
+            'Accept': 'application/vnd.github.v3+json' 
+          } 
+        });
         
-        const fileInfo = await getRes.json();
+        let currentSha = undefined;
+        if (getRes.ok) {
+          const fileInfo = await getRes.json();
+          currentSha = fileInfo.sha;
+        } else if (getRes.status !== 404) {
+          throw new Error(`GitHub Access Error (Status ${getRes.status})`);
+        }
+
         const finalJson = format18LineCompactJson(activeDataArray);
         const encoded = btoa(unescape(encodeURIComponent(finalJson)));
 
+        const bodyData = {
+          message: `Add/Update ${title} in ${targetChunk}`,
+          content: encoded,
+          branch: GH_BRANCH
+        };
+        if (currentSha) {
+          bodyData.sha = currentSha;
+        }
+
         const putRes = await fetch(url, {
           method: 'PUT',
-          headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: `Add/Update ${title} in ${targetChunk}`, content: encoded, sha: fileInfo.sha, branch: GH_BRANCH })
+          headers: { 
+            'Authorization': `Bearer ${token}`, 
+            'Accept': 'application/vnd.github.v3+json', 
+            'Content-Type': 'application/json' 
+          },
+          body: JSON.stringify(bodyData)
         });
 
-        if (!putRes.ok) throw new Error('Commit failed on GitHub');
+        if (!putRes.ok) {
+          const errData = await putRes.json().catch(() => ({}));
+          throw new Error(errData.message || 'Commit failed on GitHub');
+        }
 
         alert(`✅ Successfully saved & committed "${title}" to GitHub!`);
         closeModal();
