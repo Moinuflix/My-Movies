@@ -1070,7 +1070,7 @@
     async function loadData() {
       updateTokenBadge();
       try {
-        const response = await fetch('chunks/data_c01.json');
+        const response = await fetch(`chunks/data_c01.json?t=${Date.now()}`);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();
         moviesData = Array.isArray(data) ? data : (data.movies || []);
@@ -1231,6 +1231,7 @@
           });
         }
 
+        // Live Commit with Cache-Bust SHA
         await directCommitArrayToGitHub(moviesData, `Fix TMDB Metadata for "${meta.title}" (${meta.year})`, token);
 
         renderMoviesGrid(moviesData);
@@ -1679,21 +1680,23 @@
       return `[\n${formattedMovies}\n]`;
     }
 
-    /* DIRECT ARRAY GITHUB COMMIT HELPER */
+    /* DIRECT ARRAY GITHUB COMMIT HELPER (WITH FRESH CACHE-BUST SHA) */
     async function directCommitArrayToGitHub(updatedList, commitMsg, token) {
       const filePath = 'chunks/data_c01.json';
-      const getUrl = `https://api.github.com/repos/${GH_REPO}/contents/${filePath}?ref=${GH_BRANCH}`;
+      // Added cache-buster (?ref=main&t=timestamp) to always get live fresh SHA
+      const getUrl = `https://api.github.com/repos/${GH_REPO}/contents/${filePath}?ref=${GH_BRANCH}&_nocache=${Date.now()}`;
 
       const getRes = await fetch(getUrl, {
         headers: {
           'Authorization': `token ${token}`,
-          'Accept': 'application/vnd.github.v3+json'
+          'Accept': 'application/vnd.github.v3+json',
+          'Cache-Control': 'no-cache'
         }
       });
 
       if (!getRes.ok) {
         if (getRes.status === 401) throw new Error('Invalid GitHub Token. Please re-enter your valid token.');
-        throw new Error(`Failed to fetch file SHA (Status: ${getRes.status})`);
+        throw new Error(`Failed to fetch latest file SHA (Status: ${getRes.status})`);
       }
 
       const fileInfo = await getRes.json();
