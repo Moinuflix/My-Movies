@@ -39,7 +39,6 @@
       overflow-x: hidden;
     }
 
-    /* Sidebar */
     aside {
       width: 270px;
       background: rgba(14, 16, 24, 0.95);
@@ -76,11 +75,7 @@
       box-shadow: 0 4px 15px var(--accent-red-glow);
     }
 
-    .brand-text {
-      font-size: 1.25rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
+    .brand-text { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; }
 
     .nav-list {
       list-style: none;
@@ -107,11 +102,7 @@
       text-align: left;
     }
 
-    .nav-btn:hover {
-      background: rgba(255, 255, 255, 0.04);
-      color: #fff;
-    }
-
+    .nav-btn:hover { background: rgba(255, 255, 255, 0.04); color: #fff; }
     .nav-btn.active {
       background: linear-gradient(135deg, rgba(229, 9, 20, 0.2), rgba(229, 9, 20, 0.05));
       color: #fff;
@@ -155,9 +146,6 @@
       transition: all 0.2s ease;
     }
 
-    .btn-token-config:hover { background: rgba(56, 189, 248, 0.18); }
-
-    /* Main Area */
     main {
       margin-left: 270px;
       flex: 1;
@@ -308,8 +296,6 @@
       transition: all 0.25s;
     }
 
-    .btn-download-json:hover { background: rgba(56, 189, 248, 0.1); border-color: var(--accent-blue); }
-
     .btn-reset-mode {
       background: rgba(255, 255, 255, 0.05);
       color: var(--text-muted);
@@ -322,7 +308,6 @@
       display: none;
     }
 
-    /* Tracklist Discovery for iTunes */
     .track-picker-container {
       display: none;
       margin-bottom: 1.5rem;
@@ -338,7 +323,6 @@
     .track-item .title { font-weight: 700; color: #fff; font-size: 0.9rem; }
     .track-item .artist { font-size: 0.75rem; color: var(--text-muted); }
 
-    /* Cards Grid */
     .search-bar-container { margin-bottom: 2rem; display: flex; gap: 1rem; }
     .search-input { flex: 1; padding: 0.85rem 1.25rem; font-size: 1rem; background: var(--bg-card); border-radius: 12px; }
     .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.75rem; }
@@ -357,7 +341,6 @@
     .movie-card:hover { border-color: rgba(255, 255, 255, 0.18); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.5); }
     .poster-wrap { width: 100%; height: 280px; background: #090a0f; position: relative; overflow: hidden; }
     .poster-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-    .movie-card:hover .poster-img { transform: scale(1.04); }
     .poster-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 0.85rem; font-weight: 600; }
     
     .movie-card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
@@ -620,7 +603,7 @@
       </div>
     </section>
 
-    <!-- VIEW: EXISTING MOVIES (Grid with Fix TMDB and + Add Version) -->
+    <!-- VIEW: EXISTING MOVIES -->
     <section id="view-existing-movies" class="view-panel">
       <header>
         <div>
@@ -772,19 +755,25 @@
       <div class="movies-grid" id="series-grid"></div>
     </section>
 
-    <!-- VIEW: 3. 5.1 SONGS (iTunes Engine with Action Buttons) -->
+    <!-- VIEW: 3. 5.1 SONGS (With Language Filter: Kannada, Tamil, etc.) -->
     <section id="view-existing-songs" class="view-panel">
       <header>
         <div>
           <h1>5.1 Audio & Atmos Songs (data_c03.json)</h1>
-          <p class="section-desc">Search movie or album via iTunes discovery engine to list and add lossless surround tracks</p>
+          <p class="section-desc">Search movie or album via iTunes engine with Language Selector</p>
         </div>
         <button type="button" class="btn-download-json" onclick="downloadChunk('c03')">Download data_c03.json</button>
       </header>
 
       <div class="form-container">
-        <div style="display: flex; gap: 10px; margin-bottom: 1.5rem;">
-          <input type="text" id="song_search_query" placeholder="Enter Movie Name or Song (e.g. Jailer, Leo, Hukum)">
+        <div style="display: grid; grid-template-columns: 2fr 1fr auto; gap: 10px; margin-bottom: 1.5rem;">
+          <input type="text" id="song_search_query" placeholder="Enter Movie or Song (e.g. KGF, Leo, Jailer)">
+          <select id="song_lang_filter">
+            <option value="Kannada">Kannada (ಕನ್ನಡ)</option>
+            <option value="Tamil" selected>Tamil (தமிழ்)</option>
+            <option value="Telugu">Telugu (తెలుగు)</option>
+            <option value="Hindi">Hindi (हिंदी)</option>
+          </select>
           <button type="button" class="btn-auto-fetch" onclick="fetchAlbumAndTracks()">🎵 Fetch Tracklist</button>
         </div>
 
@@ -839,12 +828,12 @@
       <div class="movies-grid" id="songs-grid"></div>
     </section>
 
-    <!-- VIEW: 4. YOUTUBE VAULT (Auto Name on Link Paste) -->
+    <!-- VIEW: 4. YOUTUBE VAULT (Auto Title + Playlist Support) -->
     <section id="view-existing-vault" class="view-panel">
       <header>
         <div>
           <h1>YouTube Video Vault (data_c04.json)</h1>
-          <p class="section-desc">Add Comedy scenes, Action blocks, 4K Video Songs & Best moments. Video title auto-fetches on paste!</p>
+          <p class="section-desc">Add Single Video or Entire Playlist link (Auto-Imports All Videos)</p>
         </div>
         <button type="button" class="btn-download-json" onclick="downloadChunk('c04')">Download data_c04.json</button>
       </header>
@@ -853,9 +842,9 @@
         <form id="vault-form" onsubmit="handleVaultSubmit(event)">
           <div class="form-grid">
             <div class="form-group full-width">
-              <label>YouTube Link or Video ID</label>
-              <input type="text" id="yt_url" placeholder="https://www.youtube.com/watch?v=Glgu8oFFXxo" required oninput="autoFetchYTMetadata()">
-              <div class="input-hint" id="yt_fetch_hint">Auto-fetches official YouTube Title & HD Thumbnail</div>
+              <label>YouTube Video Link / Playlist Link</label>
+              <input type="text" id="yt_url" placeholder="https://www.youtube.com/watch?v=... OR https://www.youtube.com/playlist?list=..." required oninput="autoFetchYTMetadata()">
+              <div class="input-hint" id="yt_fetch_hint">Paste single video link or full playlist URL</div>
             </div>
             <div class="form-group">
               <label>Title (Auto-Fetched / Editable)</label>
@@ -871,7 +860,7 @@
               </select>
             </div>
           </div>
-          <button type="submit" class="btn-submit">ADD TO YOUTUBE VAULT</button>
+          <button type="submit" class="btn-submit" id="btn_vault_submit">ADD TO YOUTUBE VAULT</button>
         </form>
       </div>
 
@@ -968,6 +957,12 @@
       return match ? match[1] : url;
     }
 
+    function extractYTPlaylistId(url) {
+      if (!url) return '';
+      const match = url.match(/[?&]list=([a-zA-Z0-9_-]+)/);
+      return match ? match[1] : '';
+    }
+
     function escapeHtml(str) {
       if (!str) return '';
       return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -1014,7 +1009,6 @@
       renderVaultGrid(vaultData);
     }
 
-    /* RENDER MOVIES GRID */
     function renderMoviesGrid(list) {
       const container = document.getElementById('movies-grid-container');
       container.innerHTML = '';
@@ -1077,7 +1071,6 @@
       });
     }
 
-    /* RENDER SONGS GRID WITH ACTION BUTTONS */
     function renderSongsGrid(list) {
       const container = document.getElementById('songs-grid');
       container.innerHTML = '';
@@ -1207,15 +1200,26 @@
       renderMoviesGrid(filtered);
     }
 
-    /* AUTO-FETCH YOUTUBE TITLE VIA OEMBED */
+    /* AUTO-FETCH YOUTUBE METADATA & PLAYLIST SUPPORT */
     function autoFetchYTMetadata() {
       clearTimeout(ytDebounceTimeout);
       const val = document.getElementById('yt_url').value.trim();
       const hint = document.getElementById('yt_fetch_hint');
-      const ytId = extractYTId(val);
+      const submitBtn = document.getElementById('btn_vault_submit');
 
+      const playlistId = extractYTPlaylistId(val);
+      if (playlistId) {
+        hint.textContent = `📋 Detected Playlist (ID: ${playlistId}). Ready for batch import!`;
+        hint.style.color = 'var(--accent-blue)';
+        submitBtn.textContent = 'BATCH IMPORT ENTIRE PLAYLIST';
+        document.getElementById('yt_title').value = `Playlist: ${playlistId}`;
+        return;
+      }
+
+      submitBtn.textContent = 'ADD TO YOUTUBE VAULT';
+      const ytId = extractYTId(val);
       if (!ytId) {
-        hint.textContent = 'Auto-fetches official YouTube Title & HD Thumbnail';
+        hint.textContent = 'Paste single video link or full playlist URL';
         hint.style.color = 'var(--text-dim)';
         return;
       }
@@ -1237,6 +1241,65 @@
           hint.style.color = 'var(--text-dim)';
         }
       }, 300);
+    }
+
+    async function handleVaultSubmit(e) {
+      e.preventDefault();
+      const val = document.getElementById('yt_url').value.trim();
+      const cat = document.getElementById('yt_category').value;
+      const playlistId = extractYTPlaylistId(val);
+
+      if (playlistId) {
+        const hint = document.getElementById('yt_fetch_hint');
+        hint.textContent = 'Extracting playlist tracks...';
+        hint.style.color = 'var(--accent-yellow)';
+
+        try {
+          const feedUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`)}`;
+          const res = await fetch(feedUrl);
+          const xmlText = await res.text();
+          const parser = new DOMParser();
+          const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+          const entries = xmlDoc.getElementsByTagName("entry");
+
+          if (!entries || entries.length === 0) throw new Error("Could not parse playlist feed");
+
+          const batchList = [];
+          for (let i = 0; i < entries.length; i++) {
+            const vidId = entries[i].getElementsByTagName("yt:videoId")[0]?.textContent;
+            const vTitle = entries[i].getElementsByTagName("title")[0]?.textContent || `Track ${i+1}`;
+            if (vidId) {
+              batchList.push({
+                id: `yt_${vidId}`,
+                title: vTitle,
+                category: cat,
+                thumbnail: `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`,
+                stream_url: `plugin://plugin.video.youtube/play/?video_id=${vidId}`
+              });
+            }
+          }
+
+          openPreviewModal('chunks/data_c04.json', batchList, `Imported ${batchList.length} Playlist Videos`, `Playlist: ${playlistId} (${batchList.length} Tracks)`, vaultData, false, true);
+          return;
+        } catch(err) {
+          alert('Playlist import notice: Could not auto-fetch RSS feed. Adding single entry.');
+        }
+      }
+
+      const ytId = extractYTId(val);
+      const title = document.getElementById('yt_title').value.trim();
+      const stream = `plugin://plugin.video.youtube/play/?video_id=${ytId}`;
+      const thumbnail = `https://img.youtube.com/vi/${ytId}/maxresdefault.jpg`;
+
+      const entry = {
+        id: `yt_${ytId}`,
+        title: title,
+        category: cat,
+        thumbnail: thumbnail,
+        stream_url: stream
+      };
+
+      openPreviewModal('chunks/data_c04.json', entry, stream, title, vaultData, false);
     }
 
     /* TMDB MOVIE HELPERS */
@@ -1498,13 +1561,16 @@
       openPreviewModal('chunks/data_c02.json', entry, stream, `${title} (${tag})`, seriesData, false);
     }
 
-    /* 3. iTUNES SONGS DISCOVERY */
+    /* 3. iTUNES SONGS DISCOVERY WITH LANGUAGE SELECTION */
     async function fetchAlbumAndTracks() {
       let query = document.getElementById('song_search_query').value.trim();
+      const lang = document.getElementById('song_lang_filter').value;
       if (!query) return alert('Enter Movie or Album name');
 
+      const fullQuery = `${query} ${lang}`.trim();
+
       try {
-        const albumRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=album&limit=3`);
+        const albumRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(fullQuery)}&entity=album&country=IN&limit=3`);
         const albumData = await albumRes.json();
         
         let albumId = null, albumName = "", albumArt = "", albumYear = "";
@@ -1517,12 +1583,12 @@
         }
 
         if (albumId) {
-          const tracksRes = await fetch(`https://itunes.apple.com/lookup?id=${albumId}&entity=song`);
+          const tracksRes = await fetch(`https://itunes.apple.com/lookup?id=${albumId}&entity=song&country=IN`);
           const tracksData = await tracksRes.json();
           const songs = tracksData.results.filter(item => item.wrapperType === 'track');
           renderTracks(albumName, albumArt, albumYear, songs);
         } else {
-          const songRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=8`);
+          const songRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(fullQuery)}&entity=song&country=IN&limit=8`);
           const songData = await songRes.json();
           renderTracks(query, '', '', songData.results || []);
         }
@@ -1587,30 +1653,10 @@
       openPreviewModal('chunks/data_c03.json', entry, stream, title, songsData, false);
     }
 
-    /* 4. LIGHTWEIGHT YOUTUBE VAULT */
-    function handleVaultSubmit(e) {
-      e.preventDefault();
-      const ytId = extractYTId(document.getElementById('yt_url').value);
-      const cat = document.getElementById('yt_category').value;
-      const title = document.getElementById('yt_title').value.trim();
-      const stream = `plugin://plugin.video.youtube/play/?video_id=${ytId}`;
-      const thumbnail = `https://img.youtube.com/vi/${ytId}/maxresdefault.jpg`;
-
-      const entry = {
-        id: `yt_${ytId}`,
-        title: title,
-        category: cat,
-        thumbnail: thumbnail,
-        stream_url: stream
-      };
-
-      openPreviewModal('chunks/data_c04.json', entry, stream, title, vaultData, false);
-    }
-
-    /* DIRECT COMMIT ENGINE (WITH 404 AUTO-CREATE FIX) */
-    function openPreviewModal(targetChunk, newEntry, streamUrl, title, activeDataArray, isUpdate = false) {
+    /* DIRECT COMMIT ENGINE (WITH BATCH + AUTO-CREATE 404 FIX) */
+    function openPreviewModal(targetChunk, newEntry, streamUrl, title, activeDataArray, isUpdate = false, isBatch = false) {
       activeStreamUrl = streamUrl;
-      pendingCommit = { targetChunk, newEntry, activeDataArray, title, isUpdate };
+      pendingCommit = { targetChunk, newEntry, activeDataArray, title, isUpdate, isBatch };
 
       const details = document.getElementById('modal-preview-details');
       details.innerHTML = `
@@ -1619,11 +1665,11 @@
           <span class="preview-item-val" style="color: var(--accent-blue);">${targetChunk}</span>
         </div>
         <div class="preview-item">
-          <span class="preview-item-label">Title</span>
+          <span class="preview-item-label">Title / Action</span>
           <span class="preview-item-val plain-text">${title}</span>
         </div>
         <div class="preview-stream-block">
-          <span class="preview-item-label">Generated Stream URL</span>
+          <span class="preview-item-label">Generated Stream / Details</span>
           <div class="preview-stream-text">${streamUrl}</div>
         </div>
       `;
@@ -1680,8 +1726,11 @@
       btn.textContent = 'Committing...';
 
       try {
-        const { targetChunk, newEntry, activeDataArray, title, isUpdate } = pendingCommit;
-        if (!isUpdate) {
+        const { targetChunk, newEntry, activeDataArray, title, isUpdate, isBatch } = pendingCommit;
+        
+        if (isBatch && Array.isArray(newEntry)) {
+          newEntry.forEach(item => activeDataArray.unshift(item));
+        } else if (!isUpdate) {
           activeDataArray.unshift(newEntry);
         }
 
