@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "id": "yt_Glgu8oFFXxo",
+    "title": "a1",
+    "category": "Comedy",
+    "thumbnail": "https://img.youtube.com/vi/Glgu8oFFXxo/maxresdefault.jpg",
+    "stream_url": "plugin://plugin.video.youtube/play/?video_id=Glgu8oFFXxo"
+  }
+]
