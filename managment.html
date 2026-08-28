@@ -10,12 +10,10 @@
   <style>
     :root {
       --bg-dark: #090a0f;
-      --bg-surface: #10121a;
       --bg-card: rgba(22, 24, 35, 0.75);
       --bg-card-hover: rgba(30, 33, 48, 0.9);
       --bg-input: #0b0c13;
       --border-color: rgba(255, 255, 255, 0.08);
-      --border-focus: rgba(229, 9, 20, 0.6);
       --accent-red: #e50914;
       --accent-red-glow: rgba(229, 9, 20, 0.35);
       --accent-blue: #38bdf8;
@@ -27,11 +25,7 @@
       --font-stack: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       background-color: var(--bg-dark);
@@ -43,10 +37,9 @@
       display: flex;
       min-height: 100vh;
       overflow-x: hidden;
-      letter-spacing: -0.2px;
     }
 
-    /* Sidebar Navigation */
+    /* Sidebar */
     aside {
       width: 270px;
       background: rgba(14, 16, 24, 0.95);
@@ -58,7 +51,6 @@
       position: fixed;
       height: 100vh;
       z-index: 10;
-      transition: all 0.3s ease;
     }
 
     .brand {
@@ -88,9 +80,6 @@
       font-size: 1.25rem;
       font-weight: 800;
       letter-spacing: -0.5px;
-      background: linear-gradient(180deg, #fff, #cbd5e1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
     .nav-list {
@@ -120,7 +109,6 @@
     .nav-btn:hover {
       background: rgba(255, 255, 255, 0.04);
       color: #fff;
-      border-color: rgba(255, 255, 255, 0.05);
     }
 
     .nav-btn.active {
@@ -140,13 +128,31 @@
       font-weight: 700;
     }
 
-    /* Main Workspace */
+    .sidebar-footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.25rem;
+    }
+
+    .status-badge-github {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--accent-green);
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    /* Main Area */
     main {
       margin-left: 270px;
       flex: 1;
       padding: 3rem;
       max-width: 1400px;
-      transition: margin-left 0.3s ease;
     }
 
     header {
@@ -176,7 +182,7 @@
 
     .view-panel.active {
       display: block;
-      animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: fadeIn 0.3s ease-in-out;
     }
 
     @keyframes fadeIn {
@@ -184,7 +190,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Stats Grid */
+    /* Stats Cards */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -201,18 +207,7 @@
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
-      position: relative;
-      overflow: hidden;
       box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-    }
-
-    .stat-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
-      opacity: 0.6;
     }
 
     .stat-title {
@@ -236,7 +231,7 @@
       font-family: monospace;
     }
 
-    /* Form Container */
+    /* Form Styles */
     .form-container {
       background: var(--bg-card);
       backdrop-filter: blur(20px);
@@ -268,7 +263,6 @@
       font-size: 0.85rem;
       font-weight: 700;
       color: var(--text-muted);
-      letter-spacing: 0.2px;
     }
 
     input, select {
@@ -314,14 +308,6 @@
       font-family: monospace;
     }
 
-    .tmdb-fetch-status {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.85rem;
-      margin-top: 0.25rem;
-    }
-
     .form-actions {
       display: flex;
       gap: 1rem;
@@ -350,12 +336,6 @@
       box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
     }
 
-    .btn-submit:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
-
     .btn-reset-mode {
       background: rgba(255, 255, 255, 0.05);
       color: var(--text-muted);
@@ -366,7 +346,6 @@
       font-size: 0.9rem;
       cursor: pointer;
       display: none;
-      transition: all 0.2s;
     }
 
     .btn-reset-mode:hover {
@@ -395,7 +374,7 @@
       box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15);
     }
 
-    /* Search & Grid */
+    /* Movies Grid */
     .search-bar-container {
       margin-bottom: 2.5rem;
       display: flex;
@@ -424,7 +403,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.3s ease;
     }
 
     .movie-card:hover {
@@ -603,7 +582,6 @@
       padding: 0.3rem 0.75rem;
       border-radius: 6px;
       font-weight: 800;
-      letter-spacing: 0.5px;
     }
 
     .badge-new {
@@ -731,10 +709,6 @@
       cursor: pointer;
     }
 
-    .btn-close-modal:hover {
-      color: #fff;
-    }
-
     .alert-banner {
       background: rgba(56, 189, 248, 0.08);
       border: 1px solid rgba(56, 189, 248, 0.2);
@@ -751,73 +725,22 @@
       font-weight: 600;
     }
 
-    /* Responsive */
     @media (max-width: 900px) {
-      aside {
-        width: 76px;
-        padding: 1.25rem 0.5rem;
-      }
-      .brand-text, .nav-btn span:not(.brand-logo), .nav-badge {
-        display: none;
-      }
-      .brand {
-        padding: 0 0 1rem;
-        justify-content: center;
-      }
-      .nav-btn {
-        justify-content: center;
-        padding: 0.85rem;
-      }
-      main {
-        margin-left: 76px;
-        padding: 2rem;
-      }
+      aside { width: 76px; padding: 1.25rem 0.5rem; }
+      .brand-text, .nav-btn span:not(.brand-logo), .nav-badge, .status-badge-github { display: none; }
+      .brand { padding: 0 0 1rem; justify-content: center; }
+      .nav-btn { justify-content: center; padding: 0.85rem; }
+      main { margin-left: 76px; padding: 2rem; }
     }
 
     @media (max-width: 640px) {
-      body {
-        flex-direction: column;
-      }
-      aside {
-        width: 100%;
-        height: auto;
-        position: relative;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-        padding: 1rem 1.25rem;
-      }
-      .brand {
-        margin-bottom: 0.75rem;
-        padding-bottom: 0.75rem;
-        justify-content: flex-start;
-      }
-      .brand-text {
-        display: block;
-      }
-      .nav-list {
-        flex-direction: row;
-        justify-content: space-around;
-      }
-      .nav-btn {
-        padding: 0.6rem 0.85rem;
-        font-size: 0.85rem;
-      }
-      .nav-btn span {
-        display: inline;
-      }
-      main {
-        margin-left: 0;
-        padding: 1.5rem;
-      }
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-      .form-group.full-width {
-        grid-column: span 1;
-      }
-      .modal-card {
-        padding: 1.5rem;
-      }
+      body { flex-direction: column; }
+      aside { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--border-color); padding: 1rem; }
+      .brand { margin-bottom: 0.75rem; padding-bottom: 0.75rem; }
+      .nav-list { flex-direction: row; justify-content: space-around; }
+      main { margin-left: 0; padding: 1.5rem; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full-width { grid-column: span 1; }
     }
   </style>
 </head>
@@ -850,9 +773,16 @@
         </button>
       </li>
     </ul>
+
+    <div class="sidebar-footer">
+      <div class="status-badge-github">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        <span>GitHub Live Sync Active</span>
+      </div>
+    </div>
   </aside>
 
-  <!-- Main Content -->
+  <!-- Main Workspace -->
   <main>
     <section id="view-dashboard" class="view-panel active">
       <header>
@@ -880,7 +810,7 @@
       </div>
 
       <div class="alert-banner">
-        <span>Step 5 & 6 Active: Full Kodi Schema Generator & TMDB Auto-Metadata integration ready.</span>
+        <span>Auto Sync Configured: Movies will be saved & committed directly to Moinuflix/My-Movies repository.</span>
       </div>
     </section>
 
@@ -912,7 +842,7 @@
           <div class="form-grid">
             <div class="form-group full-width">
               <label for="input-tmdb-id">TMDB ID</label>
-              <input type="number" id="input-tmdb-id" placeholder="e.g. 564147, 382220, 626392" required oninput="checkTmdbMatch()">
+              <input type="number" id="input-tmdb-id" placeholder="e.g. 564147, 382220, 1213243" required oninput="checkTmdbMatch()">
               <div class="tmdb-fetch-status" id="tmdb-fetch-status">
                 <span class="input-hint" id="tmdb-match-hint">Auto-fetches English Title, Poster, IMDb, Trailer & Overview</span>
               </div>
@@ -1002,7 +932,7 @@
     </section>
   </main>
 
-  <!-- Preview Modal -->
+  <!-- Preview & Direct GitHub Commit Modal -->
   <div class="modal-overlay" id="preview-modal">
     <div class="modal-card">
       <div class="modal-header">
@@ -1017,9 +947,9 @@
           <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           <span id="btn-copy-text">Copy URL</span>
         </button>
-        <button type="button" class="btn-save-database" onclick="commitSaveToDatabase()">
+        <button type="button" class="btn-save-database" id="btn-commit-github" onclick="commitSaveToGitHub()">
           <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-          Save to Database
+          <span id="btn-commit-text">Save & Commit to GitHub</span>
         </button>
         <button type="button" class="btn-close-modal" onclick="closeModal()">Close</button>
       </div>
@@ -1036,7 +966,11 @@
     let tmdbDebounceTimeout = null;
     let isFetchingTmdb = false;
 
+    // Hardcoded API Keys & GitHub Configuration
     const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
+    const GH_REPO = 'Moinuflix/My-Movies';
+    const GH_BRANCH = 'main';
+    const GH_TOKEN = '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';
 
     function escapeHtml(str) {
       if (str === null || str === undefined) return '';
@@ -1055,7 +989,7 @@
         const data = await response.json();
         moviesData = Array.isArray(data) ? data : (data.movies || []);
       } catch (err) {
-        console.warn('Local chunk file load notice:', err);
+        console.warn('Local chunk load note:', err);
         moviesData = [];
       }
       updateDashboardMetrics();
@@ -1578,46 +1512,7 @@
       modal.classList.add('active');
     }
 
-    function commitSaveToDatabase() {
-      if (!pendingEntryToSave) return;
-
-      if (pendingEntryToSave.isMerge && pendingEntryToSave.targetMovie) {
-        const movie = pendingEntryToSave.targetMovie;
-        
-        if (!Array.isArray(movie.versions)) {
-          movie.versions = [];
-          if (movie.stream_url || movie.quality) {
-            movie.versions.push({
-              id: movie.id || '',
-              name: movie.name || movie.title || '',
-              quality: movie.quality || 'Default',
-              source: movie.source || (movie.specs && movie.specs.source) || 'WEB-DL',
-              codec: movie.codec || (movie.specs && movie.specs.codec) || 'H.264',
-              resolution: movie.resolution || (movie.specs && movie.specs.resolution) || '1080p',
-              audio: (movie.specs && movie.specs.audio) || 'DDP 5.1',
-              channels: (movie.specs && movie.specs.channels) || '5.1',
-              stream_url: movie.stream_url || '',
-              specs: movie.specs || {}
-            });
-          }
-        }
-        
-        movie.versions.push(pendingEntryToSave.version);
-        alert(`Version successfully added to "${movie.title || 'Movie'}"!`);
-      } else {
-        moviesData.push(pendingEntryToSave.fullMovie);
-        alert(`"${pendingEntryToSave.fullMovie.title}" (TMDB: ${pendingEntryToSave.fullMovie.tmdb_id}) full schema successfully created!`);
-      }
-
-      updateDashboardMetrics();
-      renderMoviesGrid(moviesData);
-
-      closeModal();
-      resetFormToNew();
-      switchTab('existing');
-    }
-
-    /* 18-Line Compact Single-Line JSON Formatter */
+    /* 18-Line Compact JSON Formatter */
     function formatCompactJson(movies) {
       const formattedMovies = movies.map(movie => {
         const versionsStr = (movie.versions || []).map(v => {
@@ -1646,6 +1541,114 @@
       }).join(',\n');
 
       return `[\n${formattedMovies}\n]`;
+    }
+
+    /* DIRECT GITHUB API SAVE & COMMIT */
+    async function commitSaveToGitHub() {
+      if (!pendingEntryToSave) return;
+
+      const commitBtn = document.getElementById('btn-commit-github');
+      const commitText = document.getElementById('btn-commit-text');
+      commitBtn.disabled = true;
+      commitText.textContent = 'Committing to GitHub...';
+
+      try {
+        const filePath = 'chunks/data_c01.json';
+        const getUrl = `https://api.github.com/repos/${GH_REPO}/contents/${filePath}?ref=${GH_BRANCH}`;
+
+        let currentSha = null;
+        let remoteMovies = [];
+
+        // 1. Live Fetch from GitHub
+        const getRes = await fetch(getUrl, {
+          headers: {
+            'Authorization': `token ${GH_TOKEN}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+
+        if (getRes.ok) {
+          const fileInfo = await getRes.json();
+          currentSha = fileInfo.sha;
+          const decodedContent = decodeURIComponent(escape(atob(fileInfo.content.replace(/\s/g, ''))));
+          const parsed = JSON.parse(decodedContent);
+          remoteMovies = Array.isArray(parsed) ? parsed : (parsed.movies || []);
+        } else if (getRes.status === 404) {
+          remoteMovies = [];
+        } else {
+          throw new Error(`GitHub API Error (${getRes.status}): ${getRes.statusText}`);
+        }
+
+        // 2. Merge or Add
+        let movieNameForCommit = '';
+        if (pendingEntryToSave.isMerge && pendingEntryToSave.targetMovie) {
+          const targetTmdb = pendingEntryToSave.targetMovie.tmdb_id || pendingEntryToSave.targetMovie.tmdbId;
+          const matchIndex = remoteMovies.findIndex(m => String(m.tmdb_id || m.tmdbId) === String(targetTmdb));
+
+          if (matchIndex !== -1) {
+            if (!Array.isArray(remoteMovies[matchIndex].versions)) {
+              remoteMovies[matchIndex].versions = [];
+            }
+            remoteMovies[matchIndex].versions.push(pendingEntryToSave.version);
+            movieNameForCommit = remoteMovies[matchIndex].title || 'Movie';
+          } else {
+            remoteMovies.push(pendingEntryToSave.fullMovie);
+            movieNameForCommit = pendingEntryToSave.fullMovie.title;
+          }
+        } else {
+          remoteMovies.push(pendingEntryToSave.fullMovie);
+          movieNameForCommit = pendingEntryToSave.fullMovie.title;
+        }
+
+        // 3. Compact JSON & Safe Base64
+        const finalJsonString = formatCompactJson(remoteMovies);
+        const encodedContent = btoa(unescape(encodeURIComponent(finalJsonString)));
+
+        // 4. Commit via PUT
+        const putUrl = `https://api.github.com/repos/${GH_REPO}/contents/${filePath}`;
+        const commitPayload = {
+          message: `Add/Update ${movieNameForCommit} via MoinuFlix Movie Manager`,
+          content: encodedContent,
+          branch: GH_BRANCH
+        };
+
+        if (currentSha) {
+          commitPayload.sha = currentSha;
+        }
+
+        const putRes = await fetch(putUrl, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `token ${GH_TOKEN}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(commitPayload)
+        });
+
+        if (!putRes.ok) {
+          const errData = await putRes.json();
+          throw new Error(errData.message || 'Failed to commit to GitHub');
+        }
+
+        // 5. Update State
+        moviesData = remoteMovies;
+        updateDashboardMetrics();
+        renderMoviesGrid(moviesData);
+
+        alert(`✅ Successfully committed "${movieNameForCommit}" directly to GitHub repository (${GH_REPO})!`);
+        
+        closeModal();
+        resetFormToNew();
+        switchTab('existing');
+
+      } catch (err) {
+        console.error('GitHub Commit Error:', err);
+        alert(`❌ Commit Failed: ${err.message}`);
+      } finally {
+        commitBtn.disabled = false;
+        commitText.textContent = 'Save & Commit to GitHub';
+      }
     }
 
     function downloadCurrentJson() {
