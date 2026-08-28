@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoinuFlix — Movie Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #090a0f;
+      --bg-surface: #10121a;
+      --bg-card: rgba(22, 24, 35, 0.75);
+      --bg-card-hover: rgba(30, 33, 48, 0.9);
+      --bg-input: #0b0c13;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(229, 9, 20, 0.6);
+      --accent-red: #e50914;
+      --accent-red-glow: rgba(229, 9, 20, 0.35);
+      --accent-blue: #38bdf8;
+      --accent-green: #22c55e;
+      --accent-yellow: #f59e0b;
+      --text-main: #ffffff;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-stack: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(229, 9, 20, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.03) 0%, transparent 40%);
+      color: var(--text-main);
+      font-family: var(--font-stack);
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+      letter-spacing: -0.2px;
+    }
+
+    /* Sidebar Navigation */
+    aside {
+      width: 270px;
+      background: rgba(14, 16, 24, 0.95);
+      backdrop-filter: blur(20px);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      padding: 1.75rem 1.25rem;
+      position: fixed;
+      height: 100vh;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0 0.5rem 1.75rem;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 1.75rem;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #ff1e27, #b30710);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #fff;
+      box-shadow: 0 4px 15px var(--accent-red-glow);
+    }
+
+    .brand-text {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(180deg, #fff, #cbd5e1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .nav-btn {
+      width: 100%;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 0.85rem 1.1rem;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: left;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-btn.active {
+      background: linear-gradient(135deg, rgba(229, 9, 20, 0.2), rgba(229, 9, 20, 0.05));
+      color: #fff;
+      border: 1px solid rgba(229, 9, 20, 0.4);
+      box-shadow: 0 4px 20px rgba(229, 9, 20, 0.15);
+    }
+
+    .nav-badge {
+      margin-left: auto;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    /* Main Workspace */
+    main {
+      margin-left: 270px;
+      flex: 1;
+      padding: 3rem;
+      max-width: 1400px;
+      transition: margin-left 0.3s ease;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: 0.35rem;
+    }
+
+    .view-panel {
+      display: none;
+    }
+
+    .view-panel.active {
+      display: block;
+      animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
+      opacity: 0.6;
+    }
+
+    .stat-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-dim);
+      font-weight: 700;
+    }
+
+    .stat-value {
+      font-size: 2.75rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1px;
+    }
+
+    .stat-target {
+      font-size: 0.8rem;
+      color: var(--accent-blue);
+      font-family: monospace;
+    }
+
+    /* Form Container */
+    .form-container {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 2.5rem;
+      max-width: 840px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .form-group.full-width {
+      grid-column: span 2;
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.2px;
+    }
+
+    input, select {
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.85rem 1.1rem;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s ease;
+      font-family: var(--font-stack);
+    }
+
+    select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2394a3b8' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+
+    select option {
+      background: #12141f;
+      color: #fff;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--accent-red);
+      box-shadow: 0 0 0 3px var(--accent-red-glow);
+    }
+
+    input[readonly] {
+      opacity: 0.6;
+      cursor: not-allowed;
+      border-style: dashed;
+    }
+
+    .input-hint {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-family: monospace;
+    }
+
+    .tmdb-fetch-status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, #e50914, #b80710);
+      color: #fff;
+      border: none;
+      padding: 0.95rem 2rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 4px 15px var(--accent-red-glow);
+      transition: all 0.25s ease;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-reset-mode {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      padding: 0.95rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: none;
+      transition: all 0.2s;
+    }
+
+    .btn-reset-mode:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-download-json {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--accent-blue);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 0.85rem 1.4rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: all 0.25s;
+    }
+
+    .btn-download-json:hover {
+      background: rgba(56, 189, 248, 0.1);
+      border-color: var(--accent-blue);
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.15);
+    }
+
+    /* Search & Grid */
+    .search-bar-container {
+      margin-bottom: 2.5rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 1rem 1.5rem;
+      font-size: 1.05rem;
+      background: var(--bg-card);
+      border-radius: 12px;
+    }
+
+    .movies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .movie-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .movie-card:hover {
+      border-color: rgba(255, 255, 255, 0.18);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    }
+
+    .poster-wrap {
+      width: 100%;
+      height: 280px;
+      background: #090a0f;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .poster-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .movie-card:hover .poster-img {
+      transform: scale(1.04);
+    }
+
+    .poster-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .movie-card-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .movie-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .movie-meta-row {
+      display: flex;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-bottom: 1.25rem;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    .badge-tmdb {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-blue);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-family: monospace;
+      font-weight: 700;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .existing-versions-list {
+      border-top: 1px solid var(--border-color);
+      padding-top: 1rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-height: 140px;
+      overflow-y: auto;
+    }
+
+    .version-tag {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.45rem 0.75rem;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .version-tag-spec {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .version-tag-detail {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-align: right;
+    }
+
+    .btn-add-version {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      border: 1px solid var(--border-color);
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-add-version:hover {
+      background: var(--accent-red);
+      border-color: var(--accent-red);
+      box-shadow: 0 4px 15px var(--accent-red-glow);
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-card {
+      background: #131520;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 720px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2.5rem;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.75rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1.25rem;
+    }
+
+    .modal-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+    }
+
+    .badge-modal-type {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-new {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--accent-green);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .badge-merge {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-blue);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .preview-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .preview-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+      padding-bottom: 0.6rem;
+      gap: 1rem;
+    }
+
+    .preview-item-label {
+      color: var(--text-dim);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .preview-item-val {
+      font-weight: 600;
+      color: var(--text-main);
+      text-align: right;
+      word-break: break-all;
+      font-family: monospace;
+      user-select: text;
+    }
+
+    .preview-item-val.plain-text {
+      font-family: var(--font-stack);
+    }
+
+    .preview-stream-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      background: #090a0f;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .preview-stream-text {
+      font-size: 0.85rem;
+      color: var(--accent-blue);
+      font-family: monospace;
+      word-break: break-all;
+      user-select: text;
+      line-height: 1.5;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-copy-url {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.85rem 1.4rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-copy-url:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--accent-blue);
+    }
+
+    .btn-save-database {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #fff;
+      border: none;
+      padding: 0.85rem 1.6rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    .btn-save-database:hover {
+      box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .btn-close-modal {
+      background: rgba(255, 255, 255, 0.05);
+      border: none;
+      color: var(--text-muted);
+      padding: 0.85rem 1.6rem;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-close-modal:hover {
+      color: #fff;
+    }
+
+    .alert-banner {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      color: var(--accent-blue);
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      aside {
+        width: 76px;
+        padding: 1.25rem 0.5rem;
+      }
+      .brand-text, .nav-btn span:not(.brand-logo), .nav-badge {
+        display: none;
+      }
+      .brand {
+        padding: 0 0 1rem;
+        justify-content: center;
+      }
+      .nav-btn {
+        justify-content: center;
+        padding: 0.85rem;
+      }
+      main {
+        margin-left: 76px;
+        padding: 2rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        flex-direction: column;
+      }
+      aside {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem 1.25rem;
+      }
+      .brand {
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.75rem;
+        justify-content: flex-start;
+      }
+      .brand-text {
+        display: block;
+      }
+      .nav-list {
+        flex-direction: row;
+        justify-content: space-around;
+      }
+      .nav-btn {
+        padding: 0.6rem 0.85rem;
+        font-size: 0.85rem;
+      }
+      .nav-btn span {
+        display: inline;
+      }
+      main {
+        margin-left: 0;
+        padding: 1.5rem;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-group.full-width {
+        grid-column: span 1;
+      }
+      .modal-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside>
+    <div class="brand">
+      <div class="brand-logo">M</div>
+      <div class="brand-text">MoinuFlix</div>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <button class="nav-btn active" onclick="switchTab('dashboard')">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg>
+          <span>Dashboard</span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-btn" onclick="switchTab('existing')">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <span>Existing Movies</span>
+          <span class="nav-badge" id="nav-count-badge">0</span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-btn" onclick="switchTab('add')">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+          <span>Add Movie</span>
+        </button>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main>
+    <section id="view-dashboard" class="view-panel active">
+      <header>
+        <div>
+          <h1>System Overview</h1>
+          <p class="section-desc">Live status of movie collection and chunk storage</p>
+        </div>
+        <button type="button" class="btn-download-json" onclick="downloadCurrentJson()">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download data_c01.json
+        </button>
+      </header>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-title">Total Movies</div>
+          <div class="stat-value" id="stat-total-movies">0</div>
+          <div class="stat-target">Target: chunks/data_c01.json</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-title">Total Versions / Qualities</div>
+          <div class="stat-value" id="stat-total-versions">0</div>
+          <div class="stat-target">Aggregated stream versions</div>
+        </div>
+      </div>
+
+      <div class="alert-banner">
+        <span>Step 5 & 6 Active: Full Kodi Schema Generator & TMDB Auto-Metadata integration ready.</span>
+      </div>
+    </section>
+
+    <section id="view-existing" class="view-panel">
+      <header>
+        <div>
+          <h1>Existing Movies</h1>
+          <p class="section-desc">Search and manage version profiles in chunks/data_c01.json</p>
+        </div>
+      </header>
+
+      <div class="search-bar-container">
+        <input type="text" id="movie-search-input" class="search-input" placeholder="Search by Title, TMDB ID, or Year..." oninput="handleSearch()">
+      </div>
+
+      <div class="movies-grid" id="movies-grid-container"></div>
+    </section>
+
+    <section id="view-add" class="view-panel">
+      <header>
+        <div>
+          <h1 id="form-view-title">Add Movie</h1>
+          <p class="section-desc" id="form-view-desc">Enter metadata identifiers and media stream details</p>
+        </div>
+      </header>
+
+      <div class="form-container">
+        <form id="movie-form" onsubmit="handleFormSubmit(event)">
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label for="input-tmdb-id">TMDB ID</label>
+              <input type="number" id="input-tmdb-id" placeholder="e.g. 564147, 382220, 626392" required oninput="checkTmdbMatch()">
+              <div class="tmdb-fetch-status" id="tmdb-fetch-status">
+                <span class="input-hint" id="tmdb-match-hint">Auto-fetches English Title, Poster, IMDb, Trailer & Overview</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="input-quality">Quality</label>
+              <select id="input-quality" required>
+                <option value="1080p">1080p</option>
+                <option value="4K">4K</option>
+                <option value="2160p">2160p</option>
+                <option value="720p">720p</option>
+                <option value="HD">HD</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="input-source">Source</label>
+              <select id="input-source" required>
+                <option value="WEB-DL">WEB-DL</option>
+                <option value="BLURAY">BLURAY</option>
+                <option value="HDTV">HDTV</option>
+                <option value="REMUX">REMUX</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="input-codec">Codec</label>
+              <select id="input-codec" required>
+                <option value="H.264">H.264</option>
+                <option value="x264">x264</option>
+                <option value="HEVC">HEVC</option>
+                <option value="x265">x265</option>
+                <option value="AVC">AVC</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="input-resolution">Resolution</label>
+              <select id="input-resolution" required>
+                <option value="1080p FHD">1080p FHD</option>
+                <option value="4K UHD">4K UHD</option>
+                <option value="1920x1080">1920x1080</option>
+                <option value="3840x2160">3840x2160</option>
+                <option value="720p HD">720p HD</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="input-audio">Audio Codec</label>
+              <select id="input-audio" required>
+                <option value="DDP 5.1">DDP 5.1</option>
+                <option value="Dolby Audio">Dolby Audio</option>
+                <option value="Dolby Atmos">Dolby Atmos</option>
+                <option value="AAC">AAC</option>
+                <option value="AC3">AC3</option>
+                <option value="DTS-HD">DTS-HD</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="input-channels">Audio Channels</label>
+              <select id="input-channels" required>
+                <option value="5.1">5.1</option>
+                <option value="7.1">7.1</option>
+                <option value="2.0">2.0</option>
+                <option value="2.1">2.1</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="input-gdrive-url">Google Drive Link / File ID</label>
+              <input type="text" id="input-gdrive-url" placeholder="https://drive.google.com/file/d/.../view or Raw File ID" required>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-submit" id="btn-form-submit">
+              <span>ADD MOVIE</span>
+            </button>
+            <button type="button" class="btn-reset-mode" id="btn-reset-mode" onclick="resetFormToNew()">
+              Cancel Merge Mode
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Preview Modal -->
+  <div class="modal-overlay" id="preview-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title" id="modal-title">Preview Action</div>
+        <span class="badge-modal-type" id="modal-action-badge">NEW MOVIE</span>
+      </div>
+
+      <div class="preview-list" id="modal-preview-details"></div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-copy-url" id="btn-copy-stream-url" onclick="copyStreamUrlToClipboard()">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span id="btn-copy-text">Copy URL</span>
+        </button>
+        <button type="button" class="btn-save-database" onclick="commitSaveToDatabase()">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Save to Database
+        </button>
+        <button type="button" class="btn-close-modal" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let moviesData = [];
+    let isMergeMode = false;
+    let targetExistingMovie = null;
+    let pendingEntryToSave = null;
+    let currentPreviewStreamUrl = '';
+    let fetchedTmdbMetadata = null;
+    let tmdbDebounceTimeout = null;
+    let isFetchingTmdb = false;
+
+    const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
+
+    function escapeHtml(str) {
+      if (str === null || str === undefined) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    async function loadData() {
+      try {
+        const response = await fetch('chunks/data_c01.json');
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        moviesData = Array.isArray(data) ? data : (data.movies || []);
+      } catch (err) {
+        console.warn('Local chunk file load notice:', err);
+        moviesData = [];
+      }
+      updateDashboardMetrics();
+      renderMoviesGrid(moviesData);
+    }
+
+    function extractGDriveId(url) {
+      if (!url) return '';
+      const cleanUrl = url.trim();
+      const paramMatch = cleanUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+      if (paramMatch && paramMatch[1]) return paramMatch[1];
+      const fileMatch = cleanUrl.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+      if (fileMatch && fileMatch[1]) return fileMatch[1];
+      const rawMatch = cleanUrl.match(/^[a-zA-Z0-9_-]{25,}$/);
+      if (rawMatch) return rawMatch[0];
+      return '';
+    }
+
+    function generateKodiStreamUrl(fileId) {
+      if (!fileId) return '';
+      return `https://gdrive-stream.moinudeentv.workers.dev/?id=${fileId}|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0`;
+    }
+
+    function generateBadges(quality, channels) {
+      const is4K = String(quality).toLowerCase().includes('4k') || String(quality).includes('2160');
+      const chStr = String(channels).replace('.', '-');
+
+      return {
+        quality: is4K 
+          ? "https://img.icons8.com/color/96/4k.png" 
+          : "https://img.icons8.com/color/96/full-hd.png",
+        source: "https://img.icons8.com/ios-filled/100/ffffff/cloud-download.png",
+        audio_format: "https://img.icons8.com/color/96/dolby-digital.png",
+        audio_channels: `https://img.icons8.com/ios-filled/100/ffffff/${chStr || '5-1'}.png`
+      };
+    }
+
+    async function fetchTmdbMetadata(tmdbId) {
+      if (!tmdbId || parseInt(tmdbId) <= 0) return null;
+      const hint = document.getElementById('tmdb-match-hint');
+      const submitBtn = document.getElementById('btn-form-submit');
+      
+      isFetchingTmdb = true;
+      hint.textContent = 'Fetching English metadata & artwork from TMDB...';
+      hint.style.color = 'var(--accent-yellow)';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Fetching TMDB...';
+
+      try {
+        const movieUrl = `https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_API_KEY}&language=en-US&append_to_response=videos,images,external_ids&include_image_language=en,null`;
+        const res = await fetch(movieUrl);
+        if (!res.ok) throw new Error(`TMDB error status: ${res.status}`);
+        const data = await res.json();
+
+        let trailerId = '';
+        if (data.videos && data.videos.results && data.videos.results.length > 0) {
+          const trailerObj = data.videos.results.find(v => v.type === 'Trailer' && v.site === 'YouTube') || data.videos.results[0];
+          trailerId = trailerObj ? trailerObj.key : '';
+        }
+
+        let logoPath = '';
+        if (data.images && data.images.logos && data.images.logos.length > 0) {
+          const enLogo = data.images.logos.find(l => l.iso_639_1 === 'en') || data.images.logos[0];
+          logoPath = enLogo ? enLogo.file_path : '';
+        }
+
+        fetchedTmdbMetadata = {
+          title: data.title || `Movie ${tmdbId}`,
+          original_title: data.original_title || data.title || `Movie ${tmdbId}`,
+          year: data.release_date ? parseInt(data.release_date.split('-')[0]) : new Date().getFullYear(),
+          imdb_id: data.imdb_id || (data.external_ids && data.external_ids.imdb_id) || '',
+          rating: data.vote_average ? Number(data.vote_average.toFixed(3)) : 7.0,
+          plot: data.overview || '',
+          poster: data.poster_path ? `https://image.tmdb.org/t/p/w500${data.poster_path}` : '',
+          fanart: data.backdrop_path ? `https://image.tmdb.org/t/p/original${data.backdrop_path}` : '',
+          logo: logoPath ? `https://image.tmdb.org/t/p/original${logoPath}` : '',
+          trailer_video_id: trailerId
+        };
+
+        hint.textContent = `Found: "${fetchedTmdbMetadata.title}" (${fetchedTmdbMetadata.year}) ★ ${fetchedTmdbMetadata.rating}`;
+        hint.style.color = 'var(--accent-green)';
+      } catch (err) {
+        console.warn('TMDB Fetch error:', err);
+        fetchedTmdbMetadata = null;
+        hint.textContent = 'TMDB auto-fetch failed. Please verify TMDB ID.';
+        hint.style.color = 'var(--accent-red)';
+      } finally {
+        isFetchingTmdb = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = isMergeMode ? 'PREVIEW MERGE' : 'ADD MOVIE';
+      }
+      return fetchedTmdbMetadata;
+    }
+
+    function checkTmdbMatch() {
+      const enteredId = document.getElementById('input-tmdb-id').value.trim();
+      const hint = document.getElementById('tmdb-match-hint');
+
+      clearTimeout(tmdbDebounceTimeout);
+
+      if (!enteredId || parseInt(enteredId) <= 0) {
+        hint.textContent = 'Auto-fetches English Title, Poster, IMDb, Trailer & Overview';
+        hint.style.color = 'var(--text-dim)';
+        isMergeMode = false;
+        targetExistingMovie = null;
+        fetchedTmdbMetadata = null;
+        document.getElementById('form-view-title').textContent = 'Add Movie';
+        document.getElementById('form-view-desc').textContent = 'Enter metadata identifiers and media stream details';
+        document.getElementById('btn-form-submit').textContent = 'ADD MOVIE';
+        document.getElementById('btn-reset-mode').style.display = 'none';
+        return;
+      }
+
+      const match = moviesData.find(m => String(m.tmdb_id || m.tmdbId) === enteredId);
+      if (match) {
+        isMergeMode = true;
+        targetExistingMovie = match;
+        hint.textContent = `Existing Movie Detected: "${match.title || 'Movie'}" (${match.year || 'N/A'}). Form will merge as a new version.`;
+        hint.style.color = 'var(--accent-blue)';
+        document.getElementById('form-view-title').textContent = `Add Version: ${match.title || 'Movie'}`;
+        document.getElementById('form-view-desc').textContent = `Adding secondary quality stream to existing ${match.title || 'Movie'} entry`;
+        document.getElementById('btn-form-submit').textContent = 'PREVIEW MERGE';
+        document.getElementById('btn-reset-mode').style.display = 'inline-block';
+      } else {
+        isMergeMode = false;
+        targetExistingMovie = null;
+        document.getElementById('form-view-title').textContent = 'Add Movie';
+        document.getElementById('form-view-desc').textContent = 'Enter metadata identifiers and media stream details';
+        document.getElementById('btn-form-submit').textContent = 'ADD MOVIE';
+        document.getElementById('btn-reset-mode').style.display = 'none';
+
+        tmdbDebounceTimeout = setTimeout(() => {
+          fetchTmdbMetadata(enteredId);
+        }, 400);
+      }
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.view-panel').forEach(panel => panel.classList.remove('active'));
+
+      if (tabId === 'dashboard') {
+        document.querySelectorAll('.nav-btn')[0].classList.add('active');
+        document.getElementById('view-dashboard').classList.add('active');
+      } else if (tabId === 'existing') {
+        document.querySelectorAll('.nav-btn')[1].classList.add('active');
+        document.getElementById('view-existing').classList.add('active');
+      } else if (tabId === 'add') {
+        document.querySelectorAll('.nav-btn')[2].classList.add('active');
+        document.getElementById('view-add').classList.add('active');
+      }
+    }
+
+    function updateDashboardMetrics() {
+      const totalMovies = moviesData.length;
+      let totalVersions = 0;
+
+      moviesData.forEach(movie => {
+        if (Array.isArray(movie.versions) && movie.versions.length > 0) {
+          totalVersions += movie.versions.length;
+        } else if (movie.stream_url || movie.quality) {
+          totalVersions += 1;
+        }
+      });
+
+      document.getElementById('stat-total-movies').textContent = totalMovies;
+      document.getElementById('stat-total-versions').textContent = totalVersions;
+      document.getElementById('nav-count-badge').textContent = totalMovies;
+    }
+
+    function renderMoviesGrid(list) {
+      const container = document.getElementById('movies-grid-container');
+      container.innerHTML = '';
+
+      if (!list || list.length === 0) {
+        container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--text-dim); padding: 3rem 0;">No matching movies found in database. Add a movie to get started!</div>';
+        return;
+      }
+
+      list.forEach(movie => {
+        const title = movie.title || `Movie (TMDB: ${movie.tmdb_id || movie.tmdbId})`;
+        const year = movie.year || 'N/A';
+        const tmdbId = movie.tmdb_id || movie.tmdbId || 'N/A';
+        const poster = movie.poster || (movie.artwork && movie.artwork.poster) || '';
+
+        let versionsHtml = '';
+        if (Array.isArray(movie.versions) && movie.versions.length > 0) {
+          movie.versions.forEach(v => {
+            const qualityText = escapeHtml(v.quality || 'HD');
+            const details = [
+              v.source || (v.specs && v.specs.source),
+              v.codec || (v.specs && v.specs.codec),
+              v.resolution || (v.specs && v.specs.resolution)
+            ].filter(Boolean).map(escapeHtml).join(' • ');
+            versionsHtml += `
+              <div class="version-tag">
+                <span class="version-tag-spec">${qualityText}</span>
+                <span class="version-tag-detail">${details}</span>
+              </div>
+            `;
+          });
+        } else if (movie.quality || movie.stream_url) {
+          const qualityText = escapeHtml(movie.quality || 'Default');
+          const details = [
+            movie.source || (movie.specs && movie.specs.source),
+            movie.codec || (movie.specs && movie.specs.codec),
+            movie.resolution || (movie.specs && movie.specs.resolution)
+          ].filter(Boolean).map(escapeHtml).join(' • ');
+          versionsHtml += `
+            <div class="version-tag">
+              <span class="version-tag-spec">${qualityText}</span>
+              <span class="version-tag-detail">${details}</span>
+            </div>
+          `;
+        } else {
+          versionsHtml = '<div class="version-tag"><span>1 Default Version</span></div>';
+        }
+
+        const safeTitle = escapeHtml(title);
+        const safeYear = escapeHtml(year);
+        const safeTmdbId = escapeHtml(tmdbId);
+        const safePoster = escapeHtml(poster);
+
+        const card = document.createElement('div');
+        card.className = 'movie-card';
+        card.innerHTML = `
+          <div class="poster-wrap">
+            ${safePoster ? `<img src="${safePoster}" class="poster-img" alt="${safeTitle}" loading="lazy" onerror="this.style.display='none'">` : '<div class="poster-placeholder">No Poster</div>'}
+          </div>
+          <div class="movie-card-body">
+            <div>
+              <div class="movie-title" title="${safeTitle}">${safeTitle}</div>
+              <div class="movie-meta-row">
+                <span>${safeYear}</span>
+                <span>•</span>
+                <span class="badge-tmdb">TMDB: ${safeTmdbId}</span>
+              </div>
+              <div class="existing-versions-list">
+                ${versionsHtml}
+              </div>
+            </div>
+            <button type="button" class="btn-add-version" onclick="prepareAddVersion('${safeTmdbId}')">
+              + ADD VERSION
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function handleSearch() {
+      const query = document.getElementById('movie-search-input').value.toLowerCase().trim();
+      if (!query) {
+        renderMoviesGrid(moviesData);
+        return;
+      }
+
+      const filtered = moviesData.filter(m => {
+        const titleMatch = m.title && String(m.title).toLowerCase().includes(query);
+        const tmdbMatch = (m.tmdb_id || m.tmdbId) && String(m.tmdb_id || m.tmdbId).includes(query);
+        const yearMatch = m.year && String(m.year).includes(query);
+        return titleMatch || tmdbMatch || yearMatch;
+      });
+
+      renderMoviesGrid(filtered);
+    }
+
+    function prepareAddVersion(tmdbId) {
+      const existing = moviesData.find(m => String(m.tmdb_id || m.tmdbId) === String(tmdbId));
+      if (!existing) return;
+
+      isMergeMode = true;
+      targetExistingMovie = existing;
+
+      const tmdbInput = document.getElementById('input-tmdb-id');
+      tmdbInput.value = existing.tmdb_id || existing.tmdbId;
+      tmdbInput.readOnly = true;
+
+      document.getElementById('input-gdrive-url').value = '';
+
+      document.getElementById('form-view-title').textContent = `Add Version: ${existing.title || 'Movie'}`;
+      document.getElementById('form-view-desc').textContent = `Adding secondary quality stream to existing ${existing.title || 'Movie'} entry`;
+      document.getElementById('tmdb-match-hint').textContent = `Locked to existing movie "${existing.title || 'Movie'}" (${existing.year || 'N/A'})`;
+      document.getElementById('tmdb-match-hint').style.color = 'var(--accent-blue)';
+      document.getElementById('btn-form-submit').textContent = 'PREVIEW MERGE';
+      document.getElementById('btn-reset-mode').style.display = 'inline-block';
+
+      switchTab('add');
+    }
+
+    function resetFormToNew() {
+      isMergeMode = false;
+      targetExistingMovie = null;
+      fetchedTmdbMetadata = null;
+
+      const tmdbInput = document.getElementById('input-tmdb-id');
+      tmdbInput.value = '';
+      tmdbInput.readOnly = false;
+
+      document.getElementById('movie-form').reset();
+
+      document.getElementById('form-view-title').textContent = 'Add Movie';
+      document.getElementById('form-view-desc').textContent = 'Enter metadata identifiers and media stream details';
+      document.getElementById('tmdb-match-hint').textContent = 'Auto-fetches English Title, Poster, IMDb, Trailer & Overview';
+      document.getElementById('tmdb-match-hint').style.color = 'var(--text-dim)';
+      document.getElementById('btn-form-submit').textContent = 'ADD MOVIE';
+      document.getElementById('btn-reset-mode').style.display = 'none';
+    }
+
+    function isDuplicateVersion(movie, newVersion) {
+      if (!movie) return false;
+
+      if (Array.isArray(movie.versions) && movie.versions.length > 0) {
+        return movie.versions.some(v => 
+          String(v.quality || '').toLowerCase() === String(newVersion.quality || '').toLowerCase() &&
+          String(v.source || (v.specs && v.specs.source) || '').toLowerCase() === String(newVersion.source || '').toLowerCase() &&
+          String(v.codec || (v.specs && v.specs.codec) || '').toLowerCase() === String(newVersion.codec || '').toLowerCase() &&
+          String(v.stream_url || '') === String(newVersion.stream_url || '')
+        );
+      }
+
+      if (movie.stream_url || movie.quality) {
+        return (
+          String(movie.quality || '').toLowerCase() === String(newVersion.quality || '').toLowerCase() &&
+          String(movie.source || (movie.specs && movie.specs.source) || '').toLowerCase() === String(newVersion.source || '').toLowerCase() &&
+          String(movie.codec || (movie.specs && movie.specs.codec) || '').toLowerCase() === String(newVersion.codec || '').toLowerCase() &&
+          String(movie.stream_url || '') === String(newVersion.stream_url || '')
+        );
+      }
+
+      return false;
+    }
+
+    function buildFullMovieSchema(tmdbId, versionData, fileId, streamUrl) {
+      const meta = fetchedTmdbMetadata || {
+        title: `Movie ${tmdbId}`,
+        original_title: `Movie ${tmdbId}`,
+        year: new Date().getFullYear(),
+        imdb_id: "",
+        rating: 7.0,
+        plot: "",
+        poster: "",
+        fanart: "",
+        logo: "",
+        trailer_video_id: ""
+      };
+
+      const movieFileName = `${meta.title} (${meta.year}) [Multi] [${versionData.quality}] [${versionData.codec}] [${versionData.audio}].mkv`;
+
+      const specsObject = {
+        resolution: versionData.resolution,
+        source: versionData.source,
+        codec: versionData.codec,
+        audio: versionData.audio,
+        channels: versionData.channels
+      };
+
+      const badgesObject = generateBadges(versionData.quality, versionData.channels);
+
+      const versionObject = {
+        id: fileId,
+        name: movieFileName,
+        quality: versionData.quality,
+        source: versionData.source,
+        codec: versionData.codec,
+        resolution: versionData.resolution,
+        audio: versionData.audio,
+        channels: versionData.channels,
+        stream_url: streamUrl,
+        specs: specsObject
+      };
+
+      const fullMovieObject = {
+        id: fileId,
+        name: movieFileName,
+        title: meta.title,
+        original_title: meta.original_title,
+        year: meta.year,
+        tmdb_id: Number(tmdbId),
+        imdb_id: meta.imdb_id,
+        imdb_url: meta.imdb_id ? `https://www.imdb.com/title/${meta.imdb_id}/` : "",
+        rating: meta.rating,
+        plot: meta.plot,
+        poster: meta.poster,
+        fanart: meta.fanart,
+        logo: meta.logo,
+        trailer: {
+          youtube_url: meta.trailer_video_id ? `plugin://plugin.video.youtube/play/?video_id=${meta.trailer_video_id}` : ""
+        },
+        stream_url: streamUrl,
+        badges: badgesObject,
+        specs: specsObject,
+        versions: [
+          versionObject
+        ]
+      };
+
+      return { fullMovieObject, versionObject };
+    }
+
+    async function handleFormSubmit(event) {
+      event.preventDefault();
+
+      const tmdbId = document.getElementById('input-tmdb-id').value.trim();
+      const quality = document.getElementById('input-quality').value;
+      const source = document.getElementById('input-source').value;
+      const codec = document.getElementById('input-codec').value;
+      const resolution = document.getElementById('input-resolution').value;
+      const audio = document.getElementById('input-audio').value;
+      const channels = document.getElementById('input-channels').value;
+      const gdriveUrl = document.getElementById('input-gdrive-url').value.trim();
+      
+      if (!tmdbId || !gdriveUrl) {
+        alert('TMDB ID and Google Drive Link are required.');
+        return;
+      }
+
+      const fileId = extractGDriveId(gdriveUrl);
+      if (!fileId) {
+        alert('Invalid Google Drive link. Please enter a valid Google Drive URL or File ID.');
+        return;
+      }
+
+      if (!isMergeMode && !fetchedTmdbMetadata) {
+        await fetchTmdbMetadata(tmdbId);
+      }
+
+      const streamUrl = generateKodiStreamUrl(fileId);
+      currentPreviewStreamUrl = streamUrl;
+
+      const versionData = { quality, source, codec, resolution, audio, channels };
+      const { fullMovieObject, versionObject } = buildFullMovieSchema(tmdbId, versionData, fileId, streamUrl);
+
+      if (isMergeMode && targetExistingMovie) {
+        if (isDuplicateVersion(targetExistingMovie, versionObject)) {
+          alert('THIS VERSION ALREADY EXISTS\n\nA version with the identical Quality, Source, Codec, and Stream URL is already attached to this movie.');
+          return;
+        }
+      }
+
+      pendingEntryToSave = {
+        isMerge: isMergeMode,
+        targetMovie: targetExistingMovie,
+        fullMovie: fullMovieObject,
+        version: versionObject
+      };
+
+      const modal = document.getElementById('preview-modal');
+      const badge = document.getElementById('modal-action-badge');
+      const detailsContainer = document.getElementById('modal-preview-details');
+
+      document.getElementById('btn-copy-text').textContent = 'Copy URL';
+
+      if (isMergeMode && targetExistingMovie) {
+        badge.className = 'badge-modal-type badge-merge';
+        badge.textContent = 'EXISTING MOVIE (MERGE)';
+
+        detailsContainer.innerHTML = `
+          <div class="preview-item">
+            <span class="preview-item-label">Target File</span>
+            <span class="preview-item-val plain-text" style="color: var(--accent-blue);">chunks/data_c01.json</span>
+          </div>
+          <div class="preview-item">
+            <span class="preview-item-label">Existing Movie</span>
+            <span class="preview-item-val plain-text">${escapeHtml(targetExistingMovie.title || 'Movie')} (${escapeHtml(targetExistingMovie.year || 'N/A')})</span>
+          </div>
+          <div class="preview-item">
+            <span class="preview-item-label">TMDB ID</span>
+            <span class="preview-item-val">${escapeHtml(tmdbId)}</span>
+          </div>
+          <div class="preview-item">
+            <span class="preview-item-label">Specs Style</span>
+            <span class="preview-item-val plain-text">${escapeHtml(quality)} • ${escapeHtml(source)} • ${escapeHtml(codec)} (${escapeHtml(resolution)}) [${escapeHtml(audio)}]</span>
+          </div>
+          <div class="preview-item">
+            <span class="preview-item-label">Drive ID</span>
+            <span class="preview-item-val">${escapeHtml(fileId)}</span>
+          </div>
+          <div class="preview-stream-block">
+            <span class="preview-item-label">Generated Kodi Stream URL</span>
+            <div class="preview-stream-text">${escapeHtml(streamUrl)}</div>
+          </div>
+        `;
+      } else {
+        badge.className = 'badge-modal-type badge-new';
+        badge.textContent = 'NEW MOVIE (FULL SCHEMA)';
+
+        detailsContainer.innerHTML = `
+          <div class="preview-item">
+            <span class="preview-item-label">Target File</span>
+            <span class="preview-item-val plain-text" style="color: var(--accent-blue);">chunks/data_c01.json</span>
+          </div>
+          <div class="preview-item">
+            <span class="preview-item-label">English Title</span>
+            <span class="preview-item-val plain-text">${escapeHtml(fullMovieObject.title)} (${escapeHtml(fullMovieObject.year)})</span>
+          </div>
+          <div class="preview-item">
+            <span class="preview-item-label">TMDB / IMDb</span>
+            <span class="preview-item-val">${escapeHtml(fullMovieObject.tmdb_id)} / ${escapeHtml(fullMovieObject.imdb_id || 'N/A')}</span>
+          </div>
+          <div class="preview-item">
+            <span class="preview-item-label">Rating</span>
+            <span class="preview-item-val">★ ${escapeHtml(fullMovieObject.rating)}</span>
+          </div>
+          <div class="preview-item">
+            <span class="preview-item-label">Specs Style</span>
+            <span class="preview-item-val plain-text">${escapeHtml(quality)} • ${escapeHtml(source)} • ${escapeHtml(codec)} [${escapeHtml(audio)}]</span>
+          </div>
+          <div class="preview-item">
+            <span class="preview-item-label">Drive ID</span>
+            <span class="preview-item-val">${escapeHtml(fileId)}</span>
+          </div>
+          <div class="preview-stream-block">
+            <span class="preview-item-label">Generated Kodi Stream URL</span>
+            <div class="preview-stream-text">${escapeHtml(streamUrl)}</div>
+          </div>
+        `;
+      }
+
+      modal.classList.add('active');
+    }
+
+    function commitSaveToDatabase() {
+      if (!pendingEntryToSave) return;
+
+      if (pendingEntryToSave.isMerge && pendingEntryToSave.targetMovie) {
+        const movie = pendingEntryToSave.targetMovie;
+        
+        if (!Array.isArray(movie.versions)) {
+          movie.versions = [];
+          if (movie.stream_url || movie.quality) {
+            movie.versions.push({
+              id: movie.id || '',
+              name: movie.name || movie.title || '',
+              quality: movie.quality || 'Default',
+              source: movie.source || (movie.specs && movie.specs.source) || 'WEB-DL',
+              codec: movie.codec || (movie.specs && movie.specs.codec) || 'H.264',
+              resolution: movie.resolution || (movie.specs && movie.specs.resolution) || '1080p',
+              audio: (movie.specs && movie.specs.audio) || 'DDP 5.1',
+              channels: (movie.specs && movie.specs.channels) || '5.1',
+              stream_url: movie.stream_url || '',
+              specs: movie.specs || {}
+            });
+          }
+        }
+        
+        movie.versions.push(pendingEntryToSave.version);
+        alert(`Version successfully added to "${movie.title || 'Movie'}"!`);
+      } else {
+        moviesData.push(pendingEntryToSave.fullMovie);
+        alert(`"${pendingEntryToSave.fullMovie.title}" (TMDB: ${pendingEntryToSave.fullMovie.tmdb_id}) full schema successfully created!`);
+      }
+
+      updateDashboardMetrics();
+      renderMoviesGrid(moviesData);
+
+      closeModal();
+      resetFormToNew();
+      switchTab('existing');
+    }
+
+    /* 18-Line Compact Single-Line JSON Formatter */
+    function formatCompactJson(movies) {
+      const formattedMovies = movies.map(movie => {
+        const versionsStr = (movie.versions || []).map(v => {
+          return `      {\n` +
+                 `        "id": ${JSON.stringify(v.id || '')}, "name": ${JSON.stringify(v.name || '')}, "quality": ${JSON.stringify(v.quality || '')}, "source": ${JSON.stringify(v.source || '')}, "codec": ${JSON.stringify(v.codec || '')}, "resolution": ${JSON.stringify(v.resolution || '')}, "audio": ${JSON.stringify(v.audio || '')}, "channels": ${JSON.stringify(v.channels || '')},\n` +
+                 `        "stream_url": ${JSON.stringify(v.stream_url || '')},\n` +
+                 `        "specs": ${JSON.stringify(v.specs || {})}\n` +
+                 `      }`;
+        }).join(',\n');
+
+        return `  {\n` +
+               `    "id": ${JSON.stringify(movie.id || '')},\n` +
+               `    "name": ${JSON.stringify(movie.name || '')},\n` +
+               `    "title": ${JSON.stringify(movie.title || '')}, "original_title": ${JSON.stringify(movie.original_title || '')}, "year": ${movie.year || 0},\n` +
+               `    "tmdb_id": ${movie.tmdb_id || 0}, "imdb_id": ${JSON.stringify(movie.imdb_id || '')}, "imdb_url": ${JSON.stringify(movie.imdb_url || '')}, "rating": ${movie.rating || 0},\n` +
+               `    "plot": ${JSON.stringify(movie.plot || '')},\n` +
+               `    "poster": ${JSON.stringify(movie.poster || '')},\n` +
+               `    "fanart": ${JSON.stringify(movie.fanart || '')},\n` +
+               `    "logo": ${JSON.stringify(movie.logo || '')},\n` +
+               `    "trailer": ${JSON.stringify(movie.trailer || {})},\n` +
+               `    "stream_url": ${JSON.stringify(movie.stream_url || '')},\n` +
+               `    "badges": ${JSON.stringify(movie.badges || {})},\n` +
+               `    "specs": ${JSON.stringify(movie.specs || {})},\n` +
+               `    "versions": [\n${versionsStr}\n    ]\n` +
+               `  }`;
+      }).join(',\n');
+
+      return `[\n${formattedMovies}\n]`;
+    }
+
+    function downloadCurrentJson() {
+      const compactJsonStr = formatCompactJson(moviesData);
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(compactJsonStr);
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", "data_c01.json");
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    }
+
+    async function copyStreamUrlToClipboard() {
+      if (!currentPreviewStreamUrl) return;
+      try {
+        await navigator.clipboard.writeText(currentPreviewStreamUrl);
+        document.getElementById('btn-copy-text').textContent = 'Copied!';
+        setTimeout(() => {
+          document.getElementById('btn-copy-text').textContent = 'Copy URL';
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy to clipboard:', err);
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('preview-modal').classList.remove('active');
+      pendingEntryToSave = null;
+    }
+
+    window.addEventListener('DOMContentLoaded', loadData);
+  </script>
+</body>
+</html>
