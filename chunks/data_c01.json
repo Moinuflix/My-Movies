@@ -101,6 +101,11 @@
         "id": "1cEEEP83RwTB-0t6fIA_cc76d_C-iYT04", "name": "Sardar.2022.1080p.TK.WEB-DL.DD5.1.H.264-MSD4K.mkv", "quality": "4K", "source": "WEB-DL", "codec": "H.264", "resolution": "4K UHD", "audio": "AAC", "channels": "2.0",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1cEEEP83RwTB-0t6fIA_cc76d_C-iYT04|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {"resolution":"4K UHD","source":"WEB-DL","codec":"H.264","audio":"AAC","channels":"2.0"}
+      },
+      {
+        "id": "12NpXKLbWYbNbUzrTmbFm2YB52VaaYvGz", "name": "Movie 858080 (2026) [Multi] [4K] [x265] [DDP 5.1].mkv", "quality": "4K", "source": "WEB-DL", "codec": "x265", "resolution": "4K UHD", "audio": "DDP 5.1", "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=12NpXKLbWYbNbUzrTmbFm2YB52VaaYvGz|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {"resolution":"4K UHD","source":"WEB-DL","codec":"x265","audio":"DDP 5.1","channels":"5.1"}
       }
     ]
   },
