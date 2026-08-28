@@ -6,21 +6,28 @@ MAIN_DATA_PATH = "chunks/data_c01.json"
 TRENDING_OUTPUT_PATH = "chunks/trending.json"
 SIMKL_CLIENT_ID = "56fea6c62198dd45fa41015d7203fdf29978c5ff2b92f18ff86f0ce33d85f3a8"
 
-def fetch_simkl_trending():
-    print("📡 Fetching live Trending Movies from SIMKL API...")
-    url = f"https://api.simkl.com/movies/trending?extended=full&client_id={SIMKL_CLIENT_ID}&app-name=MoinuFlix&app-version=1.0"
-    headers = {
-        "Content-Type": "application/json",
-        "User-Agent": "MoinuFlix/1.0"
-    }
-    try:
-        req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=10) as res:
-            data = json.loads(res.read().decode("utf-8"))
-            return data
-    except Exception as e:
-        print(f"⚠️ SIMKL API error: {e}")
-        return []
+# Indian Languages & Keywords detection
+INDIAN_LANG_KEYWORDS = [
+    "tamil", "telugu", "hindi", "malayalam", "kannada", 
+    "kollywood", "tollywood", "bollywood", "zee5", "sun nxt", "aha"
+]
+
+def is_indian_movie(movie):
+    # Check title, original_title, plot, filename for Indian indicators
+    name_str = str(movie.get("name", "")).lower()
+    title_str = str(movie.get("title", "")).lower()
+    orig_str = str(movie.get("original_title", "")).lower()
+    plot_str = str(movie.get("plot", "")).lower()
+    
+    # Check non-latin characters (e.g. Tamil script)
+    if any(ord(char) > 127 for char in orig_str):
+        return True
+        
+    combined = f"{name_str} {title_str} {orig_str} {plot_str}"
+    for kw in INDIAN_LANG_KEYWORDS:
+        if kw in combined:
+            return True
+    return False
 
 def format_18_line(movies_list):
     entries = []
@@ -63,51 +70,40 @@ if not os.path.exists(MAIN_DATA_PATH):
 with open(MAIN_DATA_PATH, "r", encoding="utf-8") as f:
     my_movies = json.load(f)
 
-local_tmdb_map = {}
-local_title_map = {}
+# Split into Indian and Hollywood categories
+indian_pool = []
+hollywood_pool = []
+
 for m in my_movies:
-    if m.get("tmdb_id"):
-        local_tmdb_map[int(m["tmdb_id"])] = m
-    t_clean = str(m.get("title", "")).lower().strip()
-    if t_clean:
-        local_title_map[t_clean] = m
+    if is_indian_movie(m):
+        indian_pool.append(m)
+    else:
+        hollywood_pool.append(m)
 
-simkl_trending = fetch_simkl_trending()
-trending_selection = []
-matched_ids = set()
+# Sort both pools by Latest Year (Descending) and Rating (Descending)
+indian_sorted = sorted(indian_pool, key=lambda x: (int(x.get("year") or 0), float(x.get("rating") or 0)), reverse=True)
+hollywood_sorted = sorted(hollywood_pool, key=lambda x: (int(x.get("year") or 0), float(x.get("rating") or 0)), reverse=True)
 
-for item in simkl_trending:
-    t_ids = item.get("ids", {})
-    tmdb_id = t_ids.get("tmdb")
-    title = str(item.get("title", "")).lower().strip()
+# Select Top 6 Indian and Top 4 Hollywood
+top_indian = indian_sorted[:6]
+top_hollywood = hollywood_sorted[:4]
 
-    matched_movie = None
-    if tmdb_id and int(tmdb_id) in local_tmdb_map:
-        matched_movie = local_tmdb_map[int(tmdb_id)]
-    elif title in local_title_map:
-        matched_movie = local_title_map[title]
+# If either list is short, balance from the other
+final_selection = top_indian + top_hollywood
 
-    if matched_movie:
-        m_id = matched_movie.get("id") or matched_movie.get("tmdb_id")
-        if m_id not in matched_ids:
-            trending_selection.append(matched_movie)
-            matched_ids.add(m_id)
-
-    if len(trending_selection) >= 10:
-        break
-
-if len(trending_selection) < 10:
-    sorted_by_rating = sorted(my_movies, key=lambda x: float(x.get("rating") or 0), reverse=True)
-    for m in sorted_by_rating:
+if len(final_selection) < 10:
+    existing_ids = {m.get("id") or m.get("tmdb_id") for m in final_selection}
+    remaining = sorted(my_movies, key=lambda x: (int(x.get("year") or 0), float(x.get("rating") or 0)), reverse=True)
+    for m in remaining:
         m_id = m.get("id") or m.get("tmdb_id")
-        if m_id not in matched_ids:
-            trending_selection.append(m)
-            matched_ids.add(m_id)
-        if len(trending_selection) >= 10:
+        if m_id not in existing_ids:
+            final_selection.append(m)
+            existing_ids.add(m_id)
+        if len(final_selection) >= 10:
             break
 
 os.makedirs(os.path.dirname(TRENDING_OUTPUT_PATH), exist_ok=True)
 with open(TRENDING_OUTPUT_PATH, "w", encoding="utf-8") as f:
-    f.write(format_18_line(trending_selection))
+    f.write(format_18_line(final_selection))
 
-print(f"✅ Created {TRENDING_OUTPUT_PATH} with {len(trending_selection)} items.")
+print(f"✅ Generated 10 Trending Movies: {len(top_indian)} Indian + {len(top_hollywood)} Hollywood!")
