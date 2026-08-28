@@ -132,19 +132,30 @@
       margin-top: auto;
       border-top: 1px solid var(--border-color);
       padding-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
     }
 
-    .status-badge-github {
+    .btn-token-config {
+      width: 100%;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      color: var(--accent-blue);
+      padding: 0.7rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
-      font-size: 0.8rem;
-      color: var(--accent-green);
-      background: rgba(34, 197, 94, 0.1);
-      border: 1px solid rgba(34, 197, 94, 0.2);
-      padding: 0.6rem 0.8rem;
-      border-radius: 8px;
-      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .btn-token-config:hover {
+      background: rgba(56, 189, 248, 0.18);
     }
 
     /* Main Area */
@@ -757,7 +768,7 @@
 
     @media (max-width: 900px) {
       aside { width: 76px; padding: 1.25rem 0.5rem; }
-      .brand-text, .nav-btn span:not(.brand-logo), .nav-badge, .status-badge-github { display: none; }
+      .brand-text, .nav-btn span:not(.brand-logo), .nav-badge, .btn-token-config span { display: none; }
       .brand { padding: 0 0 1rem; justify-content: center; }
       .nav-btn { justify-content: center; padding: 0.85rem; }
       main { margin-left: 76px; padding: 2rem; }
@@ -805,10 +816,10 @@
     </ul>
 
     <div class="sidebar-footer">
-      <div class="status-badge-github">
+      <button class="btn-token-config" onclick="configureGithubToken()">
         <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        <span>GitHub Live Sync Active</span>
-      </div>
+        <span id="token-status-label">⚙️ GitHub Token</span>
+      </button>
     </div>
   </aside>
 
@@ -996,11 +1007,55 @@
     let tmdbDebounceTimeout = null;
     let isFetchingTmdb = false;
 
-    // Hardcoded API Keys & GitHub Configuration
+    // TMDB Key & GitHub Config
     const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
     const GH_REPO = 'Moinuflix/My-Movies';
     const GH_BRANCH = 'main';
-    const GH_TOKEN = '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';
+
+    function getStoredToken() {
+      return localStorage.getItem('moinuflix_gh_token') || '';
+    }
+
+    function configureGithubToken() {
+      const current = getStoredToken();
+      const input = prompt('Enter your GitHub Personal Access Token (stored safely in your browser cache):', current);
+      if (input !== null) {
+        if (input.trim()) {
+          localStorage.setItem('moinuflix_gh_token', input.trim());
+          updateTokenBadge();
+          alert('✅ Token saved successfully in browser!');
+        } else {
+          localStorage.removeItem('moinuflix_gh_token');
+          updateTokenBadge();
+          alert('Token removed.');
+        }
+      }
+    }
+
+    function updateTokenBadge() {
+      const label = document.getElementById('token-status-label');
+      if (getStoredToken()) {
+        label.textContent = 'Token: Active ✅';
+        label.style.color = 'var(--accent-green)';
+      } else {
+        label.textContent = '⚙️ GitHub Token';
+        label.style.color = 'var(--accent-blue)';
+      }
+    }
+
+    function getValidTokenOrPrompt() {
+      let token = getStoredToken();
+      if (!token) {
+        token = prompt('Please enter your GitHub Personal Access Token (starts with ghp_...):');
+        if (token && token.trim()) {
+          localStorage.setItem('moinuflix_gh_token', token.trim());
+          updateTokenBadge();
+          return token.trim();
+        }
+        return null;
+      }
+      return token;
+    }
 
     function escapeHtml(str) {
       if (str === null || str === undefined) return '';
@@ -1013,6 +1068,7 @@
     }
 
     async function loadData() {
+      updateTokenBadge();
       try {
         const response = await fetch('chunks/data_c01.json');
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -1125,8 +1181,13 @@
       return fetchedTmdbMetadata;
     }
 
-    /* 1-CLICK FIX TMDB METADATA DIRECT COMMIT */
     async function promptFixTmdb(movieIndex) {
+      const token = getValidTokenOrPrompt();
+      if (!token) {
+        alert('GitHub Token required to save changes.');
+        return;
+      }
+
       const movie = moviesData[movieIndex];
       if (!movie) return;
 
@@ -1140,9 +1201,6 @@
         return;
       }
 
-      const confirmFix = confirm(`Fetch TMDB: ${cleanId} and update "${movie.title}" on GitHub?`);
-      if (!confirmFix) return;
-
       try {
         const meta = await fetchTmdbMetadata(cleanId);
         if (!meta) {
@@ -1150,7 +1208,6 @@
           return;
         }
 
-        // Apply TMDB Details to movie object
         movie.title = meta.title;
         movie.original_title = meta.original_title;
         movie.year = meta.year;
@@ -1168,15 +1225,13 @@
           };
         }
 
-        // Update version names
         if (Array.isArray(movie.versions)) {
           movie.versions.forEach(v => {
             v.name = `${meta.title} (${meta.year}) [Multi] [${v.quality || '1080p'}] [${v.codec || 'H.264'}] [${v.audio || 'DDP 5.1'}].mkv`;
           });
         }
 
-        // Commit directly to GitHub
-        await directCommitArrayToGitHub(moviesData, `Fix TMDB Metadata for "${meta.title}" (${meta.year})`);
+        await directCommitArrayToGitHub(moviesData, `Fix TMDB Metadata for "${meta.title}" (${meta.year})`, token);
 
         renderMoviesGrid(moviesData);
         updateDashboardMetrics();
@@ -1625,18 +1680,22 @@
     }
 
     /* DIRECT ARRAY GITHUB COMMIT HELPER */
-    async function directCommitArrayToGitHub(updatedList, commitMsg) {
+    async function directCommitArrayToGitHub(updatedList, commitMsg, token) {
       const filePath = 'chunks/data_c01.json';
       const getUrl = `https://api.github.com/repos/${GH_REPO}/contents/${filePath}?ref=${GH_BRANCH}`;
 
       const getRes = await fetch(getUrl, {
         headers: {
-          'Authorization': `token ${GH_TOKEN}`,
+          'Authorization': `token ${token}`,
           'Accept': 'application/vnd.github.v3+json'
         }
       });
 
-      if (!getRes.ok) throw new Error('Failed to fetch latest file SHA from GitHub');
+      if (!getRes.ok) {
+        if (getRes.status === 401) throw new Error('Invalid GitHub Token. Please re-enter your valid token.');
+        throw new Error(`Failed to fetch file SHA (Status: ${getRes.status})`);
+      }
+
       const fileInfo = await getRes.json();
       const currentSha = fileInfo.sha;
 
@@ -1647,7 +1706,7 @@
       const putRes = await fetch(putUrl, {
         method: 'PUT',
         headers: {
-          'Authorization': `token ${GH_TOKEN}`,
+          'Authorization': `token ${token}`,
           'Accept': 'application/vnd.github.v3+json',
           'Content-Type': 'application/json'
         },
@@ -1659,12 +1718,21 @@
         })
       });
 
-      if (!putRes.ok) throw new Error('GitHub commit failed.');
+      if (!putRes.ok) {
+        const errJson = await putRes.json();
+        throw new Error(errJson.message || 'GitHub commit failed.');
+      }
     }
 
     /* DIRECT GITHUB API SAVE & COMMIT VIA MODAL */
     async function commitSaveToGitHub() {
       if (!pendingEntryToSave) return;
+
+      const token = getValidTokenOrPrompt();
+      if (!token) {
+        alert('GitHub Token is required to commit changes.');
+        return;
+      }
 
       const commitBtn = document.getElementById('btn-commit-github');
       const commitText = document.getElementById('btn-commit-text');
@@ -1692,7 +1760,7 @@
           movieNameForCommit = pendingEntryToSave.fullMovie.title;
         }
 
-        await directCommitArrayToGitHub(moviesData, `Add/Update ${movieNameForCommit} via MoinuFlix Movie Manager`);
+        await directCommitArrayToGitHub(moviesData, `Add/Update ${movieNameForCommit} via MoinuFlix Movie Manager`, token);
 
         updateDashboardMetrics();
         renderMoviesGrid(moviesData);
