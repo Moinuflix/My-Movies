@@ -809,46 +809,61 @@
       </div>
     </section>
 
-    <!-- VIEW: 2. WEB SERIES -->
+    <!-- VIEW: 2. WEB SERIES (Parent Show + Dropdowns) -->
     <section id="view-existing-series" class="view-panel">
       <header>
         <div>
           <h1>Web Series (data_c02.json)</h1>
-          <p class="section-desc">Manage episodes and TV series streams</p>
+          <p class="section-desc">Manage parent shows, seasons, and episodes with auto dropdown selectors</p>
         </div>
         <button type="button" class="btn-download-json" onclick="downloadChunk('c02')">Download data_c02.json</button>
       </header>
 
       <div class="form-container">
         <div style="display: flex; gap: 10px; margin-bottom: 1.5rem;">
-          <input type="text" id="s_search_query" placeholder="Enter Series Name or TMDB TV ID">
-          <button type="button" class="btn-auto-fetch" onclick="fetchSeriesTMDB()">⚡ Auto Fetch</button>
+          <input type="text" id="s_search_query" placeholder="Enter Series Name or TMDB TV ID (e.g. Money Heist, 71446)">
+          <button type="button" class="btn-auto-fetch" onclick="fetchSeriesTMDB()">⚡ Auto Fetch Show</button>
         </div>
 
         <form id="series-form" onsubmit="handleSeriesSubmit(event)">
           <div class="form-grid">
             <div class="form-group">
               <label>Series Title</label>
-              <input type="text" id="s_title" required>
+              <input type="text" id="s_title" required readonly>
             </div>
+            <div class="form-group">
+              <label>Year</label>
+              <input type="number" id="s_year" readonly>
+            </div>
+
+            <div class="form-group">
+              <label>Select Season</label>
+              <select id="s_season_select" onchange="onSeasonSelected()">
+                <option value="">-- Fetch Show First --</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Select Episode</label>
+              <select id="s_episode_select" onchange="onEpisodeSelected()">
+                <option value="">-- Select Season First --</option>
+              </select>
+            </div>
+
             <div class="form-group">
               <label>Season & Episode Tag</label>
               <input type="text" id="s_tag" placeholder="e.g. S01E01" required>
             </div>
             <div class="form-group">
               <label>Episode Title</label>
-              <input type="text" id="s_ep_title">
+              <input type="text" id="s_ep_title" placeholder="Auto-filled from selection" required>
             </div>
-            <div class="form-group">
-              <label>Year</label>
-              <input type="number" id="s_year">
-            </div>
+
             <div class="form-group full-width">
-              <label>Google Drive File ID</label>
+              <label>Google Drive File ID / URL</label>
               <input type="text" id="s_gdrive" placeholder="Google Drive Link or File ID" required>
             </div>
           </div>
-          <button type="submit" class="btn-submit">ADD WEB SERIES EPISODE</button>
+          <button type="submit" class="btn-submit">ADD EPISODE TO SHOW</button>
         </form>
       </div>
 
@@ -1003,7 +1018,7 @@
     let pendingCommit = null;
     let activeStreamUrl = '';
 
-    const TMDB_API_KEY = '84b647f119098dfc0ad345c26b528be4';
+    const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
     const GH_REPO = 'Moinuflix/My-Movies';
     const GH_BRANCH = 'main';
     const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';
@@ -1113,11 +1128,12 @@
       document.getElementById('badge-c04').textContent = vaultData.length;
 
       renderMoviesGrid(moviesData);
-      renderGenericGrid('series-grid', seriesData);
+      renderSeriesGrid(seriesData);
       renderSongsGrid(songsData);
       renderVaultGrid(vaultData);
     }
 
+    /* RENDER MOVIES GRID */
     function renderMoviesGrid(list) {
       const container = document.getElementById('movies-grid-container');
       container.innerHTML = '';
@@ -1172,6 +1188,47 @@
               </button>
               <button type="button" class="btn-fix-tmdb" onclick="promptFixTmdb(${index})">
                 ✏️ Fix TMDB
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    /* RENDER SERIES GRID (Shows Folders with Episode Counts) */
+    function renderSeriesGrid(list) {
+      const container = document.getElementById('series-grid');
+      container.innerHTML = '';
+      if (!list || list.length === 0) {
+        container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--text-dim); padding: 2rem;">No web series in database yet.</div>';
+        return;
+      }
+
+      list.forEach((show) => {
+        const title = show.title || show.name || 'Untitled Show';
+        const poster = show.poster || '';
+        const year = show.year || 'N/A';
+        const epCount = Array.isArray(show.episodes) ? show.episodes.length : (show.stream_url ? 1 : 0);
+
+        const card = document.createElement('div');
+        card.className = 'movie-card';
+        card.innerHTML = `
+          <div class="poster-wrap">
+            ${poster ? `<img src="${poster}" class="poster-img" loading="lazy" onerror="this.style.display='none'">` : '<div class="poster-placeholder">No Cover</div>'}
+          </div>
+          <div class="movie-card-body">
+            <div>
+              <div class="movie-title" title="${escapeHtml(title)}">${escapeHtml(title)}</div>
+              <div class="movie-meta-row">
+                <span>${escapeHtml(year)}</span>
+                <span>•</span>
+                <span class="badge-tmdb">${epCount} Episode${epCount === 1 ? '' : 's'}</span>
+              </div>
+            </div>
+            <div class="card-actions-row">
+              <button type="button" class="btn-add-version" onclick="prepareAddEpisodeToSeries('${show.tmdb_id || title}')">
+                + ADD EPISODE
               </button>
             </div>
           </div>
@@ -1243,35 +1300,6 @@
       });
     }
 
-    function renderGenericGrid(containerId, list) {
-      const container = document.getElementById(containerId);
-      container.innerHTML = '';
-      if (!list || list.length === 0) {
-        container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--text-dim); padding: 2rem;">No items in this chunk yet.</div>';
-        return;
-      }
-      list.forEach(item => {
-        const title = item.title || item.name || 'Untitled';
-        const poster = item.poster || '';
-        const card = document.createElement('div');
-        card.className = 'movie-card';
-        card.innerHTML = `
-          <div class="poster-wrap">
-            ${poster ? `<img src="${poster}" class="poster-img" loading="lazy" onerror="this.style.display='none'">` : '<div class="poster-placeholder">No Cover</div>'}
-          </div>
-          <div class="movie-card-body">
-            <div class="movie-title" title="${escapeHtml(title)}">${escapeHtml(title)}</div>
-            <div class="movie-meta-row">
-              <span>${item.year || ''}</span>
-              ${item.tmdb_id ? `<span class="badge-tmdb">TMDB: ${item.tmdb_id}</span>` : ''}
-              ${item.specs && item.specs.audio ? `<span class="badge-tmdb">${item.specs.audio}</span>` : ''}
-            </div>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
     function renderVaultGrid(list) {
       const container = document.getElementById('vault-grid');
       container.innerHTML = '';
@@ -1307,121 +1335,6 @@
         return tMatch || idMatch || yMatch;
       });
       renderMoviesGrid(filtered);
-    }
-
-    /* AUTO-FETCH YOUTUBE METADATA & BATCH PLAYLIST */
-    function autoFetchYTMetadata() {
-      clearTimeout(ytDebounceTimeout);
-      const val = document.getElementById('yt_url').value.trim();
-      const hint = document.getElementById('yt_fetch_hint');
-      const submitBtn = document.getElementById('btn_vault_submit');
-
-      const playlistId = extractYTPlaylistId(val);
-      if (playlistId) {
-        hint.textContent = `📋 Detected Playlist (ID: ${playlistId}). Ready for batch import!`;
-        hint.style.color = 'var(--laser-cyan)';
-        submitBtn.textContent = 'BATCH IMPORT ENTIRE PLAYLIST';
-        document.getElementById('yt_title').value = `Playlist: ${playlistId}`;
-        return;
-      }
-
-      submitBtn.textContent = 'ADD TO YOUTUBE VAULT';
-      const ytId = extractYTId(val);
-      if (!ytId) {
-        hint.textContent = 'Paste single video link or full playlist URL';
-        hint.style.color = 'var(--text-dim)';
-        return;
-      }
-
-      hint.textContent = 'Fetching official YouTube Title...';
-      hint.style.color = 'var(--laser-cyan)';
-
-      ytDebounceTimeout = setTimeout(async () => {
-        try {
-          const res = await fetch(`https://noembed.com/embed?url=https://www.youtube.com/watch?v=${ytId}`);
-          const data = await res.json();
-          if (data && data.title) {
-            document.getElementById('yt_title').value = data.title;
-            hint.textContent = `Auto-Fetched: "${data.title}"`;
-            hint.style.color = 'var(--laser-green)';
-          }
-        } catch(e) {
-          hint.textContent = 'Could not auto-fetch title. You can type manually.';
-          hint.style.color = 'var(--text-dim)';
-        }
-      }, 300);
-    }
-
-    async function handleVaultSubmit(e) {
-      e.preventDefault();
-      const val = document.getElementById('yt_url').value.trim();
-      const cat = document.getElementById('yt_category').value;
-      const playlistId = extractYTPlaylistId(val);
-
-      if (playlistId) {
-        const hint = document.getElementById('yt_fetch_hint');
-        hint.textContent = 'Extracting playlist tracks via Proxy...';
-        hint.style.color = 'var(--laser-cyan)';
-
-        const proxies = [
-          `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`)}`,
-          `https://corsproxy.io/?${encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`)}`
-        ];
-
-        let xmlText = null;
-        for (let pUrl of proxies) {
-          try {
-            const res = await fetch(pUrl);
-            if (res.ok) {
-              xmlText = await res.text();
-              if (xmlText && xmlText.includes('<entry>')) break;
-            }
-          } catch(err) {}
-        }
-
-        if (xmlText && xmlText.includes('<entry>')) {
-          const parser = new DOMParser();
-          const xmlDoc = parser.parseFromString(xmlText, "text/xml");
-          const entries = xmlDoc.getElementsByTagName("entry");
-
-          const batchList = [];
-          for (let i = 0; i < entries.length; i++) {
-            const vidId = entries[i].getElementsByTagName("yt:videoId")[0]?.textContent;
-            const vTitle = entries[i].getElementsByTagName("title")[0]?.textContent || `Track ${i+1}`;
-            if (vidId) {
-              batchList.push({
-                id: `yt_${vidId}`,
-                title: vTitle,
-                category: cat,
-                thumbnail: `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`,
-                stream_url: `plugin://plugin.video.youtube/play/?video_id=${vidId}`
-              });
-            }
-          }
-
-          if (batchList.length > 0) {
-            openPreviewModal('chunks/data_c04.json', batchList, `Batch Importing ${batchList.length} Tracks`, `Playlist: ${playlistId} (${batchList.length} Videos)`, vaultData, false, true);
-            return;
-          }
-        }
-
-        showLaserToast('Could not fetch playlist feed. Saving single link.', true);
-      }
-
-      const ytId = extractYTId(val);
-      const title = document.getElementById('yt_title').value.trim();
-      const stream = `plugin://plugin.video.youtube/play/?video_id=${ytId}`;
-      const thumbnail = `https://img.youtube.com/vi/${ytId}/maxresdefault.jpg`;
-
-      const entry = {
-        id: `yt_${ytId}`,
-        title: title,
-        category: cat,
-        thumbnail: thumbnail,
-        stream_url: stream
-      };
-
-      openPreviewModal('chunks/data_c04.json', entry, stream, title, vaultData, false);
     }
 
     /* TMDB MOVIE HELPERS */
@@ -1633,18 +1546,15 @@
       }
     }
 
-/* 2. WEB SERIES AUTO-FETCH (Fixed Key + Dual Endpoint) */
+    /* 2. WEB SERIES SMART AUTO-FETCH & PARENT FOLDER SYSTEM */
     async function fetchSeriesTMDB() {
       const q = document.getElementById('s_search_query').value.trim();
       if (!q) return showLaserToast('Enter Series Name or TMDB TV ID', true);
 
-      // Verified Working TMDB API Key
-      const apiKey = '051ccf72e026820cb53b8b8531b6a2ba';
       const isNumericId = /^\d+$/.test(q);
-
       const url = isNumericId
-        ? `https://api.themoviedb.org/3/tv/${q}?api_key=${apiKey}&language=en-US`
-        : `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${encodeURIComponent(q)}&language=en-US`;
+        ? `https://api.themoviedb.org/3/tv/${q}?api_key=${TMDB_API_KEY}&language=en-US`
+        : `https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(q)}&language=en-US`;
 
       try {
         const res = await fetch(url);
@@ -1656,31 +1566,39 @@
           return showLaserToast('Series not found on TMDB', true);
         }
 
-        const seriesTitle = s.name || s.original_name || s.title || '';
-        const seriesYear = s.first_air_date ? s.first_air_date.split('-')[0] : '';
-        const seriesRating = s.vote_average ? s.vote_average.toFixed(1) : '8.0';
+        let fullShow = s;
+        if (!isNumericId) {
+          const detailRes = await fetch(`https://api.themoviedb.org/3/tv/${s.id}?api_key=${TMDB_API_KEY}&language=en-US`);
+          if (detailRes.ok) fullShow = await detailRes.json();
+        }
+
+        const seriesTitle = fullShow.name || fullShow.original_name || '';
+        const seriesYear = fullShow.first_air_date ? fullShow.first_air_date.split('-')[0] : '';
+        const seriesRating = fullShow.vote_average ? fullShow.vote_average.toFixed(1) : '8.0';
 
         document.getElementById('s_title').value = seriesTitle;
         document.getElementById('s_year').value = seriesYear;
-        window._s_poster = s.poster_path ? `https://image.tmdb.org/t/p/w500${s.poster_path}` : '';
-        window._s_fanart = s.backdrop_path ? `https://image.tmdb.org/t/p/original${s.backdrop_path}` : '';
-        window._s_plot = s.overview || '';
-        window._s_tmdb = s.id || (isNumericId ? parseInt(q) : 0);
+        window._s_poster = fullShow.poster_path ? `https://image.tmdb.org/t/p/w500${fullShow.poster_path}` : '';
+        window._s_fanart = fullShow.backdrop_path ? `https://image.tmdb.org/t/p/original${fullShow.backdrop_path}` : '';
+        window._s_plot = fullShow.overview || '';
+        window._s_tmdb = fullShow.id;
 
-        // Auto-fetch Episode Title if S01E01 is filled
-        const tagVal = document.getElementById('s_tag').value.trim();
-        const epMatch = tagVal.match(/s(\d+)e(\d+)/i);
-        if (epMatch && window._s_tmdb) {
-          const sNum = parseInt(epMatch[1]);
-          const eNum = parseInt(epMatch[2]);
-          try {
-            const epRes = await fetch(`https://api.themoviedb.org/3/tv/${window._s_tmdb}/season/${sNum}/episode/${eNum}?api_key=${apiKey}`);
-            if (epRes.ok) {
-              const epData = await epRes.json();
-              if (epData.name) document.getElementById('s_ep_title').value = epData.name;
-              if (epData.overview) window._s_plot = epData.overview;
-            }
-          } catch(e) {}
+        const seasonSelect = document.getElementById('s_season_select');
+        seasonSelect.innerHTML = '<option value="">-- Choose Season --</option>';
+        const seasons = fullShow.seasons || [];
+
+        seasons.forEach(sn => {
+          if (sn.season_number > 0) {
+            const opt = document.createElement('option');
+            opt.value = sn.season_number;
+            opt.textContent = `${sn.name} (${sn.episode_count} Episodes)`;
+            seasonSelect.appendChild(opt);
+          }
+        });
+
+        if (seasonSelect.options.length > 1) {
+          seasonSelect.selectedIndex = 1;
+          await onSeasonSelected();
         }
 
         showLaserToast(`Found: ${seriesTitle} (${seriesYear}) ★ ${seriesRating}`);
@@ -1689,34 +1607,107 @@
       }
     }
 
+    async function onSeasonSelected() {
+      const sNum = document.getElementById('s_season_select').value;
+      const epSelect = document.getElementById('s_episode_select');
+      epSelect.innerHTML = '<option value="">Loading episodes...</option>';
+      if (!sNum || !window._s_tmdb) return;
+
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/tv/${window._s_tmdb}/season/${sNum}?api_key=${TMDB_API_KEY}&language=en-US`);
+        if (!res.ok) throw new Error('Failed to load season');
+        const sData = await res.json();
+        
+        epSelect.innerHTML = '<option value="">-- Choose Episode --</option>';
+        window._currentEpisodes = sData.episodes || [];
+
+        window._currentEpisodes.forEach(ep => {
+          const opt = document.createElement('option');
+          opt.value = ep.episode_number;
+          opt.textContent = `Ep ${ep.episode_number}: ${ep.name}`;
+          epSelect.appendChild(opt);
+        });
+
+        if (epSelect.options.length > 1) {
+          epSelect.selectedIndex = 1;
+          onEpisodeSelected();
+        }
+      } catch(e) {
+        epSelect.innerHTML = '<option value="">Error loading episodes</option>';
+      }
+    }
+
+    function onEpisodeSelected() {
+      const sNum = document.getElementById('s_season_select').value;
+      const eNum = document.getElementById('s_episode_select').value;
+      if (!sNum || !eNum) return;
+
+      const sPad = String(sNum).padStart(2, '0');
+      const ePad = String(eNum).padStart(2, '0');
+      const tag = `S${sPad}E${ePad}`;
+
+      document.getElementById('s_tag').value = tag;
+
+      if (window._currentEpisodes) {
+        const epObj = window._currentEpisodes.find(ep => String(ep.episode_number) === String(eNum));
+        if (epObj) {
+          document.getElementById('s_ep_title').value = epObj.name || `Episode ${eNum}`;
+          window._s_current_ep_plot = epObj.overview || window._s_plot;
+        }
+      }
+    }
+
+    function prepareAddEpisodeToSeries(identifier) {
+      document.getElementById('s_search_query').value = identifier;
+      fetchSeriesTMDB();
+      document.getElementById('s_search_query').scrollIntoView({ behavior: 'smooth' });
+    }
+
     function handleSeriesSubmit(e) {
       e.preventDefault();
       const gId = extractGDriveId(document.getElementById('s_gdrive').value);
+      if (!gId) return showLaserToast('Invalid Google Drive File Link', true);
+
       const stream = `${WORKER_BASE}${gId}${USER_AGENT}`;
       const title = document.getElementById('s_title').value;
       const tag = document.getElementById('s_tag').value.trim();
       const epTitle = document.getElementById('s_ep_title').value.trim();
+      const sNum = parseInt(tag.match(/s(\d+)/i)?.[1] || 1);
+      const eNum = parseInt(tag.match(/e(\d+)/i)?.[1] || 1);
 
-      const entry = {
+      const epObject = {
         id: gId,
-        name: `${title} - ${tag} - ${epTitle || 'Episode'}.mkv`,
-        title: `${title} - ${tag}`,
-        original_title: title,
-        year: parseInt(document.getElementById('s_year').value) || 0,
-        tmdb_id: window._s_tmdb || 0,
-        rating: 8.0,
-        plot: window._s_plot || "",
-        poster: window._s_poster || "",
-        fanart: window._s_fanart || "",
-        logo: "",
-        trailer: { youtube_url: "" },
+        name: `${title} - ${tag} - ${epTitle}.mkv`,
+        title: `${tag} - ${epTitle}`,
+        season: sNum,
+        episode: eNum,
+        plot: window._s_current_ep_plot || window._s_plot || "",
         stream_url: stream,
-        badges: { quality: "https://img.icons8.com/color/96/full-hd.png", source: "https://img.icons8.com/ios-filled/100/ffffff/cloud-download.png", audio_format: "https://img.icons8.com/color/96/dolby-digital.png", audio_channels: "https://img.icons8.com/ios-filled/100/ffffff/5-1.png" },
-        specs: { resolution: "1080p FHD", source: "WEB-DL", codec: "H.264", audio: "Dolby Digital Plus", channels: "5.1" },
-        versions: [{ id: gId, name: `${title} ${tag}`, quality: "1080p", source: "WEB-DL", codec: "H.264", resolution: "1080p FHD", audio: "Dolby Digital Plus", channels: "5.1", stream_url: stream, specs: { resolution: "1080p FHD", source: "WEB-DL", codec: "H.264", audio: "Dolby Digital Plus", channels: "5.1" } }]
+        specs: { resolution: "1080p FHD", source: "WEB-DL", codec: "H.264", audio: "Dolby Digital Plus", channels: "5.1" }
       };
 
-      openPreviewModal('chunks/data_c02.json', entry, stream, `${title} (${tag})`, seriesData, false);
+      let existingShow = seriesData.find(s => String(s.tmdb_id) === String(window._s_tmdb) || s.title === title);
+
+      if (existingShow) {
+        existingShow.episodes = existingShow.episodes || [];
+        existingShow.episodes.push(epObject);
+        openPreviewModal('chunks/data_c02.json', existingShow, stream, `${title} (Added ${tag})`, seriesData, true);
+      } else {
+        const newShow = {
+          id: `tv_${window._s_tmdb}`,
+          title: title,
+          original_title: title,
+          year: parseInt(document.getElementById('s_year').value) || 0,
+          tmdb_id: window._s_tmdb || 0,
+          rating: 8.5,
+          plot: window._s_plot || "",
+          poster: window._s_poster || "",
+          fanart: window._s_fanart || "",
+          logo: "",
+          episodes: [epObject]
+        };
+        openPreviewModal('chunks/data_c02.json', newShow, stream, `${title} (${tag})`, seriesData, false);
+      }
     }
 
     /* 3. iTUNES SONGS DISCOVERY */
@@ -1811,7 +1802,122 @@
       openPreviewModal('chunks/data_c03.json', entry, stream, title, songsData, false);
     }
 
-    /* DIRECT COMMIT ENGINE WITH LASER POPUPS */
+    /* 4. YOUTUBE VAULT */
+    function autoFetchYTMetadata() {
+      clearTimeout(ytDebounceTimeout);
+      const val = document.getElementById('yt_url').value.trim();
+      const hint = document.getElementById('yt_fetch_hint');
+      const submitBtn = document.getElementById('btn_vault_submit');
+
+      const playlistId = extractYTPlaylistId(val);
+      if (playlistId) {
+        hint.textContent = `📋 Detected Playlist (ID: ${playlistId}). Ready for batch import!`;
+        hint.style.color = 'var(--laser-cyan)';
+        submitBtn.textContent = 'BATCH IMPORT ENTIRE PLAYLIST';
+        document.getElementById('yt_title').value = `Playlist: ${playlistId}`;
+        return;
+      }
+
+      submitBtn.textContent = 'ADD TO YOUTUBE VAULT';
+      const ytId = extractYTId(val);
+      if (!ytId) {
+        hint.textContent = 'Paste single video link or full playlist URL';
+        hint.style.color = 'var(--text-dim)';
+        return;
+      }
+
+      hint.textContent = 'Fetching official YouTube Title...';
+      hint.style.color = 'var(--laser-cyan)';
+
+      ytDebounceTimeout = setTimeout(async () => {
+        try {
+          const res = await fetch(`https://noembed.com/embed?url=https://www.youtube.com/watch?v=${ytId}`);
+          const data = await res.json();
+          if (data && data.title) {
+            document.getElementById('yt_title').value = data.title;
+            hint.textContent = `Auto-Fetched: "${data.title}"`;
+            hint.style.color = 'var(--laser-green)';
+          }
+        } catch(e) {
+          hint.textContent = 'Could not auto-fetch title. You can type manually.';
+          hint.style.color = 'var(--text-dim)';
+        }
+      }, 300);
+    }
+
+    async function handleVaultSubmit(e) {
+      e.preventDefault();
+      const val = document.getElementById('yt_url').value.trim();
+      const cat = document.getElementById('yt_category').value;
+      const playlistId = extractYTPlaylistId(val);
+
+      if (playlistId) {
+        const hint = document.getElementById('yt_fetch_hint');
+        hint.textContent = 'Extracting playlist tracks via Proxy...';
+        hint.style.color = 'var(--laser-cyan)';
+
+        const proxies = [
+          `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`)}`,
+          `https://corsproxy.io/?${encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`)}`
+        ];
+
+        let xmlText = null;
+        for (let pUrl of proxies) {
+          try {
+            const res = await fetch(pUrl);
+            if (res.ok) {
+              xmlText = await res.text();
+              if (xmlText && xmlText.includes('<entry>')) break;
+            }
+          } catch(err) {}
+        }
+
+        if (xmlText && xmlText.includes('<entry>')) {
+          const parser = new DOMParser();
+          const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+          const entries = xmlDoc.getElementsByTagName("entry");
+
+          const batchList = [];
+          for (let i = 0; i < entries.length; i++) {
+            const vidId = entries[i].getElementsByTagName("yt:videoId")[0]?.textContent;
+            const vTitle = entries[i].getElementsByTagName("title")[0]?.textContent || `Track ${i+1}`;
+            if (vidId) {
+              batchList.push({
+                id: `yt_${vidId}`,
+                title: vTitle,
+                category: cat,
+                thumbnail: `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`,
+                stream_url: `plugin://plugin.video.youtube/play/?video_id=${vidId}`
+              });
+            }
+          }
+
+          if (batchList.length > 0) {
+            openPreviewModal('chunks/data_c04.json', batchList, `Batch Importing ${batchList.length} Tracks`, `Playlist: ${playlistId} (${batchList.length} Videos)`, vaultData, false, true);
+            return;
+          }
+        }
+
+        showLaserToast('Could not fetch playlist feed. Saving single link.', true);
+      }
+
+      const ytId = extractYTId(val);
+      const title = document.getElementById('yt_title').value.trim();
+      const stream = `plugin://plugin.video.youtube/play/?video_id=${ytId}`;
+      const thumbnail = `https://img.youtube.com/vi/${ytId}/maxresdefault.jpg`;
+
+      const entry = {
+        id: `yt_${ytId}`,
+        title: title,
+        category: cat,
+        thumbnail: thumbnail,
+        stream_url: stream
+      };
+
+      openPreviewModal('chunks/data_c04.json', entry, stream, title, vaultData, false);
+    }
+
+    /* DIRECT COMMIT ENGINE */
     function openPreviewModal(targetChunk, newEntry, streamUrl, title, activeDataArray, isUpdate = false, isBatch = false) {
       activeStreamUrl = streamUrl;
       pendingCommit = { targetChunk, newEntry, activeDataArray, title, isUpdate, isBatch };
@@ -1835,18 +1941,42 @@
     }
 
     function format18LineCompactJson(list) {
-      const entries = list.map(mv => {
-        if (mv.thumbnail && !mv.versions) {
+      const entries = list.map(item => {
+        // 1. YouTube Vault Format
+        if (item.thumbnail && !item.versions && !item.episodes) {
           return `  {\n` +
-                 `    "id": ${JSON.stringify(mv.id || "")},\n` +
-                 `    "title": ${JSON.stringify(mv.title || "")},\n` +
-                 `    "category": ${JSON.stringify(mv.category || "")},\n` +
-                 `    "thumbnail": ${JSON.stringify(mv.thumbnail || "")},\n` +
-                 `    "stream_url": ${JSON.stringify(mv.stream_url || "")}\n` +
+                 `    "id": ${JSON.stringify(item.id || "")},\n` +
+                 `    "title": ${JSON.stringify(item.title || "")},\n` +
+                 `    "category": ${JSON.stringify(item.category || "")},\n` +
+                 `    "thumbnail": ${JSON.stringify(item.thumbnail || "")},\n` +
+                 `    "stream_url": ${JSON.stringify(item.stream_url || "")}\n` +
                  `  }`;
         }
 
-        const vStrs = (mv.versions || []).map(ver => {
+        // 2. Web Series (Parent Show + Episodes Array)
+        if (item.episodes) {
+          const epsStr = (item.episodes || []).map(ep => {
+            return `      {\n` +
+                   `        "id": ${JSON.stringify(ep.id || "")}, "name": ${JSON.stringify(ep.name || "")}, "title": ${JSON.stringify(ep.title || "")}, "season": ${ep.season || 1}, "episode": ${ep.episode || 1},\n` +
+                   `        "plot": ${JSON.stringify(ep.plot || "")},\n` +
+                   `        "stream_url": ${JSON.stringify(ep.stream_url || "")},\n` +
+                   `        "specs": ${JSON.stringify(ep.specs || {})}\n` +
+                   `      }`;
+          }).join(',\n');
+
+          return `  {\n` +
+                 `    "id": ${JSON.stringify(item.id || "")},\n` +
+                 `    "title": ${JSON.stringify(item.title || "")}, "original_title": ${JSON.stringify(item.original_title || "")}, "year": ${item.year || 0},\n` +
+                 `    "tmdb_id": ${item.tmdb_id || 0}, "rating": ${item.rating || 0},\n` +
+                 `    "plot": ${JSON.stringify(item.plot || "")},\n` +
+                 `    "poster": ${JSON.stringify(item.poster || "")},\n` +
+                 `    "fanart": ${JSON.stringify(item.fanart || "")},\n` +
+                 `    "episodes": [\n${epsStr}\n    ]\n` +
+                 `  }`;
+        }
+
+        // 3. Movies & Songs (Standard Versions Array)
+        const vStrs = (item.versions || []).map(ver => {
           return `      {\n` +
                  `        "id": ${JSON.stringify(ver.id || "")}, "name": ${JSON.stringify(ver.name || "")}, "quality": ${JSON.stringify(ver.quality || "")}, "source": ${JSON.stringify(ver.source || "")}, "codec": ${JSON.stringify(ver.codec || "")}, "resolution": ${JSON.stringify(ver.resolution || "")}, "audio": ${JSON.stringify(ver.audio || "")}, "channels": ${JSON.stringify(ver.channels || "")},\n` +
                  `        "stream_url": ${JSON.stringify(ver.stream_url || "")},\n` +
@@ -1855,18 +1985,18 @@
         }).join(',\n');
 
         return `  {\n` +
-               `    "id": ${JSON.stringify(mv.id || "")},\n` +
-               `    "name": ${JSON.stringify(mv.name || "")},\n` +
-               `    "title": ${JSON.stringify(mv.title || "")}, "original_title": ${JSON.stringify(mv.original_title || "")}, "year": ${mv.year || 0},\n` +
-               `    "tmdb_id": ${mv.tmdb_id || 0}, "imdb_id": ${JSON.stringify(mv.imdb_id || "")}, "imdb_url": ${JSON.stringify(mv.imdb_url || "")}, "rating": ${mv.rating || 0},\n` +
-               `    "plot": ${JSON.stringify(mv.plot || "")},\n` +
-               `    "poster": ${JSON.stringify(mv.poster || "")},\n` +
-               `    "fanart": ${JSON.stringify(mv.fanart || "")},\n` +
-               `    "logo": ${JSON.stringify(mv.logo || "")},\n` +
-               `    "trailer": ${JSON.stringify(mv.trailer || {})},\n` +
-               `    "stream_url": ${JSON.stringify(mv.stream_url || "")},\n` +
-               `    "badges": ${JSON.stringify(mv.badges || {})},\n` +
-               `    "specs": ${JSON.stringify(mv.specs || {})},\n` +
+               `    "id": ${JSON.stringify(item.id || "")},\n` +
+               `    "name": ${JSON.stringify(item.name || "")},\n` +
+               `    "title": ${JSON.stringify(item.title || "")}, "original_title": ${JSON.stringify(item.original_title || "")}, "year": ${item.year || 0},\n` +
+               `    "tmdb_id": ${item.tmdb_id || 0}, "imdb_id": ${JSON.stringify(item.imdb_id || "")}, "imdb_url": ${JSON.stringify(item.imdb_url || "")}, "rating": ${item.rating || 0},\n` +
+               `    "plot": ${JSON.stringify(item.plot || "")},\n` +
+               `    "poster": ${JSON.stringify(item.poster || "")},\n` +
+               `    "fanart": ${JSON.stringify(item.fanart || "")},\n` +
+               `    "logo": ${JSON.stringify(item.logo || "")},\n` +
+               `    "trailer": ${JSON.stringify(item.trailer || {})},\n` +
+               `    "stream_url": ${JSON.stringify(item.stream_url || "")},\n` +
+               `    "badges": ${JSON.stringify(item.badges || {})},\n` +
+               `    "specs": ${JSON.stringify(item.specs || {})},\n` +
                `    "versions": [\n${vStrs}\n    ]\n` +
                `  }`;
       }).join(',\n');
