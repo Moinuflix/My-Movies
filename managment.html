@@ -254,8 +254,8 @@
     }
 
     .smart-input {
-      border-color: rgba(255, 0, 60, 0.4);
-      background: rgba(255, 0, 60, 0.03);
+      border-color: rgba(0, 240, 255, 0.4);
+      background: rgba(0, 240, 255, 0.03);
     }
     .smart-input:focus {
       border-color: var(--laser-cyan);
@@ -273,6 +273,43 @@
       font-family: monospace;
       font-weight: 700;
     }
+
+    /* TMDB Suggestions Container */
+    .tmdb-results-box {
+      display: none;
+      margin-top: 10px;
+      background: #0b0e17;
+      border: 1px solid var(--laser-cyan);
+      box-shadow: 0 0 15px var(--laser-cyan-glow);
+      border-radius: 12px;
+      padding: 12px;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+    .tmdb-result-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+    .tmdb-result-item:hover {
+      background: #141926;
+      border-color: var(--laser-cyan);
+    }
+    .tmdb-result-poster {
+      width: 35px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+      background: #222;
+    }
+    .tmdb-result-info { flex: 1; }
+    .tmdb-result-title { font-weight: 700; color: #fff; font-size: 0.88rem; }
+    .tmdb-result-meta { font-size: 0.75rem; color: var(--text-muted); }
 
     input[readonly] { opacity: 0.6; cursor: not-allowed; border-style: dashed; }
     .input-hint { font-size: 0.8rem; color: var(--text-dim); font-family: monospace; }
@@ -315,26 +352,6 @@
       background: var(--laser-cyan);
       color: #000;
       box-shadow: 0 0 15px var(--laser-cyan-glow);
-    }
-
-    .btn-download-json {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--laser-cyan);
-      border: 1px solid rgba(0, 240, 255, 0.2);
-      padding: 0.75rem 1.25rem;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.25s;
-    }
-
-    .btn-download-json:hover {
-      border-color: var(--laser-cyan);
-      box-shadow: 0 0 10px var(--laser-cyan-glow);
     }
 
     .btn-reset-mode {
@@ -731,7 +748,6 @@
           <h1>Existing Movies Collection</h1>
           <p class="section-desc">Search, fix TMDB metadata, and manage multi-version streams</p>
         </div>
-        <button type="button" class="btn-download-json" onclick="downloadChunk('c01')">Download data_c01.json</button>
       </header>
 
       <div class="search-bar-container">
@@ -741,31 +757,39 @@
       <div class="movies-grid" id="movies-grid-container"></div>
     </section>
 
-    <!-- VIEW: ADD MOVIE FORM WITH SMART FILENAME DETECTOR -->
+    <!-- VIEW: ADD MOVIE FORM WITH SMART FILENAME & TMDB SEARCH -->
     <section id="view-add-movie" class="view-panel">
       <header>
         <div>
           <h1 id="movie-form-title">Add Movie</h1>
-          <p class="section-desc" id="movie-form-desc">Enter TMDB ID and paste release filename to auto-detect specs</p>
+          <p class="section-desc" id="movie-form-desc">Paste raw filename to auto-detect specs and auto-suggest TMDB movie choices</p>
         </div>
       </header>
 
       <div class="form-container">
         <form id="movie-form" onsubmit="handleMovieSubmit(event)">
           <div class="form-grid">
+            
+            <!-- SMART RELEASE NAME PARSER WITH AUTO TMDB SEARCH -->
+            <div class="form-group full-width">
+              <label style="color: var(--laser-cyan);">⚡ Release File Name (Paste .mkv / .mp4 to auto-search & auto-fill)</label>
+              <input type="text" id="input-smart-filename" class="smart-input"
+                     placeholder="e.g. Batman.Begins.2005.1080p.AMZN.WEB-DL.DDP2.0.English-Hindi.H.264-MSD4K.mkv"
+                     oninput="parseSmartFileName(this.value)">
+              
+              <!-- Auto TMDB Suggestions Dropdown Box -->
+              <div id="tmdb-suggestions-box" class="tmdb-results-box">
+                <div style="font-size: 0.75rem; color: var(--laser-cyan); font-weight: 700; margin-bottom: 6px;">🎯 Click your movie to auto-select TMDB ID:</div>
+                <div id="tmdb-suggestions-list"></div>
+              </div>
+
+              <div class="tag-container" id="parsed-smart-tags"></div>
+            </div>
+
             <div class="form-group full-width">
               <label for="input-tmdb-id">TMDB ID</label>
               <input type="number" id="input-tmdb-id" placeholder="e.g. 564147, 823219, 1213243" required oninput="checkTmdbMatch()">
               <div class="input-hint" id="tmdb-match-hint">Auto-fetches English Title, Poster, IMDb, Trailer & Overview</div>
-            </div>
-
-            <!-- SMART RELEASE NAME PARSER -->
-            <div class="form-group full-width">
-              <label style="color: var(--laser-cyan);">⚡ Release File Name (Auto-Detects All Specs Below)</label>
-              <input type="text" id="input-smart-filename" class="smart-input"
-                     placeholder="e.g. Batman.Begins.2005.1080p.AMZN.WEB-DL.DDP2.0.English-Hindi.H.264-MSD4K.mkv"
-                     oninput="parseSmartFileName(this.value)">
-              <div class="tag-container" id="parsed-smart-tags"></div>
             </div>
 
             <div class="form-group">
@@ -856,7 +880,6 @@
           <h1>Web Series (data_c02.json)</h1>
           <p class="section-desc">Manage parent shows, seasons, and episodes with auto dropdown selectors</p>
         </div>
-        <button type="button" class="btn-download-json" onclick="downloadChunk('c02')">Download data_c02.json</button>
       </header>
 
       <div class="form-container">
@@ -917,7 +940,6 @@
           <h1>5.1 Audio & Atmos Songs (data_c03.json)</h1>
           <p class="section-desc">Search movie or album via iTunes discovery with Language Filter</p>
         </div>
-        <button type="button" class="btn-download-json" onclick="downloadChunk('c03')">Download data_c03.json</button>
       </header>
 
       <div class="form-container">
@@ -990,7 +1012,6 @@
           <h1>YouTube Video Vault (data_c04.json)</h1>
           <p class="section-desc">Add Single Video or Entire Playlist link (Auto-Imports All Videos)</p>
         </div>
-        <button type="button" class="btn-download-json" onclick="downloadChunk('c04')">Download data_c04.json</button>
       </header>
 
       <div class="form-container">
@@ -1053,6 +1074,7 @@
     let targetExistingMovie = null;
     let fetchedTmdbMetadata = null;
     let tmdbDebounceTimeout = null;
+    let smartSearchDebounce = null;
     let ytDebounceTimeout = null;
 
     let pendingCommit = null;
@@ -1139,10 +1161,11 @@
       document.getElementById(`view-${panelId}`).classList.add('active');
     }
 
-    /* SMART FILENAME PARSER ENGINE */
+    /* SMART FILENAME PARSER ENGINE + AUTO TMDB SEARCH */
     function parseSmartFileName(filename) {
       if (!filename || filename.trim().length === 0) {
         document.getElementById('parsed-smart-tags').innerHTML = '';
+        document.getElementById('tmdb-suggestions-box').style.display = 'none';
         return;
       }
       const fn = filename.toLowerCase();
@@ -1246,6 +1269,71 @@
 
       const tagBox = document.getElementById('parsed-smart-tags');
       tagBox.innerHTML = tags.map(t => `<span class="smart-tag">✔ ${t}</span>`).join(' ');
+
+      // 6. AUTO TMDB QUERY PARSER (Extract movie title and year from filename)
+      clearTimeout(smartSearchDebounce);
+      smartSearchDebounce = setTimeout(() => {
+        searchMovieFromFilename(filename);
+      }, 350);
+    }
+
+    async function searchMovieFromFilename(rawName) {
+      // Clean dots, dashes and underscores
+      let clean = rawName.replace(/[\._\-]/g, ' ');
+      // Match year (19xx or 20xx)
+      const yearMatch = clean.match(/\b(19\d\d|20\d\d)\b/);
+      let year = yearMatch ? yearMatch[1] : '';
+      let movieTitle = clean;
+
+      if (yearMatch) {
+        movieTitle = clean.substring(0, yearMatch.index).trim();
+      } else {
+        // Cut before known tags if year not found
+        const cutoff = clean.search(/\b(1080p|720p|2160p|4k|bluray|web-dl|webdl|ddp|h264|hevc)\b/i);
+        if (cutoff > 0) movieTitle = clean.substring(0, cutoff).trim();
+      }
+
+      if (!movieTitle || movieTitle.length < 2) return;
+
+      const queryUrl = `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(movieTitle)}${year ? `&year=${year}` : ''}&language=en-US`;
+      try {
+        const res = await fetch(queryUrl);
+        const data = await res.json();
+        const results = data.results || [];
+
+        const box = document.getElementById('tmdb-suggestions-box');
+        const list = document.getElementById('tmdb-suggestions-list');
+        list.innerHTML = '';
+
+        if (results.length > 0) {
+          results.slice(0, 5).forEach(m => {
+            const y = m.release_date ? m.release_date.split('-')[0] : 'N/A';
+            const poster = m.poster_path ? `https://image.tmdb.org/t/p/w92${m.poster_path}` : '';
+            const item = document.createElement('div');
+            item.className = 'tmdb-result-item';
+            item.innerHTML = `
+              ${poster ? `<img src="${poster}" class="tmdb-result-poster">` : '<div class="tmdb-result-poster"></div>'}
+              <div class="tmdb-result-info">
+                <div class="tmdb-result-title">${escapeHtml(m.title)} (${y})</div>
+                <div class="tmdb-result-meta">TMDB ID: <b>${m.id}</b> • ★ ${m.vote_average ? m.vote_average.toFixed(1) : 'N/A'}</div>
+              </div>
+              <button type="button" class="btn-auto-fetch" style="padding: 4px 10px; font-size: 11px;">Select</button>
+            `;
+            item.onclick = () => {
+              document.getElementById('input-tmdb-id').value = m.id;
+              checkTmdbMatch();
+              box.style.display = 'none';
+              showLaserToast(`Selected: "${m.title}" (${y})`);
+            };
+            list.appendChild(item);
+          });
+          box.style.display = 'block';
+        } else {
+          box.style.display = 'none';
+        }
+      } catch(e) {
+        document.getElementById('tmdb-suggestions-box').style.display = 'none';
+      }
     }
 
     async function loadAllChunks() {
@@ -1583,6 +1671,7 @@
       inp.value = '';
       document.getElementById('movie-form').reset();
       document.getElementById('parsed-smart-tags').innerHTML = '';
+      document.getElementById('tmdb-suggestions-box').style.display = 'none';
       document.getElementById('movie-form-title').textContent = 'Add Movie';
       document.getElementById('btn-movie-submit').textContent = 'ADD MOVIE';
       document.getElementById('btn-reset-mode').style.display = 'none';
@@ -2044,7 +2133,7 @@
                 id: `yt_${vidId}`,
                 title: vTitle,
                 category: cat,
-                thumbnail: `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`,
+                thumbnail: `https://img.youtube.com/vi/{vidId}/maxresdefault.jpg`,
                 stream_url: `plugin://plugin.video.youtube/play/?video_id=${vidId}`
               });
             }
@@ -2244,20 +2333,6 @@
       if (!activeStreamUrl) return;
       await navigator.clipboard.writeText(activeStreamUrl);
       showLaserToast('Stream URL copied to clipboard!');
-    }
-
-    function downloadChunk(type) {
-      let list = moviesData;
-      let filename = 'data_c01.json';
-      if (type === 'c02') { list = seriesData; filename = 'data_c02.json'; }
-      if (type === 'c03') { list = songsData; filename = 'data_c03.json'; }
-      if (type === 'c04') { list = vaultData; filename = 'data_c04.json'; }
-
-      const blob = new Blob([format18LineCompactJson(list)], { type: 'application/json' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = filename;
-      a.click();
     }
 
     window.addEventListener('DOMContentLoaded', loadAllChunks);
