@@ -51,48 +51,69 @@ def list_movies():
         
         li = xbmcgui.ListItem(label=title)
         li.setArt({"poster": poster, "thumb": poster, "fanart": fanart})
-        li.setInfo("video", {"title": title, "plot": plot, "mediatype": "movie", "rating": m.get("rating", 0), "year": m.get("year", 2026)})
+        li.setInfo("video", {
+            "title": title,
+            "plot": plot,
+            "mediatype": "movie",
+            "rating": m.get("rating", 0),
+            "year": m.get("year", 2026)
+        })
 
         if len(versions) > 1:
-            li.setLabel(f"{title} [{len(versions)} Qualities]")
-            url = build_url({"mode": "select_version", "title": title})
-            xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=True)
+            # Play mode triggers modal popup dialog instead of opening a directory
+            li.setProperty("IsPlayable", "true")
+            url = build_url({"mode": "play_movie_dialog", "title": title})
+            xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=False)
         elif len(versions) == 1:
             stream = versions[0].get("stream_url", m.get("stream_url", ""))
             li.setProperty("IsPlayable", "true")
-            xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=stream, listitem=li, isFolder=False)
+            url = build_url({"mode": "play_direct", "url": stream, "title": title, "poster": poster})
+            xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=False)
         else:
             stream = m.get("stream_url", "")
             li.setProperty("IsPlayable", "true")
-            xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=stream, listitem=li, isFolder=False)
+            url = build_url({"mode": "play_direct", "url": stream, "title": title, "poster": poster})
+            xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=False)
 
     xbmcplugin.setContent(ADDON_HANDLE, "movies")
     xbmcplugin.endOfDirectory(ADDON_HANDLE)
 
-def select_version(target_title):
+def play_movie_dialog(target_title):
     movies = fetch_json("data_c01.json")
-    for m in movies:
-        title = m.get("title", m.get("name", ""))
-        if title == target_title:
-            versions = m.get("versions", [])
-            poster = m.get("poster", "")
-            fanart = m.get("fanart", "")
-            plot = m.get("plot", "")
-            
-            for v in versions:
-                q_label = v.get("quality", "HD")
-                audio = v.get("audio", "Stereo")
-                item_label = f"{title} ({q_label} - {audio})"
-                stream = v.get("stream_url", "")
-                
-                li = xbmcgui.ListItem(label=item_label)
-                li.setArt({"poster": poster, "thumb": poster, "fanart": fanart})
-                li.setInfo("video", {"title": item_label, "plot": plot, "mediatype": "movie"})
-                li.setProperty("IsPlayable", "true")
-                xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=stream, listitem=li, isFolder=False)
-                
-    xbmcplugin.setContent(ADDON_HANDLE, "movies")
-    xbmcplugin.endOfDirectory(ADDON_HANDLE)
+    target_movie = next((m for m in movies if (m.get("title") or m.get("name")) == target_title), None)
+    if not target_movie:
+        return
+
+    versions = target_movie.get("versions", [])
+    if not versions:
+        stream = target_movie.get("stream_url", "")
+        play_stream(stream, target_title, target_movie.get("poster", ""))
+        return
+
+    if len(versions) == 1:
+        stream = versions[0].get("stream_url", target_movie.get("stream_url", ""))
+        play_stream(stream, target_title, target_movie.get("poster", ""))
+        return
+
+    dialog_labels = []
+    for v in versions:
+        q_label = v.get("quality", v.get("resolution", "HD"))
+        audio = v.get("audio", "Stereo")
+        channels = v.get("channels", "")
+        audio_str = f"{audio} {channels}".strip()
+        dialog_labels.append(f"{q_label} • {audio_str}")
+
+    dialog = xbmcgui.Dialog()
+    selected_index = dialog.select(f"Select Quality - {target_title}", dialog_labels)
+    if selected_index >= 0:
+        chosen_stream = versions[selected_index].get("stream_url", "")
+        play_stream(chosen_stream, target_title, target_movie.get("poster", ""))
+
+def play_stream(stream_url, title, poster=""):
+    li = xbmcgui.ListItem(label=title, path=stream_url)
+    li.setArt({"poster": poster, "thumb": poster})
+    li.setInfo("video", {"title": title, "mediatype": "movie"})
+    xbmcplugin.setResolvedUrl(ADDON_HANDLE, True, li)
 
 def list_series():
     shows = fetch_json("data_c02.json")
@@ -124,7 +145,8 @@ def list_episodes(tmdb_id):
         li.setArt({"poster": poster, "thumb": poster, "fanart": fanart})
         li.setInfo("video", {"title": title, "plot": ep.get("plot", ""), "mediatype": "episode"})
         li.setProperty("IsPlayable", "true")
-        xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=stream, listitem=li, isFolder=False)
+        url = build_url({"mode": "play_direct", "url": stream, "title": title, "poster": poster})
+        xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=False)
     xbmcplugin.setContent(ADDON_HANDLE, "episodes")
     xbmcplugin.endOfDirectory(ADDON_HANDLE)
 
@@ -138,7 +160,8 @@ def list_songs():
         li.setArt({"thumb": poster, "poster": poster, "fanart": poster})
         li.setInfo("music", {"title": title})
         li.setProperty("IsPlayable", "true")
-        xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=stream, listitem=li, isFolder=False)
+        url = build_url({"mode": "play_direct", "url": stream, "title": title, "poster": poster})
+        xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=False)
     xbmcplugin.setContent(ADDON_HANDLE, "songs")
     xbmcplugin.endOfDirectory(ADDON_HANDLE)
 
@@ -152,7 +175,8 @@ def list_vault():
         li.setArt({"thumb": thumb, "poster": thumb, "fanart": thumb})
         li.setInfo("video", {"title": title})
         li.setProperty("IsPlayable", "true")
-        xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=stream, listitem=li, isFolder=False)
+        url = build_url({"mode": "play_direct", "url": stream, "title": title, "poster": thumb})
+        xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=False)
     xbmcplugin.setContent(ADDON_HANDLE, "videos")
     xbmcplugin.endOfDirectory(ADDON_HANDLE)
 
@@ -167,7 +191,8 @@ def list_recent():
         li.setArt({"poster": poster, "thumb": poster})
         li.setInfo("video", {"title": title, "mediatype": "movie"})
         li.setProperty("IsPlayable", "true")
-        xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=stream, listitem=li, isFolder=False)
+        url = build_url({"mode": "play_direct", "url": stream, "title": title, "poster": poster})
+        xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=False)
     xbmcplugin.setContent(ADDON_HANDLE, "movies")
     xbmcplugin.endOfDirectory(ADDON_HANDLE)
 
@@ -179,7 +204,8 @@ if __name__ == "__main__":
     params = dict(urllib.parse.parse_qsl(qs))
     mode = params.get("mode")
     if mode == "list_movies": list_movies()
-    elif mode == "select_version": select_version(params.get("title", ""))
+    elif mode == "play_movie_dialog": play_movie_dialog(params.get("title", ""))
+    elif mode == "play_direct": play_stream(params.get("url", ""), params.get("title", ""), params.get("poster", ""))
     elif mode == "list_series": list_series()
     elif mode == "episodes": list_episodes(params.get("tmdb_id", ""))
     elif mode == "list_songs": list_songs()
