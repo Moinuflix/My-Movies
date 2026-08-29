@@ -3,6 +3,7 @@ import sys
 import json
 import urllib.request
 import urllib.parse
+import re
 import xbmc
 import xbmcgui
 import xbmcplugin
@@ -28,6 +29,33 @@ def fetch_json(filename):
 def get_clean_title(item):
     return item.get("title") or item.get("name") or "Unknown"
 
+def extract_trailer_url(item):
+    t = item.get("trailer")
+    yt_id = ""
+    if isinstance(t, dict):
+        raw = t.get("youtube_url") or t.get("url") or ""
+    elif isinstance(t, str):
+        raw = t
+    else:
+        raw = ""
+    
+    if not raw:
+        return ""
+        
+    if "plugin://plugin.video.youtube" in raw:
+        return raw
+
+    # Match 11 char youtube video ID
+    match = re.search(r"(?:v=|\/|youtu\.be\/)([a-zA-Z0-9_-]{11})", raw)
+    if match:
+        yt_id = match.group(1)
+    elif len(raw.strip()) == 11:
+        yt_id = raw.strip()
+
+    if yt_id:
+        return f"plugin://plugin.video.youtube/play/?video_id={yt_id}"
+    return raw
+
 def main_menu():
     categories = [
         ("🎬 Movies", "list_movies"),
@@ -45,8 +73,6 @@ def main_menu():
 
 def list_movies():
     movies = fetch_json("data_c01.json")
-    
-    # Clean unique grouping
     movie_dict = {}
     for m in movies:
         t = get_clean_title(m)
@@ -59,19 +85,24 @@ def list_movies():
         poster = m.get("poster", "")
         fanart = m.get("fanart", "")
         plot = m.get("plot", "")
+        trailer_url = extract_trailer_url(m)
         
         li = xbmcgui.ListItem(label=title)
         li.setArt({"poster": poster, "thumb": poster, "fanart": fanart})
-        li.setInfo("video", {
+        
+        info_labels = {
             "title": title,
             "plot": plot,
             "mediatype": "movie",
-            "rating": m.get("rating", 0),
-            "year": m.get("year", 2026)
-        })
+            "rating": float(m.get("rating", 0) or 0),
+            "year": int(m.get("year", 2026) or 2026)
+        }
+        if trailer_url:
+            info_labels["trailer"] = trailer_url
+
+        li.setInfo("video", info_labels)
         li.setProperty("IsPlayable", "true")
 
-        # Pass target title to popup selector
         url = build_url({"mode": "play_movie_dialog", "title": title})
         xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=False)
 
@@ -80,9 +111,8 @@ def list_movies():
 
 def play_movie_dialog(target_title):
     movies = fetch_json("data_c01.json")
-    
-    # Collect all matches and sub-versions
     matched_streams = []
+    
     for m in movies:
         if get_clean_title(m) == target_title:
             versions = m.get("versions", [])
@@ -141,9 +171,15 @@ def list_series():
         title = s.get("title", "Series")
         poster = s.get("poster", "")
         fanart = s.get("fanart", "")
+        trailer_url = extract_trailer_url(s)
+        
         li = xbmcgui.ListItem(label=title)
         li.setArt({"poster": poster, "thumb": poster, "fanart": fanart})
-        li.setInfo("video", {"title": title, "plot": s.get("plot", ""), "mediatype": "tvshow"})
+        info_labels = {"title": title, "plot": s.get("plot", ""), "mediatype": "tvshow"}
+        if trailer_url:
+            info_labels["trailer"] = trailer_url
+            
+        li.setInfo("video", info_labels)
         url = build_url({"mode": "episodes", "tmdb_id": str(s.get("tmdb_id", ""))})
         xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=True)
     xbmcplugin.setContent(ADDON_HANDLE, "tvshows")
