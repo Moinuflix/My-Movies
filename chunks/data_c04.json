@@ -1,5 +1,125 @@
 [
   {
+    "id": "sun_news_live",
+    "title": "Sun News 24x7 Live HD",
+    "category": "Live News",
+    "thumbnail": "https://i.ytimg.com/vi/aCg3j7l_s1Q/hqdefault.jpg",
+    "stream_url": "plugin://plugin.video.youtube/play/?video_id=aCg3j7l_s1Q",
+    "specs": {
+      "type": "24x7 Live News",
+      "channel": "Sun TV Network",
+      "language": "Tamil"
+    }
+  },
+  {
+    "id": "polimer_news_live",
+    "title": "Polimer News Live 24x7",
+    "category": "Live News",
+    "thumbnail": "https://i.ytimg.com/vi/JPVx7HyidPE/hqdefault.jpg",
+    "stream_url": "plugin://plugin.video.youtube/play/?video_id=JPVx7HyidPE",
+    "specs": {
+      "type": "24x7 Live News",
+      "channel": "Polimer News",
+      "language": "Tamil"
+    }
+  },
+  {
+    "id": "thanthi_tv_live",
+    "title": "Thanthi TV 24x7 Live News",
+    "category": "Live News",
+    "thumbnail": "https://i.ytimg.com/vi/2N0l9b6vX-s/hqdefault.jpg",
+    "stream_url": "plugin://plugin.video.youtube/play/?video_id=2N0l9b6vX-s",
+    "specs": {
+      "type": "24x7 Live News",
+      "channel": "Thanthi TV",
+      "language": "Tamil"
+    }
+  },
+  {
+    "id": "news7_tamil_live",
+    "title": "News 7 Tamil Live 24x7",
+    "category": "Live News",
+    "thumbnail": "https://i.ytimg.com/vi/gK3XJ6_1pAQ/hqdefault.jpg",
+    "stream_url": "plugin://plugin.video.youtube/play/?video_id=gK3XJ6_1pAQ",
+    "specs": {
+      "type": "24x7 Live News",
+      "channel": "News7 Tamil",
+      "language": "Tamil"
+    }
+  },
+  {
+    "id": "puthiyathalaimurai_live",
+    "title": "Puthiya Thalaimurai TV Live",
+    "category": "Live News",
+    "thumbnail": "https://i.ytimg.com/vi/l7v3Q_E9Lsk/hqdefault.jpg",
+    "stream_url": "plugin://plugin.video.youtube/play/?video_id=l7v3Q_E9Lsk",
+    "specs": {
+      "type": "24x7 Live News",
+      "channel": "Puthiya Thalaimurai",
+      "language": "Tamil"
+    }
+  },
+  {
+    "id": "news18_tamil_live",
+    "title": "News18 Tamil Nadu Live",
+    "category": "Live News",
+    "thumbnail": "https://i.ytimg.com/vi/u1k2_78kLA4/hqdefault.jpg",
+    "stream_url": "plugin://plugin.video.youtube/play/?video_id=u1k2_78kLA4",
+    "specs": {
+      "type": "24x7 Live News",
+      "channel": "News18 Network",
+      "language": "Tamil"
+    }
+  },
+  {
+    "id": "newstamil_24x7_live",
+    "title": "News Tamil 24x7 Live",
+    "category": "Live News",
+    "thumbnail": "https://i.ytimg.com/vi/EbrSoqsm-e4/hqdefault.jpg",
+    "stream_url": "plugin://plugin.video.youtube/play/?video_id=EbrSoqsm-e4",
+    "specs": {
+      "type": "24x7 Live News",
+      "channel": "News Tamil 24x7",
+      "language": "Tamil"
+    }
+  },
+  {
+    "id": "sathiyam_tv_live",
+    "title": "Sathiyam News 24x7 Live",
+    "category": "Live News",
+    "thumbnail": "https://i.ytimg.com/vi/o08y_A9J87w/hqdefault.jpg",
+    "stream_url": "plugin://plugin.video.youtube/play/?video_id=o08y_A9J87w",
+    "specs": {
+      "type": "24x7 Live News",
+      "channel": "Sathiyam TV",
+      "language": "Tamil"
+    }
+  },
+  {
+    "id": "kalaignar_seithigal_live",
+    "title": "Kalaignar Seithigal 24x7 Live",
+    "category": "Live News",
+    "thumbnail": "https://i.ytimg.com/vi/v5_37hL8-qE/hqdefault.jpg",
+    "stream_url": "plugin://plugin.video.youtube/play/?video_id=v5_37hL8-qE",
+    "specs": {
+      "type": "24x7 Live News",
+      "channel": "Kalaignar TV",
+      "language": "Tamil"
+    }
+  },
+  {
+    "id": "jaya_plus_live",
+    "title": "Jaya Plus 24x7 News Live",
+    "category": "Live News",
+    "thumbnail": "https://i.ytimg.com/vi/9x0s-Kj92_k/hqdefault.jpg",
+    "stream_url": "plugin://plugin.video.youtube/play/?video_id=9x0s-Kj92_k",
+    "specs": {
+      "type": "24x7 Live News",
+      "channel": "Jaya TV Network",
+      "language": "Tamil"
+    }
+  },
+  {
     "id": "2l3bZTyuh5g",
     "title": "Who is that Blacksheep? | Enthiran | Rajinikanth, Aishwarya Rai, Shankar | Sneak Peek | SUN NXT",
     "category": "Iconic Scenes",
