@@ -1,5 +1,26 @@
 [
   {
+    "id": "1GpxbKc5hMoU7NvV7fFGOtqLRi9I764CS",
+    "name": "Anbe Diana (2026) [1080p] [H.264] [Dolby Atmos].mkv",
+    "title": "Anbe Diana", "original_title": "அன்பே டயானா", "year": 2026,
+    "tmdb_id": 1607634, "imdb_id": "tt39300072", "imdb_url": "https://www.imdb.com/title/tt39300072/", "rating": 7.5,
+    "plot": "Follows the chaotic love story between a Telugu boy in Perambur and an Anglo Indian girl.",
+    "poster": "https://image.tmdb.org/t/p/w500/201CEvG6ayNj71iSLxxEk7pUv0N.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/l4xqxKS7nlOni6bnTHWi3USyp4o.jpg",
+    "logo": "",
+    "trailer": {"youtube_url":""},
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1GpxbKc5hMoU7NvV7fFGOtqLRi9I764CS|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "badges": {"quality":"https://img.icons8.com/color/96/full-hd.png","source":"https://img.icons8.com/ios-filled/100/ffffff/cloud-download.png","audio_format":"https://img.icons8.com/color/96/dolby-digital.png","audio_channels":"https://img.icons8.com/ios-filled/100/ffffff/5-1.png"},
+    "specs": {"resolution":"1080p FHD","source":"WEB-DL","codec":"H.264","audio":"Dolby Atmos","channels":"5.1"},
+    "versions": [
+      {
+        "id": "1GpxbKc5hMoU7NvV7fFGOtqLRi9I764CS", "name": "Anbe Diana (2026) [1080p] [H.264] [Dolby Atmos].mkv", "quality": "1080p", "source": "WEB-DL", "codec": "H.264", "resolution": "1080p FHD", "audio": "Dolby Atmos", "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1GpxbKc5hMoU7NvV7fFGOtqLRi9I764CS|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {"resolution":"1080p FHD","source":"WEB-DL","codec":"H.264","audio":"Dolby Atmos","channels":"5.1"}
+      }
+    ]
+  },
+  {
     "id": "1PfF9Arp4byCVlg_a7_549LCgXaPJuCRK",
     "name": "Jana Nayagan (2026) 2160p ZEE5 WEB-DL HDR HEVC x265 [Tamil (DD+ 5.1 - 192kbps)] ESub.mkv",
     "title": "Jana Nayagan", "original_title": "Jana Nayagan", "year": 2026,
