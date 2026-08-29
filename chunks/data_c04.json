@@ -1,37 +1,72 @@
 [
   {
-    "id": "yt__ecKPUqvhWk",
-    "title": "The Ultimate Hacking Scene - Kee | Jiiva | Anaika Soti | Sun NXT",
-    "category": "Action",
-    "thumbnail": "https://img.youtube.com/vi/_ecKPUqvhWk/maxresdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=_ecKPUqvhWk"
+    "id": "1sW595-AwHA",
+    "title": "Vadivelu Iconic Comedy Rally | Winner, Friends & Pokkiri | Sun NXT",
+    "actor": "Vadivelu",
+    "category": "Comedy",
+    "quality": "1080p FHD",
+    "thumbnail": "https://img.youtube.com/vi/1sW595-AwHA/maxresdefault.jpg",
+    "stream_url": "plugin://plugin.video.youtube/play/?video_id=1sW595-AwHA",
+    "specs": {
+      "resolution": "1080p FHD",
+      "source": "YouTube Vault",
+      "audio": "Stereo"
+    }
   },
   {
-    "id": "yt_pvJV_GrJFJ4",
-    "title": "Playlist: PLjUvk9Kf8fc9muGxrkZMwBc4ViZJhhjSU",
+    "id": "QS3AZ6T7smI",
+    "title": "Santhanam Non-Stop Ultimate Comedy Galatta | Vaamanan | Sun NXT",
+    "actor": "Santhanam",
     "category": "Comedy",
-    "thumbnail": "https://img.youtube.com/vi/pvJV_GrJFJ4/maxresdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=pvJV_GrJFJ4"
+    "quality": "1080p FHD",
+    "thumbnail": "https://img.youtube.com/vi/QS3AZ6T7smI/maxresdefault.jpg",
+    "stream_url": "plugin://plugin.video.youtube/play/?video_id=QS3AZ6T7smI",
+    "specs": {
+      "resolution": "1080p FHD",
+      "source": "YouTube Vault",
+      "audio": "Stereo"
+    }
   },
   {
-    "id": "yt_pvJV_GrJFJ4",
-    "title": "Kanchana 2  - Back to Back Horror Comedy | Raghava Lawrence | Taapsee | Kovai Sarala | Sun NXT",
+    "id": "7K2HX3_6QaM",
+    "title": "Goundamani & Senthil Legendary Evergreen Comedy | Gentleman & Kadhalan",
+    "actor": "Goundamani & Senthil",
     "category": "Comedy",
-    "thumbnail": "https://img.youtube.com/vi/pvJV_GrJFJ4/maxresdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=pvJV_GrJFJ4"
+    "quality": "1080p FHD",
+    "thumbnail": "https://img.youtube.com/vi/7K2HX3_6QaM/maxresdefault.jpg",
+    "stream_url": "plugin://plugin.video.youtube/play/?video_id=7K2HX3_6QaM",
+    "specs": {
+      "resolution": "1080p FHD",
+      "source": "YouTube Vault",
+      "audio": "Stereo"
+    }
   },
   {
-    "id": "yt_Glgu8oFFXxo",
-    "title": "Back-to-Back Laughs with Redin Kingsley 🤣  | Doctor | Beast | A1 | Rudhran | Sun NXT",
+    "id": "IFKWQMI_tf0",
+    "title": "Vadivelu & Prashanth Non-Stop Comedy Scenes | London | Sun NXT",
+    "actor": "Vadivelu",
     "category": "Comedy",
-    "thumbnail": "https://img.youtube.com/vi/Glgu8oFFXxo/maxresdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=Glgu8oFFXxo"
+    "quality": "1080p FHD",
+    "thumbnail": "https://img.youtube.com/vi/IFKWQMI_tf0/maxresdefault.jpg",
+    "stream_url": "plugin://plugin.video.youtube/play/?video_id=IFKWQMI_tf0",
+    "specs": {
+      "resolution": "1080p FHD",
+      "source": "YouTube Vault",
+      "audio": "Stereo"
+    }
   },
   {
-    "id": "yt_Glgu8oFFXxo",
-    "title": "a1",
+    "id": "Y0lroZxTGGI",
+    "title": "Santhanam Back-to-Back Blockbuster Comedy | Boss Engira Bhaskaran",
+    "actor": "Santhanam",
     "category": "Comedy",
-    "thumbnail": "https://img.youtube.com/vi/Glgu8oFFXxo/maxresdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=Glgu8oFFXxo"
+    "quality": "1080p FHD",
+    "thumbnail": "https://img.youtube.com/vi/Y0lroZxTGGI/maxresdefault.jpg",
+    "stream_url": "plugin://plugin.video.youtube/play/?video_id=Y0lroZxTGGI",
+    "specs": {
+      "resolution": "1080p FHD",
+      "source": "YouTube Vault",
+      "audio": "Stereo"
+    }
   }
 ]
