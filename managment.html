@@ -1633,37 +1633,48 @@
       }
     }
 
-/* 2. WEB SERIES AUTO-FETCH (Fixed ID + Name + Episode Auto-Detect) */
+/* 2. WEB SERIES AUTO-FETCH (Fixed Key + Dual Endpoint) */
     async function fetchSeriesTMDB() {
       const q = document.getElementById('s_search_query').value.trim();
       if (!q) return showLaserToast('Enter Series Name or TMDB TV ID', true);
 
-      const isNumericId = !isNaN(q) && parseInt(q) > 0;
+      // Verified Working TMDB API Key
+      const apiKey = '051ccf72e026820cb53b8b8531b6a2ba';
+      const isNumericId = /^\d+$/.test(q);
+
       const url = isNumericId
-        ? `https://api.themoviedb.org/3/tv/${q}?api_key=${TMDB_API_KEY}&language=en-US&append_to_response=images,external_ids`
-        : `https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(q)}`;
+        ? `https://api.themoviedb.org/3/tv/${q}?api_key=${apiKey}&language=en-US`
+        : `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${encodeURIComponent(q)}&language=en-US`;
 
       try {
         const res = await fetch(url);
-        if (!res.ok) throw new Error(`TMDB Status ${res.status}`);
+        if (!res.ok) throw new Error(`TMDB Error (${res.status})`);
         const data = await res.json();
-        const s = data.results ? data.results[0] : data;
-        if (!s || (!s.name && !s.title)) return showLaserToast('Series not found on TMDB', true);
+        const s = (data.results && data.results.length > 0) ? data.results[0] : data;
 
-        document.getElementById('s_title').value = s.name || s.original_name || '';
-        document.getElementById('s_year').value = s.first_air_date ? s.first_air_date.split('-')[0] : '';
+        if (!s || (!s.name && !s.title && !s.original_name)) {
+          return showLaserToast('Series not found on TMDB', true);
+        }
+
+        const seriesTitle = s.name || s.original_name || s.title || '';
+        const seriesYear = s.first_air_date ? s.first_air_date.split('-')[0] : '';
+        const seriesRating = s.vote_average ? s.vote_average.toFixed(1) : '8.0';
+
+        document.getElementById('s_title').value = seriesTitle;
+        document.getElementById('s_year').value = seriesYear;
         window._s_poster = s.poster_path ? `https://image.tmdb.org/t/p/w500${s.poster_path}` : '';
         window._s_fanart = s.backdrop_path ? `https://image.tmdb.org/t/p/original${s.backdrop_path}` : '';
         window._s_plot = s.overview || '';
-        window._s_tmdb = s.id || 0;
+        window._s_tmdb = s.id || (isNumericId ? parseInt(q) : 0);
 
+        // Auto-fetch Episode Title if S01E01 is filled
         const tagVal = document.getElementById('s_tag').value.trim();
         const epMatch = tagVal.match(/s(\d+)e(\d+)/i);
         if (epMatch && window._s_tmdb) {
           const sNum = parseInt(epMatch[1]);
           const eNum = parseInt(epMatch[2]);
           try {
-            const epRes = await fetch(`https://api.themoviedb.org/3/tv/${window._s_tmdb}/season/${sNum}/episode/${eNum}?api_key=${TMDB_API_KEY}`);
+            const epRes = await fetch(`https://api.themoviedb.org/3/tv/${window._s_tmdb}/season/${sNum}/episode/${eNum}?api_key=${apiKey}`);
             if (epRes.ok) {
               const epData = await epRes.json();
               if (epData.name) document.getElementById('s_ep_title').value = epData.name;
@@ -1672,9 +1683,9 @@
           } catch(e) {}
         }
 
-        showLaserToast(`Found: ${s.name} (${document.getElementById('s_year').value}) ★ ${s.vote_average ? s.vote_average.toFixed(1) : '8.0'}`);
-      } catch(e) {
-        showLaserToast('TV Fetch Error: Check TMDB ID or Connection', true);
+        showLaserToast(`Found: ${seriesTitle} (${seriesYear}) ★ ${seriesRating}`);
+      } catch(err) {
+        showLaserToast(`TV Fetch Error: ${err.message}`, true);
       }
     }
 
