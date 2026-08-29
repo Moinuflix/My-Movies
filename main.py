@@ -25,6 +25,9 @@ def fetch_json(filename):
         xbmc.log("[MoinuFlix] Error loading " + filename + ": " + str(e), xbmc.LOGERROR)
         return []
 
+def get_clean_title(item):
+    return item.get("title") or item.get("name") or "Unknown"
+
 def main_menu():
     categories = [
         ("🎬 Movies", "list_movies"),
@@ -42,12 +45,20 @@ def main_menu():
 
 def list_movies():
     movies = fetch_json("data_c01.json")
+    
+    # Clean unique grouping
+    movie_dict = {}
     for m in movies:
-        title = m.get("title", m.get("name", "Movie"))
+        t = get_clean_title(m)
+        if t not in movie_dict:
+            movie_dict[t] = []
+        movie_dict[t].append(m)
+
+    for title, items in movie_dict.items():
+        m = items[0]
         poster = m.get("poster", "")
         fanart = m.get("fanart", "")
         plot = m.get("plot", "")
-        versions = m.get("versions", [])
         
         li = xbmcgui.ListItem(label=title)
         li.setArt({"poster": poster, "thumb": poster, "fanart": fanart})
@@ -58,61 +69,70 @@ def list_movies():
             "rating": m.get("rating", 0),
             "year": m.get("year", 2026)
         })
+        li.setProperty("IsPlayable", "true")
 
-        if len(versions) > 1:
-            # Play mode triggers modal popup dialog instead of opening a directory
-            li.setProperty("IsPlayable", "true")
-            url = build_url({"mode": "play_movie_dialog", "title": title})
-            xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=False)
-        elif len(versions) == 1:
-            stream = versions[0].get("stream_url", m.get("stream_url", ""))
-            li.setProperty("IsPlayable", "true")
-            url = build_url({"mode": "play_direct", "url": stream, "title": title, "poster": poster})
-            xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=False)
-        else:
-            stream = m.get("stream_url", "")
-            li.setProperty("IsPlayable", "true")
-            url = build_url({"mode": "play_direct", "url": stream, "title": title, "poster": poster})
-            xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=False)
+        # Pass target title to popup selector
+        url = build_url({"mode": "play_movie_dialog", "title": title})
+        xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=False)
 
     xbmcplugin.setContent(ADDON_HANDLE, "movies")
     xbmcplugin.endOfDirectory(ADDON_HANDLE)
 
 def play_movie_dialog(target_title):
     movies = fetch_json("data_c01.json")
-    target_movie = next((m for m in movies if (m.get("title") or m.get("name")) == target_title), None)
-    if not target_movie:
+    
+    # Collect all matches and sub-versions
+    matched_streams = []
+    for m in movies:
+        if get_clean_title(m) == target_title:
+            versions = m.get("versions", [])
+            if versions:
+                for v in versions:
+                    q = v.get("quality") or v.get("resolution") or (v.get("specs") or {}).get("resolution", "HD")
+                    a = v.get("audio") or (v.get("specs") or {}).get("audio", "")
+                    ch = v.get("channels") or (v.get("specs") or {}).get("channels", "")
+                    label = f"{q} • {a} {ch}".strip().strip("•")
+                    matched_streams.append({
+                        "label": label if label else "Default Quality",
+                        "url": v.get("stream_url", ""),
+                        "poster": m.get("poster", "")
+                    })
+            else:
+                specs = m.get("specs", {})
+                q = specs.get("resolution") or m.get("quality", "HD")
+                a = specs.get("audio") or m.get("audio", "")
+                ch = specs.get("channels") or m.get("channels", "")
+                label = f"{q} • {a} {ch}".strip().strip("•")
+                matched_streams.append({
+                    "label": label if label else "Default Quality",
+                    "url": m.get("stream_url", ""),
+                    "poster": m.get("poster", "")
+                })
+
+    if not matched_streams:
+        xbmcplugin.setResolvedUrl(ADDON_HANDLE, False, xbmcgui.ListItem())
         return
 
-    versions = target_movie.get("versions", [])
-    if not versions:
-        stream = target_movie.get("stream_url", "")
-        play_stream(stream, target_title, target_movie.get("poster", ""))
+    if len(matched_streams) == 1:
+        chosen = matched_streams[0]
+        play_stream(chosen["url"], target_title, chosen["poster"])
         return
 
-    if len(versions) == 1:
-        stream = versions[0].get("stream_url", target_movie.get("stream_url", ""))
-        play_stream(stream, target_title, target_movie.get("poster", ""))
-        return
-
-    dialog_labels = []
-    for v in versions:
-        q_label = v.get("quality", v.get("resolution", "HD"))
-        audio = v.get("audio", "Stereo")
-        channels = v.get("channels", "")
-        audio_str = f"{audio} {channels}".strip()
-        dialog_labels.append(f"{q_label} • {audio_str}")
-
+    dialog_labels = [item["label"] for item in matched_streams]
     dialog = xbmcgui.Dialog()
     selected_index = dialog.select(f"Select Quality - {target_title}", dialog_labels)
+    
     if selected_index >= 0:
-        chosen_stream = versions[selected_index].get("stream_url", "")
-        play_stream(chosen_stream, target_title, target_movie.get("poster", ""))
+        chosen = matched_streams[selected_index]
+        play_stream(chosen["url"], target_title, chosen["poster"])
+    else:
+        xbmcplugin.setResolvedUrl(ADDON_HANDLE, False, xbmcgui.ListItem())
 
 def play_stream(stream_url, title, poster=""):
     li = xbmcgui.ListItem(label=title, path=stream_url)
     li.setArt({"poster": poster, "thumb": poster})
     li.setInfo("video", {"title": title, "mediatype": "movie"})
+    li.setProperty("IsPlayable", "true")
     xbmcplugin.setResolvedUrl(ADDON_HANDLE, True, li)
 
 def list_series():
@@ -183,7 +203,7 @@ def list_vault():
 def list_recent():
     movies = fetch_json("data_c01.json")
     for m in movies[:15]:
-        title = m.get("title", "Movie")
+        title = get_clean_title(m)
         poster = m.get("poster", "")
         versions = m.get("versions", [])
         stream = versions[0].get("stream_url", m.get("stream_url", "")) if versions else m.get("stream_url", "")
