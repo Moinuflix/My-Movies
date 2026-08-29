@@ -1,5 +1,26 @@
 [
   {
+    "id": "1abawJdpoaqct7Pb-7SIyBTmj8yft7yKh",
+    "name": "Kabali (2016) [1080p] [H.264] [DTS-HD MA].mkv",
+    "title": "Kabali", "original_title": "கபாலி", "year": 2016,
+    "tmdb_id": 366080, "imdb_id": "tt5071886", "imdb_url": "https://www.imdb.com/title/tt5071886/", "rating": 6,
+    "plot": "A gangster in Malaysia goes in search of his family after 25 years of imprisonment.",
+    "poster": "https://image.tmdb.org/t/p/w500/va0M1xhP3sUUERWfHeSKGVhtJHW.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/12DJjwUO8rr3ds2CAXpPNwhPet6.jpg",
+    "logo": "",
+    "trailer": {"youtube_url":""},
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1abawJdpoaqct7Pb-7SIyBTmj8yft7yKh|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "badges": {"quality":"https://img.icons8.com/color/96/full-hd.png","source":"https://img.icons8.com/ios-filled/100/ffffff/cloud-download.png","audio_format":"https://img.icons8.com/color/96/dolby-digital.png","audio_channels":"https://img.icons8.com/ios-filled/100/ffffff/5-1.png"},
+    "specs": {"resolution":"1080p FHD","source":"WEB-DL","codec":"H.264","audio":"DTS-HD MA","channels":"5.1","languages":"Tamil"},
+    "versions": [
+      {
+        "id": "1abawJdpoaqct7Pb-7SIyBTmj8yft7yKh", "name": "Kabali (2016) [1080p] [H.264] [DTS-HD MA].mkv", "quality": "1080p", "source": "WEB-DL", "codec": "H.264", "resolution": "1080p FHD", "audio": "DTS-HD MA", "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1abawJdpoaqct7Pb-7SIyBTmj8yft7yKh|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {"resolution":"1080p FHD","source":"WEB-DL","codec":"H.264","audio":"DTS-HD MA","channels":"5.1","languages":"Tamil"}
+      }
+    ]
+  },
+  {
     "id": "1FRk3H4Esrq70pGtJhg-muvvFOdOcOgjP",
     "name": "Kireedam (2007) [1080p] [H.264] [Dolby Digital].mkv",
     "title": "Kireedam", "original_title": "கிரீடம்", "year": 2007,
