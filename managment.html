@@ -253,6 +253,27 @@
       box-shadow: 0 0 10px var(--laser-red-glow);
     }
 
+    .smart-input {
+      border-color: rgba(255, 0, 60, 0.4);
+      background: rgba(255, 0, 60, 0.03);
+    }
+    .smart-input:focus {
+      border-color: var(--laser-cyan);
+      box-shadow: 0 0 12px var(--laser-cyan-glow);
+    }
+
+    .tag-container { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .smart-tag {
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      color: var(--laser-cyan);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-family: monospace;
+      font-weight: 700;
+    }
+
     input[readonly] { opacity: 0.6; cursor: not-allowed; border-style: dashed; }
     .input-hint { font-size: 0.8rem; color: var(--text-dim); font-family: monospace; }
 
@@ -720,12 +741,12 @@
       <div class="movies-grid" id="movies-grid-container"></div>
     </section>
 
-    <!-- VIEW: ADD MOVIE FORM -->
+    <!-- VIEW: ADD MOVIE FORM WITH SMART FILENAME DETECTOR -->
     <section id="view-add-movie" class="view-panel">
       <header>
         <div>
           <h1 id="movie-form-title">Add Movie</h1>
-          <p class="section-desc" id="movie-form-desc">Enter TMDB ID and media stream specifications</p>
+          <p class="section-desc" id="movie-form-desc">Enter TMDB ID and paste release filename to auto-detect specs</p>
         </div>
       </header>
 
@@ -738,13 +759,23 @@
               <div class="input-hint" id="tmdb-match-hint">Auto-fetches English Title, Poster, IMDb, Trailer & Overview</div>
             </div>
 
+            <!-- SMART RELEASE NAME PARSER -->
+            <div class="form-group full-width">
+              <label style="color: var(--laser-cyan);">⚡ Release File Name (Auto-Detects All Specs Below)</label>
+              <input type="text" id="input-smart-filename" class="smart-input"
+                     placeholder="e.g. Batman.Begins.2005.1080p.AMZN.WEB-DL.DDP2.0.English-Hindi.H.264-MSD4K.mkv"
+                     oninput="parseSmartFileName(this.value)">
+              <div class="tag-container" id="parsed-smart-tags"></div>
+            </div>
+
             <div class="form-group">
               <label>Quality</label>
               <select id="input-quality" required>
                 <option value="1080p">1080p</option>
-                <option value="4K">4K</option>
+                <option value="4K UHD">4K UHD</option>
                 <option value="2160p">2160p</option>
                 <option value="720p">720p</option>
+                <option value="HQ Enhanced">HQ Enhanced</option>
               </select>
             </div>
 
@@ -752,7 +783,10 @@
               <label>Source</label>
               <select id="input-source" required>
                 <option value="WEB-DL">WEB-DL</option>
-                <option value="BLURAY">BLURAY</option>
+                <option value="AMZN WEB-DL">AMZN WEB-DL</option>
+                <option value="NF WEB-DL">NF WEB-DL</option>
+                <option value="DSNP WEB-DL">DSNP WEB-DL</option>
+                <option value="BLURAY">BLURAY / Remux</option>
                 <option value="HDTV">HDTV</option>
               </select>
             </div>
@@ -760,10 +794,10 @@
             <div class="form-group">
               <label>Codec</label>
               <select id="input-codec" required>
-                <option value="H.264">H.264</option>
+                <option value="H.264">H.264 / AVC</option>
+                <option value="HEVC">HEVC / H.265 / x265</option>
+                <option value="AV1">AV1</option>
                 <option value="x264">x264</option>
-                <option value="HEVC">HEVC</option>
-                <option value="x265">x265</option>
               </select>
             </div>
 
@@ -771,7 +805,7 @@
               <label>Resolution</label>
               <select id="input-resolution" required>
                 <option value="1080p FHD">1080p FHD</option>
-                <option value="4K UHD">4K UHD</option>
+                <option value="4K UHD">4K UHD (2160p)</option>
                 <option value="720p HD">720p HD</option>
               </select>
             </div>
@@ -779,20 +813,26 @@
             <div class="form-group">
               <label>Audio Codec</label>
               <select id="input-audio" required>
-                <option value="Dolby Digital Plus">Dolby Digital Plus</option>
-                <option value="Dolby Atmos">Dolby Atmos</option>
-                <option value="Dolby Digital">Dolby Digital</option>
-                <option value="AAC">AAC</option>
+                <option value="Dolby Digital Plus">Dolby Digital Plus (DDP / E-AC-3)</option>
+                <option value="Dolby Atmos">Dolby Atmos / TrueHD</option>
+                <option value="Dolby Digital">Dolby Digital (AC3)</option>
+                <option value="DTS-HD MA">DTS-HD Master Audio</option>
+                <option value="AAC">AAC Standard</option>
               </select>
             </div>
 
             <div class="form-group">
               <label>Channels</label>
               <select id="input-channels" required>
-                <option value="5.1">5.1</option>
-                <option value="7.1">7.1</option>
-                <option value="2.0">2.0</option>
+                <option value="5.1">5.1 (Surround)</option>
+                <option value="2.0">2.0 (Stereo)</option>
+                <option value="7.1">7.1 (Atmos)</option>
               </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label>Audio Languages (Editable)</label>
+              <input type="text" id="input-languages" placeholder="e.g. English, Hindi, Tamil" value="Tamil">
             </div>
 
             <div class="form-group full-width">
@@ -809,7 +849,7 @@
       </div>
     </section>
 
-    <!-- VIEW: 2. WEB SERIES (Parent Show + Dropdowns) -->
+    <!-- VIEW: 2. WEB SERIES -->
     <section id="view-existing-series" class="view-panel">
       <header>
         <div>
@@ -870,7 +910,7 @@
       <div class="movies-grid" id="series-grid"></div>
     </section>
 
-    <!-- VIEW: 3. 5.1 SONGS (With Language Dropdown) -->
+    <!-- VIEW: 3. 5.1 SONGS -->
     <section id="view-existing-songs" class="view-panel">
       <header>
         <div>
@@ -943,7 +983,7 @@
       <div class="movies-grid" id="songs-grid"></div>
     </section>
 
-    <!-- VIEW: 4. YOUTUBE VAULT (Robust Playlist Fetcher) -->
+    <!-- VIEW: 4. YOUTUBE VAULT -->
     <section id="view-existing-vault" class="view-panel">
       <header>
         <div>
@@ -1099,6 +1139,115 @@
       document.getElementById(`view-${panelId}`).classList.add('active');
     }
 
+    /* SMART FILENAME PARSER ENGINE */
+    function parseSmartFileName(filename) {
+      if (!filename || filename.trim().length === 0) {
+        document.getElementById('parsed-smart-tags').innerHTML = '';
+        return;
+      }
+      const fn = filename.toLowerCase();
+      let tags = [];
+
+      // 1. Quality & Resolution
+      if (fn.includes('2160p') || fn.includes('4k') || fn.includes('uhd')) {
+        document.getElementById('input-quality').value = '4K UHD';
+        document.getElementById('input-resolution').value = '4K UHD';
+        tags.push('4K UHD (2160p)');
+      } else if (fn.includes('1080p') || fn.includes('fhd')) {
+        document.getElementById('input-quality').value = '1080p';
+        document.getElementById('input-resolution').value = '1080p FHD';
+        tags.push('1080p FHD');
+      } else if (fn.includes('720p')) {
+        document.getElementById('input-quality').value = '720p';
+        document.getElementById('input-resolution').value = '720p HD';
+        tags.push('720p HD');
+      }
+
+      // 2. Source
+      if (fn.includes('amzn') || fn.includes('amazon')) {
+        document.getElementById('input-source').value = 'AMZN WEB-DL';
+        tags.push('AMZN WEB-DL');
+      } else if (fn.includes('nf') || fn.includes('netflix')) {
+        document.getElementById('input-source').value = 'NF WEB-DL';
+        tags.push('Netflix WEB-DL');
+      } else if (fn.includes('dsnp') || fn.includes('hotstar')) {
+        document.getElementById('input-source').value = 'DSNP WEB-DL';
+        tags.push('Disney+ Hotstar');
+      } else if (fn.includes('bluray') || fn.includes('remux')) {
+        document.getElementById('input-source').value = 'BLURAY';
+        tags.push('BluRay Disc');
+      } else if (fn.includes('web-dl') || fn.includes('webdl') || fn.includes('webrip')) {
+        document.getElementById('input-source').value = 'WEB-DL';
+        tags.push('WEB-DL');
+      } else if (fn.includes('hdtv')) {
+        document.getElementById('input-source').value = 'HDTV';
+        tags.push('HDTV');
+      }
+
+      // 3. Video Codec
+      if (fn.includes('hevc') || fn.includes('x265') || fn.includes('h.265') || fn.includes('h265')) {
+        document.getElementById('input-codec').value = 'HEVC';
+        tags.push('HEVC / x265');
+      } else if (fn.includes('av1')) {
+        document.getElementById('input-codec').value = 'AV1';
+        tags.push('AV1');
+      } else if (fn.includes('h.264') || fn.includes('h264') || fn.includes('x264') || fn.includes('avc')) {
+        document.getElementById('input-codec').value = 'H.264';
+        tags.push('H.264 / AVC');
+      }
+
+      // 4. Audio Codec & Channels
+      if (fn.includes('atmos') || fn.includes('truehd')) {
+        document.getElementById('input-audio').value = 'Dolby Atmos';
+        document.getElementById('input-channels').value = '7.1';
+        tags.push('Dolby Atmos 7.1');
+      } else if (fn.includes('ddp') || fn.includes('eac3') || fn.includes('dd+')) {
+        document.getElementById('input-audio').value = 'Dolby Digital Plus';
+        if (fn.includes('2.0') || fn.includes('ddp2.0') || fn.includes('ddp2')) {
+          document.getElementById('input-channels').value = '2.0';
+          tags.push('DDP 2.0 Stereo');
+        } else {
+          document.getElementById('input-channels').value = '5.1';
+          tags.push('DDP 5.1 Surround');
+        }
+      } else if (fn.includes('ac3') || fn.includes('dd5.1') || fn.includes('dd')) {
+        document.getElementById('input-audio').value = 'Dolby Digital';
+        tags.push('Dolby Digital AC3');
+      } else if (fn.includes('dts')) {
+        document.getElementById('input-audio').value = 'DTS-HD MA';
+        tags.push('DTS-HD Audio');
+      } else if (fn.includes('aac')) {
+        document.getElementById('input-audio').value = 'AAC';
+        tags.push('AAC');
+      }
+
+      // 5. Audio Languages
+      let detectedLangs = [];
+      const langMap = {
+        "tamil": "Tamil", "tam": "Tamil",
+        "hindi": "Hindi", "hin": "Hindi",
+        "english": "English", "eng": "English",
+        "telugu": "Telugu", "tel": "Telugu",
+        "malayalam": "Malayalam", "mal": "Malayalam",
+        "kannada": "Kannada", "kan": "Kannada"
+      };
+
+      for (let [k, v] of Object.entries(langMap)) {
+        let pattern = new RegExp("(^|[._\\-\\[\\(])" + k + "([._\\-\\]\\)]|$)", "i");
+        if (pattern.test(fn)) {
+          if (!detectedLangs.includes(v)) detectedLangs.push(v);
+        }
+      }
+
+      if (detectedLangs.length > 0) {
+        document.getElementById('input-languages').value = detectedLangs.join(', ');
+        tags.push('Languages: ' + detectedLangs.join(' + '));
+      }
+
+      const tagBox = document.getElementById('parsed-smart-tags');
+      tagBox.innerHTML = tags.map(t => `<span class="smart-tag">✔ ${t}</span>`).join(' ');
+    }
+
     async function loadAllChunks() {
       updateTokenBadge();
       const fetchChunk = async (path) => {
@@ -1196,7 +1345,6 @@
       });
     }
 
-    /* RENDER SERIES GRID (Shows Folders with Episode Counts) */
     function renderSeriesGrid(list) {
       const container = document.getElementById('series-grid');
       container.innerHTML = '';
@@ -1337,13 +1485,20 @@
       renderMoviesGrid(filtered);
     }
 
-    /* TMDB MOVIE HELPERS */
+    /* TMDB METADATA LOADER */
     async function fetchTmdbMetadata(tmdbId) {
       if (!tmdbId || parseInt(tmdbId) <= 0) return null;
       try {
-        const res = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_API_KEY}&language=en-US&append_to_response=images,external_ids`);
+        const res = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_API_KEY}&language=en-US&append_to_response=videos,external_ids`);
         if (!res.ok) return null;
         const data = await res.json();
+
+        let trailerUrl = "";
+        if (data.videos && data.videos.results) {
+          const t = data.videos.results.find(v => v.type === "Trailer" && v.site === "YouTube");
+          if (t) trailerUrl = `plugin://plugin.video.youtube/play/?video_id=${t.key}`;
+        }
+
         fetchedTmdbMetadata = {
           title: data.title || `Movie ${tmdbId}`,
           original_title: data.original_title || data.title || `Movie ${tmdbId}`,
@@ -1354,7 +1509,7 @@
           plot: data.overview || '',
           poster: data.poster_path ? `https://image.tmdb.org/t/p/w500${data.poster_path}` : '',
           fanart: data.backdrop_path ? `https://image.tmdb.org/t/p/original${data.backdrop_path}` : '',
-          logo: ''
+          trailer: trailerUrl ? { youtube_url: trailerUrl } : { youtube_url: "" }
         };
         return fetchedTmdbMetadata;
       } catch (e) { return null; }
@@ -1427,6 +1582,7 @@
       inp.readOnly = false;
       inp.value = '';
       document.getElementById('movie-form').reset();
+      document.getElementById('parsed-smart-tags').innerHTML = '';
       document.getElementById('movie-form-title').textContent = 'Add Movie';
       document.getElementById('btn-movie-submit').textContent = 'ADD MOVIE';
       document.getElementById('btn-reset-mode').style.display = 'none';
@@ -1453,6 +1609,7 @@
       movie.plot = meta.plot;
       movie.poster = meta.poster;
       movie.fanart = meta.fanart;
+      movie.trailer = meta.trailer;
 
       openPreviewModal('chunks/data_c01.json', movie, movie.stream_url, `Fix TMDB: ${meta.title}`, moviesData, true);
     }
@@ -1512,10 +1669,11 @@
       const resolution = document.getElementById('input-resolution').value;
       const audio = document.getElementById('input-audio').value;
       const channels = document.getElementById('input-channels').value;
+      const languages = document.getElementById('input-languages').value;
       const streamUrl = `${WORKER_BASE}${fileId}${USER_AGENT}`;
 
       const meta = fetchedTmdbMetadata || {
-        title: `Movie ${tmdbId}`, original_title: `Movie ${tmdbId}`, year: new Date().getFullYear(), tmdb_id: Number(tmdbId), rating: 7.5, plot: "", poster: "", fanart: ""
+        title: `Movie ${tmdbId}`, original_title: `Movie ${tmdbId}`, year: new Date().getFullYear(), tmdb_id: Number(tmdbId), rating: 7.5, plot: "", poster: "", fanart: "", trailer: { youtube_url: "" }
       };
 
       const versionObj = {
@@ -1523,7 +1681,7 @@
         name: `${meta.title} (${meta.year}) [${quality}] [${codec}] [${audio}].mkv`,
         quality: quality, source: source, codec: codec, resolution: resolution, audio: audio, channels: channels,
         stream_url: streamUrl,
-        specs: { resolution: resolution, source: source, codec: codec, audio: audio, channels: channels }
+        specs: { resolution: resolution, source: source, codec: codec, audio: audio, channels: channels, languages: languages }
       };
 
       if (isMergeMode && targetExistingMovie) {
@@ -1536,10 +1694,10 @@
           name: versionObj.name,
           title: meta.title, original_title: meta.original_title, year: meta.year, tmdb_id: Number(tmdbId),
           imdb_id: meta.imdb_id || "", imdb_url: meta.imdb_id ? `https://www.imdb.com/title/${meta.imdb_id}/` : "",
-          rating: meta.rating, plot: meta.plot, poster: meta.poster, fanart: meta.fanart, logo: "", trailer: { youtube_url: "" },
+          rating: meta.rating, plot: meta.plot, poster: meta.poster, fanart: meta.fanart, logo: "", trailer: meta.trailer || { youtube_url: "" },
           stream_url: streamUrl,
           badges: { quality: "https://img.icons8.com/color/96/full-hd.png", source: "https://img.icons8.com/ios-filled/100/ffffff/cloud-download.png", audio_format: "https://img.icons8.com/color/96/dolby-digital.png", audio_channels: "https://img.icons8.com/ios-filled/100/ffffff/5-1.png" },
-          specs: { resolution: resolution, source: source, codec: codec, audio: audio, channels: channels },
+          specs: { resolution: resolution, source: source, codec: codec, audio: audio, channels: channels, languages: languages },
           versions: [versionObj]
         };
         openPreviewModal('chunks/data_c01.json', fullMovie, streamUrl, fullMovie.title, moviesData, false);
