@@ -1,5 +1,26 @@
 [
   {
+    "id": "1vJomevV-q2mueobs7FcOvBUBO1X7P3YJ",
+    "name": "Pyaar Prema Kalyanam (2026) [2160p] [H.264] [Dolby Atmos].mkv",
+    "title": "Pyaar Prema Kalyanam", "original_title": "ப்யார் ப்ரேமா கல்யாணம்", "year": 2026,
+    "tmdb_id": 1538273, "imdb_id": "tt39260895", "imdb_url": "https://www.imdb.com/title/tt39260895/", "rating": 7.3,
+    "plot": "When a bride refuses to leave her family home after marriage, her husband must find out if he can adjust to life under his in-laws' roof.",
+    "poster": "https://image.tmdb.org/t/p/w500/AjaNAeMXOrK9n0YqGqX0Lz5qxYu.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/jgsptBYJbuO7omWLOj1HNsqvgLM.jpg",
+    "logo": "",
+    "trailer": {"youtube_url":""},
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vJomevV-q2mueobs7FcOvBUBO1X7P3YJ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "badges": {"quality":"https://img.icons8.com/color/96/full-hd.png","source":"https://img.icons8.com/ios-filled/100/ffffff/cloud-download.png","audio_format":"https://img.icons8.com/color/96/dolby-digital.png","audio_channels":"https://img.icons8.com/ios-filled/100/ffffff/5-1.png"},
+    "specs": {"resolution":"1080p FHD","source":"WEB-DL","codec":"H.264","audio":"Dolby Atmos","channels":"5.1"},
+    "versions": [
+      {
+        "id": "1vJomevV-q2mueobs7FcOvBUBO1X7P3YJ", "name": "Pyaar Prema Kalyanam (2026) [2160p] [H.264] [Dolby Atmos].mkv", "quality": "2160p", "source": "WEB-DL", "codec": "H.264", "resolution": "1080p FHD", "audio": "Dolby Atmos", "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vJomevV-q2mueobs7FcOvBUBO1X7P3YJ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {"resolution":"1080p FHD","source":"WEB-DL","codec":"H.264","audio":"Dolby Atmos","channels":"5.1"}
+      }
+    ]
+  },
+  {
     "id": "1GpxbKc5hMoU7NvV7fFGOtqLRi9I764CS",
     "name": "Anbe Diana (2026) [1080p] [H.264] [Dolby Atmos].mkv",
     "title": "Anbe Diana", "original_title": "அன்பே டயானா", "year": 2026,
@@ -17,11 +38,6 @@
         "id": "1GpxbKc5hMoU7NvV7fFGOtqLRi9I764CS", "name": "Anbe Diana (2026) [1080p] [H.264] [Dolby Atmos].mkv", "quality": "1080p", "source": "WEB-DL", "codec": "H.264", "resolution": "1080p FHD", "audio": "Dolby Atmos", "channels": "5.1",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1GpxbKc5hMoU7NvV7fFGOtqLRi9I764CS|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {"resolution":"1080p FHD","source":"WEB-DL","codec":"H.264","audio":"Dolby Atmos","channels":"5.1"}
-      },
-      {
-        "id": "1u_R0UCD-SaL92O0Kh28swn1SUKjiKOTL", "name": "Movie 1607634 (2026) [2160p] [x265] [Dolby Digital Plus].mkv", "quality": "2160p", "source": "WEB-DL", "codec": "x265", "resolution": "4K UHD", "audio": "Dolby Digital Plus", "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1u_R0UCD-SaL92O0Kh28swn1SUKjiKOTL|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {"resolution":"4K UHD","source":"WEB-DL","codec":"x265","audio":"Dolby Digital Plus","channels":"5.1"}
       }
     ]
   },
