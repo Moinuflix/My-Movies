@@ -1,5 +1,90 @@
 [
   {
+    "id": "1PhDP6D2s8-2V0Ep_krqs2dyW0wssOLQk",
+    "name": "Idiot (2022) [1080p] [H.264] [Dolby Digital Plus].mkv",
+    "title": "Idiot",
+    "original_title": "இடியட்",
+    "year": 2022,
+    "runtime": 122,
+    "tmdb_id": 880780,
+    "imdb_id": "tt14533820",
+    "imdb_url": "https://www.imdb.com/title/tt14533820/",
+    "rating": 6,
+    "collection": "",
+    "director": [
+      "Rambhala"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Shiva",
+        "role": "Chinnarasu",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/pYDlGj5f0WYU2NLPUauq5JSQ4ir.jpg"
+      },
+      {
+        "name": "Nikki Galrani",
+        "role": "Dr. Smitha",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/y2cyO4E71hk71RDxMLwDhpIrpAe.jpg"
+      },
+      {
+        "name": "Anandaraj",
+        "role": "Rasu Gounder",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/gZxzckfurzV0oQOME8b1ATNoMHD.jpg"
+      },
+      {
+        "name": "Urvashi",
+        "role": "Mrs. Chinarasu",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/A6kHkXIhzL2LHIi78kNROdud7Mw.jpg"
+      },
+      {
+        "name": "Ravi Mariya",
+        "role": "Sekar",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/2OKPiv0HobYPSrFMM6LZPxuLMgc.jpg"
+      }
+    ],
+    "plot": "The descendants of two men who betrayed a royal family centuries ago are caught up in events that involve ghosts, revenge and kidnapping.",
+    "poster": "https://image.tmdb.org/t/p/w500/2RzgOYP6jMyAKXsi64RKP85ZcXM.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/aZ38BOxbbHsqqGxOWo4h7RbGklJ.jpg",
+    "logo": "",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1PhDP6D2s8-2V0Ep_krqs2dyW0wssOLQk|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "badges": {
+      "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
+      "hdr": "",
+      "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web.png",
+      "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+      "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+    },
+    "specs": {
+      "resolution": "1080p FHD",
+      "source": "AMZN WEB-DL",
+      "codec": "H.264",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil"
+    },
+    "versions": [
+      {
+        "id": "1PhDP6D2s8-2V0Ep_krqs2dyW0wssOLQk",
+        "name": "Idiot (2022) [1080p] [H.264] [Dolby Digital Plus].mkv",
+        "quality": "1080p",
+        "source": "AMZN WEB-DL",
+        "codec": "H.264",
+        "resolution": "1080p FHD",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1PhDP6D2s8-2V0Ep_krqs2dyW0wssOLQk|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "source": "AMZN WEB-DL",
+          "codec": "H.264",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil"
+        }
+      }
+    ]
+  },
+  {
     "id": "1GdEzjHhyJy3Q7InOW-WWhWRHaDj8HIH3",
     "name": "Batman Begins (2005) [1080p] [H.264] [Dolby Digital Plus].mkv",
     "title": "Batman Begins",
@@ -1515,8 +1600,7 @@
           "channels": "2.0"
         }
       }
-    ],
-    "collection": "Lokesh Cinematic Universe (LCU)"
+    ]
   },
   {
     "id": "1exAZYsaqaBxFkDvWH74zf-r9SNWA-y_B",
@@ -1599,8 +1683,7 @@
           "channels": "2.0"
         }
       }
-    ],
-    "collection": "Lokesh Cinematic Universe (LCU)"
+    ]
   },
   {
     "id": "1fr_mR6Ku7MZKNWzThBazWelcidqcZgUA",
@@ -2567,8 +2650,8 @@
     "rating": 5.667,
     "director": [
       "Konkona Sen Sharma",
-      "Amit Sharma",
       "Sujoy Ghosh",
+      "Amit Sharma",
       "R. Balki"
     ],
     "cast": [
@@ -3043,8 +3126,7 @@
           "channels": "5.1"
         }
       }
-    ],
-    "collection": "K.G.F Collection"
+    ]
   },
   {
     "id": "1OE0uS-aQwvlkIVTxLpsWDPb6WXdMh8ee",
@@ -3125,8 +3207,7 @@
           "channels": "5.1"
         }
       }
-    ],
-    "collection": "K.G.F Collection"
+    ]
   },
   {
     "id": "1nM9a3APwnfT3Tb-MjehKv0wD8-vRoeyn",
@@ -7257,8 +7338,7 @@
           "channels": "2.0"
         }
       }
-    ],
-    "collection": "Baahubali Collection"
+    ]
   },
   {
     "id": "19keUJNo-uOIPm3rD4YYEOb_MzY7I6-4w",
@@ -7339,8 +7419,7 @@
           "channels": "2.0"
         }
       }
-    ],
-    "collection": "Doraemon Movie Collection"
+    ]
   },
   {
     "id": "1MKhZOokL9rQ05tecPDnLGMep2QrG1MHZ",
@@ -7421,8 +7500,7 @@
           "channels": "2.0"
         }
       }
-    ],
-    "collection": "The Dark Knight Collection"
+    ]
   },
   {
     "id": "1oShEqAKMfrZetclW4WBQ-JPiEdv7jxsy",
