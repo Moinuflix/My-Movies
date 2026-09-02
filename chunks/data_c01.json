@@ -1,5 +1,82 @@
 [
   {
+    "id": "1PdUAMv0lfgqgLVFUMTxTikrPMdoXAqxg",
+    "name": "Dharmadurai (2016) [1080p] [H.264] [Dolby Digital Plus].mkv",
+    "title": "Dharmadurai",
+    "original_title": "தர்மதுரை",
+    "year": 2016,
+    "runtime": 167,
+    "tmdb_id": 373587,
+    "imdb_id": "tt5934894",
+    "rating": 7.4,
+    "collection": "",
+    "director": [
+      "Seenu Ramasamy"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Vijay Sethupathi",
+        "role": "Dr. Dharmadurai",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/a3HWdfCAbplrvoMNEJCjnkbqqOo.jpg"
+      },
+      {
+        "name": "Tamannaah Bhatia",
+        "role": "Dr. Subhashini",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/t4WYoKiFAyO1Rhjv7O03EKmJHp4.jpg"
+      },
+      {
+        "name": "Srushti Dange",
+        "role": "Dr. Stella",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/iqhbdBvo3ISF2yDmJ4MnAkz9zyo.jpg"
+      },
+      {
+        "name": "Aishwarya Rajesh",
+        "role": "Anbuselvi",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/yM13Up2NnSPHZ03eepxPjWMjsY9.jpg"
+      },
+      {
+        "name": "Radhika Sarathkumar",
+        "role": "Pandiyamma",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/kEKzT8HAJw8lfFUtWWd0SoQ9kC9.jpg"
+      }
+    ],
+    "plot": "A once-promising village doctor, burdened by personal loss and family betrayal, spirals into alcoholism and becomes an outcast. His journey of pain, resilience, and rediscovery takes him from despair to a chance at redemption, as he confronts his past and searches for purpose, love, and reconciliation.",
+    "poster": "https://image.tmdb.org/t/p/w500/cmSUOVaaaZsQRjSYpkSuWGbDStT.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/eoiQdUrCUtO29HueK0pnESaaky1.jpg",
+    "logo": "",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1PdUAMv0lfgqgLVFUMTxTikrPMdoXAqxg|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p FHD",
+      "source": "WEB-DL",
+      "codec": "H.264",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil"
+    },
+    "versions": [
+      {
+        "id": "1PdUAMv0lfgqgLVFUMTxTikrPMdoXAqxg",
+        "name": "Dharmadurai (2016) [1080p] [H.264] [Dolby Digital Plus].mkv",
+        "quality": "1080p",
+        "source": "WEB-DL",
+        "codec": "H.264",
+        "resolution": "1080p FHD",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1PdUAMv0lfgqgLVFUMTxTikrPMdoXAqxg|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil"
+        }
+      }
+    ]
+  },
+  {
     "id": "1v7aU9o2zeKvsEcQ29K9a8FDRg7yJqx7D",
     "name": "Bharathanatyam (2024) [1080p] [H.264] [Dolby Digital Plus].mkv",
     "title": "Bharathanatyam",
