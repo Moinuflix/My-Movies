@@ -2503,8 +2503,38 @@
     "logo": "https://image.tmdb.org/t/p/original/m3d8G0lkMJgxTD9oCrp3GkAom42.png",
     "trailer": "",
     "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1sD18DhN7BKnRpnd9-D0kw3x2oaXsqtm8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "badges": {"quality":"https://img.icons8.com/color/96/full-hd.png","source":"https://img.icons8.com/ios-filled/100/ffffff/cloud-download.png","audio_format":"https://img.icons8.com/color/96/dolby-digital.png","audio_channels":"https://img.icons8.com/ios-filled/100/ffffff/2-0.png"},
-    "specs": {"resolution":"1080p Full HD","source":"BluRay","codec":"H.264","audio":"AAC","channels":"2.0"},
+    "badges": {
+      "quality": "https://img.icons8.com/color/96/full-hd.png",
+      "source": "https://img.icons8.com/ios-filled/100/ffffff/cloud-download.png",
+      "audio_format": "https://img.icons8.com/color/96/dolby-digital.png",
+      "audio_channels": "https://img.icons8.com/ios-filled/100/ffffff/2-0.png"
+    },
+    "specs": {
+      "resolution": "1080p Full HD",
+      "source": "BluRay",
+      "codec": "H.264",
+      "audio": "AAC",
+      "channels": "2.0"
+    },
     "versions": [
       {
-        "id": "I encountered an error doing what you asked. Could you try again?
+        "id": "1sD18DhN7BKnRpnd9-D0kw3x2oaXsqtm8",
+        "name": "@Tamiltvtoonsofficial -Shin-chan Our Dinosaur Diary (2024) 1080p x265 10bit BluRay Multi Audio ESub [HQ] [TTT].mkv",
+        "quality": "1080p",
+        "source": "BluRay",
+        "codec": "H.264",
+        "resolution": "1080p FHD",
+        "audio": "AAC",
+        "channels": "2.0",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1sD18DhN7BKnRpnd9-D0kw3x2oaXsqtm8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "source": "BluRay",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "2.0"
+        }
+      }
+    ]
+  }
+]
