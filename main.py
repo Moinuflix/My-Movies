@@ -33,7 +33,7 @@ def list_root():
         ("🎬 Movies", "movies", "https://img.icons8.com/color/96/movie.png"),
         ("📺 TV Series", "series", "https://img.icons8.com/color/96/tv-show.png"),
         ("🎵 5.1 & Atmos Songs", "songs", "https://img.icons8.com/color/96/musical-notes.png"),
-        ("🔴 Live News 24x7", "load_file&file=vault_news.json", "https://img.icons8.com/color/96/news.png"),
+        ("🔴 Live News 24x7", "news_brands", "https://img.icons8.com/color/96/news.png"),
         ("😂 Comedy Scenes", "load_file&file=vault_comedy.json", "https://img.icons8.com/color/96/comedy.png"),
         ("🔥 Action & Mass Scenes", "load_file&file=vault_action.json", "https://img.icons8.com/color/96/action.png"),
         ("🎬 Movie Trailers", "load_file&file=vault_trailers.json", "https://img.icons8.com/color/96/trailer.png")
@@ -49,6 +49,49 @@ def list_root():
         xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=True)
     xbmcplugin.endOfDirectory(ADDON_HANDLE)
 
+# ----------------- NEWS SECTION -----------------
+def list_news_brands():
+    channels = fetch_json("vault_news.json")
+    for idx, ch in enumerate(channels):
+        name = ch.get("channel_name") or ch.get("name", "News Brand")
+        poster = ch.get("poster") or ch.get("thumbnail", "")
+        
+        li = xbmcgui.ListItem(label=f"📡 {name}")
+        li.setArt({'icon': poster, 'thumb': poster, 'poster': poster, 'fanart': poster})
+        
+        url = build_url({'action': 'show_channel_feed', 'index': str(idx)})
+        xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=True)
+        
+    xbmcplugin.setContent(ADDON_HANDLE, 'files')
+    xbmcplugin.endOfDirectory(ADDON_HANDLE)
+
+def show_channel_feed(index_str):
+    channels = fetch_json("vault_news.json")
+    try:
+        idx = int(index_str)
+        ch = channels[idx]
+    except Exception:
+        xbmcgui.Dialog().notification("MoinuFlix", "Channel not found", xbmcgui.NOTIFICATION_ERROR)
+        return
+
+    items = ch.get("items", [])
+    for it in items:
+        title = it.get("title", "News Feed")
+        stream = it.get("stream_url", "")
+        poster = it.get("poster") or ch.get("poster", "")
+        
+        li = xbmcgui.ListItem(label=title)
+        li.setArt({'poster': poster, 'thumb': poster, 'icon': poster})
+        li.setInfo('video', {'title': title, 'plot': it.get("plot", "")})
+        li.setProperty('IsPlayable', 'true')
+        
+        play_url = build_url({'action': 'play_media', 'video_url': stream})
+        xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=play_url, listitem=li, isFolder=False)
+        
+    xbmcplugin.setContent(ADDON_HANDLE, 'videos')
+    xbmcplugin.endOfDirectory(ADDON_HANDLE)
+
+# ----------------- MEDIA RENDERING -----------------
 def render_list(data):
     for m in data:
         title = m.get("title") or m.get("name", "Unknown")
@@ -110,7 +153,7 @@ def play_media(video_url):
         xbmcplugin.setResolvedUrl(ADDON_HANDLE, False, xbmcgui.ListItem())
         return
 
-    # CASE 1: YouTube URLs (Direct execution via Kodi Player like STRM)
+    # YouTube Streams (Live Streams or Videos via YouTube Plugin)
     is_youtube = ("youtube.com" in video_url or 
                   "youtu.be" in video_url or 
                   "plugin.video.youtube" in video_url or 
@@ -125,12 +168,11 @@ def play_media(video_url):
             vid = video_url.split("youtu.be/")[1].split("?")[0]
             final_yt_url = f"plugin://plugin.video.youtube/play/?video_id={vid}"
 
-        # Directory resolving dismiss karein aur direct player call karein
         xbmcplugin.setResolvedUrl(ADDON_HANDLE, False, xbmcgui.ListItem())
         xbmc.Player().play(final_yt_url)
         return
 
-    # CASE 2: Cloudflare Worker / GDrive Streams
+    # Cloudflare GDrive Streaming
     if "workers.dev" in video_url:
         clean_url = video_url.split("|")[0]
         if "pass=" not in clean_url and "key=" not in clean_url:
@@ -152,6 +194,10 @@ def router(paramstring):
     action = params.get('action')
     if not action:
         list_root()
+    elif action == 'news_brands':
+        list_news_brands()
+    elif action == 'show_channel_feed':
+        show_channel_feed(params.get('index', '0'))
     elif action == 'load_json':
         render_list(fetch_json(params.get('file', 'data_c01.json')))
     elif action == 'watched':
