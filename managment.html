@@ -436,6 +436,39 @@
     .tmdb-result-title { font-weight: 700; color: #fff; font-size: 0.9rem; }
     .tmdb-result-meta { font-size: 0.75rem; color: var(--text-muted); }
 
+    /* BOTTOM AUTO-MERGE DOCK BAR */
+    .merge-bottom-dock {
+      position: fixed;
+      bottom: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(14, 18, 28, 0.96);
+      backdrop-filter: blur(25px);
+      border: 1px solid var(--laser-cyan);
+      border-radius: 20px;
+      padding: 0.9rem 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      box-shadow: 0 0 35px var(--laser-cyan-glow);
+      z-index: 150;
+      transition: bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .merge-bottom-dock.show { bottom: 25px; }
+    .merge-dock-title { font-weight: 800; font-size: 0.95rem; color: #fff; }
+    .merge-dock-desc { font-size: 0.8rem; color: var(--laser-cyan); }
+    .btn-dock-merge {
+      background: linear-gradient(135deg, var(--laser-cyan), #00a2ff);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.88rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 15px var(--laser-cyan-glow);
+    }
+
     /* MODAL OVERLAYS */
     .modal-overlay {
       position: fixed;
@@ -531,12 +564,22 @@
       .form-group.full-width { grid-column: span 1; }
       .movies-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
       .poster-wrap { height: 210px; }
+      .merge-bottom-dock { width: 90%; flex-direction: column; text-align: center; gap: 0.8rem; }
     }
   </style>
 </head>
 <body>
 
   <div id="laser-toast"></div>
+
+  <!-- AUTO-MERGE BOTTOM DOCK -->
+  <div class="merge-bottom-dock" id="merge-dock">
+    <div>
+      <div class="merge-dock-title" id="dock-movie-name">⚡ Existing Movie Detected!</div>
+      <div class="merge-dock-desc" id="dock-movie-desc">Click below to auto-merge this version without creating duplicates.</div>
+    </div>
+    <button type="button" class="btn-dock-merge" onclick="triggerDockMerge()">ONE-CLICK MERGE VERSION</button>
+  </div>
 
   <aside>
     <div class="brand">
@@ -810,7 +853,7 @@
       <div class="movies-grid" id="songs-grid"></div>
     </section>
 
-    <!-- VIEW: ADD SONG (GAANA / JIOSAAVN API) -->
+    <!-- VIEW: ADD SONG -->
     <section id="view-add-song" class="view-panel">
       <header>
         <div>
@@ -823,14 +866,14 @@
           <div class="form-grid">
             <div class="form-group full-width">
               <label>Search Song Name (e.g. Arabic Kuthu, Hukum, Naatu Naatu)</label>
-              <input type="text" id="input-song-search" placeholder="Type song name to search Gaana/JioSaavn..." oninput="searchSongMusicApi(this.value)">
+              <input type="text" id="input-song-search" placeholder="Type song name to search..." oninput="searchSongMusicApi(this.value)">
               <div id="song-suggestions-box" class="tmdb-results-box">
                 <div id="song-suggestions-list"></div>
               </div>
             </div>
             <div class="form-group">
               <label>Song Title</label>
-              <input type="text" id="input-song-title" placeholder="e.g. Hukum - Thalaivar Alappara" required>
+              <input type="text" id="input-song-title" placeholder="e.g. Hukum" required>
             </div>
             <div class="form-group">
               <label>Movie / Album Name</label>
@@ -846,7 +889,7 @@
             </div>
             <div class="form-group">
               <label>Cover Art URL</label>
-              <input type="text" id="input-song-poster" placeholder="Image URL (Auto-filled on search)">
+              <input type="text" id="input-song-poster" placeholder="Image URL">
             </div>
             <div class="form-group full-width">
               <label>Google Drive Link / Worker Stream Link</label>
@@ -875,14 +918,12 @@
         </div>
         <button type="button" style="background:transparent; border:none; color:#fff; font-size:1.5rem; cursor:pointer;" onclick="closePackModal()">✕</button>
       </div>
-      
       <div style="margin-bottom: 1.5rem;">
         <div style="font-size:0.85rem; font-weight:800; color:var(--laser-green); margin-bottom:0.75rem; letter-spacing:0.5px;">
           ✅ IN YOUR LIBRARY (<span id="pack-owned-count">0</span>):
         </div>
         <div id="pack-owned-list"></div>
       </div>
-
       <div id="pack-missing-section">
         <div style="font-size:0.85rem; font-weight:800; color:var(--laser-red); margin-bottom:0.75rem; letter-spacing:0.5px;">
           ❌ MISSING FROM THIS PACK (<span id="pack-missing-count">0</span>):
@@ -902,15 +943,15 @@
       <div class="form-grid" style="margin-bottom: 1.5rem;">
         <div class="form-group full-width">
           <label>Target TMDB ID</label>
-          <input type="number" id="edit-modal-tmdb" required>
+          <input type="number" id="edit-modal-tmdb" required oninput="autoUpdateEditModalFields(this.value)">
         </div>
         <div class="form-group">
           <label>Movie Title</label>
           <input type="text" id="edit-modal-title-input">
         </div>
         <div class="form-group">
-          <label>Universe / Collection (e.g. K.G.F Collection, The Dark Knight Collection)</label>
-          <input type="text" id="edit-modal-collection" placeholder="Auto or Custom e.g. K.G.F Collection">
+          <label>Universe / Collection (Auto-detected)</label>
+          <input type="text" id="edit-modal-collection" placeholder="Auto from TMDB">
         </div>
       </div>
       <div class="modal-actions" style="display:flex; justify-content:flex-end; gap:0.85rem;">
@@ -956,6 +997,7 @@
 
     let seriesDebounce = null;
     let songDebounce = null;
+    let editDebounce = null;
 
     const CONFIRM_PASS = "24592";
     const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
@@ -965,7 +1007,6 @@
     const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';
     const LCU_TITLES = ['kaithi', 'vikram', 'leo', 'coolie'];
 
-    /* MASTER FRANCHISE CATALOG WITH OFFICIAL TOTAL MOVIES */
     const MASTER_FRANCHISES = {
       "K.G.F Collection": {
         name: "K.G.F Collection",
@@ -1151,7 +1192,7 @@
       });
 
       if (taggedCount === 0) return showLaserToast('All Collections/Packs are already connected!');
-      openPreviewModal('chunks/data_c01.json', null, `Connected ${taggedCount} Movie Packs`, `Auto-Connect Packs: K.G.F, Batman, Baahubali, LCU`, moviesData, true);
+      openPreviewModal('chunks/data_c01.json', null, `Connected ${taggedCount} Movie Packs`, `Auto-Connect Packs`, moviesData, true);
     }
 
     function setCategoryFilter(cat, btn) {
@@ -1411,6 +1452,7 @@
       if (!filename || filename.trim().length === 0) {
         document.getElementById('parsed-smart-tags').innerHTML = '';
         document.getElementById('tmdb-suggestions-box').style.display = 'none';
+        hideMergeDock();
         return;
       }
       const fn = filename.toLowerCase();
@@ -1559,16 +1601,43 @@
       if (!enteredId) {
         hint.textContent = 'Auto-fetches Official Title, Poster, Cast, Director, Trailer & Collections';
         hint.style.color = 'var(--text-dim)';
+        hideMergeDock();
         return;
       }
 
-      tmdbDebounceTimeout = setTimeout(async () => {
-        const meta = await fetchTmdbMetadata(enteredId);
-        if (meta) {
-          hint.textContent = `Found: "${meta.title}" (${meta.year}) ★ ${meta.rating} | ${meta.runtime} mins ${meta.collection ? `| 👑 ${meta.collection}` : ''}`;
-          hint.style.color = 'var(--laser-green)';
-        }
-      }, 400);
+      const match = moviesData.find(m => String(m.tmdb_id) === enteredId);
+      if (match) {
+        targetExistingMovie = match;
+        document.getElementById('dock-movie-name').textContent = `⚡ "${match.title}" (${match.year}) Exists in Database!`;
+        document.getElementById('dock-movie-desc').textContent = `Currently has ${match.versions ? match.versions.length : 1} version(s). Click to add new version cleanly without duplicate entry.`;
+        document.getElementById('merge-dock').classList.add('show');
+      } else {
+        hideMergeDock();
+        tmdbDebounceTimeout = setTimeout(async () => {
+          const meta = await fetchTmdbMetadata(enteredId);
+          if (meta) {
+            hint.textContent = `Found: "${meta.title}" (${meta.year}) ★ ${meta.rating} | ${meta.runtime} mins ${meta.collection ? `| 👑 ${meta.collection}` : ''}`;
+            hint.style.color = 'var(--laser-green)';
+          }
+        }, 400);
+      }
+    }
+
+    function hideMergeDock() {
+      document.getElementById('merge-dock').classList.remove('show');
+      targetExistingMovie = null;
+      isMergeMode = false;
+    }
+
+    function triggerDockMerge() {
+      if (!targetExistingMovie) return;
+      isMergeMode = true;
+      document.getElementById('input-tmdb-id').value = targetExistingMovie.tmdb_id;
+      document.getElementById('movie-form-title').textContent = `Merge Version into: ${targetExistingMovie.title}`;
+      document.getElementById('btn-movie-submit').textContent = 'ONE-CLICK MERGE';
+      document.getElementById('btn-cancel-merge').style.display = 'inline-block';
+      document.getElementById('merge-dock').classList.remove('show');
+      showLaserToast(`Merge Mode Activated for "${targetExistingMovie.title}"`);
     }
 
     function prepareAddVersion(tmdbId) {
@@ -1594,6 +1663,7 @@
       document.getElementById('movie-form-title').textContent = 'Add Movie & Version Manager';
       document.getElementById('btn-movie-submit').textContent = 'ADD MOVIE';
       document.getElementById('btn-cancel-merge').style.display = 'none';
+      hideMergeDock();
     }
 
     async function openEditMovieModal(movieIndex) {
@@ -1606,6 +1676,19 @@
       document.getElementById('edit-movie-modal').classList.add('active');
     }
     function closeEditModal() { document.getElementById('edit-movie-modal').classList.remove('active'); }
+
+    function autoUpdateEditModalFields(idVal) {
+      clearTimeout(editDebounce);
+      if (!idVal || isNaN(idVal)) return;
+      editDebounce = setTimeout(async () => {
+        const meta = await fetchTmdbMetadata(idVal);
+        if (meta) {
+          document.getElementById('edit-modal-title-input').value = meta.title;
+          document.getElementById('edit-modal-collection').value = meta.collection || detectFranchiseCollection(meta);
+          showLaserToast(`Auto-Synced: ${meta.title}`);
+        }
+      }, 400);
+    }
 
     async function submitEditMovieModal() {
       const token = getStoredToken();
@@ -1689,32 +1772,31 @@
       }
       songDebounce = setTimeout(async () => {
         try {
-          const res = await fetch(`https://saavn.dev/api/search/songs?query=${encodeURIComponent(query)}`);
+          const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=5`);
           const data = await res.json();
-          const songs = (data && data.data && data.data.results) || [];
+          const songs = data.results || [];
           const box = document.getElementById('song-suggestions-box');
           const list = document.getElementById('song-suggestions-list');
           list.innerHTML = '';
 
           if (songs.length > 0) {
-            songs.slice(0, 5).forEach(song => {
-              const image = song.image && song.image[1] ? song.image[1].url : '';
-              const movie = song.album ? song.album.name : (song.subtitle || 'Audio Track');
+            songs.forEach(song => {
+              const image = song.artworkUrl100 ? song.artworkUrl100.replace('100x100bb.jpg', '600x600bb.jpg') : '';
               const item = document.createElement('div');
               item.className = 'tmdb-result-item';
               item.innerHTML = `
                 ${image ? `<img src="${image}" class="tmdb-result-poster">` : '<div class="tmdb-result-poster"></div>'}
                 <div class="tmdb-result-info">
-                  <div class="tmdb-result-title">${escapeHtml(song.name)}</div>
-                  <div class="tmdb-result-meta">${escapeHtml(movie)} • ${escapeHtml(song.primaryArtists || '')}</div>
+                  <div class="tmdb-result-title">${escapeHtml(song.trackName)}</div>
+                  <div class="tmdb-result-meta">${escapeHtml(song.collectionName || '')} • ${escapeHtml(song.artistName || '')}</div>
                 </div>
               `;
               item.onclick = () => {
-                document.getElementById('input-song-title').value = song.name;
-                document.getElementById('input-song-movie').value = movie;
-                document.getElementById('input-song-poster').value = song.image && song.image[2] ? song.image[2].url : image;
+                document.getElementById('input-song-title').value = song.trackName;
+                document.getElementById('input-song-movie').value = song.collectionName || '';
+                document.getElementById('input-song-poster').value = image;
                 box.style.display = 'none';
-                showLaserToast(`Selected Song: "${song.name}"`);
+                showLaserToast(`Selected: "${song.trackName}"`);
               };
               list.appendChild(item);
             });
@@ -1804,9 +1886,31 @@
         openPreviewModal('chunks/data_c01.json', targetExistingMovie, streamUrl, `${targetExistingMovie.title} (Merged ${quality})`, moviesData, true);
       } else {
         const fullMovie = {
-          id: fileId, name: versionObj.name, title: meta.title, original_title: meta.original_title, year: meta.year, runtime: meta.runtime || 0,
-          tmdb_id: Number(tmdbId), imdb_id: meta.imdb_id || "", rating: meta.rating, collection: finalCol, director: meta.director || [],
-          trailer: meta.trailer || "", cast: meta.cast || [], plot: meta.plot, poster: meta.poster, fanart: meta.fanart, logo: "", stream_url: streamUrl,
+          id: fileId, 
+          name: versionObj.name, 
+          title: meta.title, 
+          original_title: meta.original_title, 
+          year: meta.year, 
+          runtime: meta.runtime || 0,
+          tmdb_id: Number(tmdbId), 
+          imdb_id: meta.imdb_id || "", 
+          rating: meta.rating, 
+          collection: finalCol, 
+          director: meta.director || [],
+          trailer: meta.trailer || "", 
+          cast: meta.cast || [], 
+          plot: meta.plot, 
+          poster: meta.poster, 
+          fanart: meta.fanart, 
+          logo: "", 
+          stream_url: streamUrl,
+          badges: {
+            quality: quality.includes("4K") ? "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/4k.png" : "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
+            hdr: quality.includes("4K") ? "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/hdr/hdr.png" : "",
+            source: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web.png",
+            audio_format: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+            audio_channels: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+          },
           specs: { resolution: resolution, source: source, codec: codec, audio: audio, channels: channels, languages: languages },
           versions: [versionObj]
         };
@@ -1876,6 +1980,54 @@
       document.getElementById('preview-modal').classList.add('active');
     }
 
+    /* 18-LINE COMPACT JSON GENERATOR (KEEPS CODE SMALL & FORMATTED) */
+    function format18LineCompactJson(list) {
+      const entries = list.map(item => {
+        const vStrs = (item.versions || []).map(ver => {
+          return `      {\n` +
+                 `        "id": ${JSON.stringify(ver.id || "")}, "name": ${JSON.stringify(ver.name || "")}, "quality": ${JSON.stringify(ver.quality || "")}, "source": ${JSON.stringify(ver.source || "")}, "codec": ${JSON.stringify(ver.codec || "")}, "resolution": ${JSON.stringify(ver.resolution || "")}, "audio": ${JSON.stringify(ver.audio || "")}, "channels": ${JSON.stringify(ver.channels || "")},\n` +
+                 `        "stream_url": ${JSON.stringify(ver.stream_url || "")},\n` +
+                 `        "specs": ${JSON.stringify(ver.specs || {})}\n` +
+                 `      }`;
+        }).join(',\n');
+
+        const castJson = item.cast ? JSON.stringify(item.cast, null, 6) : "[]";
+        const directorJson = item.director ? JSON.stringify(item.director) : "[]";
+
+        let fields = `  {\n` +
+               `    "id": ${JSON.stringify(item.id || "")},\n` +
+               `    "name": ${JSON.stringify(item.name || "")},\n` +
+               `    "title": ${JSON.stringify(item.title || "")}, "original_title": ${JSON.stringify(item.original_title || "")}, "year": ${item.year || 0},\n` +
+               `    "runtime": ${item.runtime || 0},\n` +
+               `    "tmdb_id": ${item.tmdb_id || 0}, "imdb_id": ${JSON.stringify(item.imdb_id || "")}, "imdb_url": ${JSON.stringify(item.imdb_url || "")}, "rating": ${item.rating || 0},\n`;
+
+        if (item.collection) {
+          fields += `    "collection": ${JSON.stringify(item.collection)},\n`;
+        }
+
+        fields += `    "director": ${directorJson},\n` +
+               `    "cast": ${castJson},\n` +
+               `    "plot": ${JSON.stringify(item.plot || "")},\n` +
+               `    "poster": ${JSON.stringify(item.poster || "")},\n` +
+               `    "fanart": ${JSON.stringify(item.fanart || "")},\n` +
+               `    "logo": ${JSON.stringify(item.logo || "")},\n`;
+
+        if (item.trailer) {
+          fields += `    "trailer": ${JSON.stringify(item.trailer)},\n`;
+        }
+
+        fields += `    "stream_url": ${JSON.stringify(item.stream_url || "")},\n` +
+               `    "badges": ${JSON.stringify(item.badges || {})},\n` +
+               `    "specs": ${JSON.stringify(item.specs || {})},\n` +
+               `    "versions": [\n${vStrs}\n    ]\n` +
+               `  }`;
+
+        return fields;
+      }).join(',\n');
+
+      return `[\n${entries}\n]`;
+    }
+
     async function commitPendingToGitHub() {
       if (!pendingCommit) return;
       const token = getStoredToken();
@@ -1897,7 +2049,7 @@
           currentSha = fileInfo.sha;
         }
 
-        const finalJson = JSON.stringify(activeDataArray, null, 2);
+        const finalJson = targetChunk.includes('data_c01.json') ? format18LineCompactJson(activeDataArray) : JSON.stringify(activeDataArray, null, 2);
         const encoded = btoa(unescape(encodeURIComponent(finalJson)));
 
         const bodyData = {
