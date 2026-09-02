@@ -160,15 +160,19 @@ def render_list(data):
         if isinstance(cast_data, list) and cast_data:
             formatted_cast = []
             for c in cast_data:
-                if isinstance(c, dict):
+                if isinstance(c, dict) and c.get("name"):
                     formatted_cast.append({
-                        "name": c.get("name", ""),
-                        "role": c.get("role") or c.get("character", ""),
-                        "thumbnail": c.get("thumbnail") or c.get("profile_path", "")
+                        "name": str(c.get("name")),
+                        "role": str(c.get("role") or c.get("character", "")),
+                        "thumbnail": str(c.get("thumbnail") or c.get("profile_path", "")),
+                        "order": len(formatted_cast)
                     })
-                elif isinstance(c, str):
-                    formatted_cast.append({"name": c, "role": ""})
-            li.setCast(formatted_cast)
+                elif isinstance(c, str) and c.strip():
+                    formatted_cast.append({"name": c.strip(), "role": "", "thumbnail": ""})
+            try:
+                li.setCast(formatted_cast)
+            except Exception:
+                pass
 
         li.setProperty("IsPlayable", "true")
         play_url = build_url({"action": "play_media", "video_url": stream})
