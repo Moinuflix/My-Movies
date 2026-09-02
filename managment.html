@@ -274,7 +274,6 @@
       font-weight: 700;
     }
 
-    /* TMDB Suggestions Container */
     .tmdb-results-box {
       display: none;
       margin-top: 10px;
@@ -458,7 +457,7 @@
 
     .version-tag-spec { font-weight: 700; color: #fff; }
     .version-tag-detail { font-size: 0.75rem; color: var(--text-dim); text-align: right; }
-    .card-actions-row { display: flex; gap: 0.5rem; }
+    .card-actions-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
     .btn-add-version {
       flex: 1;
@@ -475,9 +474,10 @@
     }
 
     .btn-add-version:hover {
-      background: var(--laser-red);
-      border-color: var(--laser-red);
-      box-shadow: 0 0 15px var(--laser-red-glow);
+      background: var(--laser-cyan);
+      color: #000;
+      border-color: var(--laser-cyan);
+      box-shadow: 0 0 15px var(--laser-cyan-glow);
     }
 
     .btn-fix-tmdb {
@@ -496,6 +496,24 @@
       background: var(--laser-cyan);
       color: #000;
       box-shadow: 0 0 12px var(--laser-cyan-glow);
+    }
+
+    .btn-delete-item {
+      background: rgba(255, 0, 60, 0.15);
+      color: var(--laser-red);
+      border: 1px solid rgba(255, 0, 60, 0.3);
+      padding: 0.65rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-delete-item:hover {
+      background: var(--laser-red);
+      color: #fff;
+      box-shadow: 0 0 15px var(--laser-red-glow);
     }
 
     /* Laser Modal */
@@ -617,7 +635,7 @@
       to { transform: translateY(0); opacity: 1; }
     }
 
-    /* Mobile Responsive Adaptation */
+    /* Mobile Responsive */
     @media (max-width: 900px) {
       body { flex-direction: column; }
       aside {
@@ -746,7 +764,7 @@
       <header>
         <div>
           <h1>Existing Movies Collection</h1>
-          <p class="section-desc">Search, fix TMDB metadata, and manage multi-version streams</p>
+          <p class="section-desc">Search, fix TMDB metadata, add multi-version streams, or delete</p>
         </div>
       </header>
 
@@ -770,14 +788,12 @@
         <form id="movie-form" onsubmit="handleMovieSubmit(event)">
           <div class="form-grid">
             
-            <!-- SMART RELEASE NAME PARSER WITH AUTO TMDB SEARCH -->
             <div class="form-group full-width">
               <label style="color: var(--laser-cyan);">⚡ Release File Name (Paste .mkv / .mp4 to auto-search & auto-fill)</label>
               <input type="text" id="input-smart-filename" class="smart-input"
-                     placeholder="e.g. Batman.Begins.2005.1080p.AMZN.WEB-DL.DDP2.0.English-Hindi.H.264-MSD4K.mkv"
+                     placeholder="e.g. Jana.Nayagan.2026.2160p.ZEE5.WEB-DL.HDR.HEVC.x265.DDP5.1.Tamil.mkv"
                      oninput="parseSmartFileName(this.value)">
               
-              <!-- Auto TMDB Suggestions Dropdown Box -->
               <div id="tmdb-suggestions-box" class="tmdb-results-box">
                 <div style="font-size: 0.75rem; color: var(--laser-cyan); font-weight: 700; margin-bottom: 6px;">🎯 Click your movie to auto-select TMDB ID:</div>
                 <div id="tmdb-suggestions-list"></div>
@@ -788,15 +804,15 @@
 
             <div class="form-group full-width">
               <label for="input-tmdb-id">TMDB ID</label>
-              <input type="number" id="input-tmdb-id" placeholder="e.g. 564147, 823219, 1213243" required oninput="checkTmdbMatch()">
-              <div class="input-hint" id="tmdb-match-hint">Auto-fetches English Title, Poster, IMDb, Trailer & Overview</div>
+              <input type="number" id="input-tmdb-id" placeholder="e.g. 1235877" required oninput="checkTmdbMatch()">
+              <div class="input-hint" id="tmdb-match-hint">Auto-fetches English Title, Poster, Cast, Director, Runtime & Trailer</div>
             </div>
 
             <div class="form-group">
               <label>Quality</label>
               <select id="input-quality" required>
                 <option value="1080p">1080p</option>
-                <option value="4K UHD">4K UHD</option>
+                <option value="4K UHD" selected>4K UHD</option>
                 <option value="2160p">2160p</option>
                 <option value="720p">720p</option>
                 <option value="HQ Enhanced">HQ Enhanced</option>
@@ -806,7 +822,7 @@
             <div class="form-group">
               <label>Source</label>
               <select id="input-source" required>
-                <option value="WEB-DL">WEB-DL</option>
+                <option value="WEB-DL" selected>WEB-DL</option>
                 <option value="AMZN WEB-DL">AMZN WEB-DL</option>
                 <option value="NF WEB-DL">NF WEB-DL</option>
                 <option value="DSNP WEB-DL">DSNP WEB-DL</option>
@@ -818,8 +834,8 @@
             <div class="form-group">
               <label>Codec</label>
               <select id="input-codec" required>
+                <option value="x265" selected>HEVC / x265</option>
                 <option value="H.264">H.264 / AVC</option>
-                <option value="HEVC">HEVC / H.265 / x265</option>
                 <option value="AV1">AV1</option>
                 <option value="x264">x264</option>
               </select>
@@ -828,8 +844,8 @@
             <div class="form-group">
               <label>Resolution</label>
               <select id="input-resolution" required>
+                <option value="4K UHD" selected>4K UHD (2160p)</option>
                 <option value="1080p FHD">1080p FHD</option>
-                <option value="4K UHD">4K UHD (2160p)</option>
                 <option value="720p HD">720p HD</option>
               </select>
             </div>
@@ -837,9 +853,9 @@
             <div class="form-group">
               <label>Audio Codec</label>
               <select id="input-audio" required>
-                <option value="Dolby Digital Plus">Dolby Digital Plus (DDP / E-AC-3)</option>
-                <option value="Dolby Atmos">Dolby Atmos / TrueHD</option>
                 <option value="Dolby Digital">Dolby Digital (AC3)</option>
+                <option value="Dolby Digital Plus" selected>Dolby Digital Plus (DDP / E-AC-3)</option>
+                <option value="Dolby Atmos">Dolby Atmos / TrueHD</option>
                 <option value="DTS-HD MA">DTS-HD Master Audio</option>
                 <option value="AAC">AAC Standard</option>
               </select>
@@ -848,7 +864,7 @@
             <div class="form-group">
               <label>Channels</label>
               <select id="input-channels" required>
-                <option value="5.1">5.1 (Surround)</option>
+                <option value="5.1" selected>5.1 (Surround)</option>
                 <option value="2.0">2.0 (Stereo)</option>
                 <option value="7.1">7.1 (Atmos)</option>
               </select>
@@ -856,7 +872,7 @@
 
             <div class="form-group full-width">
               <label>Audio Languages (Editable)</label>
-              <input type="text" id="input-languages" placeholder="e.g. English, Hindi, Tamil" value="Tamil">
+              <input type="text" id="input-languages" placeholder="e.g. Tamil, Hindi, English" value="Tamil">
             </div>
 
             <div class="form-group full-width">
@@ -878,13 +894,13 @@
       <header>
         <div>
           <h1>Web Series (data_c02.json)</h1>
-          <p class="section-desc">Manage parent shows, seasons, and episodes with auto dropdown selectors</p>
+          <p class="section-desc">Manage parent shows, seasons, and episodes</p>
         </div>
       </header>
 
       <div class="form-container">
         <div style="display: flex; gap: 10px; margin-bottom: 1.5rem;">
-          <input type="text" id="s_search_query" placeholder="Enter Series Name or TMDB TV ID (e.g. Money Heist, 71446)">
+          <input type="text" id="s_search_query" placeholder="Enter Series Name or TMDB TV ID (e.g. 71446)">
           <button type="button" class="btn-auto-fetch" onclick="fetchSeriesTMDB()">⚡ Auto Fetch Show</button>
         </div>
 
@@ -938,16 +954,16 @@
       <header>
         <div>
           <h1>5.1 Audio & Atmos Songs (data_c03.json)</h1>
-          <p class="section-desc">Search movie or album via iTunes discovery with Language Filter</p>
+          <p class="section-desc">Search movie or album via iTunes discovery</p>
         </div>
       </header>
 
       <div class="form-container">
         <div style="display: grid; grid-template-columns: 2fr 1fr auto; gap: 10px; margin-bottom: 1.5rem;">
-          <input type="text" id="song_search_query" placeholder="Enter Movie or Song (e.g. KGF, Leo, Jailer)">
+          <input type="text" id="song_search_query" placeholder="Enter Movie or Song (e.g. Leo, Jailer)">
           <select id="song_lang_filter">
-            <option value="Kannada">Kannada (ಕನ್ನಡ)</option>
             <option value="Tamil" selected>Tamil (தமிழ்)</option>
+            <option value="Kannada">Kannada (ಕನ್ನಡ)</option>
             <option value="Telugu">Telugu (తెలుగు)</option>
             <option value="Hindi">Hindi (हिंदी)</option>
           </select>
@@ -1010,7 +1026,7 @@
       <header>
         <div>
           <h1>YouTube Video Vault (data_c04.json)</h1>
-          <p class="section-desc">Add Single Video or Entire Playlist link (Auto-Imports All Videos)</p>
+          <p class="section-desc">Add Single Video or Entire Playlist link</p>
         </div>
       </header>
 
@@ -1080,6 +1096,7 @@
     let pendingCommit = null;
     let activeStreamUrl = '';
 
+    const CONFIRM_PASS = "24592"; // Delete Protection Password
     const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
     const GH_REPO = 'Moinuflix/My-Movies';
     const GH_BRANCH = 'main';
@@ -1161,7 +1178,7 @@
       document.getElementById(`view-${panelId}`).classList.add('active');
     }
 
-    /* SMART FILENAME PARSER ENGINE + AUTO TMDB SEARCH */
+    /* SMART FILENAME PARSER */
     function parseSmartFileName(filename) {
       if (!filename || filename.trim().length === 0) {
         document.getElementById('parsed-smart-tags').innerHTML = '';
@@ -1171,7 +1188,6 @@
       const fn = filename.toLowerCase();
       let tags = [];
 
-      // 1. Quality & Resolution
       if (fn.includes('2160p') || fn.includes('4k') || fn.includes('uhd')) {
         document.getElementById('input-quality').value = '4K UHD';
         document.getElementById('input-resolution').value = '4K UHD';
@@ -1186,7 +1202,6 @@
         tags.push('720p HD');
       }
 
-      // 2. Source
       if (fn.includes('amzn') || fn.includes('amazon')) {
         document.getElementById('input-source').value = 'AMZN WEB-DL';
         tags.push('AMZN WEB-DL');
@@ -1207,9 +1222,8 @@
         tags.push('HDTV');
       }
 
-      // 3. Video Codec
       if (fn.includes('hevc') || fn.includes('x265') || fn.includes('h.265') || fn.includes('h265')) {
-        document.getElementById('input-codec').value = 'HEVC';
+        document.getElementById('input-codec').value = 'x265';
         tags.push('HEVC / x265');
       } else if (fn.includes('av1')) {
         document.getElementById('input-codec').value = 'AV1';
@@ -1219,7 +1233,6 @@
         tags.push('H.264 / AVC');
       }
 
-      // 4. Audio Codec & Channels
       if (fn.includes('atmos') || fn.includes('truehd')) {
         document.getElementById('input-audio').value = 'Dolby Atmos';
         document.getElementById('input-channels').value = '7.1';
@@ -1244,7 +1257,6 @@
         tags.push('AAC');
       }
 
-      // 5. Audio Languages
       let detectedLangs = [];
       const langMap = {
         "tamil": "Tamil", "tam": "Tamil",
@@ -1270,7 +1282,6 @@
       const tagBox = document.getElementById('parsed-smart-tags');
       tagBox.innerHTML = tags.map(t => `<span class="smart-tag">✔ ${t}</span>`).join(' ');
 
-      // 6. AUTO TMDB QUERY PARSER (Extract movie title and year from filename)
       clearTimeout(smartSearchDebounce);
       smartSearchDebounce = setTimeout(() => {
         searchMovieFromFilename(filename);
@@ -1278,9 +1289,7 @@
     }
 
     async function searchMovieFromFilename(rawName) {
-      // Clean dots, dashes and underscores
       let clean = rawName.replace(/[\._\-]/g, ' ');
-      // Match year (19xx or 20xx)
       const yearMatch = clean.match(/\b(19\d\d|20\d\d)\b/);
       let year = yearMatch ? yearMatch[1] : '';
       let movieTitle = clean;
@@ -1288,7 +1297,6 @@
       if (yearMatch) {
         movieTitle = clean.substring(0, yearMatch.index).trim();
       } else {
-        // Cut before known tags if year not found
         const cutoff = clean.search(/\b(1080p|720p|2160p|4k|bluray|web-dl|webdl|ddp|h264|hevc)\b/i);
         if (cutoff > 0) movieTitle = clean.substring(0, cutoff).trim();
       }
@@ -1421,10 +1429,13 @@
             </div>
             <div class="card-actions-row">
               <button type="button" class="btn-add-version" onclick="prepareAddVersion('${tmdbId}')">
-                + ADD VERSION
+                + VERSION
               </button>
               <button type="button" class="btn-fix-tmdb" onclick="promptFixTmdb(${index})">
-                ✏️ Fix TMDB
+                ✏️ Edit
+              </button>
+              <button type="button" class="btn-delete-item" onclick="promptDeleteItem('chunks/data_c01.json', ${index}, '${escapeHtml(title)}', moviesData)">
+                🗑️ Delete
               </button>
             </div>
           </div>
@@ -1441,7 +1452,7 @@
         return;
       }
 
-      list.forEach((show) => {
+      list.forEach((show, index) => {
         const title = show.title || show.name || 'Untitled Show';
         const poster = show.poster || '';
         const year = show.year || 'N/A';
@@ -1464,7 +1475,10 @@
             </div>
             <div class="card-actions-row">
               <button type="button" class="btn-add-version" onclick="prepareAddEpisodeToSeries('${show.tmdb_id || title}')">
-                + ADD EPISODE
+                + EPISODE
+              </button>
+              <button type="button" class="btn-delete-item" onclick="promptDeleteItem('chunks/data_c02.json', ${index}, '${escapeHtml(title)}', seriesData)">
+                🗑️ Delete
               </button>
             </div>
           </div>
@@ -1524,10 +1538,13 @@
             </div>
             <div class="card-actions-row">
               <button type="button" class="btn-add-version" onclick="prepareAddSongVersion(${index})">
-                + ADD VERSION
+                + VERSION
               </button>
               <button type="button" class="btn-fix-tmdb" onclick="promptFixSong(${index})">
-                ✏️ Fix Metadata
+                ✏️ Edit
+              </button>
+              <button type="button" class="btn-delete-item" onclick="promptDeleteItem('chunks/data_c03.json', ${index}, '${escapeHtml(title)}', songsData)">
+                🗑️ Delete
               </button>
             </div>
           </div>
@@ -1543,7 +1560,7 @@
         container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--text-dim); padding: 2rem;">No YouTube Vault items yet.</div>';
         return;
       }
-      list.forEach(item => {
+      list.forEach((item, index) => {
         const card = document.createElement('div');
         card.className = 'movie-card';
         card.innerHTML = `
@@ -1554,6 +1571,11 @@
             <div class="movie-title" title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</div>
             <div class="movie-meta-row">
               <span class="badge-tmdb" style="color: var(--laser-red); border-color: rgba(255,0,60,0.4);">${escapeHtml(item.category || 'Clip')}</span>
+            </div>
+            <div class="card-actions-row" style="margin-top: 10px;">
+              <button type="button" class="btn-delete-item" style="width: 100%;" onclick="promptDeleteItem('chunks/data_c04.json', ${index}, '${escapeHtml(item.title)}', vaultData)">
+                🗑️ Delete Video
+              </button>
             </div>
           </div>
         `;
@@ -1573,18 +1595,34 @@
       renderMoviesGrid(filtered);
     }
 
-    /* TMDB METADATA LOADER */
+    /* TMDB METADATA LOADER (CAST, DIRECTOR, TRAILER, RUNTIME) */
     async function fetchTmdbMetadata(tmdbId) {
       if (!tmdbId || parseInt(tmdbId) <= 0) return null;
       try {
-        const res = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_API_KEY}&language=en-US&append_to_response=videos,external_ids`);
+        const res = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_API_KEY}&language=en-US&append_to_response=videos,external_ids,credits`);
         if (!res.ok) return null;
         const data = await res.json();
 
         let trailerUrl = "";
         if (data.videos && data.videos.results) {
-          const t = data.videos.results.find(v => v.type === "Trailer" && v.site === "YouTube");
-          if (t) trailerUrl = `plugin://plugin.video.youtube/play/?video_id=${t.key}`;
+          let t = data.videos.results.find(v => v.type === "Trailer" && v.site === "YouTube" && v.iso_639_1 === "ta");
+          if (!t) t = data.videos.results.find(v => (v.type === "Trailer" || v.type === "Teaser") && v.site === "YouTube");
+          if (t) trailerUrl = `https://www.youtube.com/watch?v=${t.key}`;
+        }
+
+        const directors = (data.credits && data.credits.crew) 
+          ? data.credits.crew.filter(c => c.job === "Director").map(c => c.name)
+          : [];
+
+        const castList = [];
+        if (data.credits && data.credits.cast) {
+          data.credits.cast.slice(0, 5).forEach(c => {
+            castList.push({
+              name: c.name,
+              role: c.character || "",
+              thumbnail: c.profile_path ? `https://image.tmdb.org/t/p/w185${c.profile_path}` : ""
+            });
+          });
         }
 
         fetchedTmdbMetadata = {
@@ -1594,10 +1632,13 @@
           tmdb_id: data.id,
           imdb_id: data.imdb_id || (data.external_ids && data.external_ids.imdb_id) || '',
           rating: data.vote_average ? Number(data.vote_average.toFixed(1)) : 7.5,
+          runtime: data.runtime || 0,
+          director: directors,
+          cast: castList,
           plot: data.overview || '',
           poster: data.poster_path ? `https://image.tmdb.org/t/p/w500${data.poster_path}` : '',
           fanart: data.backdrop_path ? `https://image.tmdb.org/t/p/original${data.backdrop_path}` : '',
-          trailer: trailerUrl ? { youtube_url: trailerUrl } : { youtube_url: "" }
+          trailer: trailerUrl
         };
         return fetchedTmdbMetadata;
       } catch (e) { return null; }
@@ -1609,7 +1650,7 @@
       clearTimeout(tmdbDebounceTimeout);
 
       if (!enteredId) {
-        hint.textContent = 'Auto-fetches English Title, Poster, IMDb, Trailer & Overview';
+        hint.textContent = 'Auto-fetches English Title, Poster, Cast, Director, Runtime & Trailer';
         hint.style.color = 'var(--text-dim)';
         resetMovieFormToNew();
         return;
@@ -1634,7 +1675,7 @@
         tmdbDebounceTimeout = setTimeout(async () => {
           const meta = await fetchTmdbMetadata(enteredId);
           if (meta) {
-            hint.textContent = `Found: "${meta.title}" (${meta.year}) ★ ${meta.rating}`;
+            hint.textContent = `Found: "${meta.title}" (${meta.year}) ★ ${meta.rating} | ${meta.runtime} mins`;
             hint.style.color = 'var(--laser-green)';
           }
         }, 400);
@@ -1675,7 +1716,7 @@
       document.getElementById('movie-form-title').textContent = 'Add Movie';
       document.getElementById('btn-movie-submit').textContent = 'ADD MOVIE';
       document.getElementById('btn-reset-mode').style.display = 'none';
-      document.getElementById('tmdb-match-hint').textContent = 'Auto-fetches English Title, Poster, IMDb, Trailer & Overview';
+      document.getElementById('tmdb-match-hint').textContent = 'Auto-fetches English Title, Poster, Cast, Director, Runtime & Trailer';
       document.getElementById('tmdb-match-hint').style.color = 'var(--text-dim)';
     }
 
@@ -1694,13 +1735,36 @@
       movie.year = meta.year;
       movie.tmdb_id = meta.tmdb_id;
       movie.imdb_id = meta.imdb_id;
+      movie.imdb_url = meta.imdb_id ? `https://www.imdb.com/title/${meta.imdb_id}/` : "";
       movie.rating = meta.rating;
+      movie.runtime = meta.runtime;
+      movie.director = meta.director;
+      movie.cast = meta.cast;
       movie.plot = meta.plot;
       movie.poster = meta.poster;
       movie.fanart = meta.fanart;
       movie.trailer = meta.trailer;
 
       openPreviewModal('chunks/data_c01.json', movie, movie.stream_url, `Fix TMDB: ${meta.title}`, moviesData, true);
+    }
+
+    /* SECURE DELETE ENGINE (PASS: 24592) */
+    function promptDeleteItem(targetChunk, itemIndex, itemTitle, activeDataArray) {
+      const token = getStoredToken();
+      if (!token) return showLaserToast('GitHub Token required! Click ⚙️ GitHub Token.', true);
+
+      const pass = prompt(`⚠️ DELETE CONFIRMATION:\nEnter Password to permanently delete "${itemTitle}":`);
+      if (pass === null) return;
+
+      if (pass.trim() !== CONFIRM_PASS) {
+        return showLaserToast('Incorrect Password! Delete cancelled.', true);
+      }
+
+      // Remove from memory
+      activeDataArray.splice(itemIndex, 1);
+
+      // Open Modal to commit delete
+      openPreviewModal(targetChunk, null, "Item Removed Permanently", `Delete: "${itemTitle}"`, activeDataArray, true);
     }
 
     function prepareAddSongVersion(songIndex) {
@@ -1748,7 +1812,7 @@
       const fileId = extractGDriveId(document.getElementById('input-gdrive-url').value);
       if (!fileId) return showLaserToast('Invalid Google Drive link', true);
 
-      if (!isMergeMode && !fetchedTmdbMetadata) {
+      if (!isMergeMode && (!fetchedTmdbMetadata || String(fetchedTmdbMetadata.tmdb_id) !== tmdbId)) {
         await fetchTmdbMetadata(tmdbId);
       }
 
@@ -1762,7 +1826,7 @@
       const streamUrl = `${WORKER_BASE}${fileId}${USER_AGENT}`;
 
       const meta = fetchedTmdbMetadata || {
-        title: `Movie ${tmdbId}`, original_title: `Movie ${tmdbId}`, year: new Date().getFullYear(), tmdb_id: Number(tmdbId), rating: 7.5, plot: "", poster: "", fanart: "", trailer: { youtube_url: "" }
+        title: `Movie ${tmdbId}`, original_title: `Movie ${tmdbId}`, year: new Date().getFullYear(), tmdb_id: Number(tmdbId), rating: 7.5, plot: "", poster: "", fanart: "", trailer: "", runtime: 0, director: [], cast: []
       };
 
       const versionObj = {
@@ -1781,11 +1845,29 @@
         const fullMovie = {
           id: fileId,
           name: versionObj.name,
-          title: meta.title, original_title: meta.original_title, year: meta.year, tmdb_id: Number(tmdbId),
-          imdb_id: meta.imdb_id || "", imdb_url: meta.imdb_id ? `https://www.imdb.com/title/${meta.imdb_id}/` : "",
-          rating: meta.rating, plot: meta.plot, poster: meta.poster, fanart: meta.fanart, logo: "", trailer: meta.trailer || { youtube_url: "" },
+          title: meta.title, 
+          original_title: meta.original_title, 
+          year: meta.year, 
+          runtime: meta.runtime || 0,
+          tmdb_id: Number(tmdbId),
+          imdb_id: meta.imdb_id || "", 
+          imdb_url: meta.imdb_id ? `https://www.imdb.com/title/${meta.imdb_id}/` : "",
+          rating: meta.rating, 
+          director: meta.director || [],
+          trailer: meta.trailer || "",
+          cast: meta.cast || [],
+          plot: meta.plot, 
+          poster: meta.poster, 
+          fanart: meta.fanart, 
+          logo: "", 
           stream_url: streamUrl,
-          badges: { quality: "https://img.icons8.com/color/96/full-hd.png", source: "https://img.icons8.com/ios-filled/100/ffffff/cloud-download.png", audio_format: "https://img.icons8.com/color/96/dolby-digital.png", audio_channels: "https://img.icons8.com/ios-filled/100/ffffff/5-1.png" },
+          badges: {
+            quality: quality.includes("4K") ? "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/4k.png" : "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
+            hdr: quality.includes("4K") ? "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/hdr/hdr.png" : "",
+            source: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web.png",
+            audio_format: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+            audio_channels: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+          },
           specs: { resolution: resolution, source: source, codec: codec, audio: audio, channels: channels, languages: languages },
           versions: [versionObj]
         };
@@ -1793,7 +1875,7 @@
       }
     }
 
-    /* 2. WEB SERIES SMART AUTO-FETCH & PARENT FOLDER SYSTEM */
+    /* WEB SERIES */
     async function fetchSeriesTMDB() {
       const q = document.getElementById('s_search_query').value.trim();
       if (!q) return showLaserToast('Enter Series Name or TMDB TV ID', true);
@@ -2039,7 +2121,7 @@
         poster: document.getElementById('song_poster').value,
         fanart: document.getElementById('song_poster').value,
         logo: "",
-        trailer: { youtube_url: "" },
+        trailer: "",
         stream_url: stream,
         badges: { quality: "https://img.icons8.com/color/96/audio.png", source: "https://img.icons8.com/ios-filled/100/ffffff/cloud-download.png", audio_format: "https://img.icons8.com/color/96/dolby-digital.png", audio_channels: "https://img.icons8.com/ios-filled/100/ffffff/5-1.png" },
         specs: { resolution: "Audio Stream", source: "Master Lossless", codec: codec, audio: audioName, channels: ch },
@@ -2133,7 +2215,7 @@
                 id: `yt_${vidId}`,
                 title: vTitle,
                 category: cat,
-                thumbnail: `https://img.youtube.com/vi/{vidId}/maxresdefault.jpg`,
+                thumbnail: `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`,
                 stream_url: `plugin://plugin.video.youtube/play/?video_id=${vidId}`
               });
             }
@@ -2180,7 +2262,7 @@
           <span class="preview-item-val plain-text">${title}</span>
         </div>
         <div class="preview-stream-block">
-          <span class="preview-item-label">Generated Stream / Details</span>
+          <span class="preview-item-label">Generated Stream / Action Status</span>
           <div class="preview-stream-text">${streamUrl}</div>
         </div>
       `;
@@ -2200,7 +2282,7 @@
                  `  }`;
         }
 
-        // 2. Web Series (Parent Show + Episodes Array)
+        // 2. Web Series
         if (item.episodes) {
           const epsStr = (item.episodes || []).map(ep => {
             return `      {\n` +
@@ -2222,7 +2304,7 @@
                  `  }`;
         }
 
-        // 3. Movies & Songs (Standard Versions Array)
+        // 3. Movies & Songs (Standard Versions Array with Cast, Director & Runtime)
         const vStrs = (item.versions || []).map(ver => {
           return `      {\n` +
                  `        "id": ${JSON.stringify(ver.id || "")}, "name": ${JSON.stringify(ver.name || "")}, "quality": ${JSON.stringify(ver.quality || "")}, "source": ${JSON.stringify(ver.source || "")}, "codec": ${JSON.stringify(ver.codec || "")}, "resolution": ${JSON.stringify(ver.resolution || "")}, "audio": ${JSON.stringify(ver.audio || "")}, "channels": ${JSON.stringify(ver.channels || "")},\n` +
@@ -2231,16 +2313,22 @@
                  `      }`;
         }).join(',\n');
 
+        const castJson = item.cast ? JSON.stringify(item.cast, null, 6) : "[]";
+        const directorJson = item.director ? JSON.stringify(item.director) : "[]";
+
         return `  {\n` +
                `    "id": ${JSON.stringify(item.id || "")},\n` +
                `    "name": ${JSON.stringify(item.name || "")},\n` +
                `    "title": ${JSON.stringify(item.title || "")}, "original_title": ${JSON.stringify(item.original_title || "")}, "year": ${item.year || 0},\n` +
+               `    "runtime": ${item.runtime || 0},\n` +
                `    "tmdb_id": ${item.tmdb_id || 0}, "imdb_id": ${JSON.stringify(item.imdb_id || "")}, "imdb_url": ${JSON.stringify(item.imdb_url || "")}, "rating": ${item.rating || 0},\n` +
+               `    "director": ${directorJson},\n` +
+               `    "cast": ${castJson},\n` +
                `    "plot": ${JSON.stringify(item.plot || "")},\n` +
                `    "poster": ${JSON.stringify(item.poster || "")},\n` +
                `    "fanart": ${JSON.stringify(item.fanart || "")},\n` +
                `    "logo": ${JSON.stringify(item.logo || "")},\n` +
-               `    "trailer": ${JSON.stringify(item.trailer || {})},\n` +
+               `    "trailer": ${JSON.stringify(item.trailer || "")},\n` +
                `    "stream_url": ${JSON.stringify(item.stream_url || "")},\n` +
                `    "badges": ${JSON.stringify(item.badges || {})},\n` +
                `    "specs": ${JSON.stringify(item.specs || {})},\n` +
@@ -2263,10 +2351,12 @@
       try {
         const { targetChunk, newEntry, activeDataArray, title, isUpdate, isBatch } = pendingCommit;
         
-        if (isBatch && Array.isArray(newEntry)) {
-          newEntry.forEach(item => activeDataArray.unshift(item));
-        } else if (!isUpdate) {
-          activeDataArray.unshift(newEntry);
+        if (newEntry) {
+          if (isBatch && Array.isArray(newEntry)) {
+            newEntry.forEach(item => activeDataArray.unshift(item));
+          } else if (!isUpdate) {
+            activeDataArray.unshift(newEntry);
+          }
         }
 
         const url = `https://api.github.com/repos/${GH_REPO}/contents/${targetChunk}`;
@@ -2289,7 +2379,7 @@
         const encoded = btoa(unescape(encodeURIComponent(finalJson)));
 
         const bodyData = {
-          message: `Add/Update ${title} in ${targetChunk}`,
+          message: `Update ${title} in ${targetChunk}`,
           content: encoded,
           branch: GH_BRANCH
         };
@@ -2312,7 +2402,7 @@
           throw new Error(errData.message || 'Commit failed on GitHub');
         }
 
-        showLaserToast(`Successfully committed "${title}" to GitHub!`);
+        showLaserToast(`Successfully updated "${title}" on GitHub!`);
         closeModal();
         resetMovieFormToNew();
         loadAllChunks();
