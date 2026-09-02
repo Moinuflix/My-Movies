@@ -146,12 +146,6 @@
       transition: all 0.2s ease;
     }
 
-    .btn-token-config:hover {
-      box-shadow: 0 0 14px var(--laser-cyan-glow);
-      background: rgba(0, 240, 255, 0.15);
-    }
-
-    /* Main Area */
     main {
       margin-left: 270px;
       flex: 1;
@@ -277,7 +271,7 @@
     }
 
     .collection-tag-ui {
-      background: rgba(255, 215, 0, 0.1);
+      background: rgba(255, 215, 0, 0.12);
       border: 1px solid rgba(255, 215, 0, 0.4);
       color: var(--gold-lcu);
       padding: 3px 10px;
@@ -356,14 +350,28 @@
       white-space: nowrap;
     }
 
-    .btn-auto-fetch:hover {
-      background: var(--laser-cyan);
+    .btn-clean-duplicates {
+      background: rgba(255, 215, 0, 0.12);
+      color: var(--gold-lcu);
+      border: 1px solid rgba(255, 215, 0, 0.4);
+      padding: 0.75rem 1.2rem;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+    }
+    .btn-clean-duplicates:hover {
+      background: var(--gold-lcu);
       color: #000;
-      box-shadow: 0 0 15px var(--laser-cyan-glow);
+      box-shadow: 0 0 15px var(--gold-lcu-glow);
     }
 
-    .search-bar-container { margin-bottom: 2rem; display: flex; gap: 1rem; }
-    .search-input { flex: 1; padding: 0.9rem 1.3rem; font-size: 1rem; background: var(--bg-card); border-radius: 14px; }
+    .search-bar-container { margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+    .search-input { flex: 1; min-width: 280px; padding: 0.9rem 1.3rem; font-size: 1rem; background: var(--bg-card); border-radius: 14px; }
     .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.75rem; }
 
     .movie-card {
@@ -489,12 +497,6 @@
       transition: all 0.2s;
     }
 
-    .btn-fix-tmdb:hover {
-      background: var(--laser-cyan);
-      color: #000;
-      box-shadow: 0 0 12px var(--laser-cyan-glow);
-    }
-
     .btn-delete-item {
       background: rgba(255, 0, 68, 0.15);
       color: var(--laser-red);
@@ -507,23 +509,17 @@
       transition: all 0.2s;
     }
 
-    .btn-delete-item:hover {
-      background: var(--laser-red);
-      color: #fff;
-      box-shadow: 0 0 15px var(--laser-red-glow);
-    }
-
-    /* --- BOTTOM DYNAMIC AUTO-MERGE DOCK BAR --- */
+    /* BOTTOM AUTO-MERGE DOCK BAR */
     .merge-bottom-dock {
       position: fixed;
-      bottom: -100px;
+      bottom: -120px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(14, 18, 28, 0.95);
+      background: rgba(14, 18, 28, 0.96);
       backdrop-filter: blur(25px);
       border: 1px solid var(--laser-cyan);
       border-radius: 20px;
-      padding: 0.9rem 1.5rem;
+      padding: 0.9rem 1.6rem;
       display: flex;
       align-items: center;
       gap: 1.5rem;
@@ -532,12 +528,10 @@
       transition: bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .merge-bottom-dock.show {
-      bottom: 25px;
-    }
-
+    .merge-bottom-dock.show { bottom: 25px; }
     .merge-dock-title { font-weight: 800; font-size: 0.95rem; color: #fff; }
     .merge-dock-desc { font-size: 0.8rem; color: var(--laser-cyan); }
+    
     .btn-dock-merge {
       background: linear-gradient(135deg, var(--laser-cyan), #00a2ff);
       color: #000;
@@ -548,11 +542,9 @@
       border: none;
       cursor: pointer;
       box-shadow: 0 0 15px var(--laser-cyan-glow);
-      transition: transform 0.2s ease;
     }
-    .btn-dock-merge:hover { transform: scale(1.05); }
 
-    /* --- MODERN GLASSMORPHISM POPUP MODAL --- */
+    /* MODAL OVERLAYS */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -568,7 +560,7 @@
     .modal-overlay.active { display: flex; }
 
     .modal-card {
-      background: rgba(15, 19, 30, 0.95);
+      background: rgba(15, 19, 30, 0.96);
       border: 1px solid rgba(0, 240, 255, 0.4);
       border-radius: 24px;
       width: 100%;
@@ -577,7 +569,6 @@
       overflow-y: auto;
       padding: 2.2rem;
       box-shadow: 0 0 50px rgba(0, 240, 255, 0.25);
-      position: relative;
       animation: modalSlide 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -605,7 +596,6 @@
       background: rgba(0, 255, 102, 0.15);
       color: var(--laser-green);
       border: 1px solid var(--laser-green);
-      box-shadow: 0 0 12px var(--laser-green-glow);
     }
 
     .preview-list { display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 1.75rem; }
@@ -653,7 +643,6 @@
 
     .btn-close-modal { background: rgba(255, 255, 255, 0.05); border: none; color: var(--text-muted); padding: 0.8rem 1.4rem; border-radius: 12px; font-weight: 700; cursor: pointer; }
 
-    /* Toast Notification */
     #laser-toast {
       position: fixed;
       top: 25px;
@@ -678,41 +667,20 @@
       to { transform: translateY(0); opacity: 1; }
     }
 
-    /* Mobile Responsive */
     @media (max-width: 900px) {
       body { flex-direction: column; }
-      aside {
-        width: 100%;
-        height: auto;
-        position: relative;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-        padding: 1rem;
-      }
+      aside { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--border-color); padding: 1rem; }
       .brand { margin-bottom: 0.5rem; padding-bottom: 0.5rem; }
-      .nav-list {
-        flex-direction: row;
-        overflow-x: auto;
-        padding-bottom: 0.5rem;
-      }
+      .nav-list { flex-direction: row; overflow-x: auto; padding-bottom: 0.5rem; }
       .nav-btn { white-space: nowrap; padding: 0.6rem 0.85rem; font-size: 0.8rem; }
       .sidebar-footer { display: none; }
-      main {
-        margin-left: 0;
-        width: 100%;
-        padding: 1.25rem;
-      }
+      main { margin-left: 0; width: 100%; padding: 1.25rem; }
       .form-container { padding: 1.25rem; }
       .form-grid { grid-template-columns: 1fr; }
       .form-group.full-width { grid-column: span 1; }
       .movies-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
       .poster-wrap { height: 210px; }
-      .movie-title { font-size: 0.95rem; }
-      .modal-card { padding: 1.25rem; }
-      .modal-actions { flex-direction: column; }
-      .modal-actions button { width: 100%; }
       .merge-bottom-dock { width: 90%; flex-direction: column; text-align: center; gap: 0.8rem; }
-      #laser-toast { left: 15px; right: 15px; top: 15px; }
     }
   </style>
 </head>
@@ -720,11 +688,11 @@
 
   <div id="laser-toast"></div>
 
-  <!-- BOTTOM AUTO-MERGE FLOATING DOCK -->
+  <!-- AUTO-MERGE BOTTOM DOCK -->
   <div class="merge-bottom-dock" id="merge-dock">
     <div>
       <div class="merge-dock-title" id="dock-movie-name">⚡ Existing Movie Detected!</div>
-      <div class="merge-dock-desc" id="dock-movie-desc">Click below to auto-merge this version instead of creating a duplicate.</div>
+      <div class="merge-dock-desc" id="dock-movie-desc">Click below to auto-merge this version without creating duplicates.</div>
     </div>
     <button type="button" class="btn-dock-merge" onclick="triggerDockMerge()">ONE-CLICK MERGE VERSION</button>
   </div>
@@ -784,7 +752,7 @@
       <header>
         <div>
           <h1>Unified Studio Overview</h1>
-          <p class="section-desc">Live status of 4 chunk databases & universe collection engine</p>
+          <p class="section-desc">Live status of 4 chunk databases & auto collection engine</p>
         </div>
       </header>
 
@@ -817,12 +785,16 @@
       <header>
         <div>
           <h1>Movies & Universe Collection</h1>
-          <p class="section-desc">Search, filter by Universe (LCU / MCU), manage multi-versions, or delete</p>
+          <p class="section-desc">Search, fix TMDB metadata, auto-merge duplicates, or delete</p>
         </div>
+        <!-- SARDAR DUPLICATE FIX BUTTON -->
+        <button type="button" class="btn-clean-duplicates" onclick="autoMergeDuplicateMovies()">
+          ⚡ Auto-Merge Duplicates (Fix Sardar)
+        </button>
       </header>
 
       <div class="search-bar-container">
-        <input type="text" id="movie-search-input" class="search-input" placeholder="Search by Title, TMDB ID, Year, or Collection (e.g. LCU, Marvel)..." oninput="handleMovieSearch()">
+        <input type="text" id="movie-search-input" class="search-input" placeholder="Search by Title, TMDB ID, Year, or Collection..." oninput="handleMovieSearch()">
       </div>
 
       <div class="movies-grid" id="movies-grid-container"></div>
@@ -833,7 +805,7 @@
       <header>
         <div>
           <h1 id="movie-form-title">Add Movie & Version Manager</h1>
-          <p class="section-desc" id="movie-form-desc">Paste raw filename to auto-detect specs, search TMDB, and set Universe collections</p>
+          <p class="section-desc" id="movie-form-desc">Paste raw filename to auto-detect specs, auto-match official TMDB Universe & Collections</p>
         </div>
       </header>
 
@@ -855,25 +827,10 @@
               <div class="tag-container" id="parsed-smart-tags"></div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group full-width">
               <label for="input-tmdb-id">TMDB ID</label>
-              <input type="number" id="input-tmdb-id" placeholder="e.g. 1235877, 1072790" required oninput="checkTmdbMatch()">
-              <div class="input-hint" id="tmdb-match-hint">Auto-fetches English Title, Poster, Cast, Director, Runtime & Trailer</div>
-            </div>
-
-            <!-- UNIVERSE / COLLECTION PACK SELECTOR -->
-            <div class="form-group">
-              <label style="color: var(--gold-lcu);">👑 Collection / Universe Pack</label>
-              <select id="input-collection">
-                <option value="">None (Standalone Movie)</option>
-                <option value="LCU">LCU (Lokesh Cinematic Universe)</option>
-                <option value="Marvel Cinematic Universe">Marvel Cinematic Universe (MCU)</option>
-                <option value="DC Extended Universe">DC Extended Universe (DCEU)</option>
-                <option value="Harry Potter Collection">Harry Potter Collection</option>
-                <option value="Fast & Furious Collection">Fast & Furious Collection</option>
-                <option value="The Dark Knight Trilogy">The Dark Knight Trilogy</option>
-                <option value="Custom">Custom Franchise...</option>
-              </select>
+              <input type="number" id="input-tmdb-id" placeholder="e.g. 1235877, 858080" required oninput="checkTmdbMatch()">
+              <div class="input-hint" id="tmdb-match-hint">Auto-fetches Official Title, Poster, Cast, Director, Runtime, Trailer & Universe Collection</div>
             </div>
 
             <div class="form-group">
@@ -957,187 +914,57 @@
       </div>
     </section>
 
-    <!-- VIEW: 2. WEB SERIES -->
+    <!-- OTHER SECTIONS (Series, Songs, Vault) -->
     <section id="view-existing-series" class="view-panel">
-      <header>
-        <div>
-          <h1>Web Series (data_c02.json)</h1>
-          <p class="section-desc">Manage parent shows, seasons, and episodes</p>
-        </div>
-      </header>
-
-      <div class="form-container">
-        <div style="display: flex; gap: 10px; margin-bottom: 1.5rem;">
-          <input type="text" id="s_search_query" placeholder="Enter Series Name or TMDB TV ID (e.g. 71446)">
-          <button type="button" class="btn-auto-fetch" onclick="fetchSeriesTMDB()">⚡ Auto Fetch Show</button>
-        </div>
-
-        <form id="series-form" onsubmit="handleSeriesSubmit(event)">
-          <div class="form-grid">
-            <div class="form-group">
-              <label>Series Title</label>
-              <input type="text" id="s_title" required readonly>
-            </div>
-            <div class="form-group">
-              <label>Year</label>
-              <input type="number" id="s_year" readonly>
-            </div>
-
-            <div class="form-group">
-              <label>Select Season</label>
-              <select id="s_season_select" onchange="onSeasonSelected()">
-                <option value="">-- Fetch Show First --</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Select Episode</label>
-              <select id="s_episode_select" onchange="onEpisodeSelected()">
-                <option value="">-- Select Season First --</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Season & Episode Tag</label>
-              <input type="text" id="s_tag" placeholder="e.g. S01E01" required>
-            </div>
-            <div class="form-group">
-              <label>Episode Title</label>
-              <input type="text" id="s_ep_title" placeholder="Auto-filled from selection" required>
-            </div>
-
-            <div class="form-group full-width">
-              <label>Google Drive File ID / URL</label>
-              <input type="text" id="s_gdrive" placeholder="Google Drive Link or File ID" required>
-            </div>
-          </div>
-          <button type="submit" class="btn-submit">ADD EPISODE TO SHOW</button>
-        </form>
-      </div>
-
+      <header><div><h1>Web Series (data_c02.json)</h1></div></header>
       <div class="movies-grid" id="series-grid"></div>
     </section>
-
-    <!-- VIEW: 3. 5.1 SONGS -->
     <section id="view-existing-songs" class="view-panel">
-      <header>
-        <div>
-          <h1>5.1 Audio & Atmos Songs (data_c03.json)</h1>
-          <p class="section-desc">Search movie or album via iTunes discovery</p>
-        </div>
-      </header>
-
-      <div class="form-container">
-        <div style="display: grid; grid-template-columns: 2fr 1fr auto; gap: 10px; margin-bottom: 1.5rem;">
-          <input type="text" id="song_search_query" placeholder="Enter Movie or Song (e.g. Leo, Jailer)">
-          <select id="song_lang_filter">
-            <option value="Tamil" selected>Tamil (தமிழ்)</option>
-            <option value="Kannada">Kannada (ಕನ್ನಡ)</option>
-            <option value="Telugu">Telugu (తెలుగు)</option>
-            <option value="Hindi">Hindi (हिंदी)</option>
-          </select>
-          <button type="button" class="btn-auto-fetch" onclick="fetchAlbumAndTracks()">🎵 Fetch Tracks</button>
-        </div>
-
-        <div id="track_picker_box" class="track-picker-container">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <div style="font-weight: 700; color: var(--laser-cyan);" id="album_found_name">Discovered Tracks:</div>
-            <div style="font-size: 0.75rem; color: var(--text-muted);">Click track to auto-fill</div>
-          </div>
-          <div id="track_items_container" class="track-list"></div>
-        </div>
-
-        <form id="songs-form" onsubmit="handleSongSubmit(event)">
-          <div class="form-grid">
-            <div class="form-group">
-              <label>Track Title</label>
-              <input type="text" id="song_title" required>
-            </div>
-            <div class="form-group">
-              <label>Album / Movie</label>
-              <input type="text" id="song_album" required>
-            </div>
-            <div class="form-group">
-              <label>Artist(s)</label>
-              <input type="text" id="song_artist">
-            </div>
-            <div class="form-group">
-              <label>Release Year</label>
-              <input type="text" id="song_year">
-            </div>
-            <div class="form-group">
-              <label>Audio Passthrough Specs</label>
-              <select id="song_audio_format">
-                <option value="Dolby Atmos 7.1|7.1|EAC3-JOC">Dolby Atmos 7.1 (EAC3-JOC)</option>
-                <option value="Dolby Digital Plus 5.1|5.1|EAC3" selected>Dolby Digital Plus 5.1 (EAC3)</option>
-                <option value="DTS-HD Master Audio 5.1|5.1|DTS">DTS-HD MA 5.1 Lossless</option>
-                <option value="FLAC 5.1 Surround|5.1|FLAC">FLAC 5.1 Lossless</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Album Poster (1000x1000 HD)</label>
-              <input type="text" id="song_poster">
-            </div>
-            <div class="form-group full-width">
-              <label>Google Drive File ID</label>
-              <input type="text" id="song_gdrive" placeholder="Audio GDrive File ID" required>
-            </div>
-          </div>
-          <button type="submit" class="btn-submit">ADD 5.1 AUDIO TRACK</button>
-        </form>
-      </div>
-
+      <header><div><h1>5.1 Audio & Atmos Songs (data_c03.json)</h1></div></header>
       <div class="movies-grid" id="songs-grid"></div>
     </section>
-
-    <!-- VIEW: 4. YOUTUBE VAULT -->
     <section id="view-existing-vault" class="view-panel">
-      <header>
-        <div>
-          <h1>YouTube Video Vault (data_c04.json)</h1>
-          <p class="section-desc">Add Single Video or Entire Playlist link</p>
-        </div>
-      </header>
-
-      <div class="form-container">
-        <form id="vault-form" onsubmit="handleVaultSubmit(event)">
-          <div class="form-grid">
-            <div class="form-group full-width">
-              <label>YouTube Link or Playlist Link</label>
-              <input type="text" id="yt_url" placeholder="https://www.youtube.com/watch?v=... OR https://www.youtube.com/playlist?list=..." required oninput="autoFetchYTMetadata()">
-              <div class="input-hint" id="yt_fetch_hint">Paste single video link or full playlist URL</div>
-            </div>
-            <div class="form-group">
-              <label>Title (Auto-Fetched / Editable)</label>
-              <input type="text" id="yt_title" placeholder="Auto-fetching video title..." required>
-            </div>
-            <div class="form-group">
-              <label>Category</label>
-              <select id="yt_category">
-                <option value="Comedy">😂 Comedy Scene</option>
-                <option value="Action">🔥 Action / Mass Moment</option>
-                <option value="Video Song">🎵 4K Video Song</option>
-                <option value="Best Scene">⭐ Best Movie Scene / Climax</option>
-              </select>
-            </div>
-          </div>
-          <button type="submit" class="btn-submit" id="btn_vault_submit">ADD TO YOUTUBE VAULT</button>
-        </form>
-      </div>
-
+      <header><div><h1>YouTube Video Vault (data_c04.json)</h1></div></header>
       <div class="movies-grid" id="vault-grid"></div>
     </section>
   </main>
 
-  <!-- LATEST GLASSMORPHISM CONFIRMATION MODAL -->
+  <!-- MODERN EDIT POPUP MODAL (NO BROWSER PROMPT) -->
+  <div class="modal-overlay" id="edit-movie-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title" id="edit-modal-title">✏️ Edit Movie Metadata</div>
+        <span class="badge-modal-type" style="color: var(--laser-cyan); border-color: var(--laser-cyan);">TMDB SYNC</span>
+      </div>
+      <div class="form-grid" style="margin-bottom: 1.5rem;">
+        <div class="form-group full-width">
+          <label>Target TMDB ID (Auto-fetches everything)</label>
+          <input type="number" id="edit-modal-tmdb" required>
+        </div>
+        <div class="form-group">
+          <label>Movie Title (Editable)</label>
+          <input type="text" id="edit-modal-title-input">
+        </div>
+        <div class="form-group">
+          <label>Universe / Collection (Auto or Custom)</label>
+          <input type="text" id="edit-modal-collection" placeholder="Auto from TMDB or leave blank">
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-save-database" onclick="submitEditMovieModal()">⚡ Fetch & Save to GitHub</button>
+        <button type="button" class="btn-close-modal" onclick="closeEditModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMIT CONFIRMATION MODAL -->
   <div class="modal-overlay" id="preview-modal">
     <div class="modal-card">
       <div class="modal-header">
         <div class="modal-title" id="modal-title">Live Preview & Direct Commit</div>
         <span class="badge-modal-type" id="modal-action-badge">READY TO COMMIT</span>
       </div>
-
       <div class="preview-list" id="modal-preview-details"></div>
-
       <div class="modal-actions">
         <button type="button" class="btn-copy-url" onclick="copyStreamUrl()">Copy Stream URL</button>
         <button type="button" class="btn-save-database" id="btn-commit-github" onclick="commitPendingToGitHub()">
@@ -1159,12 +986,11 @@
     let fetchedTmdbMetadata = null;
     let tmdbDebounceTimeout = null;
     let smartSearchDebounce = null;
-    let ytDebounceTimeout = null;
-
     let pendingCommit = null;
     let activeStreamUrl = '';
+    let editingMovieIndex = null;
 
-    const CONFIRM_PASS = "24592"; // Delete Protected
+    const CONFIRM_PASS = "24592";
     const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
     const GH_REPO = 'Moinuflix/My-Movies';
     const GH_BRANCH = 'main';
@@ -1220,20 +1046,6 @@
       return clean;
     }
 
-    function extractYTId(url) {
-      if (!url) return '';
-      url = url.trim();
-      if (url.length === 11 && !url.includes('/')) return url;
-      const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
-      return match ? match[1] : url;
-    }
-
-    function extractYTPlaylistId(url) {
-      if (!url) return '';
-      const match = url.match(/[?&]list=([a-zA-Z0-9_-]+)/);
-      return match ? match[1] : '';
-    }
-
     function escapeHtml(str) {
       if (!str) return '';
       return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -1246,7 +1058,62 @@
       document.getElementById(`view-${panelId}`).classList.add('active');
     }
 
-    /* SMART FILENAME PARSER ENGINE + AUTO UNIVERSE DETECTION */
+    /* TMDB METADATA LOADER (AUTO COLLECTION EXTRACTION) */
+    async function fetchTmdbMetadata(tmdbId) {
+      if (!tmdbId || parseInt(tmdbId) <= 0) return null;
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_API_KEY}&language=en-US&append_to_response=videos,external_ids,credits`);
+        if (!res.ok) return null;
+        const data = await res.json();
+
+        let trailerUrl = "";
+        if (data.videos && data.videos.results) {
+          let t = data.videos.results.find(v => v.type === "Trailer" && v.site === "YouTube" && v.iso_639_1 === "ta");
+          if (!t) t = data.videos.results.find(v => (v.type === "Trailer" || v.type === "Teaser") && v.site === "YouTube");
+          if (t) trailerUrl = `https://www.youtube.com/watch?v=${t.key}`;
+        }
+
+        const directors = (data.credits && data.credits.crew) 
+          ? data.credits.crew.filter(c => c.job === "Director").map(c => c.name)
+          : [];
+
+        const castList = [];
+        if (data.credits && data.credits.cast) {
+          data.credits.cast.slice(0, 5).forEach(c => {
+            castList.push({
+              name: c.name,
+              role: c.character || "",
+              thumbnail: c.profile_path ? `https://image.tmdb.org/t/p/w185${c.profile_path}` : ""
+            });
+          });
+        }
+
+        let autoCollection = "";
+        if (data.belongs_to_collection && data.belongs_to_collection.name) {
+          autoCollection = data.belongs_to_collection.name;
+        }
+
+        fetchedTmdbMetadata = {
+          title: data.title || `Movie ${tmdbId}`,
+          original_title: data.original_title || data.title || `Movie ${tmdbId}`,
+          year: data.release_date ? parseInt(data.release_date.split('-')[0]) : new Date().getFullYear(),
+          tmdb_id: data.id,
+          imdb_id: data.imdb_id || (data.external_ids && data.external_ids.imdb_id) || '',
+          rating: data.vote_average ? Number(data.vote_average.toFixed(1)) : 7.5,
+          runtime: data.runtime || 0,
+          director: directors,
+          cast: castList,
+          collection: autoCollection,
+          plot: data.overview || '',
+          poster: data.poster_path ? `https://image.tmdb.org/t/p/w500${data.poster_path}` : '',
+          fanart: data.backdrop_path ? `https://image.tmdb.org/t/p/original${data.backdrop_path}` : '',
+          trailer: trailerUrl
+        };
+        return fetchedTmdbMetadata;
+      } catch (e) { return null; }
+    }
+
+    /* FILENAME PARSER */
     function parseSmartFileName(filename) {
       if (!filename || filename.trim().length === 0) {
         document.getElementById('parsed-smart-tags').innerHTML = '';
@@ -1257,7 +1124,6 @@
       const fn = filename.toLowerCase();
       let tags = [];
 
-      // Quality Detection
       if (fn.includes('2160p') || fn.includes('4k') || fn.includes('uhd')) {
         document.getElementById('input-quality').value = '4K UHD';
         document.getElementById('input-resolution').value = '4K UHD';
@@ -1272,57 +1138,30 @@
         tags.push('720p HD');
       }
 
-      // Source Detection
-      if (fn.includes('amzn') || fn.includes('amazon')) {
-        document.getElementById('input-source').value = 'AMZN WEB-DL';
-        tags.push('AMZN WEB-DL');
-      } else if (fn.includes('nf') || fn.includes('netflix')) {
-        document.getElementById('input-source').value = 'NF WEB-DL';
-        tags.push('Netflix WEB-DL');
-      } else if (fn.includes('dsnp') || fn.includes('hotstar')) {
-        document.getElementById('input-source').value = 'DSNP WEB-DL';
-        tags.push('Disney+ Hotstar');
-      } else if (fn.includes('bluray') || fn.includes('remux')) {
+      if (fn.includes('bluray') || fn.includes('remux')) {
         document.getElementById('input-source').value = 'BLURAY';
         tags.push('BluRay Disc');
-      } else if (fn.includes('web-dl') || fn.includes('webdl') || fn.includes('webrip')) {
+      } else if (fn.includes('web-dl') || fn.includes('webdl')) {
         document.getElementById('input-source').value = 'WEB-DL';
         tags.push('WEB-DL');
       }
 
-      // Codec Detection
-      if (fn.includes('hevc') || fn.includes('x265') || fn.includes('h.265') || fn.includes('h265')) {
+      if (fn.includes('hevc') || fn.includes('x265') || fn.includes('h.265')) {
         document.getElementById('input-codec').value = 'x265';
         tags.push('HEVC / x265');
-      } else if (fn.includes('av1')) {
-        document.getElementById('input-codec').value = 'AV1';
-        tags.push('AV1');
-      } else if (fn.includes('h.264') || fn.includes('h264') || fn.includes('x264') || fn.includes('avc')) {
+      } else if (fn.includes('h.264') || fn.includes('x264')) {
         document.getElementById('input-codec').value = 'H.264';
-        tags.push('H.264 / AVC');
+        tags.push('H.264');
       }
 
-      // Audio Detection
-      if (fn.includes('atmos') || fn.includes('truehd')) {
+      if (fn.includes('atmos')) {
         document.getElementById('input-audio').value = 'Dolby Atmos';
         document.getElementById('input-channels').value = '7.1';
         tags.push('Dolby Atmos 7.1');
-      } else if (fn.includes('ddp') || fn.includes('eac3') || fn.includes('dd+')) {
+      } else if (fn.includes('ddp') || fn.includes('dd+')) {
         document.getElementById('input-audio').value = 'Dolby Digital Plus';
         document.getElementById('input-channels').value = '5.1';
-        tags.push('DDP 5.1 Surround');
-      } else if (fn.includes('ac3') || fn.includes('dd5.1') || fn.includes('dd')) {
-        document.getElementById('input-audio').value = 'Dolby Digital';
-        tags.push('Dolby Digital AC3');
-      }
-
-      // Universe & Collection Auto-Tagging
-      if (fn.includes('kaithi') || fn.includes('vikram') || fn.includes('leo') || fn.includes('coolie')) {
-        document.getElementById('input-collection').value = 'LCU';
-        tags.push('👑 LCU Universe');
-      } else if (fn.includes('avengers') || fn.includes('iron.man') || fn.includes('thor') || fn.includes('captain.america')) {
-        document.getElementById('input-collection').value = 'Marvel Cinematic Universe';
-        tags.push('👑 MCU Universe');
+        tags.push('DDP 5.1');
       }
 
       const tagBox = document.getElementById('parsed-smart-tags');
@@ -1349,9 +1188,8 @@
 
       if (!movieTitle || movieTitle.length < 2) return;
 
-      const queryUrl = `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(movieTitle)}${year ? `&year=${year}` : ''}&language=en-US`;
       try {
-        const res = await fetch(queryUrl);
+        const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(movieTitle)}${year ? `&year=${year}` : ''}&language=en-US`);
         const data = await res.json();
         const results = data.results || [];
 
@@ -1419,12 +1257,9 @@
       document.getElementById('badge-c04').textContent = vaultData.length;
 
       renderMoviesGrid(moviesData);
-      renderSeriesGrid(seriesData);
-      renderSongsGrid(songsData);
-      renderVaultGrid(vaultData);
     }
 
-    /* RENDER MOVIES WITH COLLECTION UNIVERSE BADGES */
+    /* RENDER MOVIES GRID */
     function renderMoviesGrid(list) {
       const container = document.getElementById('movies-grid-container');
       container.innerHTML = '';
@@ -1480,150 +1315,11 @@
               <button type="button" class="btn-add-version" onclick="prepareAddVersion('${tmdbId}')">
                 + VERSION
               </button>
-              <button type="button" class="btn-fix-tmdb" onclick="promptFixTmdb(${index})">
+              <button type="button" class="btn-fix-tmdb" onclick="openEditMovieModal(${index})">
                 ✏️ Edit
               </button>
               <button type="button" class="btn-delete-item" onclick="promptDeleteItem('chunks/data_c01.json', ${index}, '${escapeHtml(title)}', moviesData)">
                 🗑️ Delete
-              </button>
-            </div>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function renderSeriesGrid(list) {
-      const container = document.getElementById('series-grid');
-      container.innerHTML = '';
-      if (!list || list.length === 0) {
-        container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--text-dim); padding: 2rem;">No web series in database yet.</div>';
-        return;
-      }
-
-      list.forEach((show, index) => {
-        const title = show.title || show.name || 'Untitled Show';
-        const poster = show.poster || '';
-        const year = show.year || 'N/A';
-        const epCount = Array.isArray(show.episodes) ? show.episodes.length : (show.stream_url ? 1 : 0);
-
-        const card = document.createElement('div');
-        card.className = 'movie-card';
-        card.innerHTML = `
-          <div class="poster-wrap">
-            ${poster ? `<img src="${poster}" class="poster-img" loading="lazy" onerror="this.style.display='none'">` : '<div class="poster-placeholder">No Cover</div>'}
-          </div>
-          <div class="movie-card-body">
-            <div>
-              <div class="movie-title" title="${escapeHtml(title)}">${escapeHtml(title)}</div>
-              <div class="movie-meta-row">
-                <span>${escapeHtml(year)}</span>
-                <span>•</span>
-                <span class="badge-tmdb">${epCount} Episode${epCount === 1 ? '' : 's'}</span>
-              </div>
-            </div>
-            <div class="card-actions-row">
-              <button type="button" class="btn-add-version" onclick="prepareAddEpisodeToSeries('${show.tmdb_id || title}')">
-                + EPISODE
-              </button>
-              <button type="button" class="btn-delete-item" onclick="promptDeleteItem('chunks/data_c02.json', ${index}, '${escapeHtml(title)}', seriesData)">
-                🗑️ Delete
-              </button>
-            </div>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function renderSongsGrid(list) {
-      const container = document.getElementById('songs-grid');
-      container.innerHTML = '';
-      if (!list || list.length === 0) {
-        container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--text-dim); padding: 2rem;">No songs in database yet.</div>';
-        return;
-      }
-
-      list.forEach((song, index) => {
-        const title = song.title || song.name || 'Untitled Track';
-        const poster = song.poster || '';
-        const year = song.year || 'N/A';
-        const audioFormat = song.specs && song.specs.audio ? song.specs.audio : 'Dolby Digital';
-        const tmdbId = song.tmdb_id || 0;
-
-        let versionsHtml = '';
-        if (Array.isArray(song.versions) && song.versions.length > 0) {
-          song.versions.forEach(v => {
-            const q = escapeHtml(v.audio || v.quality || 'Audio');
-            const details = [v.codec, v.channels].filter(Boolean).map(escapeHtml).join(' • ');
-            versionsHtml += `
-              <div class="version-tag">
-                <span class="version-tag-spec">${q}</span>
-                <span class="version-tag-detail">${details}</span>
-              </div>
-            `;
-          });
-        } else {
-          versionsHtml = '<div class="version-tag"><span>1 Stream</span></div>';
-        }
-
-        const card = document.createElement('div');
-        card.className = 'movie-card';
-        card.innerHTML = `
-          <div class="poster-wrap">
-            ${poster ? `<img src="${poster}" class="poster-img" loading="lazy" onerror="this.style.display='none'">` : '<div class="poster-placeholder">No Cover</div>'}
-          </div>
-          <div class="movie-card-body">
-            <div>
-              <div class="movie-title" title="${escapeHtml(title)}">${escapeHtml(title)}</div>
-              <div class="movie-meta-row">
-                <span>${escapeHtml(year)}</span>
-                ${tmdbId ? `<span>•</span><span class="badge-tmdb">TMDB: ${escapeHtml(tmdbId)}</span>` : ''}
-                <span class="badge-tmdb">${escapeHtml(audioFormat)}</span>
-              </div>
-              <div class="existing-versions-list">
-                ${versionsHtml}
-              </div>
-            </div>
-            <div class="card-actions-row">
-              <button type="button" class="btn-add-version" onclick="prepareAddSongVersion(${index})">
-                + VERSION
-              </button>
-              <button type="button" class="btn-fix-tmdb" onclick="promptFixSong(${index})">
-                ✏️ Edit
-              </button>
-              <button type="button" class="btn-delete-item" onclick="promptDeleteItem('chunks/data_c03.json', ${index}, '${escapeHtml(title)}', songsData)">
-                🗑️ Delete
-              </button>
-            </div>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function renderVaultGrid(list) {
-      const container = document.getElementById('vault-grid');
-      container.innerHTML = '';
-      if (!list || list.length === 0) {
-        container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--text-dim); padding: 2rem;">No YouTube Vault items yet.</div>';
-        return;
-      }
-      list.forEach((item, index) => {
-        const card = document.createElement('div');
-        card.className = 'movie-card';
-        card.innerHTML = `
-          <div class="poster-wrap">
-            ${item.thumbnail ? `<img src="${item.thumbnail}" class="poster-img" loading="lazy" onerror="this.style.display='none'">` : '<div class="poster-placeholder">No Thumbnail</div>'}
-          </div>
-          <div class="movie-card-body">
-            <div class="movie-title" title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</div>
-            <div class="movie-meta-row">
-              <span class="badge-tmdb" style="color: var(--laser-red); border-color: rgba(255,0,60,0.4);">${escapeHtml(item.category || 'Clip')}</span>
-            </div>
-            <div class="card-actions-row" style="margin-top: 10px;">
-              <button type="button" class="btn-delete-item" style="width: 100%;" onclick="promptDeleteItem('chunks/data_c04.json', ${index}, '${escapeHtml(item.title)}', vaultData)">
-                🗑️ Delete Video
               </button>
             </div>
           </div>
@@ -1645,63 +1341,74 @@
       renderMoviesGrid(filtered);
     }
 
-    /* TMDB METADATA LOADER (CAST, DIRECTOR, TRAILER, RUNTIME) */
-    async function fetchTmdbMetadata(tmdbId) {
-      if (!tmdbId || parseInt(tmdbId) <= 0) return null;
-      try {
-        const res = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_API_KEY}&language=en-US&append_to_response=videos,external_ids,credits`);
-        if (!res.ok) return null;
-        const data = await res.json();
+    /* AUTO-MERGE DUPLICATES (FIX 2 SARDAR INSTANTLY) */
+    function autoMergeDuplicateMovies() {
+      const token = getStoredToken();
+      if (!token) return showLaserToast('Please configure GitHub Token first.', true);
 
-        let trailerUrl = "";
-        if (data.videos && data.videos.results) {
-          let t = data.videos.results.find(v => v.type === "Trailer" && v.site === "YouTube" && v.iso_639_1 === "ta");
-          if (!t) t = data.videos.results.find(v => (v.type === "Trailer" || v.type === "Teaser") && v.site === "YouTube");
-          if (t) trailerUrl = `https://www.youtube.com/watch?v=${t.key}`;
-        }
+      let mergedMap = new Map();
+      let duplicatesFound = 0;
 
-        const directors = (data.credits && data.credits.crew) 
-          ? data.credits.crew.filter(c => c.job === "Director").map(c => c.name)
-          : [];
+      moviesData.forEach(movie => {
+        const key = movie.tmdb_id ? String(movie.tmdb_id) : movie.title;
+        if (!mergedMap.has(key)) {
+          if (!movie.versions || movie.versions.length === 0) {
+            movie.versions = [{
+              id: movie.id,
+              name: movie.name || movie.title,
+              quality: movie.specs?.resolution || "1080p",
+              source: movie.specs?.source || "WEB-DL",
+              codec: movie.specs?.codec || "H.264",
+              resolution: movie.specs?.resolution || "1080p FHD",
+              audio: movie.specs?.audio || "Dolby Digital",
+              channels: movie.specs?.channels || "5.1",
+              stream_url: movie.stream_url,
+              specs: movie.specs || {}
+            }];
+          }
+          mergedMap.set(key, movie);
+        } else {
+          duplicatesFound++;
+          const masterMovie = mergedMap.get(key);
+          masterMovie.versions = masterMovie.versions || [];
 
-        const castList = [];
-        if (data.credits && data.credits.cast) {
-          data.credits.cast.slice(0, 5).forEach(c => {
-            castList.push({
-              name: c.name,
-              role: c.character || "",
-              thumbnail: c.profile_path ? `https://image.tmdb.org/t/p/w185${c.profile_path}` : ""
-            });
+          const newVersions = movie.versions && movie.versions.length > 0 ? movie.versions : [{
+            id: movie.id,
+            name: movie.name || movie.title,
+            quality: movie.specs?.resolution || "4K UHD",
+            source: movie.specs?.source || "WEB-DL",
+            codec: movie.specs?.codec || "x265",
+            resolution: movie.specs?.resolution || "4K UHD",
+            audio: movie.specs?.audio || "Dolby Digital",
+            channels: movie.specs?.channels || "5.1",
+            stream_url: movie.stream_url,
+            specs: movie.specs || {}
+          }];
+
+          newVersions.forEach(nv => {
+            if (!masterMovie.versions.some(v => v.id === nv.id || v.stream_url === nv.stream_url)) {
+              masterMovie.versions.push(nv);
+            }
           });
         }
+      });
 
-        fetchedTmdbMetadata = {
-          title: data.title || `Movie ${tmdbId}`,
-          original_title: data.original_title || data.title || `Movie ${tmdbId}`,
-          year: data.release_date ? parseInt(data.release_date.split('-')[0]) : new Date().getFullYear(),
-          tmdb_id: data.id,
-          imdb_id: data.imdb_id || (data.external_ids && data.external_ids.imdb_id) || '',
-          rating: data.vote_average ? Number(data.vote_average.toFixed(1)) : 7.5,
-          runtime: data.runtime || 0,
-          director: directors,
-          cast: castList,
-          plot: data.overview || '',
-          poster: data.poster_path ? `https://image.tmdb.org/t/p/w500${data.poster_path}` : '',
-          fanart: data.backdrop_path ? `https://image.tmdb.org/t/p/original${data.backdrop_path}` : '',
-          trailer: trailerUrl
-        };
-        return fetchedTmdbMetadata;
-      } catch (e) { return null; }
+      if (duplicatesFound === 0) {
+        return showLaserToast('No duplicates found in database! Everything is clean.');
+      }
+
+      moviesData = Array.from(mergedMap.values());
+      openPreviewModal('chunks/data_c01.json', null, `Merged ${duplicatesFound} Duplicates`, `Auto-Merged ${duplicatesFound} Duplicate Movies (e.g. Sardar)`, moviesData, true);
     }
 
-    /* AUTO-MERGE DOCK ENGINE */
+    /* AUTO-MERGE DOCK */
     function checkTmdbMatch() {
       const enteredId = document.getElementById('input-tmdb-id').value.trim();
       const hint = document.getElementById('tmdb-match-hint');
       clearTimeout(tmdbDebounceTimeout);
 
       if (!enteredId) {
-        hint.textContent = 'Auto-fetches English Title, Poster, Cast, Director, Runtime & Trailer';
+        hint.textContent = 'Auto-fetches Official Title, Poster, Cast, Director, Runtime, Trailer & Universe Collection';
         hint.style.color = 'var(--text-dim)';
         hideMergeDock();
         return;
@@ -1709,24 +1416,20 @@
 
       const match = moviesData.find(m => String(m.tmdb_id) === enteredId);
       if (match) {
-        showMergeDock(match);
+        targetExistingMovie = match;
+        document.getElementById('dock-movie-name').textContent = `⚡ "${match.title}" (${match.year}) Exists in Database!`;
+        document.getElementById('dock-movie-desc').textContent = `Currently has ${match.versions ? match.versions.length : 1} version(s). Click to add new version cleanly without duplicate entry.`;
+        document.getElementById('merge-dock').classList.add('show');
       } else {
         hideMergeDock();
         tmdbDebounceTimeout = setTimeout(async () => {
           const meta = await fetchTmdbMetadata(enteredId);
           if (meta) {
-            hint.textContent = `Found: "${meta.title}" (${meta.year}) ★ ${meta.rating} | ${meta.runtime} mins`;
+            hint.textContent = `Found: "${meta.title}" (${meta.year}) ★ ${meta.rating} | ${meta.runtime} mins ${meta.collection ? `| 👑 ${meta.collection}` : ''}`;
             hint.style.color = 'var(--laser-green)';
           }
         }, 400);
       }
-    }
-
-    function showMergeDock(match) {
-      targetExistingMovie = match;
-      document.getElementById('dock-movie-name').textContent = `⚡ "${match.title}" (${match.year}) Exists in Database!`;
-      document.getElementById('dock-movie-desc').textContent = `Currently has ${match.versions ? match.versions.length : 1} version(s). Click to add new version cleanly without duplicate entry.`;
-      document.getElementById('merge-dock').classList.add('show');
     }
 
     function hideMergeDock() {
@@ -1767,26 +1470,43 @@
 
       document.getElementById('input-tmdb-id').value = existing.tmdb_id;
       document.getElementById('input-gdrive-url').value = '';
-      if (existing.collection) document.getElementById('input-collection').value = existing.collection;
 
       document.getElementById('movie-form-title').textContent = `Merge Version into: ${existing.title}`;
       document.getElementById('btn-movie-submit').textContent = 'ONE-CLICK MERGE';
       document.getElementById('btn-cancel-merge').style.display = 'inline-block';
     }
 
-    async function promptFixTmdb(movieIndex) {
+    /* MODERN EDIT POPUP MODAL (NO BROWSER PROMPT) */
+    function openEditMovieModal(movieIndex) {
+      editingMovieIndex = movieIndex;
+      const movie = moviesData[movieIndex];
+      document.getElementById('edit-modal-title').textContent = `✏️ Edit: ${movie.title}`;
+      document.getElementById('edit-modal-tmdb').value = movie.tmdb_id || '';
+      document.getElementById('edit-modal-title-input').value = movie.title || '';
+      document.getElementById('edit-modal-collection').value = movie.collection || '';
+      document.getElementById('edit-movie-modal').classList.add('active');
+    }
+
+    function closeEditModal() {
+      document.getElementById('edit-movie-modal').classList.remove('active');
+      editingMovieIndex = null;
+    }
+
+    async function submitEditMovieModal() {
       const token = getStoredToken();
       if (!token) return showLaserToast('Please configure GitHub Token first.', true);
-      const movie = moviesData[movieIndex];
-      const newId = prompt(`Enter correct TMDB ID for "${movie.title}":`, movie.tmdb_id || '');
-      if (!newId || isNaN(newId)) return;
 
-      const col = prompt(`Set Universe Collection for "${movie.title}" (e.g. LCU, MCU, or leave blank):`, movie.collection || '');
+      const movie = moviesData[editingMovieIndex];
+      const newId = document.getElementById('edit-modal-tmdb').value.trim();
+      const customTitle = document.getElementById('edit-modal-title-input').value.trim();
+      const customCol = document.getElementById('edit-modal-collection').value.trim();
 
-      const meta = await fetchTmdbMetadata(newId.trim());
+      if (!newId || isNaN(newId)) return showLaserToast('Please enter a valid TMDB ID', true);
+
+      const meta = await fetchTmdbMetadata(newId);
       if (!meta) return showLaserToast('Could not fetch TMDB details.', true);
 
-      movie.title = meta.title;
+      movie.title = customTitle || meta.title;
       movie.original_title = meta.original_title;
       movie.year = meta.year;
       movie.tmdb_id = meta.tmdb_id;
@@ -1800,9 +1520,10 @@
       movie.poster = meta.poster;
       movie.fanart = meta.fanart;
       movie.trailer = meta.trailer;
-      if (col !== null) movie.collection = col.trim();
+      movie.collection = customCol || meta.collection || "";
 
-      openPreviewModal('chunks/data_c01.json', movie, movie.stream_url, `Update Metadata: ${meta.title}`, moviesData, true);
+      closeEditModal();
+      openPreviewModal('chunks/data_c01.json', movie, movie.stream_url, `Update Metadata: ${movie.title}`, moviesData, true);
     }
 
     /* SECURE DELETE ENGINE (PASS: 24592) */
@@ -1819,45 +1540,6 @@
 
       activeDataArray.splice(itemIndex, 1);
       openPreviewModal(targetChunk, null, "Item Removed Permanently", `Delete: "${itemTitle}"`, activeDataArray, true);
-    }
-
-    function prepareAddSongVersion(songIndex) {
-      const song = songsData[songIndex];
-      if (!song) return;
-      const gId = prompt(`Enter new Google Drive File ID for "${song.title}":`);
-      if (!gId) return;
-      const cleanGId = extractGDriveId(gId);
-      const stream = `${WORKER_BASE}${cleanGId}${USER_AGENT}`;
-
-      const newVersion = {
-        id: cleanGId,
-        name: `${song.title} (Lossless Surround)`,
-        quality: "Lossless",
-        source: "Master",
-        codec: "FLAC/EAC3",
-        resolution: "Audio",
-        audio: "5.1 Surround",
-        channels: "5.1",
-        stream_url: stream,
-        specs: { resolution: "Audio", source: "Master", codec: "FLAC/EAC3", audio: "5.1 Surround", channels: "5.1" }
-      };
-
-      song.versions = song.versions || [];
-      song.versions.push(newVersion);
-      openPreviewModal('chunks/data_c03.json', song, stream, `Add Version to ${song.title}`, songsData, true);
-    }
-
-    function promptFixSong(songIndex) {
-      const song = songsData[songIndex];
-      if (!song) return;
-      const newTitle = prompt(`Edit Track Title for "${song.title}":`, song.title);
-      if (newTitle === null) return;
-      const newPoster = prompt(`Edit Poster / Album Art URL:`, song.poster || '');
-
-      song.title = newTitle.trim() || song.title;
-      if (newPoster !== null) song.poster = newPoster.trim();
-
-      openPreviewModal('chunks/data_c03.json', song, song.stream_url, `Fix Metadata: ${song.title}`, songsData, true);
     }
 
     async function handleMovieSubmit(e) {
@@ -1877,11 +1559,10 @@
       const audio = document.getElementById('input-audio').value;
       const channels = document.getElementById('input-channels').value;
       const languages = document.getElementById('input-languages').value;
-      const collection = document.getElementById('input-collection').value;
       const streamUrl = `${WORKER_BASE}${fileId}${USER_AGENT}`;
 
       const meta = fetchedTmdbMetadata || {
-        title: `Movie ${tmdbId}`, original_title: `Movie ${tmdbId}`, year: new Date().getFullYear(), tmdb_id: Number(tmdbId), rating: 7.5, plot: "", poster: "", fanart: "", trailer: "", runtime: 0, director: [], cast: []
+        title: `Movie ${tmdbId}`, original_title: `Movie ${tmdbId}`, year: new Date().getFullYear(), tmdb_id: Number(tmdbId), rating: 7.5, plot: "", poster: "", fanart: "", trailer: "", runtime: 0, director: [], cast: [], collection: ""
       };
 
       const versionObj = {
@@ -1895,7 +1576,7 @@
       if (isMergeMode && targetExistingMovie) {
         targetExistingMovie.versions = targetExistingMovie.versions || [];
         targetExistingMovie.versions.push(versionObj);
-        if (collection) targetExistingMovie.collection = collection;
+        if (meta.collection && !targetExistingMovie.collection) targetExistingMovie.collection = meta.collection;
         openPreviewModal('chunks/data_c01.json', targetExistingMovie, streamUrl, `${targetExistingMovie.title} (Merged ${quality})`, moviesData, true);
       } else {
         const fullMovie = {
@@ -1909,7 +1590,7 @@
           imdb_id: meta.imdb_id || "", 
           imdb_url: meta.imdb_id ? `https://www.imdb.com/title/${meta.imdb_id}/` : "",
           rating: meta.rating, 
-          collection: collection || "",
+          collection: meta.collection || "",
           director: meta.director || [],
           trailer: meta.trailer || "",
           cast: meta.cast || [],
@@ -1932,378 +1613,7 @@
       }
     }
 
-    /* WEB SERIES */
-    async function fetchSeriesTMDB() {
-      const q = document.getElementById('s_search_query').value.trim();
-      if (!q) return showLaserToast('Enter Series Name or TMDB TV ID', true);
-
-      const isNumericId = /^\d+$/.test(q);
-      const url = isNumericId
-        ? `https://api.themoviedb.org/3/tv/${q}?api_key=${TMDB_API_KEY}&language=en-US`
-        : `https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(q)}&language=en-US`;
-
-      try {
-        const res = await fetch(url);
-        if (!res.ok) throw new Error(`TMDB Error (${res.status})`);
-        const data = await res.json();
-        const s = (data.results && data.results.length > 0) ? data.results[0] : data;
-
-        if (!s || (!s.name && !s.title && !s.original_name)) {
-          return showLaserToast('Series not found on TMDB', true);
-        }
-
-        let fullShow = s;
-        if (!isNumericId) {
-          const detailRes = await fetch(`https://api.themoviedb.org/3/tv/${s.id}?api_key=${TMDB_API_KEY}&language=en-US`);
-          if (detailRes.ok) fullShow = await detailRes.json();
-        }
-
-        const seriesTitle = fullShow.name || fullShow.original_name || '';
-        const seriesYear = fullShow.first_air_date ? fullShow.first_air_date.split('-')[0] : '';
-        const seriesRating = fullShow.vote_average ? fullShow.vote_average.toFixed(1) : '8.0';
-
-        document.getElementById('s_title').value = seriesTitle;
-        document.getElementById('s_year').value = seriesYear;
-        window._s_poster = fullShow.poster_path ? `https://image.tmdb.org/t/p/w500${fullShow.poster_path}` : '';
-        window._s_fanart = fullShow.backdrop_path ? `https://image.tmdb.org/t/p/original${fullShow.backdrop_path}` : '';
-        window._s_plot = fullShow.overview || '';
-        window._s_tmdb = fullShow.id;
-
-        const seasonSelect = document.getElementById('s_season_select');
-        seasonSelect.innerHTML = '<option value="">-- Choose Season --</option>';
-        const seasons = fullShow.seasons || [];
-
-        seasons.forEach(sn => {
-          if (sn.season_number > 0) {
-            const opt = document.createElement('option');
-            opt.value = sn.season_number;
-            opt.textContent = `${sn.name} (${sn.episode_count} Episodes)`;
-            seasonSelect.appendChild(opt);
-          }
-        });
-
-        if (seasonSelect.options.length > 1) {
-          seasonSelect.selectedIndex = 1;
-          await onSeasonSelected();
-        }
-
-        showLaserToast(`Found: ${seriesTitle} (${seriesYear}) ★ ${seriesRating}`);
-      } catch(err) {
-        showLaserToast(`TV Fetch Error: ${err.message}`, true);
-      }
-    }
-
-    async function onSeasonSelected() {
-      const sNum = document.getElementById('s_season_select').value;
-      const epSelect = document.getElementById('s_episode_select');
-      epSelect.innerHTML = '<option value="">Loading episodes...</option>';
-      if (!sNum || !window._s_tmdb) return;
-
-      try {
-        const res = await fetch(`https://api.themoviedb.org/3/tv/${window._s_tmdb}/season/${sNum}?api_key=${TMDB_API_KEY}&language=en-US`);
-        if (!res.ok) throw new Error('Failed to load season');
-        const sData = await res.json();
-        
-        epSelect.innerHTML = '<option value="">-- Choose Episode --</option>';
-        window._currentEpisodes = sData.episodes || [];
-
-        window._currentEpisodes.forEach(ep => {
-          const opt = document.createElement('option');
-          opt.value = ep.episode_number;
-          opt.textContent = `Ep ${ep.episode_number}: ${ep.name}`;
-          epSelect.appendChild(opt);
-        });
-
-        if (epSelect.options.length > 1) {
-          epSelect.selectedIndex = 1;
-          onEpisodeSelected();
-        }
-      } catch(e) {
-        epSelect.innerHTML = '<option value="">Error loading episodes</option>';
-      }
-    }
-
-    function onEpisodeSelected() {
-      const sNum = document.getElementById('s_season_select').value;
-      const eNum = document.getElementById('s_episode_select').value;
-      if (!sNum || !eNum) return;
-
-      const sPad = String(sNum).padStart(2, '0');
-      const ePad = String(eNum).padStart(2, '0');
-      const tag = `S${sPad}E${ePad}`;
-
-      document.getElementById('s_tag').value = tag;
-
-      if (window._currentEpisodes) {
-        const epObj = window._currentEpisodes.find(ep => String(ep.episode_number) === String(eNum));
-        if (epObj) {
-          document.getElementById('s_ep_title').value = epObj.name || `Episode ${eNum}`;
-          window._s_current_ep_plot = epObj.overview || window._s_plot;
-        }
-      }
-    }
-
-    function prepareAddEpisodeToSeries(identifier) {
-      document.getElementById('s_search_query').value = identifier;
-      fetchSeriesTMDB();
-      document.getElementById('s_search_query').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function handleSeriesSubmit(e) {
-      e.preventDefault();
-      const gId = extractGDriveId(document.getElementById('s_gdrive').value);
-      if (!gId) return showLaserToast('Invalid Google Drive File Link', true);
-
-      const stream = `${WORKER_BASE}${gId}${USER_AGENT}`;
-      const title = document.getElementById('s_title').value;
-      const tag = document.getElementById('s_tag').value.trim();
-      const epTitle = document.getElementById('s_ep_title').value.trim();
-      const sNum = parseInt(tag.match(/s(\d+)/i)?.[1] || 1);
-      const eNum = parseInt(tag.match(/e(\d+)/i)?.[1] || 1);
-
-      const epObject = {
-        id: gId,
-        name: `${title} - ${tag} - ${epTitle}.mkv`,
-        title: `${tag} - ${epTitle}`,
-        season: sNum,
-        episode: eNum,
-        plot: window._s_current_ep_plot || window._s_plot || "",
-        stream_url: stream,
-        specs: { resolution: "1080p FHD", source: "WEB-DL", codec: "H.264", audio: "Dolby Digital Plus", channels: "5.1" }
-      };
-
-      let existingShow = seriesData.find(s => String(s.tmdb_id) === String(window._s_tmdb) || s.title === title);
-
-      if (existingShow) {
-        existingShow.episodes = existingShow.episodes || [];
-        existingShow.episodes.push(epObject);
-        openPreviewModal('chunks/data_c02.json', existingShow, stream, `${title} (Added ${tag})`, seriesData, true);
-      } else {
-        const newShow = {
-          id: `tv_${window._s_tmdb}`,
-          title: title,
-          original_title: title,
-          year: parseInt(document.getElementById('s_year').value) || 0,
-          tmdb_id: window._s_tmdb || 0,
-          rating: 8.5,
-          plot: window._s_plot || "",
-          poster: window._s_poster || "",
-          fanart: window._s_fanart || "",
-          logo: "",
-          episodes: [epObject]
-        };
-        openPreviewModal('chunks/data_c02.json', newShow, stream, `${title} (${tag})`, seriesData, false);
-      }
-    }
-
-    /* 3. iTUNES SONGS DISCOVERY */
-    async function fetchAlbumAndTracks() {
-      let query = document.getElementById('song_search_query').value.trim();
-      const lang = document.getElementById('song_lang_filter').value;
-      if (!query) return showLaserToast('Enter Movie or Album name', true);
-
-      const fullQuery = `${query} ${lang}`.trim();
-
-      try {
-        const albumRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(fullQuery)}&entity=album&country=IN&limit=3`);
-        const albumData = await albumRes.json();
-        
-        let albumId = null, albumName = "", albumArt = "", albumYear = "";
-        if (albumData.results && albumData.results.length > 0) {
-          const alb = albumData.results[0];
-          albumId = alb.collectionId;
-          albumName = alb.collectionName;
-          albumArt = alb.artworkUrl100 ? alb.artworkUrl100.replace('100x100bb.jpg', '1000x1000bb.jpg') : '';
-          albumYear = alb.releaseDate ? alb.releaseDate.split('-')[0] : '';
-        }
-
-        if (albumId) {
-          const tracksRes = await fetch(`https://itunes.apple.com/lookup?id=${albumId}&entity=song&country=IN`);
-          const tracksData = await tracksRes.json();
-          const songs = tracksData.results.filter(item => item.wrapperType === 'track');
-          renderTracks(albumName, albumArt, albumYear, songs);
-        } else {
-          const songRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(fullQuery)}&entity=song&country=IN&limit=8`);
-          const songData = await songRes.json();
-          renderTracks(query, '', '', songData.results || []);
-        }
-      } catch (e) { showLaserToast('iTunes search failed', true); }
-    }
-
-    function renderTracks(albTitle, albArt, albYear, tracks) {
-      const box = document.getElementById('track_picker_box');
-      const container = document.getElementById('track_items_container');
-      document.getElementById('album_found_name').innerText = `Album: ${albTitle} (${tracks.length} Songs)`;
-      container.innerHTML = '';
-
-      tracks.forEach(t => {
-        const div = document.createElement('div');
-        div.className = 'track-item';
-        const art = t.artworkUrl100 ? t.artworkUrl100.replace('100x100bb.jpg', '1000x1000bb.jpg') : albArt;
-        div.innerHTML = `
-          <div>
-            <div class="title">🎵 ${t.trackName}</div>
-            <div class="artist">${t.artistName} • ${t.collectionName || albTitle}</div>
-          </div>
-          <button type="button" class="btn-auto-fetch" style="padding: 4px 10px; font-size: 11px;">Select</button>
-        `;
-        div.onclick = () => {
-          document.getElementById('song_title').value = t.trackName;
-          document.getElementById('song_album').value = t.collectionName || albTitle;
-          document.getElementById('song_artist').value = t.artistName;
-          document.getElementById('song_year').value = t.releaseDate ? t.releaseDate.split('-')[0] : albYear;
-          document.getElementById('song_poster').value = art;
-          box.style.display = 'none';
-        };
-        container.appendChild(div);
-      });
-      box.style.display = 'block';
-    }
-
-    function handleSongSubmit(e) {
-      e.preventDefault();
-      const gId = extractGDriveId(document.getElementById('song_gdrive').value);
-      const stream = `${WORKER_BASE}${gId}${USER_AGENT}`;
-      const [audioName, ch, codec] = document.getElementById('song_audio_format').value.split('|');
-      const title = document.getElementById('song_title').value;
-
-      const entry = {
-        id: gId || `song_${Date.now()}`,
-        name: `${title} (${audioName}).flac`,
-        title: title,
-        original_title: document.getElementById('song_album').value,
-        year: parseInt(document.getElementById('song_year').value) || 0,
-        tmdb_id: 0, imdb_id: "", imdb_url: "", rating: 9.0,
-        plot: `Artist: ${document.getElementById('song_artist').value} | Album: ${document.getElementById('song_album').value}`,
-        poster: document.getElementById('song_poster').value,
-        fanart: document.getElementById('song_poster').value,
-        logo: "",
-        trailer: "",
-        stream_url: stream,
-        badges: { quality: "https://img.icons8.com/color/96/audio.png", source: "https://img.icons8.com/ios-filled/100/ffffff/cloud-download.png", audio_format: "https://img.icons8.com/color/96/dolby-digital.png", audio_channels: "https://img.icons8.com/ios-filled/100/ffffff/5-1.png" },
-        specs: { resolution: "Audio Stream", source: "Master Lossless", codec: codec, audio: audioName, channels: ch },
-        versions: [{ id: gId, name: `${title} ${audioName}`, quality: "Lossless", source: "Master", codec: codec, resolution: "Audio", audio: audioName, channels: ch, stream_url: stream, specs: { resolution: "Audio", source: "Master", codec: codec, audio: audioName, channels: ch } }]
-      };
-
-      openPreviewModal('chunks/data_c03.json', entry, stream, title, songsData, false);
-    }
-
-    /* 4. YOUTUBE VAULT */
-    function autoFetchYTMetadata() {
-      clearTimeout(ytDebounceTimeout);
-      const val = document.getElementById('yt_url').value.trim();
-      const hint = document.getElementById('yt_fetch_hint');
-      const submitBtn = document.getElementById('btn_vault_submit');
-
-      const playlistId = extractYTPlaylistId(val);
-      if (playlistId) {
-        hint.textContent = `📋 Detected Playlist (ID: ${playlistId}). Ready for batch import!`;
-        hint.style.color = 'var(--laser-cyan)';
-        submitBtn.textContent = 'BATCH IMPORT ENTIRE PLAYLIST';
-        document.getElementById('yt_title').value = `Playlist: ${playlistId}`;
-        return;
-      }
-
-      submitBtn.textContent = 'ADD TO YOUTUBE VAULT';
-      const ytId = extractYTId(val);
-      if (!ytId) {
-        hint.textContent = 'Paste single video link or full playlist URL';
-        hint.style.color = 'var(--text-dim)';
-        return;
-      }
-
-      hint.textContent = 'Fetching official YouTube Title...';
-      hint.style.color = 'var(--laser-cyan)';
-
-      ytDebounceTimeout = setTimeout(async () => {
-        try {
-          const res = await fetch(`https://noembed.com/embed?url=https://www.youtube.com/watch?v=${ytId}`);
-          const data = await res.json();
-          if (data && data.title) {
-            document.getElementById('yt_title').value = data.title;
-            hint.textContent = `Auto-Fetched: "${data.title}"`;
-            hint.style.color = 'var(--laser-green)';
-          }
-        } catch(e) {
-          hint.textContent = 'Could not auto-fetch title. You can type manually.';
-          hint.style.color = 'var(--text-dim)';
-        }
-      }, 300);
-    }
-
-    async function handleVaultSubmit(e) {
-      e.preventDefault();
-      const val = document.getElementById('yt_url').value.trim();
-      const cat = document.getElementById('yt_category').value;
-      const playlistId = extractYTPlaylistId(val);
-
-      if (playlistId) {
-        const hint = document.getElementById('yt_fetch_hint');
-        hint.textContent = 'Extracting playlist tracks via Proxy...';
-        hint.style.color = 'var(--laser-cyan)';
-
-        const proxies = [
-          `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`)}`,
-          `https://corsproxy.io/?${encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`)}`
-        ];
-
-        let xmlText = null;
-        for (let pUrl of proxies) {
-          try {
-            const res = await fetch(pUrl);
-            if (res.ok) {
-              xmlText = await res.text();
-              if (xmlText && xmlText.includes('<entry>')) break;
-            }
-          } catch(err) {}
-        }
-
-        if (xmlText && xmlText.includes('<entry>')) {
-          const parser = new DOMParser();
-          const xmlDoc = parser.parseFromString(xmlText, "text/xml");
-          const entries = xmlDoc.getElementsByTagName("entry");
-
-          const batchList = [];
-          for (let i = 0; i < entries.length; i++) {
-            const vidId = entries[i].getElementsByTagName("yt:videoId")[0]?.textContent;
-            const vTitle = entries[i].getElementsByTagName("title")[0]?.textContent || `Track ${i+1}`;
-            if (vidId) {
-              batchList.push({
-                id: `yt_${vidId}`,
-                title: vTitle,
-                category: cat,
-                thumbnail: `https://img.youtube.com/vi/${vidId}/maxresdefault.jpg`,
-                stream_url: `plugin://plugin.video.youtube/play/?video_id=${vidId}`
-              });
-            }
-          }
-
-          if (batchList.length > 0) {
-            openPreviewModal('chunks/data_c04.json', batchList, `Batch Importing ${batchList.length} Tracks`, `Playlist: ${playlistId} (${batchList.length} Videos)`, vaultData, false, true);
-            return;
-          }
-        }
-
-        showLaserToast('Could not fetch playlist feed. Saving single link.', true);
-      }
-
-      const ytId = extractYTId(val);
-      const title = document.getElementById('yt_title').value.trim();
-      const stream = `plugin://plugin.video.youtube/play/?video_id=${ytId}`;
-      const thumbnail = `https://img.youtube.com/vi/${ytId}/maxresdefault.jpg`;
-
-      const entry = {
-        id: `yt_${ytId}`,
-        title: title,
-        category: cat,
-        thumbnail: thumbnail,
-        stream_url: stream
-      };
-
-      openPreviewModal('chunks/data_c04.json', entry, stream, title, vaultData, false);
-    }
-
-    /* DIRECT COMMIT ENGINE WITH LATEST POPUP DESIGN */
+    /* DIRECT COMMIT ENGINE */
     function openPreviewModal(targetChunk, newEntry, streamUrl, title, activeDataArray, isUpdate = false, isBatch = false) {
       activeStreamUrl = streamUrl;
       pendingCommit = { targetChunk, newEntry, activeDataArray, title, isUpdate, isBatch };
@@ -2319,7 +1629,7 @@
           <span class="preview-item-val plain-text">${title}</span>
         </div>
         <div class="preview-stream-block">
-          <span class="preview-item-label">Resolved Stream URL / Action Details</span>
+          <span class="preview-item-label">Action Details</span>
           <div class="preview-stream-text">${streamUrl}</div>
         </div>
       `;
@@ -2328,37 +1638,6 @@
 
     function format18LineCompactJson(list) {
       const entries = list.map(item => {
-        if (item.thumbnail && !item.versions && !item.episodes) {
-          return `  {\n` +
-                 `    "id": ${JSON.stringify(item.id || "")},\n` +
-                 `    "title": ${JSON.stringify(item.title || "")},\n` +
-                 `    "category": ${JSON.stringify(item.category || "")},\n` +
-                 `    "thumbnail": ${JSON.stringify(item.thumbnail || "")},\n` +
-                 `    "stream_url": ${JSON.stringify(item.stream_url || "")}\n` +
-                 `  }`;
-        }
-
-        if (item.episodes) {
-          const epsStr = (item.episodes || []).map(ep => {
-            return `      {\n` +
-                   `        "id": ${JSON.stringify(ep.id || "")}, "name": ${JSON.stringify(ep.name || "")}, "title": ${JSON.stringify(ep.title || "")}, "season": ${ep.season || 1}, "episode": ${ep.episode || 1},\n` +
-                   `        "plot": ${JSON.stringify(ep.plot || "")},\n` +
-                   `        "stream_url": ${JSON.stringify(ep.stream_url || "")},\n` +
-                   `        "specs": ${JSON.stringify(ep.specs || {})}\n` +
-                   `      }`;
-          }).join(',\n');
-
-          return `  {\n` +
-                 `    "id": ${JSON.stringify(item.id || "")},\n` +
-                 `    "title": ${JSON.stringify(item.title || "")}, "original_title": ${JSON.stringify(item.original_title || "")}, "year": ${item.year || 0},\n` +
-                 `    "tmdb_id": ${item.tmdb_id || 0}, "rating": ${item.rating || 0},\n` +
-                 `    "plot": ${JSON.stringify(item.plot || "")},\n` +
-                 `    "poster": ${JSON.stringify(item.poster || "")},\n` +
-                 `    "fanart": ${JSON.stringify(item.fanart || "")},\n` +
-                 `    "episodes": [\n${epsStr}\n    ]\n` +
-                 `  }`;
-        }
-
         const vStrs = (item.versions || []).map(ver => {
           return `      {\n` +
                  `        "id": ${JSON.stringify(ver.id || "")}, "name": ${JSON.stringify(ver.name || "")}, "quality": ${JSON.stringify(ver.quality || "")}, "source": ${JSON.stringify(ver.source || "")}, "codec": ${JSON.stringify(ver.codec || "")}, "resolution": ${JSON.stringify(ver.resolution || "")}, "audio": ${JSON.stringify(ver.audio || "")}, "channels": ${JSON.stringify(ver.channels || "")},\n` +
@@ -2426,8 +1705,6 @@
         if (getRes.ok) {
           const fileInfo = await getRes.json();
           currentSha = fileInfo.sha;
-        } else if (getRes.status !== 404) {
-          throw new Error(`GitHub Access Error (Status ${getRes.status})`);
         }
 
         const finalJson = format18LineCompactJson(activeDataArray);
@@ -2438,9 +1715,7 @@
           content: encoded,
           branch: GH_BRANCH
         };
-        if (currentSha) {
-          bodyData.sha = currentSha;
-        }
+        if (currentSha) bodyData.sha = currentSha;
 
         const putRes = await fetch(url, {
           method: 'PUT',
@@ -2452,12 +1727,9 @@
           body: JSON.stringify(bodyData)
         });
 
-        if (!putRes.ok) {
-          const errData = await putRes.json().catch(() => ({}));
-          throw new Error(errData.message || 'Commit failed on GitHub');
-        }
+        if (!putRes.ok) throw new Error('Commit failed on GitHub');
 
-        showLaserToast(`Successfully committed "${title}" to GitHub!`);
+        showLaserToast(`Successfully updated "${title}" on GitHub!`);
         closeModal();
         cancelMergeMode();
         loadAllChunks();
