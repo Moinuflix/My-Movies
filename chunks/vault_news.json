@@ -1,121 +1,56 @@
 [
   {
-    "id": "sun_news_live",
-    "title": "Sun News 24x7 Live HD",
-    "category": "🔴 Live News 24x7",
-    "thumbnail": "https://i.ytimg.com/vi/aCg3j7l_s1Q/hqdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=aCg3j7l_s1Q"
+    "channel_name": "Sun News Tamil",
+    "poster": "https://yt3.googleusercontent.com/ytc/AIdro_mdg4fI9y9Ww1l66sWjX5hL...",
+    "items": [
+      {
+        "title": "🔴 Sun News 24x7 LIVE Stream",
+        "stream_url": "https://www.youtube.com/watch?v=OieM9brlm4g",
+        "poster": "https://i.ytimg.com/vi/OieM9brlm4g/hqdefault.jpg"
+      },
+      {
+        "title": "Sun News - Today Prime Headlines",
+        "stream_url": "https://www.youtube.com/watch?v=OieM9brlm4g",
+        "poster": "https://i.ytimg.com/vi/OieM9brlm4g/hqdefault.jpg"
+      }
+    ]
   },
   {
-    "id": "polimer_news_live",
-    "title": "Polimer News Live 24x7",
-    "category": "🔴 Live News 24x7",
-    "thumbnail": "https://i.ytimg.com/vi/JPVx7HyidPE/hqdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=JPVx7HyidPE"
+    "channel_name": "Polimer News",
+    "poster": "https://yt3.googleusercontent.com/ytc/AIdro_n4yU...",
+    "items": [
+      {
+        "title": "🔴 Polimer News 24x7 LIVE",
+        "stream_url": "plugin://plugin.video.youtube/play/?video_id=x5J0s5...",
+        "poster": "https://yt3.googleusercontent.com/ytc/AIdro_n4yU..."
+      },
+      {
+        "title": "Polimer Express Seithigal",
+        "stream_url": "plugin://plugin.video.youtube/play/?video_id=...",
+        "poster": "https://yt3.googleusercontent.com/ytc/AIdro_n4yU..."
+      }
+    ]
   },
   {
-    "id": "thanthi_tv_live",
-    "title": "Thanthi TV 24x7 Live News",
-    "category": "🔴 Live News 24x7",
-    "thumbnail": "https://i.ytimg.com/vi/2N0l9b6vX-s/hqdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=2N0l9b6vX-s"
+    "channel_name": "Thanthi TV",
+    "poster": "https://yt3.googleusercontent.com/ytc/AIdro_Thanthi...",
+    "items": [
+      {
+        "title": "🔴 Thanthi TV 24x7 LIVE",
+        "stream_url": "plugin://plugin.video.youtube/play/?video_id=...",
+        "poster": "https://yt3.googleusercontent.com/ytc/AIdro_Thanthi..."
+      }
+    ]
   },
   {
-    "id": "news7_tamil_live",
-    "title": "News 7 Tamil Live 24x7",
-    "category": "🔴 Live News 24x7",
-    "thumbnail": "https://i.ytimg.com/vi/gK3XJ6_1pAQ/hqdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=gK3XJ6_1pAQ"
-  },
-  {
-    "id": "puthiyathalaimurai_live",
-    "title": "Puthiya Thalaimurai TV Live",
-    "category": "🔴 Live News 24x7",
-    "thumbnail": "https://i.ytimg.com/vi/l7v3Q_E9Lsk/hqdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=l7v3Q_E9Lsk"
-  },
-  {
-    "id": "news18_tamil_live",
-    "title": "News18 Tamil Nadu Live",
-    "category": "🔴 Live News 24x7",
-    "thumbnail": "https://i.ytimg.com/vi/u1k2_78kLA4/hqdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=u1k2_78kLA4"
-  },
-  {
-    "id": "newstamil_24x7_live",
-    "title": "News Tamil 24x7 Live",
-    "category": "🔴 Live News 24x7",
-    "thumbnail": "https://i.ytimg.com/vi/EbrSoqsm-e4/hqdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=EbrSoqsm-e4"
-  },
-  {
-    "id": "sathiyam_tv_live",
-    "title": "Sathiyam News 24x7 Live",
-    "category": "🔴 Live News 24x7",
-    "thumbnail": "https://i.ytimg.com/vi/o08y_A9J87w/hqdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=o08y_A9J87w"
-  },
-  {
-    "id": "kalaignar_seithigal_live",
-    "title": "Kalaignar Seithigal 24x7 Live",
-    "category": "🔴 Live News 24x7",
-    "thumbnail": "https://i.ytimg.com/vi/v5_37hL8-qE/hqdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=v5_37hL8-qE"
-  },
-  {
-    "id": "jaya_plus_live",
-    "title": "Jaya Plus 24x7 News Live",
-    "category": "🔴 Live News 24x7",
-    "thumbnail": "https://i.ytimg.com/vi/9x0s-Kj92_k/hqdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=9x0s-Kj92_k"
-  },
-  {
-    "id": "-2Z7xmhknkY",
-    "title": "Nithya Menen's Strength: Breaking Dhanush's Silence | Thiruchitrambalam | Full Movie on Sun NXT",
-    "category": "🔴 Live News 24x7",
-    "thumbnail": "https://img.youtube.com/vi/-2Z7xmhknkY/maxresdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=-2Z7xmhknkY"
-  },
-  {
-    "id": "fAJPKhG-aMs",
-    "title": "The Heart-breaking Betrayal | Aranmanai Movie | Hansika | Sundar C | Watch Full Movie on Sun NXT",
-    "category": "🔴 Live News 24x7",
-    "thumbnail": "https://img.youtube.com/vi/fAJPKhG-aMs/maxresdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=fAJPKhG-aMs"
-  },
-  {
-    "id": "gGXBPPaFdwY",
-    "title": "This is how Suriya delivers the broken phone to Shruthi?| Tamil | 7aum Arivu | Suriya|Shruthi|SUNNXT",
-    "category": "🔴 Live News 24x7",
-    "thumbnail": "https://img.youtube.com/vi/gGXBPPaFdwY/maxresdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=gGXBPPaFdwY"
-  },
-  {
-    "id": "7mtvewyLCUc",
-    "title": "Jayam Ravi and Nadhiya's Heartbreaking Scene 💔 | M. Kumaran Son of Mahalakshmi | Sun NXT",
-    "category": "🔴 Live News 24x7",
-    "thumbnail": "https://img.youtube.com/vi/7mtvewyLCUc/maxresdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=7mtvewyLCUc"
-  },
-  {
-    "id": "EAXDkQojJC8",
-    "title": "Relive the Magic of Yaaradi Nee Mohini! | Tamil | Dhanush | Nayantara | Sun NXT",
-    "category": "🔴 Live News 24x7",
-    "thumbnail": "https://img.youtube.com/vi/EAXDkQojJC8/maxresdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=EAXDkQojJC8"
-  },
-  {
-    "id": "ueyJjhXEHH0",
-    "title": "Vijay Sethupathy delivers the pizza directly to Ghost! | Pizza | Tamil | Remya Nambeesan | Sun NXT",
-    "category": "🔴 Live News 24x7",
-    "thumbnail": "https://img.youtube.com/vi/ueyJjhXEHH0/maxresdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=ueyJjhXEHH0"
-  },
-  {
-    "id": "Iiket8CB3FM",
-    "title": "Heart-Breaking Scene from Thirupaachi | Thalapathy Vijay | Trisha | Sun NXT",
-    "category": "🔴 Live News 24x7",
-    "thumbnail": "https://img.youtube.com/vi/Iiket8CB3FM/maxresdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=Iiket8CB3FM"
+    "channel_name": "Puthiya Thalaimurai",
+    "poster": "https://yt3.googleusercontent.com/ytc/AIdro_PT...",
+    "items": [
+      {
+        "title": "🔴 Puthiya Thalaimurai 24x7 LIVE",
+        "stream_url": "plugin://plugin.video.youtube/play/?video_id=...",
+        "poster": "https://yt3.googleusercontent.com/ytc/AIdro_PT..."
+      }
+    ]
   }
 ]
