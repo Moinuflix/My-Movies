@@ -104,7 +104,7 @@ def render_list(data):
         if not stream and m.get("versions"):
             stream = m["versions"][0].get("stream_url", "")
             
-        # 1. Trailer Resolution (Handle both String and Dict format)
+        # 1. Trailer Resolution
         raw_trailer = m.get("trailer", "")
         if isinstance(raw_trailer, dict):
             raw_trailer = raw_trailer.get("youtube_url", "") or raw_trailer.get("url", "")
@@ -133,46 +133,99 @@ def render_list(data):
             art_dict["clearlogo"] = clearlogo
         li.setArt(art_dict)
         
-        # 3. Complete Video Metadata Dict
+        # 3. Duration & Director formatting
         duration = m.get("duration") or m.get("runtime") or 0
         if isinstance(duration, str) and duration.isdigit():
             duration = int(duration) * 60
         elif isinstance(duration, (int, float)):
             duration = int(duration) * 60
 
-        v_info = {
-            "title": title,
-            "originaltitle": m.get("original_title", title),
-            "plot": m.get("plot") or m.get("overview", ""),
-            "rating": float(m.get("rating", 7.5)) if str(m.get("rating", "")).replace(".","").isdigit() else 7.5,
-            "year": int(m.get("year", 2024)) if str(m.get("year", "")).isdigit() else 2024,
-            "duration": duration,
-            "director": m.get("director", []) if isinstance(m.get("director"), list) else [m.get("director")] if m.get("director") else [],
-            "mediatype": "movie"
-        }
-        if formatted_trailer:
-            v_info["trailer"] = formatted_trailer
+        director_list = m.get("director", [])
+        if isinstance(director_list, str):
+            director_list = [director_list]
+
+        rating_val = float(m.get("rating", 7.5)) if str(m.get("rating", "")).replace(".","").isdigit() else 7.5
+        year_val = int(m.get("year", 2024)) if str(m.get("year", "")).isdigit() else 2024
+        plot_val = m.get("plot") or m.get("overview", "")
+
+        # 4. Modern VideoInfoTag (Nexus / Omega) + Legacy Fallback
+        try:
+            info_tag = li.getVideoInfoTag()
+            info_tag.setMediaType("movie")
+            info_tag.setTitle(title)
+            info_tag.setOriginalTitle(m.get("original_title", title))
+            info_tag.setPlot(plot_val)
+            info_tag.setRating(rating_val)
+            info_tag.setYear(year_val)
+            info_tag.setDuration(duration)
+            if director_list:
+                info_tag.setDirectors(director_list)
+            if formatted_trailer:
+                info_tag.setTrailer(formatted_trailer)
+
+            # Modern Cast Injection via xbmc.Actor (Fixes "Cast not available" in AH2)
+            cast_data = m.get("cast", [])
+            if isinstance(cast_data, list) and cast_data:
+                actor_objects = []
+                for c in cast_data:
+                    if isinstance(c, dict) and c.get("name"):
+                        actor_objects.append(xbmc.Actor(
+                            name=str(c.get("name")),
+                            role=str(c.get("role") or c.get("character", "")),
+                            thumbnail=str(c.get("thumbnail") or c.get("profile_path", ""))
+                        ))
+                    elif isinstance(c, str) and c.strip():
+                        actor_objects.append(xbmc.Actor(name=c.strip()))
+                info_tag.setCast(actor_objects)
+
+        except (AttributeError, TypeError):
+            # Fallback for older Kodi versions
+            v_info = {
+                "title": title,
+                "originaltitle": m.get("original_title", title),
+                "plot": plot_val,
+                "rating": rating_val,
+                "year": year_val,
+                "duration": duration,
+                "director": director_list,
+                "mediatype": "movie"
+            }
+            if formatted_trailer:
+                v_info["trailer"] = formatted_trailer
+            li.setInfo("video", v_info)
             
-        li.setInfo("video", v_info)
-        
-        # 4. Cast Details
+            cast_data = m.get("cast", [])
+            if isinstance(cast_data, list) and cast_data:
+                formatted_cast = []
+                for c in cast_data:
+                    if isinstance(c, dict) and c.get("name"):
+                        formatted_cast.append({
+                            "name": str(c.get("name")),
+                            "role": str(c.get("role") or c.get("character", "")),
+                            "thumbnail": str(c.get("thumbnail") or c.get("profile_path", ""))
+                        })
+                try:
+                    li.setCast(formatted_cast)
+                except Exception:
+                    pass
+
+        # 5. Skin Properties for Arctic Horizon 2
+        if formatted_trailer:
+            li.setProperty("Trailer", formatted_trailer)
+            li.setProperty("trailer", formatted_trailer)
+
         cast_data = m.get("cast", [])
         if isinstance(cast_data, list) and cast_data:
-            formatted_cast = []
-            for c in cast_data:
-                if isinstance(c, dict) and c.get("name"):
-                    formatted_cast.append({
-                        "name": str(c.get("name")),
-                        "role": str(c.get("role") or c.get("character", "")),
-                        "thumbnail": str(c.get("thumbnail") or c.get("profile_path", "")),
-                        "order": len(formatted_cast)
-                    })
-                elif isinstance(c, str) and c.strip():
-                    formatted_cast.append({"name": c.strip(), "role": "", "thumbnail": ""})
-            try:
-                li.setCast(formatted_cast)
-            except Exception:
-                pass
+            for idx_cast, actor_item in enumerate(cast_data[:10]):
+                if isinstance(actor_item, dict):
+                    li.setProperty(f"Cast.{idx_cast}.Name", str(actor_item.get("name", "")))
+                    li.setProperty(f"Cast.{idx_cast}.Role", str(actor_item.get("role", "")))
+                    li.setProperty(f"Cast.{idx_cast}.Thumb", str(actor_item.get("thumbnail", "")))
+
+        badges = m.get("badges", {})
+        if isinstance(badges, dict):
+            for b_key, b_val in badges.items():
+                li.setProperty(f"Badge.{b_key}", str(b_val))
 
         li.setProperty("IsPlayable", "true")
         play_url = build_url({"action": "play_media", "video_url": stream})
