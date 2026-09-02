@@ -98,10 +98,17 @@ def render_list(data):
     for m in data:
         title = m.get("title") or m.get("name", "Unknown")
         poster = m.get("poster") or m.get("thumbnail", "")
+        fanart = m.get("fanart") or m.get("backdrop", "")
+        clearlogo = m.get("clearlogo") or m.get("logo", "")
         stream = m.get("stream_url", "") or m.get("link", "")
         if not stream and m.get("versions"):
             stream = m["versions"][0].get("stream_url", "")
+            
+        # 1. Trailer Resolution (Handle both String and Dict format)
         raw_trailer = m.get("trailer", "")
+        if isinstance(raw_trailer, dict):
+            raw_trailer = raw_trailer.get("youtube_url", "") or raw_trailer.get("url", "")
+            
         formatted_trailer = ""
         if raw_trailer:
             if "watch?v=" in raw_trailer:
@@ -112,21 +119,61 @@ def render_list(data):
                 formatted_trailer = f"plugin://plugin.video.youtube/play/?video_id={vid}"
             else:
                 formatted_trailer = raw_trailer
+
         li = xbmcgui.ListItem(label=title)
-        li.setArt({"poster": poster, "thumb": poster, "fanart": m.get("fanart", "")})
+        
+        # 2. Artworks
+        art_dict = {
+            "poster": poster,
+            "thumb": poster,
+            "icon": poster,
+            "fanart": fanart
+        }
+        if clearlogo:
+            art_dict["clearlogo"] = clearlogo
+        li.setArt(art_dict)
+        
+        # 3. Complete Video Metadata Dict
+        duration = m.get("duration") or m.get("runtime") or 0
+        if isinstance(duration, str) and duration.isdigit():
+            duration = int(duration) * 60
+        elif isinstance(duration, (int, float)):
+            duration = int(duration) * 60
+
         v_info = {
             "title": title,
-            "plot": m.get("plot", ""),
+            "originaltitle": m.get("original_title", title),
+            "plot": m.get("plot") or m.get("overview", ""),
             "rating": float(m.get("rating", 7.5)) if str(m.get("rating", "")).replace(".","").isdigit() else 7.5,
             "year": int(m.get("year", 2024)) if str(m.get("year", "")).isdigit() else 2024,
+            "duration": duration,
+            "director": m.get("director", []) if isinstance(m.get("director"), list) else [m.get("director")] if m.get("director") else [],
             "mediatype": "movie"
         }
         if formatted_trailer:
             v_info["trailer"] = formatted_trailer
+            
         li.setInfo("video", v_info)
+        
+        # 4. Cast Details
+        cast_data = m.get("cast", [])
+        if isinstance(cast_data, list) and cast_data:
+            formatted_cast = []
+            for c in cast_data:
+                if isinstance(c, dict):
+                    formatted_cast.append({
+                        "name": c.get("name", ""),
+                        "role": c.get("role") or c.get("character", ""),
+                        "thumbnail": c.get("thumbnail") or c.get("profile_path", "")
+                    })
+                elif isinstance(c, str):
+                    formatted_cast.append({"name": c, "role": ""})
+            li.setCast(formatted_cast)
+
         li.setProperty("IsPlayable", "true")
         play_url = build_url({"action": "play_media", "video_url": stream})
         xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=play_url, listitem=li, isFolder=False)
+        
     xbmcplugin.setContent(ADDON_HANDLE, "movies")
     xbmcplugin.endOfDirectory(ADDON_HANDLE)
 
