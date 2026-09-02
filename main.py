@@ -53,7 +53,7 @@ def render_list(data):
     for m in data:
         title = m.get("title") or m.get("name", "Unknown")
         poster = m.get("poster") or m.get("thumbnail", "")
-        stream = m.get("stream_url", "")
+        stream = m.get("stream_url", "") or m.get("link", "")
         if not stream and m.get("versions"):
             stream = m["versions"][0].get("stream_url", "")
             
@@ -67,7 +67,6 @@ def render_list(data):
         })
         li.setProperty('IsPlayable', 'true')
         
-        # Click hone par play_media router trigger hoga
         play_url = build_url({'action': 'play_media', 'video_url': stream})
         xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=play_url, listitem=li, isFolder=False)
         
@@ -111,19 +110,33 @@ def play_media(video_url):
         xbmcplugin.setResolvedUrl(ADDON_HANDLE, False, xbmcgui.ListItem())
         return
 
-    # GDrive Worker links me password aur User-Agent ensure karein
+    # CASE 1: YouTube URLs (Direct execution via Kodi Player like STRM)
+    is_youtube = ("youtube.com" in video_url or 
+                  "youtu.be" in video_url or 
+                  "plugin.video.youtube" in video_url or 
+                  video_url.startswith("plugin://"))
+
+    if is_youtube:
+        final_yt_url = video_url
+        if "watch?v=" in video_url:
+            vid = video_url.split("watch?v=")[1].split("&")[0]
+            final_yt_url = f"plugin://plugin.video.youtube/play/?video_id={vid}"
+        elif "youtu.be/" in video_url:
+            vid = video_url.split("youtu.be/")[1].split("?")[0]
+            final_yt_url = f"plugin://plugin.video.youtube/play/?video_id={vid}"
+
+        # Directory resolving dismiss karein aur direct player call karein
+        xbmcplugin.setResolvedUrl(ADDON_HANDLE, False, xbmcgui.ListItem())
+        xbmc.Player().play(final_yt_url)
+        return
+
+    # CASE 2: Cloudflare Worker / GDrive Streams
     if "workers.dev" in video_url:
         clean_url = video_url.split("|")[0]
-        if "pass=" not in clean_url:
+        if "pass=" not in clean_url and "key=" not in clean_url:
             separator = "&" if "?" in clean_url else "?"
             clean_url = f"{clean_url}{separator}pass={ADMIN_PASS}"
         video_url = f"{clean_url}|User-Agent={ALLOWED_AGENT}"
-
-    # YouTube Plugin URLs (Vault Categories)
-    if "youtube.com" in video_url or "youtu.be" in video_url:
-        if "v=" in video_url:
-            vid = video_url.split("v=")[1].split("&")[0]
-            video_url = f"plugin://plugin.video.youtube/play/?video_id={vid}"
 
     play_item = xbmcgui.ListItem(path=video_url)
     play_item.setProperty('IsPlayable', 'true')
