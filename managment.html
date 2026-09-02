@@ -1476,7 +1476,7 @@
       document.getElementById('btn-cancel-merge').style.display = 'inline-block';
     }
 
-   /* MODERN EDIT POPUP MODAL (WITH AUTO FETCH) */
+    /* MODERN EDIT POPUP MODAL (WITH AUTO FETCH) */
     async function openEditMovieModal(movieIndex) {
       editingMovieIndex = movieIndex;
       const movie = moviesData[movieIndex];
@@ -1492,9 +1492,11 @@
           if (!document.getElementById('edit-modal-title-input').value) {
             document.getElementById('edit-modal-title-input').value = meta.title;
           }
-          if (meta.collection) {
+          if (meta.collection && !document.getElementById('edit-modal-collection').value) {
             document.getElementById('edit-modal-collection').value = meta.collection;
-    
+          }
+        }
+      }
     }
 
     function closeEditModal() {
@@ -1513,11 +1515,9 @@
 
       if (!newId || isNaN(newId)) return showLaserToast('Please enter a valid TMDB ID', true);
 
-      // Fresh metadata fetch karein naye TMDB ID se
       const meta = await fetchTmdbMetadata(newId);
       if (!meta) return showLaserToast('Could not fetch TMDB details.', true);
 
-      // Naya data properly map karein (Custom title priority ya TMDB ka title)
       movie.title = customTitle !== "" ? customTitle : meta.title;
       movie.original_title = meta.original_title;
       movie.year = meta.year;
@@ -1532,36 +1532,12 @@
       movie.poster = meta.poster;
       movie.fanart = meta.fanart;
       movie.trailer = meta.trailer;
-      
-      // Collection / Universe Pack setting
       movie.collection = customCol !== "" ? customCol : (meta.collection || "");
 
       closeEditModal();
       openPreviewModal('chunks/data_c01.json', movie, movie.stream_url, `Update Metadata: ${movie.title}`, moviesData, true);
     }
 
-      // Naya data properly map karein (Custom title priority ya TMDB ka title)
-      movie.title = customTitle !== "" ? customTitle : meta.title;
-      movie.original_title = meta.original_title;
-      movie.year = meta.year;
-      movie.tmdb_id = meta.tmdb_id;
-      movie.imdb_id = meta.imdb_id;
-      movie.imdb_url = meta.imdb_id ? `https://www.imdb.com/title/${meta.imdb_id}/` : "";
-      movie.rating = meta.rating;
-      movie.runtime = meta.runtime;
-      movie.director = meta.director;
-      movie.cast = meta.cast;
-      movie.plot = meta.plot;
-      movie.poster = meta.poster;
-      movie.fanart = meta.fanart;
-      movie.trailer = meta.trailer;
-      
-      // Collection / Universe Pack setting
-      movie.collection = customCol !== "" ? customCol : (meta.collection || "");
-
-      closeEditModal();
-      openPreviewModal('chunks/data_c01.json', movie, movie.stream_url, `Update Metadata: ${movie.title}`, moviesData, true);
-    }
     /* SECURE DELETE ENGINE (PASS: 24592) */
     function promptDeleteItem(targetChunk, itemIndex, itemTitle, activeDataArray) {
       const token = getStoredToken();
