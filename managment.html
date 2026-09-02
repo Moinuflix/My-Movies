@@ -1476,8 +1476,8 @@
       document.getElementById('btn-cancel-merge').style.display = 'inline-block';
     }
 
-    /* MODERN EDIT POPUP MODAL (NO BROWSER PROMPT) */
-    function openEditMovieModal(movieIndex) {
+   /* MODERN EDIT POPUP MODAL (WITH AUTO FETCH) */
+    async function openEditMovieModal(movieIndex) {
       editingMovieIndex = movieIndex;
       const movie = moviesData[movieIndex];
       document.getElementById('edit-modal-title').textContent = `✏️ Edit: ${movie.title}`;
@@ -1485,6 +1485,18 @@
       document.getElementById('edit-modal-title-input').value = movie.title || '';
       document.getElementById('edit-modal-collection').value = movie.collection || '';
       document.getElementById('edit-movie-modal').classList.add('active');
+
+      if (movie.tmdb_id) {
+        const meta = await fetchTmdbMetadata(movie.tmdb_id);
+        if (meta) {
+          if (!document.getElementById('edit-modal-title-input').value) {
+            document.getElementById('edit-modal-title-input').value = meta.title;
+          }
+          if (meta.collection) {
+            document.getElementById('edit-modal-collection').value = meta.collection;
+          }
+        }
+      }
     }
 
     function closeEditModal() {
@@ -1492,7 +1504,7 @@
       editingMovieIndex = null;
     }
 
-async function submitEditMovieModal() {
+    async function submitEditMovieModal() {
       const token = getStoredToken();
       if (!token) return showLaserToast('Please configure GitHub Token first.', true);
 
@@ -1506,6 +1518,29 @@ async function submitEditMovieModal() {
       // Fresh metadata fetch karein naye TMDB ID se
       const meta = await fetchTmdbMetadata(newId);
       if (!meta) return showLaserToast('Could not fetch TMDB details.', true);
+
+      // Naya data properly map karein (Custom title priority ya TMDB ka title)
+      movie.title = customTitle !== "" ? customTitle : meta.title;
+      movie.original_title = meta.original_title;
+      movie.year = meta.year;
+      movie.tmdb_id = meta.tmdb_id;
+      movie.imdb_id = meta.imdb_id;
+      movie.imdb_url = meta.imdb_id ? `https://www.imdb.com/title/${meta.imdb_id}/` : "";
+      movie.rating = meta.rating;
+      movie.runtime = meta.runtime;
+      movie.director = meta.director;
+      movie.cast = meta.cast;
+      movie.plot = meta.plot;
+      movie.poster = meta.poster;
+      movie.fanart = meta.fanart;
+      movie.trailer = meta.trailer;
+      
+      // Collection / Universe Pack setting
+      movie.collection = customCol !== "" ? customCol : (meta.collection || "");
+
+      closeEditModal();
+      openPreviewModal('chunks/data_c01.json', movie, movie.stream_url, `Update Metadata: ${movie.title}`, moviesData, true);
+    }
 
       // Naya data properly map karein (Custom title priority ya TMDB ka title)
       movie.title = customTitle !== "" ? customTitle : meta.title;
