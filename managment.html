@@ -1492,7 +1492,7 @@
       editingMovieIndex = null;
     }
 
-    async function submitEditMovieModal() {
+async function submitEditMovieModal() {
       const token = getStoredToken();
       if (!token) return showLaserToast('Please configure GitHub Token first.', true);
 
@@ -1503,10 +1503,12 @@
 
       if (!newId || isNaN(newId)) return showLaserToast('Please enter a valid TMDB ID', true);
 
+      // Fresh metadata fetch karein naye TMDB ID se
       const meta = await fetchTmdbMetadata(newId);
       if (!meta) return showLaserToast('Could not fetch TMDB details.', true);
 
-      movie.title = customTitle || meta.title;
+      // Naya data properly map karein (Custom title priority ya TMDB ka title)
+      movie.title = customTitle !== "" ? customTitle : meta.title;
       movie.original_title = meta.original_title;
       movie.year = meta.year;
       movie.tmdb_id = meta.tmdb_id;
@@ -1520,12 +1522,13 @@
       movie.poster = meta.poster;
       movie.fanart = meta.fanart;
       movie.trailer = meta.trailer;
-      movie.collection = customCol || meta.collection || "";
+      
+      // Collection / Universe Pack setting
+      movie.collection = customCol !== "" ? customCol : (meta.collection || "");
 
       closeEditModal();
       openPreviewModal('chunks/data_c01.json', movie, movie.stream_url, `Update Metadata: ${movie.title}`, moviesData, true);
     }
-
     /* SECURE DELETE ENGINE (PASS: 24592) */
     function promptDeleteItem(targetChunk, itemIndex, itemTitle, activeDataArray) {
       const token = getStoredToken();
