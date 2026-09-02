@@ -82,6 +82,25 @@
           "channels": "5.1",
           "languages": "Multi"
         }
+      },
+      {
+        "id": "1kNRa26pDssehRE-NXOW-dh5Dbzoumy5x",
+        "name": "Movie 687163 (2026) [1080p] [x265] [Dolby Digital Plus].mkv",
+        "quality": "1080p",
+        "source": "WEB-DL",
+        "codec": "x265",
+        "resolution": "1080p FHD",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1kNRa26pDssehRE-NXOW-dh5Dbzoumy5x|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil"
+        }
       }
     ]
   },
@@ -2733,8 +2752,8 @@
     "rating": 5.667,
     "director": [
       "Konkona Sen Sharma",
-      "Amit Sharma",
       "Sujoy Ghosh",
+      "Amit Sharma",
       "R. Balki"
     ],
     "cast": [
