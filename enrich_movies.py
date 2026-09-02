@@ -23,7 +23,7 @@ for idx, m in enumerate(movies):
         print(f"[{idx+1}/{len(movies)}] Skip: {title} (tmdb_id missing)")
         continue
 
-    print(f"[{idx+1}/{len(movies)}] Processing: {title} (TMDB ID: {tmdb_id})...")
+    print(f"[{idx+1}/{len(movies)}] Processing: {title}...")
 
     url = f"https://api.themoviedb.org/3/movie/{tmdb_id}?api_key={TMDB_API_KEY}&append_to_response=credits,videos"
     
@@ -32,10 +32,11 @@ for idx, m in enumerate(movies):
         with urllib.request.urlopen(req, timeout=10) as resp:
             data = json.loads(resp.read().decode("utf-8"))
 
-        # 1. Exact Runtime
-        m["runtime"] = data.get("runtime") or m.get("runtime") or 0
+        # 1. Exact Runtime update karega
+        if data.get("runtime"):
+            m["runtime"] = data.get("runtime")
 
-        # 2. Directors
+        # 2. Sirf Director add/update karega
         directors = [
             crew.get("name") 
             for crew in data.get("credits", {}).get("crew", []) 
@@ -44,7 +45,7 @@ for idx, m in enumerate(movies):
         if directors:
             m["director"] = directors
 
-        # 3. Top 5 Star Cast with Profile Pictures
+        # 3. Sirf Cast add/update karega
         cast_list = []
         for c in data.get("credits", {}).get("cast", [])[:5]:
             profile_path = c.get("profile_path")
@@ -56,7 +57,7 @@ for idx, m in enumerate(movies):
         if cast_list:
             m["cast"] = cast_list
 
-        # 4. TMDB Official YouTube Trailer (Tamil -> Any Language)
+        # 4. TMDB official YouTube link sahi karega
         videos = data.get("videos", {}).get("results", [])
         trailer_key = None
         for v in videos:
@@ -71,15 +72,14 @@ for idx, m in enumerate(movies):
 
         if trailer_key:
             m["trailer"] = f"https://www.youtube.com/watch?v={trailer_key}"
-        elif not m.get("trailer") or isinstance(m.get("trailer"), dict):
-            m["trailer"] = ""
 
         time.sleep(0.2)
 
     except Exception as e:
-        print(f"Error fetching {title}: {e}")
+        print(f"Error {title}: {e}")
 
+# Original structure intact rakhte hue save karega
 with open(JSON_PATH, "w", encoding="utf-8") as f:
     json.dump(movies, f, indent=2, ensure_ascii=False)
 
-print("\nDone! chunks/data_c01.json is clean and enriched!")
+print("\nDone! Bus YouTube link, cast aur director add ho gaye, baaki sab unchanged raha!")
