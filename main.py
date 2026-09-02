@@ -1,5 +1,3 @@
-cd ~/Main
-cat << 'EOF' > main.py
 # -*- coding: utf-8 -*-
 import sys
 import json
@@ -18,17 +16,16 @@ ALLOWED_AGENT = "Kodi-MoinuTV-PrivatePlayer/1.0"
 def fetch_json(file_name):
     try:
         url = REPO_RAW + file_name
-        req = urllib.request.Request(url, headers={'User-Agent': 'Kodi-MoinuFlix/1.0'})
+        req = urllib.request.Request(url, headers={"User-Agent": "Kodi-MoinuFlix/1.0"})
         with urllib.request.urlopen(req, timeout=10) as response:
-            return json.loads(response.read().decode('utf-8'))
+            return json.loads(response.read().decode("utf-8"))
     except Exception as e:
         xbmc.log(f"[MoinuFlix] Error fetching {file_name}: {e}", xbmc.LOGERROR)
         return []
 
 def build_url(query):
-    return BASE_URL + '?' + urllib.parse.urlencode(query)
+    return BASE_URL + "?" + urllib.parse.urlencode(query)
 
-# ----------------- 1. ROOT MAIN MENU -----------------
 def list_root():
     items = [
         ("▶️ Continue Watching", "watched", "https://img.icons8.com/color/96/resume-button.png"),
@@ -40,12 +37,11 @@ def list_root():
     ]
     for title, action_str, icon in items:
         li = xbmcgui.ListItem(label=title)
-        li.setArt({'icon': icon, 'thumb': icon})
-        url = build_url({'action': action_str})
+        li.setArt({"icon": icon, "thumb": icon})
+        url = build_url({"action": action_str})
         xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=True)
     xbmcplugin.endOfDirectory(ADDON_HANDLE)
 
-# ----------------- 2. YOUTUBE VAULT CATEGORIES -----------------
 def list_youtube_vault():
     sub_folders = [
         ("🔴 Live News 24x7", "news_brands", "https://img.icons8.com/color/96/news.png"),
@@ -56,62 +52,48 @@ def list_youtube_vault():
     ]
     for title, action_str, icon in sub_folders:
         li = xbmcgui.ListItem(label=title)
-        li.setArt({'icon': icon, 'thumb': icon})
-        
+        li.setArt({"icon": icon, "thumb": icon})
         if "load_json" in action_str:
             fname = action_str.split("file=")[1]
-            url = build_url({'action': 'load_json', 'file': fname})
+            url = build_url({"action": "load_json", "file": fname})
         else:
-            url = build_url({'action': action_str})
-            
+            url = build_url({"action": action_str})
         xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=True)
-        
-    xbmcplugin.setContent(ADDON_HANDLE, 'files')
+    xbmcplugin.setContent(ADDON_HANDLE, "files")
     xbmcplugin.endOfDirectory(ADDON_HANDLE)
 
-# ----------------- 3. LIVE NEWS CHANNELS & FEEDS -----------------
 def list_news_brands():
     channels = fetch_json("vault_news.json")
     for idx, ch in enumerate(channels):
         name = ch.get("channel_name") or ch.get("name", "News Brand")
         poster = ch.get("poster") or ch.get("thumbnail", "")
-        
         li = xbmcgui.ListItem(label=f"📡 {name}")
-        li.setArt({'icon': poster, 'thumb': poster, 'poster': poster, 'fanart': poster})
-        
-        url = build_url({'action': 'show_channel_feed', 'index': str(idx)})
+        li.setArt({"icon": poster, "thumb": poster, "poster": poster, "fanart": poster})
+        url = build_url({"action": "show_channel_feed", "index": str(idx)})
         xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=True)
-        
-    xbmcplugin.setContent(ADDON_HANDLE, 'files')
+    xbmcplugin.setContent(ADDON_HANDLE, "files")
     xbmcplugin.endOfDirectory(ADDON_HANDLE)
 
 def show_channel_feed(index_str):
     channels = fetch_json("vault_news.json")
     try:
-        idx = int(index_str)
-        ch = channels[idx]
+        ch = channels[int(index_str)]
     except Exception:
         xbmcgui.Dialog().notification("MoinuFlix", "Channel not found", xbmcgui.NOTIFICATION_ERROR)
         return
-
-    items = ch.get("items", [])
-    for it in items:
+    for it in ch.get("items", []):
         title = it.get("title", "News Feed")
         stream = it.get("stream_url", "")
         poster = it.get("poster") or ch.get("poster", "")
-        
         li = xbmcgui.ListItem(label=title)
-        li.setArt({'poster': poster, 'thumb': poster, 'icon': poster})
-        li.setInfo('video', {'title': title, 'plot': it.get("plot", "")})
-        li.setProperty('IsPlayable', 'true')
-        
-        play_url = build_url({'action': 'play_media', 'video_url': stream})
+        li.setArt({"poster": poster, "thumb": poster, "icon": poster})
+        li.setInfo("video", {"title": title, "plot": it.get("plot", "")})
+        li.setProperty("IsPlayable", "true")
+        play_url = build_url({"action": "play_media", "video_url": stream})
         xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=play_url, listitem=li, isFolder=False)
-        
-    xbmcplugin.setContent(ADDON_HANDLE, 'videos')
+    xbmcplugin.setContent(ADDON_HANDLE, "videos")
     xbmcplugin.endOfDirectory(ADDON_HANDLE)
 
-# ----------------- 4. MOVIES & GENERAL MEDIA RENDERING -----------------
 def render_list(data):
     for m in data:
         title = m.get("title") or m.get("name", "Unknown")
@@ -119,35 +101,46 @@ def render_list(data):
         stream = m.get("stream_url", "") or m.get("link", "")
         if not stream and m.get("versions"):
             stream = m["versions"][0].get("stream_url", "")
-            
+        raw_trailer = m.get("trailer", "")
+        formatted_trailer = ""
+        if raw_trailer:
+            if "watch?v=" in raw_trailer:
+                vid = raw_trailer.split("watch?v=")[1].split("&")[0]
+                formatted_trailer = f"plugin://plugin.video.youtube/play/?video_id={vid}"
+            elif "youtu.be/" in raw_trailer:
+                vid = raw_trailer.split("youtu.be/")[1].split("?")[0]
+                formatted_trailer = f"plugin://plugin.video.youtube/play/?video_id={vid}"
+            else:
+                formatted_trailer = raw_trailer
         li = xbmcgui.ListItem(label=title)
-        li.setArt({'poster': poster, 'thumb': poster, 'fanart': m.get("fanart", "")})
-        li.setInfo('video', {
-            'title': title,
-            'plot': m.get("plot", ""),
-            'rating': float(m.get("rating", 7.5)) if str(m.get("rating", "")).replace(".","").isdigit() else 7.5,
-            'year': int(m.get("year", 2024)) if str(m.get("year", "")).isdigit() else 2024
-        })
-        li.setProperty('IsPlayable', 'true')
-        
-        play_url = build_url({'action': 'play_media', 'video_url': stream})
+        li.setArt({"poster": poster, "thumb": poster, "fanart": m.get("fanart", "")})
+        v_info = {
+            "title": title,
+            "plot": m.get("plot", ""),
+            "rating": float(m.get("rating", 7.5)) if str(m.get("rating", "")).replace(".","").isdigit() else 7.5,
+            "year": int(m.get("year", 2024)) if str(m.get("year", "")).isdigit() else 2024,
+            "mediatype": "movie"
+        }
+        if formatted_trailer:
+            v_info["trailer"] = formatted_trailer
+        li.setInfo("video", v_info)
+        li.setProperty("IsPlayable", "true")
+        play_url = build_url({"action": "play_media", "video_url": stream})
         xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=play_url, listitem=li, isFolder=False)
-        
-    xbmcplugin.setContent(ADDON_HANDLE, 'movies')
+    xbmcplugin.setContent(ADDON_HANDLE, "movies")
     xbmcplugin.endOfDirectory(ADDON_HANDLE)
 
-# ----------------- 5. SERIES & EPISODES -----------------
 def list_series():
     data = fetch_json("data_c02.json")
     for s in data:
         title = s.get("title") or s.get("name", "Unknown Series")
         poster = s.get("poster", "")
         li = xbmcgui.ListItem(label=title)
-        li.setArt({'poster': poster, 'thumb': poster, 'fanart': s.get("fanart", "")})
-        li.setInfo('video', {'title': title, 'plot': s.get("plot", "")})
-        url = build_url({'action': 'show_episodes', 'series_id': s.get("tmdb_id") or s.get("id")})
+        li.setArt({"poster": poster, "thumb": poster, "fanart": s.get("fanart", "")})
+        li.setInfo("video", {"title": title, "plot": s.get("plot", "")})
+        url = build_url({"action": "show_episodes", "series_id": s.get("tmdb_id") or s.get("id")})
         xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=url, listitem=li, isFolder=True)
-    xbmcplugin.setContent(ADDON_HANDLE, 'tvshows')
+    xbmcplugin.setContent(ADDON_HANDLE, "tvshows")
     xbmcplugin.endOfDirectory(ADDON_HANDLE)
 
 def show_episodes(series_id):
@@ -158,29 +151,24 @@ def show_episodes(series_id):
                 title = ep.get("title") or ep.get("name", "Episode")
                 stream = ep.get("stream_url", "")
                 li = xbmcgui.ListItem(label=title)
-                li.setArt({'poster': s.get("poster", ""), 'thumb': s.get("poster", ""), 'fanart': s.get("fanart", "")})
-                li.setInfo('video', {'title': title, 'plot': ep.get("plot", "")})
-                li.setProperty('IsPlayable', 'true')
-                
-                play_url = build_url({'action': 'play_media', 'video_url': stream})
+                li.setArt({"poster": s.get("poster", ""), "thumb": s.get("poster", ""), "fanart": s.get("fanart", "")})
+                li.setInfo("video", {"title": title, "plot": ep.get("plot", "")})
+                li.setProperty("IsPlayable", "true")
+                play_url = build_url({"action": "play_media", "video_url": stream})
                 xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=play_url, listitem=li, isFolder=False)
             break
-    xbmcplugin.setContent(ADDON_HANDLE, 'episodes')
+    xbmcplugin.setContent(ADDON_HANDLE, "episodes")
     xbmcplugin.endOfDirectory(ADDON_HANDLE)
 
-# ----------------- 6. PLAYBACK ENGINE -----------------
 def play_media(video_url):
     if not video_url:
         xbmcgui.Dialog().notification("MoinuFlix", "Stream URL not available", xbmcgui.NOTIFICATION_ERROR)
         xbmcplugin.setResolvedUrl(ADDON_HANDLE, False, xbmcgui.ListItem())
         return
-
-    # CASE 1: YouTube Streams (Direct execution via Kodi Player like STRM)
     is_youtube = ("youtube.com" in video_url or 
                   "youtu.be" in video_url or 
                   "plugin.video.youtube" in video_url or 
                   video_url.startswith("plugin://"))
-
     if is_youtube:
         final_yt_url = video_url
         if "watch?v=" in video_url:
@@ -189,62 +177,49 @@ def play_media(video_url):
         elif "youtu.be/" in video_url:
             vid = video_url.split("youtu.be/")[1].split("?")[0]
             final_yt_url = f"plugin://plugin.video.youtube/play/?video_id={vid}"
-
         xbmcplugin.setResolvedUrl(ADDON_HANDLE, False, xbmcgui.ListItem())
         xbmc.Player().play(final_yt_url)
         return
-
-    # CASE 2: Cloudflare Worker / GDrive Streams
     if "workers.dev" in video_url:
         clean_url = video_url.split("|")[0]
         if "pass=" not in clean_url and "key=" not in clean_url:
             separator = "&" if "?" in clean_url else "?"
             clean_url = f"{clean_url}{separator}pass={ADMIN_PASS}"
         video_url = f"{clean_url}|User-Agent={ALLOWED_AGENT}"
-
     play_item = xbmcgui.ListItem(path=video_url)
-    play_item.setProperty('IsPlayable', 'true')
+    play_item.setProperty("IsPlayable", "true")
     play_item.setContentLookup(False)
-    
     if "workers.dev" in video_url or video_url.endswith(".mp4"):
-        play_item.setMimeType('video/mp4')
-        
+        play_item.setMimeType("video/mp4")
     xbmcplugin.setResolvedUrl(handle=ADDON_HANDLE, succeeded=True, listitem=play_item)
 
-# ----------------- ROUTER -----------------
 def router(paramstring):
     params = dict(urllib.parse.parse_qsl(paramstring))
-    action = params.get('action')
+    action = params.get("action")
     if not action:
         list_root()
-    elif action == 'youtube_vault':
+    elif action == "youtube_vault":
         list_youtube_vault()
-    elif action == 'news_brands':
+    elif action == "news_brands":
         list_news_brands()
-    elif action == 'show_channel_feed':
-        show_channel_feed(params.get('index', '0'))
-    elif action == 'load_json':
-        render_list(fetch_json(params.get('file', 'data_c01.json')))
-    elif action == 'watched':
+    elif action == "show_channel_feed":
+        show_channel_feed(params.get("index", "0"))
+    elif action == "load_json":
+        render_list(fetch_json(params.get("file", "data_c01.json")))
+    elif action == "watched":
         render_list(fetch_json("watched.json"))
-    elif action == 'trending':
+    elif action == "trending":
         render_list(fetch_json("trending.json"))
-    elif action == 'movies':
+    elif action == "movies":
         render_list(fetch_json("data_c01.json"))
-    elif action == 'songs':
+    elif action == "songs":
         render_list(fetch_json("data_c03.json"))
-    elif action == 'series':
+    elif action == "series":
         list_series()
-    elif action == 'show_episodes':
-        show_episodes(params.get('series_id'))
-    elif action == 'play_media':
-        play_media(params.get('video_url'))
+    elif action == "show_episodes":
+        show_episodes(params.get("series_id"))
+    elif action == "play_media":
+        play_media(params.get("video_url"))
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     router(sys.argv[2][1:] if len(sys.argv) > 2 else "")
-EOF
-
-# GitHub par push karein
-git add main.py
-git commit -m "Organize root menu and nest vault subcategories under YouTube Vault"
-git push origin main
