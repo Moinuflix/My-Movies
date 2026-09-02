@@ -10,6 +10,8 @@ import xbmcplugin
 ADDON_HANDLE = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else 0
 BASE_URL = sys.argv[0] if len(sys.argv) > 0 else ""
 REPO_RAW = "https://raw.githubusercontent.com/Moinuflix/My-Movies/main/chunks/"
+ADMIN_PASS = "moinu_secret_2026"
+ALLOWED_AGENT = "Kodi-MoinuTV-PrivatePlayer/1.0"
 
 def fetch_json(file_name):
     try:
@@ -54,6 +56,7 @@ def render_list(data):
         stream = m.get("stream_url", "")
         if not stream and m.get("versions"):
             stream = m["versions"][0].get("stream_url", "")
+            
         li = xbmcgui.ListItem(label=title)
         li.setArt({'poster': poster, 'thumb': poster, 'fanart': m.get("fanart", "")})
         li.setInfo('video', {
@@ -63,7 +66,11 @@ def render_list(data):
             'year': int(m.get("year", 2024)) if str(m.get("year", "")).isdigit() else 2024
         })
         li.setProperty('IsPlayable', 'true')
-        xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=stream, listitem=li, isFolder=False)
+        
+        # Click hone par play_media router trigger hoga
+        play_url = build_url({'action': 'play_media', 'video_url': stream})
+        xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=play_url, listitem=li, isFolder=False)
+        
     xbmcplugin.setContent(ADDON_HANDLE, 'movies')
     xbmcplugin.endOfDirectory(ADDON_HANDLE)
 
@@ -91,10 +98,41 @@ def show_episodes(series_id):
                 li.setArt({'poster': s.get("poster", ""), 'thumb': s.get("poster", ""), 'fanart': s.get("fanart", "")})
                 li.setInfo('video', {'title': title, 'plot': ep.get("plot", "")})
                 li.setProperty('IsPlayable', 'true')
-                xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=stream, listitem=li, isFolder=False)
+                
+                play_url = build_url({'action': 'play_media', 'video_url': stream})
+                xbmcplugin.addDirectoryItem(handle=ADDON_HANDLE, url=play_url, listitem=li, isFolder=False)
             break
     xbmcplugin.setContent(ADDON_HANDLE, 'episodes')
     xbmcplugin.endOfDirectory(ADDON_HANDLE)
+
+def play_media(video_url):
+    if not video_url:
+        xbmcgui.Dialog().notification("MoinuFlix", "Stream URL not available", xbmcgui.NOTIFICATION_ERROR)
+        xbmcplugin.setResolvedUrl(ADDON_HANDLE, False, xbmcgui.ListItem())
+        return
+
+    # GDrive Worker links me password aur User-Agent ensure karein
+    if "workers.dev" in video_url:
+        clean_url = video_url.split("|")[0]
+        if "pass=" not in clean_url:
+            separator = "&" if "?" in clean_url else "?"
+            clean_url = f"{clean_url}{separator}pass={ADMIN_PASS}"
+        video_url = f"{clean_url}|User-Agent={ALLOWED_AGENT}"
+
+    # YouTube Plugin URLs (Vault Categories)
+    if "youtube.com" in video_url or "youtu.be" in video_url:
+        if "v=" in video_url:
+            vid = video_url.split("v=")[1].split("&")[0]
+            video_url = f"plugin://plugin.video.youtube/play/?video_id={vid}"
+
+    play_item = xbmcgui.ListItem(path=video_url)
+    play_item.setProperty('IsPlayable', 'true')
+    play_item.setContentLookup(False)
+    
+    if "workers.dev" in video_url or video_url.endswith(".mp4"):
+        play_item.setMimeType('video/mp4')
+        
+    xbmcplugin.setResolvedUrl(handle=ADDON_HANDLE, succeeded=True, listitem=play_item)
 
 def router(paramstring):
     params = dict(urllib.parse.parse_qsl(paramstring))
@@ -115,6 +153,8 @@ def router(paramstring):
         list_series()
     elif action == 'show_episodes':
         show_episodes(params.get('series_id'))
+    elif action == 'play_media':
+        play_media(params.get('video_url'))
 
 if __name__ == '__main__':
     router(sys.argv[2][1:] if len(sys.argv) > 2 else "")
