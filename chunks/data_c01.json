@@ -1,137 +1,53 @@
 [
   {
-    "id": "1SwK3sRs28SCj3bbXAhDL3uczwhCOVGPr",
-    "name": "Sivappu Manjal Pachai (2019) [1080p] [H.264] [Dolby Digital Plus].mkv",
-    "title": "Sivappu Manjal Pachai",
-    "original_title": "சிவப்பு மஞ்சள் பச்சை",
-    "year": 2019,
-    "runtime": 140,
-    "tmdb_id": 596652,
-    "imdb_id": "tt10334602",
-    "imdb_url": "https://www.imdb.com/title/tt10334602/",
-    "rating": 5.9,
-    "collection": "",
-    "director": [
-      "Sasi"
-    ],
-    "trailer": "",
-    "cast": [
-      {
-        "name": "Siddharth",
-        "role": "Rajasekar",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/9XrTuJp9lnB1rsBPzTaoXdp1ig8.jpg"
-      },
-      {
-        "name": "G. V. Prakash Kumar",
-        "role": "Madhan",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/ArX3l6CdNo0sGI8b6PFYveR9Azm.jpg"
-      },
-      {
-        "name": "Lijomol Jose",
-        "role": "Rajalakshmi aka Raji",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/vXFBgF6NMON7L4RzZ6B35lOVYOu.jpg"
-      },
-      {
-        "name": "Dheepa Ramanujam",
-        "role": "Rajasekar’s Mother",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/wnjAFAKT629yRNLD1Wya7B8wFcL.jpg"
-      },
-      {
-        "name": "Madhusudhan Rao",
-        "role": "Madhu",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/e6BpJSqq9KBnsY6p95nrrXRsI0V.jpg"
-      }
-    ],
-    "plot": "A street racer and a traffic cop end up becoming brothers-in-law. Can they accept each other given their previous hostile history?",
-    "poster": "https://image.tmdb.org/t/p/w500/iiipCUNieXTIhzRF4fDH4S8rb8J.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/oHr3eZXgen7b0UuzLRMQnPdDEUH.jpg",
-    "logo": "",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1SwK3sRs28SCj3bbXAhDL3uczwhCOVGPr|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "badges": {
-      "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
-      "hdr": "",
-      "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web.png",
-      "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
-      "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-    },
-    "specs": {
-      "resolution": "1080p FHD",
-      "source": "WEB-DL",
-      "codec": "H.264",
-      "audio": "Dolby Digital Plus",
-      "channels": "5.1",
-      "languages": "Tamil"
-    },
-    "versions": [
-      {
-        "id": "1SwK3sRs28SCj3bbXAhDL3uczwhCOVGPr",
-        "name": "Sivappu Manjal Pachai (2019) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
-        "codec": "H.264",
-        "resolution": "1080p FHD",
-        "audio": "Dolby Digital Plus",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1SwK3sRs28SCj3bbXAhDL3uczwhCOVGPr|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p FHD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "Dolby Digital Plus",
-          "channels": "5.1",
-          "languages": "Tamil"
-        }
-      }
-    ]
-  },
-  {
-    "id": "1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8",
-    "name": "Thalaivar Thambi Thalaimaiyil (2026) [4K UHD] [x265] [Dolby Digital Plus].mkv",
-    "title": "Thalaivar Thambi Thalaimaiyil",
-    "original_title": "தலைவர் தம்பி தலைமையில்",
+    "id": "11B9SFdt2YtZ2a9GNMsBNL8p-jH0LF_O8",
+    "name": "Project Hail Mary (2026) [4K UHD] [x265] [Dolby Digital Plus].mkv",
+    "title": "Project Hail Mary",
+    "original_title": "Project Hail Mary",
     "year": 2026,
-    "runtime": 113,
-    "tmdb_id": 869140,
-    "imdb_id": "tt36926733",
-    "imdb_url": "https://www.imdb.com/title/tt36926733/",
-    "rating": 6.5,
+    "runtime": 157,
+    "tmdb_id": 687163,
+    "imdb_id": "tt12042730",
+    "imdb_url": "https://www.imdb.com/title/tt12042730/",
+    "rating": 8.6,
     "collection": "",
     "director": [
-      "Nithish Sahadev"
+      "Phil Lord",
+      "Christopher Miller"
     ],
-    "trailer": "",
+    "trailer": "https://www.youtube.com/watch?v=eSGTui-T-4Q",
     "cast": [
       {
-        "name": "Jiiva",
-        "role": "Jeeva Rathnam",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/1AsFMY3Fha7BvYmw4jShQtNTZjp.jpg"
+        "name": "Ryan Gosling",
+        "role": "Ryland Grace",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/lyUyVARQKhGxaxy0FbPJCQRpiaW.jpg"
       },
       {
-        "name": "Prathana Nathan",
-        "role": "Sowmya/Sowmi",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/qJBSz9cy3J7AeLoekiTLJ1MNvfM.jpg"
+        "name": "Sandra Hüller",
+        "role": "Eva Stratt",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/t7wGqC2dRwTEnt9Fk5pxQ0uXTqs.jpg"
       },
       {
-        "name": "Ilavarasu",
-        "role": "Ilavarasu",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/gWCREhajMvlOE49g79zyvwdpf5E.jpg"
+        "name": "James Ortiz",
+        "role": "Rocky (voice)",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/unzBwVsoq8rAH8BAYlPR1zsWQ4E.jpg"
       },
       {
-        "name": "Thambi Ramaiah",
-        "role": "Mani",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/murNGZdySdA7uKgLBeMwOK4wEdg.jpg"
+        "name": "Lionel Boyce",
+        "role": "Carl",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/hpIxX5nkfA3pWCW8rYkEUCSBVyS.jpg"
       },
       {
-        "name": "Jenson Dhivakar",
-        "role": "Thavidu",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/4QAdVaCP4l1BA39Fc35WwH7mv4T.jpg"
+        "name": "Milana Vayntrub",
+        "role": "Olesya Ilyukhina",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/i5Cou9ExwTZvRRtl79V75CsI7oC.jpg"
       }
     ],
-    "plot": "A village official attending a wedding becomes entangled in an escalating family dispute over power and old resentments, testing his leadership as he tries to contain the situation.",
-    "poster": "https://image.tmdb.org/t/p/w500/wqofJvDrFv65QgyVmNI4loi9jZZ.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/cpOUDK8BBJyvrUuLN8YTRttXEab.jpg",
+    "plot": "Science teacher Ryland Grace wakes up on a spaceship light years from home with no recollection of who he is or how he got there. As his memory returns, he begins to uncover his mission: solve the riddle of the mysterious substance causing the sun to die out. He must call on his scientific knowledge and unorthodox ideas to save everything on Earth from extinction.",
+    "poster": "https://image.tmdb.org/t/p/w500/yihdXomYb5kTeSivtFndMy5iDmf.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/8Tfys3mDZVp4tNoH2ktm06a0Tau.jpg",
     "logo": "",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=11B9SFdt2YtZ2a9GNMsBNL8p-jH0LF_O8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "badges": {
       "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/4k.png",
       "hdr": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/hdr/hdr.png",
@@ -149,15 +65,15 @@
     },
     "versions": [
       {
-        "id": "1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8",
-        "name": "Thalaivar Thambi Thalaimaiyil (2026) [4K UHD] [x265] [Dolby Digital Plus].mkv",
+        "id": "11B9SFdt2YtZ2a9GNMsBNL8p-jH0LF_O8",
+        "name": "Project Hail Mary (2026) [4K UHD] [x265] [Dolby Digital Plus].mkv",
         "quality": "4K UHD",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "4K UHD",
         "audio": "Dolby Digital Plus",
         "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=11B9SFdt2YtZ2a9GNMsBNL8p-jH0LF_O8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "4K UHD",
           "source": "WEB-DL",
@@ -165,6 +81,86 @@
           "audio": "Dolby Digital Plus",
           "channels": "5.1",
           "languages": "Multi"
+        }
+      }
+    ]
+  },
+  {
+    "id": "1Vgn6oBFVidhhM0Y2SuVfR6sB1GPsCJqi",
+    "name": "Kandhakottai (2009) [4K UHD] [x265] [Dolby Digital Plus].mkv",
+    "title": "Kandhakottai",
+    "original_title": "Kandhakottai",
+    "year": 2009,
+    "runtime": 120,
+    "tmdb_id": 250499,
+    "imdb_id": "",
+    "imdb_url": "",
+    "rating": 6.5,
+    "collection": "",
+    "director": [
+      "S. Sakthivel"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Nakul",
+        "role": "Siva",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/x8kGE76qjkd7sd6ix3yQBJdb6aM.jpg"
+      },
+      {
+        "name": "Poorna",
+        "role": "Pooja",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/TDjD3RpKSgbwSApdpPhFXRtwf8.jpg"
+      },
+      {
+        "name": "Sampath Raj",
+        "role": "Singam Perumal",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/oQgoihP26Hyg6gMFVpACRAygZli.jpg"
+      },
+      {
+        "name": "Santhanam",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/6OoqLm0jzC1Ko6jMGdIJrVWM9nk.jpg"
+      }
+    ],
+    "plot": "Siva (Nakul) is a nice guy who doesn't believe in the concept of love. True to his hatred, he also doesn't hesitate to go and break up love birds. Pooja (Poorna) on the other hand believes strongly in the force of love and does whatever she can to ensure that lovers get united. The story takes a turn when Siva's sister falls in love with Pooja's cousin. As expected, Siva tries to break the couple while Pooja unites them. Finally, Siva gives up and at the same time, he develops feelings for Pooja. What happens from there forms the rest of the story.",
+    "poster": "https://image.tmdb.org/t/p/w500/uJz500dB6tTnSLbf95kUTVbV6vs.jpg",
+    "fanart": "",
+    "logo": "",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Vgn6oBFVidhhM0Y2SuVfR6sB1GPsCJqi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "badges": {
+      "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/4k.png",
+      "hdr": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/hdr/hdr.png",
+      "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web.png",
+      "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+      "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+    },
+    "specs": {
+      "resolution": "4K UHD",
+      "source": "BLURAY",
+      "codec": "x265",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil"
+    },
+    "versions": [
+      {
+        "id": "1Vgn6oBFVidhhM0Y2SuVfR6sB1GPsCJqi",
+        "name": "Kandhakottai (2009) [4K UHD] [x265] [Dolby Digital Plus].mkv",
+        "quality": "4K UHD",
+        "source": "BLURAY",
+        "codec": "x265",
+        "resolution": "4K UHD",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Vgn6oBFVidhhM0Y2SuVfR6sB1GPsCJqi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "4K UHD",
+          "source": "BLURAY",
+          "codec": "x265",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil"
         }
       }
     ]
@@ -2737,8 +2733,8 @@
     "rating": 5.667,
     "director": [
       "Konkona Sen Sharma",
-      "Amit Sharma",
       "Sujoy Ghosh",
+      "Amit Sharma",
       "R. Balki"
     ],
     "cast": [
