@@ -1,5 +1,82 @@
 [
   {
+    "id": "1KzSk6IRTtlOHbv1pvHRAOkLKCBo-j81Y",
+    "name": "Bigil (2019) [1080p] [H.264] [Dolby Digital Plus].mkv",
+    "title": "Bigil",
+    "original_title": "பிகில்",
+    "year": 2019,
+    "runtime": 177,
+    "tmdb_id": 563309,
+    "imdb_id": "tt9260636",
+    "rating": 6.3,
+    "collection": "",
+    "director": [
+      "Atlee"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Vijay",
+        "role": "Michael 'Bigil' Rayappan / Rayappan",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/zbQ1sDRVRHkroWwvrnqYKMerl66.jpg"
+      },
+      {
+        "name": "Nayanthara",
+        "role": "Angel Aasirvatham",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/sYUzvjsSsqeOgBblSzda6ZwwbEa.jpg"
+      },
+      {
+        "name": "Jackie Shroff",
+        "role": "J. K. Sharma",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/1UNJypgEyuihUW2avLLVYj76jie.jpg"
+      },
+      {
+        "name": "Kathir",
+        "role": "Kathir",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/cQNlW5ztPIANrUNRos81cxZuZe5.jpg"
+      },
+      {
+        "name": "Vivek",
+        "role": "Nessi",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/z4fZ22hnBz6W8mBNDvhtFbJErmK.jpg"
+      }
+    ],
+    "plot": "A do-gooder don wants his footballer son to uplift the life of his people by becoming a champion, but fate draws the youngster into a life of violence. Will he be able to fulfill his father’s dream when an opportunity comes his way seven years later?",
+    "poster": "https://image.tmdb.org/t/p/w500/s4Yi1RbMyyN3hH2hElwvluP2rOG.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/cc14e095w0ri6ppoLxSEl7iUqHs.jpg",
+    "logo": "",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1KzSk6IRTtlOHbv1pvHRAOkLKCBo-j81Y|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "4K UHD",
+      "source": "AMZN WEB-DL",
+      "codec": "H.264",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil"
+    },
+    "versions": [
+      {
+        "id": "1KzSk6IRTtlOHbv1pvHRAOkLKCBo-j81Y",
+        "name": "Bigil (2019) [1080p] [H.264] [Dolby Digital Plus].mkv",
+        "quality": "1080p",
+        "source": "AMZN WEB-DL",
+        "codec": "H.264",
+        "resolution": "4K UHD",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1KzSk6IRTtlOHbv1pvHRAOkLKCBo-j81Y|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "4K UHD",
+          "source": "AMZN WEB-DL",
+          "codec": "H.264",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil"
+        }
+      }
+    ]
+  },
+  {
     "id": "1PdUAMv0lfgqgLVFUMTxTikrPMdoXAqxg",
     "name": "Dharmadurai (2016) [1080p] [H.264] [Dolby Digital Plus].mkv",
     "title": "Dharmadurai",
@@ -69,25 +146,6 @@
           "resolution": "1080p FHD",
           "source": "WEB-DL",
           "codec": "H.264",
-          "audio": "Dolby Digital Plus",
-          "channels": "5.1",
-          "languages": "Tamil"
-        }
-      },
-      {
-        "id": "1MQKfEWEzzCOb6s7gqqlTob0SDPsVoZtm",
-        "name": "Movie 373587 (2026) [1080p] [x265] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
-        "source": "AMZN WEB-DL",
-        "codec": "x265",
-        "resolution": "4K UHD",
-        "audio": "Dolby Digital Plus",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1MQKfEWEzzCOb6s7gqqlTob0SDPsVoZtm|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "4K UHD",
-          "source": "AMZN WEB-DL",
-          "codec": "x265",
           "audio": "Dolby Digital Plus",
           "channels": "5.1",
           "languages": "Tamil"
