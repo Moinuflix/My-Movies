@@ -9,20 +9,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #05070c;
-      --bg-card: rgba(15, 18, 28, 0.75);
-      --bg-card-hover: rgba(24, 29, 44, 0.95);
-      --bg-input: #080b12;
-      --border-color: rgba(255, 255, 255, 0.08);
-      --laser-red: #ff0044;
-      --laser-red-glow: rgba(255, 0, 68, 0.45);
-      --laser-cyan: #00f0ff;
-      --laser-cyan-glow: rgba(0, 240, 255, 0.4);
-      --laser-green: #00ff66;
-      --laser-green-glow: rgba(0, 255, 102, 0.35);
-      --gold-lcu: #ffd700;
-      --gold-lcu-glow: rgba(255, 215, 0, 0.4);
-      --text-main: #ffffff;
+      --bg-dark: #030712;
+      --bg-card: rgba(15, 23, 42, 0.75);
+      --bg-card-hover: rgba(30, 41, 59, 0.9);
+      --bg-input: #0b1329;
+      --border-color: rgba(56, 189, 248, 0.15);
+      --electric-blue: #2563eb;
+      --electric-blue-glow: rgba(37, 99, 235, 0.45);
+      --laser-cyan: #38bdf8;
+      --laser-cyan-glow: rgba(56, 189, 248, 0.45);
+      --laser-green: #10b981;
+      --laser-green-glow: rgba(16, 185, 129, 0.35);
+      --laser-red: #ef4444;
+      --gold-lcu: #f59e0b;
+      --gold-lcu-glow: rgba(245, 158, 11, 0.4);
+      --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --text-dim: #64748b;
       --font-stack: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
@@ -33,8 +34,8 @@
     body {
       background-color: var(--bg-dark);
       background-image: 
-        radial-gradient(circle at 10% 10%, rgba(255, 0, 68, 0.09) 0%, transparent 45%),
-        radial-gradient(circle at 90% 90%, rgba(0, 240, 255, 0.08) 0%, transparent 45%);
+        radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(56, 189, 248, 0.12) 0%, transparent 45%);
       color: var(--text-main);
       font-family: var(--font-stack);
       display: flex;
@@ -44,7 +45,7 @@
 
     aside {
       width: 270px;
-      background: rgba(8, 11, 18, 0.95);
+      background: rgba(11, 19, 43, 0.95);
       backdrop-filter: blur(25px);
       border-right: 1px solid var(--border-color);
       display: flex;
@@ -65,20 +66,20 @@
     }
 
     .brand-logo {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, var(--laser-red), #80001f);
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--laser-cyan), var(--electric-blue));
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
       font-size: 1.3rem;
-      color: #fff;
-      box-shadow: 0 0 18px var(--laser-red-glow);
+      color: #030712;
+      box-shadow: 0 0 20px var(--laser-cyan-glow);
     }
 
-    .brand-text { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; }
+    .brand-text { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; }
 
     .nav-list {
       list-style: none;
@@ -105,12 +106,12 @@
       text-align: left;
     }
 
-    .nav-btn:hover { background: rgba(255, 255, 255, 0.04); color: #fff; }
+    .nav-btn:hover { background: rgba(56, 189, 248, 0.06); color: #fff; }
     .nav-btn.active {
-      background: linear-gradient(135deg, rgba(255, 0, 68, 0.2), rgba(255, 0, 68, 0.04));
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(56, 189, 248, 0.1));
       color: #fff;
-      border: 1px solid var(--laser-red);
-      box-shadow: 0 0 18px var(--laser-red-glow);
+      border: 1px solid var(--laser-cyan);
+      box-shadow: 0 0 20px var(--laser-cyan-glow);
     }
 
     .nav-badge {
@@ -127,15 +128,12 @@
       margin-top: auto;
       border-top: 1px solid var(--border-color);
       padding-top: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
     }
 
     .btn-token-config {
       width: 100%;
-      background: rgba(0, 240, 255, 0.08);
-      border: 1px solid rgba(0, 240, 255, 0.25);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
       color: var(--laser-cyan);
       padding: 0.7rem 0.9rem;
       border-radius: 10px;
@@ -176,7 +174,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* TOP CATEGORY PILLS BAR */
     .category-pills-bar {
       display: flex;
       gap: 0.6rem;
@@ -200,17 +197,10 @@
 
     .cat-pill:hover { border-color: var(--laser-cyan); color: #fff; }
     .cat-pill.active {
-      background: rgba(0, 240, 255, 0.12);
+      background: rgba(56, 189, 248, 0.15);
       border-color: var(--laser-cyan);
       color: var(--laser-cyan);
       box-shadow: 0 0 14px var(--laser-cyan-glow);
-    }
-
-    .cat-pill.pill-lcu.active {
-      background: rgba(255, 215, 0, 0.15);
-      border-color: var(--gold-lcu);
-      color: var(--gold-lcu);
-      box-shadow: 0 0 14px var(--gold-lcu-glow);
     }
 
     .stats-grid {
@@ -237,9 +227,9 @@
     .stat-card::after {
       content: '';
       position: absolute;
-      top: 0; left: 0; width: 3px; height: 100%;
+      top: 0; left: 0; width: 4px; height: 100%;
       background: var(--laser-cyan);
-      box-shadow: 0 0 10px var(--laser-cyan);
+      box-shadow: 0 0 12px var(--laser-cyan);
     }
 
     .stat-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); font-weight: 700; }
@@ -283,19 +273,19 @@
     }
 
     input:focus, select:focus {
-      border-color: var(--laser-red);
-      box-shadow: 0 0 12px var(--laser-red-glow);
+      border-color: var(--laser-cyan);
+      box-shadow: 0 0 14px var(--laser-cyan-glow);
     }
 
     .smart-input {
-      border-color: rgba(0, 240, 255, 0.4);
-      background: rgba(0, 240, 255, 0.03);
+      border-color: rgba(56, 189, 248, 0.4);
+      background: rgba(56, 189, 248, 0.04);
     }
 
     .tag-container { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
     .smart-tag {
-      background: rgba(0, 240, 255, 0.1);
-      border: 1px solid rgba(0, 240, 255, 0.3);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
       color: var(--laser-cyan);
       padding: 3px 8px;
       border-radius: 6px;
@@ -305,8 +295,8 @@
     }
 
     .collection-tag-ui {
-      background: rgba(255, 215, 0, 0.12);
-      border: 1px solid rgba(255, 215, 0, 0.4);
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.4);
       color: var(--gold-lcu);
       padding: 3px 10px;
       border-radius: 6px;
@@ -322,12 +312,12 @@
     .tmdb-results-box {
       display: none;
       margin-top: 10px;
-      background: #090c14;
+      background: #0b1329;
       border: 1px solid var(--laser-cyan);
       box-shadow: 0 0 18px var(--laser-cyan-glow);
       border-radius: 14px;
       padding: 12px;
-      max-height: 260px;
+      max-height: 250px;
       overflow-y: auto;
     }
     .tmdb-result-item {
@@ -341,46 +331,49 @@
       transition: all 0.2s;
     }
     .tmdb-result-item:hover {
-      background: #131726;
+      background: #1e293b;
       border-color: var(--laser-cyan);
     }
     .tmdb-result-poster {
       width: 38px;
-      height: 54px;
+      height: 52px;
       object-fit: cover;
       border-radius: 6px;
-      background: #222;
+      background: #1e293b;
     }
     .tmdb-result-info { flex: 1; }
     .tmdb-result-title { font-weight: 700; color: #fff; font-size: 0.9rem; }
     .tmdb-result-meta { font-size: 0.75rem; color: var(--text-muted); }
 
     .btn-submit {
-      background: linear-gradient(135deg, var(--laser-red), #990024);
-      color: #fff;
+      background: linear-gradient(135deg, var(--laser-cyan), var(--electric-blue));
+      color: #030712;
       border: none;
       padding: 0.85rem 1.8rem;
       border-radius: 12px;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 0.9rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      box-shadow: 0 0 15px var(--laser-red-glow);
+      box-shadow: 0 0 18px var(--laser-cyan-glow);
       transition: all 0.25s ease;
     }
+    .btn-submit:hover { transform: translateY(-2px); }
 
     .btn-clean-duplicates {
-      background: rgba(255, 215, 0, 0.12);
-      color: var(--gold-lcu);
-      border: 1px solid rgba(255, 215, 0, 0.4);
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--laser-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.4);
       padding: 0.75rem 1.2rem;
       border-radius: 12px;
       font-weight: 800;
       font-size: 0.85rem;
       cursor: pointer;
+      transition: all 0.2s;
     }
+    .btn-clean-duplicates:hover { background: var(--laser-cyan); color: #030712; }
 
     .search-bar-container { margin-bottom: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
     .search-input { flex: 1; min-width: 280px; padding: 0.9rem 1.3rem; font-size: 1rem; background: var(--bg-card); border-radius: 14px; }
@@ -399,21 +392,20 @@
     }
 
     .movie-card:hover {
-      border-color: rgba(0, 240, 255, 0.45);
+      border-color: var(--laser-cyan);
       transform: translateY(-5px);
-      box-shadow: 0 14px 35px rgba(0,0,0,0.6), 0 0 20px rgba(0, 240, 255, 0.18);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.6), 0 0 20px var(--laser-cyan-glow);
     }
 
-    .poster-wrap { width: 100%; height: 300px; background: #080a10; position: relative; overflow: hidden; }
-    .poster-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-    .movie-card:hover .poster-img { transform: scale(1.05); }
-    .poster-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 0.85rem; font-weight: 600; text-align: center; padding: 1rem; }
-    
+    .poster-wrap { width: 100%; height: 290px; background: #070d1e; position: relative; overflow: hidden; }
+    .poster-img { width: 100%; height: 100%; object-fit: cover; }
+    .poster-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 0.85rem; font-weight: 600; text-align: center; }
+
     .universe-badge {
       position: absolute;
       top: 10px;
       left: 10px;
-      background: rgba(0, 0, 0, 0.88);
+      background: rgba(3, 7, 18, 0.9);
       border: 1px solid var(--gold-lcu);
       color: var(--gold-lcu);
       padding: 4px 9px;
@@ -422,7 +414,6 @@
       font-weight: 800;
       backdrop-filter: blur(8px);
       z-index: 2;
-      box-shadow: 0 0 10px var(--gold-lcu-glow);
     }
 
     .movie-card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
@@ -436,7 +427,6 @@
       margin-bottom: 0.85rem;
       align-items: center;
       font-weight: 600;
-      flex-wrap: wrap;
     }
 
     .existing-versions-list {
@@ -463,13 +453,13 @@
       gap: 0.5rem;
     }
 
-    .card-actions-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .card-actions-row { display: flex; gap: 0.5rem; }
 
     .btn-action-primary {
       flex: 1;
-      background: rgba(0, 240, 255, 0.1);
+      background: rgba(56, 189, 248, 0.12);
       color: var(--laser-cyan);
-      border: 1px solid rgba(0, 240, 255, 0.3);
+      border: 1px solid rgba(56, 189, 248, 0.3);
       padding: 0.65rem;
       border-radius: 10px;
       font-size: 0.8rem;
@@ -477,15 +467,12 @@
       cursor: pointer;
       text-align: center;
     }
-    .btn-action-primary:hover {
-      background: var(--laser-cyan);
-      color: #000;
-    }
+    .btn-action-primary:hover { background: var(--laser-cyan); color: #030712; }
 
     .btn-delete-item {
-      background: rgba(255, 0, 68, 0.15);
+      background: rgba(239, 68, 68, 0.15);
       color: var(--laser-red);
-      border: 1px solid rgba(255, 0, 68, 0.3);
+      border: 1px solid rgba(239, 68, 68, 0.3);
       padding: 0.65rem 0.8rem;
       border-radius: 10px;
       font-size: 0.8rem;
@@ -498,7 +485,7 @@
       bottom: -120px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(14, 18, 28, 0.96);
+      background: rgba(11, 19, 43, 0.96);
       backdrop-filter: blur(25px);
       border: 1px solid var(--laser-cyan);
       border-radius: 20px;
@@ -513,8 +500,8 @@
     .merge-bottom-dock.show { bottom: 25px; }
 
     .btn-dock-merge {
-      background: linear-gradient(135deg, var(--laser-cyan), #00a2ff);
-      color: #000;
+      background: linear-gradient(135deg, var(--laser-cyan), var(--electric-blue));
+      color: #030712;
       font-weight: 800;
       font-size: 0.88rem;
       padding: 0.65rem 1.4rem;
@@ -526,7 +513,7 @@
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(2, 4, 8, 0.85);
+      background: rgba(2, 6, 23, 0.85);
       backdrop-filter: blur(20px);
       display: none;
       align-items: center;
@@ -537,11 +524,11 @@
     .modal-overlay.active { display: flex; }
 
     .modal-card {
-      background: rgba(15, 19, 30, 0.96);
-      border: 1px solid rgba(0, 240, 255, 0.4);
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(56, 189, 248, 0.4);
       border-radius: 24px;
       width: 100%;
-      max-width: 720px;
+      max-width: 700px;
       max-height: 90vh;
       overflow-y: auto;
       padding: 2.2rem;
@@ -562,11 +549,10 @@
     .preview-item-label { color: var(--text-dim); font-weight: 600; }
     .preview-item-val { font-weight: 600; color: var(--text-main); font-family: monospace; }
     .preview-stream-text { font-size: 0.82rem; color: var(--laser-cyan); font-family: monospace; word-break: break-all; margin-top: 5px; }
-    
-    .modal-actions { display: flex; justify-content: flex-end; gap: 0.85rem; }
+
     .btn-save-database {
-      background: linear-gradient(135deg, var(--laser-green), #00a838);
-      color: #000;
+      background: linear-gradient(135deg, var(--laser-cyan), var(--electric-blue));
+      color: #030712;
       border: none;
       padding: 0.8rem 1.6rem;
       border-radius: 12px;
@@ -579,7 +565,7 @@
       position: fixed;
       top: 25px;
       right: 25px;
-      background: rgba(14, 18, 28, 0.95);
+      background: rgba(15, 23, 42, 0.95);
       border: 1px solid var(--laser-cyan);
       box-shadow: 0 0 25px var(--laser-cyan-glow);
       color: #fff;
@@ -593,7 +579,7 @@
 
     @media (max-width: 900px) {
       body { flex-direction: column; }
-      aside { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--border-color); padding: 1rem; }
+      aside { width: 100%; height: auto; position: relative; border-right: none; padding: 1rem; }
       .nav-list { flex-direction: row; overflow-x: auto; }
       .nav-btn { white-space: nowrap; }
       .sidebar-footer { display: none; }
@@ -631,13 +617,13 @@
       </li>
       <li>
         <button class="nav-btn" onclick="switchNav('existing-movies', this)">
-          <span>🔍 Movies</span>
+          <span>🎬 Movies</span>
           <span class="nav-badge" id="badge-c01">0</span>
         </button>
       </li>
       <li>
         <button class="nav-btn" onclick="switchNav('add-movie', this)">
-          <span>🎬 + Add Movie</span>
+          <span>➕ Add Movie</span>
         </button>
       </li>
       <li>
@@ -647,9 +633,19 @@
         </button>
       </li>
       <li>
+        <button class="nav-btn" onclick="switchNav('add-series', this)">
+          <span>➕ Add Series</span>
+        </button>
+      </li>
+      <li>
         <button class="nav-btn" onclick="switchNav('existing-songs', this)">
           <span>🎵 5.1 Songs</span>
           <span class="nav-badge" id="badge-c03">0</span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-btn" onclick="switchNav('add-song', this)">
+          <span>➕ Add Song</span>
         </button>
       </li>
       <li>
@@ -709,7 +705,7 @@
           <p class="section-desc">Browse by Collections, Universes, Quality, or Packs</p>
         </div>
         <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
-          <button type="button" class="btn-clean-duplicates" style="background: rgba(0, 240, 255, 0.12); color: var(--laser-cyan); border-color: rgba(0, 240, 255, 0.4);" onclick="autoConnectFranchiseCollections()">
+          <button type="button" class="btn-clean-duplicates" onclick="autoConnectFranchiseCollections()">
             ⚡ 1-Click Connect All Packs (KGF, Baahubali, Batman)
           </button>
           <button type="button" class="btn-clean-duplicates" onclick="autoMergeDuplicateMovies()">
@@ -721,7 +717,7 @@
       <div class="category-pills-bar">
         <button class="cat-pill active" onclick="setCategoryFilter('all', this)">🍿 All Movies</button>
         <button class="cat-pill" onclick="setCategoryFilter('collections', this)">👑 Collections & Packs</button>
-        <button class="cat-pill pill-lcu" onclick="setCategoryFilter('lcu', this)">⚡ LCU Universe</button>
+        <button class="cat-pill" onclick="setCategoryFilter('lcu', this)">⚡ LCU Universe</button>
         <button class="cat-pill" onclick="setCategoryFilter('4k', this)">💎 4K UHD Only</button>
         <button class="cat-pill" onclick="setCategoryFilter('multiaudio', this)">🎧 Multi-Audio</button>
       </div>
@@ -837,15 +833,103 @@
       </div>
     </section>
 
-    <!-- OTHER SECTIONS -->
+    <!-- VIEW: EXISTING SERIES -->
     <section id="view-existing-series" class="view-panel">
       <header><div><h1>Web Series (data_c02.json)</h1></div></header>
       <div class="movies-grid" id="series-grid"></div>
     </section>
+
+    <!-- VIEW: ADD SERIES (NEW TMDB TV API) -->
+    <section id="view-add-series" class="view-panel">
+      <header>
+        <div>
+          <h1>Add Web Series to data_c02.json</h1>
+          <p class="section-desc">Search by name or TMDB Series ID (Auto-sync posters, cast & plot)</p>
+        </div>
+      </header>
+      <div class="form-container">
+        <form id="series-form" onsubmit="handleSeriesSubmit(event)">
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label>Search Series Name (e.g. All of Us Are Dead, Farzi)</label>
+              <input type="text" id="input-series-search" placeholder="Type TV show name to auto-search..." oninput="searchSeriesTmdb(this.value)">
+              <div id="series-suggestions-box" class="tmdb-results-box">
+                <div id="series-suggestions-list"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>TMDB TV Show ID</label>
+              <input type="number" id="input-series-tmdb" placeholder="e.g. 99966" required>
+            </div>
+            <div class="form-group">
+              <label>Total Seasons / Tag</label>
+              <input type="text" id="input-series-seasons" placeholder="e.g. Season 1 (All Episodes)" value="Season 1">
+            </div>
+            <div class="form-group full-width">
+              <label>Google Drive Link / Stream URL</label>
+              <input type="text" id="input-series-gdrive" placeholder="Google Drive Link or Stream Route" required>
+            </div>
+          </div>
+          <button type="submit" class="btn-submit">SAVE WEB SERIES</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- VIEW: EXISTING SONGS -->
     <section id="view-existing-songs" class="view-panel">
       <header><div><h1>5.1 Audio & Atmos Songs (data_c03.json)</h1></div></header>
       <div class="movies-grid" id="songs-grid"></div>
     </section>
+
+    <!-- VIEW: ADD SONG (NEW GAANA / JIOSAAVN API) -->
+    <section id="view-add-song" class="view-panel">
+      <header>
+        <div>
+          <h1>Add 5.1 / Atmos Song to data_c03.json</h1>
+          <p class="section-desc">Live music search (Auto-fetches Official Album Art, Singers & Movie Name)</p>
+        </div>
+      </header>
+      <div class="form-container">
+        <form id="song-form" onsubmit="handleSongSubmit(event)">
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label>Search Song Name (e.g. Arabic Kuthu, Hukum, Naatu Naatu)</label>
+              <input type="text" id="input-song-search" placeholder="Type song name to search Gaana/JioSaavn..." oninput="searchSongMusicApi(this.value)">
+              <div id="song-suggestions-box" class="tmdb-results-box">
+                <div id="song-suggestions-list"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Song Title</label>
+              <input type="text" id="input-song-title" placeholder="e.g. Hukum - Thalaivar Alappara" required>
+            </div>
+            <div class="form-group">
+              <label>Movie / Album Name</label>
+              <input type="text" id="input-song-movie" placeholder="e.g. Jailer" required>
+            </div>
+            <div class="form-group">
+              <label>Audio Quality Format</label>
+              <select id="input-song-quality">
+                <option value="5.1 Surround" selected>5.1 Dolby Digital Surround</option>
+                <option value="Dolby Atmos">Dolby Atmos Lossless</option>
+                <option value="DTS-HD 7.1">DTS-HD Master 7.1</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Cover Art URL</label>
+              <input type="text" id="input-song-poster" placeholder="Image URL (Auto-filled on search)">
+            </div>
+            <div class="form-group full-width">
+              <label>Google Drive Link / Worker Stream Link</label>
+              <input type="text" id="input-song-gdrive" placeholder="Google Drive Link or Worker Link" required>
+            </div>
+          </div>
+          <button type="submit" class="btn-submit">SAVE 5.1 SONG</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- VIEW: EXISTING VAULT -->
     <section id="view-existing-vault" class="view-panel">
       <header><div><h1>YouTube Video Vault (data_c04.json)</h1></div></header>
       <div class="movies-grid" id="vault-grid"></div>
@@ -873,7 +957,7 @@
           <input type="text" id="edit-modal-collection" placeholder="Auto or Custom e.g. K.G.F Collection">
         </div>
       </div>
-      <div class="modal-actions">
+      <div class="modal-actions" style="display:flex; justify-content:flex-end; gap:0.85rem;">
         <button type="button" class="btn-save-database" onclick="submitEditMovieModal()">⚡ Save to GitHub</button>
         <button type="button" class="btn-close-modal" onclick="closeEditModal()">Cancel</button>
       </div>
@@ -885,10 +969,10 @@
     <div class="modal-card">
       <div class="modal-header">
         <div class="modal-title">Live Preview & Direct Commit</div>
-        <span style="font-size: 0.75rem; color: var(--laser-green); font-weight: 800;">READY</span>
+        <span style="font-size: 0.75rem; color: var(--laser-cyan); font-weight: 800;">READY</span>
       </div>
       <div class="preview-list" id="modal-preview-details"></div>
-      <div class="modal-actions">
+      <div class="modal-actions" style="display:flex; justify-content:flex-end; gap:0.85rem;">
         <button type="button" class="btn-close-modal" onclick="copyStreamUrl()">Copy Stream URL</button>
         <button type="button" class="btn-save-database" id="btn-commit-github" onclick="commitPendingToGitHub()">
           <span>Save & Direct Commit to GitHub</span>
@@ -913,6 +997,9 @@
     let activeStreamUrl = '';
     let editingMovieIndex = null;
     let currentCategoryFilter = 'all';
+
+    let seriesDebounce = null;
+    let songDebounce = null;
 
     const CONFIRM_PASS = "24592";
     const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
@@ -979,10 +1066,10 @@
       document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
       if (btn) btn.classList.add('active');
-      document.getElementById(`view-${panelId}`).classList.add('active');
+      const targetPanel = document.getElementById(`view-${panelId}`);
+      if (targetPanel) targetPanel.classList.add('active');
     }
 
-    /* SMART FRANCHISE RECOGNIZER */
     function detectFranchiseCollection(item) {
       if (item.collection && item.collection.trim() !== '') return item.collection;
       const title = (item.title || item.name || '').toLowerCase();
@@ -1039,7 +1126,6 @@
       renderVaultGrid(vaultData);
     }
 
-    /* 1-CLICK CONNECT ALL PACKS TO GITHUB */
     function autoConnectFranchiseCollections() {
       const token = getStoredToken();
       if (!token) return showLaserToast('Please configure GitHub Token first.', true);
@@ -1060,7 +1146,6 @@
       openPreviewModal('chunks/data_c01.json', null, `Connected ${taggedCount} Movie Packs`, `Auto-Connect Packs: K.G.F, Batman, Baahubali, LCU`, moviesData, true);
     }
 
-    /* 1. MOVIES GRID */
     function setCategoryFilter(cat, btn) {
       currentCategoryFilter = cat;
       document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
@@ -1160,7 +1245,6 @@
       });
     }
 
-    /* 2. SERIES GRID (c02) */
     function renderSeriesGrid(list) {
       const container = document.getElementById('series-grid');
       container.innerHTML = '';
@@ -1200,7 +1284,6 @@
       });
     }
 
-    /* 3. SONGS GRID (c03) */
     function renderSongsGrid(list) {
       const container = document.getElementById('songs-grid');
       container.innerHTML = '';
@@ -1211,7 +1294,7 @@
 
       list.forEach((item, index) => {
         const title = item.title || item.name || `Song #${index+1}`;
-        const poster = item.poster || item.fanart || '';
+        const poster = item.poster || item.fanart || item.thumbnail || '';
         const movieName = item.movie || item.album || '5.1 Surround Master';
         const stream = item.stream_url || '';
 
@@ -1238,7 +1321,6 @@
       });
     }
 
-    /* 4. YT VAULT GRID (c04) */
     function renderVaultGrid(list) {
       const container = document.getElementById('vault-grid');
       container.innerHTML = '';
@@ -1286,7 +1368,6 @@
       showLaserToast('Stream URL copied to clipboard!');
     }
 
-    /* FILENAME & TMDB LOGIC */
     function parseSmartFileName(filename) {
       if (!filename || filename.trim().length === 0) {
         document.getElementById('parsed-smart-tags').innerHTML = '';
@@ -1424,8 +1505,6 @@
         }
 
         let autoCollection = (data.belongs_to_collection && data.belongs_to_collection.name) ? data.belongs_to_collection.name : "";
-        
-        // Auto-detect KGF, Baahubali, LCU agar TMDB collection blank ho
         if (!autoCollection) {
           autoCollection = detectFranchiseCollection(data);
         }
@@ -1523,7 +1602,6 @@
       document.getElementById('btn-cancel-merge').style.display = 'inline-block';
     }
 
-    /* EDIT MOVIE */
     async function openEditMovieModal(movieIndex) {
       editingMovieIndex = movieIndex;
       const movie = moviesData[movieIndex];
@@ -1573,7 +1651,6 @@
       openPreviewModal('chunks/data_c01.json', movie, movie.stream_url, `Update: ${movie.title}`, moviesData, true);
     }
 
-    /* AUTO MERGE DUPLICATES */
     function autoMergeDuplicateMovies() {
       const token = getStoredToken();
       if (!token) return showLaserToast('Please configure GitHub Token first.', true);
@@ -1630,7 +1707,6 @@
       openPreviewModal('chunks/data_c01.json', null, `Merged ${duplicatesFound} Duplicates`, `Auto-Merged Duplicates`, moviesData, true);
     }
 
-    /* DELETE ITEM */
     function promptDeleteItem(targetChunk, itemIndex, itemTitle, activeDataArray) {
       const token = getStoredToken();
       if (!token) return showLaserToast('GitHub Token required! Click ⚙️ GitHub Token.', true);
@@ -1643,7 +1719,155 @@
       openPreviewModal(targetChunk, null, "Item Removed", `Delete: "${itemTitle}"`, activeDataArray, true);
     }
 
-    /* FORM SUBMIT */
+    /* TMDB TV SHOW LIVE SEARCH */
+    function searchSeriesTmdb(query) {
+      clearTimeout(seriesDebounce);
+      if (!query || query.trim().length < 2) {
+        document.getElementById('series-suggestions-box').style.display = 'none';
+        return;
+      }
+      seriesDebounce = setTimeout(async () => {
+        try {
+          const res = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(query)}&language=en-US`);
+          const data = await res.json();
+          const results = data.results || [];
+          const box = document.getElementById('series-suggestions-box');
+          const list = document.getElementById('series-suggestions-list');
+          list.innerHTML = '';
+
+          if (results.length > 0) {
+            results.slice(0, 5).forEach(s => {
+              const y = s.first_air_date ? s.first_air_date.split('-')[0] : 'TV';
+              const poster = s.poster_path ? `https://image.tmdb.org/t/p/w92${s.poster_path}` : '';
+              const item = document.createElement('div');
+              item.className = 'tmdb-result-item';
+              item.innerHTML = `
+                ${poster ? `<img src="${poster}" class="tmdb-result-poster">` : '<div class="tmdb-result-poster"></div>'}
+                <div class="tmdb-result-info">
+                  <div class="tmdb-result-title">${escapeHtml(s.name)} (${y})</div>
+                  <div class="tmdb-result-meta">TMDB TV ID: <b style="color:var(--laser-cyan);">${s.id}</b></div>
+                </div>
+              `;
+              item.onclick = () => {
+                document.getElementById('input-series-tmdb').value = s.id;
+                document.getElementById('input-series-search').value = s.name;
+                box.style.display = 'none';
+                showLaserToast(`Selected TV Show: "${s.name}"`);
+              };
+              list.appendChild(item);
+            });
+            box.style.display = 'block';
+          } else { box.style.display = 'none'; }
+        } catch(e) { document.getElementById('series-suggestions-box').style.display = 'none'; }
+      }, 300);
+    }
+
+    /* JIOSAAVN / GAANA LIVE MUSIC SEARCH */
+    function searchSongMusicApi(query) {
+      clearTimeout(songDebounce);
+      if (!query || query.trim().length < 2) {
+        document.getElementById('song-suggestions-box').style.display = 'none';
+        return;
+      }
+      songDebounce = setTimeout(async () => {
+        try {
+          const res = await fetch(`https://saavn.dev/api/search/songs?query=${encodeURIComponent(query)}`);
+          const data = await res.json();
+          const songs = (data && data.data && data.data.results) || [];
+          const box = document.getElementById('song-suggestions-box');
+          const list = document.getElementById('song-suggestions-list');
+          list.innerHTML = '';
+
+          if (songs.length > 0) {
+            songs.slice(0, 5).forEach(song => {
+              const image = song.image && song.image[1] ? song.image[1].url : '';
+              const movie = song.album ? song.album.name : (song.subtitle || 'Audio Track');
+              const item = document.createElement('div');
+              item.className = 'tmdb-result-item';
+              item.innerHTML = `
+                ${image ? `<img src="${image}" class="tmdb-result-poster">` : '<div class="tmdb-result-poster"></div>'}
+                <div class="tmdb-result-info">
+                  <div class="tmdb-result-title">${escapeHtml(song.name)}</div>
+                  <div class="tmdb-result-meta">${escapeHtml(movie)} • ${escapeHtml(song.primaryArtists || '')}</div>
+                </div>
+              `;
+              item.onclick = () => {
+                document.getElementById('input-song-title').value = song.name;
+                document.getElementById('input-song-movie').value = movie;
+                document.getElementById('input-song-poster').value = song.image && song.image[2] ? song.image[2].url : image;
+                box.style.display = 'none';
+                showLaserToast(`Selected Song: "${song.name}"`);
+              };
+              list.appendChild(item);
+            });
+            box.style.display = 'block';
+          } else { box.style.display = 'none'; }
+        } catch(e) { document.getElementById('song-suggestions-box').style.display = 'none'; }
+      }, 350);
+    }
+
+    /* SUBMIT SERIES FORM */
+    async function handleSeriesSubmit(e) {
+      e.preventDefault();
+      const tmdbId = document.getElementById('input-series-tmdb').value.trim();
+      const seasons = document.getElementById('input-series-seasons').value.trim();
+      const fileId = extractGDriveId(document.getElementById('input-series-gdrive').value);
+      const streamUrl = fileId.startsWith('http') ? fileId : `${WORKER_BASE}${fileId}${USER_AGENT}`;
+
+      let meta = { name: `Series ${tmdbId}`, year: 'TV Series', poster: '', fanart: '', plot: '' };
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/tv/${tmdbId}?api_key=${TMDB_API_KEY}&language=en-US`);
+        if (res.ok) {
+          const d = await res.json();
+          meta.name = d.name || meta.name;
+          meta.year = d.first_air_date ? d.first_air_date.split('-')[0] : 'TV';
+          meta.poster = d.poster_path ? `https://image.tmdb.org/t/p/w500${d.poster_path}` : '';
+          meta.fanart = d.backdrop_path ? `https://image.tmdb.org/t/p/original${d.backdrop_path}` : '';
+          meta.plot = d.overview || '';
+        }
+      } catch(e) {}
+
+      const newSeries = {
+        id: fileId,
+        name: meta.name,
+        title: meta.name,
+        year: meta.year,
+        tmdb_id: Number(tmdbId),
+        seasons: seasons,
+        poster: meta.poster,
+        fanart: meta.fanart,
+        plot: meta.plot,
+        stream_url: streamUrl
+      };
+
+      openPreviewModal('chunks/data_c02.json', newSeries, streamUrl, `Add Series: ${newSeries.title}`, seriesData);
+    }
+
+    /* SUBMIT SONG FORM */
+    async function handleSongSubmit(e) {
+      e.preventDefault();
+      const title = document.getElementById('input-song-title').value.trim();
+      const movie = document.getElementById('input-song-movie').value.trim();
+      const quality = document.getElementById('input-song-quality').value;
+      const poster = document.getElementById('input-song-poster').value.trim();
+      const fileId = extractGDriveId(document.getElementById('input-song-gdrive').value);
+      const streamUrl = fileId.startsWith('http') ? fileId : `${WORKER_BASE}${fileId}${USER_AGENT}`;
+
+      const newSong = {
+        id: fileId,
+        title: title,
+        name: title,
+        movie: movie,
+        album: movie,
+        quality: quality,
+        poster: poster,
+        stream_url: streamUrl
+      };
+
+      openPreviewModal('chunks/data_c03.json', newSong, streamUrl, `Add Song: ${title}`, songsData);
+    }
+
+    /* SUBMIT MOVIE FORM */
     async function handleMovieSubmit(e) {
       e.preventDefault();
       const tmdbId = document.getElementById('input-tmdb-id').value.trim();
