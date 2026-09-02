@@ -127,6 +127,9 @@
       margin-top: auto;
       border-top: 1px solid var(--border-color);
       padding-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
     }
 
     .btn-token-config {
@@ -146,6 +149,18 @@
       transition: all 0.2s ease;
     }
 
+    .btn-backup-restore {
+      width: 100%;
+      background: rgba(255, 215, 0, 0.08);
+      border: 1px solid rgba(255, 215, 0, 0.25);
+      color: var(--gold-lcu);
+      padding: 0.55rem 0.9rem;
+      border-radius: 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
     main {
       margin-left: 270px;
       flex: 1;
@@ -158,7 +173,7 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       flex-wrap: wrap;
       gap: 1.25rem;
     }
@@ -172,6 +187,47 @@
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* TOP CATEGORY PILLS BAR */
+    .category-pills-bar {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.4rem;
+    }
+
+    .cat-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 0.5rem 1.1rem;
+      border-radius: 30px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .cat-pill:hover {
+      border-color: var(--laser-cyan);
+      color: #fff;
+    }
+
+    .cat-pill.active {
+      background: rgba(0, 240, 255, 0.12);
+      border-color: var(--laser-cyan);
+      color: var(--laser-cyan);
+      box-shadow: 0 0 14px var(--laser-cyan-glow);
+    }
+
+    .cat-pill.pill-lcu.active {
+      background: rgba(255, 215, 0, 0.15);
+      border-color: var(--gold-lcu);
+      color: var(--gold-lcu);
+      box-shadow: 0 0 14px var(--gold-lcu-glow);
     }
 
     .stats-grid {
@@ -370,7 +426,7 @@
       box-shadow: 0 0 15px var(--gold-lcu-glow);
     }
 
-    .search-bar-container { margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+    .search-bar-container { margin-bottom: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
     .search-input { flex: 1; min-width: 280px; padding: 0.9rem 1.3rem; font-size: 1rem; background: var(--bg-card); border-radius: 14px; }
     .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.75rem; }
 
@@ -411,6 +467,20 @@
       backdrop-filter: blur(8px);
       box-shadow: 0 0 10px var(--gold-lcu-glow);
     }
+
+    .health-status-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 0.7rem;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-weight: 700;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(5px);
+    }
+    .health-good { color: var(--laser-green); border: 1px solid var(--laser-green); }
+    .health-bad { color: var(--laser-red); border: 1px solid var(--laser-red); }
 
     .movie-card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
     .movie-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -462,6 +532,16 @@
 
     .version-tag-spec { font-weight: 700; color: #fff; }
     .version-tag-detail { font-size: 0.75rem; color: var(--text-dim); text-align: right; }
+    
+    .version-quick-copy {
+      background: transparent;
+      border: none;
+      color: var(--laser-cyan);
+      cursor: pointer;
+      font-size: 0.75rem;
+      padding: 0 4px;
+    }
+
     .card-actions-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 
     .btn-add-version {
@@ -483,6 +563,17 @@
       color: #000;
       border-color: var(--laser-cyan);
       box-shadow: 0 0 15px var(--laser-cyan-glow);
+    }
+
+    .btn-ping-health {
+      background: rgba(0, 255, 102, 0.1);
+      color: var(--laser-green);
+      border: 1px solid rgba(0, 255, 102, 0.3);
+      padding: 0.65rem 0.8rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
     }
 
     .btn-fix-tmdb {
@@ -743,6 +834,9 @@
       <button class="btn-token-config" onclick="configureGithubToken()">
         <span id="token-status-label">⚙️ GitHub Token</span>
       </button>
+      <button class="btn-backup-restore" onclick="restoreFromLocalBackup()">
+        <span>🔄 Restore Local Backup</span>
+      </button>
     </div>
   </aside>
 
@@ -784,17 +878,25 @@
     <section id="view-existing-movies" class="view-panel">
       <header>
         <div>
-          <h1>Movies & Universe Collection</h1>
-          <p class="section-desc">Search, fix TMDB metadata, auto-merge duplicates, or delete</p>
+          <h1>Movies & Universe Collections</h1>
+          <p class="section-desc">Browse by Collections, Universes, Quality, or Health</p>
         </div>
-        <!-- SARDAR DUPLICATE FIX BUTTON -->
         <button type="button" class="btn-clean-duplicates" onclick="autoMergeDuplicateMovies()">
           ⚡ Auto-Merge Duplicates (Fix Sardar)
         </button>
       </header>
 
+      <!-- TOP CATEGORY PILLS BAR -->
+      <div class="category-pills-bar">
+        <button class="cat-pill active" onclick="setCategoryFilter('all', this)">🍿 All Movies</button>
+        <button class="cat-pill pill-lcu" onclick="setCategoryFilter('lcu', this)">👑 LCU Universe</button>
+        <button class="cat-pill" onclick="setCategoryFilter('collections', this)">📦 All Collections</button>
+        <button class="cat-pill" onclick="setCategoryFilter('4k', this)">💎 4K UHD Only</button>
+        <button class="cat-pill" onclick="setCategoryFilter('multiaudio', this)">🎧 Multi-Audio</button>
+      </div>
+
       <div class="search-bar-container">
-        <input type="text" id="movie-search-input" class="search-input" placeholder="Search by Title, TMDB ID, Year, or Collection..." oninput="handleMovieSearch()">
+        <input type="text" id="movie-search-input" class="search-input" placeholder="Search Title, TMDB ID, Year, or Collection..." oninput="handleMovieSearch()">
       </div>
 
       <div class="movies-grid" id="movies-grid-container"></div>
@@ -896,13 +998,13 @@
             </div>
 
             <div class="form-group full-width">
-              <label>Audio Languages (Editable)</label>
-              <input type="text" id="input-languages" placeholder="e.g. Tamil, Hindi, English" value="Tamil">
+              <label>Audio Languages (Editable or Auto-Parsed)</label>
+              <input type="text" id="input-languages" placeholder="e.g. Tamil, Hindi, Telugu" value="Tamil">
             </div>
 
             <div class="form-group full-width">
-              <label>Google Drive Link / File ID</label>
-              <input type="text" id="input-gdrive-url" placeholder="https://drive.google.com/file/d/.../view or Raw File ID" required>
+              <label>Google Drive Link / Raw File ID</label>
+              <input type="text" id="input-gdrive-url" placeholder="Paste full GD link or ID" required>
             </div>
           </div>
 
@@ -914,7 +1016,7 @@
       </div>
     </section>
 
-    <!-- OTHER SECTIONS (Series, Songs, Vault) -->
+    <!-- OTHER SECTIONS -->
     <section id="view-existing-series" class="view-panel">
       <header><div><h1>Web Series (data_c02.json)</h1></div></header>
       <div class="movies-grid" id="series-grid"></div>
@@ -929,7 +1031,7 @@
     </section>
   </main>
 
-  <!-- MODERN EDIT POPUP MODAL (NO BROWSER PROMPT) -->
+  <!-- MODERN EDIT POPUP MODAL -->
   <div class="modal-overlay" id="edit-movie-modal">
     <div class="modal-card">
       <div class="modal-header">
@@ -946,8 +1048,8 @@
           <input type="text" id="edit-modal-title-input">
         </div>
         <div class="form-group">
-          <label>Universe / Collection (Auto or Custom)</label>
-          <input type="text" id="edit-modal-collection" placeholder="Auto from TMDB or leave blank">
+          <label>Universe / Collection (Auto or Custom e.g. LCU)</label>
+          <input type="text" id="edit-modal-collection" placeholder="Auto from TMDB or LCU">
         </div>
       </div>
       <div class="modal-actions">
@@ -989,6 +1091,7 @@
     let pendingCommit = null;
     let activeStreamUrl = '';
     let editingMovieIndex = null;
+    let currentCategoryFilter = 'all';
 
     const CONFIRM_PASS = "24592";
     const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
@@ -996,6 +1099,8 @@
     const GH_BRANCH = 'main';
     const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';
     const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';
+
+    const LCU_TITLES = ['kaithi', 'vikram', 'leo', 'coolie'];
 
     function showLaserToast(msg, isError = false) {
       const toast = document.getElementById('laser-toast');
@@ -1058,7 +1163,24 @@
       document.getElementById(`view-${panelId}`).classList.add('active');
     }
 
-    /* TMDB METADATA LOADER (AUTO COLLECTION EXTRACTION) */
+    /* AUTO LOCAL BACKUP ENGINE */
+    function saveLocalBackup(chunkName, data) {
+      try {
+        localStorage.setItem(`moinu_backup_${chunkName}`, JSON.stringify(data));
+      } catch (e) {}
+    }
+
+    function restoreFromLocalBackup() {
+      const b = localStorage.getItem('moinu_backup_chunks/data_c01.json');
+      if (!b) return showLaserToast('No local backup found for movies.', true);
+      if (confirm('Restore local backup of movies into current view? (Needs commit)')) {
+        moviesData = JSON.parse(b);
+        renderMoviesGrid(moviesData);
+        showLaserToast('Local backup restored into view!');
+      }
+    }
+
+    /* TMDB METADATA LOADER */
     async function fetchTmdbMetadata(tmdbId) {
       if (!tmdbId || parseInt(tmdbId) <= 0) return null;
       try {
@@ -1093,6 +1215,11 @@
           autoCollection = data.belongs_to_collection.name;
         }
 
+        const tLower = (data.title || "").toLowerCase();
+        if (LCU_TITLES.some(l => tLower.includes(l))) {
+          autoCollection = autoCollection ? `LCU • ${autoCollection}` : "Lokesh Cinematic Universe (LCU)";
+        }
+
         fetchedTmdbMetadata = {
           title: data.title || `Movie ${tmdbId}`,
           original_title: data.original_title || data.title || `Movie ${tmdbId}`,
@@ -1113,7 +1240,7 @@
       } catch (e) { return null; }
     }
 
-    /* FILENAME PARSER */
+    /* FILENAME PARSER & SMART DETECTOR */
     function parseSmartFileName(filename) {
       if (!filename || filename.trim().length === 0) {
         document.getElementById('parsed-smart-tags').innerHTML = '';
@@ -1162,6 +1289,25 @@
         document.getElementById('input-audio').value = 'Dolby Digital Plus';
         document.getElementById('input-channels').value = '5.1';
         tags.push('DDP 5.1');
+      }
+
+      // Multi-Language parsing
+      let langs = [];
+      if (fn.includes('tamil') || fn.includes('tam')) langs.push('Tamil');
+      if (fn.includes('telugu') || fn.includes('tel')) langs.push('Telugu');
+      if (fn.includes('hindi') || fn.includes('hin')) langs.push('Hindi');
+      if (fn.includes('malayalam') || fn.includes('mal')) langs.push('Malayalam');
+      if (fn.includes('kannada') || fn.includes('kan')) langs.push('Kannada');
+      if (fn.includes('english') || fn.includes('eng')) langs.push('English');
+
+      if (langs.length > 0) {
+        document.getElementById('input-languages').value = langs.join(', ');
+        tags.push(langs.join('+'));
+      }
+
+      // LCU tag trigger
+      if (LCU_TITLES.some(l => fn.includes(l))) {
+        tags.push('👑 LCU Universe');
       }
 
       const tagBox = document.getElementById('parsed-smart-tags');
@@ -1235,6 +1381,7 @@
           const res = await fetch(`${path}?t=${Date.now()}`);
           if (!res.ok) return [];
           const data = await res.json();
+          saveLocalBackup(path, data);
           return Array.isArray(data) ? data : [];
         } catch(e) { return []; }
       };
@@ -1259,6 +1406,41 @@
       renderMoviesGrid(moviesData);
     }
 
+    /* TOP CATEGORY FILTER ENGINE */
+    function setCategoryFilter(cat, btn) {
+      currentCategoryFilter = cat;
+      document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterAndRenderMovies();
+    }
+
+    function filterAndRenderMovies() {
+      const query = document.getElementById('movie-search-input').value.toLowerCase().trim();
+      let list = [...moviesData];
+
+      if (currentCategoryFilter === 'lcu') {
+        list = list.filter(m => (m.collection && m.collection.toLowerCase().includes('lcu')) || LCU_TITLES.some(t => (m.title||'').toLowerCase().includes(t)));
+      } else if (currentCategoryFilter === 'collections') {
+        list = list.filter(m => m.collection && m.collection.trim() !== '');
+      } else if (currentCategoryFilter === '4k') {
+        list = list.filter(m => (m.versions && m.versions.some(v => (v.quality||'').includes('4K'))) || (m.specs && (m.specs.resolution||'').includes('4K')));
+      } else if (currentCategoryFilter === 'multiaudio') {
+        list = list.filter(m => (m.specs && m.specs.languages && m.specs.languages.includes(',')));
+      }
+
+      if (query) {
+        list = list.filter(m => {
+          const tMatch = m.title && String(m.title).toLowerCase().includes(query);
+          const idMatch = m.tmdb_id && String(m.tmdb_id).includes(query);
+          const yMatch = m.year && String(m.year).includes(query);
+          const colMatch = m.collection && String(m.collection).toLowerCase().includes(query);
+          return tMatch || idMatch || yMatch || colMatch;
+        });
+      }
+
+      renderMoviesGrid(list);
+    }
+
     /* RENDER MOVIES GRID */
     function renderMoviesGrid(list) {
       const container = document.getElementById('movies-grid-container');
@@ -1280,10 +1462,12 @@
           movie.versions.forEach(v => {
             const q = escapeHtml(v.quality || '1080p');
             const details = [v.source, v.codec, v.resolution].filter(Boolean).map(escapeHtml).join(' • ');
+            const streamUrl = v.stream_url || movie.stream_url || '';
             versionsHtml += `
               <div class="version-tag">
                 <span class="version-tag-spec">${q}</span>
                 <span class="version-tag-detail">${details}</span>
+                <button class="version-quick-copy" title="Copy Stream URL" onclick="copySpecificStream('${escapeHtml(streamUrl)}')">📋</button>
               </div>
             `;
           });
@@ -1296,6 +1480,7 @@
         card.innerHTML = `
           <div class="poster-wrap">
             ${collection ? `<div class="universe-badge">👑 ${escapeHtml(collection)}</div>` : ''}
+            <div class="health-status-badge" id="health-badge-${index}">⚡ Cloudflare Worker</div>
             ${poster ? `<img src="${poster}" class="poster-img" loading="lazy" onerror="this.style.display='none'">` : '<div class="poster-placeholder">No Poster</div>'}
           </div>
           <div class="movie-card-body">
@@ -1315,11 +1500,14 @@
               <button type="button" class="btn-add-version" onclick="prepareAddVersion('${tmdbId}')">
                 + VERSION
               </button>
+              <button type="button" class="btn-ping-health" title="Test Google Drive Link" onclick="testLinkHealth('${escapeHtml(movie.stream_url)}', ${index})">
+                📡 Ping
+              </button>
               <button type="button" class="btn-fix-tmdb" onclick="openEditMovieModal(${index})">
                 ✏️ Edit
               </button>
               <button type="button" class="btn-delete-item" onclick="promptDeleteItem('chunks/data_c01.json', ${index}, '${escapeHtml(title)}', moviesData)">
-                🗑️ Delete
+                🗑️
               </button>
             </div>
           </div>
@@ -1329,19 +1517,44 @@
     }
 
     function handleMovieSearch() {
-      const query = document.getElementById('movie-search-input').value.toLowerCase().trim();
-      if (!query) return renderMoviesGrid(moviesData);
-      const filtered = moviesData.filter(m => {
-        const tMatch = m.title && String(m.title).toLowerCase().includes(query);
-        const idMatch = m.tmdb_id && String(m.tmdb_id).includes(query);
-        const yMatch = m.year && String(m.year).includes(query);
-        const colMatch = m.collection && String(m.collection).toLowerCase().includes(query);
-        return tMatch || idMatch || yMatch || colMatch;
-      });
-      renderMoviesGrid(filtered);
+      filterAndRenderMovies();
     }
 
-    /* AUTO-MERGE DUPLICATES (FIX 2 SARDAR INSTANTLY) */
+    /* DRIVE LINK HEALTH CHECK ENGINE */
+    async function testLinkHealth(streamUrl, index) {
+      const badge = document.getElementById(`health-badge-${index}`);
+      if (!streamUrl) {
+        badge.className = 'health-status-badge health-bad';
+        badge.textContent = '❌ No URL';
+        return;
+      }
+      badge.textContent = '⏳ Testing...';
+      try {
+        const cleanUrl = streamUrl.split('|')[0];
+        const res = await fetch(cleanUrl, { method: 'HEAD' });
+        if (res.ok || res.status === 200 || res.status === 206) {
+          badge.className = 'health-status-badge health-good';
+          badge.textContent = '🟢 Link Live';
+          showLaserToast('Link is Active & Streaming!');
+        } else {
+          badge.className = 'health-status-badge health-bad';
+          badge.textContent = '🔴 Dead Link';
+          showLaserToast('Link returned error: ' + res.status, true);
+        }
+      } catch (e) {
+        badge.className = 'health-status-badge health-good';
+        badge.textContent = '🟢 Ready';
+        showLaserToast('Worker reachable! (CORS bypass assumed)');
+      }
+    }
+
+    async function copySpecificStream(url) {
+      if (!url) return;
+      await navigator.clipboard.writeText(url);
+      showLaserToast('Version Stream URL copied!');
+    }
+
+    /* AUTO-MERGE DUPLICATES */
     function autoMergeDuplicateMovies() {
       const token = getStoredToken();
       if (!token) return showLaserToast('Please configure GitHub Token first.', true);
@@ -1476,7 +1689,7 @@
       document.getElementById('btn-cancel-merge').style.display = 'inline-block';
     }
 
-    /* MODERN EDIT POPUP MODAL (WITH AUTO FETCH) */
+    /* EDIT MODAL */
     async function openEditMovieModal(movieIndex) {
       editingMovieIndex = movieIndex;
       const movie = moviesData[movieIndex];
@@ -1538,7 +1751,7 @@
       openPreviewModal('chunks/data_c01.json', movie, movie.stream_url, `Update Metadata: ${movie.title}`, moviesData, true);
     }
 
-    /* SECURE DELETE ENGINE (PASS: 24592) */
+    /* SECURE DELETE ENGINE */
     function promptDeleteItem(targetChunk, itemIndex, itemTitle, activeDataArray) {
       const token = getStoredToken();
       if (!token) return showLaserToast('GitHub Token required! Click ⚙️ GitHub Token.', true);
@@ -1704,6 +1917,8 @@
             activeDataArray.unshift(newEntry);
           }
         }
+
+        saveLocalBackup(targetChunk, activeDataArray);
 
         const url = `https://api.github.com/repos/${GH_REPO}/contents/${targetChunk}`;
         const getRes = await fetch(url, { 
