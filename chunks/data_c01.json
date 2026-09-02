@@ -73,6 +73,25 @@
           "channels": "5.1",
           "languages": "Tamil"
         }
+      },
+      {
+        "id": "1MQKfEWEzzCOb6s7gqqlTob0SDPsVoZtm",
+        "name": "Movie 373587 (2026) [1080p] [x265] [Dolby Digital Plus].mkv",
+        "quality": "1080p",
+        "source": "AMZN WEB-DL",
+        "codec": "x265",
+        "resolution": "4K UHD",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1MQKfEWEzzCOb6s7gqqlTob0SDPsVoZtm|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "4K UHD",
+          "source": "AMZN WEB-DL",
+          "codec": "x265",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil"
+        }
       }
     ]
   },
