@@ -4385,7 +4385,6 @@
     "title": "The Dark Knight", "original_title": "The Dark Knight", "year": 2008,
     "runtime": 152,
     "tmdb_id": 155, "imdb_id": "tt0468569", "imdb_url": "https://www.imdb.com/title/tt0468569/", "rating": 8.5,
-    "collection": "The Dark Knight Collection",
     "director": ["Christopher Nolan"],
     "cast": [
       {
@@ -4635,7 +4634,8 @@
     "name": "Mission - Impossible - The Final Reckoning (2025) 1080p EAC3.mkv",
     "title": "Mission: Impossible - The Final Reckoning", "original_title": "Mission: Impossible - The Final Reckoning", "year": 2025,
     "runtime": 170,
-    "tmdb_id": 575265, "imdb_id": "tt9603208", "imdb_url": "https://www.imdb.com/title/tt9603208/", "rating": 7.176,
+    "tmdb_id": 575265, "imdb_id": "tt9603208", "imdb_url": "https://www.imdb.com/title/tt9603208/", "rating": 7.2,
+    "collection": "Mission: Impossible Collection",
     "director": ["Christopher McQuarrie"],
     "cast": [
       {
