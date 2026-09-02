@@ -1,77 +1,95 @@
 [
   {
-    "id": "1XVm90ow2b_nCng6sJ4P-cWyQEmPTWNMd",
-    "name": "Kattalan (2026) [1080p] [x265] [Dolby Digital Plus].mkv",
-    "title": "Kattalan",
-    "original_title": "കാട്ടാളൻ",
-    "year": 2026,
-    "runtime": 119,
-    "tmdb_id": 1065834,
-    "imdb_id": "tt35668756",
-    "rating": 5.8,
-    "collection": "Mikhael Extended Universe",
+    "id": "1KzSk6IRTtlOHbv1pvHRAOkLKCBo-j81Y",
+    "name": "Bigil (2019) [1080p] [H.264] [Dolby Digital Plus].mkv",
+    "title": "Bigil",
+    "original_title": "பிகில்",
+    "year": 2019,
+    "runtime": 177,
+    "tmdb_id": 563309,
+    "imdb_id": "tt9260636",
+    "rating": 6.3,
+    "collection": "",
     "director": [
-      "Paul George"
+      "Atlee"
     ],
-    "trailer": "https://www.youtube.com/watch?v=xlTJlHyhCWM",
+    "trailer": "",
     "cast": [
       {
-        "name": "Antony Varghese",
-        "role": "Antony Varghese",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/dKRa8ghSXw6J1OTcxMziZh3l1jb.jpg"
+        "name": "Vijay",
+        "role": "Michael 'Bigil' Rayappan / Rayappan",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/zbQ1sDRVRHkroWwvrnqYKMerl66.jpg"
       },
       {
-        "name": "Sunil Varma",
-        "role": "Maari",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/2ueRNLlbB8jaivO6yb7zfIlFhh7.jpg"
+        "name": "Nayanthara",
+        "role": "Angel Aasirvatham",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/sYUzvjsSsqeOgBblSzda6ZwwbEa.jpg"
       },
       {
-        "name": "Dushara Vijayan",
-        "role": "Lucy",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/5C5V9qdYil7LVCp8LqctZCEsu1n.jpg"
+        "name": "Jackie Shroff",
+        "role": "J. K. Sharma",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/1UNJypgEyuihUW2avLLVYj76jie.jpg"
       },
       {
-        "name": "Jagadish",
-        "role": "Ali",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/ml3XX5bWPIdHUPvqhW2MYYZ8H7Y.jpg"
+        "name": "Kathir",
+        "role": "Kathir",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/cQNlW5ztPIANrUNRos81cxZuZe5.jpg"
       },
       {
-        "name": "Kabir Duhan Singh",
-        "role": "Eddy",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/lAVAxFARP63oTHMYWpwHrWsXPWa.jpg"
+        "name": "Vivek",
+        "role": "Nessi",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/z4fZ22hnBz6W8mBNDvhtFbJErmK.jpg"
       }
     ],
-    "plot": "Power-hungry forces clash in the Ivory cartel war-a fierce story of control, vengeance, and survival where compassion vanishes and only the ruthless endure.",
-    "poster": "https://image.tmdb.org/t/p/w500/53FATyQirV8BuBcrsQMGPvGKgCu.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/nTimAHDG7PoycFF2afMZVPyOokg.jpg",
+    "plot": "A do-gooder don wants his footballer son to uplift the life of his people by becoming a champion, but fate draws the youngster into a life of violence. Will he be able to fulfill his father’s dream when an opportunity comes his way seven years later?",
+    "poster": "https://image.tmdb.org/t/p/w500/s4Yi1RbMyyN3hH2hElwvluP2rOG.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/cc14e095w0ri6ppoLxSEl7iUqHs.jpg",
     "logo": "",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1XVm90ow2b_nCng6sJ4P-cWyQEmPTWNMd|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1KzSk6IRTtlOHbv1pvHRAOkLKCBo-j81Y|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
-      "resolution": "1080p FHD",
-      "source": "WEB-DL",
-      "codec": "x265",
+      "resolution": "4K UHD",
+      "source": "AMZN WEB-DL",
+      "codec": "H.264",
       "audio": "Dolby Digital Plus",
       "channels": "5.1",
-      "languages": "[Tamil + Malayalam + Kannada] "
+      "languages": "Tamil"
     },
     "versions": [
       {
-        "id": "1XVm90ow2b_nCng6sJ4P-cWyQEmPTWNMd",
-        "name": "Kattalan (2026) [1080p] [x265] [Dolby Digital Plus].mkv",
+        "id": "1KzSk6IRTtlOHbv1pvHRAOkLKCBo-j81Y",
+        "name": "Bigil (2019) [1080p] [H.264] [Dolby Digital Plus].mkv",
         "quality": "1080p",
-        "source": "WEB-DL",
-        "codec": "x265",
-        "resolution": "1080p FHD",
+        "source": "AMZN WEB-DL",
+        "codec": "H.264",
+        "resolution": "4K UHD",
         "audio": "Dolby Digital Plus",
         "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1XVm90ow2b_nCng6sJ4P-cWyQEmPTWNMd|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1KzSk6IRTtlOHbv1pvHRAOkLKCBo-j81Y|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
-          "resolution": "1080p FHD",
-          "source": "WEB-DL",
-          "codec": "x265",
+          "resolution": "4K UHD",
+          "source": "AMZN WEB-DL",
+          "codec": "H.264",
           "audio": "Dolby Digital Plus",
           "channels": "5.1",
-          "languages": "[Tamil + Malayalam + Kannada] "
+          "languages": "Tamil"
+        }
+      },
+      {
+        "id": "1IWqxzOdpY52m0xjipQ4QEkCzjQgMhIpp",
+        "name": "Bigil (2019) [Multi] [4K] [H.264] [AAC].mkv",
+        "quality": "4K",
+        "source": "WEB-DL",
+        "codec": "H.264",
+        "resolution": "4K UHD",
+        "audio": "AAC",
+        "channels": "2.0",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1IWqxzOdpY52m0xjipQ4QEkCzjQgMhIpp|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "4K UHD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "2.0"
         }
       }
     ]
@@ -146,25 +164,6 @@
           "resolution": "1080p FHD",
           "source": "WEB-DL",
           "codec": "H.264",
-          "audio": "Dolby Digital Plus",
-          "channels": "5.1",
-          "languages": "Tamil"
-        }
-      },
-      {
-        "id": "1MQKfEWEzzCOb6s7gqqlTob0SDPsVoZtm",
-        "name": "Movie 373587 (2026) [1080p] [x265] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
-        "source": "AMZN WEB-DL",
-        "codec": "x265",
-        "resolution": "4K UHD",
-        "audio": "Dolby Digital Plus",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1MQKfEWEzzCOb6s7gqqlTob0SDPsVoZtm|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "4K UHD",
-          "source": "AMZN WEB-DL",
-          "codec": "x265",
           "audio": "Dolby Digital Plus",
           "channels": "5.1",
           "languages": "Tamil"
@@ -4667,89 +4666,6 @@
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1FSqpxYjcKMgBrA8BytrCsMJSqGt0DEU8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p FHD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "AAC",
-          "channels": "2.0"
-        }
-      }
-    ]
-  },
-  {
-    "id": "1IWqxzOdpY52m0xjipQ4QEkCzjQgMhIpp",
-    "name": "Whistle.2025.DS4K.1080p.10bit.AMZN.WebRip.Multi(DDP5.1-640kbps).H265.Esub @NomadRips.mkv",
-    "title": "Bigil",
-    "original_title": "பிகில்",
-    "year": 2019,
-    "runtime": 177,
-    "tmdb_id": 563309,
-    "imdb_id": "tt9260636",
-    "imdb_url": "https://www.imdb.com/title/tt9260636/",
-    "rating": 6.3,
-    "director": [
-      "Atlee"
-    ],
-    "cast": [
-      {
-        "name": "Vijay",
-        "role": "Michael 'Bigil' Rayappan / Rayappan",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/zbQ1sDRVRHkroWwvrnqYKMerl66.jpg"
-      },
-      {
-        "name": "Nayanthara",
-        "role": "Angel Aasirvatham",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/sYUzvjsSsqeOgBblSzda6ZwwbEa.jpg"
-      },
-      {
-        "name": "Jackie Shroff",
-        "role": "J. K. Sharma",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/1UNJypgEyuihUW2avLLVYj76jie.jpg"
-      },
-      {
-        "name": "Kathir",
-        "role": "Kathir",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/cQNlW5ztPIANrUNRos81cxZuZe5.jpg"
-      },
-      {
-        "name": "Vivek",
-        "role": "Nessi",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/z4fZ22hnBz6W8mBNDvhtFbJErmK.jpg"
-      }
-    ],
-    "plot": "A do-gooder don wants his footballer son to uplift the life of his people by becoming a champion, but fate draws the youngster into a life of violence. Will he be able to fulfill his father’s dream when an opportunity comes his way seven years later?",
-    "poster": "https://image.tmdb.org/t/p/w500/s4Yi1RbMyyN3hH2hElwvluP2rOG.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/cc14e095w0ri6ppoLxSEl7iUqHs.jpg",
-    "logo": "https://image.tmdb.org/t/p/original/aM2kG7tlA7LFJA1I3nUwc7k4RHc.png",
-    "trailer": {
-      "youtube_url": ""
-    },
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1IWqxzOdpY52m0xjipQ4QEkCzjQgMhIpp|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "badges": {
-      "quality": "https://img.icons8.com/color/96/4k.png",
-      "source": "https://img.icons8.com/ios-filled/100/ffffff/cloud-download.png",
-      "audio_format": "https://img.icons8.com/color/96/dolby-digital.png",
-      "audio_channels": "https://img.icons8.com/ios-filled/100/ffffff/2-0.png"
-    },
-    "specs": {
-      "resolution": "1080p Full HD",
-      "source": "WEB-DL",
-      "codec": "H.264",
-      "audio": "AAC",
-      "channels": "2.0"
-    },
-    "versions": [
-      {
-        "id": "1IWqxzOdpY52m0xjipQ4QEkCzjQgMhIpp",
-        "name": "Bigil (2019) [Multi] [4K] [H.264] [AAC].mkv",
-        "quality": "4K",
-        "source": "WEB-DL",
-        "codec": "H.264",
-        "resolution": "4K UHD",
-        "audio": "AAC",
-        "channels": "2.0",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1IWqxzOdpY52m0xjipQ4QEkCzjQgMhIpp|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "4K UHD",
           "source": "WEB-DL",
           "codec": "H.264",
           "audio": "AAC",
