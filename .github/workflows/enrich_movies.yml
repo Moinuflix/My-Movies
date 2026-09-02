@@ -1,0 +1,35 @@
+name: Auto Enrich TMDB Metadata
+
+on:
+  push:
+    paths:
+      - 'chunks/data_c01.json'
+  workflow_dispatch:
+
+jobs:
+  enrich:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run TMDB Enrichment Script
+        run: |
+          python enrich_movies.py
+
+      - name: Commit & Push Changes
+        run: |
+          git config --global user.name "MoinuFlix Bot"
+          git config --global user.email "bot@moinuflix.local"
+          git add chunks/data_c01.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-enrich movie metadata via TMDB [skip ci]" && git push)
