@@ -1,47 +1,137 @@
 [
   {
-    "id": "1Vgn6oBFVidhhM0Y2SuVfR6sB1GPsCJqi",
-    "name": "Kandhakottai (2009) [4K UHD] [x265] [Dolby Digital Plus].mkv",
-    "title": "Kandhakottai",
-    "original_title": "Kandhakottai",
-    "year": 2009,
-    "runtime": 120,
-    "tmdb_id": 250499,
-    "imdb_id": "",
-    "imdb_url": "",
-    "rating": 6.5,
+    "id": "1SwK3sRs28SCj3bbXAhDL3uczwhCOVGPr",
+    "name": "Sivappu Manjal Pachai (2019) [1080p] [H.264] [Dolby Digital Plus].mkv",
+    "title": "Sivappu Manjal Pachai",
+    "original_title": "சிவப்பு மஞ்சள் பச்சை",
+    "year": 2019,
+    "runtime": 140,
+    "tmdb_id": 596652,
+    "imdb_id": "tt10334602",
+    "imdb_url": "https://www.imdb.com/title/tt10334602/",
+    "rating": 5.9,
     "collection": "",
     "director": [
-      "S. Sakthivel"
+      "Sasi"
     ],
     "trailer": "",
     "cast": [
       {
-        "name": "Nakul",
-        "role": "Siva",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/x8kGE76qjkd7sd6ix3yQBJdb6aM.jpg"
+        "name": "Siddharth",
+        "role": "Rajasekar",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/9XrTuJp9lnB1rsBPzTaoXdp1ig8.jpg"
       },
       {
-        "name": "Poorna",
-        "role": "Pooja",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/TDjD3RpKSgbwSApdpPhFXRtwf8.jpg"
+        "name": "G. V. Prakash Kumar",
+        "role": "Madhan",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/ArX3l6CdNo0sGI8b6PFYveR9Azm.jpg"
       },
       {
-        "name": "Sampath Raj",
-        "role": "Singam Perumal",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/oQgoihP26Hyg6gMFVpACRAygZli.jpg"
+        "name": "Lijomol Jose",
+        "role": "Rajalakshmi aka Raji",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/vXFBgF6NMON7L4RzZ6B35lOVYOu.jpg"
       },
       {
-        "name": "Santhanam",
-        "role": "",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/6OoqLm0jzC1Ko6jMGdIJrVWM9nk.jpg"
+        "name": "Dheepa Ramanujam",
+        "role": "Rajasekar’s Mother",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/wnjAFAKT629yRNLD1Wya7B8wFcL.jpg"
+      },
+      {
+        "name": "Madhusudhan Rao",
+        "role": "Madhu",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/e6BpJSqq9KBnsY6p95nrrXRsI0V.jpg"
       }
     ],
-    "plot": "Siva (Nakul) is a nice guy who doesn't believe in the concept of love. True to his hatred, he also doesn't hesitate to go and break up love birds. Pooja (Poorna) on the other hand believes strongly in the force of love and does whatever she can to ensure that lovers get united. The story takes a turn when Siva's sister falls in love with Pooja's cousin. As expected, Siva tries to break the couple while Pooja unites them. Finally, Siva gives up and at the same time, he develops feelings for Pooja. What happens from there forms the rest of the story.",
-    "poster": "https://image.tmdb.org/t/p/w500/uJz500dB6tTnSLbf95kUTVbV6vs.jpg",
-    "fanart": "",
+    "plot": "A street racer and a traffic cop end up becoming brothers-in-law. Can they accept each other given their previous hostile history?",
+    "poster": "https://image.tmdb.org/t/p/w500/iiipCUNieXTIhzRF4fDH4S8rb8J.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/oHr3eZXgen7b0UuzLRMQnPdDEUH.jpg",
     "logo": "",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Vgn6oBFVidhhM0Y2SuVfR6sB1GPsCJqi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1SwK3sRs28SCj3bbXAhDL3uczwhCOVGPr|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "badges": {
+      "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
+      "hdr": "",
+      "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web.png",
+      "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+      "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+    },
+    "specs": {
+      "resolution": "1080p FHD",
+      "source": "WEB-DL",
+      "codec": "H.264",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil"
+    },
+    "versions": [
+      {
+        "id": "1SwK3sRs28SCj3bbXAhDL3uczwhCOVGPr",
+        "name": "Sivappu Manjal Pachai (2019) [1080p] [H.264] [Dolby Digital Plus].mkv",
+        "quality": "1080p",
+        "source": "WEB-DL",
+        "codec": "H.264",
+        "resolution": "1080p FHD",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1SwK3sRs28SCj3bbXAhDL3uczwhCOVGPr|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil"
+        }
+      }
+    ]
+  },
+  {
+    "id": "1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8",
+    "name": "Thalaivar Thambi Thalaimaiyil (2026) [4K UHD] [x265] [Dolby Digital Plus].mkv",
+    "title": "Thalaivar Thambi Thalaimaiyil",
+    "original_title": "தலைவர் தம்பி தலைமையில்",
+    "year": 2026,
+    "runtime": 113,
+    "tmdb_id": 869140,
+    "imdb_id": "tt36926733",
+    "imdb_url": "https://www.imdb.com/title/tt36926733/",
+    "rating": 6.5,
+    "collection": "",
+    "director": [
+      "Nithish Sahadev"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Jiiva",
+        "role": "Jeeva Rathnam",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/1AsFMY3Fha7BvYmw4jShQtNTZjp.jpg"
+      },
+      {
+        "name": "Prathana Nathan",
+        "role": "Sowmya/Sowmi",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/qJBSz9cy3J7AeLoekiTLJ1MNvfM.jpg"
+      },
+      {
+        "name": "Ilavarasu",
+        "role": "Ilavarasu",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/gWCREhajMvlOE49g79zyvwdpf5E.jpg"
+      },
+      {
+        "name": "Thambi Ramaiah",
+        "role": "Mani",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/murNGZdySdA7uKgLBeMwOK4wEdg.jpg"
+      },
+      {
+        "name": "Jenson Dhivakar",
+        "role": "Thavidu",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/4QAdVaCP4l1BA39Fc35WwH7mv4T.jpg"
+      }
+    ],
+    "plot": "A village official attending a wedding becomes entangled in an escalating family dispute over power and old resentments, testing his leadership as he tries to contain the situation.",
+    "poster": "https://image.tmdb.org/t/p/w500/wqofJvDrFv65QgyVmNI4loi9jZZ.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/cpOUDK8BBJyvrUuLN8YTRttXEab.jpg",
+    "logo": "",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "badges": {
       "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/4k.png",
       "hdr": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/hdr/hdr.png",
@@ -51,30 +141,30 @@
     },
     "specs": {
       "resolution": "4K UHD",
-      "source": "BLURAY",
+      "source": "WEB-DL",
       "codec": "x265",
       "audio": "Dolby Digital Plus",
       "channels": "5.1",
-      "languages": "Tamil"
+      "languages": "Multi"
     },
     "versions": [
       {
-        "id": "1Vgn6oBFVidhhM0Y2SuVfR6sB1GPsCJqi",
-        "name": "Kandhakottai (2009) [4K UHD] [x265] [Dolby Digital Plus].mkv",
+        "id": "1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8",
+        "name": "Thalaivar Thambi Thalaimaiyil (2026) [4K UHD] [x265] [Dolby Digital Plus].mkv",
         "quality": "4K UHD",
-        "source": "BLURAY",
+        "source": "WEB-DL",
         "codec": "x265",
         "resolution": "4K UHD",
         "audio": "Dolby Digital Plus",
         "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Vgn6oBFVidhhM0Y2SuVfR6sB1GPsCJqi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "4K UHD",
-          "source": "BLURAY",
+          "source": "WEB-DL",
           "codec": "x265",
           "audio": "Dolby Digital Plus",
           "channels": "5.1",
-          "languages": "Tamil"
+          "languages": "Multi"
         }
       }
     ]
