@@ -289,13 +289,29 @@
 
     .movie-meta-row {
       display: flex;
-      gap: 0.6rem;
-      font-size: 0.82rem;
+      gap: 0.5rem;
+      font-size: 0.8rem;
       color: var(--text-dim);
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.65rem;
       align-items: center;
       font-weight: 600;
       flex-wrap: wrap;
+    }
+
+    .spec-chip {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: var(--laser-cyan);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .spec-chip.chip-gold {
+      background: rgba(245, 158, 11, 0.12);
+      border-color: rgba(245, 158, 11, 0.3);
+      color: var(--gold-lcu);
     }
 
     .card-actions-row { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
@@ -381,6 +397,22 @@
       font-weight: 700;
     }
 
+    .lang-btn-chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-muted);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .lang-btn-chip:hover {
+      border-color: var(--laser-cyan);
+      color: #fff;
+    }
+
     .btn-submit {
       background: linear-gradient(135deg, var(--laser-cyan), var(--electric-blue));
       color: #030712;
@@ -435,6 +467,33 @@
     .tmdb-result-info { flex: 1; }
     .tmdb-result-title { font-weight: 700; color: #fff; font-size: 0.9rem; }
     .tmdb-result-meta { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* ALL-IN-ONE HUB TAB SWITCHER */
+    .hub-switcher-bar {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem;
+    }
+
+    .hub-tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .hub-tab-btn.active {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--laser-cyan);
+      color: var(--laser-cyan);
+      box-shadow: 0 0 14px var(--laser-cyan-glow);
+    }
 
     /* BOTTOM AUTO-MERGE DOCK BAR */
     .merge-bottom-dock {
@@ -599,30 +658,20 @@
         </button>
       </li>
       <li>
-        <button class="nav-btn" onclick="switchNav('add-movie', this)">
-          <span>➕ Add Movie</span>
+        <button class="nav-btn" onclick="switchNav('add-items-hub', this)">
+          <span style="color: var(--laser-cyan);">➕ Add Items</span>
         </button>
       </li>
       <li>
         <button class="nav-btn" onclick="switchNav('existing-series', this)">
-          <span>📺 Series</span>
+          <span>📺 Web Series</span>
           <span class="nav-badge" id="badge-c02">0</span>
-        </button>
-      </li>
-      <li>
-        <button class="nav-btn" onclick="switchNav('add-series', this)">
-          <span>➕ Add Series</span>
         </button>
       </li>
       <li>
         <button class="nav-btn" onclick="switchNav('existing-songs', this)">
           <span>🎵 5.1 Songs</span>
           <span class="nav-badge" id="badge-c03">0</span>
-        </button>
-      </li>
-      <li>
-        <button class="nav-btn" onclick="switchNav('add-song', this)">
-          <span>➕ Add Song</span>
         </button>
       </li>
       <li>
@@ -674,11 +723,11 @@
       <header>
         <div>
           <h1>Movies & Franchise Collections</h1>
-          <p class="section-desc">Packs bundled into 1 Card (KGF, Spider-Man, Batman, Baahubali)</p>
+          <p class="section-desc">Packs bundled into 1 Card (Pushpa, KGF, Spider-Man, Batman, Baahubali)</p>
         </div>
         <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
           <button type="button" class="btn-clean-duplicates" onclick="autoConnectFranchiseCollections()">
-            ⚡ 1-Click Connect All Packs (KGF, Baahubali, Batman)
+            ⚡ 1-Click Connect All Packs (Pushpa, KGF, Baahubali)
           </button>
           <button type="button" class="btn-clean-duplicates" onclick="autoMergeDuplicateMovies()">
             ⚡ Auto-Merge Duplicates
@@ -695,113 +744,232 @@
       </div>
 
       <div class="search-bar-container">
-        <input type="text" id="movie-search-input" class="search-input" placeholder="Search KGF, Spider-Man, Batman, Baahubali, LCU..." oninput="handleMovieSearch()">
+        <input type="text" id="movie-search-input" class="search-input" placeholder="Search Pushpa, KGF, Spider-Man, Batman, Baahubali, LCU..." oninput="handleMovieSearch()">
       </div>
 
       <div class="movies-grid" id="movies-grid-container"></div>
     </section>
 
-    <!-- VIEW: ADD MOVIE FORM -->
-    <section id="view-add-movie" class="view-panel">
+    <!-- ALL-IN-ONE INGESTION HUB ("➕ Add Items") -->
+    <section id="view-add-items-hub" class="view-panel">
       <header>
         <div>
-          <h1 id="movie-form-title">Add Movie & Version Manager</h1>
-          <p class="section-desc" id="movie-form-desc">Paste raw filename to auto-detect specs, auto-match TMDB Universe</p>
+          <h1>Studio Ingestion Hub</h1>
+          <p class="section-desc">Add Movies, Web Series, 5.1 Audio or YouTube Videos in one clean place</p>
         </div>
       </header>
 
-      <div class="form-container">
-        <form id="movie-form" onsubmit="handleMovieSubmit(event)">
-          <div class="form-grid">
-            <div class="form-group full-width">
-              <label style="color: var(--laser-cyan);">⚡ Release File Name (Paste .mkv / .mp4)</label>
-              <input type="text" id="input-smart-filename" class="smart-input" placeholder="e.g. Leo.2023.2160p.NF.WEB-DL.HDR.DDP5.1.Atmos.Tamil.mkv" oninput="parseSmartFileName(this.value)">
-              <div id="tmdb-suggestions-box" class="tmdb-results-box">
-                <div style="font-size: 0.75rem; color: var(--laser-cyan); font-weight: 700; margin-bottom: 6px;">🎯 Click your movie to auto-select TMDB ID:</div>
-                <div id="tmdb-suggestions-list"></div>
+      <!-- TAB SWITCHER -->
+      <div class="hub-switcher-bar">
+        <button type="button" class="hub-tab-btn active" onclick="switchHubTab('movie', this)">🎬 Add Movie</button>
+        <button type="button" class="hub-tab-btn" onclick="switchHubTab('series', this)">📺 Add Web Series</button>
+        <button type="button" class="hub-tab-btn" onclick="switchHubTab('song', this)">🎵 Add 5.1 Song</button>
+        <button type="button" class="hub-tab-btn" onclick="switchHubTab('vault', this)">🍿 Add YouTube Vault</button>
+      </div>
+
+      <!-- TAB 1: MOVIE FORM -->
+      <div id="hub-tab-movie" class="hub-content active">
+        <div class="form-container">
+          <form id="movie-form" onsubmit="handleMovieSubmit(event)">
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label style="color: var(--laser-cyan);">⚡ Release File Name (Paste .mkv / .mp4 to auto-detect)</label>
+                <input type="text" id="input-smart-filename" class="smart-input" placeholder="e.g. Pushpa.The.Rule.2024.2160p.WEB-DL.HDR.x265.DDP5.1.Atmos.Tamil.mkv" oninput="parseSmartFileName(this.value)">
+                <div id="tmdb-suggestions-box" class="tmdb-results-box">
+                  <div style="font-size: 0.75rem; color: var(--laser-cyan); font-weight: 700; margin-bottom: 6px;">🎯 Click your movie to auto-select TMDB ID:</div>
+                  <div id="tmdb-suggestions-list"></div>
+                </div>
+                <div class="tag-container" id="parsed-smart-tags"></div>
               </div>
-              <div class="tag-container" id="parsed-smart-tags"></div>
+
+              <div class="form-group full-width">
+                <label for="input-tmdb-id">TMDB ID</label>
+                <input type="number" id="input-tmdb-id" placeholder="e.g. 872585, 671583" required oninput="checkTmdbMatch()">
+                <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;" id="tmdb-match-hint">Auto-fetches Official Title, Poster, Cast, Director, Trailer & Pushpa/LCU Packs</div>
+              </div>
+
+              <div class="form-group">
+                <label>Quality</label>
+                <select id="input-quality" required>
+                  <option value="1080p">1080p</option>
+                  <option value="4K UHD" selected>4K UHD</option>
+                  <option value="2160p">2160p</option>
+                  <option value="720p">720p</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Source</label>
+                <select id="input-source" required>
+                  <option value="WEB-DL" selected>WEB-DL</option>
+                  <option value="AMZN WEB-DL">AMZN WEB-DL</option>
+                  <option value="NF WEB-DL">NF WEB-DL</option>
+                  <option value="BLURAY">BLURAY / Remux</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Codec</label>
+                <select id="input-codec" required>
+                  <option value="H.264">H.264 / AVC (x264)</option>
+                  <option value="x265" selected>HEVC / x265 (H.265)</option>
+                  <option value="AV1">AV1</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Resolution</label>
+                <select id="input-resolution" required>
+                  <option value="4K UHD" selected>4K UHD (2160p)</option>
+                  <option value="1080p FHD">1080p FHD</option>
+                  <option value="720p HD">720p HD</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Audio Codec</label>
+                <select id="input-audio" required>
+                  <option value="Dolby Digital">Dolby Digital (AC3)</option>
+                  <option value="Dolby Digital Plus" selected>Dolby Digital Plus (DDP / E-AC-3)</option>
+                  <option value="Dolby Atmos">Dolby Atmos / TrueHD</option>
+                  <option value="AAC">AAC Standard</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Channels</label>
+                <select id="input-channels" required>
+                  <option value="5.1" selected>5.1 (Surround)</option>
+                  <option value="2.0">2.0 (Stereo)</option>
+                  <option value="7.1">7.1 (Atmos)</option>
+                </select>
+              </div>
+
+              <div class="form-group full-width">
+                <label>Audio Languages (Click to quick-toggle Top Indian Langs)</label>
+                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px;">
+                  <button type="button" class="lang-btn-chip" onclick="toggleLanguage('Tamil')">+ Tamil</button>
+                  <button type="button" class="lang-btn-chip" onclick="toggleLanguage('Hindi')">+ Hindi</button>
+                  <button type="button" class="lang-btn-chip" onclick="toggleLanguage('Telugu')">+ Telugu</button>
+                  <button type="button" class="lang-btn-chip" onclick="toggleLanguage('Malayalam')">+ Malayalam</button>
+                  <button type="button" class="lang-btn-chip" onclick="toggleLanguage('Kannada')">+ Kannada</button>
+                  <button type="button" class="lang-btn-chip" onclick="toggleLanguage('English')">+ English</button>
+                </div>
+                <input type="text" id="input-languages" placeholder="e.g. Tamil, Hindi, Telugu" value="Tamil">
+              </div>
+
+              <div class="form-group full-width">
+                <label>Google Drive Link / Raw File ID</label>
+                <input type="text" id="input-gdrive-url" placeholder="Paste full GD link or ID" required>
+              </div>
             </div>
 
-            <div class="form-group full-width">
-              <label for="input-tmdb-id">TMDB ID</label>
-              <input type="number" id="input-tmdb-id" placeholder="e.g. 1235877, 858080" required oninput="checkTmdbMatch()">
-              <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;" id="tmdb-match-hint">Auto-fetches Official Title, Poster, Cast, Director, Trailer & Collections</div>
+            <div class="form-actions" style="display: flex; gap: 10px;">
+              <button type="submit" class="btn-submit" id="btn-movie-submit">ADD MOVIE</button>
+              <button type="button" class="btn-close-modal" id="btn-cancel-merge" style="display: none;" onclick="cancelMergeMode()">Cancel Merge</button>
             </div>
+          </form>
+        </div>
+      </div>
 
-            <div class="form-group">
-              <label>Quality</label>
-              <select id="input-quality" required>
-                <option value="1080p">1080p</option>
-                <option value="4K UHD" selected>4K UHD</option>
-                <option value="2160p">2160p</option>
-                <option value="720p">720p</option>
-              </select>
+      <!-- TAB 2: SERIES FORM -->
+      <div id="hub-tab-series" class="hub-content" style="display: none;">
+        <div class="form-container">
+          <form id="series-form" onsubmit="handleSeriesSubmit(event)">
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label>Search Series Name (e.g. Farzi, Mirzapur, Stranger Things)</label>
+                <input type="text" id="input-series-search" placeholder="Type TV show name to auto-search..." oninput="searchSeriesTmdb(this.value)">
+                <div id="series-suggestions-box" class="tmdb-results-box">
+                  <div id="series-suggestions-list"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>TMDB TV Show ID</label>
+                <input type="number" id="input-series-tmdb" placeholder="e.g. 99966" required>
+              </div>
+              <div class="form-group">
+                <label>Total Seasons / Tag</label>
+                <input type="text" id="input-series-seasons" placeholder="e.g. Season 1 (All Episodes)" value="Season 1">
+              </div>
+              <div class="form-group full-width">
+                <label>Google Drive Link / Stream URL</label>
+                <input type="text" id="input-series-gdrive" placeholder="Google Drive Link or Stream Route" required>
+              </div>
             </div>
+            <button type="submit" class="btn-submit">SAVE WEB SERIES</button>
+          </form>
+        </div>
+      </div>
 
-            <div class="form-group">
-              <label>Source</label>
-              <select id="input-source" required>
-                <option value="WEB-DL" selected>WEB-DL</option>
-                <option value="AMZN WEB-DL">AMZN WEB-DL</option>
-                <option value="NF WEB-DL">NF WEB-DL</option>
-                <option value="BLURAY">BLURAY / Remux</option>
-              </select>
+      <!-- TAB 3: SONG FORM -->
+      <div id="hub-tab-song" class="hub-content" style="display: none;">
+        <div class="form-container">
+          <form id="song-form" onsubmit="handleSongSubmit(event)">
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label>Search Song Name (e.g. Pushpa Pushpa, Hukum, Arabic Kuthu)</label>
+                <input type="text" id="input-song-search" placeholder="Type song name to search..." oninput="searchSongMusicApi(this.value)">
+                <div id="song-suggestions-box" class="tmdb-results-box">
+                  <div id="song-suggestions-list"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Song Title</label>
+                <input type="text" id="input-song-title" placeholder="e.g. Hukum" required>
+              </div>
+              <div class="form-group">
+                <label>Movie / Album Name</label>
+                <input type="text" id="input-song-movie" placeholder="e.g. Jailer" required>
+              </div>
+              <div class="form-group">
+                <label>Audio Quality Format</label>
+                <select id="input-song-quality">
+                  <option value="5.1 Surround" selected>5.1 Dolby Digital Surround</option>
+                  <option value="Dolby Atmos">Dolby Atmos Lossless</option>
+                  <option value="DTS-HD 7.1">DTS-HD Master 7.1</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Cover Art URL</label>
+                <input type="text" id="input-song-poster" placeholder="Image URL">
+              </div>
+              <div class="form-group full-width">
+                <label>Google Drive Link / Worker Stream Link</label>
+                <input type="text" id="input-song-gdrive" placeholder="Google Drive Link or Worker Link" required>
+              </div>
             </div>
+            <button type="submit" class="btn-submit">SAVE 5.1 SONG</button>
+          </form>
+        </div>
+      </div>
 
-            <div class="form-group">
-              <label>Codec</label>
-              <select id="input-codec" required>
-                <option value="x265" selected>HEVC / x265</option>
-                <option value="H.264">H.264 / AVC</option>
-                <option value="AV1">AV1</option>
-              </select>
+      <!-- TAB 4: VAULT FORM -->
+      <div id="hub-tab-vault" class="hub-content" style="display: none;">
+        <div class="form-container">
+          <form id="vault-form" onsubmit="handleVaultSubmit(event)">
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label>YouTube Link or Playlist Link</label>
+                <input type="text" id="input-yt-url" placeholder="Paste single YouTube video or playlist link" required>
+              </div>
+              <div class="form-group">
+                <label>Video Title</label>
+                <input type="text" id="input-yt-title" placeholder="Auto or custom title" required>
+              </div>
+              <div class="form-group">
+                <label>Category</label>
+                <select id="input-yt-category">
+                  <option value="Comedy">😂 Comedy Scene</option>
+                  <option value="Action">🔥 Action / Mass Moment</option>
+                  <option value="Video Song">🎵 4K Video Song</option>
+                  <option value="Best Scene">⭐ Best Movie Scene / Climax</option>
+                </select>
+              </div>
             </div>
-
-            <div class="form-group">
-              <label>Resolution</label>
-              <select id="input-resolution" required>
-                <option value="4K UHD" selected>4K UHD (2160p)</option>
-                <option value="1080p FHD">1080p FHD</option>
-                <option value="720p HD">720p HD</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Audio Codec</label>
-              <select id="input-audio" required>
-                <option value="Dolby Digital">Dolby Digital (AC3)</option>
-                <option value="Dolby Digital Plus" selected>Dolby Digital Plus (DDP / E-AC-3)</option>
-                <option value="Dolby Atmos">Dolby Atmos / TrueHD</option>
-                <option value="AAC">AAC Standard</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label>Channels</label>
-              <select id="input-channels" required>
-                <option value="5.1" selected>5.1 (Surround)</option>
-                <option value="2.0">2.0 (Stereo)</option>
-                <option value="7.1">7.1 (Atmos)</option>
-              </select>
-            </div>
-
-            <div class="form-group full-width">
-              <label>Audio Languages</label>
-              <input type="text" id="input-languages" placeholder="e.g. Tamil, Hindi, Telugu" value="Tamil">
-            </div>
-
-            <div class="form-group full-width">
-              <label>Google Drive Link / Raw File ID</label>
-              <input type="text" id="input-gdrive-url" placeholder="Paste full GD link or ID" required>
-            </div>
-          </div>
-
-          <div class="form-actions" style="display: flex; gap: 10px;">
-            <button type="submit" class="btn-submit" id="btn-movie-submit">ADD MOVIE</button>
-            <button type="button" class="btn-close-modal" id="btn-cancel-merge" style="display: none;" onclick="cancelMergeMode()">Cancel Merge</button>
-          </div>
-        </form>
+            <button type="submit" class="btn-submit">ADD TO YOUTUBE VAULT</button>
+          </form>
+        </div>
       </div>
     </section>
 
@@ -811,94 +979,10 @@
       <div class="movies-grid" id="series-grid"></div>
     </section>
 
-    <!-- VIEW: ADD SERIES (TMDB TV API) -->
-    <section id="view-add-series" class="view-panel">
-      <header>
-        <div>
-          <h1>Add Web Series to data_c02.json</h1>
-          <p class="section-desc">Search by name or TMDB Series ID (Auto-sync posters, cast & plot)</p>
-        </div>
-      </header>
-      <div class="form-container">
-        <form id="series-form" onsubmit="handleSeriesSubmit(event)">
-          <div class="form-grid">
-            <div class="form-group full-width">
-              <label>Search Series Name (e.g. All of Us Are Dead, Farzi)</label>
-              <input type="text" id="input-series-search" placeholder="Type TV show name to auto-search..." oninput="searchSeriesTmdb(this.value)">
-              <div id="series-suggestions-box" class="tmdb-results-box">
-                <div id="series-suggestions-list"></div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label>TMDB TV Show ID</label>
-              <input type="number" id="input-series-tmdb" placeholder="e.g. 99966" required>
-            </div>
-            <div class="form-group">
-              <label>Total Seasons / Tag</label>
-              <input type="text" id="input-series-seasons" placeholder="e.g. Season 1 (All Episodes)" value="Season 1">
-            </div>
-            <div class="form-group full-width">
-              <label>Google Drive Link / Stream URL</label>
-              <input type="text" id="input-series-gdrive" placeholder="Google Drive Link or Stream Route" required>
-            </div>
-          </div>
-          <button type="submit" class="btn-submit">SAVE WEB SERIES</button>
-        </form>
-      </div>
-    </section>
-
     <!-- VIEW: EXISTING SONGS -->
     <section id="view-existing-songs" class="view-panel">
       <header><div><h1>5.1 Audio & Atmos Songs (data_c03.json)</h1></div></header>
       <div class="movies-grid" id="songs-grid"></div>
-    </section>
-
-    <!-- VIEW: ADD SONG -->
-    <section id="view-add-song" class="view-panel">
-      <header>
-        <div>
-          <h1>Add 5.1 / Atmos Song to data_c03.json</h1>
-          <p class="section-desc">Live music search (Auto-fetches Official Album Art, Singers & Movie Name)</p>
-        </div>
-      </header>
-      <div class="form-container">
-        <form id="song-form" onsubmit="handleSongSubmit(event)">
-          <div class="form-grid">
-            <div class="form-group full-width">
-              <label>Search Song Name (e.g. Arabic Kuthu, Hukum, Naatu Naatu)</label>
-              <input type="text" id="input-song-search" placeholder="Type song name to search..." oninput="searchSongMusicApi(this.value)">
-              <div id="song-suggestions-box" class="tmdb-results-box">
-                <div id="song-suggestions-list"></div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Song Title</label>
-              <input type="text" id="input-song-title" placeholder="e.g. Hukum" required>
-            </div>
-            <div class="form-group">
-              <label>Movie / Album Name</label>
-              <input type="text" id="input-song-movie" placeholder="e.g. Jailer" required>
-            </div>
-            <div class="form-group">
-              <label>Audio Quality Format</label>
-              <select id="input-song-quality">
-                <option value="5.1 Surround" selected>5.1 Dolby Digital Surround</option>
-                <option value="Dolby Atmos">Dolby Atmos Lossless</option>
-                <option value="DTS-HD 7.1">DTS-HD Master 7.1</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Cover Art URL</label>
-              <input type="text" id="input-song-poster" placeholder="Image URL">
-            </div>
-            <div class="form-group full-width">
-              <label>Google Drive Link / Worker Stream Link</label>
-              <input type="text" id="input-song-gdrive" placeholder="Google Drive Link or Worker Link" required>
-            </div>
-          </div>
-          <button type="submit" class="btn-submit">SAVE 5.1 SONG</button>
-        </form>
-      </div>
     </section>
 
     <!-- VIEW: EXISTING VAULT -->
@@ -1007,7 +1091,17 @@
     const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';
     const LCU_TITLES = ['kaithi', 'vikram', 'leo', 'coolie'];
 
+    /* MASTER FRANCHISE CATALOG (PUSHPA + KGF + DC + MARVEL + LCU) */
     const MASTER_FRANCHISES = {
+      "Pushpa Collection": {
+        name: "Pushpa Collection",
+        alias: ["pushpa"],
+        poster: "https://image.tmdb.org/t/p/w500/1XDDpvTy1nQ9l5t9L5W09U09yR.jpg",
+        allMovies: [
+          { title: "Pushpa: The Rise", year: 2021, tmdb_id: 671583 },
+          { title: "Pushpa 2: The Rule", year: 2024, tmdb_id: 872585 }
+        ]
+      },
       "K.G.F Collection": {
         name: "K.G.F Collection",
         alias: ["k.g.f", "kgf"],
@@ -1124,9 +1218,29 @@
       if (targetPanel) targetPanel.classList.add('active');
     }
 
+    function switchHubTab(tabType, btn) {
+      document.querySelectorAll('.hub-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.hub-content').forEach(c => c.style.display = 'none');
+      btn.classList.add('active');
+      const activeContent = document.getElementById(`hub-tab-${tabType}`);
+      if (activeContent) activeContent.style.display = 'block';
+    }
+
+    function toggleLanguage(lang) {
+      const input = document.getElementById('input-languages');
+      let current = input.value.split(',').map(s => s.trim()).filter(Boolean);
+      if (current.includes(lang)) {
+        current = current.filter(l => l !== lang);
+      } else {
+        current.push(lang);
+      }
+      input.value = current.join(', ');
+    }
+
     function detectFranchiseCollection(item) {
       if (item.collection && item.collection.trim() !== '') return item.collection;
       const title = (item.title || item.name || '').toLowerCase();
+      if (title.includes('pushpa')) return 'Pushpa Collection';
       if (title.includes('k.g.f') || title.includes('kgf')) return 'K.G.F Collection';
       if (title.includes('bāhubali') || title.includes('baahubali') || title.includes('bahubali')) return 'Baahubali Collection';
       if (title.includes('dark knight') || title.includes('batman begins')) return 'The Dark Knight Collection';
@@ -1256,10 +1370,20 @@
       } else {
         moviesData.forEach((movie, index) => {
           if (query && !(movie.title||'').toLowerCase().includes(query)) return;
+
+          // Versions / Resolution Tags Calculation
+          let versionBadgeText = "1080p";
+          if (movie.versions && movie.versions.length > 1) {
+            versionBadgeText = `${movie.versions.length} Versions`;
+          } else if (movie.specs && movie.specs.resolution) {
+            versionBadgeText = movie.specs.resolution;
+          }
+
           const card = document.createElement('div');
           card.className = 'movie-card';
           card.innerHTML = `
             <div class="poster-wrap">
+              ${movie.collection ? `<div class="universe-badge">👑 ${escapeHtml(movie.collection)}</div>` : ''}
               ${movie.poster ? `<img src="${movie.poster}" class="poster-img" loading="lazy">` : '<div class="poster-placeholder">No Poster</div>'}
             </div>
             <div class="movie-card-body">
@@ -1268,8 +1392,10 @@
                 <div class="movie-meta-row">
                   <span>${escapeHtml(movie.year || 'N/A')}</span>
                   <span>•</span>
-                  <span style="color:var(--laser-cyan);">TMDB: ${escapeHtml(movie.tmdb_id || '')}</span>
+                  <span class="spec-chip">${escapeHtml(versionBadgeText)}</span>
+                  ${movie.specs?.audio ? `<span class="spec-chip chip-gold">${escapeHtml(movie.specs.audio)}</span>` : ''}
                 </div>
+                ${movie.specs?.languages ? `<div style="font-size:0.75rem; color:var(--text-dim); margin-bottom:8px;">🌐 ${escapeHtml(movie.specs.languages)}</div>` : ''}
               </div>
               <div class="card-actions-row">
                 <button type="button" class="btn-action-primary" onclick="prepareAddVersion('${movie.tmdb_id}')">+ VERSION</button>
@@ -1448,6 +1574,7 @@
       });
     }
 
+    /* FILENAME PARSER ENGINE (ACCURATE CODEC, RESOLUTION & TOP 6 INDIAN LANGUAGES) */
     function parseSmartFileName(filename) {
       if (!filename || filename.trim().length === 0) {
         document.getElementById('parsed-smart-tags').innerHTML = '';
@@ -1458,6 +1585,7 @@
       const fn = filename.toLowerCase();
       let tags = [];
 
+      // 1. Resolution
       if (fn.includes('2160p') || fn.includes('4k') || fn.includes('uhd')) {
         document.getElementById('input-quality').value = '4K UHD';
         document.getElementById('input-resolution').value = '4K UHD';
@@ -1466,30 +1594,66 @@
         document.getElementById('input-quality').value = '1080p';
         document.getElementById('input-resolution').value = '1080p FHD';
         tags.push('1080p');
+      } else if (fn.includes('720p')) {
+        document.getElementById('input-quality').value = '720p';
+        document.getElementById('input-resolution').value = '720p HD';
+        tags.push('720p');
       }
 
-      if (fn.includes('bluray') || fn.includes('remux')) {
+      // 2. Source
+      if (fn.includes('bluray') || fn.includes('remux') || fn.includes('bdrip') || fn.includes('brrip')) {
         document.getElementById('input-source').value = 'BLURAY';
-        tags.push('BluRay');
-      } else if (fn.includes('web-dl')) {
+        tags.push('BluRay/BDRip');
+      } else if (fn.includes('web-dl') || fn.includes('webdl') || fn.includes('webrip')) {
         document.getElementById('input-source').value = 'WEB-DL';
         tags.push('WEB-DL');
       }
 
-      if (fn.includes('hevc') || fn.includes('x265')) {
+      // 3. Codec: Strict Priority for x264 vs x265
+      if (fn.includes('x264') || fn.includes('h264') || fn.includes('h.264') || fn.includes('avc')) {
+        document.getElementById('input-codec').value = 'H.264';
+        tags.push('H.264 / AVC');
+      } else if (fn.includes('hevc') || fn.includes('x265') || fn.includes('h265') || fn.includes('h.265')) {
         document.getElementById('input-codec').value = 'x265';
-        tags.push('HEVC/x265');
+        tags.push('HEVC / x265');
+      } else if (fn.includes('av1')) {
+        document.getElementById('input-codec').value = 'AV1';
+        tags.push('AV1');
       }
-      if (fn.includes('atmos')) {
+
+      // 4. Audio
+      if (fn.includes('atmos') || fn.includes('truehd')) {
         document.getElementById('input-audio').value = 'Dolby Atmos';
         document.getElementById('input-channels').value = '7.1';
         tags.push('Atmos 7.1');
+      } else if (fn.includes('ddp') || fn.includes('dd+') || fn.includes('eac3')) {
+        document.getElementById('input-audio').value = 'Dolby Digital Plus';
+        document.getElementById('input-channels').value = '5.1';
+        tags.push('DDP 5.1');
+      } else if (fn.includes('ac3') || fn.includes('dd5.1') || fn.includes('dd')) {
+        document.getElementById('input-audio').value = 'Dolby Digital';
+        document.getElementById('input-channels').value = '5.1';
+        tags.push('DD 5.1');
       }
 
+      // 5. Top 6 Indian Languages Auto-Detection
       let langs = [];
-      if (fn.includes('tamil') || fn.includes('tam')) langs.push('Tamil');
-      if (fn.includes('telugu') || fn.includes('tel')) langs.push('Telugu');
-      if (fn.includes('hindi') || fn.includes('hin')) langs.push('Hindi');
+      const langMap = {
+        "tamil": "Tamil", "tam": "Tamil",
+        "telugu": "Telugu", "tel": "Telugu",
+        "hindi": "Hindi", "hin": "Hindi",
+        "malayalam": "Malayalam", "mal": "Malayalam",
+        "kannada": "Kannada", "kan": "Kannada",
+        "english": "English", "eng": "English"
+      };
+
+      for (let [k, v] of Object.entries(langMap)) {
+        let pattern = new RegExp("(^|[._\\-\\[\\(])" + k + "([._\\-\\]\\)]|$)", "i");
+        if (pattern.test(fn)) {
+          if (!langs.includes(v)) langs.push(v);
+        }
+      }
+
       if (langs.length > 0) {
         document.getElementById('input-languages').value = langs.join(', ');
         tags.push(langs.join('+'));
@@ -1510,7 +1674,7 @@
       if (yearMatch) {
         movieTitle = clean.substring(0, yearMatch.index).trim();
       } else {
-        const cutoff = clean.search(/\b(1080p|720p|2160p|4k|bluray|web-dl|ddp)\b/i);
+        const cutoff = clean.search(/\b(1080p|720p|2160p|4k|bluray|web-dl|ddp|x264|hevc)\b/i);
         if (cutoff > 0) movieTitle = clean.substring(0, cutoff).trim();
       }
       if (!movieTitle || movieTitle.length < 2) return;
@@ -1633,11 +1797,18 @@
       if (!targetExistingMovie) return;
       isMergeMode = true;
       document.getElementById('input-tmdb-id').value = targetExistingMovie.tmdb_id;
-      document.getElementById('movie-form-title').textContent = `Merge Version into: ${targetExistingMovie.title}`;
       document.getElementById('btn-movie-submit').textContent = 'ONE-CLICK MERGE';
       document.getElementById('btn-cancel-merge').style.display = 'inline-block';
       document.getElementById('merge-dock').classList.remove('show');
       showLaserToast(`Merge Mode Activated for "${targetExistingMovie.title}"`);
+    }
+
+    function cancelMergeMode() {
+      isMergeMode = false;
+      targetExistingMovie = null;
+      document.getElementById('btn-movie-submit').textContent = 'ADD MOVIE';
+      document.getElementById('btn-cancel-merge').style.display = 'none';
+      hideMergeDock();
     }
 
     function prepareAddVersion(tmdbId) {
@@ -1648,22 +1819,13 @@
 
       document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
-      document.getElementById('view-add-movie').classList.add('active');
+      document.getElementById('view-add-items-hub').classList.add('active');
+      switchHubTab('movie', document.querySelectorAll('.hub-tab-btn')[0]);
 
       document.getElementById('input-tmdb-id').value = existing.tmdb_id;
       document.getElementById('input-gdrive-url').value = '';
-      document.getElementById('movie-form-title').textContent = `Merge Version into: ${existing.title}`;
       document.getElementById('btn-movie-submit').textContent = 'ONE-CLICK MERGE';
       document.getElementById('btn-cancel-merge').style.display = 'inline-block';
-    }
-
-    function cancelMergeMode() {
-      isMergeMode = false;
-      targetExistingMovie = null;
-      document.getElementById('movie-form-title').textContent = 'Add Movie & Version Manager';
-      document.getElementById('btn-movie-submit').textContent = 'ADD MOVIE';
-      document.getElementById('btn-cancel-merge').style.display = 'none';
-      hideMergeDock();
     }
 
     async function openEditMovieModal(movieIndex) {
@@ -1848,6 +2010,27 @@
       openPreviewModal('chunks/data_c03.json', newSong, streamUrl, `Add Song: ${title}`, songsData);
     }
 
+    function handleVaultSubmit(e) {
+      e.preventDefault();
+      const url = document.getElementById('input-yt-url').value.trim();
+      const title = document.getElementById('input-yt-title').value.trim();
+      const category = document.getElementById('input-yt-category').value;
+      
+      let vid = "";
+      if (url.includes('v=')) vid = url.split('v=')[1].split('&')[0];
+      else if (url.includes('youtu.be/')) vid = url.split('youtu.be/')[1].split('?')[0];
+      else vid = url;
+
+      const newVault = {
+        id: `yt_${vid}`,
+        title: title,
+        category: category,
+        thumbnail: `https://img.youtube.com/vi/${vid}/maxresdefault.jpg`,
+        stream_url: `plugin://plugin.video.youtube/play/?video_id=${vid}`
+      };
+      openPreviewModal('chunks/data_c04.json', newVault, newVault.stream_url, `Add Video: ${title}`, vaultData);
+    }
+
     async function handleMovieSubmit(e) {
       e.preventDefault();
       const tmdbId = document.getElementById('input-tmdb-id').value.trim();
@@ -1980,7 +2163,7 @@
       document.getElementById('preview-modal').classList.add('active');
     }
 
-    /* 18-LINE COMPACT JSON GENERATOR (KEEPS CODE SMALL & FORMATTED) */
+    /* 18-LINE COMPACT JSON GENERATOR */
     function format18LineCompactJson(list) {
       const entries = list.map(item => {
         const vStrs = (item.versions || []).map(ver => {
