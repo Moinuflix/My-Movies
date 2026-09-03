@@ -364,7 +364,7 @@
     .form-group.full-width { grid-column: span 2; }
     label { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
 
-    input, select {
+    input, select, textarea {
       background: var(--bg-input);
       border: 1px solid var(--border-color);
       border-radius: 12px;
@@ -376,7 +376,7 @@
       font-family: var(--font-stack);
       width: 100%;
     }
-    input:focus, select:focus {
+    input:focus, select:focus, textarea:focus {
       border-color: var(--laser-cyan);
       box-shadow: 0 0 14px var(--laser-cyan-glow);
     }
@@ -475,6 +475,7 @@
       margin-bottom: 2rem;
       border-bottom: 1px solid var(--border-color);
       padding-bottom: 1rem;
+      flex-wrap: wrap;
     }
 
     .hub-tab-btn {
@@ -493,6 +494,12 @@
       border-color: var(--laser-cyan);
       color: var(--laser-cyan);
       box-shadow: 0 0 14px var(--laser-cyan-glow);
+    }
+    .hub-tab-btn.gold-tab.active {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: var(--gold-lcu);
+      color: var(--gold-lcu);
+      box-shadow: 0 0 14px var(--gold-lcu-glow);
     }
 
     /* BOTTOM AUTO-MERGE DOCK BAR */
@@ -755,19 +762,20 @@
       <header>
         <div>
           <h1>Studio Ingestion Hub</h1>
-          <p class="section-desc">Add Movies, Web Series, 5.1 Audio or YouTube Videos in one clean place</p>
+          <p class="section-desc">Add Single Movies, Web Series, 5.1 Audio, YouTube or Review Batch Scraper</p>
         </div>
       </header>
 
       <!-- TAB SWITCHER -->
       <div class="hub-switcher-bar">
-        <button type="button" class="hub-tab-btn active" onclick="switchHubTab('movie', this)">🎬 Add Movie</button>
-        <button type="button" class="hub-tab-btn" onclick="switchHubTab('series', this)">📺 Add Web Series</button>
-        <button type="button" class="hub-tab-btn" onclick="switchHubTab('song', this)">🎵 Add 5.1 Song</button>
-        <button type="button" class="hub-tab-btn" onclick="switchHubTab('vault', this)">🍿 Add YouTube Vault</button>
+        <button type="button" class="hub-tab-btn active" onclick="switchHubTab('movie', this)">🎬 Single Movie</button>
+        <button type="button" class="hub-tab-btn gold-tab" onclick="switchHubTab('folder-batch', this)">📁 Batch Folder Scraper</button>
+        <button type="button" class="hub-tab-btn" onclick="switchHubTab('series', this)">📺 Web Series</button>
+        <button type="button" class="hub-tab-btn" onclick="switchHubTab('song', this)">🎵 5.1 Song</button>
+        <button type="button" class="hub-tab-btn" onclick="switchHubTab('vault', this)">🍿 YouTube Vault</button>
       </div>
 
-      <!-- TAB 1: MOVIE FORM -->
+      <!-- TAB 1: SINGLE MOVIE FORM -->
       <div id="hub-tab-movie" class="hub-content active">
         <div class="form-container">
           <form id="movie-form" onsubmit="handleMovieSubmit(event)">
@@ -872,7 +880,60 @@
         </div>
       </div>
 
-      <!-- TAB 2: SERIES FORM -->
+      <!-- TAB 2: SMART BATCH FOLDER SCRAPER (2-STAGE REVIEW WORKFLOW) -->
+      <div id="hub-tab-folder-batch" class="hub-content" style="display: none;">
+        <div class="form-container" style="border-color: rgba(245, 158, 11, 0.4); max-width: 1050px;">
+          <div style="font-size: 1.1rem; font-weight: 800; color: var(--gold-lcu); margin-bottom: 0.5rem;">📁 Google Drive Batch Importer (Review & Verify Mode)</div>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Step 1: Scan Folder/Paste JSON ➔ Step 2: Check Name, Drive ID & TMDB ID in Table ➔ Step 3: Direct Final Fetch & GitHub Commit.</p>
+
+          <div class="form-grid" style="margin-bottom: 1rem;">
+            <div class="form-group full-width">
+              <label>Google Drive Folder Link / ID</label>
+              <input type="text" id="input-batch-folder-url" placeholder="https://drive.google.com/drive/folders/1qSbkXGLBE6OxRF2pwiNekNDHPnyQQm-w">
+            </div>
+            <div class="form-group full-width">
+              <label>Or Paste Raw JSON / Scraped List [From Browser Console]:</label>
+              <textarea id="input-batch-manual-json" rows="3" placeholder='[{"name": "Leo.2023.1080p.mkv", "id": "1H4hepCl_..."}, {"name": "Pushpa.2.2024.4k.mkv", "id": "1qSbk..."}]'></textarea>
+            </div>
+          </div>
+
+          <button type="button" class="btn-submit" style="background: linear-gradient(135deg, var(--gold-lcu), #d97706); color:#000;" onclick="loadFilesToReviewTable()">
+            🔍 STEP 1: SCAN & GENERATE VERIFICATION LIST
+          </button>
+
+          <!-- STAGE 2: VERIFICATION & CHECKUP TABLE -->
+          <div id="batch-verification-section" style="display: none; margin-top: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <div style="font-weight: 800; font-size: 1rem; color: #fff;">
+                📋 Verification Checklist (<span id="review-count">0</span> Files Ready)
+              </div>
+              <span style="font-size: 0.8rem; color: var(--laser-cyan);">Verify/Edit TMDB IDs below before saving</span>
+            </div>
+
+            <div style="max-height: 420px; overflow-y: auto; border: 1px solid var(--border-color); border-radius: 14px; background: rgba(3, 7, 18, 0.6); margin-bottom: 1.5rem;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: left;">
+                <thead>
+                  <tr style="border-bottom: 1px solid var(--border-color); background: rgba(15, 23, 42, 0.9); position: sticky; top: 0; z-index: 5;">
+                    <th style="padding: 10px 14px; color: var(--text-dim);">#</th>
+                    <th style="padding: 10px 14px; color: var(--text-dim);">File Name</th>
+                    <th style="padding: 10px 14px; color: var(--text-dim); width: 180px;">Drive ID</th>
+                    <th style="padding: 10px 14px; color: var(--text-dim); width: 140px;">TMDB ID</th>
+                    <th style="padding: 10px 14px; color: var(--text-dim); width: 60px;">Del</th>
+                  </tr>
+                </thead>
+                <tbody id="batch-table-body"></tbody>
+              </table>
+            </div>
+
+            <!-- FINAL STEP: COMMIT TO GITHUB -->
+            <button type="button" class="btn-submit" style="background: linear-gradient(135deg, var(--laser-green), #059669); color: #fff; width: 100%; justify-content: center; font-size: 1rem;" onclick="executeFinalBatchFetchAndCommit()">
+              🚀 CONFIRM CHECKLIST & COMMIT ALL TO GITHUB
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: SERIES FORM -->
       <div id="hub-tab-series" class="hub-content" style="display: none;">
         <div class="form-container">
           <form id="series-form" onsubmit="handleSeriesSubmit(event)">
@@ -902,7 +963,7 @@
         </div>
       </div>
 
-      <!-- TAB 3: SONG FORM -->
+      <!-- TAB 4: SONG FORM -->
       <div id="hub-tab-song" class="hub-content" style="display: none;">
         <div class="form-container">
           <form id="song-form" onsubmit="handleSongSubmit(event)">
@@ -944,7 +1005,7 @@
         </div>
       </div>
 
-      <!-- TAB 4: VAULT FORM -->
+      <!-- TAB 5: VAULT FORM -->
       <div id="hub-tab-vault" class="hub-content" style="display: none;">
         <div class="form-container">
           <form id="vault-form" onsubmit="handleVaultSubmit(event)">
@@ -1017,6 +1078,20 @@
     </div>
   </div>
 
+  <!-- POPUP: DOUBT RESOLVER MODAL -->
+  <div class="modal-overlay" id="doubt-modal">
+    <div class="modal-card" style="border-color: var(--gold-lcu);">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title" style="color: var(--gold-lcu);">⚠️ Clarification Required</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;" id="doubt-modal-subtitle">Multiple matches found for this file. Please choose the correct movie:</div>
+        </div>
+      </div>
+      <div style="background: rgba(255, 255, 255, 0.04); padding: 0.85rem; border-radius: 12px; margin-bottom: 1.2rem; font-family: monospace; font-size: 0.85rem; color: var(--laser-cyan);" id="doubt-filename-display"></div>
+      <div id="doubt-choices-list" style="display: flex; flex-direction: column; gap: 0.8rem; max-height: 360px; overflow-y: auto;"></div>
+    </div>
+  </div>
+
   <!-- EDIT MOVIE METADATA MODAL -->
   <div class="modal-overlay" id="edit-movie-modal">
     <div class="modal-card">
@@ -1082,6 +1157,8 @@
     let seriesDebounce = null;
     let songDebounce = null;
     let editDebounce = null;
+
+    let stageReviewList = [];
 
     const CONFIRM_PASS = "24592";
     const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
@@ -1200,6 +1277,8 @@
       if (pMatch && pMatch[1]) return pMatch[1];
       const fMatch = clean.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
       if (fMatch && fMatch[1]) return fMatch[1];
+      const folMatch = clean.match(/\/folders\/([a-zA-Z0-9_-]+)/);
+      if (folMatch && folMatch[1]) return folMatch[1];
       const rMatch = clean.match(/^[a-zA-Z0-9_-]{25,}$/);
       if (rMatch) return rMatch[0];
       return clean;
@@ -1371,7 +1450,6 @@
         moviesData.forEach((movie, index) => {
           if (query && !(movie.title||'').toLowerCase().includes(query)) return;
 
-          // Versions / Resolution Tags Calculation
           let versionBadgeText = "1080p";
           if (movie.versions && movie.versions.length > 1) {
             versionBadgeText = `${movie.versions.length} Versions`;
@@ -1574,7 +1652,44 @@
       });
     }
 
-    /* FILENAME PARSER ENGINE (ACCURATE CODEC, RESOLUTION & TOP 6 INDIAN LANGUAGES) */
+    /* FILENAME PARSER ENGINE (STRICT ACCURACY) */
+    function parseSpecsFromFileName(filename) {
+      const fn = filename.toLowerCase();
+      let res = "1080p FHD", quality = "1080p", source = "WEB-DL", codec = "H.264", audio = "Dolby Digital Plus", channels = "5.1", langs = [];
+
+      if (fn.includes('2160p') || fn.includes('4k') || fn.includes('uhd')) {
+        res = "4K UHD"; quality = "4K UHD";
+      } else if (fn.includes('720p')) {
+        res = "720p HD"; quality = "720p";
+      }
+
+      if (fn.includes('bluray') || fn.includes('remux') || fn.includes('bdrip') || fn.includes('brrip')) {
+        source = "BLURAY";
+      }
+
+      if (fn.includes('x265') || fn.includes('hevc') || fn.includes('h265') || fn.includes('h.265')) {
+        codec = "x265";
+      } else if (fn.includes('av1')) {
+        codec = "AV1";
+      } else {
+        codec = "H.264";
+      }
+
+      if (fn.includes('atmos') || fn.includes('truehd')) {
+        audio = "Dolby Atmos"; channels = "7.1";
+      } else if (fn.includes('ac3') || fn.includes('dd5.1') || fn.includes('dd')) {
+        audio = "Dolby Digital";
+      }
+
+      const langMap = { "tamil": "Tamil", "tam": "Tamil", "telugu": "Telugu", "tel": "Telugu", "hindi": "Hindi", "hin": "Hindi", "malayalam": "Malayalam", "mal": "Malayalam", "kannada": "Kannada", "kan": "Kannada", "english": "English", "eng": "English" };
+      for (let [k, v] of Object.entries(langMap)) {
+        let pattern = new RegExp("(^|[._\\-\\[\\(])" + k + "([._\\-\\]\\)]|$)", "i");
+        if (pattern.test(fn)) { if (!langs.includes(v)) langs.push(v); }
+      }
+
+      return { resolution: res, quality: quality, source: source, codec: codec, audio: audio, channels: channels, languages: langs.length > 0 ? langs.join(', ') : "Tamil" };
+    }
+
     function parseSmartFileName(filename) {
       if (!filename || filename.trim().length === 0) {
         document.getElementById('parsed-smart-tags').innerHTML = '';
@@ -1582,83 +1697,16 @@
         hideMergeDock();
         return;
       }
-      const fn = filename.toLowerCase();
-      let tags = [];
+      const specs = parseSpecsFromFileName(filename);
+      document.getElementById('input-quality').value = specs.quality;
+      document.getElementById('input-resolution').value = specs.resolution;
+      document.getElementById('input-source').value = specs.source;
+      document.getElementById('input-codec').value = specs.codec;
+      document.getElementById('input-audio').value = specs.audio;
+      document.getElementById('input-channels').value = specs.channels;
+      document.getElementById('input-languages').value = specs.languages;
 
-      // 1. Resolution
-      if (fn.includes('2160p') || fn.includes('4k') || fn.includes('uhd')) {
-        document.getElementById('input-quality').value = '4K UHD';
-        document.getElementById('input-resolution').value = '4K UHD';
-        tags.push('4K UHD');
-      } else if (fn.includes('1080p') || fn.includes('fhd')) {
-        document.getElementById('input-quality').value = '1080p';
-        document.getElementById('input-resolution').value = '1080p FHD';
-        tags.push('1080p');
-      } else if (fn.includes('720p')) {
-        document.getElementById('input-quality').value = '720p';
-        document.getElementById('input-resolution').value = '720p HD';
-        tags.push('720p');
-      }
-
-      // 2. Source
-      if (fn.includes('bluray') || fn.includes('remux') || fn.includes('bdrip') || fn.includes('brrip')) {
-        document.getElementById('input-source').value = 'BLURAY';
-        tags.push('BluRay/BDRip');
-      } else if (fn.includes('web-dl') || fn.includes('webdl') || fn.includes('webrip')) {
-        document.getElementById('input-source').value = 'WEB-DL';
-        tags.push('WEB-DL');
-      }
-
-      // 3. Codec: Strict Priority for x264 vs x265
-      if (fn.includes('x264') || fn.includes('h264') || fn.includes('h.264') || fn.includes('avc')) {
-        document.getElementById('input-codec').value = 'H.264';
-        tags.push('H.264 / AVC');
-      } else if (fn.includes('hevc') || fn.includes('x265') || fn.includes('h265') || fn.includes('h.265')) {
-        document.getElementById('input-codec').value = 'x265';
-        tags.push('HEVC / x265');
-      } else if (fn.includes('av1')) {
-        document.getElementById('input-codec').value = 'AV1';
-        tags.push('AV1');
-      }
-
-      // 4. Audio
-      if (fn.includes('atmos') || fn.includes('truehd')) {
-        document.getElementById('input-audio').value = 'Dolby Atmos';
-        document.getElementById('input-channels').value = '7.1';
-        tags.push('Atmos 7.1');
-      } else if (fn.includes('ddp') || fn.includes('dd+') || fn.includes('eac3')) {
-        document.getElementById('input-audio').value = 'Dolby Digital Plus';
-        document.getElementById('input-channels').value = '5.1';
-        tags.push('DDP 5.1');
-      } else if (fn.includes('ac3') || fn.includes('dd5.1') || fn.includes('dd')) {
-        document.getElementById('input-audio').value = 'Dolby Digital';
-        document.getElementById('input-channels').value = '5.1';
-        tags.push('DD 5.1');
-      }
-
-      // 5. Top 6 Indian Languages Auto-Detection
-      let langs = [];
-      const langMap = {
-        "tamil": "Tamil", "tam": "Tamil",
-        "telugu": "Telugu", "tel": "Telugu",
-        "hindi": "Hindi", "hin": "Hindi",
-        "malayalam": "Malayalam", "mal": "Malayalam",
-        "kannada": "Kannada", "kan": "Kannada",
-        "english": "English", "eng": "English"
-      };
-
-      for (let [k, v] of Object.entries(langMap)) {
-        let pattern = new RegExp("(^|[._\\-\\[\\(])" + k + "([._\\-\\]\\)]|$)", "i");
-        if (pattern.test(fn)) {
-          if (!langs.includes(v)) langs.push(v);
-        }
-      }
-
-      if (langs.length > 0) {
-        document.getElementById('input-languages').value = langs.join(', ');
-        tags.push(langs.join('+'));
-      }
-
+      const tags = [specs.resolution, specs.source, specs.codec, specs.audio, specs.languages];
       document.getElementById('parsed-smart-tags').innerHTML = tags.map(t => `<span class="smart-tag">✔ ${t}</span>`).join(' ');
 
       clearTimeout(smartSearchDebounce);
@@ -1884,6 +1932,161 @@
       openPreviewModal('chunks/data_c01.json', movie, movie.stream_url, `Update: ${movie.title}`, moviesData, true);
     }
 
+    /* -------------------------------------------------------------
+       SMART BATCH FOLDER SCRAPER (TWO-STAGE REVIEW WORKFLOW)
+    -------------------------------------------------------------- */
+    async function loadFilesToReviewTable() {
+      const folderInput = document.getElementById('input-batch-folder-url').value.trim();
+      const manualJson = document.getElementById('input-batch-manual-json').value.trim();
+      stageReviewList = [];
+
+      let rawFiles = [];
+      if (manualJson) {
+        try { rawFiles = JSON.parse(manualJson); } 
+        catch(e) { return showLaserToast('Invalid JSON in paste box', true); }
+      } else if (folderInput) {
+        const folderId = extractGDriveId(folderInput);
+        if (!folderId) return showLaserToast('Invalid Folder link', true);
+        showLaserToast('Scanning folder via Worker...');
+        try {
+          const res = await fetch(`${WORKER_BASE.split('?')[0]}?action=scan_folder&folder_id=${folderId}`);
+          if (res.ok) {
+            const d = await res.json();
+            rawFiles = d.files || [];
+          } else {
+            return showLaserToast('Worker folder scan route not ready. Please paste files JSON.', true);
+          }
+        } catch(e) {
+          return showLaserToast('Could not reach Worker scan route.', true);
+        }
+      } else {
+        return showLaserToast('Please enter Folder link or paste JSON list', true);
+      }
+
+      if (rawFiles.length === 0) return showLaserToast('No files found to process', true);
+
+      showLaserToast(`Matching ${rawFiles.length} files with TMDB...`);
+
+      for (let i = 0; i < rawFiles.length; i++) {
+        const item = rawFiles[i];
+        const rawName = item.name || item.title || "";
+        const fileId = item.id || extractGDriveId(item.url);
+
+        let clean = rawName.replace(/[\._\-]/g, ' ');
+        const yearMatch = clean.match(/\b(19\d\d|20\d\d)\b/);
+        let year = yearMatch ? yearMatch[1] : '';
+        let queryTitle = clean;
+
+        if (yearMatch) queryTitle = clean.substring(0, yearMatch.index).trim();
+        else {
+          const cutoff = clean.search(/\b(1080p|720p|2160p|4k|bluray|web-dl|ddp|x264|hevc)\b/i);
+          if (cutoff > 0) queryTitle = clean.substring(0, cutoff).trim();
+        }
+
+        let detectedTmdb = "";
+        try {
+          const sRes = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(queryTitle)}${year ? `&year=${year}` : ''}&language=en-US`);
+          const sData = await sRes.json();
+          if (sData.results && sData.results.length > 0) {
+            detectedTmdb = sData.results[0].id;
+          }
+        } catch(e) {}
+
+        stageReviewList.push({
+          rawName: rawName,
+          fileId: fileId,
+          tmdbId: detectedTmdb
+        });
+      }
+
+      renderReviewTable();
+    }
+
+    function renderReviewTable() {
+      const tbody = document.getElementById('batch-table-body');
+      tbody.innerHTML = '';
+      document.getElementById('review-count').textContent = stageReviewList.length;
+
+      stageReviewList.forEach((item, index) => {
+        const tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+        tr.innerHTML = `
+          <td style="padding: 8px 14px; color: var(--text-dim);">${index + 1}</td>
+          <td style="padding: 8px 14px; font-weight:600; color:#fff; word-break:break-all;">${escapeHtml(item.rawName)}</td>
+          <td style="padding: 8px 14px; font-family:monospace; color:var(--laser-cyan);">${escapeHtml(item.fileId)}</td>
+          <td style="padding: 8px 14px;">
+            <input type="number" value="${item.tmdbId}" style="padding: 4px 8px; font-size: 0.8rem;" onchange="stageReviewList[${index}].tmdbId = this.value">
+          </td>
+          <td style="padding: 8px 14px;">
+            <button type="button" style="background:transparent; border:none; color:var(--laser-red); cursor:pointer;" onclick="stageReviewList.splice(${index},1); renderReviewTable();">🗑️</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById('batch-verification-section').style.display = 'block';
+    }
+
+    async function executeFinalBatchFetchAndCommit() {
+      const token = getStoredToken();
+      if (!token) return showLaserToast('Please configure GitHub Token first.', true);
+
+      if (stageReviewList.length === 0) return showLaserToast('No files to commit', true);
+
+      showLaserToast(`Fetching official metadata for ${stageReviewList.length} movies...`);
+
+      let addedCount = 0;
+
+      for (let i = 0; i < stageReviewList.length; i++) {
+        const item = stageReviewList[i];
+        if (!item.tmdbId) continue;
+
+        const meta = await fetchTmdbMetadata(item.tmdbId);
+        if (!meta) continue;
+
+        const specs = parseSpecsFromFileName(item.rawName);
+        const streamUrl = `${WORKER_BASE}${item.fileId}${USER_AGENT}`;
+        const finalCol = meta.collection || detectFranchiseCollection(meta);
+
+        const versionObj = {
+          id: item.fileId,
+          name: `${meta.title} (${meta.year}) [${specs.quality}] [${specs.codec}] [${specs.audio}].mkv`,
+          quality: specs.quality, source: specs.source, codec: specs.codec, resolution: specs.resolution, audio: specs.audio, channels: specs.channels, stream_url: streamUrl,
+          specs: specs
+        };
+
+        const existingMovie = moviesData.find(m => String(m.tmdb_id) === String(meta.tmdb_id));
+        if (existingMovie) {
+          existingMovie.versions = existingMovie.versions || [];
+          if (!existingMovie.versions.some(v => v.id === item.fileId || v.stream_url === streamUrl)) {
+            existingMovie.versions.push(versionObj);
+          }
+        } else {
+          const fullMovie = {
+            id: item.fileId, name: versionObj.name, title: meta.title, original_title: meta.original_title, year: meta.year, runtime: meta.runtime || 0,
+            tmdb_id: Number(meta.tmdb_id), imdb_id: meta.imdb_id || "", rating: meta.rating, collection: finalCol, director: meta.director || [],
+            trailer: meta.trailer || "", cast: meta.cast || [], plot: meta.plot, poster: meta.poster, fanart: meta.fanart, logo: "", stream_url: streamUrl,
+            badges: {
+              quality: specs.quality.includes("4K") ? "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/4k.png" : "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
+              hdr: specs.quality.includes("4K") ? "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/hdr/hdr.png" : "",
+              source: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web.png",
+              audio_format: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+              audio_channels: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+            },
+            specs: specs,
+            versions: [versionObj]
+          };
+          moviesData.unshift(fullMovie);
+          addedCount++;
+        }
+      }
+
+      openPreviewModal('chunks/data_c01.json', null, `Batch Import of ${addedCount} Verified Movies`, `Verified Batch Ingestion`, moviesData, true);
+    }
+
+    /* -------------------------------------------------------------
+       SERIES, SONGS & VAULT
+    -------------------------------------------------------------- */
     function searchSeriesTmdb(query) {
       clearTimeout(seriesDebounce);
       if (!query || query.trim().length < 2) {
