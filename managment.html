@@ -880,11 +880,11 @@
         </div>
       </div>
 
-      <!-- TAB 2: SMART BATCH FOLDER SCRAPER (2-STAGE REVIEW WORKFLOW) -->
+      <!-- TAB 2: SMART BATCH FOLDER SCRAPER (TWO-STAGE REVIEW WORKFLOW) -->
       <div id="hub-tab-folder-batch" class="hub-content" style="display: none;">
-        <div class="form-container" style="border-color: rgba(245, 158, 11, 0.4); max-width: 1050px;">
+        <div class="form-container" style="border-color: rgba(245, 158, 11, 0.4); max-width: 1100px;">
           <div style="font-size: 1.1rem; font-weight: 800; color: var(--gold-lcu); margin-bottom: 0.5rem;">📁 Google Drive Batch Importer (Review & Verify Mode)</div>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Step 1: Scan Folder/Paste JSON ➔ Step 2: Check Name, Drive ID & TMDB ID in Table ➔ Step 3: Direct Final Fetch & GitHub Commit.</p>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Step 1: Scan Folder/Paste JSON ➔ Step 2: Check Posters, Drive ID & TMDB Dropdown ➔ Step 3: Direct Final Fetch & GitHub Commit.</p>
 
           <div class="form-grid" style="margin-bottom: 1rem;">
             <div class="form-group full-width">
@@ -907,18 +907,18 @@
               <div style="font-weight: 800; font-size: 1rem; color: #fff;">
                 📋 Verification Checklist (<span id="review-count">0</span> Files Ready)
               </div>
-              <span style="font-size: 0.8rem; color: var(--laser-cyan);">Verify/Edit TMDB IDs below before saving</span>
+              <span style="font-size: 0.8rem; color: var(--laser-cyan);">Click movie title/poster to open TMDB suggestions dropdown</span>
             </div>
 
-            <div style="max-height: 420px; overflow-y: auto; border: 1px solid var(--border-color); border-radius: 14px; background: rgba(3, 7, 18, 0.6); margin-bottom: 1.5rem;">
+            <div style="max-height: 480px; overflow-y: auto; border: 1px solid var(--border-color); border-radius: 14px; background: rgba(3, 7, 18, 0.6); margin-bottom: 1.5rem;">
               <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: left;">
                 <thead>
-                  <tr style="border-bottom: 1px solid var(--border-color); background: rgba(15, 23, 42, 0.9); position: sticky; top: 0; z-index: 5;">
-                    <th style="padding: 10px 14px; color: var(--text-dim);">#</th>
-                    <th style="padding: 10px 14px; color: var(--text-dim);">File Name</th>
+                  <tr style="border-bottom: 1px solid var(--border-color); background: rgba(15, 23, 42, 0.95); position: sticky; top: 0; z-index: 20;">
+                    <th style="padding: 10px 14px; color: var(--text-dim); width: 40px;">#</th>
+                    <th style="padding: 10px 14px; color: var(--text-dim); width: 35%;">File Name</th>
                     <th style="padding: 10px 14px; color: var(--text-dim); width: 180px;">Drive ID</th>
-                    <th style="padding: 10px 14px; color: var(--text-dim); width: 140px;">TMDB ID</th>
-                    <th style="padding: 10px 14px; color: var(--text-dim); width: 60px;">Del</th>
+                    <th style="padding: 10px 14px; color: var(--text-dim);">TMDB Match (Poster & Dropdown)</th>
+                    <th style="padding: 10px 14px; color: var(--text-dim); width: 50px; text-align: center;">Del</th>
                   </tr>
                 </thead>
                 <tbody id="batch-table-body"></tbody>
@@ -1933,11 +1933,12 @@
     }
 
     /* -------------------------------------------------------------
-       SMART BATCH FOLDER SCRAPER (TWO-STAGE REVIEW WORKFLOW)
+       SMART BATCH FOLDER SCRAPER (TWO-STAGE REVIEW WITH DROPDOWNS)
     -------------------------------------------------------------- */
     async function loadFilesToReviewTable() {
       const folderInput = document.getElementById('input-batch-folder-url').value.trim();
       const manualJson = document.getElementById('input-batch-manual-json').value.trim();
+      const scanBtn = document.querySelector('button[onclick="loadFilesToReviewTable()"]');
       stageReviewList = [];
 
       let rawFiles = [];
@@ -1963,43 +1964,84 @@
         return showLaserToast('Please enter Folder link or paste JSON list', true);
       }
 
-      if (rawFiles.length === 0) return showLaserToast('No files found to process', true);
+      if (!rawFiles || rawFiles.length === 0) return showLaserToast('No files found in folder!', true);
 
-      showLaserToast(`Matching ${rawFiles.length} files with TMDB...`);
+      if (scanBtn) {
+        scanBtn.disabled = true;
+        scanBtn.textContent = `Matching 0/${rawFiles.length} with TMDB...`;
+      }
 
-      for (let i = 0; i < rawFiles.length; i++) {
-        const item = rawFiles[i];
+      // Auto-filter exact duplicate IDs from drive
+      const uniqueFiles = [];
+      const seenIds = new Set();
+      rawFiles.forEach(f => {
+        const fid = f.id || extractGDriveId(f.url);
+        if (!seenIds.has(fid)) {
+          seenIds.add(fid);
+          uniqueFiles.push(f);
+        }
+      });
+
+      for (let i = 0; i < uniqueFiles.length; i++) {
+        const item = uniqueFiles[i];
         const rawName = item.name || item.title || "";
         const fileId = item.id || extractGDriveId(item.url);
+
+        if (scanBtn) scanBtn.textContent = `Matching (${i + 1}/${uniqueFiles.length}): ${rawName.substring(0, 20)}...`;
 
         let clean = rawName.replace(/[\._\-]/g, ' ');
         const yearMatch = clean.match(/\b(19\d\d|20\d\d)\b/);
         let year = yearMatch ? yearMatch[1] : '';
         let queryTitle = clean;
 
-        if (yearMatch) queryTitle = clean.substring(0, yearMatch.index).trim();
-        else {
-          const cutoff = clean.search(/\b(1080p|720p|2160p|4k|bluray|web-dl|ddp|x264|hevc)\b/i);
+        if (yearMatch) {
+          queryTitle = clean.substring(0, yearMatch.index).trim();
+        } else {
+          const cutoff = clean.search(/\b(1080p|720p|2160p|4k|bluray|web-dl|webrip|ddp|x264|x265|hevc)\b/i);
           if (cutoff > 0) queryTitle = clean.substring(0, cutoff).trim();
         }
+        queryTitle = queryTitle.replace(/[\[\]\(\)\{\}]/g, '').trim();
 
         let detectedTmdb = "";
+        let matchedTitle = "";
+        let matchedPoster = "";
+
         try {
-          const sRes = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(queryTitle)}${year ? `&year=${year}` : ''}&language=en-US`);
-          const sData = await sRes.json();
-          if (sData.results && sData.results.length > 0) {
-            detectedTmdb = sData.results[0].id;
+          if (queryTitle.length >= 2) {
+            const sRes = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(queryTitle)}${year ? `&year=${year}` : ''}&language=en-US`);
+            if (sRes.ok) {
+              const sData = await sRes.json();
+              if (sData.results && sData.results.length > 0) {
+                const top = sData.results[0];
+                detectedTmdb = top.id;
+                matchedTitle = `${top.title} (${top.release_date ? top.release_date.split('-')[0] : 'N/A'})`;
+                matchedPoster = top.poster_path ? `https://image.tmdb.org/t/p/w92${top.poster_path}` : '';
+              }
+            }
           }
         } catch(e) {}
 
         stageReviewList.push({
           rawName: rawName,
           fileId: fileId,
-          tmdbId: detectedTmdb
+          tmdbId: detectedTmdb,
+          matchedTitle: matchedTitle,
+          poster: matchedPoster
         });
+
+        await new Promise(r => setTimeout(r, 60));
       }
 
+      if (scanBtn) {
+        scanBtn.disabled = false;
+        scanBtn.textContent = '🔍 STEP 1: SCAN & GENERATE VERIFICATION LIST';
+      }
+
+      showLaserToast(`Loaded ${stageReviewList.length} files for review!`);
       renderReviewTable();
+
+      const sec = document.getElementById('batch-verification-section');
+      if (sec) sec.scrollIntoView({ behavior: 'smooth' });
     }
 
     function renderReviewTable() {
@@ -2009,22 +2051,114 @@
 
       stageReviewList.forEach((item, index) => {
         const tr = document.createElement('tr');
-        tr.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
+        tr.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
+
+        const posterImg = item.poster ? `<img src="${item.poster}" style="width:34px; height:48px; object-fit:cover; border-radius:6px; border:1px solid var(--laser-cyan); flex-shrink:0;">` : `<div style="width:34px; height:48px; background:#1e293b; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:0.65rem; color:var(--text-dim); flex-shrink:0;">No Pic</div>`;
+
         tr.innerHTML = `
-          <td style="padding: 8px 14px; color: var(--text-dim);">${index + 1}</td>
-          <td style="padding: 8px 14px; font-weight:600; color:#fff; word-break:break-all;">${escapeHtml(item.rawName)}</td>
-          <td style="padding: 8px 14px; font-family:monospace; color:var(--laser-cyan);">${escapeHtml(item.fileId)}</td>
-          <td style="padding: 8px 14px;">
-            <input type="number" value="${item.tmdbId}" style="padding: 4px 8px; font-size: 0.8rem;" onchange="stageReviewList[${index}].tmdbId = this.value">
+          <td style="padding: 10px 14px; color: var(--text-dim);">${index + 1}</td>
+          <td style="padding: 10px 14px; font-weight:600; color:#fff; word-break:break-all;">
+            ${escapeHtml(item.rawName)}
           </td>
-          <td style="padding: 8px 14px;">
-            <button type="button" style="background:transparent; border:none; color:var(--laser-red); cursor:pointer;" onclick="stageReviewList.splice(${index},1); renderReviewTable();">🗑️</button>
+          <td style="padding: 10px 14px; font-family:monospace; color:var(--laser-cyan); font-size:0.75rem;">
+            ${escapeHtml(item.fileId)}
+          </td>
+          <td style="padding: 10px 14px; position:relative;">
+            <div style="display:flex; align-items:center; gap:10px;">
+              ${posterImg}
+              <div style="flex:1;">
+                <div style="font-weight:700; color:#fff; font-size:0.85rem; cursor:pointer; display:flex; align-items:center; gap:4px;" onclick="openRowTmdbDropdown(${index})">
+                  <span>${escapeHtml(item.matchedTitle || 'Select TMDB Match')}</span>
+                  <span style="color:var(--laser-cyan); font-size:0.75rem;">🔽</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:6px; margin-top:2px;">
+                  <span style="font-size:0.72rem; color:var(--text-dim);">TMDB ID:</span>
+                  <input type="number" value="${item.tmdbId || ''}" style="width:110px; padding:2px 6px; font-size:0.75rem; border-radius:6px;" onchange="updateRowTmdbId(${index}, this.value)">
+                </div>
+              </div>
+            </div>
+            <div id="row-dropdown-${index}" class="tmdb-results-box" style="position:absolute; top:60px; left:10px; z-index:100; width:320px; display:none; background:#0b1329; border:1px solid var(--laser-cyan);"></div>
+          </td>
+          <td style="padding: 10px 14px; text-align:center;">
+            <button type="button" style="background:transparent; border:none; color:var(--laser-red); cursor:pointer; font-size:1.1rem;" onclick="stageReviewList.splice(${index},1); renderReviewTable();">🗑️</button>
           </td>
         `;
         tbody.appendChild(tr);
       });
 
       document.getElementById('batch-verification-section').style.display = 'block';
+    }
+
+    async function openRowTmdbDropdown(rowIndex) {
+      const box = document.getElementById(`row-dropdown-${rowIndex}`);
+      if (box.style.display === 'block') {
+        box.style.display = 'none';
+        return;
+      }
+
+      document.querySelectorAll('.tmdb-results-box').forEach(b => { if (b.id.startsWith('row-dropdown-')) b.style.display = 'none'; });
+
+      const item = stageReviewList[rowIndex];
+      let clean = item.rawName.replace(/[\._\-]/g, ' ');
+      const yearMatch = clean.match(/\b(19\d\d|20\d\d)\b/);
+      let year = yearMatch ? yearMatch[1] : '';
+      let queryTitle = clean;
+
+      if (yearMatch) queryTitle = clean.substring(0, yearMatch.index).trim();
+      else {
+        const cutoff = clean.search(/\b(1080p|720p|2160p|4k|bluray|web-dl|webrip|ddp|x264|x265|hevc)\b/i);
+        if (cutoff > 0) queryTitle = clean.substring(0, cutoff).trim();
+      }
+      queryTitle = queryTitle.replace(/[\[\]\(\)\{\}]/g, '').trim();
+
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(queryTitle)}${year ? `&year=${year}` : ''}&language=en-US`);
+        const data = await res.json();
+        const list = data.results || [];
+        
+        box.innerHTML = '';
+        if (list.length === 0) {
+          box.innerHTML = '<div style="padding:8px; color:var(--text-dim); font-size:0.75rem;">No TMDB results found.</div>';
+        } else {
+          list.slice(0, 5).forEach(m => {
+            const y = m.release_date ? m.release_date.split('-')[0] : 'N/A';
+            const poster = m.poster_path ? `https://image.tmdb.org/t/p/w92${m.poster_path}` : '';
+            const rowItem = document.createElement('div');
+            rowItem.className = 'tmdb-result-item';
+            rowItem.innerHTML = `
+              ${poster ? `<img src="${poster}" class="tmdb-result-poster">` : '<div class="tmdb-result-poster"></div>'}
+              <div class="tmdb-result-info">
+                <div class="tmdb-result-title">${escapeHtml(m.title)} (${y})</div>
+                <div class="tmdb-result-meta">ID: <b>${m.id}</b> • ★ ${m.vote_average ? m.vote_average.toFixed(1) : 'N/A'}</div>
+              </div>
+            `;
+            rowItem.onclick = () => {
+              stageReviewList[rowIndex].tmdbId = m.id;
+              stageReviewList[rowIndex].matchedTitle = `${m.title} (${y})`;
+              stageReviewList[rowIndex].poster = poster;
+              box.style.display = 'none';
+              renderReviewTable();
+              showLaserToast(`Updated: ${m.title}`);
+            };
+            box.appendChild(rowItem);
+          });
+        }
+        box.style.display = 'block';
+      } catch(e) {
+        box.style.display = 'none';
+      }
+    }
+
+    async function updateRowTmdbId(rowIndex, newId) {
+      stageReviewList[rowIndex].tmdbId = newId;
+      if (newId) {
+        const meta = await fetchTmdbMetadata(newId);
+        if (meta) {
+          stageReviewList[rowIndex].matchedTitle = `${meta.title} (${meta.year})`;
+          stageReviewList[rowIndex].poster = meta.poster ? meta.poster.replace('w500', 'w92') : '';
+          renderReviewTable();
+        }
+      }
     }
 
     async function executeFinalBatchFetchAndCommit() {
