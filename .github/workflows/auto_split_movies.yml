@@ -1,0 +1,37 @@
+name: Auto Split Movies to Categories
+
+on:
+  push:
+    paths:
+      - 'chunks/data_c01.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  split-movies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run Split Script
+        run: python split_movies.py
+
+      - name: Commit and Push Updated Category JSONs
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add chunks/data_c01_*.json
+          if git diff --staged --quiet; then
+            echo "No changes."
+          else
+            git commit -m "Auto-split data_c01 into categories [skip ci]"
+            git push
+          fi
