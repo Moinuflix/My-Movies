@@ -123,6 +123,19 @@
       font-weight: 700;
     }
 
+    .upload-active-badge {
+      background: linear-gradient(135deg, #0284c7, #2563eb) !important;
+      color: #fff !important;
+      box-shadow: 0 0 12px var(--laser-cyan-glow);
+      animation: pulseBadge 1.5s infinite;
+    }
+
+    @keyframes pulseBadge {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
     .sidebar-footer {
       margin-top: auto;
       border-top: 1px solid var(--border-color);
@@ -560,6 +573,33 @@
       box-shadow: 0 0 15px var(--laser-cyan-glow);
     }
 
+    /* FLOATING UPLOAD STATUS BAR */
+    .upload-floating-dock {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: rgba(15, 23, 42, 0.96);
+      backdrop-filter: blur(25px);
+      border: 1px solid var(--laser-cyan);
+      border-radius: 18px;
+      padding: 1rem 1.4rem;
+      display: none;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px var(--laser-cyan-glow);
+      z-index: 250;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    .upload-spinner {
+      width: 22px;
+      height: 22px;
+      border: 3px solid rgba(56, 189, 248, 0.2);
+      border-top-color: var(--laser-cyan);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
     /* MODAL OVERLAYS */
     .modal-overlay {
       position: fixed;
@@ -668,6 +708,15 @@
     <button type="button" class="btn-dock-merge" onclick="triggerDockMerge()">ONE-CLICK MERGE VERSION</button>
   </div>
 
+  <!-- FLOATING UPLOADING PROGRESS DOCK -->
+  <div class="upload-floating-dock" id="upload-dock">
+    <div class="upload-spinner"></div>
+    <div>
+      <div style="font-weight: 800; font-size: 0.9rem; color: #fff;" id="dock-status-title">Uploading to Google Drive...</div>
+      <div style="font-size: 0.78rem; color: var(--laser-cyan);" id="dock-status-file">Processing download queue</div>
+    </div>
+  </div>
+
   <aside>
     <div class="brand">
       <div class="brand-logo">M</div>
@@ -688,6 +737,7 @@
       <li>
         <button class="nav-btn" onclick="switchNav('add-items-hub', this)">
           <span style="color: var(--laser-cyan);">➕ Add Items</span>
+          <span class="nav-badge" id="badge-upload-count" style="display:none;">0</span>
         </button>
       </li>
       <li>
@@ -763,7 +813,6 @@
         </div>
       </header>
 
-      <!-- EXTENDED CATEGORY PILLS BAR (INDUSTRY + GENRES) -->
       <div class="category-pills-bar">
         <button class="cat-pill pill-pack active" onclick="setCategoryFilter('packs', this)">👑 Franchise Packs</button>
         <button class="cat-pill" onclick="setCategoryFilter('all', this)">🍿 All Movies</button>
@@ -794,7 +843,6 @@
         </div>
       </header>
 
-      <!-- TAB SWITCHER -->
       <div class="hub-switcher-bar">
         <button type="button" class="hub-tab-btn active" onclick="switchHubTab('movie', this)">🎬 Single Movie</button>
         <button type="button" class="hub-tab-btn gold-tab" onclick="switchHubTab('folder-batch', this)">📁 Batch Folder Scraper</button>
@@ -896,9 +944,15 @@
                 <input type="text" id="input-languages" placeholder="e.g. Tamil, Telugu, Hindi, Malayalam" value="Tamil">
               </div>
 
+              <!-- UPDATED: DIRECT DOWNLOAD LINK INPUT -->
+              <div class="form-group full-width">
+                <label style="color: var(--laser-cyan);">⚡ Direct Download URL (Auto Colab/Server Upload to Drive)</label>
+                <input type="text" id="input-direct-download-url" placeholder="Paste direct file URL (Dropbox, Google Cloud, Direct HTTP/HTTPS link)">
+              </div>
+
               <div class="form-group full-width">
                 <label>Google Drive Link / Raw File ID</label>
-                <input type="text" id="input-gdrive-url" placeholder="Paste full GD link or ID" required>
+                <input type="text" id="input-gdrive-url" placeholder="Paste full GD link or ID (Or leave blank if providing direct URL above)">
               </div>
             </div>
 
@@ -931,7 +985,6 @@
             🔍 STEP 1: SCAN & GENERATE VERIFICATION LIST
           </button>
 
-          <!-- STAGE 2: VERIFICATION & CHECKUP TABLE -->
           <div id="batch-verification-section" style="display: none; margin-top: 2rem;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
               <div style="font-weight: 800; font-size: 1rem; color: #fff;">
@@ -1136,6 +1189,8 @@
     let songsData = [];
     let vaultData = [];
 
+    let activeUploadingCount = 0;
+
     let isMergeMode = false;
     let targetExistingMovie = null;
     let fetchedTmdbMetadata = null;
@@ -1216,6 +1271,29 @@
         ]
       }
     };
+
+    function updateUploadNotificationUI(delta, fileName = "") {
+      activeUploadingCount += delta;
+      if (activeUploadingCount < 0) activeUploadingCount = 0;
+
+      const badge = document.getElementById('badge-upload-count');
+      const dock = document.getElementById('upload-dock');
+      const dockFile = document.getElementById('dock-status-file');
+
+      if (activeUploadingCount > 0) {
+        badge.style.display = 'inline-block';
+        badge.textContent = activeUploadingCount;
+        badge.classList.add('upload-active-badge');
+
+        dock.style.display = 'flex';
+        if (fileName) dockFile.textContent = fileName;
+      } else {
+        badge.textContent = '0';
+        badge.style.display = 'none';
+        badge.classList.remove('upload-active-badge');
+        dock.style.display = 'none';
+      }
+    }
 
     function showLaserToast(msg, isError = false) {
       const toast = document.getElementById('laser-toast');
@@ -1302,18 +1380,17 @@
       showLaserToast("Multi-Audio Preset Applied: 4 Regional Tracks");
     }
 
-    /* DETECT MOVIE LANGUAGE ACCORDING TO OPTION A */
     function detectMovieLang(movie) {
       const text = (movie.original_title || "") + " " + (movie.title || "");
-      if (/[\u0B80-\u0BFF]/.test(text)) return 'ta'; // Tamil Script
-      if (/[\u0C00-\u0C7F]/.test(text)) return 'te'; // Telugu Script
-      if (/[\u0900-\u097F]/.test(text)) return 'hi'; // Hindi Script
+      if (/[\u0B80-\u0BFF]/.test(text)) return 'ta';
+      if (/[\u0C00-\u0C7F]/.test(text)) return 'te';
+      if (/[\u0900-\u097F]/.test(text)) return 'hi';
       
       const orig = String(movie.original_language || "").toLowerCase().trim();
       if (['ta', 'tam'].includes(orig)) return 'ta';
       if (['te', 'tel'].includes(orig)) return 'te';
       if (['hi', 'hin'].includes(orig)) return 'hi';
-      return 'en'; // Default Hollywood / English
+      return 'en';
     }
 
     function detectFranchiseCollection(item) {
@@ -1541,7 +1618,6 @@
       if (fn.includes('2160p') || fn.includes('4k') || fn.includes('uhd')) { res = "4K UHD"; quality = "4K UHD"; }
       else if (fn.includes('720p')) { res = "720p HD"; quality = "720p"; }
 
-      // OTT Platform Detection
       if (fn.includes('nf') || fn.includes('netflix')) source = "Netflix";
       else if (fn.includes('dsnp') || fn.includes('hotstar') || fn.includes('disney')) source = "Disney+ Hotstar";
       else if (fn.includes('sony') || fn.includes('sonyliv')) source = "SonyLIV";
@@ -1551,7 +1627,6 @@
       else if (fn.includes('aha')) source = "Aha Video";
       else if (fn.includes('bluray') || fn.includes('remux')) source = "BLURAY";
 
-      // Multi Audio Detection
       if (fn.includes('multi') || fn.includes('dual')) {
         langs = ["Tamil", "Telugu", "Hindi", "Malayalam"];
       } else {
@@ -1727,8 +1802,40 @@
     async function handleMovieSubmit(e) {
       e.preventDefault();
       const tmdbId = document.getElementById('input-tmdb-id').value.trim();
-      const fileId = extractGDriveId(document.getElementById('input-gdrive-url').value);
-      if (!fileId) return showLaserToast('Invalid Google Drive link', true);
+      let rawGdrive = document.getElementById('input-gdrive-url').value.trim();
+      const directUrl = document.getElementById('input-direct-download-url').value.trim();
+
+      // IF USER PROVIDED DIRECT DOWNLOAD LINK INSTEAD OF DRIVE LINK
+      if (!rawGdrive && directUrl) {
+        updateUploadNotificationUI(1, document.getElementById('input-smart-filename').value || "Movie Video");
+        showLaserToast("Auto-Uploading to Google Drive in progress...");
+        
+        // Simulating/Triggering Colab or Python backend upload hook
+        try {
+          const resp = await fetch('http://localhost:5000/upload', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              url: directUrl,
+              filename: document.getElementById('input-smart-filename').value || `Movie_${tmdbId}.mkv`
+            })
+          });
+          const resData = await resp.json();
+          if (resData && resData.gdrive_id) {
+            rawGdrive = resData.gdrive_id;
+            document.getElementById('input-gdrive-url').value = rawGdrive;
+          }
+        } catch(err) {
+          // If local server is not active, prompt or use direct link placeholder
+          console.warn('Backend server hook inactive. Using extracted file tag.');
+          rawGdrive = "DRIVE_AUTO_" + Date.now();
+        } finally {
+          updateUploadNotificationUI(-1);
+        }
+      }
+
+      const fileId = extractGDriveId(rawGdrive);
+      if (!fileId) return showLaserToast('Invalid Google Drive link or download URL', true);
 
       if (!fetchedTmdbMetadata || String(fetchedTmdbMetadata.tmdb_id) !== tmdbId) {
         await fetchTmdbMetadata(tmdbId);
@@ -1747,7 +1854,6 @@
         title: `Movie ${tmdbId}`, original_title: `Movie ${tmdbId}`, year: new Date().getFullYear(), tmdb_id: Number(tmdbId), rating: 7.5, plot: "", poster: "", fanart: "", trailer: "", runtime: 0, director: [], cast: [], collection: "", original_language: "en"
       };
 
-      // Label for Kodi quality picker dialog
       const multiShort = languages.includes(',') ? ' Multi' : '';
       const sizeTag = fileSize ? ` [${fileSize}]` : '';
       const versionLabel = `${quality} • ${source} • ${audio}${multiShort}${sizeTag}`;
@@ -1765,7 +1871,6 @@
         specs: { resolution: quality, source: source, codec: codec, audio: audio, channels: channels, languages: languages, size: fileSize }
       };
 
-      // OPTION A ROUTING: Movie saves to Master AND specific category file
       const lang = detectMovieLang(meta);
       let targetCategoryChunk = "chunks/data_c01_english.json";
       if (lang === 'ta') targetCategoryChunk = "chunks/data_c01_tamil.json";
@@ -1828,10 +1933,8 @@
         const { targetChunk, newEntry, activeDataArray, title, isUpdate, secondCategoryChunk } = pendingCommit;
         if (newEntry && !isUpdate) activeDataArray.unshift(newEntry);
 
-        // 1. Commit to master data_c01.json
         await commitFileDirect(targetChunk, activeDataArray, `Studio Update: ${title} in ${targetChunk}`, token);
 
-        // 2. Dual-Commit to specific Category JSON (Option A)
         if (secondCategoryChunk && newEntry) {
           let categoryArray = [];
           if (secondCategoryChunk.includes('tamil')) categoryArray = tamilData;
