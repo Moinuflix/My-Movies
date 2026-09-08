@@ -1,5 +1,83 @@
 [
   {
+    "id": "1Rt8ogBLIKY3Tbw5wrGXxT3WZ-m6m5I-8",
+    "name": "Ananthan Kaadu (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
+    "title": "Ananthan Kaadu",
+    "original_title": "അനന്തൻ കാട്",
+    "original_language": "en",
+    "year": 2026,
+    "runtime": 157,
+    "tmdb_id": 1326891,
+    "rating": 4,
+    "collection": "",
+    "director": [
+      "Jiyen Krishnakumar"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Arya",
+        "role": "Vetrivel Kumaran",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/tX9cHKPa52Iz8M3dvUFW9uqbqUK.jpg"
+      },
+      {
+        "name": "Nikhila Vimal",
+        "role": "Deepa",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/9Y5DAApG8LozGUKw00fnFwtZYtE.jpg"
+      },
+      {
+        "name": "Regena Cassandrra",
+        "role": "Priyamvadha",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/ypUo0oOCjY2FMhjrNBeCR9esmpS.jpg"
+      },
+      {
+        "name": "Vijayaraghavan",
+        "role": "K. K. Menon",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/3AE7r02YPbSrEUIfP7gUN7lLNfI.jpg"
+      },
+      {
+        "name": "Achyuth Kumar",
+        "role": "Mudaliyar",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/zO1MoCgaz0RxILjga8VYXguROMp.jpg"
+      }
+    ],
+    "plot": "Set against the socio-political landscape of the 1980s and 1990s, this gripping drama weaves together themes of ambition, survival, violence, and retribution. As choices made in desperation set powerful forces in motion, the story unfolds into a compelling journey where karma relentlessly pursues those trying to outrun their past.",
+    "poster": "https://image.tmdb.org/t/p/w500/a8Ut1fkbqvolWfEIl8Voa1oUsDG.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/AvMub4XZABMznZBn7W5fot7ghDS.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Rt8ogBLIKY3Tbw5wrGXxT3WZ-m6m5I-8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "H.264",
+      "audio": "Dolby Atmos",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": "10GB"
+    },
+    "versions": [
+      {
+        "id": "1Rt8ogBLIKY3Tbw5wrGXxT3WZ-m6m5I-8",
+        "name": "Ananthan Kaadu (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
+        "quality": "1080p • WEB-DL • Dolby Atmos [10GB]",
+        "source": "WEB-DL",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Rt8ogBLIKY3Tbw5wrGXxT3WZ-m6m5I-8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "10GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "15H8bz0_dN0lru8--wQmXMtG5HzYZi4GP",
     "name": "(MAD)² (2025) [4K UHD] [x265] [Dolby Digital].mkv",
     "title": "(MAD)²",
