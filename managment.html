@@ -140,6 +140,9 @@
       margin-top: auto;
       border-top: 1px solid var(--border-color);
       padding-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
 
     .btn-token-config {
@@ -690,7 +693,7 @@
       aside { width: 100%; height: auto; position: relative; border-right: none; padding: 1rem; }
       .nav-list { flex-direction: row; overflow-x: auto; }
       .nav-btn { white-space: nowrap; }
-      .sidebar-footer { display: none; }
+      .sidebar-footer { flex-direction: row; flex-wrap: wrap; }
       main { margin-left: 0; width: 100%; padding: 1.25rem; }
       .form-grid { grid-template-columns: 1fr; }
       .form-group.full-width { grid-column: span 1; }
@@ -766,6 +769,9 @@
     </ul>
 
     <div class="sidebar-footer">
+      <button class="btn-token-config" onclick="configureBackendUrl()">
+        <span id="backend-status-label">🌐 Colab Backend URL</span>
+      </button>
       <button class="btn-token-config" onclick="configureGithubToken()">
         <span id="token-status-label">⚙️ GitHub Token</span>
       </button>
@@ -951,7 +957,7 @@
 
               <!-- DIRECT DOWNLOAD URL FIELD -->
               <div class="form-group full-width">
-                <label style="color: var(--laser-cyan);">⚡ Direct Download URL (Auto Server/Colab Upload to Drive)</label>
+                <label style="color: var(--laser-cyan);">⚡ Direct Download URL (Auto Colab/Server Upload to Drive)</label>
                 <input type="text" id="input-direct-download-url" placeholder="Paste direct file URL (Dropbox, Google Cloud, Direct HTTP/HTTPS link)">
               </div>
 
@@ -1277,6 +1283,32 @@
       }
     };
 
+    function getBackendUrl() {
+      return localStorage.getItem('moinuflix_backend_url') || 'http://localhost:5000/upload';
+    }
+
+    function configureBackendUrl() {
+      const current = getBackendUrl();
+      const input = prompt('Enter your Colab Ngrok/Backend URL (e.g. https://xxxx.ngrok-free.app/upload):', current);
+      if (input !== null && input.trim()) {
+        localStorage.setItem('moinuflix_backend_url', input.trim());
+        updateBackendBadge();
+        showLaserToast('Colab Backend URL Saved Successfully!');
+      }
+    }
+
+    function updateBackendBadge() {
+      const label = document.getElementById('backend-status-label');
+      const url = getBackendUrl();
+      if (url && !url.includes('localhost')) {
+        label.textContent = '🌐 Colab API: Connected';
+        label.style.color = 'var(--laser-green)';
+      } else {
+        label.textContent = '🌐 Colab Backend URL';
+        label.style.color = 'var(--laser-cyan)';
+      }
+    }
+
     function updateUploadNotificationUI(delta, fileName = "") {
       activeUploadingCount += delta;
       if (activeUploadingCount < 0) activeUploadingCount = 0;
@@ -1305,7 +1337,7 @@
       toast.style.borderColor = isError ? 'var(--laser-red)' : 'var(--laser-cyan)';
       toast.innerHTML = (isError ? '❌ ' : '⚡ ') + escapeHtml(msg);
       toast.style.display = 'block';
-      setTimeout(() => { toast.style.display = 'none'; }, 4000);
+      setTimeout(() => { toast.style.display = 'none'; }, 4500);
     }
 
     function getStoredToken() { return localStorage.getItem('moinuflix_gh_token') || ''; }
@@ -1421,6 +1453,7 @@
 
     async function loadAllChunks() {
       updateTokenBadge();
+      updateBackendBadge();
       const fetchChunk = async (path) => {
         try {
           const res = await fetch(`${path}?t=${Date.now()}`);
@@ -1560,7 +1593,7 @@
       }
     }
 
-    /* FIXED WORKING DELETE FUNCTION */
+    /* DELETE FUNCTION - WITH CONFIRM PIN & DUAL SYNC */
     async function promptDeleteItem(chunkPath, index, itemTitle, dataArray) {
       const pass = prompt(`Delete "${itemTitle}"?\nEnter confirmation PIN:`);
       if (pass !== CONFIRM_PASS) {
@@ -1582,7 +1615,6 @@
       try {
         await commitFileDirect(chunkPath, dataArray, `Studio Delete: Removed ${itemTitle} from ${chunkPath}`, token);
 
-        // Also remove from category chunks if movie
         if (deletedItem && deletedItem.tmdb_id) {
           const lang = detectMovieLang(deletedItem);
           let catChunk = "chunks/data_c01_english.json";
@@ -1598,7 +1630,7 @@
           }
         }
 
-        showLaserToast(`"${itemTitle}" successfully deleted and committed!`);
+        showLaserToast(`"${itemTitle}" successfully deleted!`);
         loadAllChunks();
       } catch (err) {
         showLaserToast(`Delete Failed: ${err.message}`, true);
@@ -1658,7 +1690,6 @@
     }
     function closePackModal() { document.getElementById('pack-modal').classList.remove('active'); }
 
-    /* FILENAME PARSER (SMART OTT, MULTI & SPECS) */
     function parseSpecsFromFileName(filename) {
       const fn = filename.toLowerCase();
       let res = "1080p FHD", quality = "1080p", source = "WEB-DL", codec = "x265", audio = "Dolby Atmos", channels = "5.1", langs = [];
@@ -1847,41 +1878,67 @@
       document.getElementById('btn-cancel-merge').style.display = 'none';
     }
 
+    /* HANDLE MOVIE SUBMIT - PROPER AWAIT & ERROR HANDLING */
     async function handleMovieSubmit(e) {
       e.preventDefault();
       const tmdbId = document.getElementById('input-tmdb-id').value.trim();
       let rawGdrive = document.getElementById('input-gdrive-url').value.trim();
       const directUrl = document.getElementById('input-direct-download-url').value.trim();
 
+      const submitBtn = document.getElementById('btn-movie-submit');
+
+      // 1. Agar user ne Direct Download link diya hai
       if (!rawGdrive && directUrl) {
-        updateUploadNotificationUI(1, document.getElementById('input-smart-filename').value || "Movie Video");
-        showLaserToast("Auto-Uploading in progress...");
+        const movieFileName = document.getElementById('input-smart-filename').value.trim() || `Movie_${tmdbId}.mkv`;
+        
+        updateUploadNotificationUI(1, movieFileName);
+        showLaserToast("Downloading to Google Drive in progress... Please wait!");
+        submitBtn.disabled = true;
+        submitBtn.textContent = '⏳ DOWNLOADING TO GDRIVE...';
 
         try {
-          const resp = await fetch('http://localhost:5000/upload', {
+          const backendEndpoint = getBackendUrl();
+          const resp = await fetch(backendEndpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               url: directUrl,
-              filename: document.getElementById('input-smart-filename').value || `Movie_${tmdbId}.mkv`
+              filename: movieFileName
             })
           });
+
+          if (!resp.ok) {
+            throw new Error(`Server returned error: ${resp.status}`);
+          }
+
           const resData = await resp.json();
           if (resData && resData.gdrive_id) {
             rawGdrive = resData.gdrive_id;
             document.getElementById('input-gdrive-url').value = rawGdrive;
+            showLaserToast("✅ Google Drive Upload Complete!");
+          } else {
+            throw new Error("Server completed download but no Google Drive ID was returned.");
           }
         } catch(err) {
-          console.warn('Backend server hook inactive. Using direct URL tag.');
-          rawGdrive = "DRIVE_AUTO_" + Date.now();
+          showLaserToast(`Upload Failed: ${err.message}`, true);
+          updateUploadNotificationUI(-1);
+          submitBtn.disabled = false;
+          submitBtn.textContent = isMergeMode ? 'ONE-CLICK MERGE' : 'ADD MOVIE';
+          return; // Process ruk jayega taaki fake commit na ho
         } finally {
           updateUploadNotificationUI(-1);
+          submitBtn.disabled = false;
+          submitBtn.textContent = isMergeMode ? 'ONE-CLICK MERGE' : 'ADD MOVIE';
         }
       }
 
+      // 2. Drive ID check karein (Fake IDs allow nahi hongi)
       const fileId = extractGDriveId(rawGdrive);
-      if (!fileId) return showLaserToast('Invalid Google Drive link or download URL', true);
+      if (!fileId || fileId.startsWith('DRIVE_AUTO_')) {
+        return showLaserToast('Valid Google Drive link/ID required!', true);
+      }
 
+      // 3. TMDB Metadata fetch karein
       if (!fetchedTmdbMetadata || String(fetchedTmdbMetadata.tmdb_id) !== tmdbId) {
         await fetchTmdbMetadata(tmdbId);
       }
