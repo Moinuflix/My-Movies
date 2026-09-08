@@ -1,5 +1,83 @@
 [
   {
+    "id": "DRIVE_AUTO_1788835654514",
+    "name": "Korean Kanakaraju (2026) [1080p] [Netflix] [Dolby Atmos].mkv",
+    "title": "Korean Kanakaraju",
+    "original_title": "కొరియన్ కనకరాజు",
+    "original_language": "te",
+    "year": 2026,
+    "runtime": 165,
+    "tmdb_id": 1423253,
+    "rating": 7,
+    "collection": "",
+    "director": [
+      "Merlapaka Gandhi"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=kq0X2owCVKw",
+    "cast": [
+      {
+        "name": "Varun Tej",
+        "role": "Kanakaraju",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/2N9LTqRxLpeCCyNTYUpnVBhZiZU.jpg"
+      },
+      {
+        "name": "Ritika Nayak",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/6KyRbryxk9Od1goIDGlK3GodKlp.jpg"
+      },
+      {
+        "name": "Sunil Varma",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/2ueRNLlbB8jaivO6yb7zfIlFhh7.jpg"
+      },
+      {
+        "name": "Satya",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/fWHqfjiqnORU6R2fqwiJnowujdP.jpg"
+      },
+      {
+        "name": "VTV Ganesh",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/5JomvpPx6PrExYcZAbHM1MoHjoZ.jpg"
+      }
+    ],
+    "plot": "Follows a Rayalaseema youth named Kanakaraju whose life upends when a vessel from Korea brings a spirit that possesses him, transforming him into Korean Kanakaraju.",
+    "poster": "https://image.tmdb.org/t/p/w500/vUEb8v8W5ANRXhydogbmjXfRfni.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/qMcVNK71eq1oWWbAt62ZLEkEQnO.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=DRIVE_AUTO_1788835654514|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "Netflix",
+      "codec": "H.264",
+      "audio": "Dolby Atmos",
+      "channels": "5.1",
+      "languages": "Tamil, Telugu, Hindi, Malayalam, Kannada",
+      "size": "9GB"
+    },
+    "versions": [
+      {
+        "id": "DRIVE_AUTO_1788835654514",
+        "name": "Korean Kanakaraju (2026) [1080p] [Netflix] [Dolby Atmos].mkv",
+        "quality": "1080p • Netflix • Dolby Atmos Multi [9GB]",
+        "source": "Netflix",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=DRIVE_AUTO_1788835654514|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Netflix",
+          "codec": "H.264",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Hindi, Malayalam, Kannada",
+          "size": "9GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "1qo24dMaHgNy7IzUSXu6TWKE_9SY8yW5i",
     "name": "Bhartha Mahasayulaku Wignyapthi (2026) [4K UHD] [Aha Video] [Dolby Atmos].mkv",
     "title": "Bhartha Mahasayulaku Wignyapthi",
