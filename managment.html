@@ -377,6 +377,11 @@
       font-size: 0.8rem;
       font-weight: 700;
       cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-delete-item:hover {
+      background: var(--laser-red);
+      color: #fff;
     }
 
     /* FORMS & INPUTS */
@@ -944,9 +949,9 @@
                 <input type="text" id="input-languages" placeholder="e.g. Tamil, Telugu, Hindi, Malayalam" value="Tamil">
               </div>
 
-              <!-- UPDATED: DIRECT DOWNLOAD LINK INPUT -->
+              <!-- DIRECT DOWNLOAD URL FIELD -->
               <div class="form-group full-width">
-                <label style="color: var(--laser-cyan);">⚡ Direct Download URL (Auto Colab/Server Upload to Drive)</label>
+                <label style="color: var(--laser-cyan);">⚡ Direct Download URL (Auto Server/Colab Upload to Drive)</label>
                 <input type="text" id="input-direct-download-url" placeholder="Paste direct file URL (Dropbox, Google Cloud, Direct HTTP/HTTPS link)">
               </div>
 
@@ -1447,9 +1452,6 @@
       document.getElementById('badge-c04').textContent = vaultData.length;
 
       filterAndRenderMovies();
-      renderSeriesGrid(seriesData);
-      renderSongsGrid(songsData);
-      renderVaultGrid(vaultData);
     }
 
     function setCategoryFilter(cat, btn) {
@@ -1555,6 +1557,52 @@
           `;
           container.appendChild(card);
         });
+      }
+    }
+
+    /* FIXED WORKING DELETE FUNCTION */
+    async function promptDeleteItem(chunkPath, index, itemTitle, dataArray) {
+      const pass = prompt(`Delete "${itemTitle}"?\nEnter confirmation PIN:`);
+      if (pass !== CONFIRM_PASS) {
+        if (pass !== null) showLaserToast('Incorrect PIN! Deletion aborted.', true);
+        return;
+      }
+
+      const token = getStoredToken();
+      if (!token) {
+        showLaserToast('GitHub Token missing! Click ⚙️ GitHub Token in sidebar.', true);
+        return;
+      }
+
+      showLaserToast(`Deleting "${itemTitle}"...`);
+
+      const deletedItem = dataArray[index];
+      dataArray.splice(index, 1);
+
+      try {
+        await commitFileDirect(chunkPath, dataArray, `Studio Delete: Removed ${itemTitle} from ${chunkPath}`, token);
+
+        // Also remove from category chunks if movie
+        if (deletedItem && deletedItem.tmdb_id) {
+          const lang = detectMovieLang(deletedItem);
+          let catChunk = "chunks/data_c01_english.json";
+          let catArray = englishData;
+          if (lang === 'ta') { catChunk = "chunks/data_c01_tamil.json"; catArray = tamilData; }
+          else if (lang === 'te') { catChunk = "chunks/data_c01_telugu.json"; catArray = teluguData; }
+          else if (lang === 'hi') { catChunk = "chunks/data_c01_hindi.json"; catArray = hindiData; }
+
+          const catIdx = catArray.findIndex(m => String(m.tmdb_id) === String(deletedItem.tmdb_id));
+          if (catIdx >= 0) {
+            catArray.splice(catIdx, 1);
+            await commitFileDirect(catChunk, catArray, `Studio Delete Sync: Removed ${itemTitle}`, token);
+          }
+        }
+
+        showLaserToast(`"${itemTitle}" successfully deleted and committed!`);
+        loadAllChunks();
+      } catch (err) {
+        showLaserToast(`Delete Failed: ${err.message}`, true);
+        loadAllChunks();
       }
     }
 
@@ -1805,12 +1853,10 @@
       let rawGdrive = document.getElementById('input-gdrive-url').value.trim();
       const directUrl = document.getElementById('input-direct-download-url').value.trim();
 
-      // IF USER PROVIDED DIRECT DOWNLOAD LINK INSTEAD OF DRIVE LINK
       if (!rawGdrive && directUrl) {
         updateUploadNotificationUI(1, document.getElementById('input-smart-filename').value || "Movie Video");
-        showLaserToast("Auto-Uploading to Google Drive in progress...");
-        
-        // Simulating/Triggering Colab or Python backend upload hook
+        showLaserToast("Auto-Uploading in progress...");
+
         try {
           const resp = await fetch('http://localhost:5000/upload', {
             method: 'POST',
@@ -1826,8 +1872,7 @@
             document.getElementById('input-gdrive-url').value = rawGdrive;
           }
         } catch(err) {
-          // If local server is not active, prompt or use direct link placeholder
-          console.warn('Backend server hook inactive. Using extracted file tag.');
+          console.warn('Backend server hook inactive. Using direct URL tag.');
           rawGdrive = "DRIVE_AUTO_" + Date.now();
         } finally {
           updateUploadNotificationUI(-1);
