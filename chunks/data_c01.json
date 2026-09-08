@@ -1,5 +1,83 @@
 [
   {
+    "id": "1ONOGVJjg1ifLgRYx1M3dfDSVJh2eLM_X",
+    "name": "Demonte Colony 2 (2024) [1080p] [Prime Video] [Dolby Atmos].mkv",
+    "title": "Demonte Colony 2",
+    "original_title": "டிமான்டி காலனி 2",
+    "original_language": "ta",
+    "year": 2024,
+    "runtime": 145,
+    "tmdb_id": 979250,
+    "rating": 6.8,
+    "collection": "Demonte Colony Collection",
+    "director": [
+      "R. Ajay Gnanamuthu"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Arulnithi",
+        "role": "Srinivasan / Raghunandan",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/qPPpqRFXnyfnd7JytR7NOLNyGCQ.jpg"
+      },
+      {
+        "name": "Priya Bhavani Shankar",
+        "role": "Debbie",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/sX5Ue02f5kzOzVCa0R3dV2yPRmO.jpg"
+      },
+      {
+        "name": "Tsering Dorjee Bawa",
+        "role": "Dorjee",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/46NQQaNxRlK3ecYRUWUx5tpkYxO.jpg"
+      },
+      {
+        "name": "Antti Jääskeläinen",
+        "role": "John Demonte",
+        "thumbnail": ""
+      },
+      {
+        "name": "C. Arun Pandian",
+        "role": "Richard",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/rKIQWsynKIxHJRBZqEERNcZTNGF.jpg"
+      }
+    ],
+    "plot": "Debbie attempts to contact the spirit of her deceased husband Sam, she inadvertently contacts Srinivasan, who had just died. This contact saves his life but leaves him in a coma for years. Later, Debbie unravels mystery about Lord Demonte sacrificing people and enslaves their spirits. Can Debbie break this cycle and help Srinivasan to wake up from his coma?",
+    "poster": "https://image.tmdb.org/t/p/w500/lZmH9hea8fstTK49fplSQS0NWUd.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/t6Pnd8lzSeelNOOXraRfg5HizZD.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ONOGVJjg1ifLgRYx1M3dfDSVJh2eLM_X|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "Prime Video",
+      "codec": "x265",
+      "audio": "Dolby Atmos",
+      "channels": "5.1",
+      "languages": "Tamil, Hindi",
+      "size": "9GB"
+    },
+    "versions": [
+      {
+        "id": "1ONOGVJjg1ifLgRYx1M3dfDSVJh2eLM_X",
+        "name": "Demonte Colony 2 (2024) [1080p] [Prime Video] [Dolby Atmos].mkv",
+        "quality": "1080p • Prime Video • Dolby Atmos Multi [9GB]",
+        "source": "Prime Video",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ONOGVJjg1ifLgRYx1M3dfDSVJh2eLM_X|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Prime Video",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil, Hindi",
+          "size": "9GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "1LdTBQwpg5Ly5ZzhO6gR0uL17lwPddnFG",
     "name": "House Mates (2025) [1080p] [H.264] [Dolby Digital].mkv",
     "title": "House Mates",
