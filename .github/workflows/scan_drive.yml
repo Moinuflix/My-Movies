@@ -1,45 +1,4 @@
-name: Scan Google Drive Arrivals
-
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 */6 * * *'
-
-permissions:
-  contents: write
-
-jobs:
-  scan:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup Rclone & Python
-        run: |
-          sudo -v ; curl https://rclone.org/install.sh | sudo bash
-          sudo apt-get install -y python3
-
-      - name: Configure Rclone
-        env:
-          GDRIVE_TOKEN: ${{ secrets.RCLONE_GDRIVE_TOKEN }}
-        run: |
-          mkdir -p ~/.config/rclone
-          cat << 'EOF' > make_conf.py
-          import os
-
-          token = os.environ.get("GDRIVE_TOKEN", "").strip()
-          conf = f"[gdrive]\ntype = drive\nscope = drive\ntoken = {token}\n"
-
-          with open(os.path.expanduser("~/.config/rclone/rclone.conf"), "w", encoding="utf-8") as f:
-              f.write(conf)
-          EOF
-          python3 make_conf.py
-
-      - name: Auto Audit & Generate Inbox
+- name: Auto Audit & Generate Inbox
         run: |
           cat << 'EOF' > scan_arrivals.py
           import subprocess
@@ -61,7 +20,7 @@ jobs:
                   print(f"JSON Parse Error: {e}")
                   drive_files = []
 
-          print(f"Total raw files found in Google Drive: {len(drive_files)}")
+          print(f"Total files in Google Drive: {len(drive_files)}")
 
           def load_json(filepath):
               if os.path.exists(filepath):
@@ -78,53 +37,47 @@ jobs:
           hindi_list = load_json("chunks/data_c01_hindi.json")
           english_list = load_json("chunks/data_c01_english.json")
 
-          def clean_title_text(text):
-              if not text: return ""
-              # Brackets aur extra specs remove karein
-              t = re.sub(r'\[.*?\]|\(.*?\)|\.mkv|\.mp4', ' ', str(text).lower())
-              t = re.sub(r'[\._\-\+]', ' ', t)
-              words = [w for w in t.split() if w not in ['1080p', '2160p', '4k', 'hevc', 'x264', 'x265', 'web', 'dl', 'bluray', 'dts', 'atmos', 'ddp5', 'aac']]
-              return "".join(words)
+          # Normalize String for fuzzy title match
+          def clean_str(s):
+              if not s: return ""
+              s = re.sub(r'\[.*?\]|\(.*?\)|\.mkv|\.mp4', ' ', str(s).lower())
+              s = re.sub(r'[^a-zA-Z0-9]', '', s)
+              return s
 
-          # Extract IDs & Clean Names
-          def index_database(data_list):
-              id_set = set()
-              name_set = set()
+          master_ids = set()
+          master_titles = set()
 
-              for x in data_list:
-                  if not isinstance(x, dict): continue
+          # Sabhi databases ka complete index banayein
+          all_existing = master_list + tamil_list + telugu_list + hindi_list + english_list
 
-                  # 1. Main ID
-                  if x.get("id"): id_set.add(str(x.get("id")).strip())
-                  if x.get("gdrive_id"): id_set.add(str(x.get("gdrive_id")).strip())
+          for x in all_existing:
+              if not isinstance(x, dict): continue
 
-                  # 2. Stream URL ID
-                  url = x.get("stream_url", "")
-                  m = re.search(r'[?&]id=([a-zA-Z0-9_-]+)', url)
-                  if m: id_set.add(m.group(1))
+              # 1. Main ID
+              if x.get("id"): master_ids.add(str(x.get("id")).strip())
+              if x.get("gdrive_id"): master_ids.add(str(x.get("gdrive_id")).strip())
 
-                  # 3. Versions IDs
-                  for v in x.get("versions", []):
-                      if isinstance(v, dict):
-                          if v.get("id"): id_set.add(str(v.get("id")).strip())
-                          vm = re.search(r'[?&]id=([a-zA-Z0-9_-]+)', v.get("stream_url", ""))
-                          if vm: id_set.add(vm.group(1))
+              # 2. Stream URL se ID
+              url = x.get("stream_url", "")
+              m = re.search(r'[?&]id=([a-zA-Z0-9_-]+)', url)
+              if m: master_ids.add(m.group(1))
 
-                  # 4. Normalized Names
-                  for key in ["title", "name", "original_title"]:
-                      val = x.get(key)
-                      if val:
-                          cleaned = clean_title_text(val)
-                          if len(cleaned) > 2:
-                              name_set.add(cleaned)
+              # 3. Versions ke andar se ID
+              for v in x.get("versions", []):
+                  if isinstance(v, dict):
+                      if v.get("id"): master_ids.add(str(v.get("id")).strip())
+                      vm = re.search(r'[?&]id=([a-zA-Z0-9_-]+)', v.get("stream_url", ""))
+                      if vm: master_ids.add(vm.group(1))
 
-              return id_set, name_set
+              # 4. Clean Titles (e.g. "Kaappaan", "Demonte Colony 2")
+              for key in ["title", "original_title", "name"]:
+                  if x.get(key):
+                      c = clean_str(x.get(key))
+                      if len(c) >= 3:
+                          master_titles.add(c[:12]) # Core name match
 
-          master_ids, master_names = index_database(master_list)
-          cat_ids, cat_names = index_database(tamil_list + telugu_list + hindi_list + english_list)
-
-          print(f"Total Unique IDs in Master: {len(master_ids)}")
-          print(f"Total Unique Titles in Master: {len(master_names)}")
+          print(f"Total Known Movie IDs: {len(master_ids)}")
+          print(f"Total Known Movie Titles: {len(master_titles)}")
 
           inbox = []
 
@@ -136,23 +89,25 @@ jobs:
               if not fname.lower().endswith(('.mkv', '.mp4', '.avi', '.ts')):
                   continue
 
-              # Clean integer rounded GB
-              gb_val = round(fbytes / (1024 ** 3))
-              clean_size = f"{gb_val} GB"
+              clean_drive_name = clean_str(os.path.basename(fname))
 
-              # Matching Check: ID match ya Name match
-              clean_drive_name = clean_title_text(os.path.basename(fname))
-
-              in_master = (fid in master_ids) or (clean_drive_name in master_names and len(clean_drive_name) > 3)
-              in_category = (fid in cat_ids) or (clean_drive_name in cat_names and len(clean_drive_name) > 3)
-
-              # Agar dono me mojood hai toh skip!
-              if in_master and in_category:
+              # RULE: Agar Drive ID pehle se kisi bhi JSON me hai -> SKIP!
+              if fid in master_ids:
                   continue
 
-              status = "completely_missing"
-              if in_master and not in_category:
-                  status = "missing_in_category"
+              # RULE: Agar Movie Title pehle se kisi bhi JSON me hai -> SKIP!
+              is_title_match = False
+              for t in master_titles:
+                  if t in clean_drive_name:
+                      is_title_match = True
+                      break
+
+              if is_title_match:
+                  continue
+
+              # Sirf wahi aayega jo waqai NAYA hai
+              gb_val = round(fbytes / (1024 ** 3))
+              clean_size = f"{gb_val} GB"
 
               lower = fname.lower()
               target_cat = "kollywood"
@@ -173,22 +128,17 @@ jobs:
                   "title": display_title,
                   "gdrive_id": fid,
                   "size": clean_size,
-                  "status": status,
+                  "status": "completely_missing",
                   "target_category": target_cat,
                   "target_chunk": target_file,
                   "stream_url": f"https://gdrive-stream.moinudeentv.workers.dev/?id={fid}|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
               })
 
-          print(f"Genuine missing movies for inbox: {len(inbox)}")
+          print(f"--- FINAL CLEAN RESULT ---")
+          print(f"Actually Brand New Missing Movies: {len(inbox)}")
+
           with open("inbox_arrivals.json", "w", encoding="utf-8") as f:
               json.dump(inbox, f, indent=2, ensure_ascii=False)
           EOF
 
           python3 scan_arrivals.py
-
-      - name: Commit & Push Changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add inbox_arrivals.json
-          git diff --staged --quiet || (git commit -m "Auto-Audit: Updated Inbox Arrivals" && git push origin main)
