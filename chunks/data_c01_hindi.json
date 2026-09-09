@@ -1,5 +1,90 @@
 [
   {
+    "id": "1570D1bMAEf4pO26874cxKS0pgRDTW53l",
+    "name": "Jawan Extended Cut (2023) 2160p NF WEB-DL HEVC x265 [Tamil (DD+ 5 1 - 640kbps)] ESub [2160p] [15 GB].mkv",
+    "title": "Jawan",
+    "original_title": "जवान",
+    "original_language": "hi",
+    "year": 2023,
+    "runtime": 169,
+    "tmdb_id": 872906,
+    "rating": 7,
+    "director": [
+      "Atlee"
+    ],
+    "cast": [
+      {
+        "name": "Shah Rukh Khan",
+        "role": "Vikram Rathore / Azad",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/tCEppfUu0g2Luu0rS5VKMoL4eSw.jpg"
+      },
+      {
+        "name": "Nayanthara",
+        "role": "Narmada",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/sYUzvjsSsqeOgBblSzda6ZwwbEa.jpg"
+      },
+      {
+        "name": "Vijay Sethupathi",
+        "role": "Kalee Gaikwad",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/a3HWdfCAbplrvoMNEJCjnkbqqOo.jpg"
+      },
+      {
+        "name": "Deepika Padukone",
+        "role": "Aishwarya Rathore",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/rzvvBQ0r6oiqDdzcsdTRB7jN4Rx.jpg"
+      },
+      {
+        "name": "Sanjay Dutt",
+        "role": "Madhavan Naik",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/oq4pnvWhl1HxKpp0KVlSfAr3Tiu.jpg"
+      }
+    ],
+    "plot": "An emotional journey of a prison warden, driven by a personal vendetta while keeping up to a promise made years ago, recruits inmates to commit outrageous crimes that shed light on corruption and injustice, in an attempt to get even with his past,  and that leads him to an unexpected reunion.",
+    "poster": "https://image.tmdb.org/t/p/w500/jFt1gS4BGHlK8xt76Y81Alp4dbt.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/5LtSjMNw6j3LkG29Oa4O0iY5U8.jpg",
+    "trailer": "https://www.youtube.com/watch?v=MWOlnZSnXJo",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1570D1bMAEf4pO26874cxKS0pgRDTW53l|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "badges": {
+      "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/4k.png",
+      "hdr": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/hdr/hdr.png",
+      "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web.png",
+      "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+      "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+    },
+    "specs": {
+      "resolution": "4K UHD",
+      "source": "WEB-DL",
+      "codec": "HEVC",
+      "audio": "Dolby Digital",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": "15 GB"
+    },
+    "versions": [
+      {
+        "id": "1570D1bMAEf4pO26874cxKS0pgRDTW53l",
+        "name": "Jawan Extended Cut (2023) 2160p NF WEB-DL HEVC x265 [Tamil (DD+ 5 1 - 640kbps)] ESub [2160p] [15 GB].mkv",
+        "quality": "4K UHD",
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "resolution": "4K UHD",
+        "audio": "Dolby Digital",
+        "channels": "5.1",
+        "size": "15 GB",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1570D1bMAEf4pO26874cxKS0pgRDTW53l|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "4K UHD",
+          "source": "WEB-DL",
+          "codec": "HEVC",
+          "audio": "Dolby Digital",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "15 GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "1f0whg9PBSASoloaWYW5GAq6lHRziv4Dx",
     "name": "Raanjhanaa (2013) [1080p] [H.264] [Dolby Digital].mkv",
     "title": "Raanjhanaa",
