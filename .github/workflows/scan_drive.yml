@@ -1,21 +1,30 @@
-name: Scan Google Drive & Update Inbox
+name: Scan Google Drive Arrivals
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
+
+# Push permission fix (Exit code 128 solution)
+permissions:
+  contents: write
 
 jobs:
   scan:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Install Rclone
+      - name: Setup Rclone & Python
         run: |
           sudo -v ; curl https://rclone.org/install.sh | sudo bash
+          sudo apt-get install -y python3
 
-      - name: Setup Rclone Config
+      - name: Configure Rclone
         env:
           GDRIVE_TOKEN: ${{ secrets.RCLONE_GDRIVE_TOKEN }}
         run: |
@@ -27,19 +36,19 @@ jobs:
           token = $GDRIVE_TOKEN
           EOF
 
-      - name: Scan Drive & Round to Clean GB
+      - name: Run Scan & Clean GB Rounder
         run: |
-          python3 - << 'EOF'
+          cat << 'EOF' > scan_arrivals.py
           import subprocess
           import json
           import os
 
-          # Google Drive se files scan karein
+          # 1. Google Drive se video files fetch karein
           cmd = ["rclone", "lsjson", "gdrive:", "--files-only"]
           res = subprocess.run(cmd, stdout=subprocess.PIPE, text=True)
           drive_files = json.loads(res.stdout) if res.stdout else []
 
-          # Existing chunks check karein duplicate na aane ke liye
+          # 2. Existing JSON chunks se ID check karein taaki duplicate na aaye
           existing_ids = set()
           chunks_dir = "chunks"
           if os.path.exists(chunks_dir):
@@ -47,8 +56,8 @@ jobs:
                   if f.endswith(".json"):
                       try:
                           with open(os.path.join(chunks_dir, f), "r", encoding="utf-8") as jf:
-                              d = json.load(jf)
-                              for item in d:
+                              data = json.load(jf)
+                              for item in data:
                                   if "gdrive_id" in item:
                                       existing_ids.add(item["gdrive_id"])
                       except:
@@ -57,7 +66,7 @@ jobs:
           arrivals = []
           for file in drive_files:
               file_id = file.get("ID")
-              file_name = file.get("Path", "")
+              file_name = file.get("Path")
               file_bytes = file.get("Size", 0)
 
               if not file_name.lower().endswith(('.mkv', '.mp4', '.avi')):
@@ -66,38 +75,45 @@ jobs:
               if file_id in existing_ids:
                   continue
 
-              # Clean GB Rounding: 14.2 GB -> "14 GB"
-              clean_gb = round(file_bytes / (1024 ** 3))
-              size_tag = f"{clean_gb} GB" if clean_gb > 0 else "1 GB"
+              # Clean GB Rounding: 14.2 GB -> 14 GB, 2.4 GB -> 2 GB
+              gb_val = round(file_bytes / (1024 ** 3))
+              clean_size = f"{gb_val} GB"
 
-              # Language category detect
-              low = file_name.lower()
-              cat = "hollywood"
-              if "tamil" in low:
-                  cat = "tamil"
-              elif "telugu" in low:
-                  cat = "telugu"
-              elif "hindi" in low:
-                  cat = "hindi"
+              # Industry Target detection
+              lower = file_name.lower()
+              target = "kollywood"
+              target_file = "chunks/data_c01_tamil.json"
+              if "telugu" in lower:
+                  target = "tollywood"
+                  target_file = "chunks/data_c01_telugu.json"
+              elif "hindi" in lower:
+                  target = "bollywood"
+                  target_file = "chunks/data_c01_hindi.json"
+              elif any(x in lower for x in ["english", "hollywood", "dual"]):
+                  target = "hollywood"
+                  target_file = "chunks/data_c01_english.json"
 
               arrivals.append({
-                  "name": file_name.rsplit(".", 1)[0].replace(".", " "),
+                  "title": file_name.rsplit(".", 1)[0].replace(".", " "),
                   "gdrive_id": file_id,
-                  "size": size_tag,
-                  "category": cat,
+                  "size": clean_size,
+                  "target_category": target,
+                  "target_chunk": target_file,
                   "stream_url": f"https://gdrive-stream.moinudeentv.workers.dev/?id={file_id}"
               })
 
-          with open("inbox_arrivals.json", "w", encoding="utf-8") as out:
-              json.dump(arrivals, out, indent=2, ensure_ascii=False)
+          with open("inbox_arrivals.json", "w", encoding="utf-8") as f:
+              json.dump(arrivals, f, indent=2, ensure_ascii=False)
 
-          print(f"Total new arrivals found: {len(arrivals)}")
+          print(f"Scan complete: {len(arrivals)} new arrivals ready with clean GB tags.")
           EOF
 
-      - name: Commit Inbox
+          python3 scan_arrivals.py
+
+      - name: Commit & Push Inbox
         run: |
-          git config --global user.name "Moinuflix Bot"
-          git config --global user.email "bot@moinuflix.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add inbox_arrivals.json
-          git commit -m "Auto-scan: Updated inbox arrivals with clean GB" || echo "No changes"
-          git push
+          git commit -m "Auto-Sync: Updated Drive Arrivals [Clean GB]" || echo "No changes to commit"
+          git push origin main
