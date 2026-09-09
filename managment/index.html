@@ -1,1 +1,551 @@
-index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MoinuFlix — Studio Manager Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="laser-toast"></div>
+
+  <!-- AUTO-MERGE BOTTOM DOCK -->
+  <div class="merge-bottom-dock" id="merge-dock">
+    <div>
+      <div class="merge-dock-title" id="dock-movie-name">⚡ Existing Movie Detected!</div>
+      <div class="merge-dock-desc" id="dock-movie-desc">Click below to auto-merge this version without creating duplicates.</div>
+    </div>
+    <button type="button" class="btn-dock-merge" onclick="triggerDockMerge()">ONE-CLICK MERGE VERSION</button>
+  </div>
+
+  <!-- FLOATING UPLOADING PROGRESS DOCK -->
+  <div class="upload-floating-dock" id="upload-dock">
+    <div class="upload-spinner"></div>
+    <div>
+      <div style="font-weight: 800; font-size: 0.9rem; color: #fff;" id="dock-status-title">Uploading to Google Drive...</div>
+      <div style="font-size: 0.78rem; color: var(--laser-cyan);" id="dock-status-file">Processing download queue</div>
+    </div>
+  </div>
+
+  <aside>
+    <div class="brand">
+      <div class="brand-logo">M</div>
+      <div class="brand-text">MoinuFlix</div>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <button class="nav-btn active" onclick="switchNav('dashboard', this)">
+          <span>📊 Dashboard</span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-btn" onclick="switchNav('drive-inbox', this)" id="nav-btn-inbox">
+          <span>🔔 Drive Arrivals</span>
+          <span class="nav-badge" id="badge-inbox-count" style="display:none;">0</span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-btn" onclick="switchNav('existing-movies', this)">
+          <span>🎬 Movies & Packs</span>
+          <span class="nav-badge" id="badge-c01">0</span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-btn" onclick="switchNav('add-items-hub', this)">
+          <span style="color: var(--laser-cyan);">➕ Add Items</span>
+          <span class="nav-badge" id="badge-upload-count" style="display:none;">0</span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-btn" onclick="switchNav('existing-series', this)">
+          <span>📺 Web Series</span>
+          <span class="nav-badge" id="badge-c02">0</span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-btn" onclick="switchNav('existing-songs', this)">
+          <span>🎵 5.1 Songs</span>
+          <span class="nav-badge" id="badge-c03">0</span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-btn" onclick="switchNav('existing-vault', this)">
+          <span>🍿 YT Vault</span>
+          <span class="nav-badge" id="badge-c04">0</span>
+        </button>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button class="btn-token-config" onclick="configureBackendUrl()">
+        <span id="backend-status-label">🌐 Colab Backend URL</span>
+      </button>
+      <button class="btn-token-config" onclick="configureGithubToken()">
+        <span id="token-status-label">⚙️ GitHub Token</span>
+      </button>
+    </div>
+  </aside>
+
+  <main>
+    <!-- VIEW: DASHBOARD -->
+    <section id="view-dashboard" class="view-panel active">
+      <header>
+        <div>
+          <h1>Unified Studio Overview</h1>
+          <p class="section-desc">Live status of movie packs & database chunks</p>
+        </div>
+      </header>
+      <div class="stats-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; margin-bottom: 2rem;">
+        <div style="background:var(--bg-card); padding:1.5rem; border-radius:18px; border:1px solid var(--border-color);">
+          <div style="color:var(--text-dim); font-size:0.8rem; font-weight:700;">🎬 TOTAL MASTER MOVIES</div>
+          <div style="font-size:2rem; font-weight:800; color:#fff;" id="stat-c01">0</div>
+        </div>
+        <div style="background:var(--bg-card); padding:1.5rem; border-radius:18px; border:1px solid var(--border-color);">
+          <div style="color:var(--laser-cyan); font-size:0.8rem; font-weight:700;">🌴 TAMIL (KOLLYWOOD)</div>
+          <div style="font-size:2rem; font-weight:800; color:#fff;" id="stat-tamil">0</div>
+        </div>
+        <div style="background:var(--bg-card); padding:1.5rem; border-radius:18px; border:1px solid var(--border-color);">
+          <div style="color:#a855f7; font-size:0.8rem; font-weight:700;">🏛️ TELUGU (TOLLYWOOD)</div>
+          <div style="font-size:2rem; font-weight:800; color:#fff;" id="stat-telugu">0</div>
+        </div>
+        <div style="background:var(--bg-card); padding:1.5rem; border-radius:18px; border:1px solid var(--border-color);">
+          <div style="color:var(--laser-red); font-size:0.8rem; font-weight:700;">📥 PENDING ARRIVALS</div>
+          <div style="font-size:2rem; font-weight:800; color:#ff4d58;" id="stat-inbox">0</div>
+        </div>
+        <div style="background:var(--bg-card); padding:1.5rem; border-radius:18px; border:1px solid var(--border-color);">
+          <div style="color:var(--gold-lcu); font-size:0.8rem; font-weight:700;">👑 FRANCHISE PACKS</div>
+          <div style="font-size:2rem; font-weight:800; color:var(--gold-lcu);" id="stat-packs">0</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: DRIVE ARRIVALS & DIRECT AUDIT SCANNER -->
+    <section id="view-drive-inbox" class="view-panel">
+      <header>
+        <div>
+          <h1>📡 Google Drive Arrivals & Audit Hub</h1>
+          <p class="section-desc">Clean Drive ID + Real Name Match • Direct Transfer to Add Form • 1-Click Sync</p>
+        </div>
+        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+          <button type="button" class="btn-clean-duplicates" id="btn-trigger-action" onclick="triggerGitHubScanAction()">
+            ⚡ Trigger Drive Scan (GitHub Action)
+          </button>
+          <button type="button" class="btn-clean-duplicates" onclick="loadDriveArrivalsList()">
+            🔄 Refresh List
+          </button>
+        </div>
+      </header>
+
+      <div id="inbox-status-msg" style="margin-bottom: 1.2rem; font-size: 0.88rem; color: var(--laser-cyan); font-weight: 600;"></div>
+
+      <div class="smart-table-wrap">
+        <table class="smart-scan-table">
+          <thead>
+            <tr>
+              <th style="width: 150px;">Drive ID</th>
+              <th>Real Google Drive File Name</th>
+              <th style="width: 110px;">Size</th>
+              <th style="text-align: right; width: 190px;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="smart-ingest-table-body">
+            <tr>
+              <td colspan="4" style="text-align: center; color: var(--text-muted); padding: 30px;">
+                Click "Refresh List" to scan arrivals against Master data_c01.json...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- VIEW: MOVIES & FRANCHISE PACKS -->
+    <section id="view-existing-movies" class="view-panel">
+      <header>
+        <div>
+          <h1>Movies, Industries & Genres</h1>
+          <p class="section-desc">Option A: Native Industry First • Hollywood Dubs in Hollywood • Multi-Audio Auto-Tagged</p>
+        </div>
+        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+          <button type="button" class="btn-clean-duplicates" onclick="autoConnectFranchiseCollections()">
+            ⚡ Connect All Packs
+          </button>
+          <button type="button" class="btn-clean-duplicates" onclick="autoMergeDuplicateMovies()">
+            ⚡ Auto-Merge Duplicates
+          </button>
+        </div>
+      </header>
+
+      <div class="category-pills-bar">
+        <button class="cat-pill pill-pack active" onclick="setCategoryFilter('packs', this)">👑 Franchise Packs</button>
+        <button class="cat-pill" onclick="setCategoryFilter('all', this)">🍿 All Movies</button>
+        <button class="cat-pill" onclick="setCategoryFilter('lang_ta', this)">🌴 Tamil (Kollywood)</button>
+        <button class="cat-pill" onclick="setCategoryFilter('lang_te', this)">🏛️ Telugu (Tollywood)</button>
+        <button class="cat-pill" onclick="setCategoryFilter('lang_hi', this)">✨ Hindi (Bollywood)</button>
+        <button class="cat-pill" onclick="setCategoryFilter('lang_en', this)">🌐 Hollywood (English)</button>
+        <button class="cat-pill pill-genre" onclick="setCategoryFilter('genre_horror', this)">🩸 Horror</button>
+        <button class="cat-pill pill-genre" onclick="setCategoryFilter('genre_crime', this)">🕵️ Crime / Thriller</button>
+        <button class="cat-pill pill-genre" onclick="setCategoryFilter('genre_action', this)">🔥 Action</button>
+        <button class="cat-pill pill-genre" onclick="setCategoryFilter('genre_comedy', this)">😂 Comedy</button>
+        <button class="cat-pill pill-genre" onclick="setCategoryFilter('genre_romance', this)">❤️ Romance</button>
+      </div>
+
+      <div class="search-bar-container">
+        <input type="text" id="movie-search-input" class="search-input" placeholder="Search by Movie Title, Year, Multi Audio, OTT Platform, LCU..." oninput="handleMovieSearch()">
+      </div>
+
+      <div class="movies-grid" id="movies-grid-container"></div>
+    </section>
+
+    <!-- ALL-IN-ONE INGESTION HUB ("➕ Add Items") -->
+    <section id="view-add-items-hub" class="view-panel">
+      <header>
+        <div>
+          <h1>Studio Ingestion Hub</h1>
+          <p class="section-desc">Add Single Movies, Web Series, 5.1 Audio, YouTube or Review Batch Scraper</p>
+        </div>
+      </header>
+
+      <div class="hub-switcher-bar">
+        <button type="button" class="hub-tab-btn active" onclick="switchHubTab('movie', this)">🎬 Single Movie</button>
+        <button type="button" class="hub-tab-btn gold-tab" onclick="switchHubTab('folder-batch', this)">📁 Batch Folder Scraper</button>
+        <button type="button" class="hub-tab-btn" onclick="switchHubTab('series', this)">📺 Web Series</button>
+        <button type="button" class="hub-tab-btn" onclick="switchHubTab('song', this)">🎵 5.1 Song</button>
+        <button type="button" class="hub-tab-btn" onclick="switchHubTab('vault', this)">🍿 YouTube Vault</button>
+      </div>
+
+      <!-- TAB 1: SINGLE MOVIE FORM -->
+      <div id="hub-tab-movie" class="hub-content active">
+        <div class="form-container">
+          <form id="movie-form" onsubmit="handleMovieSubmit(event)">
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label style="color: var(--laser-cyan);">⚡ Release File Name (Paste .mkv / .mp4 to auto-detect Multi-Audio, OTT & Specs)</label>
+                <input type="text" id="input-smart-filename" class="smart-input" placeholder="e.g. Vikram.2022.Tamil.Multi.2160p.NF.WEB-DL.DDP5.1.Atmos.x265-Moinu.mkv" oninput="parseSmartFileName(this.value)">
+                <div id="tmdb-suggestions-box" class="tmdb-results-box">
+                  <div style="font-size: 0.75rem; color: var(--laser-cyan); font-weight: 700; margin-bottom: 6px;">🎯 Click your movie to auto-select TMDB ID:</div>
+                  <div id="tmdb-suggestions-list"></div>
+                </div>
+                <div class="tag-container" id="parsed-smart-tags"></div>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="input-tmdb-id">TMDB ID</label>
+                <input type="number" id="input-tmdb-id" placeholder="e.g. 743563, 872585" required oninput="checkTmdbMatch()">
+                <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;" id="tmdb-match-hint">Auto-fetches Official Title, Poster, Cast, Director, Trailer & Industry</div>
+              </div>
+
+              <div class="form-group">
+                <label>Quality</label>
+                <select id="input-quality" required>
+                  <option value="1080p">1080p FHD</option>
+                  <option value="4K UHD" selected>4K UHD (2160p)</option>
+                  <option value="720p">720p HD</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Platform / Source (OTT & Disc)</label>
+                <select id="input-source" required>
+                  <option value="Netflix" selected>Netflix</option>
+                  <option value="Disney+ Hotstar">Disney+ Hotstar</option>
+                  <option value="SonyLIV">SonyLIV</option>
+                  <option value="Prime Video">Amazon Prime Video</option>
+                  <option value="Zee5">Zee5</option>
+                  <option value="JioCinema">JioCinema</option>
+                  <option value="Aha Video">Aha Video</option>
+                  <option value="Apple TV+">Apple TV+</option>
+                  <option value="WEB-DL">WEB-DL Standard</option>
+                  <option value="BLURAY">BLURAY / Remux</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Codec</label>
+                <select id="input-codec" required>
+                  <option value="x265" selected>HEVC / x265 (H.265)</option>
+                  <option value="H.264">H.264 / AVC (x264)</option>
+                  <option value="AV1">AV1</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Audio Codec</label>
+                <select id="input-audio" required>
+                  <option value="Dolby Atmos" selected>Dolby Atmos / TrueHD</option>
+                  <option value="Dolby Digital Plus">Dolby Digital Plus (DDP / E-AC-3)</option>
+                  <option value="Dolby Digital">Dolby Digital (AC3)</option>
+                  <option value="AAC">AAC Standard</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Channels</label>
+                <select id="input-channels" required>
+                  <option value="5.1" selected>5.1 (Surround)</option>
+                  <option value="7.1">7.1 (Atmos)</option>
+                  <option value="2.0">2.0 (Stereo)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>File Size (Clean Integer Rounded)</label>
+                <input type="text" id="input-filesize" placeholder="e.g. 14 GB or 2 GB">
+              </div>
+
+              <div class="form-group full-width">
+                <label>Audio Languages (Multi-Audio: Ta+Te+Hi+Ml Auto-Fills)</label>
+                <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px;">
+                  <button type="button" class="lang-btn-chip" onclick="toggleLanguage('Tamil')">+ Tamil</button>
+                  <button type="button" class="lang-btn-chip" onclick="toggleLanguage('Telugu')">+ Telugu</button>
+                  <button type="button" class="lang-btn-chip" onclick="toggleLanguage('Hindi')">+ Hindi</button>
+                  <button type="button" class="lang-btn-chip" onclick="toggleLanguage('Malayalam')">+ Malayalam</button>
+                  <button type="button" class="lang-btn-chip" onclick="toggleLanguage('Kannada')">+ Kannada</button>
+                  <button type="button" class="lang-btn-chip" onclick="toggleLanguage('English')">+ English</button>
+                  <button type="button" class="lang-btn-chip" style="color:var(--gold-lcu); border-color:var(--gold-lcu);" onclick="applyMultiPreset()">⚡ Set Multi-Audio (4-Dubs)</button>
+                </div>
+                <input type="text" id="input-languages" placeholder="e.g. Tamil, Telugu, Hindi, Malayalam" value="Tamil">
+              </div>
+
+              <div class="form-group full-width">
+                <label style="color: var(--laser-cyan);">⚡ Direct Download URL (Auto Colab/Server Upload to Drive)</label>
+                <input type="text" id="input-direct-download-url" placeholder="Paste direct file URL (Dropbox, Google Cloud, Direct HTTP/HTTPS link)">
+              </div>
+
+              <div class="form-group full-width">
+                <label>Google Drive Link / Raw File ID</label>
+                <input type="text" id="input-gdrive-url" placeholder="Paste full GD link or ID (Or leave blank if providing direct URL above)">
+              </div>
+            </div>
+
+            <div class="form-actions" style="display: flex; gap: 10px;">
+              <button type="submit" class="btn-submit" id="btn-movie-submit">ADD MOVIE</button>
+              <button type="button" class="btn-close-modal" id="btn-cancel-merge" style="display: none;" onclick="cancelMergeMode()">Cancel Merge</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- TAB 2: SMART BATCH FOLDER SCRAPER -->
+      <div id="hub-tab-folder-batch" class="hub-content" style="display: none;">
+        <div class="form-container" style="border-color: rgba(245, 158, 11, 0.4); max-width: 1100px;">
+          <div style="font-size: 1.1rem; font-weight: 800; color: var(--gold-lcu); margin-bottom: 0.5rem;">📁 Google Drive Batch Importer (Review & Verify Mode)</div>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Step 1: Scan Folder/Paste JSON ➔ Step 2: Check Posters, Drive ID & TMDB Dropdown ➔ Step 3: Direct Final Fetch & GitHub Commit.</p>
+
+          <div class="form-grid" style="margin-bottom: 1rem;">
+            <div class="form-group full-width">
+              <label>Google Drive Folder Link / ID</label>
+              <input type="text" id="input-batch-folder-url" placeholder="https://drive.google.com/drive/folders/1qSbkXGLBE6OxRF2pwiNekNDHPnyQQm-w">
+            </div>
+            <div class="form-group full-width">
+              <label>Or Paste Raw JSON / Scraped List [From Browser Console]:</label>
+              <textarea id="input-batch-manual-json" rows="3" placeholder='[{"name": "Leo.2023.1080p.mkv", "id": "1H4hepCl_..."}, {"name": "Pushpa.2.2024.4k.mkv", "id": "1qSbk..."}]'></textarea>
+            </div>
+          </div>
+
+          <button type="button" class="btn-submit" style="background: linear-gradient(135deg, var(--gold-lcu), #d97706); color:#000;" onclick="loadFilesToReviewTable()">
+            🔍 STEP 1: SCAN & GENERATE VERIFICATION LIST
+          </button>
+
+          <div id="batch-verification-section" style="display: none; margin-top: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <div style="font-weight: 800; font-size: 1rem; color: #fff;">
+                📋 Verification Checklist (<span id="review-count">0</span> Files Ready)
+              </div>
+              <span style="font-size: 0.8rem; color: var(--laser-cyan);">Click movie title/poster to open TMDB suggestions dropdown</span>
+            </div>
+
+            <div style="max-height: 480px; overflow-y: auto; border: 1px solid var(--border-color); border-radius: 14px; background: rgba(3, 7, 18, 0.6); margin-bottom: 1.5rem;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: left;">
+                <thead>
+                  <tr style="border-bottom: 1px solid var(--border-color); background: rgba(15, 23, 42, 0.95); position: sticky; top: 0; z-index: 20;">
+                    <th style="padding: 10px 14px; color: var(--text-dim); width: 40px;">#</th>
+                    <th style="padding: 10px 14px; color: var(--text-dim); width: 35%;">File Name</th>
+                    <th style="padding: 10px 14px; color: var(--text-dim); width: 180px;">Drive ID</th>
+                    <th style="padding: 10px 14px; color: var(--text-dim);">TMDB Match (Poster & Dropdown)</th>
+                    <th style="padding: 10px 14px; color: var(--text-dim); width: 50px; text-align: center;">Del</th>
+                  </tr>
+                </thead>
+                <tbody id="batch-table-body"></tbody>
+              </table>
+            </div>
+
+            <button type="button" class="btn-submit" style="background: linear-gradient(135deg, var(--laser-green), #059669); color: #fff; width: 100%; justify-content: center; font-size: 1rem;" onclick="executeFinalBatchFetchAndCommit()">
+              🚀 CONFIRM CHECKLIST & COMMIT ALL TO GITHUB
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: SERIES FORM -->
+      <div id="hub-tab-series" class="hub-content" style="display: none;">
+        <div class="form-container">
+          <form id="series-form" onsubmit="handleSeriesSubmit(event)">
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label>Search Series Name (e.g. Farzi, Mirzapur, Stranger Things)</label>
+                <input type="text" id="input-series-search" placeholder="Type TV show name to auto-search..." oninput="searchSeriesTmdb(this.value)">
+                <div id="series-suggestions-box" class="tmdb-results-box">
+                  <div id="series-suggestions-list"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>TMDB TV Show ID</label>
+                <input type="number" id="input-series-tmdb" placeholder="e.g. 99966" required>
+              </div>
+              <div class="form-group">
+                <label>Total Seasons / Tag</label>
+                <input type="text" id="input-series-seasons" placeholder="e.g. Season 1 (All Episodes)" value="Season 1">
+              </div>
+              <div class="form-group full-width">
+                <label>Google Drive Link / Stream URL</label>
+                <input type="text" id="input-series-gdrive" placeholder="Google Drive Link or Stream Route" required>
+              </div>
+            </div>
+            <button type="submit" class="btn-submit">SAVE WEB SERIES</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- TAB 4: SONG FORM -->
+      <div id="hub-tab-song" class="hub-content" style="display: none;">
+        <div class="form-container">
+          <form id="song-form" onsubmit="handleSongSubmit(event)">
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label>Search Song Name</label>
+                <input type="text" id="input-song-search" placeholder="Type song name to search..." oninput="searchSongMusicApi(this.value)">
+                <div id="song-suggestions-box" class="tmdb-results-box">
+                  <div id="song-suggestions-list"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Song Title</label>
+                <input type="text" id="input-song-title" placeholder="e.g. Hukum" required>
+              </div>
+              <div class="form-group">
+                <label>Movie / Album Name</label>
+                <input type="text" id="input-song-movie" placeholder="e.g. Jailer" required>
+              </div>
+              <div class="form-group">
+                <label>Audio Format</label>
+                <select id="input-song-quality">
+                  <option value="5.1 Surround" selected>5.1 Dolby Digital Surround</option>
+                  <option value="Dolby Atmos">Dolby Atmos Lossless</option>
+                  <option value="DTS-HD 7.1">DTS-HD Master 7.1</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Cover Art URL</label>
+                <input type="text" id="input-song-poster" placeholder="Image URL">
+              </div>
+              <div class="form-group full-width">
+                <label>Google Drive Link / Stream Link</label>
+                <input type="text" id="input-song-gdrive" placeholder="Google Drive Link or Worker Link" required>
+              </div>
+            </div>
+            <button type="submit" class="btn-submit">SAVE 5.1 SONG</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- TAB 5: VAULT FORM -->
+      <div id="hub-tab-vault" class="hub-content" style="display: none;">
+        <div class="form-container">
+          <form id="vault-form" onsubmit="handleVaultSubmit(event)">
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label>YouTube Link or Playlist Link</label>
+                <input type="text" id="input-yt-url" placeholder="Paste single YouTube video or playlist link" required>
+              </div>
+              <div class="form-group">
+                <label>Video Title</label>
+                <input type="text" id="input-yt-title" placeholder="Auto or custom title" required>
+              </div>
+              <div class="form-group">
+                <label>Category</label>
+                <select id="input-yt-category">
+                  <option value="Comedy">😂 Comedy Scene</option>
+                  <option value="Action">🔥 Action / Mass Moment</option>
+                  <option value="Video Song">🎵 4K Video Song</option>
+                  <option value="Best Scene">⭐ Best Movie Scene / Climax</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn-submit">ADD TO YOUTUBE VAULT</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: EXISTING SERIES -->
+    <section id="view-existing-series" class="view-panel">
+      <header><div><h1>Web Series (data_c02.json)</h1><p class="section-desc">Loaded Web Series Library</p></div></header>
+      <div class="movies-grid" id="series-grid"></div>
+    </section>
+
+    <!-- VIEW: EXISTING SONGS -->
+    <section id="view-existing-songs" class="view-panel">
+      <header><div><h1>5.1 Audio & Atmos Songs (data_c03.json)</h1><p class="section-desc">Dolby Surround & Lossless Audio Vault</p></div></header>
+      <div class="movies-grid" id="songs-grid"></div>
+    </section>
+
+    <!-- VIEW: EXISTING VAULT -->
+    <section id="view-existing-vault" class="view-panel">
+      <header><div><h1>YouTube Video Vault (data_c04.json)</h1><p class="section-desc">Curated Scenes & Video Songs</p></div></header>
+      <div class="movies-grid" id="vault-grid"></div>
+    </section>
+  </main>
+
+  <!-- POPUP: PACK DETAILS & MISSING MOVIES CHECKLIST -->
+  <div class="modal-overlay" id="pack-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title" id="pack-modal-title">Franchise Pack</div>
+          <div style="font-size: 0.85rem; color: var(--laser-cyan); margin-top: 4px;" id="pack-modal-subtitle"></div>
+        </div>
+        <button type="button" style="background:transparent; border:none; color:#fff; font-size:1.5rem; cursor:pointer;" onclick="closePackModal()">✕</button>
+      </div>
+      <div style="margin-bottom: 1.5rem;">
+        <div style="font-size:0.85rem; font-weight:800; color:var(--laser-green); margin-bottom:0.75rem; letter-spacing:0.5px;">
+          ✅ IN YOUR LIBRARY (<span id="pack-owned-count">0</span>):
+        </div>
+        <div id="pack-owned-list"></div>
+      </div>
+      <div id="pack-missing-section">
+        <div style="font-size:0.85rem; font-weight:800; color:var(--laser-red); margin-bottom:0.75rem; letter-spacing:0.5px;">
+          ❌ MISSING FROM THIS PACK (<span id="pack-missing-count">0</span>):
+        </div>
+        <div id="pack-missing-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMIT PREVIEW MODAL -->
+  <div class="modal-overlay" id="preview-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">Live Preview & Direct Commit</div>
+        <span style="font-size: 0.75rem; color: var(--laser-cyan); font-weight: 800;">READY</span>
+      </div>
+      <div class="preview-list" id="modal-preview-details"></div>
+      <div class="modal-actions" style="display:flex; justify-content:flex-end; gap:0.85rem;">
+        <button type="button" class="btn-close-modal" onclick="copyStreamUrl()">Copy Stream URL</button>
+        <button type="button" class="btn-save-database" id="btn-commit-github" onclick="commitPendingToGitHub()">
+          <span>Save & Direct Commit to GitHub</span>
+        </button>
+        <button type="button" class="btn-close-modal" onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="render.js"></script>
+  <script src="actions.js"></script>
+</body>
+</html>
