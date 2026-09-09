@@ -1,5 +1,83 @@
 [
   {
+    "id": "1mcN5rfSzRVrmwAth_cFg6PxLUJS-49Mp",
+    "name": "Kushi (2000) [1080p] [WEB-DL] [Dolby Atmos].mkv",
+    "title": "Kushi",
+    "original_title": "குஷி",
+    "original_language": "ta",
+    "year": 2000,
+    "runtime": 178,
+    "tmdb_id": 69654,
+    "rating": 7.1,
+    "collection": "",
+    "director": [
+      "S. J. Suryah"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=IyFx-rAqHnk",
+    "cast": [
+      {
+        "name": "Vijay",
+        "role": "Shiva",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/zbQ1sDRVRHkroWwvrnqYKMerl66.jpg"
+      },
+      {
+        "name": "Jyothika",
+        "role": "Jennifer",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/n8JVr2ToMbTz3XsJ7uo95J3hgCj.jpg"
+      },
+      {
+        "name": "Vivek",
+        "role": "Vicky",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/z4fZ22hnBz6W8mBNDvhtFbJErmK.jpg"
+      },
+      {
+        "name": "Nagendra Prasad",
+        "role": "Babu",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/eUXrNJ8Vmsy9LDnxAy76YA7RqG6.jpg"
+      },
+      {
+        "name": "Nizhalgal Ravi",
+        "role": "Shiva's Father",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/g62k2PPCRcet0PhagJxS3rFTpdK.jpg"
+      }
+    ],
+    "plot": "College friends Jenny and Shiva part ways due to a misunderstanding. Although they are in love and realize they cannot live without each other, their egos prevent them from uniting.",
+    "poster": "https://image.tmdb.org/t/p/w500/n0bz0nX3GqPKfoXY8kH8QFTyWCs.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/10qih3joKDNsiMQrAkfNhJDejRP.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1mcN5rfSzRVrmwAth_cFg6PxLUJS-49Mp|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x265",
+      "audio": "Dolby Atmos",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": "5 GB"
+    },
+    "versions": [
+      {
+        "id": "1mcN5rfSzRVrmwAth_cFg6PxLUJS-49Mp",
+        "name": "Kushi (2000) [1080p] [WEB-DL] [Dolby Atmos].mkv",
+        "quality": "1080p • WEB-DL • Dolby Atmos [5 GB]",
+        "source": "WEB-DL",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1mcN5rfSzRVrmwAth_cFg6PxLUJS-49Mp|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "5 GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "1MSm3VHN8cP5IrO9WBraD13Lk7ziKJYX3",
     "name": "Master (2021) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
     "title": "Master",
