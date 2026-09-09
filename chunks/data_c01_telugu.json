@@ -1,5 +1,83 @@
 [
   {
+    "id": "1kHE5V3OLAE4tkCSGy4cGMbRM-wdDPOuJ",
+    "name": "KJQ (2026) [4K UHD] [WEB-DL] [Dolby Atmos].mkv",
+    "title": "KJQ",
+    "original_title": "KJQ",
+    "original_language": "te",
+    "year": 2026,
+    "runtime": 108,
+    "tmdb_id": 1437129,
+    "rating": 10,
+    "collection": "",
+    "director": [
+      "Kiran Kumar"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=2fKeLvwm_dw",
+    "cast": [
+      {
+        "name": "Dheekshith Shetty",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/f0MzEH6dmEZiXuZ78ycDKgxECbD.jpg"
+      },
+      {
+        "name": "Yukti Thareja",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/aUcMSWJMz5ur0AagUYC8jQBsV32.jpg"
+      },
+      {
+        "name": "Shashi Odela",
+        "role": "",
+        "thumbnail": ""
+      },
+      {
+        "name": "Prudhviraj",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/lNyBQMo0rEnLQsRV8IQsU2j5m8f.jpg"
+      },
+      {
+        "name": "Surekha Vani",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/bqDsLZ0ysImn4466eD3MfiWmcnw.jpg"
+      }
+    ],
+    "plot": "Two close friends become entangled in a high-stakes conflict driven by power, ego, and vengeance, exploring how circumstances shape human nature.",
+    "poster": "https://image.tmdb.org/t/p/w500/q1AGDayKh45gCc00ZiDpWd1XzI7.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/9WfekewVNvq8XUdQ6UCpgExWCrL.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1kHE5V3OLAE4tkCSGy4cGMbRM-wdDPOuJ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "4K UHD",
+      "source": "WEB-DL",
+      "codec": "x265",
+      "audio": "Dolby Atmos",
+      "channels": "5.1",
+      "languages": "Tamil, Telugu, Hindi, Malayalam",
+      "size": "13 GB"
+    },
+    "versions": [
+      {
+        "id": "1kHE5V3OLAE4tkCSGy4cGMbRM-wdDPOuJ",
+        "name": "KJQ (2026) [4K UHD] [WEB-DL] [Dolby Atmos].mkv",
+        "quality": "4K UHD • WEB-DL • Dolby Atmos Multi [13 GB]",
+        "source": "WEB-DL",
+        "codec": "x265",
+        "resolution": "4K UHD",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1kHE5V3OLAE4tkCSGy4cGMbRM-wdDPOuJ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "4K UHD",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Hindi, Malayalam",
+          "size": "13 GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "1pItRxDm10AQN8EYZsQdRfYE5aKWZ-JAK",
     "name": "Korean Kanakaraju (2026) [1080p] [Netflix] [Dolby Atmos].mkv",
     "title": "Korean Kanakaraju",
