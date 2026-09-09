@@ -2,293 +2,1417 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MoinuFlix - Drive & JSON Auditor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MoinuFlix — Studio Manager Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f1015;
-      --card-bg: #181920;
-      --accent: #e50914;
-      --green: #2ecc71;
-      --yellow: #f1c40f;
-      --text: #f5f6fa;
-      --text-muted: #8c909e;
-      --border: #262833;
+      --bg-dark: #030712;
+      --bg-card: rgba(15, 23, 42, 0.75);
+      --bg-card-hover: rgba(30, 41, 59, 0.9);
+      --bg-input: #0b1329;
+      --border-color: rgba(56, 189, 248, 0.15);
+      --electric-blue: #2563eb;
+      --laser-cyan: #38bdf8;
+      --laser-cyan-glow: rgba(56, 189, 248, 0.45);
+      --laser-green: #10b981;
+      --laser-green-glow: rgba(16, 185, 129, 0.35);
+      --laser-red: #ef4444;
+      --gold-lcu: #f59e0b;
+      --gold-lcu-glow: rgba(245, 158, 11, 0.4);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-stack: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-    body { background-color: var(--bg); color: var(--text); padding: 24px 16px; display: flex; justify-content: center; }
-    .container { width: 100%; max-width: 850px; }
-    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
-    h1 { font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
-    .btn { background: var(--border); color: var(--text); border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; }
-    .btn:hover { background: #323544; }
-    .token-bar { background: #14151c; border: 1px solid var(--border); padding: 10px 14px; border-radius: 8px; margin-bottom: 20px; display: flex; gap: 10px; align-items: center; font-size: 13px; }
-    .token-input { background: #0c0d12; border: 1px solid var(--border); color: #fff; padding: 6px 10px; border-radius: 6px; flex: 1; font-size: 13px; outline: none; }
-    .inbox-list { display: flex; flex-direction: column; gap: 14px; }
-    .item-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-    .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
-    .title { font-size: 16px; font-weight: 600; line-height: 1.4; color: #fff; word-break: break-all; }
-    .badge-size { background: #e5091420; color: #ff4d58; border: 1px solid #e5091440; padding: 3px 8px; border-radius: 5px; font-size: 13px; font-weight: 700; white-space: nowrap; }
-    .card-meta { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-muted); flex-wrap: wrap; }
-    .meta-select { background: #121318; border: 1px solid var(--border); color: #fff; padding: 6px 10px; border-radius: 5px; font-size: 13px; outline: none; }
-    .card-actions { display: flex; gap: 10px; margin-top: 4px; }
-    .btn-push { background: var(--green); color: #000; font-weight: 700; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; flex: 1; text-align: center; }
-    .btn-push:disabled { opacity: 0.5; cursor: not-allowed; }
-    .empty-state { text-align: center; padding: 48px 16px; color: var(--text-muted); font-size: 14px; background: var(--card-bg); border-radius: 10px; border: 1px dashed var(--border); }
-    .status-badge { display: inline-block; font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; }
-    .status-new { background: #e5091430; color: #ff525d; border: 1px solid #e5091450; }
-    .status-category-missing { background: #f1c40f25; color: #f1c40f; border: 1px solid #f1c40f40; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(56, 189, 248, 0.12) 0%, transparent 45%);
+      color: var(--text-main);
+      font-family: var(--font-stack);
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    aside {
+      width: 270px;
+      background: rgba(11, 19, 43, 0.95);
+      backdrop-filter: blur(25px);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 1.2rem;
+      position: fixed;
+      height: 100vh;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0 0.5rem 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 1.25rem;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--laser-cyan), var(--electric-blue));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #030712;
+      box-shadow: 0 0 20px var(--laser-cyan-glow);
+    }
+
+    .brand-text { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      overflow-y: auto;
+    }
+
+    .nav-btn {
+      width: 100%;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 0.75rem 0.95rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: left;
+    }
+
+    .nav-btn:hover { background: rgba(56, 189, 248, 0.06); color: #fff; }
+    .nav-btn.active {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(56, 189, 248, 0.1));
+      color: #fff;
+      border: 1px solid var(--laser-cyan);
+      box-shadow: 0 0 20px var(--laser-cyan-glow);
+    }
+
+    .nav-badge {
+      margin-left: auto;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 0.15rem 0.55rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .inbox-alert-badge {
+      background: linear-gradient(135deg, #ef4444, #b91c1c) !important;
+      color: #fff !important;
+      box-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
+      animation: pulseBadge 1.5s infinite;
+    }
+
+    @keyframes pulseBadge {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .btn-token-config {
+      width: 100%;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: var(--laser-cyan);
+      padding: 0.7rem 0.9rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    main {
+      margin-left: 270px;
+      flex: 1;
+      padding: 2.5rem 3rem 6rem 3rem;
+      max-width: 1440px;
+      width: calc(100% - 270px);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    h1 { font-size: 1.95rem; font-weight: 800; letter-spacing: -0.8px; }
+    .section-desc { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem; }
+
+    .view-panel { display: none; }
+    .view-panel.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .category-pills-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.4rem;
+      flex-wrap: nowrap;
+    }
+
+    .cat-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .cat-pill:hover { border-color: var(--laser-cyan); color: #fff; }
+    .cat-pill.active {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--laser-cyan);
+      color: var(--laser-cyan);
+      box-shadow: 0 0 14px var(--laser-cyan-glow);
+    }
+    .cat-pill.pill-pack.active {
+      background: rgba(245, 158, 11, 0.18);
+      border-color: var(--gold-lcu);
+      color: var(--gold-lcu);
+      box-shadow: 0 0 14px var(--gold-lcu-glow);
+    }
+
+    .search-bar-container { margin-bottom: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+    .search-input { flex: 1; min-width: 280px; padding: 0.9rem 1.3rem; font-size: 1rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; color: #fff; }
+    .search-input:focus { border-color: var(--laser-cyan); outline: none; }
+    .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.75rem; }
+
+    .movie-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .movie-card:hover {
+      border-color: var(--laser-cyan);
+      transform: translateY(-5px);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.6), 0 0 20px var(--laser-cyan-glow);
+    }
+
+    .poster-wrap { width: 100%; height: 290px; background: #070d1e; position: relative; overflow: hidden; }
+    .poster-img { width: 100%; height: 100%; object-fit: cover; }
+    .poster-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 0.85rem; font-weight: 600; text-align: center; }
+
+    .universe-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(3, 7, 18, 0.9);
+      border: 1px solid var(--gold-lcu);
+      color: var(--gold-lcu);
+      padding: 4px 9px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+      z-index: 2;
+    }
+
+    .multi-badge {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(16, 185, 129, 0.9);
+      color: #000;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      z-index: 2;
+    }
+
+    .movie-card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .movie-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .movie-meta-row {
+      display: flex;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-bottom: 0.65rem;
+      align-items: center;
+      font-weight: 600;
+      flex-wrap: wrap;
+    }
+
+    .spec-chip {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: var(--laser-cyan);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .spec-chip.chip-gold {
+      background: rgba(245, 158, 11, 0.12);
+      border-color: rgba(245, 158, 11, 0.3);
+      color: var(--gold-lcu);
+    }
+    
+    .spec-chip.chip-ott {
+      background: rgba(239, 68, 68, 0.12);
+      border-color: rgba(239, 68, 68, 0.3);
+      color: #f87171;
+    }
+
+    .card-actions-row { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+
+    .btn-action-primary {
+      flex: 1;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--laser-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 0.65rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn-action-primary:hover { background: var(--laser-cyan); color: #030712; }
+
+    .btn-delete-item {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--laser-red);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 0.65rem 0.8rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-delete-item:hover { background: var(--laser-red); color: #fff; }
+
+    /* FORMS & INPUTS */
+    .form-container {
+      background: var(--bg-card);
+      backdrop-filter: blur(25px);
+      border: 1px solid var(--border-color);
+      border-radius: 22px;
+      padding: 2.2rem 2.6rem;
+      max-width: 900px;
+      box-shadow: 0 12px 45px rgba(0,0,0,0.5);
+      margin-bottom: 2rem;
+    }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.75rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-group.full-width { grid-column: span 2; }
+    label { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
+
+    input, select, textarea {
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.2s ease;
+      font-family: var(--font-stack);
+      width: 100%;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--laser-cyan);
+      box-shadow: 0 0 14px var(--laser-cyan-glow);
+    }
+
+    .smart-input { border-color: rgba(56, 189, 248, 0.4); background: rgba(56, 189, 248, 0.04); }
+    .tag-container { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .smart-tag {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--laser-cyan);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-family: monospace;
+      font-weight: 700;
+    }
+
+    .lang-btn-chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-muted);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .lang-btn-chip:hover { border-color: var(--laser-cyan); color: #fff; }
+
+    .btn-submit {
+      background: linear-gradient(135deg, var(--laser-cyan), var(--electric-blue));
+      color: #030712;
+      border: none;
+      padding: 0.85rem 1.8rem;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 0 18px var(--laser-cyan-glow);
+      transition: all 0.25s ease;
+    }
+    .btn-submit:hover { transform: translateY(-2px); }
+
+    .btn-clean-duplicates {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--laser-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 0.75rem 1.2rem;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .tmdb-results-box {
+      display: none;
+      margin-top: 10px;
+      background: #0b1329;
+      border: 1px solid var(--laser-cyan);
+      box-shadow: 0 0 18px var(--laser-cyan-glow);
+      border-radius: 14px;
+      padding: 12px;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+    .tmdb-result-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+    .tmdb-result-item:hover { background: #1e293b; border-color: var(--laser-cyan); }
+    .tmdb-result-poster { width: 38px; height: 52px; object-fit: cover; border-radius: 6px; background: #1e293b; }
+    .tmdb-result-info { flex: 1; }
+    .tmdb-result-title { font-weight: 700; color: #fff; font-size: 0.9rem; }
+    .tmdb-result-meta { font-size: 0.75rem; color: var(--text-muted); }
+
+    .hub-switcher-bar {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hub-tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .hub-tab-btn.active {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--laser-cyan);
+      color: var(--laser-cyan);
+      box-shadow: 0 0 14px var(--laser-cyan-glow);
+    }
+    .hub-tab-btn.gold-tab.active {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: var(--gold-lcu);
+      color: var(--gold-lcu);
+      box-shadow: 0 0 14px var(--gold-lcu-glow);
+    }
+
+    /* INBOX & AUDIT PANEL STYLES */
+    .audit-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: all 0.2s ease;
+    }
+    .audit-card:hover { border-color: var(--laser-cyan); }
+    .audit-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+    .audit-title { font-size: 1.05rem; font-weight: 700; color: #fff; line-height: 1.4; word-break: break-word; }
+    .clean-gb-badge {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ff4d58;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .audit-meta-bar { display: flex; align-items: center; gap: 0.8rem; font-size: 0.82rem; color: var(--text-muted); flex-wrap: wrap; }
+    .audit-select { background: #0c1222; border: 1px solid var(--border-color); color: #fff; padding: 6px 10px; border-radius: 8px; font-size: 0.85rem; outline: none; }
+    .btn-push-sync {
+      width: 100%;
+      background: linear-gradient(135deg, var(--laser-green), #059669);
+      color: #fff;
+      font-weight: 800;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      transition: all 0.2s ease;
+    }
+    .btn-push-sync:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-push-sync:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* MODAL OVERLAYS */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(2, 6, 23, 0.88);
+      backdrop-filter: blur(20px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 1.25rem;
+    }
+    .modal-overlay.active { display: flex; }
+
+    .modal-card {
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 720px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem;
+    }
+    .modal-title { font-size: 1.35rem; font-weight: 800; }
+
+    .preview-list { display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 1.75rem; }
+    .preview-item { display: flex; justify-content: space-between; font-size: 0.9rem; border-bottom: 1px dashed rgba(255, 255, 255, 0.06); padding-bottom: 0.5rem; }
+    .preview-item-label { color: var(--text-dim); font-weight: 600; }
+    .preview-item-val { font-weight: 600; color: var(--text-main); font-family: monospace; }
+    .preview-stream-text { font-size: 0.82rem; color: var(--laser-cyan); font-family: monospace; word-break: break-all; margin-top: 5px; }
+
+    .btn-save-database {
+      background: linear-gradient(135deg, var(--laser-cyan), var(--electric-blue));
+      color: #030712;
+      border: none;
+      padding: 0.8rem 1.6rem;
+      border-radius: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .btn-close-modal { background: rgba(255, 255, 255, 0.05); border: none; color: var(--text-muted); padding: 0.8rem 1.4rem; border-radius: 12px; font-weight: 700; cursor: pointer; }
+
+    #laser-toast {
+      position: fixed;
+      top: 25px;
+      right: 25px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--laser-cyan);
+      box-shadow: 0 0 25px var(--laser-cyan-glow);
+      color: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: none;
+      z-index: 300;
+    }
+
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      aside { width: 100%; height: auto; position: relative; border-right: none; padding: 1rem; }
+      .nav-list { flex-direction: row; overflow-x: auto; }
+      .nav-btn { white-space: nowrap; }
+      .sidebar-footer { flex-direction: row; flex-wrap: wrap; }
+      main { margin-left: 0; width: 100%; padding: 1.25rem; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full-width { grid-column: span 1; }
+      .movies-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+    }
   </style>
 </head>
 <body>
 
-<div class="container">
-  <header>
-    <h1>📡 Drive vs JSON Audit Manager</h1>
-    <div>
-      <button class="btn" onclick="loadArrivals()">🔄 Refresh</button>
+  <div id="laser-toast"></div>
+
+  <aside>
+    <div class="brand">
+      <div class="brand-logo">M</div>
+      <div class="brand-text">MoinuFlix</div>
     </div>
-  </header>
+    <ul class="nav-list">
+      <li>
+        <button class="nav-btn active" onclick="switchNav('dashboard', this)">
+          <span>📊 Dashboard</span>
+        </button>
+      </li>
+      <!-- NOTIFICATION BELL & AUDIT ARRIVALS -->
+      <li>
+        <button class="nav-btn" onclick="switchNav('drive-inbox', this)" id="nav-btn-inbox">
+          <span>🔔 Drive Arrivals</span>
+          <span class="nav-badge" id="badge-inbox-count" style="display: none;">0</span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-btn" onclick="switchNav('existing-movies', this)">
+          <span>🎬 Movies & Packs</span>
+          <span class="nav-badge" id="badge-c01">0</span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-btn" onclick="switchNav('add-items-hub', this)">
+          <span style="color: var(--laser-cyan);">➕ Add Items</span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-btn" onclick="switchNav('existing-series', this)">
+          <span>📺 Web Series</span>
+          <span class="nav-badge" id="badge-c02">0</span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-btn" onclick="switchNav('existing-songs', this)">
+          <span>🎵 5.1 Songs</span>
+          <span class="nav-badge" id="badge-c03">0</span>
+        </button>
+      </li>
+      <li>
+        <button class="nav-btn" onclick="switchNav('existing-vault', this)">
+          <span>🍿 YT Vault</span>
+          <span class="nav-badge" id="badge-c04">0</span>
+        </button>
+      </li>
+    </ul>
 
-  <div class="token-bar">
-    <span>🔑 GitHub Token:</span>
-    <input type="password" id="gh-token" class="token-input" placeholder="ghp_xxxxxxxxx (Repo Write Access)">
-    <button class="btn" onclick="saveToken()">Save</button>
+    <div class="sidebar-footer">
+      <button class="btn-token-config" onclick="configureGithubToken()">
+        <span id="token-status-label">⚙️ GitHub Token</span>
+      </button>
+    </div>
+  </aside>
+
+  <main>
+    <!-- VIEW: DASHBOARD -->
+    <section id="view-dashboard" class="view-panel active">
+      <header>
+        <div>
+          <h1>Unified Studio Overview</h1>
+          <p class="section-desc">Live status of movie packs, audit arrivals & database chunks</p>
+        </div>
+      </header>
+      <div class="stats-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; margin-bottom: 2rem;">
+        <div style="background:var(--bg-card); padding:1.5rem; border-radius:18px; border:1px solid var(--border-color);">
+          <div style="color:var(--text-dim); font-size:0.8rem; font-weight:700;">🎬 TOTAL MASTER MOVIES</div>
+          <div style="font-size:2rem; font-weight:800; color:#fff;" id="stat-c01">0</div>
+        </div>
+        <div style="background:var(--bg-card); padding:1.5rem; border-radius:18px; border:1px solid var(--border-color);">
+          <div style="color:var(--laser-cyan); font-size:0.8rem; font-weight:700;">🌴 TAMIL (KOLLYWOOD)</div>
+          <div style="font-size:2rem; font-weight:800; color:#fff;" id="stat-tamil">0</div>
+        </div>
+        <div style="background:var(--bg-card); padding:1.5rem; border-radius:18px; border:1px solid var(--border-color);">
+          <div style="color:#a855f7; font-size:0.8rem; font-weight:700;">🏛️ TELUGU (TOLLYWOOD)</div>
+          <div style="font-size:2rem; font-weight:800; color:#fff;" id="stat-telugu">0</div>
+        </div>
+        <div style="background:var(--bg-card); padding:1.5rem; border-radius:18px; border:1px solid var(--border-color);">
+          <div style="color:var(--laser-red); font-size:0.8rem; font-weight:700;">📥 PENDING INBOX</div>
+          <div style="font-size:2rem; font-weight:800; color:#ff4d58;" id="stat-inbox">0</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: DRIVE INBOX & AUDIT MANAGER -->
+    <section id="view-drive-inbox" class="view-panel">
+      <header>
+        <div>
+          <h1>📡 Google Drive Arrivals & Audit</h1>
+          <p class="section-desc">Detected files with clean rounded GB sizes • 1-Click push to Master & Category JSONs</p>
+        </div>
+        <button type="button" class="btn-clean-duplicates" onclick="loadDriveArrivals()">🔄 Refresh Arrivals</button>
+      </header>
+
+      <div id="inbox-cards-container">
+        <div style="text-align: center; padding: 40px; color: var(--text-muted); background: var(--bg-card); border-radius: 16px; border: 1px dashed var(--border-color);">
+          Checking for fresh Drive arrivals...
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: MOVIES & FRANCHISE PACKS -->
+    <section id="view-existing-movies" class="view-panel">
+      <header>
+        <div>
+          <h1>Movies, Industries & Genres</h1>
+          <p class="section-desc">Option A: Native Industry First • Clean Rounded Sizes</p>
+        </div>
+      </header>
+
+      <div class="category-pills-bar">
+        <button class="cat-pill active" onclick="setCategoryFilter('all', this)">🍿 All Movies</button>
+        <button class="cat-pill" onclick="setCategoryFilter('lang_ta', this)">🌴 Tamil (Kollywood)</button>
+        <button class="cat-pill" onclick="setCategoryFilter('lang_te', this)">🏛️ Telugu (Tollywood)</button>
+        <button class="cat-pill" onclick="setCategoryFilter('lang_hi', this)">✨ Hindi (Bollywood)</button>
+        <button class="cat-pill" onclick="setCategoryFilter('lang_en', this)">🌐 Hollywood (English)</button>
+      </div>
+
+      <div class="search-bar-container">
+        <input type="text" id="movie-search-input" class="search-input" placeholder="Search by Movie Title, Year, Audio..." oninput="filterAndRenderMovies()">
+      </div>
+
+      <div class="movies-grid" id="movies-grid-container"></div>
+    </section>
+
+    <!-- VIEW: ADD ITEMS HUB -->
+    <section id="view-add-items-hub" class="view-panel">
+      <header>
+        <div>
+          <h1>Studio Ingestion Hub</h1>
+          <p class="section-desc">Add Single Movie, Web Series or 5.1 Songs</p>
+        </div>
+      </header>
+
+      <div class="hub-switcher-bar">
+        <button type="button" class="hub-tab-btn active" onclick="switchHubTab('movie', this)">🎬 Single Movie</button>
+        <button type="button" class="hub-tab-btn" onclick="switchHubTab('series', this)">📺 Web Series</button>
+        <button type="button" class="hub-tab-btn" onclick="switchHubTab('song', this)">🎵 5.1 Song</button>
+      </div>
+
+      <div id="hub-tab-movie" class="hub-content active">
+        <div class="form-container">
+          <form id="movie-form" onsubmit="handleMovieSubmit(event)">
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label style="color: var(--laser-cyan);">⚡ Release File Name (Paste .mkv / .mp4)</label>
+                <input type="text" id="input-smart-filename" class="smart-input" placeholder="e.g. Leo.2023.Tamil.2160p.NF.WEB-DL.DDP5.1.Atmos.mkv" oninput="parseSmartFileName(this.value)">
+                <div id="tmdb-suggestions-box" class="tmdb-results-box">
+                  <div id="tmdb-suggestions-list"></div>
+                </div>
+                <div class="tag-container" id="parsed-smart-tags"></div>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="input-tmdb-id">TMDB ID</label>
+                <input type="number" id="input-tmdb-id" placeholder="e.g. 1072790" required oninput="checkTmdbMatch()">
+                <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;" id="tmdb-match-hint">Auto-fetches Official Title, Poster, Cast & Director</div>
+              </div>
+
+              <div class="form-group">
+                <label>Quality</label>
+                <select id="input-quality">
+                  <option value="1080p">1080p FHD</option>
+                  <option value="4K UHD" selected>4K UHD (2160p)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Platform / Source</label>
+                <select id="input-source">
+                  <option value="Netflix" selected>Netflix</option>
+                  <option value="Disney+ Hotstar">Disney+ Hotstar</option>
+                  <option value="SonyLIV">SonyLIV</option>
+                  <option value="Prime Video">Prime Video</option>
+                  <option value="WEB-DL">WEB-DL</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>File Size (Clean Integer Display)</label>
+                <input type="text" id="input-filesize" placeholder="e.g. 14 GB or 2 GB">
+              </div>
+
+              <div class="form-group">
+                <label>Audio Languages</label>
+                <input type="text" id="input-languages" value="Tamil">
+              </div>
+
+              <div class="form-group full-width">
+                <label>Google Drive Link / Raw ID</label>
+                <input type="text" id="input-gdrive-url" placeholder="Paste full GDrive link or ID" required>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-submit" id="btn-movie-submit">ADD MOVIE</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: EXISTING SERIES -->
+    <section id="view-existing-series" class="view-panel">
+      <header><div><h1>Web Series (data_c02.json)</h1></div></header>
+      <div class="movies-grid" id="series-grid"></div>
+    </section>
+
+    <!-- VIEW: EXISTING SONGS -->
+    <section id="view-existing-songs" class="view-panel">
+      <header><div><h1>5.1 Audio & Atmos Songs (data_c03.json)</h1></div></header>
+      <div class="movies-grid" id="songs-grid"></div>
+    </section>
+
+    <!-- VIEW: EXISTING VAULT -->
+    <section id="view-existing-vault" class="view-panel">
+      <header><div><h1>YouTube Video Vault (data_c04.json)</h1></div></header>
+      <div class="movies-grid" id="vault-grid"></div>
+    </section>
+  </main>
+
+  <!-- COMMIT PREVIEW MODAL -->
+  <div class="modal-overlay" id="preview-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">Live Preview & Direct Commit</div>
+      </div>
+      <div class="preview-list" id="modal-preview-details"></div>
+      <div class="modal-actions" style="display:flex; justify-content:flex-end; gap:0.85rem;">
+        <button type="button" class="btn-save-database" id="btn-commit-github" onclick="commitPendingToGitHub()">
+          <span>Save & Direct Commit to GitHub</span>
+        </button>
+        <button type="button" class="btn-close-modal" onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
   </div>
 
-  <div id="inbox-container" class="inbox-list">
-    <div class="empty-state">Checking Drive & JSONs...</div>
-  </div>
-</div>
+  <script>
+    let moviesData = [];
+    let tamilData = [];
+    let teluguData = [];
+    let hindiData = [];
+    let englishData = [];
+    let seriesData = [];
+    let songsData = [];
+    let vaultData = [];
+    let inboxArrivals = [];
 
-<script>
-  const OWNER = "Moinuflix";
-  const REPO = "My-Movies";
-  const RAW_BASE = `https://raw.githubusercontent.com/${OWNER}/${REPO}/main`;
-  const API_BASE = `https://api.github.com/repos/${OWNER}/${REPO}`;
+    let currentCategoryFilter = 'all';
+    let fetchedTmdbMetadata = null;
+    let tmdbDebounceTimeout = null;
+    let smartSearchDebounce = null;
+    let pendingCommit = null;
 
-  let currentArrivals = [];
+    const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
+    const GH_REPO = 'Moinuflix/My-Movies';
+    const GH_BRANCH = 'main';
+    const RAW_BASE = `https://raw.githubusercontent.com/${GH_REPO}/main`;
+    const API_BASE = `https://api.github.com/repos/${GH_REPO}`;
+    const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';
+    const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';
 
-  const savedToken = localStorage.getItem("moinu_gh_token") || "";
-  document.getElementById("gh-token").value = savedToken;
-
-  function saveToken() {
-    const val = document.getElementById("gh-token").value.trim();
-    localStorage.setItem("moinu_gh_token", val);
-    alert("Token saved successfully in browser!");
-  }
-
-  async function loadArrivals() {
-    const container = document.getElementById("inbox-container");
-    container.innerHTML = '<div class="empty-state">Loading audit status...</div>';
-
-    try {
-      const res = await fetch(`${RAW_BASE}/inbox_arrivals.json?t=${Date.now()}`);
-      if (!res.ok) {
-        container.innerHTML = '<div class="empty-state">Run "Scan Google Drive Arrivals" Action on GitHub first!</div>';
-        return;
+    function getStoredToken() { return localStorage.getItem('moinuflix_gh_token') || ''; }
+    function configureGithubToken() {
+      const current = getStoredToken();
+      const input = prompt('Enter your GitHub Personal Access Token (ghp_...):', current);
+      if (input !== null) {
+        if (input.trim()) {
+          localStorage.setItem('moinuflix_gh_token', input.trim());
+          updateTokenBadge();
+          showLaserToast('GitHub Token Saved Successfully!');
+        } else {
+          localStorage.removeItem('moinuflix_gh_token');
+          updateTokenBadge();
+        }
       }
-      currentArrivals = await res.json();
-      if (!Array.isArray(currentArrivals) || currentArrivals.length === 0) {
-        container.innerHTML = '<div class="empty-state">🎉 All 100% Synced! Har movie Master aur Category dono me add hai.</div>';
-        return;
-      }
-      renderCards(currentArrivals);
-    } catch (e) {
-      container.innerHTML = `<div class="empty-state">Error: ${e.message}</div>`;
     }
-  }
+    function updateTokenBadge() {
+      const label = document.getElementById('token-status-label');
+      if (getStoredToken()) {
+        label.textContent = 'Token: Active ✅';
+        label.style.color = 'var(--laser-green)';
+      } else {
+        label.textContent = '⚙️ GitHub Token';
+        label.style.color = 'var(--laser-cyan)';
+      }
+    }
 
-  function renderCards(items) {
-    const container = document.getElementById("inbox-container");
-    container.innerHTML = "";
+    function showLaserToast(msg, isError = false) {
+      const toast = document.getElementById('laser-toast');
+      toast.style.borderColor = isError ? 'var(--laser-red)' : 'var(--laser-cyan)';
+      toast.innerHTML = (isError ? '❌ ' : '⚡ ') + escapeHtml(msg);
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 4000);
+    }
 
-    items.forEach((item, index) => {
-      const isMissingInCat = item.status === "missing_in_category";
-      const statusHtml = isMissingInCat 
-        ? `<span class="status-badge status-category-missing">⚠️ In Master Only (Category Missing)</span>`
-        : `<span class="status-badge status-new">❌ Not In Any JSON</span>`;
+    function extractGDriveId(url) {
+      if (!url) return '';
+      const clean = url.trim();
+      const pMatch = clean.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+      if (pMatch && pMatch[1]) return pMatch[1];
+      const fMatch = clean.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+      if (fMatch && fMatch[1]) return fMatch[1];
+      const rMatch = clean.match(/^[a-zA-Z0-9_-]{25,}$/);
+      return rMatch ? rMatch[0] : clean;
+    }
 
-      const card = document.createElement("div");
-      card.className = "item-card";
-      card.innerHTML = `
-        <div class="card-top">
-          <div class="title">${item.title}</div>
-          <div class="badge-size">${item.size}</div>
-        </div>
-        <div class="card-meta">
-          ${statusHtml}
-          <span>Route To:</span>
-          <select id="target-${index}" class="meta-select">
-            <option value="chunks/data_c01_tamil.json" ${item.target_category === 'kollywood' ? 'selected' : ''}>Kollywood (Tamil)</option>
-            <option value="chunks/data_c01_telugu.json" ${item.target_category === 'tollywood' ? 'selected' : ''}>Tollywood (Telugu)</option>
-            <option value="chunks/data_c01_hindi.json" ${item.target_category === 'bollywood' ? 'selected' : ''}>Bollywood (Hindi)</option>
-            <option value="chunks/data_c01_english.json" ${item.target_category === 'hollywood' ? 'selected' : ''}>Hollywood (English)</option>
-          </select>
-        </div>
-        <div class="card-actions">
-          <button id="btn-${index}" class="btn-push" onclick="syncMovie(${index})">
-            ⚡ 1-Click Sync (Master + Category)
-          </button>
-        </div>
-      `;
-      container.appendChild(card);
-    });
-  }
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
 
-  // Helper function to build full Arctic Horizon 2 Kodi item schema
-  function buildKodiSchema(item, targetFile) {
-    const lang = targetFile.includes("tamil") ? "Tamil" :
-                 targetFile.includes("telugu") ? "Telugu" :
-                 targetFile.includes("hindi") ? "Hindi" : "English";
+    function switchNav(panelId, btn) {
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const targetPanel = document.getElementById(`view-${panelId}`);
+      if (targetPanel) targetPanel.classList.add('active');
 
-    const langCode = targetFile.includes("tamil") ? "ta" :
-                     targetFile.includes("telugu") ? "te" :
-                     targetFile.includes("hindi") ? "hi" : "en";
+      if (panelId === 'drive-inbox') {
+        loadDriveArrivals();
+      }
+    }
 
-    const is4K = item.title.includes("2160p") || item.title.includes("4K");
-    const resolution = is4K ? "4K UHD" : "1080p FHD";
-    const qualityBadge = is4K ? "4k" : "1080p";
-    const fileName = `${item.title} [${is4K ? '2160p' : '1080p'}] [${item.size}].mkv`;
-    const cleanStreamUrl = `https://gdrive-stream.moinudeentv.workers.dev/?id=${item.gdrive_id}|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0`;
+    function switchHubTab(tabType, btn) {
+      document.querySelectorAll('.hub-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.hub-content').forEach(c => c.style.display = 'none');
+      btn.classList.add('active');
+      const activeContent = document.getElementById(`hub-tab-${tabType}`);
+      if (activeContent) activeContent.style.display = 'block';
+    }
 
-    return {
-      "id": item.gdrive_id,
-      "name": fileName,
-      "title": item.title,
-      "original_title": item.title,
-      "original_language": langCode,
-      "year": new Date().getFullYear(),
-      "runtime": 130,
-      "tmdb_id": 0,
-      "imdb_id": "",
-      "imdb_url": "",
-      "rating": 7,
-      "director": [],
-      "cast": [],
-      "plot": "Streamed via MoinuFlix Private High-Speed Server.",
-      "poster": "",
-      "fanart": "",
-      "logo": "",
-      "stream_url": cleanStreamUrl,
-      "badges": {
-        "quality": `https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/${qualityBadge}.png`,
-        "hdr": is4K ? "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/hdr/hdr.png" : "",
-        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web.png",
-        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
-        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-      },
-      "specs": {
-        "resolution": resolution,
-        "source": "WEB-DL",
-        "codec": is4K ? "HEVC" : "H.264",
-        "audio": "Dolby Digital",
-        "channels": "5.1",
-        "languages": lang,
-        "size": item.size
-      },
-      "versions": [
-        {
-          "id": item.gdrive_id,
-          "name": fileName,
-          "quality": is4K ? "4K" : "1080p",
-          "source": "WEB-DL",
-          "codec": is4K ? "HEVC" : "H.264",
-          "resolution": resolution,
-          "audio": "Dolby Digital",
-          "channels": "5.1",
-          "size": item.size,
-          "stream_url": cleanStreamUrl,
-          "specs": {
-            "resolution": resolution,
-            "source": "WEB-DL",
-            "codec": is4K ? "HEVC" : "H.264",
-            "audio": "Dolby Digital",
-            "channels": "5.1",
-            "languages": lang,
-            "size": item.size
+    function detectMovieLang(movie) {
+      const text = (movie.original_title || "") + " " + (movie.title || "");
+      if (/[\u0B80-\u0BFF]/.test(text)) return 'ta';
+      if (/[\u0C00-\u0C7F]/.test(text)) return 'te';
+      if (/[\u0900-\u097F]/.test(text)) return 'hi';
+      const orig = String(movie.original_language || "").toLowerCase().trim();
+      if (['ta', 'tam'].includes(orig)) return 'ta';
+      if (['te', 'tel'].includes(orig)) return 'te';
+      if (['hi', 'hin'].includes(orig)) return 'hi';
+      return 'en';
+    }
+
+    async function loadAllChunks() {
+      updateTokenBadge();
+      const fetchChunk = async (path) => {
+        try {
+          const res = await fetch(`${path}?t=${Date.now()}`);
+          if (!res.ok) return [];
+          const data = await res.json();
+          return Array.isArray(data) ? data : [];
+        } catch(e) { return []; }
+      };
+
+      [moviesData, tamilData, teluguData, hindiData, englishData, seriesData, songsData, vaultData] = await Promise.all([
+        fetchChunk('chunks/data_c01.json'),
+        fetchChunk('chunks/data_c01_tamil.json'),
+        fetchChunk('chunks/data_c01_telugu.json'),
+        fetchChunk('chunks/data_c01_hindi.json'),
+        fetchChunk('chunks/data_c01_english.json'),
+        fetchChunk('chunks/data_c02.json'),
+        fetchChunk('chunks/data_c03.json'),
+        fetchChunk('chunks/data_c04.json')
+      ]);
+
+      document.getElementById('stat-c01').textContent = moviesData.length;
+      document.getElementById('stat-tamil').textContent = tamilData.length || moviesData.filter(m => detectMovieLang(m) === 'ta').length;
+      document.getElementById('stat-telugu').textContent = teluguData.length || moviesData.filter(m => detectMovieLang(m) === 'te').length;
+      document.getElementById('badge-c01').textContent = moviesData.length;
+      document.getElementById('badge-c02').textContent = seriesData.length;
+      document.getElementById('badge-c03').textContent = songsData.length;
+      document.getElementById('badge-c04').textContent = vaultData.length;
+
+      filterAndRenderMovies();
+      checkInboxBadgeOnly();
+    }
+
+    /* INBOX & AUDIT ARRIVALS LOGIC */
+    async function checkInboxBadgeOnly() {
+      try {
+        const res = await fetch(`${RAW_BASE}/inbox_arrivals.json?t=${Date.now()}`);
+        if (res.ok) {
+          const data = await res.json();
+          const count = Array.isArray(data) ? data.length : 0;
+          const badge = document.getElementById('badge-inbox-count');
+          const statInbox = document.getElementById('stat-inbox');
+          if (statInbox) statInbox.textContent = count;
+
+          if (count > 0) {
+            badge.textContent = count;
+            badge.style.display = 'inline-block';
+            badge.classList.add('inbox-alert-badge');
+          } else {
+            badge.style.display = 'none';
+            badge.classList.remove('inbox-alert-badge');
           }
         }
-      ]
-    };
-  }
-
-  // GitHub Helpers
-  async function fetchFile(path, token) {
-    const res = await fetch(`${API_BASE}/contents/${path}`, {
-      headers: { "Authorization": `token ${token}`, "Accept": "application/vnd.github.v3+json" }
-    });
-    if (!res.ok) throw new Error(`Failed to fetch ${path}`);
-    const data = await res.json();
-    const content = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))));
-    return { sha: data.sha, json: JSON.parse(content) };
-  }
-
-  async function updateFile(path, contentStr, sha, commitMsg, token) {
-    const encoded = btoa(unescape(encodeURIComponent(contentStr)));
-    const res = await fetch(`${API_BASE}/contents/${path}`, {
-      method: "PUT",
-      headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ message: commitMsg, content: encoded, sha: sha })
-    });
-    if (!res.ok) throw new Error(`Commit failed for ${path}`);
-    return await res.json();
-  }
-
-  async function syncMovie(index) {
-    const token = document.getElementById("gh-token").value.trim();
-    if (!token) {
-      alert("Please enter GitHub Token first!");
-      return;
+      } catch (e) {}
     }
 
-    const item = currentArrivals[index];
-    const targetFile = document.getElementById(`target-${index}`).value;
-    const btn = document.getElementById(`btn-${index}`);
+    async function loadDriveArrivals() {
+      const container = document.getElementById('inbox-cards-container');
+      container.innerHTML = '<div style="text-align: center; padding: 35px; color: var(--text-muted);">Loading fresh arrivals from Drive...</div>';
 
-    btn.disabled = true;
-    btn.innerText = "⏳ Syncing Schema...";
-
-    try {
-      // Build proper full schema
-      const fullMovieEntry = buildKodiSchema(item, targetFile);
-
-      // 1. Add to Category JSON
-      const catData = await fetchFile(targetFile, token);
-      if (!catData.json.some(x => (x.id === item.gdrive_id || x.gdrive_id === item.gdrive_id))) {
-        catData.json.unshift(fullMovieEntry);
-        await updateFile(targetFile, JSON.stringify(catData.json, null, 2), catData.sha, `Add ${item.title} to ${targetFile}`, token);
-      }
-
-      // 2. Add to Master chunks/data_c01.json (Agar missing ho)
-      if (item.status === "completely_missing") {
-        btn.innerText = "⏳ Adding to Master JSON...";
-        const masterData = await fetchFile("chunks/data_c01.json", token);
-        if (!masterData.json.some(x => (x.id === item.gdrive_id || x.gdrive_id === item.gdrive_id))) {
-          masterData.json.unshift(fullMovieEntry);
-          await updateFile("chunks/data_c01.json", JSON.stringify(masterData.json, null, 2), masterData.sha, `Add ${item.title} to Master`, token);
+      try {
+        const res = await fetch(`${RAW_BASE}/inbox_arrivals.json?t=${Date.now()}`);
+        if (!res.ok) {
+          container.innerHTML = '<div style="text-align: center; padding: 35px; color: var(--laser-cyan);">Run "Scan Google Drive Arrivals" Action on GitHub first!</div>';
+          return;
         }
+        inboxArrivals = await res.json();
+        const count = Array.isArray(inboxArrivals) ? inboxArrivals.length : 0;
+
+        const badge = document.getElementById('badge-inbox-count');
+        const statInbox = document.getElementById('stat-inbox');
+        if (statInbox) statInbox.textContent = count;
+
+        if (count > 0) {
+          badge.textContent = count;
+          badge.style.display = 'inline-block';
+          badge.classList.add('inbox-alert-badge');
+        } else {
+          badge.style.display = 'none';
+          badge.classList.remove('inbox-alert-badge');
+          container.innerHTML = '<div style="text-align: center; padding: 45px; color: var(--laser-green); font-weight: 800; font-size: 1.1rem; background: var(--bg-card); border-radius: 16px; border: 1px solid var(--border-color);">🎉 All 100% Synced! No pending movies found in Drive.</div>';
+          return;
+        }
+
+        renderArrivalsList(inboxArrivals);
+      } catch (e) {
+        container.innerHTML = `<div style="text-align: center; padding: 30px; color: var(--laser-red);">Error: ${e.message}</div>`;
+      }
+    }
+
+    function renderArrivalsList(items) {
+      const container = document.getElementById('inbox-cards-container');
+      container.innerHTML = '';
+
+      items.forEach((item, index) => {
+        const isMissingCat = item.status === "missing_in_category";
+        const statusHtml = isMissingCat
+          ? `<span style="background: rgba(245, 158, 11, 0.15); color: var(--gold-lcu); border: 1px solid rgba(245, 158, 11, 0.3); padding: 3px 8px; border-radius: 6px; font-weight: 700;">⚠️ In Master Only (Category Missing)</span>`
+          : `<span style="background: rgba(239, 68, 68, 0.15); color: #ff525d; border: 1px solid rgba(239, 68, 68, 0.3); padding: 3px 8px; border-radius: 6px; font-weight: 700;">❌ Not In Any JSON</span>`;
+
+        const card = document.createElement('div');
+        card.className = 'audit-card';
+        card.innerHTML = `
+          <div class="audit-top">
+            <div class="audit-title">${escapeHtml(item.title)}</div>
+            <div class="clean-gb-badge">${escapeHtml(item.size)}</div>
+          </div>
+          <div class="audit-meta-bar">
+            ${statusHtml}
+            <span>Target Route:</span>
+            <select id="route-target-${index}" class="audit-select">
+              <option value="chunks/data_c01_tamil.json" ${item.target_category === 'kollywood' ? 'selected' : ''}>Kollywood (Tamil)</option>
+              <option value="chunks/data_c01_telugu.json" ${item.target_category === 'tollywood' ? 'selected' : ''}>Tollywood (Telugu)</option>
+              <option value="chunks/data_c01_hindi.json" ${item.target_category === 'bollywood' ? 'selected' : ''}>Bollywood (Hindi)</option>
+              <option value="chunks/data_c01_english.json" ${item.target_category === 'hollywood' ? 'selected' : ''}>Hollywood (English)</option>
+            </select>
+          </div>
+          <button type="button" class="btn-push-sync" id="btn-sync-${index}" onclick="syncInboxMovie(${index})">
+            ⚡ 1-Click Sync to JSONs (Master + Category)
+          </button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function buildKodiMovieEntry(item, targetFile) {
+      const lang = targetFile.includes('tamil') ? 'Tamil' :
+                   targetFile.includes('telugu') ? 'Telugu' :
+                   targetFile.includes('hindi') ? 'Hindi' : 'English';
+
+      const langCode = targetFile.includes('tamil') ? 'ta' :
+                       targetFile.includes('telugu') ? 'te' :
+                       targetFile.includes('hindi') ? 'hi' : 'en';
+
+      const is4K = item.title.includes('2160p') || item.title.includes('4K');
+      const resolution = is4K ? '4K UHD' : '1080p FHD';
+      const qualityBadge = is4K ? '4k' : '1080p';
+      const streamUrl = `${WORKER_BASE}${item.gdrive_id}${USER_AGENT}`;
+      const fullName = `${item.title} [${is4K ? '2160p' : '1080p'}] [${item.size}].mkv`;
+
+      return {
+        id: item.gdrive_id,
+        name: fullName,
+        title: item.title,
+        original_title: item.title,
+        original_language: langCode,
+        year: new Date().getFullYear(),
+        runtime: 130,
+        tmdb_id: 0,
+        imdb_id: "",
+        imdb_url: "",
+        rating: 7,
+        director: [],
+        cast: [],
+        plot: "Streamed via MoinuFlix High-Speed Cloudflare Network.",
+        poster: "",
+        fanart: "",
+        logo: "",
+        stream_url: streamUrl,
+        badges: {
+          quality: `https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/${qualityBadge}.png`,
+          hdr: is4K ? "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/hdr/hdr.png" : "",
+          source: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web.png",
+          audio_format: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+          audio_channels: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+        },
+        specs: { resolution: resolution, source: "WEB-DL", codec: is4K ? "HEVC" : "H.264", audio: "Dolby Digital", channels: "5.1", languages: lang, size: item.size },
+        versions: [
+          {
+            id: item.gdrive_id,
+            name: fullName,
+            quality: is4K ? "4K" : "1080p",
+            source: "WEB-DL",
+            codec: is4K ? "HEVC" : "H.264",
+            resolution: resolution,
+            audio: "Dolby Digital",
+            channels: "5.1",
+            size: item.size,
+            stream_url: streamUrl,
+            specs: { resolution: resolution, source: "WEB-DL", codec: is4K ? "HEVC" : "H.264", audio: "Dolby Digital", channels: "5.1", languages: lang, size: item.size }
+          }
+        ]
+      };
+    }
+
+    async function fetchRepoFile(path, token) {
+      const res = await fetch(`${API_BASE}/contents/${path}`, {
+        headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+      });
+      if (!res.ok) throw new Error(`Could not fetch ${path}`);
+      const data = await res.json();
+      const content = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))));
+      return { sha: data.sha, json: JSON.parse(content) };
+    }
+
+    async function updateRepoFile(path, contentStr, sha, commitMsg, token) {
+      const encoded = btoa(unescape(encodeURIComponent(contentStr)));
+      const res = await fetch(`${API_BASE}/contents/${path}`, {
+        method: 'PUT',
+        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: commitMsg, content: encoded, sha: sha, branch: GH_BRANCH })
+      });
+      if (!res.ok) throw new Error(`Commit failed for ${path}`);
+      return await res.json();
+    }
+
+    async function syncInboxMovie(index) {
+      const token = getStoredToken();
+      if (!token) {
+        showLaserToast('GitHub Token Required! Click ⚙️ GitHub Token in sidebar.', true);
+        return;
       }
 
-      // 3. Clear from inbox_arrivals.json
-      btn.innerText = "⏳ Clearing Inbox...";
-      const inboxData = await fetchFile("inbox_arrivals.json", token);
-      const updatedInbox = inboxData.json.filter(x => x.gdrive_id !== item.gdrive_id);
-      await updateFile("inbox_arrivals.json", JSON.stringify(updatedInbox, null, 2), inboxData.sha, `Clear ${item.title} from inbox`, token);
+      const item = inboxArrivals[index];
+      const targetFile = document.getElementById(`route-target-${index}`).value;
+      const btn = document.getElementById(`btn-sync-${index}`);
 
-      btn.innerText = "✅ Synced Successfully!";
-      btn.style.background = "#3498db";
-      setTimeout(() => { loadArrivals(); }, 1200);
+      btn.disabled = true;
+      btn.textContent = '⏳ Syncing schema & files...';
 
-    } catch (e) {
-      alert("Sync Failed: " + e.message);
-      btn.disabled = false;
-      btn.innerText = "⚡ 1-Click Sync";
+      try {
+        const fullEntry = buildKodiMovieEntry(item, targetFile);
+
+        // 1. Add to Category JSON
+        const catData = await fetchRepoFile(targetFile, token);
+        if (!catData.json.some(x => (x.id === item.gdrive_id || x.gdrive_id === item.gdrive_id))) {
+          catData.json.unshift(fullEntry);
+          await updateRepoFile(targetFile, JSON.stringify(catData.json, null, 2), catData.sha, `Add ${item.title} to ${targetFile}`, token);
+        }
+
+        // 2. Add to Master chunks/data_c01.json
+        if (item.status === 'completely_missing') {
+          const masterData = await fetchRepoFile('chunks/data_c01.json', token);
+          if (!masterData.json.some(x => (x.id === item.gdrive_id || x.gdrive_id === item.gdrive_id))) {
+            masterData.json.unshift(fullEntry);
+            await updateRepoFile('chunks/data_c01.json', JSON.stringify(masterData.json, null, 2), masterData.sha, `Add ${item.title} to Master`, token);
+          }
+        }
+
+        // 3. Clear from inbox_arrivals.json
+        const inboxData = await fetchRepoFile('inbox_arrivals.json', token);
+        const updatedInbox = inboxData.json.filter(x => x.gdrive_id !== item.gdrive_id);
+        await updateRepoFile('inbox_arrivals.json', JSON.stringify(updatedInbox, null, 2), inboxData.sha, `Clear ${item.title} from inbox`, token);
+
+        showLaserToast(`✅ "${item.title}" successfully added with clean ${item.size}!`);
+        loadAllChunks();
+        setTimeout(loadDriveArrivals, 1200);
+      } catch (err) {
+        showLaserToast(`Sync Failed: ${err.message}`, true);
+        btn.disabled = false;
+        btn.textContent = '⚡ 1-Click Sync to JSONs';
+      }
     }
-  }
 
-  loadArrivals();
-</script>
+    function setCategoryFilter(cat, btn) {
+      currentCategoryFilter = cat;
+      document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterAndRenderMovies();
+    }
 
+    function filterAndRenderMovies() {
+      const container = document.getElementById('movies-grid-container');
+      container.innerHTML = '';
+      const query = document.getElementById('movie-search-input').value.toLowerCase().trim();
+
+      moviesData.forEach((movie, index) => {
+        if (query && !(movie.title||'').toLowerCase().includes(query)) return;
+
+        const lang = detectMovieLang(movie);
+        if (currentCategoryFilter === 'lang_ta' && lang !== 'ta') return;
+        if (currentCategoryFilter === 'lang_te' && lang !== 'te') return;
+        if (currentCategoryFilter === 'lang_hi' && lang !== 'hi') return;
+        if (currentCategoryFilter === 'lang_en' && lang !== 'en') return;
+
+        const card = document.createElement('div');
+        card.className = 'movie-card';
+        card.innerHTML = `
+          <div class="poster-wrap">
+            ${movie.poster ? `<img src="${movie.poster}" class="poster-img" loading="lazy">` : '<div class="poster-placeholder">No Poster</div>'}
+          </div>
+          <div class="movie-card-body">
+            <div>
+              <div class="movie-title">${escapeHtml(movie.title)}</div>
+              <div class="movie-meta-row">
+                <span>${escapeHtml(movie.year || 'N/A')}</span>
+                <span>•</span>
+                <span class="spec-chip">${escapeHtml(movie.specs?.resolution || '1080p')}</span>
+                ${movie.specs?.size ? `<span class="clean-gb-badge">${escapeHtml(movie.specs.size)}</span>` : ''}
+              </div>
+            </div>
+            <div class="card-actions-row">
+              <button type="button" class="btn-delete-item" onclick="promptDeleteItem('chunks/data_c01.json', ${index}, '${escapeHtml(movie.title)}', moviesData)">🗑️ Delete</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    async function promptDeleteItem(chunkPath, index, itemTitle, dataArray) {
+      const pass = prompt(`Delete "${itemTitle}"?\nEnter confirmation PIN:`);
+      if (pass !== "24592") {
+        if (pass !== null) showLaserToast('Incorrect PIN!', true);
+        return;
+      }
+
+      const token = getStoredToken();
+      if (!token) return showLaserToast('GitHub Token missing!', true);
+
+      showLaserToast(`Deleting "${itemTitle}"...`);
+      dataArray.splice(index, 1);
+
+      try {
+        await commitFileDirect(chunkPath, dataArray, `Studio Delete: Removed ${itemTitle}`, token);
+        showLaserToast(`"${itemTitle}" deleted!`);
+        loadAllChunks();
+      } catch (err) {
+        showLaserToast(`Delete Failed: ${err.message}`, true);
+        loadAllChunks();
+      }
+    }
+
+    async function commitFileDirect(chunkPath, arrayData, message, token) {
+      const url = `https://api.github.com/repos/${GH_REPO}/contents/${chunkPath}`;
+      const getRes = await fetch(url, { headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' } });
+      let currentSha = undefined;
+      if (getRes.ok) {
+        const fileInfo = await getRes.json();
+        currentSha = fileInfo.sha;
+      }
+
+      const finalJson = JSON.stringify(arrayData, null, 2);
+      const encoded = btoa(unescape(encodeURIComponent(finalJson)));
+
+      const putRes = await fetch(url, {
+        method: 'PUT',
+        headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: message, content: encoded, branch: GH_BRANCH, sha: currentSha })
+      });
+      if (!putRes.ok) throw new Error(`Commit failed for ${chunkPath}`);
+    }
+
+    function parseSmartFileName(filename) {
+      if (!filename || filename.trim().length === 0) {
+        document.getElementById('parsed-smart-tags').innerHTML = '';
+        return;
+      }
+      const is4K = filename.toLowerCase().includes('2160p') || filename.toLowerCase().includes('4k');
+      document.getElementById('input-quality').value = is4K ? '4K UHD' : '1080p';
+      document.getElementById('parsed-smart-tags').innerHTML = `<span class="smart-tag">✔ ${is4K ? '4K UHD' : '1080p'}</span>`;
+    }
+
+    async function handleMovieSubmit(e) {
+      e.preventDefault();
+      const tmdbId = document.getElementById('input-tmdb-id').value.trim();
+      const rawGdrive = document.getElementById('input-gdrive-url').value.trim();
+      const fileId = extractGDriveId(rawGdrive);
+
+      if (!fileId) return showLaserToast('Valid Google Drive ID required!', true);
+
+      const quality = document.getElementById('input-quality').value;
+      const source = document.getElementById('input-source').value;
+      const languages = document.getElementById('input-languages').value;
+      const fileSize = document.getElementById('input-filesize').value.trim();
+      const streamUrl = `${WORKER_BASE}${fileId}${USER_AGENT}`;
+
+      const res = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_API_KEY}&language=en-US`);
+      const meta = await res.json();
+
+      const langCode = meta.original_language || 'en';
+      let targetCat = 'chunks/data_c01_english.json';
+      if (langCode === 'ta') targetCat = 'chunks/data_c01_tamil.json';
+      else if (langCode === 'te') targetCat = 'chunks/data_c01_telugu.json';
+      else if (langCode === 'hi') targetCat = 'chunks/data_c01_hindi.json';
+
+      const fullMovie = {
+        id: fileId,
+        name: `${meta.title} (${meta.release_date?.split('-')[0] || ''}) [${quality}] [${fileSize || '14 GB'}].mkv`,
+        title: meta.title,
+        original_title: meta.original_title || meta.title,
+        original_language: langCode,
+        year: meta.release_date ? parseInt(meta.release_date.split('-')[0]) : new Date().getFullYear(),
+        runtime: meta.runtime || 120,
+        tmdb_id: Number(tmdbId),
+        rating: meta.vote_average || 7,
+        plot: meta.overview || '',
+        poster: meta.poster_path ? `https://image.tmdb.org/t/p/w500${meta.poster_path}` : '',
+        fanart: meta.backdrop_path ? `https://image.tmdb.org/t/p/original${meta.backdrop_path}` : '',
+        stream_url: streamUrl,
+        specs: { resolution: quality, source: source, codec: "x265", audio: "Dolby Atmos", channels: "5.1", languages: languages, size: fileSize || "14 GB" },
+        versions: [{
+          id: fileId,
+          name: `${meta.title} [${quality}] [${fileSize || '14 GB'}].mkv`,
+          quality: quality,
+          source: source,
+          stream_url: streamUrl,
+          size: fileSize || "14 GB"
+        }]
+      };
+
+      pendingCommit = { targetChunk: 'chunks/data_c01.json', newEntry: fullMovie, activeDataArray: moviesData, title: fullMovie.title, secondCategoryChunk: targetCat };
+
+      const details = document.getElementById('modal-preview-details');
+      details.innerHTML = `
+        <div class="preview-item"><span class="preview-item-label">Target Chunk</span><span class="preview-item-val" style="color: var(--laser-cyan);">chunks/data_c01.json + ${targetCat}</span></div>
+        <div class="preview-item"><span class="preview-item-label">Title</span><span class="preview-item-val">${fullMovie.title} [${fileSize || '14 GB'}]</span></div>
+        <div><span class="preview-item-label">Stream</span><div class="preview-stream-text">${streamUrl}</div></div>
+      `;
+      document.getElementById('preview-modal').classList.add('active');
+    }
+
+    async function commitPendingToGitHub() {
+      if (!pendingCommit) return;
+      const token = getStoredToken();
+      if (!token) return showLaserToast('GitHub Token required!', true);
+
+      const btn = document.getElementById('btn-commit-github');
+      btn.disabled = true;
+      btn.textContent = 'Committing...';
+
+      try {
+        const { targetChunk, newEntry, activeDataArray, title, secondCategoryChunk } = pendingCommit;
+        activeDataArray.unshift(newEntry);
+        await commitFileDirect(targetChunk, activeDataArray, `Add ${title} to Master`, token);
+
+        let catArr = secondCategoryChunk.includes('tamil') ? tamilData :
+                     secondCategoryChunk.includes('telugu') ? teluguData :
+                     secondCategoryChunk.includes('hindi') ? hindiData : englishData;
+
+        catArr.unshift(newEntry);
+        await commitFileDirect(secondCategoryChunk, catArr, `Add ${title} to Category`, token);
+
+        showLaserToast(`"${title}" successfully saved!`);
+        closeModal();
+        loadAllChunks();
+      } catch (err) {
+        showLaserToast(`Commit Error: ${err.message}`, true);
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('preview-modal').classList.remove('active');
+      pendingCommit = null;
+    }
+
+    window.addEventListener('DOMContentLoaded', loadAllChunks);
+  </script>
 </body>
 </html>
