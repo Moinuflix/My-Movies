@@ -1,5 +1,83 @@
 [
   {
+    "id": "1MSm3VHN8cP5IrO9WBraD13Lk7ziKJYX3",
+    "name": "Master (2021) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
+    "title": "Master",
+    "original_title": "மாஸ்டர்",
+    "original_language": "ta",
+    "year": 2021,
+    "runtime": 179,
+    "tmdb_id": 626392,
+    "rating": 6.6,
+    "collection": "",
+    "director": [
+      "Lokesh Kanagaraj"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Vijay",
+        "role": "John 'JD' Durairaj",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/zbQ1sDRVRHkroWwvrnqYKMerl66.jpg"
+      },
+      {
+        "name": "Vijay Sethupathi",
+        "role": "Bhavani / Young Bhavani (voice)",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/a3HWdfCAbplrvoMNEJCjnkbqqOo.jpg"
+      },
+      {
+        "name": "Arjun Das",
+        "role": "Das",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/20RDzfTjpfRHxLYBfnIYXs7vcri.jpg"
+      },
+      {
+        "name": "Malavika Mohanan",
+        "role": "Chaarulatha 'Chaaru' Prasad",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/ukA3kk56Eqhn8g42an73CgdpXC5.jpg"
+      },
+      {
+        "name": "Andrea Jeremiah",
+        "role": "Vanathi",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/rYuhyicWBWguymMQ5B02IfENdvI.jpg"
+      }
+    ],
+    "plot": "An alcoholic professor is sent to a juvenile school, where he clashes with a gangster, who uses the children of the school for criminal activities.",
+    "poster": "https://image.tmdb.org/t/p/w500/wjbOlovDadOdPKkSAMohLCjbIsc.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/x1I63Mm5KU2DXjL4HdBy6JaGTms.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1MSm3VHN8cP5IrO9WBraD13Lk7ziKJYX3|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "Prime Video",
+      "codec": "x265",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil, Telugu, Hindi, Malayalam",
+      "size": "12 GB"
+    },
+    "versions": [
+      {
+        "id": "1MSm3VHN8cP5IrO9WBraD13Lk7ziKJYX3",
+        "name": "Master (2021) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
+        "quality": "1080p • Prime Video • Dolby Digital Plus Multi [12 GB]",
+        "source": "Prime Video",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1MSm3VHN8cP5IrO9WBraD13Lk7ziKJYX3|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Prime Video",
+          "codec": "x265",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Hindi, Malayalam",
+          "size": "12 GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "1570D1bMAEf4pO26874cxKS0pgRDTW53l",
     "name": "Jawan Extended Cut (2023) 2160p NF WEB-DL HEVC x265 [Tamil (DD+ 5 1 - 640kbps)] ESub [2160p] [15 GB].mkv",
     "title": "Jawan",
