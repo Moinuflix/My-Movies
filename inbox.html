@@ -504,6 +504,7 @@
       font-size: 0.85rem;
       cursor: pointer;
     }
+    .btn-clean-duplicates:hover { background: var(--laser-cyan); color: #000; }
 
     .tmdb-results-box {
       display: none;
@@ -566,39 +567,6 @@
       box-shadow: 0 0 14px var(--gold-lcu-glow);
     }
 
-    /* INBOX AUDIT CARD STYLES */
-    .inbox-audit-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 1.25rem;
-      margin-bottom: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-      transition: all 0.25s ease;
-    }
-    .inbox-audit-card:hover { border-color: var(--laser-cyan); box-shadow: 0 0 15px var(--laser-cyan-glow); }
-    .inbox-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
-    .inbox-card-title { font-size: 1.1rem; font-weight: 700; color: #fff; line-height: 1.4; word-break: break-all; }
-    .inbox-card-meta { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-muted); flex-wrap: wrap; }
-    .inbox-target-select { background: #0b1329; border: 1px solid var(--border-color); color: #fff; padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; outline: none; }
-    .btn-inbox-push {
-      width: 100%;
-      background: linear-gradient(135deg, var(--laser-green), #059669);
-      color: #fff;
-      font-weight: 800;
-      border: none;
-      padding: 0.8rem;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 0.88rem;
-      box-shadow: 0 0 14px var(--laser-green-glow);
-      transition: all 0.2s;
-    }
-    .btn-inbox-push:hover { opacity: 0.9; transform: translateY(-1px); }
-    .btn-inbox-push:disabled { opacity: 0.5; cursor: not-allowed; }
-
     /* SMART TABLE STYLES FOR DIRECT DRIVE INGEST */
     .smart-table-wrap {
       background: var(--bg-card);
@@ -627,6 +595,23 @@
     }
     .smart-scan-table tr:hover {
       background: rgba(56, 189, 248, 0.03);
+    }
+
+    .tmdb-pick-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 6px;
+      background: #0b1329;
+      transition: all 0.2s;
+    }
+    .tmdb-pick-item:hover {
+      border-color: var(--laser-cyan);
+      background: #1e293b;
     }
 
     /* BOTTOM AUTO-MERGE DOCK BAR */
@@ -898,12 +883,12 @@
       </div>
     </section>
 
-    <!-- NAYA UPGRADE VIEW: DRIVE ARRIVALS & DIRECT AUDIT SCANNER -->
+    <!-- VIEW: DRIVE ARRIVALS & DIRECT AUDIT SCANNER -->
     <section id="view-drive-inbox" class="view-panel">
       <header>
         <div>
           <h1>📡 Google Drive Arrivals & Audit Hub</h1>
-          <p class="section-desc">Clean Drive ID + Real Name Match • TMDB Auto-Check • Direct Commit to chunks/data_c01.json</p>
+          <p class="section-desc">Clean Drive ID + Real Name Match • Direct Transfer to Add Form • 1-Click Sync</p>
         </div>
         <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
           <button type="button" class="btn-clean-duplicates" id="btn-trigger-action" onclick="triggerGitHubScanAction()">
@@ -917,30 +902,25 @@
 
       <div id="inbox-status-msg" style="margin-bottom: 1.2rem; font-size: 0.88rem; color: var(--laser-cyan); font-weight: 600;"></div>
 
-      <!-- SMART INGESTION TABLE (DIRECT MATCH & COMMIT) -->
       <div class="smart-table-wrap">
         <table class="smart-scan-table">
           <thead>
             <tr>
-              <th style="width: 140px;">Drive ID</th>
-              <th style="width: 25%;">Raw File Name</th>
-              <th>Real Title & Year (Auto-Cleaned)</th>
-              <th style="width: 90px;">Size</th>
-              <th style="width: 200px;">TMDB Confirmation</th>
-              <th style="text-align: right; width: 140px;">Action</th>
+              <th style="width: 150px;">Drive ID</th>
+              <th>Real Google Drive File Name</th>
+              <th style="width: 110px;">Size</th>
+              <th style="text-align: right; width: 190px;">Action</th>
             </tr>
           </thead>
           <tbody id="smart-ingest-table-body">
             <tr>
-              <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 30px;">
+              <td colspan="4" style="text-align: center; color: var(--text-muted); padding: 30px;">
                 Click "Refresh List" to scan arrivals against Master data_c01.json...
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-
-      <div id="inbox-cards-container" style="margin-top: 1.5rem;"></div>
     </section>
 
     <!-- VIEW: MOVIES & FRANCHISE PACKS -->
@@ -1265,19 +1245,19 @@
 
     <!-- VIEW: EXISTING SERIES -->
     <section id="view-existing-series" class="view-panel">
-      <header><div><h1>Web Series (data_c02.json)</h1></div></header>
+      <header><div><h1>Web Series (data_c02.json)</h1><p class="section-desc">Loaded Web Series Library</p></div></header>
       <div class="movies-grid" id="series-grid"></div>
     </section>
 
     <!-- VIEW: EXISTING SONGS -->
     <section id="view-existing-songs" class="view-panel">
-      <header><div><h1>5.1 Audio & Atmos Songs (data_c03.json)</h1></div></header>
+      <header><div><h1>5.1 Audio & Atmos Songs (data_c03.json)</h1><p class="section-desc">Dolby Surround & Lossless Audio Vault</p></div></header>
       <div class="movies-grid" id="songs-grid"></div>
     </section>
 
     <!-- VIEW: EXISTING VAULT -->
     <section id="view-existing-vault" class="view-panel">
-      <header><div><h1>YouTube Video Vault (data_c04.json)</h1></div></header>
+      <header><div><h1>YouTube Video Vault (data_c04.json)</h1><p class="section-desc">Curated Scenes & Video Songs</p></div></header>
       <div class="movies-grid" id="vault-grid"></div>
     </section>
   </main>
@@ -1524,6 +1504,22 @@
       return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
+    /* CLEAN PARSER: Strips Telegram prefixes (@PrakyTV - ), brackets, tags */
+    function cleanMovieFileName(filename) {
+      let raw = filename.replace(/\.(mkv|mp4|avi|ts)$/i, '');
+      raw = raw.replace(/^@[\w\-]+[\s\-_]+/i, '');
+      raw = raw.replace(/[\._\-]/g, ' ');
+
+      const ym = raw.match(/\b(19\d\d|20\d\d)\b/);
+      let year = ym ? ym[1] : '';
+      let title = ym ? raw.substring(0, ym.index).trim() : raw.split('[')[0].split('(')[0].trim();
+
+      title = title.replace(/[\(\)\[\]]/g, '').trim();
+      title = title.replace(/\b(1080p|720p|2160p|4k|uhd|bluray|web-dl|web|dts|atmos|ddp|x264|x265|hevc|remastered|untouched|true)\b/gi, '').trim();
+
+      return { title: title || filename, year: year };
+    }
+
     function switchNav(panelId, btn) {
       document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
@@ -1533,13 +1529,19 @@
 
       if (panelId === 'drive-inbox') {
         loadDriveArrivalsList();
+      } else if (panelId === 'existing-series') {
+        renderSeriesGrid();
+      } else if (panelId === 'existing-songs') {
+        renderSongsGrid();
+      } else if (panelId === 'existing-vault') {
+        renderVaultGrid();
       }
     }
 
     function switchHubTab(tabType, btn) {
       document.querySelectorAll('.hub-tab-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.hub-content').forEach(c => c.style.display = 'none');
-      btn.classList.add('active');
+      if (btn) btn.classList.add('active');
       const activeContent = document.getElementById(`hub-tab-${tabType}`);
       if (activeContent) activeContent.style.display = 'block';
     }
@@ -1594,16 +1596,6 @@
       return null;
     }
 
-    /* FILENAME TO CLEAN TITLE PARSER */
-    function cleanMovieFileName(filename) {
-      let raw = filename.replace(/\.(mkv|mp4|avi|ts)$/i, '').replace(/[\._\-]/g, ' ');
-      const ym = raw.match(/\b(19\d\d|20\d\d)\b/);
-      let year = ym ? ym[1] : '';
-      let title = ym ? raw.substring(0, ym.index).trim() : raw.split('[')[0].trim();
-      title = title.replace(/\b(1080p|720p|2160p|4k|uhd|bluray|web-dl|web|dts|atmos|ddp|x264|x265|hevc)\b/gi, '').trim();
-      return { title: title || filename, year: year };
-    }
-
     async function loadAllChunks() {
       updateTokenBadge();
       updateBackendBadge();
@@ -1641,9 +1633,177 @@
       pollInboxNotificationBadge();
     }
 
-    /* ============================================================
-       DRIVE SCANNER & MASTER DATA_C01.JSON STRICT AUDIT
-       ============================================================ */
+    /* RENDER SERIES (data_c02.json) */
+    function renderSeriesGrid() {
+      const container = document.getElementById('series-grid');
+      container.innerHTML = '';
+      if (seriesData.length === 0) {
+        container.innerHTML = '<div style="color:var(--text-muted); padding:30px;">No series found in chunks/data_c02.json.</div>';
+        return;
+      }
+      seriesData.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'movie-card';
+        card.innerHTML = `
+          <div class="poster-wrap">
+            ${item.poster ? `<img src="${item.poster}" class="poster-img" loading="lazy">` : '<div class="poster-placeholder">No Poster</div>'}
+          </div>
+          <div class="movie-card-body">
+            <div>
+              <div class="movie-title">${escapeHtml(item.name || item.title)}</div>
+              <div class="movie-meta-row">
+                <span class="spec-chip">${escapeHtml(item.seasons || 'Series')}</span>
+              </div>
+            </div>
+            <button class="btn-action-primary" onclick="window.open('${escapeHtml(item.stream_url || item.gdrive || '')}', '_blank')">▶ Play Series</button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    /* RENDER SONGS (data_c03.json) */
+    function renderSongsGrid() {
+      const container = document.getElementById('songs-grid');
+      container.innerHTML = '';
+      if (songsData.length === 0) {
+        container.innerHTML = '<div style="color:var(--text-muted); padding:30px;">No songs found in chunks/data_c03.json.</div>';
+        return;
+      }
+      songsData.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'movie-card';
+        card.innerHTML = `
+          <div class="poster-wrap" style="height:210px;">
+            ${item.poster ? `<img src="${item.poster}" class="poster-img" loading="lazy">` : '<div class="poster-placeholder">🎵 5.1 Track</div>'}
+          </div>
+          <div class="movie-card-body">
+            <div>
+              <div class="movie-title">${escapeHtml(item.title || item.name)}</div>
+              <div class="movie-meta-row">
+                <span class="spec-chip chip-ott">${escapeHtml(item.movie || 'Single')}</span>
+                <span class="spec-chip chip-gold">${escapeHtml(item.quality || '5.1 Dolby')}</span>
+              </div>
+            </div>
+            <button class="btn-action-primary" onclick="window.open('${escapeHtml(item.stream_url || item.gdrive || '')}', '_blank')">▶ Listen 5.1</button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    /* RENDER VAULT (data_c04.json) */
+    function renderVaultGrid() {
+      const container = document.getElementById('vault-grid');
+      container.innerHTML = '';
+      if (vaultData.length === 0) {
+        container.innerHTML = '<div style="color:var(--text-muted); padding:30px;">No video clips found in chunks/data_c04.json.</div>';
+        return;
+      }
+      vaultData.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'movie-card';
+        card.innerHTML = `
+          <div class="poster-wrap" style="height:200px;">
+            ${item.thumbnail ? `<img src="${item.thumbnail}" class="poster-img" loading="lazy">` : '<div class="poster-placeholder">🍿 YouTube Clip</div>'}
+          </div>
+          <div class="movie-card-body">
+            <div>
+              <div class="movie-title">${escapeHtml(item.title)}</div>
+              <div class="movie-meta-row">
+                <span class="spec-chip">${escapeHtml(item.category || 'Clip')}</span>
+              </div>
+            </div>
+            <button class="btn-action-primary" onclick="window.open('${escapeHtml(item.url || '')}', '_blank')">▶ Watch Video</button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    /* CONNECT ALL PACKS */
+    async function autoConnectFranchiseCollections() {
+      const token = getStoredToken();
+      if (!token) {
+        showLaserToast('GitHub Token Required!', true);
+        return;
+      }
+
+      showLaserToast('Connecting franchise collections...');
+      let updatedCount = 0;
+
+      moviesData.forEach(m => {
+        const t = (m.title || m.name || '').toLowerCase();
+        for (const [packName, pack] of Object.entries(MASTER_FRANCHISES)) {
+          if (pack.alias.some(a => t.includes(a))) {
+            if (m.collection !== packName) {
+              m.collection = packName;
+              updatedCount++;
+            }
+          }
+        }
+      });
+
+      if (updatedCount === 0) {
+        showLaserToast('All packs are already connected!');
+        return;
+      }
+
+      try {
+        await commitFileDirect('chunks/data_c01.json', moviesData, `Auto-Connected ${updatedCount} Franchise Packs`, token);
+        showLaserToast(`✅ Successfully connected ${updatedCount} movies into packs!`);
+        filterAndRenderMovies();
+      } catch(e) {
+        showLaserToast(`Pack connect error: ${e.message}`, true);
+      }
+    }
+
+    /* AUTO-MERGE DUPLICATES */
+    async function autoMergeDuplicateMovies() {
+      const token = getStoredToken();
+      if (!token) {
+        showLaserToast('GitHub Token Required!', true);
+        return;
+      }
+
+      showLaserToast('Scanning for duplicate movies...');
+      const map = new Map();
+      let mergedCount = 0;
+
+      moviesData.forEach(m => {
+        const key = m.tmdb_id ? String(m.tmdb_id) : (m.title || m.name || '').toLowerCase().trim();
+        if (!map.has(key)) {
+          m.versions = m.versions || [];
+          map.set(key, m);
+        } else {
+          const existing = map.get(key);
+          existing.versions = existing.versions || [];
+          if (m.versions && m.versions.length > 0) {
+            m.versions.forEach(v => {
+              if (!existing.versions.some(ev => ev.id === v.id)) {
+                existing.versions.push(v);
+              }
+            });
+          }
+          mergedCount++;
+        }
+      });
+
+      if (mergedCount === 0) {
+        showLaserToast('No duplicate movies found to merge!');
+        return;
+      }
+
+      const deduplicated = Array.from(map.values());
+      try {
+        await commitFileDirect('chunks/data_c01.json', deduplicated, `Auto-Merged ${mergedCount} Duplicate Versions`, token);
+        moviesData = deduplicated;
+        showLaserToast(`✅ Cleaned up and merged ${mergedCount} duplicate movies!`);
+        loadAllChunks();
+      } catch(e) {
+        showLaserToast(`Merge error: ${e.message}`, true);
+      }
+    }
 
     async function pollInboxNotificationBadge() {
       try {
@@ -1716,18 +1876,17 @@
     async function loadDriveArrivalsList() {
       const tbody = document.getElementById('smart-ingest-table-body');
       const statusMsg = document.getElementById('inbox-status-msg');
-      tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 30px;">Cross-referencing Drive files with Master data_c01.json...</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 30px;">Cross-referencing Drive files with Master data_c01.json...</td></tr>';
 
       try {
         const res = await fetch(`${RAW_BASE}/inbox_arrivals.json?t=${Date.now()}`);
         if (!res.ok) {
-          tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--laser-cyan); padding: 30px;">No arrivals file found. Click "Trigger Drive Scan" first!</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--laser-cyan); padding: 30px;">No arrivals file found. Click "Trigger Drive Scan" first!</td></tr>';
           return;
         }
 
         const rawList = await res.json();
         
-        // Deep Master ID Extractor
         const masterKnownIds = new Set();
         moviesData.forEach(m => {
           if (m.id) masterKnownIds.add(String(m.id).trim());
@@ -1739,7 +1898,6 @@
           });
         });
 
-        // Strict Master Filter: Only truly missing entries for data_c01.json
         inboxArrivalsList = rawList.filter(x => !masterKnownIds.has(String(x.gdrive_id).trim()));
         const count = inboxArrivalsList.length;
 
@@ -1751,19 +1909,43 @@
           badge.style.display = 'inline-block';
           badge.textContent = count;
           badge.classList.add('inbox-alert-badge');
-          statusMsg.textContent = `🎯 Found ${count} genuine missing movies ready for 1-click addition to data_c01.json:`;
+          statusMsg.textContent = `🎯 Found ${count} genuine missing movies ready for addition:`;
         } else {
           badge.style.display = 'none';
           badge.classList.remove('inbox-alert-badge');
           statusMsg.textContent = '';
-          tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--laser-green); font-weight: 800; font-size: 1rem; padding: 30px;">🎉 All 100% Synced! Master data_c01.json has all Google Drive movies.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--laser-green); font-weight: 800; font-size: 1rem; padding: 30px;">🎉 All 100% Synced! Master data_c01.json has all Google Drive movies.</td></tr>';
           return;
         }
 
         renderSmartScanTable(inboxArrivalsList);
       } catch (e) {
-        tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--laser-red); padding: 30px;">Error: ${e.message}</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--laser-red); padding: 30px;">Error: ${e.message}</td></tr>`;
       }
+    }
+
+    /* DIRECT AUTO-TRANSFER FROM DRIVE ARRIVALS TO ADD ITEMS FORM */
+    function transferArrivalToAddForm(index) {
+      const item = inboxArrivalsList[index];
+      if (!item) return;
+
+      // 1. Open "➕ Add Items" Tab
+      const addNavBtn = document.querySelectorAll('.nav-btn')[3];
+      switchNav('add-items-hub', addNavBtn);
+      switchHubTab('movie', document.querySelectorAll('.hub-tab-btn')[0]);
+
+      // 2. Transfer Real File Name, Drive ID & Size
+      document.getElementById('input-smart-filename').value = item.title;
+      document.getElementById('input-gdrive-url').value = item.gdrive_id;
+      if (item.size) {
+        document.getElementById('input-filesize').value = item.size;
+      }
+
+      // 3. Trigger Form Auto-parse & TMDB Suggestions Dropdown
+      parseSmartFileName(item.title);
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      showLaserToast(`Loaded: "${item.title}" into Form`);
     }
 
     function renderSmartScanTable(items) {
@@ -1771,7 +1953,6 @@
       tbody.innerHTML = '';
 
       items.forEach((item, index) => {
-        const parsed = cleanMovieFileName(item.title);
         const tr = document.createElement('tr');
         tr.innerHTML = `
           <td>
@@ -1780,200 +1961,21 @@
             </span>
           </td>
           <td>
-            <div style="font-size: 0.8rem; color: #fff; font-weight: 600; line-height: 1.3; max-width: 280px; word-break: break-all;">
+            <div style="font-size: 0.85rem; color: #fff; font-weight: 600; line-height: 1.4; word-break: break-all;">
               ${escapeHtml(item.title)}
-            </div>
-          </td>
-          <td>
-            <div style="display: flex; gap: 6px; align-items: center;">
-              <input type="text" id="scan-title-${index}" value="${escapeHtml(parsed.title)}" style="padding: 6px 10px; font-size: 0.82rem; font-weight: 700; color: #fff; border-color: rgba(56,189,248,0.3);">
-              <input type="text" id="scan-year-${index}" value="${escapeHtml(parsed.year)}" placeholder="Year" style="width: 70px; padding: 6px 8px; font-size: 0.82rem; font-weight: 700; text-align: center; color: var(--gold-lcu); border-color: rgba(245,158,11,0.3);">
             </div>
           </td>
           <td>
             <span class="clean-gb-badge">${escapeHtml(item.size || '10 GB')}</span>
           </td>
-          <td>
-            <button type="button" class="lang-btn-chip" style="color: var(--laser-cyan); border-color: var(--laser-cyan);" onclick="verifyRowTmdb(${index})">
-              🔍 Check TMDB
-            </button>
-            <div id="scan-tmdb-info-${index}" style="font-size: 0.72rem; color: var(--text-dim); margin-top: 4px;">Click to verify</div>
-          </td>
           <td style="text-align: right;">
-            <button type="button" class="btn-action-primary" id="btn-smart-push-${index}" style="padding: 6px 12px; font-size: 0.8rem;" onclick="smartCommitToMasterOnly(${index})">
-              ⚡ Add to data_c01
+            <button type="button" class="btn-action-primary" style="padding: 8px 14px; font-weight: 800; font-size: 0.82rem;" onclick="transferArrivalToAddForm(${index})">
+              ⚡ Load in Add Form ➔
             </button>
           </td>
         `;
         tbody.appendChild(tr);
       });
-    }
-
-    async function verifyRowTmdb(idx) {
-      const title = document.getElementById(`scan-title-${idx}`).value.trim();
-      const year = document.getElementById(`scan-year-${idx}`).value.trim();
-      const infoEl = document.getElementById(`scan-tmdb-info-${idx}`);
-
-      infoEl.innerText = "Searching TMDB...";
-      infoEl.style.color = "var(--laser-cyan)";
-
-      try {
-        let url = `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(title)}${year ? `&year=${year}` : ''}&language=en-US`;
-        const res = await fetch(url);
-        const data = await res.json();
-
-        if (data.results && data.results.length > 0) {
-          const top = data.results[0];
-          infoEl.innerHTML = `<span style="color: var(--laser-green); font-weight: 800;">✔ ${escapeHtml(top.title)} (${top.release_date ? top.release_date.split('-')[0] : 'N/A'}) [ID: ${top.id}]</span>`;
-          infoEl.dataset.tmdbId = top.id;
-        } else {
-          infoEl.innerHTML = `<span style="color: var(--laser-red); font-weight: 700;">No match found</span>`;
-        }
-      } catch (e) {
-        infoEl.innerText = "Error querying TMDB";
-      }
-    }
-
-    /* DIRECT 1-CLICK COMMIT TO MASTER DATA_C01.JSON (+ CATEGORY & INBOX CLEAR) */
-    async function smartCommitToMasterOnly(index) {
-      const token = getStoredToken();
-      if (!token) {
-        showLaserToast('GitHub Token Required! Click ⚙️ GitHub Token in sidebar.', true);
-        return;
-      }
-
-      const item = inboxArrivalsList[index];
-      const titleInput = document.getElementById(`scan-title-${index}`).value.trim();
-      const yearInput = document.getElementById(`scan-year-${index}`).value.trim();
-      const infoEl = document.getElementById(`scan-tmdb-info-${index}`);
-      const btn = document.getElementById(`btn-smart-push-${index}`);
-
-      btn.disabled = true;
-      btn.textContent = '⏳ Saving...';
-
-      let tmdbId = infoEl.dataset.tmdbId || null;
-      let tmdbMeta = null;
-
-      if (tmdbId) {
-        tmdbMeta = await fetchTmdbMetadata(tmdbId);
-      } else {
-        try {
-          const sRes = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(titleInput)}${yearInput ? `&year=${yearInput}` : ''}&language=en-US`);
-          const sData = await sRes.json();
-          if (sData.results && sData.results.length > 0) {
-            tmdbMeta = await fetchTmdbMetadata(sData.results[0].id);
-          }
-        } catch(e) {}
-      }
-
-      const is4K = item.title.includes('2160p') || item.title.includes('4K');
-      const resolution = is4K ? '4K UHD' : '1080p FHD';
-      const qualityBadge = is4K ? '4k' : '1080p';
-      const streamUrl = `${WORKER_BASE}${item.gdrive_id}${USER_AGENT}`;
-      const fullName = `${item.title} [${is4K ? '2160p' : '1080p'}] [${item.size}].mkv`;
-
-      const finalMovie = {
-        id: item.gdrive_id,
-        name: fullName,
-        title: tmdbMeta ? tmdbMeta.title : titleInput,
-        original_title: tmdbMeta ? tmdbMeta.original_title : titleInput,
-        original_language: tmdbMeta ? tmdbMeta.original_language : 'ta',
-        year: tmdbMeta ? tmdbMeta.year : (parseInt(yearInput) || new Date().getFullYear()),
-        runtime: tmdbMeta ? tmdbMeta.runtime : 140,
-        tmdb_id: tmdbMeta ? tmdbMeta.tmdb_id : 0,
-        rating: tmdbMeta ? tmdbMeta.rating : 7.0,
-        director: tmdbMeta ? tmdbMeta.director : [],
-        cast: tmdbMeta ? tmdbMeta.cast : [],
-        plot: tmdbMeta ? tmdbMeta.plot : "Streamed via MoinuFlix Private High-Speed Server.",
-        poster: tmdbMeta ? tmdbMeta.poster : "",
-        fanart: tmdbMeta ? tmdbMeta.fanart : "",
-        trailer: tmdbMeta ? tmdbMeta.trailer : "",
-        stream_url: streamUrl,
-        badges: {
-          quality: `https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/${qualityBadge}.png`,
-          hdr: is4K ? "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/hdr/hdr.png" : "",
-          source: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web.png",
-          audio_format: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
-          audio_channels: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-        },
-        specs: {
-          resolution: resolution,
-          source: "WEB-DL",
-          codec: is4K ? "HEVC" : "H.264",
-          audio: "Dolby Digital",
-          channels: "5.1",
-          languages: "Tamil",
-          size: item.size
-        },
-        versions: [{
-          id: item.gdrive_id,
-          name: fullName,
-          quality: is4K ? "4K UHD" : "1080p",
-          source: "WEB-DL",
-          codec: is4K ? "HEVC" : "H.264",
-          resolution: resolution,
-          audio: "Dolby Digital",
-          channels: "5.1",
-          size: item.size,
-          stream_url: streamUrl,
-          specs: {
-            resolution: resolution,
-            source: "WEB-DL",
-            codec: is4K ? "HEVC" : "H.264",
-            audio: "Dolby Digital",
-            channels: "5.1",
-            languages: "Tamil",
-            size: item.size
-          }
-        }]
-      };
-
-      try {
-        btn.textContent = '⏳ Writing chunks/data_c01.json...';
-
-        // 1. Direct write to chunks/data_c01.json (Master)
-        if (!moviesData.some(x => (x.id === item.gdrive_id || x.gdrive_id === item.gdrive_id))) {
-          moviesData.unshift(finalMovie);
-          await commitFileDirect('chunks/data_c01.json', moviesData, `Add ${finalMovie.title} [${item.size}] to Master data_c01.json`, token);
-        }
-
-        // 2. Write to Language Chunk
-        const lang = detectMovieLang(finalMovie);
-        let catFile = "chunks/data_c01_tamil.json";
-        let catArray = tamilData;
-        if (lang === 'te') { catFile = "chunks/data_c01_telugu.json"; catArray = teluguData; }
-        else if (lang === 'hi') { catFile = "chunks/data_c01_hindi.json"; catArray = hindiData; }
-        else if (lang === 'en') { catFile = "chunks/data_c01_english.json"; catArray = englishData; }
-
-        if (!catArray.some(x => (x.id === item.gdrive_id || x.gdrive_id === item.gdrive_id))) {
-          catArray.unshift(finalMovie);
-          await commitFileDirect(catFile, catArray, `Auto-Sync: Add ${finalMovie.title} to ${catFile}`, token);
-        }
-
-        // 3. Clean inbox_arrivals.json
-        btn.textContent = '⏳ Clearing Inbox...';
-        const inboxFileRes = await fetch(`${API_BASE}/contents/inbox_arrivals.json`, {
-          headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
-        });
-        if (inboxFileRes.ok) {
-          const inboxData = await inboxFileRes.json();
-          const currentList = JSON.parse(decodeURIComponent(escape(atob(inboxData.content.replace(/\n/g, '')))));
-          const filtered = currentList.filter(x => x.gdrive_id !== item.gdrive_id);
-          await commitFileDirect('inbox_arrivals.json', filtered, `Clear ${item.title} from inbox`, token);
-        }
-
-        showLaserToast(`✅ "${finalMovie.title}" successfully saved to Master data_c01.json!`);
-        btn.textContent = '✅ Synced!';
-        btn.style.background = 'var(--laser-green)';
-
-        loadAllChunks();
-        setTimeout(loadDriveArrivalsList, 1000);
-
-      } catch (err) {
-        showLaserToast(`Commit Error: ${err.message}`, true);
-        btn.disabled = false;
-        btn.textContent = '⚡ Add to data_c01';
-      }
     }
 
     function setCategoryFilter(cat, btn) {
@@ -2239,15 +2241,10 @@
     }
 
     async function searchMovieFromFilename(rawName) {
-      let clean = rawName.replace(/[\._\-]/g, ' ');
-      const yearMatch = clean.match(/\b(19\d\d|20\d\d)\b/);
-      let year = yearMatch ? yearMatch[1] : '';
-      let movieTitle = clean;
-      if (yearMatch) movieTitle = clean.substring(0, yearMatch.index).trim();
-      else {
-        const cutoff = clean.search(/\b(1080p|720p|2160p|4k|bluray|web-dl|ddp|x264|hevc)\b/i);
-        if (cutoff > 0) movieTitle = clean.substring(0, cutoff).trim();
-      }
+      const parsed = cleanMovieFileName(rawName);
+      let movieTitle = parsed.title;
+      let year = parsed.year;
+
       if (!movieTitle || movieTitle.length < 2) return;
 
       try {
@@ -2259,7 +2256,7 @@
         list.innerHTML = '';
 
         if (results.length > 0) {
-          results.slice(0, 5).forEach(m => {
+          results.slice(0, 6).forEach(m => {
             const y = m.release_date ? m.release_date.split('-')[0] : 'N/A';
             const poster = m.poster_path ? `https://image.tmdb.org/t/p/w92${m.poster_path}` : '';
             const item = document.createElement('div');
@@ -2536,6 +2533,21 @@
 
           await commitFileDirect(secondCategoryChunk, categoryArray, `Auto-Sync Category: ${newEntry.title}`, token);
         }
+
+        // Auto-clear from inbox_arrivals.json if was added from arrivals
+        try {
+          const inboxFileRes = await fetch(`${API_BASE}/contents/inbox_arrivals.json`, {
+            headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+          });
+          if (inboxFileRes.ok) {
+            const inboxData = await inboxFileRes.json();
+            const currentList = JSON.parse(decodeURIComponent(escape(atob(inboxData.content.replace(/\n/g, '')))));
+            const filtered = currentList.filter(x => x.gdrive_id !== newEntry.id);
+            if (filtered.length !== currentList.length) {
+              await commitFileDirect('inbox_arrivals.json', filtered, `Clear ${newEntry.title} from inbox`, token);
+            }
+          }
+        } catch(e) {}
 
         showLaserToast(`Successfully committed "${title}"!`);
         closeModal();
