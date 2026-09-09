@@ -61,7 +61,7 @@ jobs:
                   print(f"JSON Parse Error: {e}")
                   drive_files = []
 
-          print(f"Total raw files in Google Drive: {len(drive_files)}")
+          print(f"Total raw files found in Google Drive: {len(drive_files)}")
 
           def load_json(filepath):
               if os.path.exists(filepath):
@@ -78,32 +78,53 @@ jobs:
           hindi_list = load_json("chunks/data_c01_hindi.json")
           english_list = load_json("chunks/data_c01_english.json")
 
-          # Deep ID Extractor: Root IDs + Versions IDs + Stream URLs (?id=...)
-          def extract_all_ids(data_list):
-              s = set()
-              for x in data_list:
-                  if not isinstance(x, dict):
-                      continue
-                  if x.get("id"): s.add(str(x.get("id")).strip())
-                  if x.get("gdrive_id"): s.add(str(x.get("gdrive_id")).strip())
+          def clean_title_text(text):
+              if not text: return ""
+              # Brackets aur extra specs remove karein
+              t = re.sub(r'\[.*?\]|\(.*?\)|\.mkv|\.mp4', ' ', str(text).lower())
+              t = re.sub(r'[\._\-\+]', ' ', t)
+              words = [w for w in t.split() if w not in ['1080p', '2160p', '4k', 'hevc', 'x264', 'x265', 'web', 'dl', 'bluray', 'dts', 'atmos', 'ddp5', 'aac']]
+              return "".join(words)
 
+          # Extract IDs & Clean Names
+          def index_database(data_list):
+              id_set = set()
+              name_set = set()
+
+              for x in data_list:
+                  if not isinstance(x, dict): continue
+
+                  # 1. Main ID
+                  if x.get("id"): id_set.add(str(x.get("id")).strip())
+                  if x.get("gdrive_id"): id_set.add(str(x.get("gdrive_id")).strip())
+
+                  # 2. Stream URL ID
                   url = x.get("stream_url", "")
                   m = re.search(r'[?&]id=([a-zA-Z0-9_-]+)', url)
-                  if m: s.add(m.group(1))
+                  if m: id_set.add(m.group(1))
 
+                  # 3. Versions IDs
                   for v in x.get("versions", []):
                       if isinstance(v, dict):
-                          if v.get("id"): s.add(str(v.get("id")).strip())
-                          v_url = v.get("stream_url", "")
-                          vm = re.search(r'[?&]id=([a-zA-Z0-9_-]+)', v_url)
-                          if vm: s.add(vm.group(1))
-              return s
+                          if v.get("id"): id_set.add(str(v.get("id")).strip())
+                          vm = re.search(r'[?&]id=([a-zA-Z0-9_-]+)', v.get("stream_url", ""))
+                          if vm: id_set.add(vm.group(1))
 
-          master_ids = extract_all_ids(master_list)
-          category_ids = extract_all_ids(tamil_list) | extract_all_ids(telugu_list) | extract_all_ids(hindi_list) | extract_all_ids(english_list)
+                  # 4. Normalized Names
+                  for key in ["title", "name", "original_title"]:
+                      val = x.get(key)
+                      if val:
+                          cleaned = clean_title_text(val)
+                          if len(cleaned) > 2:
+                              name_set.add(cleaned)
 
-          print(f"Deep Indexed in Master: {len(master_ids)} files")
-          print(f"Deep Indexed in Categories: {len(category_ids)} files")
+              return id_set, name_set
+
+          master_ids, master_names = index_database(master_list)
+          cat_ids, cat_names = index_database(tamil_list + telugu_list + hindi_list + english_list)
+
+          print(f"Total Unique IDs in Master: {len(master_ids)}")
+          print(f"Total Unique Titles in Master: {len(master_names)}")
 
           inbox = []
 
@@ -115,13 +136,17 @@ jobs:
               if not fname.lower().endswith(('.mkv', '.mp4', '.avi', '.ts')):
                   continue
 
+              # Clean integer rounded GB
               gb_val = round(fbytes / (1024 ** 3))
               clean_size = f"{gb_val} GB"
 
-              in_master = fid in master_ids
-              in_category = fid in category_ids
+              # Matching Check: ID match ya Name match
+              clean_drive_name = clean_title_text(os.path.basename(fname))
 
-              # Dono me pehle se indexed hai toh inbox me add nahi hoga
+              in_master = (fid in master_ids) or (clean_drive_name in master_names and len(clean_drive_name) > 3)
+              in_category = (fid in cat_ids) or (clean_drive_name in cat_names and len(clean_drive_name) > 3)
+
+              # Agar dono me mojood hai toh skip!
               if in_master and in_category:
                   continue
 
@@ -154,7 +179,7 @@ jobs:
                   "stream_url": f"https://gdrive-stream.moinudeentv.workers.dev/?id={fid}|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
               })
 
-          print(f"Real pending movies for inbox: {len(inbox)}")
+          print(f"Genuine missing movies for inbox: {len(inbox)}")
           with open("inbox_arrivals.json", "w", encoding="utf-8") as f:
               json.dump(inbox, f, indent=2, ensure_ascii=False)
           EOF
