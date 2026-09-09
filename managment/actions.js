@@ -20,10 +20,11 @@ function transferArrivalToAddForm(index) {
 async function loadDriveArrivalsList() {
   const tbody = document.getElementById('smart-ingest-table-body');
   const statusMsg = document.getElementById('inbox-status-msg');
+  if (!tbody) return;
   tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 30px;">Cross-referencing Drive files with Master data_c01.json...</td></tr>';
 
   try {
-    const res = await fetch(`${RAW_BASE}/inbox_arrivals.json?t=${Date.now()}`);
+    const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/inbox_arrivals.json?t=${Date.now()}`);
     if (!res.ok) {
       tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--laser-cyan); padding: 30px;">No arrivals file found. Click "Trigger Drive Scan" first!</td></tr>';
       return;
@@ -95,7 +96,7 @@ async function autoConnectFranchiseCollections() {
   }
 
   try {
-    await commitFileDirect('chunks/data_c01.json', moviesData, `Auto-Connected ${updatedCount} Franchise Packs`, token);
+    await commitFileDirect('../chunks/data_c01.json', moviesData, `Auto-Connected ${updatedCount} Franchise Packs`, token);
     showLaserToast(`✅ Successfully connected ${updatedCount} movies into packs!`);
     filterAndRenderMovies();
   } catch(e) {
@@ -140,7 +141,7 @@ async function autoMergeDuplicateMovies() {
 
   const deduplicated = Array.from(map.values());
   try {
-    await commitFileDirect('chunks/data_c01.json', deduplicated, `Auto-Merged ${mergedCount} Duplicate Versions`, token);
+    await commitFileDirect('../chunks/data_c01.json', deduplicated, `Auto-Merged ${mergedCount} Duplicate Versions`, token);
     moviesData = deduplicated;
     showLaserToast(`✅ Cleaned up and merged ${mergedCount} duplicate movies!`);
     loadAllChunks();
@@ -150,7 +151,9 @@ async function autoMergeDuplicateMovies() {
 }
 
 async function commitFileDirect(chunkPath, arrayData, message, token) {
-  const url = `https://api.github.com/repos/${GH_REPO}/contents/${chunkPath}`;
+  const fullPath = chunkPath.startsWith('../') ? chunkPath.replace('../', '') : chunkPath;
+  const url = `https://api.github.com/repos/${GH_REPO}/contents/${fullPath}`;
+  
   const getRes = await fetch(url, { headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' } });
   let currentSha = undefined;
   if (getRes.ok) {
@@ -166,7 +169,7 @@ async function commitFileDirect(chunkPath, arrayData, message, token) {
     headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
     body: JSON.stringify({ message: message, content: encoded, branch: GH_BRANCH, sha: currentSha })
   });
-  if (!putRes.ok) throw new Error(`Commit failed for ${chunkPath}`);
+  if (!putRes.ok) throw new Error(`Commit failed for ${fullPath}`);
 }
 
 async function handleMovieSubmit(e) {
@@ -212,10 +215,10 @@ async function handleMovieSubmit(e) {
   };
 
   const lang = detectMovieLang(meta);
-  let targetCategoryChunk = "chunks/data_c01_english.json";
-  if (lang === 'ta') targetCategoryChunk = "chunks/data_c01_tamil.json";
-  else if (lang === 'te') targetCategoryChunk = "chunks/data_c01_telugu.json";
-  else if (lang === 'hi') targetCategoryChunk = "chunks/data_c01_hindi.json";
+  let targetCategoryChunk = "../chunks/data_c01_english.json";
+  if (lang === 'ta') targetCategoryChunk = "../chunks/data_c01_tamil.json";
+  else if (lang === 'te') targetCategoryChunk = "../chunks/data_c01_telugu.json";
+  else if (lang === 'hi') targetCategoryChunk = "../chunks/data_c01_hindi.json";
 
   const fullMovie = {
     id: fileId,
@@ -227,7 +230,7 @@ async function handleMovieSubmit(e) {
     runtime: meta.runtime || 0,
     tmdb_id: Number(tmdbId),
     rating: meta.rating,
-    collection: meta.collection || detectFranchiseCollection(meta),
+    collection: meta.collection || getFranchiseKey(meta) || "",
     director: meta.director || [],
     trailer: meta.trailer || "",
     cast: meta.cast || [],
@@ -239,7 +242,7 @@ async function handleMovieSubmit(e) {
     versions: [versionObj]
   };
 
-  openPreviewModal('chunks/data_c01.json', fullMovie, streamUrl, fullMovie.title, moviesData, false, targetCategoryChunk);
+  openPreviewModal('../chunks/data_c01.json', fullMovie, streamUrl, fullMovie.title, moviesData, false, targetCategoryChunk);
 }
 
 function openPreviewModal(targetChunk, newEntry, streamUrl, title, activeDataArray, isUpdate = false, secondCategoryChunk = null) {
@@ -247,6 +250,7 @@ function openPreviewModal(targetChunk, newEntry, streamUrl, title, activeDataArr
   pendingCommit = { targetChunk, newEntry, activeDataArray, title, isUpdate, secondCategoryChunk };
 
   const details = document.getElementById('modal-preview-details');
+  if (!details) return;
   details.innerHTML = `
     <div class="preview-item"><span class="preview-item-label">Target Chunk</span><span class="preview-item-val" style="color: var(--laser-cyan);">${targetChunk}</span></div>
     <div class="preview-item"><span class="preview-item-label">Title</span><span class="preview-item-val">${title}</span></div>
@@ -265,9 +269,9 @@ async function commitPendingToGitHub() {
   btn.textContent = 'Committing...';
 
   try {
-    const { targetChunk, newEntry, activeDataArray, title, secondCategoryChunk } = pendingCommit;
-    activeDataArray.unshift(newEntry);
-    await commitFileDirect(targetChunk, activeDataArray, `Studio Update: ${title}`, token);
+    const { targetChunk, newEntry, title, secondCategoryChunk } = pendingCommit;
+    moviesData.unshift(newEntry);
+    await commitFileDirect(targetChunk, moviesData, `Studio Update: ${title}`, token);
 
     if (secondCategoryChunk) {
       let categoryArray = secondCategoryChunk.includes('tamil') ? tamilData :
@@ -289,8 +293,46 @@ async function commitPendingToGitHub() {
 }
 
 function closeModal() {
-  document.getElementById('preview-modal').classList.remove('active');
+  const modal = document.getElementById('preview-modal');
+  if (modal) modal.classList.remove('active');
   pendingCommit = null;
+}
+
+async function loadAllChunks() {
+  updateTokenBadge();
+  updateBackendBadge();
+  const fetchChunk = async (path) => {
+    try {
+      const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${path}?t=${Date.now()}`);
+      if (!res.ok) return [];
+      const data = await res.json();
+      return Array.isArray(data) ? data : [];
+    } catch(e) { return []; }
+  };
+
+  [moviesData, tamilData, teluguData, hindiData, englishData, seriesData, songsData, vaultData] = await Promise.all([
+    fetchChunk('chunks/data_c01.json'),
+    fetchChunk('chunks/data_c01_tamil.json'),
+    fetchChunk('chunks/data_c01_telugu.json'),
+    fetchChunk('chunks/data_c01_hindi.json'),
+    fetchChunk('chunks/data_c01_english.json'),
+    fetchChunk('chunks/data_c02.json'),
+    fetchChunk('chunks/data_c03.json'),
+    fetchChunk('chunks/data_c04.json')
+  ]);
+
+  document.getElementById('stat-c01').textContent = moviesData.length;
+  document.getElementById('stat-tamil').textContent = tamilData.length || moviesData.filter(m => detectMovieLang(m) === 'ta').length;
+  document.getElementById('stat-telugu').textContent = teluguData.length || moviesData.filter(m => detectMovieLang(m) === 'te').length;
+  document.getElementById('stat-packs').textContent = Object.keys(MASTER_FRANCHISES).length;
+
+  document.getElementById('badge-c01').textContent = moviesData.length;
+  document.getElementById('badge-c02').textContent = seriesData.length;
+  document.getElementById('badge-c03').textContent = songsData.length;
+  document.getElementById('badge-c04').textContent = vaultData.length;
+
+  filterAndRenderMovies();
+  pollInboxNotificationBadge();
 }
 
 window.addEventListener('DOMContentLoaded', loadAllChunks);
