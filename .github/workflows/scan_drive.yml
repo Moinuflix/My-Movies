@@ -28,12 +28,16 @@ jobs:
           GDRIVE_TOKEN: ${{ secrets.RCLONE_GDRIVE_TOKEN }}
         run: |
           mkdir -p ~/.config/rclone
-          cat << EOF > ~/.config/rclone/rclone.conf
-          [gdrive]
-          type = drive
-          scope = drive
-          token = $GDRIVE_TOKEN
+          cat << 'EOF' > make_conf.py
+          import os
+
+          token = os.environ.get("GDRIVE_TOKEN", "").strip()
+          conf = f"[gdrive]\ntype = drive\nscope = drive\ntoken = {token}\n"
+
+          with open(os.path.expanduser("~/.config/rclone/rclone.conf"), "w", encoding="utf-8") as f:
+              f.write(conf)
           EOF
+          python3 make_conf.py
 
       - name: Auto Audit & Generate Inbox
         run: |
@@ -43,7 +47,6 @@ jobs:
           import os
 
           print("--- STEP 1: SCANNING GOOGLE DRIVE (RECURSIVE) ---")
-          # -R se saare subfolders scan honge
           cmd = ["rclone", "lsjson", "gdrive:", "-R", "--files-only"]
           res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
@@ -59,7 +62,6 @@ jobs:
 
           print(f"Total raw files found in Google Drive: {len(drive_files)}")
 
-          # Helper to load JSON
           def load_json(filepath):
               if os.path.exists(filepath):
                   try:
@@ -75,7 +77,6 @@ jobs:
           hindi_list = load_json("chunks/data_c01_hindi.json")
           english_list = load_json("chunks/data_c01_english.json")
 
-          # Normalize IDs (id ya gdrive_id dono check karega)
           def extract_ids(data_list):
               s = set()
               for x in data_list:
@@ -97,11 +98,9 @@ jobs:
               fid = file.get("ID", "")
               fbytes = file.get("Size", 0)
 
-              # Filter: Sirf video files
               if not fname.lower().endswith(('.mkv', '.mp4', '.avi', '.ts')):
                   continue
 
-              # Clean Integer GB: 14.2 GB -> 14 GB, 2.4 GB -> 2 GB
               gb_val = round(fbytes / (1024 ** 3))
               clean_size = f"{gb_val} GB"
 
@@ -109,13 +108,12 @@ jobs:
               in_category = fid in category_ids
 
               if in_master and in_category:
-                  continue  # Already synced in both
+                  continue
 
               status = "completely_missing"
               if in_master and not in_category:
                   status = "missing_in_category"
 
-              # Language routing suggestion
               lower = fname.lower()
               target_cat = "kollywood"
               target_file = "chunks/data_c01_tamil.json"
