@@ -3,75 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MoinuFlix - Drive Inbox & Arrivals</title>
+  <title>MoinuFlix - Drive & JSON Auditor</title>
   <style>
     :root {
       --bg: #0f1015;
       --card-bg: #181920;
       --accent: #e50914;
       --green: #2ecc71;
+      --yellow: #f1c40f;
       --text: #f5f6fa;
       --text-muted: #8c909e;
       --border: #262833;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
     body { background-color: var(--bg); color: var(--text); padding: 24px 16px; display: flex; justify-content: center; }
-    .container { width: 100%; max-width: 800px; }
-    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .container { width: 100%; max-width: 850px; }
+    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
     h1 { font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
-    .btn-refresh { background: var(--border); color: var(--text); border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 13px; }
-    .btn-refresh:hover { background: #323544; }
+    .btn { background: var(--border); color: var(--text); border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600; }
+    .btn:hover { background: #323544; }
+    .token-bar { background: #14151c; border: 1px solid var(--border); padding: 10px 14px; border-radius: 8px; margin-bottom: 20px; display: flex; gap: 10px; align-items: center; font-size: 13px; }
+    .token-input { background: #0c0d12; border: 1px solid var(--border); color: #fff; padding: 6px 10px; border-radius: 6px; flex: 1; font-size: 13px; outline: none; }
     .inbox-list { display: flex; flex-direction: column; gap: 14px; }
     .item-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
     .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
     .title { font-size: 16px; font-weight: 600; line-height: 1.4; color: #fff; word-break: break-all; }
     .badge-size { background: #e5091420; color: #ff4d58; border: 1px solid #e5091440; padding: 3px 8px; border-radius: 5px; font-size: 13px; font-weight: 700; white-space: nowrap; }
-    .card-meta { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-muted); }
-    .meta-select { background: #121318; border: 1px solid var(--border); color: #fff; padding: 5px 8px; border-radius: 5px; font-size: 13px; }
+    .card-meta { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-muted); flex-wrap: wrap; }
+    .meta-select { background: #121318; border: 1px solid var(--border); color: #fff; padding: 6px 10px; border-radius: 5px; font-size: 13px; outline: none; }
     .card-actions { display: flex; gap: 10px; margin-top: 4px; }
-    .btn-push { background: var(--green); color: #000; font-weight: 700; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; flex: 1; text-align: center; }
-    .btn-push:hover { opacity: 0.9; }
+    .btn-push { background: var(--green); color: #000; font-weight: 700; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; flex: 1; text-align: center; }
+    .btn-push:disabled { opacity: 0.5; cursor: not-allowed; }
     .empty-state { text-align: center; padding: 48px 16px; color: var(--text-muted); font-size: 14px; background: var(--card-bg); border-radius: 10px; border: 1px dashed var(--border); }
-    .status-badge { display: inline-block; font-size: 12px; padding: 2px 6px; border-radius: 4px; }
-    .status-ready { background: #2ecc7120; color: var(--green); }
+    .status-badge { display: inline-block; font-size: 12px; padding: 3px 8px; border-radius: 4px; font-weight: 600; }
+    .status-new { background: #e5091430; color: #ff525d; border: 1px solid #e5091450; }
+    .status-category-missing { background: #f1c40f25; color: #f1c40f; border: 1px solid #f1c40f40; }
   </style>
 </head>
 <body>
 
 <div class="container">
   <header>
-    <h1>📥 Drive New Arrivals</h1>
-    <button class="btn-refresh" onclick="loadArrivals()">🔄 Refresh List</button>
+    <h1>📡 Drive vs JSON Audit Manager</h1>
+    <div>
+      <button class="btn" onclick="loadArrivals()">🔄 Refresh</button>
+    </div>
   </header>
 
+  <div class="token-bar">
+    <span>🔑 GitHub Token:</span>
+    <input type="password" id="gh-token" class="token-input" placeholder="ghp_xxxxxxxxx (Repo Write Access)">
+    <button class="btn" onclick="saveToken()">Save</button>
+  </div>
+
   <div id="inbox-container" class="inbox-list">
-    <div class="empty-state">Loading detected Google Drive files...</div>
+    <div class="empty-state">Checking Drive & JSONs...</div>
   </div>
 </div>
 
 <script>
-  // Repo details
-  const REPO_BASE = "https://raw.githubusercontent.com/Moinuflix/My-Movies/main";
-  const GITHUB_API_BASE = "https://api.github.com/repos/Moinuflix/My-Movies";
+  const OWNER = "Moinuflix";
+  const REPO = "My-Movies";
+  const RAW_BASE = `https://raw.githubusercontent.com/${OWNER}/${REPO}/main`;
+  const API_BASE = `https://api.github.com/repos/${OWNER}/${REPO}`;
+
+  let currentArrivals = [];
+
+  const savedToken = localStorage.getItem("moinu_gh_token") || "";
+  document.getElementById("gh-token").value = savedToken;
+
+  function saveToken() {
+    const val = document.getElementById("gh-token").value.trim();
+    localStorage.setItem("moinu_gh_token", val);
+    alert("Token saved successfully in browser!");
+  }
 
   async function loadArrivals() {
     const container = document.getElementById("inbox-container");
-    container.innerHTML = '<div class="empty-state">Checking inbox_arrivals.json...</div>';
+    container.innerHTML = '<div class="empty-state">Loading audit status...</div>';
 
     try {
-      const res = await fetch(`${REPO_BASE}/inbox_arrivals.json?t=${Date.now()}`);
+      const res = await fetch(`${RAW_BASE}/inbox_arrivals.json?t=${Date.now()}`);
       if (!res.ok) {
-        container.innerHTML = '<div class="empty-state">No inbox_arrivals.json file found. Run GitHub Action first!</div>';
+        container.innerHTML = '<div class="empty-state">Run "Scan Google Drive Arrivals" Action on GitHub first!</div>';
         return;
       }
-      const data = await res.json();
-      if (!Array.isArray(data) || data.length === 0) {
-        container.innerHTML = '<div class="empty-state">🎉 All clear! No pending movies in inbox.</div>';
+      currentArrivals = await res.json();
+      if (!Array.isArray(currentArrivals) || currentArrivals.length === 0) {
+        container.innerHTML = '<div class="empty-state">🎉 All 100% Synced! Har movie Master aur Category dono me add hai.</div>';
         return;
       }
-      renderCards(data);
+      renderCards(currentArrivals);
     } catch (e) {
-      container.innerHTML = `<div class="empty-state">Error loading arrivals: ${e.message}</div>`;
+      container.innerHTML = `<div class="empty-state">Error: ${e.message}</div>`;
     }
   }
 
@@ -80,6 +104,11 @@
     container.innerHTML = "";
 
     items.forEach((item, index) => {
+      const isMissingInCat = item.status === "missing_in_category";
+      const statusHtml = isMissingInCat 
+        ? `<span class="status-badge status-category-missing">⚠️ In Master Only (Category Missing)</span>`
+        : `<span class="status-badge status-new">❌ Not In Any JSON</span>`;
+
       const card = document.createElement("div");
       card.className = "item-card";
       card.innerHTML = `
@@ -88,6 +117,7 @@
           <div class="badge-size">${item.size}</div>
         </div>
         <div class="card-meta">
+          ${statusHtml}
           <span>Route To:</span>
           <select id="target-${index}" class="meta-select">
             <option value="chunks/data_c01_tamil.json" ${item.target_category === 'kollywood' ? 'selected' : ''}>Kollywood (Tamil)</option>
@@ -95,17 +125,168 @@
             <option value="chunks/data_c01_hindi.json" ${item.target_category === 'bollywood' ? 'selected' : ''}>Bollywood (Hindi)</option>
             <option value="chunks/data_c01_english.json" ${item.target_category === 'hollywood' ? 'selected' : ''}>Hollywood (English)</option>
           </select>
-          <span class="status-badge status-ready">Clean ${item.size} Tag</span>
         </div>
         <div class="card-actions">
-          <button class="btn-push" onclick="pushToCategory(${index})">⚡ 1-Click Push to JSON</button>
+          <button id="btn-${index}" class="btn-push" onclick="syncMovie(${index})">
+            ⚡ 1-Click Sync (Master + Category)
+          </button>
         </div>
       `;
       container.appendChild(card);
     });
   }
 
-  window.inboxData = [];
+  // Helper function to build full Arctic Horizon 2 Kodi item schema
+  function buildKodiSchema(item, targetFile) {
+    const lang = targetFile.includes("tamil") ? "Tamil" :
+                 targetFile.includes("telugu") ? "Telugu" :
+                 targetFile.includes("hindi") ? "Hindi" : "English";
+
+    const langCode = targetFile.includes("tamil") ? "ta" :
+                     targetFile.includes("telugu") ? "te" :
+                     targetFile.includes("hindi") ? "hi" : "en";
+
+    const is4K = item.title.includes("2160p") || item.title.includes("4K");
+    const resolution = is4K ? "4K UHD" : "1080p FHD";
+    const qualityBadge = is4K ? "4k" : "1080p";
+    const fileName = `${item.title} [${is4K ? '2160p' : '1080p'}] [${item.size}].mkv`;
+    const cleanStreamUrl = `https://gdrive-stream.moinudeentv.workers.dev/?id=${item.gdrive_id}|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0`;
+
+    return {
+      "id": item.gdrive_id,
+      "name": fileName,
+      "title": item.title,
+      "original_title": item.title,
+      "original_language": langCode,
+      "year": new Date().getFullYear(),
+      "runtime": 130,
+      "tmdb_id": 0,
+      "imdb_id": "",
+      "imdb_url": "",
+      "rating": 7,
+      "director": [],
+      "cast": [],
+      "plot": "Streamed via MoinuFlix Private High-Speed Server.",
+      "poster": "",
+      "fanart": "",
+      "logo": "",
+      "stream_url": cleanStreamUrl,
+      "badges": {
+        "quality": `https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/${qualityBadge}.png`,
+        "hdr": is4K ? "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/hdr/hdr.png" : "",
+        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web.png",
+        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+      },
+      "specs": {
+        "resolution": resolution,
+        "source": "WEB-DL",
+        "codec": is4K ? "HEVC" : "H.264",
+        "audio": "Dolby Digital",
+        "channels": "5.1",
+        "languages": lang,
+        "size": item.size
+      },
+      "versions": [
+        {
+          "id": item.gdrive_id,
+          "name": fileName,
+          "quality": is4K ? "4K" : "1080p",
+          "source": "WEB-DL",
+          "codec": is4K ? "HEVC" : "H.264",
+          "resolution": resolution,
+          "audio": "Dolby Digital",
+          "channels": "5.1",
+          "size": item.size,
+          "stream_url": cleanStreamUrl,
+          "specs": {
+            "resolution": resolution,
+            "source": "WEB-DL",
+            "codec": is4K ? "HEVC" : "H.264",
+            "audio": "Dolby Digital",
+            "channels": "5.1",
+            "languages": lang,
+            "size": item.size
+          }
+        }
+      ]
+    };
+  }
+
+  // GitHub Helpers
+  async function fetchFile(path, token) {
+    const res = await fetch(`${API_BASE}/contents/${path}`, {
+      headers: { "Authorization": `token ${token}`, "Accept": "application/vnd.github.v3+json" }
+    });
+    if (!res.ok) throw new Error(`Failed to fetch ${path}`);
+    const data = await res.json();
+    const content = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))));
+    return { sha: data.sha, json: JSON.parse(content) };
+  }
+
+  async function updateFile(path, contentStr, sha, commitMsg, token) {
+    const encoded = btoa(unescape(encodeURIComponent(contentStr)));
+    const res = await fetch(`${API_BASE}/contents/${path}`, {
+      method: "PUT",
+      headers: { "Authorization": `token ${token}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ message: commitMsg, content: encoded, sha: sha })
+    });
+    if (!res.ok) throw new Error(`Commit failed for ${path}`);
+    return await res.json();
+  }
+
+  async function syncMovie(index) {
+    const token = document.getElementById("gh-token").value.trim();
+    if (!token) {
+      alert("Please enter GitHub Token first!");
+      return;
+    }
+
+    const item = currentArrivals[index];
+    const targetFile = document.getElementById(`target-${index}`).value;
+    const btn = document.getElementById(`btn-${index}`);
+
+    btn.disabled = true;
+    btn.innerText = "⏳ Syncing Schema...";
+
+    try {
+      // Build proper full schema
+      const fullMovieEntry = buildKodiSchema(item, targetFile);
+
+      // 1. Add to Category JSON
+      const catData = await fetchFile(targetFile, token);
+      if (!catData.json.some(x => (x.id === item.gdrive_id || x.gdrive_id === item.gdrive_id))) {
+        catData.json.unshift(fullMovieEntry);
+        await updateFile(targetFile, JSON.stringify(catData.json, null, 2), catData.sha, `Add ${item.title} to ${targetFile}`, token);
+      }
+
+      // 2. Add to Master chunks/data_c01.json (Agar missing ho)
+      if (item.status === "completely_missing") {
+        btn.innerText = "⏳ Adding to Master JSON...";
+        const masterData = await fetchFile("chunks/data_c01.json", token);
+        if (!masterData.json.some(x => (x.id === item.gdrive_id || x.gdrive_id === item.gdrive_id))) {
+          masterData.json.unshift(fullMovieEntry);
+          await updateFile("chunks/data_c01.json", JSON.stringify(masterData.json, null, 2), masterData.sha, `Add ${item.title} to Master`, token);
+        }
+      }
+
+      // 3. Clear from inbox_arrivals.json
+      btn.innerText = "⏳ Clearing Inbox...";
+      const inboxData = await fetchFile("inbox_arrivals.json", token);
+      const updatedInbox = inboxData.json.filter(x => x.gdrive_id !== item.gdrive_id);
+      await updateFile("inbox_arrivals.json", JSON.stringify(updatedInbox, null, 2), inboxData.sha, `Clear ${item.title} from inbox`, token);
+
+      btn.innerText = "✅ Synced Successfully!";
+      btn.style.background = "#3498db";
+      setTimeout(() => { loadArrivals(); }, 1200);
+
+    } catch (e) {
+      alert("Sync Failed: " + e.message);
+      btn.disabled = false;
+      btn.innerText = "⚡ 1-Click Sync";
+    }
+  }
+
   loadArrivals();
 </script>
 
