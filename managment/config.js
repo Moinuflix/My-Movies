@@ -1,3 +1,4 @@
+// config.js (Updated for managment folder structure)
 let moviesData = [];
 let tamilData = [];
 let teluguData = [];
@@ -7,6 +8,7 @@ let englishData = [];
 let seriesData = [];
 let songsData = [];
 let vaultData = [];
+let masterData = [];
 let inboxArrivalsList = [];
 
 let activeUploadingCount = 0;
@@ -24,12 +26,13 @@ const CONFIRM_PASS = "24592";
 const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
 const GH_REPO = 'Moinuflix/My-Movies';
 const GH_BRANCH = 'main';
+// Root ke chunks folder se direct fast fetch karne ke liye absolute Raw URL:
 const RAW_BASE = `https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}`;
 const API_BASE = `https://api.github.com/repos/${GH_REPO}`;
 const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';
 const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';
 
-/* BASE POPULAR FRANCHISES + DYNAMIC REGISTRY */
+/* DYNAMIC + BASE FRANCHISE PACKS */
 const MASTER_FRANCHISES = {
   "Demonte Colony Collection": {
     name: "Demonte Colony Collection",
@@ -86,8 +89,7 @@ const MASTER_FRANCHISES = {
     poster: "https://image.tmdb.org/t/p/w500/b1Ox59uva73r6rM2lflkgl8n8pE.jpg",
     allMovies: [
       { title: "K.G.F: Chapter 1", year: 2018, tmdb_id: 564147 },
-      { title: "K.G.F: Chapter 2", year: 2022, tmdb_id: 587412 },
-      { title: "K.G.F: Chapter 3 (Coming Soon)", year: 2027, tmdb_id: 0 }
+      { title: "K.G.F: Chapter 2", year: 2022, tmdb_id: 587412 }
     ]
   },
   "Baahubali Collection": {
@@ -156,6 +158,7 @@ function configureGithubToken() {
     }
   }
 }
+
 function updateTokenBadge() {
   const label = document.getElementById('token-status-label');
   if (!label) return;
@@ -178,6 +181,7 @@ function configureBackendUrl() {
     showLaserToast('Backend URL Saved!');
   }
 }
+
 function updateBackendBadge() {
   const label = document.getElementById('backend-status-label');
   if (!label) return;
@@ -235,69 +239,16 @@ function detectMovieLang(movie) {
   return 'en';
 }
 
-/* SMART DYNAMIC FRANCHISE & SEQUEL DETECTOR */
 function getFranchiseKey(movie) {
-  // 1. Check direct hardcoded collection match
   if (movie.collection && MASTER_FRANCHISES[movie.collection]) {
     return movie.collection;
   }
-
-  // 2. Check title against existing collection aliases
   const rawTitle = (movie.title || movie.name || '').toLowerCase();
   for (const [key, pack] of Object.entries(MASTER_FRANCHISES)) {
-    if (pack.alias.some(a => rawTitle.includes(a))) {
-      return key;
-    }
+    if (pack.alias.some(a => rawTitle.includes(a))) return key;
   }
-
-  // 3. Dynamic Collection Creation from TMDB "collection" key
   if (movie.collection && movie.collection.trim() !== '') {
-    const colName = movie.collection.trim();
-    if (!MASTER_FRANCHISES[colName]) {
-      MASTER_FRANCHISES[colName] = {
-        name: colName,
-        alias: [colName.toLowerCase().replace(/collection|verse/gi, '').trim()],
-        poster: movie.poster || '',
-        allMovies: [
-          { title: movie.title, year: movie.year || 2024, tmdb_id: movie.tmdb_id || 0 }
-        ]
-      };
-    }
-    return colName;
+    return movie.collection.trim();
   }
-
-  // 4. Auto-detect Sequels / Parts (e.g. "Demonte Colony 2", "Gatta Kusthi 2")
-  const sequelMatch = movie.title ? movie.title.match(/^(.*?)(?:\s*(?:Part|Chapter|Volume)?\s*([2-9]))$/i) : null;
-  if (sequelMatch) {
-    const baseName = sequelMatch[1].trim();
-    const currentPartNum = parseInt(sequelMatch[2], 10);
-    const generatedPackName = `${baseName} Collection`;
-
-    if (!MASTER_FRANCHISES[generatedPackName]) {
-      const generatedList = [];
-      for (let i = 1; i <= currentPartNum; i++) {
-        generatedList.push({
-          title: i === 1 ? baseName : `${baseName} ${i}`,
-          year: i === currentPartNum ? (movie.year || 2024) : 0,
-          tmdb_id: i === currentPartNum ? (movie.tmdb_id || 0) : 0
-        });
-      }
-      // Add upcoming teaser part
-      generatedList.push({
-        title: `${baseName} ${currentPartNum + 1} (Coming Soon)`,
-        year: 2026,
-        tmdb_id: 0
-      });
-
-      MASTER_FRANCHISES[generatedPackName] = {
-        name: generatedPackName,
-        alias: [baseName.toLowerCase()],
-        poster: movie.poster || '',
-        allMovies: generatedList
-      };
-    }
-    return generatedPackName;
-  }
-
   return null;
 }
