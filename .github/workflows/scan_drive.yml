@@ -42,10 +42,22 @@ jobs:
           import json
           import os
 
-          # 1. Drive files fetch
-          cmd = ["rclone", "lsjson", "gdrive:", "--files-only"]
-          res = subprocess.run(cmd, stdout=subprocess.PIPE, text=True)
-          drive_files = json.loads(res.stdout) if res.stdout else []
+          print("--- STEP 1: SCANNING GOOGLE DRIVE (RECURSIVE) ---")
+          # -R se saare subfolders scan honge
+          cmd = ["rclone", "lsjson", "gdrive:", "-R", "--files-only"]
+          res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+          if res.returncode != 0:
+              print(f"Rclone Error: {res.stderr}")
+              drive_files = []
+          else:
+              try:
+                  drive_files = json.loads(res.stdout) if res.stdout else []
+              except Exception as e:
+                  print(f"JSON Parse Error from Rclone: {e}")
+                  drive_files = []
+
+          print(f"Total raw files found in Google Drive: {len(drive_files)}")
 
           # Helper to load JSON
           def load_json(filepath):
@@ -53,8 +65,8 @@ jobs:
                   try:
                       with open(filepath, "r", encoding="utf-8") as f:
                           return json.load(f)
-                  except:
-                      pass
+                  except Exception as err:
+                      print(f"Error loading {filepath}: {err}")
               return []
 
           master_list = load_json("chunks/data_c01.json")
@@ -63,12 +75,20 @@ jobs:
           hindi_list = load_json("chunks/data_c01_hindi.json")
           english_list = load_json("chunks/data_c01_english.json")
 
-          master_ids = {x.get("gdrive_id") for x in master_list if x.get("gdrive_id")}
-          category_ids = set()
-          for lst in [tamil_list, telugu_list, hindi_list, english_list]:
-              for x in lst:
-                  if x.get("gdrive_id"):
-                      category_ids.add(x.get("gdrive_id"))
+          # Normalize IDs (id ya gdrive_id dono check karega)
+          def extract_ids(data_list):
+              s = set()
+              for x in data_list:
+                  if isinstance(x, dict):
+                      if x.get("id"): s.add(x.get("id"))
+                      if x.get("gdrive_id"): s.add(x.get("gdrive_id"))
+              return s
+
+          master_ids = extract_ids(master_list)
+          category_ids = extract_ids(tamil_list) | extract_ids(telugu_list) | extract_ids(hindi_list) | extract_ids(english_list)
+
+          print(f"Indexed in Master: {len(master_ids)} files")
+          print(f"Indexed in 4 Categories: {len(category_ids)} files")
 
           inbox = []
 
@@ -77,24 +97,25 @@ jobs:
               fid = file.get("ID", "")
               fbytes = file.get("Size", 0)
 
-              if not fname.lower().endswith(('.mkv', '.mp4', '.avi')):
+              # Filter: Sirf video files
+              if not fname.lower().endswith(('.mkv', '.mp4', '.avi', '.ts')):
                   continue
 
-              # Clean GB Rounding: 14.2 GB -> 14 GB
+              # Clean Integer GB: 14.2 GB -> 14 GB, 2.4 GB -> 2 GB
               gb_val = round(fbytes / (1024 ** 3))
               clean_size = f"{gb_val} GB"
 
               in_master = fid in master_ids
               in_category = fid in category_ids
 
-              # Status track karein
+              if in_master and in_category:
+                  continue  # Already synced in both
+
               status = "completely_missing"
               if in_master and not in_category:
                   status = "missing_in_category"
-              elif in_master and in_category:
-                  continue # Already fully synced, skip
 
-              # Language guess
+              # Language routing suggestion
               lower = fname.lower()
               target_cat = "kollywood"
               target_file = "chunks/data_c01_tamil.json"
@@ -108,28 +129,32 @@ jobs:
                   target_cat = "hollywood"
                   target_file = "chunks/data_c01_english.json"
 
+              display_title = os.path.basename(fname).rsplit(".", 1)[0].replace(".", " ")
+
               inbox.append({
-                  "title": fname.rsplit(".", 1)[0].replace(".", " "),
+                  "title": display_title,
                   "gdrive_id": fid,
                   "size": clean_size,
                   "status": status,
                   "target_category": target_cat,
                   "target_chunk": target_file,
-                  "stream_url": f"https://gdrive-stream.moinudeentv.workers.dev/?id={fid}"
+                  "stream_url": f"https://gdrive-stream.moinudeentv.workers.dev/?id={fid}|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
               })
+
+          print(f"--- STEP 2: SUMMARY ---")
+          print(f"Missing / Pending Movies for Inbox: {len(inbox)}")
 
           with open("inbox_arrivals.json", "w", encoding="utf-8") as f:
               json.dump(inbox, f, indent=2, ensure_ascii=False)
 
-          print(f"Inbox updated: {len(inbox)} items pending.")
+          print("Successfully written to inbox_arrivals.json")
           EOF
 
           python3 scan_arrivals.py
 
-      - name: Commit & Push
+      - name: Commit & Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add inbox_arrivals.json
-          git commit -m "Auto-Audit: Updated Inbox Arrivals" || echo "No changes"
-          git push origin main
+          git diff --staged --quiet || (git commit -m "Auto-Audit: Updated Inbox Arrivals" && git push origin main)
