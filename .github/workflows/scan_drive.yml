@@ -5,7 +5,6 @@ on:
   schedule:
     - cron: '0 */6 * * *'
 
-# Push permission fix (Exit code 128 solution)
 permissions:
   contents: write
 
@@ -36,84 +35,101 @@ jobs:
           token = $GDRIVE_TOKEN
           EOF
 
-      - name: Run Scan & Clean GB Rounder
+      - name: Auto Audit & Generate Inbox
         run: |
           cat << 'EOF' > scan_arrivals.py
           import subprocess
           import json
           import os
 
-          # 1. Google Drive se video files fetch karein
+          # 1. Drive files fetch
           cmd = ["rclone", "lsjson", "gdrive:", "--files-only"]
           res = subprocess.run(cmd, stdout=subprocess.PIPE, text=True)
           drive_files = json.loads(res.stdout) if res.stdout else []
 
-          # 2. Existing JSON chunks se ID check karein taaki duplicate na aaye
-          existing_ids = set()
-          chunks_dir = "chunks"
-          if os.path.exists(chunks_dir):
-              for f in os.listdir(chunks_dir):
-                  if f.endswith(".json"):
-                      try:
-                          with open(os.path.join(chunks_dir, f), "r", encoding="utf-8") as jf:
-                              data = json.load(jf)
-                              for item in data:
-                                  if "gdrive_id" in item:
-                                      existing_ids.add(item["gdrive_id"])
-                      except:
-                          pass
+          # Helper to load JSON
+          def load_json(filepath):
+              if os.path.exists(filepath):
+                  try:
+                      with open(filepath, "r", encoding="utf-8") as f:
+                          return json.load(f)
+                  except:
+                      pass
+              return []
 
-          arrivals = []
+          master_list = load_json("chunks/data_c01.json")
+          tamil_list = load_json("chunks/data_c01_tamil.json")
+          telugu_list = load_json("chunks/data_c01_telugu.json")
+          hindi_list = load_json("chunks/data_c01_hindi.json")
+          english_list = load_json("chunks/data_c01_english.json")
+
+          master_ids = {x.get("gdrive_id") for x in master_list if x.get("gdrive_id")}
+          category_ids = set()
+          for lst in [tamil_list, telugu_list, hindi_list, english_list]:
+              for x in lst:
+                  if x.get("gdrive_id"):
+                      category_ids.add(x.get("gdrive_id"))
+
+          inbox = []
+
           for file in drive_files:
-              file_id = file.get("ID")
-              file_name = file.get("Path")
-              file_bytes = file.get("Size", 0)
+              fname = file.get("Path", "")
+              fid = file.get("ID", "")
+              fbytes = file.get("Size", 0)
 
-              if not file_name.lower().endswith(('.mkv', '.mp4', '.avi')):
+              if not fname.lower().endswith(('.mkv', '.mp4', '.avi')):
                   continue
 
-              if file_id in existing_ids:
-                  continue
-
-              # Clean GB Rounding: 14.2 GB -> 14 GB, 2.4 GB -> 2 GB
-              gb_val = round(file_bytes / (1024 ** 3))
+              # Clean GB Rounding: 14.2 GB -> 14 GB
+              gb_val = round(fbytes / (1024 ** 3))
               clean_size = f"{gb_val} GB"
 
-              # Industry Target detection
-              lower = file_name.lower()
-              target = "kollywood"
+              in_master = fid in master_ids
+              in_category = fid in category_ids
+
+              # Status track karein
+              status = "completely_missing"
+              if in_master and not in_category:
+                  status = "missing_in_category"
+              elif in_master and in_category:
+                  continue # Already fully synced, skip
+
+              # Language guess
+              lower = fname.lower()
+              target_cat = "kollywood"
               target_file = "chunks/data_c01_tamil.json"
               if "telugu" in lower:
-                  target = "tollywood"
+                  target_cat = "tollywood"
                   target_file = "chunks/data_c01_telugu.json"
               elif "hindi" in lower:
-                  target = "bollywood"
+                  target_cat = "bollywood"
                   target_file = "chunks/data_c01_hindi.json"
               elif any(x in lower for x in ["english", "hollywood", "dual"]):
-                  target = "hollywood"
+                  target_cat = "hollywood"
                   target_file = "chunks/data_c01_english.json"
 
-              arrivals.append({
-                  "title": file_name.rsplit(".", 1)[0].replace(".", " "),
-                  "gdrive_id": file_id,
+              inbox.append({
+                  "title": fname.rsplit(".", 1)[0].replace(".", " "),
+                  "gdrive_id": fid,
                   "size": clean_size,
-                  "target_category": target,
+                  "status": status,
+                  "target_category": target_cat,
                   "target_chunk": target_file,
-                  "stream_url": f"https://gdrive-stream.moinudeentv.workers.dev/?id={file_id}"
+                  "stream_url": f"https://gdrive-stream.moinudeentv.workers.dev/?id={fid}"
               })
 
           with open("inbox_arrivals.json", "w", encoding="utf-8") as f:
-              json.dump(arrivals, f, indent=2, ensure_ascii=False)
+              json.dump(inbox, f, indent=2, ensure_ascii=False)
 
-          print(f"Scan complete: {len(arrivals)} new arrivals ready with clean GB tags.")
+          print(f"Inbox updated: {len(inbox)} items pending.")
           EOF
 
           python3 scan_arrivals.py
 
-      - name: Commit & Push Inbox
+      - name: Commit & Push
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add inbox_arrivals.json
-          git commit -m "Auto-Sync: Updated Drive Arrivals [Clean GB]" || echo "No changes to commit"
+          git commit -m "Auto-Audit: Updated Inbox Arrivals" || echo "No changes"
           git push origin main
