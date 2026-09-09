@@ -1,5 +1,83 @@
 [
   {
+    "id": "1ZwRGntTg2vM-ch0z95aNbAWpwJMS97xS",
+    "name": "Dridam (2026) [4K UHD] [Prime Video] [Dolby Digital Plus].mkv",
+    "title": "Dridam",
+    "original_title": "ദൃഢം",
+    "original_language": "en",
+    "year": 2026,
+    "runtime": 127,
+    "tmdb_id": 912378,
+    "rating": 5.5,
+    "collection": "",
+    "director": [
+      "Martin Joseph"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Shane Nigam",
+        "role": "SI Vijay Radhakrishnan",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/9KJqx2V9aRwcTuMh2FQmWj5HrAO.jpg"
+      },
+      {
+        "name": "Shobi Thilakan",
+        "role": "ASI Krishnan Kurup",
+        "thumbnail": ""
+      },
+      {
+        "name": "Dinesh Prabhakar",
+        "role": "CPO Satyan",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/qI85omROARp5QsUlKevz6i8kvD0.jpg"
+      },
+      {
+        "name": "Nandan Unni",
+        "role": "CPO Anand",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/8h8D6uPFLWZskE5zvoHi8TBcumj.jpg"
+      },
+      {
+        "name": "Saniya Fathima",
+        "role": "CPO Vidya Jayachandran",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/vz1zuqm4jPkEBJ20OzfaaI2Ce8L.jpg"
+      }
+    ],
+    "plot": "A police officer arrives at a seemingly peaceful station but faces pressure when human remains are discovered. Given only a week to solve the murder, he must navigate demands from his department and an anxious public seeking swift justice.",
+    "poster": "https://image.tmdb.org/t/p/w500/9JqWaizfeplMDEZGuJAZZUO4Xtp.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/sRVg5yfJJQ2emGhl6XPYJssilu.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ZwRGntTg2vM-ch0z95aNbAWpwJMS97xS|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "4K UHD",
+      "source": "Prime Video",
+      "codec": "x265",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil, Telugu, Hindi, Kannada, Malayalam",
+      "size": "9 GB"
+    },
+    "versions": [
+      {
+        "id": "1ZwRGntTg2vM-ch0z95aNbAWpwJMS97xS",
+        "name": "Dridam (2026) [4K UHD] [Prime Video] [Dolby Digital Plus].mkv",
+        "quality": "4K UHD • Prime Video • Dolby Digital Plus Multi [9 GB]",
+        "source": "Prime Video",
+        "codec": "x265",
+        "resolution": "4K UHD",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ZwRGntTg2vM-ch0z95aNbAWpwJMS97xS|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "4K UHD",
+          "source": "Prime Video",
+          "codec": "x265",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Hindi, Kannada, Malayalam",
+          "size": "9 GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "1Rt8ogBLIKY3Tbw5wrGXxT3WZ-m6m5I-8",
     "name": "Ananthan Kaadu (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
     "title": "Ananthan Kaadu",
