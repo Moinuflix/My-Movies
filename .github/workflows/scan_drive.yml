@@ -1,0 +1,103 @@
+name: Scan Google Drive & Update Inbox
+
+on:
+  workflow_dispatch:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Rclone
+        run: |
+          sudo -v ; curl https://rclone.org/install.sh | sudo bash
+
+      - name: Setup Rclone Config
+        env:
+          GDRIVE_TOKEN: ${{ secrets.RCLONE_GDRIVE_TOKEN }}
+        run: |
+          mkdir -p ~/.config/rclone
+          cat << EOF > ~/.config/rclone/rclone.conf
+          [gdrive]
+          type = drive
+          scope = drive
+          token = $GDRIVE_TOKEN
+          EOF
+
+      - name: Scan Drive & Round to Clean GB
+        run: |
+          python3 - << 'EOF'
+          import subprocess
+          import json
+          import os
+
+          # Google Drive se files scan karein
+          cmd = ["rclone", "lsjson", "gdrive:", "--files-only"]
+          res = subprocess.run(cmd, stdout=subprocess.PIPE, text=True)
+          drive_files = json.loads(res.stdout) if res.stdout else []
+
+          # Existing chunks check karein duplicate na aane ke liye
+          existing_ids = set()
+          chunks_dir = "chunks"
+          if os.path.exists(chunks_dir):
+              for f in os.listdir(chunks_dir):
+                  if f.endswith(".json"):
+                      try:
+                          with open(os.path.join(chunks_dir, f), "r", encoding="utf-8") as jf:
+                              d = json.load(jf)
+                              for item in d:
+                                  if "gdrive_id" in item:
+                                      existing_ids.add(item["gdrive_id"])
+                      except:
+                          pass
+
+          arrivals = []
+          for file in drive_files:
+              file_id = file.get("ID")
+              file_name = file.get("Path", "")
+              file_bytes = file.get("Size", 0)
+
+              if not file_name.lower().endswith(('.mkv', '.mp4', '.avi')):
+                  continue
+
+              if file_id in existing_ids:
+                  continue
+
+              # Clean GB Rounding: 14.2 GB -> "14 GB"
+              clean_gb = round(file_bytes / (1024 ** 3))
+              size_tag = f"{clean_gb} GB" if clean_gb > 0 else "1 GB"
+
+              # Language category detect
+              low = file_name.lower()
+              cat = "hollywood"
+              if "tamil" in low:
+                  cat = "tamil"
+              elif "telugu" in low:
+                  cat = "telugu"
+              elif "hindi" in low:
+                  cat = "hindi"
+
+              arrivals.append({
+                  "name": file_name.rsplit(".", 1)[0].replace(".", " "),
+                  "gdrive_id": file_id,
+                  "size": size_tag,
+                  "category": cat,
+                  "stream_url": f"https://gdrive-stream.moinudeentv.workers.dev/?id={file_id}"
+              })
+
+          with open("inbox_arrivals.json", "w", encoding="utf-8") as out:
+              json.dump(arrivals, out, indent=2, ensure_ascii=False)
+
+          print(f"Total new arrivals found: {len(arrivals)}")
+          EOF
+
+      - name: Commit Inbox
+        run: |
+          git config --global user.name "Moinuflix Bot"
+          git config --global user.email "bot@moinuflix.com"
+          git add inbox_arrivals.json
+          git commit -m "Auto-scan: Updated inbox arrivals with clean GB" || echo "No changes"
+          git push
