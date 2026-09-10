@@ -1,5 +1,83 @@
 [
   {
+    "id": "116HPRBS_E5i25PgF1M9o5ae8TWt1MyJu",
+    "name": "Puli (2015) [1080p] [Prime Video] [Dolby Atmos].mkv",
+    "title": "Puli",
+    "original_title": "புலி",
+    "original_language": "ta",
+    "year": 2015,
+    "runtime": 155,
+    "tmdb_id": 330420,
+    "rating": 4.2,
+    "collection": "",
+    "director": [
+      "Chimbu Deven"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=U9kCY9psgOc",
+    "cast": [
+      {
+        "name": "Vijay",
+        "role": "Marudheeran / Pulivendhan",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/zbQ1sDRVRHkroWwvrnqYKMerl66.jpg"
+      },
+      {
+        "name": "Sridevi",
+        "role": "Yavanaraani",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/6wxquADm0CMYMon04uEI48ZiBBf.jpg"
+      },
+      {
+        "name": "Kichcha Sudeepa",
+        "role": "Thalapathy Jalatharangan",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/8c5TYgGwbkcQkvC3ZlTU41OfYBN.jpg"
+      },
+      {
+        "name": "Shruti Haasan",
+        "role": "Pavazhamalli",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/1zYJuSccSA45VVBdgozpRcL99Rd.jpg"
+      },
+      {
+        "name": "Hansika Motwani",
+        "role": "Princess Manthagini",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/3xCuu8Wwj8TCCtYjVTiXt1nGTtn.jpg"
+      }
+    ],
+    "plot": "A virtuous soldier Magadheera aka Puli (Tiger) vows to save his people from the rule of a cruel queen and her treacherous Marshal. Does good triumph over evil?",
+    "poster": "https://image.tmdb.org/t/p/w500/jOaQRIwweY6pkqp7TEZpklNqrvd.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/ntHGUdeosYWniQbYc13Gm2jAL3c.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=116HPRBS_E5i25PgF1M9o5ae8TWt1MyJu|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "Prime Video",
+      "codec": "x265",
+      "audio": "Dolby Atmos",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": "10 GB"
+    },
+    "versions": [
+      {
+        "id": "116HPRBS_E5i25PgF1M9o5ae8TWt1MyJu",
+        "name": "Puli (2015) [1080p] [Prime Video] [Dolby Atmos].mkv",
+        "quality": "1080p • Prime Video • Dolby Atmos [10 GB]",
+        "source": "Prime Video",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=116HPRBS_E5i25PgF1M9o5ae8TWt1MyJu|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Prime Video",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "10 GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "1xsCOHdZ-xBanF97tJY4XjHSH5Mik4wss",
     "name": "Madharaasi (2025) [1080p] [Prime Video] [Dolby Atmos].mkv",
     "title": "Madharaasi",
@@ -963,26 +1041,6 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": ""
-        }
-      },
-      {
-        "id": "1wA4bv-AN4eRdjhJUNsgQImJFcLExEFWf",
-        "name": "Jawan (2023) [1080p] [Netflix] [Dolby Atmos].mkv",
-        "quality": "1080p • Netflix • Dolby Atmos [6GB]",
-        "source": "Netflix",
-        "codec": "x265",
-        "resolution": "1080p",
-        "audio": "Dolby Atmos",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1wA4bv-AN4eRdjhJUNsgQImJFcLExEFWf|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p",
-          "source": "Netflix",
-          "codec": "x265",
-          "audio": "Dolby Atmos",
-          "channels": "5.1",
-          "languages": "Tamil",
-          "size": "6GB"
         }
       }
     ]
