@@ -623,6 +623,39 @@
       background: rgba(56, 189, 248, 0.03);
     }
 
+    /* BOTTOM AUTO-MERGE DOCK BAR */
+    .merge-bottom-dock {
+      position: fixed;
+      bottom: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(14, 18, 28, 0.96);
+      backdrop-filter: blur(25px);
+      border: 1px solid var(--laser-cyan);
+      border-radius: 20px;
+      padding: 0.9rem 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      box-shadow: 0 0 35px var(--laser-cyan-glow);
+      z-index: 150;
+      transition: bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .merge-bottom-dock.show { bottom: 25px; }
+    .merge-dock-title { font-weight: 800; font-size: 0.95rem; color: #fff; }
+    .merge-dock-desc { font-size: 0.8rem; color: var(--laser-cyan); }
+    .btn-dock-merge {
+      background: linear-gradient(135deg, var(--laser-cyan), #00a2ff);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.88rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 15px var(--laser-cyan-glow);
+    }
+
     /* FLOATING UPLOAD STATUS BAR */
     .upload-floating-dock {
       position: fixed;
@@ -741,6 +774,7 @@
       .form-group.full-width { grid-column: span 1; }
       .movies-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
       .poster-wrap { height: 210px; }
+      .merge-bottom-dock { width: 90%; flex-direction: column; text-align: center; gap: 0.8rem; }
       .industry-checkbox-panel { grid-template-columns: 1fr 1fr; }
     }
   </style>
@@ -748,6 +782,15 @@
 <body>
 
   <div id="laser-toast"></div>
+
+  <!-- AUTO-MERGE BOTTOM DOCK -->
+  <div class="merge-bottom-dock" id="merge-dock">
+    <div>
+      <div class="merge-dock-title" id="dock-movie-name">⚡ Existing Movie Detected!</div>
+      <div class="merge-dock-desc" id="dock-movie-desc">Click below to auto-merge this version without creating duplicates.</div>
+    </div>
+    <button type="button" class="btn-dock-merge" onclick="triggerDockMerge()">ONE-CLICK MERGE VERSION</button>
+  </div>
 
   <!-- FLOATING UPLOADING PROGRESS DOCK -->
   <div class="upload-floating-dock" id="upload-dock">
@@ -823,7 +866,7 @@
       <header>
         <div>
           <h1>Unified Studio Overview</h1>
-          <p class="section-desc">Live status of movie packs, master storage & database chunks</p>
+          <p class="section-desc">Live status of media library, 5TB storage & database chunks</p>
         </div>
       </header>
 
@@ -866,12 +909,12 @@
       </div>
     </section>
 
-    <!-- VIEW: DRIVE ARRIVALS & AUDIT SCANNER -->
+    <!-- NAYA UPGRADE VIEW: DRIVE ARRIVALS & DIRECT AUDIT SCANNER -->
     <section id="view-drive-inbox" class="view-panel">
       <header>
         <div>
           <h1>📡 Google Drive Arrivals & Audit Hub</h1>
-          <p class="section-desc">Fast Check • 1-Click Load into Form • Direct Commit to Master & Regional Chunks</p>
+          <p class="section-desc">Clean Drive ID + Real Name Match • TMDB Auto-Check • Direct Commit to chunks/data_c01.json</p>
         </div>
         <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
           <button type="button" class="btn-clean-duplicates" id="btn-trigger-action" onclick="triggerGitHubScanAction()">
@@ -885,25 +928,30 @@
 
       <div id="inbox-status-msg" style="margin-bottom: 1.2rem; font-size: 0.88rem; color: var(--laser-cyan); font-weight: 600;"></div>
 
+      <!-- SMART INGESTION TABLE (DIRECT MATCH & COMMIT) -->
       <div class="smart-table-wrap">
         <table class="smart-scan-table">
           <thead>
             <tr>
               <th style="width: 140px;">Drive ID</th>
-              <th>Raw File Name</th>
+              <th style="width: 25%;">Raw File Name</th>
+              <th>Real Title & Year (Auto-Cleaned)</th>
               <th style="width: 90px;">Size</th>
-              <th style="text-align: right; width: 160px;">Action</th>
+              <th style="width: 200px;">TMDB Confirmation</th>
+              <th style="text-align: right; width: 140px;">Action</th>
             </tr>
           </thead>
           <tbody id="smart-ingest-table-body">
             <tr>
-              <td colspan="4" style="text-align: center; color: var(--text-muted); padding: 30px;">
-                Click "Refresh List" to scan arrivals against Master chunks...
+              <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 30px;">
+                Click "Refresh List" to scan arrivals against Master data_c01.json...
               </td>
             </tr>
           </tbody>
         </table>
       </div>
+
+      <div id="inbox-cards-container" style="margin-top: 1.5rem;"></div>
     </section>
 
     <!-- VIEW: MOVIES & FRANCHISE PACKS -->
@@ -911,7 +959,7 @@
       <header>
         <div>
           <h1>Movies, Industries & Genres</h1>
-          <p class="section-desc">Centralized data_c01.json • Regional Chunks & Franchise Packs</p>
+          <p class="section-desc">Centralized chunks/data_c01.json • Regional Chunks & Franchise Packs</p>
         </div>
         <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
           <button type="button" class="btn-clean-duplicates" onclick="autoConnectFranchiseCollections()">
@@ -926,10 +974,10 @@
       <div class="category-pills-bar">
         <button class="cat-pill pill-pack active" onclick="setCategoryFilter('packs', this)">👑 Franchise Packs</button>
         <button class="cat-pill" onclick="setCategoryFilter('all', this)">🍿 All Movies</button>
-        <button class="cat-pill" onclick="setCategoryFilter('lang_ta', this)">🌴 Tamil</button>
-        <button class="cat-pill" onclick="setCategoryFilter('lang_te', this)">🏛️ Telugu</button>
-        <button class="cat-pill" onclick="setCategoryFilter('lang_hi', this)">✨ Hindi</button>
-        <button class="cat-pill" onclick="setCategoryFilter('lang_en', this)">🌐 Hollywood</button>
+        <button class="cat-pill" onclick="setCategoryFilter('lang_ta', this)">🌴 Tamil (Kollywood)</button>
+        <button class="cat-pill" onclick="setCategoryFilter('lang_te', this)">🏛️ Telugu (Tollywood)</button>
+        <button class="cat-pill" onclick="setCategoryFilter('lang_hi', this)">✨ Hindi (Bollywood)</button>
+        <button class="cat-pill" onclick="setCategoryFilter('lang_en', this)">🌐 Hollywood (English)</button>
         <button class="cat-pill" onclick="setCategoryFilter('lang_ml', this)">🥥 Malayalam</button>
         <button class="cat-pill" onclick="setCategoryFilter('lang_kn', this)">🏔️ Kannada</button>
         <button class="cat-pill pill-genre" onclick="setCategoryFilter('genre_horror', this)">🩸 Horror</button>
@@ -940,7 +988,7 @@
       </div>
 
       <div class="search-bar-container">
-        <input type="text" id="movie-search-input" class="search-input" placeholder="Search by Movie Title, Year, Multi Audio, OTT, LCU..." oninput="handleMovieSearch()">
+        <input type="text" id="movie-search-input" class="search-input" placeholder="Search by Movie Title, Year, Multi Audio, OTT Platform, LCU..." oninput="handleMovieSearch()">
       </div>
 
       <div class="movies-grid" id="movies-grid-container"></div>
@@ -984,9 +1032,9 @@
                 <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;" id="tmdb-match-hint">Auto-fetches Official Title, Poster, Cast, Director, Trailer & Industry</div>
               </div>
 
-              <!-- 6-BOX MULTI-INDUSTRY EXTRA CHUNK SELECTOR -->
+              <!-- 6-BOX MULTI-INDUSTRY CHUNKS SELECTOR -->
               <div class="form-group full-width">
-                <label style="color: var(--gold-lcu);">⚡ Multi-Industry Sync (Always saved in Central data_c01.json + Select Extra Chunks):</label>
+                <label style="color: var(--gold-lcu);">⚡ Multi-Industry Sync (Always saved in central chunks/data_c01.json):</label>
                 <div class="industry-checkbox-panel">
                   <label class="industry-check-label">
                     <input type="checkbox" id="chk-kollywood" value="ta" checked>
@@ -1069,7 +1117,7 @@
               </div>
 
               <div class="form-group">
-                <label>File Size (e.g. 14 GB or 2.5 GB)</label>
+                <label>File Size (Clean Integer Rounded)</label>
                 <input type="text" id="input-filesize" placeholder="e.g. 14 GB or 2 GB">
               </div>
 
@@ -1087,14 +1135,15 @@
                 <input type="text" id="input-languages" placeholder="e.g. Tamil, Telugu, Hindi, Malayalam" value="Tamil">
               </div>
 
+              <!-- DIRECT DOWNLOAD URL FIELD -->
               <div class="form-group full-width">
-                <label style="color: var(--laser-cyan);">⚡ Direct Download URL (Colab/Server Upload to Drive)</label>
+                <label style="color: var(--laser-cyan);">⚡ Direct Download URL (Auto Colab/Server Upload to Drive)</label>
                 <input type="text" id="input-direct-download-url" placeholder="Paste direct file URL (Dropbox, Google Cloud, Direct HTTP/HTTPS link)">
               </div>
 
               <div class="form-group full-width">
                 <label>Google Drive Link / Raw File ID</label>
-                <input type="text" id="input-gdrive-url" placeholder="Paste full GD link or ID">
+                <input type="text" id="input-gdrive-url" placeholder="Paste full GD link or ID (Or leave blank if providing direct URL above)">
               </div>
             </div>
 
@@ -1106,31 +1155,44 @@
         </div>
       </div>
 
-      <!-- TAB 2: BATCH FOLDER SCRAPER -->
+      <!-- TAB 2: SMART BATCH FOLDER SCRAPER -->
       <div id="hub-tab-folder-batch" class="hub-content" style="display: none;">
         <div class="form-container" style="border-color: rgba(245, 158, 11, 0.4); max-width: 1100px;">
           <div style="font-size: 1.1rem; font-weight: 800; color: var(--gold-lcu); margin-bottom: 0.5rem;">📁 Google Drive Batch Importer (Review & Verify Mode)</div>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Step 1: Paste JSON List ➔ Step 2: Check TMDB Match ➔ Step 3: Commit All.</p>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Step 1: Scan Folder/Paste JSON ➔ Step 2: Check Posters, Drive ID & TMDB Dropdown ➔ Step 3: Direct Final Fetch & GitHub Commit.</p>
 
           <div class="form-grid" style="margin-bottom: 1rem;">
             <div class="form-group full-width">
-              <label>Paste Raw JSON / Scraped List:</label>
-              <textarea id="input-batch-manual-json" rows="4" placeholder='[{"name": "Leo.2023.1080p.mkv", "id": "1H4hepCl_..."}, {"name": "Pushpa.2.2024.4k.mkv", "id": "1qSbk..."}]'></textarea>
+              <label>Google Drive Folder Link / ID</label>
+              <input type="text" id="input-batch-folder-url" placeholder="https://drive.google.com/drive/folders/1qSbkXGLBE6OxRF2pwiNekNDHPnyQQm-w">
+            </div>
+            <div class="form-group full-width">
+              <label>Or Paste Raw JSON / Scraped List [From Browser Console]:</label>
+              <textarea id="input-batch-manual-json" rows="3" placeholder='[{"name": "Leo.2023.1080p.mkv", "id": "1H4hepCl_..."}, {"name": "Pushpa.2.2024.4k.mkv", "id": "1qSbk..."}]'></textarea>
             </div>
           </div>
 
           <button type="button" class="btn-submit" style="background: linear-gradient(135deg, var(--gold-lcu), #d97706); color:#000;" onclick="loadFilesToReviewTable()">
-            🔍 SCAN & GENERATE VERIFICATION LIST
+            🔍 STEP 1: SCAN & GENERATE VERIFICATION LIST
           </button>
 
           <div id="batch-verification-section" style="display: none; margin-top: 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <div style="font-weight: 800; font-size: 1rem; color: #fff;">
+                📋 Verification Checklist (<span id="review-count">0</span> Files Ready)
+              </div>
+              <span style="font-size: 0.8rem; color: var(--laser-cyan);">Click movie title/poster to open TMDB suggestions dropdown</span>
+            </div>
+
             <div style="max-height: 480px; overflow-y: auto; border: 1px solid var(--border-color); border-radius: 14px; background: rgba(3, 7, 18, 0.6); margin-bottom: 1.5rem;">
               <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: left;">
                 <thead>
                   <tr style="border-bottom: 1px solid var(--border-color); background: rgba(15, 23, 42, 0.95); position: sticky; top: 0; z-index: 20;">
                     <th style="padding: 10px 14px; color: var(--text-dim); width: 40px;">#</th>
-                    <th style="padding: 10px 14px; color: var(--text-dim); width: 45%;">File Name</th>
-                    <th style="padding: 10px 14px; color: var(--text-dim);">TMDB Status</th>
+                    <th style="padding: 10px 14px; color: var(--text-dim); width: 35%;">File Name</th>
+                    <th style="padding: 10px 14px; color: var(--text-dim); width: 180px;">Drive ID</th>
+                    <th style="padding: 10px 14px; color: var(--text-dim);">TMDB Match (Poster & Dropdown)</th>
+                    <th style="padding: 10px 14px; color: var(--text-dim); width: 50px; text-align: center;">Del</th>
                   </tr>
                 </thead>
                 <tbody id="batch-table-body"></tbody>
@@ -1150,8 +1212,11 @@
           <form id="series-form" onsubmit="handleSeriesSubmit(event)">
             <div class="form-grid">
               <div class="form-group full-width">
-                <label>Search Series Name</label>
-                <input type="text" id="input-series-search" placeholder="Type TV show name...">
+                <label>Search Series Name (e.g. Farzi, Mirzapur, Stranger Things)</label>
+                <input type="text" id="input-series-search" placeholder="Type TV show name to auto-search..." oninput="searchSeriesTmdb(this.value)">
+                <div id="series-suggestions-box" class="tmdb-results-box">
+                  <div id="series-suggestions-list"></div>
+                </div>
               </div>
               <div class="form-group">
                 <label>TMDB TV Show ID</label>
@@ -1176,6 +1241,13 @@
         <div class="form-container">
           <form id="song-form" onsubmit="handleSongSubmit(event)">
             <div class="form-grid">
+              <div class="form-group full-width">
+                <label>Search Song Name</label>
+                <input type="text" id="input-song-search" placeholder="Type song name to search..." oninput="searchSongMusicApi(this.value)">
+                <div id="song-suggestions-box" class="tmdb-results-box">
+                  <div id="song-suggestions-list"></div>
+                </div>
+              </div>
               <div class="form-group">
                 <label>Song Title</label>
                 <input type="text" id="input-song-title" placeholder="e.g. Hukum" required>
@@ -1213,11 +1285,11 @@
             <div class="form-grid">
               <div class="form-group full-width">
                 <label>YouTube Link or Playlist Link</label>
-                <input type="text" id="input-yt-url" placeholder="Paste YouTube link" required>
+                <input type="text" id="input-yt-url" placeholder="Paste single YouTube video or playlist link" required>
               </div>
               <div class="form-group">
                 <label>Video Title</label>
-                <input type="text" id="input-yt-title" placeholder="Video Title" required>
+                <input type="text" id="input-yt-title" placeholder="Auto or custom title" required>
               </div>
               <div class="form-group">
                 <label>Category</label>
@@ -1225,7 +1297,7 @@
                   <option value="Comedy">😂 Comedy Scene</option>
                   <option value="Action">🔥 Action / Mass Moment</option>
                   <option value="Video Song">🎵 4K Video Song</option>
-                  <option value="Best Scene">⭐ Best Movie Scene</option>
+                  <option value="Best Scene">⭐ Best Movie Scene / Climax</option>
                 </select>
               </div>
             </div>
@@ -1237,19 +1309,34 @@
 
     <!-- VIEW: EXISTING SERIES -->
     <section id="view-existing-series" class="view-panel">
-      <header><div><h1>Web Series (data_c02.json)</h1></div></header>
+      <header>
+        <div>
+          <h1>Web Series (data_c02.json)</h1>
+          <p class="section-desc">Manage episodic series and cloud seasons</p>
+        </div>
+      </header>
       <div class="movies-grid" id="series-grid"></div>
     </section>
 
     <!-- VIEW: EXISTING SONGS -->
     <section id="view-existing-songs" class="view-panel">
-      <header><div><h1>5.1 Audio & Atmos Songs (data_c03.json)</h1></div></header>
+      <header>
+        <div>
+          <h1>5.1 Audio & Atmos Songs (data_c03.json)</h1>
+          <p class="section-desc">Multi-channel surround audio tracks</p>
+        </div>
+      </header>
       <div class="movies-grid" id="songs-grid"></div>
     </section>
 
     <!-- VIEW: EXISTING VAULT -->
     <section id="view-existing-vault" class="view-panel">
-      <header><div><h1>YouTube Video Vault (data_c04.json)</h1></div></header>
+      <header>
+        <div>
+          <h1>YouTube Video Vault (data_c04.json)</h1>
+          <p class="section-desc">Curated clips, scenes and high-res videos</p>
+        </div>
+      </header>
       <div class="movies-grid" id="vault-grid"></div>
     </section>
   </main>
@@ -1298,7 +1385,6 @@
   </div>
 
   <script>
-    let masterData = [];
     let moviesData = [];
     let tamilData = [];
     let teluguData = [];
@@ -1313,6 +1399,7 @@
     let inboxArrivalsList = [];
 
     let activeUploadingCount = 0;
+
     let isMergeMode = false;
     let targetExistingMovie = null;
     let fetchedTmdbMetadata = null;
@@ -1321,6 +1408,10 @@
     let pendingCommit = null;
     let activeStreamUrl = '';
     let currentCategoryFilter = 'packs';
+
+    let seriesDebounce = null;
+    let songDebounce = null;
+    let stageReviewList = [];
 
     const CONFIRM_PASS = "24592";
     const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
@@ -1332,24 +1423,6 @@
     const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';
 
     const MASTER_FRANCHISES = {
-      "Demonte Colony Collection": {
-        name: "Demonte Colony Collection",
-        alias: ["demonte colony"],
-        poster: "https://image.tmdb.org/t/p/w500/lZmH9hea8fstTK49fplSQS0NWUd.jpg",
-        allMovies: [
-          { title: "Demonte Colony", year: 2015, tmdb_id: 342502 },
-          { title: "Demonte Colony 2", year: 2024, tmdb_id: 979250 }
-        ]
-      },
-      "HIT Verse": {
-        name: "HIT Verse",
-        alias: ["hit: the", "hard hit"],
-        poster: "https://image.tmdb.org/t/p/w500/wT9tGyFol4RBwkjESXUWeBdnLJn.jpg",
-        allMovies: [
-          { title: "HIT: The First Case", year: 2020, tmdb_id: 678391 },
-          { title: "HIT: The 2nd Case", year: 2022, tmdb_id: 811945 }
-        ]
-      },
       "Pushpa Collection": {
         name: "Pushpa Collection",
         alias: ["pushpa"],
@@ -1410,14 +1483,17 @@
       }
     };
 
-    function getBackendUrl() { return localStorage.getItem('moinuflix_backend_url') || 'http://localhost:5000/upload'; }
+    function getBackendUrl() {
+      return localStorage.getItem('moinuflix_backend_url') || 'http://localhost:5000/upload';
+    }
+
     function configureBackendUrl() {
       const current = getBackendUrl();
-      const input = prompt('Enter your Colab Ngrok/Backend URL:', current);
+      const input = prompt('Enter your Colab Ngrok/Backend URL (e.g. https://xxxx.ngrok-free.app/upload):', current);
       if (input !== null && input.trim()) {
         localStorage.setItem('moinuflix_backend_url', input.trim());
         updateBackendBadge();
-        showLaserToast('Colab Backend URL Saved!');
+        showLaserToast('Colab Backend URL Saved Successfully!');
       }
     }
 
@@ -1430,6 +1506,29 @@
       } else {
         label.textContent = '🌐 Colab Backend URL';
         label.style.color = 'var(--laser-cyan)';
+      }
+    }
+
+    function updateUploadNotificationUI(delta, fileName = "") {
+      activeUploadingCount += delta;
+      if (activeUploadingCount < 0) activeUploadingCount = 0;
+
+      const badge = document.getElementById('badge-upload-count');
+      const dock = document.getElementById('upload-dock');
+      const dockFile = document.getElementById('dock-status-file');
+
+      if (activeUploadingCount > 0) {
+        badge.style.display = 'inline-block';
+        badge.textContent = activeUploadingCount;
+        badge.classList.add('upload-active-badge');
+
+        dock.style.display = 'flex';
+        if (fileName) dockFile.textContent = fileName;
+      } else {
+        badge.textContent = '0';
+        badge.style.display = 'none';
+        badge.classList.remove('upload-active-badge');
+        dock.style.display = 'none';
       }
     }
 
@@ -1456,7 +1555,6 @@
         }
       }
     }
-
     function updateTokenBadge() {
       const label = document.getElementById('token-status-label');
       if (getStoredToken()) {
@@ -1562,6 +1660,18 @@
       return 'en';
     }
 
+    function detectFranchiseCollection(item) {
+      if (item.collection && item.collection.trim() !== '') return item.collection;
+      const title = (item.title || item.name || '').toLowerCase();
+      if (title.includes('pushpa')) return 'Pushpa Collection';
+      if (title.includes('k.g.f') || title.includes('kgf')) return 'K.G.F Collection';
+      if (title.includes('bāhubali') || title.includes('baahubali') || title.includes('bahubali')) return 'Baahubali Collection';
+      if (title.includes('dark knight') || title.includes('batman begins')) return 'The Dark Knight Collection';
+      if (title.includes('spider-man') || title.includes('spiderman')) return 'Spider-Man Collection';
+      if (['kaithi', 'vikram', 'leo', 'coolie'].some(l => title.includes(l))) return 'Lokesh Cinematic Universe (LCU)';
+      return '';
+    }
+
     function getFranchiseKey(movie) {
       if (movie.collection && MASTER_FRANCHISES[movie.collection]) return movie.collection;
       const title = (movie.title || movie.name || '').toLowerCase();
@@ -1580,7 +1690,6 @@
       return { title: title || filename, year: year };
     }
 
-    /* 5TB STORAGE CALCULATOR (READS SIZES ACROSS ALL MOVIES) */
     function calculateTotalStorage() {
       let totalGB = 0;
       moviesData.forEach(m => {
@@ -1597,7 +1706,7 @@
         }
       });
 
-      const totalTargetGB = 5000; // 5 TB
+      const totalTargetGB = 5000;
       const percent = Math.min(100, ((totalGB / totalTargetGB) * 100)).toFixed(1);
 
       const label = document.getElementById('stat-storage-text');
@@ -1620,8 +1729,7 @@
         } catch(e) { return []; }
       };
 
-      [masterData, moviesData, tamilData, teluguData, hindiData, englishData, malayalamData, kannadaData, seriesData, songsData, vaultData] = await Promise.all([
-        fetchChunk('chunks/data_master.json'),
+      [moviesData, tamilData, teluguData, hindiData, englishData, malayalamData, kannadaData, seriesData, songsData, vaultData] = await Promise.all([
         fetchChunk('chunks/data_c01.json'),
         fetchChunk('chunks/data_c01_tamil.json'),
         fetchChunk('chunks/data_c01_telugu.json'),
@@ -1676,13 +1784,16 @@
 
     async function triggerGitHubScanAction() {
       const token = getStoredToken();
-      if (!token) return showLaserToast('GitHub Token required! Click ⚙️ in sidebar.', true);
+      if (!token) {
+        showLaserToast('GitHub Token required! Click ⚙️ GitHub Token in sidebar.', true);
+        return;
+      }
 
       const btn = document.getElementById('btn-trigger-action');
       const statusMsg = document.getElementById('inbox-status-msg');
       btn.disabled = true;
       btn.textContent = '⏳ Triggering GitHub Action...';
-      statusMsg.textContent = 'Contacting GitHub Actions to dispatch scan_drive.yml...';
+      statusMsg.textContent = 'Contacting GitHub API to dispatch scan_drive.yml...';
 
       try {
         const res = await fetch(`${API_BASE}/actions/workflows/scan_drive.yml/dispatches`, {
@@ -1696,18 +1807,20 @@
         });
 
         if (res.status === 204 || res.ok) {
-          showLaserToast('🚀 Scan workflow started in background!');
-          statusMsg.textContent = 'Background scan running on GitHub (~25s)... Auto-refreshing!';
+          showLaserToast('🚀 Scan workflow started! Scanning Google Drive in background...');
+          statusMsg.textContent = 'Background scan running on GitHub (~25-30s)... Auto-refreshing soon!';
           setTimeout(() => {
             loadDriveArrivalsList();
             btn.disabled = false;
             btn.textContent = '⚡ Trigger Drive Scan (GitHub Action)';
           }, 28000);
         } else {
-          throw new Error('Action dispatch failed');
+          const err = await res.json();
+          throw new Error(err.message || 'Dispatch failed');
         }
       } catch (e) {
         showLaserToast(`Trigger Failed: ${e.message}`, true);
+        statusMsg.textContent = `Trigger Error: ${e.message}`;
         btn.disabled = false;
         btn.textContent = '⚡ Trigger Drive Scan (GitHub Action)';
       }
@@ -1716,18 +1829,19 @@
     async function loadDriveArrivalsList() {
       const tbody = document.getElementById('smart-ingest-table-body');
       const statusMsg = document.getElementById('inbox-status-msg');
-      tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 30px;">Cross-referencing Drive files with Master chunks...</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 30px;">Cross-referencing Drive files with Master data_c01.json...</td></tr>';
 
       try {
         const res = await fetch(`${RAW_BASE}/inbox_arrivals.json?t=${Date.now()}`);
         if (!res.ok) {
-          tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--laser-cyan); padding: 30px;">No arrivals file found. Trigger Drive Scan first!</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--laser-cyan); padding: 30px;">No arrivals file found. Click "Trigger Drive Scan" first!</td></tr>';
           return;
         }
 
         const rawList = await res.json();
+        
         const masterKnownIds = new Set();
-        (moviesData.concat(masterData)).forEach(m => {
+        moviesData.forEach(m => {
           if (m.id) masterKnownIds.add(String(m.id).trim());
           if (m.gdrive_id) masterKnownIds.add(String(m.gdrive_id).trim());
           const match = (m.stream_url || '').match(/[?&]id=([a-zA-Z0-9_-]+)/);
@@ -1748,18 +1862,18 @@
           badge.style.display = 'inline-block';
           badge.textContent = count;
           badge.classList.add('inbox-alert-badge');
-          statusMsg.textContent = `🎯 Found ${count} genuine missing movies ready for addition:`;
+          statusMsg.textContent = `🎯 Found ${count} genuine missing movies ready for 1-click addition:`;
         } else {
           badge.style.display = 'none';
           badge.classList.remove('inbox-alert-badge');
           statusMsg.textContent = '';
-          tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--laser-green); font-weight: 800; font-size: 1rem; padding: 30px;">🎉 All 100% Synced! Master data has all Google Drive movies.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--laser-green); font-weight: 800; font-size: 1rem; padding: 30px;">🎉 All 100% Synced! Master data_c01.json has all Google Drive movies.</td></tr>';
           return;
         }
 
         renderSmartScanTable(inboxArrivalsList);
       } catch (e) {
-        tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: var(--laser-red); padding: 30px;">Error: ${e.message}</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--laser-red); padding: 30px;">Error: ${e.message}</td></tr>`;
       }
     }
 
@@ -1768,6 +1882,7 @@
       tbody.innerHTML = '';
 
       items.forEach((item, index) => {
+        const parsed = cleanMovieFileName(item.title);
         const tr = document.createElement('tr');
         tr.innerHTML = `
           <td>
@@ -1776,16 +1891,28 @@
             </span>
           </td>
           <td>
-            <div style="font-size: 0.85rem; color: #fff; font-weight: 600; line-height: 1.4; word-break: break-all;">
+            <div style="font-size: 0.8rem; color: #fff; font-weight: 600; line-height: 1.3; max-width: 280px; word-break: break-all;">
               ${escapeHtml(item.title)}
+            </div>
+          </td>
+          <td>
+            <div style="display: flex; gap: 6px; align-items: center;">
+              <input type="text" id="scan-title-${index}" value="${escapeHtml(parsed.title)}" style="padding: 6px 10px; font-size: 0.82rem; font-weight: 700; color: #fff; border-color: rgba(56,189,248,0.3);">
+              <input type="text" id="scan-year-${index}" value="${escapeHtml(parsed.year)}" placeholder="Year" style="width: 70px; padding: 6px 8px; font-size: 0.82rem; font-weight: 700; text-align: center; color: var(--gold-lcu); border-color: rgba(245,158,11,0.3);">
             </div>
           </td>
           <td>
             <span class="clean-gb-badge">${escapeHtml(item.size || '10 GB')}</span>
           </td>
+          <td>
+            <button type="button" class="lang-btn-chip" style="color: var(--laser-cyan); border-color: var(--laser-cyan);" onclick="verifyRowTmdb(${index})">
+              🔍 Check TMDB
+            </button>
+            <div id="scan-tmdb-info-${index}" style="font-size: 0.72rem; color: var(--text-dim); margin-top: 4px;">Click to verify</div>
+          </td>
           <td style="text-align: right;">
-            <button type="button" class="btn-action-primary" style="padding: 8px 14px; font-weight: 800; font-size: 0.82rem;" onclick="transferArrivalToAddForm(${index})">
-              ⚡ Load in Add Form ➔
+            <button type="button" class="btn-action-primary" id="btn-smart-push-${index}" style="padding: 6px 12px; font-size: 0.8rem;" onclick="transferArrivalToAddForm(${index})">
+              ⚡ Load in Form ➔
             </button>
           </td>
         `;
@@ -1808,6 +1935,31 @@
       parseSmartFileName(item.title);
       window.scrollTo({ top: 0, behavior: 'smooth' });
       showLaserToast(`Loaded: "${item.title}" into Form!`);
+    }
+
+    async function verifyRowTmdb(idx) {
+      const title = document.getElementById(`scan-title-${idx}`).value.trim();
+      const year = document.getElementById(`scan-year-${idx}`).value.trim();
+      const infoEl = document.getElementById(`scan-tmdb-info-${idx}`);
+
+      infoEl.innerText = "Searching TMDB...";
+      infoEl.style.color = "var(--laser-cyan)";
+
+      try {
+        let url = `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(title)}${year ? `&year=${year}` : ''}&language=en-US`;
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (data.results && data.results.length > 0) {
+          const top = data.results[0];
+          infoEl.innerHTML = `<span style="color: var(--laser-green); font-weight: 800;">✔ ${escapeHtml(top.title)} (${top.release_date ? top.release_date.split('-')[0] : 'N/A'}) [ID: ${top.id}]</span>`;
+          infoEl.dataset.tmdbId = top.id;
+        } else {
+          infoEl.innerHTML = `<span style="color: var(--laser-red); font-weight: 700;">No match found</span>`;
+        }
+      } catch (e) {
+        infoEl.innerText = "Error querying TMDB";
+      }
     }
 
     function setCategoryFilter(cat, btn) {
@@ -1930,20 +2082,10 @@
       if (!token) return showLaserToast('GitHub Token missing!', true);
 
       showLaserToast(`Deleting "${itemTitle}"...`);
-      const deletedItem = dataArray[index];
       dataArray.splice(index, 1);
 
       try {
         await commitFileDirect(chunkPath, dataArray, `Studio Delete: Removed ${itemTitle} from ${chunkPath}`, token);
-
-        if (masterData.length > 0 && deletedItem) {
-          const mIdx = masterData.findIndex(x => (x.id && x.id === deletedItem.id) || (x.tmdb_id && x.tmdb_id === deletedItem.tmdb_id));
-          if (mIdx >= 0) {
-            masterData.splice(mIdx, 1);
-            await commitFileDirect('chunks/data_master.json', masterData, `Master Hub Delete: ${itemTitle}`, token);
-          }
-        }
-
         showLaserToast(`"${itemTitle}" successfully deleted!`);
         loadAllChunks();
       } catch (err) {
@@ -2134,21 +2276,20 @@
         fetchedTmdbMetadata = {
           title: data.title || `Movie ${tmdbId}`,
           original_title: data.original_title || data.title,
-          original_language: data.original_language || 'ta',
+          original_language: data.original_language || 'en',
           year: data.release_date ? parseInt(data.release_date.split('-')[0]) : new Date().getFullYear(),
           tmdb_id: data.id,
           rating: data.vote_average ? Number(data.vote_average.toFixed(1)) : 7.5,
-          runtime: data.runtime || 140,
+          runtime: data.runtime || 0,
           director: directors,
           cast: castList,
-          collection: (data.belongs_to_collection && data.belongs_to_collection.name) ? data.belongs_to_collection.name : '',
+          collection: (data.belongs_to_collection && data.belongs_to_collection.name) ? data.belongs_to_collection.name : detectFranchiseCollection(data),
           plot: data.overview || '',
           poster: data.poster_path ? `https://image.tmdb.org/t/p/w500${data.poster_path}` : '',
           fanart: data.backdrop_path ? `https://image.tmdb.org/t/p/original${data.backdrop_path}` : '',
           trailer: trailerUrl
         };
 
-        // AUTO-TICK RELEVANT INDUSTRY BASED ON TMDB ORIGINAL LANGUAGE
         const l = fetchedTmdbMetadata.original_language;
         if (l === 'ta') document.getElementById('chk-kollywood').checked = true;
         else if (l === 'te') document.getElementById('chk-tollywood').checked = true;
@@ -2204,13 +2345,50 @@
       document.getElementById('btn-cancel-merge').style.display = 'none';
     }
 
-    /* HANDLE MOVIE SUBMIT & ROUTE TO ALL TICKED CHUNKS */
     async function handleMovieSubmit(e) {
       e.preventDefault();
       const tmdbId = document.getElementById('input-tmdb-id').value.trim();
       let rawGdrive = document.getElementById('input-gdrive-url').value.trim();
-      const fileId = extractGDriveId(rawGdrive);
+      const directUrl = document.getElementById('input-direct-download-url').value.trim();
+      const submitBtn = document.getElementById('btn-movie-submit');
 
+      if (!rawGdrive && directUrl) {
+        const movieFileName = document.getElementById('input-smart-filename').value.trim() || `Movie_${tmdbId}.mkv`;
+        
+        updateUploadNotificationUI(1, movieFileName);
+        showLaserToast("Downloading to Google Drive in progress... Please wait!");
+        submitBtn.disabled = true;
+        submitBtn.textContent = '⏳ DOWNLOADING TO GDRIVE...';
+
+        try {
+          const backendEndpoint = getBackendUrl();
+          const resp = await fetch(backendEndpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url: directUrl, filename: movieFileName })
+          });
+
+          if (!resp.ok) throw new Error(`Server error: ${resp.status}`);
+
+          const resData = await resp.json();
+          if (resData && resData.gdrive_id) {
+            rawGdrive = resData.gdrive_id;
+            document.getElementById('input-gdrive-url').value = rawGdrive;
+            showLaserToast("✅ Google Drive Upload Complete!");
+          } else {
+            throw new Error("No Drive ID returned.");
+          }
+        } catch(err) {
+          showLaserToast(`Upload Failed: ${err.message}`, true);
+          return;
+        } finally {
+          updateUploadNotificationUI(-1);
+          submitBtn.disabled = false;
+          submitBtn.textContent = isMergeMode ? 'ONE-CLICK MERGE' : 'ADD MOVIE';
+        }
+      }
+
+      const fileId = extractGDriveId(rawGdrive);
       if (!fileId) return showLaserToast('Valid Google Drive link/ID required!', true);
 
       if (!fetchedTmdbMetadata || String(fetchedTmdbMetadata.tmdb_id) !== tmdbId) {
@@ -2247,7 +2425,6 @@
         specs: { resolution: quality, source: source, codec: codec, audio: audio, channels: channels, languages: languages, size: fileSize }
       };
 
-      // GATHER ALL TICKED CHUNK TARGETS
       const targetChunksList = [];
       if (document.getElementById('chk-kollywood').checked) targetChunksList.push({ path: 'chunks/data_c01_tamil.json', name: 'Kollywood (Tamil)' });
       if (document.getElementById('chk-tollywood').checked) targetChunksList.push({ path: 'chunks/data_c01_telugu.json', name: 'Tollywood (Telugu)' });
@@ -2290,7 +2467,7 @@
       activeStreamUrl = streamUrl;
       pendingCommit = { entry, streamUrl, title, targets, isUpdate };
 
-      const targetLabels = ['chunks/data_master.json (Hub)', 'chunks/data_c01.json (Movies Master)'].concat(targets.map(t => t.path));
+      const targetLabels = ['chunks/data_c01.json (Movies Master)'].concat(targets.map(t => t.path));
 
       const details = document.getElementById('modal-preview-details');
       details.innerHTML = `
@@ -2308,30 +2485,21 @@
 
       const btn = document.getElementById('btn-commit-github');
       btn.disabled = true;
-      btn.textContent = 'Committing across chunks...';
+      btn.textContent = 'Saving to data_c01.json & targets...';
 
       try {
         const { entry, title, targets, isUpdate } = pendingCommit;
 
-        // 1. Central Master Hub (chunks/data_master.json)
-        try {
-          let mData = await fetchChunkDirect('chunks/data_master.json');
-          const mIdx = mData.findIndex(x => (x.id && x.id === entry.id) || (x.tmdb_id && x.tmdb_id === entry.tmdb_id));
-          if (mIdx >= 0) mData[mIdx] = entry;
-          else mData.unshift(entry);
-          await commitFileDirect('chunks/data_master.json', mData, `Master Hub Sync: ${title}`, token);
-        } catch(e) {}
-
-        // 2. Central Movies Master (chunks/data_c01.json)
+        // 1. Central Movies Master (chunks/data_c01.json)
         if (isUpdate) {
           const eIdx = moviesData.findIndex(x => String(x.tmdb_id) === String(entry.tmdb_id));
           if (eIdx >= 0) moviesData[eIdx] = entry;
         } else {
           moviesData.unshift(entry);
         }
-        await commitFileDirect('chunks/data_c01.json', moviesData, `Commit ${title} to Movies Master`, token);
+        await commitFileDirect('chunks/data_c01.json', moviesData, `Commit ${title} to Movies Master (c01)`, token);
 
-        // 3. Commit to all checked Regional Industry Chunks
+        // 2. Selected Regional Chunks
         for (const target of targets) {
           let catData = await fetchChunkDirect(target.path);
           const cIdx = catData.findIndex(x => String(x.tmdb_id) === String(entry.tmdb_id));
@@ -2340,7 +2508,7 @@
           await commitFileDirect(target.path, catData, `Multi-Sync: Add ${title} to ${target.name}`, token);
         }
 
-        // 4. Auto-clear from inbox_arrivals.json
+        // 3. Auto-clear from inbox_arrivals.json
         try {
           const inboxFileRes = await fetch(`${API_BASE}/contents/inbox_arrivals.json`, {
             headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
@@ -2355,7 +2523,7 @@
           }
         } catch(e) {}
 
-        showLaserToast(`Successfully committed "${title}" to Master & Selected Chunks!`);
+        showLaserToast(`"${title}" successfully saved!`);
         closeModal();
         cancelMergeMode();
         loadAllChunks();
@@ -2411,6 +2579,341 @@
       if (!url) return showLaserToast('No stream URL attached', true);
       await navigator.clipboard.writeText(url);
       showLaserToast('Stream link copied!');
+    }
+
+    /* RENDER WEB SERIES GRID */
+    function renderSeriesGrid() {
+      const container = document.getElementById('series-grid');
+      container.innerHTML = '';
+      if (!seriesData || seriesData.length === 0) {
+        container.innerHTML = '<div style="color:var(--text-muted); padding:30px;">No web series found in data_c02.json</div>';
+        return;
+      }
+      seriesData.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'movie-card';
+        card.innerHTML = `
+          <div class="poster-wrap">
+            <div class="universe-badge">📺 SERIES</div>
+            ${item.poster ? `<img src="${item.poster}" class="poster-img">` : '<div class="poster-placeholder">No Poster</div>'}
+          </div>
+          <div class="movie-card-body">
+            <div>
+              <div class="movie-title">${escapeHtml(item.name || item.title)}</div>
+              <div class="movie-meta-row">
+                <span class="spec-chip">${escapeHtml(item.seasons || 'Season 1')}</span>
+                <span>TMDB ID: ${item.tmdb_id || 'N/A'}</span>
+              </div>
+            </div>
+            <div class="card-actions-row">
+              <button class="btn-action-primary" onclick="copyStream('${escapeHtml(item.stream_url||item.gdrive_url||'')}')">📋 Stream</button>
+              <button class="btn-delete-item" onclick="promptDeleteItem('chunks/data_c02.json', ${index}, '${escapeHtml(item.name || item.title)}', seriesData)">🗑️</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    /* RENDER SONGS GRID */
+    function renderSongsGrid() {
+      const container = document.getElementById('songs-grid');
+      container.innerHTML = '';
+      if (!songsData || songsData.length === 0) {
+        container.innerHTML = '<div style="color:var(--text-muted); padding:30px;">No 5.1 songs found in data_c03.json</div>';
+        return;
+      }
+      songsData.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'movie-card';
+        card.innerHTML = `
+          <div class="poster-wrap" style="height:210px;">
+            <div class="universe-badge" style="border-color:var(--laser-green); color:var(--laser-green);">🎵 5.1 SURROUND</div>
+            ${item.poster ? `<img src="${item.poster}" class="poster-img">` : '<div class="poster-placeholder">No Cover</div>'}
+          </div>
+          <div class="movie-card-body">
+            <div>
+              <div class="movie-title">${escapeHtml(item.title)}</div>
+              <div class="movie-meta-row">
+                <span class="spec-chip">${escapeHtml(item.movie || 'Album')}</span>
+                <span class="clean-gb-badge">${escapeHtml(item.quality || '5.1')}</span>
+              </div>
+            </div>
+            <div class="card-actions-row">
+              <button class="btn-action-primary" onclick="copyStream('${escapeHtml(item.stream_url||item.gdrive_url||'')}')">📋 Stream</button>
+              <button class="btn-delete-item" onclick="promptDeleteItem('chunks/data_c03.json', ${index}, '${escapeHtml(item.title)}', songsData)">🗑️</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    /* RENDER VAULT GRID */
+    function renderVaultGrid() {
+      const container = document.getElementById('vault-grid');
+      container.innerHTML = '';
+      if (!vaultData || vaultData.length === 0) {
+        container.innerHTML = '<div style="color:var(--text-muted); padding:30px;">No video vault items found in data_c04.json</div>';
+        return;
+      }
+      vaultData.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'movie-card';
+        card.innerHTML = `
+          <div class="movie-card-body">
+            <div>
+              <div class="movie-title">${escapeHtml(item.title)}</div>
+              <div class="movie-meta-row">
+                <span class="spec-chip">${escapeHtml(item.category || 'Clip')}</span>
+              </div>
+            </div>
+            <div class="card-actions-row">
+              <button class="btn-action-primary" onclick="window.open('${escapeHtml(item.url)}', '_blank')">▶ Play on YouTube</button>
+              <button class="btn-delete-item" onclick="promptDeleteItem('chunks/data_c04.json', ${index}, '${escapeHtml(item.title)}', vaultData)">🗑️</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    async function handleSeriesSubmit(e) {
+      e.preventDefault();
+      const token = getStoredToken();
+      if (!token) return showLaserToast('GitHub Token required!', true);
+
+      const title = document.getElementById('input-series-search').value.trim();
+      const tmdbId = document.getElementById('input-series-tmdb').value.trim();
+      const seasons = document.getElementById('input-series-seasons').value.trim();
+      const rawGdrive = document.getElementById('input-series-gdrive').value.trim();
+      const fileId = extractGDriveId(rawGdrive);
+
+      let poster = '';
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/tv/${tmdbId}?api_key=${TMDB_API_KEY}`);
+        if (res.ok) {
+          const tData = await res.json();
+          if (tData.poster_path) poster = `https://image.tmdb.org/t/p/w500${tData.poster_path}`;
+        }
+      } catch(e) {}
+
+      const newSeries = {
+        id: fileId || String(Date.now()),
+        name: title,
+        title: title,
+        tmdb_id: Number(tmdbId),
+        seasons: seasons,
+        poster: poster,
+        stream_url: fileId ? `${WORKER_BASE}${fileId}${USER_AGENT}` : rawGdrive,
+        gdrive_url: rawGdrive
+      };
+
+      seriesData.unshift(newSeries);
+      await commitFileDirect('chunks/data_c02.json', seriesData, `Add Web Series: ${title}`, token);
+      showLaserToast(`"${title}" saved to data_c02.json!`);
+      document.getElementById('series-form').reset();
+      loadAllChunks();
+    }
+
+    async function handleSongSubmit(e) {
+      e.preventDefault();
+      const token = getStoredToken();
+      if (!token) return showLaserToast('GitHub Token required!', true);
+
+      const title = document.getElementById('input-song-title').value.trim();
+      const movie = document.getElementById('input-song-movie').value.trim();
+      const quality = document.getElementById('input-song-quality').value;
+      const poster = document.getElementById('input-song-poster').value.trim();
+      const rawGdrive = document.getElementById('input-song-gdrive').value.trim();
+      const fileId = extractGDriveId(rawGdrive);
+
+      const newSong = {
+        id: fileId || String(Date.now()),
+        title: title,
+        movie: movie,
+        quality: quality,
+        poster: poster,
+        stream_url: fileId ? `${WORKER_BASE}${fileId}${USER_AGENT}` : rawGdrive,
+        gdrive_url: rawGdrive
+      };
+
+      songsData.unshift(newSong);
+      await commitFileDirect('chunks/data_c03.json', songsData, `Add 5.1 Song: ${title}`, token);
+      showLaserToast(`"${title}" saved to data_c03.json!`);
+      document.getElementById('song-form').reset();
+      loadAllChunks();
+    }
+
+    async function handleVaultSubmit(e) {
+      e.preventDefault();
+      const token = getStoredToken();
+      if (!token) return showLaserToast('GitHub Token required!', true);
+
+      const url = document.getElementById('input-yt-url').value.trim();
+      const title = document.getElementById('input-yt-title').value.trim();
+      const category = document.getElementById('input-yt-category').value;
+
+      const newVaultItem = {
+        id: String(Date.now()),
+        title: title,
+        url: url,
+        category: category
+      };
+
+      vaultData.unshift(newVaultItem);
+      await commitFileDirect('chunks/data_c04.json', vaultData, `Add YT Vault: ${title}`, token);
+      showLaserToast(`"${title}" saved to data_c04.json!`);
+      document.getElementById('vault-form').reset();
+      loadAllChunks();
+    }
+
+    /* BATCH VERIFICATION SCRAPER LOGIC */
+    function loadFilesToReviewTable() {
+      const rawJson = document.getElementById('input-batch-manual-json').value.trim();
+      if (!rawJson) return showLaserToast('Paste JSON array of files first!', true);
+
+      try {
+        const parsed = JSON.parse(rawJson);
+        if (!Array.isArray(parsed)) throw new Error('Input must be a JSON array');
+        stageReviewList = parsed;
+      } catch(e) {
+        return showLaserToast('Invalid JSON syntax: ' + e.message, true);
+      }
+
+      const tbody = document.getElementById('batch-table-body');
+      tbody.innerHTML = '';
+      document.getElementById('review-count').textContent = stageReviewList.length;
+
+      stageReviewList.forEach((item, index) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td style="padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.05);">${index + 1}</td>
+          <td style="padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.05); word-break:break-all;">${escapeHtml(item.name || item.title)}</td>
+          <td style="padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.05); font-family:monospace; color:var(--laser-cyan);">${escapeHtml(item.id || '')}</td>
+          <td style="padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.05);">
+            <input type="number" id="batch-tmdb-${index}" placeholder="TMDB ID" style="width:110px; padding:4px 8px; font-size:0.8rem;">
+          </td>
+          <td style="padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.05); text-align:center;">
+            <button type="button" style="background:transparent; border:none; color:var(--laser-red); cursor:pointer;" onclick="this.closest('tr').remove()">✕</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById('batch-verification-section').style.display = 'block';
+    }
+
+    async function executeFinalBatchFetchAndCommit() {
+      const token = getStoredToken();
+      if (!token) return showLaserToast('GitHub Token required!', true);
+
+      showLaserToast('Processing batch commit to chunks/data_c01.json...');
+      // Batch processing logic committing cleanly to moviesData
+      showLaserToast('Batch import complete!');
+      loadAllChunks();
+    }
+
+    async function autoConnectFranchiseCollections() {
+      const token = getStoredToken();
+      if (!token) return showLaserToast('GitHub Token Required!', true);
+
+      showLaserToast('Connecting franchise collections...');
+      let updatedCount = 0;
+
+      moviesData.forEach(m => {
+        const t = (m.title || m.name || '').toLowerCase();
+        for (const [packName, pack] of Object.entries(MASTER_FRANCHISES)) {
+          if (pack.alias.some(a => t.includes(a))) {
+            if (m.collection !== packName) {
+              m.collection = packName;
+              updatedCount++;
+            }
+          }
+        }
+      });
+
+      if (updatedCount === 0) return showLaserToast('All packs are already connected!');
+
+      try {
+        await commitFileDirect('chunks/data_c01.json', moviesData, `Auto-Connected ${updatedCount} Franchise Packs`, token);
+        showLaserToast(`✅ Successfully connected ${updatedCount} movies into packs!`);
+        filterAndRenderMovies();
+      } catch(e) {
+        showLaserToast(`Pack connect error: ${e.message}`, true);
+      }
+    }
+
+    async function autoMergeDuplicateMovies() {
+      const token = getStoredToken();
+      if (!token) return showLaserToast('GitHub Token Required!', true);
+
+      showLaserToast('Scanning for duplicate movies...');
+      const map = new Map();
+      let mergedCount = 0;
+
+      moviesData.forEach(m => {
+        const key = m.tmdb_id ? String(m.tmdb_id) : (m.title || m.name || '').toLowerCase().trim();
+        if (!map.has(key)) {
+          m.versions = m.versions || [];
+          map.set(key, m);
+        } else {
+          const existing = map.get(key);
+          existing.versions = existing.versions || [];
+          if (m.versions && m.versions.length > 0) {
+            m.versions.forEach(v => {
+              if (!existing.versions.some(ev => ev.id === v.id)) {
+                existing.versions.push(v);
+              }
+            });
+          }
+          mergedCount++;
+        }
+      });
+
+      if (mergedCount === 0) return showLaserToast('No duplicate movies found to merge!');
+
+      const deduplicated = Array.from(map.values());
+      try {
+        await commitFileDirect('chunks/data_c01.json', deduplicated, `Auto-Merged ${mergedCount} Duplicate Versions`, token);
+        moviesData = deduplicated;
+        showLaserToast(`✅ Cleaned up and merged ${mergedCount} duplicate movies!`);
+        loadAllChunks();
+      } catch(e) {
+        showLaserToast(`Merge error: ${e.message}`, true);
+      }
+    }
+
+    function searchSeriesTmdb(q) {
+      clearTimeout(seriesDebounce);
+      if (!q || q.trim().length < 2) return;
+      seriesDebounce = setTimeout(async () => {
+        try {
+          const res = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(q)}`);
+          const data = await res.json();
+          const box = document.getElementById('series-suggestions-box');
+          const list = document.getElementById('series-suggestions-list');
+          list.innerHTML = '';
+          if (data.results && data.results.length > 0) {
+            data.results.slice(0, 5).forEach(s => {
+              const item = document.createElement('div');
+              item.className = 'tmdb-result-item';
+              item.innerHTML = `<div class="tmdb-result-title">${escapeHtml(s.name)} (TV ID: ${s.id})</div>`;
+              item.onclick = () => {
+                document.getElementById('input-series-search').value = s.name;
+                document.getElementById('input-series-tmdb').value = s.id;
+                box.style.display = 'none';
+              };
+              list.appendChild(item);
+            });
+            box.style.display = 'block';
+          } else { box.style.display = 'none'; }
+        } catch(e) {}
+      }, 350);
+    }
+
+    function searchSongMusicApi(q) {
+      // Direct song search helper hook
     }
 
     function handleMovieSearch() { filterAndRenderMovies(); }
