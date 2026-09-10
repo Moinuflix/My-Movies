@@ -18,32 +18,41 @@ jobs:
       - name: Install Dependencies
         run: pip install requests
 
-      - name: Fetch Real Drive File Sizes
+      - name: Fetch Exact Real Sizes via Cloudflare Worker
         run: |
           python - << 'EOF'
           import json
           import os
           import re
           import requests
+          import time
 
           c01_path = 'chunks/data_c01.json'
           if not os.path.exists(c01_path):
-              print("File data_c01.json not found!")
+              print("data_c01.json not found!")
               exit(0)
 
           with open(c01_path, 'r', encoding='utf-8') as f:
               movies = json.load(f)
 
-          # Function to get exact file size from Drive ID using HTTP HEAD request
-          def get_real_drive_size(file_id):
-              if not file_id:
+          headers = {
+              'User-Agent': 'Kodi-MoinuTV-PrivatePlayer/1.0'
+          }
+
+          def get_accurate_size(stream_url, gdrive_id):
+              url = stream_url.split('|')[0] if stream_url else ""
+              if not url and gdrive_id:
+                  url = f"https://gdrive-stream.moinudeentv.workers.dev/?id={gdrive_id}"
+              
+              if not url:
                   return None
-              url = f"https://drive.google.com/uc?export=download&id={file_id}"
+
               try:
-                  res = requests.head(url, allow_redirects=True, timeout=8)
-                  content_len = res.headers.get('Content-Length')
-                  if content_len and int(content_len) > 0:
-                      bytes_val = int(content_len)
+                  # HEAD request gives exact file byte size instantly without downloading
+                  r = requests.head(url, headers=headers, allow_redirects=True, timeout=12)
+                  cl = r.headers.get('Content-Length')
+                  if cl and int(cl) > 1024 * 1024:
+                      bytes_val = int(cl)
                       gb_val = bytes_val / (1024 * 1024 * 1024)
                       if gb_val >= 1.0:
                           return f"{round(gb_val, 1)} GB"
@@ -57,32 +66,34 @@ jobs:
           updated_count = 0
           for m in movies:
               gid = str(m.get("id") or m.get("gdrive_id") or "").strip()
+              surl = m.get("stream_url", "")
               
-              # Extract ID if embedded in worker URL
-              if not gid or len(gid) < 20:
-                  surl = m.get("stream_url", "")
+              if not gid:
                   match = re.search(r'[?&]id=([a-zA-Z0-9_-]+)', surl)
                   if match:
                       gid = match.group(1)
 
-              real_size = get_real_drive_size(gid)
-              
-              if real_size:
+              real_sz = get_accurate_size(surl, gid)
+
+              if real_sz:
                   if "specs" not in m or not isinstance(m["specs"], dict):
                       m["specs"] = {}
-                  m["specs"]["size"] = real_size
+                  m["specs"]["size"] = real_sz
 
                   if m.get("versions") and len(m["versions"]) > 0:
                       for v in m["versions"]:
-                          v["size"] = real_size
+                          v["size"] = real_sz
                           if "specs" not in v or not isinstance(v["specs"], dict):
                               v["specs"] = {}
-                          v["specs"]["size"] = real_size
-                  
-                  updated_count += 1
-                  print(f"✔ {m.get('title')}: {real_size}")
+                          v["specs"]["size"] = real_sz
 
-          print(f"\nDone! Updated {updated_count} movies with real Google Drive size.")
+                  print(f"✔ {m.get('title')}: {real_sz}")
+                  updated_count += 1
+                  time.sleep(0.05) # Polite delay
+              else:
+                  print(f"⚠ Could not resolve size for: {m.get('title')}")
+
+          print(f"\nFinal: Updated {updated_count} movies with real file sizes!")
 
           with open(c01_path, 'w', encoding='utf-8') as f:
               json.dump(movies, f, indent=2, ensure_ascii=False)
@@ -93,5 +104,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add chunks/data_c01.json
-          git commit -m "Fetch exact real sizes from Google Drive" || echo "No changes"
+          git commit -m "Real size sync: Read exact Content-Length via worker" || echo "No changes"
           git push
