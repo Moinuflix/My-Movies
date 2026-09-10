@@ -1,82 +1,88 @@
 name: Auto Calculate & Update Movie Sizes
 
 on:
-  workflow_dispatch: # Is se GitHub par "Run workflow" ka manual button aa jata hai
+  workflow_dispatch:
 
 jobs:
   update-sizes:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
       - name: Install Dependencies
         run: pip install requests
 
-      - name: Calculate and Fill Missing Sizes
+      - name: Fetch Real Drive File Sizes
         run: |
           python - << 'EOF'
           import json
           import os
+          import re
+          import requests
 
           c01_path = 'chunks/data_c01.json'
-          inbox_path = 'inbox_arrivals.json'
-
           if not os.path.exists(c01_path):
-              print("data_c01.json not found!")
+              print("File data_c01.json not found!")
               exit(0)
 
           with open(c01_path, 'r', encoding='utf-8') as f:
               movies = json.load(f)
 
-          # Inbox se real sizes map karna
-          size_map = {}
-          if os.path.exists(inbox_path):
-              with open(inbox_path, 'r', encoding='utf-8') as f:
-                  try:
-                      inbox = json.load(f)
-                      for item in inbox:
-                          gid = item.get("gdrive_id") or item.get("id")
-                          sz = item.get("size")
-                          if gid and sz:
-                              size_map[str(gid).strip()] = sz
-                  except Exception as e:
-                      print(f"Error reading inbox: {e}")
+          # Function to get exact file size from Drive ID using HTTP HEAD request
+          def get_real_drive_size(file_id):
+              if not file_id:
+                  return None
+              url = f"https://drive.google.com/uc?export=download&id={file_id}"
+              try:
+                  res = requests.head(url, allow_redirects=True, timeout=8)
+                  content_len = res.headers.get('Content-Length')
+                  if content_len and int(content_len) > 0:
+                      bytes_val = int(content_len)
+                      gb_val = bytes_val / (1024 * 1024 * 1024)
+                      if gb_val >= 1.0:
+                          return f"{round(gb_val, 1)} GB"
+                      else:
+                          mb_val = bytes_val / (1024 * 1024)
+                          return f"{round(mb_val, 0)} MB"
+              except Exception as e:
+                  pass
+              return None
 
           updated_count = 0
           for m in movies:
               gid = str(m.get("id") or m.get("gdrive_id") or "").strip()
               
-              current_size = m.get("specs", {}).get("size") or (m.get("versions", [{}])[0].get("size") if m.get("versions") else "")
+              # Extract ID if embedded in worker URL
+              if not gid or len(gid) < 20:
+                  surl = m.get("stream_url", "")
+                  match = re.search(r'[?&]id=([a-zA-Z0-9_-]+)', surl)
+                  if match:
+                      gid = match.group(1)
+
+              real_size = get_real_drive_size(gid)
               
-              if not current_size or current_size == "":
-                  # 1. Real size from inbox if matched
-                  if gid in size_map:
-                      new_size = size_map[gid]
-                  else:
-                      # 2. Smart auto-estimate based on 4K / 1080p tag
-                      name_str = str(m.get("name", "")).lower()
-                      is_4k = "2160p" in name_str or "4k" in name_str or "uhd" in name_str
-                      new_size = "14.5 GB" if is_4k else "2.8 GB"
-                  
+              if real_size:
                   if "specs" not in m or not isinstance(m["specs"], dict):
                       m["specs"] = {}
-                  m["specs"]["size"] = new_size
-                  
-                  if m.get("versions") and len(m["versions"]) > 0:
-                      m["versions"][0]["size"] = new_size
-                      if "specs" not in m["versions"][0] or not isinstance(m["versions"][0]["specs"], dict):
-                          m["versions"][0]["specs"] = {}
-                      m["versions"][0]["specs"]["size"] = new_size
-                      
-                  updated_count += 1
+                  m["specs"]["size"] = real_size
 
-          print(f"Total {updated_count} movies updated with file sizes!")
+                  if m.get("versions") and len(m["versions"]) > 0:
+                      for v in m["versions"]:
+                          v["size"] = real_size
+                          if "specs" not in v or not isinstance(v["specs"], dict):
+                              v["specs"] = {}
+                          v["specs"]["size"] = real_size
+                  
+                  updated_count += 1
+                  print(f"✔ {m.get('title')}: {real_size}")
+
+          print(f"\nDone! Updated {updated_count} movies with real Google Drive size.")
 
           with open(c01_path, 'w', encoding='utf-8') as f:
               json.dump(movies, f, indent=2, ensure_ascii=False)
@@ -87,5 +93,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add chunks/data_c01.json
-          git commit -m "Auto-Update missing GB sizes across movie chunks" || echo "No changes to commit"
+          git commit -m "Fetch exact real sizes from Google Drive" || echo "No changes"
           git push
