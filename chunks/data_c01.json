@@ -964,6 +964,26 @@
           "languages": "Tamil",
           "size": ""
         }
+      },
+      {
+        "id": "1wA4bv-AN4eRdjhJUNsgQImJFcLExEFWf",
+        "name": "Jawan (2023) [1080p] [Netflix] [Dolby Atmos].mkv",
+        "quality": "1080p • Netflix • Dolby Atmos [6GB]",
+        "source": "Netflix",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1wA4bv-AN4eRdjhJUNsgQImJFcLExEFWf|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Netflix",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "6GB"
+        }
       }
     ]
   },
