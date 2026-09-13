@@ -1,5 +1,83 @@
 [
   {
+    "id": "1NhU8f-5NVYoAhQj7qQoLGcgNYjVjh7nE",
+    "name": "Aquaman and the Lost Kingdom (2023) [1080p] [BLURAY] [Dolby Atmos].mkv",
+    "title": "Aquaman and the Lost Kingdom",
+    "original_title": "Aquaman and the Lost Kingdom",
+    "original_language": "en",
+    "year": 2023,
+    "runtime": 124,
+    "tmdb_id": 572802,
+    "rating": 6.5,
+    "collection": "Aquaman Collection",
+    "director": [
+      "James Wan"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=4cSkHPW-MPE",
+    "cast": [
+      {
+        "name": "Jason Momoa",
+        "role": "Arthur",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/3troAR6QbSb6nUFMDu61YCCWLKa.jpg"
+      },
+      {
+        "name": "Patrick Wilson",
+        "role": "Orm",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/oym6H2QD9esk4yABjCHaUoNAOa8.jpg"
+      },
+      {
+        "name": "Yahya Abdul-Mateen II",
+        "role": "Black Manta",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/79VdVjUoiYGcgjOT9UmE5XIpoZM.jpg"
+      },
+      {
+        "name": "Randall Park",
+        "role": "Dr. Shin",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/u1QpbjVIKegk79DJG9HFmg9Ljv4.jpg"
+      },
+      {
+        "name": "Amber Heard",
+        "role": "Mera",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/vnDolRlZWiOLBg1N0hsUTz4OH4C.jpg"
+      }
+    ],
+    "plot": "Black Manta seeks revenge on Aquaman for his father's death. Wielding the Black Trident's power, he becomes a formidable foe. To defend Atlantis, Arthur (Aquaman) forges an alliance with his imprisoned brother. They must protect the kingdom.",
+    "poster": "https://image.tmdb.org/t/p/w500/7lTnXOy0iNtBAdRP3TZvaKJ77F6.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/bckxSN9ueOgm0gJpVJmPQrecWul.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1NhU8f-5NVYoAhQj7qQoLGcgNYjVjh7nE|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "BLURAY",
+      "codec": "H.264",
+      "audio": "Dolby Atmos",
+      "channels": "7.1",
+      "languages": "Tamil, Hindi, Malayalam",
+      "size": "15GB"
+    },
+    "versions": [
+      {
+        "id": "1NhU8f-5NVYoAhQj7qQoLGcgNYjVjh7nE",
+        "name": "Aquaman and the Lost Kingdom (2023) [1080p] [BLURAY] [Dolby Atmos].mkv",
+        "quality": "1080p • BLURAY • Dolby Atmos Multi [15GB]",
+        "source": "BLURAY",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "7.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1NhU8f-5NVYoAhQj7qQoLGcgNYjVjh7nE|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "BLURAY",
+          "codec": "H.264",
+          "audio": "Dolby Atmos",
+          "channels": "7.1",
+          "languages": "Tamil, Hindi, Malayalam",
+          "size": "15GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "CnZj4rCdcmFcusGoGHcn",
     "name": "Captain America: The First Avenger (2011) [1080p] [BLURAY] [Dolby Atmos].mkv",
     "title": "Captain America: The First Avenger",
