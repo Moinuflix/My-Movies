@@ -1,78 +1,78 @@
 [
   {
-    "id": "1as4gF9YwJda2YRlOgXVNwOOE7b1TYn3K",
-    "name": "Vishwanath & Sons (2026) [4K UHD] [Netflix] [Dolby Digital Plus].mkv",
-    "title": "Vishwanath & Sons",
-    "original_title": "விஸ்வநாத் & சன்ஸ்",
-    "original_language": "ta",
-    "year": 2026,
-    "runtime": 161,
-    "tmdb_id": 1408162,
-    "rating": 7.3,
-    "collection": "",
+    "id": "1NhU8f-5NVYoAhQj7qQoLGcgNYjVjh7nE",
+    "name": "Aquaman and the Lost Kingdom (2023) [1080p] [BLURAY] [Dolby Atmos].mkv",
+    "title": "Aquaman and the Lost Kingdom",
+    "original_title": "Aquaman and the Lost Kingdom",
+    "original_language": "en",
+    "year": 2023,
+    "runtime": 124,
+    "tmdb_id": 572802,
+    "rating": 6.5,
+    "collection": "Aquaman Collection",
     "director": [
-      "Venky Atluri"
+      "James Wan"
     ],
-    "trailer": "",
+    "trailer": "https://www.youtube.com/watch?v=4cSkHPW-MPE",
     "cast": [
       {
-        "name": "Suriya",
-        "role": "Sanjay 'Sanju' Vishwanath",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/hIFXv3gIjlNS78gJmaguEOxvfPH.jpg"
+        "name": "Jason Momoa",
+        "role": "Arthur",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/3troAR6QbSb6nUFMDu61YCCWLKa.jpg"
       },
       {
-        "name": "Mamitha Baiju",
-        "role": "Madanakameshwari 'Maddy Jay' Jothilingam",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/9ySiE3j7ep16fhKi3u5iq5rbOk6.jpg"
+        "name": "Patrick Wilson",
+        "role": "Orm",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/oym6H2QD9esk4yABjCHaUoNAOa8.jpg"
       },
       {
-        "name": "Radhika Sarathkumar",
-        "role": "Nirmala Devi",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/kEKzT8HAJw8lfFUtWWd0SoQ9kC9.jpg"
+        "name": "Yahya Abdul-Mateen II",
+        "role": "Black Manta",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/79VdVjUoiYGcgjOT9UmE5XIpoZM.jpg"
       },
       {
-        "name": "Raveena Tandon",
-        "role": "Anjali Devi",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/4z0X9ZMgyNZRHfJG4G2Z10rhLpu.jpg"
+        "name": "Randall Park",
+        "role": "Dr. Shin",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/u1QpbjVIKegk79DJG9HFmg9Ljv4.jpg"
       },
       {
-        "name": "Sunil",
-        "role": "Ramu",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/w92Vawfw4DcLYSLtUeFTm46KNIe.jpg"
+        "name": "Amber Heard",
+        "role": "Mera",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/vnDolRlZWiOLBg1N0hsUTz4OH4C.jpg"
       }
     ],
-    "plot": "A celebrated Olympian shooter travels to America looking for a donor to help his sick child — but unexpected romance complicates his search.",
-    "poster": "https://image.tmdb.org/t/p/w500/mLsvCffzpxxDwC7yVLJSLLjgzoq.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/nfNaAiiILjYRc2CKkId1ZfPTtlh.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1as4gF9YwJda2YRlOgXVNwOOE7b1TYn3K|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "plot": "Black Manta seeks revenge on Aquaman for his father's death. Wielding the Black Trident's power, he becomes a formidable foe. To defend Atlantis, Arthur (Aquaman) forges an alliance with his imprisoned brother. They must protect the kingdom.",
+    "poster": "https://image.tmdb.org/t/p/w500/7lTnXOy0iNtBAdRP3TZvaKJ77F6.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/bckxSN9ueOgm0gJpVJmPQrecWul.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1NhU8f-5NVYoAhQj7qQoLGcgNYjVjh7nE|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
-      "resolution": "4K UHD",
-      "source": "Netflix",
-      "codec": "x265",
-      "audio": "Dolby Digital Plus",
-      "channels": "5.1",
-      "languages": "Tamil, Telugu, Hindi, Malayalam",
-      "size": "11GB"
+      "resolution": "1080p",
+      "source": "BLURAY",
+      "codec": "H.264",
+      "audio": "Dolby Atmos",
+      "channels": "7.1",
+      "languages": "Tamil, Hindi, Malayalam",
+      "size": "15GB"
     },
     "versions": [
       {
-        "id": "1as4gF9YwJda2YRlOgXVNwOOE7b1TYn3K",
-        "name": "Vishwanath & Sons (2026) [4K UHD] [Netflix] [Dolby Digital Plus].mkv",
-        "quality": "4K UHD • Netflix • Dolby Digital Plus Multi [11GB]",
-        "source": "Netflix",
-        "codec": "x265",
-        "resolution": "4K UHD",
-        "audio": "Dolby Digital Plus",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1as4gF9YwJda2YRlOgXVNwOOE7b1TYn3K|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "id": "1NhU8f-5NVYoAhQj7qQoLGcgNYjVjh7nE",
+        "name": "Aquaman and the Lost Kingdom (2023) [1080p] [BLURAY] [Dolby Atmos].mkv",
+        "quality": "1080p • BLURAY • Dolby Atmos Multi [15GB]",
+        "source": "BLURAY",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "7.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1NhU8f-5NVYoAhQj7qQoLGcgNYjVjh7nE|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
-          "resolution": "4K UHD",
-          "source": "Netflix",
-          "codec": "x265",
-          "audio": "Dolby Digital Plus",
-          "channels": "5.1",
-          "languages": "Tamil, Telugu, Hindi, Malayalam",
-          "size": "11GB"
+          "resolution": "1080p",
+          "source": "BLURAY",
+          "codec": "H.264",
+          "audio": "Dolby Atmos",
+          "channels": "7.1",
+          "languages": "Tamil, Hindi, Malayalam",
+          "size": "15GB"
         }
       }
     ]
