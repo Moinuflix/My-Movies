@@ -1,5 +1,83 @@
 [
   {
+    "id": "1xZkqN1xmpHuTlwzU9ldW7jqSgK2MpB5C",
+    "name": "Magudam (2026) [1080p] [Prime Video] [Dolby Atmos].mkv",
+    "title": "Magudam",
+    "original_title": "மகுடம்",
+    "original_language": "ta",
+    "year": 2026,
+    "runtime": 184,
+    "tmdb_id": 1506833,
+    "rating": 7.5,
+    "collection": "",
+    "director": [
+      "Vishal Krishna"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=jEAQp6jjmQA",
+    "cast": [
+      {
+        "name": "Vishal Krishna",
+        "role": "Linga",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/39NsHSvIygBnkUpAB4Wx3A9g4GF.jpg"
+      },
+      {
+        "name": "Anjali",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/aTLJCkl6mBXnb5ekKQytd7zTfne.jpg"
+      },
+      {
+        "name": "Dushara Vijayan",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/5C5V9qdYil7LVCp8LqctZCEsu1n.jpg"
+      },
+      {
+        "name": "John Vijay",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/1H4uUEI32DmZWfTGmWnXyu0BrU7.jpg"
+      },
+      {
+        "name": "Jayaprakash",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/eyYfMqy7NsED7SYrAzaso9ZjLT5.jpg"
+      }
+    ],
+    "plot": "Peaceful medical representative and shipping harbor worker Linga's life changes because of betrayal and conflict in a coastal community.",
+    "poster": "https://image.tmdb.org/t/p/w500/uPsJfQHRw5QiwQqOoOQWkfBmnhE.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/p5LmNUM4T9xLqbeu7nBY47VUh3W.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1xZkqN1xmpHuTlwzU9ldW7jqSgK2MpB5C|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "Prime Video",
+      "codec": "x265",
+      "audio": "Dolby Atmos",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": "11 GB"
+    },
+    "versions": [
+      {
+        "id": "1xZkqN1xmpHuTlwzU9ldW7jqSgK2MpB5C",
+        "name": "Magudam (2026) [1080p] [Prime Video] [Dolby Atmos].mkv",
+        "quality": "1080p • Prime Video • Dolby Atmos [11 GB]",
+        "source": "Prime Video",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1xZkqN1xmpHuTlwzU9ldW7jqSgK2MpB5C|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Prime Video",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "11 GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "1cySTu58oZljadhvqv0M6U2eCR3q8J7rf",
     "name": "DC (2026) [4K UHD] [WEB-DL] [Dolby Atmos].mkv",
     "title": "DC",
