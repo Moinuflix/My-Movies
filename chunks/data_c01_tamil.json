@@ -153,8 +153,37 @@
           "languages": "Tamil",
           "size": "12GB"
         }
+      },
+      {
+        "id": "10eiheI2McHjZoQl5Nu45Ge4SGJ9zVftM",
+        "name": "Kanchana (2011) [720p] [Netflix] [Dolby Atmos].mkv",
+        "quality": "720p • Netflix • Dolby Atmos",
+        "source": "Netflix",
+        "codec": "x265",
+        "resolution": "720p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=10eiheI2McHjZoQl5Nu45Ge4SGJ9zVftM|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "720p",
+          "source": "Netflix",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": ""
+        }
       }
-    ]
+    ],
+    "soundtrack": {
+      "id": "1FqCVS6fohhfsYsY09QpLZa2ZWcACzk9W",
+      "title": "Karuppu Perazhaga",
+      "artist": "Sichith & Dharshana",
+      "movie": "Kanchana",
+      "quality": "5.1 Surround",
+      "poster": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/89/b1/71/89b17109-a89c-32b7-bcec-6930a10175d5/Kanchana.jpg/600x600bb.jpg",
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1FqCVS6fohhfsYsY09QpLZa2ZWcACzk9W|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+    }
   },
   {
     "id": "1TktryyxjLG8yL1FlT_g83xIC3U9HoGv6",
