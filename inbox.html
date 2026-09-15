@@ -1829,13 +1829,30 @@
       return null;
     }
 
+    // SMART PARSER: TV SERIES VS MOVIE DETECTION
     function cleanMovieFileName(filename) {
       let raw = filename.replace(/\.(mkv|mp4|avi|ts)$/i, '').replace(/[\._\-]/g, ' ');
+      
+      const tvMatch = raw.match(/\bS(\d+)\s*E(\d+)\b/i) || raw.match(/\bSeason\s*(\d+)\b/i);
+      const isSeries = !!tvMatch;
+      let seasonTag = tvMatch ? `Season ${parseInt(tvMatch[1])}` : '';
+
       const ym = raw.match(/\b(19\d\d|20\d\d)\b/);
       let year = ym ? ym[1] : '';
-      let title = ym ? raw.substring(0, ym.index).trim() : raw.split('[')[0].trim();
-      title = title.replace(/\b(1080p|720p|2160p|4k|uhd|bluray|web-dl|web|dts|atmos|ddp|x264|x265|hevc)\b/gi, '').trim();
-      return { title: title || filename, year: year };
+      
+      let cutoffIndex = raw.length;
+      if (tvMatch && tvMatch.index < cutoffIndex) cutoffIndex = tvMatch.index;
+      if (ym && ym.index < cutoffIndex) cutoffIndex = ym.index;
+
+      let title = raw.substring(0, cutoffIndex).trim();
+      title = title.replace(/\b(1080p|720p|2160p|4k|uhd|bluray|web-dl|web|dts|atmos|ddp|x264|x265|hevc|hindi|tamil|telugu)\b/gi, '').trim();
+
+      return { 
+        title: title || filename, 
+        year: year, 
+        isSeries: isSeries, 
+        seasonTag: seasonTag || 'Season 1' 
+      };
     }
 
     function calculateTotalStorage() {
@@ -2047,20 +2064,21 @@
             <div style="display: flex; gap: 6px; align-items: center;">
               <input type="text" id="scan-title-${index}" value="${escapeHtml(parsed.title)}" style="padding: 6px 10px; font-size: 0.82rem; font-weight: 700; color: #fff; border-color: rgba(56,189,248,0.3);">
               <input type="text" id="scan-year-${index}" value="${escapeHtml(parsed.year)}" placeholder="Year" style="width: 70px; padding: 6px 8px; font-size: 0.82rem; font-weight: 700; text-align: center; color: var(--gold-lcu); border-color: rgba(245,158,11,0.3);">
+              ${parsed.isSeries ? `<span class="spec-chip chip-gold" style="font-size:0.68rem;">📺 SERIES</span>` : ''}
             </div>
           </td>
           <td>
-            <span class="clean-gb-badge">${escapeHtml(item.size || '10 GB')}</span>
+            <span class="clean-gb-badge">${escapeHtml(item.size || '2 GB')}</span>
           </td>
           <td>
-            <button type="button" class="lang-btn-chip" style="color: var(--laser-cyan); border-color: var(--laser-cyan);" onclick="verifyRowTmdb(${index})">
-              🔍 Check TMDB
+            <button type="button" class="lang-btn-chip" style="color: var(--laser-cyan); border-color: var(--laser-cyan);" onclick="verifyRowTmdb(${index}, ${parsed.isSeries})">
+              🔍 Check ${parsed.isSeries ? 'TV TMDB' : 'TMDB'}
             </button>
             <div id="scan-tmdb-info-${index}" style="font-size: 0.72rem; color: var(--text-dim); margin-top: 4px;">Click to verify</div>
           </td>
           <td style="text-align: right;">
-            <button type="button" class="btn-action-primary" id="btn-smart-push-${index}" style="padding: 6px 12px; font-size: 0.8rem;" onclick="transferArrivalToAddForm(${index})">
-              ⚡ Load in Form ➔
+            <button type="button" class="btn-action-primary" id="btn-smart-push-${index}" style="padding: 6px 12px; font-size: 0.8rem; ${parsed.isSeries ? 'border-color:var(--gold-lcu); color:var(--gold-lcu);' : ''}" onclick="transferArrivalSmartRoute(${index})">
+              ${parsed.isSeries ? '📺 Load Series ➔' : '⚡ Load Movie ➔'}
             </button>
           </td>
         `;
@@ -2068,24 +2086,38 @@
       });
     }
 
-    function transferArrivalToAddForm(index) {
+    function transferArrivalSmartRoute(index) {
       const item = inboxArrivalsList[index];
       if (!item) return;
 
+      const parsed = cleanMovieFileName(item.title);
       const addNavBtn = document.querySelectorAll('.nav-btn')[3];
-      switchNav('add-items-hub', addNavBtn);
-      switchHubTab('movie', document.querySelectorAll('.hub-tab-btn')[0]);
 
-      document.getElementById('input-smart-filename').value = item.title;
-      document.getElementById('input-gdrive-url').value = item.gdrive_id;
-      if (item.size) document.getElementById('input-filesize').value = item.size;
+      if (parsed.isSeries) {
+        switchNav('add-items-hub', addNavBtn);
+        switchHubTab('series', document.querySelectorAll('.hub-tab-btn')[2]);
 
-      parseSmartFileName(item.title);
+        document.getElementById('input-series-search').value = parsed.title;
+        document.getElementById('input-series-seasons').value = parsed.seasonTag || 'Season 1';
+        document.getElementById('input-series-gdrive').value = item.gdrive_id;
+        searchSeriesTmdb(parsed.title);
+
+        showLaserToast(`📺 TV Series Detected: Loaded "${parsed.title}" into Web Series tab.`);
+      } else {
+        switchNav('add-items-hub', addNavBtn);
+        switchHubTab('movie', document.querySelectorAll('.hub-tab-btn')[0]);
+
+        document.getElementById('input-smart-filename').value = item.title;
+        document.getElementById('input-gdrive-url').value = item.gdrive_id;
+        if (item.size) document.getElementById('input-filesize').value = item.size;
+        parseSmartFileName(item.title);
+
+        showLaserToast(`🎬 Loaded Movie "${parsed.title}" into Movie Form!`);
+      }
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      showLaserToast(`Loaded: "${item.title}" into Form!`);
     }
 
-    async function verifyRowTmdb(idx) {
+    async function verifyRowTmdb(idx, isSeries = false) {
       const title = document.getElementById(`scan-title-${idx}`).value.trim();
       const year = document.getElementById(`scan-year-${idx}`).value.trim();
       const infoEl = document.getElementById(`scan-tmdb-info-${idx}`);
@@ -2094,13 +2126,18 @@
       infoEl.style.color = "var(--laser-cyan)";
 
       try {
-        let url = `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(title)}${year ? `&year=${year}` : ''}&language=en-US`;
+        const endpoint = isSeries ? 'search/tv' : 'search/movie';
+        const yearParam = isSeries ? (year ? `&first_air_date_year=${year}` : '') : (year ? `&year=${year}` : '');
+        let url = `https://api.themoviedb.org/3/${endpoint}?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(title)}${yearParam}&language=en-US`;
+        
         const res = await fetch(url);
         const data = await res.json();
 
         if (data.results && data.results.length > 0) {
           const top = data.results[0];
-          infoEl.innerHTML = `<span style="color: var(--laser-green); font-weight: 800;">✔ ${escapeHtml(top.title)} (${top.release_date ? top.release_date.split('-')[0] : 'N/A'}) [ID: ${top.id}]</span>`;
+          const releaseDate = top.release_date || top.first_air_date;
+          const displayTitle = top.title || top.name;
+          infoEl.innerHTML = `<span style="color: var(--laser-green); font-weight: 800;">✔ ${escapeHtml(displayTitle)} (${releaseDate ? releaseDate.split('-')[0] : 'N/A'}) [ID: ${top.id}]</span>`;
           infoEl.dataset.tmdbId = top.id;
         } else {
           infoEl.innerHTML = `<span style="color: var(--laser-red); font-weight: 700;">No match found</span>`;
@@ -2654,14 +2691,14 @@
       document.getElementById('preview-modal').classList.add('active');
     }
 
-async function commitPendingToGitHub() {
+    // INSTANT FAST BACKGROUND COMMIT
+    async function commitPendingToGitHub() {
       if (!pendingCommit) return;
       const token = getStoredToken();
       if (!token) return showLaserToast('GitHub Token required! Click ⚙️ Token in sidebar.', true);
 
       const { entry, title, targets, isUpdate, attachedSong } = pendingCommit;
 
-      // 1. Instantly Close Modal & Unlock UI for next work
       closeModal();
       cancelMergeMode();
       document.getElementById('movie-form').reset();
@@ -2670,13 +2707,10 @@ async function commitPendingToGitHub() {
         toggleAttachSongSection(false);
       }
 
-      // 2. Show Persistent Top Floating Status Pill
       showLaserToast(`⚡ Background Commit Started: "${title}"...`);
 
-      // 3. Fast Parallel Commit via Direct GitHub API
       (async () => {
         try {
-          // Step A: Update Movies Master (chunks/data_c01.json)
           if (isUpdate) {
             const eIdx = moviesData.findIndex(x => String(x.tmdb_id) === String(entry.tmdb_id));
             if (eIdx >= 0) moviesData[eIdx] = entry;
@@ -2685,7 +2719,6 @@ async function commitPendingToGitHub() {
           }
           await commitFileDirect('chunks/data_c01.json', moviesData, `Commit ${title} to Movies Master (c01)`, token);
 
-          // Step B: Update Selected Categories
           for (const target of targets) {
             let catData = await fetchChunkDirect(target.path);
             const cIdx = catData.findIndex(x => String(x.tmdb_id) === String(entry.tmdb_id));
@@ -2694,13 +2727,11 @@ async function commitPendingToGitHub() {
             await commitFileDirect(target.path, catData, `Multi-Sync: Add ${title} to ${target.name}`, token);
           }
 
-          // Step C: Update Attached Song (if present)
           if (attachedSong) {
             songsData.unshift(attachedSong);
             await commitFileDirect('chunks/data_c03.json', songsData, `Auto-Sync Soundtrack: ${attachedSong.title} from ${title}`, token);
           }
 
-          // Step D: Clean from inbox_arrivals.json
           try {
             const inboxFileRes = await fetch(`${API_BASE}/contents/inbox_arrivals.json`, {
               headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
