@@ -125,18 +125,5 @@
       "source": "Official Studio Label",
       "audio": "Clean Studio Mix"
     }
-  },
-  {
-    "id": "RgOEKdA2mlw",
-    "title": "Water Packet - Video Song | RAAYAN | Dhanush | Sun Pictures | A.R. Rahman | Santhosh Narayanan",
-    "category": "5.1 Surround / High Bitrate",
-    "quality": "HQ Audio (320kbps/5.1)",
-    "poster": "https://img.youtube.com/vi/RgOEKdA2mlw/maxresdefault.jpg",
-    "stream_url": "plugin://plugin.video.youtube/play/?video_id=RgOEKdA2mlw",
-    "specs": {
-      "resolution": "Audio Only / Video",
-      "source": "Official Studio Label",
-      "audio": "AR Rahman Lossless Master"
-    }
   }
 ]
