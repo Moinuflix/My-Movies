@@ -1439,14 +1439,14 @@
     "trailer": "",
     "cast": [
       {
-        "name": "Rajinikanth",
-        "role": "Padayappa",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/cQBcrXqcQPfXOQfNfgO3slJM2xi.jpg"
-      },
-      {
         "name": "Sivaji Ganesan",
         "role": "Dharmalingam",
         "thumbnail": "https://image.tmdb.org/t/p/w185/tZSFLnqftW5p0Rq2p2DCk6iyVt4.jpg"
+      },
+      {
+        "name": "Rajinikanth",
+        "role": "Padayappa",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/cQBcrXqcQPfXOQfNfgO3slJM2xi.jpg"
       },
       {
         "name": "Ramya Krishnan",
@@ -12967,8 +12967,8 @@
     "imdb_url": "https://www.imdb.com/title/tt9619824/",
     "rating": 7,
     "director": [
-      "Adam Stein",
-      "Zach Lipovsky"
+      "Zach Lipovsky",
+      "Adam Stein"
     ],
     "cast": [
       {
@@ -14679,8 +14679,8 @@
     "imdb_url": "https://www.imdb.com/title/tt0435437/",
     "rating": 5.787,
     "director": [
-      "Mustan Alibhai Burmawalla",
-      "Abbas Alibhai Burmawalla"
+      "Abbas Alibhai Burmawalla",
+      "Mustan Alibhai Burmawalla"
     ],
     "cast": [
       {
