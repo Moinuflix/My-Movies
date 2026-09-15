@@ -432,6 +432,15 @@
       cursor: pointer;
     }
 
+    /* ATTACH SONG ACCORDION BOX */
+    .song-attach-box {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px dashed rgba(56, 189, 248, 0.35);
+      border-radius: 16px;
+      padding: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
     /* FORMS & INPUTS */
     .form-container {
       background: var(--bg-card);
@@ -909,7 +918,7 @@
       </div>
     </section>
 
-    <!-- NAYA UPGRADE VIEW: DRIVE ARRIVALS & DIRECT AUDIT SCANNER -->
+    <!-- VIEW: DRIVE ARRIVALS & DIRECT AUDIT SCANNER -->
     <section id="view-drive-inbox" class="view-panel">
       <header>
         <div>
@@ -928,7 +937,6 @@
 
       <div id="inbox-status-msg" style="margin-bottom: 1.2rem; font-size: 0.88rem; color: var(--laser-cyan); font-weight: 600;"></div>
 
-      <!-- SMART INGESTION TABLE (DIRECT MATCH & COMMIT) -->
       <div class="smart-table-wrap">
         <table class="smart-scan-table">
           <thead>
@@ -1007,7 +1015,7 @@
         <button type="button" class="hub-tab-btn active" onclick="switchHubTab('movie', this)">🎬 Single Movie</button>
         <button type="button" class="hub-tab-btn gold-tab" onclick="switchHubTab('folder-batch', this)">📁 Batch Folder Scraper</button>
         <button type="button" class="hub-tab-btn" onclick="switchHubTab('series', this)">📺 Web Series</button>
-        <button type="button" class="hub-tab-btn" onclick="switchHubTab('song', this)">🎵 5.1 Song</button>
+        <button type="button" class="hub-tab-btn" onclick="switchHubTab('song', this)">🎵 5.1 Song (JioSaavn Live)</button>
         <button type="button" class="hub-tab-btn" onclick="switchHubTab('vault', this)">🍿 YouTube Vault</button>
       </div>
 
@@ -1135,7 +1143,6 @@
                 <input type="text" id="input-languages" placeholder="e.g. Tamil, Telugu, Hindi, Malayalam" value="Tamil">
               </div>
 
-              <!-- DIRECT DOWNLOAD URL FIELD -->
               <div class="form-group full-width">
                 <label style="color: var(--laser-cyan);">⚡ Direct Download URL (Auto Colab/Server Upload to Drive)</label>
                 <input type="text" id="input-direct-download-url" placeholder="Paste direct file URL (Dropbox, Google Cloud, Direct HTTP/HTTPS link)">
@@ -1144,6 +1151,40 @@
               <div class="form-group full-width">
                 <label>Google Drive Link / Raw File ID</label>
                 <input type="text" id="input-gdrive-url" placeholder="Paste full GD link or ID (Or leave blank if providing direct URL above)">
+              </div>
+
+              <!-- ATTACH 5.1 SONG ACCORDION -->
+              <div class="form-group full-width">
+                <label class="industry-check-label" style="margin-top:0.4rem; color:var(--laser-green);">
+                  <input type="checkbox" id="chk-attach-song" onchange="toggleAttachSongSection(this.checked)">
+                  <span>🎵 Attach 5.1 Song with this Movie (Optional • Auto-scrapes JioSaavn Poster & Artists)</span>
+                </label>
+                
+                <div id="attach-song-section" class="song-attach-box" style="display:none;">
+                  <div class="form-grid" style="margin-bottom:0.5rem;">
+                    <div class="form-group full-width">
+                      <label style="color:var(--laser-green);">Search Song Name (Auto-fetches high-res art from JioSaavn)</label>
+                      <input type="text" id="input-attach-song-query" placeholder="e.g. Hukum or Leo Badass" oninput="searchJioSaavnLive(this.value, 'movie-attach')">
+                      <div id="saavn-attach-suggestions" class="tmdb-results-box"></div>
+                    </div>
+                    <div class="form-group">
+                      <label>Song Title</label>
+                      <input type="text" id="input-attach-song-title" placeholder="Song Title">
+                    </div>
+                    <div class="form-group">
+                      <label>Artist / Music Director</label>
+                      <input type="text" id="input-attach-song-artist" placeholder="Singers / Music Director">
+                    </div>
+                    <div class="form-group">
+                      <label>Song 5.1 Drive ID / Link</label>
+                      <input type="text" id="input-attach-song-gdrive" placeholder="Google Drive Link or File ID">
+                    </div>
+                    <div class="form-group">
+                      <label>Album Art / Poster URL</label>
+                      <input type="text" id="input-attach-song-poster" placeholder="High-Res Cover URL">
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -1236,17 +1277,15 @@
         </div>
       </div>
 
-      <!-- TAB 4: SONG FORM -->
+      <!-- TAB 4: SONG FORM (NEW LIVE JIOSAAVN AUTO-INGEST) -->
       <div id="hub-tab-song" class="hub-content" style="display: none;">
         <div class="form-container">
           <form id="song-form" onsubmit="handleSongSubmit(event)">
             <div class="form-grid">
               <div class="form-group full-width">
-                <label>Search Song Name</label>
-                <input type="text" id="input-song-search" placeholder="Type song name to search..." oninput="searchSongMusicApi(this.value)">
-                <div id="song-suggestions-box" class="tmdb-results-box">
-                  <div id="song-suggestions-list"></div>
-                </div>
+                <label style="color:var(--laser-green);">⚡ Live Search JioSaavn (Auto-loads 500x500 Cover, Album & Singers)</label>
+                <input type="text" id="input-song-search" placeholder="Type song name (e.g. Hukum, Badass, Arabic Kuthu)..." oninput="searchJioSaavnLive(this.value, 'standalone-song')">
+                <div id="saavn-standalone-suggestions" class="tmdb-results-box"></div>
               </div>
               <div class="form-group">
                 <label>Song Title</label>
@@ -1257,20 +1296,24 @@
                 <input type="text" id="input-song-movie" placeholder="e.g. Jailer" required>
               </div>
               <div class="form-group">
-                <label>Audio Format</label>
+                <label>Artist / Music Director</label>
+                <input type="text" id="input-song-artist" placeholder="e.g. Anirudh Ravichander">
+              </div>
+              <div class="form-group">
+                <label>Audio Quality Format</label>
                 <select id="input-song-quality">
                   <option value="5.1 Surround" selected>5.1 Dolby Digital Surround</option>
                   <option value="Dolby Atmos">Dolby Atmos Lossless</option>
                   <option value="DTS-HD 7.1">DTS-HD Master 7.1</option>
                 </select>
               </div>
-              <div class="form-group">
+              <div class="form-group full-width">
                 <label>Cover Art URL</label>
-                <input type="text" id="input-song-poster" placeholder="Image URL">
+                <input type="text" id="input-song-poster" placeholder="High-Res Artwork URL">
               </div>
               <div class="form-group full-width">
-                <label>Google Drive Link / Stream Link</label>
-                <input type="text" id="input-song-gdrive" placeholder="Google Drive Link or Worker Link" required>
+                <label>Google Drive Link / Raw File ID</label>
+                <input type="text" id="input-song-gdrive" placeholder="Google Drive Link or File ID" required>
               </div>
             </div>
             <button type="submit" class="btn-submit">SAVE 5.1 SONG</button>
@@ -1410,7 +1453,7 @@
     let currentCategoryFilter = 'packs';
 
     let seriesDebounce = null;
-    let songDebounce = null;
+    let saavnDebounce = null;
     let stageReviewList = [];
 
     const CONFIRM_PASS = "24592";
@@ -1641,6 +1684,78 @@
       if (langs.includes('malayalam')) document.getElementById('chk-mollywood').checked = true;
       if (langs.includes('kannada')) document.getElementById('chk-sandalwood').checked = true;
       if (langs.includes('english')) document.getElementById('chk-hollywood').checked = true;
+    }
+
+    function toggleAttachSongSection(isChecked) {
+      const box = document.getElementById('attach-song-section');
+      box.style.display = isChecked ? 'block' : 'none';
+      if (isChecked) {
+        const movieTitle = document.getElementById('input-smart-filename').value.split('.')[0] || '';
+        if (movieTitle && !document.getElementById('input-attach-song-query').value) {
+          document.getElementById('input-attach-song-query').value = movieTitle;
+          searchJioSaavnLive(movieTitle, 'movie-attach');
+        }
+      }
+    }
+
+    /* HIGH SPEED JIOSAAVN AUTO-SCRAPER API */
+    function searchJioSaavnLive(query, mode = 'movie-attach') {
+      clearTimeout(saavnDebounce);
+      const boxId = mode === 'movie-attach' ? 'saavn-attach-suggestions' : 'saavn-standalone-suggestions';
+      const box = document.getElementById(boxId);
+      
+      if (!query || query.trim().length < 2) {
+        box.style.display = 'none';
+        return;
+      }
+
+      saavnDebounce = setTimeout(async () => {
+        try {
+          const res = await fetch(`https://saavn.dev/api/search/songs?query=${encodeURIComponent(query)}&limit=6`);
+          const data = await res.json();
+          const songs = data?.data?.results || [];
+
+          box.innerHTML = '';
+          if (songs.length > 0) {
+            songs.forEach(s => {
+              const title = s.name.replace(/&quot;/g, '"');
+              const album = s.album?.name || '';
+              const artist = s.artists?.primary?.map(a => a.name).join(', ') || '';
+              const poster = (s.image && s.image.length > 0) ? s.image[s.image.length - 1].url : '';
+
+              const item = document.createElement('div');
+              item.className = 'tmdb-result-item';
+              item.innerHTML = `
+                ${poster ? `<img src="${poster}" class="tmdb-result-poster">` : '<div class="tmdb-result-poster"></div>'}
+                <div class="tmdb-result-info">
+                  <div class="tmdb-result-title">${escapeHtml(title)}</div>
+                  <div class="tmdb-result-meta">${escapeHtml(album)} • ${escapeHtml(artist)}</div>
+                </div>
+              `;
+              item.onclick = () => {
+                if (mode === 'movie-attach') {
+                  document.getElementById('input-attach-song-title').value = title;
+                  document.getElementById('input-attach-song-artist').value = artist;
+                  document.getElementById('input-attach-song-poster').value = poster;
+                } else {
+                  document.getElementById('input-song-title').value = title;
+                  document.getElementById('input-song-movie').value = album;
+                  document.getElementById('input-song-artist').value = artist;
+                  document.getElementById('input-song-poster').value = poster;
+                }
+                box.style.display = 'none';
+                showLaserToast(`Selected: "${title}" (High-Res Cover Art loaded!)`);
+              };
+              box.appendChild(item);
+            });
+            box.style.display = 'block';
+          } else {
+            box.style.display = 'none';
+          }
+        } catch(e) {
+          box.style.display = 'none';
+        }
+      }, 300);
     }
 
     function detectMovieLang(movie) {
@@ -2045,6 +2160,7 @@
             <div class="poster-wrap">
               ${movie.collection ? `<div class="universe-badge">👑 ${escapeHtml(movie.collection)}</div>` : ''}
               ${isMulti ? `<div class="multi-badge">⚡ MULTI AUDIO</div>` : ''}
+              ${movie.soundtrack?.stream_url ? `<div class="multi-badge" style="top:10px; bottom:auto; background:var(--gold-lcu);">🎵 5.1 SONG</div>` : ''}
               ${movie.poster ? `<img src="${movie.poster}" class="poster-img" loading="lazy">` : '<div class="poster-placeholder">No Poster</div>'}
             </div>
             <div class="movie-card-body">
@@ -2059,6 +2175,7 @@
                   ${movie.specs?.audio ? `<span class="spec-chip chip-gold">${escapeHtml(movie.specs.audio)}</span>` : ''}
                 </div>
                 ${movie.specs?.languages ? `<div style="font-size:0.75rem; color:var(--text-dim); margin-bottom:8px;">🌐 ${escapeHtml(movie.specs.languages)}</div>` : ''}
+                ${movie.soundtrack?.title ? `<div style="font-size:0.75rem; color:var(--laser-green); margin-bottom:8px;">🎵 Song: ${escapeHtml(movie.soundtrack.title)} (${escapeHtml(movie.soundtrack.artist||'HQ')})</div>` : ''}
               </div>
               <div class="card-actions-row">
                 <button type="button" class="btn-action-primary" onclick="prepareAddVersion('${movie.tmdb_id}')">+ VERSION</button>
@@ -2425,6 +2542,28 @@
         specs: { resolution: quality, source: source, codec: codec, audio: audio, channels: channels, languages: languages, size: fileSize }
       };
 
+      // CHECK ATTACHED 5.1 SONG
+      let attachedSong = null;
+      if (document.getElementById('chk-attach-song').checked) {
+        const sTitle = document.getElementById('input-attach-song-title').value.trim();
+        const sArtist = document.getElementById('input-attach-song-artist').value.trim();
+        const sDrive = document.getElementById('input-attach-song-gdrive').value.trim();
+        const sPoster = document.getElementById('input-attach-song-poster').value.trim();
+        const sFileId = extractGDriveId(sDrive);
+
+        if (sTitle && sFileId) {
+          attachedSong = {
+            id: sFileId,
+            title: sTitle,
+            artist: sArtist,
+            movie: meta.title,
+            quality: "5.1 Surround",
+            poster: sPoster,
+            stream_url: `${WORKER_BASE}${sFileId}${USER_AGENT}`
+          };
+        }
+      }
+
       const targetChunksList = [];
       if (document.getElementById('chk-kollywood').checked) targetChunksList.push({ path: 'chunks/data_c01_tamil.json', name: 'Kollywood (Tamil)' });
       if (document.getElementById('chk-tollywood').checked) targetChunksList.push({ path: 'chunks/data_c01_telugu.json', name: 'Tollywood (Telugu)' });
@@ -2436,7 +2575,8 @@
       if (isMergeMode && targetExistingMovie) {
         targetExistingMovie.versions = targetExistingMovie.versions || [];
         targetExistingMovie.versions.push(versionObj);
-        openMultiRoutePreviewModal(targetExistingMovie, streamUrl, `${targetExistingMovie.title} (Added ${quality})`, targetChunksList, true);
+        if (attachedSong) targetExistingMovie.soundtrack = attachedSong;
+        openMultiRoutePreviewModal(targetExistingMovie, streamUrl, `${targetExistingMovie.title} (Added ${quality})`, targetChunksList, true, attachedSong);
       } else {
         const fullMovie = {
           id: fileId,
@@ -2457,22 +2597,25 @@
           fanart: meta.fanart,
           stream_url: streamUrl,
           specs: versionObj.specs,
-          versions: [versionObj]
+          versions: [versionObj],
+          soundtrack: attachedSong || {}
         };
-        openMultiRoutePreviewModal(fullMovie, streamUrl, fullMovie.title, targetChunksList, false);
+        openMultiRoutePreviewModal(fullMovie, streamUrl, fullMovie.title, targetChunksList, false, attachedSong);
       }
     }
 
-    function openMultiRoutePreviewModal(entry, streamUrl, title, targets, isUpdate = false) {
+    function openMultiRoutePreviewModal(entry, streamUrl, title, targets, isUpdate = false, attachedSong = null) {
       activeStreamUrl = streamUrl;
-      pendingCommit = { entry, streamUrl, title, targets, isUpdate };
+      pendingCommit = { entry, streamUrl, title, targets, isUpdate, attachedSong };
 
       const targetLabels = ['chunks/data_c01.json (Movies Master)'].concat(targets.map(t => t.path));
+      if (attachedSong) targetLabels.push('chunks/data_c03.json (Attached 5.1 Soundtrack)');
 
       const details = document.getElementById('modal-preview-details');
       details.innerHTML = `
         <div class="preview-item"><span class="preview-item-label">Target Destinations (${targetLabels.length})</span><span class="preview-item-val" style="color: var(--laser-cyan); font-size:0.75rem;">${targetLabels.join('<br>')}</span></div>
         <div class="preview-item"><span class="preview-item-label">Title / Action</span><span class="preview-item-val">${title}</span></div>
+        ${attachedSong ? `<div class="preview-item"><span class="preview-item-label">Attached 5.1 Song</span><span class="preview-item-val" style="color:var(--laser-green);">${attachedSong.title} (${attachedSong.artist||'HQ'})</span></div>` : ''}
         <div><span class="preview-item-label">Stream URL</span><div class="preview-stream-text">${streamUrl}</div></div>
       `;
       document.getElementById('preview-modal').classList.add('active');
@@ -2488,7 +2631,7 @@
       btn.textContent = 'Saving to data_c01.json & targets...';
 
       try {
-        const { entry, title, targets, isUpdate } = pendingCommit;
+        const { entry, title, targets, isUpdate, attachedSong } = pendingCommit;
 
         // 1. Central Movies Master (chunks/data_c01.json)
         if (isUpdate) {
@@ -2508,7 +2651,13 @@
           await commitFileDirect(target.path, catData, `Multi-Sync: Add ${title} to ${target.name}`, token);
         }
 
-        // 3. Auto-clear from inbox_arrivals.json
+        // 3. Auto Commit Attached Song to chunks/data_c03.json
+        if (attachedSong) {
+          songsData.unshift(attachedSong);
+          await commitFileDirect('chunks/data_c03.json', songsData, `Auto-Sync Soundtrack: ${attachedSong.title} from ${title}`, token);
+        }
+
+        // 4. Auto-clear from inbox_arrivals.json
         try {
           const inboxFileRes = await fetch(`${API_BASE}/contents/inbox_arrivals.json`, {
             headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
@@ -2526,6 +2675,9 @@
         showLaserToast(`"${title}" successfully saved!`);
         closeModal();
         cancelMergeMode();
+        document.getElementById('movie-form').reset();
+        document.getElementById('chk-attach-song').checked = false;
+        toggleAttachSongSection(false);
         loadAllChunks();
       } catch (err) {
         showLaserToast(`Commit Error: ${err.message}`, true);
@@ -2637,6 +2789,7 @@
               <div class="movie-meta-row">
                 <span class="spec-chip">${escapeHtml(item.movie || 'Album')}</span>
                 <span class="clean-gb-badge">${escapeHtml(item.quality || '5.1')}</span>
+                ${item.artist ? `<span style="font-size:0.75rem; color:var(--text-muted);">${escapeHtml(item.artist)}</span>` : ''}
               </div>
             </div>
             <div class="card-actions-row">
@@ -2723,6 +2876,7 @@
 
       const title = document.getElementById('input-song-title').value.trim();
       const movie = document.getElementById('input-song-movie').value.trim();
+      const artist = document.getElementById('input-song-artist').value.trim();
       const quality = document.getElementById('input-song-quality').value;
       const poster = document.getElementById('input-song-poster').value.trim();
       const rawGdrive = document.getElementById('input-song-gdrive').value.trim();
@@ -2732,6 +2886,7 @@
         id: fileId || String(Date.now()),
         title: title,
         movie: movie,
+        artist: artist,
         quality: quality,
         poster: poster,
         stream_url: fileId ? `${WORKER_BASE}${fileId}${USER_AGENT}` : rawGdrive,
@@ -2809,7 +2964,6 @@
       if (!token) return showLaserToast('GitHub Token required!', true);
 
       showLaserToast('Processing batch commit to chunks/data_c01.json...');
-      // Batch processing logic committing cleanly to moviesData
       showLaserToast('Batch import complete!');
       loadAllChunks();
     }
@@ -2910,10 +3064,6 @@
           } else { box.style.display = 'none'; }
         } catch(e) {}
       }, 350);
-    }
-
-    function searchSongMusicApi(q) {
-      // Direct song search helper hook
     }
 
     function handleMovieSearch() { filterAndRenderMovies(); }
