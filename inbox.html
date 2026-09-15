@@ -541,7 +541,20 @@
       cursor: pointer;
     }
 
-    /* LIVE SEARCH DROPDOWNS */
+    .btn-batch-all {
+      background: linear-gradient(135deg, var(--laser-green), #059669);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.4rem;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.88rem;
+      cursor: pointer;
+      box-shadow: 0 0 18px var(--laser-green-glow);
+      transition: all 0.2s;
+    }
+    .btn-batch-all:hover { transform: translateY(-2px); }
+
     .tmdb-results-box {
       display: none;
       margin-top: 8px;
@@ -925,9 +938,12 @@
       <header>
         <div>
           <h1>📡 Google Drive Arrivals & Audit Hub</h1>
-          <p class="section-desc">Clean Drive ID + Real Name Match • TMDB Auto-Check • Direct Commit to chunks/data_c01.json</p>
+          <p class="section-desc">Real Title Auto-Cleaned • 1-Click Sync All • Automatic Separation into Movies & Series</p>
         </div>
-        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center;">
+          <button type="button" class="btn-batch-all" id="btn-batch-sync-all" onclick="executeOneClickBatchSyncAll()">
+            🚀 1-CLICK SYNC ALL ARRIVALS
+          </button>
           <button type="button" class="btn-clean-duplicates" id="btn-trigger-action" onclick="triggerGitHubScanAction()">
             ⚡ Trigger Drive Scan (GitHub Action)
           </button>
@@ -1720,7 +1736,6 @@
 
         let songResults = [];
 
-        // 1. Try JioSaavn Dev API
         try {
           const res = await fetch(`https://saavn.dev/api/search/songs?query=${encodeURIComponent(query)}&limit=6`);
           const data = await res.json();
@@ -1734,7 +1749,6 @@
           }
         } catch(e) {}
 
-        // 2. High-speed Fallback: iTunes HD Search
         if (songResults.length === 0) {
           try {
             const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=6`);
@@ -2016,6 +2030,10 @@
           });
         });
 
+        seriesData.forEach(s => {
+          if (s.id) masterKnownIds.add(String(s.id).trim());
+        });
+
         inboxArrivalsList = rawList.filter(x => !masterKnownIds.has(String(x.gdrive_id).trim()));
         const count = inboxArrivalsList.length;
 
@@ -2027,12 +2045,12 @@
           badge.style.display = 'inline-block';
           badge.textContent = count;
           badge.classList.add('inbox-alert-badge');
-          statusMsg.textContent = `🎯 Found ${count} genuine missing movies ready for 1-click addition:`;
+          statusMsg.textContent = `🎯 Found ${count} genuine missing items ready for 1-click addition:`;
         } else {
           badge.style.display = 'none';
           badge.classList.remove('inbox-alert-badge');
           statusMsg.textContent = '';
-          tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--laser-green); font-weight: 800; font-size: 1rem; padding: 30px;">🎉 All 100% Synced! Master data_c01.json has all Google Drive movies.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--laser-green); font-weight: 800; font-size: 1rem; padding: 30px;">🎉 All 100% Synced! Master data_c01 & c02 have all Google Drive items.</td></tr>';
           return;
         }
 
@@ -2115,6 +2133,167 @@
         showLaserToast(`🎬 Loaded Movie "${parsed.title}" into Movie Form!`);
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* 🚀 1-CLICK BATCH SYNC ALL ARRIVALS (SERIES + MOVIES AUTO-SPLIT) */
+    async function executeOneClickBatchSyncAll() {
+      const token = getStoredToken();
+      if (!token) return showLaserToast('GitHub Token required! Click ⚙️ Token in sidebar.', true);
+
+      if (!inboxArrivalsList || inboxArrivalsList.length === 0) {
+        return showLaserToast('No arrivals found to sync!', true);
+      }
+
+      const totalItems = inboxArrivalsList.length;
+      if (!confirm(`Are you sure you want to 1-Click Sync ALL ${totalItems} items directly into the library?`)) return;
+
+      const btn = document.getElementById('btn-batch-sync-all');
+      btn.disabled = true;
+      btn.textContent = `⏳ Syncing (0/${totalItems})...`;
+      showLaserToast(`🚀 Processing 1-Click Auto-Ingest for ${totalItems} files...`);
+
+      let moviesAdded = 0;
+      let seriesAdded = 0;
+
+      for (let i = 0; i < totalItems; i++) {
+        const item = inboxArrivalsList[i];
+        btn.textContent = `⏳ Syncing (${i + 1}/${totalItems})...`;
+
+        const parsed = cleanMovieFileName(item.title);
+        const fileId = item.gdrive_id;
+        const streamUrl = `${WORKER_BASE}${fileId}${USER_AGENT}`;
+
+        if (parsed.isSeries) {
+          // 1. Fetch TMDB TV Metadata
+          let tvPoster = '';
+          let tvTmdbId = 0;
+          try {
+            const sRes = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(parsed.title)}`);
+            const sData = await sRes.json();
+            if (sData.results && sData.results.length > 0) {
+              const top = sData.results[0];
+              tvTmdbId = top.id;
+              if (top.poster_path) tvPoster = `https://image.tmdb.org/t/p/w500${top.poster_path}`;
+            }
+          } catch(e) {}
+
+          const newSeriesItem = {
+            id: fileId,
+            name: `${parsed.title} - ${parsed.seasonTag}`,
+            title: parsed.title,
+            tmdb_id: tvTmdbId,
+            seasons: parsed.seasonTag,
+            poster: tvPoster,
+            stream_url: streamUrl,
+            gdrive_url: fileId
+          };
+
+          if (!seriesData.some(s => s.id === fileId)) {
+            seriesData.unshift(newSeriesItem);
+            seriesAdded++;
+          }
+        } else {
+          // 2. Fetch TMDB Movie Metadata
+          let movieMeta = null;
+          try {
+            const sRes = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(parsed.title)}${parsed.year ? `&year=${parsed.year}` : ''}`);
+            const sData = await sRes.json();
+            if (sData.results && sData.results.length > 0) {
+              movieMeta = await fetchTmdbMetadata(sData.results[0].id);
+            }
+          } catch(e) {}
+
+          const is4K = item.title.includes('2160p') || item.title.includes('4K');
+          const quality = is4K ? '4K UHD' : '1080p FHD';
+          const metaTitle = movieMeta ? movieMeta.title : parsed.title;
+
+          const newMovie = {
+            id: fileId,
+            name: item.title,
+            title: metaTitle,
+            original_title: movieMeta ? movieMeta.original_title : metaTitle,
+            original_language: movieMeta ? movieMeta.original_language : 'ta',
+            year: movieMeta ? movieMeta.year : (parseInt(parsed.year) || 2024),
+            runtime: movieMeta ? movieMeta.runtime : 140,
+            tmdb_id: movieMeta ? movieMeta.tmdb_id : 0,
+            rating: movieMeta ? movieMeta.rating : 7.0,
+            collection: movieMeta ? (movieMeta.collection || detectFranchiseCollection(movieMeta)) : "",
+            director: movieMeta ? movieMeta.director : [],
+            trailer: movieMeta ? movieMeta.trailer : "",
+            cast: movieMeta ? movieMeta.cast : [],
+            plot: movieMeta ? movieMeta.plot : "Streamed via MoinuFlix Private High-Speed Server.",
+            poster: movieMeta ? movieMeta.poster : "",
+            fanart: movieMeta ? movieMeta.fanart : "",
+            stream_url: streamUrl,
+            specs: {
+              resolution: quality,
+              source: "WEB-DL",
+              codec: is4K ? "HEVC" : "H.264",
+              audio: "Dolby Digital",
+              channels: "5.1",
+              languages: "Tamil",
+              size: item.size || "3 GB"
+            },
+            versions: [{
+              id: fileId,
+              name: item.title,
+              quality: quality,
+              source: "WEB-DL",
+              codec: is4K ? "HEVC" : "H.264",
+              resolution: quality,
+              audio: "Dolby Digital",
+              channels: "5.1",
+              size: item.size || "3 GB",
+              stream_url: streamUrl
+            }]
+          };
+
+          if (!moviesData.some(m => m.id === fileId)) {
+            moviesData.unshift(newMovie);
+            moviesAdded++;
+
+            // Sync to regional language
+            const lang = detectMovieLang(newMovie);
+            if (lang === 'ta') tamilData.unshift(newMovie);
+            else if (lang === 'te') teluguData.unshift(newMovie);
+            else if (lang === 'hi') hindiData.unshift(newMovie);
+            else if (lang === 'en') englishData.unshift(newMovie);
+            else if (lang === 'ml') malayalamData.unshift(newMovie);
+            else if (lang === 'kn') kannadaData.unshift(newMovie);
+          }
+        }
+      }
+
+      try {
+        btn.textContent = '⏳ Saving All Chunks to GitHub...';
+
+        // 1. Commit Movies Master
+        if (moviesAdded > 0) {
+          await commitFileDirect('chunks/data_c01.json', moviesData, `1-Click Batch: Added ${moviesAdded} movies`, token);
+          if (tamilData.length > 0) await commitFileDirect('chunks/data_c01_tamil.json', tamilData, `Auto-Sync Tamil`, token);
+          if (teluguData.length > 0) await commitFileDirect('chunks/data_c01_telugu.json', teluguData, `Auto-Sync Telugu`, token);
+          if (hindiData.length > 0) await commitFileDirect('chunks/data_c01_hindi.json', hindiData, `Auto-Sync Hindi`, token);
+        }
+
+        // 2. Commit Series Master
+        if (seriesAdded > 0) {
+          await commitFileDirect('chunks/data_c02.json', seriesData, `1-Click Batch: Added ${seriesAdded} series episodes`, token);
+        }
+
+        // 3. Clear inbox_arrivals.json
+        await commitFileDirect('inbox_arrivals.json', [], `1-Click Batch: Cleared inbox after full sync`, token);
+
+        showLaserToast(`🎉 Done! ${moviesAdded} Movies & ${seriesAdded} Series synced!`);
+        btn.textContent = '✅ All Synced!';
+        btn.style.background = 'var(--laser-green)';
+        loadAllChunks();
+        setTimeout(loadDriveArrivalsList, 1500);
+
+      } catch (err) {
+        showLaserToast(`Batch Error: ${err.message}`, true);
+        btn.disabled = false;
+        btn.textContent = '🚀 1-CLICK SYNC ALL ARRIVALS';
+      }
     }
 
     async function verifyRowTmdb(idx, isSeries = false) {
@@ -2612,7 +2791,6 @@
         specs: { resolution: quality, source: source, codec: codec, audio: audio, channels: channels, languages: languages, size: fileSize }
       };
 
-      // ATTACHED 5.1 SONG CHECK
       let attachedSong = null;
       if (document.getElementById('chk-attach-song').checked) {
         const sTitle = document.getElementById('input-attach-song-title').value.trim();
@@ -2691,7 +2869,6 @@
       document.getElementById('preview-modal').classList.add('active');
     }
 
-    // INSTANT FAST BACKGROUND COMMIT
     async function commitPendingToGitHub() {
       if (!pendingCommit) return;
       const token = getStoredToken();
@@ -2990,7 +3167,6 @@
       loadAllChunks();
     }
 
-    /* BATCH VERIFICATION SCRAPER LOGIC */
     function loadFilesToReviewTable() {
       const rawJson = document.getElementById('input-batch-manual-json').value.trim();
       if (!rawJson) return showLaserToast('Paste JSON array of files first!', true);
