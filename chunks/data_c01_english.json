@@ -1,5 +1,84 @@
 [
   {
+    "id": "1aFmu_tpwZdvV_wiA4FR5U6WzORXKIDrQ",
+    "name": "The Nun (2018) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
+    "title": "The Nun",
+    "original_title": "The Nun",
+    "original_language": "en",
+    "year": 2018,
+    "runtime": 96,
+    "tmdb_id": 439079,
+    "rating": 5.9,
+    "collection": "The Nun Collection",
+    "director": [
+      "Corin Hardy"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=UvMVjwwZOF4",
+    "cast": [
+      {
+        "name": "Taissa Farmiga",
+        "role": "Sister Irene",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/jMDY4rFh2SFINj0wzoX10Roye3n.jpg"
+      },
+      {
+        "name": "Demián Bichir",
+        "role": "Father Burke",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/dur9tX8tbDDJE5mSOZkuW2VDGz4.jpg"
+      },
+      {
+        "name": "Bonnie Aarons",
+        "role": "The Nun / Valak",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/iEtWuoXKx4ZKbIWwJp1V76Heavy.jpg"
+      },
+      {
+        "name": "Jonas Bloquet",
+        "role": "Maurice Theriault",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/ivbElHgLKv8PaVc2A9zIZSMSPcv.jpg"
+      },
+      {
+        "name": "Ingrid Bisu",
+        "role": "Sister Oana",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/ndXpP6itF7oSDQwIoHLVZCekNSg.jpg"
+      }
+    ],
+    "plot": "A priest with a dark past and a novice nearing her final vows are sent by the Vatican to Romania to investigate a nun's death and face a demonic force.",
+    "poster": "https://image.tmdb.org/t/p/w500/sFC1ElvoKGdHJIWRpNB3xWJ9lJA.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/cMnVmutb5mVgIBeiMOncAbwNjvG.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1aFmu_tpwZdvV_wiA4FR5U6WzORXKIDrQ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "Prime Video",
+      "codec": "H.264",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil, Telugu, Hindi, Kannada, Malayalam, English",
+      "size": ""
+    },
+    "versions": [
+      {
+        "id": "1aFmu_tpwZdvV_wiA4FR5U6WzORXKIDrQ",
+        "name": "The Nun (2018) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
+        "quality": "1080p • Prime Video • Dolby Digital Plus Multi",
+        "source": "Prime Video",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1aFmu_tpwZdvV_wiA4FR5U6WzORXKIDrQ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Prime Video",
+          "codec": "H.264",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Hindi, Kannada, Malayalam, English",
+          "size": ""
+        }
+      }
+    ],
+    "soundtrack": {}
+  },
+  {
     "id": "1xZkqN1xmpHuTlwzU9ldW7jqSgK2MpB5C",
     "name": "Magudam (2026) [1080p] [Prime Video] [Dolby Atmos].mkv",
     "title": "Magudam",
