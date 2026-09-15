@@ -434,11 +434,11 @@
 
     /* ATTACH SONG ACCORDION BOX */
     .song-attach-box {
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.95);
       border: 1px dashed rgba(56, 189, 248, 0.35);
       border-radius: 16px;
       padding: 1.2rem;
-      margin-top: 0.5rem;
+      margin-top: 0.75rem;
     }
 
     /* FORMS & INPUTS */
@@ -460,7 +460,7 @@
       margin-bottom: 1.75rem;
     }
 
-    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; position: relative; }
     .form-group.full-width { grid-column: span 2; }
     label { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
 
@@ -541,16 +541,18 @@
       cursor: pointer;
     }
 
+    /* LIVE SEARCH DROPDOWNS */
     .tmdb-results-box {
       display: none;
-      margin-top: 10px;
+      margin-top: 8px;
       background: #0b1329;
       border: 1px solid var(--laser-cyan);
-      box-shadow: 0 0 18px var(--laser-cyan-glow);
+      box-shadow: 0 0 20px var(--laser-cyan-glow);
       border-radius: 14px;
-      padding: 12px;
-      max-height: 250px;
+      padding: 10px;
+      max-height: 280px;
       overflow-y: auto;
+      z-index: 50;
     }
     .tmdb-result-item {
       display: flex;
@@ -563,10 +565,10 @@
       transition: all 0.2s;
     }
     .tmdb-result-item:hover { background: #1e293b; border-color: var(--laser-cyan); }
-    .tmdb-result-poster { width: 38px; height: 52px; object-fit: cover; border-radius: 6px; background: #1e293b; }
-    .tmdb-result-info { flex: 1; }
-    .tmdb-result-title { font-weight: 700; color: #fff; font-size: 0.9rem; }
-    .tmdb-result-meta { font-size: 0.75rem; color: var(--text-muted); }
+    .tmdb-result-poster { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; background: #1e293b; flex-shrink: 0; }
+    .tmdb-result-info { flex: 1; overflow: hidden; }
+    .tmdb-result-title { font-weight: 700; color: #fff; font-size: 0.88rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .tmdb-result-meta { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
     /* ALL-IN-ONE HUB TAB SWITCHER */
     .hub-switcher-bar {
@@ -1015,7 +1017,7 @@
         <button type="button" class="hub-tab-btn active" onclick="switchHubTab('movie', this)">🎬 Single Movie</button>
         <button type="button" class="hub-tab-btn gold-tab" onclick="switchHubTab('folder-batch', this)">📁 Batch Folder Scraper</button>
         <button type="button" class="hub-tab-btn" onclick="switchHubTab('series', this)">📺 Web Series</button>
-        <button type="button" class="hub-tab-btn" onclick="switchHubTab('song', this)">🎵 5.1 Song (JioSaavn Live)</button>
+        <button type="button" class="hub-tab-btn" onclick="switchHubTab('song', this)">🎵 5.1 Song (Live Search)</button>
         <button type="button" class="hub-tab-btn" onclick="switchHubTab('vault', this)">🍿 YouTube Vault</button>
       </div>
 
@@ -1157,14 +1159,14 @@
               <div class="form-group full-width">
                 <label class="industry-check-label" style="margin-top:0.4rem; color:var(--laser-green);">
                   <input type="checkbox" id="chk-attach-song" onchange="toggleAttachSongSection(this.checked)">
-                  <span>🎵 Attach 5.1 Song with this Movie (Optional • Auto-scrapes JioSaavn Poster & Artists)</span>
+                  <span>🎵 Attach 5.1 Song with this Movie (Optional • Live Search & HD Art)</span>
                 </label>
                 
                 <div id="attach-song-section" class="song-attach-box" style="display:none;">
                   <div class="form-grid" style="margin-bottom:0.5rem;">
                     <div class="form-group full-width">
-                      <label style="color:var(--laser-green);">Search Song Name (Auto-fetches high-res art from JioSaavn)</label>
-                      <input type="text" id="input-attach-song-query" placeholder="e.g. Hukum or Leo Badass" oninput="searchJioSaavnLive(this.value, 'movie-attach')">
+                      <label style="color:var(--laser-green);">Search Song Name (Type 'Madras', 'Hukum', 'Leo Badass'...)</label>
+                      <input type="text" id="input-attach-song-query" placeholder="Type song title..." oninput="searchLiveMusicEngine(this.value, 'movie-attach')">
                       <div id="saavn-attach-suggestions" class="tmdb-results-box"></div>
                     </div>
                     <div class="form-group">
@@ -1277,14 +1279,14 @@
         </div>
       </div>
 
-      <!-- TAB 4: SONG FORM (NEW LIVE JIOSAAVN AUTO-INGEST) -->
+      <!-- TAB 4: STANDALONE SONG FORM (LIVE TOP 5-6 SEARCH) -->
       <div id="hub-tab-song" class="hub-content" style="display: none;">
         <div class="form-container">
           <form id="song-form" onsubmit="handleSongSubmit(event)">
             <div class="form-grid">
               <div class="form-group full-width">
-                <label style="color:var(--laser-green);">⚡ Live Search JioSaavn (Auto-loads 500x500 Cover, Album & Singers)</label>
-                <input type="text" id="input-song-search" placeholder="Type song name (e.g. Hukum, Badass, Arabic Kuthu)..." oninput="searchJioSaavnLive(this.value, 'standalone-song')">
+                <label style="color:var(--laser-green);">⚡ Live Search Track Name (Shows Top 5-6 Suggestions)</label>
+                <input type="text" id="input-song-search" placeholder="Type song title (e.g. Madras, Hukum, Badass, Arabic Kuthu)..." oninput="searchLiveMusicEngine(this.value, 'standalone-song')">
                 <div id="saavn-standalone-suggestions" class="tmdb-results-box"></div>
               </div>
               <div class="form-group">
@@ -1453,7 +1455,7 @@
     let currentCategoryFilter = 'packs';
 
     let seriesDebounce = null;
-    let saavnDebounce = null;
+    let musicSearchDebounce = null;
     let stageReviewList = [];
 
     const CONFIRM_PASS = "24592";
@@ -1690,17 +1692,20 @@
       const box = document.getElementById('attach-song-section');
       box.style.display = isChecked ? 'block' : 'none';
       if (isChecked) {
-        const movieTitle = document.getElementById('input-smart-filename').value.split('.')[0] || '';
-        if (movieTitle && !document.getElementById('input-attach-song-query').value) {
-          document.getElementById('input-attach-song-query').value = movieTitle;
-          searchJioSaavnLive(movieTitle, 'movie-attach');
+        const rawFileName = document.getElementById('input-smart-filename').value.trim();
+        if (rawFileName) {
+          const parsed = cleanMovieFileName(rawFileName);
+          if (parsed.title && !document.getElementById('input-attach-song-query').value) {
+            document.getElementById('input-attach-song-query').value = parsed.title;
+            searchLiveMusicEngine(parsed.title, 'movie-attach');
+          }
         }
       }
     }
 
-    /* HIGH SPEED JIOSAAVN AUTO-SCRAPER API */
-    function searchJioSaavnLive(query, mode = 'movie-attach') {
-      clearTimeout(saavnDebounce);
+    /* TOP 5-6 LIVE MUSIC SEARCH (DUAL ENGINE: JIOSAAVN + ITUNES HD) */
+    function searchLiveMusicEngine(query, mode = 'movie-attach') {
+      clearTimeout(musicSearchDebounce);
       const boxId = mode === 'movie-attach' ? 'saavn-attach-suggestions' : 'saavn-standalone-suggestions';
       const box = document.getElementById(boxId);
       
@@ -1709,53 +1714,81 @@
         return;
       }
 
-      saavnDebounce = setTimeout(async () => {
+      musicSearchDebounce = setTimeout(async () => {
+        box.innerHTML = '<div style="font-size:0.75rem; color:var(--laser-cyan); padding:6px 8px;">🔍 Searching top 5-6 matching tracks...</div>';
+        box.style.display = 'block';
+
+        let songResults = [];
+
+        // 1. Try JioSaavn Dev API
         try {
           const res = await fetch(`https://saavn.dev/api/search/songs?query=${encodeURIComponent(query)}&limit=6`);
           const data = await res.json();
-          const songs = data?.data?.results || [];
-
-          box.innerHTML = '';
-          if (songs.length > 0) {
-            songs.forEach(s => {
-              const title = s.name.replace(/&quot;/g, '"');
-              const album = s.album?.name || '';
-              const artist = s.artists?.primary?.map(a => a.name).join(', ') || '';
-              const poster = (s.image && s.image.length > 0) ? s.image[s.image.length - 1].url : '';
-
-              const item = document.createElement('div');
-              item.className = 'tmdb-result-item';
-              item.innerHTML = `
-                ${poster ? `<img src="${poster}" class="tmdb-result-poster">` : '<div class="tmdb-result-poster"></div>'}
-                <div class="tmdb-result-info">
-                  <div class="tmdb-result-title">${escapeHtml(title)}</div>
-                  <div class="tmdb-result-meta">${escapeHtml(album)} • ${escapeHtml(artist)}</div>
-                </div>
-              `;
-              item.onclick = () => {
-                if (mode === 'movie-attach') {
-                  document.getElementById('input-attach-song-title').value = title;
-                  document.getElementById('input-attach-song-artist').value = artist;
-                  document.getElementById('input-attach-song-poster').value = poster;
-                } else {
-                  document.getElementById('input-song-title').value = title;
-                  document.getElementById('input-song-movie').value = album;
-                  document.getElementById('input-song-artist').value = artist;
-                  document.getElementById('input-song-poster').value = poster;
-                }
-                box.style.display = 'none';
-                showLaserToast(`Selected: "${title}" (High-Res Cover Art loaded!)`);
-              };
-              box.appendChild(item);
-            });
-            box.style.display = 'block';
-          } else {
-            box.style.display = 'none';
+          if (data?.data?.results && data.data.results.length > 0) {
+            songResults = data.data.results.map(s => ({
+              title: s.name.replace(/&quot;/g, '"'),
+              album: s.album?.name || '',
+              artist: s.artists?.primary?.map(a => a.name).join(', ') || '',
+              poster: (s.image && s.image.length > 0) ? s.image[s.image.length - 1].url : ''
+            }));
           }
-        } catch(e) {
-          box.style.display = 'none';
+        } catch(e) {}
+
+        // 2. High-speed Fallback: iTunes HD Search
+        if (songResults.length === 0) {
+          try {
+            const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=6`);
+            const itunesData = await itunesRes.json();
+            if (itunesData.results && itunesData.results.length > 0) {
+              songResults = itunesData.results.map(i => ({
+                title: i.trackName,
+                album: i.collectionName || '',
+                artist: i.artistName || '',
+                poster: (i.artworkUrl100 || '').replace('100x100bb', '600x600bb')
+              }));
+            }
+          } catch(e) {}
         }
-      }, 300);
+
+        box.innerHTML = '';
+        if (songResults.length > 0) {
+          const header = document.createElement('div');
+          header.style.cssText = 'font-size:0.72rem; color:var(--laser-cyan); font-weight:800; margin-bottom:6px; padding:0 4px;';
+          header.textContent = `🎯 TOP ${songResults.length} MATCHING TRACKS (Click to select):`;
+          box.appendChild(header);
+
+          songResults.slice(0, 6).forEach(s => {
+            const item = document.createElement('div');
+            item.className = 'tmdb-result-item';
+            item.innerHTML = `
+              ${s.poster ? `<img src="${s.poster}" class="tmdb-result-poster">` : '<div class="tmdb-result-poster"></div>'}
+              <div class="tmdb-result-info">
+                <div class="tmdb-result-title">${escapeHtml(s.title)}</div>
+                <div class="tmdb-result-meta">${escapeHtml(s.album || 'Single')} • ${escapeHtml(s.artist || 'HQ Artist')}</div>
+              </div>
+            `;
+            item.onclick = () => {
+              if (mode === 'movie-attach') {
+                document.getElementById('input-attach-song-title').value = s.title;
+                document.getElementById('input-attach-song-artist').value = s.artist;
+                document.getElementById('input-attach-song-poster').value = s.poster;
+              } else {
+                document.getElementById('input-song-title').value = s.title;
+                document.getElementById('input-song-movie').value = s.album || s.title;
+                document.getElementById('input-song-artist').value = s.artist;
+                document.getElementById('input-song-poster').value = s.poster;
+              }
+              box.style.display = 'none';
+              showLaserToast(`Selected: "${s.title}" (High-Res Artwork Loaded!)`);
+            };
+            box.appendChild(item);
+          });
+          box.style.display = 'block';
+        } else {
+          box.innerHTML = '<div style="font-size:0.75rem; color:var(--laser-red); padding:6px 8px;">No songs found. Try a different title/spelling.</div>';
+          setTimeout(() => { box.style.display = 'none'; }, 3000);
+        }
+      }, 350);
     }
 
     function detectMovieLang(movie) {
@@ -2542,7 +2575,7 @@
         specs: { resolution: quality, source: source, codec: codec, audio: audio, channels: channels, languages: languages, size: fileSize }
       };
 
-      // CHECK ATTACHED 5.1 SONG
+      // ATTACHED 5.1 SONG CHECK
       let attachedSong = null;
       if (document.getElementById('chk-attach-song').checked) {
         const sTitle = document.getElementById('input-attach-song-title').value.trim();
