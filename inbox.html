@@ -2654,70 +2654,73 @@
       document.getElementById('preview-modal').classList.add('active');
     }
 
-    async function commitPendingToGitHub() {
+async function commitPendingToGitHub() {
       if (!pendingCommit) return;
       const token = getStoredToken();
       if (!token) return showLaserToast('GitHub Token required! Click ⚙️ Token in sidebar.', true);
 
-      const btn = document.getElementById('btn-commit-github');
-      btn.disabled = true;
-      btn.textContent = 'Saving to data_c01.json & targets...';
+      const { entry, title, targets, isUpdate, attachedSong } = pendingCommit;
 
-      try {
-        const { entry, title, targets, isUpdate, attachedSong } = pendingCommit;
-
-        // 1. Central Movies Master (chunks/data_c01.json)
-        if (isUpdate) {
-          const eIdx = moviesData.findIndex(x => String(x.tmdb_id) === String(entry.tmdb_id));
-          if (eIdx >= 0) moviesData[eIdx] = entry;
-        } else {
-          moviesData.unshift(entry);
-        }
-        await commitFileDirect('chunks/data_c01.json', moviesData, `Commit ${title} to Movies Master (c01)`, token);
-
-        // 2. Selected Regional Chunks
-        for (const target of targets) {
-          let catData = await fetchChunkDirect(target.path);
-          const cIdx = catData.findIndex(x => String(x.tmdb_id) === String(entry.tmdb_id));
-          if (cIdx >= 0) catData[cIdx] = entry;
-          else catData.unshift(entry);
-          await commitFileDirect(target.path, catData, `Multi-Sync: Add ${title} to ${target.name}`, token);
-        }
-
-        // 3. Auto Commit Attached Song to chunks/data_c03.json
-        if (attachedSong) {
-          songsData.unshift(attachedSong);
-          await commitFileDirect('chunks/data_c03.json', songsData, `Auto-Sync Soundtrack: ${attachedSong.title} from ${title}`, token);
-        }
-
-        // 4. Auto-clear from inbox_arrivals.json
-        try {
-          const inboxFileRes = await fetch(`${API_BASE}/contents/inbox_arrivals.json`, {
-            headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
-          });
-          if (inboxFileRes.ok) {
-            const inboxData = await inboxFileRes.json();
-            const currentList = JSON.parse(decodeURIComponent(escape(atob(inboxData.content.replace(/\n/g, '')))));
-            const filtered = currentList.filter(x => x.gdrive_id !== entry.id);
-            if (filtered.length !== currentList.length) {
-              await commitFileDirect('inbox_arrivals.json', filtered, `Clear ${entry.title} from inbox`, token);
-            }
-          }
-        } catch(e) {}
-
-        showLaserToast(`"${title}" successfully saved!`);
-        closeModal();
-        cancelMergeMode();
-        document.getElementById('movie-form').reset();
+      // 1. Instantly Close Modal & Unlock UI for next work
+      closeModal();
+      cancelMergeMode();
+      document.getElementById('movie-form').reset();
+      if (document.getElementById('chk-attach-song')) {
         document.getElementById('chk-attach-song').checked = false;
         toggleAttachSongSection(false);
-        loadAllChunks();
-      } catch (err) {
-        showLaserToast(`Commit Error: ${err.message}`, true);
-      } finally {
-        btn.disabled = false;
-        btn.textContent = 'Save & Direct Commit to GitHub';
       }
+
+      // 2. Show Persistent Top Floating Status Pill
+      showLaserToast(`⚡ Background Commit Started: "${title}"...`);
+
+      // 3. Fast Parallel Commit via Direct GitHub API
+      (async () => {
+        try {
+          // Step A: Update Movies Master (chunks/data_c01.json)
+          if (isUpdate) {
+            const eIdx = moviesData.findIndex(x => String(x.tmdb_id) === String(entry.tmdb_id));
+            if (eIdx >= 0) moviesData[eIdx] = entry;
+          } else {
+            moviesData.unshift(entry);
+          }
+          await commitFileDirect('chunks/data_c01.json', moviesData, `Commit ${title} to Movies Master (c01)`, token);
+
+          // Step B: Update Selected Categories
+          for (const target of targets) {
+            let catData = await fetchChunkDirect(target.path);
+            const cIdx = catData.findIndex(x => String(x.tmdb_id) === String(entry.tmdb_id));
+            if (cIdx >= 0) catData[cIdx] = entry;
+            else catData.unshift(entry);
+            await commitFileDirect(target.path, catData, `Multi-Sync: Add ${title} to ${target.name}`, token);
+          }
+
+          // Step C: Update Attached Song (if present)
+          if (attachedSong) {
+            songsData.unshift(attachedSong);
+            await commitFileDirect('chunks/data_c03.json', songsData, `Auto-Sync Soundtrack: ${attachedSong.title} from ${title}`, token);
+          }
+
+          // Step D: Clean from inbox_arrivals.json
+          try {
+            const inboxFileRes = await fetch(`${API_BASE}/contents/inbox_arrivals.json`, {
+              headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+            });
+            if (inboxFileRes.ok) {
+              const inboxData = await inboxFileRes.json();
+              const currentList = JSON.parse(decodeURIComponent(escape(atob(inboxData.content.replace(/\n/g, '')))));
+              const filtered = currentList.filter(x => x.gdrive_id !== entry.id);
+              if (filtered.length !== currentList.length) {
+                await commitFileDirect('inbox_arrivals.json', filtered, `Clear ${entry.title} from inbox`, token);
+              }
+            }
+          } catch(e) {}
+
+          showLaserToast(`✅ "${title}" successfully committed to GitHub!`);
+          loadAllChunks();
+        } catch (err) {
+          showLaserToast(`Commit Error (${title}): ${err.message}`, true);
+        }
+      })();
     }
 
     async function fetchChunkDirect(path) {
