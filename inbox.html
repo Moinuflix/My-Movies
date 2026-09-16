@@ -225,6 +225,19 @@
       color: var(--laser-cyan);
       box-shadow: 0 0 14px var(--laser-cyan-glow);
     }
+    .cat-pill.pill-imax.active {
+      background: rgba(251, 191, 36, 0.22);
+      border-color: #fbbf24;
+      color: #fbbf24;
+      box-shadow: 0 0 16px rgba(251, 191, 36, 0.55);
+    }
+    .spec-chip.chip-imax {
+      background: rgba(251, 191, 36, 0.2);
+      border-color: #fbbf24;
+      color: #fbbf24;
+      font-weight: 800;
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+    }
     .cat-pill.pill-pack.active {
       background: rgba(245, 158, 11, 0.18);
       border-color: var(--gold-lcu);
@@ -998,6 +1011,7 @@
       </header>
 
       <div class="category-pills-bar">
+        <button class="cat-pill pill-imax" onclick="setCategoryFilter('imax', this)">⚡ IMAX Core (1509k DTS)</button>
         <button class="cat-pill pill-pack active" onclick="setCategoryFilter('packs', this)">👑 Franchise Packs</button>
         <button class="cat-pill" onclick="setCategoryFilter('all', this)">🍿 All Movies</button>
         <button class="cat-pill" onclick="setCategoryFilter('lang_ta', this)">🌴 Tamil (Kollywood)</button>
@@ -1126,6 +1140,7 @@
               <div class="form-group">
                 <label>Audio Codec</label>
                 <select id="input-audio" required>
+                  <option value="DTS-HD Master / 1509k DTS">DTS-HD Master / 1509k DTS (Lossless)</option>
                   <option value="Dolby Atmos" selected>Dolby Atmos / TrueHD</option>
                   <option value="Dolby Digital Plus">Dolby Digital Plus (DDP / E-AC-3)</option>
                   <option value="Dolby Digital">Dolby Digital (AC3)</option>
@@ -1169,6 +1184,14 @@
               <div class="form-group full-width">
                 <label>Google Drive Link / Raw File ID</label>
                 <input type="text" id="input-gdrive-url" placeholder="Paste full GD link or ID (Or leave blank if providing direct URL above)">
+              </div>
+
+              <!-- IMAX CORE EXTRA ROUTE CHECKBOX -->
+              <div class="form-group full-width">
+                <label class="industry-check-label" style="background: rgba(251, 191, 36, 0.08); border: 1px solid rgba(251, 191, 36, 0.35); padding: 10px 14px; border-radius: 12px;">
+                  <input type="checkbox" id="chk-is-imax">
+                  <span style="color: #fbbf24; font-weight: 800; font-size: 0.88rem;">⚡ Push to IMAX Core (Auto-saves to chunks/data_c01_imax.json)</span>
+                </label>
               </div>
 
               <!-- ATTACH 5.1 SONG ACCORDION -->
@@ -1447,6 +1470,7 @@
 
   <script>
     let moviesData = [];
+    let imaxData = [];
     let tamilData = [];
     let teluguData = [];
     let hindiData = [];
@@ -1908,8 +1932,10 @@
         } catch(e) { return []; }
       };
 
-      [moviesData, tamilData, teluguData, hindiData, englishData, malayalamData, kannadaData, seriesData, songsData, vaultData] = await Promise.all([
+let rawImax = [];
+      [moviesData, rawImax, tamilData, teluguData, hindiData, englishData, malayalamData, kannadaData, seriesData, songsData, vaultData] = await Promise.all([
         fetchChunk('chunks/data_c01.json'),
+        fetchChunk('chunks/data_c01_imax.json'),
         fetchChunk('chunks/data_c01_tamil.json'),
         fetchChunk('chunks/data_c01_telugu.json'),
         fetchChunk('chunks/data_c01_hindi.json'),
@@ -1921,6 +1947,7 @@
         fetchChunk('chunks/data_c04.json')
       ]);
 
+      imaxData = rawImax || [];
       document.getElementById('stat-c01').textContent = moviesData.length;
       document.getElementById('stat-tamil').textContent = tamilData.length || moviesData.filter(m => detectMovieLang(m) === 'ta').length;
       document.getElementById('stat-telugu').textContent = teluguData.length || moviesData.filter(m => detectMovieLang(m) === 'te').length;
@@ -2338,6 +2365,40 @@
       container.innerHTML = '';
       const query = document.getElementById('movie-search-input').value.toLowerCase().trim();
 
+      if (currentCategoryFilter === 'imax') {
+        const imaxList = imaxData.length > 0 ? imaxData : moviesData.filter(m => /1509k|dts|remux|imax/i.test((m.specs?.audio || '') + ' ' + (m.name || '') + ' ' + (m.title || '')));
+        imaxList.forEach((movie, index) => {
+          if (query && !(movie.title||'').toLowerCase().includes(query)) return;
+          const card = document.createElement('div');
+          card.className = 'movie-card';
+          card.style.borderColor = 'rgba(251, 191, 36, 0.4)';
+          card.innerHTML = `
+            <div class="poster-wrap">
+              <div class="universe-badge" style="border-color:#fbbf24; color:#fbbf24;">⚡ IMAX CORE</div>
+              ${movie.poster ? `<img src="${movie.poster}" class="poster-img" loading="lazy">` : '<div class="poster-placeholder">No Poster</div>'}
+            </div>
+            <div class="movie-card-body">
+              <div>
+                <div class="movie-title">${escapeHtml(movie.title)}</div>
+                <div class="movie-meta-row">
+                  <span>${escapeHtml(movie.year || 'N/A')}</span>
+                  <span>•</span>
+                  <span class="spec-chip chip-imax">${escapeHtml(movie.specs?.audio || '1509k DTS')}</span>
+                  <span class="spec-chip">${escapeHtml(movie.specs?.resolution || '4K UHD')}</span>
+                  ${movie.specs?.size ? `<span class="clean-gb-badge">${escapeHtml(movie.specs.size)}</span>` : ''}
+                </div>
+              </div>
+              <div class="card-actions-row">
+                <button type="button" class="btn-action-primary" onclick="copyStream('${escapeHtml(movie.stream_url||'')}')">📋 Stream</button>
+                <button type="button" class="btn-delete-item" onclick="promptDeleteItem('chunks/data_c01_imax.json', ${index}, '${escapeHtml(movie.title)}', imaxData)">🗑️</button>
+              </div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+        return;
+      }
+
       if (currentCategoryFilter === 'packs') {
         Object.entries(MASTER_FRANCHISES).forEach(([franchiseKey, packInfo]) => {
           const ownedMovies = moviesData.filter(m => getFranchiseKey(m) === franchiseKey);
@@ -2408,6 +2469,7 @@
           card.innerHTML = `
             <div class="poster-wrap">
               ${movie.collection ? `<div class="universe-badge">👑 ${escapeHtml(movie.collection)}</div>` : ''}
+              ${/1509k|dts|remux|imax/i.test((movie.specs?.audio || '') + ' ' + (movie.name || '')) ? `<div class="universe-badge" style="border-color:#fbbf24; color:#fbbf24; top:36px;">⚡ IMAX CORE</div>` : ''}
               ${isMulti ? `<div class="multi-badge">⚡ MULTI AUDIO</div>` : ''}
               ${movie.soundtrack?.stream_url ? `<div class="multi-badge" style="top:10px; bottom:auto; background:var(--gold-lcu);">🎵 5.1 SONG</div>` : ''}
               ${movie.poster ? `<img src="${movie.poster}" class="poster-img" loading="lazy">` : '<div class="poster-placeholder">No Poster</div>'}
@@ -2542,8 +2604,9 @@
         resolution: res,
         quality: quality,
         source: source,
+        isImax: /1509k|dts|remux|imax/i.test(fn),
         codec: fn.includes('x264') || fn.includes('h264') ? "H.264" : "x265",
-        audio: fn.includes('ddp') ? "Dolby Digital Plus" : (fn.includes('ac3') ? "Dolby Digital" : "Dolby Atmos"),
+        audio: /1509k|dts/i.test(fn) ? "DTS-HD Master / 1509k DTS" : (fn.includes('ddp') ? "Dolby Digital Plus" : (fn.includes('ac3') ? "Dolby Digital" : "Dolby Atmos")),
         channels: fn.includes('7.1') ? "7.1" : "5.1",
         languages: langs.length > 0 ? langs.join(', ') : "Tamil"
       };
@@ -2560,6 +2623,8 @@
       document.getElementById('input-source').value = specs.source;
       document.getElementById('input-codec').value = specs.codec;
       document.getElementById('input-audio').value = specs.audio;
+      const imaxChk = document.getElementById('chk-is-imax');
+      if (imaxChk) imaxChk.checked = specs.isImax || false;
       document.getElementById('input-channels').value = specs.channels;
       document.getElementById('input-languages').value = specs.languages;
 
@@ -2813,6 +2878,9 @@
       }
 
       const targetChunksList = [];
+      if (document.getElementById('chk-is-imax') && document.getElementById('chk-is-imax').checked) {
+        targetChunksList.push({ path: 'chunks/data_c01_imax.json', name: 'IMAX Core (Lossless DTS)' });
+      }
       if (document.getElementById('chk-kollywood').checked) targetChunksList.push({ path: 'chunks/data_c01_tamil.json', name: 'Kollywood (Tamil)' });
       if (document.getElementById('chk-tollywood').checked) targetChunksList.push({ path: 'chunks/data_c01_telugu.json', name: 'Tollywood (Telugu)' });
       if (document.getElementById('chk-bollywood').checked) targetChunksList.push({ path: 'chunks/data_c01_hindi.json', name: 'Bollywood (Hindi)' });
@@ -2942,22 +3010,33 @@
 
     async function commitFileDirect(chunkPath, arrayData, message, token) {
       const url = `https://api.github.com/repos/${GH_REPO}/contents/${chunkPath}`;
-      const getRes = await fetch(url, { headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' } });
       let currentSha = undefined;
-      if (getRes.ok) {
-        const fileInfo = await getRes.json();
-        currentSha = fileInfo.sha;
-      }
+      try {
+        const getRes = await fetch(`${url}?t=${Date.now()}`, {
+          headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        if (getRes.ok) {
+          const fileInfo = await getRes.json();
+          currentSha = fileInfo.sha;
+        }
+      } catch(e) {}
 
       const finalJson = JSON.stringify(arrayData, null, 2);
       const encoded = btoa(unescape(encodeURIComponent(finalJson)));
 
       const putRes = await fetch(url, {
         method: 'PUT',
-        headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({ message: message, content: encoded, branch: GH_BRANCH, sha: currentSha })
       });
-      if (!putRes.ok) throw new Error(`Commit failed for ${chunkPath}`);
+      if (!putRes.ok) {
+        const err = await putRes.json();
+        throw new Error(err.message || `Commit failed for ${chunkPath}`);
+      }
     }
 
     function closeModal() {
@@ -2977,38 +3056,149 @@
       showLaserToast('Stream link copied!');
     }
 
-    /* RENDER WEB SERIES GRID */
+    /* RENDER WEB SERIES AS 1 CONSOLIDATED PACK (TITAN BINGIE SCHEMA) */
     function renderSeriesGrid() {
       const container = document.getElementById('series-grid');
+      if (!container) return;
       container.innerHTML = '';
       if (!seriesData || seriesData.length === 0) {
         container.innerHTML = '<div style="color:var(--text-muted); padding:30px;">No web series found in data_c02.json</div>';
         return;
       }
+
+      const seriesMap = new Map();
       seriesData.forEach((item, index) => {
+        const parsed = cleanMovieFileName(item.name || item.title);
+        const key = item.tmdb_id ? String(item.tmdb_id) : parsed.title.toLowerCase().trim();
+
+        if (!seriesMap.has(key)) {
+          seriesMap.set(key, {
+            rawIndex: index,
+            title: item.title || parsed.title,
+            tmdb_id: item.tmdb_id || '',
+            seasons: item.seasons || parsed.seasonTag || 'Season 1',
+            poster: item.poster || '',
+            fanart: item.fanart || '',
+            episodes: []
+          });
+        }
+
+        const seriesObj = seriesMap.get(key);
+        if (item.episodes && Array.isArray(item.episodes)) {
+          item.episodes.forEach(ep => {
+            if (!seriesObj.episodes.some(e => e.id === ep.id)) seriesObj.episodes.push(ep);
+          });
+        } else {
+          const epMatch = (item.name || item.title).match(/\bS\d+\s*E(\d+)\b/i) || (item.name || item.title).match(/\bE(\d+)\b/i);
+          const epNum = epMatch ? parseInt(epMatch[1]) : (seriesObj.episodes.length + 1);
+
+          if (!seriesObj.episodes.some(e => e.id === (item.id || item.gdrive_id))) {
+            seriesObj.episodes.push({
+              episode_number: epNum,
+              title: `Episode ${epNum}`,
+              overview: item.overview || `Episode ${epNum} streaming via MoinuFlix.`,
+              poster: item.poster || seriesObj.poster,
+              fanart: item.fanart || seriesObj.fanart,
+              id: item.id || item.gdrive_id,
+              stream_url: item.stream_url || item.gdrive_url,
+              specs: item.specs || { resolution: "1080p FHD", audio: "Dolby Digital Plus 5.1", size: item.size || "2 GB" }
+            });
+          }
+        }
+      });
+
+      seriesMap.forEach(s => {
+        s.episodes.sort((a, b) => (a.episode_number || 0) - (b.episode_number || 0));
+      });
+
+      seriesMap.forEach((series, sKey) => {
+        const totalEps = series.episodes.length;
         const card = document.createElement('div');
-        card.className = 'movie-card';
+        card.className = 'movie-card pack-card';
         card.innerHTML = `
           <div class="poster-wrap">
-            <div class="universe-badge">📺 SERIES</div>
-            ${item.poster ? `<img src="${item.poster}" class="poster-img">` : '<div class="poster-placeholder">No Poster</div>'}
+            <div class="universe-badge" style="border-color:var(--laser-cyan); color:var(--laser-cyan);">📺 SERIES PACK</div>
+            <div class="pack-status-badge badge-complete">🟢 ${totalEps} EPISODES</div>
+            ${series.poster ? `<img src="${series.poster}" class="poster-img" loading="lazy">` : '<div class="poster-placeholder">No Poster</div>'}
           </div>
           <div class="movie-card-body">
             <div>
-              <div class="movie-title">${escapeHtml(item.name || item.title)}</div>
+              <div class="movie-title">${escapeHtml(series.title)}</div>
               <div class="movie-meta-row">
-                <span class="spec-chip">${escapeHtml(item.seasons || 'Season 1')}</span>
-                <span>TMDB ID: ${item.tmdb_id || 'N/A'}</span>
+                <span class="spec-chip chip-gold">${escapeHtml(series.seasons)}</span>
+                <span>•</span>
+                <span style="color:var(--laser-green); font-weight:800;">${totalEps} Episodes Ready</span>
               </div>
             </div>
             <div class="card-actions-row">
-              <button class="btn-action-primary" onclick="copyStream('${escapeHtml(item.stream_url||item.gdrive_url||'')}')">📋 Stream</button>
-              <button class="btn-delete-item" onclick="promptDeleteItem('chunks/data_c02.json', ${index}, '${escapeHtml(item.name || item.title)}', seriesData)">🗑️</button>
+              <button type="button" class="btn-action-primary" onclick="openSeriesEpisodesModal('${sKey}')">📂 VIEW EPISODES</button>
+              <button type="button" class="btn-delete-item" onclick="promptDeleteItem('chunks/data_c02.json', ${series.rawIndex}, '${escapeHtml(series.title)}', seriesData)">🗑️</button>
             </div>
           </div>
         `;
         container.appendChild(card);
       });
+    }
+
+    function openSeriesEpisodesModal(sKey) {
+      let modal = document.getElementById('series-ep-modal');
+      if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'series-ep-modal';
+        modal.className = 'modal-overlay';
+        modal.innerHTML = `
+          <div class="modal-card">
+            <div class="modal-header">
+              <div>
+                <div class="modal-title" id="series-modal-title">Series Pack</div>
+                <div style="font-size:0.85rem; color:var(--laser-cyan); margin-top:3px;" id="series-modal-subtitle"></div>
+              </div>
+              <button type="button" style="background:transparent; border:none; color:#fff; font-size:1.5rem; cursor:pointer;" onclick="this.closest('.modal-overlay').classList.remove('active')">✕</button>
+            </div>
+            <div id="series-episodes-list" style="display:flex; flex-direction:column; gap:0.85rem; max-height:520px; overflow-y:auto;"></div>
+          </div>
+        `;
+        document.body.appendChild(modal);
+      }
+
+      const epList = document.getElementById('series-episodes-list');
+      epList.innerHTML = '';
+
+      const matched = seriesData.filter(s => {
+        const p = cleanMovieFileName(s.name || s.title);
+        return (s.tmdb_id && String(s.tmdb_id) === String(sKey)) || p.title.toLowerCase().trim() === sKey.toLowerCase().trim();
+      });
+
+      const seriesTitle = matched[0]?.title || sKey;
+      document.getElementById('series-modal-title').textContent = seriesTitle;
+      document.getElementById('series-modal-subtitle').textContent = `Total Episodes: ${matched.length}`;
+
+      matched.sort((a, b) => {
+        const nA = (a.name || a.title).match(/E(\d+)/i)?.[1] || 0;
+        const nB = (b.name || b.title).match(/E(\d+)/i)?.[1] || 0;
+        return parseInt(nA) - parseInt(nB);
+      });
+
+      matched.forEach((ep, idx) => {
+        const epMatch = (ep.name || ep.title).match(/\bS\d+\s*E(\d+)\b/i) || (ep.name || ep.title).match(/\bE(\d+)\b/i);
+        const epNum = epMatch ? epMatch[1] : (idx + 1);
+
+        const div = document.createElement('div');
+        div.style.cssText = 'display:flex; gap:12px; align-items:center; background:rgba(255,255,255,0.03); padding:10px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);';
+        div.innerHTML = `
+          <div style="width:110px; height:65px; border-radius:8px; overflow:hidden; background:#070d1e; flex-shrink:0;">
+            ${ep.poster ? `<img src="${ep.poster}" style="width:100%; height:100%; object-fit:cover;">` : '<div style="color:var(--text-dim); text-align:center; font-size:0.75rem; padding-top:20px;">No Still</div>'}
+          </div>
+          <div style="flex:1;">
+            <div style="font-weight:800; color:#fff; font-size:0.9rem;">Episode ${epNum}</div>
+            <div style="font-size:0.75rem; color:var(--text-dim); margin-top:2px;">${escapeHtml(ep.name || ep.title)}</div>
+          </div>
+          <button class="btn-action-primary" style="flex:none; padding:6px 14px;" onclick="copyStream('${escapeHtml(ep.stream_url || ep.gdrive_url || '')}')">📋 Stream</button>
+        `;
+        epList.appendChild(div);
+      });
+
+      modal.classList.add('active');
     }
 
     /* RENDER SONGS GRID */
