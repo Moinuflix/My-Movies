@@ -1665,20 +1665,20 @@
     "original_language": "te"
   },
   {
-    "id": "1zhsiJ92JAy7ydzzh-9bfC9DvoLJIp-vi",
-    "name": "The Beginning (2015) 1080p DTS.mkv",
+    "id": "1vqn1WZL-_HVHP8iYKeTia8MTUtxxXzrM",
+    "name": "Bāhubali: The Beginning (2015) [1080p] [BLURAY] [Dolby Atmos].mkv",
     "title": "Bāhubali: The Beginning",
     "original_title": "బాహుబలి:ద బిగినింగ్",
+    "original_language": "te",
     "year": 2015,
     "runtime": 159,
     "tmdb_id": 256040,
-    "imdb_id": "tt2631186",
-    "imdb_url": "https://www.imdb.com/title/tt2631186/",
     "rating": 7.6,
-    "collection": "Baahubali Collection",
+    "collection": "Bāhubali Collection",
     "director": [
       "S. S. Rajamouli"
     ],
+    "trailer": "https://www.youtube.com/watch?v=3NQRhE772b0",
     "cast": [
       {
         "name": "Prabhas",
@@ -1709,61 +1709,38 @@
     "plot": "The young Shivudu is left as a foundling in a small village by his mother. By the time he’s grown up, it has become apparent that he possesses exceptional gifts. He meets the beautiful warrior princess Avanthika and learns that her queen has been held captive for the last 25 years. Shividu sets off to rescue her, discovering his own origins in the process.",
     "poster": "https://image.tmdb.org/t/p/w500/9BAjt8nSSms62uOVYn1t3C3dVto.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/e9ZEuHGHZ06AToHlfN1L7nejJ7W.jpg",
-    "logo": "https://image.tmdb.org/t/p/original/69YQrfMCEHRMFPqvsOo6NnbLAJv.png",
-    "trailer": "https://www.youtube.com/watch?v=3NQRhE772b0",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1zhsiJ92JAy7ydzzh-9bfC9DvoLJIp-vi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "badges": {
-      "quality": "https://img.icons8.com/color/96/full-hd.png",
-      "source": "https://img.icons8.com/ios-filled/100/ffffff/cloud-download.png",
-      "audio_format": "https://img.icons8.com/color/96/dolby-digital.png",
-      "audio_channels": "https://img.icons8.com/ios-filled/100/ffffff/2-0.png"
-    },
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vqn1WZL-_HVHP8iYKeTia8MTUtxxXzrM|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
-      "resolution": "1080p Full HD",
-      "source": "WEB-DL",
-      "codec": "H.264",
-      "audio": "DTS",
-      "channels": "2.0"
+      "resolution": "1080p",
+      "source": "BLURAY",
+      "codec": "x265",
+      "audio": "Dolby Atmos",
+      "channels": "5.1",
+      "languages": "Tamil, Telugu, Hindi, Malayalam",
+      "size": "22GB"
     },
     "versions": [
       {
-        "id": "1zhsiJ92JAy7ydzzh-9bfC9DvoLJIp-vi",
-        "name": "Bāhubali: The Beginning (2015) [Multi] [1080p] [H.264] [DTS].mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
-        "codec": "H.264",
-        "resolution": "1080p FHD",
-        "audio": "DTS",
-        "channels": "2.0",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1zhsiJ92JAy7ydzzh-9bfC9DvoLJIp-vi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "id": "1vqn1WZL-_HVHP8iYKeTia8MTUtxxXzrM",
+        "name": "Bāhubali: The Beginning (2015) [1080p] [BLURAY] [Dolby Atmos].mkv",
+        "quality": "1080p • BLURAY • Dolby Atmos Multi [22GB]",
+        "source": "BLURAY",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vqn1WZL-_HVHP8iYKeTia8MTUtxxXzrM|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
-          "resolution": "1080p FHD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "DTS",
-          "channels": "2.0"
-        }
-      },
-      {
-        "id": "1V2YQ0HNXKN94mJc5x17q7RUiHY6b4lg_",
-        "name": "Bāhubali - The Beginning (2015) 1080p DTS.mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
-        "codec": "H.264",
-        "resolution": "1080p FHD",
-        "audio": "DTS",
-        "channels": "2.0",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1V2YQ0HNXKN94mJc5x17q7RUiHY6b4lg_|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p FHD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "DTS",
-          "channels": "2.0"
+          "resolution": "1080p",
+          "source": "BLURAY",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Hindi, Malayalam",
+          "size": "22GB"
         }
       }
-    ],
-    "original_language": "te"
+    ]
   },
   {
     "id": "1DYhOHSLUA2SglyKok1WC4HMMGaPCAlJq",
