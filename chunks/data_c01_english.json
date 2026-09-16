@@ -1,5 +1,56 @@
 [
   {
+    "id": "1py7RRrVsXvTvmdcuf4JCnpphLDTFyWxj",
+    "name": "Dolby Presents: Amaze (2014) [1080p] [WEB-DL] [Dolby Atmos].mkv",
+    "title": "Dolby Presents: Amaze",
+    "original_title": "Dolby Presents: Amaze",
+    "original_language": "en",
+    "year": 2014,
+    "runtime": 1,
+    "tmdb_id": 1047826,
+    "rating": 7.5,
+    "collection": "",
+    "director": [],
+    "trailer": "https://www.youtube.com/watch?v=kvAfmYNtugQ",
+    "cast": [],
+    "plot": "Enter a new world of sound with Dolby Atmos®. A leap forward from surround sound, it transports you into the story with moving audio that fills the cinema and flows all around you — even overhead — to deliver the premier sound of entertainment. You’ll feel like you’re inside the action as the sounds of people, places, things, and music come alive with breathtaking realism and move throughout the space. Immersive and emotive, Dolby Atmos is sound you can feel — sound that creates a powerfully moving entertainment experience.",
+    "poster": "https://image.tmdb.org/t/p/w500/1durwQj4FvYnI7mAtjI3HzkknuO.jpg",
+    "fanart": "",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1py7RRrVsXvTvmdcuf4JCnpphLDTFyWxj|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x265",
+      "audio": "Dolby Atmos",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": ""
+    },
+    "versions": [
+      {
+        "id": "1py7RRrVsXvTvmdcuf4JCnpphLDTFyWxj",
+        "name": "Dolby Presents: Amaze (2014) [1080p] [WEB-DL] [Dolby Atmos].mkv",
+        "quality": "1080p • WEB-DL • Dolby Atmos",
+        "source": "WEB-DL",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1py7RRrVsXvTvmdcuf4JCnpphLDTFyWxj|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": ""
+        }
+      }
+    ],
+    "soundtrack": {}
+  },
+  {
     "id": "1aFmu_tpwZdvV_wiA4FR5U6WzORXKIDrQ",
     "name": "The Nun (2018) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
     "title": "The Nun",
