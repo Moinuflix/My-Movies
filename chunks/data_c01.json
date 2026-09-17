@@ -1,5 +1,83 @@
 [
   {
+    "id": "1qKgY9UT7_mB2fcXNWgNsGOHNtbN5uAWA",
+    "name": "Aquaman (2018) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
+    "title": "Aquaman",
+    "original_title": "Aquaman",
+    "original_language": "en",
+    "year": 2018,
+    "runtime": 143,
+    "tmdb_id": 297802,
+    "rating": 6.9,
+    "collection": "Aquaman Collection",
+    "director": [
+      "James Wan"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=2wcj6SrX4zw",
+    "cast": [
+      {
+        "name": "Jason Momoa",
+        "role": "Arthur Curry / Aquaman",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/3troAR6QbSb6nUFMDu61YCCWLKa.jpg"
+      },
+      {
+        "name": "Amber Heard",
+        "role": "Mera",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/vnDolRlZWiOLBg1N0hsUTz4OH4C.jpg"
+      },
+      {
+        "name": "Willem Dafoe",
+        "role": "Nuidis Vulko",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/ui8e4sgZAwMPi3hzEO53jyBJF9B.jpg"
+      },
+      {
+        "name": "Patrick Wilson",
+        "role": "King Orm Marius / Ocean Master",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/oym6H2QD9esk4yABjCHaUoNAOa8.jpg"
+      },
+      {
+        "name": "Nicole Kidman",
+        "role": "Atlanna",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/4KSQDodyBtTDMaREYgMdWD1LbH1.jpg"
+      }
+    ],
+    "plot": "Half-human, half-Atlantean Arthur Curry is taken on the journey of his lifetime to discover if he is worth of being a king.",
+    "poster": "https://image.tmdb.org/t/p/w500/ufl63EFcc5XpByEV2Ecdw6WJZAI.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/9QusGjxcYvfPD1THg6oW3RLeNn7.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1qKgY9UT7_mB2fcXNWgNsGOHNtbN5uAWA|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "Prime Video",
+      "codec": "H.264",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil, Telugu, Hindi, Malayalam",
+      "size": ""
+    },
+    "versions": [
+      {
+        "id": "1qKgY9UT7_mB2fcXNWgNsGOHNtbN5uAWA",
+        "name": "Aquaman (2018) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
+        "quality": "1080p • Prime Video • Dolby Digital Plus Multi",
+        "source": "Prime Video",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1qKgY9UT7_mB2fcXNWgNsGOHNtbN5uAWA|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Prime Video",
+          "codec": "H.264",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Hindi, Malayalam",
+          "size": ""
+        }
+      }
+    ]
+  },
+  {
     "id": "1py7RRrVsXvTvmdcuf4JCnpphLDTFyWxj",
     "name": "Dolby Presents: Amaze (2014) [1080p] [WEB-DL] [Dolby Atmos].mkv",
     "title": "Dolby Presents: Amaze",
