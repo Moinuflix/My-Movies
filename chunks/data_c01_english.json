@@ -2195,19 +2195,20 @@
     "original_language": "en"
   },
   {
-    "id": "14vIHDvP3Ge4o_OR1miHILdU74eBTtoOp",
-    "name": "@Tamiltvtoonsofficial - Aquaman 2018 Open Matte 1080p x264 Tamil-Telugu-Hindi DD5.1 - English Atmos 5.1 ESubs By Xebec D Shanks [TTT].mkv",
+    "id": "1qKgY9UT7_mB2fcXNWgNsGOHNtbN5uAWA",
+    "name": "Aquaman (2018) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
     "title": "Aquaman",
     "original_title": "Aquaman",
+    "original_language": "en",
     "year": 2018,
     "runtime": 143,
     "tmdb_id": 297802,
-    "imdb_id": "tt1477834",
-    "imdb_url": "https://www.imdb.com/title/tt1477834/",
-    "rating": 6.865,
+    "rating": 6.9,
+    "collection": "Aquaman Collection",
     "director": [
       "James Wan"
     ],
+    "trailer": "https://www.youtube.com/watch?v=2wcj6SrX4zw",
     "cast": [
       {
         "name": "Jason Momoa",
@@ -2238,43 +2239,38 @@
     "plot": "Half-human, half-Atlantean Arthur Curry is taken on the journey of his lifetime to discover if he is worth of being a king.",
     "poster": "https://image.tmdb.org/t/p/w500/ufl63EFcc5XpByEV2Ecdw6WJZAI.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/9QusGjxcYvfPD1THg6oW3RLeNn7.jpg",
-    "logo": "https://image.tmdb.org/t/p/original/fJOwxPRnjOuzDk2e2sj6DMHyava.png",
-    "trailer": "https://www.youtube.com/watch?v=2wcj6SrX4zw",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=14vIHDvP3Ge4o_OR1miHILdU74eBTtoOp|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "badges": {
-      "quality": "https://img.icons8.com/color/96/full-hd.png",
-      "source": "https://img.icons8.com/ios-filled/100/ffffff/cloud-download.png",
-      "audio_format": "https://img.icons8.com/color/96/dolby-digital.png",
-      "audio_channels": "https://img.icons8.com/ios-filled/100/ffffff/5-1.png"
-    },
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1qKgY9UT7_mB2fcXNWgNsGOHNtbN5uAWA|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
-      "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "resolution": "1080p",
+      "source": "Prime Video",
       "codec": "H.264",
-      "audio": "Dolby Atmos",
-      "channels": "5.1"
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil, Telugu, Hindi, Malayalam",
+      "size": ""
     },
     "versions": [
       {
-        "id": "14vIHDvP3Ge4o_OR1miHILdU74eBTtoOp",
-        "name": "@Tamiltvtoonsofficial - Aquaman 2018 Open Matte 1080p x264 Tamil-Telugu-Hindi DD5.1 - English Atmos 5.1 ESubs By Xebec D Shanks [TTT].mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "id": "1qKgY9UT7_mB2fcXNWgNsGOHNtbN5uAWA",
+        "name": "Aquaman (2018) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
+        "quality": "1080p • Prime Video • Dolby Digital Plus Multi",
+        "source": "Prime Video",
         "codec": "H.264",
-        "resolution": "1080p FHD",
-        "audio": "Dolby Atmos",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
         "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=14vIHDvP3Ge4o_OR1miHILdU74eBTtoOp|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1qKgY9UT7_mB2fcXNWgNsGOHNtbN5uAWA|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
-          "resolution": "1080p FHD",
-          "source": "WEB-DL",
+          "resolution": "1080p",
+          "source": "Prime Video",
           "codec": "H.264",
-          "audio": "Dolby Atmos",
-          "channels": "5.1"
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Hindi, Malayalam",
+          "size": ""
         }
       }
-    ],
-    "original_language": "en"
+    ]
   },
   {
     "id": "1ZWAqOjhTD5KwWWVOCnEOmV3d-qxHVqsI",
