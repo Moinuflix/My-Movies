@@ -307,8 +307,8 @@
     "soundtrack": {}
   },
   {
-    "id": "1FqCVS6fohhfsYsY09QpLZa2ZWcACzk9W",
-    "name": "Kanchana (2011) [1080p] [WEB-DL] [Dolby Atmos].mkv",
+    "id": "10eiheI2McHjZoQl5Nu45Ge4SGJ9zVftM",
+    "name": "Kanchana (2011) [720p] [WEB-DL] [Dolby Atmos].mkv",
     "title": "Kanchana",
     "original_title": "முனி 2: காஞ்சனா",
     "original_language": "ta",
@@ -351,42 +351,22 @@
     "plot": "When three spirits possess a timid young man and start making him act like a woman, his mother consults an exorcist who unearths a heartbreaking tale of societal injustice, murder and vengeance.",
     "poster": "https://image.tmdb.org/t/p/w500/imGP0yeKkK8u8LCboD3ufUvaFnT.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/1Vx5e9s6X8dCCfghY4jIioe8hX5.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1FqCVS6fohhfsYsY09QpLZa2ZWcACzk9W|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=10eiheI2McHjZoQl5Nu45Ge4SGJ9zVftM|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
-      "resolution": "1080p",
+      "resolution": "720p",
       "source": "WEB-DL",
       "codec": "x265",
       "audio": "Dolby Atmos",
       "channels": "5.1",
       "languages": "Tamil",
-      "size": "12GB"
+      "size": ""
     },
     "versions": [
       {
-        "id": "1FqCVS6fohhfsYsY09QpLZa2ZWcACzk9W",
-        "name": "Kanchana (2011) [1080p] [WEB-DL] [Dolby Atmos].mkv",
-        "quality": "1080p • WEB-DL • Dolby Atmos [12GB]",
-        "source": "WEB-DL",
-        "codec": "x265",
-        "resolution": "1080p",
-        "audio": "Dolby Atmos",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1FqCVS6fohhfsYsY09QpLZa2ZWcACzk9W|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p",
-          "source": "WEB-DL",
-          "codec": "x265",
-          "audio": "Dolby Atmos",
-          "channels": "5.1",
-          "languages": "Tamil",
-          "size": "12GB"
-        }
-      },
-      {
         "id": "10eiheI2McHjZoQl5Nu45Ge4SGJ9zVftM",
-        "name": "Kanchana (2011) [720p] [Netflix] [Dolby Atmos].mkv",
-        "quality": "720p • Netflix • Dolby Atmos",
-        "source": "Netflix",
+        "name": "Kanchana (2011) [720p] [WEB-DL] [Dolby Atmos].mkv",
+        "quality": "720p • WEB-DL • Dolby Atmos",
+        "source": "WEB-DL",
         "codec": "x265",
         "resolution": "720p",
         "audio": "Dolby Atmos",
@@ -394,7 +374,7 @@
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=10eiheI2McHjZoQl5Nu45Ge4SGJ9zVftM|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "720p",
-          "source": "Netflix",
+          "source": "WEB-DL",
           "codec": "x265",
           "audio": "Dolby Atmos",
           "channels": "5.1",
@@ -403,15 +383,7 @@
         }
       }
     ],
-    "soundtrack": {
-      "id": "1FqCVS6fohhfsYsY09QpLZa2ZWcACzk9W",
-      "title": "Karuppu Perazhaga",
-      "artist": "Sichith & Dharshana",
-      "movie": "Kanchana",
-      "quality": "5.1 Surround",
-      "poster": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/89/b1/71/89b17109-a89c-32b7-bcec-6930a10175d5/Kanchana.jpg/600x600bb.jpg",
-      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1FqCVS6fohhfsYsY09QpLZa2ZWcACzk9W|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-    }
+    "soundtrack": {}
   },
   {
     "id": "1TktryyxjLG8yL1FlT_g83xIC3U9HoGv6",
