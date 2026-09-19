@@ -1,5 +1,84 @@
 [
   {
+    "id": "1guzdM11nr7mYwLhlvx1Ce5QLnhbJwfU4",
+    "name": "Modha Rathri (2026) [1080p] [Netflix] [Dolby Atmos].mkv",
+    "title": "Modha Rathri",
+    "original_title": "மொத ராத்திரி",
+    "original_language": "ta",
+    "year": 2026,
+    "runtime": 155,
+    "tmdb_id": 1685882,
+    "rating": 7,
+    "collection": "",
+    "director": [
+      "Raja Karuppasamy"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=UrWrvwIRnqk",
+    "cast": [
+      {
+        "name": "Rishikanth",
+        "role": "Maruthanayagam",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/psIJLUWAZ106KsWnpa4oqJjSuzu.jpg"
+      },
+      {
+        "name": "Anishma Anilkumar",
+        "role": "Muthuselvi",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/4neoaZvYhVFgN4jGmtPGJqmkPxl.jpg"
+      },
+      {
+        "name": "Bagavathi Perumal",
+        "role": "Saravanan",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/ixK5bTpLOIXc8oJVE1IVMzcJrB2.jpg"
+      },
+      {
+        "name": "Chetan",
+        "role": "Poosari",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/jE66LoKC6ctmSLitdtIQUOrpTkI.jpg"
+      },
+      {
+        "name": "Abdool Lee",
+        "role": "Kannan",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/j23g1EIvFNGB3hlbEUbxV2GZwpj.jpg"
+      }
+    ],
+    "plot": "Two strangers are brought together at an unusual wedding where, in one night, too many surprises unfold and several lies are told, spiraling into chaos that changes everything.",
+    "poster": "https://image.tmdb.org/t/p/w500/lZiTSLDLIkW9YS6CWo8uaXZMcO6.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/11TnS5t4jJrD6Rl0mv6Klckxv7U.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1guzdM11nr7mYwLhlvx1Ce5QLnhbJwfU4|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "Netflix",
+      "codec": "H.264",
+      "audio": "Dolby Atmos",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": "6GB"
+    },
+    "versions": [
+      {
+        "id": "1guzdM11nr7mYwLhlvx1Ce5QLnhbJwfU4",
+        "name": "Modha Rathri (2026) [1080p] [Netflix] [Dolby Atmos].mkv",
+        "quality": "1080p • Netflix • Dolby Atmos [6GB]",
+        "source": "Netflix",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1guzdM11nr7mYwLhlvx1Ce5QLnhbJwfU4|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Netflix",
+          "codec": "H.264",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "6GB"
+        }
+      }
+    ],
+    "soundtrack": {}
+  },
+  {
     "id": "1py7RRrVsXvTvmdcuf4JCnpphLDTFyWxj",
     "name": "Dolby Presents: Amaze (2014) [1080p] [WEB-DL] [Dolby Atmos].mkv",
     "title": "Dolby Presents: Amaze",
