@@ -20,23 +20,28 @@
     "cast": [
       {
         "name": "Aamir Khan",
-        "role": "Sahir/Samar"
+        "role": "Sahir/Samar",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/6uiZSwi2kvd1jZ7X7Xz9W9VGuV4.jpg"
       },
       {
         "name": "Abhishek Bachchan",
-        "role": "A.C.P. Jai Dixit"
+        "role": "A.C.P. Jai Dixit",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/cALtfAvfUtS0Luf8MZaSiLfFRwd.jpg"
       },
       {
         "name": "Katrina Kaif",
-        "role": "Aaliya"
+        "role": "Aaliya",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/gSNaBg8Q7Nh0u4HhW6pR5B0ujlL.jpg"
       },
       {
         "name": "Uday Chopra",
-        "role": "Ali"
+        "role": "Ali",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/bHmH00vJNavpf5BgSuBeUSPB9bj.jpg"
       },
       {
         "name": "Jackie Shroff",
-        "role": "Iqbal Khan"
+        "role": "Iqbal Khan",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/sVqe6VioM37LQwgQLd8wnC5vapK.jpg"
       }
     ],
     "plot": "To avenge his father's death, a circus entertainer trained in magic and acrobatics robs banks to take down a corrupt bank owner. Two cops from Mumbai are assigned to the case.",
@@ -60,7 +65,8 @@
         "size": "8GB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1dQkZ73zz5G7kH7dNYNqNs7Wt31UxetGz|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
-    ]
+    ],
+    "trailer": "https://www.youtube.com/watch?v=qBf-oHyJWgA"
   },
   {
     "id": "1thhGIgK6QnJx17HEdzawQJs7Wg-_QA_c",
