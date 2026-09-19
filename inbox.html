@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>MoinuFlix — Movies & Collections Studio Pro</title>
+  <title>MoinuFlix — Movies & Collections Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-dark: #040711;
-      --bg-card: rgba(13, 22, 38, 0.78);
-      --bg-card-hover: rgba(22, 36, 61, 0.9);
+      --bg-card: rgba(13, 22, 38, 0.85);
+      --bg-card-hover: rgba(22, 36, 61, 0.95);
       --bg-input: #091224;
       --border-color: rgba(56, 189, 248, 0.18);
       
       --laser-cyan: #38bdf8;
-      --laser-cyan-glow: rgba(56, 189, 248, 0.4);
+      --laser-cyan-glow: rgba(56, 189, 248, 0.45);
       --laser-green: #10b981;
       --laser-green-glow: rgba(16, 185, 129, 0.35);
       --neon-purple: #a855f7;
@@ -27,7 +27,6 @@
       --text-muted: #94a3b8;
       --text-dim: #64748b;
       --font-stack: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -35,9 +34,8 @@
     body {
       background-color: var(--bg-dark);
       background-image: 
-        radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 90% 90%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 60%);
+        radial-gradient(circle at 12% 12%, rgba(56, 189, 248, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 88% 88%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
       color: var(--text-main);
       font-family: var(--font-stack);
       display: flex;
@@ -89,7 +87,6 @@
       display: flex;
       flex-direction: column;
       gap: 0.4rem;
-      overflow-y: auto;
     }
 
     .nav-btn {
@@ -183,7 +180,7 @@
       gap: 0.5rem;
     }
 
-    /* MAIN CONTAINER */
+    /* MAIN CONTENT */
     main {
       margin-left: 270px;
       flex: 1;
@@ -212,7 +209,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* CATEGORY PILLS */
+    /* PILLS */
     .category-pills-bar {
       display: flex;
       gap: 0.5rem;
@@ -269,7 +266,7 @@
     }
     .search-input:focus { border-color: var(--laser-cyan); outline: none; }
 
-    /* MOVIES & PACKS GRID */
+    /* GRID & CARDS */
     .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.75rem; }
 
     .movie-card {
@@ -320,11 +317,6 @@
       border: 1px solid var(--laser-green);
       color: var(--laser-green);
       box-shadow: 0 0 12px var(--laser-green-glow);
-    }
-    .badge-missing {
-      background: rgba(245, 158, 11, 0.25);
-      border: 1px solid var(--neon-gold);
-      color: var(--neon-gold);
     }
 
     .universe-badge {
@@ -422,7 +414,7 @@
     .form-group.full-width { grid-column: span 2; }
     label { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
 
-    input, select, textarea {
+    input, select {
       background: var(--bg-input);
       border: 1px solid var(--border-color);
       border-radius: 12px;
@@ -434,7 +426,7 @@
       font-family: var(--font-stack);
       width: 100%;
     }
-    input:focus, select:focus, textarea:focus {
+    input:focus, select:focus {
       border-color: var(--laser-cyan);
       box-shadow: 0 0 14px var(--laser-cyan-glow);
     }
@@ -625,7 +617,7 @@
       </li>
       <li>
         <button class="nav-btn" onclick="switchNav('existing-movies', this)">
-          <span>🎬 Movies & Collections</span>
+          <span>🎬 Movies & Packs</span>
           <span class="nav-badge" id="badge-c01">0</span>
         </button>
       </li>
@@ -639,12 +631,12 @@
 
       <li>
         <a href="series.html" class="nav-btn nav-ext-link">
-          <span>📺 Web Series Studio ➔</span>
+          <span>📺 Web Series ➔</span>
         </a>
       </li>
       <li>
         <a href="songs.html" class="nav-btn nav-ext-link">
-          <span>🎵 5.1 Songs Vault ➔</span>
+          <span>🎵 5.1 Songs ➔</span>
         </a>
       </li>
     </ul>
@@ -687,11 +679,11 @@
           <div style="font-size:1.85rem; font-weight:800; color:#fff;" id="stat-c01">0</div>
         </div>
         <div style="background:var(--bg-card); padding:1.2rem; border-radius:18px; border:1px solid var(--border-color);">
-          <div style="color:var(--neon-gold); font-size:0.75rem; font-weight:700;">⚡ IMAX CORE (1509k)</div>
+          <div style="color:var(--neon-gold); font-size:0.75rem; font-weight:700;">⚡ IMAX CORE</div>
           <div style="font-size:1.85rem; font-weight:800; color:var(--neon-gold);" id="stat-imax">0</div>
         </div>
         <div style="background:var(--bg-card); padding:1.2rem; border-radius:18px; border:1px solid var(--border-color);">
-          <div style="color:var(--neon-purple); font-size:0.75rem; font-weight:700;">👑 DYNAMIC PACKS</div>
+          <div style="color:var(--neon-purple); font-size:0.75rem; font-weight:700;">👑 FRANCHISE PACKS</div>
           <div style="font-size:1.85rem; font-weight:800; color:var(--neon-purple);" id="stat-packs">0</div>
         </div>
         <div style="background:var(--bg-card); padding:1.2rem; border-radius:18px; border:1px solid var(--border-color);">
@@ -745,7 +737,7 @@
       <header>
         <div>
           <h1>Movies, Collections & Genre Vaults</h1>
-          <p class="section-desc">Browse by Dynamic Franchise Collections, Regional Languages, or Genres</p>
+          <p class="section-desc">Browse by Franchise Packs, Regional Languages, or Genres</p>
         </div>
         <div style="display:flex; gap:0.6rem;">
           <button type="button" class="btn-clean-duplicates" onclick="autoMergeDuplicates()">
@@ -755,17 +747,18 @@
       </header>
 
       <div class="category-pills-bar">
-        <button class="cat-pill pill-pack active" onclick="setCategoryFilter('packs', this)">👑 Franchise Collections</button>
+        <button class="cat-pill pill-pack active" onclick="setCategoryFilter('packs', this)">👑 Franchise Packs</button>
         <button class="cat-pill pill-imax" onclick="setCategoryFilter('imax', this)">⚡ IMAX Core</button>
         <button class="cat-pill" onclick="setCategoryFilter('all', this)">🍿 All Movies</button>
         <button class="cat-pill" onclick="setCategoryFilter('lang_ta', this)">🌴 Tamil</button>
         <button class="cat-pill" onclick="setCategoryFilter('lang_te', this)">🏛️ Telugu</button>
         <button class="cat-pill" onclick="setCategoryFilter('lang_hi', this)">✨ Hindi</button>
         <button class="cat-pill" onclick="setCategoryFilter('lang_en', this)">🌐 English</button>
-        <button class="cat-pill" onclick="setCategoryFilter('genre_action', this)">🔥 Action Chunk</button>
-        <button class="cat-pill" onclick="setCategoryFilter('genre_horror', this)">🩸 Horror Chunk</button>
-        <button class="cat-pill" onclick="setCategoryFilter('genre_comedy', this)">😂 Comedy Chunk</button>
-        <button class="cat-pill" onclick="setCategoryFilter('genre_crime', this)">🕵️ Crime Chunk</button>
+        <button class="cat-pill" onclick="setCategoryFilter('genre_action', this)">🔥 Action</button>
+        <button class="cat-pill" onclick="setCategoryFilter('genre_horror', this)">🩸 Horror</button>
+        <button class="cat-pill" onclick="setCategoryFilter('genre_comedy', this)">😂 Comedy</button>
+        <button class="cat-pill" onclick="setCategoryFilter('genre_crime', this)">🕵️ Crime</button>
+        <button class="cat-pill" onclick="setCategoryFilter('genre_romance', this)">❤️ Romance</button>
       </div>
 
       <div class="search-bar-container">
@@ -775,12 +768,12 @@
       <div class="movies-grid" id="movies-grid-container"></div>
     </section>
 
-    <!-- VIEW 4: ADD SINGLE MOVIE & MULTI-CHUNKS -->
+    <!-- VIEW 4: ADD SINGLE MOVIE -->
     <section id="view-add-items-hub" class="view-panel">
       <header>
         <div>
           <h1>🎬 Ingest Single Movie</h1>
-          <p class="section-desc">Auto-routes to regional and genre chunks (`data_genre_action.json`, etc.)</p>
+          <p class="section-desc">Real-time TMDB sync to regional and genre chunks</p>
         </div>
       </header>
 
@@ -800,25 +793,25 @@
             </div>
 
             <div class="form-group">
-              <label>Collection / Franchise Name (Auto-filled or Custom)</label>
+              <label>Collection / Franchise Name (Auto-filled from TMDB)</label>
               <input type="text" id="input-collection-name" placeholder="e.g. K.G.F Collection">
             </div>
 
-            <!-- MULTI-GENRE CHUNKS ROUTE -->
+            <!-- GENRE CHUNKS ROUTE -->
             <div class="form-group full-width">
-              <label style="color: var(--laser-green);">⚡ Select Genre Chunks (Auto-saves to individual genre JSON files):</label>
+              <label style="color: var(--laser-green);">⚡ Select Genre Chunks (Saves directly into JSON files):</label>
               <div class="industry-checkbox-panel">
                 <label class="industry-check-label">
                   <input type="checkbox" id="chk-genre-action" value="action">
-                  <span>🔥 Action Chunk</span>
+                  <span>🔥 Action</span>
                 </label>
                 <label class="industry-check-label">
                   <input type="checkbox" id="chk-genre-horror" value="horror">
-                  <span>🩸 Horror Chunk</span>
+                  <span>🩸 Horror</span>
                 </label>
                 <label class="industry-check-label">
                   <input type="checkbox" id="chk-genre-comedy" value="comedy">
-                  <span>😂 Comedy Chunk</span>
+                  <span>😂 Comedy</span>
                 </label>
                 <label class="industry-check-label">
                   <input type="checkbox" id="chk-genre-crime" value="crime">
@@ -826,14 +819,14 @@
                 </label>
                 <label class="industry-check-label">
                   <input type="checkbox" id="chk-genre-romance" value="romance">
-                  <span>❤️ Romance Chunk</span>
+                  <span>❤️ Romance</span>
                 </label>
               </div>
             </div>
 
-            <!-- MULTI-INDUSTRY REGIONAL CHUNKS ROUTE -->
+            <!-- REGIONAL CHUNKS ROUTE -->
             <div class="form-group full-width">
-              <label style="color: var(--neon-gold);">⚡ Regional Language Chunks Sync:</label>
+              <label style="color: var(--neon-gold);">⚡ Regional Language Chunks:</label>
               <div class="industry-checkbox-panel">
                 <label class="industry-check-label">
                   <input type="checkbox" id="chk-kollywood" value="ta" checked>
@@ -866,8 +859,8 @@
             <div class="form-group">
               <label>Audio Format</label>
               <select id="input-audio" required>
-                <option value="DTS-HD Master / 1509k DTS">DTS-HD Master / 1509k DTS (Lossless)</option>
                 <option value="Dolby Atmos" selected>Dolby Atmos / TrueHD</option>
+                <option value="DTS-HD Master / 1509k DTS">DTS-HD Master / 1509k DTS</option>
                 <option value="Dolby Digital Plus">Dolby Digital Plus (DDP 5.1)</option>
                 <option value="Dolby Digital">Dolby Digital (AC3 5.1)</option>
               </select>
@@ -888,14 +881,14 @@
           </div>
 
           <button type="submit" class="btn-submit" id="btn-submit-movie" style="width: 100%;">
-            🚀 COMMIT MOVIE & SYNC ALL SELECTED CHUNKS
+            🚀 COMMIT MOVIE & SYNC ALL CHUNKS
           </button>
         </form>
       </div>
     </section>
   </main>
 
-  <!-- POPUP: DYNAMIC FRANCHISE PACK CHECKLIST -->
+  <!-- POPUP: REAL DYNAMIC FRANCHISE CHECKLIST -->
   <div class="modal-overlay" id="pack-modal">
     <div class="modal-card">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; border-bottom:1px solid var(--border-color); padding-bottom:1rem;">
@@ -915,7 +908,7 @@
 
       <div id="pack-missing-section">
         <div style="font-size:0.85rem; font-weight:800; color:var(--laser-red); margin-bottom:0.75rem;">
-          ❌ MISSING PARTS FROM THIS COLLECTION:
+          ❌ MISSING PARTS IN THIS COLLECTION:
         </div>
         <div id="pack-missing-list" style="display:flex; flex-direction:column; gap:0.6rem;"></div>
       </div>
@@ -930,11 +923,12 @@
     let hindiData = [];
     let englishData = [];
     
-    // Naye Genre Arrays
+    // Genre Arrays
     let genreAction = [];
     let genreHorror = [];
     let genreComedy = [];
     let genreCrime = [];
+    let genreRomance = [];
 
     let inboxArrivalsList = [];
     let fetchedMeta = null;
@@ -1027,7 +1021,7 @@
         } catch(e) { return []; }
       };
 
-      [moviesData, imaxData, tamilData, teluguData, hindiData, englishData, genreAction, genreHorror, genreComedy, genreCrime] = await Promise.all([
+      [moviesData, imaxData, tamilData, teluguData, hindiData, englishData, genreAction, genreHorror, genreComedy, genreCrime, genreRomance] = await Promise.all([
         fetchChunk('chunks/data_c01.json'),
         fetchChunk('chunks/data_c01_imax.json'),
         fetchChunk('chunks/data_c01_tamil.json'),
@@ -1037,19 +1031,20 @@
         fetchChunk('chunks/data_genre_action.json'),
         fetchChunk('chunks/data_genre_horror.json'),
         fetchChunk('chunks/data_genre_comedy.json'),
-        fetchChunk('chunks/data_genre_crime.json')
+        fetchChunk('chunks/data_genre_crime.json'),
+        fetchChunk('chunks/data_genre_romance.json')
       ]);
 
       document.getElementById('stat-c01').textContent = moviesData.length;
       document.getElementById('stat-imax').textContent = imaxData.length;
       document.getElementById('badge-c01').textContent = moviesData.length;
 
-      // Calculate Dynamic Packs
-      const dynamicPacks = new Set();
+      // Real Unique Franchise Packs Counter
+      const packSet = new Set();
       moviesData.forEach(m => {
-        if (m.collection && m.collection.trim()) dynamicPacks.add(m.collection.trim());
+        if (m.collection && m.collection.trim()) packSet.add(m.collection.trim());
       });
-      document.getElementById('stat-packs').textContent = dynamicPacks.size;
+      document.getElementById('stat-packs').textContent = packSet.size;
 
       calculateStorage();
       renderMoviesGrid();
@@ -1066,7 +1061,7 @@
           if (numMatch[2].toLowerCase() === 'gb') totalGB += val;
           else totalGB += (val / 1024);
         } else {
-          totalGB += 4; // default average
+          totalGB += 4;
         }
       });
       const pct = Math.min(100, ((totalGB / 5000) * 100)).toFixed(1);
@@ -1095,7 +1090,104 @@
       } catch(e) {}
     }
 
-    /* RENDER MOVIES OR DYNAMIC FRANCHISE PACKS */
+    async function loadDriveArrivalsList() {
+      const tbody = document.getElementById('smart-ingest-table-body');
+      tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 30px;">Cross-referencing Drive arrivals...</td></tr>';
+
+      try {
+        const res = await fetch(`${RAW_BASE}/inbox_arrivals.json?t=${Date.now()}`);
+        if (!res.ok) {
+          tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--laser-cyan); padding: 30px;">No pending arrivals found.</td></tr>';
+          return;
+        }
+        const raw = await res.json();
+        const knownIds = new Set(moviesData.map(m => m.id));
+        inboxArrivalsList = Array.isArray(raw) ? raw.filter(x => !knownIds.has(x.gdrive_id)) : [];
+
+        if (inboxArrivalsList.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--laser-green); font-weight:800; padding: 30px;">🎉 All Google Drive files are 100% Synced!</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = '';
+        inboxArrivalsList.forEach((item, idx) => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td style="font-family:monospace; color:var(--laser-cyan); font-weight:700;">${item.gdrive_id.substring(0, 14)}...</td>
+            <td style="color:#fff; font-weight:600;">${escapeHtml(item.title)}</td>
+            <td style="color:var(--neon-gold);">${escapeHtml(item.title.replace(/\.mkv|\.mp4/gi, ''))}</td>
+            <td><span style="background:rgba(56,189,248,0.15); color:var(--laser-cyan); padding:2px 7px; border-radius:6px; font-weight:700;">${item.size || '3 GB'}</span></td>
+            <td style="text-align:right;">
+              <button class="btn-action-primary" style="padding:5px 12px;" onclick="loadArrivalToForm(${idx})">⚡ Load Form ➔</button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+      } catch(e) {
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:var(--laser-red); padding:30px;">Error: ${e.message}</td></tr>`;
+      }
+    }
+
+    function loadArrivalToForm(idx) {
+      const item = inboxArrivalsList[idx];
+      if (!item) return;
+
+      switchNav('add-items-hub', document.querySelectorAll('.nav-btn')[3]);
+      document.getElementById('input-smart-filename').value = item.title;
+      document.getElementById('input-gdrive-url').value = item.gdrive_id;
+      parseSmartFileName(item.title);
+      showLaserToast(`Loaded: ${item.title}`);
+    }
+
+    async function executeOneClickBatchSyncAll() {
+      const token = getStoredToken();
+      if (!token) return showLaserToast('GitHub Token required!', true);
+      if (!inboxArrivalsList || inboxArrivalsList.length === 0) return showLaserToast('No arrivals to sync!', true);
+
+      if (!confirm(`Sync all ${inboxArrivalsList.length} arrivals directly to chunks?`)) return;
+
+      showLaserToast(`Processing batch sync...`);
+      let added = 0;
+
+      for (const item of inboxArrivalsList) {
+        const fileId = item.gdrive_id;
+        const streamUrl = `${WORKER_BASE}${fileId}${USER_AGENT}`;
+        const rawName = item.title.replace(/\.(mkv|mp4)/gi, '');
+
+        const entry = {
+          id: fileId,
+          name: item.title,
+          title: rawName,
+          original_title: rawName,
+          original_language: 'ta',
+          year: 2024,
+          runtime: 140,
+          tmdb_id: 0,
+          rating: 7.0,
+          collection: "",
+          director: [],
+          cast: [],
+          plot: "Streamed via MoinuFlix Private High-Speed Server.",
+          poster: "",
+          fanart: "",
+          stream_url: streamUrl,
+          specs: { resolution: "1080p FHD", audio: "Dolby Digital", source: "WEB-DL", size: item.size || "3 GB" },
+          versions: [{ id: fileId, name: item.title, quality: "1080p FHD", stream_url: streamUrl }]
+        };
+
+        if (!moviesData.some(m => m.id === fileId)) {
+          moviesData.unshift(entry);
+          added++;
+        }
+      }
+
+      await commitFileDirect('chunks/data_c01.json', moviesData, `Batch Sync: Added ${added} files`, token);
+      await commitFileDirect('inbox_arrivals.json', [], `Batch Sync: Cleared Inbox`, token);
+      showLaserToast(`✅ Synced ${added} files!`);
+      loadAllChunks();
+    }
+
+    /* RENDER MOVIES OR REAL TMDB FRANCHISE PACKS */
     function renderMoviesGrid() {
       const container = document.getElementById('movies-grid-container');
       container.innerHTML = '';
@@ -1106,14 +1198,14 @@
         const packMap = new Map();
         moviesData.forEach(m => {
           if (m.collection && m.collection.trim()) {
-            const colName = m.collection.trim();
-            if (!packMap.has(colName)) packMap.set(colName, []);
-            packMap.get(colName).push(m);
+            const cName = m.collection.trim();
+            if (!packMap.has(cName)) packMap.set(cName, []);
+            packMap.get(cName).push(m);
           }
         });
 
         if (packMap.size === 0) {
-          container.innerHTML = '<div style="color:var(--text-muted); padding:30px;">No Franchise Packs detected in Master Library. When movies have a TMDB collection name, they will appear here automatically!</div>';
+          container.innerHTML = '<div style="color:var(--text-muted); padding:30px;">No Franchise Collections detected in Master Library. Once movies with TMDB collections are added, they appear here.</div>';
           return;
         }
 
@@ -1136,7 +1228,7 @@
               <div>
                 <div class="movie-title">${escapeHtml(packTitle)}</div>
                 <div class="movie-meta-row">
-                  <span>${ownedList.length} Movie(s) Available</span>
+                  <span>${ownedList.length} Part(s) In Master</span>
                 </div>
               </div>
               <button type="button" class="btn-action-primary" onclick="openDynamicPackModal('${escapeHtml(packTitle)}')">
@@ -1149,19 +1241,20 @@
         return;
       }
 
-      // REGULAR MOVIES / GENRE FILTER
-      let listToRender = moviesData;
-      if (currentCategory === 'imax') listToRender = imaxData;
-      else if (currentCategory === 'lang_ta') listToRender = tamilData;
-      else if (currentCategory === 'lang_te') listToRender = teluguData;
-      else if (currentCategory === 'lang_hi') listToRender = hindiData;
-      else if (currentCategory === 'lang_en') listToRender = englishData;
-      else if (currentCategory === 'genre_action') listToRender = genreAction;
-      else if (currentCategory === 'genre_horror') listToRender = genreHorror;
-      else if (currentCategory === 'genre_comedy') listToRender = genreComedy;
-      else if (currentCategory === 'genre_crime') listToRender = genreCrime;
+      // GENRE & CHUNK LISTING
+      let list = moviesData;
+      if (currentCategory === 'imax') list = imaxData;
+      else if (currentCategory === 'lang_ta') list = tamilData;
+      else if (currentCategory === 'lang_te') list = teluguData;
+      else if (currentCategory === 'lang_hi') list = hindiData;
+      else if (currentCategory === 'lang_en') list = englishData;
+      else if (currentCategory === 'genre_action') list = genreAction;
+      else if (currentCategory === 'genre_horror') list = genreHorror;
+      else if (currentCategory === 'genre_comedy') list = genreComedy;
+      else if (currentCategory === 'genre_crime') list = genreCrime;
+      else if (currentCategory === 'genre_romance') list = genreRomance;
 
-      listToRender.forEach((m, idx) => {
+      list.forEach((m, idx) => {
         if (query && !m.title.toLowerCase().includes(query)) return;
 
         const card = document.createElement('div');
@@ -1178,7 +1271,7 @@
                 <span>${escapeHtml(m.year || '2024')}</span>
                 <span>•</span>
                 <span class="spec-chip">${escapeHtml(m.specs?.resolution || '4K UHD')}</span>
-                <span class="spec-chip chip-gold">${escapeHtml(m.specs?.audio || 'Atmos')}</span>
+                <span class="spec-chip chip-gold">${escapeHtml(m.specs?.audio || 'Dolby Atmos')}</span>
               </div>
             </div>
             <div class="card-actions-row">
@@ -1191,7 +1284,7 @@
       });
     }
 
-    // DYNAMIC PACK DETAILS & MISSING CHECKLIST FETCH VIA TMDB
+    // REAL TMDB DYNAMIC PACK CHECKLIST (E.G. KGF 1 OWNED ➔ KGF 2 CHECKLIST)
     async function openDynamicPackModal(packTitle) {
       document.getElementById('pack-modal-title').textContent = packTitle;
       const owned = moviesData.filter(m => m.collection && m.collection.trim() === packTitle);
@@ -1204,16 +1297,15 @@
         item.innerHTML = `
           <div>
             <div style="font-weight:700; color:#fff;">${escapeHtml(m.title)} (${m.year})</div>
-            <div style="font-size:0.75rem; color:var(--laser-green);">Ready in Library</div>
+            <div style="font-size:0.75rem; color:var(--laser-green);">Ready in Master Chunks</div>
           </div>
           <button class="btn-action-primary" style="flex:none; padding:4px 10px; font-size:0.75rem;" onclick="copyStream('${escapeHtml(m.stream_url)}')">📋 Link</button>
         `;
         ownedList.appendChild(item);
       });
 
-      // Fetch Collection Parts from TMDB to see what is missing
       const missingList = document.getElementById('pack-missing-list');
-      missingList.innerHTML = '<div style="font-size:0.8rem; color:var(--laser-cyan);">Checking missing movies from TMDB collection...</div>';
+      missingList.innerHTML = '<div style="font-size:0.8rem; color:var(--laser-cyan);">Checking TMDB live collection parts...</div>';
       document.getElementById('pack-modal').classList.add('active');
 
       try {
@@ -1229,7 +1321,7 @@
           const missing = parts.filter(p => !owned.some(o => (o.tmdb_id && Number(o.tmdb_id) === p.id) || o.title.toLowerCase().includes(p.title.toLowerCase())));
 
           if (missing.length === 0) {
-            missingList.innerHTML = '<div style="font-size:0.8rem; color:var(--laser-green); font-weight:700;">🎉 100% Complete! You own all movies in this collection.</div>';
+            missingList.innerHTML = '<div style="font-size:0.8rem; color:var(--laser-green); font-weight:700;">🎉 100% Complete Collection in your library!</div>';
           } else {
             missing.forEach(m => {
               const div = document.createElement('div');
@@ -1245,15 +1337,14 @@
             });
           }
         } else {
-          missingList.innerHTML = '<div style="font-size:0.8rem; color:var(--text-dim);">Collection details verified.</div>';
+          missingList.innerHTML = '<div style="font-size:0.8rem; color:var(--text-dim);">No extra parts found for this franchise.</div>';
         }
       } catch(e) {
-        missingList.innerHTML = '<div style="font-size:0.8rem; color:var(--text-dim);">Check complete.</div>';
+        missingList.innerHTML = '<div style="font-size:0.8rem; color:var(--text-dim);">Collection verified.</div>';
       }
     }
     function closePackModal() { document.getElementById('pack-modal').classList.remove('active'); }
 
-    // PARSER FOR MOVIE INPUT
     function parseSmartFileName(filename) {
       if (!filename || !filename.trim()) return;
       let raw = filename.replace(/\.(mkv|mp4|avi|ts)$/i, '').replace(/[\._\-]/g, ' ');
@@ -1268,7 +1359,6 @@
       document.getElementById('input-quality').value = is4K ? '4K UHD' : '1080p FHD';
       document.getElementById('chk-is-imax').checked = /1509k|dts|imax/i.test(filename);
 
-      // Search TMDB
       searchTmdbMovie(title, year);
     }
 
@@ -1332,19 +1422,19 @@
         if (gIds.includes('crime') || gIds.includes('thriller')) document.getElementById('chk-genre-crime').checked = true;
         if (gIds.includes('romance')) document.getElementById('chk-genre-romance').checked = true;
 
-        showLaserToast(`Loaded Metadata: "${data.title}"`);
+        showLaserToast(`Found: "${data.title}" (${fetchedMeta.year})`);
       } catch(e) {}
     }
 
     async function handleMovieSubmit(e) {
       e.preventDefault();
       const token = getStoredToken();
-      if (!token) return showLaserToast('GitHub Token required! Click ⚙️ Token.', true);
+      if (!token) return showLaserToast('GitHub Token required!', true);
 
       const tmdbId = document.getElementById('input-tmdb-id').value.trim();
       const gdrive = document.getElementById('input-gdrive-url').value.trim();
       const fileId = extractGDriveId(gdrive);
-      if (!fileId) return showLaserToast('Valid Drive ID required!', true);
+      if (!fileId) return showLaserToast('Valid Google Drive ID required!', true);
 
       if (!fetchedMeta || String(fetchedMeta.tmdb_id) !== tmdbId) {
         await fetchTmdbMetadata(tmdbId);
@@ -1386,11 +1476,11 @@
         }]
       };
 
-      showLaserToast(`Committing "${meta.title}" to GitHub...`);
+      showLaserToast(`Committing "${meta.title}"...`);
 
-      // 1. Master c01
+      // 1. Central Master
       moviesData.unshift(newEntry);
-      await commitFileDirect('chunks/data_c01.json', moviesData, `Studio: Add ${meta.title}`, token);
+      await commitFileDirect('chunks/data_c01.json', moviesData, `Add Movie ${meta.title}`, token);
 
       // 2. IMAX
       if (document.getElementById('chk-is-imax').checked) {
@@ -1398,7 +1488,7 @@
         await commitFileDirect('chunks/data_c01_imax.json', imaxData, `Sync IMAX: ${meta.title}`, token);
       }
 
-      // 3. Regional Chunks
+      // 3. Regional
       if (document.getElementById('chk-kollywood').checked) {
         tamilData.unshift(newEntry);
         await commitFileDirect('chunks/data_c01_tamil.json', tamilData, `Sync Tamil`, token);
@@ -1433,8 +1523,12 @@
         genreCrime.unshift(newEntry);
         await commitFileDirect('chunks/data_genre_crime.json', genreCrime, `Sync Crime`, token);
       }
+      if (document.getElementById('chk-genre-romance').checked) {
+        genreRomance.unshift(newEntry);
+        await commitFileDirect('chunks/data_genre_romance.json', genreRomance, `Sync Romance`, token);
+      }
 
-      showLaserToast(`🎉 "${meta.title}" committed to all selected chunks!`);
+      showLaserToast(`🎉 "${meta.title}" committed successfully!`);
       document.getElementById('movie-form').reset();
       loadAllChunks();
     }
@@ -1465,7 +1559,7 @@
       const clean = Array.from(map.values());
       await commitFileDirect('chunks/data_c01.json', clean, `Merged ${merged} duplicates`, token);
       moviesData = clean;
-      showLaserToast(`Merged ${merged} duplicates!`);
+      showLaserToast(`Merged ${merged} duplicate entries!`);
       loadAllChunks();
     }
 
