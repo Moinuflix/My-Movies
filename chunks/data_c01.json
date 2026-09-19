@@ -1,7 +1,7 @@
 [
   {
-    "id": "1guzdM11nr7mYwLhlvx1Ce5QLnhbJwfU4",
-    "name": "Modha Rathri (2026) [1080p] [Netflix] [Dolby Atmos].mkv",
+    "id": "1w_-PhsK_7KjFOSXAuLbKyKSRmaCW2Kgx",
+    "name": "Modha Rathri (2026) [4K UHD] [Netflix] [Dolby Atmos].mkv",
     "title": "Modha Rathri",
     "original_title": "மொத ராத்திரி",
     "original_language": "ta",
@@ -44,35 +44,35 @@
     "plot": "Two strangers are brought together at an unusual wedding where, in one night, too many surprises unfold and several lies are told, spiraling into chaos that changes everything.",
     "poster": "https://image.tmdb.org/t/p/w500/lZiTSLDLIkW9YS6CWo8uaXZMcO6.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/11TnS5t4jJrD6Rl0mv6Klckxv7U.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1guzdM11nr7mYwLhlvx1Ce5QLnhbJwfU4|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1w_-PhsK_7KjFOSXAuLbKyKSRmaCW2Kgx|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
-      "resolution": "1080p",
+      "resolution": "4K UHD",
       "source": "Netflix",
-      "codec": "H.264",
+      "codec": "x265",
       "audio": "Dolby Atmos",
       "channels": "5.1",
       "languages": "Tamil",
-      "size": "6GB"
+      "size": "13GB"
     },
     "versions": [
       {
-        "id": "1guzdM11nr7mYwLhlvx1Ce5QLnhbJwfU4",
-        "name": "Modha Rathri (2026) [1080p] [Netflix] [Dolby Atmos].mkv",
-        "quality": "1080p • Netflix • Dolby Atmos [6GB]",
+        "id": "1w_-PhsK_7KjFOSXAuLbKyKSRmaCW2Kgx",
+        "name": "Modha Rathri (2026) [4K UHD] [Netflix] [Dolby Atmos].mkv",
+        "quality": "4K UHD • Netflix • Dolby Atmos [13GB]",
         "source": "Netflix",
-        "codec": "H.264",
-        "resolution": "1080p",
+        "codec": "x265",
+        "resolution": "4K UHD",
         "audio": "Dolby Atmos",
         "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1guzdM11nr7mYwLhlvx1Ce5QLnhbJwfU4|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1w_-PhsK_7KjFOSXAuLbKyKSRmaCW2Kgx|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
-          "resolution": "1080p",
+          "resolution": "4K UHD",
           "source": "Netflix",
-          "codec": "H.264",
+          "codec": "x265",
           "audio": "Dolby Atmos",
           "channels": "5.1",
           "languages": "Tamil",
-          "size": "6GB"
+          "size": "13GB"
         }
       }
     ],
