@@ -21,23 +21,28 @@
     "cast": [
       {
         "name": "Turo Pajala",
-        "role": "Taisto Kasurinen"
+        "role": "Taisto Kasurinen",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/b6JdzqTn6UFYf4DouHbbE8Ypk4r.jpg"
       },
       {
         "name": "Susanna Haavisto",
-        "role": "Irmeli Pihlaja"
+        "role": "Irmeli Pihlaja",
+        "thumbnail": ""
       },
       {
         "name": "Matti Pellonpää",
-        "role": "Mikkonen"
+        "role": "Mikkonen",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/1Qzhkkp3wFE2NMGKVyOra9931q2.jpg"
       },
       {
         "name": "Eetu Hilkamo",
-        "role": "Riku"
+        "role": "Riku",
+        "thumbnail": ""
       },
       {
         "name": "Erkki Pajala",
-        "role": "Miner"
+        "role": "Miner",
+        "thumbnail": ""
       }
     ],
     "plot": "A Finnish man goes to the city to find a job after the mine where he worked is closed and his father commits suicide.",
@@ -5741,7 +5746,7 @@
       {
         "name": "Sumathi",
         "role": "Vijay's Sister",
-        "thumbnail": ""
+        "thumbnail": "https://image.tmdb.org/t/p/w185/4edOcFO44XgkkOoATsdDeGShs8z.jpg"
       }
     ],
     "plot": "A young man turns into a vigilante to fight injustice after his loved ones are killed.",
@@ -13808,8 +13813,8 @@
     "imdb_url": "https://www.imdb.com/title/tt9619824/",
     "rating": 7,
     "director": [
-      "Zach Lipovsky",
-      "Adam Stein"
+      "Adam Stein",
+      "Zach Lipovsky"
     ],
     "cast": [
       {
@@ -15520,8 +15525,8 @@
     "imdb_url": "https://www.imdb.com/title/tt0435437/",
     "rating": 5.787,
     "director": [
-      "Abbas Alibhai Burmawalla",
-      "Mustan Alibhai Burmawalla"
+      "Mustan Alibhai Burmawalla",
+      "Abbas Alibhai Burmawalla"
     ],
     "cast": [
       {
