@@ -348,6 +348,23 @@
       border-color: rgba(245, 158, 11, 0.3);
       color: var(--neon-gold);
     }
+    .spec-chip.chip-green {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: var(--laser-green);
+      color: var(--laser-green);
+      font-weight: 800;
+    }
+
+    .clean-gb-badge {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ff4d58;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
 
     .card-actions-row { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
     .btn-action-primary {
@@ -1294,8 +1311,14 @@
         });
       }
 
-      list.forEach((m, idx) => {
+      list.forEach((m) => {
         if (query && !m.title.toLowerCase().includes(query)) return;
+
+        // Version count calculation
+        const vCount = (m.versions && Array.isArray(m.versions)) ? m.versions.length : 1;
+        const versionBadge = vCount > 1 
+          ? `<span class="spec-chip chip-green">⚡ ${vCount} VERSIONS</span>` 
+          : `<span class="spec-chip" style="opacity:0.75;">1 Version</span>`;
 
         const card = document.createElement('div');
         card.className = 'movie-card';
@@ -1311,13 +1334,17 @@
                 <span>${escapeHtml(m.year || '2024')}</span>
                 <span>•</span>
                 <span class="spec-chip">${escapeHtml(m.specs?.resolution || '4K UHD')}</span>
+                ${versionBadge}
+              </div>
+              <div class="movie-meta-row" style="margin-top:-2px;">
                 <span class="spec-chip chip-gold">${escapeHtml(m.specs?.audio || 'Dolby Atmos')}</span>
+                ${m.specs?.size ? `<span class="clean-gb-badge">${escapeHtml(m.specs.size)}</span>` : ''}
               </div>
             </div>
             <div class="card-actions-row">
               <button type="button" class="btn-action-primary" onclick="prepareAddVersion('${m.tmdb_id}')">+ VERSION</button>
               <button type="button" class="btn-action-primary" onclick="copyStream('${escapeHtml(m.stream_url)}')">📋 Link</button>
-              <button type="button" class="btn-delete-item" onclick="deleteMovie(${idx}, '${escapeHtml(m.title)}')">🗑️</button>
+              <button type="button" class="btn-delete-item" onclick="deleteMovie('${m.id}', '${m.tmdb_id || 0}', '${escapeHtml(m.title)}')">🗑️</button>
             </div>
           </div>
         `;
@@ -1456,6 +1483,7 @@
           fanart: data.backdrop_path ? `https://image.tmdb.org/t/p/original${data.backdrop_path}` : ''
         };
 
+        // Auto check language
         const lang = data.original_language;
         if (lang === 'ta') document.getElementById('chk-kollywood').checked = true;
         else if (lang === 'te') document.getElementById('chk-tollywood').checked = true;
@@ -1464,7 +1492,17 @@
         else if (lang === 'ml') document.getElementById('chk-mollywood').checked = true;
         else if (lang === 'kn') document.getElementById('chk-sandalwood').checked = true;
 
-        showLaserToast(`Found: "${data.title}" (${fetchedMeta.year})`);
+        // Auto check if already exists in library for merge dock
+        const existing = moviesData.find(m => String(m.tmdb_id) === String(tmdbId));
+        if (existing) {
+          targetExistingMovie = existing;
+          document.getElementById('dock-movie-name').textContent = `⚡ "${existing.title}" is already in Library!`;
+          document.getElementById('merge-dock').classList.add('show');
+        } else {
+          document.getElementById('merge-dock').classList.remove('show');
+        }
+
+        showLaserToast(`Loaded: "${data.title}"`);
       } catch(e) {}
     }
 
@@ -1499,12 +1537,12 @@
     async function handleMovieSubmit(e) {
       e.preventDefault();
       const token = getStoredToken();
-      if (!token) return showLaserToast('GitHub Token required!', true);
+      if (!token) return showLaserToast('GitHub Token required! Click ⚙️ Token.', true);
 
       const tmdbId = document.getElementById('input-tmdb-id').value.trim();
       const gdrive = document.getElementById('input-gdrive-url').value.trim();
       const fileId = extractGDriveId(gdrive);
-      if (!fileId) return showLaserToast('Valid Google Drive ID required!', true);
+      if (!fileId) return showLaserToast('Valid Drive link or ID required!', true);
 
       if (!fetchedMeta || String(fetchedMeta.tmdb_id) !== tmdbId) {
         await fetchTmdbMetadata(tmdbId);
@@ -1568,13 +1606,13 @@
         versions: [versionObj]
       };
 
-      showLaserToast(`Committing "${meta.title}"...`);
+      showLaserToast(`Committing "${meta.title}" to Master...`);
 
-      // 1. Central Master
+      // 1. Central Master Chunk (c01)
       moviesData.unshift(newEntry);
       await commitFileDirect('chunks/data_c01.json', moviesData, `Add Movie ${meta.title}`, token);
 
-      // 2. IMAX
+      // 2. IMAX Core Chunk (if applicable)
       if (document.getElementById('chk-is-imax').checked) {
         imaxData.unshift(newEntry);
         await commitFileDirect('chunks/data_c01_imax.json', imaxData, `Sync IMAX: ${meta.title}`, token);
@@ -1617,16 +1655,39 @@
 
       const map = new Map();
       let merged = 0;
+
       moviesData.forEach(m => {
-        const key = m.tmdb_id ? String(m.tmdb_id) : m.title.toLowerCase().trim();
+        const key = (m.tmdb_id && String(m.tmdb_id) !== "0") 
+          ? `tmdb_${m.tmdb_id}` 
+          : `title_${(m.title || m.name || '').toLowerCase().trim()}`;
+
         if (!map.has(key)) {
-          m.versions = m.versions || [];
+          if (!m.versions || !Array.isArray(m.versions) || m.versions.length === 0) {
+            m.versions = [{
+              id: m.id || m.gdrive_id,
+              name: m.name || m.title,
+              quality: (m.specs && m.specs.resolution) ? m.specs.resolution : '1080p FHD',
+              stream_url: m.stream_url
+            }];
+          }
           map.set(key, m);
         } else {
           const ex = map.get(key);
           ex.versions = ex.versions || [];
-          (m.versions || []).forEach(v => {
-            if (!ex.versions.some(ev => ev.id === v.id)) ex.versions.push(v);
+          
+          const incoming = (m.versions && Array.isArray(m.versions) && m.versions.length > 0)
+            ? m.versions
+            : [{
+                id: m.id || m.gdrive_id,
+                name: m.name || m.title,
+                quality: (m.specs && m.specs.resolution) ? m.specs.resolution : '1080p FHD',
+                stream_url: m.stream_url
+              }];
+
+          incoming.forEach(v => {
+            if (v.id && !ex.versions.some(ev => String(ev.id).trim() === String(v.id).trim())) {
+              ex.versions.push(v);
+            }
           });
           merged++;
         }
@@ -1635,22 +1696,52 @@
       if (merged === 0) return showLaserToast('No duplicates found!');
 
       const clean = Array.from(map.values());
-      await commitFileDirect('chunks/data_c01.json', clean, `Merged ${merged} duplicates`, token);
-      moviesData = clean;
-      showLaserToast(`Merged ${merged} duplicate entries!`);
-      loadAllChunks();
+      showLaserToast(`Saving ${merged} merged duplicates to GitHub...`);
+
+      try {
+        await commitFileDirect('chunks/data_c01.json', clean, `Merged ${merged} duplicate entries into versions`, token);
+        moviesData = clean;
+        showLaserToast(`✅ Successfully merged ${merged} duplicates!`);
+        await loadAllChunks();
+      } catch (e) {
+        showLaserToast(`Merge Failed: ${e.message}`, true);
+      }
     }
 
-    async function deleteMovie(idx, title) {
+    async function deleteMovie(targetId, targetTmdb, title) {
       const pin = prompt(`Delete "${title}"?\nEnter confirmation PIN:`);
-      if (pin !== CONFIRM_PIN) return showLaserToast('Incorrect PIN!', true);
-      const token = getStoredToken();
-      if (!token) return showLaserToast('Token required!', true);
+      if (pin !== CONFIRM_PIN) {
+        if (pin !== null) showLaserToast('Incorrect PIN! Deletion aborted.', true);
+        return;
+      }
 
-      moviesData.splice(idx, 1);
-      await commitFileDirect('chunks/data_c01.json', moviesData, `Delete ${title}`, token);
-      showLaserToast(`Deleted "${title}"`);
-      loadAllChunks();
+      const token = getStoredToken();
+      if (!token) return showLaserToast('GitHub Token missing! Please click ⚙️ Token.', true);
+
+      showLaserToast(`Deleting "${title}" from GitHub...`);
+
+      try {
+        const initialCount = moviesData.length;
+        
+        moviesData = moviesData.filter(m => {
+          if (targetTmdb && String(targetTmdb) !== "0" && m.tmdb_id) {
+            return String(m.tmdb_id) !== String(targetTmdb);
+          }
+          return String(m.id).trim() !== String(targetId).trim();
+        });
+
+        if (moviesData.length === initialCount) {
+          showLaserToast('Movie not found in list!', true);
+          return;
+        }
+
+        await commitFileDirect('chunks/data_c01.json', moviesData, `Studio Delete: Removed ${title}`, token);
+        showLaserToast(`✅ "${title}" successfully deleted!`);
+        await loadAllChunks();
+      } catch (err) {
+        showLaserToast(`Delete Failed: ${err.message}`, true);
+        await loadAllChunks();
+      }
     }
 
     async function commitFileDirect(chunkPath, arrayData, message, token) {
@@ -1690,7 +1781,7 @@
     }
 
     async function copyStream(url) {
-      if (!url) return showLaserToast('No URL', true);
+      if (!url) return showLaserToast('No Stream Link Available', true);
       await navigator.clipboard.writeText(url);
       showLaserToast('Stream Link Copied!');
     }
