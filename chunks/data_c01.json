@@ -1,66 +1,64 @@
 [
   {
-    "id": "13LHtaaQN8cQrvQ1gPZ7AwSwQBnAmSWDU",
-    "name": "Dhoom 2 (2006) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
-    "title": "Dhoom 2",
-    "original_title": "धूम २",
+    "id": "1dQkZ73zz5G7kH7dNYNqNs7Wt31UxetGz",
+    "name": "Dhoom 3 (2013) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
+    "title": "Dhoom 3",
+    "original_title": "धूम ३",
     "original_language": "hi",
-    "year": 2006,
-    "runtime": 151,
-    "tmdb_id": 14194,
-    "rating": 6.6,
+    "year": 2013,
+    "runtime": 171,
+    "tmdb_id": 44977,
+    "rating": 6,
     "collection": "Dhoom Collection",
     "genres": [
-      "Drama",
       "Action",
-      "Thriller",
       "Crime"
     ],
     "director": [
-      "Sanjay Gadhvi"
+      "Vijay Krishna Acharya"
     ],
     "cast": [
       {
-        "name": "Hrithik Roshan",
-        "role": "Mr. A"
+        "name": "Aamir Khan",
+        "role": "Sahir/Samar"
       },
       {
         "name": "Abhishek Bachchan",
-        "role": "Jai Dixit"
+        "role": "A.C.P. Jai Dixit"
       },
       {
-        "name": "Aishwarya Rai Bachchan",
-        "role": "Sunehri"
+        "name": "Katrina Kaif",
+        "role": "Aaliya"
       },
       {
         "name": "Uday Chopra",
-        "role": "Ali Khan"
+        "role": "Ali"
       },
       {
-        "name": "Bipasha Basu",
-        "role": "Sonali Bose / Monali Bose"
+        "name": "Jackie Shroff",
+        "role": "Iqbal Khan"
       }
     ],
-    "plot": "Jai and Ali return, this time on the trail of an international thief who steals priceless artifacts and has chosen Mumbai as his next target.",
-    "poster": "https://image.tmdb.org/t/p/w500/3zJLnrP9g9LSMpX5C1wau49gGUv.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/yKQjyrGMfNZJDFGoDumZIcCNZvb.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13LHtaaQN8cQrvQ1gPZ7AwSwQBnAmSWDU|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "plot": "To avenge his father's death, a circus entertainer trained in magic and acrobatics robs banks to take down a corrupt bank owner. Two cops from Mumbai are assigned to the case.",
+    "poster": "https://image.tmdb.org/t/p/w500/rUVTM5EQUQ2I0fcfE46AkvBYWae.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/m715Fj5VVCXfwzqbCZFhmJBH8S9.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1dQkZ73zz5G7kH7dNYNqNs7Wt31UxetGz|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
       "resolution": "1080p FHD",
       "audio": "Dolby Atmos",
       "source": "Netflix",
-      "size": "11 GB"
+      "size": "8GB"
     },
     "versions": [
       {
-        "id": "13LHtaaQN8cQrvQ1gPZ7AwSwQBnAmSWDU",
-        "name": "Dhoom 2 (2006) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
+        "id": "1dQkZ73zz5G7kH7dNYNqNs7Wt31UxetGz",
+        "name": "Dhoom 3 (2013) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
         "quality": "1080p FHD • Netflix • Dolby Atmos",
         "source": "Netflix",
         "resolution": "1080p FHD",
         "audio": "Dolby Atmos",
-        "size": "11 GB",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13LHtaaQN8cQrvQ1gPZ7AwSwQBnAmSWDU|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        "size": "8GB",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1dQkZ73zz5G7kH7dNYNqNs7Wt31UxetGz|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
   },
