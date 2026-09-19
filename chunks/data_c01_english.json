@@ -1,5 +1,84 @@
 [
   {
+    "id": "1thhGIgK6QnJx17HEdzawQJs7Wg-_QA_c",
+    "name": "Naruto Shippuden the Movie (2007) [1080p] [BLURAY] [Dolby Atmos].mkv",
+    "title": "Naruto Shippuden the Movie",
+    "original_title": "劇場版 NARUTO -ナルト- 疾風伝",
+    "original_language": "en",
+    "year": 2007,
+    "runtime": 94,
+    "tmdb_id": 20982,
+    "rating": 7.4,
+    "collection": "Naruto Collection",
+    "director": [
+      "Hajime Kamegaki"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=57eqTNwLVbk",
+    "cast": [
+      {
+        "name": "Junko Takeuchi",
+        "role": "Naruto Uzumaki (voice)",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/zNjrblq3xS1idpCsmSl5P5eTon7.jpg"
+      },
+      {
+        "name": "Chie Nakamura",
+        "role": "Sakura Haruno (voice)",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/evB6vKUbm0CKgBcgikPeFXdwd29.jpg"
+      },
+      {
+        "name": "Yōichi Masukawa",
+        "role": "Rock Lee (voice)",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/sE664CcqM1pvoWsYsca7szlIzl5.jpg"
+      },
+      {
+        "name": "Koichi Tochika",
+        "role": "Neji Hyûga (voice)",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/wZYe5RmOLYIhpesKEaFIxz7YN7G.jpg"
+      },
+      {
+        "name": "Ayumi Fujimura",
+        "role": "Shion (voice)",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/zITmioEbXjrhybAOBNS3CAyy2QQ.jpg"
+      }
+    ],
+    "plot": "Demons that once almost destroyed the world, are revived by someone. To prevent the world from being destroyed, the demon has to be sealed and the only one who can do it is the shrine maiden Shion from the country of demons, who has two powers; one is sealing demons and the other is predicting the deaths of humans. This time Naruto's mission is to guard Shion, but she predicts Naruto's death. The only way to escape it, is to get away from Shion, which would leave her unguarded, then the demon, whose only goal is to kill Shion will do so, thus meaning the end of the world. Naruto decides to challenge this \"prediction of death.\"",
+    "poster": "https://image.tmdb.org/t/p/w500/vDkct38sSFSWJIATlfJw0l3QOIR.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/fJRbm6m2DDbSSyD8jTeB8evZ3Hq.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1thhGIgK6QnJx17HEdzawQJs7Wg-_QA_c|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "BLURAY",
+      "codec": "x265",
+      "audio": "Dolby Atmos",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": "2 GB"
+    },
+    "versions": [
+      {
+        "id": "1thhGIgK6QnJx17HEdzawQJs7Wg-_QA_c",
+        "name": "Naruto Shippuden the Movie (2007) [1080p] [BLURAY] [Dolby Atmos].mkv",
+        "quality": "1080p • BLURAY • Dolby Atmos [2 GB]",
+        "source": "BLURAY",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1thhGIgK6QnJx17HEdzawQJs7Wg-_QA_c|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "BLURAY",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "2 GB"
+        }
+      }
+    ],
+    "soundtrack": {}
+  },
+  {
     "id": "1py7RRrVsXvTvmdcuf4JCnpphLDTFyWxj",
     "name": "Dolby Presents: Amaze (2014) [1080p] [WEB-DL] [Dolby Atmos].mkv",
     "title": "Dolby Presents: Amaze",
