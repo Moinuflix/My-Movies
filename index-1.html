@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MoinuFlix — Web Series Studio Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #030712;
+      --bg-card: rgba(15, 23, 42, 0.75);
+      --bg-card-hover: rgba(30, 41, 59, 0.9);
+      --bg-input: #0b1329;
+      --border-color: rgba(56, 189, 248, 0.15);
+      --electric-blue: #2563eb;
+      --laser-cyan: #38bdf8;
+      --laser-cyan-glow: rgba(56, 189, 248, 0.45);
+      --laser-green: #10b981;
+      --laser-green-glow: rgba(16, 185, 129, 0.35);
+      --laser-red: #ef4444;
+      --gold-lcu: #f59e0b;
+      --gold-lcu-glow: rgba(245, 158, 11, 0.4);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-stack: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.15) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(56, 189, 248, 0.12) 0%, transparent 45%);
+      color: var(--text-main);
+      font-family: var(--font-stack);
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    aside {
+      width: 270px;
+      background: rgba(11, 19, 43, 0.95);
+      backdrop-filter: blur(25px);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 1.2rem;
+      position: fixed;
+      height: 100vh;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0 0.5rem 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 1.25rem;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--laser-cyan), var(--electric-blue));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #030712;
+      box-shadow: 0 0 20px var(--laser-cyan-glow);
+    }
+
+    .brand-text { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .nav-btn {
+      width: 100%;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 0.75rem 0.95rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: left;
+      text-decoration: none;
+    }
+
+    .nav-btn:hover { background: rgba(56, 189, 248, 0.06); color: #fff; }
+    .nav-btn.active {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(56, 189, 248, 0.1));
+      color: #fff;
+      border: 1px solid var(--laser-cyan);
+      box-shadow: 0 0 20px var(--laser-cyan-glow);
+    }
+
+    .nav-badge {
+      margin-left: auto;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 0.15rem 0.55rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .btn-token-config {
+      width: 100%;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: var(--laser-cyan);
+      padding: 0.7rem 0.9rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    main {
+      margin-left: 270px;
+      flex: 1;
+      padding: 2.5rem 3rem 6rem 3rem;
+      max-width: 1440px;
+      width: calc(100% - 270px);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    h1 { font-size: 1.95rem; font-weight: 800; letter-spacing: -0.8px; }
+    .section-desc { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem; }
+
+    /* FORM STYLING */
+    .form-container {
+      background: var(--bg-card);
+      backdrop-filter: blur(25px);
+      border: 1px solid var(--border-color);
+      border-radius: 22px;
+      padding: 2.2rem 2.6rem;
+      max-width: 900px;
+      box-shadow: 0 12px 45px rgba(0,0,0,0.5);
+      margin-bottom: 2.5rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; position: relative; }
+    .form-group.full-width { grid-column: span 2; }
+    label { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
+
+    input, select {
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.2s ease;
+      font-family: var(--font-stack);
+      width: 100%;
+    }
+    input:focus, select:focus {
+      border-color: var(--laser-cyan);
+      box-shadow: 0 0 14px var(--laser-cyan-glow);
+    }
+
+    .smart-input {
+      border-color: rgba(56, 189, 248, 0.4);
+      background: rgba(56, 189, 248, 0.04);
+    }
+
+    .tag-container { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .smart-tag {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--laser-cyan);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-family: monospace;
+      font-weight: 700;
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, var(--laser-cyan), var(--electric-blue));
+      color: #030712;
+      border: none;
+      padding: 0.85rem 1.8rem;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 0 18px var(--laser-cyan-glow);
+      transition: all 0.25s ease;
+    }
+    .btn-submit:hover { transform: translateY(-2px); }
+
+    .tmdb-results-box {
+      display: none;
+      margin-top: 8px;
+      background: #0b1329;
+      border: 1px solid var(--laser-cyan);
+      box-shadow: 0 0 20px var(--laser-cyan-glow);
+      border-radius: 14px;
+      padding: 10px;
+      max-height: 280px;
+      overflow-y: auto;
+      z-index: 50;
+    }
+    .tmdb-result-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+    .tmdb-result-item:hover { background: #1e293b; border-color: var(--laser-cyan); }
+    .tmdb-result-poster { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; background: #1e293b; flex-shrink: 0; }
+    .tmdb-result-info { flex: 1; overflow: hidden; }
+    .tmdb-result-title { font-weight: 700; color: #fff; font-size: 0.88rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .tmdb-result-meta { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* SERIES GRID & CARDS */
+    .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.75rem; }
+    .movie-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .movie-card:hover {
+      border-color: var(--laser-cyan);
+      transform: translateY(-5px);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.6), 0 0 20px var(--laser-cyan-glow);
+    }
+    .poster-wrap { width: 100%; height: 290px; background: #070d1e; position: relative; overflow: hidden; }
+    .poster-img { width: 100%; height: 100%; object-fit: cover; }
+    .poster-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 0.85rem; font-weight: 600; text-align: center; }
+
+    .universe-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(3, 7, 18, 0.9);
+      border: 1px solid var(--laser-cyan);
+      color: var(--laser-cyan);
+      padding: 4px 9px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+      z-index: 2;
+    }
+
+    .pack-status-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+      z-index: 2;
+      background: rgba(16, 185, 129, 0.25);
+      border: 1px solid var(--laser-green);
+      color: var(--laser-green);
+      box-shadow: 0 0 12px var(--laser-green-glow);
+    }
+
+    .movie-card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .movie-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .movie-meta-row {
+      display: flex;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-bottom: 0.65rem;
+      align-items: center;
+      font-weight: 600;
+      flex-wrap: wrap;
+    }
+
+    .spec-chip {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: var(--laser-cyan);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+    .spec-chip.chip-gold {
+      background: rgba(245, 158, 11, 0.12);
+      border-color: rgba(245, 158, 11, 0.3);
+      color: var(--gold-lcu);
+    }
+
+    .card-actions-row { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+    .btn-action-primary {
+      flex: 1;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--laser-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 0.65rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn-action-primary:hover { background: var(--laser-cyan); color: #030712; }
+
+    .btn-delete-item {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--laser-red);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 0.65rem 0.8rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-delete-item:hover { background: var(--laser-red); color: #fff; }
+
+    /* MODAL OVERLAY */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(2, 6, 23, 0.88);
+      backdrop-filter: blur(20px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 1.25rem;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-card {
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 720px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+    }
+
+    #laser-toast {
+      position: fixed;
+      top: 25px;
+      right: 25px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--laser-cyan);
+      box-shadow: 0 0 25px var(--laser-cyan-glow);
+      color: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: none;
+      z-index: 300;
+      max-width: 90%;
+    }
+
+    /* MOBILE RESPONSIVENESS */
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      aside {
+        width: 100%;
+        height: auto;
+        position: sticky;
+        top: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 0.75rem 1rem;
+        z-index: 100;
+      }
+      .brand { padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+      .nav-list {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .nav-btn { white-space: nowrap; padding: 0.5rem 0.8rem; font-size: 0.8rem; }
+      .sidebar-footer { display: none; }
+      main { margin-left: 0; width: 100%; padding: 1.25rem 1rem 6rem 1rem; }
+      .form-container { padding: 1.4rem 1.1rem; }
+      .form-grid { grid-template-columns: 1fr; gap: 0.9rem; }
+      .form-group.full-width { grid-column: span 1; }
+      .movies-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
+      .poster-wrap { height: 210px; }
+      .movie-card-body { padding: 0.85rem; }
+      .movie-title { font-size: 0.95rem; }
+      .modal-card { padding: 1.25rem; border-radius: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="laser-toast"></div>
+
+  <aside>
+    <div class="brand">
+      <div class="brand-logo">M</div>
+      <div class="brand-text">MoinuFlix</div>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="inbox.html" class="nav-btn">
+          <span>🎬 Movies Manager</span>
+        </a>
+      </li>
+      <li>
+        <a href="series.html" class="nav-btn active">
+          <span>📺 Web Series</span>
+          <span class="nav-badge" id="badge-series-count">0</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button class="btn-token-config" onclick="configureGithubToken()">
+        <span id="token-status-label">⚙️ GitHub Token</span>
+      </button>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <h1>📺 Web Series Studio Manager</h1>
+        <p class="section-desc">Manage episodes, cloud seasons, and chunk sync for `chunks/data_c02.json`</p>
+      </div>
+      <div>
+        <button class="btn-action-primary" style="padding: 0.6rem 1.2rem;" onclick="configureGithubToken()">⚙️ Token Config</button>
+      </div>
+    </header>
+
+    <!-- INGESTION FORM -->
+    <div class="form-container">
+      <form id="series-ingest-form" onsubmit="handleSeriesSubmit(event)">
+        <div class="form-grid">
+          
+          <div class="form-group full-width">
+            <label style="color: var(--laser-cyan);">⚡ Release File Name (Auto-detects TV Show, Season & Episode)</label>
+            <input type="text" id="input-series-filename" class="smart-input" placeholder="e.g. Farzi.S01E01.1080p.Prime.WEB-DL.DDP5.1.Atmos.x265.mkv" oninput="parseSeriesSmartFileName(this.value)">
+            <div id="series-suggestions-box" class="tmdb-results-box">
+              <div style="font-size: 0.75rem; color: var(--laser-cyan); font-weight: 700; margin-bottom: 6px;">🎯 Click your TV Show to auto-select TMDB TV ID:</div>
+              <div id="series-suggestions-list"></div>
+            </div>
+            <div class="tag-container" id="series-smart-tags"></div>
+          </div>
+
+          <div class="form-group">
+            <label>TV Show Title</label>
+            <input type="text" id="input-series-title" placeholder="e.g. Farzi" required>
+          </div>
+
+          <div class="form-group">
+            <label>TMDB TV ID</label>
+            <input type="number" id="input-series-tmdb" placeholder="e.g. 99966" required oninput="fetchTvShowDetails(this.value)">
+          </div>
+
+          <div class="form-group">
+            <label>Season Name / Tag</label>
+            <input type="text" id="input-series-season" placeholder="Season 1" value="Season 1" required>
+          </div>
+
+          <div class="form-group">
+            <label>Episode Number</label>
+            <input type="number" id="input-series-episode" placeholder="1" value="1" required>
+          </div>
+
+          <div class="form-group full-width">
+            <label>Google Drive Link or Stream File ID</label>
+            <input type="text" id="input-series-gdrive" placeholder="Paste full Google Drive link or File ID" required>
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn-submit" id="btn-submit-series" style="width: 100%;">
+          🚀 SAVE EPISODE TO DATA_C02.JSON
+        </button>
+      </form>
+    </div>
+
+    <!-- EXISTING SERIES LIST -->
+    <header style="margin-top: 2rem;">
+      <div>
+        <h2 style="font-size: 1.4rem; font-weight: 800;">📚 Active Series in Library</h2>
+        <p class="section-desc">Packs grouped by series title & seasons</p>
+      </div>
+      <div>
+        <input type="text" id="search-series-input" placeholder="Search series..." style="max-width: 250px; padding: 0.6rem 1rem;" oninput="filterSeriesCards()">
+      </div>
+    </header>
+
+    <div class="movies-grid" id="series-grid"></div>
+  </main>
+
+  <script>
+    let seriesData = [];
+    let activeTvMeta = null;
+    let searchDebounce = null;
+
+    const CONFIRM_PASS = "24592";
+    const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
+    const GH_REPO = 'Moinuflix/My-Movies';
+    const GH_BRANCH = 'main';
+    const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';
+    const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';
+
+    function getStoredToken() { return localStorage.getItem('moinuflix_gh_token') || ''; }
+    function configureGithubToken() {
+      const current = getStoredToken();
+      const input = prompt('Enter your GitHub Personal Access Token (ghp_...):', current);
+      if (input !== null) {
+        if (input.trim()) {
+          localStorage.setItem('moinuflix_gh_token', input.trim());
+          updateTokenBadge();
+          showLaserToast('GitHub Token Saved!');
+        } else {
+          localStorage.removeItem('moinuflix_gh_token');
+          updateTokenBadge();
+        }
+      }
+    }
+    function updateTokenBadge() {
+      const label = document.getElementById('token-status-label');
+      if (!label) return;
+      if (getStoredToken()) {
+        label.textContent = 'Token: Active ✅';
+        label.style.color = 'var(--laser-green)';
+      } else {
+        label.textContent = '⚙️ GitHub Token';
+        label.style.color = 'var(--laser-cyan)';
+      }
+    }
+
+    function showLaserToast(msg, isError = false) {
+      const toast = document.getElementById('laser-toast');
+      toast.style.borderColor = isError ? 'var(--laser-red)' : 'var(--laser-cyan)';
+      toast.innerHTML = (isError ? '❌ ' : '⚡ ') + escapeHtml(msg);
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 4000);
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function extractGDriveId(url) {
+      if (!url) return '';
+      const clean = url.trim();
+      const pMatch = clean.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+      if (pMatch && pMatch[1]) return pMatch[1];
+      const fMatch = clean.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+      if (fMatch && fMatch[1]) return fMatch[1];
+      const rMatch = clean.match(/^[a-zA-Z0-9_-]{25,}$/);
+      if (rMatch) return rMatch[0];
+      return clean;
+    }
+
+    // Smart Parser for TV Shows
+    function parseSeriesSmartFileName(filename) {
+      if (!filename || !filename.trim()) {
+        document.getElementById('series-smart-tags').innerHTML = '';
+        document.getElementById('series-suggestions-box').style.display = 'none';
+        return;
+      }
+
+      let raw = filename.replace(/\.(mkv|mp4|avi|ts)$/i, '').replace(/[\._\-]/g, ' ');
+
+      // Extract Season & Episode
+      const seMatch = raw.match(/\bS(\d+)\s*E(\d+)\b/i);
+      const eMatch = raw.match(/\bE(\d+)\b/i);
+
+      let seasonNum = seMatch ? parseInt(seMatch[1]) : 1;
+      let epNum = seMatch ? parseInt(seMatch[2]) : (eMatch ? parseInt(eMatch[1]) : 1);
+
+      document.getElementById('input-series-season').value = `Season ${seasonNum}`;
+      document.getElementById('input-series-episode').value = epNum;
+
+      // Extract clean title
+      let cutoffIndex = raw.length;
+      if (seMatch && seMatch.index < cutoffIndex) cutoffIndex = seMatch.index;
+      else if (eMatch && eMatch.index < cutoffIndex) cutoffIndex = eMatch.index;
+
+      let cleanTitle = raw.substring(0, cutoffIndex).trim();
+      cleanTitle = cleanTitle.replace(/\b(1080p|720p|2160p|4k|uhd|bluray|web-dl|web|dts|atmos|ddp|x264|x265|hevc|hindi|tamil|telugu)\b/gi, '').trim();
+
+      document.getElementById('input-series-title').value = cleanTitle;
+
+      const tags = [`Season ${seasonNum}`, `Episode ${epNum}`];
+      if (filename.includes('2160p') || filename.includes('4K')) tags.push('4K UHD');
+      else tags.push('1080p FHD');
+
+      document.getElementById('series-smart-tags').innerHTML = tags.map(t => `<span class="smart-tag">✔ ${t}</span>`).join(' ');
+
+      clearTimeout(searchDebounce);
+      searchDebounce = setTimeout(() => {
+        searchTvShowTmdb(cleanTitle);
+      }, 350);
+    }
+
+    async function searchTvShowTmdb(query) {
+      if (!query || query.length < 2) return;
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(query)}&language=en-US`);
+        const data = await res.json();
+        const box = document.getElementById('series-suggestions-box');
+        const list = document.getElementById('series-suggestions-list');
+        list.innerHTML = '';
+
+        if (data.results && data.results.length > 0) {
+          data.results.slice(0, 5).forEach(show => {
+            const y = show.first_air_date ? show.first_air_date.split('-')[0] : 'N/A';
+            const poster = show.poster_path ? `https://image.tmdb.org/t/p/w92${show.poster_path}` : '';
+            const item = document.createElement('div');
+            item.className = 'tmdb-result-item';
+            item.innerHTML = `
+              ${poster ? `<img src="${poster}" class="tmdb-result-poster">` : '<div class="tmdb-result-poster"></div>'}
+              <div class="tmdb-result-info">
+                <div class="tmdb-result-title">${escapeHtml(show.name)} (${y})</div>
+                <div class="tmdb-result-meta">TMDB ID: <b>${show.id}</b> • ★ ${show.vote_average ? show.vote_average.toFixed(1) : 'N/A'}</div>
+              </div>
+            `;
+            item.onclick = () => {
+              document.getElementById('input-series-tmdb').value = show.id;
+              document.getElementById('input-series-title').value = show.name;
+              fetchTvShowDetails(show.id);
+              box.style.display = 'none';
+              showLaserToast(`Selected: "${show.name}"`);
+            };
+            list.appendChild(item);
+          });
+          box.style.display = 'block';
+        } else {
+          box.style.display = 'none';
+        }
+      } catch(e) {
+        document.getElementById('series-suggestions-box').style.display = 'none';
+      }
+    }
+
+    async function fetchTvShowDetails(tmdbId) {
+      if (!tmdbId) return;
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/tv/${tmdbId}?api_key=${TMDB_API_KEY}&language=en-US`);
+        if (!res.ok) return;
+        const data = await res.json();
+        activeTvMeta = {
+          title: data.name,
+          poster: data.poster_path ? `https://image.tmdb.org/t/p/w500${data.poster_path}` : '',
+          fanart: data.backdrop_path ? `https://image.tmdb.org/t/p/original${data.backdrop_path}` : '',
+          overview: data.overview || ''
+        };
+      } catch(e) {}
+    }
+
+    async function loadSeriesData() {
+      updateTokenBadge();
+      try {
+        const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/chunks/data_c02.json?t=${Date.now()}`);
+        if (res.ok) {
+          seriesData = await res.json();
+        } else {
+          seriesData = [];
+        }
+      } catch(e) {
+        seriesData = [];
+      }
+      document.getElementById('badge-series-count').textContent = seriesData.length;
+      renderSeriesGrid();
+    }
+
+    function renderSeriesGrid(filter = '') {
+      const container = document.getElementById('series-grid');
+      container.innerHTML = '';
+
+      if (!seriesData || seriesData.length === 0) {
+        container.innerHTML = '<div style="color:var(--text-muted); padding:30px;">No web series found in chunks/data_c02.json</div>';
+        return;
+      }
+
+      // Group by Show
+      const groups = new Map();
+      seriesData.forEach((item, index) => {
+        const key = item.tmdb_id ? String(item.tmdb_id) : (item.title || item.name).toLowerCase().trim();
+        if (!groups.has(key)) {
+          groups.set(key, {
+            title: item.title || item.name,
+            tmdb_id: item.tmdb_id || '',
+            seasons: item.seasons || 'Season 1',
+            poster: item.poster || '',
+            episodes: []
+          });
+        }
+        const g = groups.get(key);
+        g.episodes.push({ ...item, rawIndex: index });
+      });
+
+      groups.forEach((group, gKey) => {
+        if (filter && !group.title.toLowerCase().includes(filter.toLowerCase())) return;
+
+        const card = document.createElement('div');
+        card.className = 'movie-card';
+        card.innerHTML = `
+          <div class="poster-wrap">
+            <div class="universe-badge">📺 SERIES</div>
+            <div class="pack-status-badge">🟢 ${group.episodes.length} EPS</div>
+            ${group.poster ? `<img src="${group.poster}" class="poster-img" loading="lazy">` : '<div class="poster-placeholder">No Poster</div>'}
+          </div>
+          <div class="movie-card-body">
+            <div>
+              <div class="movie-title">${escapeHtml(group.title)}</div>
+              <div class="movie-meta-row">
+                <span class="spec-chip chip-gold">${escapeHtml(group.seasons)}</span>
+                <span>•</span>
+                <span style="color:var(--laser-green); font-weight:700;">${group.episodes.length} Episodes</span>
+              </div>
+            </div>
+            <div class="card-actions-row">
+              <button type="button" class="btn-action-primary" onclick="openEpisodesModal('${gKey}')">📂 VIEW EPS</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function openEpisodesModal(gKey) {
+      let modal = document.getElementById('series-ep-modal');
+      if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'series-ep-modal';
+        modal.className = 'modal-overlay';
+        modal.innerHTML = `
+          <div class="modal-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.2rem; border-bottom:1px solid var(--border-color); padding-bottom:0.8rem;">
+              <div>
+                <h3 id="modal-series-title" style="font-size:1.3rem; font-weight:800; color:#fff;"></h3>
+                <span style="font-size:0.8rem; color:var(--laser-cyan);" id="modal-series-count"></span>
+              </div>
+              <button type="button" style="background:transparent; border:none; color:#fff; font-size:1.4rem; cursor:pointer;" onclick="this.closest('.modal-overlay').classList.remove('active')">✕</button>
+            </div>
+            <div id="modal-episodes-list" style="display:flex; flex-direction:column; gap:0.75rem; max-height:450px; overflow-y:auto;"></div>
+          </div>
+        `;
+        document.body.appendChild(modal);
+      }
+
+      const matched = seriesData.filter((item, idx) => {
+        item.rawIndex = idx;
+        return (item.tmdb_id && String(item.tmdb_id) === String(gKey)) || (item.title || item.name).toLowerCase().trim() === gKey.toLowerCase().trim();
+      });
+
+      document.getElementById('modal-series-title').textContent = matched[0]?.title || matched[0]?.name || 'Series';
+      document.getElementById('modal-series-count').textContent = `Total Episodes: ${matched.length}`;
+
+      const list = document.getElementById('modal-episodes-list');
+      list.innerHTML = '';
+
+      matched.forEach(ep => {
+        const row = document.createElement('div');
+        row.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.03); padding:10px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);';
+        row.innerHTML = `
+          <div style="flex:1; overflow:hidden;">
+            <div style="font-weight:700; color:#fff; font-size:0.9rem;">${escapeHtml(ep.name || ep.title)}</div>
+            <div style="font-size:0.75rem; color:var(--text-dim);">${escapeHtml(ep.seasons || 'Season 1')} • Stream Ready</div>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button class="btn-action-primary" style="flex:none; padding:5px 12px; font-size:0.75rem;" onclick="copyStream('${escapeHtml(ep.stream_url || ep.gdrive_url)}')">📋 Link</button>
+            <button class="btn-delete-item" style="flex:none; padding:5px 10px; font-size:0.75rem;" onclick="deleteSeriesEpisode(${ep.rawIndex})">🗑️</button>
+          </div>
+        `;
+        list.appendChild(row);
+      });
+
+      modal.classList.add('active');
+    }
+
+    async function handleSeriesSubmit(e) {
+      e.preventDefault();
+      const token = getStoredToken();
+      if (!token) return showLaserToast('GitHub Token required! Click ⚙️ Token.', true);
+
+      const title = document.getElementById('input-series-title').value.trim();
+      const tmdbId = document.getElementById('input-series-tmdb').value.trim();
+      const season = document.getElementById('input-series-season').value.trim();
+      const epNum = document.getElementById('input-series-episode').value.trim();
+      const rawGdrive = document.getElementById('input-series-gdrive').value.trim();
+      const fileId = extractGDriveId(rawGdrive);
+
+      if (!fileId) return showLaserToast('Valid Google Drive link or ID required!', true);
+
+      if (!activeTvMeta || String(activeTvMeta.tmdb_id) !== String(tmdbId)) {
+        await fetchTvShowDetails(tmdbId);
+      }
+
+      const streamUrl = `${WORKER_BASE}${fileId}${USER_AGENT}`;
+      const epTitle = `${title} - ${season} - Episode ${epNum}`;
+
+      const newEp = {
+        id: fileId,
+        name: epTitle,
+        title: title,
+        tmdb_id: parseInt(tmdbId) || 0,
+        seasons: season,
+        episode_number: parseInt(epNum) || 1,
+        poster: activeTvMeta ? activeTvMeta.poster : '',
+        fanart: activeTvMeta ? activeTvMeta.fanart : '',
+        overview: activeTvMeta ? activeTvMeta.overview : `Streaming via MoinuFlix.`,
+        stream_url: streamUrl,
+        gdrive_url: fileId,
+        specs: {
+          resolution: "1080p FHD",
+          audio: "Dolby Digital Plus 5.1",
+          source: "WEB-DL"
+        }
+      };
+
+      showLaserToast(`Saving "${epTitle}"...`);
+
+      seriesData.unshift(newEp);
+
+      try {
+        await commitFileDirect('chunks/data_c02.json', seriesData, `Studio Add: ${epTitle}`, token);
+        showLaserToast(`🎉 Episode saved to data_c02.json!`);
+        document.getElementById('series-ingest-form').reset();
+        document.getElementById('series-smart-tags').innerHTML = '';
+        activeTvMeta = null;
+        loadSeriesData();
+      } catch(err) {
+        showLaserToast(`Save Error: ${err.message}`, true);
+      }
+    }
+
+    async function deleteSeriesEpisode(index) {
+      const pass = prompt('Enter confirmation PIN to delete episode:');
+      if (pass !== CONFIRM_PASS) return showLaserToast('Incorrect PIN!', true);
+
+      const token = getStoredToken();
+      if (!token) return showLaserToast('GitHub Token missing!', true);
+
+      const deletedTitle = seriesData[index]?.name || 'Episode';
+      seriesData.splice(index, 1);
+
+      try {
+        await commitFileDirect('chunks/data_c02.json', seriesData, `Studio Delete: Removed ${deletedTitle}`, token);
+        showLaserToast(`Deleted "${deletedTitle}"`);
+        const modal = document.getElementById('series-ep-modal');
+        if (modal) modal.classList.remove('active');
+        loadSeriesData();
+      } catch(e) {
+        showLaserToast(`Delete Failed: ${e.message}`, true);
+      }
+    }
+
+    async function commitFileDirect(chunkPath, arrayData, message, token) {
+      const url = `https://api.github.com/repos/${GH_REPO}/contents/${chunkPath}`;
+      let currentSha = undefined;
+      try {
+        const getRes = await fetch(`${url}?t=${Date.now()}`, {
+          headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        if (getRes.ok) {
+          const fileInfo = await getRes.json();
+          currentSha = fileInfo.sha;
+        }
+      } catch(e) {}
+
+      const finalJson = JSON.stringify(arrayData, null, 2);
+      const uint8Array = new TextEncoder().encode(finalJson);
+      let binary = '';
+      for (let i = 0; i < uint8Array.byteLength; i++) {
+        binary += String.fromCharCode(uint8Array[i]);
+      }
+      const encoded = btoa(binary);
+
+      const putRes = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: message, content: encoded, branch: GH_BRANCH, sha: currentSha })
+      });
+      if (!putRes.ok) {
+        const err = await putRes.json();
+        throw new Error(err.message || `Commit failed for ${chunkPath}`);
+      }
+    }
+
+    async function copyStream(url) {
+      if (!url) return showLaserToast('No URL', true);
+      await navigator.clipboard.writeText(url);
+      showLaserToast('Link Copied!');
+    }
+
+    function filterSeriesCards() {
+      const q = document.getElementById('search-series-input').value.trim();
+      renderSeriesGrid(q);
+    }
+
+    window.addEventListener('DOMContentLoaded', loadSeriesData);
+  </script>
+</body>
+</html>
