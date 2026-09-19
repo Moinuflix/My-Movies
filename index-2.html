@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MoinuFlix — 5.1 Surround Audio Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #030712;
+      --bg-card: rgba(15, 23, 42, 0.75);
+      --bg-card-hover: rgba(30, 41, 59, 0.9);
+      --bg-input: #0b1329;
+      --border-color: rgba(56, 189, 248, 0.15);
+      --electric-blue: #2563eb;
+      --laser-cyan: #38bdf8;
+      --laser-cyan-glow: rgba(56, 189, 248, 0.45);
+      --laser-green: #10b981;
+      --laser-green-glow: rgba(16, 185, 129, 0.35);
+      --laser-red: #ef4444;
+      --gold-lcu: #f59e0b;
+      --gold-lcu-glow: rgba(245, 158, 11, 0.4);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-stack: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(56, 189, 248, 0.12) 0%, transparent 45%);
+      color: var(--text-main);
+      font-family: var(--font-stack);
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    aside {
+      width: 270px;
+      background: rgba(11, 19, 43, 0.95);
+      backdrop-filter: blur(25px);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 1.2rem;
+      position: fixed;
+      height: 100vh;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0 0.5rem 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 1.25rem;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--laser-green), var(--laser-cyan));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #030712;
+      box-shadow: 0 0 20px var(--laser-green-glow);
+    }
+
+    .brand-text { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .nav-btn {
+      width: 100%;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 0.75rem 0.95rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: left;
+      text-decoration: none;
+    }
+
+    .nav-btn:hover { background: rgba(56, 189, 248, 0.06); color: #fff; }
+    .nav-btn.active {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(56, 189, 248, 0.1));
+      color: #fff;
+      border: 1px solid var(--laser-green);
+      box-shadow: 0 0 20px var(--laser-green-glow);
+    }
+
+    .nav-badge {
+      margin-left: auto;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 0.15rem 0.55rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .btn-token-config {
+      width: 100%;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: var(--laser-green);
+      padding: 0.7rem 0.9rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    main {
+      margin-left: 270px;
+      flex: 1;
+      padding: 2.5rem 3rem 6rem 3rem;
+      max-width: 1440px;
+      width: calc(100% - 270px);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    h1 { font-size: 1.95rem; font-weight: 800; letter-spacing: -0.8px; }
+    .section-desc { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem; }
+
+    /* FORM STYLING */
+    .form-container {
+      background: var(--bg-card);
+      backdrop-filter: blur(25px);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 22px;
+      padding: 2.2rem 2.6rem;
+      max-width: 900px;
+      box-shadow: 0 12px 45px rgba(0,0,0,0.5);
+      margin-bottom: 2.5rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; position: relative; }
+    .form-group.full-width { grid-column: span 2; }
+    label { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
+
+    input, select {
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.2s ease;
+      font-family: var(--font-stack);
+      width: 100%;
+    }
+    input:focus, select:focus {
+      border-color: var(--laser-green);
+      box-shadow: 0 0 14px var(--laser-green-glow);
+    }
+
+    .smart-input {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.04);
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, var(--laser-green), #059669);
+      color: #fff;
+      border: none;
+      padding: 0.85rem 1.8rem;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 0 18px var(--laser-green-glow);
+      transition: all 0.25s ease;
+    }
+    .btn-submit:hover { transform: translateY(-2px); }
+
+    .tmdb-results-box {
+      display: none;
+      margin-top: 8px;
+      background: #0b1329;
+      border: 1px solid var(--laser-green);
+      box-shadow: 0 0 20px var(--laser-green-glow);
+      border-radius: 14px;
+      padding: 10px;
+      max-height: 280px;
+      overflow-y: auto;
+      z-index: 50;
+    }
+    .tmdb-result-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+    .tmdb-result-item:hover { background: #1e293b; border-color: var(--laser-green); }
+    .tmdb-result-poster { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; background: #1e293b; flex-shrink: 0; }
+    .tmdb-result-info { flex: 1; overflow: hidden; }
+    .tmdb-result-title { font-weight: 700; color: #fff; font-size: 0.88rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .tmdb-result-meta { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* SONGS GRID */
+    .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.75rem; }
+    .movie-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .movie-card:hover {
+      border-color: var(--laser-green);
+      transform: translateY(-5px);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.6), 0 0 20px var(--laser-green-glow);
+    }
+    .poster-wrap { width: 100%; height: 230px; background: #070d1e; position: relative; overflow: hidden; }
+    .poster-img { width: 100%; height: 100%; object-fit: cover; }
+    .poster-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 0.85rem; font-weight: 600; text-align: center; }
+
+    .universe-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(3, 7, 18, 0.9);
+      border: 1px solid var(--laser-green);
+      color: var(--laser-green);
+      padding: 4px 9px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+      z-index: 2;
+    }
+
+    .movie-card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .movie-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.35rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .movie-meta-row {
+      display: flex;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-bottom: 0.65rem;
+      align-items: center;
+      font-weight: 600;
+      flex-wrap: wrap;
+    }
+
+    .spec-chip {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: var(--laser-green);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+    .clean-gb-badge {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--laser-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .card-actions-row { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+    .btn-action-primary {
+      flex: 1;
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--laser-green);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 0.65rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn-action-primary:hover { background: var(--laser-green); color: #030712; }
+
+    .btn-delete-item {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--laser-red);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 0.65rem 0.8rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-delete-item:hover { background: var(--laser-red); color: #fff; }
+
+    #laser-toast {
+      position: fixed;
+      top: 25px;
+      right: 25px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--laser-green);
+      box-shadow: 0 0 25px var(--laser-green-glow);
+      color: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: none;
+      z-index: 300;
+      max-width: 90%;
+    }
+
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      aside {
+        width: 100%;
+        height: auto;
+        position: sticky;
+        top: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 0.75rem 1rem;
+        z-index: 100;
+      }
+      .brand { padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+      .nav-list {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .nav-btn { white-space: nowrap; padding: 0.5rem 0.8rem; font-size: 0.8rem; }
+      .sidebar-footer { display: none; }
+      main { margin-left: 0; width: 100%; padding: 1.25rem 1rem 6rem 1rem; }
+      .form-container { padding: 1.4rem 1.1rem; }
+      .form-grid { grid-template-columns: 1fr; gap: 0.9rem; }
+      .form-group.full-width { grid-column: span 1; }
+      .movies-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
+      .poster-wrap { height: 180px; }
+      .movie-card-body { padding: 0.85rem; }
+      .movie-title { font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="laser-toast"></div>
+
+  <aside>
+    <div class="brand">
+      <div class="brand-logo">M</div>
+      <div class="brand-text">MoinuFlix</div>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="inbox.html" class="nav-btn">
+          <span>🎬 Movies</span>
+        </a>
+      </li>
+      <li>
+        <a href="series.html" class="nav-btn">
+          <span>📺 Web Series</span>
+        </a>
+      </li>
+      <li>
+        <a href="songs.html" class="nav-btn active">
+          <span>🎵 5.1 Songs</span>
+          <span class="nav-badge" id="badge-songs-count">0</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button class="btn-token-config" onclick="configureGithubToken()">
+        <span id="token-status-label">⚙️ GitHub Token</span>
+      </button>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <h1>🎵 5.1 Surround Songs Studio</h1>
+        <p class="section-desc">Manage Atmos, DTS-HD & 5.1 lossless music chunks (`chunks/data_c03.json`)</p>
+      </div>
+      <div>
+        <button class="btn-action-primary" style="padding: 0.6rem 1.2rem;" onclick="configureGithubToken()">⚙️ Token Config</button>
+      </div>
+    </header>
+
+    <!-- FORM -->
+    <div class="form-container">
+      <form id="song-ingest-form" onsubmit="handleSongSubmit(event)">
+        <div class="form-grid">
+          
+          <div class="form-group full-width">
+            <label style="color: var(--laser-green);">⚡ Live Search Track Name (Auto-fills Title, Artist & HD Artwork)</label>
+            <input type="text" id="input-song-search" class="smart-input" placeholder="Type song title (e.g. Hukum, Badass, Arabic Kuthu, Madras)..." oninput="searchLiveMusic(this.value)">
+            <div id="saavn-suggestions-box" class="tmdb-results-box">
+              <div id="saavn-suggestions-list"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Song Title</label>
+            <input type="text" id="input-song-title" placeholder="e.g. Hukum" required>
+          </div>
+
+          <div class="form-group">
+            <label>Movie / Album Name</label>
+            <input type="text" id="input-song-movie" placeholder="e.g. Jailer" required>
+          </div>
+
+          <div class="form-group">
+            <label>Artist / Music Director</label>
+            <input type="text" id="input-song-artist" placeholder="e.g. Anirudh Ravichander" required>
+          </div>
+
+          <div class="form-group">
+            <label>Audio Format / Quality</label>
+            <select id="input-song-quality">
+              <option value="5.1 Surround" selected>5.1 Dolby Digital Surround (AC3/DDP)</option>
+              <option value="Dolby Atmos">Dolby Atmos Lossless (TrueHD)</option>
+              <option value="DTS-HD 7.1">DTS-HD Master Audio 7.1</option>
+              <option value="Lossless FLAC">24-bit Lossless FLAC</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label>Album Art / Poster URL</label>
+            <input type="text" id="input-song-poster" placeholder="https://... High-Res Album Cover URL">
+          </div>
+
+          <div class="form-group full-width">
+            <label>Google Drive Link or File ID</label>
+            <input type="text" id="input-song-gdrive" placeholder="Paste full Google Drive link or File ID" required>
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn-submit" id="btn-submit-song" style="width: 100%;">
+          🚀 SAVE 5.1 TRACK TO DATA_C03.JSON
+        </button>
+      </form>
+    </div>
+
+    <!-- EXISTING SONGS GRID -->
+    <header style="margin-top: 2rem;">
+      <div>
+        <h2 style="font-size: 1.4rem; font-weight: 800;">🎼 Active Tracks in Audio Vault</h2>
+        <p class="section-desc">Standalone surround tracks ready for streaming</p>
+      </div>
+      <div>
+        <input type="text" id="search-songs-input" placeholder="Search track or movie..." style="max-width: 250px; padding: 0.6rem 1rem;" oninput="filterSongs()">
+      </div>
+    </header>
+
+    <div class="movies-grid" id="songs-grid"></div>
+  </main>
+
+  <script>
+    let songsData = [];
+    let searchDebounce = null;
+
+    const CONFIRM_PASS = "24592";
+    const GH_REPO = 'Moinuflix/My-Movies';
+    const GH_BRANCH = 'main';
+    const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';
+    const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';
+
+    function getStoredToken() { return localStorage.getItem('moinuflix_gh_token') || ''; }
+    function configureGithubToken() {
+      const current = getStoredToken();
+      const input = prompt('Enter your GitHub Personal Access Token (ghp_...):', current);
+      if (input !== null) {
+        if (input.trim()) {
+          localStorage.setItem('moinuflix_gh_token', input.trim());
+          updateTokenBadge();
+          showLaserToast('GitHub Token Saved!');
+        } else {
+          localStorage.removeItem('moinuflix_gh_token');
+          updateTokenBadge();
+        }
+      }
+    }
+    function updateTokenBadge() {
+      const label = document.getElementById('token-status-label');
+      if (!label) return;
+      if (getStoredToken()) {
+        label.textContent = 'Token: Active ✅';
+        label.style.color = 'var(--laser-green)';
+      } else {
+        label.textContent = '⚙️ GitHub Token';
+        label.style.color = 'var(--laser-cyan)';
+      }
+    }
+
+    function showLaserToast(msg, isError = false) {
+      const toast = document.getElementById('laser-toast');
+      toast.style.borderColor = isError ? 'var(--laser-red)' : 'var(--laser-green)';
+      toast.innerHTML = (isError ? '❌ ' : '⚡ ') + escapeHtml(msg);
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 4000);
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function extractGDriveId(url) {
+      if (!url) return '';
+      const clean = url.trim();
+      const pMatch = clean.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+      if (pMatch && pMatch[1]) return pMatch[1];
+      const fMatch = clean.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+      if (fMatch && fMatch[1]) return fMatch[1];
+      const rMatch = clean.match(/^[a-zA-Z0-9_-]{25,}$/);
+      if (rMatch) return rMatch[0];
+      return clean;
+    }
+
+    // Live Music Search Engine (JioSaavn + iTunes)
+    function searchLiveMusic(query) {
+      clearTimeout(searchDebounce);
+      const box = document.getElementById('saavn-suggestions-box');
+      const list = document.getElementById('saavn-suggestions-list');
+
+      if (!query || query.trim().length < 2) {
+        box.style.display = 'none';
+        return;
+      }
+
+      searchDebounce = setTimeout(async () => {
+        list.innerHTML = '<div style="font-size:0.75rem; color:var(--laser-green); padding:6px 8px;">🔍 Searching top matching tracks...</div>';
+        box.style.display = 'block';
+
+        let songResults = [];
+        try {
+          const res = await fetch(`https://saavn.dev/api/search/songs?query=${encodeURIComponent(query)}&limit=6`);
+          const data = await res.json();
+          if (data?.data?.results && data.data.results.length > 0) {
+            songResults = data.data.results.map(s => ({
+              title: s.name.replace(/&quot;/g, '"'),
+              album: s.album?.name || '',
+              artist: s.artists?.primary?.map(a => a.name).join(', ') || '',
+              poster: (s.image && s.image.length > 0) ? s.image[s.image.length - 1].url : ''
+            }));
+          }
+        } catch(e) {}
+
+        if (songResults.length === 0) {
+          try {
+            const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=6`);
+            const itunesData = await itunesRes.json();
+            if (itunesData.results && itunesData.results.length > 0) {
+              songResults = itunesData.results.map(i => ({
+                title: i.trackName,
+                album: i.collectionName || '',
+                artist: i.artistName || '',
+                poster: (i.artworkUrl100 || '').replace('100x100bb', '600x600bb')
+              }));
+            }
+          } catch(e) {}
+        }
+
+        list.innerHTML = '';
+        if (songResults.length > 0) {
+          songResults.forEach(s => {
+            const item = document.createElement('div');
+            item.className = 'tmdb-result-item';
+            item.innerHTML = `
+              ${s.poster ? `<img src="${s.poster}" class="tmdb-result-poster">` : '<div class="tmdb-result-poster"></div>'}
+              <div class="tmdb-result-info">
+                <div class="tmdb-result-title">${escapeHtml(s.title)}</div>
+                <div class="tmdb-result-meta">${escapeHtml(s.album || 'Single')} • ${escapeHtml(s.artist || 'Artist')}</div>
+              </div>
+            `;
+            item.onclick = () => {
+              document.getElementById('input-song-title').value = s.title;
+              document.getElementById('input-song-movie').value = s.album || s.title;
+              document.getElementById('input-song-artist').value = s.artist;
+              document.getElementById('input-song-poster').value = s.poster;
+              box.style.display = 'none';
+              showLaserToast(`Selected: "${s.title}" (High-Res Cover Attached)`);
+            };
+            list.appendChild(item);
+          });
+          box.style.display = 'block';
+        } else {
+          list.innerHTML = '<div style="font-size:0.75rem; color:var(--laser-red); padding:6px 8px;">No matching tracks found.</div>';
+          setTimeout(() => { box.style.display = 'none'; }, 2500);
+        }
+      }, 350);
+    }
+
+    async function loadSongsData() {
+      updateTokenBadge();
+      try {
+        const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/chunks/data_c03.json?t=${Date.now()}`);
+        if (res.ok) {
+          songsData = await res.json();
+        } else {
+          songsData = [];
+        }
+      } catch(e) {
+        songsData = [];
+      }
+      document.getElementById('badge-songs-count').textContent = songsData.length;
+      renderSongsGrid();
+    }
+
+    function renderSongsGrid(filter = '') {
+      const container = document.getElementById('songs-grid');
+      container.innerHTML = '';
+
+      if (!songsData || songsData.length === 0) {
+        container.innerHTML = '<div style="color:var(--text-muted); padding:30px;">No tracks found in chunks/data_c03.json</div>';
+        return;
+      }
+
+      songsData.forEach((item, index) => {
+        if (filter) {
+          const matchTitle = (item.title || '').toLowerCase().includes(filter.toLowerCase());
+          const matchMovie = (item.movie || '').toLowerCase().includes(filter.toLowerCase());
+          const matchArtist = (item.artist || '').toLowerCase().includes(filter.toLowerCase());
+          if (!matchTitle && !matchMovie && !matchArtist) return;
+        }
+
+        const card = document.createElement('div');
+        card.className = 'movie-card';
+        card.innerHTML = `
+          <div class="poster-wrap">
+            <div class="universe-badge">🎵 ${escapeHtml(item.quality || '5.1')}</div>
+            ${item.poster ? `<img src="${item.poster}" class="poster-img" loading="lazy">` : '<div class="poster-placeholder">No Cover Art</div>'}
+          </div>
+          <div class="movie-card-body">
+            <div>
+              <div class="movie-title">${escapeHtml(item.title)}</div>
+              <div class="movie-meta-row">
+                <span class="spec-chip">${escapeHtml(item.movie || 'Album')}</span>
+                <span class="clean-gb-badge">${escapeHtml(item.quality || '5.1')}</span>
+              </div>
+              <div style="font-size:0.75rem; color:var(--text-dim); margin-bottom:8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                🎤 ${escapeHtml(item.artist || 'Unknown Artist')}
+              </div>
+            </div>
+            <div class="card-actions-row">
+              <button type="button" class="btn-action-primary" onclick="copyStream('${escapeHtml(item.stream_url || item.gdrive_url)}')">📋 Stream</button>
+              <button type="button" class="btn-delete-item" onclick="deleteSongTrack(${index}, '${escapeHtml(item.title)}')">🗑️</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    async function handleSongSubmit(e) {
+      e.preventDefault();
+      const token = getStoredToken();
+      if (!token) return showLaserToast('GitHub Token required! Click ⚙️ Token.', true);
+
+      const title = document.getElementById('input-song-title').value.trim();
+      const movie = document.getElementById('input-song-movie').value.trim();
+      const artist = document.getElementById('input-song-artist').value.trim();
+      const quality = document.getElementById('input-song-quality').value;
+      const poster = document.getElementById('input-song-poster').value.trim();
+      const rawGdrive = document.getElementById('input-song-gdrive').value.trim();
+      const fileId = extractGDriveId(rawGdrive);
+
+      if (!fileId) return showLaserToast('Valid Google Drive link or ID required!', true);
+
+      const streamUrl = `${WORKER_BASE}${fileId}${USER_AGENT}`;
+
+      const newSong = {
+        id: fileId,
+        title: title,
+        movie: movie,
+        artist: artist,
+        quality: quality,
+        poster: poster,
+        stream_url: streamUrl,
+        gdrive_url: fileId
+      };
+
+      showLaserToast(`Saving "${title}"...`);
+
+      songsData.unshift(newSong);
+
+      try {
+        await commitFileDirect('chunks/data_c03.json', songsData, `Studio Add Song: ${title} (${movie})`, token);
+        showLaserToast(`🎉 Track saved to data_c03.json!`);
+        document.getElementById('song-ingest-form').reset();
+        loadSongsData();
+      } catch(err) {
+        showLaserToast(`Save Error: ${err.message}`, true);
+      }
+    }
+
+    async function deleteSongTrack(index, itemTitle) {
+      const pass = prompt(`Delete "${itemTitle}"?\nEnter confirmation PIN:`);
+      if (pass !== CONFIRM_PASS) return showLaserToast('Incorrect PIN!', true);
+
+      const token = getStoredToken();
+      if (!token) return showLaserToast('GitHub Token missing!', true);
+
+      songsData.splice(index, 1);
+
+      try {
+        await commitFileDirect('chunks/data_c03.json', songsData, `Studio Delete: Removed ${itemTitle}`, token);
+        showLaserToast(`Deleted "${itemTitle}"`);
+        loadSongsData();
+      } catch(e) {
+        showLaserToast(`Delete Failed: ${e.message}`, true);
+      }
+    }
+
+    async function commitFileDirect(chunkPath, arrayData, message, token) {
+      const url = `https://api.github.com/repos/${GH_REPO}/contents/${chunkPath}`;
+      let currentSha = undefined;
+      try {
+        const getRes = await fetch(`${url}?t=${Date.now()}`, {
+          headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        if (getRes.ok) {
+          const fileInfo = await getRes.json();
+          currentSha = fileInfo.sha;
+        }
+      } catch(e) {}
+
+      const finalJson = JSON.stringify(arrayData, null, 2);
+      const uint8Array = new TextEncoder().encode(finalJson);
+      let binary = '';
+      for (let i = 0; i < uint8Array.byteLength; i++) {
+        binary += String.fromCharCode(uint8Array[i]);
+      }
+      const encoded = btoa(binary);
+
+      const putRes = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: message, content: encoded, branch: GH_BRANCH, sha: currentSha })
+      });
+      if (!putRes.ok) {
+        const err = await putRes.json();
+        throw new Error(err.message || `Commit failed for ${chunkPath}`);
+      }
+    }
+
+    async function copyStream(url) {
+      if (!url) return showLaserToast('No Stream Link Available', true);
+      await navigator.clipboard.writeText(url);
+      showLaserToast('Audio Stream Link Copied!');
+    }
+
+    function filterSongs() {
+      const q = document.getElementById('search-songs-input').value.trim();
+      renderSongsGrid(q);
+    }
+
+    window.addEventListener('DOMContentLoaded', loadSongsData);
+  </script>
+</body>
+</html>
