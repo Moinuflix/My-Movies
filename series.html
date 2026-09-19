@@ -3,29 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>MoinuFlix — Web Series Studio Manager</title>
+  <title>MoinuFlix — Web Series Bundle Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #030712;
-      --bg-card: rgba(15, 23, 42, 0.75);
-      --bg-card-hover: rgba(30, 41, 59, 0.9);
-      --bg-input: #0b1329;
-      --border-color: rgba(56, 189, 248, 0.15);
+      --bg-dark: #040711;
+      --bg-card: rgba(13, 22, 38, 0.85);
+      --bg-card-hover: rgba(22, 36, 61, 0.95);
+      --bg-input: #091224;
+      --border-color: rgba(56, 189, 248, 0.18);
       --electric-blue: #2563eb;
       --laser-cyan: #38bdf8;
       --laser-cyan-glow: rgba(56, 189, 248, 0.45);
       --laser-green: #10b981;
       --laser-green-glow: rgba(16, 185, 129, 0.35);
       --laser-red: #ef4444;
-      --gold-lcu: #f59e0b;
-      --gold-lcu-glow: rgba(245, 158, 11, 0.4);
+      --neon-gold: #f59e0b;
+      --neon-purple: #a855f7;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --text-dim: #64748b;
       --font-stack: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -33,8 +34,8 @@
     body {
       background-color: var(--bg-dark);
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.15) 0%, transparent 45%),
-        radial-gradient(circle at 85% 85%, rgba(56, 189, 248, 0.12) 0%, transparent 45%);
+        radial-gradient(circle at 10% 10%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 90% 90%, rgba(56, 189, 248, 0.1) 0%, transparent 50%);
       color: var(--text-main);
       font-family: var(--font-stack);
       display: flex;
@@ -44,7 +45,7 @@
 
     aside {
       width: 270px;
-      background: rgba(11, 19, 43, 0.95);
+      background: rgba(8, 14, 28, 0.96);
       backdrop-filter: blur(25px);
       border-right: 1px solid var(--border-color);
       display: flex;
@@ -67,7 +68,7 @@
     .brand-logo {
       width: 42px;
       height: 42px;
-      background: linear-gradient(135deg, var(--laser-cyan), var(--electric-blue));
+      background: linear-gradient(135deg, var(--neon-purple), var(--laser-cyan));
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -75,7 +76,7 @@
       font-weight: 800;
       font-size: 1.3rem;
       color: #030712;
-      box-shadow: 0 0 20px var(--laser-cyan-glow);
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.45);
     }
 
     .brand-text { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; }
@@ -105,10 +106,510 @@
       text-decoration: none;
     }
 
-    .nav-btn:hover { background: rgba(56, 189, 248, 0.06); color: #fff; }
+    .nav-btn:hover { background: rgba(56, 189, 248, 0.08); color: #fff; }
     .nav-btn.active {
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(56, 189, 248, 0.1));
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(56, 189, 248, 0.12));
       color: #fff;
+      border: 1px solid var(--neon-purple);
+      box-shadow: 0 0 18px rgba(168, 85, 247, 0.35);
+    }
+
+    .nav-badge {
+      margin-left: auto;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 0.15rem 0.55rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .nav-divider {
+      height: 1px;
+      background: var(--border-color);
+      margin: 0.8rem 0;
+      opacity: 0.6;
+    }
+
+    .nav-ext-btn {
+      color: var(--laser-cyan);
+      border: 1px dashed rgba(56, 189, 248, 0.35);
+    }
+    .nav-ext-btn:hover {
+      background: rgba(56, 189, 248, 0.08);
+      border-color: var(--laser-cyan);
+      color: #fff;
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .btn-token-config {
+      width: 100%;
+      background: rgba(168, 85, 247, 0.08);
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      color: var(--neon-purple);
+      padding: 0.7rem 0.9rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    main {
+      margin-left: 270px;
+      flex: 1;
+      padding: 2.5rem 3rem 6rem 3rem;
+      max-width: 1440px;
+      width: calc(100% - 270px);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.8px; }
+    .section-desc { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem; }
+
+    /* FORMS */
+    .form-container {
+      background: var(--bg-card);
+      backdrop-filter: blur(25px);
+      border: 1px solid var(--border-color);
+      border-radius: 22px;
+      padding: 2.2rem 2.6rem;
+      max-width: 950px;
+      box-shadow: 0 12px 45px rgba(0,0,0,0.5);
+      margin-bottom: 2.5rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; position: relative; }
+    .form-group.full-width { grid-column: span 2; }
+    label { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
+
+    input, textarea {
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.2s ease;
+      font-family: var(--font-stack);
+      width: 100%;
+    }
+    textarea { font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.5; }
+    input:focus, textarea:focus {
+      border-color: var(--neon-purple);
+      box-shadow: 0 0 14px rgba(168, 85, 247, 0.4);
+    }
+
+    .smart-input {
+      border-color: rgba(168, 85, 247, 0.4);
+      background: rgba(168, 85, 247, 0.04);
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, var(--neon-purple), #7c3aed);
+      color: #fff;
+      border: none;
+      padding: 0.9rem 1.8rem;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+      transition: all 0.25s ease;
+    }
+    .btn-submit:hover { transform: translateY(-2px); }
+
+    .tmdb-results-box {
+      display: none;
+      margin-top: 8px;
+      background: #091224;
+      border: 1px solid var(--neon-purple);
+      border-radius: 12px;
+      padding: 10px;
+      max-height: 260px;
+      overflow-y: auto;
+      z-index: 50;
+    }
+    .tmdb-result-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+    .tmdb-result-item:hover { background: #1e293b; border-color: var(--neon-purple); }
+    .tmdb-result-poster { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; background: #1e293b; flex-shrink: 0; }
+    .tmdb-result-info { flex: 1; overflow: hidden; }
+    .tmdb-result-title { font-weight: 700; color: #fff; font-size: 0.88rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .tmdb-result-meta { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* GRID & CARDS */
+    .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.75rem; }
+
+    .movie-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .movie-card:hover {
+      border-color: var(--neon-purple);
+      transform: translateY(-5px);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.6), 0 0 20px rgba(168, 85, 247, 0.4);
+    }
+
+    .poster-wrap { width: 100%; height: 290px; background: #070d1e; position: relative; overflow: hidden; }
+    .poster-img { width: 100%; height: 100%; object-fit: cover; }
+    .poster-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 0.85rem; font-weight: 600; text-align: center; }
+
+    .pack-status-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+      z-index: 2;
+      background: rgba(16, 185, 129, 0.25);
+      border: 1px solid var(--laser-green);
+      color: var(--laser-green);
+      box-shadow: 0 0 12px var(--laser-green-glow);
+    }
+
+    .universe-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(4, 7, 17, 0.85);
+      border: 1px solid var(--neon-purple);
+      color: var(--neon-purple);
+      padding: 4px 9px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+      z-index: 2;
+    }
+
+    .movie-card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .movie-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .movie-meta-row {
+      display: flex;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-bottom: 0.65rem;
+      align-items: center;
+      font-weight: 600;
+      flex-wrap: wrap;
+    }
+
+    .spec-chip {
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      color: var(--neon-purple);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .card-actions-row { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+    .btn-action-primary {
+      flex: 1;
+      background: rgba(168, 85, 247, 0.15);
+      color: var(--neon-purple);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      padding: 0.65rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn-action-primary:hover { background: var(--neon-purple); color: #fff; }
+
+    .btn-delete-item {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--laser-red);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 0.65rem 0.8rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-delete-item:hover { background: var(--laser-red); color: #fff; }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(2, 6, 23, 0.88);
+      backdrop-filter: blur(20px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 1.25rem;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-card {
+      background: rgba(13, 22, 38, 0.98);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 760px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+    }
+
+    #laser-toast {
+      position: fixed;
+      top: 25px;
+      right: 25px;
+      background: rgba(13, 22, 38, 0.96);
+      border: 1px solid var(--neon-purple);
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.45);
+      color: #fff;
+      padding: 1rem 1.5rem;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: none;
+      z-index: 300;
+      max-width: 90%;
+    }
+
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      aside {
+        width: 100%;
+        height: auto;
+        position: sticky;
+        top: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 0.75rem 1rem;
+        z-index: 100;
+      }
+      .brand { padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+      .nav-list { flex-direction: row; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+      .nav-btn { white-space: nowrap; padding: 0.5rem 0.8rem; font-size: 0.8rem; }
+      .nav-divider { display: none; }
+      .sidebar-footer { display: none; }
+      main { margin-left: 0; width: 100%; padding: 1.25rem 1rem 6rem 1rem; }
+      .form-container { padding: 1.4rem 1.1rem; }
+      .form-grid { grid-template-columns: 1fr; gap: 0.9rem; }
+      .form-group.full-width { grid-column: span 1; }
+      .movies-grid { grid-template-columns: repeat(auto-fill, minmax(145px, 1fr)); gap: 1rem; }
+      .poster-wrap { height: 210px; }
+      .movie-card-body { padding: 0.85rem; }
+      .movie-title { font-size: 0.95rem; }
+      .modal-card { padding: 1.25rem; border-radius: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="laser-toast"></div>
+
+  <aside>
+    <div class="brand">
+      <div class="brand-logo">M</div>
+      <div class="brand-text">MoinuFlix</div>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="inbox.html" class="nav-btn nav-ext-btn">
+          <span>🎬 Movies Studio ➔</span>
+        </a>
+      </li>
+      <li>
+        <button class="nav-btn active">
+          <span>📺 Web Series</span>
+          <span class="nav-badge" id="badge-series-count">0</span>
+        </button>
+      </li>
+      <li>
+        <a href="songs.html" class="nav-btn nav-ext-btn">
+          <span>🎵 5.1 Songs ➔</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button class="btn-token-config" onclick="configureGithubToken()">
+        <span id="token-status-label">⚙️ GitHub Token</span>
+      </button>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <h1>📺 Web Series Bundle Ingest</h1>
+        <p class="section-desc">Create consolidated Season packs directly in `chunks/data_c02.json`</p>
+      </div>
+      <div>
+        <button class="cat-pill" style="border-color:var(--neon-purple); color:var(--neon-purple);" onclick="configureGithubToken()">⚙️ Token</button>
+        <button class="cat-pill" onclick="loadSeriesData()">🔄 Refresh</button>
+      </div>
+    </header>
+
+    <!-- FORM: SEASON PACK BUNDLE INGESTOR -->
+    <div class="form-container">
+      <form id="series-bundle-form" onsubmit="handleBundleSubmit(event)">
+        <div class="form-grid">
+          
+          <div class="form-group full-width">
+            <label style="color: var(--neon-purple);">⚡ Search TV Show Name (e.g. Naruto, Farzi, Mirzapur, Stranger Things)</label>
+            <input type="text" id="input-series-search" class="smart-input" placeholder="Type TV Show name to search TMDB..." oninput="searchTvShowTmdb(this.value)">
+            <div id="series-suggestions-box" class="tmdb-results-box"></div>
+          </div>
+
+          <div class="form-group">
+            <label>TV Show Title</label>
+            <input type="text" id="input-series-title" placeholder="e.g. Naruto" required>
+          </div>
+
+          <div class="form-group">
+            <label>TMDB TV ID</label>
+            <input type="number" id="input-series-tmdb" placeholder="e.g. 46260" required oninput="fetchTvShowDetails(this.value)">
+          </div>
+
+          <div class="form-group">
+            <label>Season Tag / Name</label>
+            <input type="text" id="input-series-season" placeholder="Season 1" value="Season 1" required>
+          </div>
+
+          <div class="form-group">
+            <label>Release Year</label>
+            <input type="number" id="input-series-year" placeholder="2002" value="2002">
+          </div>
+
+          <!-- THE BUNDLE TEXTAREA -->
+          <div class="form-group full-width">
+            <label style="color: var(--laser-cyan);">📦 Episode Links Bundle (Paste all Google Drive Links or IDs, 1 per line):</label>
+            <textarea id="input-episodes-bundle" rows="8" placeholder="Paste full Google Drive Links or IDs here (1 per line). Examples:
+1XP0iAM3IiiZ0eVYRkKeC9gdk_Y3-rQgq
+https://drive.google.com/file/d/1aYFpSvY5zIh9aBchIAVHnvgujJ6M8LXA/view
+Or format: Episode Title | Drive Link | Size
+Episode 2 - Konohamaru | 1XP0iAM3IiiZ0eVYRkKeC9gdk_Y3-rQgq | 422 MB" required></textarea>
+            <span style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">
+              ⚡ Auto-detects Google Drive IDs, assigns Episode 1, 2, 3... and wraps into clean Kodi Pack Schema!
+            </span>
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn-submit" id="btn-submit-bundle" style="width: 100%;">
+          🚀 PACK & COMMIT COMPLETE SEASON TO DATA_C02.JSON
+        </button>
+      </form>
+    </div>
+
+    <!-- EXISTING SERIES LIST -->
+    <header style="margin-top: 2rem;">
+      <div>
+        <h2>📚 Library Seasons & Series</h2>
+        <p class="section-desc">Consolidated TV Packs stored in chunks/data_c02.json</p>
+      </div>
+      <div>
+        <input type="text" id="search-series-input" placeholder="Search series in library..." style="max-width: 250px; padding: 0.6rem 1rem;" oninput="filterSeriesCards()">
+      </div>
+    </header>
+
+    <div class="movies-grid" id="series-grid"></div>
+  </main>
+
+  <!-- MODAL: EPISODES LIST -->
+  <div class="modal-overlay" id="series-ep-modal">
+    <div class="modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.2rem; border-bottom:1px solid var(--border-color); padding-bottom:0.8rem;">
+        <div>
+          <h3 id="modal-series-title" style="font-size:1.3rem; font-weight:800; color:#fff;"></h3>
+          <span style="font-size:0.85rem; color:var(--laser-cyan);" id="modal-series-count"></span>
+        </div>
+        <button type="button" style="background:transparent; border:none; color:#fff; font-size:1.5rem; cursor:pointer;" onclick="closeEpModal()">✕</button>
+      </div>
+      <div id="modal-episodes-list" style="display:flex; flex-direction:column; gap:0.75rem; max-height:500px; overflow-y:auto;"></div>
+    </div>
+  </div>
+
+  <script>
+    let seriesData = [];
+    let activeTvMeta = null;
+    let searchDebounce = null;
+
+    const CONFIRM_PIN = "24592";
+    const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
+    const GH_REPO = 'Moinuflix/My-Movies';
+    const GH_BRANCH = 'main';
+    const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';
+    const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';
+
+    function getStoredToken() { return localStorage.getItem('moinuflix_gh_token') || ''; }
+    function configureGithubToken() {
+      const current = getStoredToken();
+      const input = prompt('Enter your GitHub Personal Access Token (ghp_...):', current);
+      if (input !== null) {
+        if (input.trim()) {
+          localStorage.setItem('moinuflix_gh_token', input.trim());
+          updateTokenBadge();
+          showLaserToast('GitHub Token Saved!');
+        } else {
+          localStorage.removeItem('moinuflix_gh_token');
+          updateTokenBadge();
+        }
+      }
+    }
+    function updateTokenBadge() {
+      const label = do      color: #fff;
       border: 1px solid var(--laser-cyan);
       box-shadow: 0 0 20px var(--laser-cyan-glow);
     }
