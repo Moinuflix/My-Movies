@@ -203,6 +203,7 @@
       overflow-x: auto;
       padding-bottom: 0.4rem;
       flex-wrap: nowrap;
+      -webkit-overflow-scrolling: touch;
     }
 
     .cat-pill {
@@ -251,7 +252,7 @@
     }
 
     .search-bar-container { margin-bottom: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
-    .search-input { flex: 1; min-width: 280px; padding: 0.9rem 1.3rem; font-size: 1rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; color: #fff; }
+    .search-input { flex: 1; min-width: 240px; padding: 0.9rem 1.3rem; font-size: 1rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; color: #fff; }
     .search-input:focus { border-color: var(--laser-cyan); outline: none; }
     .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.75rem; }
 
@@ -399,6 +400,7 @@
       font-weight: 700;
       cursor: pointer;
       text-align: center;
+      text-decoration: none;
     }
     .btn-action-primary:hover { background: var(--laser-cyan); color: #030712; }
 
@@ -514,7 +516,7 @@
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.15);
       color: var(--text-muted);
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: 20px;
       font-size: 0.75rem;
       font-weight: 700;
@@ -537,6 +539,7 @@
       cursor: pointer;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
       box-shadow: 0 0 18px var(--laser-cyan-glow);
       transition: all 0.25s ease;
@@ -603,7 +606,9 @@
       margin-bottom: 2rem;
       border-bottom: 1px solid var(--border-color);
       padding-bottom: 1rem;
-      flex-wrap: wrap;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      -webkit-overflow-scrolling: touch;
     }
 
     .hub-tab-btn {
@@ -616,6 +621,7 @@
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s;
+      white-space: nowrap;
     }
     .hub-tab-btn.active {
       background: rgba(56, 189, 248, 0.15);
@@ -638,9 +644,11 @@
       padding: 1.25rem;
       margin-top: 1rem;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .smart-scan-table {
       width: 100%;
+      min-width: 680px;
       border-collapse: collapse;
       font-size: 0.85rem;
       text-align: left;
@@ -663,7 +671,7 @@
     /* BOTTOM AUTO-MERGE DOCK BAR */
     .merge-bottom-dock {
       position: fixed;
-      bottom: -120px;
+      bottom: -150px;
       left: 50%;
       transform: translateX(-50%);
       background: rgba(14, 18, 28, 0.96);
@@ -677,6 +685,8 @@
       box-shadow: 0 0 35px var(--laser-cyan-glow);
       z-index: 150;
       transition: bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 90%;
+      max-width: 600px;
     }
     .merge-bottom-dock.show { bottom: 25px; }
     .merge-dock-title { font-weight: 800; font-size: 0.95rem; color: #fff; }
@@ -691,6 +701,7 @@
       border: none;
       cursor: pointer;
       box-shadow: 0 0 15px var(--laser-cyan-glow);
+      white-space: nowrap;
     }
 
     /* FLOATING UPLOAD STATUS BAR */
@@ -798,21 +809,47 @@
       font-weight: 700;
       display: none;
       z-index: 300;
+      max-width: 90%;
     }
 
+    /* MOBILE RESPONSIVE MASTER FIXES */
     @media (max-width: 900px) {
       body { flex-direction: column; }
-      aside { width: 100%; height: auto; position: relative; border-right: none; padding: 1rem; }
-      .nav-list { flex-direction: row; overflow-x: auto; }
-      .nav-btn { white-space: nowrap; }
-      .sidebar-footer { flex-direction: row; flex-wrap: wrap; }
-      main { margin-left: 0; width: 100%; padding: 1.25rem; }
-      .form-grid { grid-template-columns: 1fr; }
+      aside {
+        width: 100%;
+        height: auto;
+        position: sticky;
+        top: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 0.75rem 1rem;
+        z-index: 100;
+      }
+      .brand { padding-bottom: 0.6rem; margin-bottom: 0.6rem; }
+      .nav-list {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .nav-btn { white-space: nowrap; padding: 0.5rem 0.8rem; font-size: 0.8rem; }
+      .sidebar-footer { display: none; } /* Footers moved/hidden for smooth mobile space */
+      main {
+        margin-left: 0;
+        width: 100%;
+        padding: 1.25rem 1rem 6rem 1rem;
+      }
+      h1 { font-size: 1.45rem; }
+      .form-container { padding: 1.4rem 1.1rem; }
+      .form-grid { grid-template-columns: 1fr; gap: 0.9rem; }
       .form-group.full-width { grid-column: span 1; }
-      .movies-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+      .movies-grid { grid-template-columns: repeat(auto-fill, minmax(145px, 1fr)); gap: 1rem; }
       .poster-wrap { height: 210px; }
-      .merge-bottom-dock { width: 90%; flex-direction: column; text-align: center; gap: 0.8rem; }
-      .industry-checkbox-panel { grid-template-columns: 1fr 1fr; }
+      .movie-card-body { padding: 0.85rem; }
+      .movie-title { font-size: 0.95rem; }
+      .merge-bottom-dock { width: 92%; flex-direction: column; text-align: center; gap: 0.6rem; padding: 0.8rem 1rem; }
+      .industry-checkbox-panel { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+      .modal-card { padding: 1.25rem; border-radius: 18px; }
     }
   </style>
 </head>
@@ -905,12 +942,16 @@
           <h1>Unified Studio Overview</h1>
           <p class="section-desc">Live status of media library, 5TB storage & database chunks</p>
         </div>
+        <div style="display:flex; gap:6px;">
+          <button class="cat-pill" onclick="configureGithubToken()">⚙️ Token</button>
+          <button class="cat-pill" onclick="configureBackendUrl()">🌐 Backend</button>
+        </div>
       </header>
 
       <!-- 5TB JIO DRIVE LIVE STORAGE BAR -->
       <div style="background:var(--bg-card); padding:1.2rem 1.6rem; border-radius:18px; border:1px solid rgba(56, 189, 248, 0.3); margin-bottom: 1.5rem; display:flex; flex-direction:column; gap:0.6rem;">
         <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span style="font-weight:800; font-size:0.92rem; color:#fff;">💾 Jio 5TB Storage Meter (Calculated Library)</span>
+          <span style="font-weight:800; font-size:0.92rem; color:#fff;">💾 Jio 5TB Storage Meter</span>
           <span style="font-weight:800; font-size:0.88rem; color:var(--laser-cyan);" id="stat-storage-text">0 GB / 5000 GB (0%)</span>
         </div>
         <div style="width:100%; height:8px; background:rgba(255,255,255,0.08); border-radius:10px; overflow:hidden;">
@@ -918,28 +959,32 @@
         </div>
       </div>
 
-      <div class="stats-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1rem; margin-bottom: 2rem;">
-        <div style="background:var(--bg-card); padding:1.4rem; border-radius:18px; border:1px solid var(--border-color);">
-          <div style="color:var(--text-dim); font-size:0.75rem; font-weight:700;">🎬 TOTAL MOVIES (c01)</div>
+      <div class="stats-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:1rem; margin-bottom: 2rem;">
+        <div style="background:var(--bg-card); padding:1.2rem; border-radius:18px; border:1px solid var(--border-color);">
+          <div style="color:var(--text-dim); font-size:0.75rem; font-weight:700;">🎬 TOTAL MOVIES</div>
           <div style="font-size:1.85rem; font-weight:800; color:#fff;" id="stat-c01">0</div>
         </div>
-        <div style="background:var(--bg-card); padding:1.4rem; border-radius:18px; border:1px solid var(--border-color);">
-          <div style="color:var(--laser-cyan); font-size:0.75rem; font-weight:700;">🌴 TAMIL (KOLLYWOOD)</div>
+        <div style="background:var(--bg-card); padding:1.2rem; border-radius:18px; border:1px solid var(--border-color);">
+          <div style="color:#fbbf24; font-size:0.75rem; font-weight:700;">⚡ IMAX CORE</div>
+          <div style="font-size:1.85rem; font-weight:800; color:#fbbf24;" id="stat-imax">0</div>
+        </div>
+        <div style="background:var(--bg-card); padding:1.2rem; border-radius:18px; border:1px solid var(--border-color);">
+          <div style="color:var(--laser-cyan); font-size:0.75rem; font-weight:700;">🌴 TAMIL</div>
           <div style="font-size:1.85rem; font-weight:800; color:#fff;" id="stat-tamil">0</div>
         </div>
-        <div style="background:var(--bg-card); padding:1.4rem; border-radius:18px; border:1px solid var(--border-color);">
-          <div style="color:#a855f7; font-size:0.75rem; font-weight:700;">🏛️ TELUGU (TOLLYWOOD)</div>
+        <div style="background:var(--bg-card); padding:1.2rem; border-radius:18px; border:1px solid var(--border-color);">
+          <div style="color:#a855f7; font-size:0.75rem; font-weight:700;">🏛️ TELUGU</div>
           <div style="font-size:1.85rem; font-weight:800; color:#fff;" id="stat-telugu">0</div>
         </div>
-        <div style="background:var(--bg-card); padding:1.4rem; border-radius:18px; border:1px solid var(--border-color);">
-          <div style="color:#fbbf24; font-size:0.75rem; font-weight:700;">✨ HINDI (BOLLYWOOD)</div>
+        <div style="background:var(--bg-card); padding:1.2rem; border-radius:18px; border:1px solid var(--border-color);">
+          <div style="color:#fbbf24; font-size:0.75rem; font-weight:700;">✨ HINDI</div>
           <div style="font-size:1.85rem; font-weight:800; color:#fff;" id="stat-hindi">0</div>
         </div>
-        <div style="background:var(--bg-card); padding:1.4rem; border-radius:18px; border:1px solid var(--border-color);">
+        <div style="background:var(--bg-card); padding:1.2rem; border-radius:18px; border:1px solid var(--border-color);">
           <div style="color:var(--laser-red); font-size:0.75rem; font-weight:700;">📥 PENDING ARRIVALS</div>
           <div style="font-size:1.85rem; font-weight:800; color:#ff4d58;" id="stat-inbox">0</div>
         </div>
-        <div style="background:var(--bg-card); padding:1.4rem; border-radius:18px; border:1px solid var(--border-color);">
+        <div style="background:var(--bg-card); padding:1.2rem; border-radius:18px; border:1px solid var(--border-color);">
           <div style="color:var(--gold-lcu); font-size:0.75rem; font-weight:700;">👑 FRANCHISE PACKS</div>
           <div style="font-size:1.85rem; font-weight:800; color:var(--gold-lcu);" id="stat-packs">0</div>
         </div>
@@ -951,14 +996,14 @@
       <header>
         <div>
           <h1>📡 Google Drive Arrivals & Audit Hub</h1>
-          <p class="section-desc">Real Title Auto-Cleaned • 1-Click Sync All • Automatic Separation into Movies & Series</p>
+          <p class="section-desc">Real Title Auto-Cleaned • 1-Click Sync All</p>
         </div>
         <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center;">
           <button type="button" class="btn-batch-all" id="btn-batch-sync-all" onclick="executeOneClickBatchSyncAll()">
             🚀 1-CLICK SYNC ALL ARRIVALS
           </button>
           <button type="button" class="btn-clean-duplicates" id="btn-trigger-action" onclick="triggerGitHubScanAction()">
-            ⚡ Trigger Drive Scan (GitHub Action)
+            ⚡ Trigger Scan
           </button>
           <button type="button" class="btn-clean-duplicates" onclick="loadDriveArrivalsList()">
             🔄 Refresh List
@@ -1002,7 +1047,7 @@
         </div>
         <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
           <button type="button" class="btn-clean-duplicates" onclick="autoConnectFranchiseCollections()">
-            ⚡ Connect All Packs
+            ⚡ Connect Packs
           </button>
           <button type="button" class="btn-clean-duplicates" onclick="autoMergeDuplicateMovies()">
             ⚡ Auto-Merge Duplicates
@@ -1028,7 +1073,7 @@
       </div>
 
       <div class="search-bar-container">
-        <input type="text" id="movie-search-input" class="search-input" placeholder="Search by Movie Title, Year, Multi Audio, OTT Platform, LCU..." oninput="handleMovieSearch()">
+        <input type="text" id="movie-search-input" class="search-input" placeholder="Search Title, Year, Multi Audio, LCU..." oninput="handleMovieSearch()">
       </div>
 
       <div class="movies-grid" id="movies-grid-container"></div>
@@ -1158,7 +1203,7 @@
               </div>
 
               <div class="form-group">
-                <label>File Size (Clean Integer Rounded)</label>
+                <label>File Size</label>
                 <input type="text" id="input-filesize" placeholder="e.g. 14 GB or 2 GB">
               </div>
 
@@ -1178,12 +1223,12 @@
 
               <div class="form-group full-width">
                 <label style="color: var(--laser-cyan);">⚡ Direct Download URL (Auto Colab/Server Upload to Drive)</label>
-                <input type="text" id="input-direct-download-url" placeholder="Paste direct file URL (Dropbox, Google Cloud, Direct HTTP/HTTPS link)">
+                <input type="text" id="input-direct-download-url" placeholder="Paste direct file URL">
               </div>
 
               <div class="form-group full-width">
                 <label>Google Drive Link / Raw File ID</label>
-                <input type="text" id="input-gdrive-url" placeholder="Paste full GD link or ID (Or leave blank if providing direct URL above)">
+                <input type="text" id="input-gdrive-url" placeholder="Paste full GD link or ID">
               </div>
 
               <!-- IMAX CORE EXTRA ROUTE CHECKBOX -->
@@ -1198,13 +1243,13 @@
               <div class="form-group full-width">
                 <label class="industry-check-label" style="margin-top:0.4rem; color:var(--laser-green);">
                   <input type="checkbox" id="chk-attach-song" onchange="toggleAttachSongSection(this.checked)">
-                  <span>🎵 Attach 5.1 Song with this Movie (Optional • Live Search & HD Art)</span>
+                  <span>🎵 Attach 5.1 Song with this Movie (Optional • Live Search)</span>
                 </label>
                 
                 <div id="attach-song-section" class="song-attach-box" style="display:none;">
                   <div class="form-grid" style="margin-bottom:0.5rem;">
                     <div class="form-group full-width">
-                      <label style="color:var(--laser-green);">Search Song Name (Type 'Madras', 'Hukum', 'Leo Badass'...)</label>
+                      <label style="color:var(--laser-green);">Search Song Name (Type 'Hukum', 'Badass'...)</label>
                       <input type="text" id="input-attach-song-query" placeholder="Type song title..." oninput="searchLiveMusicEngine(this.value, 'movie-attach')">
                       <div id="saavn-attach-suggestions" class="tmdb-results-box"></div>
                     </div>
@@ -1230,7 +1275,7 @@
             </div>
 
             <div class="form-actions" style="display: flex; gap: 10px;">
-              <button type="submit" class="btn-submit" id="btn-movie-submit">ADD MOVIE</button>
+              <button type="submit" class="btn-submit" id="btn-movie-submit" style="flex:1;">ADD MOVIE</button>
               <button type="button" class="btn-close-modal" id="btn-cancel-merge" style="display: none;" onclick="cancelMergeMode()">Cancel Merge</button>
             </div>
           </form>
@@ -1241,40 +1286,35 @@
       <div id="hub-tab-folder-batch" class="hub-content" style="display: none;">
         <div class="form-container" style="border-color: rgba(245, 158, 11, 0.4); max-width: 1100px;">
           <div style="font-size: 1.1rem; font-weight: 800; color: var(--gold-lcu); margin-bottom: 0.5rem;">📁 Google Drive Batch Importer (Review & Verify Mode)</div>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Step 1: Scan Folder/Paste JSON ➔ Step 2: Check Posters, Drive ID & TMDB Dropdown ➔ Step 3: Direct Final Fetch & GitHub Commit.</p>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Step 1: Paste Scraped JSON ➔ Step 2: Confirm TMDB ➔ Step 3: Direct Commit.</p>
 
           <div class="form-grid" style="margin-bottom: 1rem;">
             <div class="form-group full-width">
-              <label>Google Drive Folder Link / ID</label>
-              <input type="text" id="input-batch-folder-url" placeholder="https://drive.google.com/drive/folders/1qSbkXGLBE6OxRF2pwiNekNDHPnyQQm-w">
-            </div>
-            <div class="form-group full-width">
-              <label>Or Paste Raw JSON / Scraped List [From Browser Console]:</label>
+              <label>Paste Raw JSON Array [From Browser Console]:</label>
               <textarea id="input-batch-manual-json" rows="3" placeholder='[{"name": "Leo.2023.1080p.mkv", "id": "1H4hepCl_..."}, {"name": "Pushpa.2.2024.4k.mkv", "id": "1qSbk..."}]'></textarea>
             </div>
           </div>
 
-          <button type="button" class="btn-submit" style="background: linear-gradient(135deg, var(--gold-lcu), #d97706); color:#000;" onclick="loadFilesToReviewTable()">
-            🔍 STEP 1: SCAN & GENERATE VERIFICATION LIST
+          <button type="button" class="btn-submit" style="background: linear-gradient(135deg, var(--gold-lcu), #d97706); color:#000; width:100%; justify-content:center;" onclick="loadFilesToReviewTable()">
+            🔍 SCAN & GENERATE CHECKLIST
           </button>
 
           <div id="batch-verification-section" style="display: none; margin-top: 2rem;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
               <div style="font-weight: 800; font-size: 1rem; color: #fff;">
-                📋 Verification Checklist (<span id="review-count">0</span> Files Ready)
+                📋 Verification Checklist (<span id="review-count">0</span> Ready)
               </div>
-              <span style="font-size: 0.8rem; color: var(--laser-cyan);">Click movie title/poster to open TMDB suggestions dropdown</span>
             </div>
 
-            <div style="max-height: 480px; overflow-y: auto; border: 1px solid var(--border-color); border-radius: 14px; background: rgba(3, 7, 18, 0.6); margin-bottom: 1.5rem;">
-              <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: left;">
+            <div style="max-height: 480px; overflow-y: auto; border: 1px solid var(--border-color); border-radius: 14px; background: rgba(3, 7, 18, 0.6); margin-bottom: 1.5rem; overflow-x: auto;">
+              <table style="width: 100%; min-width: 500px; border-collapse: collapse; font-size: 0.82rem; text-align: left;">
                 <thead>
                   <tr style="border-bottom: 1px solid var(--border-color); background: rgba(15, 23, 42, 0.95); position: sticky; top: 0; z-index: 20;">
-                    <th style="padding: 10px 14px; color: var(--text-dim); width: 40px;">#</th>
-                    <th style="padding: 10px 14px; color: var(--text-dim); width: 35%;">File Name</th>
-                    <th style="padding: 10px 14px; color: var(--text-dim); width: 180px;">Drive ID</th>
-                    <th style="padding: 10px 14px; color: var(--text-dim);">TMDB Match (Poster & Dropdown)</th>
-                    <th style="padding: 10px 14px; color: var(--text-dim); width: 50px; text-align: center;">Del</th>
+                    <th style="padding: 10px; color: var(--text-dim); width: 30px;">#</th>
+                    <th style="padding: 10px; color: var(--text-dim);">File Name</th>
+                    <th style="padding: 10px; color: var(--text-dim); width: 140px;">Drive ID</th>
+                    <th style="padding: 10px; color: var(--text-dim); width: 120px;">TMDB ID</th>
+                    <th style="padding: 10px; color: var(--text-dim); width: 40px; text-align: center;">Del</th>
                   </tr>
                 </thead>
                 <tbody id="batch-table-body"></tbody>
@@ -1282,7 +1322,7 @@
             </div>
 
             <button type="button" class="btn-submit" style="background: linear-gradient(135deg, var(--laser-green), #059669); color: #fff; width: 100%; justify-content: center; font-size: 1rem;" onclick="executeFinalBatchFetchAndCommit()">
-              🚀 CONFIRM CHECKLIST & COMMIT ALL TO GITHUB
+              🚀 CONFIRM & COMMIT ALL TO GITHUB
             </button>
           </div>
         </div>
@@ -1294,8 +1334,8 @@
           <form id="series-form" onsubmit="handleSeriesSubmit(event)">
             <div class="form-grid">
               <div class="form-group full-width">
-                <label>Search Series Name (e.g. Farzi, Mirzapur, Stranger Things)</label>
-                <input type="text" id="input-series-search" placeholder="Type TV show name to auto-search..." oninput="searchSeriesTmdb(this.value)">
+                <label>Search Series Name (e.g. Farzi, Mirzapur)</label>
+                <input type="text" id="input-series-search" placeholder="Type TV show name..." oninput="searchSeriesTmdb(this.value)">
                 <div id="series-suggestions-box" class="tmdb-results-box">
                   <div id="series-suggestions-list"></div>
                 </div>
@@ -1306,39 +1346,39 @@
               </div>
               <div class="form-group">
                 <label>Total Seasons / Tag</label>
-                <input type="text" id="input-series-seasons" placeholder="e.g. Season 1 (All Episodes)" value="Season 1">
+                <input type="text" id="input-series-seasons" placeholder="e.g. Season 1" value="Season 1">
               </div>
               <div class="form-group full-width">
                 <label>Google Drive Link / Stream URL</label>
                 <input type="text" id="input-series-gdrive" placeholder="Google Drive Link or Stream Route" required>
               </div>
             </div>
-            <button type="submit" class="btn-submit">SAVE WEB SERIES</button>
+            <button type="submit" class="btn-submit" style="width:100%; justify-content:center;">SAVE WEB SERIES</button>
           </form>
         </div>
       </div>
 
-      <!-- TAB 4: STANDALONE SONG FORM (LIVE TOP 5-6 SEARCH) -->
+      <!-- TAB 4: STANDALONE SONG FORM -->
       <div id="hub-tab-song" class="hub-content" style="display: none;">
         <div class="form-container">
           <form id="song-form" onsubmit="handleSongSubmit(event)">
             <div class="form-grid">
               <div class="form-group full-width">
-                <label style="color:var(--laser-green);">⚡ Live Search Track Name (Shows Top 5-6 Suggestions)</label>
-                <input type="text" id="input-song-search" placeholder="Type song title (e.g. Madras, Hukum, Badass, Arabic Kuthu)..." oninput="searchLiveMusicEngine(this.value, 'standalone-song')">
+                <label style="color:var(--laser-green);">⚡ Live Search Track Name</label>
+                <input type="text" id="input-song-search" placeholder="Type song title..." oninput="searchLiveMusicEngine(this.value, 'standalone-song')">
                 <div id="saavn-standalone-suggestions" class="tmdb-results-box"></div>
               </div>
               <div class="form-group">
                 <label>Song Title</label>
-                <input type="text" id="input-song-title" placeholder="e.g. Hukum" required>
+                <input type="text" id="input-song-title" placeholder="Song Title" required>
               </div>
               <div class="form-group">
                 <label>Movie / Album Name</label>
-                <input type="text" id="input-song-movie" placeholder="e.g. Jailer" required>
+                <input type="text" id="input-song-movie" placeholder="Album Name" required>
               </div>
               <div class="form-group">
                 <label>Artist / Music Director</label>
-                <input type="text" id="input-song-artist" placeholder="e.g. Anirudh Ravichander">
+                <input type="text" id="input-song-artist" placeholder="Artist" required>
               </div>
               <div class="form-group">
                 <label>Audio Quality Format</label>
@@ -1357,7 +1397,7 @@
                 <input type="text" id="input-song-gdrive" placeholder="Google Drive Link or File ID" required>
               </div>
             </div>
-            <button type="submit" class="btn-submit">SAVE 5.1 SONG</button>
+            <button type="submit" class="btn-submit" style="width:100%; justify-content:center;">SAVE 5.1 SONG</button>
           </form>
         </div>
       </div>
@@ -1369,11 +1409,11 @@
             <div class="form-grid">
               <div class="form-group full-width">
                 <label>YouTube Link or Playlist Link</label>
-                <input type="text" id="input-yt-url" placeholder="Paste single YouTube video or playlist link" required>
+                <input type="text" id="input-yt-url" placeholder="Paste YouTube link" required>
               </div>
               <div class="form-group">
                 <label>Video Title</label>
-                <input type="text" id="input-yt-title" placeholder="Auto or custom title" required>
+                <input type="text" id="input-yt-title" placeholder="Video title" required>
               </div>
               <div class="form-group">
                 <label>Category</label>
@@ -1385,7 +1425,7 @@
                 </select>
               </div>
             </div>
-            <button type="submit" class="btn-submit">ADD TO YOUTUBE VAULT</button>
+            <button type="submit" class="btn-submit" style="width:100%; justify-content:center;">ADD TO YOUTUBE VAULT</button>
           </form>
         </div>
       </div>
@@ -1436,13 +1476,13 @@
         <button type="button" style="background:transparent; border:none; color:#fff; font-size:1.5rem; cursor:pointer;" onclick="closePackModal()">✕</button>
       </div>
       <div style="margin-bottom: 1.5rem;">
-        <div style="font-size:0.85rem; font-weight:800; color:var(--laser-green); margin-bottom:0.75rem; letter-spacing:0.5px;">
+        <div style="font-size:0.85rem; font-weight:800; color:var(--laser-green); margin-bottom:0.75rem;">
           ✅ IN YOUR LIBRARY (<span id="pack-owned-count">0</span>):
         </div>
         <div id="pack-owned-list"></div>
       </div>
       <div id="pack-missing-section">
-        <div style="font-size:0.85rem; font-weight:800; color:var(--laser-red); margin-bottom:0.75rem; letter-spacing:0.5px;">
+        <div style="font-size:0.85rem; font-weight:800; color:var(--laser-red); margin-bottom:0.75rem;">
           ❌ MISSING FROM THIS PACK (<span id="pack-missing-count">0</span>):
         </div>
         <div id="pack-missing-list"></div>
@@ -1458,10 +1498,10 @@
         <span style="font-size: 0.75rem; color: var(--laser-cyan); font-weight: 800;">READY</span>
       </div>
       <div class="preview-list" id="modal-preview-details"></div>
-      <div class="modal-actions" style="display:flex; justify-content:flex-end; gap:0.85rem;">
-        <button type="button" class="btn-close-modal" onclick="copyStreamUrl()">Copy Stream URL</button>
+      <div class="modal-actions" style="display:flex; flex-wrap:wrap; justify-content:flex-end; gap:0.6rem;">
+        <button type="button" class="btn-close-modal" onclick="copyStreamUrl()">Copy Stream</button>
         <button type="button" class="btn-save-database" id="btn-commit-github" onclick="commitPendingToGitHub()">
-          <span>Save & Direct Commit to GitHub</span>
+          <span>Save to GitHub</span>
         </button>
         <button type="button" class="btn-close-modal" onclick="closeModal()">Cancel</button>
       </div>
@@ -1498,8 +1538,10 @@
     let musicSearchDebounce = null;
     let stageReviewList = [];
 
-    const CONFIRM_PASS = "24592";
-    const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
+    // Security Settings
+    function getConfirmPass() { return localStorage.getItem('moinuflix_del_pin') || '24592'; }
+    function getTmdbApiKey() { return localStorage.getItem('moinuflix_tmdb_key') || '051ccf72e026820cb53b8b8531b6a2ba'; }
+
     const GH_REPO = 'Moinuflix/My-Movies';
     const GH_BRANCH = 'main';
     const RAW_BASE = `https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}`;
@@ -1584,6 +1626,7 @@
 
     function updateBackendBadge() {
       const label = document.getElementById('backend-status-label');
+      if (!label) return;
       const url = getBackendUrl();
       if (url && !url.includes('localhost')) {
         label.textContent = '🌐 Colab API: Connected';
@@ -1642,6 +1685,7 @@
     }
     function updateTokenBadge() {
       const label = document.getElementById('token-status-label');
+      if (!label) return;
       if (getStoredToken()) {
         label.textContent = 'Token: Active ✅';
         label.style.color = 'var(--laser-green)';
@@ -1743,7 +1787,7 @@
       }
     }
 
-    /* TOP 5-6 LIVE MUSIC SEARCH (DUAL ENGINE: JIOSAAVN + ITUNES HD) */
+    // Live Music Search
     function searchLiveMusicEngine(query, mode = 'movie-attach') {
       clearTimeout(musicSearchDebounce);
       const boxId = mode === 'movie-attach' ? 'saavn-attach-suggestions' : 'saavn-standalone-suggestions';
@@ -1755,11 +1799,10 @@
       }
 
       musicSearchDebounce = setTimeout(async () => {
-        box.innerHTML = '<div style="font-size:0.75rem; color:var(--laser-cyan); padding:6px 8px;">🔍 Searching top 5-6 matching tracks...</div>';
+        box.innerHTML = '<div style="font-size:0.75rem; color:var(--laser-cyan); padding:6px 8px;">🔍 Searching tracks...</div>';
         box.style.display = 'block';
 
         let songResults = [];
-
         try {
           const res = await fetch(`https://saavn.dev/api/search/songs?query=${encodeURIComponent(query)}&limit=6`);
           const data = await res.json();
@@ -1792,7 +1835,7 @@
         if (songResults.length > 0) {
           const header = document.createElement('div');
           header.style.cssText = 'font-size:0.72rem; color:var(--laser-cyan); font-weight:800; margin-bottom:6px; padding:0 4px;';
-          header.textContent = `🎯 TOP ${songResults.length} MATCHING TRACKS (Click to select):`;
+          header.textContent = `🎯 TOP ${songResults.length} MATCHES:`;
           box.appendChild(header);
 
           songResults.slice(0, 6).forEach(s => {
@@ -1802,7 +1845,7 @@
               ${s.poster ? `<img src="${s.poster}" class="tmdb-result-poster">` : '<div class="tmdb-result-poster"></div>'}
               <div class="tmdb-result-info">
                 <div class="tmdb-result-title">${escapeHtml(s.title)}</div>
-                <div class="tmdb-result-meta">${escapeHtml(s.album || 'Single')} • ${escapeHtml(s.artist || 'HQ Artist')}</div>
+                <div class="tmdb-result-meta">${escapeHtml(s.album || 'Single')} • ${escapeHtml(s.artist || 'Artist')}</div>
               </div>
             `;
             item.onclick = () => {
@@ -1817,14 +1860,14 @@
                 document.getElementById('input-song-poster').value = s.poster;
               }
               box.style.display = 'none';
-              showLaserToast(`Selected: "${s.title}" (High-Res Artwork Loaded!)`);
+              showLaserToast(`Selected: "${s.title}"`);
             };
             box.appendChild(item);
           });
           box.style.display = 'block';
         } else {
-          box.innerHTML = '<div style="font-size:0.75rem; color:var(--laser-red); padding:6px 8px;">No songs found. Try a different title/spelling.</div>';
-          setTimeout(() => { box.style.display = 'none'; }, 3000);
+          box.innerHTML = '<div style="font-size:0.75rem; color:var(--laser-red); padding:6px 8px;">No songs found.</div>';
+          setTimeout(() => { box.style.display = 'none'; }, 2500);
         }
       }, 350);
     }
@@ -1867,7 +1910,6 @@
       return null;
     }
 
-    // SMART PARSER: TV SERIES VS MOVIE DETECTION
     function cleanMovieFileName(filename) {
       let raw = filename.replace(/\.(mkv|mp4|avi|ts)$/i, '').replace(/[\._\-]/g, ' ');
       
@@ -1920,6 +1962,7 @@
       }
     }
 
+    // FIX: Missing IMAX Counter updated on dashboard
     async function loadAllChunks() {
       updateTokenBadge();
       updateBackendBadge();
@@ -1932,7 +1975,7 @@
         } catch(e) { return []; }
       };
 
-let rawImax = [];
+      let rawImax = [];
       [moviesData, rawImax, tamilData, teluguData, hindiData, englishData, malayalamData, kannadaData, seriesData, songsData, vaultData] = await Promise.all([
         fetchChunk('chunks/data_c01.json'),
         fetchChunk('chunks/data_c01_imax.json'),
@@ -1949,6 +1992,7 @@ let rawImax = [];
 
       imaxData = rawImax || [];
       document.getElementById('stat-c01').textContent = moviesData.length;
+      document.getElementById('stat-imax').textContent = imaxData.length;
       document.getElementById('stat-tamil').textContent = tamilData.length || moviesData.filter(m => detectMovieLang(m) === 'ta').length;
       document.getElementById('stat-telugu').textContent = teluguData.length || moviesData.filter(m => detectMovieLang(m) === 'te').length;
       document.getElementById('stat-hindi').textContent = hindiData.length || moviesData.filter(m => detectMovieLang(m) === 'hi').length;
@@ -1964,13 +2008,21 @@ let rawImax = [];
       pollInboxNotificationBadge();
     }
 
+    // FIX: Comprehensive ID search checking version IDs to prevent inbox duplicates
     async function pollInboxNotificationBadge() {
       try {
         const res = await fetch(`${RAW_BASE}/inbox_arrivals.json?t=${Date.now()}`);
         if (res.ok) {
           const data = await res.json();
-          const existingIds = new Set(moviesData.map(m => m.id || m.gdrive_id));
-          const count = Array.isArray(data) ? data.filter(x => !existingIds.has(x.gdrive_id)).length : 0;
+          const existingIds = new Set();
+          moviesData.forEach(m => {
+            if (m.id) existingIds.add(String(m.id).trim());
+            if (m.gdrive_id) existingIds.add(String(m.gdrive_id).trim());
+            (m.versions || []).forEach(v => { if (v.id) existingIds.add(String(v.id).trim()); });
+          });
+          seriesData.forEach(s => { if (s.id) existingIds.add(String(s.id).trim()); });
+
+          const count = Array.isArray(data) ? data.filter(x => !existingIds.has(String(x.gdrive_id).trim())).length : 0;
 
           const badge = document.getElementById('badge-inbox-count');
           const statInbox = document.getElementById('stat-inbox');
@@ -1991,14 +2043,14 @@ let rawImax = [];
     async function triggerGitHubScanAction() {
       const token = getStoredToken();
       if (!token) {
-        showLaserToast('GitHub Token required! Click ⚙️ GitHub Token in sidebar.', true);
+        showLaserToast('GitHub Token required! Click ⚙️ Token in dashboard.', true);
         return;
       }
 
       const btn = document.getElementById('btn-trigger-action');
       const statusMsg = document.getElementById('inbox-status-msg');
       btn.disabled = true;
-      btn.textContent = '⏳ Triggering GitHub Action...';
+      btn.textContent = '⏳ Triggering...';
       statusMsg.textContent = 'Contacting GitHub API to dispatch scan_drive.yml...';
 
       try {
@@ -2013,12 +2065,12 @@ let rawImax = [];
         });
 
         if (res.status === 204 || res.ok) {
-          showLaserToast('🚀 Scan workflow started! Scanning Google Drive in background...');
-          statusMsg.textContent = 'Background scan running on GitHub (~25-30s)... Auto-refreshing soon!';
+          showLaserToast('🚀 Scan started! Scanning Google Drive in background...');
+          statusMsg.textContent = 'Background scan running on GitHub (~25s)... Auto-refreshing soon!';
           setTimeout(() => {
             loadDriveArrivalsList();
             btn.disabled = false;
-            btn.textContent = '⚡ Trigger Drive Scan (GitHub Action)';
+            btn.textContent = '⚡ Trigger Scan';
           }, 28000);
         } else {
           const err = await res.json();
@@ -2028,7 +2080,7 @@ let rawImax = [];
         showLaserToast(`Trigger Failed: ${e.message}`, true);
         statusMsg.textContent = `Trigger Error: ${e.message}`;
         btn.disabled = false;
-        btn.textContent = '⚡ Trigger Drive Scan (GitHub Action)';
+        btn.textContent = '⚡ Trigger Scan';
       }
     }
 
@@ -2040,7 +2092,7 @@ let rawImax = [];
       try {
         const res = await fetch(`${RAW_BASE}/inbox_arrivals.json?t=${Date.now()}`);
         if (!res.ok) {
-          tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--laser-cyan); padding: 30px;">No arrivals file found. Click "Trigger Drive Scan" first!</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--laser-cyan); padding: 30px;">No arrivals file found. Click "Trigger Scan" first!</td></tr>';
           return;
         }
 
@@ -2077,7 +2129,7 @@ let rawImax = [];
           badge.style.display = 'none';
           badge.classList.remove('inbox-alert-badge');
           statusMsg.textContent = '';
-          tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--laser-green); font-weight: 800; font-size: 1rem; padding: 30px;">🎉 All 100% Synced! Master data_c01 & c02 have all Google Drive items.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--laser-green); font-weight: 800; font-size: 1rem; padding: 30px;">🎉 All 100% Synced! Master library has all items.</td></tr>';
           return;
         }
 
@@ -2101,7 +2153,7 @@ let rawImax = [];
             </span>
           </td>
           <td>
-            <div style="font-size: 0.8rem; color: #fff; font-weight: 600; line-height: 1.3; max-width: 280px; word-break: break-all;">
+            <div style="font-size: 0.8rem; color: #fff; font-weight: 600; line-height: 1.3; max-width: 250px; word-break: break-all;">
               ${escapeHtml(item.title)}
             </div>
           </td>
@@ -2147,7 +2199,7 @@ let rawImax = [];
         document.getElementById('input-series-gdrive').value = item.gdrive_id;
         searchSeriesTmdb(parsed.title);
 
-        showLaserToast(`📺 TV Series Detected: Loaded "${parsed.title}" into Web Series tab.`);
+        showLaserToast(`📺 TV Series Detected: Loaded "${parsed.title}" into Web Series.`);
       } else {
         switchNav('add-items-hub', addNavBtn);
         switchHubTab('movie', document.querySelectorAll('.hub-tab-btn')[0]);
@@ -2162,17 +2214,16 @@ let rawImax = [];
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    /* 🚀 1-CLICK BATCH SYNC ALL ARRIVALS (SERIES + MOVIES AUTO-SPLIT) */
     async function executeOneClickBatchSyncAll() {
       const token = getStoredToken();
-      if (!token) return showLaserToast('GitHub Token required! Click ⚙️ Token in sidebar.', true);
+      if (!token) return showLaserToast('GitHub Token required!', true);
 
       if (!inboxArrivalsList || inboxArrivalsList.length === 0) {
         return showLaserToast('No arrivals found to sync!', true);
       }
 
       const totalItems = inboxArrivalsList.length;
-      if (!confirm(`Are you sure you want to 1-Click Sync ALL ${totalItems} items directly into the library?`)) return;
+      if (!confirm(`Are you sure you want to 1-Click Sync ALL ${totalItems} items directly?`)) return;
 
       const btn = document.getElementById('btn-batch-sync-all');
       btn.disabled = true;
@@ -2191,11 +2242,10 @@ let rawImax = [];
         const streamUrl = `${WORKER_BASE}${fileId}${USER_AGENT}`;
 
         if (parsed.isSeries) {
-          // 1. Fetch TMDB TV Metadata
           let tvPoster = '';
           let tvTmdbId = 0;
           try {
-            const sRes = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(parsed.title)}`);
+            const sRes = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${getTmdbApiKey()}&query=${encodeURIComponent(parsed.title)}`);
             const sData = await sRes.json();
             if (sData.results && sData.results.length > 0) {
               const top = sData.results[0];
@@ -2220,10 +2270,9 @@ let rawImax = [];
             seriesAdded++;
           }
         } else {
-          // 2. Fetch TMDB Movie Metadata
           let movieMeta = null;
           try {
-            const sRes = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(parsed.title)}${parsed.year ? `&year=${parsed.year}` : ''}`);
+            const sRes = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${getTmdbApiKey()}&query=${encodeURIComponent(parsed.title)}${parsed.year ? `&year=${parsed.year}` : ''}`);
             const sData = await sRes.json();
             if (sData.results && sData.results.length > 0) {
               movieMeta = await fetchTmdbMetadata(sData.results[0].id);
@@ -2279,7 +2328,6 @@ let rawImax = [];
             moviesData.unshift(newMovie);
             moviesAdded++;
 
-            // Sync to regional language
             const lang = detectMovieLang(newMovie);
             if (lang === 'ta') tamilData.unshift(newMovie);
             else if (lang === 'te') teluguData.unshift(newMovie);
@@ -2294,7 +2342,6 @@ let rawImax = [];
       try {
         btn.textContent = '⏳ Saving All Chunks to GitHub...';
 
-        // 1. Commit Movies Master
         if (moviesAdded > 0) {
           await commitFileDirect('chunks/data_c01.json', moviesData, `1-Click Batch: Added ${moviesAdded} movies`, token);
           if (tamilData.length > 0) await commitFileDirect('chunks/data_c01_tamil.json', tamilData, `Auto-Sync Tamil`, token);
@@ -2302,12 +2349,10 @@ let rawImax = [];
           if (hindiData.length > 0) await commitFileDirect('chunks/data_c01_hindi.json', hindiData, `Auto-Sync Hindi`, token);
         }
 
-        // 2. Commit Series Master
         if (seriesAdded > 0) {
           await commitFileDirect('chunks/data_c02.json', seriesData, `1-Click Batch: Added ${seriesAdded} series episodes`, token);
         }
 
-        // 3. Clear inbox_arrivals.json
         await commitFileDirect('inbox_arrivals.json', [], `1-Click Batch: Cleared inbox after full sync`, token);
 
         showLaserToast(`🎉 Done! ${moviesAdded} Movies & ${seriesAdded} Series synced!`);
@@ -2334,7 +2379,7 @@ let rawImax = [];
       try {
         const endpoint = isSeries ? 'search/tv' : 'search/movie';
         const yearParam = isSeries ? (year ? `&first_air_date_year=${year}` : '') : (year ? `&year=${year}` : '');
-        let url = `https://api.themoviedb.org/3/${endpoint}?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(title)}${yearParam}&language=en-US`;
+        let url = `https://api.themoviedb.org/3/${endpoint}?api_key=${getTmdbApiKey()}&query=${encodeURIComponent(title)}${yearParam}&language=en-US`;
         
         const res = await fetch(url);
         const data = await res.json();
@@ -2501,7 +2546,7 @@ let rawImax = [];
 
     async function promptDeleteItem(chunkPath, index, itemTitle, dataArray) {
       const pass = prompt(`Delete "${itemTitle}"?\nEnter confirmation PIN:`);
-      if (pass !== CONFIRM_PASS) {
+      if (pass !== getConfirmPass()) {
         if (pass !== null) showLaserToast('Incorrect PIN! Deletion aborted.', true);
         return;
       }
@@ -2650,7 +2695,7 @@ let rawImax = [];
       if (!movieTitle || movieTitle.length < 2) return;
 
       try {
-        const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(movieTitle)}${year ? `&year=${year}` : ''}&language=en-US`);
+        const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${getTmdbApiKey()}&query=${encodeURIComponent(movieTitle)}${year ? `&year=${year}` : ''}&language=en-US`);
         const data = await res.json();
         const results = data.results || [];
         const box = document.getElementById('tmdb-suggestions-box');
@@ -2686,7 +2731,7 @@ let rawImax = [];
     async function fetchTmdbMetadata(tmdbId) {
       if (!tmdbId || parseInt(tmdbId) <= 0) return null;
       try {
-        const res = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_API_KEY}&language=en-US&append_to_response=videos,credits`);
+        const res = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${getTmdbApiKey()}&language=en-US&append_to_response=videos,credits`);
         if (!res.ok) return null;
         const data = await res.json();
 
@@ -2774,6 +2819,15 @@ let rawImax = [];
       targetExistingMovie = null;
       document.getElementById('btn-movie-submit').textContent = 'ADD MOVIE';
       document.getElementById('btn-cancel-merge').style.display = 'none';
+    }
+
+    // FIX: Implement Missing triggerDockMerge function
+    function triggerDockMerge() {
+      if (!targetExistingMovie) return;
+      const dock = document.getElementById('merge-dock');
+      dock.classList.remove('show');
+      prepareAddVersion(targetExistingMovie.tmdb_id);
+      showLaserToast(`Auto-Merge Mode Activated for: ${targetExistingMovie.title}`);
     }
 
     async function handleMovieSubmit(e) {
@@ -2940,7 +2994,7 @@ let rawImax = [];
     async function commitPendingToGitHub() {
       if (!pendingCommit) return;
       const token = getStoredToken();
-      if (!token) return showLaserToast('GitHub Token required! Click ⚙️ Token in sidebar.', true);
+      if (!token) return showLaserToast('GitHub Token required!', true);
 
       const { entry, title, targets, isUpdate, attachedSong } = pendingCommit;
 
@@ -3008,6 +3062,7 @@ let rawImax = [];
       } catch(e) { return []; }
     }
 
+    // FIX: Safe base64 encoding prevents crashes on regional scripts / emojis
     async function commitFileDirect(chunkPath, arrayData, message, token) {
       const url = `https://api.github.com/repos/${GH_REPO}/contents/${chunkPath}`;
       let currentSha = undefined;
@@ -3022,7 +3077,12 @@ let rawImax = [];
       } catch(e) {}
 
       const finalJson = JSON.stringify(arrayData, null, 2);
-      const encoded = btoa(unescape(encodeURIComponent(finalJson)));
+      const uint8Array = new TextEncoder().encode(finalJson);
+      let binary = '';
+      for (let i = 0; i < uint8Array.byteLength; i++) {
+        binary += String.fromCharCode(uint8Array[i]);
+      }
+      const encoded = btoa(binary);
 
       const putRes = await fetch(url, {
         method: 'PUT',
@@ -3056,7 +3116,6 @@ let rawImax = [];
       showLaserToast('Stream link copied!');
     }
 
-    /* RENDER WEB SERIES AS 1 CONSOLIDATED PACK (TITAN BINGIE SCHEMA) */
     function renderSeriesGrid() {
       const container = document.getElementById('series-grid');
       if (!container) return;
@@ -3118,7 +3177,7 @@ let rawImax = [];
         card.innerHTML = `
           <div class="poster-wrap">
             <div class="universe-badge" style="border-color:var(--laser-cyan); color:var(--laser-cyan);">📺 SERIES PACK</div>
-            <div class="pack-status-badge badge-complete">🟢 ${totalEps} EPISODES</div>
+            <div class="pack-status-badge badge-complete">🟢 ${totalEps} EPS</div>
             ${series.poster ? `<img src="${series.poster}" class="poster-img" loading="lazy">` : '<div class="poster-placeholder">No Poster</div>'}
           </div>
           <div class="movie-card-body">
@@ -3127,11 +3186,11 @@ let rawImax = [];
               <div class="movie-meta-row">
                 <span class="spec-chip chip-gold">${escapeHtml(series.seasons)}</span>
                 <span>•</span>
-                <span style="color:var(--laser-green); font-weight:800;">${totalEps} Episodes Ready</span>
+                <span style="color:var(--laser-green); font-weight:800;">${totalEps} Episodes</span>
               </div>
             </div>
             <div class="card-actions-row">
-              <button type="button" class="btn-action-primary" onclick="openSeriesEpisodesModal('${sKey}')">📂 VIEW EPISODES</button>
+              <button type="button" class="btn-action-primary" onclick="openSeriesEpisodesModal('${sKey}')">📂 VIEW EPS</button>
               <button type="button" class="btn-delete-item" onclick="promptDeleteItem('chunks/data_c02.json', ${series.rawIndex}, '${escapeHtml(series.title)}', seriesData)">🗑️</button>
             </div>
           </div>
@@ -3201,7 +3260,6 @@ let rawImax = [];
       modal.classList.add('active');
     }
 
-    /* RENDER SONGS GRID */
     function renderSongsGrid() {
       const container = document.getElementById('songs-grid');
       container.innerHTML = '';
@@ -3236,7 +3294,6 @@ let rawImax = [];
       });
     }
 
-    /* RENDER VAULT GRID */
     function renderVaultGrid() {
       const container = document.getElementById('vault-grid');
       container.innerHTML = '';
@@ -3278,7 +3335,7 @@ let rawImax = [];
 
       let poster = '';
       try {
-        const res = await fetch(`https://api.themoviedb.org/3/tv/${tmdbId}?api_key=${TMDB_API_KEY}`);
+        const res = await fetch(`https://api.themoviedb.org/3/tv/${tmdbId}?api_key=${getTmdbApiKey()}`);
         if (res.ok) {
           const tData = await res.json();
           if (tData.poster_path) poster = `https://image.tmdb.org/t/p/w500${tData.poster_path}`;
@@ -3359,11 +3416,11 @@ let rawImax = [];
 
     function loadFilesToReviewTable() {
       const rawJson = document.getElementById('input-batch-manual-json').value.trim();
-      if (!rawJson) return showLaserToast('Paste JSON array of files first!', true);
+      if (!rawJson) return showLaserToast('Paste JSON array first!', true);
 
       try {
         const parsed = JSON.parse(rawJson);
-        if (!Array.isArray(parsed)) throw new Error('Input must be a JSON array');
+        if (!Array.isArray(parsed)) throw new Error('Must be a JSON array');
         stageReviewList = parsed;
       } catch(e) {
         return showLaserToast('Invalid JSON syntax: ' + e.message, true);
@@ -3376,13 +3433,13 @@ let rawImax = [];
       stageReviewList.forEach((item, index) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td style="padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.05);">${index + 1}</td>
-          <td style="padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.05); word-break:break-all;">${escapeHtml(item.name || item.title)}</td>
-          <td style="padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.05); font-family:monospace; color:var(--laser-cyan);">${escapeHtml(item.id || '')}</td>
-          <td style="padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.05);">
-            <input type="number" id="batch-tmdb-${index}" placeholder="TMDB ID" style="width:110px; padding:4px 8px; font-size:0.8rem;">
+          <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,0.05);">${index + 1}</td>
+          <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,0.05); word-break:break-all;">${escapeHtml(item.name || item.title)}</td>
+          <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,0.05); font-family:monospace; color:var(--laser-cyan);">${escapeHtml(item.id || '')}</td>
+          <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,0.05);">
+            <input type="number" id="batch-tmdb-${index}" placeholder="TMDB ID" style="width:100px; padding:4px 6px; font-size:0.8rem;">
           </td>
-          <td style="padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.05); text-align:center;">
+          <td style="padding:8px 10px; border-bottom:1px solid rgba(255,255,255,0.05); text-align:center;">
             <button type="button" style="background:transparent; border:none; color:var(--laser-red); cursor:pointer;" onclick="this.closest('tr').remove()">✕</button>
           </td>
         `;
@@ -3392,13 +3449,80 @@ let rawImax = [];
       document.getElementById('batch-verification-section').style.display = 'block';
     }
 
+    // FIX: Functional batch commit implementation fetching metadata and writing chunk
     async function executeFinalBatchFetchAndCommit() {
       const token = getStoredToken();
       if (!token) return showLaserToast('GitHub Token required!', true);
 
-      showLaserToast('Processing batch commit to chunks/data_c01.json...');
-      showLaserToast('Batch import complete!');
-      loadAllChunks();
+      if (!stageReviewList || stageReviewList.length === 0) {
+        return showLaserToast('Checklist is empty!', true);
+      }
+
+      showLaserToast('🚀 Fetching TMDB metadata & processing checklist...');
+      let addedCount = 0;
+
+      for (let i = 0; i < stageReviewList.length; i++) {
+        const item = stageReviewList[i];
+        const userTmdb = document.getElementById(`batch-tmdb-${i}`)?.value.trim();
+        const driveId = extractGDriveId(item.id || item.gdrive_id);
+        const parsed = cleanMovieFileName(item.name || item.title);
+
+        let meta = null;
+        if (userTmdb) {
+          meta = await fetchTmdbMetadata(userTmdb);
+        }
+
+        const title = meta ? meta.title : parsed.title;
+        const year = meta ? meta.year : (parseInt(parsed.year) || 2024);
+        const streamUrl = `${WORKER_BASE}${driveId}${USER_AGENT}`;
+
+        const entry = {
+          id: driveId,
+          name: item.name || item.title,
+          title: title,
+          original_title: meta ? meta.original_title : title,
+          original_language: meta ? meta.original_language : 'ta',
+          year: year,
+          runtime: meta ? meta.runtime : 140,
+          tmdb_id: meta ? meta.tmdb_id : (parseInt(userTmdb) || 0),
+          rating: meta ? meta.rating : 7.0,
+          collection: meta ? (meta.collection || detectFranchiseCollection(meta)) : "",
+          director: meta ? meta.director : [],
+          cast: meta ? meta.cast : [],
+          plot: meta ? meta.plot : "Streamed via MoinuFlix.",
+          poster: meta ? meta.poster : "",
+          fanart: meta ? meta.fanart : "",
+          stream_url: streamUrl,
+          specs: { resolution: "1080p FHD", source: "WEB-DL", codec: "x265", audio: "Dolby Atmos", channels: "5.1", languages: "Tamil", size: "3 GB" },
+          versions: [{
+            id: driveId,
+            name: item.name || item.title,
+            quality: "1080p FHD • WEB-DL • Dolby Atmos",
+            source: "WEB-DL",
+            codec: "x265",
+            resolution: "1080p FHD",
+            audio: "Dolby Atmos",
+            channels: "5.1",
+            size: "3 GB",
+            stream_url: streamUrl
+          }]
+        };
+
+        if (!moviesData.some(m => m.id === driveId)) {
+          moviesData.unshift(entry);
+          addedCount++;
+        }
+      }
+
+      if (addedCount > 0) {
+        await commitFileDirect('chunks/data_c01.json', moviesData, `Batch Scraper: Added ${addedCount} movies`, token);
+        showLaserToast(`🎉 Successfully committed ${addedCount} movies to data_c01.json!`);
+        document.getElementById('batch-verification-section').style.display = 'none';
+        stageReviewList = [];
+        loadAllChunks();
+      } else {
+        showLaserToast('No new unique files to add.', true);
+      }
     }
 
     async function autoConnectFranchiseCollections() {
@@ -3476,7 +3600,7 @@ let rawImax = [];
       if (!q || q.trim().length < 2) return;
       seriesDebounce = setTimeout(async () => {
         try {
-          const res = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(q)}`);
+          const res = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${getTmdbApiKey()}&query=${encodeURIComponent(q)}`);
           const data = await res.json();
           const box = document.getElementById('series-suggestions-box');
           const list = document.getElementById('series-suggestions-list');
