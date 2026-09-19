@@ -74,6 +74,26 @@
           "languages": "Tamil",
           "size": "13GB"
         }
+      },
+      {
+        "id": "1guzdM11nr7mYwLhlvx1Ce5QLnhbJwfU4",
+        "name": "Modha Rathri (2026) [1080p] [Netflix] [Dolby Atmos].mkv",
+        "quality": "1080p • Netflix • Dolby Atmos",
+        "source": "Netflix",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1guzdM11nr7mYwLhlvx1Ce5QLnhbJwfU4|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Netflix",
+          "codec": "H.264",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": ""
+        }
       }
     ],
     "soundtrack": {}
