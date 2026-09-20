@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>MoinuFlix — 5.1 Soundtrack Studio Pro</title>
+  <title>MoinuFlix — 5.1 Dual-API Soundtrack Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -40,7 +40,7 @@
       overflow-x: hidden;
     }
 
-    /* 3D LASER PROGRESS NOTIFICATION (TOP 1% - 100%) */
+    /* TOP 3D LASER PROGRESS NOTIFICATION (1% TO 100%) */
     #laser-progress-bar-container {
       position: fixed;
       top: 0;
@@ -104,11 +104,458 @@
       border-bottom: 1px solid var(--border-color);
       margin-bottom: 1.25rem;
     }
-
     .brand-logo {
       width: 44px;
       height: 44px;
       background: linear-gradient(135deg, var(--laser-green), var(--laser-cyan));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #030712;
+      box-shadow: 0 0 25px var(--laser-green-glow);
+    }
+    .brand-text { font-size: 1.3rem; font-weight: 800; }
+
+    .nav-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .nav-btn {
+      width: 100%;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 0.75rem 0.95rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .nav-btn:hover { background: rgba(56, 189, 248, 0.08); color: #fff; }
+    .nav-btn.active {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(56, 189, 248, 0.12));
+      color: #fff;
+      border: 1px solid var(--laser-green);
+      box-shadow: 0 0 20px var(--laser-green-glow);
+    }
+
+    .sidebar-footer { margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 1.25rem; }
+    .btn-token-config {
+      width: 100%;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: var(--laser-green);
+      padding: 0.7rem 0.9rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    main {
+      margin-left: 270px;
+      flex: 1;
+      padding: 2.5rem 3rem 6rem;
+      max-width: 1440px;
+      width: calc(100% - 270px);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    .form-container {
+      background: var(--bg-card);
+      backdrop-filter: blur(25px);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 24px;
+      padding: 2.2rem 2.6rem;
+      max-width: 980px;
+      box-shadow: 0 15px 45px rgba(0,0,0,0.6);
+      margin-bottom: 2.5rem;
+    }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; position: relative; }
+    .full-width { grid-column: span 2; }
+    label { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
+
+    input, select {
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
+      font-family: var(--font-stack);
+      transition: all 0.2s;
+    }
+    input:focus, select:focus {
+      border-color: var(--laser-green);
+      box-shadow: 0 0 16px var(--laser-green-glow);
+    }
+
+    /* TMDB TOP 5 RESULT CARDS */
+    .tmdb-results-box {
+      display: none;
+      margin-top: 8px;
+      background: #081024;
+      border: 1px solid var(--laser-cyan);
+      box-shadow: 0 0 25px var(--laser-cyan-glow);
+      border-radius: 14px;
+      padding: 8px;
+      max-height: 320px;
+      overflow-y: auto;
+      z-index: 60;
+    }
+    .tmdb-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+    .tmdb-item:hover { background: #162544; border-color: var(--laser-cyan); }
+    .tmdb-poster { width: 44px; height: 60px; border-radius: 6px; object-fit: cover; background: #0c1836; flex-shrink: 0; }
+    .tmdb-badge {
+      background: rgba(56, 189, 248, 0.18);
+      color: var(--laser-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.78rem;
+      margin-left: auto;
+    }
+
+    /* CONFIRMED MOVIE BADGE */
+    .confirmed-movie-badge {
+      display: none;
+      align-items: center;
+      gap: 14px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid var(--laser-green);
+      border-radius: 14px;
+      padding: 12px 16px;
+      margin-top: 6px;
+    }
+    .confirmed-movie-img { width: 48px; height: 68px; border-radius: 8px; object-fit: cover; }
+
+    /* SONG DETAIL DYNAMIC PANEL */
+    .song-edit-panel {
+      display: none;
+      background: rgba(6, 12, 28, 0.9);
+      border: 1px dashed var(--laser-green);
+      border-radius: 16px;
+      padding: 1.4rem;
+      margin-top: 1rem;
+      gap: 1rem;
+      flex-direction: column;
+    }
+    .song-edit-preview-row { display: flex; align-items: center; gap: 14px; }
+    .song-edit-thumb { width: 60px; height: 60px; border-radius: 10px; object-fit: cover; border: 1px solid var(--laser-cyan); }
+
+    .btn-add-to-pack {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--laser-green);
+      border: 1px solid var(--laser-green);
+      padding: 0.8rem;
+      border-radius: 10px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-add-to-pack:hover { background: var(--laser-green); color: #030712; }
+
+    /* STAGED TRACKS LIST */
+    .staged-pack-container {
+      margin-top: 1.5rem;
+      background: rgba(9, 16, 34, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.2rem;
+    }
+    .staged-track-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 8px 12px;
+      margin-bottom: 8px;
+    }
+
+    .btn-submit-pack {
+      background: linear-gradient(135deg, var(--laser-green), var(--laser-cyan));
+      color: #030712;
+      border: none;
+      padding: 1rem;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 1.25rem;
+      box-shadow: 0 0 25px var(--laser-green-glow);
+    }
+
+    /* SOUNDTRACK ALBUM GRID */
+    .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.75rem; }
+    .soundtrack-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .soundtrack-card:hover {
+      border-color: var(--laser-green);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.7), 0 0 25px var(--laser-green-glow);
+    }
+    .poster-wrap { width: 100%; height: 250px; background: #081024; position: relative; }
+    .poster-img { width: 100%; height: 100%; object-fit: cover; }
+    .pack-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(56, 189, 248, 0.25);
+      border: 1px solid var(--laser-cyan);
+      color: var(--laser-cyan);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+    }
+    .soundtrack-card-body { padding: 1.2rem; display: flex; flex-direction: column; gap: 6px; }
+
+    #laser-toast {
+      position: fixed;
+      top: 25px;
+      right: 25px;
+      background: rgba(10, 18, 38, 0.96);
+      border: 1px solid var(--laser-green);
+      box-shadow: 0 0 25px var(--laser-green-glow);
+      color: #fff;
+      padding: 1rem 1.4rem;
+      border-radius: 12px;
+      font-weight: 700;
+      display: none;
+      z-index: 300;
+    }
+
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      aside { width: 100%; height: auto; position: sticky; top: 0; padding: 0.75rem 1rem; border-right: none; border-bottom: 1px solid var(--border-color); }
+      .brand { margin-bottom: 0.5rem; padding-bottom: 0.5rem; }
+      .nav-list { flex-direction: row; overflow-x: auto; }
+      .nav-btn { white-space: nowrap; padding: 0.5rem 0.8rem; }
+      .sidebar-footer { display: none; }
+      main { margin-left: 0; width: 100%; padding: 1.2rem 1rem 6rem; }
+      .form-container { padding: 1.4rem 1.1rem; }
+      .form-grid { grid-template-columns: 1fr; }
+      .full-width { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP 3D LASER PROGRESS NOTIFICATION -->
+  <div id="laser-progress-bar-container">
+    <div id="laser-progress-bar"></div>
+  </div>
+  <div id="laser-progress-label">
+    <span id="laser-progress-text">⚡ Processing...</span>
+    <span id="laser-progress-pct">0%</span>
+  </div>
+
+  <div id="laser-toast"></div>
+
+  <aside>
+    <div class="brand">
+      <div class="brand-logo">M</div>
+      <div class="brand-text">MoinuFlix</div>
+    </div>
+    <ul class="nav-list">
+      <li><a href="inbox.html" class="nav-btn">🎬 Movies Vault ➔</a></li>
+      <li><a href="series.html" class="nav-btn">📺 Web Series ➔</a></li>
+      <li><button class="nav-btn active">🎵 5.1 Soundtracks</button></li>
+    </ul>
+    <div class="sidebar-footer">
+      <button class="btn-token-config" onclick="configureGithubToken()">
+        <span id="token-status-label">⚙️ GitHub Token</span>
+      </button>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <h1 style="font-size: 1.8rem;">🎵 5.1 Soundtrack Pack Studio</h1>
+        <p class="section-desc">Dual API: TMDB Movies + Apple iTunes Official Soundtrack Engine</p>
+      </div>
+      <div>
+        <button class="btn-token-config" style="padding: 0.6rem 1.2rem;" onclick="loadAllSongs()">🔄 Refresh Vault</button>
+      </div>
+    </header>
+
+    <!-- FORM WORKFLOW -->
+    <div class="form-container">
+      <div class="form-grid">
+
+        <!-- STEP 1: MOVIE SEARCH WITH TOP 5 CONFIRMATION (TMDB) -->
+        <div class="form-group full-width">
+          <label style="color: var(--laser-cyan);">1. Search Movie Name (TMDB Top 5 Show):</label>
+          <input type="text" id="input-movie-query" placeholder="Type Movie Name (e.g. Yaan, Leo, Jailer, Vikram, Pushpa, KGF)..." oninput="searchTmdbTop5(this.value)">
+          <div id="tmdb-suggest-box" class="tmdb-results-box"></div>
+          
+          <div id="confirmed-movie-box" class="confirmed-movie-badge">
+            <img id="confirmed-poster" class="confirmed-movie-img" src="" alt="poster">
+            <div style="flex:1;">
+              <div id="confirmed-title" style="font-weight:800; font-size:1rem; color:#fff;"></div>
+              <div id="confirmed-meta" style="font-size:0.8rem; color:var(--laser-green);"></div>
+            </div>
+            <button type="button" onclick="resetMovieSelection()" style="background:transparent; border:1px solid var(--laser-red); color:var(--laser-red); padding:4px 8px; border-radius:6px; cursor:pointer;">Change Movie</button>
+          </div>
+        </div>
+
+        <!-- STEP 2: SONG SELECT DROPDOWN -->
+        <div class="form-group full-width" id="song-select-group" style="display:none;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <label style="color: var(--laser-green);">2. Select Song from Official Album (Apple Music Engine):</label>
+            <span id="album-status-tag" style="font-size:0.75rem; color:var(--laser-cyan); font-weight:700;"></span>
+          </div>
+          <select id="select-movie-song" onchange="handleSongSelected(this.value)">
+            <option value="">-- Choose a Track from Official Album --</option>
+          </select>
+        </div>
+
+        <!-- STEP 3: INDIVIDUAL SONG DETAIL SECTION (AUTO-REVEALS ON SONG CLICK) -->
+        <div class="form-group full-width" id="song-edit-panel" class="song-edit-panel" style="display:none;">
+          <div class="song-edit-preview-row">
+            <img id="song-edit-thumb" class="song-edit-thumb" src="" alt="track">
+            <div>
+              <div id="song-edit-name" style="font-weight:800; font-size:1.05rem; color:#fff;"></div>
+              <div id="song-edit-artist" style="font-size:0.8rem; color:var(--laser-cyan);"></div>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:12px;">
+            <div class="form-group">
+              <label>Quality Format</label>
+              <select id="song-quality-input">
+                <option value="5.1 Surround" selected>5.1 Dolby Digital Surround (AC3/DDP)</option>
+                <option value="Dolby Atmos (TrueHD)">Dolby Atmos (Lossless TrueHD)</option>
+                <option value="DTS-HD Master 7.1">DTS-HD Master Audio 7.1</option>
+                <option value="24-bit FLAC">24-bit Lossless FLAC</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Source / Provider</label>
+              <select id="song-source-input">
+                <option value="Apple Music" selected>Apple Music (Atmos Rip)</option>
+                <option value="Original BLURAY 5.1">Original BLURAY 5.1</option>
+                <option value="JioSaavn Hi-Res">JioSaavn Hi-Res</option>
+                <option value="Tidal Master">Tidal Master</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top:10px;">
+            <label style="color:var(--laser-cyan);">Google Drive Link or File ID for this Song:</label>
+            <input type="text" id="song-gdrive-input" placeholder="Paste full Google Drive link or ID" required>
+          </div>
+
+          <button type="button" class="btn-add-to-pack" onclick="addCurrentSongToStaging()">
+            ➕ ADD THIS SONG TO PACK (Click to include in Bundle)
+          </button>
+        </div>
+
+        <!-- STEP 4: PACK STAGING PREVIEW & 1-CLICK PUSH -->
+        <div class="form-group full-width" id="staged-pack-box" style="display:none;">
+          <div class="staged-pack-container">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+              <span style="font-weight:800; color:#fff; font-size:0.9rem;">📦 Songs Added in this Movie Pack:</span>
+              <span id="staged-count-badge" style="font-weight:800; color:var(--laser-green); font-size:0.85rem;">0 Songs</span>
+            </div>
+            <div id="staged-list-items"></div>
+
+            <button type="button" class="btn-submit-pack" onclick="pushFinalPackToGithub()">
+              🚀 PUSH SOUNDTRACK PACK TO MASTER (DATA_C03.JSON)
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SOUNDTRACK ALBUMS IN LIBRARY -->
+    <header style="margin-top: 2rem;">
+      <div>
+        <h2 style="font-size: 1.4rem; font-weight: 800;">🎼 Active Soundtracks in Audio Vault</h2>
+        <p class="section-desc">Packs stored in chunks/data_c03.json</p>
+      </div>
+    </header>
+
+    <div class="movies-grid" id="soundtracks-grid"></div>
+  </main>
+
+  <script>
+    let songsData = [];
+    let activeMovie = null;
+    let albumTracksCache = [];
+    let stagedTracks = [];
+    let tmdbDebounce = null;
+
+    const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
+    const CONFIRM_PASS = "24592";
+    const GH_REPO = 'Moinuflix/My-Movies';[span_5](start_span)[span_5](end_span)[span_6](start_span)[span_6](end_span)
+    const GH_BRANCH = 'main';[span_7](start_span)[span_7](end_span)[span_8](start_span)[span_8](end_span)
+    const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';[span_9](start_span)[span_9](end_span)[span_10](start_span)[span_10](end_span)
+    const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';[span_11](start_span)[span_11](end_span)[span_12](start_span)[span_12](end_span)
+
+    function getStoredToken() { return localStorage.getItem('moinuflix_gh_token') || ''; }
+    function configureGithubToken() {
+      const cur = getStoredToken();
+      const input = prompt('Enter your GitHub Personal Access Token (ghp_...):', cur);
+      if (input !== null) {
+        if (input.trim()) {
+          localStorage.setItem('moinuflix_gh_token', input.trim());
+          updateTokenBadge();
+          showLaserToast('GitHub Token Saved!');
+        } else {
+          localStorage.removeItem('moinuflix_gh_token');
+          updateTokenBadge();
+        }
+      }
+    }
+    function updateTokenBadge() {
+      const label = document.getElementById('token-status-label');
+      if      background: linear-gradient(135deg, var(--laser-green), var(--laser-cyan));
       border-radius: 12px;
       display: flex;
       align-items: center;
