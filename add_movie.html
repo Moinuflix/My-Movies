@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MoinuFlix — Ingest Studio & Drive Arrivals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #040711;
+      --bg-card: rgba(13, 22, 38, 0.85);
+      --bg-input: #091224;
+      --border-color: rgba(56, 189, 248, 0.18);
+      --laser-cyan: #38bdf8;
+      --laser-green: #10b981;
+      --laser-red: #ef4444;
+      --neon-gold: #f59e0b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-stack: 'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-stack);
+      padding: 1.5rem 1rem 6rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 10px; }
+    .back-btn { text-decoration: none; color: var(--laser-cyan); font-weight: 700; font-size: 0.9rem; }
+    .form-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 1.8rem;
+      margin-bottom: 2rem;
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .full-width { grid-column: span 2; }
+    label { font-size: 0.82rem; font-weight: 700; color: var(--text-muted); }
+    input, select {
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      color: #fff;
+      outline: none;
+    }
+    input:focus, select:focus { border-color: var(--laser-cyan); }
+    .btn-submit {
+      background: linear-gradient(135deg, var(--laser-cyan), #2563eb);
+      color: #000;
+      border: none;
+      padding: 0.85rem;
+      border-radius: 10px;
+      font-weight: 800;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    .btn-batch {
+      background: linear-gradient(135deg, var(--laser-green), #059669);
+      color: #fff; border: none; padding: 0.65rem 1.2rem; border-radius: 8px; font-weight: 800; cursor: pointer;
+    }
+    .arrivals-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 0.8rem; }
+    .arrivals-table th, .arrivals-table td { padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    #laser-toast { position: fixed; top: 20px; right: 20px; background: rgba(13,22,38,0.96); border: 1px solid var(--laser-cyan); color: #fff; padding: 12px 18px; border-radius: 10px; font-weight: 700; display: none; z-index: 300; }
+    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } .full-width { grid-column: span 1; } }
+  </style>
+</head>
+<body>
+
+  <div id="laser-toast"></div>
+
+  <header>
+    <div>
+      <a href="inbox.html" class="back-btn">⬅️ Back to Movies Vault</a>
+      <h1 style="font-size: 1.6rem; margin-top: 4px;">🎬 Ingest & Drive Arrivals</h1>
+    </div>
+    <div>
+      <button onclick="configureToken()" style="background:transparent; border:1px solid var(--laser-cyan); color:var(--laser-cyan); padding:6px 12px; border-radius:8px; font-weight:700; cursor:pointer;">⚙️ Token</button>
+    </div>
+  </header>
+
+  <!-- 1. DRIVE ARRIVALS AUDIT -->
+  <div class="form-container">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+      <h3 style="font-size:1.1rem; color:var(--laser-cyan);">📡 Google Drive Pending Arrivals</h3>
+      <button class="btn-batch" onclick="batchSyncAllArrivals()">🚀 1-CLICK SYNC ALL</button>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="arrivals-table">
+        <thead>
+          <tr>
+            <th>Raw Name</th>
+            <th>Size</th>
+            <th style="text-align:right;">Action</th>
+          </tr>
+        </thead>
+        <tbody id="arrivals-tbody">
+          <tr><td colspan="3" style="text-align:center; padding:20px; color:var(--text-muted);">Loading arrivals...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 2. ADD SINGLE MOVIE FORM -->
+  <div class="form-container">
+    <h3 style="font-size:1.1rem; color:var(--laser-cyan); margin-bottom:1rem;">➕ Ingest Single Movie to Master</h3>
+    <form id="movie-form" onsubmit="handleMovieSubmit(event)">
+      <div class="form-grid">
+        <div class="form-group full-width">
+          <label>Release File Name (Auto-parse specs)</label>
+          <input type="text" id="in-filename" placeholder="K.G.F.Chapter.1.2018.Tamil.2160p.WEB-DL.mkv" oninput="parseFileName(this.value)">
+        </div>
+        <div class="form-group">
+          <label>TMDB Movie ID</label>
+          <input type="number" id="in-tmdb" placeholder="564147" required oninput="fetchTmdb(this.value)">
+        </div>
+        <div class="form-group">
+          <label>Collection Name (Auto-filled)</label>
+          <input type="text" id="in-collection" placeholder="K.G.F Collection">
+        </div>
+        <div class="form-group">
+          <label>Quality</label>
+          <select id="in-quality">
+            <option value="4K UHD" selected>4K UHD</option>
+            <option value="1080p FHD">1080p FHD</option>
+            <option value="720p HD">720p HD</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Audio</label>
+          <select id="in-audio">
+            <option value="Dolby Atmos" selected>Dolby Atmos</option>
+            <option value="DTS-HD Master / 1509k DTS">DTS-HD Master / 1509k DTS</option>
+            <option value="Dolby Digital Plus">Dolby Digital Plus</option>
+            <option value="Dolby Digital">Dolby Digital</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Source / OTT</label>
+          <select id="in-source">
+            <option value="Netflix">Netflix</option>
+            <option value="Disney+ Hotstar">Disney+ Hotstar</option>
+            <option value="Prime Video">Prime Video</option>
+            <option value="WEB-DL" selected>WEB-DL</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>File Size</label>
+          <input type="text" id="in-size" placeholder="14 GB">
+        </div>
+        <div class="form-group full-width">
+          <label>Google Drive Link or File ID</label>
+          <input type="text" id="in-gdrive" placeholder="Paste link or ID" required>
+        </div>
+      </div>
+      <button type="submit" class="btn-submit">🚀 COMMIT TO MASTER (DATA_C01.JSON)</button>
+    </form>
+  </div>
+
+  <script>
+    const GH_REPO = 'Moinuflix/My-Movies';
+    const GH_BRANCH = 'main';
+    const RAW_BASE = `https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}`;
+    const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
+    const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';
+    const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';
+
+    let arrivalsList = [];
+    let fetchedMeta = null;
+
+    function getStoredToken() { return localStorage.getItem('moinuflix_gh_token') || ''; }
+    function configureToken() {
+      const cur = getStoredToken();
+      const input = prompt('Enter GitHub PAT (ghp_...):', cur);
+      if (input !== null) {
+        localStorage.setItem('moinuflix_gh_token', input.trim());
+        showLaserToast('Token Saved!');
+      }
+    }
+    function showLaserToast(msg, isError = false) {
+      const toast = document.getElementById('laser-toast');
+      toast.style.borderColor = isError ? 'var(--laser-red)' : 'var(--laser-cyan)';
+      toast.innerHTML = (isError ? '❌ ' : '⚡ ') + msg;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 3500);
+    }
+    function extractGDriveId(url) {
+      if (!url) return '';
+      const pMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+      if (pMatch) return pMatch[1];
+      const fMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+      if (fMatch) return fMatch[1];
+      return url.trim();
+    }
+
+    async function loadArrivals() {
+      const tbody = document.getElementById('arrivals-tbody');
+      try {
+        const res = await fetch(`${RAW_BASE}/inbox_arrivals.json?t=${Date.now()}`);
+        arrivalsList = res.ok ? await res.json() : [];
+        if (!arrivalsList || arrivalsList.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:var(--laser-green); padding:20px;">🎉 100% Synced! No pending arrivals.</td></tr>';
+          return;
+        }
+        tbody.innerHTML = '';
+        arrivalsList.forEach((it, idx) => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td style="font-weight:600;">${it.title}</td>
+            <td style="color:var(--laser-cyan);">${it.size || 'HD'}</td>
+            <td style="text-align:right;">
+              <button style="background:rgba(56,189,248,0.15); color:var(--laser-cyan); border:1px solid rgba(56,189,248,0.3); padding:4px 8px; border-radius:6px; cursor:pointer;" onclick="fillFormFromArrival(${idx})">Load ➔</button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+      } catch(e) {
+        tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:var(--laser-red);">Error: ${e.message}</td></tr>`;
+      }
+    }
+
+    function fillFormFromArrival(idx) {
+      const it = arrivalsList[idx];
+      if (!it) return;
+      document.getElementById('in-filename').value = it.title;
+      document.getElementById('in-gdrive').value = it.gdrive_id;
+      if (it.size) document.getElementById('in-size').value = it.size;
+      parseFileName(it.title);
+      showLaserToast(`Loaded "${it.title}" into form`);
+    }
+
+    function parseFileName(name) {
+      if (!name) return;
+      const is4k = /2160p|4k/i.test(name);
+      document.getElementById('in-quality').value = is4k ? '4K UHD' : '1080p FHD';
+      if (/nf|netflix/i.test(name)) document.getElementById('in-source').value = 'Netflix';
+      else if (/dsnp|hotstar/i.test(name)) document.getElementById('in-source').value = 'Disney+ Hotstar';
+      else if (/amzn|prime/i.test(name)) document.getElementById('in-source').value = 'Prime Video';
+    }
+
+    async function fetchTmdb(tmdbId) {
+      if (!tmdbId) return;
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_API_KEY}`);
+        if (!res.ok) return;
+        const d = await res.json();
+        document.getElementById('in-collection').value = d.belongs_to_collection ? d.belongs_to_collection.name : '';
+        fetchedMeta = {
+          title: d.title, year: d.release_date ? parseInt(d.release_date.split('-')[0]) : 2024,
+          poster: d.poster_path ? `https://image.tmdb.org/t/p/w500${d.poster_path}` : '',
+          fanart: d.backdrop_path ? `https://image.tmdb.org/t/p/original${d.backdrop_path}` : '',
+          tmdb_id: d.id, collection: d.belongs_to_collection ? d.belongs_to_collection.name : ''
+        };
+        showLaserToast(`Found: ${d.title}`);
+      } catch(e) {}
+    }
+
+    async function handleMovieSubmit(e) {
+      e.preventDefault();
+      const token = getStoredToken();
+      if (!token) return showLaserToast('Token required!', true);
+
+      const fileId = extractGDriveId(document.getElementById('in-gdrive').value);
+      if (!fileId) return showLaserToast('Invalid Drive ID', true);
+
+      const tmdbId = document.getElementById('in-tmdb').value.trim();
+      if (!fetchedMeta || String(fetchedMeta.tmdb_id) !== tmdbId) await fetchTmdb(tmdbId);
+
+      const quality = document.getElementById('in-quality').value;
+      const audio = document.getElementById('in-audio').value;
+      const source = document.getElementById('in-source').value;
+      const size = document.getElementById('in-size').value.trim() || '10 GB';
+      const streamUrl = `${WORKER_BASE}${fileId}${USER_AGENT}`;
+
+      const meta = fetchedMeta || { title: `Movie ${tmdbId}`, year: 2024, poster: '', tmdb_id: parseInt(tmdbId) };
+      const newEntry = {
+        id: fileId,
+        name: `${meta.title} (${meta.year}) [${quality}] [${source}] [${audio}].mkv`,
+        title: meta.title, year: meta.year, tmdb_id: meta.tmdb_id,
+        collection: document.getElementById('in-collection').value.trim(),
+        poster: meta.poster, fanart: meta.fanart || '',
+        stream_url: streamUrl,
+        specs: { resolution: quality, audio: audio, source: source, size: size },
+        versions: [{ id: fileId, name: meta.title, quality: quality, source: source, size: size, stream_url: streamUrl }]
+      };
+
+      showLaserToast(`Committing "${meta.title}"...`);
+      const masterRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/chunks/data_c01.json?t=${Date.now()}`);
+      const masterData = masterRes.ok ? await masterRes.json() : [];
+      masterData.unshift(newEntry);
+
+      await commitFile('chunks/data_c01.json', masterData, `Add ${meta.title}`, token);
+      showLaserToast(`🎉 "${meta.title}" committed!`);
+      document.getElementById('movie-form').reset();
+      loadArrivals();
+    }
+
+    async function batchSyncAllArrivals() {
+      const token = getStoredToken();
+      if (!token) return showLaserToast('Token required!', true);
+      if (!arrivalsList || arrivalsList.length === 0) return showLaserToast('No arrivals to sync!', true);
+
+      showLaserToast('Syncing all arrivals...');
+      const masterRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/chunks/data_c01.json?t=${Date.now()}`);
+      const masterData = masterRes.ok ? await masterRes.json() : [];
+
+      arrivalsList.forEach(it => {
+        const fileId = it.gdrive_id;
+        const streamUrl = `${WORKER_BASE}${fileId}${USER_AGENT}`;
+        masterData.unshift({
+          id: fileId, name: it.title, title: it.title, year: 2024, tmdb_id: 0,
+          collection: '', poster: '', stream_url: streamUrl,
+          specs: { resolution: '1080p FHD', audio: 'Dolby Digital', source: 'WEB-DL', size: it.size || '3 GB' },
+          versions: [{ id: fileId, name: it.title, stream_url: streamUrl }]
+        });
+      });
+
+      await commitFile('chunks/data_c01.json', masterData, `Batch Sync ${arrivalsList.length} files`, token);
+      await commitFile('inbox_arrivals.json', [], `Clear Inbox Arrivals`, token);
+      showLaserToast('✅ All arrivals synced to Master!');
+      loadArrivals();
+    }
+
+    async function commitFile(path, data, msg, token) {
+      const url = `https://api.github.com/repos/${GH_REPO}/contents/${path}`;
+      let sha = undefined;
+      try {
+        const r = await fetch(url, { headers: { 'Authorization': `Bearer ${token}` } });
+        if (r.ok) sha = (await r.json()).sha;
+      } catch(e) {}
+
+      const jsonStr = JSON.stringify(data, null, 2);
+      const uint8 = new TextEncoder().encode(jsonStr);
+      let binary = '';
+      for (let i = 0; i < uint8.byteLength; i++) binary += String.fromCharCode(uint8[i]);
+
+      await fetch(url, {
+        method: 'PUT',
+        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: msg, content: btoa(binary), branch: GH_BRANCH, sha: sha })
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', loadArrivals);
+  </script>
+</body>
+</html>
+
