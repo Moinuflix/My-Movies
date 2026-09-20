@@ -53,11 +53,11 @@
       {
         "id": "1ZwRGntTg2vM-ch0z95aNbAWpwJMS97xS",
         "name": "Dridam (2026) [4K UHD] [Netflix] [Dolby Atmos].mkv",
-        "quality": "4K UHD • Netflix • Dolby Atmos",
-        "source": "Netflix",
+        "quality": "4K UHD • Prime Video • Dolby Atmos",
+        "source": "Prime Video",
         "resolution": "4K UHD",
         "audio": "Dolby Atmos",
-        "size": "9GB",
+        "size": "8.5 GB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ZwRGntTg2vM-ch0z95aNbAWpwJMS97xS|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
@@ -118,11 +118,11 @@
       {
         "id": "13LHtaaQN8cQrvQ1gPZ7AwSwQBnAmSWDU",
         "name": "Dhoom 2 (2006) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
-        "quality": "1080p FHD • Netflix • Dolby Atmos",
-        "source": "Netflix",
+        "quality": "1080p FHD • Prime Video • Dolby Atmos",
+        "source": "Prime Video",
         "resolution": "1080p FHD",
         "audio": "Dolby Atmos",
-        "size": "11 GB",
+        "size": "11.1 GB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13LHtaaQN8cQrvQ1gPZ7AwSwQBnAmSWDU|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
@@ -190,7 +190,7 @@
         "source": "Netflix",
         "resolution": "1080p FHD",
         "audio": "Dolby Atmos",
-        "size": "8GB",
+        "size": "8.3 GB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1dQkZ73zz5G7kH7dNYNqNs7Wt31UxetGz|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ],
@@ -255,7 +255,7 @@
       {
         "id": "1thhGIgK6QnJx17HEdzawQJs7Wg-_QA_c",
         "name": "Naruto Shippuden the Movie (2007) [1080p] [BLURAY] [Dolby Atmos].mkv",
-        "quality": "1080p • BLURAY • Dolby Atmos [2 GB]",
+        "quality": "1080p • BLURAY • Dolby Atmos",
         "source": "BLURAY",
         "codec": "x265",
         "resolution": "1080p",
@@ -270,7 +270,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": "2 GB"
-        }
+        },
+        "size": "2.0 GB"
       }
     ],
     "soundtrack": {}
@@ -334,7 +335,7 @@
       {
         "id": "19mNfhe0zhEaJR9o_7AofkEP4ZSHdcKUm",
         "name": "Dhoom (2004) [1080p] [BLURAY] [DTS-HD Master / 1509k DTS].mkv",
-        "quality": "1080p • BLURAY • DTS-HD Master / 1509k DTS [13GB]",
+        "quality": "1080p • BLURAY • DTS-HD Master / 1509k DTS",
         "source": "BLURAY",
         "codec": "H.264",
         "resolution": "1080p",
@@ -349,7 +350,8 @@
           "channels": "5.1",
           "languages": "Hindi",
           "size": "13GB"
-        }
+        },
+        "size": "12.7 GB"
       }
     ],
     "soundtrack": {}
@@ -413,7 +415,7 @@
       {
         "id": "1w_-PhsK_7KjFOSXAuLbKyKSRmaCW2Kgx",
         "name": "Modha Rathri (2026) [4K UHD] [Netflix] [Dolby Atmos].mkv",
-        "quality": "4K UHD • Netflix • Dolby Atmos [13GB]",
+        "quality": "4K UHD • Netflix • Dolby Atmos",
         "source": "Netflix",
         "codec": "x265",
         "resolution": "4K UHD",
@@ -428,7 +430,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": "13GB"
-        }
+        },
+        "size": "12.9 GB"
       },
       {
         "id": "1guzdM11nr7mYwLhlvx1Ce5QLnhbJwfU4",
@@ -448,7 +451,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": ""
-        }
+        },
+        "size": "5.6 GB"
       }
     ],
     "soundtrack": {}
@@ -506,7 +510,7 @@
       "audio": "Dolby Atmos",
       "channels": "5.1",
       "languages": "Tamil",
-      "size": ""
+      "size": "18.4 GB"
     },
     "versions": [
       {
@@ -527,12 +531,13 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": ""
-        }
+        },
+        "size": "18.4 GB"
       },
       {
         "id": "1YlYkRSaYbwciNVbv6vN7iDzecTsTH1eg",
         "name": "Saiyaara (2025) [1080p] [WEB-DL] [Dolby Atmos].mkv",
-        "quality": "1080p • WEB-DL • Dolby Atmos [6GB]",
+        "quality": "1080p • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "1080p",
@@ -547,7 +552,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": "6GB"
-        }
+        },
+        "size": "5.9 GB"
       }
     ]
   },
@@ -604,13 +610,13 @@
       "audio": "Dolby Digital Plus",
       "channels": "5.1",
       "languages": "Tamil, Telugu, Hindi, Malayalam",
-      "size": ""
+      "size": "11.4 GB"
     },
     "versions": [
       {
         "id": "1qKgY9UT7_mB2fcXNWgNsGOHNtbN5uAWA",
         "name": "Aquaman (2018) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
-        "quality": "1080p • Prime Video • Dolby Digital Plus Multi",
+        "quality": "1080p • Prime Video • Dolby Digital Plus",
         "source": "Prime Video",
         "codec": "H.264",
         "resolution": "1080p",
@@ -625,12 +631,13 @@
           "channels": "5.1",
           "languages": "Tamil, Telugu, Hindi, Malayalam",
           "size": ""
-        }
+        },
+        "size": "11.4 GB"
       },
       {
         "id": "14vIHDvP3Ge4o_OR1miHILdU74eBTtoOp",
         "name": "@Tamiltvtoonsofficial - Aquaman 2018 Open Matte 1080p x264 Tamil-Telugu-Hindi DD5.1 - English Atmos 5.1 ESubs By Xebec D Shanks [TTT].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -695,7 +702,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": ""
-        }
+        },
+        "size": "10 GB"
       },
       {
         "id": "1mtoiZgISqDqnErLVNeS5W9KxCxIaixbu",
@@ -715,7 +723,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": ""
-        }
+        },
+        "size": "10 GB"
       }
     ],
     "soundtrack": {}
@@ -779,7 +788,7 @@
       {
         "id": "1vqn1WZL-_HVHP8iYKeTia8MTUtxxXzrM",
         "name": "Bāhubali: The Beginning (2015) [1080p] [BLURAY] [Dolby Atmos].mkv",
-        "quality": "1080p • BLURAY • Dolby Atmos [15 GB]",
+        "quality": "1080p • BLURAY • Dolby Atmos",
         "source": "BLURAY",
         "codec": "x265",
         "resolution": "1080p",
@@ -794,12 +803,13 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": "15 GB"
-        }
+        },
+        "size": "21.8 GB"
       },
       {
         "id": "1zhsiJ92JAy7ydzzh-9bfC9DvoLJIp-vi",
         "name": "Bāhubali: The Beginning (2015) [Multi] [1080p] [H.264] [DTS].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • DTS",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -819,7 +829,7 @@
       {
         "id": "1V2YQ0HNXKN94mJc5x17q7RUiHY6b4lg_",
         "name": "Bāhubali - The Beginning (2015) 1080p DTS.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • DTS",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -897,7 +907,7 @@
       {
         "id": "1U_kUjmAfo4e1h85sVM4s-LGTNWxyBZh5",
         "name": "Thalaivaa (2013) [1080p] [BLURAY] [DTS-HD Master / 1509k DTS].mkv",
-        "quality": "1080p • BLURAY • DTS-HD Master / 1509k DTS [15GB]",
+        "quality": "1080p • BLURAY • DTS-HD Master / 1509k DTS",
         "source": "BLURAY",
         "codec": "x265",
         "resolution": "1080p",
@@ -912,7 +922,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": "15GB"
-        }
+        },
+        "size": "14.8 GB"
       }
     ],
     "soundtrack": {}
@@ -970,13 +981,13 @@
       "audio": "Dolby Digital Plus",
       "channels": "5.1",
       "languages": "Tamil, Telugu, Hindi, Kannada, Malayalam, English",
-      "size": ""
+      "size": "20.5 GB"
     },
     "versions": [
       {
         "id": "1aFmu_tpwZdvV_wiA4FR5U6WzORXKIDrQ",
         "name": "The Nun (2018) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
-        "quality": "1080p • Prime Video • Dolby Digital Plus Multi",
+        "quality": "1080p • Prime Video • Dolby Digital Plus",
         "source": "Prime Video",
         "codec": "H.264",
         "resolution": "1080p",
@@ -991,7 +1002,8 @@
           "channels": "5.1",
           "languages": "Tamil, Telugu, Hindi, Kannada, Malayalam, English",
           "size": ""
-        }
+        },
+        "size": "20.5 GB"
       }
     ],
     "soundtrack": {}
@@ -1049,7 +1061,7 @@
       "audio": "Dolby Atmos",
       "channels": "5.1",
       "languages": "Tamil",
-      "size": ""
+      "size": "5.3 GB"
     },
     "versions": [
       {
@@ -1070,7 +1082,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": ""
-        }
+        },
+        "size": "5.3 GB"
       }
     ],
     "soundtrack": {}
@@ -1100,19 +1113,19 @@
       "audio": "Dolby Digital",
       "channels": "5.1",
       "languages": "Tamil",
-      "size": "0 GB"
+      "size": "8 MB"
     },
     "versions": [
       {
         "id": "1TktryyxjLG8yL1FlT_g83xIC3U9HoGv6",
         "name": "Copy of VID-20260515-WA0047",
-        "quality": "1080p FHD",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital",
         "channels": "5.1",
-        "size": "0 GB",
+        "size": "8 MB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1TktryyxjLG8yL1FlT_g83xIC3U9HoGv6|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
@@ -1176,7 +1189,7 @@
       {
         "id": "1FqCVS6fohhfsYsY09QpLZa2ZWcACzk9W",
         "name": "Kanchana (2011) [1080p] [WEB-DL] [Dolby Atmos].mkv",
-        "quality": "1080p • WEB-DL • Dolby Atmos [12GB]",
+        "quality": "1080p • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "1080p",
@@ -1191,7 +1204,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": "12GB"
-        }
+        },
+        "size": "11.7 GB"
       }
     ],
     "soundtrack": {
@@ -1263,7 +1277,7 @@
       {
         "id": "1LKoooSXIgp6vu7T5AUyE_tS9aAwIvyDV",
         "name": "Anbe Sivam (2003) [1080p] [Prime Video] [Dolby Atmos].mkv",
-        "quality": "1080p • Prime Video • Dolby Atmos [11 GB]",
+        "quality": "1080p • Prime Video • Dolby Atmos",
         "source": "Prime Video",
         "codec": "H.264",
         "resolution": "1080p",
@@ -1278,7 +1292,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": "11 GB"
-        }
+        },
+        "size": "11.2 GB"
       }
     ],
     "soundtrack": {}
@@ -1342,7 +1357,7 @@
       {
         "id": "134aXuzRH7o9kXEEBgpQM1t1U9asiusjo",
         "name": "Love Oh Love (2026) [4K UHD] [Prime Video] [Dolby Digital Plus].mkv",
-        "quality": "4K UHD • Prime Video • Dolby Digital Plus [9 GB]",
+        "quality": "4K UHD • Prime Video • Dolby Digital Plus",
         "source": "Prime Video",
         "codec": "x265",
         "resolution": "4K UHD",
@@ -1357,7 +1372,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": "9 GB"
-        }
+        },
+        "size": "9.5 GB"
       }
     ],
     "soundtrack": {}
@@ -1421,7 +1437,7 @@
       {
         "id": "1Mo4VttVz3i3FszpZjS70wS5Zd1xtGT5H",
         "name": "Sardar 2 (2026) [1080p] [WEB-DL] [AAC].mkv",
-        "quality": "1080p • WEB-DL • AAC [19GB]",
+        "quality": "1080p • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "1080p",
@@ -1436,7 +1452,8 @@
           "channels": "2.0",
           "languages": "Tamil",
           "size": "19GB"
-        }
+        },
+        "size": "18.5 GB"
       }
     ]
   },
@@ -1499,7 +1516,7 @@
       {
         "id": "1xZkqN1xmpHuTlwzU9ldW7jqSgK2MpB5C",
         "name": "Magudam (2026) [1080p] [Prime Video] [Dolby Atmos].mkv",
-        "quality": "1080p • Prime Video • Dolby Atmos [11 GB]",
+        "quality": "1080p • Prime Video • Dolby Atmos",
         "source": "Prime Video",
         "codec": "x265",
         "resolution": "1080p",
@@ -1514,7 +1531,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": "11 GB"
-        }
+        },
+        "size": "10.6 GB"
       }
     ]
   },
@@ -1577,7 +1595,7 @@
       {
         "id": "1cySTu58oZljadhvqv0M6U2eCR3q8J7rf",
         "name": "DC (2026) [4K UHD] [WEB-DL] [Dolby Atmos].mkv",
-        "quality": "4K UHD • WEB-DL • Dolby Atmos [15 GB]",
+        "quality": "4K UHD • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "4K UHD",
@@ -1592,12 +1610,13 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": "15 GB"
-        }
+        },
+        "size": "15.4 GB"
       },
       {
         "id": "1TEEWyc19TsWviX5z-r-81rmIQ1sIdojq",
         "name": "DC (2026) HQ HDTC - 1080p - AVC - [Tamil + Telugu + Hindi] - HQ Clean Audio - AAC - 15.3GB.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -1617,7 +1636,7 @@
       {
         "id": "1UgAE_urL2u55uS2DIBAY77nHTdIVgjZp",
         "name": "Passing Days (1969) [4K UHD] [x265] [Dolby Digital Plus].mkv",
-        "quality": "4K UHD",
+        "quality": "4K UHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "4K UHD",
@@ -1633,7 +1652,7 @@
           "languages": "Tamil",
           "size": "15.3 GB"
         },
-        "size": "15.3 GB"
+        "size": "15.4 GB"
       }
     ]
   },
@@ -1696,7 +1715,7 @@
       {
         "id": "1NhU8f-5NVYoAhQj7qQoLGcgNYjVjh7nE",
         "name": "Aquaman and the Lost Kingdom (2023) [1080p] [BLURAY] [Dolby Atmos].mkv",
-        "quality": "1080p • BLURAY • Dolby Atmos Multi [15GB]",
+        "quality": "1080p • BLURAY • Dolby Atmos",
         "source": "BLURAY",
         "codec": "H.264",
         "resolution": "1080p",
@@ -1711,7 +1730,8 @@
           "channels": "7.1",
           "languages": "Tamil, Hindi, Malayalam",
           "size": "15GB"
-        }
+        },
+        "size": "15.1 GB"
       }
     ]
   },
@@ -1768,7 +1788,7 @@
       "audio": "Dolby Digital Plus",
       "channels": "5.1",
       "languages": "Hindi",
-      "size": ""
+      "size": "8.0 GB"
     },
     "versions": [
       {
@@ -1789,7 +1809,8 @@
           "channels": "5.1",
           "languages": "Hindi",
           "size": ""
-        }
+        },
+        "size": "8.0 GB"
       }
     ]
   },
@@ -1867,7 +1888,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": ""
-        }
+        },
+        "size": "10 GB"
       }
     ]
   },
@@ -1924,13 +1946,13 @@
       "audio": "Dolby Atmos",
       "channels": "5.1",
       "languages": "Tamil, Telugu, Hindi",
-      "size": "10 GB"
+      "size": "9.9 GB"
     },
     "versions": [
       {
         "id": "1Fi4tHHtypB857axHKDNrLWPWDL5WonnP",
         "name": "Thalaivan Thalaivii (2025) [1080p] [Prime Video] [Dolby Atmos].mkv",
-        "quality": "1080p • Prime Video • Dolby Atmos Multi [10 GB]",
+        "quality": "1080p • Prime Video • Dolby Atmos",
         "source": "Prime Video",
         "codec": "H.264",
         "resolution": "1080p",
@@ -1945,7 +1967,8 @@
           "channels": "5.1",
           "languages": "Tamil, Telugu, Hindi",
           "size": "10 GB"
-        }
+        },
+        "size": "9.9 GB"
       }
     ]
   },
@@ -2002,13 +2025,13 @@
       "audio": "Dolby Atmos",
       "channels": "5.1",
       "languages": "Tamil",
-      "size": "10 GB"
+      "size": "10.3 GB"
     },
     "versions": [
       {
         "id": "116HPRBS_E5i25PgF1M9o5ae8TWt1MyJu",
         "name": "Puli (2015) [1080p] [Prime Video] [Dolby Atmos].mkv",
-        "quality": "1080p • Prime Video • Dolby Atmos [10 GB]",
+        "quality": "1080p • Prime Video • Dolby Atmos",
         "source": "Prime Video",
         "codec": "x265",
         "resolution": "1080p",
@@ -2023,12 +2046,13 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": "10 GB"
-        }
+        },
+        "size": "10.3 GB"
       },
       {
         "id": "1XRzIcyNQqAUkZa2w3DmzfOLHgrX8BUsE",
         "name": "Puli (2015) [4K UHD] [WEB-DL] [Dolby Digital Plus].mkv",
-        "quality": "4K UHD • WEB-DL • Dolby Digital Plus [13 GB]",
+        "quality": "4K UHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -2043,7 +2067,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": "13 GB"
-        }
+        },
+        "size": "12.9 GB"
       }
     ]
   },
@@ -2100,13 +2125,13 @@
       "audio": "Dolby Atmos",
       "channels": "5.1",
       "languages": "Tamil",
-      "size": "10 GB"
+      "size": "9.9 GB"
     },
     "versions": [
       {
         "id": "1xsCOHdZ-xBanF97tJY4XjHSH5Mik4wss",
         "name": "Madharaasi (2025) [1080p] [Prime Video] [Dolby Atmos].mkv",
-        "quality": "1080p • Prime Video • Dolby Atmos [10 GB]",
+        "quality": "1080p • Prime Video • Dolby Atmos",
         "source": "Prime Video",
         "codec": "H.264",
         "resolution": "1080p",
@@ -2121,7 +2146,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": "10 GB"
-        }
+        },
+        "size": "9.9 GB"
       }
     ]
   },
@@ -2184,7 +2210,7 @@
       {
         "id": "1NeITWwUCLPi0ffGQCqEQ84ctYPzUNcm-",
         "name": "Sketch (2018) [1080p] [Prime Video] [Dolby Atmos].mkv",
-        "quality": "1080p • Prime Video • Dolby Atmos [9 GB]",
+        "quality": "1080p • Prime Video • Dolby Atmos",
         "source": "Prime Video",
         "codec": "H.264",
         "resolution": "1080p",
@@ -2199,7 +2225,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": "9 GB"
-        }
+        },
+        "size": "9.0 GB"
       }
     ]
   },
@@ -2262,7 +2289,7 @@
       {
         "id": "1lVyoDIMN_cSC51ArYj--IU1aUQ-GjA5i",
         "name": "Engeyum Kadhal (2011) [1080p] [BLURAY] [Dolby Atmos].mkv",
-        "quality": "1080p • BLURAY • Dolby Atmos [12 GB]",
+        "quality": "1080p • BLURAY • Dolby Atmos",
         "source": "BLURAY",
         "codec": "H.264",
         "resolution": "1080p",
@@ -2341,7 +2368,7 @@
       {
         "id": "1weCOQpO5eEMwTbOQl7krWXGcM5SDFVV0\t1ghHnNuZFqCn06Z8nHLyRtjzVYWxvi1QI",
         "name": "Elysium (2013) [4K UHD] [BLURAY] [Dolby Atmos].mkv",
-        "quality": "4K UHD • BLURAY • Dolby Atmos Multi [5 GB]",
+        "quality": "4K UHD • BLURAY • Dolby Atmos",
         "source": "BLURAY",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -2356,7 +2383,8 @@
           "channels": "5.1",
           "languages": "Tamil, Telugu, Hindi, Malayalam, Kannada",
           "size": "5 GB"
-        }
+        },
+        "size": "4.6 GB"
       }
     ]
   },
@@ -2419,7 +2447,7 @@
       {
         "id": "1k5R42NPdEc6Zrg86bQOMPRtAUoq_vM8e",
         "name": "LURK (2026) [4K UHD] [WEB-DL] [Dolby Digital Plus].mkv",
-        "quality": "4K UHD • WEB-DL • Dolby Digital Plus [8 GB]",
+        "quality": "4K UHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "4K UHD",
@@ -2498,7 +2526,7 @@
       {
         "id": "1xm3E_QAXPTsIIhM8lT4AHlkSOB0viAo1\t15_yxKNIsG0EsL0aMciKZwEMKXRawIUEA",
         "name": "Padayappa (1999) [4K UHD] [Prime Video] [Dolby Digital Plus].mkv",
-        "quality": "4K UHD • Prime Video • Dolby Digital Plus [12 GB]",
+        "quality": "4K UHD • Prime Video • Dolby Digital Plus",
         "source": "Prime Video",
         "codec": "x265",
         "resolution": "4K UHD",
@@ -2513,7 +2541,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": "12 GB"
-        }
+        },
+        "size": "11.6 GB"
       }
     ]
   },
@@ -2576,7 +2605,7 @@
       {
         "id": "1viVZYkbB5OirQg-grlf50NsO2-kFOY0f",
         "name": "Perazhagan (2004) [1080p] [WEB-DL] [Dolby Atmos].mkv",
-        "quality": "1080p • WEB-DL • Dolby Atmos [11 GB]",
+        "quality": "1080p • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "1080p",
@@ -2649,13 +2678,13 @@
       "audio": "Dolby Atmos",
       "channels": "5.1",
       "languages": "Tamil",
-      "size": "10 GB"
+      "size": "10.0 GB"
     },
     "versions": [
       {
         "id": "1vMBY0tcOmUzve5wLpGiED_yBOqWIeFjl\t1V2NKNwbY_m9AndNIXKNpMmTIBURZSfCs",
         "name": "Mersal (2017) [4K UHD] [WEB-DL] [Dolby Atmos].mkv",
-        "quality": "4K UHD • WEB-DL • Dolby Atmos [10 GB]",
+        "quality": "4K UHD • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "4K UHD",
@@ -2670,7 +2699,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": "10 GB"
-        }
+        },
+        "size": "10.0 GB"
       }
     ]
   },
@@ -2733,7 +2763,7 @@
       {
         "id": "1mcN5rfSzRVrmwAth_cFg6PxLUJS-49Mp",
         "name": "Kushi (2000) [1080p] [WEB-DL] [Dolby Atmos].mkv",
-        "quality": "1080p • WEB-DL • Dolby Atmos [5 GB]",
+        "quality": "1080p • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "1080p",
@@ -2812,7 +2842,7 @@
       {
         "id": "1MSm3VHN8cP5IrO9WBraD13Lk7ziKJYX3",
         "name": "Master (2021) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
-        "quality": "1080p • Prime Video • Dolby Digital Plus Multi [12 GB]",
+        "quality": "1080p • Prime Video • Dolby Digital Plus",
         "source": "Prime Video",
         "codec": "x265",
         "resolution": "1080p",
@@ -2886,7 +2916,7 @@
     },
     "specs": {
       "resolution": "4K UHD",
-      "source": "WEB-DL",
+      "source": "Netflix",
       "codec": "HEVC",
       "audio": "Dolby Digital",
       "channels": "5.1",
@@ -2897,8 +2927,8 @@
       {
         "id": "1570D1bMAEf4pO26874cxKS0pgRDTW53l",
         "name": "Jawan Extended Cut (2023) 2160p NF WEB-DL HEVC x265 [Tamil (DD+ 5 1 - 640kbps)] ESub [2160p] [15 GB].mkv",
-        "quality": "4K UHD",
-        "source": "WEB-DL",
+        "quality": "4K UHD • Netflix • Dolby Digital",
+        "source": "Netflix",
         "codec": "HEVC",
         "resolution": "4K UHD",
         "audio": "Dolby Digital",
@@ -2918,8 +2948,8 @@
       {
         "id": "1wA4bv-AN4eRdjhJUNsgQImJFcLExEFWf",
         "name": "Jawan (2023) [1080p] [Netflix] [Dolby Atmos].mkv",
-        "quality": "1080p • Netflix • Dolby Atmos",
-        "source": "Netflix",
+        "quality": "1080p • WEB-DL • Dolby Atmos",
+        "source": "WEB-DL",
         "codec": "x265",
         "resolution": "1080p",
         "audio": "Dolby Atmos",
@@ -2933,7 +2963,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": ""
-        }
+        },
+        "size": "6.7 GB"
       }
     ]
   },
@@ -2991,7 +3022,7 @@
     },
     "specs": {
       "resolution": "4K UHD",
-      "source": "WEB-DL",
+      "source": "Netflix",
       "codec": "HEVC",
       "audio": "Dolby Digital",
       "channels": "5.1",
@@ -3002,8 +3033,8 @@
       {
         "id": "1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8",
         "name": "Thalaivar Thambi Thalaimaiyil (2026) 2160p NF WEB-DL HEVC x265 [Tamil + Telugu + Malayalam + Kannada (DD+ 5 1 - 640kbps)] ESub [2160p] [14 GB].mkv",
-        "quality": "4K UHD",
-        "source": "WEB-DL",
+        "quality": "4K UHD • Netflix • Dolby Digital",
+        "source": "Netflix",
         "codec": "HEVC",
         "resolution": "4K UHD",
         "audio": "Dolby Digital",
@@ -3076,7 +3107,7 @@
     },
     "specs": {
       "resolution": "1080p FHD",
-      "source": "WEB-DL",
+      "source": "Prime Video",
       "codec": "H.264",
       "audio": "Dolby Digital",
       "channels": "5.1",
@@ -3087,8 +3118,8 @@
       {
         "id": "1kUM76p3XoiptI25k0GjawE0qs-q3YMxk",
         "name": "Kaappaan (2019) 1080p AMZN WEB-DL AVC x264 [Tamil (DD+ 5 1 - 640kbps)] ESub [1080p] [11 GB].mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Prime Video • Dolby Digital",
+        "source": "Prime Video",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital",
@@ -3108,8 +3139,8 @@
       {
         "id": "17sDq6S0qTtYZmx8GD4oaRy09W-jeYxnn",
         "name": "Kaappaan (2019) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Prime Video • Dolby Digital Plus",
+        "source": "Prime Video",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -3266,7 +3297,7 @@
       {
         "id": "1Rt8ogBLIKY3Tbw5wrGXxT3WZ-m6m5I-8",
         "name": "Ananthan Kaadu (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
-        "quality": "1080p • WEB-DL • Dolby Atmos [10GB]",
+        "quality": "1080p • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p",
@@ -3345,8 +3376,8 @@
       {
         "id": "1qo24dMaHgNy7IzUSXu6TWKE_9SY8yW5i",
         "name": "Bhartha Mahasayulaku Wignyapthi (2026) [4K UHD] [Aha Video] [Dolby Atmos].mkv",
-        "quality": "4K UHD • Aha Video • Dolby Atmos Multi [8GB]",
-        "source": "Aha Video",
+        "quality": "4K UHD • WEB-DL • Dolby Atmos",
+        "source": "WEB-DL",
         "codec": "x265",
         "resolution": "4K UHD",
         "audio": "Dolby Atmos",
@@ -3424,7 +3455,7 @@
       {
         "id": "1ONOGVJjg1ifLgRYx1M3dfDSVJh2eLM_X",
         "name": "Demonte Colony 2 (2024) [1080p] [Prime Video] [Dolby Atmos].mkv",
-        "quality": "1080p • Prime Video • Dolby Atmos Multi [9GB]",
+        "quality": "1080p • Prime Video • Dolby Atmos",
         "source": "Prime Video",
         "codec": "x265",
         "resolution": "1080p",
@@ -3439,7 +3470,8 @@
           "channels": "5.1",
           "languages": "Tamil, Hindi",
           "size": "9GB"
-        }
+        },
+        "size": "9.3 GB"
       }
     ]
   },
@@ -3509,7 +3541,7 @@
       {
         "id": "1LdTBQwpg5Ly5ZzhO6gR0uL17lwPddnFG",
         "name": "House Mates (2025) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -3598,7 +3630,7 @@
       {
         "id": "1cBRaKRSwKW6NiuIW9p8DRaq2cnfCPyyA",
         "name": "HIT: The Third Case (2025) [1080p] [H.264] [Dolby Atmos].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -3615,7 +3647,7 @@
           "languages": "Tamil",
           "size": "9.9 GB"
         },
-        "size": "9.9 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -3687,7 +3719,7 @@
       {
         "id": "1OFVgzonnAghm9Rj1LQRTm3rgFcFhFcbe",
         "name": "Dasavatharam (2008) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -3704,7 +3736,7 @@
           "languages": "Tamil",
           "size": "13.6 GB"
         },
-        "size": "13.6 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -3776,7 +3808,7 @@
       {
         "id": "1sT8c_r2BwkIwDYkba13DeDTOi8wIkZu_",
         "name": "Ghilli (2004) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -3793,7 +3825,7 @@
           "languages": "Tamil",
           "size": "12.4 GB"
         },
-        "size": "12.4 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -3864,7 +3896,7 @@
       {
         "id": "1c0J7keRIoBT0XQqxQ2F_qLhEgs4vVdth",
         "name": "Thambikku Entha Ooru (1984) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -3881,7 +3913,7 @@
           "languages": "Tamil",
           "size": "4.8 GB"
         },
-        "size": "4.8 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -3952,7 +3984,7 @@
       {
         "id": "11J3-KOVacXFuwdEJbFo87Sw273u4G6t1",
         "name": "Brother (2024) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -3969,7 +4001,7 @@
           "languages": "Tamil",
           "size": "2.4 GB"
         },
-        "size": "2.4 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -4040,8 +4072,8 @@
       {
         "id": "1AjG6v5nyth9YQRL7kvw_sS1dnYZUZsNj",
         "name": "Raja Rani (2013) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
-        "source": "BLURAY",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -4057,7 +4089,7 @@
           "languages": "Tamil",
           "size": "15.5 GB"
         },
-        "size": "15.5 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -4130,7 +4162,7 @@
       {
         "id": "1f0whg9PBSASoloaWYW5GAq6lHRziv4Dx",
         "name": "Raanjhanaa (2013) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -4147,7 +4179,7 @@
           "languages": "Tamil",
           "size": "11.7 GB"
         },
-        "size": "11.7 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -4218,8 +4250,8 @@
       {
         "id": "1rlESC-sqZn4F2YZpkNVJ7Ez0CC83J97A",
         "name": "Peranmai (2009) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
-        "source": "BLURAY",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -4235,7 +4267,7 @@
           "languages": "Tamil",
           "size": "14.5 GB"
         },
-        "size": "14.5 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -4307,7 +4339,7 @@
       {
         "id": "19idDy99TXlinKREeljs2pMzYnGFFCugF",
         "name": "Jeans (1998) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -4324,7 +4356,7 @@
           "languages": "Tamil",
           "size": "12.2 GB"
         },
-        "size": "12.2 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -4396,7 +4428,7 @@
       {
         "id": "1ErH2psDP2foSG4YECP9pAFlBu5W91Bfk",
         "name": "Bogan (2017) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -4413,7 +4445,7 @@
           "languages": "Tamil",
           "size": "7.7 GB"
         },
-        "size": "7.7 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -4485,7 +4517,7 @@
       {
         "id": "1fLi0CSlgvbLJk9UP0qyDGs5nRJUKVeSf",
         "name": "DD Returns (2023) [4K UHD] [H.264] [Dolby Digital].mkv",
-        "quality": "4K UHD",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -4502,12 +4534,12 @@
           "languages": "Tamil",
           "size": "2.0 GB"
         },
-        "size": "2.0 GB"
+        "size": "10 GB"
       },
       {
         "id": "17qy_yghIXaBs7SYr5lSuy6hL-sLH9We2",
         "name": "DD Returns (2023) [4K UHD] [x265] [Dolby Digital].mkv",
-        "quality": "4K UHD",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "4K UHD",
@@ -4524,7 +4556,7 @@
           "languages": "Tamil",
           "size": "2.0 GB"
         },
-        "size": "2.0 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -4596,7 +4628,7 @@
       {
         "id": "1TFW4eEVGVF2gMr1Ln2u20X_IZ_kgwrNE",
         "name": "Dhilluku Dhuddu 2 (2019) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -4613,7 +4645,7 @@
           "languages": "Tamil",
           "size": "7.9 GB"
         },
-        "size": "7.9 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -4686,7 +4718,7 @@
       {
         "id": "1zin_xTM08gXZvij1OqLlz8n-GmLu6hOT",
         "name": "Dhilluku Dhuddu (2016) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -4703,7 +4735,7 @@
           "languages": "Tamil",
           "size": "7.4 GB"
         },
-        "size": "7.4 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -4775,7 +4807,7 @@
       {
         "id": "15GXgSqBibiwD-LHYje3t3UPJIHXoMUue",
         "name": "Nesippaya (2025) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -4792,7 +4824,7 @@
           "languages": "Tamil",
           "size": "3.8 GB"
         },
-        "size": "3.8 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -4864,7 +4896,7 @@
       {
         "id": "1aYx4cO9AXfELPh63U_dr9649M8vKmAQR",
         "name": "Nannbenda (2015) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -4881,7 +4913,7 @@
           "languages": "Tamil",
           "size": "10.2 GB"
         },
-        "size": "10.2 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -4952,7 +4984,7 @@
       {
         "id": "1DxOoGCo4YdI9K-MIx0oneVKeATjrJ4qi",
         "name": "Vetrivel (2016) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -4969,7 +5001,7 @@
           "languages": "Tamil",
           "size": "8.6 GB"
         },
-        "size": "8.6 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -5040,7 +5072,7 @@
       {
         "id": "1puY-DT9teCt99IjECDARgOufNEZniuTn",
         "name": "Baasha (1995) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -5057,7 +5089,7 @@
           "languages": "Tamil",
           "size": "9.7 GB"
         },
-        "size": "9.7 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -5129,7 +5161,7 @@
       {
         "id": "1tCT3u490297zhHuxS4RJZaEiYegzBJQj",
         "name": "Vanmam (2014) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -5146,7 +5178,7 @@
           "languages": "Tamil",
           "size": "9.6 GB"
         },
-        "size": "9.6 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -5218,7 +5250,7 @@
       {
         "id": "1r0OlfljJscybQD59J2Mbk5ev0tJ4OFuq",
         "name": "Hard Hit (2020) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -5235,7 +5267,7 @@
           "languages": "Tamil",
           "size": "2.9 GB"
         },
-        "size": "2.9 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -5307,7 +5339,7 @@
       {
         "id": "15hvY_8m6YRLNXqbVNEKhwMmue1J9Rquw",
         "name": "HIT: The 2nd Case (2022) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -5324,7 +5356,7 @@
           "languages": "Tamil",
           "size": "3.0 GB"
         },
-        "size": "3.0 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -5396,7 +5428,7 @@
       {
         "id": "1BXADeTWw_ZU0K-OlbOvmOJelGw-cWjUs",
         "name": "Samar (2013) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -5413,7 +5445,7 @@
           "languages": "Tamil",
           "size": "10.0 GB"
         },
-        "size": "10.0 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -5484,7 +5516,7 @@
       {
         "id": "1oiNjn8T7voD4YuX9xgDekSSjHE8q5zsw",
         "name": "Ten Hours (2025) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -5501,7 +5533,7 @@
           "languages": "Tamil",
           "size": "6.2 GB"
         },
-        "size": "6.2 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -5572,7 +5604,7 @@
       {
         "id": "1k0o0j8AMQ3Xx0s4psG4x3yQdkZNkPxSm",
         "name": "Good Bad Ugly (2025) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -5589,12 +5621,12 @@
           "languages": "Tamil",
           "size": "8.2 GB"
         },
-        "size": "8.2 GB"
+        "size": "10 GB"
       },
       {
         "id": "1sZFMkTZH7GWTaD3g5RHt7E0VGFtDC1Kl",
         "name": "Good Bad Ugly (2025) [4K UHD] [x265] [Dolby Digital].mkv",
-        "quality": "4K UHD",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "4K UHD",
@@ -5611,7 +5643,7 @@
           "languages": "Tamil",
           "size": "8.2 GB"
         },
-        "size": "8.2 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -5682,7 +5714,7 @@
       {
         "id": "1rqJZO6nj77I1ZldXZ9ez97nXAqDy_XcV",
         "name": "Veeram (2014) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -5699,7 +5731,7 @@
           "languages": "Tamil",
           "size": "11.2 GB"
         },
-        "size": "11.2 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -5770,7 +5802,7 @@
       {
         "id": "1zwhgd0b0WKlyX8gtDa0k5IM7-PLtuvGg",
         "name": "Bajirao Mastani (2015) [4K UHD] [H.264] [Dolby Digital].mkv",
-        "quality": "4K UHD",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -5787,7 +5819,7 @@
           "languages": "Tamil",
           "size": "9.5 GB"
         },
-        "size": "9.5 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -5858,7 +5890,7 @@
       {
         "id": "1jRbPmoAF1chui0NebvFbVYh6qG_VV5Aq",
         "name": "Vaaranam Aayiram (2008) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -5875,7 +5907,7 @@
           "languages": "Tamil",
           "size": "12.3 GB"
         },
-        "size": "12.3 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -5946,7 +5978,7 @@
       {
         "id": "1YpfDbm8sHmEmDT1oH65KJ04ZW-D75Huv",
         "name": "Naan Sigappu Manithan (1985) [4K UHD] [H.264] [Dolby Digital].mkv",
-        "quality": "4K UHD",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -5963,7 +5995,7 @@
           "languages": "Tamil",
           "size": "6.8 GB"
         },
-        "size": "6.8 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -6035,7 +6067,7 @@
       {
         "id": "1uxIUBm-h1Wis60LcRb3A_15jtSQG8b6c",
         "name": "Kadhalum Kadanthu Pogum (2016) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -6052,7 +6084,7 @@
           "languages": "Tamil",
           "size": "7.9 GB"
         },
-        "size": "7.9 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -6123,7 +6155,7 @@
       {
         "id": "1ljMAreRE9y9J0LYwEs3aVCQGqOpE2HU1",
         "name": "Deepavali (2007) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -6140,7 +6172,7 @@
           "languages": "Tamil",
           "size": "8.5 GB"
         },
-        "size": "8.5 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -6211,7 +6243,7 @@
       {
         "id": "1arSBQLGfrd3uiZBn62kPo8z5jAjfIehv",
         "name": "Nirangal Moondru (2024) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -6228,7 +6260,7 @@
           "languages": "Tamil",
           "size": "7.1 GB"
         },
-        "size": "7.1 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -6300,7 +6332,7 @@
       {
         "id": "1nZg9HErvYN5N2Y7TokLMqmu8h8U_b4Fq",
         "name": "Massu Engira Maasilamani (2015) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -6317,12 +6349,12 @@
           "languages": "Tamil",
           "size": "10.5 GB"
         },
-        "size": "10.5 GB"
+        "size": "10 GB"
       },
       {
         "id": "1wgnZs1Nv6G8_zkDdbSDp99P_cgYJk5Lw",
         "name": "Massu Engira Maasilamani (2015) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -6339,7 +6371,7 @@
           "languages": "Tamil",
           "size": "10.5 GB"
         },
-        "size": "10.5 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -6411,8 +6443,8 @@
       {
         "id": "16_gTrHSHLMOaESlQE6az84Ou5UeEyk18",
         "name": "Thaandavam (2012) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
-        "source": "BLURAY",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -6428,7 +6460,7 @@
           "languages": "Tamil",
           "size": "15.4 GB"
         },
-        "size": "15.4 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -6499,7 +6531,7 @@
       {
         "id": "1otHQ1fcHb_pHMMZevZ8msuTAn7gNbwSB",
         "name": "Sachein (2005) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -6516,7 +6548,7 @@
           "languages": "Tamil",
           "size": "11.0 GB"
         },
-        "size": "11.0 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -6588,7 +6620,7 @@
       {
         "id": "1C5zwe14oB3QyVdsDt814COAX4j7OQ7Tn",
         "name": "O Kadhal Kanmani (2015) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -6605,7 +6637,7 @@
           "languages": "Tamil",
           "size": "9.5 GB"
         },
-        "size": "9.5 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -6676,7 +6708,7 @@
       {
         "id": "1xsn-bBzr7q_ujej-8czYC5nzbD_47Jpu",
         "name": "Gemini (2002) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -6693,7 +6725,7 @@
           "languages": "Tamil",
           "size": "11.1 GB"
         },
-        "size": "11.1 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -6765,7 +6797,7 @@
       {
         "id": "1NMb9eUn6yYLaCGa0rdr-eNC1Na7EuYXt",
         "name": "Miss You (2024) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -6782,7 +6814,7 @@
           "languages": "Tamil",
           "size": "7.6 GB"
         },
-        "size": "7.6 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -6855,7 +6887,7 @@
       {
         "id": "1JMlW5FQnKu1EGmfJaB7Wgv58LiN3eC5n",
         "name": "Soodhu Kavvum 2: Nadum Naatu Makkalum... (2024) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -6872,7 +6904,7 @@
           "languages": "Tamil",
           "size": "6.5 GB"
         },
-        "size": "6.5 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -6944,7 +6976,7 @@
       {
         "id": "149gLkY7NSvWYPtsl_tIzkDjgFD2dA2aG",
         "name": "The Smile Man (2024) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -6961,7 +6993,7 @@
           "languages": "Tamil",
           "size": "2.7 GB"
         },
-        "size": "2.7 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -7033,7 +7065,7 @@
       {
         "id": "1C1R0gC_8ahIrUOxl4bVxkg2NQrv8mmWk",
         "name": "Singham Again (2024) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -7050,7 +7082,7 @@
           "languages": "Tamil",
           "size": "6.8 GB"
         },
-        "size": "6.8 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -7121,7 +7153,7 @@
       {
         "id": "1oGxstme1j2gkaCu9UnT-Qjo7U_JKe0-h",
         "name": "Once Upon a Time in Madras (2024) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -7138,7 +7170,7 @@
           "languages": "Tamil",
           "size": "1.8 GB"
         },
-        "size": "1.8 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -7209,7 +7241,7 @@
       {
         "id": "1xX_y3hmU3glxzIHqdHB8ipxfr1hmptGL",
         "name": "Padikathavan (2009) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -7226,7 +7258,7 @@
           "languages": "Tamil",
           "size": "8.9 GB"
         },
-        "size": "8.9 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -7297,7 +7329,7 @@
       {
         "id": "1olFefrujaz4gi3qq43Nij6bcMf9OH7jr",
         "name": "Yamakaathaghi (2025) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -7314,7 +7346,7 @@
           "languages": "Tamil",
           "size": "1.6 GB"
         },
-        "size": "1.6 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -7386,7 +7418,7 @@
       {
         "id": "1b5foUsJCtWGnT-8dmv9b3uBAV7SLOr7H",
         "name": "Retro (2025) [1080p] [H.264] [Dolby Atmos].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -7403,7 +7435,7 @@
           "languages": "Tamil",
           "size": "10.0 GB"
         },
-        "size": "10.0 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -7475,7 +7507,7 @@
       {
         "id": "1v8GC67nvFivqMA7Vz0MTEQxOEedzOsD_",
         "name": "Tourist Family (2025) [4K UHD] [x265] [Dolby Digital].mkv",
-        "quality": "4K UHD",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "4K UHD",
@@ -7492,12 +7524,12 @@
           "languages": "Tamil",
           "size": "11.2 GB"
         },
-        "size": "11.2 GB"
+        "size": "10 GB"
       },
       {
         "id": "1Bw7upA0IRakfbEWXmbHeYa0QECSvMd07",
         "name": "Tourist Family (2025) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -7514,7 +7546,7 @@
           "languages": "Tamil",
           "size": "11.2 GB"
         },
-        "size": "11.2 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -7588,7 +7620,7 @@
       {
         "id": "1HAZu-5GVjkI-InQr79Ekbr0J1pkhUKeU",
         "name": "Vikram Vedha (2017) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -7605,7 +7637,7 @@
           "languages": "Tamil",
           "size": "9.1 GB"
         },
-        "size": "9.1 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -7677,7 +7709,7 @@
       {
         "id": "1X2zL-GzXAX6wVQ9mriT0K717c7RtklEc",
         "name": "Court: State vs. A Nobody (2025) [4K UHD] [x265] [Dolby Digital].mkv",
-        "quality": "4K UHD",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "4K UHD",
@@ -7694,12 +7726,12 @@
           "languages": "Tamil",
           "size": "15.5 GB"
         },
-        "size": "15.5 GB"
+        "size": "10 GB"
       },
       {
         "id": "1Pp0UAE-SuBRHDd8XYgLHlg6dx4YIxjrZ",
         "name": "Court: State vs. A Nobody (2025) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -7716,7 +7748,7 @@
           "languages": "Tamil",
           "size": "15.5 GB"
         },
-        "size": "15.5 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -7789,7 +7821,7 @@
       {
         "id": "15H8bz0_dN0lru8--wQmXMtG5HzYZi4GP",
         "name": "(MAD)² (2025) [4K UHD] [x265] [Dolby Digital].mkv",
-        "quality": "4K UHD",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "4K UHD",
@@ -7806,12 +7838,12 @@
           "languages": "Tamil",
           "size": "16.0 GB"
         },
-        "size": "16.0 GB"
+        "size": "10 GB"
       },
       {
         "id": "1JdM1BR64cd0pNxTkjzN4ykJvPtzPtlYG",
         "name": "(MAD)² (2025) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -7828,7 +7860,7 @@
           "languages": "Tamil",
           "size": "16.0 GB"
         },
-        "size": "16.0 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -7899,7 +7931,7 @@
       {
         "id": "1kxW0a0IV2UtAQCjLMCgbAlRKXF_MdF9-",
         "name": "Kavalai Vendam (2016) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -7916,7 +7948,7 @@
           "languages": "Tamil",
           "size": "5.5 GB"
         },
-        "size": "5.5 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -7989,7 +8021,7 @@
       {
         "id": "1TqoCEyl19uTG7wgrLy323jEhAQy_NZc-",
         "name": "Leo (2023) [1080p] [H.264] [Dolby Atmos].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -8006,7 +8038,7 @@
           "languages": "Tamil",
           "size": "6.6 GB"
         },
-        "size": "6.6 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -8078,7 +8110,7 @@
       {
         "id": "1XqZ9Dg1TDjytl4g1zIVto0FqP63YF6i6",
         "name": "Alex Pandian (2013) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -8095,7 +8127,7 @@
           "languages": "Tamil",
           "size": "8.8 GB"
         },
-        "size": "8.8 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -8168,7 +8200,7 @@
       {
         "id": "1gGmdAX1MyY-8BkRGBaAvloNoiW7vE6OF",
         "name": "Viduthalai: Part II (2024) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -8185,7 +8217,7 @@
           "languages": "Tamil",
           "size": "4.2 GB"
         },
-        "size": "4.2 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -8256,7 +8288,7 @@
       {
         "id": "14M2MG4PZoTI-RVW1_ZoFdwIyO1L3Y-3O",
         "name": "Dharmam Vellum (1989) [4K UHD] [H.264] [Dolby Digital].mkv",
-        "quality": "4K UHD",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -8273,12 +8305,12 @@
           "languages": "Tamil",
           "size": "9.1 GB"
         },
-        "size": "9.1 GB"
+        "size": "10 GB"
       },
       {
         "id": "1ruTXSqOE9dVTpQ-KbOAi-SXYDsiugCQn",
         "name": "Dharmam Vellum (1989) [4K UHD] [H.264] [Dolby Digital].mkv",
-        "quality": "4K UHD",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -8295,7 +8327,7 @@
           "languages": "Tamil",
           "size": "9.1 GB"
         },
-        "size": "9.1 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -8366,7 +8398,7 @@
       {
         "id": "1PnX9h5eJMrabVCecUbzU5TAtXWrcyGaj",
         "name": "Sethu... (1999) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -8383,7 +8415,7 @@
           "languages": "Tamil",
           "size": "5.2 GB"
         },
-        "size": "5.2 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -8454,7 +8486,7 @@
       {
         "id": "1VNRGsOZz9qsicTEHpRK663tR_66MPtG9",
         "name": "Paruthiveeran (2007) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -8471,7 +8503,7 @@
           "languages": "Tamil",
           "size": "5.5 GB"
         },
-        "size": "5.5 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -8543,8 +8575,8 @@
       {
         "id": "1_tLtKA7jC8V-twqmF7JRNgfieM2DQgTa",
         "name": "Paiyaa (2010) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
-        "source": "BLURAY",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital",
@@ -8560,7 +8592,7 @@
           "languages": "Tamil",
           "size": "10.3 GB"
         },
-        "size": "10.3 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -8633,7 +8665,7 @@
       {
         "id": "1mgMWHX94H0O0-8htCQyAHnDbtgoKIl42",
         "name": "7G Rainbow Colony (2004) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -8650,7 +8682,7 @@
           "languages": "Tamil",
           "size": "8.7 GB"
         },
-        "size": "8.7 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -8721,7 +8753,7 @@
       {
         "id": "1f7SzLaq2kI22clLW9yTk7vf9X9LqjUpY",
         "name": "Madurey (2004) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -8738,7 +8770,7 @@
           "languages": "Tamil",
           "size": "11.0 GB"
         },
-        "size": "11.0 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -8811,7 +8843,7 @@
       {
         "id": "1lI3YYwRKhHwrsRfrUZCcSp9GW7qPkOia",
         "name": "Krrish 3 (2013) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -8828,7 +8860,7 @@
           "languages": "Tamil",
           "size": "4.3 GB"
         },
-        "size": "4.3 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -8900,7 +8932,7 @@
       {
         "id": "1QUBRAnAau79bx18-VoA2jNpka5401l3V",
         "name": "Skanda (2023) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -8917,7 +8949,7 @@
           "languages": "Tamil",
           "size": "4.7 GB"
         },
-        "size": "4.7 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -8988,7 +9020,7 @@
       {
         "id": "17Kl7ICeConhco1p6OjlA8GysLTo1R2Ce",
         "name": "Parking (2023) [4K UHD] [x265] [Dolby Digital].mkv",
-        "quality": "4K UHD",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "4K UHD",
@@ -9005,7 +9037,7 @@
           "languages": "Tamil",
           "size": "12.5 GB"
         },
-        "size": "12.5 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -9076,7 +9108,7 @@
       {
         "id": "1VS4K6myqZbS2FwN3GFd_IxQ_pOdjEzu4",
         "name": "Pulan Visaranai (1990) [4K UHD] [H.264] [Dolby Digital].mkv",
-        "quality": "4K UHD",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -9093,7 +9125,7 @@
           "languages": "Tamil",
           "size": "5.1 GB"
         },
-        "size": "5.1 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -9164,7 +9196,7 @@
       {
         "id": "1rRHwCasvQBjNGYQVsAJQPrs8hH1oTE2a",
         "name": "Annapoorani (2023) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -9181,7 +9213,7 @@
           "languages": "Tamil",
           "size": "5.8 GB"
         },
-        "size": "5.8 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -9252,7 +9284,7 @@
       {
         "id": "1L8vE3s2Dc4AOifOxfbz50psPQsDF6Xkr",
         "name": "Irugapatru (2023) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -9269,7 +9301,7 @@
           "languages": "Tamil",
           "size": "6.1 GB"
         },
-        "size": "6.1 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -9341,7 +9373,7 @@
       {
         "id": "16temhwnW-gMRy2IOCXzdNqw8eo8dfpyw",
         "name": "Manithan (2016) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -9358,7 +9390,7 @@
           "languages": "Tamil",
           "size": "8.2 GB"
         },
-        "size": "8.2 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -9431,7 +9463,7 @@
       {
         "id": "1f51xIKgBOXWo9Ma8900cP0PRI-ZlSyAy",
         "name": "Mission: Impossible - Dead Reckoning Part One (2023) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -9448,7 +9480,7 @@
           "languages": "Tamil",
           "size": "13.9 GB"
         },
-        "size": "13.9 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -9520,7 +9552,7 @@
       {
         "id": "1Gc13U4lnVvghY3JAdUahGm_qNRBShlr1",
         "name": "Madras (2014) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -9537,7 +9569,7 @@
           "languages": "Tamil",
           "size": "4.4 GB"
         },
-        "size": "4.4 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -9608,7 +9640,7 @@
       {
         "id": "1BtGYGSaFRK-w6uCoAPAbHyqfZkTq2N2U",
         "name": "Ullam Ketkumae (2005) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -9625,7 +9657,7 @@
           "languages": "Tamil",
           "size": "4.3 GB"
         },
-        "size": "4.3 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -9697,7 +9729,7 @@
       {
         "id": "10kWJFBiFMa16PCBoC5pbr2Ft5Ryt0Q5H",
         "name": "Captain Miller (2024) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -9714,7 +9746,7 @@
           "languages": "Tamil",
           "size": "11.7 GB"
         },
-        "size": "11.7 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -9786,8 +9818,8 @@
       {
         "id": "1VBp2S31S7Ex0nOcC02zjoB66rUFVwJtP",
         "name": "Ra.One (2011) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
-        "source": "BLURAY",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital",
@@ -9803,7 +9835,7 @@
           "languages": "Tamil",
           "size": "15.5 GB"
         },
-        "size": "15.5 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -9875,7 +9907,7 @@
       {
         "id": "1mNtEOYaQu8Z9i_nubvk_hmldD9hk-E9Y",
         "name": "Guntur Kaaram (2024) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -9892,7 +9924,7 @@
           "languages": "Tamil",
           "size": "6.1 GB"
         },
-        "size": "6.1 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -9963,7 +9995,7 @@
       {
         "id": "11bG9zt6EMEbXRekdlTkiYJlRsp2idCwS",
         "name": "Mark Antony (2023) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -9980,7 +10012,7 @@
           "languages": "Tamil",
           "size": "10.6 GB"
         },
-        "size": "10.6 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -10052,7 +10084,7 @@
       {
         "id": "1YachzpAqGaIMwQH_PuBLevkR89RI95j7",
         "name": "RRR (2022) [1080p] [H.264] [Dolby Atmos].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -10069,7 +10101,7 @@
           "languages": "Tamil",
           "size": "6.0 GB"
         },
-        "size": "6.0 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -10140,7 +10172,7 @@
       {
         "id": "1ZI9QCAgwez8gjTQ6mYG5HJ6l5O8SC55x",
         "name": "Pandigai (2017) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -10157,7 +10189,7 @@
           "languages": "Tamil",
           "size": "4.8 GB"
         },
-        "size": "4.8 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -10230,8 +10262,8 @@
       {
         "id": "18NinKiSSi4IL8nymZ9b6X6zo7RGFpgnb",
         "name": "Si 3 (2017) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
-        "source": "BLURAY",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -10247,7 +10279,7 @@
           "languages": "Tamil",
           "size": "13.3 GB"
         },
-        "size": "13.3 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -10320,8 +10352,8 @@
       {
         "id": "1lUjVu0ueQs3i8k1hsIldC6Lqj0nPx-Xt",
         "name": "Singam 2 (2013) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
-        "source": "BLURAY",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -10337,7 +10369,7 @@
           "languages": "Tamil",
           "size": "15.8 GB"
         },
-        "size": "15.8 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -10408,7 +10440,7 @@
       {
         "id": "17GYwy0W6XWCxWV3D1E4pZ9fov6Hi0FsB",
         "name": "Anjaneya (2003) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -10425,12 +10457,12 @@
           "languages": "Tamil",
           "size": "13.6 GB"
         },
-        "size": "13.6 GB"
+        "size": "10 GB"
       },
       {
         "id": "1rK4nmWmyWYzh6tdbKrE8o_GDBMfbYPGt",
         "name": "Anjaneya (2003) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -10447,7 +10479,7 @@
           "languages": "Tamil",
           "size": "13.6 GB"
         },
-        "size": "13.6 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -10518,7 +10550,7 @@
       {
         "id": "1vIh1KD7LQy8JQM__4Ax0HRBz6Nkeq9ID",
         "name": "Thangalaan (2024) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -10535,7 +10567,7 @@
           "languages": "Tamil",
           "size": "6.1 GB"
         },
-        "size": "6.1 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -10607,7 +10639,7 @@
       {
         "id": "12qRYGgccdCNVHI6ROfa5gUKr-tH_8Tzc",
         "name": "Vettaiyan (2024) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -10624,7 +10656,7 @@
           "languages": "Tamil",
           "size": "13.4 GB"
         },
-        "size": "13.4 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -10697,7 +10729,7 @@
       {
         "id": "1ivEiv8cAt0P_W42QSRlPqJoeMw0TNmIn",
         "name": "Pushpa: The Rise (2021) [4K UHD] [x265] [Dolby Digital].mkv",
-        "quality": "4K UHD",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "4K UHD",
@@ -10714,7 +10746,7 @@
           "languages": "Tamil",
           "size": "19.2 GB"
         },
-        "size": "19.2 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -10786,7 +10818,7 @@
       {
         "id": "1JJteZnLBd0CKwNrGmQPCdvMwhSYjHTdO",
         "name": "Maan Karate (2014) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -10803,7 +10835,7 @@
           "languages": "Tamil",
           "size": "10.6 GB"
         },
-        "size": "10.6 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -10875,7 +10907,7 @@
       {
         "id": "1XBBfwLb3zhd3JQ4O38IvCM-_5wxemniB",
         "name": "Naa Saami Ranga (2024) [1080p] [x265] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "1080p FHD",
@@ -10892,7 +10924,7 @@
           "languages": "Tamil",
           "size": "5.1 GB"
         },
-        "size": "5.1 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -10964,8 +10996,8 @@
       {
         "id": "1oLNHZ8wA_ETPYsz58cBSrfrLoIe2Ohf9",
         "name": "Lingaa (2014) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
-        "source": "BLURAY",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -10981,7 +11013,7 @@
           "languages": "Tamil",
           "size": "16.6 GB"
         },
-        "size": "16.6 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -11052,7 +11084,7 @@
       {
         "id": "1Xe2P94kcFksDbznhnl6bUVBRwrLLYA_P",
         "name": "7Aum Arivu (2011) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -11069,7 +11101,7 @@
           "languages": "Tamil",
           "size": "9.6 GB"
         },
-        "size": "9.6 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -11142,7 +11174,7 @@
       {
         "id": "1x-kgsjms0zOj_K1dVc6ixd4-T2aAp5AA",
         "name": "Devara: Part 1 (2024) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -11159,7 +11191,7 @@
           "languages": "Tamil",
           "size": "8.4 GB"
         },
-        "size": "8.4 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -11230,7 +11262,7 @@
       {
         "id": "1j0HaJRLFk29krmekrcMUFIIjK1lWnKfp",
         "name": "A.R.M - Ajayante Randam Moshanam (2024) [1080p] [x265] [Dolby Atmos].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "1080p FHD",
@@ -11247,7 +11279,7 @@
           "languages": "Tamil",
           "size": "7.3 GB"
         },
-        "size": "7.3 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -11319,7 +11351,7 @@
       {
         "id": "1Ypv6arS97hjhwDxCxv18hMd30TsQFvQI",
         "name": "Kaithi (2019) [1080p] [H.264] [Dolby Atmos].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -11335,12 +11367,12 @@
           "languages": "Tamil",
           "size": "4.2 GB"
         },
-        "size": "4.2 GB"
+        "size": "10 GB"
       },
       {
         "id": "1OdadWyAeln8W783-r9cfaxs_dYvQOVKJ",
         "name": "Movie 587030 (2026) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -11356,7 +11388,7 @@
           "languages": "Tamil",
           "size": "4.2 GB"
         },
-        "size": "4.2 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -11428,8 +11460,8 @@
       {
         "id": "1Kj2CVoBDnr0gAnRieF_jhoVapagojoVf",
         "name": "Spider-Man: Far From Home (2019) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
-        "source": "BLURAY",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -11444,7 +11476,7 @@
           "languages": "Tamil, Telugu, Hindi",
           "size": "5.5 GB"
         },
-        "size": "5.5 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -11508,8 +11540,8 @@
       {
         "id": "1KzSk6IRTtlOHbv1pvHRAOkLKCBo-j81Y",
         "name": "Bigil (2019) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
-        "source": "AMZN WEB-DL",
+        "quality": "4K UHD • WEB-DL • Dolby Digital Plus",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
         "audio": "Dolby Digital Plus",
@@ -11524,12 +11556,12 @@
           "languages": "Tamil",
           "size": "12.0 GB"
         },
-        "size": "12.0 GB"
+        "size": "10 GB"
       },
       {
         "id": "1IWqxzOdpY52m0xjipQ4QEkCzjQgMhIpp",
         "name": "Bigil (2019) [Multi] [4K] [H.264] [AAC].mkv",
-        "quality": "4K",
+        "quality": "4K UHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -11544,7 +11576,7 @@
           "channels": "2.0",
           "size": "12.0 GB"
         },
-        "size": "12.0 GB"
+        "size": "5.7 GB"
       }
     ]
   },
@@ -11608,7 +11640,7 @@
       {
         "id": "1PdUAMv0lfgqgLVFUMTxTikrPMdoXAqxg",
         "name": "Dharmadurai (2016) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -11624,7 +11656,7 @@
           "languages": "Tamil",
           "size": "2.8 GB"
         },
-        "size": "2.8 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -11695,8 +11727,8 @@
       {
         "id": "1v7aU9o2zeKvsEcQ29K9a8FDRg7yJqx7D",
         "name": "Bharathanatyam (2024) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
-        "source": "BLURAY",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -11711,7 +11743,7 @@
           "languages": "Malyalam",
           "size": "6.8 GB"
         },
-        "size": "6.8 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -11783,7 +11815,7 @@
       {
         "id": "11B9SFdt2YtZ2a9GNMsBNL8p-jH0LF_O8",
         "name": "Project Hail Mary (2026) [4K UHD] [x265] [Dolby Digital Plus].mkv",
-        "quality": "4K UHD",
+        "quality": "4K UHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "4K UHD",
@@ -11799,12 +11831,12 @@
           "languages": "Multi",
           "size": "25.4 GB"
         },
-        "size": "25.4 GB"
+        "size": "10 GB"
       },
       {
         "id": "1kNRa26pDssehRE-NXOW-dh5Dbzoumy5x",
         "name": "Movie 687163 (2026) [1080p] [x265] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "1080p FHD",
@@ -11820,7 +11852,7 @@
           "languages": "Tamil",
           "size": "25.4 GB"
         },
-        "size": "25.4 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -11885,7 +11917,7 @@
       {
         "id": "1Vgn6oBFVidhhM0Y2SuVfR6sB1GPsCJqi",
         "name": "Kandhakottai (2009) [4K UHD] [x265] [Dolby Digital Plus].mkv",
-        "quality": "4K UHD",
+        "quality": "4K UHD • BLURAY • Dolby Digital Plus",
         "source": "BLURAY",
         "codec": "x265",
         "resolution": "4K UHD",
@@ -11973,8 +12005,8 @@
       {
         "id": "1GdEzjHhyJy3Q7InOW-WWhWRHaDj8HIH3",
         "name": "Batman Begins (2005) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
-        "source": "AMZN WEB-DL",
+        "quality": "1080p FHD • Prime Video • Dolby Digital Plus",
+        "source": "Prime Video",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -12061,7 +12093,7 @@
       {
         "id": "1abawJdpoaqct7Pb-7SIyBTmj8yft7yKh",
         "name": "Kabali (2016) [1080p] [H.264] [DTS-HD MA].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • DTS-HD MA",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -12149,7 +12181,7 @@
       {
         "id": "1FRk3H4Esrq70pGtJhg-muvvFOdOcOgjP",
         "name": "Kireedam (2007) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • BLURAY • Dolby Digital",
         "source": "BLURAY",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -12226,7 +12258,7 @@
     },
     "specs": {
       "resolution": "1080p FHD",
-      "source": "WEB-DL",
+      "source": "Netflix",
       "codec": "H.264",
       "audio": "Dolby Atmos",
       "channels": "5.1",
@@ -12236,8 +12268,8 @@
       {
         "id": "1vJomevV-q2mueobs7FcOvBUBO1X7P3YJ",
         "name": "Pyaar Prema Kalyanam (2026) [2160p] [H.264] [Dolby Atmos].mkv",
-        "quality": "2160p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Netflix • Dolby Atmos",
+        "source": "Netflix",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Atmos",
@@ -12310,7 +12342,7 @@
     },
     "specs": {
       "resolution": "1080p FHD",
-      "source": "WEB-DL",
+      "source": "SonyLIV",
       "codec": "H.264",
       "audio": "Dolby Atmos",
       "channels": "5.1",
@@ -12320,8 +12352,8 @@
       {
         "id": "1GpxbKc5hMoU7NvV7fFGOtqLRi9I764CS",
         "name": "Anbe Diana (2026) [1080p] [H.264] [Dolby Atmos].mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • SonyLIV • Dolby Atmos",
+        "source": "SonyLIV",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Atmos",
@@ -12406,7 +12438,7 @@
       {
         "id": "1PfF9Arp4byCVlg_a7_549LCgXaPJuCRK",
         "name": "Jana Nayagan (2026) 2160p ZEE5 WEB-DL HDR HEVC x265 [Tamil (DD+ 5.1 - 192kbps)] ESub.mkv",
-        "quality": "4K",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -12490,7 +12522,7 @@
       {
         "id": "1ow8jA4ltQuwj4VHm76lq5wnCUea7WgUD",
         "name": "Thodari.2016.1080p.AMZN.WEB-DL.DD+5.1.H.264-TR.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -12574,7 +12606,7 @@
       {
         "id": "1gYQQp06PkdO6z9mw52KSVvGrGFvlGWNb",
         "name": "Velayudham.2011.2160p.SS.WEB-DL.DD+5.1.x264-[JACK ~Edition].mkv",
-        "quality": "4K",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -12660,7 +12692,7 @@
       {
         "id": "1cEEEP83RwTB-0t6fIA_cc76d_C-iYT04",
         "name": "Sardar.2022.1080p.TK.WEB-DL.DD5.1.H.264-MSD4K.mkv",
-        "quality": "4K",
+        "quality": "4K UHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -12680,7 +12712,7 @@
       {
         "id": "12NpXKLbWYbNbUzrTmbFm2YB52VaaYvGz",
         "name": "Movie 858080 (2026) [Multi] [4K] [x265] [DDP 5.1].mkv",
-        "quality": "4K",
+        "quality": "4K UHD • WEB-DL • DDP 5.1",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "4K UHD",
@@ -12695,12 +12727,12 @@
           "channels": "5.1",
           "size": "10.3 GB"
         },
-        "size": "10.3 GB"
+        "size": "14.3 GB"
       },
       {
         "id": "1cEEEP83RwTB-0t6fIA_cc76d_C-iYT04",
         "name": "Movie 858080 (2026) [Multi] [1080p] [H.264] [DDP 5.1].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • DDP 5.1",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -12774,7 +12806,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Netflix",
       "codec": "H.264",
       "audio": "Dolby Digital",
       "channels": "5.1",
@@ -12784,8 +12816,8 @@
       {
         "id": "1XFlELp5QtYQrDVn9KU_oLwcJaLKRIL4U",
         "name": "Idhayam Murali (2026) 1080p x265 HEVC 10bit NF WEB-DL [Telugu + Tamil + Hindi + Malayalam + Kannada (DD+ 5.1 - 640Kbps)] Esub [TTT].mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Netflix • Dolby Digital",
+        "source": "Netflix",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital",
@@ -12858,7 +12890,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Zee5",
       "codec": "H.264",
       "audio": "Dolby Digital",
       "channels": "5.1",
@@ -12868,8 +12900,8 @@
       {
         "id": "1vcojEYNy8tHogrpBxSo0ONpSfUmnS3bu",
         "name": "Nooru Sami (2026) 1080p x264 AVC 8bit ZEE5 WEB-DL [Tamil (DD+ 5.1) + Tamil (AAC 2.0)] Esub [2.3GB] [TTT].mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Zee5 • Dolby Digital",
+        "source": "Zee5",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital",
@@ -12952,8 +12984,8 @@
       {
         "id": "1BjFxuYWhh5mvf5YZ3jARKEWWNteiGE8g",
         "name": "Anjaan (2014) Tamil - BluRay - 1080p - AVC - DTS5.1(1509kbps) - 13.1GB - [Jack ~Edition].mkv",
-        "quality": "1080p",
-        "source": "BluRay",
+        "quality": "1080p FHD • WEB-DL • AAC",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "AAC",
@@ -13036,7 +13068,7 @@
       {
         "id": "1tbY3qpMCW0MsFhf1DEKf7N4Dm6pCY4tm",
         "name": "Kannum.Kannum.Kollaiyadithaal.2020.2160p.WEB-UHD.DDP5.1.H.265.Eusb-JACK.mkv",
-        "quality": "4K",
+        "quality": "4K UHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -13122,7 +13154,7 @@
       {
         "id": "1LjyswIVOYwnlrsJBFypVx21Q9MrADwgX",
         "name": "Siva.Manasula.Sakthi.2009.1080p.AMZN.WEB-DL.DD+5.1.H.265-TR.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -13142,7 +13174,7 @@
       {
         "id": "1XGA1eTwIpqIpWzH0NVP_ZEGBnE8Kyhha",
         "name": "Siva Manasula Sakthi (2009) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -13159,7 +13191,7 @@
           "languages": "Tamil",
           "size": "9.2 GB"
         },
-        "size": "9.2 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -13228,7 +13260,7 @@
       {
         "id": "1xg33RnfY6WBS24eZ2fRA1TZbABHSI5-f",
         "name": "Ghost.Train.2025.1080p.AMZN.WEB-DL.Multi.Audio.DDP.5.1.H264-Shubham.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -13312,7 +13344,7 @@
       {
         "id": "1Rps8mTmM7Ia-73mKO32mw18yGD89tX26",
         "name": "Gatta.Kusthi.2.2026.1080p.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -13399,7 +13431,7 @@
       {
         "id": "11_akzVCgJBgEHsh9ru4boon3J4pdZ5zr",
         "name": "Coolie.2025.1080p.AMZN.WEB-DL.HIN-TAM-TEL-KAN-MAL.DDP5.1.H.264-Telly.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -13486,7 +13518,7 @@
       {
         "id": "1exAZYsaqaBxFkDvWH74zf-r9SNWA-y_B",
         "name": "Vikram.2022.1080p.10bit.DSNP.WEBRip.Multi.DDP5.1.H.265.Homelander.[60FPS].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -13506,7 +13538,7 @@
       {
         "id": "1tMbv0Zxy8LYW4EvTTf5NF5kyF7ySYAhD",
         "name": "Vikram (2022) [1080p] [x265] [Dolby Atmos].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "1080p FHD",
@@ -13523,7 +13555,7 @@
           "languages": "Tamil",
           "size": "11.7 GB"
         },
-        "size": "11.7 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -13584,7 +13616,7 @@
     },
     "specs": {
       "resolution": "4K Ultra HD",
-      "source": "WEB-DL",
+      "source": "Zee5",
       "codec": "H.264",
       "audio": "AAC",
       "channels": "2.0",
@@ -13594,8 +13626,8 @@
       {
         "id": "1fr_mR6Ku7MZKNWzThBazWelcidqcZgUA",
         "name": "Kiss (2025) [Multi] [4K] [H.264] [AAC].mkv",
-        "quality": "4K",
-        "source": "WEB-DL",
+        "quality": "4K UHD • Zee5 • AAC",
+        "source": "Zee5",
         "codec": "H.264",
         "resolution": "4K UHD",
         "audio": "AAC",
@@ -13668,7 +13700,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Prime Video",
       "codec": "H.264",
       "audio": "AAC",
       "channels": "2.0",
@@ -13678,8 +13710,8 @@
       {
         "id": "1W_VOjNwfnAO5R50auISO2Oxcpio2YFBF",
         "name": "TN.2026.2026.1080p.AMZN.WEB-DL.MULTI.DDP5.1.H.264-Friday4KPopcorn.mkv",
-        "quality": "4K",
-        "source": "WEB-DL",
+        "quality": "4K UHD • Prime Video • AAC",
+        "source": "Prime Video",
         "codec": "H.264",
         "resolution": "4K UHD",
         "audio": "AAC",
@@ -13764,7 +13796,7 @@
       {
         "id": "1JI719Jg80oAZT4Q3oJVGBsTbbeHW6m_c",
         "name": "Gentleman (1993) 1080p MUBI WEB-DL AVC x264 [Tamil (AAC 2.0 - 128kbps)] Esub.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -13838,7 +13870,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Netflix",
       "codec": "H.264",
       "audio": "AAC",
       "channels": "2.0",
@@ -13848,8 +13880,8 @@
       {
         "id": "1uafQH7045RwhbQCC-FnGZfnMLVOfF8Gp",
         "name": "Haq.2025.1080p.NF.WEB-DL.Hindi.DDP5.1.H.264-Archie.mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Netflix • AAC",
+        "source": "Netflix",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "AAC",
@@ -13933,7 +13965,7 @@
       {
         "id": "1sxjzrR-IEEOS8pezCkcaWEjsTkLj9D-9",
         "name": "Final disnination.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -13953,8 +13985,8 @@
       {
         "id": "1zXXf4uJCYgIC6faFOREn8uTRC14vVbYH",
         "name": "Final Destination - Bloodlines (2025) 1080p BluRay x264 AVC Multi Audio [Org AMZN Hindi-Tamil-Telugu DDP 5.1 ~ 640Kbps + English TrueHD Atmos 7.1] ESub ~ KNiVES.mkv",
-        "quality": "1080p",
-        "source": "BluRay",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Atmos",
@@ -14037,8 +14069,8 @@
       {
         "id": "1tT5hunrID0LHliRpyRj2LdzwhCdUqriy",
         "name": "[SD RIPS]- Inception (2010) 1080p BluRay [Telugu (Org AMZN DD+2.0 - 224Kbps) + Eng + Tamil + Hindi] x265 10bit HEVC ESub ~SD.RIPS.mkv",
-        "quality": "4K",
-        "source": "BluRay",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
         "audio": "Dolby Digital",
@@ -14121,7 +14153,7 @@
       {
         "id": "1V7mY4bAaf7eRWJBlVMoH6LQKdp2Eh4mc",
         "name": "Lee.Cronins.The.Mummy.2026.1080p.MA.WEB-DL.HIN-ENG-TAM-TEL.DDP5.1.Atmos.x264-Draken02.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -14205,7 +14237,7 @@
       {
         "id": "1BAiTVjjGu_X-E7RdzvF8WduG8SM-vcmU",
         "name": "Jailer.2023.1080p.AMZN.WEB-DL.Multi.DDP5.1.H.264-Telly.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -14225,7 +14257,7 @@
       {
         "id": "1ERgMcNBYpc_IcqjAVPK5lVLBPkmawfsE",
         "name": "Jailer.2023.2160p.CBR.AMZN.WEB-DL.MULTI.DDP5.1.H.265-Telly.mkv",
-        "quality": "4K",
+        "quality": "4K UHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -14240,7 +14272,7 @@
           "channels": "2.0",
           "size": "13.1 GB"
         },
-        "size": "13.1 GB"
+        "size": "20.8 GB"
       }
     ]
   },
@@ -14311,7 +14343,7 @@
       {
         "id": "11o2NYuQxJhb1sgM0YFdtmi-5aRn6WSKH",
         "name": "Jaat.2025.1080p.DS4K.SDR.10bit.NF.WEBRip.HIN-TEL.DDP5.1.x265.HEVC-OlaM.mkv",
-        "quality": "4K",
+        "quality": "4K UHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -14385,7 +14417,7 @@
     },
     "specs": {
       "resolution": "4K Ultra HD",
-      "source": "WEB-DL",
+      "source": "Prime Video",
       "codec": "H.264",
       "audio": "Dolby Digital",
       "channels": "5.1",
@@ -14395,8 +14427,8 @@
       {
         "id": "1CWC_W8eAfmbIP2Jhq02nk-SoC4KEb5Vr",
         "name": "Double Occupancy (2026) 2160p AMZN WEB-DL HEVC x265 [Tamil (DD+ 5.1 - 640kbps)] ESub.mkv",
-        "quality": "4K",
-        "source": "WEB-DL",
+        "quality": "4K UHD • Prime Video • Dolby Digital",
+        "source": "Prime Video",
         "codec": "H.264",
         "resolution": "4K UHD",
         "audio": "Dolby Digital",
@@ -14479,8 +14511,8 @@
       {
         "id": "1I810Y4PAjRxX1hzkHMOV8bBveGqmFUMQ",
         "name": "Obsession (2025) 1080p BluRay x264 AVC [Org AMZN Hindi DDP 5.1 ~ 640Kbps + English DDP Atmos 7.1] ESub ~ ZoroSenpai.mkv",
-        "quality": "1080p",
-        "source": "BluRay",
+        "quality": "1080p FHD • Prime Video • Dolby Atmos",
+        "source": "Prime Video",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Atmos",
@@ -14499,8 +14531,8 @@
       {
         "id": "1dincOBuCOiFH9eAgbqdwKWxTwMDt4B0F",
         "name": "Obsession (2026) 1080p DS4K SDR 10bit BluRay x265 HEVC [Org AMZN Hindi DDP 5.1 ~ 640Kbps + English DDP Atmos 7.1] ESub ~ PunisheR.mkv",
-        "quality": "4K",
-        "source": "BluRay",
+        "quality": "4K UHD • Prime Video • Dolby Atmos",
+        "source": "Prime Video",
         "codec": "H.264",
         "resolution": "4K UHD",
         "audio": "Dolby Atmos",
@@ -14514,7 +14546,7 @@
           "channels": "7.1",
           "size": "13.9 GB"
         },
-        "size": "13.9 GB"
+        "size": "3.2 GB"
       }
     ]
   },
@@ -14578,7 +14610,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Netflix",
       "codec": "H.264",
       "audio": "AAC",
       "channels": "5.1",
@@ -14588,8 +14620,8 @@
       {
         "id": "1R2XDC7WjYWXOKTihGMbtyYcd9Z238JFd",
         "name": "Lust Stories 2 (2023) 1080p 10bit NF WEBRip x265 HEVC Multi Audio [Org NF Hindi-Tamil-Telugu HE-AAC 5.1 ~ 256Kbps + English AAC 5.1] ESub ~ PSA.mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Netflix • AAC",
+        "source": "Netflix",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "AAC",
@@ -14672,7 +14704,7 @@
       {
         "id": "16oSh7IjkNPVbYU8gmGmcuK4_81kWo6wk",
         "name": "Peddi.2026.1080p.10bit.HQ.DS4K.NF.WEBRip.HIN.DDP2.0-TAM-TEL-KAN-MAL.DDP5.1.x265.HEVC.ESub-iP00L.mkv",
-        "quality": "4K",
+        "quality": "4K UHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -14756,8 +14788,8 @@
       {
         "id": "1gGJtZSVk4FZ_a74Y7QjE6RI3OQ4d0Yp6",
         "name": "The Invisible Man (2020) 1080p 10bit BluRay x265 HEVC [Org Hindi BD DDP 7.1 ~ 768Kbps + English AAC 7.1] ESub ~ Tigole.mkv",
-        "quality": "1080p",
-        "source": "BluRay",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -14830,7 +14862,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Prime Video",
       "codec": "H.264",
       "audio": "Dolby Digital",
       "channels": "5.1",
@@ -14840,8 +14872,8 @@
       {
         "id": "1ZB2JyMbs2aEs2wtBMjMQrpTpyoN6bIVe",
         "name": "FIR (2022) [Multi] [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Prime Video • Dolby Digital",
+        "source": "Prime Video",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital",
@@ -14925,8 +14957,8 @@
       {
         "id": "1ZWAqOjhTD5KwWWVOCnEOmV3d-qxHVqsI",
         "name": "KGF Chapter 2 (2022) 1080p 10bit BluRay [ Org AMZN (Tamil + Telugu + Malayalam + Hindi) - DDP 5.1 - 640Kbps + Kannada DDP 5.1 768Kbps ] - x265 ~ StOiC ~ FLASH.mkv",
-        "quality": "1080p",
-        "source": "BluRay",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -14945,7 +14977,7 @@
       {
         "id": "1VI7_QR6CZlmJuJN9USh6mFra0hfP2KLc",
         "name": "K.G.F: Chapter 2 (2022) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -14962,7 +14994,7 @@
           "languages": "Tamil",
           "size": "12.3 GB"
         },
-        "size": "12.3 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -15032,8 +15064,8 @@
       {
         "id": "1OE0uS-aQwvlkIVTxLpsWDPb6WXdMh8ee",
         "name": "KGF Chapter 1 (2018) 1080p 10bit BluRay [ Org AMZN(Tamil + Telugu + Malayalam + Hindi)- DDP5.1 - 640Kbps + Kannada DDP 5.1 768Kbps ] - x265 ~ StOiC ~ FLASH.mkv",
-        "quality": "1080p",
-        "source": "BluRay",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -15116,7 +15148,7 @@
       {
         "id": "1nM9a3APwnfT3Tb-MjehKv0wD8-vRoeyn",
         "name": "Thunivu (2023) 1080p NF WEB-DL AVC x264 [Tamil (DD+ 5.1 - 640kbps)] ESub.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -15136,7 +15168,7 @@
       {
         "id": "1FcgYg5gDwMNvkVb1M46lecS5MJiAP_7Q",
         "name": "Thunivu.2023.Hindi.1080p.10bit.DS4K.SDR.NF.WEBRip.DDP.5.1.x265.HEVC-OlaM.mkv",
-        "quality": "4K",
+        "quality": "4K UHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -15151,7 +15183,7 @@
           "channels": "5.1",
           "size": "5.7 GB"
         },
-        "size": "5.7 GB"
+        "size": "5.5 GB"
       }
     ]
   },
@@ -15220,7 +15252,7 @@
       {
         "id": "1AUY4G54MoTQq0J26cQ3MjPQL7eP6rqCU",
         "name": "Deva.2025.Hindi.1080p.NF.WEB-DL.DDP5.1.H.264-PrimeFix.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -15296,7 +15328,7 @@
     },
     "specs": {
       "resolution": "1080p FHD",
-      "source": "WEB-DL",
+      "source": "BLURAY",
       "codec": "H.264",
       "audio": "Dolby Digital",
       "channels": "5.1",
@@ -15306,8 +15338,8 @@
       {
         "id": "1URj4kp4DMkRWGI-FiRLBN_0YPdZ9VWVK",
         "name": "Citizen (2001) [Multi] [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • BLURAY • Dolby Digital",
+        "source": "BLURAY",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital",
@@ -15382,7 +15414,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Prime Video",
       "codec": "H.264",
       "audio": "AAC",
       "channels": "2.0",
@@ -15392,8 +15424,8 @@
       {
         "id": "15mdmSgIUDn4CiFzOnmC4EGR649ybfLy6",
         "name": "Junior.2025.1080p.AMZN.WEB-DL.MULTi.DDP2.0.H.264-MRX.mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Prime Video • AAC",
+        "source": "Prime Video",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "AAC",
@@ -15466,7 +15498,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Netflix",
       "codec": "H.264",
       "audio": "Dolby Digital Plus",
       "channels": "5.1",
@@ -15476,8 +15508,8 @@
       {
         "id": "1e-wmCNf1d3NnLX10O1gEr6KhGODZkqgd",
         "name": "Blast.2026.1080p.NF.WEB-DL.MULTi.DDP.5.1.H264-CloudMovieZ.Top.mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Netflix • Dolby Digital Plus",
+        "source": "Netflix",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -15553,7 +15585,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Prime Video",
       "codec": "H.264",
       "audio": "AAC",
       "channels": "2.0",
@@ -15563,8 +15595,8 @@
       {
         "id": "136PcsOJpJsLt35M5E0Fo8KzyfdzBDTbf",
         "name": "Taarzan - The Wonder Car.2004.Hindi.1080p.AMZN.WEB-DL.H264.DDP5.1.ESub-AXE.mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Prime Video • AAC",
+        "source": "Prime Video",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "AAC",
@@ -15647,7 +15679,7 @@
       {
         "id": "1bsaCvRDPl2BSF18QO670yfoCmtzl-8Vj",
         "name": "Bhooth.Bangla.2026.1080p.NF.WEB-DL.Hindi.DDP.5.1.H264-APeX.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -15721,7 +15753,7 @@
     },
     "specs": {
       "resolution": "4K Ultra HD",
-      "source": "WEB-DL",
+      "source": "Netflix",
       "codec": "H.264",
       "audio": "AAC",
       "channels": "5.1",
@@ -15731,8 +15763,8 @@
       {
         "id": "1MxA1HVcS9BZdc-v_TzErI8PJJaM-uiWR",
         "name": "Maa.Behen.2026.2160p.NF.WEB-DL.HEVC.MULTi.DDPA.5.1.Dv.HDR.H265-[CloudMovieZ.Top].mkv",
-        "quality": "4K",
-        "source": "WEB-DL",
+        "quality": "4K UHD • Netflix • AAC",
+        "source": "Netflix",
         "codec": "H.264",
         "resolution": "4K UHD",
         "audio": "AAC",
@@ -15805,7 +15837,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Prime Video",
       "codec": "H.264",
       "audio": "AAC",
       "channels": "2.0",
@@ -15815,8 +15847,8 @@
       {
         "id": "18HN6YG2rqrRb7jMmr-F_v5GiMjsXL983",
         "name": "Karuppu 2026 1080p AMZN WEB-DL MULTi DDP5 1 H 264-RUDR.mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Prime Video • AAC",
+        "source": "Prime Video",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "AAC",
@@ -15902,7 +15934,7 @@
       {
         "id": "1Zm_DybTXnHCa2wYwy94qqU_RZqLLPc_F",
         "name": "Pushpa 2 - The Rule (2024) [Multi] [4K] [H.264] [AAC].mkv",
-        "quality": "4K",
+        "quality": "4K UHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -15922,8 +15954,8 @@
       {
         "id": "1jOOjTo6TwHMARexqTxGkesESD1D7RZIe",
         "name": "Pushpa 2 - The Rule (2024) [Multi] [1080p] [H.264] [AAC].mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Netflix • AAC",
+        "source": "Netflix",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "AAC",
@@ -15937,12 +15969,12 @@
           "channels": "2.0",
           "size": "14.4 GB"
         },
-        "size": "14.4 GB"
+        "size": "12.8 GB"
       },
       {
         "id": "16MasoXMSDKTIhXr5KpZc4yFP1fXeAIGy",
         "name": "Pushpa 2 - The Rule (2024) [4K UHD] [x265] [Dolby Digital].mkv",
-        "quality": "4K UHD",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "4K UHD",
@@ -15959,7 +15991,7 @@
           "languages": "Tamil",
           "size": "14.4 GB"
         },
-        "size": "14.4 GB"
+        "size": "10 GB"
       }
     ]
   },
@@ -16028,7 +16060,7 @@
       {
         "id": "1Xixlv4PRtKwcS-1AGMsNoUHzYu47sGh3",
         "name": "2.0 (2018) Tamil - [Proper 1080p True HD UNTOUCHED AVC x264 - DD 5.1 (640kbps) - Esubs - 14.4GB] Ninja 360 (1).mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -16104,7 +16136,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Netflix",
       "codec": "H.264",
       "audio": "AAC",
       "channels": "2.0",
@@ -16114,8 +16146,8 @@
       {
         "id": "1FSqpxYjcKMgBrA8BytrCsMJSqGt0DEU8",
         "name": "Don (2022) [Multi] [1080p] [H.264] [AAC].mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Netflix • AAC",
+        "source": "Netflix",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "AAC",
@@ -16190,7 +16222,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Prime Video",
       "codec": "H.264",
       "audio": "Dolby Digital Plus",
       "channels": "5.1",
@@ -16200,8 +16232,8 @@
       {
         "id": "1rUIbVi33e1_Lq_mc7OpU2-susPO1DImN",
         "name": "Happy.Raj.2026.1080p.AMZN.WEB-DL.DUAL.DDP.5.1.H.264-MRX.mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Prime Video • Dolby Digital Plus",
+        "source": "Prime Video",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -16276,7 +16308,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Netflix",
       "codec": "H.264",
       "audio": "AAC",
       "channels": "2.0",
@@ -16286,8 +16318,8 @@
       {
         "id": "1f1r3W4wVxx4cOIZ0ire6mQ_cyYg6VzxJ",
         "name": "Youth (2026) [Multi] [1080p] [H.264] [AAC].mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Netflix • AAC",
+        "source": "Netflix",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "AAC",
@@ -16370,8 +16402,8 @@
       {
         "id": "1GolBl0agRiE6XXi2-UoL4arD0LMSs7xm",
         "name": "Source Code (2011) 1080p 10bit BluRay 60FPS x265 HEVC [Hindi + English] - ViiR.mkv",
-        "quality": "1080p",
-        "source": "BluRay",
+        "quality": "1080p FHD • WEB-DL • AAC",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "AAC",
@@ -16454,8 +16486,8 @@
       {
         "id": "1RlfGIKwEXv05PXFF_2Q4gUJez1ZT9GsX",
         "name": "Kingdom Of Heaven (2005) EXTENDED Director's Cut 1080p 10bit BluRay x265 HEVC [Org Hindi DD 2.0 ~ 384Kbps + English AAC 5.1] Esub ~ Tigole.mkv",
-        "quality": "4K",
-        "source": "BluRay",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
         "audio": "Dolby Digital",
@@ -16538,7 +16570,7 @@
       {
         "id": "1qhihv_iHAhiImfXBWxiLgtf-pCF7mGa3",
         "name": "Interstellar.2014.2014.1080p.AMZN.WEB-DL.English.DD+.5.1.H265-[Udhay®].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -16558,8 +16590,8 @@
       {
         "id": "1tKHI8uA0Alt1x1xxurHI9ccU9T_QjJHD",
         "name": "Interstellar (2014) IMAX 2160p 4K UHD HDR10 BluRay x265 10bit HEVC [Org NF Hindi DDP 5.1640Kbps + English AAC 5.1] ESubTigole ~SD.RIPS.mkv",
-        "quality": "4K",
-        "source": "BluRay",
+        "quality": "4K UHD • WEB-DL • Dolby Digital Plus",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
         "audio": "Dolby Digital Plus",
@@ -16573,12 +16605,12 @@
           "channels": "5.1",
           "size": "5.5 GB"
         },
-        "size": "5.5 GB"
+        "size": "26.6 GB"
       },
       {
         "id": "11dHLgz-FGMwjMbtVVA1VdDnJ6V4LE1z-",
         "name": "Interstellar - IMAX (2014) 1080p EAC3.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -16593,7 +16625,7 @@
           "channels": "2.0",
           "size": "5.5 GB"
         },
-        "size": "5.5 GB"
+        "size": "4.5 GB"
       }
     ]
   },
@@ -16662,8 +16694,8 @@
       {
         "id": "1M4BEryziWtZjU58kxeqj1yKuMmZyUuzu",
         "name": "Until Dawn (2025) 1080p BluRay x265 10bit HEVC Multi Audio [Org AMZN Hindi-Tamil-Telugu DDP 5.1 ~ 640Kbps + English DDP 7.1] ESub ~ Ralphy.mkv",
-        "quality": "1080p",
-        "source": "BluRay",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -16736,7 +16768,7 @@
     },
     "specs": {
       "resolution": "720p HD",
-      "source": "WEB-DL",
+      "source": "JioCinema",
       "codec": "H.264",
       "audio": "Dolby Digital Plus",
       "channels": "5.1",
@@ -16746,8 +16778,8 @@
       {
         "id": "1hCvNBvqDw2YHHQjv4F0F3rtgLT7bDl4H",
         "name": "Sarvam.Maya.2025.720p.JIOHS.WEB-DL.Multi.Audio.DDP.5.1.H264-CC-RiPS.mkv",
-        "quality": "720p",
-        "source": "WEB-DL",
+        "quality": "720p HD • JioCinema • Dolby Digital Plus",
+        "source": "JioCinema",
         "codec": "H.264",
         "resolution": "720p HD",
         "audio": "Dolby Digital Plus",
@@ -16822,7 +16854,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Netflix",
       "codec": "H.264",
       "audio": "Dolby Digital",
       "channels": "5.1",
@@ -16832,8 +16864,8 @@
       {
         "id": "1XCLPr1fjzonPUCTj0XAQBQAX6k35NwKb",
         "name": "Ustaad.Bhagat.Singh.2026.1080p.NF.WEB-DL.Multi.DD+5.1.x264-YiFaN.mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Netflix • Dolby Digital",
+        "source": "Netflix",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital",
@@ -16908,7 +16940,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Prime Video",
       "codec": "H.264",
       "audio": "Dolby Digital",
       "channels": "2.0",
@@ -16918,8 +16950,8 @@
       {
         "id": "1QUDPC5X_eVo7cgbrnBwuBV5OUEgvb9SR",
         "name": "Mustafa.Mustafa.2026.1080p.AMZN.WEB-DL.DD+2.0.H.264-CPTN5DW.mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Prime Video • Dolby Digital",
+        "source": "Prime Video",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital",
@@ -16994,7 +17026,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Netflix",
       "codec": "H.264",
       "audio": "AAC",
       "channels": "2.0",
@@ -17004,8 +17036,8 @@
       {
         "id": "1IXXCtsp-eQHNNoZ-pNRrwfRwiO6cHNjp",
         "name": "Kaantha.2025.1080p.NF.WEB-DL.Multi.Audio.DDP5.1.H.264 𝑺𝒉𝒖𝒃𝒉𝒂𝒎.mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Netflix • AAC",
+        "source": "Netflix",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "AAC",
@@ -17024,8 +17056,8 @@
       {
         "id": "1jIM7FTCol3FRffZwerIMJAilF_3TdUXM",
         "name": "Kaantha.2025.V2.1080p.10bit.DS4K.NF.WEBRip.HIN-TAM-TEL-KAN-MAL.DDP5.1.Atmos.x265.HEVC-Ospreay.mkv",
-        "quality": "4K",
-        "source": "WEB-DL",
+        "quality": "4K UHD • Netflix • Dolby Atmos",
+        "source": "Netflix",
         "codec": "H.264",
         "resolution": "4K UHD",
         "audio": "Dolby Atmos",
@@ -17039,7 +17071,7 @@
           "channels": "2.0",
           "size": "5.9 GB"
         },
-        "size": "5.9 GB"
+        "size": "5.1 GB"
       }
     ]
   },
@@ -17098,7 +17130,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Netflix",
       "codec": "H.264",
       "audio": "Dolby Atmos",
       "channels": "2.0",
@@ -17108,8 +17140,8 @@
       {
         "id": "15oCsXCGyIaPStaSl3CZOP1FElyA1YBgE",
         "name": "Dhurandhar.The.Revenge.Raw.and.Undekha.2026.V2.Hindi.1080p.10bit.DS4K.NF.WEBRip.DDP5.1.Atmos.ESub.HEVC-The.PunisheR.mkv",
-        "quality": "4K",
-        "source": "WEB-DL",
+        "quality": "4K UHD • Netflix • Dolby Atmos",
+        "source": "Netflix",
         "codec": "H.264",
         "resolution": "4K UHD",
         "audio": "Dolby Atmos",
@@ -17128,7 +17160,7 @@
       {
         "id": "13bsstLdeqYS1Kl_Uz6cy0OWu-cYEOZsx",
         "name": "Dhurandhar-The.Revenge.2026.1080p.V2-HDTC.Hindi-Line.HC-ESubs.x264.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -17143,13 +17175,13 @@
           "channels": "2.0",
           "size": "6.9 GB"
         },
-        "size": "6.9 GB"
+        "size": "10 GB"
       },
       {
         "id": "1uBdnZYYUjcU47W-RLB8Ay6zFFZRBOfnb",
         "name": "Dhurandhar.2025.HQ.1080p.10bit.NF.WEB-DL.HIN-TAM-TEL.DD+5.1.H.265-CPTN5DW.mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Netflix • Dolby Digital",
+        "source": "Netflix",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital",
@@ -17163,13 +17195,13 @@
           "channels": "5.1",
           "size": "6.9 GB"
         },
-        "size": "6.9 GB"
+        "size": "10 GB"
       },
       {
         "id": "1zrPDPsZvNbZZxT9ufQnEOYJ7-e_MM8LY",
         "name": "Dhurandhar.2025.REPACK.2160p.NF.WEB-DL.HIN-TAM-TEL.DDP5.1.H.265-Spidey.mkv",
-        "quality": "4K",
-        "source": "WEB-DL",
+        "quality": "4K UHD • Netflix • AAC",
+        "source": "Netflix",
         "codec": "H.264",
         "resolution": "4K UHD",
         "audio": "AAC",
@@ -17183,7 +17215,7 @@
           "channels": "2.0",
           "size": "6.9 GB"
         },
-        "size": "6.9 GB"
+        "size": "24.4 GB"
       }
     ]
   },
@@ -17254,7 +17286,7 @@
       {
         "id": "1LIH7kT1S0SXeVgAdDVmAWmJ-St0AyyHr",
         "name": "Vash.2023.Gujarati.1080p.DS4K.SDR.10bit.SM.WEBRip.DDP2.0.x265.HEVC-OlaM.mkv",
-        "quality": "4K",
+        "quality": "4K UHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -17328,7 +17360,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Netflix",
       "codec": "H.264",
       "audio": "AAC",
       "channels": "2.0",
@@ -17338,8 +17370,8 @@
       {
         "id": "1bZRpswFpxJOSF8dJgUe_YyQ7mBgIHhJK",
         "name": "Vash.Level.2.2025.1080p.DS4K.SDR.10bit.NF.WEBRip.HIN-GUJ.DDP5.1.x265.HEVC-OlaM.mkv",
-        "quality": "4K",
-        "source": "WEB-DL",
+        "quality": "4K UHD • Netflix • AAC",
+        "source": "Netflix",
         "codec": "H.264",
         "resolution": "4K UHD",
         "audio": "AAC",
@@ -17414,7 +17446,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Prime Video",
       "codec": "H.264",
       "audio": "Dolby Digital",
       "channels": "5.1",
@@ -17424,8 +17456,8 @@
       {
         "id": "1DcL-H_pYHYh8slHpEQdkRO6CuinGL6TR",
         "name": "Love Insurance Kompany (2026) 1080p AMZN WEB-DL AVC x264 [Tamil (DD+ 5.1 - 640kbps)] ESub.mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Prime Video • Dolby Digital",
+        "source": "Prime Video",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital",
@@ -17508,7 +17540,7 @@
       {
         "id": "1gkQt1spz0E_pJzBuIh2oMifdYNqE9-eK",
         "name": "Kis.Kisko.Pyaar.Karoon.2.2025.1080p.10bit.DS4K.HS.WEBRip.Hindi.DDP5.1.x265.HEVC-Ospreay.mkv",
-        "quality": "4K",
+        "quality": "4K UHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -17594,7 +17626,7 @@
       {
         "id": "1LKGdiqA0QVISrvejvvE5_rhrxQeyl_4r",
         "name": "Dude.2025.HQ.1080p.NF.WEB.DL.DoVi-HDR10.HEVC.HIN-TAM-TEL-KAN-MAL.DDP5.1.640k-DDH.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -17678,7 +17710,7 @@
       {
         "id": "14Hs85FZojKNciGN6tzw0enc49wdm2Cpx",
         "name": "The.Raja.Saab.2026.1080p.JHS.WEB-DL.HIN-TAM-TEL-KAN-MAL.DDP5.1.Atmos.H.264-DTR.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -17762,8 +17794,8 @@
       {
         "id": "1QPsnjiW8eSGZwQJICM1xyeHzqcWen9pa",
         "name": "Speed (1994) 2160p 4K UHD HDR10 BluRay x265 10bit HEVC [Org VCD Hindi DD 2.0 ~ 224Kbps + English DTS-HDMA 5.1] ESub ~ RARBG.mkv",
-        "quality": "4K",
-        "source": "BluRay",
+        "quality": "4K UHD • WEB-DL • Dolby Digital",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
         "audio": "Dolby Digital",
@@ -17846,7 +17878,7 @@
       {
         "id": "1ko5F47CRLSKnRXnXA42gK4NOcCKRjDcC",
         "name": "The Mummy (1999) - 1080p - EAC3 - 16.6GB.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -17866,8 +17898,8 @@
       {
         "id": "1I2xsrWZPRsHamTOJOV8U8UkTHkFh7ofN",
         "name": "The Mummy (1999) 1080p UHD HDR10 REGRADE BluRay x265 10bit HEVC Multi Audio [Org NF Hindi-Tamil-Telugu DDP 5.1 ~ 640Kbps + English DTS-HDMA 5.1] ESub ~ Peruguy (1).mkv",
-        "quality": "4K",
-        "source": "BluRay",
+        "quality": "4K UHD • WEB-DL • Dolby Digital Plus",
+        "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
         "audio": "Dolby Digital Plus",
@@ -17881,7 +17913,7 @@
           "channels": "5.1",
           "size": "16.6 GB"
         },
-        "size": "16.6 GB"
+        "size": "6.1 GB"
       }
     ]
   },
@@ -17950,8 +17982,8 @@
       {
         "id": "1sD18DhN7BKnRpnd9-D0kw3x2oaXsqtm8",
         "name": "@Tamiltvtoonsofficial -Shin-chan Our Dinosaur Diary (2024) 1080p x265 10bit BluRay Multi Audio ESub [HQ] [TTT].mkv",
-        "quality": "1080p",
-        "source": "BluRay",
+        "quality": "1080p FHD • BLURAY • AAC",
+        "source": "BLURAY",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "AAC",
@@ -18036,7 +18068,7 @@
       {
         "id": "153DQuFHWVpof0OqAcAh7-D8i_ETudf_b",
         "name": "Seemaraja.2018.1080p.HDTV.HDR10+.x265.Tamil.AAC.2.0.x265-FLASH.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -18120,7 +18152,7 @@
       {
         "id": "1jNFHKtTb5YSUVgRYRC-zRIh_Ui8xrprW",
         "name": "Thamma.2025.1080p.AMZN.WEB-DL.HIN-TEL.DDP5.1.H.264-Yamraaj.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -18140,7 +18172,7 @@
       {
         "id": "1ktyAWNj-u_3ABLBFcEWEGfK-tnUO0hhe",
         "name": "Thamma (2025) 2160p EAC3.mkv",
-        "quality": "4K",
+        "quality": "4K UHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -18155,7 +18187,7 @@
           "channels": "2.0",
           "size": "8.3 GB"
         },
-        "size": "8.3 GB"
+        "size": "16.6 GB"
       }
     ]
   },
@@ -18224,7 +18256,7 @@
       {
         "id": "1IWWQEg_sU5FcDjAox-Q4oZJQV92rnqw9",
         "name": "Lokah Chapter 1 Chandra 2025.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -18310,7 +18342,7 @@
       {
         "id": "13zefePjp7E9RyLPb1FF41BxyRjd-6ZX2",
         "name": "Wrecked (2010) [Multi] [1080p] [H.264] [AAC].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -18396,7 +18428,7 @@
       {
         "id": "1UGjtVWCOQIcmDjNHB0dIMmSPvVR1lsUF",
         "name": "Sarpatta Parambarai (2021).mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -18482,7 +18514,7 @@
       {
         "id": "1PQ-p1mHy1PjddkB2oPhOVY8zazm9lgLt",
         "name": "Kantara A Legend 2022.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -18568,7 +18600,7 @@
       {
         "id": "1jB017bWYcc5HLCMyXHFwLHdswC0Ayt1U",
         "name": "Panchatanthiram (2002) [Multi] [1080p] [H.264] [AAC].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -18652,7 +18684,7 @@
       {
         "id": "1_jnc9HA0WX6uVj_N0pez_iByMwbAAUss",
         "name": "Geetha Govindam (2018) 4K-2160p.mkv",
-        "quality": "4K",
+        "quality": "4K UHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -18738,7 +18770,7 @@
       {
         "id": "11bUAglqy7B8h6zmyMCqX364PDSK-2oxd",
         "name": "Annamalai (1992) 1080p AC3.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -18822,7 +18854,7 @@
       {
         "id": "1On4LitRS4LZwLOsDfLBZgsFuUZ6F_4cD",
         "name": "24 (2016) 1080p EAC3.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -18896,7 +18928,7 @@
     },
     "specs": {
       "resolution": "1080p Full HD",
-      "source": "WEB-DL",
+      "source": "Prime Video",
       "codec": "H.264",
       "audio": "AAC",
       "channels": "2.0",
@@ -18906,8 +18938,8 @@
       {
         "id": "1tCYdXHeD_0E33-zmX6KmT528MBQ-M2ng",
         "name": "Kantara A Legend Chapter-1 (2025) 1080p AMZN CBR WEB-DL - AVC - [Tel + Tam + Kan + Mal (DDP5.1 - 640Kbps)] - H.264 - MSub -[TTT].mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • Prime Video • AAC",
+        "source": "Prime Video",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "AAC",
@@ -18990,7 +19022,7 @@
       {
         "id": "1YhmToItP7drO82lF1OPWbk2-JnVOxhlq",
         "name": "The Conjuring - Last Rites - IMAX (2025) 1080p EAC3.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -19076,7 +19108,7 @@
       {
         "id": "1bC5ofWvV0NqraaNN7Ww7OSCbZJ8tz-qY",
         "name": "Bison Kaalamaadan (2025) 1080p EAC3.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -19162,7 +19194,7 @@
       {
         "id": "1YW6P3dHo3pGh7dWnwPamEyC9hnlsWY-2",
         "name": "Aaryan (2025) 1080p EAC3.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -19247,7 +19279,7 @@
       {
         "id": "19keUJNo-uOIPm3rD4YYEOb_MzY7I6-4w",
         "name": "Doraemon the Movie - Nobita's Earth Symphony (2024) 1080p EAC3.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -19332,7 +19364,7 @@
       {
         "id": "1MKhZOokL9rQ05tecPDnLGMep2QrG1MHZ",
         "name": "The Dark Knight Rises - IMAX (2012) 1080p EAC3.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -19417,7 +19449,7 @@
       {
         "id": "1oShEqAKMfrZetclW4WBQ-JPiEdv7jxsy",
         "name": "The Dark Knight - IMAX (2008) 1080p EAC3.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -19501,7 +19533,7 @@
       {
         "id": "1OTj2H7F-ORJNLHoGNBw6JTVaZyQGdB1C",
         "name": "Vidaamuyarchi (2025) 2160p EAC3.mkv",
-        "quality": "4K",
+        "quality": "4K UHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
@@ -19585,7 +19617,7 @@
       {
         "id": "1q5qQACTdGesrfgu56_G4xgOFMRJvMXak",
         "name": "Tere Ishk Mein (2025) 1080p EAC3.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -19669,7 +19701,7 @@
       {
         "id": "1LRbF4Z8hyqNkeDb8OP7H7xpi5xUsYi_t",
         "name": "The Message (1976) 1080p AAC.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -19753,7 +19785,7 @@
       {
         "id": "1CISSbxDNglwXOnO7cP8inUCii-wl9Ocb",
         "name": "Jumanji - Welcome to the Jungle (2017) 1080p EAC3.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -19837,7 +19869,7 @@
       {
         "id": "1hWeC7a9itUwpH1rmROHSkUwqcs06ZzP6",
         "name": "Mission - Impossible - The Final Reckoning (2025) 1080p EAC3.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -19921,7 +19953,7 @@
       {
         "id": "1syi1WUC5EwLrDaIBtD8PSQRRhmk02VDH",
         "name": "Jurassic World (2015) 1080p DTS.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • DTS",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -20007,7 +20039,7 @@
       {
         "id": "1D5aWpEhh7DMhRyvug5_l_gc-jgNlW4Bw",
         "name": "Parasakthi (2026) 1080p EAC3.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -20091,7 +20123,7 @@
       {
         "id": "1-6054OJrO3pk2jAGp9rcW0K56KL3kuXw",
         "name": "Stuart Little (1999) 1080p MP3.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -20175,7 +20207,7 @@
       {
         "id": "1IYvbuthrlJ2ZEX7pC2FaQPp3aBnACIWL",
         "name": "Stuart Little 2 (2002) 1080p MPEG Audio.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • AAC",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -20259,7 +20291,7 @@
       {
         "id": "17wzzukX1yeGeU3GRXOnA032H4PK94wFd",
         "name": "The Avengers (2012) 1080p AC3.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -20343,7 +20375,7 @@
       {
         "id": "1gy9eD3LExZWrEJecUUhGPSQhgufnwi3D",
         "name": "The Boss Baby (2017) 1080p EAC3.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -20429,7 +20461,7 @@
       {
         "id": "1DYhOHSLUA2SglyKok1WC4HMMGaPCAlJq",
         "name": "The Girlfriend (2025) 1080p EAC3 Atmos.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -20513,7 +20545,7 @@
       {
         "id": "1ndTModhQdMnSyGeWjx5i9Dm_tvb6VcaL",
         "name": "The Mummy Returns (2001) 1080p EAC3.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -20597,7 +20629,7 @@
       {
         "id": "11xRb5AfeaVTLbf1iz3_EDczJTv9Q6P6b",
         "name": "They Call Him OG (2025) 1080p EAC3 Atmos.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -20683,7 +20715,7 @@
       {
         "id": "1c87XqGrbvt6KkST7qQ3cKx_sZQU-kDF5",
         "name": "Vaa Vaathiyaar (2026) 1080p EAC3.mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -20769,7 +20801,7 @@
       {
         "id": "1D8IYtHorMTLuqPvupESQo7b1ajNSFgjl",
         "name": "Sirai (2025) 2160p EAC3.mkv",
-        "quality": "4K",
+        "quality": "4K UHD • WEB-DL • Dolby Digital Plus",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "4K UHD",
