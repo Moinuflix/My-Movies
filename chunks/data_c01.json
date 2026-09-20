@@ -74,6 +74,16 @@
           "languages": "Hindi",
           "size": "14GB"
         }
+      },
+      {
+        "id": "13LHtaaQN8cQrvQ1gPZ7AwSwQBnAmSWDU",
+        "name": "Dhoom 2 (2006) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
+        "quality": "1080p FHD • Prime Video • Dolby Atmos",
+        "source": "Prime Video",
+        "resolution": "1080p FHD",
+        "audio": "Dolby Atmos",
+        "size": "11.1 GB",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13LHtaaQN8cQrvQ1gPZ7AwSwQBnAmSWDU|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
   },
@@ -137,71 +147,6 @@
         "audio": "Dolby Atmos",
         "size": "8.5 GB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ZwRGntTg2vM-ch0z95aNbAWpwJMS97xS|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-      }
-    ]
-  },
-  {
-    "id": "13LHtaaQN8cQrvQ1gPZ7AwSwQBnAmSWDU",
-    "name": "Dhoom 2 (2006) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
-    "title": "Dhoom 2",
-    "original_title": "धूम २",
-    "original_language": "hi",
-    "year": 2006,
-    "runtime": 151,
-    "tmdb_id": 14194,
-    "rating": 6.6,
-    "collection": "Dhoom Collection",
-    "genres": [
-      "Drama",
-      "Action",
-      "Thriller",
-      "Crime"
-    ],
-    "director": [
-      "Sanjay Gadhvi"
-    ],
-    "cast": [
-      {
-        "name": "Hrithik Roshan",
-        "role": "Mr. A"
-      },
-      {
-        "name": "Abhishek Bachchan",
-        "role": "Jai Dixit"
-      },
-      {
-        "name": "Aishwarya Rai Bachchan",
-        "role": "Sunehri"
-      },
-      {
-        "name": "Uday Chopra",
-        "role": "Ali Khan"
-      },
-      {
-        "name": "Bipasha Basu",
-        "role": "Sonali Bose / Monali Bose"
-      }
-    ],
-    "plot": "Jai and Ali return, this time on the trail of an international thief who steals priceless artifacts and has chosen Mumbai as his next target.",
-    "poster": "https://image.tmdb.org/t/p/w500/3zJLnrP9g9LSMpX5C1wau49gGUv.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/yKQjyrGMfNZJDFGoDumZIcCNZvb.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13LHtaaQN8cQrvQ1gPZ7AwSwQBnAmSWDU|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p FHD",
-      "audio": "Dolby Atmos",
-      "source": "Netflix",
-      "size": "11 GB"
-    },
-    "versions": [
-      {
-        "id": "13LHtaaQN8cQrvQ1gPZ7AwSwQBnAmSWDU",
-        "name": "Dhoom 2 (2006) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
-        "quality": "1080p FHD • Prime Video • Dolby Atmos",
-        "source": "Prime Video",
-        "resolution": "1080p FHD",
-        "audio": "Dolby Atmos",
-        "size": "11.1 GB",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13LHtaaQN8cQrvQ1gPZ7AwSwQBnAmSWDU|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
   },
