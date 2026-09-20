@@ -37,15 +37,15 @@ jobs:
           EOF
           python3 make_conf.py
 
-      - name: Auto Audit & Generate Inbox
+      - name: Auto Audit, Enrich Old Movies & Generate Inbox
         run: |
-          cat << 'EOF' > scan_arrivals.py
+          cat << 'EOF' > scan_and_enrich.py
           import subprocess
           import json
           import os
           import re
 
-          print("--- STEP 1: SCANNING GOOGLE DRIVE ---")
+          print("--- STEP 1: SCANNING GOOGLE DRIVE VIA RCLONE ---")
           cmd = ["rclone", "lsjson", "gdrive:", "-R", "--files-only"]
           res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
@@ -61,6 +61,48 @@ jobs:
 
           print(f"Total raw files in Drive: {len(drive_files)}")
 
+          # Drive ID lookup map (ID -> {name, bytes, size_gb, ott})
+          drive_id_map = {}
+          for f in drive_files:
+              fid = str(f.get("ID", "")).strip()
+              fname = f.get("Path", "")
+              fbytes = f.get("Size", 0)
+              if fid:
+                  drive_id_map[fid] = {
+                      "name": os.path.basename(fname),
+                      "bytes": fbytes
+                  }
+
+          def parse_ott_and_size(filename, raw_bytes=0):
+              fn = filename.lower()
+              
+              # 1. OTT Source Detection
+              source = "WEB-DL"
+              if "nf" in fn or "netflix" in fn:
+                  source = "Netflix"
+              elif any(x in fn for x in ["hotstar", "dsnp", "disney"]):
+                  source = "Disney+ Hotstar"
+              elif any(x in fn for x in ["amzn", "prime"]):
+                  source = "Prime Video"
+              elif "sonyliv" in fn or "sony" in fn:
+                  source = "SonyLIV"
+              elif "zee5" in fn:
+                  source = "Zee5"
+              elif "jio" in fn:
+                  source = "JioCinema"
+              elif "bluray" in fn or "remux" in fn:
+                  source = "BLURAY"
+
+              # 2. Exact GB Size
+              if raw_bytes and raw_bytes > 0:
+                  gb_val = round(raw_bytes / (1024 ** 3), 1)
+                  size_str = f"{gb_val} GB" if gb_val >= 1 else f"{round(raw_bytes / (1024 ** 2))} MB"
+              else:
+                  sz_match = re.search(r"(\d+(\.\d+)?)\s*(gb|mb)", fn)
+                  size_str = f"{sz_match.group(1)} {sz_match.group(3).upper()}" if sz_match else "10 GB"
+
+              return source, size_str
+
           def load_json(filepath):
               if os.path.exists(filepath):
                   try:
@@ -70,7 +112,65 @@ jobs:
                       pass
               return []
 
+          def save_json(filepath, data):
+              with open(filepath, "w", encoding="utf-8") as f:
+                  json.dump(data, f, indent=2, ensure_ascii=False)
+
+          # --- STEP 2: ENRICH OLD MOVIES IN DATA_C01.JSON ---
+          print("--- STEP 2: ENRICHING OLD MOVIES IN CHUNKS ---")
           master_list = load_json("chunks/data_c01.json")
+          enriched_count = 0
+
+          for movie in master_list:
+              if not isinstance(movie, dict):
+                  continue
+
+              mid = str(movie.get("id", "")).strip()
+              movie_name = movie.get("name", "") or movie.get("title", "")
+              
+              # Drive lookup for exact bytes and raw filename
+              matched_info = drive_id_map.get(mid)
+              raw_bytes = matched_info.get("bytes", 0) if matched_info else 0
+              real_name = matched_info.get("name", "") if matched_info else movie_name
+
+              detected_source, detected_size = parse_ott_and_size(real_name, raw_bytes)
+
+              # Update specs
+              movie.setdefault("specs", {})
+              curr_source = movie["specs"].get("source")
+              curr_size = movie["specs"].get("size")
+
+              needs_update = False
+              if not curr_source or curr_source == "WEB-DL":
+                  movie["specs"]["source"] = detected_source
+                  needs_update = True
+
+              if not curr_size or curr_size in ["10 GB", "3 GB", "0 GB"]:
+                  if detected_size != "10 GB":
+                      movie["specs"]["size"] = detected_size
+                      needs_update = True
+
+              # Update versions array
+              versions = movie.get("versions", [])
+              if isinstance(versions, list):
+                  for v in versions:
+                      if isinstance(v, dict):
+                          v_id = str(v.get("id", "")).strip()
+                          v_bytes = drive_id_map.get(v_id, {}).get("bytes", 0)
+                          v_name = drive_id_map.get(v_id, {}).get("name", v.get("name", ""))
+                          v_src, v_sz = parse_ott_and_size(v_name, v_bytes)
+                          v["source"] = v_src
+                          v["size"] = v_sz
+                          v["quality"] = f"{v.get('resolution', '1080p FHD')} • {v_src} • {v.get('audio', 'Dolby Atmos')}"
+
+              if needs_update:
+                  enriched_count += 1
+
+          save_json("chunks/data_c01.json", master_list)
+          print(f"Enriched {enriched_count} existing movies with real OTT and exact sizes!")
+
+          # --- STEP 3: AUDIT DRIVE INBOX ARRIVALS ---
+          print("--- STEP 3: AUDITING NEW INBOX ARRIVALS ---")
           tamil_list = load_json("chunks/data_c01_tamil.json")
           telugu_list = load_json("chunks/data_c01_telugu.json")
           hindi_list = load_json("chunks/data_c01_hindi.json")
@@ -108,6 +208,68 @@ jobs:
                   val = x.get(k)
                   if val:
                       c = clean_str(val)
+                      if len(c) >= 3:
+                          known_titles.add(c[:10])
+
+          inbox = []
+
+          for file in drive_files:
+              fname = file.get("Path", "")
+              fid = str(file.get("ID", "")).strip()
+              fbytes = file.get("Size", 0)
+
+              if not fname.lower().endswith(('.mkv', '.mp4', '.avi', '.ts')):
+                  continue
+
+              # 1. Drive ID Match -> Skip
+              if fid in known_ids:
+                  continue
+
+              # 2. Clean Title Match -> Skip
+              clean_name = clean_str(os.path.basename(fname))
+              if any(t in clean_name for t in known_titles if len(t) >= 3):
+                  continue
+
+              gb_val = round(fbytes / (1024 ** 3), 1)
+              clean_size = f"{gb_val} GB"
+
+              lower = fname.lower()
+              target_cat = "kollywood"
+              target_file = "chunks/data_c01_tamil.json"
+              if "telugu" in lower:
+                  target_cat = "tollywood"
+                  target_file = "chunks/data_c01_telugu.json"
+              elif "hindi" in lower:
+                  target_cat = "bollywood"
+                  target_file = "chunks/data_c01_hindi.json"
+              elif any(x in lower for x in ["english", "hollywood", "dual"]):
+                  target_cat = "hollywood"
+                  target_file = "chunks/data_c01_english.json"
+
+              display_title = os.path.basename(fname).rsplit(".", 1)[0].replace(".", " ")
+
+              inbox.append({
+                  "title": display_title,
+                  "gdrive_id": fid,
+                  "size": clean_size,
+                  "status": "completely_missing",
+                  "target_category": target_cat,
+                  "target_chunk": target_file,
+                  "stream_url": f"https://gdrive-stream.moinudeentv.workers.dev/?id={fid}|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+              })
+
+          print(f"Actually Brand New Missing: {len(inbox)}")
+          save_json("inbox_arrivals.json", inbox)
+          EOF
+
+          python3 scan_and_enrich.py
+
+      - name: Commit & Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add chunks/data_c01.json inbox_arrivals.json
+          git diff --staged --quiet || (git commit -m "Auto-Enrich: Updated OTT sources, GB sizes & Inbox Arrivals" && git push origin main)
                       if len(c) >= 3:
                           known_titles.add(c[:10])
 
