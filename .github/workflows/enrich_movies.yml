@@ -1,35 +1,69 @@
-name: Auto Enrich TMDB Metadata
+import os
+import re
+import json
+import requests
+import base64
 
-on:
-  push:
-    paths:
-      - 'chunks/data_c01.json'
-  workflow_dispatch:
+GH_REPO = "Moinuflix/My-Movies" #[span_25](start_span)[span_25](end_span)[span_26](start_span)[span_26](end_span)
+GH_TOKEN = os.environ.get("GH_TOKEN") # Repo secrets se aayega
+GH_BRANCH = "main" #[span_27](start_span)[span_27](end_span)[span_28](start_span)[span_28](end_span)
 
-jobs:
-  enrich:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+def parse_source_and_size(filename, raw_bytes=None):
+    fn = filename.lower()
+    
+    # 1. OTT / Source detection[span_29](start_span)[span_29](end_span)[span_30](start_span)[span_30](end_span)
+    source = "WEB-DL"
+    if "nf" in fn or "netflix" in fn: source = "Netflix" #[span_31](start_span)[span_31](end_span)[span_32](start_span)[span_32](end_span)
+    elif any(x in fn for x in ["hotstar", "dsnp", "disney"]): source = "Disney+ Hotstar" #[span_33](start_span)[span_33](end_span)[span_34](start_span)[span_34](end_span)
+    elif any(x in fn for x in ["amzn", "prime"]): source = "Prime Video" #[span_35](start_span)[span_35](end_span)[span_36](start_span)[span_36](end_span)
+    elif "sonyliv" in fn or "sony" in fn: source = "SonyLIV" #[span_37](start_span)[span_37](end_span)[span_38](start_span)[span_38](end_span)
+    elif "zee5" in fn: source = "Zee5" #[span_39](start_span)[span_39](end_span)[span_40](start_span)[span_40](end_span)
+    elif "jio" in fn: source = "JioCinema" #[span_41](start_span)[span_41](end_span)[span_42](start_span)[span_42](end_span)
+    elif "bluray" in fn or "remux" in fn: source = "BLURAY" #[span_43](start_span)[span_43](end_span)[span_44](start_span)[span_44](end_span)
 
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+    # 2. Size formatting[span_45](start_span)[span_45](end_span)[span_46](start_span)[span_46](end_span)
+    size_str = "10 GB"
+    if raw_bytes:
+        gb = raw_bytes / (1024 ** 3)
+        size_str = f"{gb:.1f} GB"
+    else:
+        # File name se size match karna (agar name me 5gb ya 14gb likha ho)
+        sz_match = re.search(r"(\d+(\.\d+)?)\s*(gb|mb)", fn)
+        if sz_match:
+            size_str = f"{sz_match.group(1)} {sz_match.group(3).upper()}"
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+    return source, size_str
 
-      - name: Run TMDB Enrichment Script
-        run: |
-          python enrich_movies.py
+# data_c01.json fetch & update[span_47](start_span)[span_47](end_span)[span_48](start_span)[span_48](end_span)[span_49](start_span)[span_49](end_span)
+url = f"https://api.github.com/repos/{GH_REPO}/contents/chunks/data_c01.json"
+headers = {"Authorization": f"Bearer {GH_TOKEN}", "Accept": "application/vnd.github.v3+json"}
+r = requests.get(url, headers=headers)
 
-      - name: Commit & Push Changes
-        run: |
-          git config --global user.name "MoinuFlix Bot"
-          git config --global user.email "bot@moinuflix.local"
-          git add chunks/data_c01.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-enrich movie metadata via TMDB [skip ci]" && git push)
+if r.status_code == 200:
+    file_info = r.json()
+    data = json.loads(base64.b64decode(file_info["content"]).decode("utf-8"))
+    
+    updated = 0
+    for movie in data:
+        raw_name = movie.get("name", "")
+        # Missing ya default values ko check karein[span_50](start_span)[span_50](end_span)[span_51](start_span)[span_51](end_span)
+        src, sz = parse_source_and_size(raw_name)
+        
+        movie.setdefault("specs", {})
+        if movie["specs"].get("source") in [None, "", "WEB-DL"]:
+            movie["specs"]["source"] = src
+            updated += 1
+        if not movie["specs"].get("size") or movie["specs"].get("size") == "10 GB":
+            movie["specs"]["size"] = sz
+            
+        for v in movie.get("versions", []):
+            v["source"] = src
+            v["size"] = sz
+            v["quality"] = f"{v.get('resolution', '1080p')} • {src} • {v.get('audio', 'Dolby Atmos')}" #[span_52](start_span)[span_52](end_span)[span_53](start_span)[span_53](end_span)
+
+    # Wapas Commit karein[span_54](start_span)[span_54](end_span)[span_55](start_span)[span_55](end_span)
+    encoded = base64.b64encode(json.dumps(data, indent=2).encode("utf-8")).decode("utf-8")
+    payload = {"message": f"Auto-enrich missing OTT sources and sizes ({updated} items)", "content": encoded, "branch": GH_BRANCH, "sha": file_info["sha"]} #[span_56](start_span)[span_56](end_span)[span_57](start_span)[span_57](end_span)
+    requests.put(url, headers=headers, json=payload)
+    print(f"Updated {updated} movies successfully!")
+    
