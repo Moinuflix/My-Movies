@@ -3,74 +3,202 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>MoinuFlix — Ingest Studio & Drive Arrivals</title>
+  <title>MoinuFlix — Advanced Ingest Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-dark: #040711;
-      --bg-card: rgba(13, 22, 38, 0.85);
+      --bg-card: rgba(13, 22, 38, 0.88);
       --bg-input: #091224;
-      --border-color: rgba(56, 189, 248, 0.18);
+      --border-color: rgba(56, 189, 248, 0.2);
       --laser-cyan: #38bdf8;
+      --laser-cyan-glow: rgba(56, 189, 248, 0.45);
       --laser-green: #10b981;
+      --laser-green-glow: rgba(16, 185, 129, 0.35);
       --laser-red: #ef4444;
       --neon-gold: #f59e0b;
+      --neon-purple: #a855f7;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
+      --text-dim: #64748b;
       --font-stack: 'Plus Jakarta Sans', system-ui, sans-serif;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: var(--bg-dark);
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 12% 12%, rgba(56, 189, 248, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 88% 88%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
       color: var(--text-main);
       font-family: var(--font-stack);
       padding: 1.5rem 1rem 6rem;
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
     }
-    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 10px; }
-    .back-btn { text-decoration: none; color: var(--laser-cyan); font-weight: 700; font-size: 0.9rem; }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .back-btn {
+      text-decoration: none;
+      color: var(--laser-cyan);
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
     .form-container {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 1.8rem;
+      border-radius: 22px;
+      padding: 2rem;
       margin-bottom: 2rem;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
     }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.45rem; position: relative; }
     .full-width { grid-column: span 2; }
-    label { font-size: 0.82rem; font-weight: 700; color: var(--text-muted); }
+    label { font-size: 0.84rem; font-weight: 700; color: var(--text-muted); }
+
     input, select {
       background: var(--bg-input);
       border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
       color: #fff;
+      font-size: 0.9rem;
       outline: none;
+      font-family: var(--font-stack);
     }
-    input:focus, select:focus { border-color: var(--laser-cyan); }
+    input:focus, select:focus {
+      border-color: var(--laser-cyan);
+      box-shadow: 0 0 14px var(--laser-cyan-glow);
+    }
+
+    .smart-input {
+      border-color: rgba(56, 189, 248, 0.45);
+      background: rgba(56, 189, 248, 0.04);
+    }
+
+    .industry-checkbox-panel {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 0.75rem;
+      background: rgba(11, 19, 41, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1rem;
+      margin-top: 0.4rem;
+    }
+    .industry-check-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+    .industry-check-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--laser-cyan);
+      cursor: pointer;
+    }
+
     .btn-submit {
       background: linear-gradient(135deg, var(--laser-cyan), #2563eb);
-      color: #000;
+      color: #030712;
       border: none;
-      padding: 0.85rem;
+      padding: 0.95rem;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 1.2rem;
+      box-shadow: 0 0 20px var(--laser-cyan-glow);
+      transition: transform 0.2s;
+    }
+    .btn-submit:hover { transform: translateY(-2px); }
+
+    .btn-batch {
+      background: linear-gradient(135deg, var(--laser-green), #059669);
+      color: #fff;
+      border: none;
+      padding: 0.65rem 1.3rem;
       border-radius: 10px;
       font-weight: 800;
       cursor: pointer;
+      box-shadow: 0 0 14px var(--laser-green-glow);
+    }
+
+    .arrivals-table {
       width: 100%;
-      margin-top: 1rem;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+      margin-top: 0.8rem;
     }
-    .btn-batch {
-      background: linear-gradient(135deg, var(--laser-green), #059669);
-      color: #fff; border: none; padding: 0.65rem 1.2rem; border-radius: 8px; font-weight: 800; cursor: pointer;
+    .arrivals-table th { padding: 10px; color: var(--text-dim); text-align: left; border-bottom: 1px solid var(--border-color); }
+    .arrivals-table td { padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: middle; }
+
+    .tmdb-results-box {
+      display: none;
+      margin-top: 6px;
+      background: #091224;
+      border: 1px solid var(--laser-cyan);
+      border-radius: 12px;
+      padding: 8px;
+      max-height: 240px;
+      overflow-y: auto;
+      z-index: 50;
     }
-    .arrivals-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 0.8rem; }
-    .arrivals-table th, .arrivals-table td { padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    #laser-toast { position: fixed; top: 20px; right: 20px; background: rgba(13,22,38,0.96); border: 1px solid var(--laser-cyan); color: #fff; padding: 12px 18px; border-radius: 10px; font-weight: 700; display: none; z-index: 300; }
-    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } .full-width { grid-column: span 1; } }
+    .tmdb-item {
+      padding: 8px 10px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: #fff;
+      border-radius: 8px;
+    }
+    .tmdb-item:hover { background: #1e293b; color: var(--laser-cyan); }
+
+    #laser-toast {
+      position: fixed;
+      top: 25px;
+      right: 25px;
+      background: rgba(13, 22, 38, 0.96);
+      border: 1px solid var(--laser-cyan);
+      box-shadow: 0 0 25px var(--laser-cyan-glow);
+      color: #fff;
+      padding: 1rem 1.4rem;
+      border-radius: 12px;
+      font-weight: 700;
+      display: none;
+      z-index: 300;
+    }
+
+    @media (max-width: 650px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .full-width { grid-column: span 1; }
+      .industry-checkbox-panel { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -79,26 +207,29 @@
 
   <header>
     <div>
-      <a href="inbox.html" class="back-btn">⬅️ Back to Movies Vault</a>
-      <h1 style="font-size: 1.6rem; margin-top: 4px;">🎬 Ingest & Drive Arrivals</h1>
+      <a href="inbox.html" class="back-btn">⬅️ Back to Movies Dashboard</a>
+      <h1 style="font-size: 1.7rem; margin-top: 4px;">🎬 Studio Movie Ingest & Arrivals</h1>
     </div>
-    <div>
-      <button onclick="configureToken()" style="background:transparent; border:1px solid var(--laser-cyan); color:var(--laser-cyan); padding:6px 12px; border-radius:8px; font-weight:700; cursor:pointer;">⚙️ Token</button>
+    <div style="display:flex; gap:8px;">
+      <button onclick="configureToken()" style="background:transparent; border:1px solid var(--laser-cyan); color:var(--laser-cyan); padding:7px 14px; border-radius:10px; font-weight:700; cursor:pointer;">⚙️ Token</button>
     </div>
   </header>
 
   <!-- 1. DRIVE ARRIVALS AUDIT -->
   <div class="form-container">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-      <h3 style="font-size:1.1rem; color:var(--laser-cyan);">📡 Google Drive Pending Arrivals</h3>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:10px;">
+      <div>
+        <h3 style="font-size:1.15rem; color:var(--laser-cyan);">📡 Google Drive Pending Arrivals</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted);">Auto-scanned files from inbox_arrivals.json</p>
+      </div>
       <button class="btn-batch" onclick="batchSyncAllArrivals()">🚀 1-CLICK SYNC ALL</button>
     </div>
     <div style="overflow-x:auto;">
       <table class="arrivals-table">
         <thead>
           <tr>
-            <th>Raw Name</th>
-            <th>Size</th>
+            <th>Raw Release Name</th>
+            <th>Clean GB</th>
             <th style="text-align:right;">Action</th>
           </tr>
         </thead>
@@ -109,6 +240,271 @@
     </div>
   </div>
 
+  <!-- 2. ADD SINGLE MOVIE FORM -->
+  <div class="form-container">
+    <h3 style="font-size:1.15rem; color:var(--laser-cyan); margin-bottom:1.2rem;">➕ Ingest Single Movie to Master & Chunks</h3>
+    <form id="movie-form" onsubmit="handleMovieSubmit(event)">
+      <div class="form-grid">
+
+        <div class="form-group full-width">
+          <label style="color: var(--laser-cyan);">⚡ Release File Name (Auto-detects OTT, Quality & Clean GB)</label>
+          <input type="text" id="in-filename" class="smart-input" placeholder="e.g. Leo.2023.Tamil.DS4K.NF.WEB-DL.DDP5.1.Atmos.x265-13.6GB.mkv" oninput="parseFileName(this.value)">
+          <div id="tmdb-box" class="tmdb-results-box"></div>
+        </div>
+
+        <div class="form-group">
+          <label>TMDB Movie ID</label>
+          <input type="number" id="in-tmdb" placeholder="e.g. 1072790" required oninput="fetchTmdb(this.value)">
+        </div>
+
+        <div class="form-group">
+          <label>Collection / Franchise Name (Auto-filled)</label>
+          <input type="text" id="in-collection" placeholder="e.g. LCU - Lokesh Cinematic Universe">
+        </div>
+
+        <!-- REGIONAL LANGUAGE CHUNKS -->
+        <div class="form-group full-width">
+          <label style="color: var(--neon-gold);">⚡ Sync to Language Chunks (chunks/data_c01_...):</label>
+          <div class="industry-checkbox-panel">
+            <label class="industry-check-label">
+              <input type="checkbox" id="chk-kollywood" value="ta" checked>
+              <span>🌴 Tamil (Kollywood)</span>
+            </label>
+            <label class="industry-check-label">
+              <input type="checkbox" id="chk-tollywood" value="te">
+              <span>🏛️ Telugu (Tollywood)</span>
+            </label>
+            <label class="industry-check-label">
+              <input type="checkbox" id="chk-bollywood" value="hi">
+              <span>✨ Hindi (Bollywood)</span>
+            </label>
+            <label class="industry-check-label">
+              <input type="checkbox" id="chk-hollywood" value="en">
+              <span>🌐 English (Hollywood)</span>
+            </label>
+            <label class="industry-check-label">
+              <input type="checkbox" id="chk-mollywood" value="ml">
+              <span>🥥 Malayalam (Mollywood)</span>
+            </label>
+            <label class="industry-check-label">
+              <input type="checkbox" id="chk-sandalwood" value="kn">
+              <span>🏔️ Kannada (Sandalwood)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- QUALITY DROPDOWN -->
+        <div class="form-group">
+          <label>Quality Format</label>
+          <select id="in-quality" required>
+            <option value="4K UHD" selected>4K UHD (2160p)</option>
+            <option value="DS4K">DS4K (Downsampled 4K)</option>
+            <option value="1080p FHD">1080p FHD</option>
+            <option value="1080p 60fps">1080p 60fps</option>
+            <option value="720p HD">720p HD</option>
+          </select>
+        </div>
+
+        <!-- AUDIO DROPDOWN -->
+        <div class="form-group">
+          <label>Audio Format</label>
+          <select id="in-audio" required>
+            <option value="Dolby Atmos" selected>Dolby Atmos / TrueHD</option>
+            <option value="DTS-HD Master / 1509k DTS">DTS-HD Master / 1509k DTS (Lossless)</option>
+            <option value="Dolby Digital Plus">Dolby Digital Plus (DDP 5.1)</option>
+            <option value="Dolby Digital">Dolby Digital (AC3 5.1)</option>
+          </select>
+        </div>
+
+        <!-- OTT PLATFORM DROPDOWN -->
+        <div class="form-group">
+          <label>Source / OTT Platform</label>
+          <select id="in-source" required>
+            <option value="Netflix" selected>Netflix</option>
+            <option value="Disney+ Hotstar">Disney+ Hotstar</option>
+            <option value="Prime Video">Prime Video</option>
+            <option value="Sun NXT">Sun NXT</option>
+            <option value="Aha">Aha Video</option>
+            <option value="SonyLIV">SonyLIV</option>
+            <option value="Zee5">Zee5</option>
+            <option value="JioCinema">JioCinema</option>
+            <option value="WEB-DL">WEB-DL</option>
+            <option value="BLURAY">BLURAY / Remux</option>
+          </select>
+        </div>
+
+        <!-- CLEAN GB SIZE -->
+        <div class="form-group">
+          <label>Clean File Size (e.g. 13.4 ➔ 13 GB, 13.6 ➔ 14 GB)</label>
+          <input type="text" id="in-size" placeholder="e.g. 14 GB" required>
+        </div>
+
+        <!-- IMAX PUSH -->
+        <div class="form-group full-width">
+          <label class="industry-check-label" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); padding: 10px 14px; border-radius: 12px;">
+            <input type="checkbox" id="chk-is-imax">
+            <span style="color: var(--neon-gold); font-weight: 800;">⚡ Push to IMAX Core Chunk (chunks/data_c01_imax.json)</span>
+          </label>
+        </div>
+
+        <!-- GDRIVE URL -->
+        <div class="form-group full-width">
+          <label>Google Drive Link or File ID</label>
+          <input type="text" id="in-gdrive" placeholder="Paste full Google Drive link or File ID" required>
+        </div>
+
+      </div>
+
+      <button type="submit" class="btn-submit">🚀 COMMIT TO MASTER & SYNC SELECTED CHUNKS</button>
+    </form>
+  </div>
+
+  <script>
+    const GH_REPO = 'Moinuflix/My-Movies';[span_4](start_span)[span_4](end_span)[span_5](start_span)[span_5](end_span)
+    const GH_BRANCH = 'main';[span_6](start_span)[span_6](end_span)[span_7](start_span)[span_7](end_span)
+    const RAW_BASE = `https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}`;
+    const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
+    const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';[span_8](start_span)[span_8](end_span)[span_9](start_span)[span_9](end_span)
+    const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';[span_10](start_span)[span_10](end_span)[span_11](start_span)[span_11](end_span)
+
+    // Kodi ClearLogo mapping for studio badges
+    const OTT_LOGOS = {
+      "Netflix": "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
+      "Disney+ Hotstar": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Disney%2B_Hotstar_logo.svg",
+      "Prime Video": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png",
+      "Sun NXT": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Sun_NXT_logo.svg/320px-Sun_NXT_logo.svg.png",
+      "Aha": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Aha_OTT_logo.png",
+      "SonyLIV": "https://upload.wikimedia.org/wikipedia/commons/5/52/SonyLIV_logo.svg",
+      "Zee5": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",
+      "JioCinema": "https://upload.wikimedia.org/wikipedia/commons/1/14/JioCinema_Logo.svg"
+    };
+
+    let arrivalsList = [];
+    let fetchedMeta = null;
+
+    function getStoredToken() { return localStorage.getItem('moinuflix_gh_token') || ''; }
+    function configureToken() {
+      const cur = getStoredToken();
+      const input = prompt('Enter GitHub PAT (ghp_...):', cur);
+      if (input !== null) {
+        localStorage.setItem('moinuflix_gh_token', input.trim());
+        showLaserToast('GitHub Token Saved!');
+      }
+    }
+
+    function showLaserToast(msg, isError = false) {
+      const toast = document.getElementById('laser-toast');
+      toast.style.borderColor = isError ? 'var(--laser-red)' : 'var(--laser-cyan)';
+      toast.innerHTML = (isError ? '❌ ' : '⚡ ') + msg;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 3500);
+    }
+
+    function extractGDriveId(url) {
+      if (!url) return '';
+      const pMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+      if (pMatch) return pMatch[1];
+      const fMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+      if (fMatch) return fMatch[1];
+      return url.trim();
+    }
+
+    // SMART CLEAN GB LOGIC (13.4 -> 13 GB, 13.6 -> 14 GB)
+    function cleanRoundGB(rawSizeStr) {
+      if (!rawSizeStr) return "10 GB";
+      const m = String(rawSizeStr).match(/([\d\.]+)\s*(gb|mb)/i);
+      if (m) {
+        let val = parseFloat(m[1]);
+        let unit = m[2].toLowerCase();
+        if (unit === 'gb') {
+          return `${Math.round(val)} GB`;
+        } else {
+          let inGb = val / 1024;
+          return inGb >= 1 ? `${Math.round(inGb)} GB` : `${Math.round(val)} MB`;
+        }
+      }
+      return rawSizeStr;
+    }
+
+    // AUTO-PARSE FILENAME (OTT, QUALITY, AUDIO & GB)
+    function parseFileName(name) {
+      if (!name) return;
+      const fn = name.toLowerCase();
+
+      // 1. Quality
+      if (fn.includes('ds4k')) document.getElementById('in-quality').value = 'DS4K';
+      else if (fn.includes('2160p') || fn.includes('4k') || fn.includes('uhd')) document.getElementById('in-quality').value = '4K UHD';
+      else if (fn.includes('60fps') || fn.includes('60 fbs')) document.getElementById('in-quality').value = '1080p 60fps';
+      else if (fn.includes('1080p') || fn.includes('fhd')) document.getElementById('in-quality').value = '1080p FHD';
+      else if (fn.includes('720p')) document.getElementById('in-quality').value = '720p HD';
+
+      // 2. OTT Source (SunNXT & Aha included)
+      if (fn.includes('sunnxt') || fn.includes('sun nxt')) document.getElementById('in-source').value = 'Sun NXT';
+      else if (fn.includes('aha')) document.getElementById('in-source').value = 'Aha';
+      else if (fn.includes('nf') || fn.includes('netflix')) document.getElementById('in-source').value = 'Netflix';
+      else if (fn.includes('dsnp') || fn.includes('hotstar') || fn.includes('disney')) document.getElementById('in-source').value = 'Disney+ Hotstar';
+      else if (fn.includes('amzn') || fn.includes('prime')) document.getElementById('in-source').value = 'Prime Video';
+      else if (fn.includes('sonyliv') || fn.includes('sony')) document.getElementById('in-source').value = 'SonyLIV';
+      else if (fn.includes('zee5')) document.getElementById('in-source').value = 'Zee5';
+      else if (fn.includes('jio')) document.getElementById('in-source').value = 'JioCinema';
+      else if (fn.includes('bluray') || fn.includes('remux')) document.getElementById('in-source').value = 'BLURAY';
+
+      // 3. Audio & IMAX
+      if (fn.includes('1509k') || fn.includes('dts-hd') || fn.includes('dts')) {
+        document.getElementById('in-audio').value = 'DTS-HD Master / 1509k DTS';
+        document.getElementById('chk-is-imax').checked = true;
+      }
+
+      // 4. GB Rounding Check
+      const szMatch = name.match(/(\d+(\.\d+)?)\s*(gb|mb)/i);
+      if (szMatch) {
+        document.getElementById('in-size').value = cleanRoundGB(szMatch[0]);
+      }
+
+      // Search TMDB
+      let cleanTitle = name.replace(/\.(mkv|mp4|avi|ts)$/i, '').replace(/[\._\-]/g, ' ');
+      const ym = cleanTitle.match(/\b(19\d\d|20\d\d)\b/);
+      let year = ym ? ym[1] : '';
+      if (ym) cleanTitle = cleanTitle.substring(0, ym.index).trim();
+      cleanTitle = cleanTitle.replace(/\b(1080p|720p|2160p|4k|ds4k|web dl|dts|atmos|ddp|netflix|sunnxt|aha)\b/gi, '').trim();
+
+      searchTmdbSuggestions(cleanTitle, year);
+    }
+
+    async function searchTmdbSuggestions(title, year) {
+      if (!title || title.length < 2) return;
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(title)}${year ? `&year=${year}` : ''}`);
+        const data = await res.json();
+        const box = document.getElementById('tmdb-box');
+        box.innerHTML = '';
+        if (data.results && data.results.length > 0) {
+          data.results.slice(0, 4).forEach(m => {
+            const row = document.createElement('div');
+            row.className = 'tmdb-item';
+            row.textContent = `🎯 ${m.title} (${m.release_date ? m.release_date.split('-')[0] : 'N/A'}) [ID: ${m.id}]`;
+            row.onclick = () => {
+              document.getElementById('in-tmdb').value = m.id;
+              fetchTmdb(m.id);
+              box.style.display = 'none';
+            };
+            box.appendChild(row);
+          });
+          box.style.display = 'block';
+        } else {
+          box.style.display = 'none';
+        }
+      } catch(e) {}
+    }
+
+    async function fetchTmdb(tmdbId) {
+      if (!tmdbId) return;
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_API_KEY}&append_to_response=credits`);
+        if (!res.ok) return;
+        const d = await res.json();
+        
+        let col = d.belongs_to_collection ? d.
   <!-- 2. ADD SINGLE MOVIE FORM -->
   <div class="form-container">
     <h3 style="font-size:1.1rem; color:var(--laser-cyan); margin-bottom:1rem;">➕ Ingest Single Movie to Master</h3>
