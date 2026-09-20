@@ -1,5 +1,83 @@
 [
   {
+    "id": "1-Vjwie7L4U4avSL3-hWxWcLUUupCyKGd",
+    "name": "Dhoom 2 (2006) [1080p] [BLURAY] [Dolby Atmos].mkv",
+    "title": "Dhoom 2",
+    "original_title": "धूम २",
+    "original_language": "hi",
+    "year": 2006,
+    "runtime": 151,
+    "tmdb_id": 14194,
+    "rating": 6.6,
+    "collection": "Dhoom Collection",
+    "director": [
+      "Sanjay Gadhvi"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=oRIIeyIa6nE",
+    "cast": [
+      {
+        "name": "Hrithik Roshan",
+        "role": "Mr. A",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/d7XGTvyYgmrsA05XOn1YtxYcuY1.jpg"
+      },
+      {
+        "name": "Abhishek Bachchan",
+        "role": "Jai Dixit",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/cALtfAvfUtS0Luf8MZaSiLfFRwd.jpg"
+      },
+      {
+        "name": "Aishwarya Rai Bachchan",
+        "role": "Sunehri",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/59YeZ2zAoBfl3bnloriMyQkgwOK.jpg"
+      },
+      {
+        "name": "Uday Chopra",
+        "role": "Ali Khan",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/bHmH00vJNavpf5BgSuBeUSPB9bj.jpg"
+      },
+      {
+        "name": "Bipasha Basu",
+        "role": "Sonali Bose / Monali Bose",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/j4p0NOHUNvOCBcfaZiCoyxdJJou.jpg"
+      }
+    ],
+    "plot": "Jai and Ali return, this time on the trail of an international thief who steals priceless artifacts and has chosen Mumbai as his next target.",
+    "poster": "https://image.tmdb.org/t/p/w500/3zJLnrP9g9LSMpX5C1wau49gGUv.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/yKQjyrGMfNZJDFGoDumZIcCNZvb.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1-Vjwie7L4U4avSL3-hWxWcLUUupCyKGd|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "BLURAY",
+      "codec": "H.264",
+      "audio": "Dolby Atmos",
+      "channels": "5.1",
+      "languages": "Hindi",
+      "size": "14GB"
+    },
+    "versions": [
+      {
+        "id": "1-Vjwie7L4U4avSL3-hWxWcLUUupCyKGd",
+        "name": "Dhoom 2 (2006) [1080p] [BLURAY] [Dolby Atmos].mkv",
+        "quality": "1080p • BLURAY • Dolby Atmos [14GB]",
+        "source": "BLURAY",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1-Vjwie7L4U4avSL3-hWxWcLUUupCyKGd|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "BLURAY",
+          "codec": "H.264",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Hindi",
+          "size": "14GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "1ZwRGntTg2vM-ch0z95aNbAWpwJMS97xS",
     "name": "Dridam (2026) [4K UHD] [Netflix] [Dolby Atmos].mkv",
     "title": "Dridam",
