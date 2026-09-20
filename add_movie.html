@@ -6,7 +6,7 @@
   <title>MoinuFlix — Advanced Ingest Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-dark: #040711;
@@ -24,6 +24,7 @@
       --text-muted: #94a3b8;
       --text-dim: #64748b;
       --font-stack: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -97,6 +98,25 @@
       background: rgba(56, 189, 248, 0.04);
     }
 
+    /* OTT BADGE LIVE PREVIEW BOX */
+    .ott-preview-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(9, 18, 36, 0.7);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 10px 16px;
+      margin-top: 4px;
+    }
+    .ott-logo-img {
+      height: 38px;
+      max-width: 110px;
+      object-fit: contain;
+      background: transparent;
+      padding: 2px;
+    }
+
     .industry-checkbox-panel {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
@@ -159,25 +179,52 @@
     .arrivals-table th { padding: 10px; color: var(--text-dim); text-align: left; border-bottom: 1px solid var(--border-color); }
     .arrivals-table td { padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: middle; }
 
+    /* TMDB SEARCH DROPDOWN (TOP 3 WITH CLEAR ID BADGE) */
     .tmdb-results-box {
       display: none;
-      margin-top: 6px;
+      margin-top: 8px;
       background: #091224;
       border: 1px solid var(--laser-cyan);
-      border-radius: 12px;
+      box-shadow: 0 0 20px var(--laser-cyan-glow);
+      border-radius: 14px;
       padding: 8px;
-      max-height: 240px;
+      max-height: 280px;
       overflow-y: auto;
-      z-index: 50;
+      z-index: 60;
     }
     .tmdb-item {
-      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
       cursor: pointer;
-      font-size: 0.85rem;
-      color: #fff;
-      border-radius: 8px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: all 0.2s;
     }
-    .tmdb-item:hover { background: #1e293b; color: var(--laser-cyan); }
+    .tmdb-item:hover {
+      background: #1e293b;
+      border-color: var(--laser-cyan);
+    }
+    .tmdb-poster {
+      width: 44px;
+      height: 60px;
+      border-radius: 6px;
+      object-fit: cover;
+      background: #070d1e;
+      flex-shrink: 0;
+    }
+    .tmdb-id-badge {
+      background: rgba(56, 189, 248, 0.18);
+      color: var(--laser-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.78rem;
+      white-space: nowrap;
+    }
 
     #laser-toast {
       position: fixed;
@@ -253,13 +300,38 @@
         </div>
 
         <div class="form-group">
-          <label>TMDB Movie ID</label>
+          <label>TMDB Movie ID (Auto-selected from top suggestions)</label>
           <input type="number" id="in-tmdb" placeholder="e.g. 1072790" required oninput="fetchTmdb(this.value)">
         </div>
 
         <div class="form-group">
           <label>Collection / Franchise Name (Auto-filled)</label>
           <input type="text" id="in-collection" placeholder="e.g. LCU - Lokesh Cinematic Universe">
+        </div>
+
+        <!-- OTT PLATFORM SELECT & LOGO PREVIEW -->
+        <div class="form-group full-width">
+          <label style="color: var(--laser-cyan);">⚡ OTT Provider & Kodi ClearLogo Tag:</label>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items:center;">
+            <select id="in-source" onchange="updateOttLogoPreview(this.value)" required>
+              <option value="Netflix" selected>Netflix</option>
+              <option value="Disney+ Hotstar">Disney+ Hotstar</option>
+              <option value="Prime Video">Prime Video</option>
+              <option value="Sun NXT">Sun NXT</option>
+              <option value="Aha">Aha Video</option>
+              <option value="SonyLIV">SonyLIV</option>
+              <option value="Zee5">Zee5</option>
+              <option value="JioCinema">JioCinema</option>
+              <option value="WEB-DL">WEB-DL (Generic)</option>
+              <option value="BLURAY">BLURAY / Remux</option>
+            </select>
+            
+            <div class="ott-preview-card">
+              <span style="font-size:0.75rem; color:var(--text-dim);">Kodi OTT Logo:</span>
+              <img id="ott-preview-img" class="ott-logo-img" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="OTT Logo">
+              <span id="ott-label" style="font-size:0.8rem; font-weight:800; color:var(--laser-green);">Netflix</span>
+            </div>
+          </div>
         </div>
 
         <!-- REGIONAL LANGUAGE CHUNKS -->
@@ -316,34 +388,17 @@
           </select>
         </div>
 
-        <!-- OTT PLATFORM DROPDOWN -->
-        <div class="form-group">
-          <label>Source / OTT Platform</label>
-          <select id="in-source" required>
-            <option value="Netflix" selected>Netflix</option>
-            <option value="Disney+ Hotstar">Disney+ Hotstar</option>
-            <option value="Prime Video">Prime Video</option>
-            <option value="Sun NXT">Sun NXT</option>
-            <option value="Aha">Aha Video</option>
-            <option value="SonyLIV">SonyLIV</option>
-            <option value="Zee5">Zee5</option>
-            <option value="JioCinema">JioCinema</option>
-            <option value="WEB-DL">WEB-DL</option>
-            <option value="BLURAY">BLURAY / Remux</option>
-          </select>
-        </div>
-
         <!-- CLEAN GB SIZE -->
         <div class="form-group">
-          <label>Clean File Size (e.g. 13.4 ➔ 13 GB, 13.6 ➔ 14 GB)</label>
+          <label>Clean File Size (Auto-rounded e.g. 13.4 ➔ 13 GB, 13.6 ➔ 14 GB)</label>
           <input type="text" id="in-size" placeholder="e.g. 14 GB" required>
         </div>
 
         <!-- IMAX PUSH -->
-        <div class="form-group full-width">
-          <label class="industry-check-label" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); padding: 10px 14px; border-radius: 12px;">
+        <div class="form-group">
+          <label class="industry-check-label" style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); padding: 10px 14px; border-radius: 12px; margin-top:22px;">
             <input type="checkbox" id="chk-is-imax">
-            <span style="color: var(--neon-gold); font-weight: 800;">⚡ Push to IMAX Core Chunk (chunks/data_c01_imax.json)</span>
+            <span style="color: var(--neon-gold); font-weight: 800;">⚡ Push to IMAX Core (data_c01_imax.json)</span>
           </label>
         </div>
 
@@ -360,14 +415,14 @@
   </div>
 
   <script>
-    const GH_REPO = 'Moinuflix/My-Movies';[span_4](start_span)[span_4](end_span)[span_5](start_span)[span_5](end_span)
-    const GH_BRANCH = 'main';[span_6](start_span)[span_6](end_span)[span_7](start_span)[span_7](end_span)
+    const GH_REPO = 'Moinuflix/My-Movies';[span_3](start_span)[span_3](end_span)[span_4](start_span)[span_4](end_span)
+    const GH_BRANCH = 'main';[span_5](start_span)[span_5](end_span)[span_6](start_span)[span_6](end_span)
     const RAW_BASE = `https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}`;
     const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
-    const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';[span_8](start_span)[span_8](end_span)[span_9](start_span)[span_9](end_span)
-    const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';[span_10](start_span)[span_10](end_span)[span_11](start_span)[span_11](end_span)
+    const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';[span_7](start_span)[span_7](end_span)[span_8](start_span)[span_8](end_span)
+    const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';[span_9](start_span)[span_9](end_span)[span_10](start_span)[span_10](end_span)
 
-    // Kodi ClearLogo mapping for studio badges
+    // High Quality Transparent ClearArt Logos for Kodi
     const OTT_LOGOS = {
       "Netflix": "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
       "Disney+ Hotstar": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Disney%2B_Hotstar_logo.svg",
@@ -376,7 +431,9 @@
       "Aha": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Aha_OTT_logo.png",
       "SonyLIV": "https://upload.wikimedia.org/wikipedia/commons/5/52/SonyLIV_logo.svg",
       "Zee5": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Zee5-official-logo.jpeg",
-      "JioCinema": "https://upload.wikimedia.org/wikipedia/commons/1/14/JioCinema_Logo.svg"
+      "JioCinema": "https://upload.wikimedia.org/wikipedia/commons/1/14/JioCinema_Logo.svg",
+      "WEB-DL": "",
+      "BLURAY": ""
     };
 
     let arrivalsList = [];
@@ -409,6 +466,19 @@
       return url.trim();
     }
 
+    function updateOttLogoPreview(sourceVal) {
+      const logoUrl = OTT_LOGOS[sourceVal] || "";
+      const img = document.getElementById('ott-preview-img');
+      const label = document.getElementById('ott-label');
+      label.textContent = sourceVal;
+      if (logoUrl) {
+        img.src = logoUrl;
+        img.style.display = 'inline-block';
+      } else {
+        img.style.display = 'none';
+      }
+    }
+
     // SMART CLEAN GB LOGIC (13.4 -> 13 GB, 13.6 -> 14 GB)
     function cleanRoundGB(rawSizeStr) {
       if (!rawSizeStr) return "10 GB";
@@ -426,7 +496,7 @@
       return rawSizeStr;
     }
 
-    // AUTO-PARSE FILENAME (OTT, QUALITY, AUDIO & GB)
+    // AUTO-PARSE FILENAME
     function parseFileName(name) {
       if (!name) return;
       const fn = name.toLowerCase();
@@ -438,315 +508,19 @@
       else if (fn.includes('1080p') || fn.includes('fhd')) document.getElementById('in-quality').value = '1080p FHD';
       else if (fn.includes('720p')) document.getElementById('in-quality').value = '720p HD';
 
-      // 2. OTT Source (SunNXT & Aha included)
-      if (fn.includes('sunnxt') || fn.includes('sun nxt')) document.getElementById('in-source').value = 'Sun NXT';
-      else if (fn.includes('aha')) document.getElementById('in-source').value = 'Aha';
-      else if (fn.includes('nf') || fn.includes('netflix')) document.getElementById('in-source').value = 'Netflix';
-      else if (fn.includes('dsnp') || fn.includes('hotstar') || fn.includes('disney')) document.getElementById('in-source').value = 'Disney+ Hotstar';
-      else if (fn.includes('amzn') || fn.includes('prime')) document.getElementById('in-source').value = 'Prime Video';
-      else if (fn.includes('sonyliv') || fn.includes('sony')) document.getElementById('in-source').value = 'SonyLIV';
-      else if (fn.includes('zee5')) document.getElementById('in-source').value = 'Zee5';
-      else if (fn.includes('jio')) document.getElementById('in-source').value = 'JioCinema';
-      else if (fn.includes('bluray') || fn.includes('remux')) document.getElementById('in-source').value = 'BLURAY';
+      // 2. OTT Source (SunNXT, Aha, Netflix, etc.)
+      let detectedSource = 'WEB-DL';
+      if (fn.includes('sunnxt') || fn.includes('sun nxt')) detectedSource = 'Sun NXT';
+      else if (fn.includes('aha')) detectedSource = 'Aha';
+      else if (fn.includes('nf') || fn.includes('netflix')) detectedSource = 'Netflix';
+      else if (fn.includes('dsnp') || fn.includes('hotstar') || fn.includes('disney')) detectedSource = 'Disney+ Hotstar';
+      else if (fn.includes('amzn') || fn.includes('prime')) detectedSource = 'Prime Video';
+      else if (fn.includes('sonyliv') || fn.includes('sony')) detectedSource = 'SonyLIV';
+      else if (fn.includes('zee5')) detectedSource = 'Zee5';
+      else if (fn.includes('jio')) detectedSource = 'JioCinema';
+      else if (fn.includes('bluray') || fn.includes('remux')) detectedSource = 'BLURAY';
 
-      // 3. Audio & IMAX
-      if (fn.includes('1509k') || fn.includes('dts-hd') || fn.includes('dts')) {
-        document.getElementById('in-audio').value = 'DTS-HD Master / 1509k DTS';
-        document.getElementById('chk-is-imax').checked = true;
-      }
+      document.getElementById('in-source').value = detectedSource;
+      updateOttLogoPreview(detectedSource);
 
-      // 4. GB Rounding Check
-      const szMatch = name.match(/(\d+(\.\d+)?)\s*(gb|mb)/i);
-      if (szMatch) {
-        document.getElementById('in-size').value = cleanRoundGB(szMatch[0]);
-      }
-
-      // Search TMDB
-      let cleanTitle = name.replace(/\.(mkv|mp4|avi|ts)$/i, '').replace(/[\._\-]/g, ' ');
-      const ym = cleanTitle.match(/\b(19\d\d|20\d\d)\b/);
-      let year = ym ? ym[1] : '';
-      if (ym) cleanTitle = cleanTitle.substring(0, ym.index).trim();
-      cleanTitle = cleanTitle.replace(/\b(1080p|720p|2160p|4k|ds4k|web dl|dts|atmos|ddp|netflix|sunnxt|aha)\b/gi, '').trim();
-
-      searchTmdbSuggestions(cleanTitle, year);
-    }
-
-    async function searchTmdbSuggestions(title, year) {
-      if (!title || title.length < 2) return;
-      try {
-        const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(title)}${year ? `&year=${year}` : ''}`);
-        const data = await res.json();
-        const box = document.getElementById('tmdb-box');
-        box.innerHTML = '';
-        if (data.results && data.results.length > 0) {
-          data.results.slice(0, 4).forEach(m => {
-            const row = document.createElement('div');
-            row.className = 'tmdb-item';
-            row.textContent = `🎯 ${m.title} (${m.release_date ? m.release_date.split('-')[0] : 'N/A'}) [ID: ${m.id}]`;
-            row.onclick = () => {
-              document.getElementById('in-tmdb').value = m.id;
-              fetchTmdb(m.id);
-              box.style.display = 'none';
-            };
-            box.appendChild(row);
-          });
-          box.style.display = 'block';
-        } else {
-          box.style.display = 'none';
-        }
-      } catch(e) {}
-    }
-
-    async function fetchTmdb(tmdbId) {
-      if (!tmdbId) return;
-      try {
-        const res = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_API_KEY}&append_to_response=credits`);
-        if (!res.ok) return;
-        const d = await res.json();
-        
-        let col = d.belongs_to_collection ? d.
-  <!-- 2. ADD SINGLE MOVIE FORM -->
-  <div class="form-container">
-    <h3 style="font-size:1.1rem; color:var(--laser-cyan); margin-bottom:1rem;">➕ Ingest Single Movie to Master</h3>
-    <form id="movie-form" onsubmit="handleMovieSubmit(event)">
-      <div class="form-grid">
-        <div class="form-group full-width">
-          <label>Release File Name (Auto-parse specs)</label>
-          <input type="text" id="in-filename" placeholder="K.G.F.Chapter.1.2018.Tamil.2160p.WEB-DL.mkv" oninput="parseFileName(this.value)">
-        </div>
-        <div class="form-group">
-          <label>TMDB Movie ID</label>
-          <input type="number" id="in-tmdb" placeholder="564147" required oninput="fetchTmdb(this.value)">
-        </div>
-        <div class="form-group">
-          <label>Collection Name (Auto-filled)</label>
-          <input type="text" id="in-collection" placeholder="K.G.F Collection">
-        </div>
-        <div class="form-group">
-          <label>Quality</label>
-          <select id="in-quality">
-            <option value="4K UHD" selected>4K UHD</option>
-            <option value="1080p FHD">1080p FHD</option>
-            <option value="720p HD">720p HD</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Audio</label>
-          <select id="in-audio">
-            <option value="Dolby Atmos" selected>Dolby Atmos</option>
-            <option value="DTS-HD Master / 1509k DTS">DTS-HD Master / 1509k DTS</option>
-            <option value="Dolby Digital Plus">Dolby Digital Plus</option>
-            <option value="Dolby Digital">Dolby Digital</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Source / OTT</label>
-          <select id="in-source">
-            <option value="Netflix">Netflix</option>
-            <option value="Disney+ Hotstar">Disney+ Hotstar</option>
-            <option value="Prime Video">Prime Video</option>
-            <option value="WEB-DL" selected>WEB-DL</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>File Size</label>
-          <input type="text" id="in-size" placeholder="14 GB">
-        </div>
-        <div class="form-group full-width">
-          <label>Google Drive Link or File ID</label>
-          <input type="text" id="in-gdrive" placeholder="Paste link or ID" required>
-        </div>
-      </div>
-      <button type="submit" class="btn-submit">🚀 COMMIT TO MASTER (DATA_C01.JSON)</button>
-    </form>
-  </div>
-
-  <script>
-    const GH_REPO = 'Moinuflix/My-Movies';
-    const GH_BRANCH = 'main';
-    const RAW_BASE = `https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}`;
-    const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
-    const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';
-    const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';
-
-    let arrivalsList = [];
-    let fetchedMeta = null;
-
-    function getStoredToken() { return localStorage.getItem('moinuflix_gh_token') || ''; }
-    function configureToken() {
-      const cur = getStoredToken();
-      const input = prompt('Enter GitHub PAT (ghp_...):', cur);
-      if (input !== null) {
-        localStorage.setItem('moinuflix_gh_token', input.trim());
-        showLaserToast('Token Saved!');
-      }
-    }
-    function showLaserToast(msg, isError = false) {
-      const toast = document.getElementById('laser-toast');
-      toast.style.borderColor = isError ? 'var(--laser-red)' : 'var(--laser-cyan)';
-      toast.innerHTML = (isError ? '❌ ' : '⚡ ') + msg;
-      toast.style.display = 'block';
-      setTimeout(() => { toast.style.display = 'none'; }, 3500);
-    }
-    function extractGDriveId(url) {
-      if (!url) return '';
-      const pMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-      if (pMatch) return pMatch[1];
-      const fMatch = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-      if (fMatch) return fMatch[1];
-      return url.trim();
-    }
-
-    async function loadArrivals() {
-      const tbody = document.getElementById('arrivals-tbody');
-      try {
-        const res = await fetch(`${RAW_BASE}/inbox_arrivals.json?t=${Date.now()}`);
-        arrivalsList = res.ok ? await res.json() : [];
-        if (!arrivalsList || arrivalsList.length === 0) {
-          tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:var(--laser-green); padding:20px;">🎉 100% Synced! No pending arrivals.</td></tr>';
-          return;
-        }
-        tbody.innerHTML = '';
-        arrivalsList.forEach((it, idx) => {
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td style="font-weight:600;">${it.title}</td>
-            <td style="color:var(--laser-cyan);">${it.size || 'HD'}</td>
-            <td style="text-align:right;">
-              <button style="background:rgba(56,189,248,0.15); color:var(--laser-cyan); border:1px solid rgba(56,189,248,0.3); padding:4px 8px; border-radius:6px; cursor:pointer;" onclick="fillFormFromArrival(${idx})">Load ➔</button>
-            </td>
-          `;
-          tbody.appendChild(tr);
-        });
-      } catch(e) {
-        tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:var(--laser-red);">Error: ${e.message}</td></tr>`;
-      }
-    }
-
-    function fillFormFromArrival(idx) {
-      const it = arrivalsList[idx];
-      if (!it) return;
-      document.getElementById('in-filename').value = it.title;
-      document.getElementById('in-gdrive').value = it.gdrive_id;
-      if (it.size) document.getElementById('in-size').value = it.size;
-      parseFileName(it.title);
-      showLaserToast(`Loaded "${it.title}" into form`);
-    }
-
-    function parseFileName(name) {
-      if (!name) return;
-      const is4k = /2160p|4k/i.test(name);
-      document.getElementById('in-quality').value = is4k ? '4K UHD' : '1080p FHD';
-      if (/nf|netflix/i.test(name)) document.getElementById('in-source').value = 'Netflix';
-      else if (/dsnp|hotstar/i.test(name)) document.getElementById('in-source').value = 'Disney+ Hotstar';
-      else if (/amzn|prime/i.test(name)) document.getElementById('in-source').value = 'Prime Video';
-    }
-
-    async function fetchTmdb(tmdbId) {
-      if (!tmdbId) return;
-      try {
-        const res = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_API_KEY}`);
-        if (!res.ok) return;
-        const d = await res.json();
-        document.getElementById('in-collection').value = d.belongs_to_collection ? d.belongs_to_collection.name : '';
-        fetchedMeta = {
-          title: d.title, year: d.release_date ? parseInt(d.release_date.split('-')[0]) : 2024,
-          poster: d.poster_path ? `https://image.tmdb.org/t/p/w500${d.poster_path}` : '',
-          fanart: d.backdrop_path ? `https://image.tmdb.org/t/p/original${d.backdrop_path}` : '',
-          tmdb_id: d.id, collection: d.belongs_to_collection ? d.belongs_to_collection.name : ''
-        };
-        showLaserToast(`Found: ${d.title}`);
-      } catch(e) {}
-    }
-
-    async function handleMovieSubmit(e) {
-      e.preventDefault();
-      const token = getStoredToken();
-      if (!token) return showLaserToast('Token required!', true);
-
-      const fileId = extractGDriveId(document.getElementById('in-gdrive').value);
-      if (!fileId) return showLaserToast('Invalid Drive ID', true);
-
-      const tmdbId = document.getElementById('in-tmdb').value.trim();
-      if (!fetchedMeta || String(fetchedMeta.tmdb_id) !== tmdbId) await fetchTmdb(tmdbId);
-
-      const quality = document.getElementById('in-quality').value;
-      const audio = document.getElementById('in-audio').value;
-      const source = document.getElementById('in-source').value;
-      const size = document.getElementById('in-size').value.trim() || '10 GB';
-      const streamUrl = `${WORKER_BASE}${fileId}${USER_AGENT}`;
-
-      const meta = fetchedMeta || { title: `Movie ${tmdbId}`, year: 2024, poster: '', tmdb_id: parseInt(tmdbId) };
-      const newEntry = {
-        id: fileId,
-        name: `${meta.title} (${meta.year}) [${quality}] [${source}] [${audio}].mkv`,
-        title: meta.title, year: meta.year, tmdb_id: meta.tmdb_id,
-        collection: document.getElementById('in-collection').value.trim(),
-        poster: meta.poster, fanart: meta.fanart || '',
-        stream_url: streamUrl,
-        specs: { resolution: quality, audio: audio, source: source, size: size },
-        versions: [{ id: fileId, name: meta.title, quality: quality, source: source, size: size, stream_url: streamUrl }]
-      };
-
-      showLaserToast(`Committing "${meta.title}"...`);
-      const masterRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/chunks/data_c01.json?t=${Date.now()}`);
-      const masterData = masterRes.ok ? await masterRes.json() : [];
-      masterData.unshift(newEntry);
-
-      await commitFile('chunks/data_c01.json', masterData, `Add ${meta.title}`, token);
-      showLaserToast(`🎉 "${meta.title}" committed!`);
-      document.getElementById('movie-form').reset();
-      loadArrivals();
-    }
-
-    async function batchSyncAllArrivals() {
-      const token = getStoredToken();
-      if (!token) return showLaserToast('Token required!', true);
-      if (!arrivalsList || arrivalsList.length === 0) return showLaserToast('No arrivals to sync!', true);
-
-      showLaserToast('Syncing all arrivals...');
-      const masterRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/chunks/data_c01.json?t=${Date.now()}`);
-      const masterData = masterRes.ok ? await masterRes.json() : [];
-
-      arrivalsList.forEach(it => {
-        const fileId = it.gdrive_id;
-        const streamUrl = `${WORKER_BASE}${fileId}${USER_AGENT}`;
-        masterData.unshift({
-          id: fileId, name: it.title, title: it.title, year: 2024, tmdb_id: 0,
-          collection: '', poster: '', stream_url: streamUrl,
-          specs: { resolution: '1080p FHD', audio: 'Dolby Digital', source: 'WEB-DL', size: it.size || '3 GB' },
-          versions: [{ id: fileId, name: it.title, stream_url: streamUrl }]
-        });
-      });
-
-      await commitFile('chunks/data_c01.json', masterData, `Batch Sync ${arrivalsList.length} files`, token);
-      await commitFile('inbox_arrivals.json', [], `Clear Inbox Arrivals`, token);
-      showLaserToast('✅ All arrivals synced to Master!');
-      loadArrivals();
-    }
-
-    async function commitFile(path, data, msg, token) {
-      const url = `https://api.github.com/repos/${GH_REPO}/contents/${path}`;
-      let sha = undefined;
-      try {
-        const r = await fetch(url, { headers: { 'Authorization': `Bearer ${token}` } });
-        if (r.ok) sha = (await r.json()).sha;
-      } catch(e) {}
-
-      const jsonStr = JSON.stringify(data, null, 2);
-      const uint8 = new TextEncoder().encode(jsonStr);
-      let binary = '';
-      for (let i = 0; i < uint8.byteLength; i++) binary += String.fromCharCode(uint8[i]);
-
-      await fetch(url, {
-        method: 'PUT',
-        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: msg, content: btoa(binary), branch: GH_BRANCH, sha: sha })
-      });
-    }
-
-    window.addEventListener('DOMContentLoaded', loadArrivals);
-  </script>
-</body>
-</html>
-
+      // 3. Audio 
