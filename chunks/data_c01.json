@@ -1,5 +1,69 @@
 [
   {
+    "id": "1gTSyWVQl2O5Sql2Pn5HEgExpj7rDq9Rc",
+    "name": "22 Bullets (2010) [1080p FHD] [Prime Video] [Dolby Atmos].mkv",
+    "title": "22 Bullets",
+    "original_title": "L'Immortel",
+    "original_language": "fr",
+    "year": 2010,
+    "runtime": 117,
+    "tmdb_id": 37645,
+    "rating": 6.7,
+    "collection": "",
+    "genres": [
+      "Drama",
+      "Crime",
+      "Thriller"
+    ],
+    "director": [
+      "Richard Berry"
+    ],
+    "cast": [
+      {
+        "name": "Jean Reno",
+        "role": "Charly Matteï"
+      },
+      {
+        "name": "Kad Merad",
+        "role": "Tony Zacchia"
+      },
+      {
+        "name": "Marina Foïs",
+        "role": "Marie Goldman"
+      },
+      {
+        "name": "Jean-Pierre Darroussin",
+        "role": "Martin Beaudinard"
+      },
+      {
+        "name": "JoeyStarr",
+        "role": "Pistachio"
+      }
+    ],
+    "plot": "A retired mobster goes on a revenge spree after being left for dead with 22 bullets in his body by his former childhood friend.",
+    "poster": "https://image.tmdb.org/t/p/w500/4spRV4Qw0YGaWBHYJ6enu84sR81.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/ulv4h7NglaqDl68RZKnpvOPqT2t.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1gTSyWVQl2O5Sql2Pn5HEgExpj7rDq9Rc|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p FHD",
+      "audio": "Dolby Atmos",
+      "source": "Prime Video",
+      "size": "10 GB"
+    },
+    "versions": [
+      {
+        "id": "1gTSyWVQl2O5Sql2Pn5HEgExpj7rDq9Rc",
+        "name": "22 Bullets (2010) [1080p FHD] [Prime Video] [Dolby Atmos].mkv",
+        "quality": "1080p FHD • Prime Video • Dolby Atmos",
+        "source": "Prime Video",
+        "resolution": "1080p FHD",
+        "audio": "Dolby Atmos",
+        "size": "10 GB",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1gTSyWVQl2O5Sql2Pn5HEgExpj7rDq9Rc|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+      }
+    ]
+  },
+  {
     "id": "1zCtth5aLCgozic3F6JHjeaDVPyCeJ_fs",
     "name": "Magudam (2026) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
     "title": "Magudam",
