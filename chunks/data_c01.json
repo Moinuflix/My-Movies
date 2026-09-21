@@ -1,5 +1,68 @@
 [
   {
+    "id": "1zCtth5aLCgozic3F6JHjeaDVPyCeJ_fs",
+    "name": "Magudam (2026) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
+    "title": "Magudam",
+    "original_title": "மகுடம்",
+    "original_language": "ta",
+    "year": 2026,
+    "runtime": 184,
+    "tmdb_id": 1506833,
+    "rating": 7,
+    "collection": "",
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "director": [
+      "Vishal Krishna"
+    ],
+    "cast": [
+      {
+        "name": "Vishal Krishna",
+        "role": "Linga"
+      },
+      {
+        "name": "Anjali",
+        "role": ""
+      },
+      {
+        "name": "Dushara Vijayan",
+        "role": ""
+      },
+      {
+        "name": "John Vijay",
+        "role": ""
+      },
+      {
+        "name": "Jayaprakash",
+        "role": ""
+      }
+    ],
+    "plot": "Peaceful medical representative and shipping harbor worker Linga's life changes because of betrayal and conflict in a coastal community.",
+    "poster": "https://image.tmdb.org/t/p/w500/oM0daQezJfdK8ADtwi1SMCy1BJA.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/p5LmNUM4T9xLqbeu7nBY47VUh3W.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1zCtth5aLCgozic3F6JHjeaDVPyCeJ_fs|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p FHD",
+      "audio": "Dolby Atmos",
+      "source": "Netflix",
+      "size": "14GB"
+    },
+    "versions": [
+      {
+        "id": "1zCtth5aLCgozic3F6JHjeaDVPyCeJ_fs",
+        "name": "Magudam (2026) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
+        "quality": "1080p FHD • Netflix • Dolby Atmos",
+        "source": "Netflix",
+        "resolution": "1080p FHD",
+        "audio": "Dolby Atmos",
+        "size": "14GB",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1zCtth5aLCgozic3F6JHjeaDVPyCeJ_fs|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+      }
+    ]
+  },
+  {
     "id": "1xmMxnVc77rK1rIFkCM71soAYwwdwRrUC",
     "name": "Ko (2011) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
     "title": "Ko",
@@ -1704,16 +1767,6 @@
           "size": "11 GB"
         },
         "size": "10.6 GB"
-      },
-      {
-        "id": "1zCtth5aLCgozic3F6JHjeaDVPyCeJ_fs",
-        "name": "Magudam (2026) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
-        "quality": "1080p FHD • Netflix • Dolby Atmos",
-        "source": "Netflix",
-        "resolution": "1080p FHD",
-        "audio": "Dolby Atmos",
-        "size": "14",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1zCtth5aLCgozic3F6JHjeaDVPyCeJ_fs|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
   },
