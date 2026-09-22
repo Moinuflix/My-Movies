@@ -1,113 +1,364 @@
 [
   {
-    "title": "Arul",
-    "original_title": "அருள்",
-    "tmdb_id": 63674,
-    "year": 2004,
-    "type": "series",
-    "total_episodes": 5,
-    "poster": "https://image.tmdb.org/t/p/w500/dDEv1rGGyLNs1ZnOSDDL29cwA7Q.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
-    "plot": "Arul (2004) official 5.1 surround sound video tracks and master musical cuts.",
-    "seasons": [
-      {
-        "season_number": 1,
-        "name": "5.1 Video Songs",
-        "episodes": [
-          {
-            "episode_number": 1,
-            "title": "Ottaiyanum Senja Thara",
-            "name": "Arul S01E01 - Ottaiyanum Senja Thara [1080p] [5.1].mkv",
-            "artist": "Hariharan & Srimathumitha",
-            "drive_url": "https://drive.google.com/file/d/11COe5kN83hoPb_g3BKXaAtuPtlFYOIEW/view?usp=drive_link",
-            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=11COe5kN83hoPb_g3BKXaAtuPtlFYOIEW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-            "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg"
-          },
-          {
-            "episode_number": 2,
-            "title": "Pathu Viral",
-            "name": "Arul S01E02 - Pathu Viral [1080p] [5.1].mkv",
-            "artist": "S.P. Balasubrahmanyam & Swarnalatha",
-            "drive_url": "https://drive.google.com/file/d/1RKdFX_vduGPV34tt4ePM3uUhD6cQ5dXZ/view?usp=drive_link",
-            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1RKdFX_vduGPV34tt4ePM3uUhD6cQ5dXZ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-            "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg"
-          },
-          {
-            "episode_number": 3,
-            "title": "Punnakunnu",
-            "name": "Arul S01E03 - Punnakunnu [1080p] [5.1].mkv",
-            "artist": "Tippu & Sriram Parthasarathy",
-            "drive_url": "https://drive.google.com/file/d/1vAhIyhtr-pZuBB8Rq94ZfQHUwVRbsckF/view?usp=drive_link",
-            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vAhIyhtr-pZuBB8Rq94ZfQHUwVRbsckF|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-            "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg"
-          },
-          {
-            "episode_number": 4,
-            "title": "Soodamani",
-            "name": "Arul S01E04 - Soodamani [1080p] [5.1].mkv",
-            "artist": "Ranjith & Pop Shalini",
-            "drive_url": "https://drive.google.com/file/d/1ibgpwt-phObURjpKvuj7jpI-lSDTfrf3/view?usp=drive_link",
-            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ibgpwt-phObURjpKvuj7jpI-lSDTfrf3|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-            "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg"
-          },
-          {
-            "episode_number": 5,
-            "title": "Ukkadathu Papadame",
-            "name": "Arul S01E05 - Ukkadathu Papadame [1080p] [5.1].mkv",
-            "artist": "Tippu, L. R. Eswari & Theni Kunjramma",
-            "drive_url": "https://drive.google.com/file/d/1LfpGC0gdOwujVMQUt82ZWQ5tF0peT0qW/view?usp=drive_link",
-            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1LfpGC0gdOwujVMQUt82ZWQ5tF0peT0qW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-            "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "title": "Leo",
-    "original_title": "லியோ",
-    "tmdb_id": 949229,
+    "id": "1wyGcJelIyXwu781UfWoUgv2ifUF53XMi",
+    "name": "Naa Ready - Leo (2023) [1080p 60FPS] [Dolby Atmos 5.1].mkv",
+    "title": "Naa Ready (Leo)",
+    "original_title": "Naa Ready",
+    "original_language": "ta",
+    "movie": "Leo",
+    "artist": "Anirudh Ravichander, Vijay & Asal Kolaar",
     "year": 2023,
-    "type": "series",
-    "total_episodes": 7,
+    "tmdb_id": 949229,
+    "rating": 7.5,
+    "genres": [
+      "Music Video",
+      "Action",
+      "5.1 Surround"
+    ],
+    "plot": "Leo (2023) - Naa Ready official 1080p 60FPS video song with Dolby Atmos 5.1 surround sound.",
     "poster": "https://image.tmdb.org/t/p/w500/2XUHC4lp3tDsgfFLFygNZ2x2Um9.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
-    "plot": "Leo (2023) 5.1 Dolby Atmos surround video tracks composed by Anirudh Ravichander.",
-    "seasons": [
-      {
-        "season_number": 1,
-        "name": "5.1 Video Songs",
-        "episodes": [
-          {
-            "episode_number": 1,
-            "title": "Naa Ready",
-            "name": "Leo S01E01 - Naa Ready [1080p 60FPS] [Dolby Atmos].mkv",
-            "artist": "Anirudh Ravichander, Vijay & Asal Kolaar",
-            "drive_url": "https://drive.google.com/file/d/1wyGcJelIyXwu781UfWoUgv2ifUF53XMi/view?usp=drive_link",
-            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1wyGcJelIyXwu781UfWoUgv2ifUF53XMi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-            "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg"
-          },
-          {
-            "episode_number": 2,
-            "title": "Anbenum",
-            "name": "Leo S01E02 - Anbenum [1080p 60FPS] [Dolby Atmos].mkv",
-            "artist": "Anirudh Ravichander & Lothika",
-            "drive_url": "https://drive.google.com/file/d/1NGHiSQ_qbJtALuKWPYU50CWS8f97z1Fi/view?usp=drive_link",
-            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1NGHiSQ_qbJtALuKWPYU50CWS8f97z1Fi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-            "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg"
-          },
-          {
-            "episode_number": 3,
-            "title": "Badass",
-            "name": "Leo S01E03 - Badass [1080p 60FPS] [Dolby Atmos].mkv",
-            "artist": "Anirudh Ravichander",
-            "drive_url": "https://drive.google.com/file/d/1S4g8eo6JuZ9Uf2jK9bMx3C9Sw-Z45QWt/view?usp=drive_link",
-            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1S4g8eo6JuZ9Uf2jK9bMx3C9Sw-Z45QWt|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-            "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg"
-          },
-          {
-            "episode_number": 4,
-            "title": "Ratata",
+    "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1wyGcJelIyXwu781UfWoUgv2ifUF53XMi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p FHD 60FPS",
+      "audio": "Dolby Atmos / 5.1 Surround",
+      "source": "WEB-DL",
+      "size": "524MB"
+    }
+  },
+  {
+    "id": "1NGHiSQ_qbJtALuKWPYU50CWS8f97z1Fi",
+    "name": "Anbenum - Leo (2023) [1080p 60FPS] [Dolby Atmos 5.1].mkv",
+    "title": "Anbenum (Leo)",
+    "original_title": "Anbenum",
+    "original_language": "ta",
+    "movie": "Leo",
+    "artist": "Anirudh Ravichander & Lothika",
+    "year": 2023,
+    "tmdb_id": 949229,
+    "rating": 7.5,
+    "genres": [
+      "Music Video",
+      "Melody",
+      "5.1 Surround"
+    ],
+    "plot": "Leo (2023) - Anbenum official 1080p 60FPS video song with Dolby Atmos 5.1 surround sound.",
+    "poster": "https://image.tmdb.org/t/p/w500/2XUHC4lp3tDsgfFLFygNZ2x2Um9.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+    "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1NGHiSQ_qbJtALuKWPYU50CWS8f97z1Fi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p FHD 60FPS",
+      "audio": "Dolby Atmos / 5.1 Surround",
+      "source": "WEB-DL",
+      "size": "331MB"
+    }
+  },
+  {
+    "id": "1S4g8eo6JuZ9Uf2jK9bMx3C9Sw-Z45QWt",
+    "name": "Badass - Leo (2023) [1080p 60FPS] [Dolby Atmos 5.1].mkv",
+    "title": "Badass (Leo)",
+    "original_title": "Badass",
+    "original_language": "ta",
+    "movie": "Leo",
+    "artist": "Anirudh Ravichander",
+    "year": 2023,
+    "tmdb_id": 949229,
+    "rating": 7.5,
+    "genres": [
+      "Music Video",
+      "Action",
+      "5.1 Surround"
+    ],
+    "plot": "Leo (2023) - Badass official 1080p 60FPS video song with Dolby Atmos 5.1 surround sound.",
+    "poster": "https://image.tmdb.org/t/p/w500/2XUHC4lp3tDsgfFLFygNZ2x2Um9.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+    "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1S4g8eo6JuZ9Uf2jK9bMx3C9Sw-Z45QWt|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p FHD 60FPS",
+      "audio": "Dolby Atmos / 5.1 Surround",
+      "source": "WEB-DL",
+      "size": "434MB"
+    }
+  },
+  {
+    "id": "19Ck-FmLL8HTCScTnldW0ZBlGVQSPnnHB",
+    "name": "Ratata - Leo (2023) [1080p 60FPS] [Dolby Atmos 5.1].mkv",
+    "title": "Ratata (Leo)",
+    "original_title": "Ratata",
+    "original_language": "ta",
+    "movie": "Leo",
+    "artist": "Anirudh Ravichander",
+    "year": 2023,
+    "tmdb_id": 949229,
+    "rating": 7.5,
+    "genres": [
+      "Music Video",
+      "Rap",
+      "5.1 Surround"
+    ],
+    "plot": "Leo (2023) - Ratata official 1080p 60FPS video song with Dolby Atmos 5.1 surround sound.",
+    "poster": "https://image.tmdb.org/t/p/w500/2XUHC4lp3tDsgfFLFygNZ2x2Um9.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+    "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=19Ck-FmLL8HTCScTnldW0ZBlGVQSPnnHB|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p FHD 60FPS",
+      "audio": "Dolby Atmos / 5.1 Surround",
+      "source": "WEB-DL",
+      "size": "206MB"
+    }
+  },
+  {
+    "id": "18zTZTBbrZNwh1pP2F97hzLpIc3sGzPxW",
+    "name": "Im Scared - Leo (2023) [1080p 60FPS] [Dolby Atmos 5.1].mkv",
+    "title": "Im Scared (Leo)",
+    "original_title": "Im Scared",
+    "original_language": "ta",
+    "movie": "Leo",
+    "artist": "Anirudh Ravichander",
+    "year": 2023,
+    "tmdb_id": 949229,
+    "rating": 7.5,
+    "genres": [
+      "Music Video",
+      "5.1 Surround"
+    ],
+    "plot": "Leo (2023) - Im Scared official 1080p 60FPS video song with Dolby Atmos 5.1 surround sound.",
+    "poster": "https://image.tmdb.org/t/p/w500/2XUHC4lp3tDsgfFLFygNZ2x2Um9.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+    "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=18zTZTBbrZNwh1pP2F97hzLpIc3sGzPxW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p FHD 60FPS",
+      "audio": "Dolby Atmos / 5.1 Surround",
+      "source": "WEB-DL",
+      "size": "115MB"
+    }
+  },
+  {
+    "id": "1UQfiqfYgis7kUQLwMTdzztZugWz9XpyZ",
+    "name": "Karu Karu Karupayi - Leo (2023) [1080p] [5.1 Surround].mkv",
+    "title": "Karu Karu Karupayi (Leo)",
+    "original_title": "Karu Karu Karupayi",
+    "original_language": "ta",
+    "movie": "Leo",
+    "artist": "Deva, Unni Menon, Anuradha Sriram (Leo Version)",
+    "year": 2023,
+    "tmdb_id": 949229,
+    "rating": 7.5,
+    "genres": [
+      "Music Video",
+      "Folk",
+      "5.1 Surround"
+    ],
+    "plot": "Leo (2023) - Karu Karu Karupayi retro movie cut video song with 5.1 surround sound.",
+    "poster": "https://image.tmdb.org/t/p/w500/2XUHC4lp3tDsgfFLFygNZ2x2Um9.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+    "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1UQfiqfYgis7kUQLwMTdzztZugWz9XpyZ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p FHD",
+      "audio": "5.1 Surround",
+      "source": "WEB-DL",
+      "size": "436MB"
+    }
+  },
+  {
+    "id": "1KK9MfcCJjcfbdSjSBTMxi9cvXyX4k86z",
+    "name": "Villain Yaaru - Leo (2023) [1080p] [5.1 Surround].mkv",
+    "title": "Villain Yaaru (Leo)",
+    "original_title": "Villain Yaaru",
+    "original_language": "ta",
+    "movie": "Leo",
+    "artist": "Anirudh Ravichander & Shakthisree Gopalan",
+    "year": 2023,
+    "tmdb_id": 949229,
+    "rating": 7.5,
+    "genres": [
+      "Music Video",
+      "5.1 Surround"
+    ],
+    "plot": "Leo (2023) - Villain Yaaru official video track with 5.1 surround sound.",
+    "poster": "https://image.tmdb.org/t/p/w500/2XUHC4lp3tDsgfFLFygNZ2x2Um9.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+    "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1KK9MfcCJjcfbdSjSBTMxi9cvXyX4k86z|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p FHD",
+      "audio": "5.1 Surround",
+      "source": "WEB-DL",
+      "size": "250MB"
+    }
+  },
+  {
+    "id": "11COe5kN83hoPb_g3BKXaAtuPtlFYOIEW",
+    "name": "Ottaiyanum Senja Thara - Arul (2004) [1080p] [5.1].mkv",
+    "title": "Ottaiyanum Senja Thara (Arul)",
+    "original_title": "Ottaiyanum Senja Thara",
+    "original_language": "ta",
+    "movie": "Arul",
+    "artist": "Hariharan & Srimathumitha",
+    "year": 2004,
+    "tmdb_id": 63674,
+    "rating": 7.0,
+    "genres": [
+      "Music Video",
+      "Melody",
+      "5.1 Surround"
+    ],
+    "plot": "Arul (2004) - Ottaiyanum Senja Thara 5.1 surround video song composed by Harris Jayaraj.",
+    "poster": "https://image.tmdb.org/t/p/w500/dDEv1rGGyLNs1ZnOSDDL29cwA7Q.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+    "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=11COe5kN83hoPb_g3BKXaAtuPtlFYOIEW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p FHD",
+      "audio": "5.1 Surround",
+      "source": "BLURAY",
+      "size": "280MB"
+    }
+  },
+  {
+    "id": "1RKdFX_vduGPV34tt4ePM3uUhD6cQ5dXZ",
+    "name": "Pathu Viral - Arul (2004) [1080p] [5.1].mkv",
+    "title": "Pathu Viral (Arul)",
+    "original_title": "Pathu Viral",
+    "original_language": "ta",
+    "movie": "Arul",
+    "artist": "S.P. Balasubrahmanyam & Swarnalatha",
+    "year": 2004,
+    "tmdb_id": 63674,
+    "rating": 7.0,
+    "genres": [
+      "Music Video",
+      "5.1 Surround"
+    ],
+    "plot": "Arul (2004) - Pathu Viral 5.1 surround video song composed by Harris Jayaraj.",
+    "poster": "https://image.tmdb.org/t/p/w500/dDEv1rGGyLNs1ZnOSDDL29cwA7Q.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+    "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1RKdFX_vduGPV34tt4ePM3uUhD6cQ5dXZ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p FHD",
+      "audio": "5.1 Surround",
+      "source": "BLURAY",
+      "size": "260MB"
+    }
+  },
+  {
+    "id": "1vAhIyhtr-pZuBB8Rq94ZfQHUwVRbsckF",
+    "name": "Punnakunnu - Arul (2004) [1080p] [5.1].mkv",
+    "title": "Punnakunnu (Arul)",
+    "original_title": "Punnakunnu",
+    "original_language": "ta",
+    "movie": "Arul",
+    "artist": "Tippu & Sriram Parthasarathy",
+    "year": 2004,
+    "tmdb_id": 63674,
+    "rating": 7.0,
+    "genres": [
+      "Music Video",
+      "5.1 Surround"
+    ],
+    "plot": "Arul (2004) - Punnakunnu 5.1 surround video song composed by Harris Jayaraj.",
+    "poster": "https://image.tmdb.org/t/p/w500/dDEv1rGGyLNs1ZnOSDDL29cwA7Q.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+    "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vAhIyhtr-pZuBB8Rq94ZfQHUwVRbsckF|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p FHD",
+      "audio": "5.1 Surround",
+      "source": "BLURAY",
+      "size": "240MB"
+    }
+  },
+  {
+    "id": "1ibgpwt-phObURjpKvuj7jpI-lSDTfrf3",
+    "name": "Soodamani - Arul (2004) [1080p] [5.1].mkv",
+    "title": "Soodamani (Arul)",
+    "original_title": "Soodamani",
+    "original_language": "ta",
+    "movie": "Arul",
+    "artist": "Ranjith & Pop Shalini",
+    "year": 2004,
+    "tmdb_id": 63674,
+    "rating": 7.0,
+    "genres": [
+      "Music Video",
+      "Kuthu",
+      "5.1 Surround"
+    ],
+    "plot": "Arul (2004) - Soodamani fast beat kuthu video song with 5.1 audio.",
+    "poster": "https://image.tmdb.org/t/p/w500/dDEv1rGGyLNs1ZnOSDDL29cwA7Q.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+    "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ibgpwt-phObURjpKvuj7jpI-lSDTfrf3|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p FHD",
+      "audio": "5.1 Surround",
+      "source": "BLURAY",
+      "size": "270MB"
+    }
+  },
+  {
+    "id": "1LfpGC0gdOwujVMQUt82ZWQ5tF0peT0qW",
+    "name": "Ukkadathu Papadame - Arul (2004) [1080p] [5.1].mkv",
+    "title": "Ukkadathu Papadame (Arul)",
+    "original_title": "Ukkadathu Papadame",
+    "original_language": "ta",
+    "movie": "Arul",
+    "artist": "Tippu, L. R. Eswari & Theni Kunjramma",
+    "year": 2004,
+    "tmdb_id": 63674,
+    "rating": 7.0,
+    "genres": [
+      "Music Video",
+      "5.1 Surround"
+    ],
+    "plot": "Arul (2004) - Ukkadathu Papadame 5.1 surround video song composed by Harris Jayaraj.",
+    "poster": "https://image.tmdb.org/t/p/w500/dDEv1rGGyLNs1ZnOSDDL29cwA7Q.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+    "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1LfpGC0gdOwujVMQUt82ZWQ5tF0peT0qW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p FHD",
+      "audio": "5.1 Surround",
+      "source": "BLURAY",
+      "size": "250MB"
+    }
+  },
+  {
+    "id": "1AAys6JpxKj78ii6oyKQOK2l1kKR9Zjhd",
+    "name": "Venpaniye - Ko (2011) [1080p] [5.1 Surround].mkv",
+    "title": "Venpaniye (Ko)",
+    "original_title": "Venpaniye",
+    "original_language": "ta",
+    "movie": "Ko",
+    "artist": "Sriram Parthasarathy, Harris Jayaraj & Bombay Jayashri",
+    "year": 2011,
+    "tmdb_id": 63654,
+    "rating": 7.1,
+    "genres": [
+      "Music Video",
+      "Melody",
+      "5.1 Surround"
+    ],
+    "plot": "Ko (2011) - Venpaniye classic video song in 1080p with 5.1 audio.",
+    "poster": "https://image.tmdb.org/t/p/w500/oe91RGQkLROh0rTNoStnse1p0qw.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/19pGxP79ciHgdQ20bzc0KCM1Ogg.jpg",
+    "thumbnail": "https://image.tmdb.org/t/p/w780/19pGxP79ciHgdQ20bzc0KCM1Ogg.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1AAys6JpxKj78ii6oyKQOK2l1kKR9Zjhd|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p FHD",
+      "audio": "5.1 Surround",
+      "source": "BLURAY",
+      "size": "350MB"
+    }
+  }
+]
             "name": "Leo S01E04 - Ratata [1080p 60FPS] [Dolby Atmos].mkv",
             "artist": "Anirudh Ravichander",
             "drive_url": "https://drive.google.com/file/d/19Ck-FmLL8HTCScTnldW0ZBlGVQSPnnHB/view?usp=drive_link",
