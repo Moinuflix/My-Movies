@@ -1,126 +1,175 @@
 [
   {
-    "movie": "Arul",
+    "title": "Arul",
+    "original_title": "அருள்",
     "tmdb_id": 63674,
-    "year": "2004",
+    "year": 2004,
+    "type": "series",
+    "total_episodes": 5,
     "poster": "https://image.tmdb.org/t/p/w500/dDEv1rGGyLNs1ZnOSDDL29cwA7Q.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
-    "songs": [
+    "plot": "Arul (2004) official 5.1 surround sound video tracks and master musical cuts.",
+    "seasons": [
       {
-        "title": "Ottaiyanum Senja Thara",
-        "artist": "Hariharan & Srimathumitha",
-        "drive_url": "https://drive.google.com/file/d/11COe5kN83hoPb_g3BKXaAtuPtlFYOIEW/view?usp=drive_link",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=11COe5kN83hoPb_g3BKXaAtuPtlFYOIEW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg"
-      },
-      {
-        "title": "Pathu Viral",
-        "artist": "S.P. Balasubrahmanyam & Swarnalatha",
-        "drive_url": "https://drive.google.com/file/d/1RKdFX_vduGPV34tt4ePM3uUhD6cQ5dXZ/view?usp=drive_link",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1RKdFX_vduGPV34tt4ePM3uUhD6cQ5dXZ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg"
-      },
-      {
-        "title": "Punnakunnu",
-        "artist": "Tippu & Sriram Parthasarathy",
-        "drive_url": "https://drive.google.com/file/d/1vAhIyhtr-pZuBB8Rq94ZfQHUwVRbsckF/view?usp=drive_link",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vAhIyhtr-pZuBB8Rq94ZfQHUwVRbsckF|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg"
-      },
-      {
-        "title": "Soodamani",
-        "artist": "Ranjith & Pop Shalini",
-        "drive_url": "https://drive.google.com/file/d/1ibgpwt-phObURjpKvuj7jpI-lSDTfrf3/view?usp=drive_link",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ibgpwt-phObURjpKvuj7jpI-lSDTfrf3|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg"
-      },
-      {
-        "title": "Ukkadathu Papadame",
-        "artist": "Tippu, L. R. Eswari & Theni Kunjramma",
-        "drive_url": "https://drive.google.com/file/d/1LfpGC0gdOwujVMQUt82ZWQ5tF0peT0qW/view?usp=drive_link",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1LfpGC0gdOwujVMQUt82ZWQ5tF0peT0qW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg"
+        "season_number": 1,
+        "name": "5.1 Video Songs",
+        "episodes": [
+          {
+            "episode_number": 1,
+            "title": "Ottaiyanum Senja Thara",
+            "name": "Arul S01E01 - Ottaiyanum Senja Thara [1080p] [5.1].mkv",
+            "artist": "Hariharan & Srimathumitha",
+            "drive_url": "https://drive.google.com/file/d/11COe5kN83hoPb_g3BKXaAtuPtlFYOIEW/view?usp=drive_link",
+            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=11COe5kN83hoPb_g3BKXaAtuPtlFYOIEW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+            "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg"
+          },
+          {
+            "episode_number": 2,
+            "title": "Pathu Viral",
+            "name": "Arul S01E02 - Pathu Viral [1080p] [5.1].mkv",
+            "artist": "S.P. Balasubrahmanyam & Swarnalatha",
+            "drive_url": "https://drive.google.com/file/d/1RKdFX_vduGPV34tt4ePM3uUhD6cQ5dXZ/view?usp=drive_link",
+            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1RKdFX_vduGPV34tt4ePM3uUhD6cQ5dXZ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+            "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg"
+          },
+          {
+            "episode_number": 3,
+            "title": "Punnakunnu",
+            "name": "Arul S01E03 - Punnakunnu [1080p] [5.1].mkv",
+            "artist": "Tippu & Sriram Parthasarathy",
+            "drive_url": "https://drive.google.com/file/d/1vAhIyhtr-pZuBB8Rq94ZfQHUwVRbsckF/view?usp=drive_link",
+            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vAhIyhtr-pZuBB8Rq94ZfQHUwVRbsckF|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+            "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg"
+          },
+          {
+            "episode_number": 4,
+            "title": "Soodamani",
+            "name": "Arul S01E04 - Soodamani [1080p] [5.1].mkv",
+            "artist": "Ranjith & Pop Shalini",
+            "drive_url": "https://drive.google.com/file/d/1ibgpwt-phObURjpKvuj7jpI-lSDTfrf3/view?usp=drive_link",
+            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ibgpwt-phObURjpKvuj7jpI-lSDTfrf3|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+            "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg"
+          },
+          {
+            "episode_number": 5,
+            "title": "Ukkadathu Papadame",
+            "name": "Arul S01E05 - Ukkadathu Papadame [1080p] [5.1].mkv",
+            "artist": "Tippu, L. R. Eswari & Theni Kunjramma",
+            "drive_url": "https://drive.google.com/file/d/1LfpGC0gdOwujVMQUt82ZWQ5tF0peT0qW/view?usp=drive_link",
+            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1LfpGC0gdOwujVMQUt82ZWQ5tF0peT0qW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+            "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg"
+          }
+        ]
       }
     ]
   },
   {
-    "movie": "Leo",
+    "title": "Leo",
+    "original_title": "லியோ",
     "tmdb_id": 949229,
-    "year": "2023",
+    "year": 2023,
+    "type": "series",
+    "total_episodes": 7,
     "poster": "https://image.tmdb.org/t/p/w500/2XUHC4lp3tDsgfFLFygNZ2x2Um9.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
-    "songs": [
+    "plot": "Leo (2023) 5.1 Dolby Atmos surround video tracks composed by Anirudh Ravichander.",
+    "seasons": [
       {
-        "title": "Naa Ready",
-        "artist": "Anirudh Ravichander, Vijay & Asal Kolaar",
-        "drive_url": "https://drive.google.com/file/d/1wyGcJelIyXwu781UfWoUgv2ifUF53XMi/view?usp=drive_link",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1wyGcJelIyXwu781UfWoUgv2ifUF53XMi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg"
-      },
-      {
-        "title": "Anbenum",
-        "artist": "Anirudh Ravichander & Lothika",
-        "drive_url": "https://drive.google.com/file/d/1NGHiSQ_qbJtALuKWPYU50CWS8f97z1Fi/view?usp=drive_link",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1NGHiSQ_qbJtALuKWPYU50CWS8f97z1Fi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg"
-      },
-      {
-        "title": "Badass",
-        "artist": "Anirudh Ravichander",
-        "drive_url": "https://drive.google.com/file/d/1S4g8eo6JuZ9Uf2jK9bMx3C9Sw-Z45QWt/view?usp=drive_link",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1S4g8eo6JuZ9Uf2jK9bMx3C9Sw-Z45QWt|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg"
-      },
-      {
-        "title": "Ratata",
-        "artist": "Anirudh Ravichander",
-        "drive_url": "https://drive.google.com/file/d/19Ck-FmLL8HTCScTnldW0ZBlGVQSPnnHB/view?usp=drive_link",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=19Ck-FmLL8HTCScTnldW0ZBlGVQSPnnHB|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg"
-      },
-      {
-        "title": "Im Scared",
-        "artist": "Anirudh Ravichander",
-        "drive_url": "https://drive.google.com/file/d/18zTZTBbrZNwh1pP2F97hzLpIc3sGzPxW/view?usp=drive_link",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=18zTZTBbrZNwh1pP2F97hzLpIc3sGzPxW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg"
-      },
-      {
-        "title": "Karu Karu Karupayi",
-        "artist": "Deva, Unni Menon, Anuradha Sriram (Leo Version)",
-        "drive_url": "https://drive.google.com/file/d/1UQfiqfYgis7kUQLwMTdzztZugWz9XpyZ/view?usp=drive_link",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1UQfiqfYgis7kUQLwMTdzztZugWz9XpyZ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg"
-      },
-      {
-        "title": "Thamarai Poovukum",
-        "artist": "Vidyasagar, Sujatha (Leo Version)",
-        "drive_url": "",
-        "stream_url": "",
-        "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg"
-      },
-      {
-        "title": "Villain Yaaru",
-        "artist": "Anirudh Ravichander & Shakthisree Gopalan",
-        "drive_url": "https://drive.google.com/file/d/1KK9MfcCJjcfbdSjSBTMxi9cvXyX4k86z/view?usp=drive_link",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1KK9MfcCJjcfbdSjSBTMxi9cvXyX4k86z|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg"
+        "season_number": 1,
+        "name": "5.1 Video Songs",
+        "episodes": [
+          {
+            "episode_number": 1,
+            "title": "Naa Ready",
+            "name": "Leo S01E01 - Naa Ready [1080p 60FPS] [Dolby Atmos].mkv",
+            "artist": "Anirudh Ravichander, Vijay & Asal Kolaar",
+            "drive_url": "https://drive.google.com/file/d/1wyGcJelIyXwu781UfWoUgv2ifUF53XMi/view?usp=drive_link",
+            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1wyGcJelIyXwu781UfWoUgv2ifUF53XMi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+            "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg"
+          },
+          {
+            "episode_number": 2,
+            "title": "Anbenum",
+            "name": "Leo S01E02 - Anbenum [1080p 60FPS] [Dolby Atmos].mkv",
+            "artist": "Anirudh Ravichander & Lothika",
+            "drive_url": "https://drive.google.com/file/d/1NGHiSQ_qbJtALuKWPYU50CWS8f97z1Fi/view?usp=drive_link",
+            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1NGHiSQ_qbJtALuKWPYU50CWS8f97z1Fi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+            "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg"
+          },
+          {
+            "episode_number": 3,
+            "title": "Badass",
+            "name": "Leo S01E03 - Badass [1080p 60FPS] [Dolby Atmos].mkv",
+            "artist": "Anirudh Ravichander",
+            "drive_url": "https://drive.google.com/file/d/1S4g8eo6JuZ9Uf2jK9bMx3C9Sw-Z45QWt/view?usp=drive_link",
+            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1S4g8eo6JuZ9Uf2jK9bMx3C9Sw-Z45QWt|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+            "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg"
+          },
+          {
+            "episode_number": 4,
+            "title": "Ratata",
+            "name": "Leo S01E04 - Ratata [1080p 60FPS] [Dolby Atmos].mkv",
+            "artist": "Anirudh Ravichander",
+            "drive_url": "https://drive.google.com/file/d/19Ck-FmLL8HTCScTnldW0ZBlGVQSPnnHB/view?usp=drive_link",
+            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=19Ck-FmLL8HTCScTnldW0ZBlGVQSPnnHB|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+            "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg"
+          },
+          {
+            "episode_number": 5,
+            "title": "Im Scared",
+            "name": "Leo S01E05 - Im Scared [1080p 60FPS] [Dolby Atmos].mkv",
+            "artist": "Anirudh Ravichander",
+            "drive_url": "https://drive.google.com/file/d/18zTZTBbrZNwh1pP2F97hzLpIc3sGzPxW/view?usp=drive_link",
+            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=18zTZTBbrZNwh1pP2F97hzLpIc3sGzPxW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+            "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg"
+          },
+          {
+            "episode_number": 6,
+            "title": "Karu Karu Karupayi",
+            "name": "Leo S01E06 - Karu Karu Karupayi [1080p] [5.1].mkv",
+            "artist": "Deva, Unni Menon, Anuradha Sriram (Leo Version)",
+            "drive_url": "https://drive.google.com/file/d/1UQfiqfYgis7kUQLwMTdzztZugWz9XpyZ/view?usp=drive_link",
+            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1UQfiqfYgis7kUQLwMTdzztZugWz9XpyZ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+            "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg"
+          },
+          {
+            "episode_number": 7,
+            "title": "Villain Yaaru",
+            "name": "Leo S01E07 - Villain Yaaru [1080p] [5.1].mkv",
+            "artist": "Anirudh Ravichander & Shakthisree Gopalan",
+            "drive_url": "https://drive.google.com/file/d/1KK9MfcCJjcfbdSjSBTMxi9cvXyX4k86z/view?usp=drive_link",
+            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1KK9MfcCJjcfbdSjSBTMxi9cvXyX4k86z|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+            "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg"
+          }
+        ]
       }
     ]
   },
   {
-    "movie": "Ko",
+    "title": "Ko",
+    "original_title": "கோ",
     "tmdb_id": 63654,
-    "year": "2011",
+    "year": 2011,
+    "type": "series",
+    "total_episodes": 1,
     "poster": "https://image.tmdb.org/t/p/w500/oe91RGQkLROh0rTNoStnse1p0qw.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/19pGxP79ciHgdQ20bzc0KCM1Ogg.jpg",
-    "songs": [
+    "plot": "Ko (2011) high-definition video songs composed by Harris Jayaraj.",
+    "seasons": [
       {
-        "title": "Venpaniye",
-        "artist": "Sriram Parthasarathy, Harris Jayaraj & Bombay Jayashri",
-        "drive_url": "https://drive.google.com/file/d/1AAys6JpxKj78ii6oyKQOK2l1kKR9Zjhd/view?usp=drive_link",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1AAys6JpxKj78ii6oyKQOK2l1kKR9Zjhd|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "thumbnail": "https://image.tmdb.org/t/p/w780/19pGxP79ciHgdQ20bzc0KCM1Ogg.jpg"
+        "season_number": 1,
+        "name": "5.1 Video Songs",
+        "episodes": [
+          {
+            "episode_number": 1,
+            "title": "Venpaniye",
+            "name": "Ko S01E01 - Venpaniye [1080p] [5.1].mkv",
+            "artist": "Sriram Parthasarathy, Harris Jayaraj & Bombay Jayashri",
+            "drive_url": "https://drive.google.com/file/d/1AAys6JpxKj78ii6oyKQOK2l1kKR9Zjhd/view?usp=drive_link",
+            "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1AAys6JpxKj78ii6oyKQOK2l1kKR9Zjhd|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+            "thumbnail": "https://image.tmdb.org/t/p/w780/19pGxP79ciHgdQ20bzc0KCM1Ogg.jpg"
+          }
+        ]
       }
     ]
   }
