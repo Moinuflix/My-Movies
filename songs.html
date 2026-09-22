@@ -1,1214 +1,1370 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MoinuFlix — 5.1 Surround &amp; Soundtrack Studio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Songs Manager · MoinuFlix</title>
   <style>
+    /* =========================================================
+       MoinuFlix — Songs Manager
+       Premium cinematic dark UI, matte black + gold accent
+       ========================================================= */
+
     :root {
-      --bg-matte: #0b0d10;
-      --bg-surface: #12151a;
-      --bg-card: #181c24;
-      --bg-card-hover: #1f242e;
-      --bg-input: #0e1116;
-
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-focus: rgba(212, 175, 55, 0.5);
-
-      --text-primary: #f8fafc;
-      --text-secondary: #94a3b8;
-      --text-muted: #64748b;
-
-      --accent-gold: #d4af37;
-      --accent-gold-soft: rgba(212, 175, 55, 0.15);
-      --status-success: #10b981;
-      --status-success-soft: rgba(16, 185, 129, 0.15);
-      --status-error: #f59e0b;
-      --status-error-soft: rgba(245, 158, 11, 0.15);
-
-      --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      --radius-sm: 8px;
+      --bg: #0a0a0a;
+      --bg-elevated: #131313;
+      --card: #161616;
+      --card-hover: #1c1c1c;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.14);
+      --text-primary: #f5f5f3;
+      --text-secondary: #9a9a94;
+      --text-tertiary: #6b6b66;
+      --gold: #cfa15a;
+      --gold-soft: rgba(207, 161, 90, 0.14);
+      --gold-border: rgba(207, 161, 90, 0.35);
+      --success: #6fae7a;
+      --success-soft: rgba(111, 174, 122, 0.14);
+      --error: #c96a5a;
+      --error-soft: rgba(201, 106, 90, 0.14);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      --radius-lg: 16px;
       --radius-md: 12px;
-      --radius-lg: 18px;
-
-      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.35);
-      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
-      --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      --radius-sm: 8px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
     }
 
     body {
-      background-color: var(--bg-matte);
+      margin: 0;
+      background: var(--bg);
       color: var(--text-primary);
-      font-family: var(--font-family);
-      line-height: 1.5;
-      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
     }
 
-    /* Top Bar */
-    .app-header {
-      border-bottom: 1px solid var(--border-subtle);
-      background: rgba(11, 13, 16, 0.85);
-      backdrop-filter: blur(16px);
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    /* -------------------- Layout -------------------- */
+    .page {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    .section {
+      margin-top: 28px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin: 0 0 12px;
+      letter-spacing: 0.01em;
+    }
+
+    /* -------------------- Header -------------------- */
+    .site-header {
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 40;
+      background: rgba(10, 10, 10, 0.86);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
     }
 
     .header-inner {
-      max-width: 1280px;
+      max-width: 880px;
       margin: 0 auto;
-      padding: 1rem 1.5rem;
+      padding: 14px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 16px;
     }
 
     .brand {
       display: flex;
-      align-items: center;
-      gap: 0.65rem;
+      flex-direction: column;
+      line-height: 1.15;
     }
 
-    .brand-badge {
-      background: var(--accent-gold-soft);
-      color: var(--accent-gold);
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      font-size: 0.65rem;
+    .brand-name {
+      font-size: 17px;
       font-weight: 700;
-      letter-spacing: 1px;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-
-    .brand-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: -0.3px;
       color: var(--text-primary);
+    }
+
+    .brand-name span {
+      color: var(--gold);
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      margin-top: 2px;
     }
 
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 12px;
     }
 
-    .btn-token {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+    .main-nav {
+      display: flex;
+      gap: 4px;
+    }
+
+    .main-nav a {
+      font-size: 13px;
       color: var(--text-secondary);
-      padding: 0.4rem 0.8rem;
+      padding: 8px 12px;
       border-radius: var(--radius-sm);
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: var(--transition);
+      transition: color 0.2s var(--ease), background 0.2s var(--ease);
     }
 
-    .btn-token:hover {
+    .main-nav a:hover {
       color: var(--text-primary);
-      border-color: rgba(255, 255, 255, 0.2);
+      background: var(--card);
     }
 
-    .main-container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 6rem;
-    }
-
-    /* Search Section */
-    .search-section {
-      margin-bottom: 2.5rem;
-    }
-
-    .search-wrap {
-      position: relative;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    .search-label {
-      display: block;
-      font-size: 0.85rem;
+    .main-nav a.active {
+      color: var(--bg);
+      background: var(--gold);
       font-weight: 600;
-      color: var(--text-secondary);
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.3px;
     }
 
-    .search-input-box {
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      width: 38px;
+      height: 38px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* -------------------- Cards -------------------- */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .panel {
+      padding: 18px;
+    }
+
+    /* -------------------- Search -------------------- */
+    .search-row {
       position: relative;
       display: flex;
-      align-items: center;
+      gap: 10px;
     }
 
-    .search-icon {
-      position: absolute;
-      left: 1rem;
-      width: 1.15rem;
-      height: 1.15rem;
-      color: var(--text-muted);
-      pointer-events: none;
-    }
-
-    .search-input-box input {
+    .input,
+    .text-input {
       width: 100%;
-      background-color: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 1rem 3rem 1rem 2.85rem;
-      font-family: inherit;
-      font-size: 1rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-strong);
       color: var(--text-primary);
+      border-radius: var(--radius-md);
+      padding: 13px 14px;
+      font-size: 14px;
+      transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+    }
+
+    .input:focus,
+    .text-input:focus {
       outline: none;
-      transition: var(--transition);
+      border-color: var(--gold-border);
+      background: #171512;
     }
 
-    .search-input-box input:focus {
-      border-color: var(--border-focus);
-      background-color: var(--bg-card);
-      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.08);
+    .input::placeholder,
+    .text-input::placeholder {
+      color: var(--text-tertiary);
     }
 
-    .clear-btn {
+    .search-results {
       position: absolute;
-      right: 0.85rem;
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-size: 1.25rem;
-      cursor: pointer;
-      padding: 0.25rem;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow);
+      max-height: 340px;
+      overflow-y: auto;
+      z-index: 30;
       display: none;
     }
 
-    .clear-btn:hover { color: var(--text-primary); }
-
-    .autocomplete-dropdown {
-      position: absolute;
-      top: calc(100% + 6px);
-      left: 0;
-      right: 0;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-lg);
-      max-height: 380px;
-      overflow-y: auto;
-      z-index: 100;
+    .search-results.open {
+      display: block;
     }
 
-    .autocomplete-item {
+    .search-result-item {
       display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 0.75rem 1rem;
+      gap: 12px;
+      padding: 10px 12px;
       cursor: pointer;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-      transition: var(--transition);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s var(--ease);
     }
 
-    .autocomplete-item:last-child { border-bottom: none; }
-    .autocomplete-item:hover { background: var(--bg-card-hover); }
+    .search-result-item:last-child {
+      border-bottom: none;
+    }
 
-    .item-thumb {
+    .search-result-item:hover {
+      background: var(--card-hover);
+    }
+
+    .search-result-poster {
       width: 38px;
       height: 56px;
-      background: #000;
-      border-radius: 4px;
+      border-radius: 6px;
       object-fit: cover;
+      background: #222;
       flex-shrink: 0;
     }
 
-    .item-info {
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
+    .search-result-meta {
+      min-width: 0;
     }
 
-    .item-title {
-      font-size: 0.95rem;
+    .search-result-title {
+      font-size: 13.5px;
       font-weight: 600;
+      color: var(--text-primary);
       white-space: nowrap;
+      overflow: hidden;
       text-overflow: ellipsis;
-      overflow: hidden;
     }
 
-    .item-meta {
-      font-size: 0.8rem;
-      color: var(--text-muted);
+    .search-result-year {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      margin-top: 2px;
     }
 
-    /* Cinematic Hero */
-    .movie-hero {
-      position: relative;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid var(--border-subtle);
-      background-color: var(--bg-surface);
-      min-height: 380px;
+    .search-empty-state {
+      padding: 14px 16px;
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    /* -------------------- Selected movie -------------------- */
+    .movie-summary {
+      display: none;
+      gap: 16px;
+      padding: 18px;
+    }
+
+    .movie-summary.visible {
       display: flex;
-      align-items: flex-end;
-      padding: 2.5rem;
-      margin-bottom: 3rem;
     }
 
-    .hero-backdrop {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center top;
-      filter: brightness(0.35) saturate(1.1);
-      transform: scale(1.02);
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(11, 13, 16, 0.2) 0%, rgba(11, 13, 16, 0.95) 90%);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      gap: 2rem;
-      align-items: flex-end;
-      max-width: 100%;
-    }
-
-    .hero-poster-wrap {
-      width: 150px;
-      height: 225px;
+    .movie-summary-poster {
+      width: 92px;
+      height: 138px;
       border-radius: var(--radius-md);
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-      flex-shrink: 0;
-      background-color: #000;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .hero-poster {
-      width: 100%;
-      height: 100%;
       object-fit: cover;
+      background: #1e1e1e;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
     }
 
-    .hero-details {
+    .movie-summary-body {
+      min-width: 0;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 6px;
     }
 
-    .hero-meta-row {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-    }
-
-    .pill {
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.25rem 0.6rem;
-      border-radius: 4px;
-    }
-
-    .pill-year {
-      background: rgba(255, 255, 255, 0.1);
+    .movie-summary-title {
+      font-size: 19px;
+      font-weight: 700;
       color: var(--text-primary);
     }
 
-    .pill-rating {
-      background: var(--accent-gold-soft);
-      color: var(--accent-gold);
-      border: 1px solid rgba(212, 175, 55, 0.3);
-    }
-
-    .pill-id {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-muted);
-    }
-
-    .hero-title {
-      font-size: 2.25rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      line-height: 1.15;
-    }
-
-    .hero-overview {
-      font-size: 0.92rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      max-width: 780px;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    /* Songs Section */
-    .songs-section-header {
+    .movie-summary-grid {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border-subtle);
-      padding-bottom: 1.25rem;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 6px 14px;
+      margin-top: 2px;
     }
 
-    .section-title {
-      font-size: 1.25rem;
-      font-weight: 700;
+    .meta-chip {
+      font-size: 12px;
+      color: var(--text-secondary);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      padding: 4px 9px;
+      border-radius: 999px;
     }
 
-    .section-subtitle {
-      font-size: 0.85rem;
-      color: var(--text-muted);
+    .meta-chip.gold {
+      color: var(--gold);
+      border-color: var(--gold-border);
+      background: var(--gold-soft);
     }
 
-    .songs-list {
+    /* -------------------- Empty / status states -------------------- */
+    .state-block {
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 13.5px;
+    }
+
+    .state-block .state-icon {
+      font-size: 22px;
+      margin-bottom: 10px;
+      opacity: 0.7;
+    }
+
+    .state-block.error {
+      color: var(--error);
+    }
+
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid var(--border-strong);
+      border-top-color: var(--gold);
+      animation: spin 0.7s linear infinite;
+      display: inline-block;
+      vertical-align: -3px;
+      margin-right: 8px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* -------------------- Song list -------------------- */
+    .song-list {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 10px;
     }
 
     .song-card {
-      background-color: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 1.15rem 1.5rem;
       display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      transition: var(--transition);
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px;
+      transition: border-color 0.2s var(--ease);
     }
 
     .song-card:hover {
-      border-color: rgba(255, 255, 255, 0.15);
-      background-color: var(--bg-card);
+      border-color: var(--border-strong);
     }
 
     .song-index {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--accent-gold);
-      min-width: 28px;
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      color: var(--text-tertiary);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .song-title-wrap {
-      width: 250px;
-      flex-shrink: 0;
+    .song-body {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .song-title-row {
+      display: flex;
+      flex-direction: column;
     }
 
     .song-title {
-      font-size: 0.98rem;
+      font-size: 15px;
       font-weight: 600;
       color: var(--text-primary);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .song-artist {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      margin-top: 1px;
     }
 
-    .song-input-wrap {
+    .song-link-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .song-link-input {
       flex: 1;
+      min-width: 0;
     }
 
-    .song-input-wrap input {
-      width: 100%;
-      background-color: var(--bg-input);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      padding: 0.65rem 0.85rem;
-      color: var(--text-primary);
-      font-family: inherit;
-      font-size: 0.85rem;
-      outline: none;
-      transition: var(--transition);
-    }
-
-    .song-input-wrap input:focus {
-      border-color: var(--border-focus);
-    }
-
-    .song-input-wrap input.invalid {
-      border-color: var(--status-error);
-      background-color: var(--status-error-soft);
-    }
-
-    .song-actions {
+    .song-footer {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      flex-shrink: 0;
+      justify-content: space-between;
+      gap: 10px;
     }
 
-    .song-status-pill {
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.35rem 0.65rem;
-      border-radius: 4px;
-      background: transparent;
-      color: var(--text-muted);
-    }
-
-    .song-status-pill.saved {
-      background: var(--status-success-soft);
-      color: var(--status-success);
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
+    .song-status {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.65rem 1.1rem;
+      gap: 5px;
+    }
+
+    .song-status.saved {
+      color: var(--success);
+    }
+
+    .song-status.unsaved {
+      color: var(--text-tertiary);
+    }
+
+    .song-status.error {
+      color: var(--error);
+    }
+
+    /* -------------------- Buttons -------------------- */
+    .btn {
+      border: 1px solid var(--border-strong);
+      background: var(--bg-elevated);
+      color: var(--text-primary);
       border-radius: var(--radius-sm);
-      font-family: inherit;
-      font-size: 0.85rem;
+      padding: 10px 16px;
+      font-size: 13px;
       font-weight: 600;
       cursor: pointer;
-      border: 1px solid transparent;
-      transition: var(--transition);
+      transition: background 0.2s var(--ease), border-color 0.2s var(--ease),
+        transform 0.1s var(--ease), opacity 0.2s var(--ease);
+      white-space: nowrap;
     }
 
-    .btn-save-song {
-      background-color: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-primary);
+    .btn:hover {
+      background: var(--card-hover);
+      border-color: var(--border-strong);
     }
 
-    .btn-save-song:hover {
-      border-color: rgba(255, 255, 255, 0.25);
-      background-color: var(--bg-card-hover);
-    }
-
-    .btn-save-all {
-      background-color: var(--accent-gold);
-      color: #0b0d10;
-      font-weight: 700;
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--radius-sm);
-      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
-    }
-
-    .btn-save-all:hover:not(:disabled) {
-      background-color: #dfbe4a;
-      transform: translateY(-1px);
+    .btn:active {
+      transform: scale(0.97);
     }
 
     .btn:disabled {
-      opacity: 0.5;
+      opacity: 0.45;
       cursor: not-allowed;
+      transform: none;
     }
 
-    .btn-spinner {
-      width: 14px;
-      height: 14px;
-      border: 2px solid rgba(0, 0, 0, 0.2);
-      border-top-color: #0b0d10;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
+    .btn-gold {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #1a1305;
     }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+    .btn-gold:hover {
+      background: #dbb06c;
+      border-color: #dbb06c;
+    }
 
-    /* States & Skeletons */
-    .state-card {
-      border: 1px dashed var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 5rem 2rem;
+    .btn-save {
+      padding: 10px 14px;
+      min-width: 76px;
+    }
+
+    .btn-block {
+      width: 100%;
+      padding: 16px;
+      font-size: 14.5px;
+      border-radius: var(--radius-md);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text-secondary);
+    }
+
+    .btn-ghost:hover {
+      background: var(--card-hover);
+      color: var(--text-primary);
+    }
+
+    /* -------------------- JSON preview -------------------- */
+    .json-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 18px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .json-toggle-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .json-toggle-icon {
+      color: var(--text-tertiary);
+      transition: transform 0.25s var(--ease);
+      font-size: 13px;
+    }
+
+    .json-panel.open .json-toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .json-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s var(--ease);
+    }
+
+    .json-panel.open .json-body {
+      max-height: 520px;
+    }
+
+    .json-body pre {
+      margin: 0;
+      padding: 0 18px 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      color: #c9c6ba;
+      overflow-x: auto;
+      white-space: pre;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* -------------------- Save-all bar -------------------- */
+    .save-all-bar {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .commit-status {
+      font-size: 12.5px;
+      color: var(--text-tertiary);
       text-align: center;
-      max-width: 600px;
-      margin: 3rem auto;
+      min-height: 16px;
     }
 
-    .state-icon { font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.8; }
-    .state-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .state-desc { font-size: 0.9rem; color: var(--text-muted); }
+    .commit-status.success { color: var(--success); }
+    .commit-status.error { color: var(--error); }
 
-    .skeleton {
-      background: linear-gradient(90deg, #12151a 25%, #181c24 50%, #12151a 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-      border-radius: var(--radius-sm);
+    /* -------------------- Toasts -------------------- */
+    .toast-container {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: min(360px, calc(100vw - 32px));
+      align-items: center;
     }
-
-    @keyframes shimmer {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
-    .skeleton-hero {
-      display: flex; gap: 2rem; padding: 2.5rem; background: var(--bg-surface);
-      border-radius: var(--radius-lg); margin-bottom: 2rem;
-    }
-    .skeleton-poster { width: 150px; height: 225px; flex-shrink: 0; }
-    .skeleton-meta { flex: 1; display: flex; flex-direction: column; gap: 1rem; justify-content: center; }
-    .skeleton-title { height: 36px; width: 45%; }
-    .skeleton-tags { height: 20px; width: 25%; }
-    .skeleton-text { height: 16px; width: 85%; }
-    .skeleton-text.short { width: 50%; }
-    .skeleton-card { height: 70px; width: 100%; margin-bottom: 1rem; }
 
     .toast {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 0.85rem 1.25rem;
-      font-size: 0.88rem;
+      width: 100%;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-strong);
       color: var(--text-primary);
-      box-shadow: var(--shadow-lg);
-      transform: translateY(100px);
-      opacity: 0;
-      transition: var(--transition);
-      z-index: 200;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      animation: toast-in 0.25s var(--ease);
     }
 
-    .toast.visible { transform: translateY(0); opacity: 1; }
-    .toast.success { border-color: var(--status-success); }
-    .toast.error { border-color: var(--status-error); }
+    .toast.success { border-color: rgba(111, 174, 122, 0.4); }
+    .toast.error { border-color: rgba(201, 106, 90, 0.4); }
 
-    @media (max-width: 960px) {
-      .movie-hero { padding: 1.5rem; }
-      .hero-content { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
-      .hero-poster-wrap { width: 120px; height: 180px; }
-      .hero-title { font-size: 1.85rem; }
-      .song-card { flex-direction: column; align-items: stretch; gap: 0.75rem; }
-      .song-title-wrap { width: 100%; }
-      .song-actions { justify-content: flex-end; }
+    .toast-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
     }
+
+    .toast.success .toast-dot { background: var(--success); }
+    .toast.error .toast-dot { background: var(--error); }
+
+    @keyframes toast-in {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hidden { display: none !important; }
 
     @media (max-width: 640px) {
-      .songs-section-header { flex-direction: column; align-items: stretch; }
-      .btn-save-all { width: 100%; }
+      .main-nav { display: none; }
+      .nav-toggle { display: flex; }
+      .main-nav.open {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--bg-elevated);
+        border-bottom: 1px solid var(--border);
+        padding: 8px;
+        gap: 2px;
+      }
+      .movie-summary { flex-direction: column; }
+      .movie-summary-poster { width: 100px; height: 150px; }
+      .song-card { flex-direction: column; }
+      .song-index { align-self: flex-start; }
+      .song-link-row { flex-direction: column; align-items: stretch; }
+      .btn-save { width: 100%; }
     }
   </style>
 </head>
 <body>
 
-  <header class="app-header">
-    <div class="header-inner">
-      <div class="brand">
-        <span class="brand-badge">5.1 ATMOS</span>
-        <span class="brand-title">MoinuFlix Songs</span>
-      </div>
-      <div class="header-actions">
-        <button type="button" id="set-token-btn" class="btn-token">🔑 Config GitHub Token</button>
-      </div>
-    </div>
-  </header>
-
-  <main class="main-container">
-
-    <!-- Movie Search -->
-    <section class="search-section">
-      <div class="search-wrap">
-        <label for="movie-search-input" class="search-label">Search Movie or Soundtrack Album</label>
-        <div class="search-input-box">
-          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input 
-            type="text" 
-            id="movie-search-input" 
-            placeholder="Type movie name (e.g. Paiyaa, Leo, Jailer, Vikram)..." 
-            autocomplete="off"
-            spellcheck="false"
-          >
-          <button type="button" id="clear-search-btn" class="clear-btn" aria-label="Clear Search">&times;</button>
-        </div>
-
-        <div id="autocomplete-dropdown" class="autocomplete-dropdown" hidden>
-          <div id="autocomplete-list" class="autocomplete-list"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Empty State -->
-    <section id="empty-state" class="state-card empty-state">
-      <div class="state-icon">🎧</div>
-      <h2 class="state-title">No Movie Selected</h2>
-      <p class="state-desc">Type a movie name above. The system will load the verified movie soundtrack for Google Drive link ingestion.</p>
-    </section>
-
-    <!-- Skeleton Loader -->
-    <section id="loading-skeleton" class="skeleton-wrap" hidden>
-      <div class="skeleton-hero">
-        <div class="skeleton skeleton-poster"></div>
-        <div class="skeleton-meta">
-          <div class="skeleton skeleton-title"></div>
-          <div class="skeleton skeleton-tags"></div>
-          <div class="skeleton skeleton-text"></div>
-          <div class="skeleton skeleton-text short"></div>
-        </div>
-      </div>
-      <div class="skeleton skeleton-card"></div>
-      <div class="skeleton skeleton-card"></div>
-      <div class="skeleton skeleton-card"></div>
-    </section>
-
-    <!-- Active Workspace -->
-    <div id="active-workspace" hidden>
-
-      <!-- Movie Backdrop & Hero -->
-      <section id="movie-hero" class="movie-hero">
-        <div id="hero-backdrop" class="hero-backdrop"></div>
-        <div class="hero-overlay"></div>
-        
-        <div class="hero-content">
-          <div class="hero-poster-wrap">
-            <img id="hero-poster" class="hero-poster" src="" alt="Movie Poster">
-          </div>
-          <div class="hero-details">
-            <div class="hero-meta-row">
-              <span id="hero-year" class="pill pill-year"></span>
-              <span id="hero-rating" class="pill pill-rating"></span>
-              <span id="hero-id" class="pill pill-id"></span>
-            </div>
-            <h1 id="hero-title" class="hero-title"></h1>
-            <p id="hero-overview" class="hero-overview"></p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Songs Listing & Drive Ingest -->
-      <section class="songs-section">
-        <div class="songs-section-header">
-          <div>
-            <h2 class="section-title">Tracks &amp; 5.1 Surround Links</h2>
-            <p class="section-subtitle" id="song-count-label">Auto-detected tracks</p>
-          </div>
-          <button type="button" id="save-all-btn" class="btn btn-save-all">
-            <span class="btn-spinner" hidden></span>
-            <span class="btn-text">Save All to chunks/data_c03.json</span>
-          </button>
-        </div>
-
-        <div id="songs-list" class="songs-list"></div>
-      </section>
-
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-name">Moinu<span>Flix</span></div>
+      <div class="brand-sub">Songs Manager</div>
     </div>
 
-  </main>
+    <div class="header-actions">
+      <nav class="main-nav" id="mainNav">
+        <a href="inbox.html">Movies</a>
+        <a href="songs.html" class="active">Songs</a>
+        <a href="series.html">Series</a>
+        <a href="management.html">Management</a>
+      </nav>
+      <button type="button" class="btn btn-ghost" id="tokenConfigBtn" style="padding: 6px 12px; font-size: 12px;">🔑 Token</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+    </div>
+  </div>
+</header>
 
-  <div id="toast" class="toast"></div>
+<main class="page">
+  <!-- Search Movie -->
+  <section class="section">
+    <h2 class="section-title">Search Movie</h2>
+    <div class="search-row">
+      <input
+        type="text"
+        id="movieSearchInput"
+        class="input"
+        placeholder="Type movie name (e.g. Paiyaa, Leo, Vikram)..."
+        autocomplete="off"
+      />
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </section>
 
-  <script>
-    const CONFIG = {
-      TMDB_API_KEY: '051ccf72e026820cb53b8b8531b6a2ba',
-      TMDB_BASE: 'https://api.themoviedb.org/3',
-      TMDB_IMG_BASE: 'https://image.tmdb.org/t/p',
-      
-      DB_CHUNK_PATH: 'chunks/data_c03.json',
-      GITHUB_OWNER: 'Moinuflix',
-      GITHUB_REPOSITORY: 'My-Movies',
-      GITHUB_BRANCH: 'main',
-      TOKEN_STORAGE_KEY: 'moinuflix_gh_token'
-    };
+  <!-- Selected movie summary -->
+  <section class="section">
+    <div class="card movie-summary" id="movieSummary">
+      <img class="movie-summary-poster" id="movieSummaryPoster" alt="" />
+      <div class="movie-summary-body">
+        <div class="movie-summary-title" id="movieSummaryTitle"></div>
+        <div class="movie-summary-grid">
+          <span class="meta-chip" id="movieSummaryYear"></span>
+          <span class="meta-chip" id="movieSummaryId"></span>
+          <span class="meta-chip" id="movieSummaryLang"></span>
+          <span class="meta-chip gold">
+            <span id="movieSummarySongCount">0</span> songs
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    const state = {
-      activeMovie: null,
-      songs: [],
-      searchDebounceTimer: null,
-      isCommitting: false
-    };
+  <!-- Song list -->
+  <section class="section hidden" id="songsSection">
+    <h2 class="section-title">Verified Soundtrack</h2>
 
-    const DOM = {
-      searchInput: document.getElementById('movie-search-input'),
-      clearSearchBtn: document.getElementById('clear-search-btn'),
-      autocompleteDropdown: document.getElementById('autocomplete-dropdown'),
-      autocompleteList: document.getElementById('autocomplete-list'),
-      emptyState: document.getElementById('empty-state'),
-      loadingSkeleton: document.getElementById('loading-skeleton'),
-      activeWorkspace: document.getElementById('active-workspace'),
-      heroBackdrop: document.getElementById('hero-backdrop'),
-      heroPoster: document.getElementById('hero-poster'),
-      heroTitle: document.getElementById('hero-title'),
-      heroYear: document.getElementById('hero-year'),
-      heroRating: document.getElementById('hero-rating'),
-      heroId: document.getElementById('hero-id'),
-      heroOverview: document.getElementById('hero-overview'),
-      songCountLabel: document.getElementById('song-count-label'),
-      songsList: document.getElementById('songs-list'),
-      saveAllBtn: document.getElementById('save-all-btn'),
-      setTokenBtn: document.getElementById('set-token-btn'),
-      toast: document.getElementById('toast')
-    };
+    <div class="card hidden" id="songsStateBlock"></div>
+    <div class="song-list" id="songList"></div>
 
-    // GitHub Token Local Storage Config
-    DOM.setTokenBtn.addEventListener('click', () => {
-      const existing = localStorage.getItem(CONFIG.TOKEN_STORAGE_KEY) || '';
-      const token = prompt('Enter your GitHub Personal Access Token (ghp_...):', existing);
-      if (token !== null) {
-        localStorage.setItem(CONFIG.TOKEN_STORAGE_KEY, token.trim());
-        showToast(token ? 'GitHub Token Saved!' : 'Token cleared', 'success');
-      }
+    <div class="save-all-bar hidden" id="saveAllBar">
+      <button class="btn btn-gold btn-block" id="saveAllBtn">Save All to chunks/data_c03.json</button>
+      <div class="commit-status" id="commitStatus"></div>
+    </div>
+  </section>
+
+  <!-- JSON preview -->
+  <section class="section">
+    <div class="card json-panel" id="jsonPanel">
+      <div class="json-toggle" id="jsonToggle">
+        <span class="json-toggle-title">JSON Preview</span>
+        <span class="json-toggle-icon">▾</span>
+      </div>
+      <div class="json-body">
+        <pre id="jsonOutput">// Select a movie to preview its song data</pre>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  const CONFIG = {
+    TMDB_API_KEY: "051ccf72e026820cb53b8b8531b6a2ba",
+    TMDB_BASE: "https://api.themoviedb.org/3",
+    TMDB_IMG_BASE: "https://image.tmdb.org/t/p/w342",
+
+    GITHUB_OWNER: "Moinuflix",
+    GITHUB_REPOSITORY: "My-Movies",
+    GITHUB_BRANCH: "main",
+    GITHUB_TARGET_FILE: "chunks/data_c03.json",
+    TOKEN_KEY: "moinuflix_gh_token",
+
+    SEARCH_DEBOUNCE_MS: 350,
+  };
+
+  const state = {
+    selectedMovie: null,
+    songs: [],
+    isCommitting: false
+  };
+
+  const els = {
+    navToggle: document.getElementById("navToggle"),
+    mainNav: document.getElementById("mainNav"),
+    tokenConfigBtn: document.getElementById("tokenConfigBtn"),
+
+    movieSearchInput: document.getElementById("movieSearchInput"),
+    searchResults: document.getElementById("searchResults"),
+
+    movieSummary: document.getElementById("movieSummary"),
+    movieSummaryPoster: document.getElementById("movieSummaryPoster"),
+    movieSummaryTitle: document.getElementById("movieSummaryTitle"),
+    movieSummaryYear: document.getElementById("movieSummaryYear"),
+    movieSummaryId: document.getElementById("movieSummaryId"),
+    movieSummaryLang: document.getElementById("movieSummaryLang"),
+    movieSummarySongCount: document.getElementById("movieSummarySongCount"),
+
+    songsSection: document.getElementById("songsSection"),
+    songList: document.getElementById("songList"),
+    songsStateBlock: document.getElementById("songsStateBlock"),
+
+    jsonPanel: document.getElementById("jsonPanel"),
+    jsonToggle: document.getElementById("jsonToggle"),
+    jsonOutput: document.getElementById("jsonOutput"),
+
+    saveAllBar: document.getElementById("saveAllBar"),
+    saveAllBtn: document.getElementById("saveAllBtn"),
+    commitStatus: document.getElementById("commitStatus"),
+
+    toastContainer: document.getElementById("toastContainer"),
+  };
+
+  function toast(message, type) {
+    const node = document.createElement("div");
+    node.className = "toast" + (type ? " " + type : "");
+    node.innerHTML = '<span class="toast-dot"></span><span></span>';
+    node.querySelector("span:last-child").textContent = message;
+    els.toastContainer.appendChild(node);
+    setTimeout(() => {
+      node.style.opacity = "0";
+      node.style.transition = "opacity 0.25s ease";
+      setTimeout(() => node.remove(), 260);
+    }, 3200);
+  }
+
+  // Token Config
+  els.tokenConfigBtn.addEventListener("click", () => {
+    const existing = localStorage.getItem(CONFIG.TOKEN_KEY) || "";
+    const token = prompt("Enter your GitHub Personal Access Token (ghp_...):", existing);
+    if (token !== null) {
+      localStorage.setItem(CONFIG.TOKEN_KEY, token.trim());
+      toast(token ? "GitHub Token Saved!" : "Token Cleared", "success");
+    }
+  });
+
+  if (els.navToggle) {
+    els.navToggle.addEventListener("click", () => {
+      els.mainNav.classList.toggle("open");
     });
+  }
 
-    // Autocomplete & Search Input Handlers
-    DOM.searchInput.addEventListener('input', (e) => {
-      const query = e.target.value.trim();
-      DOM.clearSearchBtn.style.display = query ? 'block' : 'none';
+  // TMDB Movie Search
+  let searchDebounceTimer = null;
+  let activeSearchController = null;
 
-      clearTimeout(state.searchDebounceTimer);
-      if (!query || query.length < 2) {
-        DOM.autocompleteDropdown.hidden = true;
-        return;
-      }
+  els.movieSearchInput.addEventListener("input", () => {
+    const query = els.movieSearchInput.value.trim();
+    clearTimeout(searchDebounceTimer);
 
-      state.searchDebounceTimer = setTimeout(() => {
-        searchTMDB(query);
-      }, 300);
-    });
-
-    DOM.clearSearchBtn.addEventListener('click', () => {
-      DOM.searchInput.value = '';
-      DOM.clearSearchBtn.style.display = 'none';
-      DOM.autocompleteDropdown.hidden = true;
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.search-wrap')) {
-        DOM.autocompleteDropdown.hidden = true;
-      }
-    });
-
-    async function searchTMDB(query) {
-      try {
-        const url = `${CONFIG.TMDB_BASE}/search/movie?api_key=${CONFIG.TMDB_API_KEY}&query=${encodeURIComponent(query)}&page=1`;
-        const res = await fetch(url);
-        if (!res.ok) return;
-        const data = await res.json();
-        renderDropdown(data.results || []);
-      } catch (_) {}
+    if (!query) {
+      closeSearchResults();
+      return;
     }
 
-    function renderDropdown(results) {
-      DOM.autocompleteList.innerHTML = '';
+    searchDebounceTimer = setTimeout(() => {
+      runMovieSearch(query);
+    }, CONFIG.SEARCH_DEBOUNCE_MS);
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!els.searchResults.contains(e.target) && e.target !== els.movieSearchInput) {
+      closeSearchResults();
+    }
+  });
+
+  function closeSearchResults() {
+    els.searchResults.classList.remove("open");
+    els.searchResults.innerHTML = "";
+  }
+
+  async function runMovieSearch(query) {
+    if (activeSearchController) activeSearchController.abort();
+    activeSearchController = new AbortController();
+
+    renderSearchState("loading");
+
+    try {
+      const url = `${CONFIG.TMDB_BASE}/search/movie?api_key=${CONFIG.TMDB_API_KEY}&query=${encodeURIComponent(query)}&include_adult=false`;
+      const res = await fetch(url, { signal: activeSearchController.signal });
+      if (!res.ok) throw new Error("TMDB search failed");
+      const data = await res.json();
+      const results = (data.results || []).slice(0, 8);
+
       if (!results.length) {
-        DOM.autocompleteDropdown.hidden = true;
+        renderSearchState("empty");
+        return;
+      }
+      renderSearchResults(results);
+    } catch (err) {
+      if (err.name === "AbortError") return;
+      renderSearchState("error", "Failed to load movies.");
+    }
+  }
+
+  function renderSearchState(mode, message) {
+    els.searchResults.classList.add("open");
+    if (mode === "loading") {
+      els.searchResults.innerHTML = '<div class="search-empty-state"><span class="spinner"></span>Searching movies…</div>';
+    } else if (mode === "empty") {
+      els.searchResults.innerHTML = '<div class="search-empty-state">No movies found.</div>';
+    } else if (mode === "error") {
+      els.searchResults.innerHTML = '<div class="search-empty-state">' + escapeHtml(message || "Search error.") + "</div>";
+    }
+  }
+
+  function renderSearchResults(results) {
+    els.searchResults.innerHTML = "";
+    results.forEach((movie) => {
+      const item = document.createElement("div");
+      item.className = "search-result-item";
+      const posterSrc = movie.poster_path ? CONFIG.TMDB_IMG_BASE + movie.poster_path : "";
+      const year = movie.release_date ? movie.release_date.slice(0, 4) : "—";
+
+      item.innerHTML = `
+        <img class="search-result-poster" src="${posterSrc}" alt="" loading="lazy" />
+        <div class="search-result-meta">
+          <div class="search-result-title">${escapeHtml(movie.title)}</div>
+          <div class="search-result-year">${year} &bull; TMDB #${movie.id}</div>
+        </div>
+      `;
+
+      item.addEventListener("click", () => selectMovie(movie));
+      els.searchResults.appendChild(item);
+    });
+  }
+
+  // Movie Selection
+  async function selectMovie(movie) {
+    closeSearchResults();
+    els.movieSearchInput.value = movie.title;
+
+    const year = movie.release_date ? movie.release_date.slice(0, 4) : "—";
+    const posterSrc = movie.poster_path ? CONFIG.TMDB_IMG_BASE + movie.poster_path : "";
+
+    state.selectedMovie = {
+      id: movie.id,
+      title: movie.title,
+      original_title: movie.original_title || movie.title,
+      year: year,
+      release_date: movie.release_date || "",
+      language: (movie.original_language || "").toUpperCase(),
+      poster: posterSrc,
+    };
+
+    els.movieSummary.classList.add("visible");
+    els.movieSummaryPoster.src = posterSrc;
+    els.movieSummaryTitle.textContent = movie.title;
+    els.movieSummaryYear.textContent = year;
+    els.movieSummaryId.textContent = "TMDB #" + movie.id;
+    els.movieSummaryLang.textContent = state.selectedMovie.language || "—";
+    els.movieSummarySongCount.textContent = "…";
+
+    els.songsSection.classList.remove("hidden");
+    els.saveAllBar.classList.add("hidden");
+    state.songs = [];
+    renderSongsState("loading");
+    updateJsonPreview();
+
+    await loadSoundtrack(state.selectedMovie);
+  }
+
+  // Strict Soundtrack Resolution (iTunes Album + JioSaavn Album)
+  async function loadSoundtrack(movie) {
+    try {
+      const movieYear = movie.year && movie.year !== "—" ? parseInt(movie.year, 10) : null;
+      let songs = [];
+
+      // 1. Strict iTunes Soundtrack Album Match
+      const itunesAlbum = await findExactITunesAlbum(movie.title, movieYear);
+      if (itunesAlbum && itunesAlbum.collectionId) {
+        songs = await fetchITunesTracks(itunesAlbum.collectionId);
+      }
+
+      // 2. Strict JioSaavn Album Lookup for Regional titles
+      if (!songs.length) {
+        songs = await fetchExactSaavnAlbum(movie.title, movieYear);
+      }
+
+      if (!songs.length && movie.original_title && movie.original_title !== movie.title) {
+        songs = await fetchExactSaavnAlbum(movie.original_title, movieYear);
+      }
+
+      if (!songs.length) {
+        state.songs = [];
+        renderSongsState("not-found");
+        els.movieSummarySongCount.textContent = "0";
+        updateJsonPreview();
         return;
       }
 
-      results.slice(0, 6).forEach((movie) => {
-        const row = document.createElement('div');
-        row.className = 'autocomplete-item';
-        const year = movie.release_date ? movie.release_date.split('-')[0] : 'N/A';
-        const thumb = movie.poster_path ? `${CONFIG.TMDB_IMG_BASE}/w92${movie.poster_path}` : '';
+      state.songs = songs.map((t) => ({
+        title: t.title,
+        artist: t.artist || "Original Soundtrack",
+        drive_url: "",
+        saved: false,
+      }));
 
-        row.innerHTML = `
-          <img src="${thumb}" class="item-thumb" alt="">
-          <div class="item-info">
-            <span class="item-title">${escapeHtml(movie.title)}</span>
-            <span class="item-meta">${year} &bull; TMDB #${movie.id}</span>
-          </div>
-        `;
-
-        row.addEventListener('click', () => {
-          DOM.autocompleteDropdown.hidden = true;
-          selectMovie(movie.id);
-        });
-
-        DOM.autocompleteList.appendChild(row);
-      });
-
-      DOM.autocompleteDropdown.hidden = false;
+      els.movieSummarySongCount.textContent = String(state.songs.length);
+      renderSongList();
+      updateJsonPreview();
+    } catch (err) {
+      console.error(err);
+      renderSongsState("api-error");
+      toast("Error loading the soundtrack.", "error");
     }
+  }
 
-    // Select Movie & Execute Strict Ingestion
-    async function selectMovie(tmdbId) {
-      showLoading(true);
-      try {
-        const url = `${CONFIG.TMDB_BASE}/movie/${tmdbId}?api_key=${CONFIG.TMDB_API_KEY}`;
-        const res = await fetch(url);
-        const movie = await res.json();
-        state.activeMovie = movie;
+  async function findExactITunesAlbum(title, movieYear) {
+    try {
+      const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(title + " Soundtrack")}&entity=album&limit=10`);
+      if (!res.ok) return null;
+      const data = await res.json();
+      const cleanTitle = normalize(title);
 
-        displayMovieHero(movie);
-        
-        // Pass exact movie context for strict soundtrack matching
-        await autoFetchTrackList(movie);
+      for (const alb of (data.results || [])) {
+        const cleanAlb = normalize(alb.collectionName || "");
+        const albYear = alb.releaseDate ? parseInt(alb.releaseDate.slice(0, 4), 10) : null;
+        const matches = cleanAlb.includes(cleanTitle);
+        const yearOk = (!movieYear || !albYear) ? true : Math.abs(albYear - movieYear) <= 1;
 
-        DOM.emptyState.hidden = true;
-        DOM.activeWorkspace.hidden = false;
-      } catch (err) {
-        showToast('Error loading movie: ' + err.message, 'error');
-      } finally {
-        showLoading(false);
+        if (matches && yearOk) return alb;
       }
-    }
+    } catch (_) {}
+    return null;
+  }
 
-    function displayMovieHero(m) {
-      DOM.heroTitle.textContent = m.title;
-      DOM.heroYear.textContent = m.release_date ? m.release_date.split('-')[0] : 'N/A';
-      DOM.heroRating.textContent = `★ ${m.vote_average ? m.vote_average.toFixed(1) : 'NR'}`;
-      DOM.heroId.textContent = `TMDB: ${m.id}`;
-      DOM.heroOverview.textContent = m.overview || 'No description available.';
-
-      if (m.backdrop_path) {
-        DOM.heroBackdrop.style.backgroundImage = `url(${CONFIG.TMDB_IMG_BASE}/w1280${m.backdrop_path})`;
-      }
-      if (m.poster_path) {
-        DOM.heroPoster.src = `${CONFIG.TMDB_IMG_BASE}/w500${m.poster_path}`;
-      }
-    }
-
-    // ==========================================================================
-    // Strict Movie-Soundtrack Verification Logic
-    // ==========================================================================
-    async function autoFetchTrackList(movie) {
-      state.songs = [];
-      const movieTitle = (movie.title || '').trim();
-      const origTitle = (movie.original_title || '').trim();
-      const releaseYear = movie.release_date ? parseInt(movie.release_date.split('-')[0], 10) : null;
-
-      // 1. Check verified soundtrack album on iTunes Engine
-      let verifiedAlbum = await findExactSoundtrackAlbum(movieTitle, releaseYear);
-
-      // Fallback with original regional title if differing
-      if (!verifiedAlbum && origTitle && origTitle.toLowerCase() !== movieTitle.toLowerCase()) {
-        verifiedAlbum = await findExactSoundtrackAlbum(origTitle, releaseYear);
-      }
-
-      if (verifiedAlbum && verifiedAlbum.collectionId) {
-        state.songs = await fetchAlbumTracklist(verifiedAlbum.collectionId);
-      }
-
-      // 2. Secondary check on JioSaavn for regional/Indian film soundtracks
-      if (!state.songs.length) {
-        state.songs = await fetchExactSaavnAlbum(movieTitle, releaseYear);
-      }
-
-      // Render strictly verified tracks or display "Soundtrack not found"
-      renderSongCards();
-    }
-
-    async function findExactSoundtrackAlbum(title, movieYear) {
-      try {
-        const query = encodeURIComponent(`${title} Soundtrack`);
-        const res = await fetch(`https://itunes.apple.com/search?term=${query}&entity=album&limit=10`);
-        if (!res.ok) return null;
-
-        const data = await res.json();
-        if (!data?.results?.length) return null;
-
-        const cleanMovieTitle = normalizeTitle(title);
-
-        for (const album of data.results) {
-          const cleanAlbumName = normalizeTitle(album.collectionName || '');
-          const albumYear = album.releaseDate ? parseInt(album.releaseDate.split('-')[0], 10) : null;
-
-          const titleMatches = cleanAlbumName.includes(cleanMovieTitle);
-          const yearMatches = (!movieYear || !albumYear) ? true : Math.abs(albumYear - movieYear) <= 1;
-
-          if (titleMatches && yearMatches) {
-            return album;
-          }
-        }
-      } catch (err) {
-        console.warn('Soundtrack verification error:', err);
-      }
-      return null;
-    }
-
-    async function fetchAlbumTracklist(collectionId) {
-      try {
-        const res = await fetch(`https://itunes.apple.com/lookup?id=${collectionId}&entity=song`);
-        if (!res.ok) return [];
-
-        const data = await res.json();
-        if (!data?.results?.length) return [];
-
-        const tracks = data.results.filter(item => item.wrapperType === 'track');
-        return tracks.map(t => ({
+  async function fetchITunesTracks(collectionId) {
+    try {
+      const res = await fetch(`https://itunes.apple.com/lookup?id=${collectionId}&entity=song`);
+      if (!res.ok) return [];
+      const data = await res.json();
+      return (data.results || [])
+        .filter((item) => item.wrapperType === "track")
+        .map((t) => ({
           title: t.trackName,
-          artist: t.artistName || 'Original Soundtrack',
-          drive_url: ''
+          artist: t.artistName || "Original Artist"
         }));
-      } catch (_) {
-        return [];
-      }
-    }
-
-    async function fetchExactSaavnAlbum(title, movieYear) {
-      try {
-        const res = await fetch(`https://saavn.dev/api/search/albums?query=${encodeURIComponent(title)}&limit=5`);
-        if (!res.ok) return [];
-
-        const json = await res.json();
-        const albums = json?.data?.results || [];
-        const cleanMovieTitle = normalizeTitle(title);
-
-        for (const alb of albums) {
-          const cleanAlbName = normalizeTitle(alb.name || '');
-          const albYear = alb.year ? parseInt(alb.year, 10) : null;
-
-          const titleMatches = cleanAlbName.includes(cleanMovieTitle);
-          const yearMatches = (!movieYear || !albYear) ? true : Math.abs(albYear - movieYear) <= 1;
-
-          if (titleMatches && yearMatches && alb.id) {
-            const detailRes = await fetch(`https://saavn.dev/api/albums?id=${alb.id}`);
-            if (detailRes.ok) {
-              const detailJson = await detailRes.json();
-              const songList = detailJson?.data?.songs || [];
-              return songList.map(s => ({
-                title: s.name.replace(/&quot;/g, '"').replace(/&#039;/g, "'"),
-                artist: s.artists?.primary?.map(a => a.name).join(', ') || 'Original Soundtrack',
-                drive_url: ''
-              }));
-            }
-          }
-        }
-      } catch (_) {}
+    } catch (_) {
       return [];
     }
+  }
 
-    function normalizeTitle(str) {
-      return (str || '')
-        .toLowerCase()
-        .replace(/[^a-z0-9]/g, '');
+  async function fetchExactSaavnAlbum(title, movieYear) {
+    try {
+      const res = await fetch(`https://saavn.dev/api/search/albums?query=${encodeURIComponent(title)}&limit=6`);
+      if (!res.ok) return [];
+      const json = await res.json();
+      const cleanTitle = normalize(title);
+
+      for (const alb of (json?.data?.results || [])) {
+        const cleanAlb = normalize(alb.name || "");
+        const albYear = alb.year ? parseInt(alb.year, 10) : null;
+        const matches = cleanAlb.includes(cleanTitle);
+        const yearOk = (!movieYear || !albYear) ? true : Math.abs(albYear - movieYear) <= 1;
+
+        if (matches && yearOk && alb.id) {
+          const detailRes = await fetch(`https://saavn.dev/api/albums?id=${alb.id}`);
+          if (detailRes.ok) {
+            const d = await detailRes.json();
+            return (d?.data?.songs || []).map((s) => ({
+              title: s.name.replace(/&quot;/g, '"').replace(/&#039;/g, "'"),
+              artist: s.artists?.primary?.map((a) => a.name).join(", ") || "Soundtrack"
+            }));
+          }
+        }
+      }
+    } catch (_) {}
+    return [];
+  }
+
+  function normalize(str) {
+    return (str || "")
+      .toLowerCase()
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]/g, "");
+  }
+
+  // Song List UI
+  function renderSongsState(mode) {
+    els.songList.innerHTML = "";
+    els.saveAllBar.classList.add("hidden");
+
+    const messages = {
+      "no-movie": ["🎬", "Search for a movie to get started."],
+      loading: ["", "Searching verified soundtrack album…"],
+      "not-found": ["⚠️", "Soundtrack not found for this movie."],
+      "api-error": ["⚠️", "Something went wrong fetching soundtrack."],
+    };
+
+    const [icon, text] = messages[mode] || messages["no-movie"];
+    const block = document.createElement("div");
+    block.className = "state-block" + (mode === "api-error" ? " error" : "");
+
+    if (mode === "loading") {
+      block.innerHTML = '<span class="spinner"></span>' + text;
+    } else {
+      block.innerHTML = `<div class="state-icon">${icon}</div><div>${text}</div>`;
+      if (mode === "not-found") {
+        block.innerHTML += `<button type="button" class="btn btn-ghost" style="margin-top:12px;" onclick="window.__addManualTrack()">+ Add Track Manually</button>`;
+      }
     }
 
-    // Render Song Cards or "Soundtrack Not Found"
-    function renderSongCards() {
-      DOM.songsList.innerHTML = '';
+    els.songsStateBlock.innerHTML = "";
+    els.songsStateBlock.appendChild(block);
+    els.songsStateBlock.classList.remove("hidden");
+  }
 
-      if (!state.songs.length) {
-        DOM.songCountLabel.textContent = '0 Tracks found';
-        const year = state.activeMovie.release_date ? state.activeMovie.release_date.split('-')[0] : 'N/A';
-        DOM.songsList.innerHTML = `
-          <div class="state-card" style="margin: 1.5rem 0; padding: 2.5rem 1.5rem;">
-            <div class="state-icon">⚠️</div>
-            <h3 class="state-title" style="font-size: 1.1rem;">Soundtrack not found</h3>
-            <p class="state-desc" style="font-size: 0.85rem;">
-              No verified official soundtrack matching "<strong>${escapeHtml(state.activeMovie.title)}</strong>" (${year}) was found.
-            </p>
-            <button type="button" class="btn btn-save-song" style="margin-top: 1rem;" onclick="addManualTrackSlot()">
-              + Add Track Manually
-            </button>
-          </div>
-        `;
-        return;
-      }
-
-      DOM.songCountLabel.textContent = `${state.songs.length} Verified Soundtrack Tracks`;
-
-      state.songs.forEach((song, idx) => {
-        const card = document.createElement('div');
-        card.className = 'song-card';
-        const num = String(idx + 1).padStart(2, '0');
-
-        card.innerHTML = `
-          <div class="song-index">${num}</div>
-          <div class="song-title-wrap">
-            <div class="song-title" title="${escapeHtml(song.title)}">${escapeHtml(song.title)}</div>
-            <div class="song-artist">${escapeHtml(song.artist)}</div>
-          </div>
-          <div class="song-input-wrap">
-            <input 
-              type="url" 
-              id="drive-input-${idx}" 
-              placeholder="Paste Google Drive link for this song..." 
-              value="${escapeHtml(song.drive_url)}"
-            >
-          </div>
-          <div class="song-actions">
-            <span id="status-pill-${idx}" class="song-status-pill ${song.drive_url ? 'saved' : ''}">
-              ${song.drive_url ? '✓ Attached' : 'Unsaved'}
-            </span>
-            <button type="button" class="btn btn-save-song" onclick="saveIndividualSong(${idx})">Save</button>
-          </div>
-        `;
-
-        DOM.songsList.appendChild(card);
+  window.__addManualTrack = function () {
+    const title = prompt("Enter song name:");
+    if (title && title.trim()) {
+      state.songs.push({
+        title: title.trim(),
+        artist: state.selectedMovie ? state.selectedMovie.title + " OST" : "Original Track",
+        drive_url: "",
+        saved: false
       });
+      els.movieSummarySongCount.textContent = String(state.songs.length);
+      renderSongList();
+      updateJsonPreview();
+    }
+  };
+
+  function renderSongList() {
+    els.songsStateBlock.classList.add("hidden");
+    els.songList.innerHTML = "";
+
+    if (!state.songs.length) {
+      renderSongsState("not-found");
+      return;
     }
 
-    window.addManualTrackSlot = function() {
-      const trackName = prompt('Enter song/track name:');
-      if (trackName && trackName.trim()) {
-        state.songs.push({
-          title: trackName.trim(),
-          artist: state.activeMovie.title + ' OST',
-          drive_url: ''
-        });
-        renderSongCards();
-      }
-    };
-
-    window.saveIndividualSong = function(index) {
-      const input = document.getElementById(`drive-input-${index}`);
-      const pill = document.getElementById(`status-pill-${index}`);
-      const val = input.value.trim();
-
-      if (!val) {
-        input.classList.add('invalid');
-        showToast('Please paste a valid Google Drive link', 'error');
-        return;
-      }
-
-      input.classList.remove('invalid');
-      state.songs[index].drive_url = val;
-
-      pill.className = 'song-status-pill saved';
-      pill.textContent = '✓ Attached';
-      showToast(`Link attached for: ${state.songs[index].title}`, 'success');
-    };
-
-    // Save All to chunks/data_c03.json
-    DOM.saveAllBtn.addEventListener('click', async () => {
-      if (state.isCommitting) return;
-
-      const token = localStorage.getItem(CONFIG.TOKEN_STORAGE_KEY);
-      if (!token) {
-        showToast('Click "🔑 Config GitHub Token" at top right to enter your token first.', 'error');
-        return;
-      }
-
-      const readySongs = state.songs.filter(s => s.drive_url && s.drive_url.trim());
-      if (!readySongs.length) {
-        showToast('Please attach at least one Google Drive song link.', 'error');
-        return;
-      }
-
-      setSavingState(true);
-
-      try {
-        showToast('Reading current chunks/data_c03.json...', '');
-        
-        const endpoint = `https://api.github.com/repos/${CONFIG.GITHUB_OWNER}/${CONFIG.GITHUB_REPOSITORY}/contents/${CONFIG.DB_CHUNK_PATH}`;
-        
-        let existingData = [];
-        let fileSha = null;
-
-        const getRes = await fetch(endpoint, {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Accept': 'application/vnd.github.v3+json'
-          }
-        });
-
-        if (getRes.ok) {
-          const fileMeta = await getRes.json();
-          fileSha = fileMeta.sha;
-          try {
-            existingData = JSON.parse(decodeURIComponent(escape(atob(fileMeta.content))));
-          } catch (_) {
-            existingData = [];
-          }
-        }
-
-        if (!Array.isArray(existingData)) existingData = [];
-
-        // Build Movie Payload
-        const currentPayload = {
-          movie: state.activeMovie.title,
-          tmdb_id: state.activeMovie.id,
-          year: state.activeMovie.release_date ? state.activeMovie.release_date.split('-')[0] : '',
-          poster: state.activeMovie.poster_path ? `${CONFIG.TMDB_IMG_BASE}/w500${state.activeMovie.poster_path}` : '',
-          songs: readySongs.map(s => ({
-            title: s.title,
-            artist: s.artist,
-            drive_url: s.drive_url.trim()
-          }))
-        };
-
-        const targetIndex = existingData.findIndex(item => item.tmdb_id === currentPayload.tmdb_id || item.movie === currentPayload.movie);
-        if (targetIndex >= 0) {
-          existingData[targetIndex] = currentPayload;
-        } else {
-          existingData.unshift(currentPayload);
-        }
-
-        showToast('Committing to chunks/data_c03.json...', '');
-
-        const utf8Bytes = unescape(encodeURIComponent(JSON.stringify(existingData, null, 2)));
-        const base64Content = btoa(utf8Bytes);
-
-        const putBody = {
-          message: `MoinuFlix: Ingest songs for ${state.activeMovie.title}`,
-          content: base64Content,
-          branch: CONFIG.GITHUB_BRANCH
-        };
-        if (fileSha) putBody.sha = fileSha;
-
-        const putRes = await fetch(endpoint, {
-          method: 'PUT',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Accept': 'application/vnd.github.v3+json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(putBody)
-        });
-
-        if (!putRes.ok) {
-          const errData = await putRes.json();
-          throw new Error(errData.message || 'GitHub rejected the update');
-        }
-
-        showToast('✓ Successfully saved all songs to chunks/data_c03.json!', 'success');
-      } catch (err) {
-        showToast('Save Failed: ' + err.message, 'error');
-      } finally {
-        setSavingState(false);
-      }
+    state.songs.forEach((song, index) => {
+      els.songList.appendChild(buildSongCard(song, index));
     });
 
-    function showLoading(active) {
-      DOM.loadingSkeleton.hidden = !active;
-      if (active) {
-        DOM.emptyState.hidden = true;
-        DOM.activeWorkspace.hidden = true;
+    els.saveAllBar.classList.remove("hidden");
+  }
+
+  function buildSongCard(song, index) {
+    const card = document.createElement("div");
+    card.className = "card song-card";
+    card.dataset.index = String(index);
+
+    card.innerHTML = `
+      <div class="song-index">${String(index + 1).padStart(2, "0")}</div>
+      <div class="song-body">
+        <div class="song-title-row">
+          <div class="song-title">${escapeHtml(song.title)}</div>
+          <div class="song-artist">${escapeHtml(song.artist || "Original Artist")}</div>
+        </div>
+        <div class="song-link-row">
+          <input
+            type="url"
+            class="text-input song-link-input"
+            placeholder="Paste Google Drive link"
+            autocomplete="off"
+            value="${escapeHtml(song.drive_url || "")}"
+          />
+          <button type="button" class="btn btn-gold btn-save">Save</button>
+        </div>
+        <div class="song-footer">
+          <div class="song-status ${song.saved ? 'saved' : 'unsaved'}">
+            <span class="status-text">${song.saved ? '✓ Saved' : 'Not saved'}</span>
+          </div>
+        </div>
+      </div>
+    `;
+
+    const input = card.querySelector(".song-link-input");
+    const statusEl = card.querySelector(".song-status");
+    const statusText = card.querySelector(".status-text");
+    const saveBtn = card.querySelector(".btn-save");
+
+    function setStatus(kind, label) {
+      statusEl.className = "song-status " + kind;
+      statusText.textContent = label;
+    }
+
+    input.addEventListener("input", () => {
+      song.drive_url = input.value.trim();
+      song.saved = false;
+      setStatus("unsaved", "Not saved");
+      updateJsonPreview();
+    });
+
+    saveBtn.addEventListener("click", () => {
+      const val = input.value.trim();
+      if (!val) {
+        setStatus("error", "Enter a link first");
+        return;
       }
+      if (!isValidDriveUrl(val)) {
+        setStatus("error", "Not a valid Drive link");
+        toast("Please enter a valid Google Drive link.", "error");
+        return;
+      }
+
+      song.drive_url = val;
+      song.saved = true;
+      setStatus("saved", "✓ Saved");
+      updateJsonPreview();
+      toast(`Saved link for "${song.title}".`, "success");
+    });
+
+    return card;
+  }
+
+  function isValidDriveUrl(url) {
+    return /(drive\.google\.com\/(file\/d\/|open\?id=)|^[a-zA-Z0-9_-]{25,}$)/i.test(url.trim());
+  }
+
+  // JSON Preview
+  if (els.jsonToggle) {
+    els.jsonToggle.addEventListener("click", () => {
+      els.jsonPanel.classList.toggle("open");
+    });
+  }
+
+  function buildPayload() {
+    if (!state.selectedMovie) return null;
+    return {
+      movie: state.selectedMovie.title,
+      tmdb_id: state.selectedMovie.id,
+      year: state.selectedMovie.year,
+      poster: state.selectedMovie.poster,
+      songs: state.songs.map((s) => ({
+        title: s.title,
+        artist: s.artist,
+        drive_url: s.drive_url || "",
+      })),
+    };
+  }
+
+  function updateJsonPreview() {
+    const payload = buildPayload();
+    els.jsonOutput.textContent = payload
+      ? JSON.stringify(payload, null, 2)
+      : "// Select a movie to preview its song data";
+  }
+
+  // Save All to GitHub (chunks/data_c03.json)
+  els.saveAllBtn.addEventListener("click", saveAllToGithub);
+
+  async function saveAllToGithub() {
+    if (!state.selectedMovie || !state.songs.length || state.isCommitting) return;
+
+    const token = localStorage.getItem(CONFIG.TOKEN_KEY);
+    if (!token) {
+      toast("Click '🔑 Token' button on the top right to configure your GitHub token.", "error");
+      return;
     }
 
-    function setSavingState(isBusy) {
-      state.isCommitting = isBusy;
-      DOM.saveAllBtn.disabled = isBusy;
-      DOM.saveAllBtn.querySelector('.btn-spinner').hidden = !isBusy;
-      DOM.saveAllBtn.querySelector('.btn-text').textContent = isBusy ? 'Committing...' : 'Save All to chunks/data_c03.json';
+    const readySongs = state.songs.filter((s) => s.drive_url && s.drive_url.trim());
+    if (!readySongs.length) {
+      toast("Please attach at least one Google Drive link first.", "error");
+      return;
     }
 
-    function showToast(msg, type = '') {
-      DOM.toast.textContent = msg;
-      DOM.toast.className = `toast visible ${type}`.trim();
-      clearTimeout(DOM.toast._timer);
-      DOM.toast._timer = setTimeout(() => {
-        DOM.toast.className = 'toast';
-      }, 4000);
-    }
+    state.isCommitting = true;
+    els.saveAllBtn.disabled = true;
+    els.saveAllBtn.textContent = "Committing to chunks/data_c03.json…";
+    setCommitStatus("pending", "Syncing with GitHub...");
 
-    function escapeHtml(str) {
-      return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    try {
+      const endpoint = `https://api.github.com/repos/${CONFIG.GITHUB_OWNER}/${CONFIG.GITHUB_REPOSITORY}/contents/${CONFIG.GITHUB_TARGET_FILE}`;
+      
+      let existingData = [];
+      let fileSha = null;
+
+      const getRes = await fetch(endpoint, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json",
+        },
+      });
+
+      if (getRes.ok) {
+        const fileMeta = await getRes.json();
+        fileSha = fileMeta.sha;
+        try {
+          existingData = JSON.parse(decodeURIComponent(escape(atob(fileMeta.content))));
+        } catch (_) {
+          existingData = [];
+        }
+      }
+
+      if (!Array.isArray(existingData)) existingData = [];
+
+      const currentEntry = {
+        movie: state.selectedMovie.title,
+        tmdb_id: state.selectedMovie.id,
+        year: state.selectedMovie.year,
+        poster: state.selectedMovie.poster,
+        songs: readySongs.map((s) => ({
+          title: s.title,
+          artist: s.artist,
+          drive_url: s.drive_url.trim(),
+        })),
+      };
+
+      const targetIdx = existingData.findIndex(
+        (item) => item.tmdb_id === currentEntry.tmdb_id || item.movie === currentEntry.movie
+      );
+
+      if (targetIdx >= 0) {
+        existingData[targetIdx] = currentEntry;
+      } else {
+        existingData.unshift(currentEntry);
+      }
+
+      const utf8Bytes = unescape(encodeURIComponent(JSON.stringify(existingData, null, 2)));
+      const base64Content = btoa(utf8Bytes);
+
+      const putBody = {
+        message: `MoinuFlix: Ingest songs for ${state.selectedMovie.title}`,
+        content: base64Content,
+        branch: CONFIG.GITHUB_BRANCH,
+      };
+      if (fileSha) putBody.sha = fileSha;
+
+      const putRes = await fetch(endpoint, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/vnd.github.v3+json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(putBody),
+      });
+
+      if (!putRes.ok) {
+        const errJson = await putRes.json();
+        throw new Error(errJson.message || "GitHub commit rejected");
+      }
+
+      state.songs.forEach((s) => {
+        if (s.drive_url) s.saved = true;
+      });
+      renderSongList();
+      updateJsonPreview();
+
+      setCommitStatus("success", "✓ Successfully committed to chunks/data_c03.json");
+      toast("Soundtrack committed to GitHub!", "success");
+    } catch (err) {
+      console.error(err);
+      setCommitStatus("error", err.message || "Commit failed.");
+      toast("Commit failed: " + err.message, "error");
+    } finally {
+      state.isCommitting = false;
+      els.saveAllBtn.disabled = false;
+      els.saveAllBtn.textContent = "Save All to chunks/data_c03.json";
     }
-  </script>
+  }
+
+  function setCommitStatus(kind, text) {
+    els.commitStatus.className = "commit-status " + kind;
+    els.commitStatus.textContent = text;
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = str || "";
+    return div.innerHTML;
+  }
+
+  renderSongsState("no-movie");
+  updateJsonPreview();
+})();
+</script>
 </body>
 </html>
