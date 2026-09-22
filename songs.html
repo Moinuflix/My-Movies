@@ -2,2513 +2,1112 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>MoinuFlix — 5.1 Soundtrack Studio Pro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoinuFlix — 5.1 Surround &amp; Soundtrack Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-dark: #030611;
-      --bg-card: rgba(10, 18, 38, 0.92);
-      --bg-input: #060c1d;
-      --border-color: rgba(56, 189, 248, 0.22);
-      --laser-green: #10b981;
-      --laser-green-glow: rgba(16, 185, 129, 0.5);
-      --laser-cyan: #38bdf8;
-      --laser-cyan-glow: rgba(56, 189, 248, 0.55);
-      --laser-red: #ef4444;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
-      --font-stack: 'Plus Jakarta Sans', system-ui, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-
-    body {
-      background-color: var(--bg-dark);
-      background-image: 
-        radial-gradient(circle at 10% 15%, rgba(16, 185, 129, 0.15) 0%, transparent 45%),
-        radial-gradient(circle at 90% 85%, rgba(56, 189, 248, 0.15) 0%, transparent 50%);
-      color: var(--text-main);
-      font-family: var(--font-stack);
-      display: flex;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* TOP 3D LASER PROGRESS NOTIFICATION */
-    #laser-progress-bar-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 6px;
-      background: rgba(3, 6, 17, 0.8);
-      z-index: 2000;
-      display: none;
-    }
-    #laser-progress-bar {
-      width: 0%;
-      height: 100%;
-      background: linear-gradient(90deg, var(--laser-green), var(--laser-cyan));
-      box-shadow: 0 0 16px var(--laser-cyan-glow), 0 0 30px var(--laser-green-glow);
-      transition: width 0.2s ease-out;
-    }
-    #laser-progress-label {
-      position: fixed;
-      top: 14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(8, 14, 30, 0.98);
-      border: 1px solid var(--laser-cyan);
-      box-shadow: 0 0 25px var(--laser-cyan-glow);
-      border-radius: 30px;
-      padding: 6px 20px;
-      font-size: 0.82rem;
-      font-weight: 800;
-      color: #fff;
-      display: none;
-      align-items: center;
-      gap: 10px;
-      z-index: 2001;
-      backdrop-filter: blur(16px);
-    }
-    #laser-progress-pct {
-      font-family: var(--font-mono);
-      color: var(--laser-green);
-      font-size: 0.9rem;
-    }
-
-    aside {
-      width: 270px;
-      background: rgba(6, 12, 28, 0.95);
-      backdrop-filter: blur(25px);
-      border-right: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      padding: 1.5rem 1.2rem;
-      position: fixed;
-      height: 100vh;
-      z-index: 100;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      padding: 0 0.5rem 1.25rem;
-      border-bottom: 1px solid var(--border-color);
-      margin-bottom: 1.25rem;
-    }
-    .brand-logo {
-      width: 44px;
-      height: 44px;
-      background: linear-gradient(135deg, var(--laser-green), var(--laser-cyan));
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 1.3rem;
-      color: #030712;
-      box-shadow: 0 0 25px var(--laser-green-glow);
-    }
-    .brand-text { font-size: 1.3rem; font-weight: 800; }
-
-    .nav-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .nav-btn {
-      width: 100%;
-      background: transparent;
-      border: 1px solid transparent;
-      color: var(--text-muted);
-      padding: 0.75rem 0.95rem;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .nav-btn:hover { background: rgba(56, 189, 248, 0.08); color: #fff; }
-    .nav-btn.active {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(56, 189, 248, 0.12));
-      color: #fff;
-      border: 1px solid var(--laser-green);
-      box-shadow: 0 0 20px var(--laser-green-glow);
-    }
-
-    .sidebar-footer { margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 1.25rem; }
-    .btn-token-config {
-      width: 100%;
-      background: rgba(16, 185, 129, 0.08);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      color: var(--laser-green);
-      padding: 0.7rem 0.9rem;
-      border-radius: 10px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    main {
-      margin-left: 270px;
-      flex: 1;
-      padding: 2.5rem 3rem 6rem;
-      max-width: 1440px;
-      width: calc(100% - 270px);
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-    }
-
-    .form-container {
-      background: var(--bg-card);
-      backdrop-filter: blur(25px);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      border-radius: 24px;
-      padding: 2.2rem 2.6rem;
-      max-width: 980px;
-      box-shadow: 0 15px 45px rgba(0,0,0,0.6);
-      margin-bottom: 2.5rem;
-    }
-
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
-    .full-width { grid-column: span 2; }
-    label { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
-
-    input, select {
-      background: var(--bg-input);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 0.85rem 1rem;
-      color: #fff;
-      font-size: 0.9rem;
-      outline: none;
-      font-family: var(--font-stack);
-      transition: all 0.2s;
-    }
-    input:focus, select:focus {
-      border-color: var(--laser-green);
-      box-shadow: 0 0 16px var(--laser-green-glow);
-    }
-
-    .search-action-wrap {
-      display: flex;
-      gap: 8px;
-      width: 100%;
-    }
-    .btn-search-trigger {
-      background: linear-gradient(135deg, var(--laser-cyan), #0284c7);
-      color: #030712;
-      border: none;
-      border-radius: 12px;
-      padding: 0 1.5rem;
-      font-weight: 800;
-      font-size: 0.92rem;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-
-    /* SEARCH RESULTS DISPLAY */
-    .tmdb-results-box {
-      display: none;
-      margin-top: 12px;
-      background: #081024;
-      border: 1px solid var(--laser-cyan);
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9);
-      border-radius: 14px;
-      padding: 10px;
-      max-height: 360px;
-      overflow-y: auto;
-    }
-    .tmdb-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px;
-      cursor: pointer;
-      border-radius: 10px;
-      border: 1px solid transparent;
-      margin-bottom: 6px;
-      background: rgba(255,255,255,0.02);
-    }
-    .tmdb-item:hover { background: #162544; border-color: var(--laser-cyan); }
-    .tmdb-poster { width: 44px; height: 62px; border-radius: 6px; object-fit: cover; background: #0c1836; flex-shrink: 0; }
-    .tmdb-badge {
-      background: rgba(56, 189, 248, 0.18);
-      color: var(--laser-cyan);
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 0.78rem;
-      margin-left: auto;
-    }
-
-    .confirmed-movie-badge {
-      display: none;
-      align-items: center;
-      gap: 14px;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid var(--laser-green);
-      border-radius: 14px;
-      padding: 12px 16px;
-      margin-top: 8px;
-    }
-    .confirmed-movie-img { width: 48px; height: 68px; border-radius: 8px; object-fit: cover; }
-
-    /* EDIT PANEL */
-    #song-edit-panel {
-      display: none;
-      background: rgba(6, 12, 28, 0.95);
-      border: 1px dashed var(--laser-green);
-      border-radius: 16px;
-      padding: 1.4rem;
-      margin-top: 1rem;
-      gap: 1rem;
-      flex-direction: column;
-    }
-    .song-edit-preview-row { display: flex; align-items: center; gap: 14px; }
-    .song-edit-thumb { 
-      width: 60px; 
-      height: 60px; 
-      border-radius: 10px; 
-      object-fit: cover; 
-      border: 1px solid var(--laser-cyan);
-      background-color: #0c1836;
-    }
-
-    .btn-add-to-pack {
-      background: rgba(16, 185, 129, 0.2);
-      color: var(--laser-green);
-      border: 1px solid var(--laser-green);
-      padding: 0.9rem;
-      border-radius: 10px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .btn-add-to-pack:hover { background: var(--laser-green); color: #030712; }
-
-    /* STAGED PACK PREVIEW */
-    .staged-pack-container {
-      margin-top: 1.5rem;
-      background: rgba(9, 16, 34, 0.8);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 1.2rem;
-    }
-    .staged-track-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 10px;
-      padding: 8px 12px;
-      margin-bottom: 8px;
-    }
-
-    .btn-submit-pack {
-      background: linear-gradient(135deg, var(--laser-green), var(--laser-cyan));
-      color: #030712;
-      border: none;
-      padding: 1rem;
-      border-radius: 14px;
-      font-weight: 800;
-      font-size: 0.95rem;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 1.25rem;
-      box-shadow: 0 0 25px var(--laser-green-glow);
-    }
-
-    .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.75rem; }
-    .soundtrack-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-    }
-    .soundtrack-card:hover {
-      border-color: var(--laser-green);
-      transform: translateY(-5px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.7), 0 0 25px var(--laser-green-glow);
-    }
-    .poster-wrap { width: 100%; height: 250px; background: #081024; position: relative; }
-    .poster-img { width: 100%; height: 100%; object-fit: cover; }
-    .pack-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: rgba(56, 189, 248, 0.25);
-      border: 1px solid var(--laser-cyan);
-      color: var(--laser-cyan);
-      padding: 4px 10px;
-      border-radius: 8px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      backdrop-filter: blur(8px);
-    }
-    .soundtrack-card-body { padding: 1.2rem; display: flex; flex-direction: column; gap: 6px; }
-
-    #laser-toast {
-      position: fixed;
-      top: 25px;
-      right: 25px;
-      background: rgba(10, 18, 38, 0.96);
-      border: 1px solid var(--laser-green);
-      box-shadow: 0 0 25px var(--laser-green-glow);
-      color: #fff;
-      padding: 1rem 1.4rem;
-      border-radius: 12px;
-      font-weight: 700;
-      display: none;
-      z-index: 3000;
-    }
-
-    @media (max-width: 900px) {
-      body { flex-direction: column; }
-      aside { width: 100%; height: auto; position: sticky; top: 0; padding: 0.75rem 1rem; border-right: none; border-bottom: 1px solid var(--border-color); }
-      .brand { margin-bottom: 0.5rem; padding-bottom: 0.5rem; }
-      .nav-list { flex-direction: row; overflow-x: auto; }
-      .nav-btn { white-space: nowrap; padding: 0.5rem 0.8rem; }
-      .sidebar-footer { display: none; }
-      main { margin-left: 0; width: 100%; padding: 1.2rem 1rem 6rem; }
-      .form-container { padding: 1.4rem 1.1rem; }
-      .form-grid { grid-template-columns: 1fr; }
-      .full-width { grid-column: span 1; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- TOP 3D LASER PROGRESS -->
-  <div id="laser-progress-bar-container">
-    <div id="laser-progress-bar"></div>
-  </div>
-  <div id="laser-progress-label">
-    <span id="laser-progress-text">⚡ Processing...</span>
-    <span id="laser-progress-pct">0%</span>
-  </div>
-
-  <div id="laser-toast"></div>
-
-  <aside>
-    <div class="brand">
-      <div class="brand-logo">M</div>
-      <div class="brand-text">MoinuFlix</div>
-    </div>
-    <ul class="nav-list">
-      <li><a href="inbox.html" class="nav-btn">🎬 Movies Vault ➔</a></li>
-      <li><a href="series.html" class="nav-btn">📺 Web Series ➔</a></li>
-      <li><button class="nav-btn active">🎵 5.1 Soundtracks</button></li>
-    </ul>
-    <div class="sidebar-footer">
-      <button class="btn-token-config" onclick="configureGithubToken()">
-        <span id="token-status-label">⚙️ GitHub Token</span>
-      </button>
-    </div>
-  </aside>
-
-  <main>
-    <header>
-      <div>
-        <h1 style="font-size: 1.8rem;">🎵 5.1 Soundtrack Pack Studio</h1>
-        <p class="section-desc">Search movie, confirm TMDB, pick song and push packs to chunks/data_c03.json</p>
-      </div>
-      <div>
-        <button class="btn-token-config" style="padding: 0.6rem 1.2rem;" onclick="loadAllSongs()">🔄 Refresh Vault</button>
-      </div>
-    </header>
-
-    <!-- FORM WORKFLOW -->
-    <div class="form-container">
-      <div class="form-grid">
-
-        <!-- STEP 1: MOVIE SEARCH WITH CONFIRMATION -->
-        <div class="form-group full-width">
-          <label style="color: var(--laser-cyan);">1. Search Movie Name (TMDB Top 5):</label>
-          <div class="search-action-wrap" id="search-input-wrapper">
-            <input type="text" id="input-movie-query" placeholder="Type Movie Name (e.g. Yaan, Leo, Jailer, Vikram)..." onkeydown="if(event.key==='Enter'){event.preventDefault(); triggerMovieSearch();}">
-            <button type="button" class="btn-search-trigger" onclick="triggerMovieSearch()">🔍 Search</button>
-          </div>
-          <div id="tmdb-suggest-box" class="tmdb-results-box"></div>
-          
-          <div id="confirmed-movie-box" class="confirmed-movie-badge">
-            <img id="confirmed-poster" class="confirmed-movie-img" src="" alt="poster">
-            <div style="flex:1;">
-              <div id="confirmed-title" style="font-weight:800; font-size:1rem; color:#fff;"></div>
-              <div id="confirmed-meta" style="font-size:0.8rem; color:var(--laser-green);"></div>
-            </div>
-            <button type="button" onclick="resetMovieSelection()" style="background:transparent; border:1px solid var(--laser-red); color:var(--laser-red); padding:4px 8px; border-radius:6px; cursor:pointer;">Change Movie</button>
-          </div>
-        </div>
-
-        <!-- STEP 2: SONG SELECT DROPDOWN -->
-        <div class="form-group full-width" id="song-select-group" style="display:none;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <label style="color: var(--laser-green);">2. Select Song from Official Album:</label>
-            <span id="album-status-tag" style="font-size:0.75rem; color:var(--laser-cyan); font-weight:700;"></span>
-          </div>
-          <select id="select-movie-song" onchange="handleSongSelected(this.value)">
-            <option value="">-- Choose a Track from Official Album --</option>
-          </select>
-        </div>
-
-        <!-- STEP 3: INDIVIDUAL SONG DETAIL SECTION -->
-        <div class="form-group full-width" id="song-edit-panel">
-          <div class="song-edit-preview-row">
-            <img id="song-edit-thumb" class="song-edit-thumb" src="" alt="track">
-            <div>
-              <div id="song-edit-name" style="font-weight:800; font-size:1.05rem; color:#fff;"></div>
-              <div id="song-edit-artist" style="font-size:0.8rem; color:var(--laser-cyan);"></div>
-            </div>
-          </div>
-
-          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:12px;">
-            <div class="form-group">
-              <label>Quality Format</label>
-              <select id="song-quality-input">
-                <option value="5.1 Surround" selected>5.1 Dolby Digital Surround (AC3/DDP)</option>
-                <option value="Dolby Atmos (TrueHD)">Dolby Atmos (Lossless TrueHD)</option>
-                <option value="DTS-HD Master 7.1">DTS-HD Master Audio 7.1</option>
-                <option value="24-bit FLAC">24-bit Lossless FLAC</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Source / Provider</label>
-              <select id="song-source-input">
-                <option value="Apple Music" selected>Apple Music (Atmos Rip)</option>
-                <option value="Original BLURAY 5.1">Original BLURAY 5.1</option>
-                <option value="JioSaavn Hi-Res">JioSaavn Hi-Res</option>
-                <option value="Tidal Master">Tidal Master</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group" style="margin-top:10px;">
-            <label style="color:var(--laser-cyan);">Google Drive Link or File ID for this Song:</label>
-            <input type="text" id="song-gdrive-input" placeholder="Paste full Google Drive link or ID">
-          </div>
-
-          <button type="button" class="btn-add-to-pack" onclick="addCurrentSongToStaging()">
-            ➕ ADD THIS SONG TO PACK (Click to include in Bundle)
-          </button>
-        </div>
-
-        <!-- STEP 4: PACK STAGING PREVIEW & PUSH -->
-        <div class="form-group full-width" id="staged-pack-box" style="display:none;">
-          <div class="staged-pack-container">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-              <span style="font-weight:800; color:#fff; font-size:0.9rem;">📦 Songs Added in this Movie Pack:</span>
-              <span id="staged-count-badge" style="font-weight:800; color:var(--laser-green); font-size:0.85rem;">0 Songs</span>
-            </div>
-            <div id="staged-list-items"></div>
-
-            <button type="button" class="btn-submit-pack" onclick="pushFinalPackToGithub()">
-              🚀 PUSH SOUNDTRACK PACK TO MASTER (DATA_C03.JSON)
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- SOUNDTRACK ALBUMS IN LIBRARY -->
-    <header style="margin-top: 2rem;">
-      <div>
-        <h2 style="font-size: 1.4rem; font-weight: 800;">🎼 Active Soundtracks in Audio Vault</h2>
-        <p class="section-desc">Packs stored in chunks/data_c03.json</p>
-      </div>
-    </header>
-
-    <div class="movies-grid" id="soundtracks-grid"></div>
-  </main>
-
-  <script>
-    let songsData = [];
-    let activeMovie = null;
-    let albumTracksCache = [];
-    let stagedTracks = [];
-
-    const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
-    const CONFIRM_PASS = "24592";
-    const GH_REPO = 'Moinuflix/My-Movies';[span_5](start_span)[span_5](end_span)[span_6](start_span)[span_6](end_span)
-    const GH_BRANCH = 'main';[span_7](start_span)[span_7](end_span)[span_8](start_span)[span_8](end_span)
-    const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';[span_9](start_span)[span_9](end_span)[span_10](start_span)[span_10](end_span)
-    const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';[span_11](start_span)[span_11](end_span)[span_12](start_span)[span_12](end_span)
-    const DEFAULT_TRACK_THUMB = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='100%25' height='100%25' fill='%230b1329'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%2310b981' text-anchor='middle' dy='.3em'%3E%E2%99%AC%3C/text%3E%3C/svg%3E";
-
-    function getStoredTo      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 1.3rem;
-      color: #030712;
-      box-shadow: 0 0 25px var(--laser-green-glow);
-    }
-    .brand-text { font-size: 1.3rem; font-weight: 800; }
-
-    .nav-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .nav-btn {
-      width: 100%;
-      background: transparent;
-      border: 1px solid transparent;
-      color: var(--text-muted);
-      padding: 0.75rem 0.95rem;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .nav-btn:hover { background: rgba(56, 189, 248, 0.08); color: #fff; }
-    .nav-btn.active {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(56, 189, 248, 0.12));
-      color: #fff;
-      border: 1px solid var(--laser-green);
-      box-shadow: 0 0 20px var(--laser-green-glow);
-    }
-
-    .sidebar-footer { margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 1.25rem; }
-    .btn-token-config {
-      width: 100%;
-      background: rgba(16, 185, 129, 0.08);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      color: var(--laser-green);
-      padding: 0.7rem 0.9rem;
-      border-radius: 10px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    main {
-      margin-left: 270px;
-      flex: 1;
-      padding: 2.5rem 3rem 6rem;
-      max-width: 1440px;
-      width: calc(100% - 270px);
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-    }
-
-    .form-container {
-      background: var(--bg-card);
-      backdrop-filter: blur(25px);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      border-radius: 24px;
-      padding: 2.2rem 2.6rem;
-      max-width: 980px;
-      box-shadow: 0 15px 45px rgba(0,0,0,0.6);
-      margin-bottom: 2.5rem;
-    }
-
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.5rem; position: relative; }
-    .full-width { grid-column: span 2; }
-    label { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
-
-    input, select {
-      background: var(--bg-input);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 0.85rem 1rem;
-      color: #fff;
-      font-size: 0.9rem;
-      outline: none;
-      font-family: var(--font-stack);
-      transition: all 0.2s;
-    }
-    input:focus, select:focus {
-      border-color: var(--laser-green);
-      box-shadow: 0 0 16px var(--laser-green-glow);
-    }
-
-    .search-action-wrap {
-      display: flex;
-      gap: 8px;
-    }
-    .btn-search-trigger {
-      background: linear-gradient(135deg, var(--laser-cyan), #0284c7);
-      color: #030712;
-      border: none;
-      border-radius: 12px;
-      padding: 0 1.4rem;
-      font-weight: 800;
-      font-size: 0.9rem;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-
-    /* TMDB SEARCH RESULTS LIST */
-    .tmdb-results-box {
-      display: none;
-      margin-top: 10px;
-      background: #081024;
-      border: 1px solid var(--laser-cyan);
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9);
-      border-radius: 14px;
-      padding: 8px;
-      max-height: 340px;
-      overflow-y: auto;
-    }
-    .tmdb-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px;
-      cursor: pointer;
-      border-radius: 10px;
-      border: 1px solid transparent;
-      margin-bottom: 4px;
-    }
-    .tmdb-item:hover { background: #162544; border-color: var(--laser-cyan); }
-    .tmdb-poster { width: 44px; height: 60px; border-radius: 6px; object-fit: cover; background: #0c1836; flex-shrink: 0; }
-    .tmdb-badge {
-      background: rgba(56, 189, 248, 0.18);
-      color: var(--laser-cyan);
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 0.78rem;
-      margin-left: auto;
-    }
-
-    .confirmed-movie-badge {
-      display: none;
-      align-items: center;
-      gap: 14px;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid var(--laser-green);
-      border-radius: 14px;
-      padding: 12px 16px;
-      margin-top: 6px;
-    }
-    .confirmed-movie-img { width: 48px; height: 68px; border-radius: 8px; object-fit: cover; }
-
-    /* EDIT PANEL */
-    #song-edit-panel {
-      display: none;
-      background: rgba(6, 12, 28, 0.95);
-      border: 1px dashed var(--laser-green);
-      border-radius: 16px;
-      padding: 1.4rem;
-      margin-top: 1rem;
-      gap: 1rem;
-      flex-direction: column;
-    }
-    .song-edit-preview-row { display: flex; align-items: center; gap: 14px; }
-    .song-edit-thumb { 
-      width: 60px; 
-      height: 60px; 
-      border-radius: 10px; 
-      object-fit: cover; 
-      border: 1px solid var(--laser-cyan);
-      background-color: #0c1836;
-    }
-
-    .btn-add-to-pack {
-      background: rgba(16, 185, 129, 0.2);
-      color: var(--laser-green);
-      border: 1px solid var(--laser-green);
-      padding: 0.85rem;
-      border-radius: 10px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .btn-add-to-pack:hover { background: var(--laser-green); color: #030712; }
-
-    /* STAGED TRACKS LIST */
-    .staged-pack-container {
-      margin-top: 1.5rem;
-      background: rgba(9, 16, 34, 0.8);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 1.2rem;
-    }
-    .staged-track-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 10px;
-      padding: 8px 12px;
-      margin-bottom: 8px;
-    }
-
-    .btn-submit-pack {
-      background: linear-gradient(135deg, var(--laser-green), var(--laser-cyan));
-      color: #030712;
-      border: none;
-      padding: 1rem;
-      border-radius: 14px;
-      font-weight: 800;
-      font-size: 0.95rem;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 1.25rem;
-      box-shadow: 0 0 25px var(--laser-green-glow);
-    }
-
-    .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.75rem; }
-    .soundtrack-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-    }
-    .soundtrack-card:hover {
-      border-color: var(--laser-green);
-      transform: translateY(-5px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.7), 0 0 25px var(--laser-green-glow);
-    }
-    .poster-wrap { width: 100%; height: 250px; background: #081024; position: relative; }
-    .poster-img { width: 100%; height: 100%; object-fit: cover; }
-    .pack-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: rgba(56, 189, 248, 0.25);
-      border: 1px solid var(--laser-cyan);
-      color: var(--laser-cyan);
-      padding: 4px 10px;
-      border-radius: 8px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      backdrop-filter: blur(8px);
-    }
-    .soundtrack-card-body { padding: 1.2rem; display: flex; flex-direction: column; gap: 6px; }
-
-    #laser-toast {
-      position: fixed;
-      top: 25px;
-      right: 25px;
-      background: rgba(10, 18, 38, 0.96);
-      border: 1px solid var(--laser-green);
-      box-shadow: 0 0 25px var(--laser-green-glow);
-      color: #fff;
-      padding: 1rem 1.4rem;
-      border-radius: 12px;
-      font-weight: 700;
-      display: none;
-      z-index: 3000;
-    }
-
-    @media (max-width: 900px) {
-      body { flex-direction: column; }
-      aside { width: 100%; height: auto; position: sticky; top: 0; padding: 0.75rem 1rem; border-right: none; border-bottom: 1px solid var(--border-color); }
-      .brand { margin-bottom: 0.5rem; padding-bottom: 0.5rem; }
-      .nav-list { flex-direction: row; overflow-x: auto; }
-      .nav-btn { white-space: nowrap; padding: 0.5rem 0.8rem; }
-      .sidebar-footer { display: none; }
-      main { margin-left: 0; width: 100%; padding: 1.2rem 1rem 6rem; }
-      .form-container { padding: 1.4rem 1.1rem; }
-      .form-grid { grid-template-columns: 1fr; }
-      .full-width { grid-column: span 1; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- TOP 3D LASER PROGRESS NOTIFICATION -->
-  <div id="laser-progress-bar-container">
-    <div id="laser-progress-bar"></div>
-  </div>
-  <div id="laser-progress-label">
-    <span id="laser-progress-text">⚡ Processing...</span>
-    <span id="laser-progress-pct">0%</span>
-  </div>
-
-  <div id="laser-toast"></div>
-
-  <aside>
-    <div class="brand">
-      <div class="brand-logo">M</div>
-      <div class="brand-text">MoinuFlix</div>
-    </div>
-    <ul class="nav-list">
-      <li><a href="inbox.html" class="nav-btn">🎬 Movies Vault ➔</a></li>
-      <li><a href="series.html" class="nav-btn">📺 Web Series ➔</a></li>
-      <li><button class="nav-btn active">🎵 5.1 Soundtracks</button></li>
-    </ul>
-    <div class="sidebar-footer">
-      <button class="btn-token-config" onclick="configureGithubToken()">
-        <span id="token-status-label">⚙️ GitHub Token</span>
-      </button>
-    </div>
-  </aside>
-
-  <main>
-    <header>
-      <div>
-        <h1 style="font-size: 1.8rem;">🎵 5.1 Soundtrack Pack Studio</h1>
-        <p class="section-desc">Search movie, pick song, fill GDrive ID and push album packs[span_10](start_span)[span_10](end_span)[span_11](start_span)[span_11](end_span)</p>
-      </div>
-      <div>
-        <button class="btn-token-config" style="padding: 0.6rem 1.2rem;" onclick="loadAllSongs()">🔄 Refresh Vault</button>
-      </div>
-    </header>
-
-    <!-- FORM WORKFLOW -->
-    <div class="form-container">
-      <div class="form-grid">
-
-        <!-- STEP 1: MOVIE SEARCH -->
-        <div class="form-group full-width">
-          <label style="color: var(--laser-cyan);">1. Search Movie Name (TMDB Top 5):</label>
-          <div class="search-action-wrap" id="search-input-wrapper">
-            <input type="text" id="input-movie-query" placeholder="Type Movie Name (e.g. Yaan, Leo, Jailer, Vikram)...">
-            <button type="button" class="btn-search-trigger" onclick="triggerMovieSearch()">🔍 Search</button>
-          </div>
-          <div id="tmdb-suggest-box" class="tmdb-results-box"></div>
-          
-          <div id="confirmed-movie-box" class="confirmed-movie-badge">
-            <img id="confirmed-poster" class="confirmed-movie-img" src="" alt="poster">
-            <div style="flex:1;">
-              <div id="confirmed-title" style="font-weight:800; font-size:1rem; color:#fff;"></div>
-              <div id="confirmed-meta" style="font-size:0.8rem; color:var(--laser-green);"></div>
-            </div>
-            <button type="button" onclick="resetMovieSelection()" style="background:transparent; border:1px solid var(--laser-red); color:var(--laser-red); padding:4px 8px; border-radius:6px; cursor:pointer;">Change Movie</button>
-          </div>
-        </div>
-
-        <!-- STEP 2: SONG SELECT DROPDOWN -->
-        <div class="form-group full-width" id="song-select-group" style="display:none;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <label style="color: var(--laser-green);">2. Select Song from Official Album:</label>
-            <span id="album-status-tag" style="font-size:0.75rem; color:var(--laser-cyan); font-weight:700;"></span>
-          </div>
-          <select id="select-movie-song" onchange="handleSongSelected(this.value)">
-            <option value="">-- Choose a Track from Official Album --</option>
-          </select>
-        </div>
-
-        <!-- STEP 3: INDIVIDUAL SONG DETAIL SECTION -->
-        <div class="form-group full-width" id="song-edit-panel">
-          <div class="song-edit-preview-row">
-            <img id="song-edit-thumb" class="song-edit-thumb" src="" alt="track">
-            <div>
-              <div id="song-edit-name" style="font-weight:800; font-size:1.05rem; color:#fff;"></div>
-              <div id="song-edit-artist" style="font-size:0.8rem; color:var(--laser-cyan);"></div>
-            </div>
-          </div>
-
-          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:12px;">
-            <div class="form-group">
-              <label>Quality Format</label>
-              <select id="song-quality-input">
-                <option value="5.1 Surround" selected>5.1 Dolby Digital Surround (AC3/DDP)</option>
-                <option value="Dolby Atmos (TrueHD)">Dolby Atmos (Lossless TrueHD)</option>
-                <option value="DTS-HD Master 7.1">DTS-HD Master Audio 7.1</option>
-                <option value="24-bit FLAC">24-bit Lossless FLAC</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Source / Provider</label>
-              <select id="song-source-input">
-                <option value="Apple Music" selected>Apple Music (Atmos Rip)</option>
-                <option value="Original BLURAY 5.1">Original BLURAY 5.1</option>
-                <option value="JioSaavn Hi-Res">JioSaavn Hi-Res</option>
-                <option value="Tidal Master">Tidal Master</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group" style="margin-top:10px;">
-            <label style="color:var(--laser-cyan);">Google Drive Link or File ID for this Song:</label>
-            <input type="text" id="song-gdrive-input" placeholder="Paste full Google Drive link or ID">
-          </div>
-
-          <button type="button" class="btn-add-to-pack" onclick="addCurrentSongToStaging()">
-            ➕ ADD THIS SONG TO PACK (Click to include in Bundle)
-          </button>
-        </div>
-
-        <!-- STEP 4: PACK STAGING PREVIEW & PUSH -->
-        <div class="form-group full-width" id="staged-pack-box" style="display:none;">
-          <div class="staged-pack-container">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-              <span style="font-weight:800; color:#fff; font-size:0.9rem;">📦 Songs Added in this Movie Pack:</span>
-              <span id="staged-count-badge" style="font-weight:800; color:var(--laser-green); font-size:0.85rem;">0 Songs</span>
-            </div>
-            <div id="staged-list-items"></div>
-
-            <button type="button" class="btn-submit-pack" onclick="pushFinalPackToGithub()">
-              🚀 PUSH SOUNDTRACK PACK TO MASTER (DATA_C03.JSON)
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- SOUNDTRACK ALBUMS IN LIBRARY -->
-    <header style="margin-top: 2rem;">
-      <div>
-        <h2 style="font-size: 1.4rem; font-weight: 800;">🎼 Active Soundtracks in Audio Vault</h2>
-        <p class="section-desc">Packs stored in chunks/data_c03.json[span_12](start_span)[span_12](end_span)[span_13](start_span)[span_13](end_span)</p>
-      </div>
-    </header>
-
-    <div class="movies-grid" id="soundtracks-grid"></div>
-  </main>
-
-  <script>
-    let songsData = [];
-    let activeMovie = null;
-    let albumTracksCache = [];
-    let stagedTracks = [];
-
-    const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
-    const CONFIRM_PASS = "24592";
-    const GH_REPO = 'Moinuflix/My-Movies';[span_14](start_span)[span_14](end_span)[span_15](start_span)[span_15](end_span)
-    const GH_BRANCH = 'main';[span_16](start_span)[span_16](end_span)[span_17](start_span)[span_17](end_span)
-    const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';[span_18](start_span)[span_18](end_span)[span_19](start_span)[span_19](end_span)
-    const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';[span_20](start_span)[span_20](end_span)[span_21](start_span)[span_21](end_span)
-    const DEFAULT_TRACK_THUMB = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='100%25' height='100%25' fill='%230b1329'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%2310b981' text-anchor='middle' dy='.3em'%3E%E2%99%AC%3C/text%3E%3C/svg%3E";
-
-    function      justify-content: center;
-      font-weight: 800;
-      font-size: 1.3rem;
-      color: #030712;
-      box-shadow: 0 0 25px var(--laser-green-glow);
-    }
-    .brand-text { font-size: 1.3rem; font-weight: 800; }
-
-    .nav-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .nav-btn {
-      width: 100%;
-      background: transparent;
-      border: 1px solid transparent;
-      color: var(--text-muted);
-      padding: 0.75rem 0.95rem;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .nav-btn:hover { background: rgba(56, 189, 248, 0.08); color: #fff; }
-    .nav-btn.active {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(56, 189, 248, 0.12));
-      color: #fff;
-      border: 1px solid var(--laser-green);
-      box-shadow: 0 0 20px var(--laser-green-glow);
-    }
-
-    .sidebar-footer { margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 1.25rem; }
-    .btn-token-config {
-      width: 100%;
-      background: rgba(16, 185, 129, 0.08);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      color: var(--laser-green);
-      padding: 0.7rem 0.9rem;
-      border-radius: 10px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    main {
-      margin-left: 270px;
-      flex: 1;
-      padding: 2.5rem 3rem 6rem;
-      max-width: 1440px;
-      width: calc(100% - 270px);
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-    }
-
-    .form-container {
-      background: var(--bg-card);
-      backdrop-filter: blur(25px);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      border-radius: 24px;
-      padding: 2.2rem 2.6rem;
-      max-width: 980px;
-      box-shadow: 0 15px 45px rgba(0,0,0,0.6);
-      margin-bottom: 2.5rem;
-    }
-
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.5rem; position: relative; }
-    .full-width { grid-column: span 2; }
-    label { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
-
-    input, select {
-      background: var(--bg-input);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 0.85rem 1rem;
-      color: #fff;
-      font-size: 0.9rem;
-      outline: none;
-      font-family: var(--font-stack);
-      transition: all 0.2s;
-    }
-    input:focus, select:focus {
-      border-color: var(--laser-green);
-      box-shadow: 0 0 16px var(--laser-green-glow);
-    }
-
-    .search-action-wrap {
-      display: flex;
-      gap: 8px;
-    }
-    .btn-search-trigger {
-      background: linear-gradient(135deg, var(--laser-cyan), #0284c7);
-      color: #030712;
-      border: none;
-      border-radius: 12px;
-      padding: 0 1.4rem;
-      font-weight: 800;
-      font-size: 0.9rem;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-
-    /* TMDB SEARCH RESULTS LIST */
-    .tmdb-results-box {
-      display: none;
-      margin-top: 10px;
-      background: #081024;
-      border: 1px solid var(--laser-cyan);
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9);
-      border-radius: 14px;
-      padding: 8px;
-      max-height: 340px;
-      overflow-y: auto;
-    }
-    .tmdb-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px;
-      cursor: pointer;
-      border-radius: 10px;
-      border: 1px solid transparent;
-      margin-bottom: 4px;
-    }
-    .tmdb-item:hover { background: #162544; border-color: var(--laser-cyan); }
-    .tmdb-poster { width: 44px; height: 60px; border-radius: 6px; object-fit: cover; background: #0c1836; flex-shrink: 0; }
-    .tmdb-badge {
-      background: rgba(56, 189, 248, 0.18);
-      color: var(--laser-cyan);
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 0.78rem;
-      margin-left: auto;
-    }
-
-    .confirmed-movie-badge {
-      display: none;
-      align-items: center;
-      gap: 14px;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid var(--laser-green);
-      border-radius: 14px;
-      padding: 12px 16px;
-      margin-top: 6px;
-    }
-    .confirmed-movie-img { width: 48px; height: 68px; border-radius: 8px; object-fit: cover; }
-
-    /* EDIT PANEL */
-    #song-edit-panel {
-      display: none;
-      background: rgba(6, 12, 28, 0.95);
-      border: 1px dashed var(--laser-green);
-      border-radius: 16px;
-      padding: 1.4rem;
-      margin-top: 1rem;
-      gap: 1rem;
-      flex-direction: column;
-    }
-    .song-edit-preview-row { display: flex; align-items: center; gap: 14px; }
-    .song-edit-thumb { 
-      width: 60px; 
-      height: 60px; 
-      border-radius: 10px; 
-      object-fit: cover; 
-      border: 1px solid var(--laser-cyan);
-      background-color: #0c1836;
-    }
-
-    .btn-add-to-pack {
-      background: rgba(16, 185, 129, 0.2);
-      color: var(--laser-green);
-      border: 1px solid var(--laser-green);
-      padding: 0.85rem;
-      border-radius: 10px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .btn-add-to-pack:hover { background: var(--laser-green); color: #030712; }
-
-    /* STAGED TRACKS LIST */
-    .staged-pack-container {
-      margin-top: 1.5rem;
-      background: rgba(9, 16, 34, 0.8);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 1.2rem;
-    }
-    .staged-track-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 10px;
-      padding: 8px 12px;
-      margin-bottom: 8px;
-    }
-
-    .btn-submit-pack {
-      background: linear-gradient(135deg, var(--laser-green), var(--laser-cyan));
-      color: #030712;
-      border: none;
-      padding: 1rem;
-      border-radius: 14px;
-      font-weight: 800;
-      font-size: 0.95rem;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 1.25rem;
-      box-shadow: 0 0 25px var(--laser-green-glow);
-    }
-
-    .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.75rem; }
-    .soundtrack-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-    }
-    .soundtrack-card:hover {
-      border-color: var(--laser-green);
-      transform: translateY(-5px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.7), 0 0 25px var(--laser-green-glow);
-    }
-    .poster-wrap { width: 100%; height: 250px; background: #081024; position: relative; }
-    .poster-img { width: 100%; height: 100%; object-fit: cover; }
-    .pack-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: rgba(56, 189, 248, 0.25);
-      border: 1px solid var(--laser-cyan);
-      color: var(--laser-cyan);
-      padding: 4px 10px;
-      border-radius: 8px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      backdrop-filter: blur(8px);
-    }
-    .soundtrack-card-body { padding: 1.2rem; display: flex; flex-direction: column; gap: 6px; }
-
-    #laser-toast {
-      position: fixed;
-      top: 25px;
-      right: 25px;
-      background: rgba(10, 18, 38, 0.96);
-      border: 1px solid var(--laser-green);
-      box-shadow: 0 0 25px var(--laser-green-glow);
-      color: #fff;
-      padding: 1rem 1.4rem;
-      border-radius: 12px;
-      font-weight: 700;
-      display: none;
-      z-index: 3000;
-    }
-
-    @media (max-width: 900px) {
-      body { flex-direction: column; }
-      aside { width: 100%; height: auto; position: sticky; top: 0; padding: 0.75rem 1rem; border-right: none; border-bottom: 1px solid var(--border-color); }
-      .brand { margin-bottom: 0.5rem; padding-bottom: 0.5rem; }
-      .nav-list { flex-direction: row; overflow-x: auto; }
-      .nav-btn { white-space: nowrap; padding: 0.5rem 0.8rem; }
-      .sidebar-footer { display: none; }
-      main { margin-left: 0; width: 100%; padding: 1.2rem 1rem 6rem; }
-      .form-container { padding: 1.4rem 1.1rem; }
-      .form-grid { grid-template-columns: 1fr; }
-      .full-width { grid-column: span 1; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- TOP 3D LASER PROGRESS NOTIFICATION -->
-  <div id="laser-progress-bar-container">
-    <div id="laser-progress-bar"></div>
-  </div>
-  <div id="laser-progress-label">
-    <span id="laser-progress-text">⚡ Processing...</span>
-    <span id="laser-progress-pct">0%</span>
-  </div>
-
-  <div id="laser-toast"></div>
-
-  <aside>
-    <div class="brand">
-      <div class="brand-logo">M</div>
-      <div class="brand-text">MoinuFlix</div>
-    </div>
-    <ul class="nav-list">
-      <li><a href="inbox.html" class="nav-btn">🎬 Movies Vault ➔</a></li>
-      <li><a href="series.html" class="nav-btn">📺 Web Series ➔</a></li>
-      <li><button class="nav-btn active">🎵 5.1 Soundtracks</button></li>
-    </ul>
-    <div class="sidebar-footer">
-      <button class="btn-token-config" onclick="configureGithubToken()">
-        <span id="token-status-label">⚙️ GitHub Token</span>
-      </button>
-    </div>
-  </aside>
-
-  <main>
-    <header>
-      <div>
-        <h1 style="font-size: 1.8rem;">🎵 5.1 Soundtrack Pack Studio</h1>
-        <p class="section-desc">Search movie, pick song, fill GDrive ID and push album packs[span_10](start_span)[span_10](end_span)[span_11](start_span)[span_11](end_span)</p>
-      </div>
-      <div>
-        <button class="btn-token-config" style="padding: 0.6rem 1.2rem;" onclick="loadAllSongs()">🔄 Refresh Vault</button>
-      </div>
-    </header>
-
-    <!-- FORM WORKFLOW -->
-    <div class="form-container">
-      <div class="form-grid">
-
-        <!-- STEP 1: MOVIE SEARCH -->
-        <div class="form-group full-width">
-          <label style="color: var(--laser-cyan);">1. Search Movie Name (TMDB Top 5):</label>
-          <div class="search-action-wrap" id="search-input-wrapper">
-            <input type="text" id="input-movie-query" placeholder="Type Movie Name (e.g. Yaan, Leo, Jailer, Vikram)...">
-            <button type="button" class="btn-search-trigger" onclick="triggerMovieSearch()">🔍 Search</button>
-          </div>
-          <div id="tmdb-suggest-box" class="tmdb-results-box"></div>
-          
-          <div id="confirmed-movie-box" class="confirmed-movie-badge">
-            <img id="confirmed-poster" class="confirmed-movie-img" src="" alt="poster">
-            <div style="flex:1;">
-              <div id="confirmed-title" style="font-weight:800; font-size:1rem; color:#fff;"></div>
-              <div id="confirmed-meta" style="font-size:0.8rem; color:var(--laser-green);"></div>
-            </div>
-            <button type="button" onclick="resetMovieSelection()" style="background:transparent; border:1px solid var(--laser-red); color:var(--laser-red); padding:4px 8px; border-radius:6px; cursor:pointer;">Change Movie</button>
-          </div>
-        </div>
-
-        <!-- STEP 2: SONG SELECT DROPDOWN -->
-        <div class="form-group full-width" id="song-select-group" style="display:none;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <label style="color: var(--laser-green);">2. Select Song from Official Album:</label>
-            <span id="album-status-tag" style="font-size:0.75rem; color:var(--laser-cyan); font-weight:700;"></span>
-          </div>
-          <select id="select-movie-song" onchange="handleSongSelected(this.value)">
-            <option value="">-- Choose a Track from Official Album --</option>
-          </select>
-        </div>
-
-        <!-- STEP 3: INDIVIDUAL SONG DETAIL SECTION -->
-        <div class="form-group full-width" id="song-edit-panel">
-          <div class="song-edit-preview-row">
-            <img id="song-edit-thumb" class="song-edit-thumb" src="" alt="track">
-            <div>
-              <div id="song-edit-name" style="font-weight:800; font-size:1.05rem; color:#fff;"></div>
-              <div id="song-edit-artist" style="font-size:0.8rem; color:var(--laser-cyan);"></div>
-            </div>
-          </div>
-
-          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:12px;">
-            <div class="form-group">
-              <label>Quality Format</label>
-              <select id="song-quality-input">
-                <option value="5.1 Surround" selected>5.1 Dolby Digital Surround (AC3/DDP)</option>
-                <option value="Dolby Atmos (TrueHD)">Dolby Atmos (Lossless TrueHD)</option>
-                <option value="DTS-HD Master 7.1">DTS-HD Master Audio 7.1</option>
-                <option value="24-bit FLAC">24-bit Lossless FLAC</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Source / Provider</label>
-              <select id="song-source-input">
-                <option value="Apple Music" selected>Apple Music (Atmos Rip)</option>
-                <option value="Original BLURAY 5.1">Original BLURAY 5.1</option>
-                <option value="JioSaavn Hi-Res">JioSaavn Hi-Res</option>
-                <option value="Tidal Master">Tidal Master</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group" style="margin-top:10px;">
-            <label style="color:var(--laser-cyan);">Google Drive Link or File ID for this Song:</label>
-            <input type="text" id="song-gdrive-input" placeholder="Paste full Google Drive link or ID">
-          </div>
-
-          <button type="button" class="btn-add-to-pack" onclick="addCurrentSongToStaging()">
-            ➕ ADD THIS SONG TO PACK (Click to include in Bundle)
-          </button>
-        </div>
-
-        <!-- STEP 4: PACK STAGING PREVIEW & PUSH -->
-        <div class="form-group full-width" id="staged-pack-box" style="display:none;">
-          <div class="staged-pack-container">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-              <span style="font-weight:800; color:#fff; font-size:0.9rem;">📦 Songs Added in this Movie Pack:</span>
-              <span id="staged-count-badge" style="font-weight:800; color:var(--laser-green); font-size:0.85rem;">0 Songs</span>
-            </div>
-            <div id="staged-list-items"></div>
-
-            <button type="button" class="btn-submit-pack" onclick="pushFinalPackToGithub()">
-              🚀 PUSH SOUNDTRACK PACK TO MASTER (DATA_C03.JSON)
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- SOUNDTRACK ALBUMS IN LIBRARY -->
-    <header style="margin-top: 2rem;">
-      <div>
-        <h2 style="font-size: 1.4rem; font-weight: 800;">🎼 Active Soundtracks in Audio Vault</h2>
-        <p class="section-desc">Packs stored in chunks/data_c03.json[span_12](start_span)[span_12](end_span)[span_13](start_span)[span_13](end_span)</p>
-      </div>
-    </header>
-
-    <div class="movies-grid" id="soundtracks-grid"></div>
-  </main>
-
-  <script>
-    let songsData = [];
-    let activeMovie = null;
-    let albumTracksCache = [];
-    let stagedTracks = [];
-
-    const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
-    const CONFIRM_PASS = "24592";
-    const GH_REPO = 'Moinuflix/My-Movies';[span_14](start_span)[span_14](end_span)[span_15](start_span)[span_15](end_span)
-    const GH_BRANCH = 'main';[span_16](start_span)[span_16](end_span)[span_17](start_span)[span_17](end_span)
-    const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';[span_18](start_span)[span_18](end_span)[span_19](start_span)[span_19](end_span)
-    const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';[span_20](start_span)[span_20](end_span)[span_21](start_span)[span_21](end_span)
-    const DEFAULT_TRACK_THUMB = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='100%25' height='100%25' fill='%230b1329'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%2310b981' text-anchor='middle' dy='.3em'%3E%E2%99%AC%3C/text%3E%3C/svg%3E";
-
-    function<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>MoinuFlix — 5.1 Soundtrack Studio Pro</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-dark: #030611;
-      --bg-card: rgba(10, 18, 38, 0.92);
-      --bg-input: #060c1d;
-      --border-color: rgba(56, 189, 248, 0.22);
-      --laser-green: #10b981;
-      --laser-green-glow: rgba(16, 185, 129, 0.5);
-      --laser-cyan: #38bdf8;
-      --laser-cyan-glow: rgba(56, 189, 248, 0.55);
-      --laser-red: #ef4444;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
-      --font-stack: 'Plus Jakarta Sans', system-ui, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-
-    body {
-      background-color: var(--bg-dark);
-      background-image: 
-        radial-gradient(circle at 10% 15%, rgba(16, 185, 129, 0.15) 0%, transparent 45%),
-        radial-gradient(circle at 90% 85%, rgba(56, 189, 248, 0.15) 0%, transparent 50%);
-      color: var(--text-main);
-      font-family: var(--font-stack);
-      display: flex;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* TOP 3D LASER PROGRESS */
-    #laser-progress-bar-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 6px;
-      background: rgba(3, 6, 17, 0.8);
-      z-index: 2000;
-      display: none;
-    }
-    #laser-progress-bar {
-      width: 0%;
-      height: 100%;
-      background: linear-gradient(90deg, var(--laser-green), var(--laser-cyan));
-      box-shadow: 0 0 16px var(--laser-cyan-glow), 0 0 30px var(--laser-green-glow);
-      transition: width 0.2s ease-out;
-    }
-    #laser-progress-label {
-      position: fixed;
-      top: 14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(8, 14, 30, 0.98);
-      border: 1px solid var(--laser-cyan);
-      box-shadow: 0 0 25px var(--laser-cyan-glow);
-      border-radius: 30px;
-      padding: 6px 20px;
-      font-size: 0.82rem;
-      font-weight: 800;
-      color: #fff;
-      display: none;
-      align-items: center;
-      gap: 10px;
-      z-index: 2001;
-      backdrop-filter: blur(16px);
-    }
-    #laser-progress-pct {
-      font-family: var(--font-mono);
-      color: var(--laser-green);
-      font-size: 0.9rem;
-    }
-
-    aside {
-      width: 270px;
-      background: rgba(6, 12, 28, 0.95);
-      backdrop-filter: blur(25px);
-      border-right: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      padding: 1.5rem 1.2rem;
-      position: fixed;
-      height: 100vh;
-      z-index: 100;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      padding: 0 0.5rem 1.25rem;
-      border-bottom: 1px solid var(--border-color);
-      margin-bottom: 1.25rem;
-    }
-    .brand-logo {
-      width: 44px;
-      height: 44px;
-      background: linear-gradient(135deg, var(--laser-green), var(--laser-cyan));
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 1.3rem;
-      color: #030712;
-      box-shadow: 0 0 25px var(--laser-green-glow);
-    }
-    .brand-text { font-size: 1.3rem; font-weight: 800; }
-
-    .nav-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .nav-btn {
-      width: 100%;
-      background: transparent;
-      border: 1px solid transparent;
-      color: var(--text-muted);
-      padding: 0.75rem 0.95rem;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .nav-btn:hover { background: rgba(56, 189, 248, 0.08); color: #fff; }
-    .nav-btn.active {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(56, 189, 248, 0.12));
-      color: #fff;
-      border: 1px solid var(--laser-green);
-      box-shadow: 0 0 20px var(--laser-green-glow);
-    }
-
-    .sidebar-footer { margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 1.25rem; }
-    .btn-token-config {
-      width: 100%;
-      background: rgba(16, 185, 129, 0.08);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      color: var(--laser-green);
-      padding: 0.7rem 0.9rem;
-      border-radius: 10px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    main {
-      margin-left: 270px;
-      flex: 1;
-      padding: 2.5rem 3rem 6rem;
-      max-width: 1440px;
-      width: calc(100% - 270px);
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-    }
-
-    .form-container {
-      background: var(--bg-card);
-      backdrop-filter: blur(25px);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      border-radius: 24px;
-      padding: 2.2rem 2.6rem;
-      max-width: 980px;
-      box-shadow: 0 15px 45px rgba(0,0,0,0.6);
-      margin-bottom: 2.5rem;
-    }
-
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.5rem; position: relative; }
-    .full-width { grid-column: span 2; }
-    label { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
-
-    input, select {
-      background: var(--bg-input);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 0.85rem 1rem;
-      color: #fff;
-      font-size: 0.9rem;
-      outline: none;
-      font-family: var(--font-stack);
-      transition: all 0.2s;
-    }
-    input:focus, select:focus {
-      border-color: var(--laser-green);
-      box-shadow: 0 0 16px var(--laser-green-glow);
-    }
-
-    .search-action-wrap {
-      display: flex;
-      gap: 8px;
-    }
-    .btn-search-trigger {
-      background: linear-gradient(135deg, var(--laser-cyan), #0284c7);
-      color: #030712;
-      border: none;
-      border-radius: 12px;
-      padding: 0 1.4rem;
-      font-weight: 800;
-      font-size: 0.9rem;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-
-    /* TMDB SEARCH RESULTS LIST */
-    .tmdb-results-box {
-      display: none;
-      margin-top: 10px;
-      background: #081024;
-      border: 1px solid var(--laser-cyan);
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9);
-      border-radius: 14px;
-      padding: 8px;
-      max-height: 340px;
-      overflow-y: auto;
-    }
-    .tmdb-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px;
-      cursor: pointer;
-      border-radius: 10px;
-      border: 1px solid transparent;
-      margin-bottom: 4px;
-    }
-    .tmdb-item:hover { background: #162544; border-color: var(--laser-cyan); }
-    .tmdb-poster { width: 44px; height: 60px; border-radius: 6px; object-fit: cover; background: #0c1836; flex-shrink: 0; }
-    .tmdb-badge {
-      background: rgba(56, 189, 248, 0.18);
-      color: var(--laser-cyan);
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-weight: 700;
-      font-size: 0.78rem;
-      margin-left: auto;
-    }
-
-    .confirmed-movie-badge {
-      display: none;
-      align-items: center;
-      gap: 14px;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid var(--laser-green);
-      border-radius: 14px;
-      padding: 12px 16px;
-      margin-top: 6px;
-    }
-    .confirmed-movie-img { width: 48px; height: 68px; border-radius: 8px; object-fit: cover; }
-
-    /* EDIT PANEL */
-    #song-edit-panel {
-      display: none;
-      background: rgba(6, 12, 28, 0.95);
-      border: 1px dashed var(--laser-green);
-      border-radius: 16px;
-      padding: 1.4rem;
-      margin-top: 1rem;
-      gap: 1rem;
-      flex-direction: column;
-    }
-    .song-edit-preview-row { display: flex; align-items: center; gap: 14px; }
-    .song-edit-thumb { 
-      width: 60px; 
-      height: 60px; 
-      border-radius: 10px; 
-      object-fit: cover; 
-      border: 1px solid var(--laser-cyan);
-      background-color: #0c1836;
-    }
-
-    .btn-add-to-pack {
-      background: rgba(16, 185, 129, 0.2);
-      color: var(--laser-green);
-      border: 1px solid var(--laser-green);
-      padding: 0.85rem;
-      border-radius: 10px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .btn-add-to-pack:hover { background: var(--laser-green); color: #030712; }
-
-    /* STAGED TRACKS LIST */
-    .staged-pack-container {
-      margin-top: 1.5rem;
-      background: rgba(9, 16, 34, 0.8);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 1.2rem;
-    }
-    .staged-track-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 10px;
-      padding: 8px 12px;
-      margin-bottom: 8px;
-    }
-
-    .btn-submit-pack {
-      background: linear-gradient(135deg, var(--laser-green), var(--laser-cyan));
-      color: #030712;
-      border: none;
-      padding: 1rem;
-      border-radius: 14px;
-      font-weight: 800;
-      font-size: 0.95rem;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 1.25rem;
-      box-shadow: 0 0 25px var(--laser-green-glow);
-    }
-
-    .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.75rem; }
-    .soundtrack-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-    }
-    .soundtrack-card:hover {
-      border-color: var(--laser-green);
-      transform: translateY(-5px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.7), 0 0 25px var(--laser-green-glow);
-    }
-    .poster-wrap { width: 100%; height: 250px; background: #081024; position: relative; }
-    .poster-img { width: 100%; height: 100%; object-fit: cover; }
-    .pack-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: rgba(56, 189, 248, 0.25);
-      border: 1px solid var(--laser-cyan);
-      color: var(--laser-cyan);
-      padding: 4px 10px;
-      border-radius: 8px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      backdrop-filter: blur(8px);
-    }
-    .soundtrack-card-body { padding: 1.2rem; display: flex; flex-direction: column; gap: 6px; }
-
-    #laser-toast {
-      position: fixed;
-      top: 25px;
-      right: 25px;
-      background: rgba(10, 18, 38, 0.96);
-      border: 1px solid var(--laser-green);
-      box-shadow: 0 0 25px var(--laser-green-glow);
-      color: #fff;
-      padding: 1rem 1.4rem;
-      border-radius: 12px;
-      font-weight: 700;
-      display: none;
-      z-index: 3000;
-    }
-
-    @media (max-width: 900px) {
-      body { flex-direction: column; }
-      aside { width: 100%; height: auto; position: sticky; top: 0; padding: 0.75rem 1rem; border-right: none; border-bottom: 1px solid var(--border-color); }
-      .brand { margin-bottom: 0.5rem; padding-bottom: 0.5rem; }
-      .nav-list { flex-direction: row; overflow-x: auto; }
-      .nav-btn { white-space: nowrap; padding: 0.5rem 0.8rem; }
-      .sidebar-footer { display: none; }
-      main { margin-left: 0; width: 100%; padding: 1.2rem 1rem 6rem; }
-      .form-container { padding: 1.4rem 1.1rem; }
-      .form-grid { grid-template-columns: 1fr; }
-      .full-width { grid-column: span 1; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- TOP 3D LASER PROGRESS NOTIFICATION -->
-  <div id="laser-progress-bar-container">
-    <div id="laser-progress-bar"></div>
-  </div>
-  <div id="laser-progress-label">
-    <span id="laser-progress-text">⚡ Processing...</span>
-    <span id="laser-progress-pct">0%</span>
-  </div>
-
-  <div id="laser-toast"></div>
-
-  <aside>
-    <div class="brand">
-      <div class="brand-logo">M</div>
-      <div class="brand-text">MoinuFlix</div>
-    </div>
-    <ul class="nav-list">
-      <li><a href="inbox.html" class="nav-btn">🎬 Movies Vault ➔</a></li>
-      <li><a href="series.html" class="nav-btn">📺 Web Series ➔</a></li>
-      <li><button class="nav-btn active">🎵 5.1 Soundtracks</button></li>
-    </ul>
-    <div class="sidebar-footer">
-      <button class="btn-token-config" onclick="configureGithubToken()">
-        <span id="token-status-label">⚙️ GitHub Token</span>
-      </button>
-    </div>
-  </aside>
-
-  <main>
-    <header>
-      <div>
-        <h1 style="font-size: 1.8rem;">🎵 5.1 Soundtrack Pack Studio</h1>
-        <p class="section-desc">Search movie, pick song, fill GDrive ID and push album packs[span_10](start_span)[span_10](end_span)[span_11](start_span)[span_11](end_span)</p>
-      </div>
-      <div>
-        <button class="btn-token-config" style="padding: 0.6rem 1.2rem;" onclick="loadAllSongs()">🔄 Refresh Vault</button>
-      </div>
-    </header>
-
-    <!-- FORM WORKFLOW -->
-    <div class="form-container">
-      <div class="form-grid">
-
-        <!-- STEP 1: MOVIE SEARCH -->
-        <div class="form-group full-width">
-          <label style="color: var(--laser-cyan);">1. Search Movie Name (TMDB Top 5):</label>
-          <div class="search-action-wrap" id="search-input-wrapper">
-            <input type="text" id="input-movie-query" placeholder="Type Movie Name (e.g. Yaan, Leo, Jailer, Vikram)...">
-            <button type="button" class="btn-search-trigger" onclick="triggerMovieSearch()">🔍 Search</button>
-          </div>
-          <div id="tmdb-suggest-box" class="tmdb-results-box"></div>
-          
-          <div id="confirmed-movie-box" class="confirmed-movie-badge">
-            <img id="confirmed-poster" class="confirmed-movie-img" src="" alt="poster">
-            <div style="flex:1;">
-              <div id="confirmed-title" style="font-weight:800; font-size:1rem; color:#fff;"></div>
-              <div id="confirmed-meta" style="font-size:0.8rem; color:var(--laser-green);"></div>
-            </div>
-            <button type="button" onclick="resetMovieSelection()" style="background:transparent; border:1px solid var(--laser-red); color:var(--laser-red); padding:4px 8px; border-radius:6px; cursor:pointer;">Change Movie</button>
-          </div>
-        </div>
-
-        <!-- STEP 2: SONG SELECT DROPDOWN -->
-        <div class="form-group full-width" id="song-select-group" style="display:none;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <label style="color: var(--laser-green);">2. Select Song from Official Album:</label>
-            <span id="album-status-tag" style="font-size:0.75rem; color:var(--laser-cyan); font-weight:700;"></span>
-          </div>
-          <select id="select-movie-song" onchange="handleSongSelected(this.value)">
-            <option value="">-- Choose a Track from Official Album --</option>
-          </select>
-        </div>
-
-        <!-- STEP 3: INDIVIDUAL SONG DETAIL SECTION -->
-        <div class="form-group full-width" id="song-edit-panel">
-          <div class="song-edit-preview-row">
-            <img id="song-edit-thumb" class="song-edit-thumb" src="" alt="track">
-            <div>
-              <div id="song-edit-name" style="font-weight:800; font-size:1.05rem; color:#fff;"></div>
-              <div id="song-edit-artist" style="font-size:0.8rem; color:var(--laser-cyan);"></div>
-            </div>
-          </div>
-
-          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top:12px;">
-            <div class="form-group">
-              <label>Quality Format</label>
-              <select id="song-quality-input">
-                <option value="5.1 Surround" selected>5.1 Dolby Digital Surround (AC3/DDP)</option>
-                <option value="Dolby Atmos (TrueHD)">Dolby Atmos (Lossless TrueHD)</option>
-                <option value="DTS-HD Master 7.1">DTS-HD Master Audio 7.1</option>
-                <option value="24-bit FLAC">24-bit Lossless FLAC</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Source / Provider</label>
-              <select id="song-source-input">
-                <option value="Apple Music" selected>Apple Music (Atmos Rip)</option>
-                <option value="Original BLURAY 5.1">Original BLURAY 5.1</option>
-                <option value="JioSaavn Hi-Res">JioSaavn Hi-Res</option>
-                <option value="Tidal Master">Tidal Master</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group" style="margin-top:10px;">
-            <label style="color:var(--laser-cyan);">Google Drive Link or File ID for this Song:</label>
-            <input type="text" id="song-gdrive-input" placeholder="Paste full Google Drive link or ID">
-          </div>
-
-          <button type="button" class="btn-add-to-pack" onclick="addCurrentSongToStaging()">
-            ➕ ADD THIS SONG TO PACK (Click to include in Bundle)
-          </button>
-        </div>
-
-        <!-- STEP 4: PACK STAGING PREVIEW & PUSH -->
-        <div class="form-group full-width" id="staged-pack-box" style="display:none;">
-          <div class="staged-pack-container">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-              <span style="font-weight:800; color:#fff; font-size:0.9rem;">📦 Songs Added in this Movie Pack:</span>
-              <span id="staged-count-badge" style="font-weight:800; color:var(--laser-green); font-size:0.85rem;">0 Songs</span>
-            </div>
-            <div id="staged-list-items"></div>
-
-            <button type="button" class="btn-submit-pack" onclick="pushFinalPackToGithub()">
-              🚀 PUSH SOUNDTRACK PACK TO MASTER (DATA_C03.JSON)
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- SOUNDTRACK ALBUMS IN LIBRARY -->
-    <header style="margin-top: 2rem;">
-      <div>
-        <h2 style="font-size: 1.4rem; font-weight: 800;">🎼 Active Soundtracks in Audio Vault</h2>
-        <p class="section-desc">Packs stored in chunks/data_c03.json[span_12](start_span)[span_12](end_span)[span_13](start_span)[span_13](end_span)</p>
-      </div>
-    </header>
-
-    <div class="movies-grid" id="soundtracks-grid"></div>
-  </main>
-
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
+  <style>
+    :root {
+      --bg-matte: #0b0d10;
+      --bg-surface: #12151a;
+      --bg-card: #181c24;
+      --bg-card-hover: #1f242e;
+      --bg-input: #0e1116;
+
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(212, 175, 55, 0.5);
+
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+
+      --accent-gold: #d4af37;
+      --accent-gold-soft: rgba(212, 175, 55, 0.15);
+      --status-success: #10b981;
+      --status-success-soft: rgba(16, 185, 129, 0.15);
+      --status-error: #f59e0b;
+      --status-error-soft: rgba(245, 158, 11, 0.15);
+
+      --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.35);
+      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+      --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-matte);
+      color: var(--text-primary);
+      font-family: var(--font-family);
+      line-height: 1.5;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Bar */
+    .app-header {
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(11, 13, 16, 0.85);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .brand-badge {
+      background: var(--accent-gold-soft);
+      color: var(--accent-gold);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .brand-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: var(--text-primary);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn-token {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-token:hover {
+      color: var(--text-primary);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .main-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 6rem;
+    }
+
+    /* Search Section */
+    .search-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .search-wrap {
+      position: relative;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .search-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.3px;
+    }
+
+    .search-input-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      width: 1.15rem;
+      height: 1.15rem;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .search-input-box input {
+      width: 100%;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1rem 3rem 1rem 2.85rem;
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--text-primary);
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .search-input-box input:focus {
+      border-color: var(--border-focus);
+      background-color: var(--bg-card);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.08);
+    }
+
+    .clear-btn {
+      position: absolute;
+      right: 0.85rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.25rem;
+      cursor: pointer;
+      padding: 0.25rem;
+      display: none;
+    }
+
+    .clear-btn:hover { color: var(--text-primary); }
+
+    .autocomplete-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      max-height: 380px;
+      overflow-y: auto;
+      z-index: 100;
+    }
+
+    .autocomplete-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      transition: var(--transition);
+    }
+
+    .autocomplete-item:last-child { border-bottom: none; }
+    .autocomplete-item:hover { background: var(--bg-card-hover); }
+
+    .item-thumb {
+      width: 38px;
+      height: 56px;
+      background: #000;
+      border-radius: 4px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .item-info {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .item-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .item-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Cinematic Hero */
+    .movie-hero {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      background-color: var(--bg-surface);
+      min-height: 380px;
+      display: flex;
+      align-items: flex-end;
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .hero-backdrop {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center top;
+      filter: brightness(0.35) saturate(1.1);
+      transform: scale(1.02);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(11, 13, 16, 0.2) 0%, rgba(11, 13, 16, 0.95) 90%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 2rem;
+      align-items: flex-end;
+      max-width: 100%;
+    }
+
+    .hero-poster-wrap {
+      width: 150px;
+      height: 225px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      flex-shrink: 0;
+      background-color: #000;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-poster {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .hero-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .pill-year {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+    }
+
+    .pill-rating {
+      background: var(--accent-gold-soft);
+      color: var(--accent-gold);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .pill-id {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+    }
+
+    .hero-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+
+    .hero-overview {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 780px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Songs Section */
+    .songs-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .section-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .songs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .song-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .song-card:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      background-color: var(--bg-card);
+    }
+
+    .song-index {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      min-width: 28px;
+    }
+
+    .song-title-wrap {
+      width: 250px;
+      flex-shrink: 0;
+    }
+
+    .song-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .song-artist {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .song-input-wrap {
+      flex: 1;
+    }
+
+    .song-input-wrap input {
+      width: 100%;
+      background-color: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 0.85rem;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .song-input-wrap input:focus {
+      border-color: var(--border-focus);
+    }
+
+    .song-input-wrap input.invalid {
+      border-color: var(--status-error);
+      background-color: var(--status-error-soft);
+    }
+
+    .song-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .song-status-pill {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.35rem 0.65rem;
+      border-radius: 4px;
+      background: transparent;
+      color: var(--text-muted);
+    }
+
+    .song-status-pill.saved {
+      background: var(--status-success-soft);
+      color: var(--status-success);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.1rem;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition);
+    }
+
+    .btn-save-song {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+    }
+
+    .btn-save-song:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      background-color: var(--bg-card-hover);
+    }
+
+    .btn-save-all {
+      background-color: var(--accent-gold);
+      color: #0b0d10;
+      font-weight: 700;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+    }
+
+    .btn-save-all:hover:not(:disabled) {
+      background-color: #dfbe4a;
+      transform: translateY(-1px);
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(0, 0, 0, 0.2);
+      border-top-color: #0b0d10;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* States & Skeletons */
+    .state-card {
+      border: 1px dashed var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 5rem 2rem;
+      text-align: center;
+      max-width: 600px;
+      margin: 3rem auto;
+    }
+
+    .state-icon { font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.8; }
+    .state-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .state-desc { font-size: 0.9rem; color: var(--text-muted); }
+
+    .skeleton {
+      background: linear-gradient(90deg, #12151a 25%, #181c24 50%, #12151a 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: var(--radius-sm);
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .skeleton-hero {
+      display: flex; gap: 2rem; padding: 2.5rem; background: var(--bg-surface);
+      border-radius: var(--radius-lg); margin-bottom: 2rem;
+    }
+    .skeleton-poster { width: 150px; height: 225px; flex-shrink: 0; }
+    .skeleton-meta { flex: 1; display: flex; flex-direction: column; gap: 1rem; justify-content: center; }
+    .skeleton-title { height: 36px; width: 45%; }
+    .skeleton-tags { height: 20px; width: 25%; }
+    .skeleton-text { height: 16px; width: 85%; }
+    .skeleton-text.short { width: 50%; }
+    .skeleton-card { height: 70px; width: 100%; margin-bottom: 1rem; }
+
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.25rem;
+      font-size: 0.88rem;
+      color: var(--text-primary);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 200;
+    }
+
+    .toast.visible { transform: translateY(0); opacity: 1; }
+    .toast.success { border-color: var(--status-success); }
+    .toast.error { border-color: var(--status-error); }
+
+    @media (max-width: 960px) {
+      .movie-hero { padding: 1.5rem; }
+      .hero-content { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+      .hero-poster-wrap { width: 120px; height: 180px; }
+      .hero-title { font-size: 1.85rem; }
+      .song-card { flex-direction: column; align-items: stretch; gap: 0.75rem; }
+      .song-title-wrap { width: 100%; }
+      .song-actions { justify-content: flex-end; }
+    }
+
+    @media (max-width: 640px) {
+      .songs-section-header { flex-direction: column; align-items: stretch; }
+      .btn-save-all { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-badge">5.1 ATMOS</span>
+        <span class="brand-title">MoinuFlix Songs</span>
+      </div>
+      <div class="header-actions">
+        <button type="button" id="set-token-btn" class="btn-token">🔑 Config GitHub Token</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <!-- Movie Search -->
+    <section class="search-section">
+      <div class="search-wrap">
+        <label for="movie-search-input" class="search-label">Search Movie or Soundtrack Album</label>
+        <div class="search-input-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="text" 
+            id="movie-search-input" 
+            placeholder="Type movie name (e.g. Leo, Jailer, Vikram, Master)..." 
+            autocomplete="off"
+            spellcheck="false"
+          >
+          <button type="button" id="clear-search-btn" class="clear-btn" aria-label="Clear Search">&times;</button>
+        </div>
+
+        <div id="autocomplete-dropdown" class="autocomplete-dropdown" hidden>
+          <div id="autocomplete-list" class="autocomplete-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Empty State -->
+    <section id="empty-state" class="state-card empty-state">
+      <div class="state-icon">🎧</div>
+      <h2 class="state-title">No Movie Selected</h2>
+      <p class="state-desc">Type a movie name above. The system will load the poster and auto-fetch all tracks for Google Drive link ingestion.</p>
+    </section>
+
+    <!-- Skeleton Loader -->
+    <section id="loading-skeleton" class="skeleton-wrap" hidden>
+      <div class="skeleton-hero">
+        <div class="skeleton skeleton-poster"></div>
+        <div class="skeleton-meta">
+          <div class="skeleton skeleton-title"></div>
+          <div class="skeleton skeleton-tags"></div>
+          <div class="skeleton skeleton-text"></div>
+          <div class="skeleton skeleton-text short"></div>
+        </div>
+      </div>
+      <div class="skeleton skeleton-card"></div>
+      <div class="skeleton skeleton-card"></div>
+      <div class="skeleton skeleton-card"></div>
+    </section>
+
+    <!-- Active Workspace -->
+    <div id="active-workspace" hidden>
+
+      <!-- Movie Backdrop & Hero -->
+      <section id="movie-hero" class="movie-hero">
+        <div id="hero-backdrop" class="hero-backdrop"></div>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+          <div class="hero-poster-wrap">
+            <img id="hero-poster" class="hero-poster" src="" alt="Movie Poster">
+          </div>
+          <div class="hero-details">
+            <div class="hero-meta-row">
+              <span id="hero-year" class="pill pill-year"></span>
+              <span id="hero-rating" class="pill pill-rating"></span>
+              <span id="hero-id" class="pill pill-id"></span>
+            </div>
+            <h1 id="hero-title" class="hero-title"></h1>
+            <p id="hero-overview" class="hero-overview"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Songs Listing & Drive Ingest -->
+      <section class="songs-section">
+        <div class="songs-section-header">
+          <div>
+            <h2 class="section-title">Tracks &amp; 5.1 Surround Links</h2>
+            <p class="section-subtitle" id="song-count-label">Auto-detected tracks</p>
+          </div>
+          <button type="button" id="save-all-btn" class="btn btn-save-all">
+            <span class="btn-spinner" hidden></span>
+            <span class="btn-text">Save All to chunks/data_c03.json</span>
+          </button>
+        </div>
+
+        <div id="songs-list" class="songs-list"></div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <div id="toast" class="toast"></div>
+
   <script>
-    let songsData = [];
-    let activeMovie = null;
-    let albumTracksCache = [];
-    let stagedTracks = [];
+    // Configuration targeted to your repository and chunks folder
+    const CONFIG = {
+      TMDB_API_KEY: '051ccf72e026820cb53b8b8531b6a2ba',
+      TMDB_BASE: 'https://api.themoviedb.org/3',
+      TMDB_IMG_BASE: 'https://image.tmdb.org/t/p',
+      
+      // Target file inside the Chunks folder
+      DB_CHUNK_PATH: 'chunks/data_c03.json',
+      GITHUB_OWNER: 'Moinuflix',
+      GITHUB_REPOSITORY: 'My-Movies',
+      GITHUB_BRANCH: 'main',
+      TOKEN_STORAGE_KEY: 'moinuflix_gh_token'
+    };
 
-    const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
-    const CONFIRM_PASS = "24592";
-    const GH_REPO = 'Moinuflix/My-Movies';[span_14](start_span)[span_14](end_span)[span_15](start_span)[span_15](end_span)
-    const GH_BRANCH = 'main';[span_16](start_span)[span_16](end_span)[span_17](start_span)[span_17](end_span)
-    const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';[span_18](start_span)[span_18](end_span)[span_19](start_span)[span_19](end_span)
-    const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';[span_20](start_span)[span_20](end_span)[span_21](start_span)[span_21](end_span)
-    const DEFAULT_TRACK_THUMB = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='100%25' height='100%25' fill='%230b1329'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%2310b981' text-anchor='middle' dy='.3em'%3E%E2%99%AC%3C/text%3E%3C/svg%3E";
+    const state = {
+      activeMovie: null,
+      songs: [],
+      searchDebounceTimer: null,
+      isCommitting: false
+    };
 
-    function getStoredToken() { return localStorage.getItem('moinuflix_gh_token') || ''; }
-    function configureGithubToken() {
-      const cur = getStoredToken();
-      const input = prompt('Enter your GitHub Personal Access Token (ghp_...):', cur);
-      if (input !== null) {
-        if (input.trim()) {
-          localStorage.setItem('moinuflix_gh_token', input.trim());
-          updateTokenBadge();
-          showLaserToast('GitHub Token Saved!');
-        } else {
-          localStorage.removeItem('moinuflix_gh_token');
-          updateTokenBadge();
+    const DOM = {
+      searchInput: document.getElementById('movie-search-input'),
+      clearSearchBtn: document.getElementById('clear-search-btn'),
+      autocompleteDropdown: document.getElementById('autocomplete-dropdown'),
+      autocompleteList: document.getElementById('autocomplete-list'),
+      emptyState: document.getElementById('empty-state'),
+      loadingSkeleton: document.getElementById('loading-skeleton'),
+      activeWorkspace: document.getElementById('active-workspace'),
+      heroBackdrop: document.getElementById('hero-backdrop'),
+      heroPoster: document.getElementById('hero-poster'),
+      heroTitle: document.getElementById('hero-title'),
+      heroYear: document.getElementById('hero-year'),
+      heroRating: document.getElementById('hero-rating'),
+      heroId: document.getElementById('hero-id'),
+      heroOverview: document.getElementById('hero-overview'),
+      songCountLabel: document.getElementById('song-count-label'),
+      songsList: document.getElementById('songs-list'),
+      saveAllBtn: document.getElementById('save-all-btn'),
+      setTokenBtn: document.getElementById('set-token-btn'),
+      toast: document.getElementById('toast')
+    };
+
+    // GitHub Token Setup
+    DOM.setTokenBtn.addEventListener('click', () => {
+      const existing = localStorage.getItem(CONFIG.TOKEN_STORAGE_KEY) || '';
+      const token = prompt('Enter your GitHub Personal Access Token (ghp_...):', existing);
+      if (token !== null) {
+        localStorage.setItem(CONFIG.TOKEN_STORAGE_KEY, token.trim());
+        showToast(token ? 'GitHub Token Saved!' : 'Token cleared', 'success');
+      }
+    });
+
+    // Autocomplete & Search Handlers
+    DOM.searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.trim();
+      DOM.clearSearchBtn.style.display = query ? 'block' : 'none';
+
+      clearTimeout(state.searchDebounceTimer);
+      if (!query || query.length < 2) {
+        DOM.autocompleteDropdown.hidden = true;
+        return;
+      }
+
+      state.searchDebounceTimer = setTimeout(() => {
+        searchTMDB(query);
+      }, 300);
+    });
+
+    DOM.clearSearchBtn.addEventListener('click', () => {
+      DOM.searchInput.value = '';
+      DOM.clearSearchBtn.style.display = 'none';
+      DOM.autocompleteDropdown.hidden = true;
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.search-wrap')) {
+        DOM.autocompleteDropdown.hidden = true;
+      }
+    });
+
+    async function searchTMDB(query) {
+      try {
+        const url = `${CONFIG.TMDB_BASE}/search/movie?api_key=${CONFIG.TMDB_API_KEY}&query=${encodeURIComponent(query)}&page=1`;
+        const res = await fetch(url);
+        if (!res.ok) return;
+        const data = await res.json();
+        renderDropdown(data.results || []);
+      } catch (_) {}
+    }
+
+    function renderDropdown(results) {
+      DOM.autocompleteList.innerHTML = '';
+      if (!results.length) {
+        DOM.autocompleteDropdown.hidden = true;
+        return;
+      }
+
+      results.slice(0, 6).forEach((movie) => {
+        const row = document.createElement('div');
+        row.className = 'autocomplete-item';
+        const year = movie.release_date ? movie.release_date.split('-')[0] : 'N/A';
+        const thumb = movie.poster_path ? `${CONFIG.TMDB_IMG_BASE}/w92${movie.poster_path}` : '';
+
+        row.innerHTML = `
+          <img src="${thumb}" class="item-thumb" alt="">
+          <div class="item-info">
+            <span class="item-title">${escapeHtml(movie.title)}</span>
+            <span class="item-meta">${year} &bull; TMDB #${movie.id}</span>
+          </div>
+        `;
+
+        row.addEventListener('click', () => {
+          DOM.autocompleteDropdown.hidden = true;
+          selectMovie(movie.id);
+        });
+
+        DOM.autocompleteList.appendChild(row);
+      });
+
+      DOM.autocompleteDropdown.hidden = false;
+    }
+
+    // Select Movie & Fetch Music
+    async function selectMovie(tmdbId) {
+      showLoading(true);
+      try {
+        const url = `${CONFIG.TMDB_BASE}/movie/${tmdbId}?api_key=${CONFIG.TMDB_API_KEY}`;
+        const res = await fetch(url);
+        const movie = await res.json();
+        state.activeMovie = movie;
+
+        displayMovieHero(movie);
+        await autoFetchTrackList(movie.title);
+
+        DOM.emptyState.hidden = true;
+        DOM.activeWorkspace.hidden = false;
+      } catch (err) {
+        showToast('Error loading movie: ' + err.message, 'error');
+      } finally {
+        showLoading(false);
+      }
+    }
+
+    function displayMovieHero(m) {
+      DOM.heroTitle.textContent = m.title;
+      DOM.heroYear.textContent = m.release_date ? m.release_date.split('-')[0] : 'N/A';
+      DOM.heroRating.textContent = `★ ${m.vote_average ? m.vote_average.toFixed(1) : 'NR'}`;
+      DOM.heroId.textContent = `TMDB: ${m.id}`;
+      DOM.heroOverview.textContent = m.overview || 'No description available.';
+
+      if (m.backdrop_path) {
+        DOM.heroBackdrop.style.backgroundImage = `url(${CONFIG.TMDB_IMG_BASE}/w1280${m.backdrop_path})`;
+      }
+      if (m.poster_path) {
+        DOM.heroPoster.src = `${CONFIG.TMDB_IMG_BASE}/w500${m.poster_path}`;
+      }
+    }
+
+    // Dual Music API Ingestion
+    async function autoFetchTrackList(movieTitle) {
+      state.songs = [];
+
+      // 1. Try JioSaavn Music API
+      try {
+        const res = await fetch(`https://saavn.dev/api/search/songs?query=${encodeURIComponent(movieTitle)}&limit=10`);
+        if (res.ok) {
+          const json = await res.json();
+          if (json?.data?.results?.length) {
+            state.songs = json.data.results.map(t => ({
+              title: t.name.replace(/&quot;/g, '"').replace(/&#039;/g, "'"),
+              artist: t.artists?.primary?.map(a => a.name).join(', ') || 'Original Track',
+              drive_url: ''
+            }));
+          }
         }
-      }
-    }
-    function updateTokenBadge() {
-      const label = document.getElementById('token-status-label');
-      if (!label) return;
-      if (getStoredToken()) {
-        label.textContent = 'Token: Active ✅';
-        label.style.color = 'var(--laser-green)';
-      } else {
-        label.textContent = '⚙️ GitHub Token';
-        label.style.color = 'var(--laser-cyan)';
-      }
-    }
+      } catch (_) {}
 
-    function updateLaserProgress(percent, labelText = 'Processing...') {
-      const container = document.getElementById('laser-progress-bar-container');
-      const bar = document.getElementById('laser-progress-bar');
-      const labelWrap = document.getElementById('laser-progress-label');
-      const text = document.getElementById('laser-progress-text');
-      const pct = document.getElementById('laser-progress-pct');
-
-      container.style.display = 'block';
-      labelWrap.style.display = 'flex';
-      text.textContent = `⚡ ${labelText}`;
-      pct.textContent = `${percent}%`;
-      bar.style.width = `${percent}%`;
-
-      if (percent >= 100) {
-        setTimeout(() => {
-          container.style.display = 'none';
-          labelWrap.style.display = 'none';
-          bar.style.width = '0%';
-        }, 1200);
+      // 2. Try iTunes Music API as fallback
+      if (!state.songs.length) {
+        try {
+          const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(movieTitle)}&entity=song&limit=8`);
+          if (res.ok) {
+            const data = await res.json();
+            if (data?.results?.length) {
+              state.songs = data.results.map(i => ({
+                title: i.trackName,
+                artist: i.artistName || 'Original Soundtrack',
+                drive_url: ''
+              }));
+            }
+          }
+        } catch (_) {}
       }
+
+      // Default placeholder if API tracks are empty
+      if (!state.songs.length) {
+        state.songs = [
+          { title: `${movieTitle} - Theme / OST`, artist: 'Official Score', drive_url: '' },
+          { title: `${movieTitle} - Track 01`, artist: 'Soundtrack', drive_url: '' }
+        ];
+      }
+
+      renderSongCards();
     }
 
-    function showLaserToast(msg, isError = false) {
-      const toast = document.getElementById('laser-toast');
-      toast.style.borderColor = isError ? 'var(--laser-red)' : 'var(--laser-green)';
-      toast.innerHTML = (isError ? '❌ ' : '⚡ ') + escapeHtml(msg);
-      toast.style.display = 'block';
-      setTimeout(() => { toast.style.display = 'none'; }, 3500);
+    function renderSongCards() {
+      DOM.songsList.innerHTML = '';
+      DOM.songCountLabel.textContent = `${state.songs.length} Tracks automatically found`;
+
+      state.songs.forEach((song, idx) => {
+        const card = document.createElement('div');
+        card.className = 'song-card';
+        const num = String(idx + 1).padStart(2, '0');
+
+        card.innerHTML = `
+          <div class="song-index">${num}</div>
+          <div class="song-title-wrap">
+            <div class="song-title" title="${escapeHtml(song.title)}">${escapeHtml(song.title)}</div>
+            <div class="song-artist">${escapeHtml(song.artist)}</div>
+          </div>
+          <div class="song-input-wrap">
+            <input 
+              type="url" 
+              id="drive-input-${idx}" 
+              placeholder="Paste Google Drive link for this song..." 
+              value="${escapeHtml(song.drive_url)}"
+            >
+          </div>
+          <div class="song-actions">
+            <span id="status-pill-${idx}" class="song-status-pill ${song.drive_url ? 'saved' : ''}">
+              ${song.drive_url ? '✓ Attached' : 'Unsaved'}
+            </span>
+            <button type="button" class="btn btn-save-song" onclick="saveIndividualSong(${idx})">Save</button>
+          </div>
+        `;
+
+        DOM.songsList.appendChild(card);
+      });
+    }
+
+    window.saveIndividualSong = function(index) {
+      const input = document.getElementById(`drive-input-${index}`);
+      const pill = document.getElementById(`status-pill-${index}`);
+      const val = input.value.trim();
+
+      if (!val) {
+        input.classList.add('invalid');
+        showToast('Please paste a valid Google Drive link', 'error');
+        return;
+      }
+
+      input.classList.remove('invalid');
+      state.songs[index].drive_url = val;
+
+      pill.className = 'song-status-pill saved';
+      pill.textContent = '✓ Attached';
+      showToast(`Link attached for: ${state.songs[index].title}`, 'success');
+    };
+
+    // Save All to chunks/data_c03.json
+    DOM.saveAllBtn.addEventListener('click', async () => {
+      if (state.isCommitting) return;
+
+      const token = localStorage.getItem(CONFIG.TOKEN_STORAGE_KEY);
+      if (!token) {
+        showToast('Click "🔑 Config GitHub Token" at top right to enter your token first.', 'error');
+        return;
+      }
+
+      const readySongs = state.songs.filter(s => s.drive_url && s.drive_url.trim());
+      if (!readySongs.length) {
+        showToast('Please attach at least one Google Drive song link.', 'error');
+        return;
+      }
+
+      setSavingState(true);
+
+      try {
+        showToast('Reading current chunks/data_c03.json...', '');
+        
+        const endpoint = `https://api.github.com/repos/${CONFIG.GITHUB_OWNER}/${CONFIG.GITHUB_REPOSITORY}/contents/${CONFIG.DB_CHUNK_PATH}`;
+        
+        let existingData = [];
+        let fileSha = null;
+
+        const getRes = await fetch(endpoint, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+
+        if (getRes.ok) {
+          const fileMeta = await getRes.json();
+          fileSha = fileMeta.sha;
+          try {
+            existingData = JSON.parse(decodeURIComponent(escape(atob(fileMeta.content))));
+          } catch (_) {
+            existingData = [];
+          }
+        }
+
+        if (!Array.isArray(existingData)) existingData = [];
+
+        // Build Payload
+        const currentPayload = {
+          movie: state.activeMovie.title,
+          tmdb_id: state.activeMovie.id,
+          year: state.activeMovie.release_date ? state.activeMovie.release_date.split('-')[0] : '',
+          poster: state.activeMovie.poster_path ? `${CONFIG.TMDB_IMG_BASE}/w500${state.activeMovie.poster_path}` : '',
+          songs: readySongs.map(s => ({
+            title: s.title,
+            artist: s.artist,
+            drive_url: s.drive_url.trim()
+          }))
+        };
+
+        const targetIndex = existingData.findIndex(item => item.tmdb_id === currentPayload.tmdb_id || item.movie === currentPayload.movie);
+        if (targetIndex >= 0) {
+          existingData[targetIndex] = currentPayload;
+        } else {
+          existingData.unshift(currentPayload);
+        }
+
+        showToast('Committing to chunks/data_c03.json...', '');
+
+        const utf8Bytes = unescape(encodeURIComponent(JSON.stringify(existingData, null, 2)));
+        const base64Content = btoa(utf8Bytes);
+
+        const putBody = {
+          message: `MoinuFlix: Ingest songs for ${state.activeMovie.title}`,
+          content: base64Content,
+          branch: CONFIG.GITHUB_BRANCH
+        };
+        if (fileSha) putBody.sha = fileSha;
+
+        const putRes = await fetch(endpoint, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(putBody)
+        });
+
+        if (!putRes.ok) {
+          const errData = await putRes.json();
+          throw new Error(errData.message || 'GitHub rejected the update');
+        }
+
+        showToast('✓ Successfully saved all songs to chunks/data_c03.json!', 'success');
+      } catch (err) {
+        showToast('Save Failed: ' + err.message, 'error');
+      } finally {
+        setSavingState(false);
+      }
+    });
+
+    function showLoading(active) {
+      DOM.loadingSkeleton.hidden = !active;
+      if (active) {
+        DOM.emptyState.hidden = true;
+        DOM.activeWorkspace.hidden = true;
+      }
+    }
+
+    function setSavingState(isBusy) {
+      state.isCommitting = isBusy;
+      DOM.saveAllBtn.disabled = isBusy;
+      DOM.saveAllBtn.querySelector('.btn-spinner').hidden = !isBusy;
+      DOM.saveAllBtn.querySelector('.btn-text').textContent = isBusy ? 'Committing...' : 'Save All to chunks/data_c03.json';
+    }
+
+    function showToast(msg, type = '') {
+      DOM.toast.textContent = msg;
+      DOM.toast.className = `toast visible ${type}`.trim();
+      clearTimeout(DOM.toast._timer);
+      DOM.toast._timer = setTimeout(() => {
+        DOM.toast.className = 'toast';
+      }, 4000);
     }
 
     function escapeHtml(str) {
       return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
-
-    function extractGDriveId(url) {
-      if (!url) return '';
-      const clean = url.trim();
-      const pMatch = clean.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-      if (pMatch) return pMatch[1];
-      const fMatch = clean.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-      if (fMatch) return fMatch[1];
-      return clean;
-    }
-
-    function triggerMovieSearch() {
-      const query = document.getElementById('input-movie-query').value.trim();
-      if (!query) return showLaserToast('Pehle movie ka naam likhein!', true);
-      executeTmdbSearch(query);
-    }
-
-    // 1. TMDB SEARCH WITH INDIAN REGION SUPPORT
-    async function executeTmdbSearch(query) {
-      const box = document.getElementById('tmdb-suggest-box');
-      box.innerHTML = '<div style="color:var(--laser-cyan); padding:12px; font-weight:700;">🔍 Searching TMDB database...</div>';
-      box.style.display = 'block';
-      updateLaserProgress(30, `Searching "${query}"...`);
-
-      try {
-        const url = `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(query)}&include_adult=false`;
-        const res = await fetch(url);
-        const data = await res.json();
-        box.innerHTML = '';
-        updateLaserProgress(70, 'Building Top 5...');
-
-        let results = data.results || [];
-        if (results.length > 0) {
-          results.slice(0, 5).forEach(m => {
-            const y = m.release_date ? m.release_date.split('-')[0] : 'N/A';
-            const poster = m.poster_path ? `https://image.tmdb.org/t/p/w92${m.poster_path}` : '';
-            
-            const row = document.createElement('div');
-            row.className = 'tmdb-item';
-            row.innerHTML = `
-              ${poster ? `<img src="${poster}" class="tmdb-poster">` : '<div class="tmdb-poster"></div>'}
-              <div style="flex:1; overflow:hidden;">
-                <div style="font-weight:800; color:#fff; font-size:0.92rem;">${m.title}</div>
-                <div style="font-size:0.75rem; color:var(--text-dim); margin-top:2px;">Year: <b>${y}</b> • Rating: ★ ${m.vote_average ? m.vote_average.toFixed(1) : 'N/A'}</div>
-              </div>
-              <div class="tmdb-badge">ID: ${m.id}</div>
-            `;
-            row.onclick = () => confirmMovie(m);
-            box.appendChild(row);
-          });
-          box.style.display = 'block';
-          updateLaserProgress(100, 'Top 5 Ready');
-        } else {
-          box.innerHTML = '<div style="color:var(--text-dim); padding:12px;">No matching movies found on TMDB.</div>';
-          updateLaserProgress(100, 'No match');
-        }
-      } catch(e) {
-        box.innerHTML = `<div style="color:var(--laser-red); padding:12px;">Search Error: ${e.message}</div>`;
-        updateLaserProgress(100, 'Error');
-      }
-    }
-
-    // 2. CONFIRM MOVIE
-    async function confirmMovie(movie) {
-      document.getElementById('tmdb-suggest-box').style.display = 'none';
-      document.getElementById('search-input-wrapper').style.display = 'none';
-
-      const year = movie.release_date ? movie.release_date.split('-')[0] : '2024';
-      const poster = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : '';
-
-      activeMovie = {
-        title: movie.title,
-        year: year,
-        tmdb_id: movie.id,
-        poster: poster
-      };
-
-      document.getElementById('confirmed-poster').src = poster;
-      document.getElementById('confirmed-title').textContent = movie.title;
-      document.getElementById('confirmed-meta').textContent = `Year: ${year} • TMDB ID: ${movie.id} (Confirmed ✅)`;
-      document.getElementById('confirmed-movie-box').style.display = 'flex';
-
-      showLaserToast(`Confirmed: "${movie.title}"`);
-      await fetchDualApiSongs(movie.title);
-    }
-
-    function resetMovieSelection() {
-      activeMovie = null;
-      stagedTracks = [];
-      albumTracksCache = [];
-      document.getElementById('confirmed-movie-box').style.display = 'none';
-      document.getElementById('search-input-wrapper').style.display = 'flex';
-      document.getElementById('input-movie-query').value = '';
-      document.getElementById('song-select-group').style.display = 'none';
-      document.getElementById('song-edit-panel').style.display = 'none';
-      document.getElementById('staged-pack-box').style.display = 'none';
-    }
-
-    // 3. FETCH SONGS VIA ITUNES JSONP
-    function fetchItunesJsonp(query) {
-      return new Promise((resolve) => {
-        const cbName = 'itunes_cb_' + Math.round(100000 * Math.random());
-        window[cbName] = function(data) {
-          delete window[cbName];
-          if (script && script.parentNode) script.parentNode.removeChild(script);
-          resolve(data);
-        };
-        const script = document.createElement('script');
-        script.src = `https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=30&callback=${cbName}`;
-        script.onerror = () => {
-          delete window[cbName];
-          if (script && script.parentNode) script.parentNode.removeChild(script);
-          resolve(null);
-        };
-        document.body.appendChild(script);
-      });
-    }
-
-    async function fetchDualApiSongs(movieTitle) {
-      updateLaserProgress(30, `Searching Tracks for "${movieTitle}"...`);
-      const songSelect = document.getElementById('select-movie-song');
-      const statusTag = document.getElementById('album-status-tag');
-      songSelect.innerHTML = '<option value="">Searching official songs...</option>';
-      document.getElementById('song-select-group').style.display = 'block';
-      document.getElementById('song-edit-panel').style.display = 'none';
-      albumTracksCache = [];
-
-      try {
-        updateLaserProgress(60, 'Checking Music Engine...');
-        const data = await fetchItunesJsonp(movieTitle);
-
-        if (data && data.results && data.results.length > 0) {
-          const cleanMovie = movieTitle.toLowerCase().trim();
-          let filtered = data.results.filter(s => {
-            const col = (s.collectionName || '').toLowerCase();
-            const tr = (s.trackName || '').toLowerCase();
-            return col.includes(cleanMovie) || tr.includes(cleanMovie);
-          });
-
-          if (filtered.length === 0) filtered = data.results.slice(0, 10);
-
-          const seen = new Set();
-          filtered.forEach(s => {
-            const cleanTitle = s.trackName.replace(/&quot;/g, '"').replace(/\(From.*?\)/gi, '').trim();
-            if (!seen.has(cleanTitle.toLowerCase())) {
-              seen.add(cleanTitle.toLowerCase());
-              const hdArtwork = (s.artworkUrl100 || '').replace('100x100bb', '600x600bb');
-              albumTracksCache.push({
-                name: cleanTitle,
-                artist: s.artistName || 'Soundtrack',
-                thumbnail: hdArtwork || activeMovie.poster || DEFAULT_TRACK_THUMB
-              });
-            }
-          });
-
-          if (albumTracksCache.length > 0) {
-            populateSongDropdown('Official Album');
-            return;
-          }
-        }
-      } catch(e) {}
-
-      // Fallback if not found
-      songSelect.innerHTML = `
-        <option value="">-- No automatic tracklist found --</option>
-        <option value="manual">➕ Enter Song Manually</option>
-      `;
-      statusTag.textContent = "Manual Ingest";
-      updateLaserProgress(100, 'Ready');
-    }
-
-    function populateSongDropdown(sourceName) {
-      const songSelect = document.getElementById('select-movie-song');
-      const statusTag = document.getElementById('album-status-tag');
-      songSelect.innerHTML = '<option value="">-- Choose a Track from Official Album --</option>';
-
-      albumTracksCache.forEach((s, idx) => {
-        const opt = document.createElement('option');
-        opt.value = idx;
-        opt.textContent = `${idx + 1}. ${s.name} (${s.artist})`;
-        songSelect.appendChild(opt);
-      });
-
-      const optManual = document.createElement('option');
-      optManual.value = 'manual';
-      optManual.textContent = '➕ Add Another Custom Song';
-      songSelect.appendChild(optManual);
-
-      statusTag.textContent = `${sourceName} (${albumTracksCache.length} Tracks)`;
-      updateLaserProgress(100, 'Tracks Loaded!');
-      showLaserToast(`Loaded ${albumTracksCache.length} songs!`);
-    }
-
-    // 4. SONG SELECTION
-    function handleSongSelected(idx) {
-      const panel = document.getElementById('song-edit-panel');
-      if (idx === "") {
-        panel.style.display = 'none';
-        return;
-      }
-
-      let cleanTitle = "";
-      let artist = "";
-      let thumb = activeMovie.poster || DEFAULT_TRACK_THUMB;
-
-      if (idx === "manual") {
-        cleanTitle = prompt("Enter Song Name:") || "Track 1";
-        artist = prompt("Enter Artist / Music Director:") || "Soundtrack";
-      } else {
-        const s = albumTracksCache[parseInt(idx)];
-        cleanTitle = s.name;
-        artist = s.artist;
-        thumb = s.thumbnail || activeMovie.poster || DEFAULT_TRACK_THUMB;
-      }
-
-      document.getElementById('song-edit-name').textContent = cleanTitle;
-      document.getElementById('song-edit-artist').textContent = artist;
-      
-      const imgElem = document.getElementById('song-edit-thumb');
-      imgElem.src = thumb;
-      imgElem.onerror = () => { imgElem.src = DEFAULT_TRACK_THUMB; };
-
-      document.getElementById('song-gdrive-input').value = '';
-      panel.style.display = 'flex';
-      document.getElementById('song-gdrive-input').focus();
-    }
-
-    // 5. STAGING
-    function addCurrentSongToStaging() {
-      const title = document.getElementById('song-edit-name').textContent.trim();
-      const artist = document.getElementById('song-edit-artist').textContent.trim();
-      const thumb = document.getElementById('song-edit-thumb').src || DEFAULT_TRACK_THUMB;
-      const rawGdrive = document.getElementById('song-gdrive-input').value.trim();
-      const fileId = extractGDriveId(rawGdrive);
-
-      if (!fileId) return showLaserToast('Google Drive Link ya ID daalein!', true);
-
-      const quality = document.getElementById('song-quality-input').value;
-      const source = document.getElementById('song-source-input').value;
-
-      stagedTracks.push({
-        track_no: stagedTracks.length + 1,
-        title: title,
-        singer: artist,
-        thumbnail: thumb,
-        quality: quality,
-        source: source,
-        id: fileId,
-        gdrive_id: fileId,
-        stream_url: `${WORKER_BASE}${fileId}${USER_AGENT}`[span_22](start_span)[span_22](end_span)[span_23](start_span)[span_23](end_span)
-      });
-
-      renderStagedTracks();
-      document.getElementById('song-edit-panel').style.display = 'none';
-      document.getElementById('select-movie-song').value = "";
-      showLaserToast(`Added "${title}" to Pack!`);
-    }
-
-    function renderStagedTracks() {
-      const container = document.getElementById('staged-list-items');
-      container.innerHTML = '';
-
-      stagedTracks.forEach((t, i) => {
-        const div = document.createElement('div');
-        div.className = 'staged-track-item';
-        div.innerHTML = `
-          <div style="display:flex; align-items:center; gap:10px;">
-            <span style="color:var(--laser-green); font-weight:800; font-family:var(--font-mono);">#${i + 1}</span>
-            <img src="${t.thumbnail}" style="width:34px; height:34px; border-radius:6px; object-fit:cover;" onerror="this.src='${DEFAULT_TRACK_THUMB}'">
-            <div>
-              <div style="font-weight:700; color:#fff; font-size:0.85rem;">${t.title}</div>
-              <div style="font-size:0.72rem; color:var(--text-dim);">${t.quality} • ${t.source}</div>
-            </div>
-          </div>
-          <button type="button" onclick="removeStagedTrack(${i})" style="background:transparent; border:none; color:var(--laser-red); cursor:pointer; font-weight:800; font-size:1.1rem;">✕</button>
-        `;
-        container.appendChild(div);
-      });
-
-      document.getElementById('staged-count-badge').textContent = `${stagedTracks.length} Songs in Pack`;
-      document.getElementById('staged-pack-box').style.display = stagedTracks.length > 0 ? 'block' : 'none';
-    }
-
-    function removeStagedTrack(idx) {
-      stagedTracks.splice(idx, 1);
-      renderStagedTracks();
-    }
-
-    // 6. PUSH TO GITHUB
-    async function pushFinalPackToGithub() {
-      const token = getStoredToken();
-      if (!token) return showLaserToast('GitHub Token missing! Please click ⚙️ Token.', true);
-
-      if (!activeMovie || stagedTracks.length === 0) {
-        return showLaserToast('Movie aur kam se kam 1 gaana zaroori hai!', true);
-      }
-
-      updateLaserProgress(30, `Packaging ${stagedTracks.length} songs...`);
-
-      const albumSlug = activeMovie.title.toLowerCase().replace(/[^a-z0-9]/g, '-');
-      const packId = `${albumSlug}-soundtrack-5-1`;
-
-      const newSoundtrackPack = {
-        id: packId,
-        movie: activeMovie.title,
-        title: `${activeMovie.title} (Original Motion Picture Soundtrack)`,
-        year: parseInt(activeMovie.year) || 2024,
-        tmdb_id: activeMovie.tmdb_id,
-        poster: activeMovie.poster,
-        total_tracks: stagedTracks.length,
-        tracks: stagedTracks
-      };
-
-      updateLaserProgress(65, 'Pushing to GitHub chunks/data_c03.json...');[span_24](start_span)[span_24](end_span)[span_25](start_span)[span_25](end_span)
-
-      const existingIdx = songsData.findIndex(s => s.id === packId || (s.movie && s.movie.toLowerCase() === activeMovie.title.toLowerCase()));
-      if (existingIdx >= 0) {
-        songsData[existingIdx] = newSoundtrackPack;
-      } else {
-        songsData.unshift(newSoundtrackPack);
-      }
-
-      try {
-        await commitFileDirect('chunks/data_c03.json', songsData, `Studio: Ingest "${activeMovie.title}" 5.1 Pack (${stagedTracks.length} tracks)`, token);[span_26](start_span)[span_26](end_span)[span_27](start_span)[span_27](end_span)
-        updateLaserProgress(100, 'Successfully Pushed!');
-        showLaserToast(`🎉 "${activeMovie.title}" 5.1 Pack saved!`);
-        resetMovieSelection();
-        loadAllSongs();
-      } catch(err) {
-        updateLaserProgress(100, 'Push Failed');
-        showLaserToast(`Error: ${err.message}`, true);
-      }
-    }
-
-    // 7. LOAD VAULT
-    async function loadAllSongs() {
-      updateTokenBadge();
-      updateLaserProgress(30, 'Reading Library...');
-      try {
-        const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/chunks/data_c03.json?t=${Date.now()}`);[span_28](start_span)[span_28](end_span)[span_29](start_span)[span_29](end_span)
-        songsData = res.ok ? await res.json() : [];
-      } catch(e) {
-        songsData = [];
-      }
-      updateLaserProgress(80, 'Rendering Packs...');
-      renderSoundtracksGrid();
-      updateLaserProgress(100, 'Vault Synced');
-    }
-
-    function renderSoundtracksGrid() {
-      const container = document.getElementById('soundtracks-grid');
-      container.innerHTML = '';
-
-      if (!songsData || songsData.length === 0) {
-        container.innerHTML = '<div style="color:var(--text-dim); padding:20px;">No soundtracks found in chunks/data_c03.json</div>';[span_30](start_span)[span_30](end_span)[span_31](start_span)[span_31](end_span)
-        return;
-      }
-
-      songsData.forEach((pack, index) => {
-        const card = document.createElement('div');
-        card.className = 'soundtrack-card';
-        card.innerHTML = `
-          <div class="poster-wrap">
-            <span class="pack-badge">⚡ ${pack.tracks ? pack.tracks.length : (pack.total_tracks || 1)} TRACKS</span>
-            ${pack.poster ? `<img src="${pack.poster}" class="poster-img" loading="lazy">` : ''}
-          </div>
-          <div class="soundtrack-card-body">
-            <div style="font-weight:800; font-size:1.05rem; color:#fff;">${escapeHtml(pack.movie || pack.title)}</div>
-            <div style="font-size:0.75rem; color:var(--text-dim);">Year: ${pack.year || '2024'} • 5.1 Lossless</div>
-            <button class="btn-token-config" style="margin-top:8px; padding:6px;" onclick="deletePack(${index}, '${escapeHtml(pack.movie)}')">🗑️ Delete Pack</button>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    async function deletePack(idx, title) {
-      const pin = prompt(`Delete "${title}" Soundtrack Pack?\nEnter confirmation PIN:`);
-      if (pin !== CONFIRM_PASS) return showLaserToast('Incorrect PIN!', true);
-      const token = getStoredToken();
-      if (!token) return showLaserToast('Token required!', true);
-
-      songsData.splice(idx, 1);
-      updateLaserProgress(40, `Deleting "${title}"...`);
-      await commitFileDirect('chunks/data_c03.json', songsData, `Delete ${title}`, token);[span_32](start_span)[span_32](end_span)[span_33](start_span)[span_33](end_span)
-      updateLaserProgress(100, 'Deleted');
-      showLaserToast(`Deleted "${title}"`);
-      loadAllSongs();
-    }
-
-    async function commitFileDirect(chunkPath, arrayData, message, token) {
-      const url = `https://api.github.com/repos/${GH_REPO}/contents/${chunkPath}`;
-      let currentSha = undefined;
-      try {
-        const getRes = await fetch(`${url}?t=${Date.now()}`, {
-          headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
-        });
-        if (getRes.ok) currentSha = (await getRes.json()).sha;
-      } catch(e) {}
-
-      const finalJson = JSON.stringify(arrayData, null, 2);
-      const uint8Array = new TextEncoder().encode(finalJson);
-      let binary = '';
-      for (let i = 0; i < uint8Array.byteLength; i++) binary += String.fromCharCode(uint8Array[i]);
-
-      const putRes = await fetch(url, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Accept': 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ message: message, content: btoa(binary), branch: GH_BRANCH, sha: currentSha })
-      });
-
-      if (!putRes.ok) {
-        const err = await putRes.json();
-        throw new Error(err.message || `Commit failed for ${chunkPath}`);
-      }
-    }
-
-    window.addEventListener('DOMContentLoaded', loadAllSongs);
   </script>
 </body>
 </html>
