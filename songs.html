@@ -6,8 +6,7 @@
   <title>Songs Manager · MoinuFlix</title>
   <style>
     /* =========================================================
-       MoinuFlix — Songs Manager
-       Premium cinematic dark UI, matte black + gold accent
+       MoinuFlix — Songs Manager (Horizon 2 & Kodi Fanart Ready)
        ========================================================= */
 
     :root {
@@ -280,12 +279,39 @@
     /* Selected Movie Summary */
     .movie-summary {
       display: none;
-      gap: 16px;
-      padding: 18px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--card);
     }
 
     .movie-summary.visible {
+      display: block;
+    }
+
+    .movie-summary-backdrop {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.25) blur(1px);
+      z-index: 1;
+    }
+
+    .movie-summary-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.65) 60%, rgba(10,10,10,0.85) 100%);
+      z-index: 2;
+    }
+
+    .movie-summary-content {
+      position: relative;
+      z-index: 3;
       display: flex;
+      gap: 18px;
+      padding: 18px;
     }
 
     .movie-summary-poster {
@@ -295,7 +321,8 @@
       object-fit: cover;
       background: #1e1e1e;
       flex-shrink: 0;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: var(--shadow);
     }
 
     .movie-summary-body {
@@ -303,27 +330,30 @@
       display: flex;
       flex-direction: column;
       gap: 6px;
+      justify-content: center;
     }
 
     .movie-summary-title {
-      font-size: 19px;
+      font-size: 20px;
       font-weight: 700;
       color: var(--text-primary);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
     }
 
     .movie-summary-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px 14px;
-      margin-top: 2px;
+      gap: 6px 10px;
+      margin-top: 4px;
     }
 
     .meta-chip {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--text-secondary);
-      background: var(--bg-elevated);
+      background: rgba(19, 19, 19, 0.85);
+      backdrop-filter: blur(8px);
       border: 1px solid var(--border);
-      padding: 4px 9px;
+      padding: 3px 9px;
       border-radius: 999px;
     }
 
@@ -371,19 +401,20 @@
     .song-list {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     .song-card {
       display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 16px;
-      transition: border-color 0.2s var(--ease);
+      align-items: center;
+      gap: 16px;
+      padding: 14px 16px;
+      transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
     }
 
     .song-card:hover {
       border-color: var(--border-strong);
+      background: var(--card-hover);
     }
 
     .song-index {
@@ -393,12 +424,22 @@
       border-radius: 50%;
       background: var(--bg-elevated);
       border: 1px solid var(--border);
-      color: var(--text-tertiary);
+      color: var(--gold);
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .song-thumb-preview {
+      width: 80px;
+      height: 45px;
+      border-radius: 6px;
+      object-fit: cover;
+      background: #000;
+      border: 1px solid var(--border);
+      flex-shrink: 0;
     }
 
     .song-body {
@@ -406,7 +447,7 @@
       min-width: 0;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
     .song-title-row {
@@ -415,15 +456,21 @@
     }
 
     .song-title {
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 600;
       color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .song-artist {
-      font-size: 12.5px;
+      font-size: 12px;
       color: var(--text-secondary);
       margin-top: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .song-link-row {
@@ -435,6 +482,8 @@
     .song-link-input {
       flex: 1;
       min-width: 0;
+      padding: 8px 12px;
+      font-size: 13px;
     }
 
     .song-footer {
@@ -445,7 +494,7 @@
     }
 
     .song-status {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--text-tertiary);
       display: flex;
       align-items: center;
@@ -462,8 +511,8 @@
       background: var(--bg-elevated);
       color: var(--text-primary);
       border-radius: var(--radius-sm);
-      padding: 10px 16px;
-      font-size: 13px;
+      padding: 8px 14px;
+      font-size: 12.5px;
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s var(--ease), border-color 0.2s var(--ease),
@@ -498,14 +547,14 @@
     }
 
     .btn-save {
-      padding: 10px 14px;
-      min-width: 76px;
+      padding: 8px 14px;
+      min-width: 72px;
     }
 
     .btn-block {
       width: 100%;
-      padding: 16px;
-      font-size: 14.5px;
+      padding: 15px;
+      font-size: 14px;
       border-radius: var(--radius-md);
     }
 
@@ -553,7 +602,7 @@
     }
 
     .json-panel.open .json-body {
-      max-height: 520px;
+      max-height: 540px;
     }
 
     .json-body pre {
@@ -651,9 +700,10 @@
         padding: 8px;
         gap: 2px;
       }
-      .movie-summary { flex-direction: column; }
-      .movie-summary-poster { width: 100px; height: 150px; }
-      .song-card { flex-direction: column; }
+      .movie-summary-content { flex-direction: column; }
+      .movie-summary-poster { width: 90px; height: 135px; }
+      .song-card { flex-direction: column; align-items: stretch; }
+      .song-thumb-preview { width: 100%; height: 160px; }
       .song-index { align-self: flex-start; }
       .song-link-row { flex-direction: column; align-items: stretch; }
       .btn-save { width: 100%; }
@@ -666,7 +716,7 @@
   <div class="header-inner">
     <div class="brand">
       <div class="brand-name">Moinu<span>Flix</span></div>
-      <div class="brand-sub">Songs Manager</div>
+      <div class="brand-sub">Songs Studio · 5.1 Kodi Fanart</div>
     </div>
 
     <div class="header-actions">
@@ -691,26 +741,30 @@
         type="text"
         id="movieSearchInput"
         class="input"
-        placeholder="Type movie name (e.g. Leo, Paiyaa, Vikram, Jailer)..."
+        placeholder="Type movie name (e.g. Ko, Paiyaa, Leo, Jailer)..."
         autocomplete="off"
       />
       <div class="search-results" id="searchResults"></div>
     </div>
   </section>
 
-  <!-- Selected Movie Summary -->
+  <!-- Selected Movie Summary with Fanart Backdrop -->
   <section class="section">
-    <div class="card movie-summary" id="movieSummary">
-      <img class="movie-summary-poster" id="movieSummaryPoster" alt="" />
-      <div class="movie-summary-body">
-        <div class="movie-summary-title" id="movieSummaryTitle"></div>
-        <div class="movie-summary-grid">
-          <span class="meta-chip" id="movieSummaryYear"></span>
-          <span class="meta-chip" id="movieSummaryId"></span>
-          <span class="meta-chip" id="movieSummaryLang"></span>
-          <span class="meta-chip gold">
-            <span id="movieSummarySongCount">0</span> songs
-          </span>
+    <div class="movie-summary" id="movieSummary">
+      <div class="movie-summary-backdrop" id="movieSummaryBackdrop"></div>
+      <div class="movie-summary-overlay"></div>
+      <div class="movie-summary-content">
+        <img class="movie-summary-poster" id="movieSummaryPoster" alt="" />
+        <div class="movie-summary-body">
+          <div class="movie-summary-title" id="movieSummaryTitle"></div>
+          <div class="movie-summary-grid">
+            <span class="meta-chip" id="movieSummaryYear"></span>
+            <span class="meta-chip" id="movieSummaryId"></span>
+            <span class="meta-chip" id="movieSummaryLang"></span>
+            <span class="meta-chip gold">
+              <span id="movieSummarySongCount">0</span> songs
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -718,7 +772,7 @@
 
   <!-- Verified Tracklist -->
   <section class="section hidden" id="songsSection">
-    <h2 class="section-title">Verified Soundtrack</h2>
+    <h2 class="section-title">Soundtrack &amp; Horizon 2 Fanart</h2>
 
     <div class="card hidden" id="songsStateBlock"></div>
     <div class="song-list" id="songList"></div>
@@ -733,7 +787,7 @@
   <section class="section">
     <div class="card json-panel" id="jsonPanel">
       <div class="json-toggle" id="jsonToggle">
-        <span class="json-toggle-title">JSON Preview</span>
+        <span class="json-toggle-title">JSON Preview (Fanart &amp; Episode Thumbnails Included)</span>
         <span class="json-toggle-icon">▾</span>
       </div>
       <div class="json-body">
@@ -752,7 +806,9 @@
   const CONFIG = {
     TMDB_API_KEY: "051ccf72e026820cb53b8b8531b6a2ba",
     TMDB_BASE: "https://api.themoviedb.org/3",
-    TMDB_IMG_BASE: "https://image.tmdb.org/t/p/w342",
+    TMDB_IMG_POSTER: "https://image.tmdb.org/t/p/w500",
+    TMDB_IMG_BACKDROP: "https://image.tmdb.org/t/p/original",
+    TMDB_IMG_THUMB: "https://image.tmdb.org/t/p/w780",
 
     GITHUB_OWNER: "Moinuflix",
     GITHUB_REPOSITORY: "My-Movies",
@@ -778,6 +834,7 @@
     searchResults: document.getElementById("searchResults"),
 
     movieSummary: document.getElementById("movieSummary"),
+    movieSummaryBackdrop: document.getElementById("movieSummaryBackdrop"),
     movieSummaryPoster: document.getElementById("movieSummaryPoster"),
     movieSummaryTitle: document.getElementById("movieSummaryTitle"),
     movieSummaryYear: document.getElementById("movieSummaryYear"),
@@ -829,7 +886,7 @@
     });
   }
 
-  // TMDB Search Logic
+  // TMDB Movie Search Logic
   let searchDebounceTimer = null;
   let activeSearchController = null;
 
@@ -898,7 +955,7 @@
     results.forEach((movie) => {
       const item = document.createElement("div");
       item.className = "search-result-item";
-      const posterSrc = movie.poster_path ? CONFIG.TMDB_IMG_BASE + movie.poster_path : "";
+      const posterSrc = movie.poster_path ? `${CONFIG.TMDB_IMG_POSTER}${movie.poster_path}` : "";
       const year = movie.release_date ? movie.release_date.slice(0, 4) : "—";
 
       item.innerHTML = `
@@ -914,13 +971,15 @@
     });
   }
 
-  // Select Movie
+  // Select Movie (Capturing 16:9 Fanart & Landscape Thumbnails)
   async function selectMovie(movie) {
     closeSearchResults();
     els.movieSearchInput.value = movie.title;
 
     const year = movie.release_date ? movie.release_date.slice(0, 4) : "—";
-    const posterSrc = movie.poster_path ? CONFIG.TMDB_IMG_BASE + movie.poster_path : "";
+    const posterSrc = movie.poster_path ? `${CONFIG.TMDB_IMG_POSTER}${movie.poster_path}` : "";
+    const fanartSrc = movie.backdrop_path ? `${CONFIG.TMDB_IMG_BACKDROP}${movie.backdrop_path}` : posterSrc;
+    const thumbSrc = movie.backdrop_path ? `${CONFIG.TMDB_IMG_THUMB}${movie.backdrop_path}` : posterSrc;
 
     state.selectedMovie = {
       id: movie.id,
@@ -930,9 +989,12 @@
       release_date: movie.release_date || "",
       language: (movie.original_language || "").toLowerCase(),
       poster: posterSrc,
+      fanart: fanartSrc,
+      thumbnail: thumbSrc
     };
 
     els.movieSummary.classList.add("visible");
+    els.movieSummaryBackdrop.style.backgroundImage = `url('${fanartSrc}')`;
     els.movieSummaryPoster.src = posterSrc;
     els.movieSummaryTitle.textContent = movie.title;
     els.movieSummaryYear.textContent = year;
@@ -949,9 +1011,7 @@
     await loadSoundtrack(state.selectedMovie);
   }
 
-  // ==========================================================================
-  // Strict Regional & Indian Cinema Verified Soundtrack Engine
-  // ==========================================================================
+  // Regional & Indian Cinema Soundtrack Matching Engine
   async function loadSoundtrack(movie) {
     try {
       const movieYear = movie.year && movie.year !== "—" ? parseInt(movie.year, 10) : null;
@@ -959,12 +1019,12 @@
       const isIndianLang = ["ta", "te", "hi", "kn", "ml"].includes(lang);
       let songs = [];
 
-      // 1. Regional Indian Movies (Tamil, Telugu, Hindi, etc.) Priority Check on JioSaavn
+      // 1. Regional Indian Movies (Tamil, Telugu, Hindi) on JioSaavn
       if (isIndianLang) {
         songs = await fetchExactSaavnAlbum(movie.title, movieYear, lang);
       }
 
-      // 2. iTunes Store Check (Prioritizing Indian Storefront for Regional Cinema)
+      // 2. iTunes Store Fallback (India Storefront prioritised)
       if (!songs.length) {
         const itunesAlbum = await findExactITunesAlbum(movie.title, movieYear, isIndianLang ? "IN" : "US");
         if (itunesAlbum && itunesAlbum.collectionId) {
@@ -972,7 +1032,7 @@
         }
       }
 
-      // 3. Fallback to Original Title if needed
+      // 3. Original Regional Title check
       if (!songs.length && movie.original_title && movie.original_title !== movie.title) {
         songs = await fetchExactSaavnAlbum(movie.original_title, movieYear, lang);
       }
@@ -989,6 +1049,7 @@
         title: t.title,
         artist: t.artist || "Original Soundtrack",
         drive_url: "",
+        thumbnail: movie.thumbnail, // Kodi Horizon 2 horizontal banner
         saved: false,
       }));
 
@@ -1051,7 +1112,6 @@
         const albYear = alb.releaseDate ? parseInt(alb.releaseDate.slice(0, 4), 10) : null;
         const artist = (alb.artistName || "").toLowerCase();
 
-        // Prevent animated/unrelated Hollywood crossovers
         if (cleanTitle === "leo" && (artist.includes("sandler") || cleanAlb.includes("lizard"))) {
           continue;
         }
@@ -1089,7 +1149,7 @@
       .replace(/[^a-z0-9]/g, "");
   }
 
-  // UI Render
+  // Song Rendering UI with Landscape Thumbnail Preview
   function renderSongsState(mode) {
     els.songList.innerHTML = "";
     els.saveAllBar.classList.add("hidden");
@@ -1126,6 +1186,7 @@
         title: title.trim(),
         artist: state.selectedMovie ? state.selectedMovie.title + " OST" : "Original Track",
         drive_url: "",
+        thumbnail: state.selectedMovie ? state.selectedMovie.thumbnail : "",
         saved: false
       });
       els.movieSummarySongCount.textContent = String(state.songs.length);
@@ -1157,6 +1218,7 @@
 
     card.innerHTML = `
       <div class="song-index">${String(index + 1).padStart(2, "0")}</div>
+      <img src="${song.thumbnail}" class="song-thumb-preview" alt="" loading="lazy" />
       <div class="song-body">
         <div class="song-title-row">
           <div class="song-title">${escapeHtml(song.title)}</div>
@@ -1230,6 +1292,7 @@
     });
   }
 
+  // Full Payload with Fanart and Thumbnails for Kodi Skins
   function buildPayload() {
     if (!state.selectedMovie) return null;
     return {
@@ -1237,10 +1300,12 @@
       tmdb_id: state.selectedMovie.id,
       year: state.selectedMovie.year,
       poster: state.selectedMovie.poster,
+      fanart: state.selectedMovie.fanart,
       songs: state.songs.map((s) => ({
         title: s.title,
         artist: s.artist,
         drive_url: s.drive_url || "",
+        thumbnail: s.thumbnail || state.selectedMovie.thumbnail
       })),
     };
   }
@@ -1300,17 +1365,13 @@
 
       if (!Array.isArray(existingData)) existingData = [];
 
-      const currentEntry = {
-        movie: state.selectedMovie.title,
-        tmdb_id: state.selectedMovie.id,
-        year: state.selectedMovie.year,
-        poster: state.selectedMovie.poster,
-        songs: readySongs.map((s) => ({
-          title: s.title,
-          artist: s.artist,
-          drive_url: s.drive_url.trim(),
-        })),
-      };
+      const currentEntry = buildPayload();
+      currentEntry.songs = readySongs.map((s) => ({
+        title: s.title,
+        artist: s.artist,
+        drive_url: s.drive_url.trim(),
+        thumbnail: s.thumbnail || state.selectedMovie.thumbnail
+      }));
 
       const targetIdx = existingData.findIndex(
         (item) => item.tmdb_id === currentEntry.tmdb_id || item.movie === currentEntry.movie
@@ -1326,7 +1387,7 @@
       const base64Content = btoa(utf8Bytes);
 
       const putBody = {
-        message: `MoinuFlix: Ingest songs for ${state.selectedMovie.title}`,
+        message: `MoinuFlix: Ingest songs & fanart for ${state.selectedMovie.title}`,
         content: base64Content,
         branch: CONFIG.GITHUB_BRANCH,
       };
@@ -1354,7 +1415,7 @@
       updateJsonPreview();
 
       setCommitStatus("success", "✓ Successfully committed to chunks/data_c03.json");
-      toast("Soundtrack committed to GitHub!", "success");
+      toast("Soundtrack & Fanart committed to GitHub!", "success");
     } catch (err) {
       console.error(err);
       setCommitStatus("error", err.message || "Commit failed.");
