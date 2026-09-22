@@ -276,7 +276,7 @@
       color: var(--text-tertiary);
     }
 
-    /* Selected Movie Summary */
+    /* Selected Movie Summary with Backdrop */
     .movie-summary {
       display: none;
       position: relative;
@@ -787,7 +787,7 @@
   <section class="section">
     <div class="card json-panel" id="jsonPanel">
       <div class="json-toggle" id="jsonToggle">
-        <span class="json-toggle-title">JSON Preview (Fanart &amp; Episode Thumbnails Included)</span>
+        <span class="json-toggle-title">JSON Preview (Fanart &amp; Stream URLs Included)</span>
         <span class="json-toggle-icon">▾</span>
       </div>
       <div class="json-body">
@@ -809,6 +809,10 @@
     TMDB_IMG_POSTER: "https://image.tmdb.org/t/p/w500",
     TMDB_IMG_BACKDROP: "https://image.tmdb.org/t/p/original",
     TMDB_IMG_THUMB: "https://image.tmdb.org/t/p/w780",
+
+    // Cloudflare Stream Worker Endpoint
+    STREAMER_HOST: "https://gdrive-stream.moinudeentv.workers.dev",
+    STREAM_HEADER: "|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
 
     GITHUB_OWNER: "Moinuflix",
     GITHUB_REPOSITORY: "My-Movies",
@@ -868,6 +872,21 @@
       node.style.transition = "opacity 0.25s ease";
       setTimeout(() => node.remove(), 260);
     }, 3200);
+  }
+
+  // Google Drive File ID & Stream URL Extraction
+  function extractDriveId(url) {
+    if (!url) return "";
+    const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || 
+                  url.match(/id=([a-zA-Z0-9_-]+)/) || 
+                  url.match(/^([a-zA-Z0-9_-]{25,})$/);
+    return match ? match[1] : "";
+  }
+
+  function generateStreamUrl(driveUrl) {
+    const fileId = extractDriveId(driveUrl);
+    if (!fileId) return "";
+    return `${CONFIG.STREAMER_HOST}/${fileId}${CONFIG.STREAM_HEADER}`;
   }
 
   // GitHub Token Config
@@ -971,7 +990,7 @@
     });
   }
 
-  // Select Movie (Capturing 16:9 Fanart & Landscape Thumbnails)
+  // Select Movie
   async function selectMovie(movie) {
     closeSearchResults();
     els.movieSearchInput.value = movie.title;
@@ -1049,7 +1068,7 @@
         title: t.title,
         artist: t.artist || "Original Soundtrack",
         drive_url: "",
-        thumbnail: movie.thumbnail, // Kodi Horizon 2 horizontal banner
+        thumbnail: movie.thumbnail,
         saved: false,
       }));
 
@@ -1149,7 +1168,7 @@
       .replace(/[^a-z0-9]/g, "");
   }
 
-  // Song Rendering UI with Landscape Thumbnail Preview
+  // Song Rendering UI
   function renderSongsState(mode) {
     els.songList.innerHTML = "";
     els.saveAllBar.classList.add("hidden");
@@ -1292,21 +1311,28 @@
     });
   }
 
-  // Full Payload with Fanart and Thumbnails for Kodi Skins
+  // Full Payload: Filter Empty Links & Inject Stream URLs
   function buildPayload() {
     if (!state.selectedMovie) return null;
+    
+    // Only keep songs where drive_url is NOT empty
+    const validSongs = state.songs
+      .filter((s) => s.drive_url && s.drive_url.trim() !== "")
+      .map((s) => ({
+        title: s.title,
+        artist: s.artist,
+        drive_url: s.drive_url.trim(),
+        stream_url: generateStreamUrl(s.drive_url.trim()),
+        thumbnail: s.thumbnail || state.selectedMovie.thumbnail
+      }));
+
     return {
       movie: state.selectedMovie.title,
       tmdb_id: state.selectedMovie.id,
       year: state.selectedMovie.year,
       poster: state.selectedMovie.poster,
       fanart: state.selectedMovie.fanart,
-      songs: state.songs.map((s) => ({
-        title: s.title,
-        artist: s.artist,
-        drive_url: s.drive_url || "",
-        thumbnail: s.thumbnail || state.selectedMovie.thumbnail
-      })),
+      songs: validSongs
     };
   }
 
@@ -1329,9 +1355,9 @@
       return;
     }
 
-    const readySongs = state.songs.filter((s) => s.drive_url && s.drive_url.trim());
-    if (!readySongs.length) {
-      toast("Please attach at least one Google Drive link first.", "error");
+    const currentEntry = buildPayload();
+    if (!currentEntry.songs.length) {
+      toast("Please attach at least one Google Drive link before saving.", "error");
       return;
     }
 
@@ -1365,14 +1391,6 @@
 
       if (!Array.isArray(existingData)) existingData = [];
 
-      const currentEntry = buildPayload();
-      currentEntry.songs = readySongs.map((s) => ({
-        title: s.title,
-        artist: s.artist,
-        drive_url: s.drive_url.trim(),
-        thumbnail: s.thumbnail || state.selectedMovie.thumbnail
-      }));
-
       const targetIdx = existingData.findIndex(
         (item) => item.tmdb_id === currentEntry.tmdb_id || item.movie === currentEntry.movie
       );
@@ -1387,7 +1405,7 @@
       const base64Content = btoa(utf8Bytes);
 
       const putBody = {
-        message: `MoinuFlix: Ingest songs & fanart for ${state.selectedMovie.title}`,
+        message: `MoinuFlix: Ingest songs, streamer links & fanart for ${state.selectedMovie.title}`,
         content: base64Content,
         branch: CONFIG.GITHUB_BRANCH,
       };
@@ -1415,7 +1433,7 @@
       updateJsonPreview();
 
       setCommitStatus("success", "✓ Successfully committed to chunks/data_c03.json");
-      toast("Soundtrack & Fanart committed to GitHub!", "success");
+      toast("Soundtrack & Streamer links committed to GitHub!", "success");
     } catch (err) {
       console.error(err);
       setCommitStatus("error", err.message || "Commit failed.");
