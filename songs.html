@@ -638,7 +638,7 @@
           <input 
             type="text" 
             id="movie-search-input" 
-            placeholder="Type movie name (e.g. Leo, Jailer, Vikram, Master)..." 
+            placeholder="Type movie name (e.g. Paiyaa, Leo, Jailer, Vikram)..." 
             autocomplete="off"
             spellcheck="false"
           >
@@ -655,7 +655,7 @@
     <section id="empty-state" class="state-card empty-state">
       <div class="state-icon">🎧</div>
       <h2 class="state-title">No Movie Selected</h2>
-      <p class="state-desc">Type a movie name above. The system will load the poster and auto-fetch all tracks for Google Drive link ingestion.</p>
+      <p class="state-desc">Type a movie name above. The system will load the verified movie soundtrack for Google Drive link ingestion.</p>
     </section>
 
     <!-- Skeleton Loader -->
@@ -721,13 +721,11 @@
   <div id="toast" class="toast"></div>
 
   <script>
-    // Configuration targeted to your repository and chunks folder
     const CONFIG = {
       TMDB_API_KEY: '051ccf72e026820cb53b8b8531b6a2ba',
       TMDB_BASE: 'https://api.themoviedb.org/3',
       TMDB_IMG_BASE: 'https://image.tmdb.org/t/p',
       
-      // Target file inside the Chunks folder
       DB_CHUNK_PATH: 'chunks/data_c03.json',
       GITHUB_OWNER: 'Moinuflix',
       GITHUB_REPOSITORY: 'My-Movies',
@@ -764,7 +762,7 @@
       toast: document.getElementById('toast')
     };
 
-    // GitHub Token Setup
+    // GitHub Token Local Storage Config
     DOM.setTokenBtn.addEventListener('click', () => {
       const existing = localStorage.getItem(CONFIG.TOKEN_STORAGE_KEY) || '';
       const token = prompt('Enter your GitHub Personal Access Token (ghp_...):', existing);
@@ -774,7 +772,7 @@
       }
     });
 
-    // Autocomplete & Search Handlers
+    // Autocomplete & Search Input Handlers
     DOM.searchInput.addEventListener('input', (e) => {
       const query = e.target.value.trim();
       DOM.clearSearchBtn.style.display = query ? 'block' : 'none';
@@ -844,7 +842,7 @@
       DOM.autocompleteDropdown.hidden = false;
     }
 
-    // Select Movie & Fetch Music
+    // Select Movie & Execute Strict Ingestion
     async function selectMovie(tmdbId) {
       showLoading(true);
       try {
@@ -854,7 +852,9 @@
         state.activeMovie = movie;
 
         displayMovieHero(movie);
-        await autoFetchTrackList(movie.title);
+        
+        // Pass exact movie context for strict soundtrack matching
+        await autoFetchTrackList(movie);
 
         DOM.emptyState.hidden = true;
         DOM.activeWorkspace.hidden = false;
@@ -880,56 +880,145 @@
       }
     }
 
-    // Dual Music API Ingestion
-    async function autoFetchTrackList(movieTitle) {
+    // ==========================================================================
+    // Strict Movie-Soundtrack Verification Logic
+    // ==========================================================================
+    async function autoFetchTrackList(movie) {
       state.songs = [];
+      const movieTitle = (movie.title || '').trim();
+      const origTitle = (movie.original_title || '').trim();
+      const releaseYear = movie.release_date ? parseInt(movie.release_date.split('-')[0], 10) : null;
 
-      // 1. Try JioSaavn Music API
+      // 1. Check verified soundtrack album on iTunes Engine
+      let verifiedAlbum = await findExactSoundtrackAlbum(movieTitle, releaseYear);
+
+      // Fallback with original regional title if differing
+      if (!verifiedAlbum && origTitle && origTitle.toLowerCase() !== movieTitle.toLowerCase()) {
+        verifiedAlbum = await findExactSoundtrackAlbum(origTitle, releaseYear);
+      }
+
+      if (verifiedAlbum && verifiedAlbum.collectionId) {
+        state.songs = await fetchAlbumTracklist(verifiedAlbum.collectionId);
+      }
+
+      // 2. Secondary check on JioSaavn for regional/Indian film soundtracks
+      if (!state.songs.length) {
+        state.songs = await fetchExactSaavnAlbum(movieTitle, releaseYear);
+      }
+
+      // Render strictly verified tracks or display "Soundtrack not found"
+      renderSongCards();
+    }
+
+    async function findExactSoundtrackAlbum(title, movieYear) {
       try {
-        const res = await fetch(`https://saavn.dev/api/search/songs?query=${encodeURIComponent(movieTitle)}&limit=10`);
-        if (res.ok) {
-          const json = await res.json();
-          if (json?.data?.results?.length) {
-            state.songs = json.data.results.map(t => ({
-              title: t.name.replace(/&quot;/g, '"').replace(/&#039;/g, "'"),
-              artist: t.artists?.primary?.map(a => a.name).join(', ') || 'Original Track',
-              drive_url: ''
-            }));
+        const query = encodeURIComponent(`${title} Soundtrack`);
+        const res = await fetch(`https://itunes.apple.com/search?term=${query}&entity=album&limit=10`);
+        if (!res.ok) return null;
+
+        const data = await res.json();
+        if (!data?.results?.length) return null;
+
+        const cleanMovieTitle = normalizeTitle(title);
+
+        for (const album of data.results) {
+          const cleanAlbumName = normalizeTitle(album.collectionName || '');
+          const albumYear = album.releaseDate ? parseInt(album.releaseDate.split('-')[0], 10) : null;
+
+          const titleMatches = cleanAlbumName.includes(cleanMovieTitle);
+          const yearMatches = (!movieYear || !albumYear) ? true : Math.abs(albumYear - movieYear) <= 1;
+
+          if (titleMatches && yearMatches) {
+            return album;
           }
         }
-      } catch (_) {}
+      } catch (err) {
+        console.warn('Soundtrack verification error:', err);
+      }
+      return null;
+    }
 
-      // 2. Try iTunes Music API as fallback
-      if (!state.songs.length) {
-        try {
-          const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(movieTitle)}&entity=song&limit=8`);
-          if (res.ok) {
-            const data = await res.json();
-            if (data?.results?.length) {
-              state.songs = data.results.map(i => ({
-                title: i.trackName,
-                artist: i.artistName || 'Original Soundtrack',
+    async function fetchAlbumTracklist(collectionId) {
+      try {
+        const res = await fetch(`https://itunes.apple.com/lookup?id=${collectionId}&entity=song`);
+        if (!res.ok) return [];
+
+        const data = await res.json();
+        if (!data?.results?.length) return [];
+
+        const tracks = data.results.filter(item => item.wrapperType === 'track');
+        return tracks.map(t => ({
+          title: t.trackName,
+          artist: t.artistName || 'Original Soundtrack',
+          drive_url: ''
+        }));
+      } catch (_) {
+        return [];
+      }
+    }
+
+    async function fetchExactSaavnAlbum(title, movieYear) {
+      try {
+        const res = await fetch(`https://saavn.dev/api/search/albums?query=${encodeURIComponent(title)}&limit=5`);
+        if (!res.ok) return [];
+
+        const json = await res.json();
+        const albums = json?.data?.results || [];
+        const cleanMovieTitle = normalizeTitle(title);
+
+        for (const alb of albums) {
+          const cleanAlbName = normalizeTitle(alb.name || '');
+          const albYear = alb.year ? parseInt(alb.year, 10) : null;
+
+          const titleMatches = cleanAlbName.includes(cleanMovieTitle);
+          const yearMatches = (!movieYear || !albYear) ? true : Math.abs(albYear - movieYear) <= 1;
+
+          if (titleMatches && yearMatches && alb.id) {
+            const detailRes = await fetch(`https://saavn.dev/api/albums?id=${alb.id}`);
+            if (detailRes.ok) {
+              const detailJson = await detailRes.json();
+              const songList = detailJson?.data?.songs || [];
+              return songList.map(s => ({
+                title: s.name.replace(/&quot;/g, '"').replace(/&#039;/g, "'"),
+                artist: s.artists?.primary?.map(a => a.name).join(', ') || 'Original Soundtrack',
                 drive_url: ''
               }));
             }
           }
-        } catch (_) {}
-      }
-
-      // Default placeholder if API tracks are empty
-      if (!state.songs.length) {
-        state.songs = [
-          { title: `${movieTitle} - Theme / OST`, artist: 'Official Score', drive_url: '' },
-          { title: `${movieTitle} - Track 01`, artist: 'Soundtrack', drive_url: '' }
-        ];
-      }
-
-      renderSongCards();
+        }
+      } catch (_) {}
+      return [];
     }
 
+    function normalizeTitle(str) {
+      return (str || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, '');
+    }
+
+    // Render Song Cards or "Soundtrack Not Found"
     function renderSongCards() {
       DOM.songsList.innerHTML = '';
-      DOM.songCountLabel.textContent = `${state.songs.length} Tracks automatically found`;
+
+      if (!state.songs.length) {
+        DOM.songCountLabel.textContent = '0 Tracks found';
+        const year = state.activeMovie.release_date ? state.activeMovie.release_date.split('-')[0] : 'N/A';
+        DOM.songsList.innerHTML = `
+          <div class="state-card" style="margin: 1.5rem 0; padding: 2.5rem 1.5rem;">
+            <div class="state-icon">⚠️</div>
+            <h3 class="state-title" style="font-size: 1.1rem;">Soundtrack not found</h3>
+            <p class="state-desc" style="font-size: 0.85rem;">
+              No verified official soundtrack matching "<strong>${escapeHtml(state.activeMovie.title)}</strong>" (${year}) was found.
+            </p>
+            <button type="button" class="btn btn-save-song" style="margin-top: 1rem;" onclick="addManualTrackSlot()">
+              + Add Track Manually
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      DOM.songCountLabel.textContent = `${state.songs.length} Verified Soundtrack Tracks`;
 
       state.songs.forEach((song, idx) => {
         const card = document.createElement('div');
@@ -961,6 +1050,18 @@
         DOM.songsList.appendChild(card);
       });
     }
+
+    window.addManualTrackSlot = function() {
+      const trackName = prompt('Enter song/track name:');
+      if (trackName && trackName.trim()) {
+        state.songs.push({
+          title: trackName.trim(),
+          artist: state.activeMovie.title + ' OST',
+          drive_url: ''
+        });
+        renderSongCards();
+      }
+    };
 
     window.saveIndividualSong = function(index) {
       const input = document.getElementById(`drive-input-${index}`);
@@ -1026,7 +1127,7 @@
 
         if (!Array.isArray(existingData)) existingData = [];
 
-        // Build Payload
+        // Build Movie Payload
         const currentPayload = {
           movie: state.activeMovie.title,
           tmdb_id: state.activeMovie.id,
