@@ -3,12 +3,14 @@
     "movie": "Ko",
     "tmdb_id": 63654,
     "year": "2011",
-    "poster": "https://image.tmdb.org/t/p/w342/oe91RGQkLROh0rTNoStnse1p0qw.jpg",
+    "poster": "https://image.tmdb.org/t/p/w500/oe91RGQkLROh0rTNoStnse1p0qw.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/19pGxP79ciHgdQ20bzc0KCM1Ogg.jpg",
     "songs": [
       {
         "title": "Venpaniye",
         "artist": "Sriram Parthasarathy, Harris Jayaraj & Bombay Jayashri",
-        "drive_url": "https://drive.google.com/file/d/1AAys6JpxKj78ii6oyKQOK2l1kKR9Zjhd/view?usp=drive_link"
+        "drive_url": "https://drive.google.com/file/d/1AAys6JpxKj78ii6oyKQOK2l1kKR9Zjhd/view?usp=drive_link",
+        "thumbnail": "https://image.tmdb.org/t/p/w780/19pGxP79ciHgdQ20bzc0KCM1Ogg.jpg"
       }
     ]
   },
