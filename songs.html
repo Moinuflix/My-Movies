@@ -60,7 +60,7 @@
       font-family: inherit;
     }
 
-    /* -------------------- Layout -------------------- */
+    /* Layout */
     .page {
       max-width: 880px;
       margin: 0 auto;
@@ -79,7 +79,7 @@
       letter-spacing: 0.01em;
     }
 
-    /* -------------------- Header -------------------- */
+    /* Header */
     .site-header {
       position: sticky;
       top: 0;
@@ -164,7 +164,7 @@
       justify-content: center;
     }
 
-    /* -------------------- Cards -------------------- */
+    /* Cards */
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -176,7 +176,7 @@
       padding: 18px;
     }
 
-    /* -------------------- Search -------------------- */
+    /* Search */
     .search-row {
       position: relative;
       display: flex;
@@ -277,7 +277,7 @@
       color: var(--text-tertiary);
     }
 
-    /* -------------------- Selected movie -------------------- */
+    /* Selected Movie Summary */
     .movie-summary {
       display: none;
       gap: 16px;
@@ -333,7 +333,7 @@
       background: var(--gold-soft);
     }
 
-    /* -------------------- Empty / status states -------------------- */
+    /* State Block */
     .state-block {
       padding: 40px 20px;
       text-align: center;
@@ -367,7 +367,7 @@
       to { transform: rotate(360deg); }
     }
 
-    /* -------------------- Song list -------------------- */
+    /* Song List */
     .song-list {
       display: flex;
       flex-direction: column;
@@ -452,19 +452,11 @@
       gap: 5px;
     }
 
-    .song-status.saved {
-      color: var(--success);
-    }
+    .song-status.saved { color: var(--success); }
+    .song-status.unsaved { color: var(--text-tertiary); }
+    .song-status.error { color: var(--error); }
 
-    .song-status.unsaved {
-      color: var(--text-tertiary);
-    }
-
-    .song-status.error {
-      color: var(--error);
-    }
-
-    /* -------------------- Buttons -------------------- */
+    /* Buttons */
     .btn {
       border: 1px solid var(--border-strong);
       background: var(--bg-elevated);
@@ -528,7 +520,7 @@
       color: var(--text-primary);
     }
 
-    /* -------------------- JSON preview -------------------- */
+    /* JSON Preview Panel */
     .json-toggle {
       display: flex;
       align-items: center;
@@ -576,7 +568,7 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    /* -------------------- Save-all bar -------------------- */
+    /* Save All Bar */
     .save-all-bar {
       margin-top: 24px;
       display: flex;
@@ -594,7 +586,7 @@
     .commit-status.success { color: var(--success); }
     .commit-status.error { color: var(--error); }
 
-    /* -------------------- Toasts -------------------- */
+    /* Toasts */
     .toast-container {
       position: fixed;
       bottom: 20px;
@@ -691,7 +683,7 @@
 </header>
 
 <main class="page">
-  <!-- Search Movie -->
+  <!-- Movie Search -->
   <section class="section">
     <h2 class="section-title">Search Movie</h2>
     <div class="search-row">
@@ -699,14 +691,14 @@
         type="text"
         id="movieSearchInput"
         class="input"
-        placeholder="Type movie name (e.g. Paiyaa, Leo, Vikram)..."
+        placeholder="Type movie name (e.g. Leo, Paiyaa, Vikram, Jailer)..."
         autocomplete="off"
       />
       <div class="search-results" id="searchResults"></div>
     </div>
   </section>
 
-  <!-- Selected movie summary -->
+  <!-- Selected Movie Summary -->
   <section class="section">
     <div class="card movie-summary" id="movieSummary">
       <img class="movie-summary-poster" id="movieSummaryPoster" alt="" />
@@ -724,7 +716,7 @@
     </div>
   </section>
 
-  <!-- Song list -->
+  <!-- Verified Tracklist -->
   <section class="section hidden" id="songsSection">
     <h2 class="section-title">Verified Soundtrack</h2>
 
@@ -737,7 +729,7 @@
     </div>
   </section>
 
-  <!-- JSON preview -->
+  <!-- JSON Output Panel -->
   <section class="section">
     <div class="card json-panel" id="jsonPanel">
       <div class="json-toggle" id="jsonToggle">
@@ -821,7 +813,7 @@
     }, 3200);
   }
 
-  // Token Config
+  // GitHub Token Config
   els.tokenConfigBtn.addEventListener("click", () => {
     const existing = localStorage.getItem(CONFIG.TOKEN_KEY) || "";
     const token = prompt("Enter your GitHub Personal Access Token (ghp_...):", existing);
@@ -837,7 +829,7 @@
     });
   }
 
-  // TMDB Movie Search
+  // TMDB Search Logic
   let searchDebounceTimer = null;
   let activeSearchController = null;
 
@@ -913,7 +905,7 @@
         <img class="search-result-poster" src="${posterSrc}" alt="" loading="lazy" />
         <div class="search-result-meta">
           <div class="search-result-title">${escapeHtml(movie.title)}</div>
-          <div class="search-result-year">${year} &bull; TMDB #${movie.id}</div>
+          <div class="search-result-year">${year} &bull; TMDB #${movie.id} [${(movie.original_language || '').toUpperCase()}]</div>
         </div>
       `;
 
@@ -922,7 +914,7 @@
     });
   }
 
-  // Movie Selection
+  // Select Movie
   async function selectMovie(movie) {
     closeSearchResults();
     els.movieSearchInput.value = movie.title;
@@ -936,7 +928,7 @@
       original_title: movie.original_title || movie.title,
       year: year,
       release_date: movie.release_date || "",
-      language: (movie.original_language || "").toUpperCase(),
+      language: (movie.original_language || "").toLowerCase(),
       poster: posterSrc,
     };
 
@@ -945,7 +937,7 @@
     els.movieSummaryTitle.textContent = movie.title;
     els.movieSummaryYear.textContent = year;
     els.movieSummaryId.textContent = "TMDB #" + movie.id;
-    els.movieSummaryLang.textContent = state.selectedMovie.language || "—";
+    els.movieSummaryLang.textContent = state.selectedMovie.language.toUpperCase() || "—";
     els.movieSummarySongCount.textContent = "…";
 
     els.songsSection.classList.remove("hidden");
@@ -957,25 +949,32 @@
     await loadSoundtrack(state.selectedMovie);
   }
 
-  // Strict Soundtrack Resolution (iTunes Album + JioSaavn Album)
+  // ==========================================================================
+  // Strict Regional & Indian Cinema Verified Soundtrack Engine
+  // ==========================================================================
   async function loadSoundtrack(movie) {
     try {
       const movieYear = movie.year && movie.year !== "—" ? parseInt(movie.year, 10) : null;
+      const lang = movie.language || "";
+      const isIndianLang = ["ta", "te", "hi", "kn", "ml"].includes(lang);
       let songs = [];
 
-      // 1. Strict iTunes Soundtrack Album Match
-      const itunesAlbum = await findExactITunesAlbum(movie.title, movieYear);
-      if (itunesAlbum && itunesAlbum.collectionId) {
-        songs = await fetchITunesTracks(itunesAlbum.collectionId);
+      // 1. Regional Indian Movies (Tamil, Telugu, Hindi, etc.) Priority Check on JioSaavn
+      if (isIndianLang) {
+        songs = await fetchExactSaavnAlbum(movie.title, movieYear, lang);
       }
 
-      // 2. Strict JioSaavn Album Lookup for Regional titles
+      // 2. iTunes Store Check (Prioritizing Indian Storefront for Regional Cinema)
       if (!songs.length) {
-        songs = await fetchExactSaavnAlbum(movie.title, movieYear);
+        const itunesAlbum = await findExactITunesAlbum(movie.title, movieYear, isIndianLang ? "IN" : "US");
+        if (itunesAlbum && itunesAlbum.collectionId) {
+          songs = await fetchITunesTracks(itunesAlbum.collectionId, isIndianLang ? "IN" : "US");
+        }
       }
 
+      // 3. Fallback to Original Title if needed
       if (!songs.length && movie.original_title && movie.original_title !== movie.title) {
-        songs = await fetchExactSaavnAlbum(movie.original_title, movieYear);
+        songs = await fetchExactSaavnAlbum(movie.original_title, movieYear, lang);
       }
 
       if (!songs.length) {
@@ -1003,9 +1002,46 @@
     }
   }
 
-  async function findExactITunesAlbum(title, movieYear) {
+  async function fetchExactSaavnAlbum(title, movieYear, lang) {
     try {
-      const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(title + " Soundtrack")}&entity=album&limit=10`);
+      const query = encodeURIComponent(title);
+      const res = await fetch(`https://saavn.dev/api/search/albums?query=${query}&limit=10`);
+      if (!res.ok) return [];
+      const json = await res.json();
+      const albums = json?.data?.results || [];
+      const cleanTitle = normalize(title);
+
+      for (const alb of albums) {
+        const cleanAlb = normalize(alb.name || "");
+        const albYear = alb.year ? parseInt(alb.year, 10) : null;
+        const albLang = (alb.language || "").toLowerCase();
+
+        const titleMatches = cleanAlb === cleanTitle || cleanAlb.includes(cleanTitle);
+        const yearOk = (!movieYear || !albYear) ? true : Math.abs(albYear - movieYear) <= 1;
+        const langOk = lang ? albLang.includes(lang) || albLang === "tamil" || albLang === "telugu" || albLang === "hindi" : true;
+
+        if (titleMatches && yearOk && langOk && alb.id) {
+          const detailRes = await fetch(`https://saavn.dev/api/albums?id=${alb.id}`);
+          if (detailRes.ok) {
+            const d = await detailRes.json();
+            const trackList = d?.data?.songs || [];
+            if (trackList.length) {
+              return trackList.map((s) => ({
+                title: s.name.replace(/&quot;/g, '"').replace(/&#039;/g, "'"),
+                artist: s.artists?.primary?.map((a) => a.name).join(", ") || "Original Soundtrack"
+              }));
+            }
+          }
+        }
+      }
+    } catch (_) {}
+    return [];
+  }
+
+  async function findExactITunesAlbum(title, movieYear, countryCode = "IN") {
+    try {
+      const term = encodeURIComponent(`${title} Original Motion Picture Soundtrack`);
+      const res = await fetch(`https://itunes.apple.com/search?term=${term}&entity=album&country=${countryCode}&limit=15`);
       if (!res.ok) return null;
       const data = await res.json();
       const cleanTitle = normalize(title);
@@ -1013,6 +1049,13 @@
       for (const alb of (data.results || [])) {
         const cleanAlb = normalize(alb.collectionName || "");
         const albYear = alb.releaseDate ? parseInt(alb.releaseDate.slice(0, 4), 10) : null;
+        const artist = (alb.artistName || "").toLowerCase();
+
+        // Prevent animated/unrelated Hollywood crossovers
+        if (cleanTitle === "leo" && (artist.includes("sandler") || cleanAlb.includes("lizard"))) {
+          continue;
+        }
+
         const matches = cleanAlb.includes(cleanTitle);
         const yearOk = (!movieYear || !albYear) ? true : Math.abs(albYear - movieYear) <= 1;
 
@@ -1022,9 +1065,9 @@
     return null;
   }
 
-  async function fetchITunesTracks(collectionId) {
+  async function fetchITunesTracks(collectionId, countryCode = "IN") {
     try {
-      const res = await fetch(`https://itunes.apple.com/lookup?id=${collectionId}&entity=song`);
+      const res = await fetch(`https://itunes.apple.com/lookup?id=${collectionId}&entity=song&country=${countryCode}`);
       if (!res.ok) return [];
       const data = await res.json();
       return (data.results || [])
@@ -1038,34 +1081,6 @@
     }
   }
 
-  async function fetchExactSaavnAlbum(title, movieYear) {
-    try {
-      const res = await fetch(`https://saavn.dev/api/search/albums?query=${encodeURIComponent(title)}&limit=6`);
-      if (!res.ok) return [];
-      const json = await res.json();
-      const cleanTitle = normalize(title);
-
-      for (const alb of (json?.data?.results || [])) {
-        const cleanAlb = normalize(alb.name || "");
-        const albYear = alb.year ? parseInt(alb.year, 10) : null;
-        const matches = cleanAlb.includes(cleanTitle);
-        const yearOk = (!movieYear || !albYear) ? true : Math.abs(albYear - movieYear) <= 1;
-
-        if (matches && yearOk && alb.id) {
-          const detailRes = await fetch(`https://saavn.dev/api/albums?id=${alb.id}`);
-          if (detailRes.ok) {
-            const d = await detailRes.json();
-            return (d?.data?.songs || []).map((s) => ({
-              title: s.name.replace(/&quot;/g, '"').replace(/&#039;/g, "'"),
-              artist: s.artists?.primary?.map((a) => a.name).join(", ") || "Soundtrack"
-            }));
-          }
-        }
-      }
-    } catch (_) {}
-    return [];
-  }
-
   function normalize(str) {
     return (str || "")
       .toLowerCase()
@@ -1074,7 +1089,7 @@
       .replace(/[^a-z0-9]/g, "");
   }
 
-  // Song List UI
+  // UI Render
   function renderSongsState(mode) {
     els.songList.innerHTML = "";
     els.saveAllBar.classList.add("hidden");
@@ -1082,7 +1097,7 @@
     const messages = {
       "no-movie": ["🎬", "Search for a movie to get started."],
       loading: ["", "Searching verified soundtrack album…"],
-      "not-found": ["⚠️", "Soundtrack not found for this movie."],
+      "not-found": ["⚠️", "Exact soundtrack not found."],
       "api-error": ["⚠️", "Something went wrong fetching soundtrack."],
     };
 
@@ -1237,7 +1252,7 @@
       : "// Select a movie to preview its song data";
   }
 
-  // Save All to GitHub (chunks/data_c03.json)
+  // Commit to chunks/data_c03.json
   els.saveAllBtn.addEventListener("click", saveAllToGithub);
 
   async function saveAllToGithub() {
