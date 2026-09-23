@@ -1,5 +1,69 @@
 [
   {
+    "id": "1DduxvogyKP4Tbpg-trz2ifGkHcMW-Nzm",
+    "name": "Mad Max: Fury Road (2015) [1080p FHD] [Prime Video] [Dolby Atmos].mkv",
+    "title": "Mad Max: Fury Road",
+    "original_title": "Mad Max: Fury Road",
+    "original_language": "en",
+    "year": 2015,
+    "runtime": 121,
+    "tmdb_id": 76341,
+    "rating": 7.6,
+    "collection": "Mad Max Collection",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Science Fiction"
+    ],
+    "director": [
+      "George Miller"
+    ],
+    "cast": [
+      {
+        "name": "Tom Hardy",
+        "role": "Max Rockatansky"
+      },
+      {
+        "name": "Charlize Theron",
+        "role": "Imperator Furiosa"
+      },
+      {
+        "name": "Nicholas Hoult",
+        "role": "Nux"
+      },
+      {
+        "name": "Hugh Keays-Byrne",
+        "role": "Immortan Joe"
+      },
+      {
+        "name": "Josh Helman",
+        "role": "Slit"
+      }
+    ],
+    "plot": "An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken, and most everyone is crazed fighting for the necessities of life. Within this world exist two rebels on the run who just might be able to restore order.",
+    "poster": "https://image.tmdb.org/t/p/w500/ulcAi4dKpAjHwYGS08vNyx9H6I9.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/gqrnQA6Xppdl8vIb2eJc58VC1tW.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1DduxvogyKP4Tbpg-trz2ifGkHcMW-Nzm|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p FHD",
+      "audio": "Dolby Atmos",
+      "source": "Prime Video",
+      "size": "10 GB"
+    },
+    "versions": [
+      {
+        "id": "1DduxvogyKP4Tbpg-trz2ifGkHcMW-Nzm",
+        "name": "Mad Max: Fury Road (2015) [1080p FHD] [Prime Video] [Dolby Atmos].mkv",
+        "quality": "1080p FHD • Prime Video • Dolby Atmos",
+        "source": "Prime Video",
+        "resolution": "1080p FHD",
+        "audio": "Dolby Atmos",
+        "size": "10 GB",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1DduxvogyKP4Tbpg-trz2ifGkHcMW-Nzm|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+      }
+    ]
+  },
+  {
     "id": "1Bc-avsnuQBKtfZTNaoLLsenm-iDGGtKp",
     "name": "Estrada on the Screen (1968) [1080p FHD] [BLURAY] [DTS-HD Master / 1509k DTS].mkv",
     "title": "Estrada on the Screen",
