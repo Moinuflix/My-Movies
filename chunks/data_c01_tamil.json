@@ -1,5 +1,83 @@
 [
   {
+    "id": "1xoMdKGygZWhT80cVBKzLuVQuLtLqzq1N",
+    "name": "Thani Oruvan (2015) [1080p] [WEB-DL] [Dolby Atmos].mkv",
+    "title": "Thani Oruvan",
+    "original_title": "தனி ஒருவன்",
+    "original_language": "ta",
+    "year": 2015,
+    "runtime": 159,
+    "tmdb_id": 280165,
+    "rating": 7.4,
+    "collection": "Thani Oruvan Collection",
+    "director": [
+      "Mohan Raja"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=r5Lih8rKd6k",
+    "cast": [
+      {
+        "name": "Ravi Mohan",
+        "role": "Mithran IPS",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/wKZNz2kOYPYbSrVDIdHZHtQqHs1.jpg"
+      },
+      {
+        "name": "Arvind Swamy",
+        "role": "Dr. Siddharth Abhimanyu",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/axg3WBjcK5j6YrstPtPdDKUJ0y2.jpg"
+      },
+      {
+        "name": "Nayanthara",
+        "role": "Mahima",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/sYUzvjsSsqeOgBblSzda6ZwwbEa.jpg"
+      },
+      {
+        "name": "Vamsi Krishna",
+        "role": "Vicky",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/zilAgIIQdNJ4fdsmzcze7KCX6B0.jpg"
+      },
+      {
+        "name": "Ganesh Venkatraman",
+        "role": "Shakthi",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/p9lK3JKTQxnNuTWPHVg4DbApus5.jpg"
+      }
+    ],
+    "plot": "An idealistic cop and an ambitious scientist-businessman indulge in a high-stake battle of wits.",
+    "poster": "https://image.tmdb.org/t/p/w500/90ZpZw1qZlt0RUVByJATFVUEeEm.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/aRB5UvDflR0A4qDFxjOpiiLD7bf.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1xoMdKGygZWhT80cVBKzLuVQuLtLqzq1N|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "H.264",
+      "audio": "Dolby Atmos",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": "10 GB"
+    },
+    "versions": [
+      {
+        "id": "1xoMdKGygZWhT80cVBKzLuVQuLtLqzq1N",
+        "name": "Thani Oruvan (2015) [1080p] [WEB-DL] [Dolby Atmos].mkv",
+        "quality": "1080p • WEB-DL • Dolby Atmos [10 GB]",
+        "source": "WEB-DL",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1xoMdKGygZWhT80cVBKzLuVQuLtLqzq1N|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "10 GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "1VgiSXaEiCSt2gRWEakdkgDbUyE4WsflG",
     "name": "Ram and Leela (2026) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
     "title": "Ram and Leela",
