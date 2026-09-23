@@ -1,5 +1,83 @@
 [
   {
+    "id": "1VgiSXaEiCSt2gRWEakdkgDbUyE4WsflG",
+    "name": "Ram and Leela (2026) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
+    "title": "Ram and Leela",
+    "original_title": "Ram and Leela",
+    "original_language": "ta",
+    "year": 2026,
+    "runtime": 143,
+    "tmdb_id": 1590380,
+    "rating": 5,
+    "collection": "",
+    "director": [
+      "Ramachandrran Kannan"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Rio Raj",
+        "role": "Raghuram",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/jzYil7rsWsUeBDxoy3SbIwJ241v.jpg"
+      },
+      {
+        "name": "Vartika Jain",
+        "role": "Leela",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/gnLDqtXZYS9Rf6RXec50wj01T4A.jpg"
+      },
+      {
+        "name": "Chetan",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/jE66LoKC6ctmSLitdtIQUOrpTkI.jpg"
+      },
+      {
+        "name": "Malavika Avinash",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/1D3J1HIRP4gm0bYzrOdF2AmreV5.jpg"
+      },
+      {
+        "name": "Balaji Thiyagarajan",
+        "role": "",
+        "thumbnail": ""
+      }
+    ],
+    "plot": "A repeatedly unlucky man finally finds the woman of his dreams, only for an unexpected twist to challenge his understanding of love and commitment.",
+    "poster": "https://image.tmdb.org/t/p/w500/j1X0t57PguWBcaa8LAOaAHGyjcK.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/w0hg42XRWiaWlGPvQI8Defwn5En.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1VgiSXaEiCSt2gRWEakdkgDbUyE4WsflG|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "Prime Video",
+      "codec": "x265",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil, Telugu, Hindi, Malayalam",
+      "size": "10 GB"
+    },
+    "versions": [
+      {
+        "id": "1VgiSXaEiCSt2gRWEakdkgDbUyE4WsflG",
+        "name": "Ram and Leela (2026) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
+        "quality": "1080p • Prime Video • Dolby Digital Plus Multi [10 GB]",
+        "source": "Prime Video",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1VgiSXaEiCSt2gRWEakdkgDbUyE4WsflG|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Prime Video",
+          "codec": "x265",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Hindi, Malayalam",
+          "size": "10 GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "1DduxvogyKP4Tbpg-trz2ifGkHcMW-Nzm",
     "name": "Mad Max: Fury Road (2015) [1080p FHD] [Prime Video] [Dolby Atmos].mkv",
     "title": "Mad Max: Fury Road",
