@@ -1,505 +1,228 @@
 [
   {
-    "id": "1wyGcJelIyXwu781UfWoUgv2ifUF53XMi",
-    "name": "Naa Ready - Leo (2023) [1080p 60FPS] [Dolby Atmos 5.1].mkv",
-    "title": "Naa Ready (Leo)",
-    "original_title": "Naa Ready",
-    "original_language": "ta",
+    "id": "album_leo_2023",
+    "title": "Leo (5.1 Surround Soundtracks)",
+    "original_title": "Leo",
     "year": 2023,
-    "runtime": 5,
     "tmdb_id": 949229,
     "rating": 7.5,
     "collection": "Leo Soundtracks",
     "genres": ["Music Video", "Action", "5.1 Surround"],
     "director": ["Lokesh Kanagaraj"],
-    "cast": [
-      { "name": "Vijay", "role": "Leo Das" },
-      { "name": "Anirudh Ravichander", "role": "Music Director" }
-    ],
-    "plot": "Leo (2023) - Naa Ready official 1080p 60FPS video song with Dolby Atmos 5.1 surround sound.",
+    "plot": "Leo (2023) Official 1080p 60FPS Video Songs Pack mixed with pure Dolby Atmos 5.1 Surround Sound.",
     "poster": "https://image.tmdb.org/t/p/w500/2XUHC4lp3tDsgfFLFygNZ2x2Um9.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
-    "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1wyGcJelIyXwu781UfWoUgv2ifUF53XMi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p FHD 60FPS",
-      "source": "WEB-DL",
-      "codec": "H.264",
-      "audio": "Dolby Atmos / 5.1 Surround",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": "524MB"
-    },
-    "versions": [
+    "logo": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+    "tracks": [
       {
         "id": "1wyGcJelIyXwu781UfWoUgv2ifUF53XMi",
-        "name": "Naa Ready - Leo (2023) [1080p 60FPS] [Dolby Atmos 5.1].mkv",
-        "quality": "1080p FHD • Dolby Atmos • 5.1 Surround",
-        "source": "WEB-DL",
-        "resolution": "1080p FHD",
-        "audio": "Dolby Atmos / 5.1 Surround",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1wyGcJelIyXwu781UfWoUgv2ifUF53XMi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-      }
-    ]
-  },
-  {
-    "id": "1NGHiSQ_qbJtALuKWPYU50CWS8f97z1Fi",
-    "name": "Anbenum - Leo (2023) [1080p 60FPS] [Dolby Atmos 5.1].mkv",
-    "title": "Anbenum (Leo)",
-    "original_title": "Anbenum",
-    "original_language": "ta",
-    "year": 2023,
-    "runtime": 4,
-    "tmdb_id": 949229,
-    "rating": 7.5,
-    "collection": "Leo Soundtracks",
-    "genres": ["Music Video", "Melody", "5.1 Surround"],
-    "director": ["Lokesh Kanagaraj"],
-    "cast": [
-      { "name": "Vijay", "role": "Leo Das" },
-      { "name": "Trisha", "role": "Sathya" }
-    ],
-    "plot": "Leo (2023) - Anbenum official 1080p 60FPS video song with Dolby Atmos 5.1 surround sound.",
-    "poster": "https://image.tmdb.org/t/p/w500/2XUHC4lp3tDsgfFLFygNZ2x2Um9.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
-    "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1NGHiSQ_qbJtALuKWPYU50CWS8f97z1Fi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p FHD 60FPS",
-      "source": "WEB-DL",
-      "codec": "H.264",
-      "audio": "Dolby Atmos / 5.1 Surround",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": "331MB"
-    },
-    "versions": [
+        "title": "Naa Ready",
+        "track_number": 1,
+        "runtime": 5,
+        "plot": "Naa Ready official 1080p 60FPS video song with Dolby Atmos 5.1 surround sound.",
+        "thumb": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1wyGcJelIyXwu781UfWoUgv2ifUF53XMi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD 60FPS",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
       {
         "id": "1NGHiSQ_qbJtALuKWPYU50CWS8f97z1Fi",
-        "name": "Anbenum - Leo (2023) [1080p 60FPS] [Dolby Atmos 5.1].mkv",
-        "quality": "1080p FHD • Dolby Atmos • 5.1 Surround",
-        "source": "WEB-DL",
-        "resolution": "1080p FHD",
-        "audio": "Dolby Atmos / 5.1 Surround",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1NGHiSQ_qbJtALuKWPYU50CWS8f97z1Fi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-      }
-    ]
-  },
-  {
-    "id": "1S4g8eo6JuZ9Uf2jK9bMx3C9Sw-Z45QWt",
-    "name": "Badass - Leo (2023) [1080p 60FPS] [Dolby Atmos 5.1].mkv",
-    "title": "Badass (Leo)",
-    "original_title": "Badass",
-    "original_language": "ta",
-    "year": 2023,
-    "runtime": 4,
-    "tmdb_id": 949229,
-    "rating": 7.5,
-    "collection": "Leo Soundtracks",
-    "genres": ["Music Video", "Action", "5.1 Surround"],
-    "director": ["Lokesh Kanagaraj"],
-    "cast": [
-      { "name": "Vijay", "role": "Leo Das" }
-    ],
-    "plot": "Leo (2023) - Badass official 1080p 60FPS video song with Dolby Atmos 5.1 surround sound.",
-    "poster": "https://image.tmdb.org/t/p/w500/2XUHC4lp3tDsgfFLFygNZ2x2Um9.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
-    "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1S4g8eo6JuZ9Uf2jK9bMx3C9Sw-Z45QWt|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p FHD 60FPS",
-      "source": "WEB-DL",
-      "codec": "H.264",
-      "audio": "Dolby Atmos / 5.1 Surround",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": "434MB"
-    },
-    "versions": [
+        "title": "Anbenum",
+        "track_number": 2,
+        "runtime": 4,
+        "plot": "Anbenum official 1080p 60FPS video song with Dolby Atmos 5.1 surround sound.",
+        "thumb": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1NGHiSQ_qbJtALuKWPYU50CWS8f97z1Fi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD 60FPS",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
       {
         "id": "1S4g8eo6JuZ9Uf2jK9bMx3C9Sw-Z45QWt",
-        "name": "Badass - Leo (2023) [1080p 60FPS] [Dolby Atmos 5.1].mkv",
-        "quality": "1080p FHD • Dolby Atmos • 5.1 Surround",
-        "source": "WEB-DL",
-        "resolution": "1080p FHD",
-        "audio": "Dolby Atmos / 5.1 Surround",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1S4g8eo6JuZ9Uf2jK9bMx3C9Sw-Z45QWt|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-      }
-    ]
-  },
-  {
-    "id": "19Ck-FmLL8HTCScTnldW0ZBlGVQSPnnHB",
-    "name": "Ratata - Leo (2023) [1080p 60FPS] [Dolby Atmos 5.1].mkv",
-    "title": "Ratata (Leo)",
-    "original_title": "Ratata",
-    "original_language": "ta",
-    "year": 2023,
-    "runtime": 4,
-    "tmdb_id": 949229,
-    "rating": 7.5,
-    "collection": "Leo Soundtracks",
-    "genres": ["Music Video", "5.1 Surround"],
-    "director": ["Lokesh Kanagaraj"],
-    "cast": [
-      { "name": "Vijay", "role": "Leo Das" }
-    ],
-    "plot": "Leo (2023) - Ratata official 1080p 60FPS video song with Dolby Atmos 5.1 surround sound.",
-    "poster": "https://image.tmdb.org/t/p/w500/2XUHC4lp3tDsgfFLFygNZ2x2Um9.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
-    "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=19Ck-FmLL8HTCScTnldW0ZBlGVQSPnnHB|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p FHD 60FPS",
-      "source": "WEB-DL",
-      "codec": "H.264",
-      "audio": "Dolby Atmos / 5.1 Surround",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": "206MB"
-    },
-    "versions": [
+        "title": "Badass",
+        "track_number": 3,
+        "runtime": 4,
+        "plot": "Badass official 1080p 60FPS video song with Dolby Atmos 5.1 surround sound.",
+        "thumb": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1S4g8eo6JuZ9Uf2jK9bMx3C9Sw-Z45QWt|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD 60FPS",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
       {
         "id": "19Ck-FmLL8HTCScTnldW0ZBlGVQSPnnHB",
-        "name": "Ratata - Leo (2023) [1080p 60FPS] [Dolby Atmos 5.1].mkv",
-        "quality": "1080p FHD • Dolby Atmos • 5.1 Surround",
-        "source": "WEB-DL",
-        "resolution": "1080p FHD",
-        "audio": "Dolby Atmos / 5.1 Surround",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=19Ck-FmLL8HTCScTnldW0ZBlGVQSPnnHB|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-      }
-    ]
-  },
-  {
-    "id": "18zTZTBbrZNwh1pP2F97hzLpIc3sGzPxW",
-    "name": "Im Scared - Leo (2023) [1080p 60FPS] [Dolby Atmos 5.1].mkv",
-    "title": "Im Scared (Leo)",
-    "original_title": "Im Scared",
-    "original_language": "ta",
-    "year": 2023,
-    "runtime": 3,
-    "tmdb_id": 949229,
-    "rating": 7.5,
-    "collection": "Leo Soundtracks",
-    "genres": ["Music Video", "5.1 Surround"],
-    "director": ["Lokesh Kanagaraj"],
-    "cast": [
-      { "name": "Vijay", "role": "Leo Das" }
-    ],
-    "plot": "Leo (2023) - Im Scared official 1080p 60FPS video song with Dolby Atmos 5.1 surround sound.",
-    "poster": "https://image.tmdb.org/t/p/w500/2XUHC4lp3tDsgfFLFygNZ2x2Um9.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
-    "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=18zTZTBbrZNwh1pP2F97hzLpIc3sGzPxW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p FHD 60FPS",
-      "source": "WEB-DL",
-      "codec": "H.264",
-      "audio": "Dolby Atmos / 5.1 Surround",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": "115MB"
-    },
-    "versions": [
+        "title": "Ratata",
+        "track_number": 4,
+        "runtime": 4,
+        "plot": "Ratata official 1080p 60FPS video song with Dolby Atmos 5.1 surround sound.",
+        "thumb": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=19Ck-FmLL8HTCScTnldW0ZBlGVQSPnnHB|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD 60FPS",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
       {
         "id": "18zTZTBbrZNwh1pP2F97hzLpIc3sGzPxW",
-        "name": "Im Scared - Leo (2023) [1080p 60FPS] [Dolby Atmos 5.1].mkv",
-        "quality": "1080p FHD • Dolby Atmos • 5.1 Surround",
-        "source": "WEB-DL",
-        "resolution": "1080p FHD",
-        "audio": "Dolby Atmos / 5.1 Surround",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=18zTZTBbrZNwh1pP2F97hzLpIc3sGzPxW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-      }
-    ]
-  },
-  {
-    "id": "1UQfiqfYgis7kUQLwMTdzztZugWz9XpyZ",
-    "name": "Karu Karu Karupayi - Leo (2023) [1080p] [5.1 Surround].mkv",
-    "title": "Karu Karu Karupayi (Leo)",
-    "original_title": "Karu Karu Karupayi",
-    "original_language": "ta",
-    "year": 2023,
-    "runtime": 4,
-    "tmdb_id": 949229,
-    "rating": 7.5,
-    "collection": "Leo Soundtracks",
-    "genres": ["Music Video", "Folk", "5.1 Surround"],
-    "director": ["Lokesh Kanagaraj"],
-    "cast": [
-      { "name": "Vijay", "role": "Leo Das" }
-    ],
-    "plot": "Leo (2023) - Karu Karu Karupayi retro movie cut video song with 5.1 surround sound.",
-    "poster": "https://image.tmdb.org/t/p/w500/2XUHC4lp3tDsgfFLFygNZ2x2Um9.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
-    "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1UQfiqfYgis7kUQLwMTdzztZugWz9XpyZ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p FHD",
-      "source": "WEB-DL",
-      "codec": "H.264",
-      "audio": "5.1 Surround",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": "436MB"
-    },
-    "versions": [
+        "title": "Im Scared",
+        "track_number": 5,
+        "runtime": 3,
+        "plot": "Im Scared official 1080p 60FPS video song with Dolby Atmos 5.1 surround sound.",
+        "thumb": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=18zTZTBbrZNwh1pP2F97hzLpIc3sGzPxW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD 60FPS",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
       {
         "id": "1UQfiqfYgis7kUQLwMTdzztZugWz9XpyZ",
-        "name": "Karu Karu Karupayi - Leo (2023) [1080p] [5.1 Surround].mkv",
-        "quality": "1080p FHD • 5.1 Surround",
-        "source": "WEB-DL",
-        "resolution": "1080p FHD",
-        "audio": "5.1 Surround",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1UQfiqfYgis7kUQLwMTdzztZugWz9XpyZ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-      }
-    ]
-  },
-  {
-    "id": "1KK9MfcCJjcfbdSjSBTMxi9cvXyX4k86z",
-    "name": "Villain Yaaru - Leo (2023) [1080p] [5.1 Surround].mkv",
-    "title": "Villain Yaaru (Leo)",
-    "original_title": "Villain Yaaru",
-    "original_language": "ta",
-    "year": 2023,
-    "runtime": 3,
-    "tmdb_id": 949229,
-    "rating": 7.5,
-    "collection": "Leo Soundtracks",
-    "genres": ["Music Video", "5.1 Surround"],
-    "director": ["Lokesh Kanagaraj"],
-    "cast": [
-      { "name": "Vijay", "role": "Leo Das" }
-    ],
-    "plot": "Leo (2023) - Villain Yaaru official video track with 5.1 surround sound.",
-    "poster": "https://image.tmdb.org/t/p/w500/2XUHC4lp3tDsgfFLFygNZ2x2Um9.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
-    "thumbnail": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1KK9MfcCJjcfbdSjSBTMxi9cvXyX4k86z|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p FHD",
-      "source": "WEB-DL",
-      "codec": "H.264",
-      "audio": "5.1 Surround",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": "250MB"
-    },
-    "versions": [
+        "title": "Karu Karu Karupayi",
+        "track_number": 6,
+        "runtime": 4,
+        "plot": "Karu Karu Karupayi retro movie cut video song with 5.1 surround sound.",
+        "thumb": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1UQfiqfYgis7kUQLwMTdzztZugWz9XpyZ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "5.1 Surround",
+          "channels": "5.1"
+        }
+      },
       {
         "id": "1KK9MfcCJjcfbdSjSBTMxi9cvXyX4k86z",
-        "name": "Villain Yaaru - Leo (2023) [1080p] [5.1 Surround].mkv",
-        "quality": "1080p FHD • 5.1 Surround",
-        "source": "WEB-DL",
-        "resolution": "1080p FHD",
-        "audio": "5.1 Surround",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1KK9MfcCJjcfbdSjSBTMxi9cvXyX4k86z|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        "title": "Villain Yaaru",
+        "track_number": 7,
+        "runtime": 3,
+        "plot": "Villain Yaaru official video track with 5.1 surround sound.",
+        "thumb": "https://image.tmdb.org/t/p/w780/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1KK9MfcCJjcfbdSjSBTMxi9cvXyX4k86z|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "5.1 Surround",
+          "channels": "5.1"
+        }
       }
     ]
   },
   {
-    "id": "11COe5kN83hoPb_g3BKXaAtuPtlFYOIEW",
-    "name": "Ottaiyanum Senja Thara - Arul (2004) [1080p] [5.1].mkv",
-    "title": "Ottaiyanum Senja Thara (Arul)",
-    "original_title": "Ottaiyanum Senja Thara",
-    "original_language": "ta",
+    "id": "album_arul_2004",
+    "title": "Arul (5.1 Surround Soundtracks)",
+    "original_title": "Arul",
     "year": 2004,
-    "runtime": 5,
     "tmdb_id": 63674,
     "rating": 7.0,
     "collection": "Arul Soundtracks",
     "genres": ["Music Video", "Melody", "5.1 Surround"],
     "director": ["Hari"],
-    "cast": [
-      { "name": "Vikram", "role": "Arul" },
-      { "name": "Jyothika", "role": "Kanmani" }
-    ],
-    "plot": "Arul (2004) - Ottaiyanum Senja Thara 5.1 surround sound video song.",
+    "plot": "Arul (2004) Original 1080p Bluray Video Songs Pack with pure 5.1 Surround Sound Audio.",
     "poster": "https://image.tmdb.org/t/p/w500/dDEv1rGGyLNs1ZnOSDDL29cwA7Q.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
-    "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=11COe5kN83hoPb_g3BKXaAtuPtlFYOIEW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p FHD",
-      "source": "BLURAY",
-      "codec": "H.264",
-      "audio": "5.1 Surround",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": "280MB"
-    },
-    "versions": [
+    "logo": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+    "tracks": [
       {
         "id": "11COe5kN83hoPb_g3BKXaAtuPtlFYOIEW",
-        "name": "Ottaiyanum Senja Thara - Arul (2004) [1080p] [5.1].mkv",
-        "quality": "1080p FHD • BLURAY • 5.1 Surround",
-        "source": "BLURAY",
-        "resolution": "1080p FHD",
-        "audio": "5.1 Surround",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=11COe5kN83hoPb_g3BKXaAtuPtlFYOIEW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-      }
-    ]
-  },
-  {
-    "id": "1RKdFX_vduGPV34tt4ePM3uUhD6cQ5dXZ",
-    "name": "Pathu Viral - Arul (2004) [1080p] [5.1].mkv",
-    "title": "Pathu Viral (Arul)",
-    "original_title": "Pathu Viral",
-    "original_language": "ta",
-    "year": 2004,
-    "runtime": 5,
-    "tmdb_id": 63674,
-    "rating": 7.0,
-    "collection": "Arul Soundtracks",
-    "genres": ["Music Video", "5.1 Surround"],
-    "director": ["Hari"],
-    "cast": [
-      { "name": "Vikram", "role": "Arul" },
-      { "name": "Jyothika", "role": "Kanmani" }
-    ],
-    "plot": "Arul (2004) - Pathu Viral 5.1 surround video song.",
-    "poster": "https://image.tmdb.org/t/p/w500/dDEv1rGGyLNs1ZnOSDDL29cwA7Q.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
-    "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1RKdFX_vduGPV34tt4ePM3uUhD6cQ5dXZ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p FHD",
-      "source": "BLURAY",
-      "codec": "H.264",
-      "audio": "5.1 Surround",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": "260MB"
-    },
-    "versions": [
+        "title": "Ottaiyanum Senja Thara",
+        "track_number": 1,
+        "runtime": 5,
+        "plot": "Arul (2004) - Ottaiyanum Senja Thara 5.1 surround sound video song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=11COe5kN83hoPb_g3BKXaAtuPtlFYOIEW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "5.1 Surround",
+          "channels": "5.1"
+        }
+      },
       {
         "id": "1RKdFX_vduGPV34tt4ePM3uUhD6cQ5dXZ",
-        "name": "Pathu Viral - Arul (2004) [1080p] [5.1].mkv",
-        "quality": "1080p FHD • BLURAY • 5.1 Surround",
-        "source": "BLURAY",
-        "resolution": "1080p FHD",
-        "audio": "5.1 Surround",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1RKdFX_vduGPV34tt4ePM3uUhD6cQ5dXZ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-      }
-    ]
-  },
-  {
-    "id": "1vAhIyhtr-pZuBB8Rq94ZfQHUwVRbsckF",
-    "name": "Punnakunnu - Arul (2004) [1080p] [5.1].mkv",
-    "title": "Punnakunnu (Arul)",
-    "original_title": "Punnakunnu",
-    "original_language": "ta",
-    "year": 2004,
-    "runtime": 5,
-    "tmdb_id": 63674,
-    "rating": 7.0,
-    "collection": "Arul Soundtracks",
-    "genres": ["Music Video", "5.1 Surround"],
-    "director": ["Hari"],
-    "cast": [
-      { "name": "Vikram", "role": "Arul" }
-    ],
-    "plot": "Arul (2004) - Punnakunnu 5.1 surround video song.",
-    "poster": "https://image.tmdb.org/t/p/w500/dDEv1rGGyLNs1ZnOSDDL29cwA7Q.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
-    "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vAhIyhtr-pZuBB8Rq94ZfQHUwVRbsckF|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p FHD",
-      "source": "BLURAY",
-      "codec": "H.264",
-      "audio": "5.1 Surround",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": "240MB"
-    },
-    "versions": [
+        "title": "Pathu Viral",
+        "track_number": 2,
+        "runtime": 5,
+        "plot": "Arul (2004) - Pathu Viral 5.1 surround video song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1RKdFX_vduGPV34tt4ePM3uUhD6cQ5dXZ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "5.1 Surround",
+          "channels": "5.1"
+        }
+      },
       {
         "id": "1vAhIyhtr-pZuBB8Rq94ZfQHUwVRbsckF",
-        "name": "Punnakunnu - Arul (2004) [1080p] [5.1].mkv",
-        "quality": "1080p FHD • BLURAY • 5.1 Surround",
-        "source": "BLURAY",
-        "resolution": "1080p FHD",
-        "audio": "5.1 Surround",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vAhIyhtr-pZuBB8Rq94ZfQHUwVRbsckF|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-      }
-    ]
-  },
-  {
-    "id": "1ibgpwt-phObURjpKvuj7jpI-lSDTfrf3",
-    "name": "Soodamani - Arul (2004) [1080p] [5.1].mkv",
-    "title": "Soodamani (Arul)",
-    "original_title": "Soodamani",
-    "original_language": "ta",
-    "year": 2004,
-    "runtime": 5,
-    "tmdb_id": 63674,
-    "rating": 7.0,
-    "collection": "Arul Soundtracks",
-    "genres": ["Music Video", "Kuthu", "5.1 Surround"],
-    "director": ["Hari"],
-    "cast": [
-      { "name": "Vikram", "role": "Arul" }
-    ],
-    "plot": "Arul (2004) - Soodamani fast beat video song with 5.1 audio.",
-    "poster": "https://image.tmdb.org/t/p/w500/dDEv1rGGyLNs1ZnOSDDL29cwA7Q.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
-    "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ibgpwt-phObURjpKvuj7jpI-lSDTfrf3|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p FHD",
-      "source": "BLURAY",
-      "codec": "H.264",
-      "audio": "5.1 Surround",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": "270MB"
-    },
-    "versions": [
+        "title": "Punnakunnu",
+        "track_number": 3,
+        "runtime": 5,
+        "plot": "Arul (2004) - Punnakunnu 5.1 surround video song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vAhIyhtr-pZuBB8Rq94ZfQHUwVRbsckF|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "5.1 Surround",
+          "channels": "5.1"
+        }
+      },
       {
         "id": "1ibgpwt-phObURjpKvuj7jpI-lSDTfrf3",
-        "name": "Soodamani - Arul (2004) [1080p] [5.1].mkv",
-        "quality": "1080p FHD • BLURAY • 5.1 Surround",
-        "source": "BLURAY",
-        "resolution": "1080p FHD",
-        "audio": "5.1 Surround",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ibgpwt-phObURjpKvuj7jpI-lSDTfrf3|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        "title": "Soodamani",
+        "track_number": 4,
+        "runtime": 5,
+        "plot": "Arul (2004) - Soodamani fast beat video song with 5.1 audio.",
+        "thumb": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ibgpwt-phObURjpKvuj7jpI-lSDTfrf3|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "5.1 Surround",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "1LfpGC0gdOwujVMQUt82ZWQ5tF0peT0qW",
+        "title": "Ukkadathu Papadame",
+        "track_number": 5,
+        "runtime": 5,
+        "plot": "Arul (2004) - Ukkadathu Papadame 5.1 surround video song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1LfpGC0gdOwujVMQUt82ZWQ5tF0peT0qW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "5.1 Surround",
+          "channels": "5.1"
+        }
       }
     ]
-  },
-  {
-    "id": "1LfpGC0gdOwujVMQUt82ZWQ5tF0peT0qW",
-    "name": "Ukkadathu Papadame - Arul (2004) [1080p] [5.1].mkv",
-    "title": "Ukkadathu Papadame (Arul)",
-    "original_title": "Ukkadathu Papadame",
-    "original_language": "ta",
-    "year": 2004,
-    "runtime": 5,
-    "tmdb_id": 63674,
-    "rating": 7.0,
-    "collection": "Arul Soundtracks",
-    "genres": ["Music Video", "5.1 Surround"],
-    "director": ["Hari"],
-    "cast": [
-      { "name": "Vikram", "role": "Arul" }
-    ],
-    "plot": "Arul (2004) - Ukkadathu Papadame 5.1 surround video song.",
-    "poster": "https://image.tmdb.org/t/p/w500/dDEv1rGGyLNs1ZnOSDDL29cwA7Q.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
-    "thumbnail": "https://image.tmdb.org/t/p/w780/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1LfpGC0gdOwujVMQUt82ZWQ5tF0peT0qW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p FHD",
-      "source": "BLURAY",
-      "codec": "H.264",
-      "audio": "5.1 Surround",
-    
+  }
+]
