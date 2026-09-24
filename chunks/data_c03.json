@@ -1,5 +1,100 @@
 [
   {
+    "id": "album_1479832",
+    "title": "DC (5.1 Surround Soundtracks)",
+    "original_title": "DC",
+    "movie": "DC",
+    "tmdb_id": 1479832,
+    "year": "2026",
+    "rating": 7.5,
+    "plot": "DC (2026) Complete 5.1 Surround Sound Master Video Pack.",
+    "poster": "https://image.tmdb.org/t/p/w500/8k71CD24GIAmEFgHYRhqFvwbXH8.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/9GmAODqkVdRvSgg5C4Vfeomi5Nj.jpg",
+    "logo": "https://image.tmdb.org/t/p/w780/9GmAODqkVdRvSgg5C4Vfeomi5Nj.jpg",
+    "tracks": [
+      {
+        "id": "1rFCijvC3YLlln_DddYqO5qsqabuSUIJT",
+        "title": "Raga of Revenge (From \"DC\")",
+        "track_number": 1,
+        "artist": "Anirudh Ravichander",
+        "plot": "DC - Raga of Revenge (From \"DC\") Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/9GmAODqkVdRvSgg5C4Vfeomi5Nj.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/9GmAODqkVdRvSgg5C4Vfeomi5Nj.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1rFCijvC3YLlln_DddYqO5qsqabuSUIJT|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "1w1tOmxPj3psFCjGp69Hm17--4EL4jQsX",
+        "title": "Bum Baa Diga Diga (From \"DC\")",
+        "track_number": 2,
+        "artist": "Anirudh Ravichander, Vedan & Heisenberg",
+        "plot": "DC - Bum Baa Diga Diga (From \"DC\") Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/9GmAODqkVdRvSgg5C4Vfeomi5Nj.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/9GmAODqkVdRvSgg5C4Vfeomi5Nj.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1w1tOmxPj3psFCjGp69Hm17--4EL4jQsX|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "17ie_N6VGUIM0u92bO_ksW-BNWg_qbKVu",
+        "title": "Hangova (From \"DC\")",
+        "track_number": 3,
+        "artist": "Anirudh Ravichander & Heisenberg",
+        "plot": "DC - Hangova (From \"DC\") Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/9GmAODqkVdRvSgg5C4Vfeomi5Nj.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/9GmAODqkVdRvSgg5C4Vfeomi5Nj.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=17ie_N6VGUIM0u92bO_ksW-BNWg_qbKVu|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "1EkPUkeLr1faF5DaYQgr3L8XOjy2uxyMV",
+        "title": "Ain't Nobody (From \"DC\")",
+        "track_number": 4,
+        "artist": "Anirudh Ravichander, Ram Kumar & HEISENBERG",
+        "plot": "DC - Ain't Nobody (From \"DC\") Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/9GmAODqkVdRvSgg5C4Vfeomi5Nj.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/9GmAODqkVdRvSgg5C4Vfeomi5Nj.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1EkPUkeLr1faF5DaYQgr3L8XOjy2uxyMV|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "1qZPmA7nPsdl_YWKfk6hTIhwxptjPYsAe",
+        "title": "Echoes of DC (Instrumental)",
+        "track_number": 5,
+        "artist": "Anirudh Ravichander",
+        "plot": "DC - Echoes of DC (Instrumental) Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/9GmAODqkVdRvSgg5C4Vfeomi5Nj.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/9GmAODqkVdRvSgg5C4Vfeomi5Nj.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1qZPmA7nPsdl_YWKfk6hTIhwxptjPYsAe|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      }
+    ]
+  },
+  {
     "id": "album_leo_2023",
     "title": "Leo (5.1 Surround Soundtracks)",
     "original_title": "Leo",
@@ -7,8 +102,14 @@
     "tmdb_id": 949229,
     "rating": 7.5,
     "collection": "Leo Soundtracks",
-    "genres": ["Music Video", "Action", "5.1 Surround"],
-    "director": ["Lokesh Kanagaraj"],
+    "genres": [
+      "Music Video",
+      "Action",
+      "5.1 Surround"
+    ],
+    "director": [
+      "Lokesh Kanagaraj"
+    ],
     "plot": "Leo (2023) Official 1080p 60FPS Video Songs Pack mixed with pure Dolby Atmos 5.1 Surround Sound.",
     "poster": "https://image.tmdb.org/t/p/w500/2XUHC4lp3tDsgfFLFygNZ2x2Um9.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/zXuGXX6IjWRVjHQqMaxaobqzD8O.jpg",
@@ -134,10 +235,16 @@
     "original_title": "Arul",
     "year": 2004,
     "tmdb_id": 63674,
-    "rating": 7.0,
+    "rating": 7,
     "collection": "Arul Soundtracks",
-    "genres": ["Music Video", "Melody", "5.1 Surround"],
-    "director": ["Hari"],
+    "genres": [
+      "Music Video",
+      "Melody",
+      "5.1 Surround"
+    ],
+    "director": [
+      "Hari"
+    ],
     "plot": "Arul (2004) Original 1080p Bluray Video Songs Pack with pure 5.1 Surround Sound Audio.",
     "poster": "https://image.tmdb.org/t/p/w500/dDEv1rGGyLNs1ZnOSDDL29cwA7Q.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/sD6WkzNf9HOksXNypDlS50Bpt6u.jpg",
