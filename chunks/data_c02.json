@@ -1,193 +1,319 @@
 [
   {
-    "id": "1EsuyM9QK48JkETNDmsGOmYhhrQkvRqgW",
-    "name": "All of Us Are Dead - Season 1",
+    "id": "tv_99966",
     "title": "All of Us Are Dead",
+    "original_title": "All of Us Are Dead",
+    "year": 2022,
     "tmdb_id": 99966,
-    "seasons": "Season 1",
+    "rating": 8.283,
+    "plot": "A high school becomes ground zero for a zombie virus outbreak. Trapped students must fight their way out or turn into one of the infected.",
     "poster": "https://image.tmdb.org/t/p/w500/pTEFqAjLd5YTsMD6NSUxV6Dq7A6.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1EsuyM9QK48JkETNDmsGOmYhhrQkvRqgW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1EsuyM9QK48JkETNDmsGOmYhhrQkvRqgW"
+    "fanart": "https://image.tmdb.org/t/p/original/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
+    "logo": "https://image.tmdb.org/t/p/original/cEc7XPbGxSKXfiZU0z8czFOImI2.png",
+    "episodes": [
+      {
+        "id": "1EsuyM9QK48JkETNDmsGOmYhhrQkvRqgW",
+        "name": "All of Us Are Dead - S01E01.mkv",
+        "title": "S01E01 - Episode 1",
+        "season": 1,
+        "episode": 1,
+        "plot": "Inside Lee Byeong-chan's science lab, a student incurs a seemingly harmless bite. Shortly after, a fast-spreading outbreak soaks the school in blood.",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1EsuyM9QK48JkETNDmsGOmYhhrQkvRqgW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p Full HD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1 Surround"
+        }
+      },
+      {
+        "id": "1m7PkSuxNk_5xzrV1WgRytpD1JRSKp3eM",
+        "name": "All of Us Are Dead - S01E02.mkv",
+        "title": "S01E02 - Episode 2",
+        "season": 1,
+        "episode": 2,
+        "plot": "The infected multiply in droves. Scrambling for their lives, Nam On-jo and Lee Cheong-san find safety with others inside a classroom — but not for long.",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1m7PkSuxNk_5xzrV1WgRytpD1JRSKp3eM|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p Full HD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1 Surround"
+        }
+      },
+      {
+        "id": "1MkbKk_oW1TFW60krx5Kx7IihsgL9-tym",
+        "name": "All of Us Are Dead - S01E03.mkv",
+        "title": "S01E03 - Episode 3",
+        "season": 1,
+        "episode": 3,
+        "plot": "When one of the group is scratched while fighting a zombie, Lee Na-yeon demands they kick him out. Outside, the virus swallows up the city.",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1MkbKk_oW1TFW60krx5Kx7IihsgL9-tym|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p Full HD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1 Surround"
+        }
+      },
+      {
+        "id": "1cWYRLr2JH4HM9pih89iU8o6sS_K8PM5f",
+        "name": "All of Us Are Dead - S01E04.mkv",
+        "title": "S01E04 - Episode 4",
+        "season": 1,
+        "episode": 4,
+        "plot": "In need of a cellphone, two students take a risky journey to the teachers' office. Byeong-chan passes on critical information to Detective Song Jae-ik.",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1cWYRLr2JH4HM9pih89iU8o6sS_K8PM5f|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p Full HD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1 Surround"
+        }
+      },
+      {
+        "id": "1JomVfF99RC1W7YSUSiBjXGIALaZYZhwj",
+        "name": "All of Us Are Dead - S01E05.mkv",
+        "title": "S01E05 - Episode 5",
+        "season": 1,
+        "episode": 5,
+        "plot": "Martial law is imposed on the city. When Cheong-san is separated from the rest of the group, On-jo leads a mission to use a drone to locate him.",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1JomVfF99RC1W7YSUSiBjXGIALaZYZhwj|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p Full HD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1 Surround"
+        }
+      },
+      {
+        "id": "1MKND1nbNqX9jRi94xDmf3FStEBN2zN7U",
+        "name": "All of Us Are Dead - S01E06.mkv",
+        "title": "S01E06 - Episode 6",
+        "season": 1,
+        "episode": 6,
+        "plot": "The group clears a path to Cheong-san using sound to draw away zombies, but a new type of threat surfaces. Nam So-ju breaks out of the quarantine camp.",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1MKND1nbNqX9jRi94xDmf3FStEBN2zN7U|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p Full HD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1 Surround"
+        }
+      },
+      {
+        "id": "1tILCemFiuYdY00wAfvqWxCjPnxD5h2da",
+        "name": "All of Us Are Dead - S01E07.mkv",
+        "title": "S01E07 - Episode 7",
+        "season": 1,
+        "episode": 7,
+        "plot": "To make it out of the music room and onto the roof, the students put into action their most perilous plan yet. Elsewhere, Jae-ik comes across a setback.",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1tILCemFiuYdY00wAfvqWxCjPnxD5h2da|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p Full HD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1 Surround"
+        }
+      },
+      {
+        "id": "1iHpMoskcj8NDNiraDR5b-lL8fdkV62u5",
+        "name": "All of Us Are Dead - S01E08.mkv",
+        "title": "S01E08 - Episode 8",
+        "season": 1,
+        "episode": 8,
+        "plot": "Jae-ik and his crew run into a student from the school. Na-yeon works up the courage to face her peers. The group shares confessions around a fire.",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1iHpMoskcj8NDNiraDR5b-lL8fdkV62u5|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p Full HD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1 Surround"
+        }
+      },
+      {
+        "id": "1yE4D-NWcjUwQQwGjUlbFHDgHSRApgvae",
+        "name": "All of Us Are Dead - S01E09.mkv",
+        "title": "S01E09 - Episode 9",
+        "season": 1,
+        "episode": 9,
+        "plot": "A disturbance at the camp shifts the military's understanding of the virus. A thunderstorm provides cover as the group agrees to keep on moving.",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1yE4D-NWcjUwQQwGjUlbFHDgHSRApgvae|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p Full HD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1 Surround"
+        }
+      },
+      {
+        "id": "1EY_NdG8AA2-RxL3ToUbUb4b84xGqZ0aJ",
+        "name": "All of Us Are Dead - S01E10.mkv",
+        "title": "S01E10 - Episode 10",
+        "season": 1,
+        "episode": 10,
+        "plot": "The auditorium quickly becomes a trap for the two newly united teams of survivors. Byeong-chan's video logs reveal a drastic solution to the crisis.",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1EY_NdG8AA2-RxL3ToUbUb4b84xGqZ0aJ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p Full HD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1 Surround"
+        }
+      },
+      {
+        "id": "1RBSb60AlCvTuEXLpXRk6D0V08HKzFw2U",
+        "name": "All of Us Are Dead - S01E11.mkv",
+        "title": "S01E11 - Episode 11",
+        "season": 1,
+        "episode": 11,
+        "plot": "Though a surprise protector provides the group safe passage to their next stop, Yoon Gwi-nam is not far behind. The military makes a grave decision.",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1RBSb60AlCvTuEXLpXRk6D0V08HKzFw2U|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p Full HD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1 Surround"
+        }
+      },
+      {
+        "id": "1Qrsks3E8uO4_W_mK7P__nr6Q1Gdgazgc",
+        "name": "All of Us Are Dead - S01E12.mkv",
+        "title": "S01E12 - Episode 12",
+        "season": 1,
+        "episode": 12,
+        "plot": "The students make it to the quarantine camp, each of them weighed down by tragic loss. Months later, they hang on to hope for a survivor.",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Qrsks3E8uO4_W_mK7P__nr6Q1Gdgazgc|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p Full HD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1 Surround"
+        }
+      }
+    ]
   },
   {
-    "id": "1m7PkSuxNk_5xzrV1WgRytpD1JRSKp3eM",
-    "name": "All of Us Are Dead - Season 1",
-    "title": "All of Us Are Dead",
-    "tmdb_id": 99966,
-    "seasons": "Season 1",
-    "poster": "https://image.tmdb.org/t/p/w500/pTEFqAjLd5YTsMD6NSUxV6Dq7A6.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1m7PkSuxNk_5xzrV1WgRytpD1JRSKp3eM|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1m7PkSuxNk_5xzrV1WgRytpD1JRSKp3eM"
-  },
-  {
-    "id": "1MkbKk_oW1TFW60krx5Kx7IihsgL9-tym",
-    "name": "All of Us Are Dead - Season 1",
-    "title": "All of Us Are Dead",
-    "tmdb_id": 99966,
-    "seasons": "Season 1",
-    "poster": "https://image.tmdb.org/t/p/w500/pTEFqAjLd5YTsMD6NSUxV6Dq7A6.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1MkbKk_oW1TFW60krx5Kx7IihsgL9-tym|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1MkbKk_oW1TFW60krx5Kx7IihsgL9-tym"
-  },
-  {
-    "id": "1cWYRLr2JH4HM9pih89iU8o6sS_K8PM5f",
-    "name": "All of Us Are Dead - Season 1",
-    "title": "All of Us Are Dead",
-    "tmdb_id": 99966,
-    "seasons": "Season 1",
-    "poster": "https://image.tmdb.org/t/p/w500/pTEFqAjLd5YTsMD6NSUxV6Dq7A6.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1cWYRLr2JH4HM9pih89iU8o6sS_K8PM5f|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1cWYRLr2JH4HM9pih89iU8o6sS_K8PM5f"
-  },
-  {
-    "id": "1JomVfF99RC1W7YSUSiBjXGIALaZYZhwj",
-    "name": "All of Us Are Dead - Season 1",
-    "title": "All of Us Are Dead",
-    "tmdb_id": 99966,
-    "seasons": "Season 1",
-    "poster": "https://image.tmdb.org/t/p/w500/pTEFqAjLd5YTsMD6NSUxV6Dq7A6.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1JomVfF99RC1W7YSUSiBjXGIALaZYZhwj|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1JomVfF99RC1W7YSUSiBjXGIALaZYZhwj"
-  },
-  {
-    "id": "1MKND1nbNqX9jRi94xDmf3FStEBN2zN7U",
-    "name": "All of Us Are Dead - Season 1",
-    "title": "All of Us Are Dead",
-    "tmdb_id": 99966,
-    "seasons": "Season 1",
-    "poster": "https://image.tmdb.org/t/p/w500/pTEFqAjLd5YTsMD6NSUxV6Dq7A6.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1MKND1nbNqX9jRi94xDmf3FStEBN2zN7U|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1MKND1nbNqX9jRi94xDmf3FStEBN2zN7U"
-  },
-  {
-    "id": "1tILCemFiuYdY00wAfvqWxCjPnxD5h2da",
-    "name": "All of Us Are Dead - Season 1",
-    "title": "All of Us Are Dead",
-    "tmdb_id": 99966,
-    "seasons": "Season 1",
-    "poster": "https://image.tmdb.org/t/p/w500/pTEFqAjLd5YTsMD6NSUxV6Dq7A6.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1tILCemFiuYdY00wAfvqWxCjPnxD5h2da|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1tILCemFiuYdY00wAfvqWxCjPnxD5h2da"
-  },
-  {
-    "id": "1EY_NdG8AA2-RxL3ToUbUb4b84xGqZ0aJ",
-    "name": "All of Us Are Dead - Season 1",
-    "title": "All of Us Are Dead",
-    "tmdb_id": 99966,
-    "seasons": "Season 1",
-    "poster": "https://image.tmdb.org/t/p/w500/pTEFqAjLd5YTsMD6NSUxV6Dq7A6.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1EY_NdG8AA2-RxL3ToUbUb4b84xGqZ0aJ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1EY_NdG8AA2-RxL3ToUbUb4b84xGqZ0aJ"
-  },
-  {
-    "id": "1RBSb60AlCvTuEXLpXRk6D0V08HKzFw2U",
-    "name": "All of Us Are Dead - Season 1",
-    "title": "All of Us Are Dead",
-    "tmdb_id": 99966,
-    "seasons": "Season 1",
-    "poster": "https://image.tmdb.org/t/p/w500/pTEFqAjLd5YTsMD6NSUxV6Dq7A6.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1RBSb60AlCvTuEXLpXRk6D0V08HKzFw2U|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1RBSb60AlCvTuEXLpXRk6D0V08HKzFw2U"
-  },
-  {
-    "id": "1yE4D-NWcjUwQQwGjUlbFHDgHSRApgvae",
-    "name": "All of Us Are Dead - Season 1",
-    "title": "All of Us Are Dead",
-    "tmdb_id": 99966,
-    "seasons": "Season 1",
-    "poster": "https://image.tmdb.org/t/p/w500/pTEFqAjLd5YTsMD6NSUxV6Dq7A6.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1yE4D-NWcjUwQQwGjUlbFHDgHSRApgvae|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1yE4D-NWcjUwQQwGjUlbFHDgHSRApgvae"
-  },
-  {
-    "id": "1cMM-Tvf2Tb_KOu0qLvXcrVO7RId-2oa_",
-    "name": "Pritam and Pedro - Season 1",
+    "id": "tv_243206",
     "title": "Pritam and Pedro",
+    "original_title": "Pritam and Pedro",
+    "year": 2024,
     "tmdb_id": 243206,
-    "seasons": "Season 1",
+    "rating": 8.4,
+    "plot": "A quirky investigation unfolds when Pritam's missing tape recorder collides with Pedro's high-stakes kidnapping probe in the cyber cell.",
     "poster": "https://image.tmdb.org/t/p/w500/uA5hAexR9Xis3BzSOMKjNuYQUsj.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1cMM-Tvf2Tb_KOu0qLvXcrVO7RId-2oa_|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1cMM-Tvf2Tb_KOu0qLvXcrVO7RId-2oa_"
-  },
-  {
-    "id": "1Dhn-d_m6MIncHlA6j6U4BGOYOp1UQgJ5",
-    "name": "Pritam and Pedro - Season 1",
-    "title": "Pritam and Pedro",
-    "tmdb_id": 243206,
-    "seasons": "Season 1",
-    "poster": "https://image.tmdb.org/t/p/w500/uA5hAexR9Xis3BzSOMKjNuYQUsj.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Dhn-d_m6MIncHlA6j6U4BGOYOp1UQgJ5|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1Dhn-d_m6MIncHlA6j6U4BGOYOp1UQgJ5"
-  },
-  {
-    "id": "1xf_PmLCd0jbGqSbFh3JdNRlI_0nbdgpe",
-    "name": "Pritam and Pedro - Season 1",
-    "title": "Pritam and Pedro",
-    "tmdb_id": 243206,
-    "seasons": "Season 1",
-    "poster": "https://image.tmdb.org/t/p/w500/uA5hAexR9Xis3BzSOMKjNuYQUsj.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1xf_PmLCd0jbGqSbFh3JdNRlI_0nbdgpe|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1xf_PmLCd0jbGqSbFh3JdNRlI_0nbdgpe"
-  },
-  {
-    "id": "1lFeF75D-KiCalcWoGqwSSfou8MRUFhpi",
-    "name": "Pritam and Pedro - Season 1",
-    "title": "Pritam and Pedro",
-    "tmdb_id": 243206,
-    "seasons": "Season 1",
-    "poster": "https://image.tmdb.org/t/p/w500/uA5hAexR9Xis3BzSOMKjNuYQUsj.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1lFeF75D-KiCalcWoGqwSSfou8MRUFhpi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1lFeF75D-KiCalcWoGqwSSfou8MRUFhpi"
-  },
-  {
-    "id": "1nCMyql-Ib5w4ffEDDQYIDl1xtlRf1oC_",
-    "name": "Pritam and Pedro - Season 1",
-    "title": "Pritam and Pedro",
-    "tmdb_id": 243206,
-    "seasons": "Season 1",
-    "poster": "https://image.tmdb.org/t/p/w500/uA5hAexR9Xis3BzSOMKjNuYQUsj.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1nCMyql-Ib5w4ffEDDQYIDl1xtlRf1oC_|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1nCMyql-Ib5w4ffEDDQYIDl1xtlRf1oC_"
-  },
-  {
-    "id": "1HShWhpdZ8bhuHIy6Nbg8-xHv04-Mcwkf",
-    "name": "Pritam and Pedro - Season 1",
-    "title": "Pritam and Pedro",
-    "tmdb_id": 243206,
-    "seasons": "Season 1",
-    "poster": "https://image.tmdb.org/t/p/w500/uA5hAexR9Xis3BzSOMKjNuYQUsj.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HShWhpdZ8bhuHIy6Nbg8-xHv04-Mcwkf|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1HShWhpdZ8bhuHIy6Nbg8-xHv04-Mcwkf"
-  },
-  {
-    "id": "1iHpMoskcj8NDNiraDR5b-lL8fdkV62u5",
-    "name": "All of Us Are Dead",
-    "title": "All of Us Are Dead",
-    "tmdb_id": 99966,
-    "seasons": "Season 1",
-    "poster": "https://image.tmdb.org/t/p/w500/pTEFqAjLd5YTsMD6NSUxV6Dq7A6.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1iHpMoskcj8NDNiraDR5b-lL8fdkV62u5|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1iHpMoskcj8NDNiraDR5b-lL8fdkV62u5"
-  },
-  {
-    "id": "1iHpMoskcj8NDNiraDR5b-lL8fdkV62u5",
-    "name": "All of Us Are Dead",
-    "title": "All of Us Are Dead",
-    "tmdb_id": 99966,
-    "seasons": "Season 1",
-    "poster": "https://image.tmdb.org/t/p/w500/pTEFqAjLd5YTsMD6NSUxV6Dq7A6.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1iHpMoskcj8NDNiraDR5b-lL8fdkV62u5|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1iHpMoskcj8NDNiraDR5b-lL8fdkV62u5"
-  },
-  {
-    "id": "1Qrsks3E8uO4_W_mK7P__nr6Q1Gdgazgc",
-    "name": "All of Us Are Dead S01E12",
-    "title": "All of Us Are Dead S01E12",
-    "tmdb_id": 99966,
-    "seasons": "Season 1",
-    "poster": "https://image.tmdb.org/t/p/w500/pTEFqAjLd5YTsMD6NSUxV6Dq7A6.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Qrsks3E8uO4_W_mK7P__nr6Q1Gdgazgc|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1Qrsks3E8uO4_W_mK7P__nr6Q1Gdgazgc"
+    "fanart": "https://image.tmdb.org/t/p/original/vKleSrov3Qnozav6n7eMDAf6pTs.jpg",
+    "logo": "https://image.tmdb.org/t/p/original/dZNea0ZgA88deN3RXzk22sHL754.png",
+    "episodes": [
+      {
+        "id": "1cMM-Tvf2Tb_KOu0qLvXcrVO7RId-2oa_",
+        "name": "Pritam and Pedro - S01E01.mkv",
+        "title": "S01E01 - Episode 1",
+        "season": 1,
+        "episode": 1,
+        "plot": "A 'worthless' tape recorder goes missing, which Pritam wants back. Pedro gets dumped in the cyber cell and wants to go back to the crime branch. When they meet, they strike a deal.",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1cMM-Tvf2Tb_KOu0qLvXcrVO7RId-2oa_|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p Full HD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "Dolby Atmos",
+          "channels": "5.1 Surround"
+        }
+      },
+      {
+        "id": "1Dhn-d_m6MIncHlA6j6U4BGOYOp1UQgJ5",
+        "name": "Pritam and Pedro - S01E02.mkv",
+        "title": "S01E02 - Episode 2",
+        "season": 1,
+        "episode": 2,
+        "plot": "Pedro sees his one shot at redemption when the Sports Minister's son is kidnapped. But as the case goes out of his control, Pedro makes a decision he can't undo.",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Dhn-d_m6MIncHlA6j6U4BGOYOp1UQgJ5|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p Full HD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "Dolby Atmos",
+          "channels": "5.1 Surround"
+        }
+      },
+      {
+        "id": "1xf_PmLCd0jbGqSbFh3JdNRlI_0nbdgpe",
+        "name": "Pritam and Pedro - S01E03.mkv",
+        "title": "S01E03 - Episode 3",
+        "season": 1,
+        "episode": 3,
+        "plot": "While Pedro chases control, Pritam chases logic. With Vinny still missing, their efforts reveal an unsettling truth - the case is moving on someone else's terms.",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1xf_PmLCd0jbGqSbFh3JdNRlI_0nbdgpe|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p Full HD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "Dolby Atmos",
+          "channels": "5.1 Surround"
+        }
+      },
+      {
+        "id": "1lFeF75D-KiCalcWoGqwSSfou8MRUFhpi",
+        "name": "Pritam and Pedro - S01E04.mkv",
+        "title": "S01E04 - Episode 4",
+        "season": 1,
+        "episode": 4,
+        "plot": "Digging into Vinny's secret online game, Pedro and Pritam uncover a digital maze. A subtle discovery rattles the family, as Pritam's past creeps closer than he expects.",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1lFeF75D-KiCalcWoGqwSSfou8MRUFhpi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p Full HD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "Dolby Atmos",
+          "channels": "5.1 Surround"
+        }
+      },
+      {
+        "id": "1nCMyql-Ib5w4ffEDDQYIDl1xtlRf1oC_",
+        "name": "Pritam and Pedro - S01E05.mkv",
+        "title": "S01E05 - Episode 2",
+        "season": 1,
+        "episode": 5,
+        "plot": "Pedro wants to catch a criminal, but Pritam wants to track a mind. The hunt flips, turning the case into a cat-and-mouse game where Pedro isn't sure who is chasing whom.",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1nCMyql-Ib5w4ffEDDQYIDl1xtlRf1oC_|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p Full HD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "Dolby Atmos",
+          "channels": "5.1 Surround"
+        }
+      },
+      {
+        "id": "1HShWhpdZ8bhuHIy6Nbg8-xHv04-Mcwkf",
+        "name": "Pritam and Pedro - S01E06.mkv",
+        "title": "S01E06 - Episode 6",
+        "season": 1,
+        "episode": 6,
+        "plot": "Time's up! Is Martin really their guy? Pritam, Pedro and the entire police squad better act quick… before Vinny loses his life.",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HShWhpdZ8bhuHIy6Nbg8-xHv04-Mcwkf|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p Full HD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "Dolby Atmos",
+          "channels": "5.1 Surround"
+        }
+      }
+    ]
   },
   {
     "id": "tv_212574",
@@ -326,322 +452,6 @@
           "source": "WEB-DL",
           "codec": "H.264",
           "audio": "Dolby Atmos",
-          "channels": "5.1 Surround"
-        }
-      }
-    ]
-  },
-  {
-    "id": "tv_243206",
-    "title": "Pritam.and.Pedro.2026.S01E06.1080p.DS4K.SDR.10bit.JHS.WEBRip.HIN-TAM-TEL-KAN-MAL-BHO-BEN-MAR.DDP5.1.Atmos.x265.HEVC-OlaM.mkv",
-    "original_title": "Pritam.and.Pedro.2026.S01E06.1080p.DS4K.SDR.10bit.JHS.WEBRip.HIN-TAM-TEL-KAN-MAL-BHO-BEN-MAR.DDP5.1.Atmos.x265.HEVC-OlaM.mkv",
-    "year": 0,
-    "tmdb_id": 243206,
-    "rating": 8.4,
-    "plot": "Time's up! Is Martin really their guy? Pritam, Pedro and the entire police squad better act quick… before Vinny loses his life.",
-    "poster": "https://image.tmdb.org/t/p/w500/lC0MtWrnC0SZICFHazagIfVKy0x.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/vKleSrov3Qnozav6n7eMDAf6pTs.jpg",
-    "logo": "https://image.tmdb.org/t/p/original/dZNea0ZgA88deN3RXzk22sHL754.png",
-    "episodes": [
-      {
-        "id": "1cMM-Tvf2Tb_KOu0qLvXcrVO7RId-2oa_",
-        "name": "Pritam.and.Pedro.2026.S01E01.1080p.DS4K.SDR.10bit.JHS.WEBRip.HIN-TAM-TEL-KAN-MAL-BHO-BEN-MAR.DDP5.1.Atmos.x265.HEVC-OlaM.mkv - S01E01.mkv",
-        "title": "S01E01 - Episode 1",
-        "season": 1,
-        "episode": 1,
-        "plot": "A 'worthless' tape recorder goes missing, which Pritam wants back. Pedro gets dumped in the cyber cell and wants to go back to the crime branch. When they meet, they strike a deal.",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1cMM-Tvf2Tb_KOu0qLvXcrVO7RId-2oa_|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p Full HD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "Dolby Atmos",
-          "channels": "5.1 Surround"
-        }
-      },
-      {
-        "id": "1Dhn-d_m6MIncHlA6j6U4BGOYOp1UQgJ5",
-        "name": "Pritam.and.Pedro.2026.S01E02.1080p.DS4K.SDR.10bit.JHS.WEBRip.HIN-TAM-TEL-KAN-MAL-BHO-BEN-MAR.DDP5.1.Atmos.x265.HEVC-OlaM.mkv - S01E02.mkv",
-        "title": "S01E02 - Episode 2",
-        "season": 1,
-        "episode": 2,
-        "plot": "Pedro sees his one shot at redemption when the Sports Minister's son is kidnapped. But as the case goes out of his control, Pedro makes a decision he can't undo.",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Dhn-d_m6MIncHlA6j6U4BGOYOp1UQgJ5|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p Full HD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "Dolby Atmos",
-          "channels": "5.1 Surround"
-        }
-      },
-      {
-        "id": "1xf_PmLCd0jbGqSbFh3JdNRlI_0nbdgpe",
-        "name": "Pritam.and.Pedro.2026.S01E03.1080p.DS4K.SDR.10bit.JHS.WEBRip.HIN-TAM-TEL-KAN-MAL-BHO-BEN-MAR.DDP5.1.Atmos.x265.HEVC-OlaM.mkv - S01E03.mkv",
-        "title": "S01E03 - Episode 3",
-        "season": 1,
-        "episode": 3,
-        "plot": "While Pedro chases control, Pritam chases logic. With Vinny still missing, their efforts reveal an unsettling truth - the case is moving on someone else's terms.",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1xf_PmLCd0jbGqSbFh3JdNRlI_0nbdgpe|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p Full HD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "Dolby Atmos",
-          "channels": "5.1 Surround"
-        }
-      },
-      {
-        "id": "1lFeF75D-KiCalcWoGqwSSfou8MRUFhpi",
-        "name": "Pritam.and.Pedro.2026.S01E04.1080p.DS4K.SDR.10bit.JHS.WEBRip.HIN-TAM-TEL-KAN-MAL-BHO-BEN-MAR.DDP5.1.Atmos.x265.HEVC-OlaM.mkv - S01E04.mkv",
-        "title": "S01E04 - Episode 4",
-        "season": 1,
-        "episode": 4,
-        "plot": "Digging into Vinny's secret online game, Pedro and Pritam uncover a digital maze. A subtle discovery rattles the family, as Pritam's past creeps closer than he expects.",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1lFeF75D-KiCalcWoGqwSSfou8MRUFhpi|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p Full HD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "Dolby Atmos",
-          "channels": "5.1 Surround"
-        }
-      },
-      {
-        "id": "1nCMyql-Ib5w4ffEDDQYIDl1xtlRf1oC_",
-        "name": "Pritam.and.Pedro.2026.S01E05.1080p.DS4K.SDR.10bit.JHS.WEBRip.HIN-TAM-TEL-KAN-MAL-BHO-BEN-MAR.DDP5.1.Atmos.x265.HEVC-OlaM.mkv - S01E05.mkv",
-        "title": "S01E05 - Episode 5",
-        "season": 1,
-        "episode": 5,
-        "plot": "Pedro wants to catch a criminal, but Pritam wants to track a mind. The hunt flips, turning the case into a cat-and-mouse game where Pedro isn't sure who is chasing whom.",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1nCMyql-Ib5w4ffEDDQYIDl1xtlRf1oC_|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p Full HD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "Dolby Atmos",
-          "channels": "5.1 Surround"
-        }
-      },
-      {
-        "id": "1HShWhpdZ8bhuHIy6Nbg8-xHv04-Mcwkf",
-        "name": "Pritam.and.Pedro.2026.S01E06.1080p.DS4K.SDR.10bit.JHS.WEBRip.HIN-TAM-TEL-KAN-MAL-BHO-BEN-MAR.DDP5.1.Atmos.x265.HEVC-OlaM.mkv - S01E06.mkv",
-        "title": "S01E06 - Episode 6",
-        "season": 1,
-        "episode": 6,
-        "plot": "Time's up! Is Martin really their guy? Pritam, Pedro and the entire police squad better act quick… before Vinny loses his life.",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HShWhpdZ8bhuHIy6Nbg8-xHv04-Mcwkf|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p Full HD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "Dolby Atmos",
-          "channels": "5.1 Surround"
-        }
-      }
-    ]
-  },
-  {
-    "id": "tv_99966",
-    "title": "All.of.Us.Are.Dead.S01E12.1080p.NF.WEB-DL.DDP5.1.x264-Telly.mkv",
-    "original_title": "All.of.Us.Are.Dead.S01E12.1080p.NF.WEB-DL.DDP5.1.x264-Telly.mkv",
-    "year": 0,
-    "tmdb_id": 99966,
-    "rating": 8.283,
-    "plot": "The students make it to the quarantine camp, each of them weighed down by tragic loss. Months later, they hang on to hope for a survivor.",
-    "poster": "https://image.tmdb.org/t/p/w500/pTEFqAjLd5YTsMD6NSUxV6Dq7A6.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
-    "logo": "https://image.tmdb.org/t/p/original/cEc7XPbGxSKXfiZU0z8czFOImI2.png",
-    "episodes": [
-      {
-        "id": "1EsuyM9QK48JkETNDmsGOmYhhrQkvRqgW",
-        "name": "All.of.Us.Are.Dead.S01E01.1080p.NF.WEB-DL.DDP5.1.x264-Telly.mkv - S01E01.mkv",
-        "title": "S01E01 - Episode 1",
-        "season": 1,
-        "episode": 1,
-        "plot": "Inside Lee Byeong-chan's science lab, a student incurs a seemingly harmless bite. Shortly after, a fast-spreading outbreak soaks the school in blood.",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1EsuyM9QK48JkETNDmsGOmYhhrQkvRqgW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p Full HD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "AAC",
-          "channels": "5.1 Surround"
-        }
-      },
-      {
-        "id": "1m7PkSuxNk_5xzrV1WgRytpD1JRSKp3eM",
-        "name": "All.of.Us.Are.Dead.S01E02.1080p.NF.WEB-DL.DDP5.1.x264-Telly.mkv - S01E02.mkv",
-        "title": "S01E02 - Episode 2",
-        "season": 1,
-        "episode": 2,
-        "plot": "The infected multiply in droves. Scrambling for their lives, Nam On-jo and Lee Cheong-san find safety with others inside a classroom — but not for long.",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1m7PkSuxNk_5xzrV1WgRytpD1JRSKp3eM|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p Full HD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "AAC",
-          "channels": "5.1 Surround"
-        }
-      },
-      {
-        "id": "1MkbKk_oW1TFW60krx5Kx7IihsgL9-tym",
-        "name": "All.of.Us.Are.Dead.S01E03.1080p.NF.WEB-DL.DDP5.1.x264-Telly.mkv - S01E03.mkv",
-        "title": "S01E03 - Episode 3",
-        "season": 1,
-        "episode": 3,
-        "plot": "When one of the group is scratched while fighting a zombie, Lee Na-yeon demands they kick him out. Outside, the virus swallows up the city.",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1MkbKk_oW1TFW60krx5Kx7IihsgL9-tym|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p Full HD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "AAC",
-          "channels": "5.1 Surround"
-        }
-      },
-      {
-        "id": "1cWYRLr2JH4HM9pih89iU8o6sS_K8PM5f",
-        "name": "All.of.Us.Are.Dead.S01E04.1080p.NF.WEB-DL.DDP5.1.x264-Telly.mkv - S01E04.mkv",
-        "title": "S01E04 - Episode 4",
-        "season": 1,
-        "episode": 4,
-        "plot": "In need of a cellphone, two students take a risky journey to the teachers' office. Byeong-chan passes on critical information to Detective Song Jae-ik.",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1cWYRLr2JH4HM9pih89iU8o6sS_K8PM5f|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p Full HD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "AAC",
-          "channels": "5.1 Surround"
-        }
-      },
-      {
-        "id": "1JomVfF99RC1W7YSUSiBjXGIALaZYZhwj",
-        "name": "All.of.Us.Are.Dead.S01E05.1080p.NF.WEB-DL.DDP5.1.x264-Telly.mkv - S01E05.mkv",
-        "title": "S01E05 - Episode 5",
-        "season": 1,
-        "episode": 5,
-        "plot": "Martial law is imposed on the city. When Cheong-san is separated from the rest of the group, On-jo leads a mission to use a drone to locate him.",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1JomVfF99RC1W7YSUSiBjXGIALaZYZhwj|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p Full HD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "AAC",
-          "channels": "5.1 Surround"
-        }
-      },
-      {
-        "id": "1MKND1nbNqX9jRi94xDmf3FStEBN2zN7U",
-        "name": "All.of.Us.Are.Dead.S01E06.1080p.NF.WEB-DL.DDP5.1.x264-Telly.mkv - S01E06.mkv",
-        "title": "S01E06 - Episode 6",
-        "season": 1,
-        "episode": 6,
-        "plot": "The group clears a path to Cheong-san using sound to draw away zombies, but a new type of threat surfaces. Nam So-ju breaks out of the quarantine camp.",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1MKND1nbNqX9jRi94xDmf3FStEBN2zN7U|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p Full HD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "AAC",
-          "channels": "5.1 Surround"
-        }
-      },
-      {
-        "id": "1tILCemFiuYdY00wAfvqWxCjPnxD5h2da",
-        "name": "All.of.Us.Are.Dead.S01E07.1080p.NF.WEB-DL.DDP5.1.x264-Telly.mkv - S01E07.mkv",
-        "title": "S01E07 - Episode 7",
-        "season": 1,
-        "episode": 7,
-        "plot": "To make it out of the music room and onto the roof, the students put into action their most perilous plan yet. Elsewhere, Jae-ik comes across a setback.",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1tILCemFiuYdY00wAfvqWxCjPnxD5h2da|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p Full HD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "AAC",
-          "channels": "5.1 Surround"
-        }
-      },
-      {
-        "id": "1iHpMoskcj8NDNiraDR5b-lL8fdkV62u5",
-        "name": "All.of.Us.Are.Dead.S01E08.1080p.NF.WEB-DL.DDP5.1.x264-Telly.mkv - S01E08.mkv",
-        "title": "S01E08 - Episode 8",
-        "season": 1,
-        "episode": 8,
-        "plot": "Jae-ik and his crew run into a student from the school. Na-yeon works up the courage to face her peers. The group shares confessions around a fire.",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1iHpMoskcj8NDNiraDR5b-lL8fdkV62u5|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p Full HD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "AAC",
-          "channels": "5.1 Surround"
-        }
-      },
-      {
-        "id": "1yE4D-NWcjUwQQwGjUlbFHDgHSRApgvae",
-        "name": "All.of.Us.Are.Dead.S01E09.1080p.NF.WEB-DL.DDP5.1.x264-Telly.mkv - S01E09.mkv",
-        "title": "S01E09 - Episode 9",
-        "season": 1,
-        "episode": 9,
-        "plot": "A disturbance at the camp shifts the military's understanding of the virus. A thunderstorm provides cover as the group agrees to keep on moving.",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1yE4D-NWcjUwQQwGjUlbFHDgHSRApgvae|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p Full HD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "AAC",
-          "channels": "5.1 Surround"
-        }
-      },
-      {
-        "id": "1EY_NdG8AA2-RxL3ToUbUb4b84xGqZ0aJ",
-        "name": "All.of.Us.Are.Dead.S01E10.1080p.NF.WEB-DL.DDP5.1.x264-Telly.mkv - S01E10.mkv",
-        "title": "S01E10 - Episode 10",
-        "season": 1,
-        "episode": 10,
-        "plot": "The auditorium quickly becomes a trap for the two newly united teams of survivors. Byeong-chan's video logs reveal a drastic solution to the crisis.",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1EY_NdG8AA2-RxL3ToUbUb4b84xGqZ0aJ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p Full HD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "AAC",
-          "channels": "5.1 Surround"
-        }
-      },
-      {
-        "id": "1RBSb60AlCvTuEXLpXRk6D0V08HKzFw2U",
-        "name": "All.of.Us.Are.Dead.S01E11.1080p.NF.WEB-DL.DDP5.1.x264-Telly.mkv - S01E11.mkv",
-        "title": "S01E11 - Episode 11",
-        "season": 1,
-        "episode": 11,
-        "plot": "Though a surprise protector provides the group safe passage to their next stop, Yoon Gwi-nam is not far behind. The military makes a grave decision.",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1RBSb60AlCvTuEXLpXRk6D0V08HKzFw2U|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p Full HD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "AAC",
-          "channels": "5.1 Surround"
-        }
-      },
-      {
-        "id": "1Qrsks3E8uO4_W_mK7P__nr6Q1Gdgazgc",
-        "name": "All.of.Us.Are.Dead.S01E12.1080p.NF.WEB-DL.DDP5.1.x264-Telly.mkv - S01E12.mkv",
-        "title": "S01E12 - Episode 12",
-        "season": 1,
-        "episode": 12,
-        "plot": "The students make it to the quarantine camp, each of them weighed down by tragic loss. Months later, they hang on to hope for a survivor.",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Qrsks3E8uO4_W_mK7P__nr6Q1Gdgazgc|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p Full HD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "AAC",
           "channels": "5.1 Surround"
         }
       }
