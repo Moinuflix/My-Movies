@@ -1,5 +1,116 @@
 [
   {
+    "id": "album_39523",
+    "title": "Paiyaa (5.1 Surround Soundtracks)",
+    "original_title": "Paiyaa",
+    "movie": "Paiyaa",
+    "tmdb_id": 39523,
+    "year": "2010",
+    "rating": 7.5,
+    "plot": "Paiyaa (2010) Complete 5.1 Surround Sound Master Video Pack.",
+    "poster": "https://image.tmdb.org/t/p/w500/svnjrFTdJRvP3nwGEI7gEQF6fv.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/u7mriV4C6rlbqCSOrmACiimceAZ.jpg",
+    "logo": "https://image.tmdb.org/t/p/w780/u7mriV4C6rlbqCSOrmACiimceAZ.jpg",
+    "tracks": [
+      {
+        "id": "15NaQP5ruH307201kRYogYLGbpAGkOiDg",
+        "title": "Thuli Thuli",
+        "track_number": 1,
+        "artist": "Haricharan, Tanvi Shah",
+        "plot": "Paiyaa - Thuli Thuli Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/u7mriV4C6rlbqCSOrmACiimceAZ.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/u7mriV4C6rlbqCSOrmACiimceAZ.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=15NaQP5ruH307201kRYogYLGbpAGkOiDg|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "1vKiwCGCWWKY6Dl9BA5XXtUZLjLFkX2Sz",
+        "title": "Adada Mazhaida",
+        "track_number": 2,
+        "artist": "Rahul Nambiar, Saindhavi",
+        "plot": "Paiyaa - Adada Mazhaida Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/u7mriV4C6rlbqCSOrmACiimceAZ.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/u7mriV4C6rlbqCSOrmACiimceAZ.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vKiwCGCWWKY6Dl9BA5XXtUZLjLFkX2Sz|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "197enfL4BgnuZi7rpoTC1sz6icNMoPTo6",
+        "title": "En Kadhal Solla",
+        "track_number": 3,
+        "artist": "Yuvan Shankar Raja, Tanvi Shah",
+        "plot": "Paiyaa - En Kadhal Solla Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/u7mriV4C6rlbqCSOrmACiimceAZ.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/u7mriV4C6rlbqCSOrmACiimceAZ.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=197enfL4BgnuZi7rpoTC1sz6icNMoPTo6|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "1zztk8bzUVO7MdMcXRlTf7W_PxP27cFeb",
+        "title": "Poongatre Poongatre",
+        "track_number": 4,
+        "artist": "Benny Dayal",
+        "plot": "Paiyaa - Poongatre Poongatre Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/u7mriV4C6rlbqCSOrmACiimceAZ.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/u7mriV4C6rlbqCSOrmACiimceAZ.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1zztk8bzUVO7MdMcXRlTf7W_PxP27cFeb|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "1NrlQ1bR5dQfcJml4DepxO80gkW7NBCHg",
+        "title": "Suthuthe Suthuthe Bhoomi",
+        "track_number": 5,
+        "artist": "Paiyaa Song",
+        "plot": "Paiyaa - Suthuthe Suthuthe Bhoomi Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/u7mriV4C6rlbqCSOrmACiimceAZ.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/u7mriV4C6rlbqCSOrmACiimceAZ.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1NrlQ1bR5dQfcJml4DepxO80gkW7NBCHg|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "1zztk8bzUVO7MdMcXRlTf7W_PxP27cFeb",
+        "title": "Poongatre Poongatre",
+        "track_number": 6,
+        "artist": "Paiyaa Song",
+        "plot": "Paiyaa - Poongatre Poongatre Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/u7mriV4C6rlbqCSOrmACiimceAZ.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/u7mriV4C6rlbqCSOrmACiimceAZ.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1zztk8bzUVO7MdMcXRlTf7W_PxP27cFeb|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      }
+    ]
+  },
+  {
     "id": "album_1479832",
     "title": "DC (5.1 Surround Soundtracks)",
     "original_title": "DC",
