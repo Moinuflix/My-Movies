@@ -1,5 +1,72 @@
 [
   {
+    "id": "1r-3HRa6ST9BwUwA7nCDKzXnN7Ignt144",
+    "name": "Thalaivar Thambi Thalaimaiyil (2026) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
+    "title": "Thalaivar Thambi Thalaimaiyil",
+    "original_title": "தலைவர் தம்பி தலைமையில்",
+    "original_language": "ta",
+    "year": 2026,
+    "runtime": 113,
+    "tmdb_id": 869140,
+    "rating": 6.5,
+    "collection": "",
+    "studio": "Netflix",
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "director": [
+      "Nithish Sahadev"
+    ],
+    "cast": [
+      {
+        "name": "Jiiva",
+        "role": "Jeeva Rathnam"
+      },
+      {
+        "name": "Prathana Nathan",
+        "role": "Sowmya/Sowmi"
+      },
+      {
+        "name": "Ilavarasu",
+        "role": "Ilavarasu"
+      },
+      {
+        "name": "Thambi Ramaiah",
+        "role": "Mani"
+      },
+      {
+        "name": "Jenson Dhivakar",
+        "role": "Thavidu"
+      }
+    ],
+    "plot": "A village official attending a wedding becomes entangled in an escalating family dispute over power and old resentments, testing his leadership as he tries to contain the situation.",
+    "poster": "https://image.tmdb.org/t/p/w500/wqofJvDrFv65QgyVmNI4loi9jZZ.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/cpOUDK8BBJyvrUuLN8YTRttXEab.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1r-3HRa6ST9BwUwA7nCDKzXnN7Ignt144|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p FHD",
+      "audio": "Dolby Atmos",
+      "source": "Netflix",
+      "size": "10GB",
+      "channels": "5.1",
+      "codec": "H.264"
+    },
+    "versions": [
+      {
+        "id": "1r-3HRa6ST9BwUwA7nCDKzXnN7Ignt144",
+        "name": "Thalaivar Thambi Thalaimaiyil (2026) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
+        "quality": "1080p FHD • Netflix • Dolby Atmos",
+        "source": "Netflix",
+        "studio": "Netflix",
+        "resolution": "1080p FHD",
+        "audio": "Dolby Atmos",
+        "size": "10GB",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1r-3HRa6ST9BwUwA7nCDKzXnN7Ignt144|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+      }
+    ]
+  },
+  {
     "id": "1xoMdKGygZWhT80cVBKzLuVQuLtLqzq1N",
     "name": "Thani Oruvan (2015) [1080p] [WEB-DL] [Dolby Atmos].mkv",
     "title": "Thani Oruvan",
