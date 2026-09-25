@@ -354,6 +354,12 @@
       color: var(--laser-green);
       font-weight: 800;
     }
+    .spec-chip.chip-studio {
+      background: rgba(234, 179, 8, 0.15);
+      border-color: #eab308;
+      color: #facc15;
+      font-weight: 700;
+    }
 
     .clean-gb-badge {
       background: rgba(239, 68, 68, 0.15);
@@ -892,22 +898,34 @@
               </select>
             </div>
 
+            <!-- STUDIO / OTT SELECTION WITH SUN NXT -->
             <div class="form-group">
-              <label>Source / OTT</label>
+              <label>Studio / OTT Platform (Kodi HD Logo)</label>
               <select id="input-source" required>
-                <option value="Netflix" selected>Netflix</option>
+                <option value="Amazon Prime Video" selected>Amazon Prime Video</option>
+                <option value="Netflix">Netflix</option>
+                <option value="Sun NXT">Sun NXT</option>
                 <option value="Disney+ Hotstar">Disney+ Hotstar</option>
-                <option value="Prime Video">Prime Video</option>
                 <option value="SonyLIV">SonyLIV</option>
                 <option value="Zee5">Zee5</option>
-                <option value="WEB-DL">WEB-DL</option>
-                <option value="BLURAY">BLURAY / Remux</option>
+                <option value="Apple TV+">Apple TV+</option>
+                <option value="Aha">Aha</option>
+                <option value="JioCinema">JioCinema</option>
+                <option value="WEB-DL">WEB-DL (Universal)</option>
+                <option value="BluRay">BluRay / Remux</option>
               </select>
             </div>
 
+            <!-- DYNAMIC 1 TO 50 GB SLIDER WITH AUTO ROUNDING -->
             <div class="form-group">
-              <label>File Size</label>
-              <input type="text" id="input-filesize" placeholder="e.g. 14 GB or 4 GB">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <label>File Size (1GB to 50GB)</label>
+                <span id="slider-size-val" style="color:var(--laser-cyan); font-weight:800; font-size:0.9rem;">10GB</span>
+              </div>
+              <div style="display:flex; gap:10px; align-items:center;">
+                <input type="range" id="input-filesize-range" min="1" max="50" value="10" step="1" oninput="updateFileSizeFromSlider(this.value)" style="flex:1; accent-color:var(--laser-cyan);">
+                <input type="text" id="input-filesize" value="10GB" style="width:85px; text-align:center; font-weight:800;" onchange="handleManualSizeInput(this.value)">
+              </div>
             </div>
 
             <div class="form-group full-width">
@@ -936,8 +954,7 @@
       </div>
     </section>
   </main>
-
-  <!-- POPUP: REAL DYNAMIC TMDB FRANCHISE CHECKLIST -->
+    <!-- POPUP: REAL DYNAMIC TMDB FRANCHISE CHECKLIST -->
   <div class="modal-overlay" id="pack-modal">
     <div class="modal-card">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; border-bottom:1px solid var(--border-color); padding-bottom:1rem;">
@@ -984,6 +1001,7 @@
     const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
     const GH_REPO = 'Moinuflix/My-Movies';
     const GH_BRANCH = 'main';
+    const RAW_BASE = `https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}`;
     const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';
     const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';
 
@@ -1037,6 +1055,39 @@
       const rMatch = clean.match(/^[a-zA-Z0-9_-]{25,}$/);
       if (rMatch) return rMatch[0];
       return clean;
+    }
+
+    /* AUTO ROUNDING & SLIDER FUNCTIONS */
+    function cleanAndRoundSize(rawSize) {
+      if (!rawSize) return '10GB';
+      const match = String(rawSize).match(/([\d\.]+)\s*(gb|mb)?/i);
+      if (!match) return '10GB';
+
+      let num = parseFloat(match[1]);
+      let unit = (match[2] || 'gb').toLowerCase();
+
+      if (unit === 'mb') {
+        num = num / 1024;
+      }
+
+      let rounded = Math.round(num);
+      if (rounded < 1) rounded = 1;
+      if (rounded > 50) rounded = 50;
+
+      return `${rounded}GB`;
+    }
+
+    function updateFileSizeFromSlider(val) {
+      document.getElementById('input-filesize').value = `${val}GB`;
+      document.getElementById('slider-size-val').textContent = `${val}GB`;
+    }
+
+    function handleManualSizeInput(val) {
+      const rounded = cleanAndRoundSize(val);
+      const num = parseInt(rounded);
+      document.getElementById('input-filesize').value = rounded;
+      document.getElementById('input-filesize-range').value = num;
+      document.getElementById('slider-size-val').textContent = rounded;
     }
 
     function switchNav(panelId, btn) {
@@ -1161,12 +1212,13 @@
 
         tbody.innerHTML = '';
         inboxArrivalsList.forEach((item, idx) => {
+          const finalSize = cleanAndRoundSize(item.size || '3GB');
           const tr = document.createElement('tr');
           tr.innerHTML = `
             <td style="font-family:monospace; color:var(--laser-cyan); font-weight:700;">${item.gdrive_id.substring(0, 14)}...</td>
             <td style="color:#fff; font-weight:600;">${escapeHtml(item.title)}</td>
             <td style="color:var(--neon-gold);">${escapeHtml(item.title.replace(/\.mkv|\.mp4/gi, ''))}</td>
-            <td><span style="background:rgba(56,189,248,0.15); color:var(--laser-cyan); padding:2px 7px; border-radius:6px; font-weight:700;">${item.size || '3 GB'}</span></td>
+            <td><span style="background:rgba(56,189,248,0.15); color:var(--laser-cyan); padding:2px 7px; border-radius:6px; font-weight:700;">${finalSize}</span></td>
             <td style="text-align:right;">
               <button class="btn-action-primary" style="padding:5px 12px;" onclick="loadArrivalToForm(${idx})">⚡ Load Form ➔</button>
             </td>
@@ -1185,7 +1237,12 @@
       switchNav('add-items-hub', document.querySelectorAll('.nav-btn')[3]);
       document.getElementById('input-smart-filename').value = item.title;
       document.getElementById('input-gdrive-url').value = item.gdrive_id;
-      if (item.size) document.getElementById('input-filesize').value = item.size;
+      
+      const finalRounded = cleanAndRoundSize(item.size || '10GB');
+      document.getElementById('input-filesize').value = finalRounded;
+      document.getElementById('input-filesize-range').value = parseInt(finalRounded);
+      document.getElementById('slider-size-val').textContent = finalRounded;
+
       parseSmartFileName(item.title);
       showLaserToast(`Loaded: ${item.title}`);
     }
@@ -1204,6 +1261,7 @@
         const fileId = item.gdrive_id;
         const streamUrl = `${WORKER_BASE}${fileId}${USER_AGENT}`;
         const rawName = item.title.replace(/\.(mkv|mp4)/gi, '');
+        const finalSize = cleanAndRoundSize(item.size || '10GB');
 
         const entry = {
           id: fileId,
@@ -1216,6 +1274,7 @@
           tmdb_id: 0,
           rating: 7.0,
           collection: "",
+          studio: "Amazon Prime Video",
           genres: ["Action"],
           director: [],
           cast: [],
@@ -1223,8 +1282,8 @@
           poster: "",
           fanart: "",
           stream_url: streamUrl,
-          specs: { resolution: "1080p FHD", audio: "Dolby Digital", source: "WEB-DL", size: item.size || "3 GB" },
-          versions: [{ id: fileId, name: item.title, quality: "1080p FHD", stream_url: streamUrl }]
+          specs: { resolution: "1080p FHD", audio: "Dolby Digital", source: "WEB-DL", size: finalSize, channels: "5.1", codec: "H.264" },
+          versions: [{ id: fileId, name: item.title, quality: "1080p FHD", studio: "Amazon Prime Video", stream_url: streamUrl }]
         };
 
         if (!moviesData.some(m => m.id === fileId)) {
@@ -1314,7 +1373,6 @@
       list.forEach((m) => {
         if (query && !m.title.toLowerCase().includes(query)) return;
 
-        // Version count calculation
         const vCount = (m.versions && Array.isArray(m.versions)) ? m.versions.length : 1;
         const versionBadge = vCount > 1 
           ? `<span class="spec-chip chip-green">⚡ ${vCount} VERSIONS</span>` 
@@ -1338,6 +1396,7 @@
               </div>
               <div class="movie-meta-row" style="margin-top:-2px;">
                 <span class="spec-chip chip-gold">${escapeHtml(m.specs?.audio || 'Dolby Atmos')}</span>
+                <span class="spec-chip chip-studio">${escapeHtml(m.studio || m.specs?.source || 'Amazon Prime Video')}</span>
                 ${m.specs?.size ? `<span class="clean-gb-badge">${escapeHtml(m.specs.size)}</span>` : ''}
               </div>
             </div>
@@ -1352,7 +1411,6 @@
       });
     }
 
-    // REAL DYNAMIC TMDB FRANCHISE CHECKLIST (KGF 1 OWNED -> KGF 2 CHECKLIST)
     async function openDynamicPackModal(packTitle) {
       document.getElementById('pack-modal-title').textContent = packTitle;
       const owned = moviesData.filter(m => m.collection && m.collection.trim() === packTitle);
@@ -1415,13 +1473,48 @@
 
     function parseSmartFileName(filename) {
       if (!filename || !filename.trim()) return;
+
+      // 1. Auto Detect Studio (Sun NXT, Prime, Netflix, Hotstar, etc.)
+      const srcSelect = document.getElementById('input-source');
+      if (/sun\s*nxt|sunnxt/i.test(filename)) {
+        srcSelect.value = 'Sun NXT';
+      } else if (/amzn|prime/i.test(filename)) {
+        srcSelect.value = 'Amazon Prime Video';
+      } else if (/nf|netflix/i.test(filename)) {
+        srcSelect.value = 'Netflix';
+      } else if (/hotstar|dsnp|disney/i.test(filename)) {
+        srcSelect.value = 'Disney+ Hotstar';
+      } else if (/sonyliv/i.test(filename)) {
+        srcSelect.value = 'SonyLIV';
+      } else if (/zee5/i.test(filename)) {
+        srcSelect.value = 'Zee5';
+      } else if (/aha/i.test(filename)) {
+        srcSelect.value = 'Aha';
+      } else if (/appletv|apple\s*tv/i.test(filename)) {
+        srcSelect.value = 'Apple TV+';
+      } else if (/bluray|remux/i.test(filename)) {
+        srcSelect.value = 'BluRay';
+      } else {
+        srcSelect.value = 'WEB-DL';
+      }
+
+      // 2. Auto Detect & Round File Size from Filename
+      const sizeMatch = filename.match(/(\d+\.?\d*)\s*(gb|mb)/i);
+      if (sizeMatch) {
+        const roundedStr = cleanAndRoundSize(sizeMatch[0]);
+        const numVal = parseInt(roundedStr);
+        document.getElementById('input-filesize').value = roundedStr;
+        document.getElementById('input-filesize-range').value = numVal;
+        document.getElementById('slider-size-val').textContent = roundedStr;
+      }
+
       let raw = filename.replace(/\.(mkv|mp4|avi|ts)$/i, '').replace(/[\._\-]/g, ' ');
       const ym = raw.match(/\b(19\d\d|20\d\d)\b/);
       let year = ym ? ym[1] : '';
       let cutoff = raw.length;
       if (ym) cutoff = ym.index;
       let title = raw.substring(0, cutoff).trim();
-      title = title.replace(/\b(1080p|720p|2160p|4k|uhd|bluray|web-dl|dts|atmos|ddp|x264|x265|hevc|hindi|tamil|telugu)\b/gi, '').trim();
+      title = title.replace(/\b(1080p|720p|2160p|4k|uhd|bluray|web-dl|dts|atmos|ddp|x264|x265|hevc|hindi|tamil|telugu|sunnxt)\b/gi, '').trim();
 
       const is4K = /2160p|4k|uhd/i.test(filename);
       document.getElementById('input-quality').value = is4K ? '4K UHD' : '1080p FHD';
@@ -1483,7 +1576,6 @@
           fanart: data.backdrop_path ? `https://image.tmdb.org/t/p/original${data.backdrop_path}` : ''
         };
 
-        // Auto check language
         const lang = data.original_language;
         if (lang === 'ta') document.getElementById('chk-kollywood').checked = true;
         else if (lang === 'te') document.getElementById('chk-tollywood').checked = true;
@@ -1492,7 +1584,6 @@
         else if (lang === 'ml') document.getElementById('chk-mollywood').checked = true;
         else if (lang === 'kn') document.getElementById('chk-sandalwood').checked = true;
 
-        // Auto check if already exists in library for merge dock
         const existing = moviesData.find(m => String(m.tmdb_id) === String(tmdbId));
         if (existing) {
           targetExistingMovie = existing;
@@ -1550,8 +1641,9 @@
 
       const quality = document.getElementById('input-quality').value;
       const audio = document.getElementById('input-audio').value;
-      const source = document.getElementById('input-source').value;
-      const fileSize = document.getElementById('input-filesize').value.trim() || '10 GB';
+      const studioName = document.getElementById('input-source').value;
+      const rawFileSize = document.getElementById('input-filesize').value.trim();
+      const fileSize = cleanAndRoundSize(rawFileSize);
       const collection = document.getElementById('input-collection-name').value.trim();
       const streamUrl = `${WORKER_BASE}${fileId}${USER_AGENT}`;
 
@@ -1562,9 +1654,10 @@
 
       const versionObj = {
         id: fileId,
-        name: `${meta.title} (${meta.year}) [${quality}] [${source}] [${audio}].mkv`,
-        quality: `${quality} • ${source} • ${audio}`,
-        source: source,
+        name: `${meta.title} (${meta.year}) [${quality}] [${studioName}] [${audio}].mkv`,
+        quality: `${quality} • ${studioName} • ${audio}`,
+        source: studioName,
+        studio: studioName,
         resolution: quality,
         audio: audio,
         size: fileSize,
@@ -1595,6 +1688,7 @@
         tmdb_id: meta.tmdb_id,
         rating: meta.rating,
         collection: collection,
+        studio: studioName,
         genres: meta.genres || ["Action"],
         director: meta.director,
         cast: meta.cast,
@@ -1602,7 +1696,14 @@
         poster: meta.poster,
         fanart: meta.fanart,
         stream_url: streamUrl,
-        specs: { resolution: quality, audio: audio, source: source, size: fileSize },
+        specs: { 
+          resolution: quality, 
+          audio: audio, 
+          source: studioName, 
+          size: fileSize,
+          channels: "5.1",
+          codec: "H.264"
+        },
         versions: [versionObj]
       };
 
@@ -1610,7 +1711,7 @@
 
       // 1. Central Master Chunk (c01)
       moviesData.unshift(newEntry);
-      await commitFileDirect('chunks/data_c01.json', moviesData, `Add Movie ${meta.title}`, token);
+      await commitFileDirect('chunks/data_c01.json', moviesData, `Add Movie: ${meta.title}`, token);
 
       // 2. IMAX Core Chunk (if applicable)
       if (document.getElementById('chk-is-imax').checked) {
@@ -1667,6 +1768,7 @@
               id: m.id || m.gdrive_id,
               name: m.name || m.title,
               quality: (m.specs && m.specs.resolution) ? m.specs.resolution : '1080p FHD',
+              studio: m.studio || 'Amazon Prime Video',
               stream_url: m.stream_url
             }];
           }
@@ -1681,6 +1783,7 @@
                 id: m.id || m.gdrive_id,
                 name: m.name || m.title,
                 quality: (m.specs && m.specs.resolution) ? m.specs.resolution : '1080p FHD',
+                studio: m.studio || 'Amazon Prime Video',
                 stream_url: m.stream_url
               }];
 
