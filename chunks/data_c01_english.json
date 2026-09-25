@@ -1,14 +1,14 @@
 [
   {
-    "id": "1DkuTUHpVVxdFUGP06kfpxQzDufaVGhGX",
-    "name": "The Mummy (1999) [1080p FHD] [WEB-DL] [Dolby Atmos].mkv",
-    "title": "The Mummy",
-    "original_title": "The Mummy",
+    "id": "13W0E0Nq8mRkWuSbk-pqS-VdiRsij7rT3",
+    "name": "The Mummy Returns (2001) [1080p FHD] [WEB-DL] [Dolby Atmos].mkv",
+    "title": "The Mummy Returns",
+    "original_title": "The Mummy Returns",
     "original_language": "en",
-    "year": 1999,
-    "runtime": 124,
-    "tmdb_id": 564,
-    "rating": 7,
+    "year": 2001,
+    "runtime": 130,
+    "tmdb_id": 1734,
+    "rating": 6.4,
     "collection": "The Mummy Collection",
     "studio": "WEB-DL",
     "genres": [
@@ -26,25 +26,25 @@
       },
       {
         "name": "Rachel Weisz",
-        "role": "Evelyn Carnahan"
+        "role": "Evelyn O'Connell / Nefertiri"
       },
       {
         "name": "John Hannah",
         "role": "Jonathan Carnahan"
       },
       {
-        "name": "Arnold Vosloo",
-        "role": "Imhotep"
+        "name": "Oded Fehr",
+        "role": "Ardeth Bay"
       },
       {
-        "name": "Patricia Velásquez",
-        "role": "Anck-Su-Namun"
+        "name": "Arnold Vosloo",
+        "role": "Imhotep"
       }
     ],
-    "plot": "Dashing legionnaire Rick O'Connell stumbles upon the hidden ruins of Hamunaptra while in the midst of a battle to claim the area in 1920s Egypt. It has been over three thousand years since former High Priest Imhotep suffered a fate worse than death as a punishment for a forbidden love—along with a curse that guarantees eternal doom upon the world if he is ever awoken.",
-    "poster": "https://image.tmdb.org/t/p/w500/yhIsVvcUm7QxzLfT6HW2wLf5ajY.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/8zLS8p1tRyWFLRFfmgQq0j5WE6z.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1DkuTUHpVVxdFUGP06kfpxQzDufaVGhGX|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "plot": "Rick and Evelyn O’Connell, along with their 8-year-old son Alex, discover the key to the legendary Scorpion King’s might: the fabled Bracelet of Anubis. Unfortunately, a newly resurrected Imhotep has designs on the bracelet as well, and isn’t above kidnapping its new bearer, Alex, to gain control of Anubis’s otherworldly army.",
+    "poster": "https://image.tmdb.org/t/p/w500/kdJsW7hcy1lrj7tdMPycTAQPAiR.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/7s7WkAFPBsMTprYMbqbgKoppQsR.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13W0E0Nq8mRkWuSbk-pqS-VdiRsij7rT3|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
       "resolution": "1080p FHD",
       "audio": "Dolby Atmos",
@@ -55,15 +55,15 @@
     },
     "versions": [
       {
-        "id": "1DkuTUHpVVxdFUGP06kfpxQzDufaVGhGX",
-        "name": "The Mummy (1999) [1080p FHD] [WEB-DL] [Dolby Atmos].mkv",
+        "id": "13W0E0Nq8mRkWuSbk-pqS-VdiRsij7rT3",
+        "name": "The Mummy Returns (2001) [1080p FHD] [WEB-DL] [Dolby Atmos].mkv",
         "quality": "1080p FHD • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "studio": "WEB-DL",
         "resolution": "1080p FHD",
         "audio": "Dolby Atmos",
         "size": "9GB",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1DkuTUHpVVxdFUGP06kfpxQzDufaVGhGX|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13W0E0Nq8mRkWuSbk-pqS-VdiRsij7rT3|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
   },
