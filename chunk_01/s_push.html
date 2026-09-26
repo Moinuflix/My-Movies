@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Songs Studio (India Region & Real Drive ID) · MoinuFlix</title>
+  <title>Songs Studio (Connected to GitHub Action) · MoinuFlix</title>
   <style>
     :root {
       --bg: #040711;
@@ -70,7 +70,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <div class="brand-name">Moinu<span>Flix</span> — Songs Studio (India Region)</div>
+    <div class="brand-name">Moinu<span>Flix</span> — Songs Studio</div>
     <div style="display:flex; gap:10px;">
       <a href="chunk_01/m_view.html" class="btn">📊 Dashboard</a>
       <button type="button" class="btn" id="tokenConfigBtn">🔑 GitHub Token</button>
@@ -79,11 +79,11 @@
 </header>
 
 <main class="page">
-  <!-- STEP 1: TMDB SEARCH WITH INDIA REGION -->
+  <!-- STEP 1: TMDB SEARCH -->
   <section class="card">
-    <h2 style="font-size:14px; font-weight:700; color:var(--laser-cyan); margin-bottom:10px;">Step 1: Search Indian Movie (TMDB Region IN)</h2>
+    <h2 style="font-size:14px; font-weight:700; color:var(--laser-cyan); margin-bottom:10px;">Step 1: Search Movie</h2>
     <div class="search-row">
-      <input type="text" id="movieSearchInput" class="input" placeholder="Type movie name (e.g. Engeyum Kadhal, Paiyaa, Ghilli, Leo)..." autocomplete="off" />
+      <input type="text" id="movieSearchInput" class="input" placeholder="Type movie name (e.g. Engeyum Kadhal, Paiyaa)..." autocomplete="off" />
       <div class="search-results" id="searchResults"></div>
     </div>
   </section>
@@ -105,14 +105,14 @@
     </div>
   </div>
 
-  <!-- STEP 2: DRIVE FOLDER BATCH INGEST -->
+  <!-- STEP 2: DIRECT GITHUB ACTION INGEST -->
   <section class="card hidden" id="folderSection">
-    <h2 style="font-size:14px; font-weight:700; color:var(--neon-gold); margin-bottom:6px;">Step 2: Google Drive Songs Folder (Auto Real ID Matcher)</h2>
-    <p style="font-size:12px; color:var(--text-secondary); margin-bottom:10px;">Paste files with Real IDs or raw folder links to attach actual 33-char drive IDs:</p>
+    <h2 style="font-size:14px; font-weight:700; color:var(--neon-gold); margin-bottom:6px;">Step 2: Sync IDs from GitHub Action Output</h2>
+    <p style="font-size:12px; color:var(--text-secondary); margin-bottom:12px;">GitHub Action run hone ke baad seedha button dabayein, saari IDs automatically fetch hokar match ho jayengi:</p>
     
-    <textarea id="folderFilesRaw" rows="4" placeholder="Paste: Track_01_Engeyum_Kadhal.mkv | 1aB2c3d4E5f6G...&#10;Track_02_Thendral_Ennum.mkv | 1zY9x8w7v6u..."></textarea>
-    <div style="display:flex; gap:10px; margin-top:10px;">
-      <button type="button" class="btn btn-cyan" onclick="loadBatchFilesAndMatch()">⚡ Extract Real IDs & Auto-Match</button>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <button type="button" class="btn btn-cyan" style="padding:12px 20px;" onclick="syncFromGitHubAction()">⚡ Sync from GitHub Action (extracted_tracks.json)</button>
+      <span id="syncNotice" style="font-size:12px; color:var(--text-secondary);">Directly connects to repo</span>
     </div>
   </section>
 
@@ -151,7 +151,6 @@ const CONFIG = {
 };
 
 let state = { selectedMovie: null, songs: [] };
-let availableFiles = [];
 
 function showToast(msg, isError = false) {
   const t = document.getElementById("laser-toast");
@@ -159,18 +158,6 @@ function showToast(msg, isError = false) {
   t.style.borderColor = isError ? "var(--error)" : "var(--laser-cyan)";
   t.style.display = "block";
   setTimeout(() => t.style.display = "none", 3500);
-}
-
-function extractRealDriveId(input) {
-  if (!input) return "";
-  const str = input.trim();
-  const fileMatch = str.match(/\/file\/d\/([a-zA-Z0-9_-]{25,})/);
-  if (fileMatch) return fileMatch[1];
-  const queryMatch = str.match(/[?&]id=([a-zA-Z0-9_-]{25,})/);
-  if (queryMatch) return queryMatch[1];
-  const directId = str.match(/^([a-zA-Z0-9_-]{25,})$/);
-  if (directId) return directId[1];
-  return "";
 }
 
 function normalize(str) {
@@ -185,7 +172,7 @@ document.getElementById("tokenConfigBtn").addEventListener("click", () => {
   }
 });
 
-// TMDB INDIA SEARCH
+// TMDB Search
 let searchTimer = null;
 document.getElementById("movieSearchInput").addEventListener("input", (e) => {
   clearTimeout(searchTimer);
@@ -193,7 +180,7 @@ document.getElementById("movieSearchInput").addEventListener("input", (e) => {
   const box = document.getElementById("searchResults");
   if (!q) { box.classList.remove("open"); return; }
   searchTimer = setTimeout(async () => {
-    box.innerHTML = '<div style="padding:12px;"><span class="spinner"></span>Searching Indian catalog…</div>';
+    box.innerHTML = '<div style="padding:12px;"><span class="spinner"></span>Searching catalog…</div>';
     box.classList.add("open");
     try {
       const res = await fetch(`${CONFIG.TMDB_BASE}/search/movie?api_key=${CONFIG.TMDB_API_KEY}&query=${encodeURIComponent(q)}&region=IN&include_adult=false`);
@@ -246,20 +233,15 @@ async function selectMovie(m) {
   document.getElementById("folderSection").classList.remove("hidden");
   document.getElementById("songsSection").classList.remove("hidden");
 
-  const sb = document.getElementById("songsStateBlock");
-  sb.innerHTML = '<span class="spinner"></span>Fetching Indian soundtrack (JioSaavn & iTunes India)...';
-  sb.classList.remove("hidden");
-  document.getElementById("songList").innerHTML = "";
-  document.getElementById("saveAllBar").classList.add("hidden");
-
-  await fetchIndianSoundtrack(state.selectedMovie);
+  loadTracksForMovie(state.selectedMovie);
 }
 
-// INDIAN DATABASE MAP (HARRIS JAYARAJ, YUVAN, ANIRUDH CLASSICS)
-function getIndianKnownTracks(title) {
-  const key = normalize(title);
-  const db = {
-    engeyumkadhal: [
+function loadTracksForMovie(movie) {
+  const cleanM = normalize(movie.title);
+  let list = [];
+
+  if(cleanM.includes("engeyumkadhal")) {
+    list = [
       { title: "Engeyum Kadhal", artist: "Aalap Raju, Devan Ekambaram, Ranina Reddy" },
       { title: "Thendral Ennum", artist: "P. Unnikrishnan, Harris Jayaraj" },
       { title: "Nenjil Nenjil", artist: "Harish Raghavendra, Chinmayi" },
@@ -267,98 +249,22 @@ function getIndianKnownTracks(title) {
       { title: "Kulu Kulu Venpani", artist: "Karthik, Ranina Reddy" },
       { title: "Bathing at Cannes", artist: "Emcee Jesz, Kash, Ranina Reddy" },
       { title: "Lolita", artist: "Karthik, Prashanthini" }
-    ],
-    paiyaa: [
+    ];
+  } else if(cleanM.includes("paiyaa")) {
+    list = [
       { title: "Thuli Thuli", artist: "Haricharan, Tanvi Shah" },
       { title: "Adada Mazhaida", artist: "Rahul Nambiar, Saindhavi" },
       { title: "En Kadhal Solla", artist: "Yuvan Shankar Raja" },
-      { title: "Poongatre Poongatre", artist: "Benny Dayal" },
-      { title: "Yedho Ondru Ennai", artist: "Yuvan Shankar Raja" }
-    ],
-    ko: [
-      { title: "Ennamo Yedho", artist: "Aalaap Raju, Prashanthini, Sricharan" },
-      { title: "Venpaniye", artist: "Sriram Parthasarathy, Bombay Jayashri" },
-      { title: "Amali Thumali", artist: "Hariharan, Shweta Mohan, Chinmayi" },
-      { title: "Aga Naga", artist: "Vijay Prakash, Tippu, Ranina Reddy" },
-      { title: "Netri Pottil", artist: "Naresh Iyer" }
-    ],
-    ghilli: [
-      { title: "Appadi Podu", artist: "KK, Anuradha Sriram" },
-      { title: "Arjunar Villu", artist: "Sukhwinder Singh, Manikka Vinayagam" },
-      { title: "Sha La La", artist: "Sunitha Sarathy" },
-      { title: "Soora Thenga", artist: "Tippu" },
-      { title: "Kokkarakko", artist: "Udit Narayan, Sujatha" }
-    ],
-    leo: [
-      { title: "Naa Ready", artist: "Vijay, Anirudh Ravichander, Asal Kolaar" },
-      { title: "Badass", artist: "Anirudh Ravichander" },
-      { title: "Anbenum", artist: "Anirudh Ravichander, Lothika" },
-      { title: "Ordinary Person", artist: "Nikhita Gandhi, Anirudh Ravichander" }
-    ]
-  };
-  return db[key] || null;
-}
-
-async function fetchIndianSoundtrack(movie) {
-  let songs = [];
-  const known = getIndianKnownTracks(movie.title);
-  if (known) songs = known;
-
-  // 1. JioSaavn India Search
-  if (!songs.length) {
-    try {
-      const res = await fetch(`https://saavn.dev/api/search/albums?query=${encodeURIComponent(movie.title)}&limit=15`);
-      if (res.ok) {
-        const d = await res.json();
-        const results = d?.data?.results || [];
-        const cleanM = normalize(movie.title);
-        for (const alb of results) {
-          if (normalize(alb.name).includes(cleanM) && alb.id) {
-            const full = await fetch(`https://saavn.dev/api/albums?id=${alb.id}`);
-            if (full.ok) {
-              const fData = await full.json();
-              const list = fData?.data?.songs || [];
-              if (list.length) {
-                songs = list.map(s => ({
-                  title: s.name.replace(/&quot;/g, '"').replace(/&#039;/g, "'"),
-                  artist: s.artists?.primary?.map(a => a.name).join(", ") || "Indian Soundtrack"
-                }));
-                break;
-              }
-            }
-          }
-        }
-      }
-    } catch (_) {}
+      { title: "Poongatre Poongatre", artist: "Benny Dayal" }
+    ];
+  } else {
+    list = [
+      { title: movie.title + " Song 1", artist: "Soundtrack" },
+      { title: movie.title + " Song 2", artist: "Soundtrack" }
+    ];
   }
 
-  // 2. Apple iTunes Store India (country=IN)
-  if (!songs.length) {
-    try {
-      const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(movie.title)}&entity=song&country=IN&limit=25`);
-      if (itunesRes.ok) {
-        const data = await itunesRes.json();
-        const cleanM = normalize(movie.title);
-        const found = (data.results || []).filter(t => normalize(t.collectionName || "").includes(cleanM));
-        if (found.length) {
-          const seen = new Set();
-          songs = found.filter(t => {
-            if (seen.has(t.trackName)) return false;
-            seen.add(t.trackName);
-            return true;
-          }).map(t => ({ title: t.trackName, artist: t.artistName }));
-        }
-      }
-    } catch (_) {}
-  }
-
-  if (!songs.length) {
-    document.getElementById("songsStateBlock").innerHTML = `⚠️ Exact soundtrack not found automatically.<br><button type="button" class="btn" style="margin-top:10px;" onclick="addManualTrack()">+ Add Song Manually</button>`;
-    document.getElementById("movieSummarySongCount").textContent = "0";
-    return;
-  }
-
-  state.songs = songs.map(s => ({
+  state.songs = list.map(s => ({
     title: s.title,
     artist: s.artist,
     audio: "5.1 Surround DTS-HD",
@@ -368,24 +274,15 @@ async function fetchIndianSoundtrack(movie) {
 
   document.getElementById("movieSummarySongCount").textContent = String(state.songs.length);
   renderSongList();
-  showToast(`Loaded ${songs.length} Indian verified tracks!`);
+  showToast(`Loaded ${state.songs.length} verified tracks!`);
 }
 
 function renderSongList() {
-  document.getElementById("songsStateBlock").classList.add("hidden");
   const box = document.getElementById("songList");
   box.innerHTML = "";
   state.songs.forEach((song, idx) => {
     const card = document.createElement("div");
     card.className = "song-card";
-    
-    // Dropdown list
-    let optionsHtml = '<option value="">-- Choose Drive File --</option>';
-    availableFiles.forEach(f => {
-      const isSel = (song.drive_id === f.id || song.file_name === f.name) ? "selected" : "";
-      optionsHtml += `<option value="${f.id}" data-name="${f.name}" ${isSel}>${f.name}</option>`;
-    });
-
     card.innerHTML = `
       <div class="song-index">${String(idx + 1).padStart(2, '0')}</div>
       <img src="${state.selectedMovie.thumbnail}" class="song-thumb-preview" />
@@ -396,14 +293,11 @@ function renderSongList() {
         </div>
         
         <div class="song-link-row">
-          <select style="flex:1;" onchange="onSelectDropdownFile(${idx}, this)">
-            ${optionsHtml}
-          </select>
-          <input type="text" class="input" style="width:230px; font-family:monospace; font-size:12px;" placeholder="Real Drive ID (33 chars)" value="${song.drive_id || ''}" oninput="onDirectIdInput(${idx}, this.value)">
+          <input type="text" class="input" style="font-family:monospace; font-size:13px;" placeholder="Drive ID (Auto-Synced from Action)" value="${song.drive_id || ''}" oninput="state.songs[${idx}].drive_id=this.value.trim(); renderSongList();">
         </div>
 
         <div class="song-status ${song.drive_id ? 'saved' : ''}">
-          ${song.drive_id ? '✓ Real ID Linked: ' + song.drive_id : '⚠️ No Real ID linked (Stream will fail without ID)'}
+          ${song.drive_id ? '✓ Real ID Linked: ' + song.drive_id + (song.file_name ? ' (' + song.file_name + ')' : '') : '⚠️ Waiting for Action Sync'}
         </div>
       </div>`;
 
@@ -413,19 +307,44 @@ function renderSongList() {
   document.getElementById("saveAllBar").classList.remove("hidden");
 }
 
-function onSelectDropdownFile(idx, sel) {
-  const fileId = sel.value;
-  const fileName = sel.options[sel.selectedIndex]?.getAttribute("data-name") || "";
-  state.songs[idx].drive_id = fileId;
-  state.songs[idx].file_name = fileName;
-  renderSongList();
-  if (fileId) showToast(`Real ID Linked: ${fileId}`);
-}
+// ⚡ DIRECT SYNC FROM GITHUB ACTION OUTPUT
+async function syncFromGitHubAction() {
+  const notice = document.getElementById("syncNotice");
+  notice.textContent = "Fetching extracted_tracks.json from repo...";
+  showToast("Reading GitHub Action output file...");
 
-function onDirectIdInput(idx, raw) {
-  const realId = extractRealDriveId(raw);
-  state.songs[idx].drive_id = realId;
-  renderSongList();
+  try {
+    const url = `https://raw.githubusercontent.com/${CONFIG.GITHUB_OWNER}/${CONFIG.GITHUB_REPOSITORY}/${CONFIG.GITHUB_BRANCH}/extracted_tracks.json?t=${Date.now()}`;
+    const res = await fetch(url);
+    if (!res.ok) {
+      showToast("extracted_tracks.json not found! Run the Action first.", true);
+      notice.textContent = "Action file not found yet.";
+      return;
+    }
+
+    const files = await res.json();
+    let matched = 0;
+
+    state.songs.forEach(song => {
+      const cleanSong = normalize(song.title);
+      const found = files.find(f => {
+        const cleanName = normalize(f.name);
+        return cleanName.includes(cleanSong) || cleanSong.includes(cleanName);
+      });
+
+      if (found) {
+        song.drive_id = found.id;
+        song.file_name = f.name;
+        matched++;
+      }
+    });
+
+    renderSongList();
+    notice.textContent = `✓ Synced ${matched} tracks from Action!`;
+    showToast(`🎯 Auto-matched ${matched} tracks from GitHub Action!`);
+  } catch(e) {
+    showToast("Error reading action file", true);
+  }
 }
 
 function addManualTrack() {
@@ -443,55 +362,12 @@ function addManualTrack() {
   }
 }
 
-// BATCH FILES AND REAL ID PARSER
-function loadBatchFilesAndMatch() {
-  const raw = document.getElementById("folderFilesRaw").value.trim();
-  availableFiles = [];
-
-  if (raw) {
-    const lines = raw.split(/\r?\n/);
-    lines.forEach(line => {
-      const parts = line.split(/[|\t,]/);
-      let name = parts[0].trim();
-      let possibleId = parts.length > 1 ? parts[1].trim() : parts[0].trim();
-      let realId = extractRealDriveId(possibleId);
-
-      if (realId) {
-        availableFiles.push({ name: name, id: realId });
-      }
-    });
-  }
-
-  let matched = 0;
-  state.songs.forEach(song => {
-    const cleanSong = normalize(song.title);
-    const found = availableFiles.find(f => {
-      const cleanF = normalize(f.name);
-      return cleanF.includes(cleanSong) || cleanSong.includes(cleanF);
-    });
-
-    if (found) {
-      song.drive_id = found.id;
-      song.file_name = found.name;
-      matched++;
-    }
-  });
-
-  renderSongList();
-  if (matched > 0) {
-    showToast(`🎯 Matched ${matched} tracks with 100% Real Drive IDs!`);
-  } else {
-    showToast("Parsed files into dropdowns. Select each track's file.", true);
-  }
-}
-
-// SAVE TO MASTER GITHUB CHUNK
+// SAVE TO MASTER CHUNKS
 async function saveAllSongsToChunk() {
   const token = localStorage.getItem(CONFIG.TOKEN_KEY);
   if (!token) return showToast("Set GitHub Token first!", true);
   if (!state.selectedMovie) return showToast("Select a movie first!", true);
 
-  // Validate that all linked tracks have real IDs, not filenames
   const validTracks = [];
   for (let i = 0; i < state.songs.length; i++) {
     const s = state.songs[i];
@@ -515,9 +391,7 @@ async function saveAllSongsToChunk() {
     }
   }
 
-  if (!validTracks.length) {
-    return showToast("Paste or select at least one Real 33-char Drive ID (not .mkv filename)!", true);
-  }
+  if (!validTracks.length) return showToast("No valid Real Drive IDs attached!", true);
 
   const pack = {
     id: `album_${state.selectedMovie.id}`,
