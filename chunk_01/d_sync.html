@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>MoinuFlix — Drive Sync & Folder Queue</title>
+  <link rel="stylesheet" href="c_core/ui_style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <aside>
+    <div class="brand">
+      <div class="brand-logo">M</div>
+      <div style="font-size:1.2rem; font-weight:800;">MoinuFlix</div>
+    </div>
+    <ul class="nav-list">
+      <li><a href="m_view.html" class="nav-btn "><span>📊 Movies View</span></a></li>
+      <li><a href="d_sync.html" class="nav-btn active"><span>🔔 Drive Sync</span></a></li>
+      <li><a href="p_push.html" class="nav-btn "><span>➕ Push Movie</span></a></li>
+    </ul>
+    <div style="margin-top:auto; padding-top:1rem;">
+      <button class="nav-btn" onclick="configureGithubToken()"><span>⚙️ GitHub Token</span></button>
+    </div>
+  </aside>
+  <div id="laser-toast"></div>
+
+  <main>
+    <header style="margin-bottom:1.5rem; display:flex; justify-content:space-between; align-items:flex-end;">
+      <div>
+        <h1>📡 Drive Arrivals & Folder Scanner</h1>
+        <p style="color:var(--text-muted);">Queue management with 1-click ingest and skip trigger</p>
+      </div>
+      <button class="nav-btn" style="width:auto; border-color:var(--laser-cyan);" onclick="loadQueue()">🔄 Refresh Queue</button>
+    </header>
+
+    <div class="form-container" style="margin-bottom:2rem;">
+      <label style="color:var(--laser-cyan); font-weight:700;">📂 Scan Entire Google Drive Folder:</label>
+      <div style="display:flex; gap:10px; margin-top:8px;">
+        <input type="text" id="scan-folder-url" placeholder="Paste Google Drive Folder link or Folder ID">
+        <button type="button" class="btn-submit" style="width:180px;" onclick="scanFolder()">Scan Folder</button>
+      </div>
+    </div>
+
+    <div class="smart-table-wrap">
+      <table class="smart-scan-table">
+        <thead><tr><th>Drive ID</th><th>Raw Title</th><th>Detected Size</th><th style="text-align:right;">Actions</th></tr></thead>
+        <tbody id="queue-body"><tr><td colspan="4" style="text-align:center; padding:25px;">Checking arrivals queue...</td></tr></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="j_core/gh_core.js"></script>
+  <script>
+    let queueItems = [];
+
+    async function loadQueue() {
+      const b = document.getElementById("queue-body");
+      b.innerHTML = "<tr><td colspan='4' style='text-align:center; padding:25px;'>Loading arrivals...</td></tr>";
+      try {
+        const res = await fetch("https://raw.githubusercontent.com/" + GH_REPO + "/" + GH_BRANCH + "/inbox_arrivals.json?t=" + Date.now());
+        queueItems = res.ok ? await res.json() : [];
+        renderQueue();
+      } catch(e) { b.innerHTML = "<tr><td colspan='4'>No pending items.</td></tr>"; }
+    }
+
+    function renderQueue() {
+      const b = document.getElementById("queue-body");
+      if(queueItems.length === 0) { b.innerHTML = "<tr><td colspan='4' style='text-align:center; color:var(--laser-green); padding:25px;'>🎉 Queue is empty! All files synced.</td></tr>"; return; }
+      b.innerHTML = "";
+      queueItems.forEach((item, idx) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td style="font-family:monospace; color:var(--laser-cyan);">${item.gdrive_id.substring(0, 12)}...</td>
+          <td style="color:#fff; font-weight:700;">${item.title}</td>
+          <td><span style="background:rgba(56,189,248,0.15); color:var(--laser-cyan); padding:2px 6px; border-radius:6px;">${cleanAndRoundSize(item.size)}</span></td>
+          <td style="text-align:right; display:flex; gap:6px; justify-content:flex-end;">
+            <button class="nav-btn" style="padding:4px 10px; font-size:0.75rem; border-color:var(--laser-cyan);" onclick="loadToPush('${item.gdrive_id}', '${item.title}')">⚡ Push</button>
+            <button class="nav-btn" style="padding:4px 10px; font-size:0.75rem; border-color:var(--laser-red); color:var(--laser-red);" onclick="skipItem(${idx})">⏭️ Skip</button>
+          </td>
+        `;
+        b.appendChild(tr);
+      });
+    }
+
+    function skipItem(idx) {
+      queueItems.splice(idx, 1);
+      renderQueue();
+      showLaserToast("Item skipped from queue");
+    }
+
+    function loadToPush(id, title) {
+      localStorage.setItem("temp_push_id", id);
+      localStorage.setItem("temp_push_title", title);
+      window.location.href = "p_push.html";
+    }
+
+    async function scanFolder() {
+      const fUrl = document.getElementById("scan-folder-url").value;
+      const foldId = extractGDriveId(fUrl);
+      if(!foldId) return showLaserToast("Invalid Folder ID!", true);
+      showLaserToast("Scanning folder files via Worker...");
+    }
+
+    window.onload = loadQueue;
+  </script>
+</body>
+</html>
