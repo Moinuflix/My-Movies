@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Songs Studio (Dropdown Matcher) · MoinuFlix</title>
+  <title>Songs Studio (India Region & Real Drive ID) · MoinuFlix</title>
   <style>
     :root {
       --bg: #040711;
@@ -70,7 +70,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <div class="brand-name">Moinu<span>Flix</span> — Songs Studio</div>
+    <div class="brand-name">Moinu<span>Flix</span> — Songs Studio (India Region)</div>
     <div style="display:flex; gap:10px;">
       <a href="chunk_01/m_view.html" class="btn">📊 Dashboard</a>
       <button type="button" class="btn" id="tokenConfigBtn">🔑 GitHub Token</button>
@@ -79,14 +79,16 @@
 </header>
 
 <main class="page">
+  <!-- STEP 1: TMDB SEARCH WITH INDIA REGION -->
   <section class="card">
-    <h2 style="font-size:14px; font-weight:700; color:var(--laser-cyan); margin-bottom:10px;">Step 1: Search Movie</h2>
+    <h2 style="font-size:14px; font-weight:700; color:var(--laser-cyan); margin-bottom:10px;">Step 1: Search Indian Movie (TMDB Region IN)</h2>
     <div class="search-row">
-      <input type="text" id="movieSearchInput" class="input" placeholder="Type movie name (e.g. Engeyum Kadhal)..." autocomplete="off" />
+      <input type="text" id="movieSearchInput" class="input" placeholder="Type movie name (e.g. Engeyum Kadhal, Paiyaa, Ghilli, Leo)..." autocomplete="off" />
       <div class="search-results" id="searchResults"></div>
     </div>
   </section>
 
+  <!-- MOVIE SUMMARY & BACKDROP -->
   <div class="movie-summary" id="movieSummary">
     <div class="movie-summary-backdrop" id="movieSummaryBackdrop"></div>
     <div class="movie-summary-content">
@@ -97,34 +99,34 @@
           <span class="meta-chip" id="movieSummaryYear"></span>
           <span class="meta-chip" id="movieSummaryId"></span>
           <span class="meta-chip" id="movieSummaryLang"></span>
-          <span class="meta-chip gold"><span id="movieSummarySongCount">0</span> Tracks Ready</span>
+          <span class="meta-chip gold"><span id="movieSummarySongCount">0</span> Verified Tracks</span>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- STEP 2: LOAD FOLDER FILES -->
+  <!-- STEP 2: DRIVE FOLDER BATCH INGEST -->
   <section class="card hidden" id="folderSection">
-    <h2 style="font-size:14px; font-weight:700; color:var(--neon-gold); margin-bottom:8px;">Step 2: Google Drive Folder Files</h2>
-    <p style="font-size:12px; color:var(--text-secondary); margin-bottom:10px;">Paste files list from terminal/drive OR enter Folder ID to auto-load dropdowns:</p>
+    <h2 style="font-size:14px; font-weight:700; color:var(--neon-gold); margin-bottom:6px;">Step 2: Google Drive Songs Folder (Auto Real ID Matcher)</h2>
+    <p style="font-size:12px; color:var(--text-secondary); margin-bottom:10px;">Paste files with Real IDs or raw folder links to attach actual 33-char drive IDs:</p>
     
-    <textarea id="folderFilesRaw" rows="4" placeholder="Paste extracted file list here (Name | ID) or use default loaded files..."></textarea>
+    <textarea id="folderFilesRaw" rows="4" placeholder="Paste: Track_01_Engeyum_Kadhal.mkv | 1aB2c3d4E5f6G...&#10;Track_02_Thendral_Ennum.mkv | 1zY9x8w7v6u..."></textarea>
     <div style="display:flex; gap:10px; margin-top:10px;">
-      <button type="button" class="btn btn-cyan" onclick="parseAndPopulateDropdowns()">⚡ Load Files to Dropdowns</button>
-      <button type="button" class="btn" onclick="autoMatchAllDropdowns()">🎯 Auto-Match All</button>
+      <button type="button" class="btn btn-cyan" onclick="loadBatchFilesAndMatch()">⚡ Extract Real IDs & Auto-Match</button>
     </div>
   </section>
 
-  <!-- STEP 3: TRACKS LIST WITH DROPDOWNS -->
+  <!-- STEP 3: TRACKS LIST -->
   <section class="hidden" id="songsSection">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-      <h2 style="font-size:15px; font-weight:700;">Select Drive File For Each Track</h2>
+      <h2 style="font-size:15px; font-weight:700;">Verified Tracks (5.1 Audio)</h2>
       <button type="button" class="btn" onclick="addManualTrack()">+ Add Custom Song</button>
     </div>
+    <div class="card hidden" id="songsStateBlock" style="padding:25px; text-align:center;"></div>
     <div class="song-list" id="songList"></div>
 
     <div style="margin-top:24px;" class="hidden" id="saveAllBar">
-      <button class="btn btn-cyan btn-block" id="saveAllBtn" onclick="saveAllSongsToChunk()">🚀 SAVE ALBUM PACK TO chunks/data_c03.json</button>
+      <button class="btn btn-cyan btn-block" id="saveAllBtn" onclick="saveAllSongsToChunk()">🚀 COMMIT ALBUM PACK TO chunks/data_c03.json</button>
       <div id="commitStatus" style="font-size:12px; text-align:center; margin-top:8px; color:var(--text-secondary);"></div>
     </div>
   </section>
@@ -149,7 +151,7 @@ const CONFIG = {
 };
 
 let state = { selectedMovie: null, songs: [] };
-let availableFolderFiles = [];
+let availableFiles = [];
 
 function showToast(msg, isError = false) {
   const t = document.getElementById("laser-toast");
@@ -157,6 +159,18 @@ function showToast(msg, isError = false) {
   t.style.borderColor = isError ? "var(--error)" : "var(--laser-cyan)";
   t.style.display = "block";
   setTimeout(() => t.style.display = "none", 3500);
+}
+
+function extractRealDriveId(input) {
+  if (!input) return "";
+  const str = input.trim();
+  const fileMatch = str.match(/\/file\/d\/([a-zA-Z0-9_-]{25,})/);
+  if (fileMatch) return fileMatch[1];
+  const queryMatch = str.match(/[?&]id=([a-zA-Z0-9_-]{25,})/);
+  if (queryMatch) return queryMatch[1];
+  const directId = str.match(/^([a-zA-Z0-9_-]{25,})$/);
+  if (directId) return directId[1];
+  return "";
 }
 
 function normalize(str) {
@@ -171,7 +185,7 @@ document.getElementById("tokenConfigBtn").addEventListener("click", () => {
   }
 });
 
-// Search TMDB
+// TMDB INDIA SEARCH
 let searchTimer = null;
 document.getElementById("movieSearchInput").addEventListener("input", (e) => {
   clearTimeout(searchTimer);
@@ -179,21 +193,21 @@ document.getElementById("movieSearchInput").addEventListener("input", (e) => {
   const box = document.getElementById("searchResults");
   if (!q) { box.classList.remove("open"); return; }
   searchTimer = setTimeout(async () => {
-    box.innerHTML = '<div style="padding:12px;"><span class="spinner"></span>Searching movies…</div>';
+    box.innerHTML = '<div style="padding:12px;"><span class="spinner"></span>Searching Indian catalog…</div>';
     box.classList.add("open");
     try {
-      const res = await fetch(`${CONFIG.TMDB_BASE}/search/movie?api_key=${CONFIG.TMDB_API_KEY}&query=${encodeURIComponent(q)}&include_adult=false`);
+      const res = await fetch(`${CONFIG.TMDB_BASE}/search/movie?api_key=${CONFIG.TMDB_API_KEY}&query=${encodeURIComponent(q)}&region=IN&include_adult=false`);
       const data = await res.json();
       const results = data.results || [];
       box.innerHTML = "";
-      results.slice(0, 7).forEach(m => {
+      results.slice(0, 8).forEach(m => {
         const item = document.createElement("div");
         item.className = "search-result-item";
         item.innerHTML = `
           <img class="search-result-poster" src="${m.poster_path ? CONFIG.TMDB_IMG_POSTER + m.poster_path : ''}" />
           <div>
             <div style="font-weight:700; font-size:14px;">${m.title}</div>
-            <div style="font-size:12px; color:var(--text-secondary);">${m.release_date ? m.release_date.slice(0,4) : '—'} • TMDB #${m.id}</div>
+            <div style="font-size:12px; color:var(--text-secondary);">${m.release_date ? m.release_date.slice(0,4) : '—'} • ${(m.original_language || 'IN').toUpperCase()} • TMDB #${m.id}</div>
           </div>`;
         item.addEventListener("click", () => selectMovie(m));
         box.appendChild(item);
@@ -227,20 +241,25 @@ async function selectMovie(m) {
   document.getElementById("movieSummaryTitle").textContent = m.title;
   document.getElementById("movieSummaryYear").textContent = year;
   document.getElementById("movieSummaryId").textContent = "TMDB #" + m.id;
-  document.getElementById("movieSummaryLang").textContent = (state.selectedMovie.language || "ta").toUpperCase();
+  document.getElementById("movieSummaryLang").textContent = state.selectedMovie.language.toUpperCase();
 
   document.getElementById("folderSection").classList.remove("hidden");
   document.getElementById("songsSection").classList.remove("hidden");
 
-  loadTracksForMovie(state.selectedMovie);
+  const sb = document.getElementById("songsStateBlock");
+  sb.innerHTML = '<span class="spinner"></span>Fetching Indian soundtrack (JioSaavn & iTunes India)...';
+  sb.classList.remove("hidden");
+  document.getElementById("songList").innerHTML = "";
+  document.getElementById("saveAllBar").classList.add("hidden");
+
+  await fetchIndianSoundtrack(state.selectedMovie);
 }
 
-function loadTracksForMovie(movie) {
-  const cleanM = normalize(movie.title);
-  let list = [];
-
-  if(cleanM.includes("engeyumkadhal")) {
-    list = [
+// INDIAN DATABASE MAP (HARRIS JAYARAJ, YUVAN, ANIRUDH CLASSICS)
+function getIndianKnownTracks(title) {
+  const key = normalize(title);
+  const db = {
+    engeyumkadhal: [
       { title: "Engeyum Kadhal", artist: "Aalap Raju, Devan Ekambaram, Ranina Reddy" },
       { title: "Thendral Ennum", artist: "P. Unnikrishnan, Harris Jayaraj" },
       { title: "Nenjil Nenjil", artist: "Harish Raghavendra, Chinmayi" },
@@ -248,45 +267,122 @@ function loadTracksForMovie(movie) {
       { title: "Kulu Kulu Venpani", artist: "Karthik, Ranina Reddy" },
       { title: "Bathing at Cannes", artist: "Emcee Jesz, Kash, Ranina Reddy" },
       { title: "Lolita", artist: "Karthik, Prashanthini" }
-    ];
-  } else if(cleanM.includes("paiyaa")) {
-    list = [
+    ],
+    paiyaa: [
       { title: "Thuli Thuli", artist: "Haricharan, Tanvi Shah" },
       { title: "Adada Mazhaida", artist: "Rahul Nambiar, Saindhavi" },
       { title: "En Kadhal Solla", artist: "Yuvan Shankar Raja" },
-      { title: "Poongatre Poongatre", artist: "Benny Dayal" }
-    ];
-  } else {
-    list = [
-      { title: movie.title + " Song 1", artist: "Soundtrack" },
-      { title: movie.title + " Song 2", artist: "Soundtrack" }
-    ];
+      { title: "Poongatre Poongatre", artist: "Benny Dayal" },
+      { title: "Yedho Ondru Ennai", artist: "Yuvan Shankar Raja" }
+    ],
+    ko: [
+      { title: "Ennamo Yedho", artist: "Aalaap Raju, Prashanthini, Sricharan" },
+      { title: "Venpaniye", artist: "Sriram Parthasarathy, Bombay Jayashri" },
+      { title: "Amali Thumali", artist: "Hariharan, Shweta Mohan, Chinmayi" },
+      { title: "Aga Naga", artist: "Vijay Prakash, Tippu, Ranina Reddy" },
+      { title: "Netri Pottil", artist: "Naresh Iyer" }
+    ],
+    ghilli: [
+      { title: "Appadi Podu", artist: "KK, Anuradha Sriram" },
+      { title: "Arjunar Villu", artist: "Sukhwinder Singh, Manikka Vinayagam" },
+      { title: "Sha La La", artist: "Sunitha Sarathy" },
+      { title: "Soora Thenga", artist: "Tippu" },
+      { title: "Kokkarakko", artist: "Udit Narayan, Sujatha" }
+    ],
+    leo: [
+      { title: "Naa Ready", artist: "Vijay, Anirudh Ravichander, Asal Kolaar" },
+      { title: "Badass", artist: "Anirudh Ravichander" },
+      { title: "Anbenum", artist: "Anirudh Ravichander, Lothika" },
+      { title: "Ordinary Person", artist: "Nikhita Gandhi, Anirudh Ravichander" }
+    ]
+  };
+  return db[key] || null;
+}
+
+async function fetchIndianSoundtrack(movie) {
+  let songs = [];
+  const known = getIndianKnownTracks(movie.title);
+  if (known) songs = known;
+
+  // 1. JioSaavn India Search
+  if (!songs.length) {
+    try {
+      const res = await fetch(`https://saavn.dev/api/search/albums?query=${encodeURIComponent(movie.title)}&limit=15`);
+      if (res.ok) {
+        const d = await res.json();
+        const results = d?.data?.results || [];
+        const cleanM = normalize(movie.title);
+        for (const alb of results) {
+          if (normalize(alb.name).includes(cleanM) && alb.id) {
+            const full = await fetch(`https://saavn.dev/api/albums?id=${alb.id}`);
+            if (full.ok) {
+              const fData = await full.json();
+              const list = fData?.data?.songs || [];
+              if (list.length) {
+                songs = list.map(s => ({
+                  title: s.name.replace(/&quot;/g, '"').replace(/&#039;/g, "'"),
+                  artist: s.artists?.primary?.map(a => a.name).join(", ") || "Indian Soundtrack"
+                }));
+                break;
+              }
+            }
+          }
+        }
+      }
+    } catch (_) {}
   }
 
-  state.songs = list.map(s => ({
+  // 2. Apple iTunes Store India (country=IN)
+  if (!songs.length) {
+    try {
+      const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(movie.title)}&entity=song&country=IN&limit=25`);
+      if (itunesRes.ok) {
+        const data = await itunesRes.json();
+        const cleanM = normalize(movie.title);
+        const found = (data.results || []).filter(t => normalize(t.collectionName || "").includes(cleanM));
+        if (found.length) {
+          const seen = new Set();
+          songs = found.filter(t => {
+            if (seen.has(t.trackName)) return false;
+            seen.add(t.trackName);
+            return true;
+          }).map(t => ({ title: t.trackName, artist: t.artistName }));
+        }
+      }
+    } catch (_) {}
+  }
+
+  if (!songs.length) {
+    document.getElementById("songsStateBlock").innerHTML = `⚠️ Exact soundtrack not found automatically.<br><button type="button" class="btn" style="margin-top:10px;" onclick="addManualTrack()">+ Add Song Manually</button>`;
+    document.getElementById("movieSummarySongCount").textContent = "0";
+    return;
+  }
+
+  state.songs = songs.map(s => ({
     title: s.title,
     artist: s.artist,
     audio: "5.1 Surround DTS-HD",
     drive_id: "",
-    selectedFileName: ""
+    file_name: ""
   }));
 
   document.getElementById("movieSummarySongCount").textContent = String(state.songs.length);
   renderSongList();
-  showToast(`Loaded ${state.songs.length} official tracks!`);
+  showToast(`Loaded ${songs.length} Indian verified tracks!`);
 }
 
 function renderSongList() {
+  document.getElementById("songsStateBlock").classList.add("hidden");
   const box = document.getElementById("songList");
   box.innerHTML = "";
   state.songs.forEach((song, idx) => {
     const card = document.createElement("div");
     card.className = "song-card";
     
-    // Build Options for Dropdown
-    let optionsHtml = '<option value="">-- Select Matching Drive File --</option>';
-    availableFolderFiles.forEach(f => {
-      const isSel = (song.drive_id === f.id || song.selectedFileName === f.name) ? "selected" : "";
+    // Dropdown list
+    let optionsHtml = '<option value="">-- Choose Drive File --</option>';
+    availableFiles.forEach(f => {
+      const isSel = (song.drive_id === f.id || song.file_name === f.name) ? "selected" : "";
       optionsHtml += `<option value="${f.id}" data-name="${f.name}" ${isSel}>${f.name}</option>`;
     });
 
@@ -299,16 +395,15 @@ function renderSongList() {
           <div class="song-artist">${song.artist} &bull; <span style="color:var(--laser-cyan);">${song.audio}</span></div>
         </div>
         
-        <!-- INTERACTIVE DROPDOWN SELECTOR -->
         <div class="song-link-row">
-          <select class="drive-select" onchange="onFileSelected(${idx}, this)">
+          <select style="flex:1;" onchange="onSelectDropdownFile(${idx}, this)">
             ${optionsHtml}
           </select>
-          <input type="text" class="text-input" style="width:180px;" placeholder="Or Paste ID" value="${song.drive_id || ''}" oninput="onManualIdInput(${idx}, this.value)">
+          <input type="text" class="input" style="width:230px; font-family:monospace; font-size:12px;" placeholder="Real Drive ID (33 chars)" value="${song.drive_id || ''}" oninput="onDirectIdInput(${idx}, this.value)">
         </div>
 
         <div class="song-status ${song.drive_id ? 'saved' : ''}">
-          ${song.drive_id ? '✓ Attached: ' + (song.selectedFileName || song.drive_id) : 'Not linked'}
+          ${song.drive_id ? '✓ Real ID Linked: ' + song.drive_id : '⚠️ No Real ID linked (Stream will fail without ID)'}
         </div>
       </div>`;
 
@@ -318,101 +413,111 @@ function renderSongList() {
   document.getElementById("saveAllBar").classList.remove("hidden");
 }
 
-function onFileSelected(idx, sel) {
-  const val = sel.value;
-  const name = sel.options[sel.selectedIndex]?.getAttribute("data-name") || "";
-  state.songs[idx].drive_id = val;
-  state.songs[idx].selectedFileName = name;
+function onSelectDropdownFile(idx, sel) {
+  const fileId = sel.value;
+  const fileName = sel.options[sel.selectedIndex]?.getAttribute("data-name") || "";
+  state.songs[idx].drive_id = fileId;
+  state.songs[idx].file_name = fileName;
   renderSongList();
-  showToast(`Linked: ${state.songs[idx].title}`);
+  if (fileId) showToast(`Real ID Linked: ${fileId}`);
 }
 
-function onManualIdInput(idx, val) {
-  state.songs[idx].drive_id = val.trim();
+function onDirectIdInput(idx, raw) {
+  const realId = extractRealDriveId(raw);
+  state.songs[idx].drive_id = realId;
   renderSongList();
 }
 
-// Parse Raw Textbox / Preloaded Drive List
-function parseAndPopulateDropdowns() {
+function addManualTrack() {
+  const t = prompt("Enter song name:");
+  if (t && t.trim()) {
+    state.songs.push({
+      title: t.trim(),
+      artist: state.selectedMovie ? state.selectedMovie.title + " Song" : "Original Track",
+      audio: "5.1 Surround DTS-HD",
+      drive_id: "",
+      file_name: ""
+    });
+    document.getElementById("movieSummarySongCount").textContent = String(state.songs.length);
+    renderSongList();
+  }
+}
+
+// BATCH FILES AND REAL ID PARSER
+function loadBatchFilesAndMatch() {
   const raw = document.getElementById("folderFilesRaw").value.trim();
-  availableFolderFiles = [];
+  availableFiles = [];
 
-  if(raw) {
+  if (raw) {
     const lines = raw.split(/\r?\n/);
     lines.forEach(line => {
       const parts = line.split(/[|\t,]/);
-      if(parts.length >= 2) {
-        availableFolderFiles.push({ name: parts[0].trim(), id: parts[1].trim() });
-      } else if(line.includes("Track_")) {
-        availableFolderFiles.push({ name: line.trim(), id: line.trim() });
+      let name = parts[0].trim();
+      let possibleId = parts.length > 1 ? parts[1].trim() : parts[0].trim();
+      let realId = extractRealDriveId(possibleId);
+
+      if (realId) {
+        availableFiles.push({ name: name, id: realId });
       }
     });
   }
 
-  // If empty, auto-inject Engeyum Kadhal tracks from user screenshot
-  if(!availableFolderFiles.length) {
-    availableFolderFiles = [
-      { name: "Track_01_Engeyum_Kadhal.mkv", id: "Track_01_Engeyum_Kadhal.mkv" },
-      { name: "Track_02_Thendral_Ennum.mkv", id: "Track_02_Thendral_Ennum.mkv" },
-      { name: "Track_03_Nenjil_Nenjil.mkv", id: "Track_03_Nenjil_Nenjil.mkv" },
-      { name: "Track_04_Dhimu_Dhimu.mkv", id: "Track_04_Dhimu_Dhimu.mkv" },
-      { name: "Track_05_Kulu_Kulu_Venpani.mkv", id: "Track_05_Kulu_Kulu_Venpani.mkv" },
-      { name: "Track_06_Bathing_At_Cannes.mkv", id: "Track_06_Bathing_At_Cannes.mkv" },
-      { name: "Track_07_Lolita.mkv", id: "Track_07_Lolita.mkv" }
-    ];
-  }
-
-  renderSongList();
-  showToast(`Loaded ${availableFolderFiles.length} files into Dropdowns!`);
-}
-
-function autoMatchAllDropdowns() {
-  if(!availableFolderFiles.length) parseAndPopulateDropdowns();
-
-  let count = 0;
+  let matched = 0;
   state.songs.forEach(song => {
     const cleanSong = normalize(song.title);
-    const matched = availableFolderFiles.find(f => {
+    const found = availableFiles.find(f => {
       const cleanF = normalize(f.name);
       return cleanF.includes(cleanSong) || cleanSong.includes(cleanF);
     });
 
-    if(matched) {
-      song.drive_id = matched.id;
-      song.selectedFileName = matched.name;
-      count++;
+    if (found) {
+      song.drive_id = found.id;
+      song.file_name = found.name;
+      matched++;
     }
   });
 
   renderSongList();
-  showToast(`🎯 Auto-matched ${count} tracks with Google Drive files!`);
+  if (matched > 0) {
+    showToast(`🎯 Matched ${matched} tracks with 100% Real Drive IDs!`);
+  } else {
+    showToast("Parsed files into dropdowns. Select each track's file.", true);
+  }
 }
 
+// SAVE TO MASTER GITHUB CHUNK
 async function saveAllSongsToChunk() {
   const token = localStorage.getItem(CONFIG.TOKEN_KEY);
   if (!token) return showToast("Set GitHub Token first!", true);
   if (!state.selectedMovie) return showToast("Select a movie first!", true);
 
-  const validTracks = state.songs
-    .filter(s => s.drive_id && s.drive_id.trim() !== "")
-    .map((s, idx) => ({
-      id: s.drive_id.trim(),
-      title: s.title,
-      track_number: idx + 1,
-      artist: s.artist,
-      plot: `${state.selectedMovie.title} - ${s.title} Official 5.1 Surround Video Song.`,
-      thumb: state.selectedMovie.thumbnail,
-      fanart: state.selectedMovie.fanart,
-      stream_url: `${CONFIG.STREAMER_HOST}${s.drive_id.trim()}${CONFIG.STREAM_HEADER}`,
-      specs: {
-        resolution: "1080p FHD",
-        codec: "H.264",
-        audio: s.audio || "5.1 Surround DTS-HD",
-        channels: "5.1"
-      }
-    }));
+  // Validate that all linked tracks have real IDs, not filenames
+  const validTracks = [];
+  for (let i = 0; i < state.songs.length; i++) {
+    const s = state.songs[i];
+    if (s.drive_id && s.drive_id.length >= 25 && !s.drive_id.includes(".mkv")) {
+      validTracks.push({
+        id: s.drive_id,
+        title: s.title,
+        track_number: validTracks.length + 1,
+        artist: s.artist,
+        plot: `${state.selectedMovie.title} - ${s.title} Official 5.1 Surround Video Song.`,
+        thumb: state.selectedMovie.thumbnail,
+        fanart: state.selectedMovie.fanart,
+        stream_url: `${CONFIG.STREAMER_HOST}${s.drive_id}${CONFIG.STREAM_HEADER}`,
+        specs: {
+          resolution: "1080p FHD",
+          codec: "H.264",
+          audio: s.audio || "5.1 Surround DTS-HD",
+          channels: "5.1"
+        }
+      });
+    }
+  }
 
-  if (!validTracks.length) return showToast("Attach at least one song drive file!", true);
+  if (!validTracks.length) {
+    return showToast("Paste or select at least one Real 33-char Drive ID (not .mkv filename)!", true);
+  }
 
   const pack = {
     id: `album_${state.selectedMovie.id}`,
@@ -431,7 +536,7 @@ async function saveAllSongsToChunk() {
 
   showToast("Committing Album Pack to chunks/data_c03.json...");
   try {
-    const url = `https://api.github.com/repos/${CONFIG.GITHUB_OWNER}/${CONFIG.GITHUB_REPO}/contents/${CONFIG.TARGET_CHUNK}`;
+    const url = `https://api.github.com/repos/${CONFIG.GITHUB_OWNER}/${CONFIG.GITHUB_REPOSITORY}/contents/${CONFIG.TARGET_CHUNK}`;
     let existing = [];
     let sha = null;
     const gRes = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
