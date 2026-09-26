@@ -15,6 +15,7 @@
       <li><a href="m_view.html" class="nav-btn"><span>📊 Movies View</span></a></li>
       <li><a href="d_sync.html" class="nav-btn"><span>🔔 Drive Sync</span></a></li>
       <li><a href="p_push.html" class="nav-btn active"><span>➕ Push Movie</span></a></li>
+      <li><a href="s_push.html" class="nav-btn"><span>🎵 5.1 Songs Studio</span></a></li>
     </ul>
     <div style="margin-top:auto; padding-top:1rem;">
       <button class="nav-btn" onclick="configureGithubToken()"><span>⚙️ GitHub Token</span></button>
@@ -25,7 +26,7 @@
   <main>
     <header style="margin-bottom:1.5rem;">
       <h1>Ingest & Push Movie to Master Chunks</h1>
-      <p style="color:var(--text-muted);">Scene Standard Renamer, Collection Auto-Fetch, Multi Audio & Accurate Specs</p>
+      <p style="color:var(--text-muted);">Separate Original Language, Multi Audio Sync & Clean Scene Renamer</p>
     </header>
     <div class="form-container">
       <form id="push-form" onsubmit="handleFormSubmit(event)">
@@ -52,6 +53,7 @@
             <input type="text" id="collection-name" placeholder="Auto-filled from TMDB">
           </div>
 
+          <!-- TMDB PREVIEW -->
           <div class="form-group full-width" id="tmdb-preview-panel" style="display:none;">
             <label style="color:var(--neon-gold);">🎬 TMDB Visual Verification:</label>
             <div class="preview-card">
@@ -65,10 +67,23 @@
             </div>
           </div>
 
+          <!-- OPTION 1: ORIGINAL REGIONAL LANGUAGE (ROOT JSON FIELD) -->
           <div class="form-group full-width">
-            <label style="color:var(--neon-gold);">⚡ Regional Languages Sync (Auto-Detected):</label>
+            <label style="color:var(--laser-cyan); font-weight:700;">🌐 Original Movie Language (Asal me kis bhasha ki movie hai):</label>
+            <select id="orig-language" onchange="regenerateStandardName()">
+              <option value="ta" selected>Tamil (ta)</option>
+              <option value="hi">Hindi (hi)</option>
+              <option value="te">Telugu (te)</option>
+              <option value="ml">Malayalam (ml)</option>
+              <option value="kn">Kannada (kn)</option>
+              <option value="en">English (en)</option>
+            </select>
+          </div>
+
+          <!-- OPTION 2: MULTI-AUDIO TRACKS PRESENT IN FILE -->
+          <div class="form-group full-width">
+            <label style="color:var(--neon-gold); font-weight:700;">⚡ File Audio Tracks / Multi-Language Sync (File me kya-kya audio hai):</label>
             <div class="industry-checkbox-panel">
-              <label class="industry-check-label"><input type="checkbox" id="chk-multi" onchange="regenerateStandardName()"> 🌐 Multi Audio</label>
               <label class="industry-check-label"><input type="checkbox" id="chk-tamil" onchange="regenerateStandardName()"> 🌴 Tamil (data_c01_tamil)</label>
               <label class="industry-check-label"><input type="checkbox" id="chk-hindi" onchange="regenerateStandardName()"> ✨ Hindi (data_c01_hindi)</label>
               <label class="industry-check-label"><input type="checkbox" id="chk-telugu" onchange="regenerateStandardName()"> 🏛️ Telugu (data_c01_telugu)</label>
@@ -91,8 +106,8 @@
           <div class="form-group">
             <label>Codec Format</label>
             <select id="codec-format" onchange="regenerateStandardName()">
-              <option value="AVC">AVC</option>
               <option value="x264" selected>x264</option>
+              <option value="AVC">AVC</option>
               <option value="x265">x265 (HEVC)</option>
               <option value="HEVC">HEVC</option>
               <option value="AV1">AV1</option>
@@ -101,15 +116,13 @@
 
           <div class="form-group">
             <label>Audio Codec & Mix</label>
-            <input type="text" id="audio-format" value="DD+ 5.1" oninput="regenerateStandardName()" placeholder="e.g. DD2.0 Multi + English DTS-HD MA 5.1">
+            <input type="text" id="audio-format" value="DD+ 5.1" oninput="regenerateStandardName()" placeholder="e.g. DD 2.0 Multi + English DTS-HD MA 5.1">
           </div>
 
           <div class="form-group">
             <label>Source / OTT Platform</label>
             <select id="ott-source" onchange="regenerateStandardName()">
-              <option value="BluRay REMUX">BluRay REMUX</option>
-              <option value="BluRay">BluRay</option>
-              <option value="AMZN">Amazon Prime (AMZN)</option>
+              <option value="AMZN" selected>Amazon Prime (AMZN)</option>
               <option value="NF">Netflix (NF)</option>
               <option value="SunNXT">Sun NXT</option>
               <option value="DSNP">Disney+ Hotstar (DSNP)</option>
@@ -121,7 +134,9 @@
               <option value="SimplySouth">Simply South</option>
               <option value="Tentkotta">Tentkotta</option>
               <option value="ManoramaMAX">ManoramaMAX</option>
-              <option value="WEB-DL" selected>WEB-DL</option>
+              <option value="BluRay REMUX">BluRay REMUX</option>
+              <option value="BluRay">BluRay</option>
+              <option value="WEB-DL">Universal WEB-DL</option>
             </select>
           </div>
 
@@ -180,28 +195,35 @@
       if(!name) return;
       const lower = name.toLowerCase();
 
-      // 1. Language Auto Detection
-      const hasMulti = lower.includes("multi");
-      const hasEng = lower.includes("english") || lower.includes("eng");
+      // Multi Audio Track Checkbox Detect
       const hasTam = lower.includes("tamil") || lower.includes("tam");
       const hasHin = lower.includes("hindi") || lower.includes("hin");
       const hasTel = lower.includes("telugu") || lower.includes("tel");
+      const hasEng = lower.includes("english") || lower.includes("eng");
       const hasMal = lower.includes("malayalam") || lower.includes("mal");
       const hasKan = lower.includes("kannada") || lower.includes("kan");
 
-      document.getElementById("chk-multi").checked = hasMulti;
-      document.getElementById("chk-english").checked = hasEng;
       document.getElementById("chk-tamil").checked = hasTam;
       document.getElementById("chk-hindi").checked = hasHin;
       document.getElementById("chk-telugu").checked = hasTel;
+      document.getElementById("chk-english").checked = hasEng;
       document.getElementById("chk-malayalam").checked = hasMal;
       document.getElementById("chk-kannada").checked = hasKan;
-      
+
+      // Guess Original Language if obvious from filename
+      const origSel = document.getElementById("orig-language");
+      if(hasTam) origSel.value = "ta";
+      else if(hasHin) origSel.value = "hi";
+      else if(hasTel) origSel.value = "te";
+      else if(hasMal) origSel.value = "ml";
+      else if(hasKan) origSel.value = "kn";
+      else if(hasEng) origSel.value = "en";
+
       if(lower.includes("cartoon") || lower.includes("animation") || lower.includes("tom and jerry") || lower.includes("bheem")) {
         document.getElementById("chk-kids").checked = true;
       }
 
-      // 2. Source / OTT Platform Auto-Detection
+      // Source / OTT
       const ottSel = document.getElementById("ott-source");
       if(lower.includes("remux")) ottSel.value = "BluRay REMUX";
       else if(lower.includes("bluray")) ottSel.value = "BluRay";
@@ -214,9 +236,11 @@
       else if(lower.includes("aha")) ottSel.value = "AHA";
       else if(lower.includes("atvp") || lower.includes("apple")) ottSel.value = "ATVP";
       else if(lower.includes("jc") || lower.includes("jio")) ottSel.value = "JC";
-      else if(lower.includes("web-dl") || lower.includes("webdl")) ottSel.value = "WEB-DL";
+      else if(lower.includes("simplysouth")) ottSel.value = "SimplySouth";
+      else if(lower.includes("tentkotta")) ottSel.value = "Tentkotta";
+      else if(lower.includes("manorama")) ottSel.value = "ManoramaMAX";
 
-      // 3. Codec & Quality
+      // Resolution & Codec
       if(lower.includes("2160p") || lower.includes("4k")) document.getElementById("quality-format").value = "2160p";
       else if(lower.includes("720p")) document.getElementById("quality-format").value = "720p";
       else document.getElementById("quality-format").value = "1080p";
@@ -226,7 +250,7 @@
       else if(lower.includes("hevc")) document.getElementById("codec-format").value = "HEVC";
       else document.getElementById("codec-format").value = "x264";
 
-      // 4. Exact Audio Track Parsing
+      // Audio Mix
       let detectedAudios = [];
       if(lower.includes("dd2 0") || lower.includes("dd2.0") || lower.includes("dd 2.0")) detectedAudios.push("DD 2.0");
       if(lower.includes("dts-hd ma 5 1") || lower.includes("dts-hd ma 5.1")) detectedAudios.push("DTS-HD MA 5.1");
@@ -242,11 +266,11 @@
         document.getElementById("audio-format").value = "DD+ 5.1";
       }
 
-      // 5. GB Auto Matching
+      // Size
       const sm = name.match(/(\d+\.?\d*)\s*(gb|mb)/i);
       if(sm) manualScale(sm[0]);
 
-      // 6. Base Title & TMDB Query Extraction
+      // Base Title
       let clean = name.replace(/\.(mkv|mp4|avi)$/i, '').replace(/[\._\-]/g, ' ');
       const ym = clean.match(/\b(19\d\d|20\d\d)\b/);
       baseMovieYear = ym ? ym[1] : "2024";
@@ -263,14 +287,16 @@
       let year = meta && meta.release_date ? meta.release_date.split("-")[0] : baseMovieYear;
       
       let langs = [];
-      if(document.getElementById("chk-multi").checked) langs.push("Multi");
       if(document.getElementById("chk-tamil").checked) langs.push("Tamil");
       if(document.getElementById("chk-hindi").checked) langs.push("Hindi");
       if(document.getElementById("chk-telugu").checked) langs.push("Telugu");
       if(document.getElementById("chk-english").checked) langs.push("English");
       if(document.getElementById("chk-malayalam").checked) langs.push("Malayalam");
       if(document.getElementById("chk-kannada").checked) langs.push("Kannada");
-      let langTag = langs.length > 0 ? "[" + langs.join(" + ") + "]" : "[Multi]";
+      
+      let langTag = "";
+      if(langs.length === 0) langTag = "[Multi]";
+      else langTag = "[" + langs.join(" + ") + "]";
 
       let src = "[" + document.getElementById("ott-source").value + "]";
       let qual = "[" + document.getElementById("quality-format").value + "]";
@@ -319,6 +345,11 @@
         baseMovieTitle = d.title;
         baseMovieYear = d.release_date ? d.release_date.split("-")[0] : "2024";
 
+        // Auto-select original language from TMDB
+        if(d.original_language) {
+          document.getElementById("orig-language").value = d.original_language;
+        }
+
         let collName = "";
         if(d.belongs_to_collection && d.belongs_to_collection.name) {
           collName = d.belongs_to_collection.name;
@@ -346,11 +377,13 @@
       showLaserToast("Committing movie to GitHub chunks...");
       const streamUrl = WORKER_BASE + fileId + USER_AGENT;
       const finalCleanName = document.getElementById("clean-standard-title").value;
+      const chosenOrigLang = document.getElementById("orig-language").value;
+
       const movieObj = {
         id: fileId,
         title: meta ? meta.title : (baseMovieTitle || "Movie"),
         name: finalCleanName,
-        original_language: meta ? meta.original_language : "en",
+        original_language: chosenOrigLang,
         year: meta && meta.release_date ? parseInt(meta.release_date.split("-")[0]) : parseInt(baseMovieYear),
         tmdb_id: meta ? meta.id : 0,
         collection: document.getElementById("collection-name").value.trim(),
@@ -375,10 +408,12 @@
         }]
       };
 
+      // 1. Central Master Chunk
       let master = await fetchChunk("chunks/data_c01.json");
       master.unshift(movieObj);
       await commitFileDirect("chunks/data_c01.json", master, "Add: " + movieObj.title, token);
 
+      // 2. Multi-Audio / Regional Chunks Sync
       if(document.getElementById("chk-kids").checked) {
         let kids = await fetchChunk("chunks/data_c05_kids.json");
         kids.unshift(movieObj);
