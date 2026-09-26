@@ -806,6 +806,7 @@
         <button class="cat-pill" onclick="setCategoryFilter('lang_en', this)">🌐 English</button>
         <button class="cat-pill" onclick="setCategoryFilter('lang_ml', this)">🥥 Malayalam</button>
         <button class="cat-pill" onclick="setCategoryFilter('lang_kn', this)">🏔️ Kannada</button>
+        <button class="cat-pill" style="border-color:var(--laser-green); color:var(--laser-green);" onclick="setCategoryFilter('kids', this)">🧸 Kids & Cartoon</button>
         <button class="cat-pill" onclick="setCategoryFilter('genre_action', this)">🔥 Action</button>
         <button class="cat-pill" onclick="setCategoryFilter('genre_horror', this)">🩸 Horror</button>
         <button class="cat-pill" onclick="setCategoryFilter('genre_comedy', this)">😂 Comedy</button>
@@ -875,6 +876,10 @@
                 <label class="industry-check-label">
                   <input type="checkbox" id="chk-sandalwood" value="kn">
                   <span>🏔️ Kannada (data_c01_kannada)</span>
+                </label>
+                <label class="industry-check-label">
+                  <input type="checkbox" id="chk-kids" value="kids">
+                  <span>🧸 Kids (data_c05_kids)</span>
                 </label>
               </div>
             </div>
@@ -990,6 +995,7 @@
     let englishData = [];
     let malayalamData = [];
     let kannadaData = [];
+    let kidsData = [];
 
     let inboxArrivalsList = [];
     let fetchedMeta = null;
@@ -1118,7 +1124,7 @@
         } catch(e) { return []; }
       };
 
-      [moviesData, imaxData, tamilData, teluguData, hindiData, englishData, malayalamData, kannadaData] = await Promise.all([
+      [moviesData, imaxData, tamilData, teluguData, hindiData, englishData, malayalamData, kannadaData, kidsData] = await Promise.all([
         fetchChunk('chunks/data_c01.json'),
         fetchChunk('chunks/data_c01_imax.json'),
         fetchChunk('chunks/data_c01_tamil.json'),
@@ -1126,7 +1132,8 @@
         fetchChunk('chunks/data_c01_hindi.json'),
         fetchChunk('chunks/data_c01_english.json'),
         fetchChunk('chunks/data_c01_malayalam.json'),
-        fetchChunk('chunks/data_c01_kannada.json')
+        fetchChunk('chunks/data_c01_kannada.json'),
+        fetchChunk('chunks/data_c05_kids.json')
       ]);
 
       document.getElementById('stat-c01').textContent = moviesData.length;
@@ -1361,6 +1368,7 @@
       else if (currentCategory === 'lang_en') list = englishData;
       else if (currentCategory === 'lang_ml') list = malayalamData;
       else if (currentCategory === 'lang_kn') list = kannadaData;
+      else if (currentCategory === 'kids') list = kidsData;
       else if (currentCategory.startsWith('genre_')) {
         const targetGenre = currentCategory.replace('genre_', '').toLowerCase();
         list = moviesData.filter(m => {
@@ -1743,6 +1751,10 @@
       if (document.getElementById('chk-sandalwood').checked) {
         kannadaData.unshift(newEntry);
         await commitFileDirect('chunks/data_c01_kannada.json', kannadaData, `Sync Kannada: ${meta.title}`, token);
+      }
+      if (document.getElementById("chk-kids") && document.getElementById("chk-kids").checked) {
+        kidsData.unshift(newEntry);
+        await commitFileDirect("chunks/data_c05_kids.json", kidsData, `Sync Kids: ${meta.title}`, token);
       }
 
       showLaserToast(`🎉 "${meta.title}" committed successfully!`);
