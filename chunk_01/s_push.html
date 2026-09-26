@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>MoinuFlix — 5.1 Songs Folder Studio</title>
+  <link rel="stylesheet" href="c_core/ui_style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <aside>
+    <div class="brand">
+      <div class="brand-logo">M</div>
+      <div style="font-size:1.2rem; font-weight:800;">MoinuFlix</div>
+    </div>
+    <ul class="nav-list">
+      <li><a href="m_view.html" class="nav-btn"><span>📊 Movies View</span></a></li>
+      <li><a href="d_sync.html" class="nav-btn"><span>🔔 Drive Sync</span></a></li>
+      <li><a href="p_push.html" class="nav-btn"><span>➕ Push Movie</span></a></li>
+      <li><a href="s_push.html" class="nav-btn active"><span>🎵 5.1 Songs Studio</span></a></li>
+    </ul>
+    <div style="margin-top:auto; padding-top:1rem;">
+      <button class="nav-btn" onclick="configureGithubToken()"><span>⚙️ GitHub Token</span></button>
+    </div>
+  </aside>
+  <div id="laser-toast"></div>
+
+  <main>
+    <header style="margin-bottom:1.5rem;">
+      <h1>5.1 Surround Tracks Folder Ingest</h1>
+      <p style="color:var(--text-muted);">Paste Google Drive Folder link or ID to auto-load entire soundtrack into chunks/data_c03.json</p>
+    </header>
+
+    <!-- TMDB SEARCH -->
+    <div class="form-container" style="margin-bottom:1.5rem;">
+      <label style="color:var(--laser-cyan); font-weight:700;">1. Search Movie for Album Artwork:</label>
+      <input type="text" id="movie-search" placeholder="Type movie name (e.g. Paiyaa, Thodari, Leo)..." oninput="searchMovie(this.value)" style="margin-top:6px;">
+      <div id="movie-results" style="display:none; background:#0b1329; border:1px solid var(--laser-cyan); border-radius:10px; margin-top:6px; max-height:160px; overflow-y:auto; padding:6px;"></div>
+    </div>
+
+    <!-- MOVIE PREVIEW -->
+    <div class="preview-card" id="album-preview" style="display:none; margin-bottom:1.5rem;">
+      <img id="alb-poster" class="preview-poster" src="">
+      <div id="alb-backdrop" class="preview-backdrop">
+        <div style="position:relative; z-index:2;">
+          <h3 id="alb-title" style="color:#fff; font-size:1.2rem; font-weight:800;"></h3>
+          <p id="alb-meta" style="color:var(--laser-cyan); font-size:0.85rem;"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOLDER LINK / ID INGEST -->
+    <div class="form-container" style="margin-bottom:1.5rem;">
+      <label style="color:var(--neon-gold); font-weight:700;">2. Google Drive Songs Folder Link or Folder ID:</label>
+      <div style="display:flex; gap:10px; margin-top:8px;">
+        <input type="text" id="folder-input" placeholder="Paste Folder ID or Link (e.g. 1UfMBb32d8gXAIrvBsB1jng3kfmzO4DQF)">
+        <button type="button" class="btn-submit" style="width:200px;" onclick="extractFolderFiles()">⚡ Scan Folder</button>
+      </div>
+    </div>
+
+    <!-- EXTRACTED TRACKS -->
+    <div class="form-container" id="tracks-panel" style="display:none;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h3 style="font-size:1.1rem; font-weight:700;">Extracted Audio Tracks</h3>
+        <button type="button" class="nav-btn" style="width:auto; border-color:var(--laser-cyan);" onclick="addCustomTrackRow()">+ Add Row</button>
+      </div>
+      <div id="tracks-container" style="display:flex; flex-direction:column; gap:10px;"></div>
+
+      <button type="button" class="btn-submit" style="margin-top:20px; font-size:1rem; padding:14px;" onclick="commitAlbumPack()">🚀 COMMIT ALBUM PACK TO chunks/data_c03.json</button>
+    </div>
+  </main>
+
+  <script src="j_core/gh_core.js"></script>
+  <script>
+    let activeMovie = null;
+    let trackList = [];
+
+    async function searchMovie(q) {
+      if(!q || q.length < 2) return;
+      try {
+        const res = await fetch("https://api.themoviedb.org/3/search/movie?api_key=" + TMDB_API_KEY + "&query=" + encodeURIComponent(q));
+        const d = await res.json();
+        const box = document.getElementById("movie-results");
+        box.innerHTML = "";
+        if(d.results && d.results.length) {
+          d.results.slice(0, 5).forEach(m => {
+            const row = document.createElement("div");
+            row.style.cssText = "padding:8px; cursor:pointer; color:#fff; font-size:0.85rem; border-bottom:1px solid rgba(255,255,255,0.06);";
+            row.textContent = "🎬 " + m.title + " (" + (m.release_date ? m.release_date.split("-")[0] : "—") + ")";
+            row.onclick = () => selectMovie(m);
+            box.appendChild(row);
+          });
+          box.style.display = "block";
+        }
+      } catch(e) {}
+    }
+
+    function selectMovie(m) {
+      document.getElementById("movie-results").style.display = "none";
+      document.getElementById("movie-search").value = m.title;
+      activeMovie = {
+        id: m.id,
+        title: m.title,
+        year: m.release_date ? m.release_date.split("-")[0] : "2024",
+        poster: m.poster_path ? "https://image.tmdb.org/t/p/w500" + m.poster_path : "",
+        fanart: m.backdrop_path ? "https://image.tmdb.org/t/p/original" + m.backdrop_path : "",
+        thumbnail: m.backdrop_path ? "https://image.tmdb.org/t/p/w780" + m.backdrop_path : ""
+      };
+      document.getElementById("alb-poster").src = activeMovie.poster;
+      document.getElementById("alb-backdrop").style.backgroundImage = "url(" + activeMovie.fanart + ")";
+      document.getElementById("alb-title").textContent = activeMovie.title + " (" + activeMovie.year + ")";
+      document.getElementById("alb-meta").textContent = "TMDB #" + activeMovie.id + " • Ready for Folder Attachment";
+      document.getElementById("album-preview").style.display = "flex";
+      showLaserToast("Loaded: " + activeMovie.title);
+    }
+
+    function detectAudioCodec(name) {
+      const l = name.toLowerCase();
+      if(l.includes("atmos")) return "Dolby Atmos";
+      if(l.includes("dts-hd") || l.includes("dts hd")) return "DTS-HD MA 5.1";
+      if(l.includes("1509") || l.includes("dts")) return "1509k DTS 5.1";
+      if(l.includes("ddp") || l.includes("dd+")) return "DD+ 5.1";
+      if(l.includes("flac")) return "FLAC Lossless 5.1";
+      return "5.1 Surround";
+    }
+
+    async function extractFolderFiles() {
+      const input = document.getElementById("folder-input").value;
+      const foldId = extractGDriveId(input);
+      if(!foldId) return showLaserToast("Invalid Folder ID / Link!", true);
+
+      showLaserToast("Reading folder items via Worker API...");
+      try {
+        const res = await fetch("https://gdrive-stream.moinudeentv.workers.dev/list?id=" + foldId);
+        if(res.ok) {
+          const data = await res.json();
+          if(data.files && data.files.length) {
+            trackList = data.files.map((f, idx) => ({
+              id: f.id,
+              title: f.name.replace(/\.(mkv|mp4|avi)$/i, '').replace(/[\._\-]/g, ' '),
+              audio: detectAudioCodec(f.name),
+              drive_id: f.id
+            }));
+            renderTracks();
+            document.getElementById("tracks-panel").style.display = "block";
+            showLaserToast("Extracted " + trackList.length + " tracks from Folder!");
+            return;
+          }
+        }
+      } catch(e) {}
+
+      // Fallback row if Worker direct-list endpoint is pending
+      addCustomTrackRow();
+      document.getElementById("tracks-panel").style.display = "block";
+      showLaserToast("Folder Hook linked. Add items below.");
+    }
+
+    function addCustomTrackRow() {
+      trackList.push({
+        id: "",
+        title: activeMovie ? activeMovie.title + " Video Song" : "Song Name",
+        audio: "5.1 Surround DTS-HD",
+        drive_id: ""
+      });
+      renderTracks();
+    }
+
+    function renderTracks() {
+      const c = document.getElementById("tracks-container");
+      c.innerHTML = "";
+      trackList.forEach((t, i) => {
+        const row = document.createElement("div");
+        row.style.cssText = "display:grid; grid-template-columns: 2fr 1fr 2fr 40px; gap:8px; align-items:center; background:rgba(9, 18, 36, 0.7); padding:8px 12px; border-radius:10px;";
+        row.innerHTML = `
+          <input type="text" value="${t.title}" oninput="trackList[${i}].title=this.value" placeholder="Track Name">
+          <input type="text" value="${t.audio}" oninput="trackList[${i}].audio=this.value" placeholder="Audio Codec">
+          <input type="text" value="${t.drive_id}" oninput="trackList[${i}].drive_id=this.value" placeholder="Drive File ID">
+          <button type="button" class="nav-btn" style="padding:6px; color:var(--laser-red); border-color:var(--laser-red);" onclick="removeTrackRow(${i})">✕</button>
+        `;
+        c.appendChild(row);
+      });
+    }
+
+    function removeTrackRow(i) {
+      trackList.splice(i, 1);
+      renderTracks();
+    }
+
+    async function commitAlbumPack() {
+      const token = getStoredToken();
+      if(!token) return showLaserToast("Set GitHub Token first!", true);
+      if(!activeMovie) return showLaserToast("Select movie first!", true);
+      if(!trackList.length) return showLaserToast("No tracks in list!", true);
+
+      showLaserToast("Committing 5.1 Album to chunks/data_c03.json...");
+      const pack = {
+        id: "album_" + activeMovie.id,
+        title: activeMovie.title + " (5.1 Surround Soundtracks)",
+        original_title: activeMovie.title,
+        movie: activeMovie.title,
+        tmdb_id: activeMovie.id,
+        year: activeMovie.year,
+        rating: 8.5,
+        plot: activeMovie.title + " Complete 5.1 Surround Master Video Pack.",
+        poster: activeMovie.poster,
+        fanart: activeMovie.fanart,
+        logo: activeMovie.thumbnail,
+        tracks: trackList.map((t, idx) => ({
+          id: t.drive_id || ("track_" + (idx+1)),
+          title: t.title,
+          track_number: idx + 1,
+          artist: activeMovie.title + " Soundtrack",
+          plot: activeMovie.title + " - " + t.title + " Official " + t.audio + " Video Track.",
+          thumb: activeMovie.thumbnail,
+          fanart: activeMovie.fanart,
+          stream_url: WORKER_BASE + t.drive_id + USER_AGENT,
+          specs: { resolution: "1080p FHD", codec: "H.264", audio: t.audio, channels: "5.1" }
+        }))
+      };
+
+      let existing = await fetchChunk("chunks/data_c03.json");
+      const idx = existing.findIndex(a => a.tmdb_id === activeMovie.id || a.movie === activeMovie.title);
+      if(idx >= 0) existing[idx] = pack;
+      else existing.unshift(pack);
+
+      await commitFileDirect("chunks/data_c03.json", existing, "Add 5.1 Pack: " + activeMovie.title, token);
+      showLaserToast("🎉 5.1 Album Pack Committed to chunks/data_c03.json!");
+    }
+  </script>
+</body>
+</html>
