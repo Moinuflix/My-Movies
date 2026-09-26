@@ -25,16 +25,21 @@
   <main>
     <header style="margin-bottom:1.5rem;">
       <h1>Ingest & Push Movie to Master Chunks</h1>
-      <p style="color:var(--text-muted);">Auto-fill, TMDB backdrop preview, clean rename, and scale size</p>
+      <p style="color:var(--text-muted);">Scene Standard Renamer, Full OTT list, Advanced Audio & Scale Auto-Match</p>
     </header>
     <div class="form-container">
       <form id="push-form" onsubmit="handleFormSubmit(event)">
         <div class="form-grid">
           
           <div class="form-group full-width">
-            <label style="color:var(--laser-cyan);">⚡ Release File Name (Auto-arranges & syncs languages):</label>
+            <label style="color:var(--laser-cyan);">⚡ Release File Name (Auto-detects specs, audio, OTT & searches TMDB):</label>
             <input type="text" id="raw-name" placeholder="Paste raw filename" oninput="parseFileName(this.value)">
             <div id="tmdb-suggestions" style="display:none; background:#0b1329; border:1px solid var(--laser-cyan); border-radius:10px; margin-top:6px; max-height:180px; overflow-y:auto; padding:6px;"></div>
+          </div>
+
+          <div class="form-group full-width">
+            <label style="color:var(--neon-gold);">🎬 Clean Scene Standard Title (Auto-Arranged):</label>
+            <input type="text" id="clean-standard-title" style="border-color:var(--neon-gold); font-weight:700; color:var(--neon-gold);" placeholder="Thodari (2016) [Tamil] [AMZN] [1080p] [x264] [DD+ 5.1].mkv">
           </div>
 
           <div class="form-group">
@@ -48,7 +53,7 @@
           </div>
 
           <div class="form-group full-width" id="tmdb-preview-panel" style="display:none;">
-            <label style="color:var(--neon-gold);">🎬 TMDB Backdrop & Poster Preview:</label>
+            <label style="color:var(--neon-gold);">🎬 TMDB Visual Verification:</label>
             <div class="preview-card">
               <img id="prev-poster" class="preview-poster" src="">
               <div id="prev-backdrop" class="preview-backdrop">
@@ -75,14 +80,73 @@
 
           <div class="form-group">
             <label>Quality Format</label>
-            <select id="quality-format">
-              <option value="1080p FHD" selected>1080p FHD</option>
-              <option value="4K UHD">4K UHD (2160p)</option>
-              <option value="720p HD">720p HD</option>
+            <select id="quality-format" onchange="regenerateStandardName()">
+              <option value="1080p" selected>1080p FHD</option>
+              <option value="2160p">4K UHD (2160p)</option>
+              <option value="720p">720p HD</option>
+              <option value="Remux">Remux / Lossless</option>
             </select>
           </div>
 
           <div class="form-group">
+            <label>Codec Format</label>
+            <select id="codec-format" onchange="regenerateStandardName()">
+              <option value="x264" selected>x264 (AVC)</option>
+              <option value="x265">x265 (HEVC)</option>
+              <option value="AV1">AV1</option>
+              <option value="ProRes">ProRes</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Audio Codec & Channels</label>
+            <select id="audio-format" onchange="regenerateStandardName()">
+              <option value="DD+ 5.1" selected>DD+ 5.1 (Dolby Digital Plus)</option>
+              <option value="Dolby Atmos">Dolby Atmos / TrueHD</option>
+              <option value="DD 5.1">DD 5.1 (AC3)</option>
+              <option value="AAC 2.0">AAC 2.0 (Stereo)</option>
+              <option value="AAC 5.1">AAC 5.1 (Multi)</option>
+              <option value="DTS-HD MA">DTS-HD Master Audio</option>
+              <option value="DTS 5.1">1509k DTS 5.1</option>
+              <option value="FLAC">FLAC Lossless Audio</option>
+              <option value="Opus 2.0">Opus 2.0</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Studio / OTT Platform</label>
+            <select id="ott-source" onchange="regenerateStandardName()">
+              <option value="AMZN" selected>Amazon Prime Video (AMZN)</option>
+              <option value="NF">Netflix (NF)</option>
+              <option value="SunNXT">Sun NXT</option>
+              <option value="DSNP">Disney+ Hotstar (DSNP)</option>
+              <option value="SNXT">SonyLIV</option>
+              <option value="ZEE5">Zee5</option>
+              <option value="AHA">Aha</option>
+              <option value="ATVP">Apple TV+ (ATVP)</option>
+              <option value="JC">JioCinema (JC)</option>
+              <option value="SimplySouth">Simply South</option>
+              <option value="Tentkotta">Tentkotta</option>
+              <option value="ManoramaMAX">ManoramaMAX</option>
+              <option value="Lionsgate">Lionsgate Play</option>
+              <option value="ErosNow">Eros Now</option>
+              <option value="MXPlayer">MX Player</option>
+              <option value="Chaupal">Chaupal</option>
+              <option value="Hoichoi">Hoichoi</option>
+              <option value="PlanetMarathi">Planet Marathi</option>
+              <option value="BookMyShow">BookMyShow Stream</option>
+              <option value="DiscoveryPlus">Discovery+</option>
+              <option value="ShemarooMe">ShemarooMe</option>
+              <option value="Voot">Voot</option>
+              <option value="Stage">Stage</option>
+              <option value="Ullu">Ullu</option>
+              <option value="Klikk">Klikk</option>
+              <option value="WEB-DL">Universal WEB-DL</option>
+              <option value="BluRay">BluRay Disc</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
             <div style="display:flex; justify-content:space-between;">
               <label>File Size Scale (1GB to 50GB)</label>
               <span id="scale-val" style="color:var(--laser-cyan); font-weight:800;">3GB</span>
@@ -107,6 +171,8 @@
   <script src="j_core/gh_core.js"></script>
   <script>
     let meta = null;
+    let baseMovieTitle = "";
+    let baseMovieYear = "2024";
 
     function updateScale(v) {
       document.getElementById("scale-val").textContent = v + "GB";
@@ -121,14 +187,25 @@
       document.getElementById("scale-val").textContent = rounded;
     }
 
+    function cleanAndRoundSize(raw) {
+      if(!raw) return "3GB";
+      const m = String(raw).match(/([\d\.]+)\s*(gb|mb)?/i);
+      if(!m) return "3GB";
+      let num = parseFloat(m[1]);
+      if((m[2] || "gb").toLowerCase() === "mb") num = num / 1024;
+      const rounded = Math.round(num);
+      return (rounded < 1 ? 1 : (rounded > 50 ? 50 : rounded)) + "GB";
+    }
+
     function parseFileName(name) {
       if(!name) return;
       const lower = name.toLowerCase();
 
-      document.getElementById("chk-hindi").checked = lower.includes("hindi") || lower.includes("hin");
-      document.getElementById("chk-english").checked = lower.includes("english") || lower.includes("eng");
+      // 1. Language Auto Detection
       document.getElementById("chk-tamil").checked = lower.includes("tamil") || lower.includes("tam");
+      document.getElementById("chk-hindi").checked = lower.includes("hindi") || lower.includes("hin");
       document.getElementById("chk-telugu").checked = lower.includes("telugu") || lower.includes("tel");
+      document.getElementById("chk-english").checked = lower.includes("english") || lower.includes("eng");
       document.getElementById("chk-malayalam").checked = lower.includes("malayalam") || lower.includes("mal");
       document.getElementById("chk-kannada").checked = lower.includes("kannada") || lower.includes("kan");
       
@@ -136,16 +213,75 @@
         document.getElementById("chk-kids").checked = true;
       }
 
+      // 2. Audio Auto Detection
+      const audSel = document.getElementById("audio-format");
+      if(lower.includes("atmos") || lower.includes("truehd")) audSel.value = "Dolby Atmos";
+      else if(lower.includes("ddp") || lower.includes("dd+") || lower.includes("eac3")) audSel.value = "DD+ 5.1";
+      else if(lower.includes("ac3") || lower.includes("dd5") || lower.includes("dd 5")) audSel.value = "DD 5.1";
+      else if(lower.includes("dts-hd")) audSel.value = "DTS-HD MA";
+      else if(lower.includes("dts")) audSel.value = "DTS 5.1";
+      else if(lower.includes("flac")) audSel.value = "FLAC";
+      else if(lower.includes("aac 2") || lower.includes("2.0") || lower.includes("aac")) audSel.value = "AAC 2.0";
+
+      // 3. OTT Auto Detection
+      const ottSel = document.getElementById("ott-source");
+      if(lower.includes("sunnxt") || lower.includes("sun nxt")) ottSel.value = "SunNXT";
+      else if(lower.includes("amzn") || lower.includes("prime")) ottSel.value = "AMZN";
+      else if(lower.includes("nf") || lower.includes("netflix")) ottSel.value = "NF";
+      else if(lower.includes("hotstar") || lower.includes("dsnp")) ottSel.value = "DSNP";
+      else if(lower.includes("sonyliv")) ottSel.value = "SNXT";
+      else if(lower.includes("zee5")) ottSel.value = "ZEE5";
+      else if(lower.includes("aha")) ottSel.value = "AHA";
+      else if(lower.includes("atvp") || lower.includes("apple")) ottSel.value = "ATVP";
+      else if(lower.includes("jc") || lower.includes("jio")) ottSel.value = "JC";
+      else if(lower.includes("simplysouth")) ottSel.value = "SimplySouth";
+      else if(lower.includes("tentkotta")) ottSel.value = "Tentkotta";
+      else if(lower.includes("manorama")) ottSel.value = "ManoramaMAX";
+
+      // 4. Codec & Quality
+      if(lower.includes("2160p") || lower.includes("4k")) document.getElementById("quality-format").value = "2160p";
+      else if(lower.includes("720p")) document.getElementById("quality-format").value = "720p";
+      else document.getElementById("quality-format").value = "1080p";
+
+      if(lower.includes("x265") || lower.includes("hevc")) document.getElementById("codec-format").value = "x265";
+      else document.getElementById("codec-format").value = "x264";
+
+      // 5. GB Auto Matching
       const sm = name.match(/(\d+\.?\d*)\s*(gb|mb)/i);
       if(sm) manualScale(sm[0]);
 
+      // 6. Base Title & TMDB Query Extraction
       let clean = name.replace(/\.(mkv|mp4|avi)$/i, '').replace(/[\._\-]/g, ' ');
       const ym = clean.match(/\b(19\d\d|20\d\d)\b/);
-      let year = ym ? ym[1] : '';
+      baseMovieYear = ym ? ym[1] : "2024";
       let title = ym ? clean.substring(0, ym.index).trim() : clean;
-      title = title.replace(/\b(1080p|720p|2160p|4k|uhd|bluray|web-dl|amzn|ddp5|x264|x265|hevc|hindi|tamil|telugu|english)\b/gi, '').trim();
+      title = title.replace(/\b(1080p|720p|2160p|4k|uhd|bluray|web-dl|amzn|ddp5|x264|x265|hevc|hindi|tamil|telugu|english|sunnxt|aac)\b/gi, '').trim();
+      baseMovieTitle = title;
 
-      searchTMDBAuto(title, year);
+      regenerateStandardName();
+      searchTMDBAuto(title, baseMovieYear);
+    }
+
+    function regenerateStandardName() {
+      let title = meta ? meta.title : (baseMovieTitle || "Movie");
+      let year = meta && meta.release_date ? meta.release_date.split("-")[0] : baseMovieYear;
+      
+      let langs = [];
+      if(document.getElementById("chk-tamil").checked) langs.push("Tamil");
+      if(document.getElementById("chk-hindi").checked) langs.push("Hindi");
+      if(document.getElementById("chk-telugu").checked) langs.push("Telugu");
+      if(document.getElementById("chk-english").checked) langs.push("English");
+      if(document.getElementById("chk-malayalam").checked) langs.push("Malayalam");
+      if(document.getElementById("chk-kannada").checked) langs.push("Kannada");
+      let langTag = langs.length > 0 ? "[" + langs.join(" + ") + "]" : "[Multi]";
+
+      let ott = "[" + document.getElementById("ott-source").value + "]";
+      let qual = "[" + document.getElementById("quality-format").value + "]";
+      let codec = "[" + document.getElementById("codec-format").value + "]";
+      let aud = "[" + document.getElementById("audio-format").value + "]";
+
+      const standard = `${title} (${year}) ${langTag} ${ott} ${qual} ${codec} ${aud}.mkv`;
+      document.getElementById("clean-standard-title").value = standard;
     }
 
     async function searchTMDBAuto(query, year) {
@@ -183,12 +319,17 @@
         if(!res.ok) return;
         const d = await res.json();
         meta = d;
+        baseMovieTitle = d.title;
+        baseMovieYear = d.release_date ? d.release_date.split("-")[0] : "2024";
+
         document.getElementById("collection-name").value = d.belongs_to_collection ? d.belongs_to_collection.name : "";
         document.getElementById("prev-poster").src = d.poster_path ? ("https://image.tmdb.org/t/p/w200" + d.poster_path) : "";
         document.getElementById("prev-backdrop").style.backgroundImage = d.backdrop_path ? ("url(https://image.tmdb.org/t/p/w780" + d.backdrop_path + ")") : "none";
-        document.getElementById("prev-title").textContent = d.title + " (" + (d.release_date ? d.release_date.split("-")[0] : "") + ")";
+        document.getElementById("prev-title").textContent = d.title + " (" + baseMovieYear + ")";
         document.getElementById("prev-desc").textContent = "Rating: " + d.vote_average + " • " + (d.genres ? d.genres.map(g => g.name).join(", ") : "");
         document.getElementById("tmdb-preview-panel").style.display = "block";
+        
+        regenerateStandardName();
         showLaserToast("TMDB Linked: " + d.title);
       } catch(e) {}
     }
@@ -202,19 +343,34 @@
 
       showLaserToast("Committing movie to GitHub chunks...");
       const streamUrl = WORKER_BASE + fileId + USER_AGENT;
+      const finalCleanName = document.getElementById("clean-standard-title").value;
       const movieObj = {
         id: fileId,
-        title: meta ? meta.title : "Movie",
-        original_language: meta ? meta.original_language : "en",
-        year: meta && meta.release_date ? parseInt(meta.release_date.split("-")[0]) : 2024,
+        title: meta ? meta.title : (baseMovieTitle || "Movie"),
+        name: finalCleanName,
+        original_language: meta ? meta.original_language : "ta",
+        year: meta && meta.release_date ? parseInt(meta.release_date.split("-")[0]) : parseInt(baseMovieYear),
         tmdb_id: meta ? meta.id : 0,
         collection: document.getElementById("collection-name").value.trim(),
         poster: meta && meta.poster_path ? ("https://image.tmdb.org/t/p/w500" + meta.poster_path) : "",
         fanart: meta && meta.backdrop_path ? ("https://image.tmdb.org/t/p/original" + meta.backdrop_path) : "",
         plot: meta ? meta.overview : "",
-        specs: { resolution: document.getElementById("quality-format").value, size: document.getElementById("file-size").value },
+        specs: { 
+          resolution: document.getElementById("quality-format").value, 
+          audio: document.getElementById("audio-format").value,
+          source: document.getElementById("ott-source").value,
+          codec: document.getElementById("codec-format").value,
+          size: document.getElementById("file-size").value 
+        },
         stream_url: streamUrl,
-        versions: [{ id: fileId, quality: document.getElementById("quality-format").value, stream_url: streamUrl }]
+        versions: [{ 
+          id: fileId, 
+          name: finalCleanName,
+          quality: document.getElementById("quality-format").value, 
+          audio: document.getElementById("audio-format").value,
+          source: document.getElementById("ott-source").value,
+          stream_url: streamUrl 
+        }]
       };
 
       let master = await fetchChunk("chunks/data_c01.json");
@@ -254,7 +410,6 @@
       document.getElementById("tmdb-preview-panel").style.display = "none";
     }
 
-    // Auto-trigger when opening from d_sync Push button
     window.onload = () => {
       const storedId = localStorage.getItem("temp_push_id");
       const storedTitle = localStorage.getItem("temp_push_title");
