@@ -61,7 +61,7 @@
         "studio": "Netflix",
         "resolution": "1080p FHD",
         "audio": "Dolby Atmos",
-        "size": "10GB",
+        "size": "4.5 GB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1r-3HRa6ST9BwUwA7nCDKzXnN7Ignt144|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
@@ -119,13 +119,13 @@
       "audio": "Dolby Atmos",
       "channels": "5.1",
       "languages": "Tamil",
-      "size": "10 GB"
+      "size": "8.7 GB"
     },
     "versions": [
       {
         "id": "1xoMdKGygZWhT80cVBKzLuVQuLtLqzq1N",
         "name": "Thani Oruvan (2015) [1080p] [WEB-DL] [Dolby Atmos].mkv",
-        "quality": "1080p • WEB-DL • Dolby Atmos [10 GB]",
+        "quality": "1080p • WEB-DL • Dolby Atmos",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p",
@@ -140,7 +140,8 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": "10 GB"
-        }
+        },
+        "size": "8.7 GB"
       }
     ]
   },
@@ -197,13 +198,13 @@
       "audio": "Dolby Digital Plus",
       "channels": "5.1",
       "languages": "Tamil, Telugu, Hindi, Malayalam",
-      "size": "10 GB"
+      "size": "10.2 GB"
     },
     "versions": [
       {
         "id": "1VgiSXaEiCSt2gRWEakdkgDbUyE4WsflG",
         "name": "Ram and Leela (2026) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
-        "quality": "1080p • Prime Video • Dolby Digital Plus Multi [10 GB]",
+        "quality": "1080p • Prime Video • Dolby Digital Plus",
         "source": "Prime Video",
         "codec": "x265",
         "resolution": "1080p",
@@ -218,7 +219,8 @@
           "channels": "5.1",
           "languages": "Tamil, Telugu, Hindi, Malayalam",
           "size": "10 GB"
-        }
+        },
+        "size": "10.2 GB"
       }
     ]
   },
@@ -271,7 +273,7 @@
       "resolution": "1080p FHD",
       "audio": "Dolby Atmos",
       "source": "Prime Video",
-      "size": "10 GB"
+      "size": "9.9 GB"
     },
     "versions": [
       {
@@ -281,7 +283,7 @@
         "source": "Prime Video",
         "resolution": "1080p FHD",
         "audio": "Dolby Atmos",
-        "size": "10 GB",
+        "size": "9.9 GB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1DduxvogyKP4Tbpg-trz2ifGkHcMW-Nzm|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
@@ -335,17 +337,17 @@
       "resolution": "1080p FHD",
       "audio": "Dolby Atmos",
       "source": "BLURAY",
-      "size": "10 GB"
+      "size": "450 MB"
     },
     "versions": [
       {
         "id": "1AAys6JpxKj78ii6oyKQOK2l1kKR9Zjhd",
         "name": "K.O. (2025) [1080p FHD] [BLURAY] [Dolby Atmos].mkv",
-        "quality": "1080p FHD • BLURAY • Dolby Atmos",
-        "source": "BLURAY",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
+        "source": "WEB-DL",
         "resolution": "1080p FHD",
         "audio": "Dolby Atmos",
-        "size": "10 GB",
+        "size": "450 MB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1AAys6JpxKj78ii6oyKQOK2l1kKR9Zjhd|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
@@ -399,17 +401,17 @@
       "resolution": "1080p FHD",
       "audio": "Dolby Atmos",
       "source": "Prime Video",
-      "size": "10 GB"
+      "size": "7.7 GB"
     },
     "versions": [
       {
         "id": "1gTSyWVQl2O5Sql2Pn5HEgExpj7rDq9Rc",
         "name": "22 Bullets (2010) [1080p FHD] [Prime Video] [Dolby Atmos].mkv",
-        "quality": "1080p FHD • Prime Video • Dolby Atmos",
-        "source": "Prime Video",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
+        "source": "WEB-DL",
         "resolution": "1080p FHD",
         "audio": "Dolby Atmos",
-        "size": "10 GB",
+        "size": "7.7 GB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1gTSyWVQl2O5Sql2Pn5HEgExpj7rDq9Rc|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
@@ -468,11 +470,11 @@
       {
         "id": "1zCtth5aLCgozic3F6JHjeaDVPyCeJ_fs",
         "name": "Magudam (2026) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
-        "quality": "1080p FHD • Netflix • Dolby Atmos",
-        "source": "Netflix",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
+        "source": "WEB-DL",
         "resolution": "1080p FHD",
         "audio": "Dolby Atmos",
-        "size": "14GB",
+        "size": "13.4 GB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1zCtth5aLCgozic3F6JHjeaDVPyCeJ_fs|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       },
       {
@@ -552,11 +554,11 @@
       {
         "id": "1xmMxnVc77rK1rIFkCM71soAYwwdwRrUC",
         "name": "Ko (2011) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
-        "quality": "1080p FHD • Netflix • Dolby Atmos",
-        "source": "Netflix",
+        "quality": "1080p FHD • BLURAY • Dolby Atmos",
+        "source": "BLURAY",
         "resolution": "1080p FHD",
         "audio": "Dolby Atmos",
-        "size": "9GB",
+        "size": "8.0 GB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1xmMxnVc77rK1rIFkCM71soAYwwdwRrUC|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
@@ -615,11 +617,11 @@
       {
         "id": "1zUJpd78XuGptCedNunMXLfLBRC8gXP8z",
         "name": "Remo (2016) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
-        "quality": "1080p FHD • Netflix • Dolby Atmos",
-        "source": "Netflix",
+        "quality": "1080p FHD • Prime Video • Dolby Atmos",
+        "source": "Prime Video",
         "resolution": "1080p FHD",
         "audio": "Dolby Atmos",
-        "size": "9GB",
+        "size": "9.3 GB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1zUJpd78XuGptCedNunMXLfLBRC8gXP8z|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
@@ -673,17 +675,17 @@
       "resolution": "1080p FHD",
       "audio": "Dolby Atmos",
       "source": "Netflix",
-      "size": "10 GB"
+      "size": "327 MB"
     },
     "versions": [
       {
         "id": "1Eriycyw5ZZ507Lor0RoNn22F-oZv78XL",
         "name": "Yaan (2014) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
-        "quality": "1080p FHD • Netflix • Dolby Atmos",
-        "source": "Netflix",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
+        "source": "WEB-DL",
         "resolution": "1080p FHD",
         "audio": "Dolby Atmos",
-        "size": "10 GB",
+        "size": "327 MB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Eriycyw5ZZ507Lor0RoNn22F-oZv78XL|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
@@ -747,7 +749,7 @@
       {
         "id": "1-Vjwie7L4U4avSL3-hWxWcLUUupCyKGd",
         "name": "Dhoom 2 (2006) [1080p] [BLURAY] [Dolby Atmos].mkv",
-        "quality": "1080p • BLURAY • Dolby Atmos [14GB]",
+        "quality": "1080p • BLURAY • Dolby Atmos",
         "source": "BLURAY",
         "codec": "H.264",
         "resolution": "1080p",
@@ -762,7 +764,8 @@
           "channels": "5.1",
           "languages": "Hindi",
           "size": "14GB"
-        }
+        },
+        "size": "14.0 GB"
       },
       {
         "id": "13LHtaaQN8cQrvQ1gPZ7AwSwQBnAmSWDU",
@@ -4158,7 +4161,7 @@
           "languages": "Tamil",
           "size": "9.9 GB"
         },
-        "size": "10 GB"
+        "size": "9.9 GB"
       }
     ]
   },
@@ -4247,7 +4250,7 @@
           "languages": "Tamil",
           "size": "13.6 GB"
         },
-        "size": "10 GB"
+        "size": "13.6 GB"
       }
     ]
   },
@@ -4336,7 +4339,7 @@
           "languages": "Tamil",
           "size": "12.4 GB"
         },
-        "size": "10 GB"
+        "size": "12.4 GB"
       }
     ]
   },
@@ -4424,7 +4427,7 @@
           "languages": "Tamil",
           "size": "4.8 GB"
         },
-        "size": "10 GB"
+        "size": "4.8 GB"
       }
     ]
   },
@@ -4512,7 +4515,7 @@
           "languages": "Tamil",
           "size": "2.4 GB"
         },
-        "size": "10 GB"
+        "size": "2.4 GB"
       }
     ]
   },
@@ -4583,8 +4586,8 @@
       {
         "id": "1AjG6v5nyth9YQRL7kvw_sS1dnYZUZsNj",
         "name": "Raja Rani (2013) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • BLURAY • Dolby Digital Plus",
+        "source": "BLURAY",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -4600,7 +4603,7 @@
           "languages": "Tamil",
           "size": "15.5 GB"
         },
-        "size": "10 GB"
+        "size": "15.5 GB"
       }
     ]
   },
@@ -4690,7 +4693,7 @@
           "languages": "Tamil",
           "size": "11.7 GB"
         },
-        "size": "10 GB"
+        "size": "11.7 GB"
       }
     ]
   },
@@ -4761,8 +4764,8 @@
       {
         "id": "1rlESC-sqZn4F2YZpkNVJ7Ez0CC83J97A",
         "name": "Peranmai (2009) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • BLURAY • Dolby Digital Plus",
+        "source": "BLURAY",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -4778,7 +4781,7 @@
           "languages": "Tamil",
           "size": "14.5 GB"
         },
-        "size": "10 GB"
+        "size": "14.5 GB"
       }
     ]
   },
@@ -4867,7 +4870,7 @@
           "languages": "Tamil",
           "size": "12.2 GB"
         },
-        "size": "10 GB"
+        "size": "12.2 GB"
       }
     ]
   },
@@ -4956,7 +4959,7 @@
           "languages": "Tamil",
           "size": "7.7 GB"
         },
-        "size": "10 GB"
+        "size": "7.7 GB"
       }
     ]
   },
@@ -5045,7 +5048,7 @@
           "languages": "Tamil",
           "size": "2.0 GB"
         },
-        "size": "10 GB"
+        "size": "2.0 GB"
       },
       {
         "id": "17qy_yghIXaBs7SYr5lSuy6hL-sLH9We2",
@@ -5067,7 +5070,7 @@
           "languages": "Tamil",
           "size": "2.0 GB"
         },
-        "size": "10 GB"
+        "size": "4.6 GB"
       }
     ]
   },
@@ -5156,7 +5159,7 @@
           "languages": "Tamil",
           "size": "7.9 GB"
         },
-        "size": "10 GB"
+        "size": "7.9 GB"
       }
     ]
   },
@@ -5246,7 +5249,7 @@
           "languages": "Tamil",
           "size": "7.4 GB"
         },
-        "size": "10 GB"
+        "size": "7.4 GB"
       }
     ]
   },
@@ -5335,7 +5338,7 @@
           "languages": "Tamil",
           "size": "3.8 GB"
         },
-        "size": "10 GB"
+        "size": "3.8 GB"
       }
     ]
   },
@@ -5424,7 +5427,7 @@
           "languages": "Tamil",
           "size": "10.2 GB"
         },
-        "size": "10 GB"
+        "size": "10.2 GB"
       }
     ]
   },
@@ -5512,7 +5515,7 @@
           "languages": "Tamil",
           "size": "8.6 GB"
         },
-        "size": "10 GB"
+        "size": "8.6 GB"
       }
     ]
   },
@@ -5600,7 +5603,7 @@
           "languages": "Tamil",
           "size": "9.7 GB"
         },
-        "size": "10 GB"
+        "size": "9.7 GB"
       }
     ]
   },
@@ -5689,7 +5692,7 @@
           "languages": "Tamil",
           "size": "9.6 GB"
         },
-        "size": "10 GB"
+        "size": "9.6 GB"
       }
     ]
   },
@@ -5778,7 +5781,7 @@
           "languages": "Tamil",
           "size": "2.9 GB"
         },
-        "size": "10 GB"
+        "size": "2.9 GB"
       }
     ]
   },
@@ -5867,7 +5870,7 @@
           "languages": "Tamil",
           "size": "3.0 GB"
         },
-        "size": "10 GB"
+        "size": "3.0 GB"
       }
     ]
   },
@@ -5956,7 +5959,7 @@
           "languages": "Tamil",
           "size": "10.0 GB"
         },
-        "size": "10 GB"
+        "size": "10.0 GB"
       }
     ]
   },
@@ -6044,7 +6047,7 @@
           "languages": "Tamil",
           "size": "6.2 GB"
         },
-        "size": "10 GB"
+        "size": "6.2 GB"
       }
     ]
   },
@@ -6132,7 +6135,7 @@
           "languages": "Tamil",
           "size": "8.2 GB"
         },
-        "size": "10 GB"
+        "size": "8.2 GB"
       },
       {
         "id": "1sZFMkTZH7GWTaD3g5RHt7E0VGFtDC1Kl",
@@ -6154,7 +6157,7 @@
           "languages": "Tamil",
           "size": "8.2 GB"
         },
-        "size": "10 GB"
+        "size": "15.0 GB"
       }
     ]
   },
@@ -6242,7 +6245,7 @@
           "languages": "Tamil",
           "size": "11.2 GB"
         },
-        "size": "10 GB"
+        "size": "11.2 GB"
       }
     ]
   },
@@ -6330,7 +6333,7 @@
           "languages": "Tamil",
           "size": "9.5 GB"
         },
-        "size": "10 GB"
+        "size": "9.5 GB"
       }
     ]
   },
@@ -6418,7 +6421,7 @@
           "languages": "Tamil",
           "size": "12.3 GB"
         },
-        "size": "10 GB"
+        "size": "12.3 GB"
       }
     ]
   },
@@ -6506,7 +6509,7 @@
           "languages": "Tamil",
           "size": "6.8 GB"
         },
-        "size": "10 GB"
+        "size": "6.8 GB"
       }
     ]
   },
@@ -6595,7 +6598,7 @@
           "languages": "Tamil",
           "size": "7.9 GB"
         },
-        "size": "10 GB"
+        "size": "7.9 GB"
       }
     ]
   },
@@ -6683,7 +6686,7 @@
           "languages": "Tamil",
           "size": "8.5 GB"
         },
-        "size": "10 GB"
+        "size": "8.5 GB"
       }
     ]
   },
@@ -6771,7 +6774,7 @@
           "languages": "Tamil",
           "size": "7.1 GB"
         },
-        "size": "10 GB"
+        "size": "7.1 GB"
       }
     ]
   },
@@ -6860,7 +6863,7 @@
           "languages": "Tamil",
           "size": "10.5 GB"
         },
-        "size": "10 GB"
+        "size": "10.5 GB"
       },
       {
         "id": "1wgnZs1Nv6G8_zkDdbSDp99P_cgYJk5Lw",
@@ -6882,7 +6885,7 @@
           "languages": "Tamil",
           "size": "10.5 GB"
         },
-        "size": "10 GB"
+        "size": "8.2 GB"
       }
     ]
   },
@@ -6954,8 +6957,8 @@
       {
         "id": "16_gTrHSHLMOaESlQE6az84Ou5UeEyk18",
         "name": "Thaandavam (2012) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p FHD • WEB-DL • Dolby Digital Plus",
-        "source": "WEB-DL",
+        "quality": "1080p FHD • BLURAY • Dolby Digital Plus",
+        "source": "BLURAY",
         "codec": "H.264",
         "resolution": "1080p FHD",
         "audio": "Dolby Digital Plus",
@@ -6971,7 +6974,7 @@
           "languages": "Tamil",
           "size": "15.4 GB"
         },
-        "size": "10 GB"
+        "size": "15.4 GB"
       }
     ]
   },
@@ -7059,7 +7062,7 @@
           "languages": "Tamil",
           "size": "11.0 GB"
         },
-        "size": "10 GB"
+        "size": "11.0 GB"
       }
     ]
   },
@@ -7148,7 +7151,7 @@
           "languages": "Tamil",
           "size": "9.5 GB"
         },
-        "size": "10 GB"
+        "size": "9.5 GB"
       }
     ]
   },
@@ -7236,7 +7239,7 @@
           "languages": "Tamil",
           "size": "11.1 GB"
         },
-        "size": "10 GB"
+        "size": "11.1 GB"
       }
     ]
   },
@@ -7325,7 +7328,7 @@
           "languages": "Tamil",
           "size": "7.6 GB"
         },
-        "size": "10 GB"
+        "size": "7.6 GB"
       }
     ]
   },
@@ -7415,7 +7418,7 @@
           "languages": "Tamil",
           "size": "6.5 GB"
         },
-        "size": "10 GB"
+        "size": "6.5 GB"
       }
     ]
   },
@@ -7504,7 +7507,7 @@
           "languages": "Tamil",
           "size": "2.7 GB"
         },
-        "size": "10 GB"
+        "size": "2.7 GB"
       }
     ]
   },
@@ -7593,7 +7596,7 @@
           "languages": "Tamil",
           "size": "6.8 GB"
         },
-        "size": "10 GB"
+        "size": "6.8 GB"
       }
     ]
   },
@@ -7681,7 +7684,7 @@
           "languages": "Tamil",
           "size": "1.8 GB"
         },
-        "size": "10 GB"
+        "size": "1.8 GB"
       }
     ]
   },
@@ -7769,7 +7772,7 @@
           "languages": "Tamil",
           "size": "8.9 GB"
         },
-        "size": "10 GB"
+        "size": "8.9 GB"
       }
     ]
   },
@@ -7857,7 +7860,7 @@
           "languages": "Tamil",
           "size": "1.6 GB"
         },
-        "size": "10 GB"
+        "size": "1.6 GB"
       }
     ]
   },
@@ -7946,7 +7949,7 @@
           "languages": "Tamil",
           "size": "10.0 GB"
         },
-        "size": "10 GB"
+        "size": "10.0 GB"
       }
     ]
   },
@@ -8035,7 +8038,7 @@
           "languages": "Tamil",
           "size": "11.2 GB"
         },
-        "size": "10 GB"
+        "size": "11.2 GB"
       },
       {
         "id": "1Bw7upA0IRakfbEWXmbHeYa0QECSvMd07",
@@ -8057,7 +8060,7 @@
           "languages": "Tamil",
           "size": "11.2 GB"
         },
-        "size": "10 GB"
+        "size": "3.9 GB"
       }
     ]
   },
@@ -8148,7 +8151,7 @@
           "languages": "Tamil",
           "size": "9.1 GB"
         },
-        "size": "10 GB"
+        "size": "9.1 GB"
       }
     ]
   },
@@ -8237,7 +8240,7 @@
           "languages": "Tamil",
           "size": "15.5 GB"
         },
-        "size": "10 GB"
+        "size": "15.5 GB"
       },
       {
         "id": "1Pp0UAE-SuBRHDd8XYgLHlg6dx4YIxjrZ",
@@ -8259,7 +8262,7 @@
           "languages": "Tamil",
           "size": "15.5 GB"
         },
-        "size": "10 GB"
+        "size": "8.5 GB"
       }
     ]
   },
@@ -8349,7 +8352,7 @@
           "languages": "Tamil",
           "size": "16.0 GB"
         },
-        "size": "10 GB"
+        "size": "16.0 GB"
       },
       {
         "id": "1JdM1BR64cd0pNxTkjzN4ykJvPtzPtlYG",
@@ -8371,7 +8374,7 @@
           "languages": "Tamil",
           "size": "16.0 GB"
         },
-        "size": "10 GB"
+        "size": "7.4 GB"
       }
     ]
   },
@@ -8838,7 +8841,7 @@
           "languages": "Tamil",
           "size": "9.1 GB"
         },
-        "size": "10 GB"
+        "size": "9.1 GB"
       }
     ]
   },
@@ -10990,7 +10993,7 @@
           "languages": "Tamil",
           "size": "13.6 GB"
         },
-        "size": "10 GB"
+        "size": "13.6 GB"
       }
     ]
   },
@@ -14075,7 +14078,7 @@
         "source": "Disney+ Hotstar",
         "resolution": "1080p FHD",
         "audio": "Dolby Atmos",
-        "size": "12GB",
+        "size": "10 GB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1eiZ4-4ZQ5ROJHQMYGI8OYkP17aviv46o|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
