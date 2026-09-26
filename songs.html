@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Songs Studio (TMDB + JioSaavn + iTunes) · MoinuFlix</title>
+  <title>Songs Studio (Title + ID Auto-Extractor) · MoinuFlix</title>
   <style>
     :root {
       --bg: #040711;
@@ -104,18 +104,30 @@
     </div>
   </div>
 
+  <!-- STEP 2: DRIVE FOLDER SCAN & EXTRACT -->
   <section class="card hidden" id="folderSection">
-    <h2 style="font-size:14px; font-weight:700; color:var(--neon-gold); margin-bottom:8px;">Step 2: Google Drive Songs Folder (Auto-Match All Tracks)</h2>
-    <p style="font-size:12px; color:var(--text-secondary); margin-bottom:12px;">Paste your 5.1 songs Google Drive folder link to automatically attach all files to their real soundtrack titles:</p>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+      <h2 style="font-size:14px; font-weight:700; color:var(--neon-gold);">Step 2: Google Drive Songs Folder (Extract Titles & IDs)</h2>
+      <button type="button" class="btn" style="font-size:11px; padding:4px 8px;" onclick="toggleBatchBox()">📝 Batch Paste Box</button>
+    </div>
+    
     <div style="display:flex; gap:10px;">
       <input type="text" id="folderUrlInput" class="input" placeholder="Paste Google Drive Folder link or Folder ID" />
-      <button type="button" class="btn btn-cyan" onclick="scanFolderAndAutoMatch()">⚡ Auto-Match Folder</button>
+      <button type="button" class="btn btn-cyan" onclick="scanFolderAndAutoMatch()">⚡ Extract & Match</button>
+    </div>
+
+    <!-- QUICK BATCH PASTE BACKUP -->
+    <div id="batchBoxWrap" style="display:none; margin-top:12px; border-top:1px solid var(--border); padding-top:10px;">
+      <p style="font-size:12px; color:var(--text-secondary); margin-bottom:6px;">Paste direct drive links or raw file names/IDs (One per line):</p>
+      <textarea id="rawBatchInput" class="input" rows="4" placeholder="Dhimu Dhimu - 1aB2c...&#10;Engeyum Kadhal - 1xY2z..."></textarea>
+      <button type="button" class="btn btn-cyan" style="margin-top:8px;" onclick="applyBatchRawData()">⚡ Apply to Tracks</button>
     </div>
   </section>
 
+  <!-- STEP 3: TRACKLIST -->
   <section class="hidden" id="songsSection">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-      <h2 style="font-size:15px; font-weight:700;">Verified Soundtrack (5.1 Audio Tracks)</h2>
+      <h2 style="font-size:15px; font-weight:700;">Verified Tracks (5.1 Audio)</h2>
       <button type="button" class="btn" onclick="addManualTrack()">+ Add Custom Song</button>
     </div>
     <div class="card hidden" id="songsStateBlock" style="padding:25px; text-align:center;"></div>
@@ -164,6 +176,11 @@ function extractDriveId(url) {
 
 function normalize(str) {
   return (str || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+function toggleBatchBox() {
+  const box = document.getElementById("batchBoxWrap");
+  box.style.display = box.style.display === "none" ? "block" : "none";
 }
 
 document.getElementById("tokenConfigBtn").addEventListener("click", () => {
@@ -236,7 +253,7 @@ async function selectMovie(m) {
   document.getElementById("folderSection").classList.remove("hidden");
   document.getElementById("songsSection").classList.remove("hidden");
   const sb = document.getElementById("songsStateBlock");
-  sb.innerHTML = '<span class="spinner"></span>Fetching verified soundtrack tracklist (JioSaavn & iTunes)...';
+  sb.innerHTML = '<span class="spinner"></span>Fetching verified soundtrack tracklist...';
   sb.classList.remove("hidden");
   document.getElementById("songList").innerHTML = "";
   document.getElementById("saveAllBar").classList.add("hidden");
@@ -296,14 +313,9 @@ function getKnownTracksDatabase(title) {
 
 async function loadSoundtrackMultiEngine(movie) {
   let songs = [];
-
-  // 1. Direct Known Blockbuster Map
   const known = getKnownTracksDatabase(movie.title);
-  if (known) {
-    songs = known;
-  }
+  if (known) { songs = known; }
 
-  // 2. JioSaavn API Engine
   if (!songs.length) {
     try {
       const res = await fetch(`https://saavn.dev/api/search/albums?query=${encodeURIComponent(movie.title)}&limit=15`);
@@ -331,7 +343,6 @@ async function loadSoundtrackMultiEngine(movie) {
     } catch (_) {}
   }
 
-  // 3. Apple iTunes Store India Fallback
   if (!songs.length) {
     try {
       const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(movie.title)}&entity=song&country=IN&limit=25`);
@@ -386,10 +397,10 @@ function renderSongList() {
           <div class="song-artist">${song.artist} &bull; <span style="color:var(--laser-cyan);">${song.audio || '5.1 Surround'}</span></div>
         </div>
         <div class="song-link-row">
-          <input type="url" class="text-input" placeholder="Google Drive Link or File ID" value="${song.drive_url || ''}" />
+          <input type="text" class="text-input" placeholder="Google Drive Link or File ID" value="${song.drive_url || ''}" />
           <button type="button" class="btn btn-cyan btn-save">Attach</button>
         </div>
-        <div class="song-status ${song.saved ? 'saved' : ''}">${song.saved ? '✓ Attached' : 'Not linked'}</div>
+        <div class="song-status ${song.saved ? 'saved' : ''}">${song.saved ? '✓ Attached (ID: ' + song.drive_url.substring(0,10) + '...)' : 'Not linked'}</div>
       </div>`;
     
     const input = card.querySelector(".text-input");
@@ -397,18 +408,18 @@ function renderSongList() {
     const btn = card.querySelector(".btn-save");
 
     input.addEventListener("input", () => {
-      song.drive_url = input.value.trim();
-      song.saved = false;
-      status.className = "song-status";
-      status.textContent = "Not linked";
+      song.drive_url = extractDriveId(input.value.trim());
+      song.saved = song.drive_url ? true : false;
+      status.className = "song-status" + (song.saved ? " saved" : "");
+      status.textContent = song.saved ? ("✓ Attached (ID: " + song.drive_url.substring(0,10) + "...)") : "Not linked";
     });
 
     btn.addEventListener("click", () => {
       if (!input.value.trim()) return;
-      song.drive_url = input.value.trim();
+      song.drive_url = extractDriveId(input.value.trim());
       song.saved = true;
       status.className = "song-status saved";
-      status.textContent = "✓ Attached";
+      status.textContent = "✓ Attached (ID: " + song.drive_url.substring(0,10) + "...)";
       showToast(`Linked: ${song.title}`);
     });
 
@@ -437,7 +448,7 @@ async function scanFolderAndAutoMatch() {
   const fId = extractDriveId(fUrl);
   if(!fId) return showToast("Enter valid Google Drive Folder Link or ID!", true);
 
-  showToast("Scanning folder contents via Worker API...");
+  showToast("Scanning Google Drive Folder files...");
   try {
     const res = await fetch(`https://gdrive-stream.moinudeentv.workers.dev/list?id=${fId}`);
     if(res.ok) {
@@ -461,7 +472,35 @@ async function scanFolderAndAutoMatch() {
       }
     }
   } catch(e) {}
-  showToast("Folder linked. Review and save below.");
+
+  // If worker list endpoint not returning, open batch box for quick 1-sec paste
+  showToast("Click 'Batch Paste Box' above to paste files/links once", true);
+  toggleBatchBox();
+}
+
+function applyBatchRawData() {
+  const raw = document.getElementById("rawBatchInput").value.trim();
+  if(!raw) return showToast("Paste lines containing song name and link/id", true);
+
+  const lines = raw.split(/\r?\n/);
+  let matched = 0;
+
+  lines.forEach(line => {
+    const id = extractDriveId(line);
+    const cleanLine = normalize(line);
+    if(id) {
+      state.songs.forEach(s => {
+        if(cleanLine.includes(normalize(s.title))) {
+          s.drive_url = id;
+          s.saved = true;
+          matched++;
+        }
+      });
+    }
+  });
+
+  renderSongList();
+  showToast(`Matched ${matched} tracks from batch paste!`);
 }
 
 async function saveAllSongsToChunk() {
