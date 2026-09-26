@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>MoinuFlix — Push Movie Studio</title>
+  <link rel="stylesheet" href="c_core/ui_style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <aside>
+    <div class="brand">
+      <div class="brand-logo">M</div>
+      <div style="font-size:1.2rem; font-weight:800;">MoinuFlix</div>
+    </div>
+    <ul class="nav-list">
+      <li><a href="m_view.html" class="nav-btn "><span>📊 Movies View</span></a></li>
+      <li><a href="d_sync.html" class="nav-btn "><span>🔔 Drive Sync</span></a></li>
+      <li><a href="p_push.html" class="nav-btn active"><span>➕ Push Movie</span></a></li>
+    </ul>
+    <div style="margin-top:auto; padding-top:1rem;">
+      <button class="nav-btn" onclick="configureGithubToken()"><span>⚙️ GitHub Token</span></button>
+    </div>
+  </aside>
+  <div id="laser-toast"></div>
+
+  <main>
+    <header style="margin-bottom:1.5rem;">
+      <h1>Ingest & Push Movie to Master Chunks</h1>
+      <p style="color:var(--text-muted);">Auto-language sync, TMDB backdrop preview, and folder parsing</p>
+    </header>
+    <div class="form-container">
+      <form id="push-form" onsubmit="handleFormSubmit(event)">
+        <div class="form-grid">
+          
+          <div class="form-group full-width">
+            <label style="color:var(--laser-cyan);">⚡ Release File Name (Auto-arranges & syncs languages):</label>
+            <input type="text" id="raw-name" placeholder="e.g. Tom.and.Jerry.Back.to.Oz.2016.1080p.AMZN.WEB-DL.Hindi.English.mkv" oninput="parseFileName(this.value)">
+          </div>
+
+          <div class="form-group">
+            <label>TMDB Movie ID</label>
+            <input type="number" id="tmdb-id" placeholder="e.g. 403510" required oninput="fetchMetadata(this.value)">
+          </div>
+
+          <div class="form-group">
+            <label>Franchise Collection Name</label>
+            <input type="text" id="collection-name" placeholder="e.g. Tom and Jerry in Oz Collection">
+          </div>
+
+          <div class="form-group full-width" id="tmdb-preview-panel" style="display:none;">
+            <label style="color:var(--neon-gold);">🎬 TMDB Backdrop & Poster Preview:</label>
+            <div class="preview-card">
+              <img id="prev-poster" class="preview-poster" src="">
+              <div id="prev-backdrop" class="preview-backdrop">
+                <div style="position:relative; z-index:2;">
+                  <h3 id="prev-title" style="color:#fff; font-size:1.1rem; font-weight:800;"></h3>
+                  <p id="prev-desc" style="color:var(--laser-cyan); font-size:0.8rem;"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label style="color:var(--neon-gold);">⚡ Regional Languages Sync (Auto-Detected):</label>
+            <div class="industry-checkbox-panel">
+              <label class="industry-check-label"><input type="checkbox" id="chk-tamil"> 🌴 Tamil (data_c01_tamil)</label>
+              <label class="industry-check-label"><input type="checkbox" id="chk-hindi"> ✨ Hindi (data_c01_hindi)</label>
+              <label class="industry-check-label"><input type="checkbox" id="chk-telugu"> 🏛️ Telugu (data_c01_telugu)</label>
+              <label class="industry-check-label"><input type="checkbox" id="chk-english"> 🌐 English (data_c01_english)</label>
+              <label class="industry-check-label"><input type="checkbox" id="chk-malayalam"> 🥥 Malayalam (data_c01_malayalam)</label>
+              <label class="industry-check-label"><input type="checkbox" id="chk-kannada"> 🏔️ Kannada (data_c01_kannada)</label>
+              <label class="industry-check-label"><input type="checkbox" id="chk-kids" checked> 🧸 Kids (data_c05_kids)</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Quality Format</label>
+            <select id="quality-format">
+              <option value="1080p FHD" selected>1080p FHD</option>
+              <option value="4K UHD">4K UHD (2160p)</option>
+              <option value="720p HD">720p HD</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>File Size</label>
+            <input type="text" id="file-size" value="3GB">
+          </div>
+
+          <div class="form-group full-width">
+            <label>Google Drive File or Folder URL / ID:</label>
+            <input type="text" id="gdrive-url" placeholder="Paste single file link OR folder link" required>
+          </div>
+
+        </div>
+        <button type="submit" class="btn-submit">🚀 COMMIT & SYNC TO GITHUB CHUNKS</button>
+      </form>
+    </div>
+  </main>
+
+  <script src="j_core/gh_core.js"></script>
+  <script>
+    let meta = null;
+
+    function parseFileName(name) {
+      if(!name) return;
+      const lower = name.toLowerCase();
+      document.getElementById("chk-hindi").checked = lower.includes("hindi") || lower.includes("hin");
+      document.getElementById("chk-english").checked = lower.includes("english") || lower.includes("eng");
+      document.getElementById("chk-tamil").checked = lower.includes("tamil") || lower.includes("tam");
+      document.getElementById("chk-telugu").checked = lower.includes("telugu") || lower.includes("tel");
+      document.getElementById("chk-malayalam").checked = lower.includes("malayalam") || lower.includes("mal");
+      document.getElementById("chk-kannada").checked = lower.includes("kannada") || lower.includes("kan");
+      
+      if(lower.includes("cartoon") || lower.includes("animation") || lower.includes("tom and jerry") || lower.includes("bheem")) {
+        document.getElementById("chk-kids").checked = true;
+      }
+
+      const sm = name.match(/(\d+\.?\d*)\s*(gb|mb)/i);
+      if(sm) document.getElementById("file-size").value = cleanAndRoundSize(sm[0]);
+    }
+
+    async function fetchMetadata(tmdbId) {
+      if(!tmdbId) return;
+      try {
+        const res = await fetch("https://api.themoviedb.org/3/movie/" + tmdbId + "?api_key=" + TMDB_API_KEY);
+        if(!res.ok) return;
+        const d = await res.json();
+        meta = d;
+        document.getElementById("collection-name").value = d.belongs_to_collection ? d.belongs_to_collection.name : "";
+        
+        document.getElementById("prev-poster").src = d.poster_path ? ("https://image.tmdb.org/t/p/w200" + d.poster_path) : "";
+        document.getElementById("prev-backdrop").style.backgroundImage = d.backdrop_path ? ("url(https://image.tmdb.org/t/p/w780" + d.backdrop_path + ")") : "none";
+        document.getElementById("prev-title").textContent = d.title + " (" + (d.release_date ? d.release_date.split("-")[0] : "") + ")";
+        document.getElementById("prev-desc").textContent = "Rating: " + d.vote_average + " • " + (d.genres ? d.genres.map(g => g.name).join(", ") : "");
+        document.getElementById("tmdb-preview-panel").style.display = "block";
+        showLaserToast("Loaded: " + d.title);
+      } catch(e) {}
+    }
+
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+      const token = getStoredToken();
+      if(!token) return showLaserToast("GitHub Token required! Click settings in sidebar.", true);
+      const fileId = extractGDriveId(document.getElementById("gdrive-url").value);
+      if(!fileId) return showLaserToast("Invalid Google Drive ID!", true);
+
+      showLaserToast("Committing movie to GitHub chunks...");
+      const streamUrl = WORKER_BASE + fileId + USER_AGENT;
+      const movieObj = {
+        id: fileId,
+        title: meta ? meta.title : "Movie",
+        original_language: meta ? meta.original_language : "en",
+        year: meta && meta.release_date ? parseInt(meta.release_date.split("-")[0]) : 2024,
+        tmdb_id: meta ? meta.id : 0,
+        collection: document.getElementById("collection-name").value.trim(),
+        poster: meta && meta.poster_path ? ("https://image.tmdb.org/t/p/w500" + meta.poster_path) : "",
+        fanart: meta && meta.backdrop_path ? ("https://image.tmdb.org/t/p/original" + meta.backdrop_path) : "",
+        plot: meta ? meta.overview : "",
+        specs: { resolution: document.getElementById("quality-format").value, size: document.getElementById("file-size").value },
+        stream_url: streamUrl,
+        versions: [{ id: fileId, quality: document.getElementById("quality-format").value, stream_url: streamUrl }]
+      };
+
+      let master = await fetchChunk("chunks/data_c01.json");
+      master.unshift(movieObj);
+      await commitFileDirect("chunks/data_c01.json", master, "Add: " + movieObj.title, token);
+
+      if(document.getElementById("chk-kids").checked) {
+        let kids = await fetchChunk("chunks/data_c05_kids.json");
+        kids.unshift(movieObj);
+        await commitFileDirect("chunks/data_c05_kids.json", kids, "Sync Kids: " + movieObj.title, token);
+      }
+      if(document.getElementById("chk-tamil").checked) {
+        let tam = await fetchChunk("chunks/data_c01_tamil.json");
+        tam.unshift(movieObj);
+        await commitFileDirect("chunks/data_c01_tamil.json", tam, "Sync Tamil: " + movieObj.title, token);
+      }
+      if(document.getElementById("chk-hindi").checked) {
+        let hin = await fetchChunk("chunks/data_c01_hindi.json");
+        hin.unshift(movieObj);
+        await commitFileDirect("chunks/data_c01_hindi.json", hin, "Sync Hindi: " + movieObj.title, token);
+      }
+
+      showLaserToast("🎉 Movie Committed Successfully Across Selected Chunks!");
+      document.getElementById("push-form").reset();
+      document.getElementById("tmdb-preview-panel").style.display = "none";
+    }
+  </script>
+</body>
+</html>
