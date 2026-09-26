@@ -1,5 +1,132 @@
 [
   {
+    "id": "album_63810",
+    "title": "Engeyum Kadhal (5.1 Surround Soundtracks)",
+    "original_title": "Engeyum Kadhal",
+    "movie": "Engeyum Kadhal",
+    "tmdb_id": 63810,
+    "year": "2011",
+    "rating": 7.5,
+    "plot": "Engeyum Kadhal (2011) Complete 5.1 Surround Sound Master Video Pack.",
+    "poster": "https://image.tmdb.org/t/p/w500/z5pwxRWdViCo9dLmvH9ejku7eyZ.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/mAfSLGz4nZswqiwgJiXt0gqZtEr.jpg",
+    "logo": "https://image.tmdb.org/t/p/w780/mAfSLGz4nZswqiwgJiXt0gqZtEr.jpg",
+    "tracks": [
+      {
+        "id": "16v3CL6gCc9rWonBdj1AJT1XuBtNUcm0H",
+        "title": "Engeyum Kaadhal",
+        "track_number": 1,
+        "artist": "Aalaap Raju, Harris Jayaraj, Devan Ekambaram & Ranina Reddy",
+        "plot": "Engeyum Kadhal - Engeyum Kaadhal Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/mAfSLGz4nZswqiwgJiXt0gqZtEr.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/mAfSLGz4nZswqiwgJiXt0gqZtEr.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=16v3CL6gCc9rWonBdj1AJT1XuBtNUcm0H|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "1qrdcx7oWhOGYLQpLzuZ6YAQqm9rbM7Wm",
+        "title": "Thee Illai",
+        "track_number": 2,
+        "artist": "Naresh Iyer, Mukesh, Gopal Rao, Harris Jayaraj & Mahathi",
+        "plot": "Engeyum Kadhal - Thee Illai Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/mAfSLGz4nZswqiwgJiXt0gqZtEr.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/mAfSLGz4nZswqiwgJiXt0gqZtEr.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1qrdcx7oWhOGYLQpLzuZ6YAQqm9rbM7Wm|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "1JpSmnOxVFvMY_ov1WOyVcpu7PBqLOP4m",
+        "title": "Dhimu Dhimu",
+        "track_number": 3,
+        "artist": "Karthik & Harris Jayaraj",
+        "plot": "Engeyum Kadhal - Dhimu Dhimu Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/mAfSLGz4nZswqiwgJiXt0gqZtEr.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/mAfSLGz4nZswqiwgJiXt0gqZtEr.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1JpSmnOxVFvMY_ov1WOyVcpu7PBqLOP4m|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "17-jxSy2UXuSGqsSbRp50yNpq7-naeD_I",
+        "title": "Lolita",
+        "track_number": 4,
+        "artist": "Karthik, Prashanthini & Harris Jayaraj",
+        "plot": "Engeyum Kadhal - Lolita Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/mAfSLGz4nZswqiwgJiXt0gqZtEr.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/mAfSLGz4nZswqiwgJiXt0gqZtEr.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=17-jxSy2UXuSGqsSbRp50yNpq7-naeD_I|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "1SvjpIfphBNm_sJqDigrquXuSVYcQXC1N",
+        "title": "Nenjil Nenjil",
+        "track_number": 5,
+        "artist": "Chinmayi Sripada, Harris Jayaraj & Harish Raghavendra",
+        "plot": "Engeyum Kadhal - Nenjil Nenjil Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/mAfSLGz4nZswqiwgJiXt0gqZtEr.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/mAfSLGz4nZswqiwgJiXt0gqZtEr.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1SvjpIfphBNm_sJqDigrquXuSVYcQXC1N|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "17xWVTBhnzTx8nOh0NGmkax-bWQST7PGt",
+        "title": "Bathing At Cannes",
+        "track_number": 6,
+        "artist": "Harris Jayaraj, Emcee Jesz, Lady Kash N Krissy & Ranina Reddy",
+        "plot": "Engeyum Kadhal - Bathing At Cannes Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/mAfSLGz4nZswqiwgJiXt0gqZtEr.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/mAfSLGz4nZswqiwgJiXt0gqZtEr.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=17xWVTBhnzTx8nOh0NGmkax-bWQST7PGt|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "1O-awQK_BB0m1N65Y4xN5xuzdXKZqRANy",
+        "title": "Kulu Kulu Venpani",
+        "track_number": 7,
+        "artist": "Engeyum Kadhal Song",
+        "plot": "Engeyum Kadhal - Kulu Kulu Venpani Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/mAfSLGz4nZswqiwgJiXt0gqZtEr.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/mAfSLGz4nZswqiwgJiXt0gqZtEr.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1O-awQK_BB0m1N65Y4xN5xuzdXKZqRANy|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "Dolby Atmos / 5.1 Surround",
+          "channels": "5.1"
+        }
+      }
+    ]
+  },
+  {
     "id": "album_39523",
     "title": "Paiyaa (5.1 Surround Soundtracks)",
     "original_title": "Paiyaa",
