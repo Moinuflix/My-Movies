@@ -1,0 +1,74 @@
+name: Extract Google Drive Folder IDs
+
+on:
+  workflow_dispatch:
+    inputs:
+      folder_id:
+        description: 'Google Drive Folder Link ya ID'
+        required: true
+        default: '1IGY4RGZJwvEzwJRiOFRccFXdburzwB7_'
+      output_filename:
+        description: 'Output file name'
+        required: true
+        default: 'extracted_tracks.json'
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Extract IDs from Drive Folder
+        run: |
+          python3 - << 'PYEOF'
+          import urllib.request, re, json, sys
+
+          raw_input = "${{ github.event.inputs.folder_id }}".strip()
+          m = re.search(r"folders/([a-zA-Z0-9_-]+)", raw_input)
+          folder_id = m.group(1) if m else raw_input.replace("https://drive.google.com/drive/folders/", "").split("?")[0].strip()
+
+          url = f"https://drive.google.com/embeddedfolderview?id={folder_id}#list"
+          req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+
+          try:
+              html = urllib.request.urlopen(req).read().decode("utf-8", errors="ignore")
+              items = re.findall(r"drive\.google\.com/file/d/([a-zA-Z0-9_-]{25,})/view.*?>(Track_[^<]+)", html)
+              if not items:
+                  items = re.findall(r"id=([a-zA-Z0-9_-]{25,}).*?(Track_[^\"<]+)", html)
+              if not items:
+                  items = re.findall(r"drive\.google\.com/file/d/([a-zA-Z0-9_-]{25,})/view.*?class=\"[^\"]*\"[^>]*>([^<]+)", html)
+
+              extracted = []
+              print("\nExtracted Files:")
+              for file_id, name in items:
+                  clean_name = re.sub(r"<[^>]+>", "", name).strip()
+                  print(f"{clean_name} -> {file_id.strip()}")
+                  extracted.append({
+                      "name": clean_name,
+                      "id": file_id.strip(),
+                      "stream_url": f"https://gdrive-stream.moinudeentv.workers.dev/?id={file_id.strip()}|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+                  })
+
+              with open("${{ github.event.inputs.output_filename }}", "w", encoding="utf-8") as f:
+                  json.dump(extracted, f, indent=2)
+
+              print(f"\nSuccessfully saved {len(extracted)} tracks to ${{ github.event.inputs.output_filename }}")
+
+          except Exception as e:
+              print(f"Error extracting folder: {e}")
+              sys.exit(1)
+          PYEOF
+
+      - name: Commit and Push Extracted Data
+        run: |
+          git config --global user.name "MoinuFlix Bot"
+          git config --global user.email "bot@moinuflix.local"
+          git add "${{ github.event.inputs.output_filename }}"
+          git commit -m "Auto-extracted Folder IDs for ${{ github.event.inputs.folder_id }}" || echo "No changes"
+          git push origin main
