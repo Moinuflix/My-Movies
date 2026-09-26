@@ -1,0 +1,109 @@
+[
+  {
+    "id": 5001,
+    "tmdb_id": 43539,
+    "title": "Chhota Bheem and the Curse of Damyaan",
+    "original_title": "Chhota Bheem and the Curse of Damyaan",
+    "year": 2012,
+    "original_language": "hi",
+    "collection": "Chhota Bheem Collection",
+    "genres": ["Animation", "Kids", "Adventure", "Action"],
+    "rating": 7.5,
+    "poster": "https://image.tmdb.org/t/p/w500/A8w0M3x2jZtqGz5Zq9lU1oX2PqZ.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/8tT1q6B2n4Z5pGz1eZq9lU1oX2P.jpg",
+    "plot": "Bheem aur uske dost Dholakpur se Sonapur jate hain taaki shaktishaali jadugar Damyaan ko hara sakein.",
+    "studio": "Green Gold Animation",
+    "trailer": "https://www.youtube.com/watch?v=kP9TfCWaQT4",
+    "specs": {
+      "resolution": "1080p",
+      "audio": "Tamil, Hindi, Telugu"
+    },
+    "versions": [
+      {
+        "quality": "1080p FHD",
+        "audio": "Tam + Hin + Tel (5.1 Surround)",
+        "source": "Hotstar",
+        "size": "1.8 GB",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/stream/chhota_bheem_damyaan_1080p.mkv"
+      },
+      {
+        "quality": "720p HD",
+        "audio": "Hindi + Tamil (Stereo)",
+        "source": "WEB-DL",
+        "size": "850 MB",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/stream/chhota_bheem_damyaan_720p.mkv"
+      }
+    ]
+  },
+  {
+    "id": 5002,
+    "tmdb_id": 587807,
+    "title": "Tom & Jerry: The Movie",
+    "original_title": "Tom & Jerry",
+    "year": 2021,
+    "original_language": "en",
+    "collection": "Tom & Jerry Collection",
+    "genres": ["Animation", "Comedy", "Family"],
+    "rating": 6.8,
+    "poster": "https://image.tmdb.org/t/p/w500/8j58iEBw9pOXFD2L0nt0ZXeHviB.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/fev8UvnFFPrbWW2Al4R6Sp4EGio.jpg",
+    "plot": "New York ke luxury hotel me Jerry ghus jata hai aur use bahar nikalne ke liye Tom ko hire kiya jata hai.",
+    "studio": "Warner Bros. Pictures",
+    "trailer": "https://www.youtube.com/watch?v=kP9TfCWaQT4",
+    "specs": {
+      "resolution": "1080p",
+      "audio": "English, Tamil, Hindi, Telugu"
+    },
+    "versions": [
+      {
+        "quality": "1080p FHD",
+        "audio": "Eng + Tam + Hin + Tel (5.1 Surround)",
+        "source": "Amazon Prime Video",
+        "size": "2.1 GB",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/stream/tom_and_jerry_2021_multi.mkv"
+      }
+    ]
+  },
+  {
+    "id": 5003,
+    "tmdb_id": 10193,
+    "title": "Toy Story 3",
+    "original_title": "Toy Story 3",
+    "year": 2010,
+    "original_language": "en",
+    "collection": "Toy Story Franchise",
+    "genres": ["Animation", "Family", "Comedy", "Adventure"],
+    "rating": 8.3,
+    "poster": "https://image.tmdb.org/t/p/w500/AbbXspwhud1NX0Ums1yk5bv193f.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/70MkdthwL34yO4qZ5l9BfZ4qV1v.jpg",
+    "plot": "Woody aur Buzz Lightyear galti se ek daycare center me pahunch jate hain jahan se bach nikalne ka plan banta hai.",
+    "studio": "Walt Disney Pictures",
+    "trailer": "https://www.youtube.com/watch?v=JcpWXaA2qeg",
+    "specs": {
+      "resolution": "1080p",
+      "audio": "Tamil, Hindi, English"
+    },
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/stream/toy_story_3_multi.mkv"
+  },
+  {
+    "id": 5004,
+    "tmdb_id": 614002,
+    "title": "Motu Patlu King of Kings",
+    "original_title": "Motu Patlu King of Kings",
+    "year": 2016,
+    "original_language": "hi",
+    "collection": "Motu Patlu Collection",
+    "genres": ["Animation", "Kids", "Comedy"],
+    "rating": 7.0,
+    "poster": "https://image.tmdb.org/t/p/w500/4Z3z8N3d2uG9v0z5Xq9lU1oX2P.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/9vT1q6B2n4Z5pGz1eZq9lU1oX2P.jpg",
+    "plot": "Motu aur Patlu ek circus ke sher Guddu ki madad karte hain jungle ko shikaari se bachane ke liye.",
+    "studio": "Viacom18 Studios",
+    "trailer": "https://www.youtube.com/watch?v=kP9TfCWaQT4",
+    "specs": {
+      "resolution": "1080p",
+      "audio": "Hindi, Tamil"
+    },
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/stream/motu_patlu_king_of_kings.mkv"
+  }
+]
