@@ -1,5 +1,36 @@
 [
   {
+    "id": "album_393518",
+    "title": "Album (5.1 Surround Soundtracks)",
+    "original_title": "Album",
+    "movie": "Album",
+    "tmdb_id": 393518,
+    "year": "2016",
+    "rating": 8.5,
+    "plot": "Album Complete 5.1 Surround Master Video Pack.",
+    "poster": "https://image.tmdb.org/t/p/w500/brGIZV0NBviWVo0rNU2aYWU6q93.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/tdJkzbd9xytGWuqFgxqz8549Lbj.jpg",
+    "logo": "https://image.tmdb.org/t/p/w780/tdJkzbd9xytGWuqFgxqz8549Lbj.jpg",
+    "tracks": [
+      {
+        "id": "https://drive.google.com/file/d/1nTKdZfbCPH3hcy2BpxF0THWne9gH99H5/view?usp=drivesdk",
+        "title": "Album Song 1",
+        "track_number": 1,
+        "artist": "Soundtrack",
+        "plot": "Album - Album Song 1 Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/tdJkzbd9xytGWuqFgxqz8549Lbj.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/tdJkzbd9xytGWuqFgxqz8549Lbj.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=https://drive.google.com/file/d/1nTKdZfbCPH3hcy2BpxF0THWne9gH99H5/view?usp=drivesdk|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "5.1 Surround DTS-HD",
+          "channels": "5.1"
+        }
+      }
+    ]
+  },
+  {
     "id": "album_63810",
     "title": "Engeyum Kadhal (5.1 Surround Soundtracks)",
     "original_title": "Engeyum Kadhal",
