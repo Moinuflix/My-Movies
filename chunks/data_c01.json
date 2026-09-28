@@ -1,31 +1,31 @@
 [
   {
-    "id": "1oePAWlWHnGDnI7cHziwOCdvPhn6jNlss",
-    "title": "The Nun",
-    "name": "The Nun (2018) [English] [AMZN] [1080p] [x264] [DD+ 5.1].mkv",
-    "original_language": "en",
-    "year": 2018,
-    "tmdb_id": 439079,
-    "collection": "The Nun Collection",
-    "poster": "https://image.tmdb.org/t/p/w500/sFC1ElvoKGdHJIWRpNB3xWJ9lJA.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/cMnVmutb5mVgIBeiMOncAbwNjvG.jpg",
-    "plot": "A priest with a dark past and a novice nearing her final vows are sent by the Vatican to Romania to investigate a nun's death and face a demonic force.",
+    "id": "1RntSjIHCAdZkqSmkq73Tq-HwVaXDwDnz",
+    "title": "Vikram",
+    "name": "Vikram (2022) [Tamil] [BluRay] [1080p] [x265] [DD+ 5.1].mkv",
+    "original_language": "ta",
+    "year": 2022,
+    "tmdb_id": 743563,
+    "collection": "Vikram Collection",
+    "poster": "https://image.tmdb.org/t/p/w500/774UV1aCURb4s4JfEFg3IEMu5Zj.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/dkIX4dSMuVqjfrPGunBJUR7K3LQ.jpg",
+    "plot": "Amar is assigned to investigate a case of serial killings. When Amar investigates the case, he realizes it is not what it seems to be and following down this path will lead to nothing but war between everyone involved.",
     "specs": {
       "resolution": "1080p",
       "audio": "DD+ 5.1",
-      "source": "AMZN",
-      "codec": "x264",
-      "size": "12GB"
+      "source": "BluRay",
+      "codec": "x265",
+      "size": "3GB"
     },
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1oePAWlWHnGDnI7cHziwOCdvPhn6jNlss|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1RntSjIHCAdZkqSmkq73Tq-HwVaXDwDnz|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "versions": [
       {
-        "id": "1oePAWlWHnGDnI7cHziwOCdvPhn6jNlss",
-        "name": "The Nun (2018) [English] [AMZN] [1080p] [x264] [DD+ 5.1].mkv",
+        "id": "1RntSjIHCAdZkqSmkq73Tq-HwVaXDwDnz",
+        "name": "Vikram (2022) [Tamil] [BluRay] [1080p] [x265] [DD+ 5.1].mkv",
         "quality": "1080p",
         "audio": "DD+ 5.1",
-        "source": "AMZN",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1oePAWlWHnGDnI7cHziwOCdvPhn6jNlss|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        "source": "BluRay",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1RntSjIHCAdZkqSmkq73Tq-HwVaXDwDnz|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
   },
