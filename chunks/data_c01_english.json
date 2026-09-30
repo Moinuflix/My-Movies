@@ -419,6 +419,26 @@
           "languages": "Tamil",
           "size": ""
         }
+      },
+      {
+        "id": "1v3ytvht1x3PDrL_oQzS8Pa1Of8PEhQR5",
+        "name": "Dolby Presents: Amaze (2014) [1080p] [Netflix] [Dolby Atmos].mkv",
+        "quality": "1080p • Netflix • Dolby Atmos",
+        "source": "Netflix",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1v3ytvht1x3PDrL_oQzS8Pa1Of8PEhQR5|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Netflix",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": ""
+        }
       }
     ]
   },
