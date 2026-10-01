@@ -2051,6 +2051,26 @@
           "languages": "Tamil",
           "size": "13GB"
         }
+      },
+      {
+        "id": "1uqSJFFpa1L3_cQnLpcCH2AyeC_HgY1SR",
+        "name": "Sardar 2 (2026) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
+        "quality": "1080p • Prime Video • Dolby Digital Plus Multi [9GB]",
+        "source": "Prime Video",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1uqSJFFpa1L3_cQnLpcCH2AyeC_HgY1SR|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Prime Video",
+          "codec": "x265",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Hindi, Malayalam",
+          "size": "9GB"
+        }
       }
     ]
   },
