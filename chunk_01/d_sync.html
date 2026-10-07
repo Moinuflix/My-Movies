@@ -1,121 +1,733 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><title>MoinuFlix — Drive Sync & Folder Queue</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoinuFlix V5 — Drive Sync Studio</title>
   <link rel="stylesheet" href="c_core/ui_style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0e17;
+      --bg-card: rgba(15, 23, 42, 0.75);
+      --bg-card-hover: rgba(30, 41, 59, 0.6);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-cyan: rgba(56, 189, 248, 0.3);
+      --laser-cyan: #38bdf8;
+      --laser-cyan-glow: rgba(56, 189, 248, 0.25);
+      --laser-green: #34d399;
+      --laser-gold: #f59e0b;
+      --laser-red: #f87171;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* Desktop Sidebar (Matching p_push.html) */
+    aside.sidebar {
+      width: 260px;
+      background: #070a12;
+      border-right: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 1rem;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 2rem;
+      padding: 0 0.5rem;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #0284c7, var(--laser-cyan));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #fff;
+      box-shadow: 0 0 15px var(--laser-cyan-glow);
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      background: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+    }
+
+    .nav-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--border-subtle);
+    }
+
+    .nav-btn.active {
+      color: var(--laser-cyan);
+      background: rgba(56, 189, 248, 0.08);
+      border-color: var(--border-cyan);
+      box-shadow: inset 0 0 12px rgba(56, 189, 248, 0.1);
+    }
+
+    /* Main Studio Area */
+    main.studio-main {
+      margin-left: 260px;
+      flex: 1;
+      padding: 2.5rem;
+      max-width: 1400px;
+      width: calc(100% - 260px);
+      padding-bottom: 5rem;
+    }
+
+    /* Studio Header */
+    .studio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .studio-header h1 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .studio-header p {
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-size: 0.95rem;
+    }
+
+    /* Studio Cards (Matching p_push cards) */
+    .studio-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 1.75rem;
+      backdrop-filter: blur(12px);
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      position: relative;
+    }
+
+    .card-title-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .card-title-group h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title-group p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 4px;
+    }
+
+    /* Inputs & Action Controls */
+    .search-bar-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .studio-input {
+      flex: 1;
+      min-width: 280px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 0.85rem 1.1rem;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .studio-input:focus {
+      border-color: var(--laser-cyan);
+      box-shadow: 0 0 12px var(--laser-cyan-glow);
+    }
+
+    .btn-action {
+      padding: 0.85rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-action-primary {
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      color: #04101e;
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-action-primary:hover:not(:disabled) {
+      filter: brightness(1.1);
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+      transform: translateY(-1px);
+    }
+
+    .btn-action-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-action-outline {
+      background: rgba(255, 255, 255, 0.03);
+      color: #fff;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn-action-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--laser-cyan);
+    }
+
+    /* Queue Summary Badges Bar */
+    .queue-summary-bar {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-badge {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+    }
+
+    .stat-badge strong {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    /* Studio Table / Card Hybrid */
+    .smart-table-wrap {
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .smart-scan-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .smart-scan-table th {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .smart-scan-table td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 0.9rem;
+      vertical-align: middle;
+    }
+
+    .smart-scan-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .smart-scan-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .status-pill {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .status-pill-ready {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--laser-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .tag-size {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+
+    .tag-size.active-size {
+      color: var(--laser-cyan);
+      border-color: rgba(56, 189, 248, 0.3);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    .cell-id {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--laser-cyan);
+      font-size: 0.85rem;
+    }
+
+    .cell-filename {
+      color: #fff;
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    /* Empty state */
+    .empty-state-box {
+      text-align: center;
+      padding: 3.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .empty-state-box .icon {
+      font-size: 2.8rem;
+    }
+
+    .empty-state-box h3 {
+      font-size: 1.2rem;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .empty-state-box p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      max-width: 400px;
+    }
+
+    /* Mobile Bottom Navigation (Matching p_push mobile nav) */
+    .mobile-bottom-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #070a12;
+      border-top: 1px solid var(--border-subtle);
+      padding: 0.5rem 0.75rem;
+      z-index: 999;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .mobile-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .mobile-nav-item.active {
+      color: var(--laser-cyan);
+    }
+
+    .mobile-nav-item span.icon {
+      font-size: 1.1rem;
+    }
+
+    /* Responsive Mobile Overrides */
+    @media (max-width: 900px) {
+      aside.sidebar {
+        display: none;
+      }
+
+      main.studio-main {
+        margin-left: 0;
+        width: 100%;
+        padding: 1.25rem;
+        padding-bottom: 6rem;
+      }
+
+      .mobile-bottom-nav {
+        display: flex;
+      }
+
+      /* Transform table to card deck on mobile */
+      .smart-table-wrap {
+        border: none;
+        background: transparent;
+      }
+
+      .smart-scan-table thead {
+        display: none;
+      }
+
+      .smart-scan-table, 
+      .smart-scan-table tbody, 
+      .smart-scan-table tr, 
+      .smart-scan-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .smart-scan-table tr {
+        margin-bottom: 1rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: 14px;
+        padding: 1.2rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      }
+
+      .smart-scan-table td {
+        padding: 0.35rem 0;
+        border: none;
+      }
+
+      .smart-scan-table td.actions-cell {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+    }
+  </style>
 </head>
 <body>
-  <aside>
+
+  <!-- Desktop Sidebar -->
+  <aside class="sidebar">
     <div class="brand">
       <div class="brand-logo">M</div>
-      <div style="font-size:1.2rem; font-weight:800;">MoinuFlix</div>
+      <div style="font-size:1.25rem; font-weight:800; letter-spacing:-0.01em;">MoinuFlix</div>
     </div>
     <ul class="nav-list">
       <li><a href="m_view.html" class="nav-btn"><span>📊 Movies View</span></a></li>
       <li><a href="d_sync.html" class="nav-btn active"><span>🔔 Drive Sync</span></a></li>
       <li><a href="p_push.html" class="nav-btn"><span>➕ Push Movie</span></a></li>
       <li><a href="s_push.html" class="nav-btn"><span>🎵 5.1 Songs Studio</span></a></li>
+      <li><a href="series.html" class="nav-btn"><span>📺 Series Studio</span></a></li>
     </ul>
-    <div style="margin-top:auto; padding-top:1rem;">
+    <div style="margin-top:auto; padding-top:1.5rem;">
       <button class="nav-btn" onclick="configureGithubToken()"><span>⚙️ GitHub Token</span></button>
     </div>
   </aside>
+
+  <!-- Laser Toast Notification Container -->
   <div id="laser-toast"></div>
 
-  <main>
-    <header style="margin-bottom:1.5rem; display:flex; justify-content:space-between; align-items:flex-end;">
+  <!-- Studio Workspace -->
+  <main class="studio-main">
+    <header class="studio-header">
       <div>
-        <h1>📡 Drive Arrivals & Folder Scanner</h1>
-        <p style="color:var(--text-muted);">Queue management with Folder ID batch scan and skip trigger</p>
+        <h1>📡 Drive Sync Studio</h1>
+        <p>Google Drive arrivals, folder scanner & push queue</p>
       </div>
-      <button class="nav-btn" style="width:auto; border-color:var(--laser-cyan);" onclick="loadQueue()">🔄 Refresh Queue</button>
+      <button class="btn-action btn-action-outline" onclick="loadQueue()">🔄 Refresh Queue</button>
     </header>
 
-    <div class="form-container" style="margin-bottom:2rem;">
-      <label style="color:var(--laser-cyan); font-weight:700;">📂 Scan Entire Google Drive Folder (Files or Movies):</label>
-      <div style="display:flex; gap:10px; margin-top:8px;">
-        <input type="text" id="scan-folder-url" placeholder="Paste Google Drive Folder link or Folder ID">
-        <button type="button" class="btn-submit" style="width:180px;" onclick="scanFolder()">Scan Folder</button>
+    <!-- Google Drive Scanner Card -->
+    <section class="studio-card">
+      <div class="card-title-group">
+        <h2>📂 Google Drive Folder Scanner</h2>
+        <p>Scan a Google Drive folder and load available media files into the arrival queue.</p>
       </div>
-    </div>
+      <div class="search-bar-row">
+        <input type="text" id="scan-folder-url" class="studio-input" placeholder="Paste Google Drive Folder URL or Folder ID">
+        <button type="button" id="btn-scan" class="btn-action btn-action-primary" onclick="scanFolder()">
+          <span>🔍 Scan Folder</span>
+        </button>
+      </div>
+    </section>
 
-    <div class="smart-table-wrap">
-      <table class="smart-scan-table">
-        <thead><tr><th>Drive ID</th><th>Raw Title</th><th>Detected Size</th><th style="text-align:right;">Actions</th></tr></thead>
-        <tbody id="queue-body"><tr><td colspan="4" style="text-align:center; padding:25px;">Checking arrivals queue...</td></tr></tbody>
-      </table>
-    </div>
+    <!-- Arrival Queue Section -->
+    <section class="studio-card">
+      <div class="card-title-group" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <div>
+          <h2>📥 Arrival Queue</h2>
+          <p>Pending Drive items waiting for TMDB verification and ingestion in Push Movie.</p>
+        </div>
+      </div>
+
+      <!-- Real Counters Area -->
+      <div class="queue-summary-bar">
+        <div class="stat-badge">
+          <span>Files Found:</span>
+          <strong id="stat-found" style="color:var(--laser-cyan);">0</strong>
+        </div>
+        <div class="stat-badge">
+          <span>Ready to Push:</span>
+          <strong id="stat-ready" style="color:var(--laser-green);">0</strong>
+        </div>
+        <div class="stat-badge">
+          <span>Skipped:</span>
+          <strong id="stat-skipped" style="color:var(--text-muted);">0</strong>
+        </div>
+      </div>
+
+      <!-- Table / Cards Deck -->
+      <div class="smart-table-wrap">
+        <table class="smart-scan-table">
+          <thead>
+            <tr>
+              <th style="width: 100px;">Status</th>
+              <th>Raw Release Filename</th>
+              <th style="width: 160px;">Drive ID</th>
+              <th style="width: 120px;">Size</th>
+              <th style="width: 180px; text-align:right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="queue-body">
+            <tr>
+              <td colspan="5" style="text-align:center; padding:35px; color:var(--text-muted);">
+                Checking arrivals queue...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-bottom-nav">
+    <a href="m_view.html" class="mobile-nav-item">
+      <span class="icon">📊</span>
+      <span>Movies</span>
+    </a>
+    <a href="d_sync.html" class="mobile-nav-item active">
+      <span class="icon">🔔</span>
+      <span>Sync</span>
+    </a>
+    <a href="p_push.html" class="mobile-nav-item">
+      <span class="icon">➕</span>
+      <span>Push</span>
+    </a>
+    <a href="s_push.html" class="mobile-nav-item">
+      <span class="icon">🎵</span>
+      <span>Songs</span>
+    </a>
+    <a href="series.html" class="mobile-nav-item">
+      <span class="icon">📺</span>
+      <span>Series</span>
+    </a>
+  </nav>
+
+  <!-- Scripts -->
   <script src="j_core/gh_core.js"></script>
   <script>
     let queueItems = [];
+    let skippedCount = 0;
 
-    async function loadQueue() {
-      const b = document.getElementById("queue-body");
-      b.innerHTML = "<tr><td colspan='4' style='text-align:center; padding:25px;'>Loading arrivals...</td></tr>";
-      try {
-        const res = await fetch("https://raw.githubusercontent.com/" + GH_REPO + "/" + GH_BRANCH + "/inbox_arrivals.json?t=" + Date.now());
-        queueItems = res.ok ? await res.json() : [];
-        renderQueue();
-      } catch(e) { b.innerHTML = "<tr><td colspan='4'>No pending items.</td></tr>"; }
+    // Helper: Safe size formatting without inventing values
+    function formatByteSize(bytes) {
+      if (bytes === null || bytes === undefined || bytes === "" || isNaN(Number(bytes))) {
+        return "—";
+      }
+      const b = Number(bytes);
+      if (b <= 0) return "—";
+
+      const mb = b / (1024 * 1024);
+      const gb = b / (1024 * 1024 * 1024);
+
+      if (gb >= 1) {
+        return (gb % 1 === 0 ? gb.toFixed(0) : gb.toFixed(1)) + " GB";
+      }
+      return (mb % 1 === 0 ? mb.toFixed(0) : mb.toFixed(1)) + " MB";
     }
 
+    // Helper: Safe size extraction from multi-field Worker response
+    function extractSizeFromWorker(fileObj) {
+      const candidate = fileObj.size ?? fileObj.size_bytes ?? fileObj.bytes ?? fileObj.file_size ?? fileObj.fileSize;
+      if (candidate !== undefined && candidate !== null && candidate !== "") {
+        const parsed = Number(candidate);
+        return isNaN(parsed) ? null : parsed;
+      }
+      return null;
+    }
+
+    // Helper: Google Drive Folder ID extractor
+    function extractFolderId(input) {
+      if (!input) return null;
+      input = input.trim();
+      if (typeof extractGDriveId === "function") {
+        const id = extractGDriveId(input);
+        if (id) return id;
+      }
+      const folderMatch = input.match(/folders\/([a-zA-Z0-9_-]+)/);
+      if (folderMatch) return folderMatch[1];
+      const idMatch = input.match(/id=([a-zA-Z0-9_-]+)/);
+      if (idMatch) return idMatch[1];
+      if (/^[a-zA-Z0-9_-]{15,}$/.test(input)) return input;
+      return null;
+    }
+
+    // Helper: Laser Toast notifier fallback
+    function notifyToast(msg, isError = false) {
+      if (typeof showLaserToast === "function") {
+        showLaserToast(msg, isError);
+      } else {
+        const t = document.getElementById("laser-toast");
+        if (t) {
+          t.textContent = msg;
+          t.style.display = "block";
+          t.style.background = isError ? "rgba(248, 113, 113, 0.9)" : "rgba(56, 189, 248, 0.9)";
+          t.style.position = "fixed";
+          t.style.bottom = "20px";
+          t.style.right = "20px";
+          t.style.padding = "10px 18px";
+          t.style.borderRadius = "8px";
+          t.style.zIndex = "9999";
+          setTimeout(() => { t.style.display = "none"; }, 3500);
+        }
+      }
+    }
+
+    // Update real queue counters
+    function updateCounters() {
+      document.getElementById("stat-found").textContent = queueItems.length + skippedCount;
+      document.getElementById("stat-ready").textContent = queueItems.length;
+      document.getElementById("stat-skipped").textContent = skippedCount;
+    }
+
+    // Load queue preserving inbox_arrivals.json compatibility
+    async function loadQueue() {
+      const tbody = document.getElementById("queue-body");
+      tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:35px; color:var(--text-muted);">Refreshing arrivals from repository...</td></tr>`;
+
+      try {
+        const repo = (typeof GH_REPO !== "undefined") ? GH_REPO : "Moinuflix/My-Movies";
+        const branch = (typeof GH_BRANCH !== "undefined") ? GH_BRANCH : "main";
+        const res = await fetch(`https://raw.githubusercontent.com/${repo}/${branch}/inbox_arrivals.json?t=${Date.now()}`);
+
+        if (res.ok) {
+          const data = await res.json();
+          queueItems = (Array.isArray(data) ? data : []).map(item => ({
+            gdrive_id: item.gdrive_id || item.id || "",
+            title: item.title || item.name || "Untitled",
+            size: extractSizeFromWorker(item)
+          })).filter(i => i.gdrive_id);
+          renderQueue();
+        } else {
+          queueItems = [];
+          renderQueue();
+        }
+      } catch (err) {
+        queueItems = [];
+        renderQueue();
+      }
+    }
+
+    // Safe DOM Renderer (XSS Protected + Desktop/Mobile Adaptive)
     function renderQueue() {
-      const b = document.getElementById("queue-body");
-      if(queueItems.length === 0) { b.innerHTML = "<tr><td colspan='4' style='text-align:center; color:var(--laser-green); padding:25px;'>🎉 Queue is empty! All files synced.</td></tr>"; return; }
-      b.innerHTML = "";
+      const tbody = document.getElementById("queue-body");
+      tbody.innerHTML = "";
+      updateCounters();
+
+      if (queueItems.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5">
+              <div class="empty-state-box">
+                <span class="icon">🎉</span>
+                <h3>Queue is empty</h3>
+                <p>No pending Drive files are waiting to be pushed. Scan a Google Drive folder above to stage new releases.</p>
+              </div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
       queueItems.forEach((item, idx) => {
         const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td style="font-family:monospace; color:var(--laser-cyan);">${item.gdrive_id.substring(0, 12)}...</td>
-          <td style="color:#fff; font-weight:700;">${item.title}</td>
-          <td><span style="background:rgba(56,189,248,0.15); color:var(--laser-cyan); padding:2px 6px; border-radius:6px;">${cleanAndRoundSize(item.size)}</span></td>
-          <td style="text-align:right; display:flex; gap:6px; justify-content:flex-end;">
-            <button class="nav-btn" style="padding:4px 10px; font-size:0.75rem; border-color:var(--laser-cyan);" onclick="loadToPush('${item.gdrive_id}', '${item.title}')">⚡ Push</button>
-            <button class="nav-btn" style="padding:4px 10px; font-size:0.75rem; border-color:var(--laser-red); color:var(--laser-red);" onclick="skipItem(${idx})">⏭️ Skip</button>
-          </td>
-        `;
-        b.appendChild(tr);
-      });
-    }
 
-    function skipItem(idx) {
-      queueItems.splice(idx, 1);
-      renderQueue();
-      showLaserToast("Item skipped from queue");
-    }
-
-    function loadToPush(id, title) {
-      localStorage.setItem("temp_push_id", id);
-      localStorage.setItem("temp_push_title", title);
-      window.location.href = "p_push.html";
-    }
-
-    async function scanFolder() {
-      const fUrl = document.getElementById("scan-folder-url").value;
-      const foldId = extractGDriveId(fUrl);
-      if(!foldId) return showLaserToast("Invalid Folder ID!", true);
-      showLaserToast("Scanning folder contents via Worker...");
-      try {
-        const res = await fetch("https://gdrive-stream.moinudeentv.workers.dev/list?id=" + foldId);
-        if(res.ok) {
-          const d = await res.json();
-          if(d.files && d.files.length) {
-            d.files.forEach(f => {
-              queueItems.unshift({ gdrive_id: f.id, title: f.name, size: "3GB" });
-            });
-            renderQueue();
-            showLaserToast("Loaded " + d.files.length + " files from folder into queue!");
-            return;
-          }
-        }
-      } catch(e) {}
-      showLaserToast("Folder parsed. Ready in queue.");
-    }
-
-    window.onload = loadQueue;
-  </script>
-</body>
-</html>
+        // Col 1: Status
+        const tdStatus = document.createElement("td");
+      
