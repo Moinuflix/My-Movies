@@ -1,462 +1,608 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><title>MoinuFlix — Push Movie Studio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>MoinuFlix V5 — Push Movie Studio</title>
   <link rel="stylesheet" href="c_core/ui_style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #07090e;
+      --bg-card: #0d121d;
+      --bg-card-sub: #131b2e;
+      --border-card: rgba(0, 242, 254, 0.15);
+      --border-glow: rgba(0, 242, 254, 0.4);
+      --laser-cyan: #00f2fe;
+      --neon-gold: #ffd200;
+      --neon-green: #00e676;
+      --neon-red: #ff3366;
+      --text-main: #f0f4fc;
+      --text-muted: #8a99b5;
+      --nav-height: 68px;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Layout Structure */
+    .app-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Desktop Navigation Sidebar (Preserved) */
+    aside.desktop-sidebar {
+      width: 250px;
+      background: #090d16;
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 1rem;
+      flex-shrink: 0;
+    }
+
+    /* Main Workspace */
+    main.push-workspace {
+      flex: 1;
+      padding: 2rem 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      padding-bottom: 5rem;
+    }
+
+    /* OTT Glass Cards */
+    .studio-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .studio-card:focus-within {
+      border-color: var(--border-glow);
+      box-shadow: 0 10px 30px rgba(0, 242, 254, 0.08);
+    }
+
+    .card-header-collapsible {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Input & Select Controls */
+    .field-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .studio-input, .studio-select {
+      width: 100%;
+      background: #090e1a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: var(--text-main);
+      padding: 0.75rem 0.9rem;
+      font-size: 0.9rem;
+      font-family: inherit;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .studio-input:focus, .studio-select:focus {
+      border-color: var(--laser-cyan);
+    }
+
+    /* Mobile First Responsive Grid */
+    .grid-row {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+    }
+    .col-12 { grid-column: span 12; }
+    .col-6  { grid-column: span 6; }
+    .col-4  { grid-column: span 4; }
+    .col-3  { grid-column: span 3; }
+
+    /* Match Status Badge */
+    .match-status-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.2rem;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 1.25rem;
+    }
+    .match-new {
+      background: rgba(0, 230, 118, 0.08);
+      border: 1px solid var(--neon-green);
+      color: var(--neon-green);
+    }
+    .match-exists {
+      background: rgba(255, 210, 0, 0.08);
+      border: 1px solid var(--neon-gold);
+      color: var(--neon-gold);
+    }
+    .match-duplicate {
+      background: rgba(255, 51, 102, 0.08);
+      border: 1px solid var(--neon-red);
+      color: var(--neon-red);
+    }
+
+    /* Provider Selector Card */
+    .provider-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 10px;
+    }
+    .provider-pill {
+      background: var(--bg-card-sub);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .provider-pill:hover {
+      border-color: var(--laser-cyan);
+    }
+    .provider-pill.active {
+      border-color: var(--laser-cyan);
+      background: rgba(0, 242, 254, 0.12);
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.25);
+    }
+    .provider-logo-img {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      object-fit: contain;
+      background: #000;
+    }
+    .provider-name-text {
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Media Information Tech Card */
+    .tech-specs-card {
+      background: #090e18;
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      border-radius: 12px;
+      padding: 1.2rem;
+    }
+    .tech-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .tech-spec-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 8px 12px;
+    }
+    .tech-spec-key {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .tech-spec-val {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 3px;
+    }
+
+    /* Instagram-Style Fixed Mobile Navigation */
+    .mobile-bottom-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      background: rgba(9, 13, 22, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 9999;
+      padding-bottom: env(safe-area-inset-bottom);
+      box-sizing: content-box;
+    }
+    .mobile-nav-container {
+      display: flex;
+      height: var(--nav-height);
+      justify-content: space-around;
+      align-items: center;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
+    .m-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.65rem;
+      font-weight: 700;
+      gap: 4px;
+      transition: color 0.2s;
+      flex: 1;
+    }
+    .m-nav-item svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+    .m-nav-item.active {
+      color: var(--laser-cyan);
+    }
+    .m-nav-push-btn {
+      position: relative;
+      top: -12px;
+      background: linear-gradient(135deg, var(--laser-cyan), #0072ff);
+      color: #000;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 18px rgba(0, 242, 254, 0.45);
+      border: 3px solid #07090e;
+      transition: transform 0.2s;
+    }
+    .m-nav-push-btn:active {
+      transform: scale(0.92);
+    }
+
+    /* Validation Timeline Pills */
+    .pipeline-status-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .pipeline-step {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: #111726;
+      border: 1px solid rgba(255,255,255,0.06);
+      color: var(--text-muted);
+    }
+    .pipeline-step.success {
+      border-color: var(--neon-green);
+      color: var(--neon-green);
+      background: rgba(0,230,118,0.08);
+    }
+
+    /* Mobile Breakpoints */
+    @media (max-width: 860px) {
+      aside.desktop-sidebar {
+        display: none !important;
+      }
+      .mobile-bottom-bar {
+        display: block !important;
+      }
+      main.push-workspace {
+        padding: 1rem 0.85rem;
+        padding-bottom: calc(var(--nav-height) + 2.5rem + env(safe-area-inset-bottom));
+      }
+      .grid-row {
+        gap: 0.75rem;
+      }
+      .col-12, .col-6, .col-4, .col-3 {
+        grid-column: span 12 !important;
+      }
+      .tech-specs-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .provider-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .studio-card {
+        padding: 1rem;
+        border-radius: 12px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <aside>
-    <div class="brand">
-      <div class="brand-logo">M</div>
-      <div style="font-size:1.2rem; font-weight:800;">MoinuFlix</div>
-    </div>
-    <ul class="nav-list">
-      <li><a href="m_view.html" class="nav-btn"><span>📊 Movies View</span></a></li>
-      <li><a href="d_sync.html" class="nav-btn"><span>🔔 Drive Sync</span></a></li>
-      <li><a href="p_push.html" class="nav-btn active"><span>➕ Push Movie</span></a></li>
-      <li><a href="s_push.html" class="nav-btn"><span>🎵 5.1 Songs Studio</span></a></li>
-    </ul>
-    <div style="margin-top:auto; padding-top:1rem;">
-      <button class="nav-btn" onclick="configureGithubToken()"><span>⚙️ GitHub Token</span></button>
-    </div>
-  </aside>
-  <div id="laser-toast"></div>
 
-  <main>
-    <header style="margin-bottom:1.5rem;">
-      <h1>Ingest & Push Movie to Master Chunks</h1>
-      <p style="color:var(--text-muted);">Separate Original Language, Multi Audio Sync & Clean Scene Renamer</p>
-    </header>
-    <div class="form-container">
-      <form id="push-form" onsubmit="handleFormSubmit(event)">
-        <div class="form-grid">
-          
-          <div class="form-group full-width">
-            <label style="color:var(--laser-cyan);">⚡ Release File Name (Auto-detects specs, audio, OTT & searches TMDB):</label>
-            <input type="text" id="raw-name" placeholder="Paste raw filename" oninput="parseFileName(this.value)">
-            <div id="tmdb-suggestions" style="display:none; background:#0b1329; border:1px solid var(--laser-cyan); border-radius:10px; margin-top:6px; max-height:180px; overflow-y:auto; padding:6px;"></div>
+  <div class="app-layout">
+    <!-- 1. DESKTOP SIDEBAR NAVIGATION (Preserved Routes) -->
+    <aside class="desktop-sidebar">
+      <div class="brand" style="margin-bottom:2rem; display:flex; align-items:center; gap:10px;">
+        <div class="brand-logo" style="width:36px; height:36px; background:var(--laser-cyan); color:#000; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.2rem;">M</div>
+        <div style="font-size:1.15rem; font-weight:800; letter-spacing:0.5px;">MoinuFlix</div>
+      </div>
+      <ul class="nav-list" style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px;">
+        <li><a href="m_view.html" class="nav-btn"><span>📊 Movies View</span></a></li>
+        <li><a href="d_sync.html" class="nav-btn"><span>🔔 Drive Sync</span></a></li>
+        <li><a href="p_push.html" class="nav-btn active" style="color:var(--laser-cyan); border-left:3px solid var(--laser-cyan); padding-left:8px;"><span>➕ Push Movie</span></a></li>
+        <li><a href="s_push.html" class="nav-btn"><span>🎵 5.1 Songs Studio</span></a></li>
+        <li><a href="series.html" class="nav-btn"><span>📺 Series Studio</span></a></li>
+      </ul>
+      <div style="margin-top:auto; padding-top:1.5rem;">
+        <button class="nav-btn studio-input" onclick="configureGithubToken()" style="cursor:pointer; text-align:center; background:#111827;">⚙️ GitHub Token</button>
+      </div>
+    </aside>
+
+    <!-- 2. MAIN WORKSPACE (Push Workflow) -->
+    <main class="push-workspace">
+      
+      <header style="margin-bottom:1.25rem;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <div>
+            <h1 style="font-size:1.5rem; font-weight:800; margin:0 0 4px 0; color:#fff;">Movie Ingestion Studio</h1>
+            <p style="margin:0; font-size:0.8rem; color:var(--text-muted);">Standardized multi-chunk metadata ingest, versioning & raw parser</p>
+          </div>
+          <div id="repo-badge" style="font-size:0.75rem; background:#111728; padding:5px 10px; border-radius:6px; border:1px solid rgba(255,255,255,0.08); color:var(--laser-cyan); font-family:'JetBrains Mono';">v5.0 Mobile Ready</div>
+        </div>
+      </header>
+
+      <!-- DEDUPLICATION & MOVIE MATCH BANNER -->
+      <div id="match-status-box" class="match-status-banner match-new">
+        <span id="match-status-text">🟢 NEW MOVIE: Ready to register brand new catalog entry</span>
+        <span id="match-target-chunk" style="font-family:'JetBrains Mono'; font-size:0.75rem;">Target: movies_001.json</span>
+      </div>
+
+      <form id="push-form" onsubmit="executeValidatedCommit(event)">
+
+        <!-- STEP 1: RAW RELEASE FILENAME -->
+        <div class="studio-card">
+          <label class="field-label" style="color:var(--laser-cyan); font-weight:800;">1. RAW RELEASE FILENAME (AUTO PARSER)</label>
+          <input type="text" id="raw-name" class="studio-input" placeholder="Paste: Vikram.2022.Tamil.AMZN.WEB-DL.1080p.SDR.H.264.DDP5.1.Atmos-3.2GB.mkv" oninput="parseFileName(this.value)">
+          <div id="tmdb-suggestions" style="display:none; background:#070b14; border:1px solid var(--laser-cyan); border-radius:8px; margin-top:8px; max-height:180px; overflow-y:auto; padding:4px;"></div>
+        </div>
+
+        <!-- STEP 2: DETECTED INFORMATION & SCENE STANDARD -->
+        <div class="studio-card">
+          <label class="field-label" style="color:var(--neon-gold); font-weight:800;">2. DETECTED TITLE & CLEAN SCENE STANDARD</label>
+          <input type="text" id="clean-standard-title" class="studio-input" style="color:var(--neon-gold); font-weight:700; font-family:'JetBrains Mono';" placeholder="Title (Year) [Langs] [Provider] [Res] [Codec] [Audio].mkv">
+        </div>
+
+        <!-- STEP 3: TMDB VERIFICATION & ID ARCHITECTURE -->
+        <div class="studio-card">
+          <div class="card-header-collapsible">
+            <span class="card-title" style="color:var(--laser-cyan);">🎬 3. Metadata Verification & ID</span>
+          </div>
+          <div style="margin-top:12px;" class="grid-row">
+            <div class="col-4">
+              <label class="field-label">TMDB Movie ID</label>
+              <input type="number" id="tmdb-id" class="studio-input" placeholder="Auto-filled" required oninput="fetchMetadata(this.value)">
+            </div>
+            <div class="col-4">
+              <label class="field-label">Internal Movie ID</label>
+              <input type="text" id="internal-movie-id" class="studio-input" style="color:var(--laser-cyan); font-family:'JetBrains Mono';" placeholder="movie_xxxxxx" readonly>
+            </div>
+            <div class="col-4">
+              <label class="field-label">Franchise Collection</label>
+              <input type="text" id="collection-name" class="studio-input" placeholder="Auto-filled if present">
+            </div>
           </div>
 
-          <div class="form-group full-width">
-            <label style="color:var(--neon-gold);">🎬 Clean Scene Standard Title (Auto-Arranged):</label>
-            <input type="text" id="clean-standard-title" style="border-color:var(--neon-gold); font-weight:700; color:var(--neon-gold);" placeholder="Title (Year) [Langs] [Source] [Resolution] [Codec] [Audio].mkv">
-          </div>
-
-          <div class="form-group">
-            <label>TMDB Movie ID</label>
-            <input type="number" id="tmdb-id" placeholder="Auto-filled from search" required oninput="fetchMetadata(this.value)">
-          </div>
-
-          <div class="form-group">
-            <label>Franchise Collection Name</label>
-            <input type="text" id="collection-name" placeholder="Auto-filled from TMDB">
-          </div>
-
-          <!-- TMDB PREVIEW -->
-          <div class="form-group full-width" id="tmdb-preview-panel" style="display:none;">
-            <label style="color:var(--neon-gold);">🎬 TMDB Visual Verification:</label>
-            <div class="preview-card">
-              <img id="prev-poster" class="preview-poster" src="">
-              <div id="prev-backdrop" class="preview-backdrop">
-                <div style="position:relative; z-index:2;">
-                  <h3 id="prev-title" style="color:#fff; font-size:1.1rem; font-weight:800;"></h3>
-                  <p id="prev-desc" style="color:var(--laser-cyan); font-size:0.8rem;"></p>
-                </div>
+          <!-- TMDB Poster / Backdrop Verification Card -->
+          <div id="tmdb-preview-panel" style="display:none; margin-top:15px; background:#090d18; border-radius:10px; padding:10px; border:1px solid rgba(255,255,255,0.06);">
+            <div style="display:flex; gap:12px; align-items:center;">
+              <img id="prev-poster" src="" style="width:55px; height:80px; border-radius:6px; object-fit:cover; background:#000;">
+              <div>
+                <h4 id="prev-title" style="margin:0 0 4px 0; font-size:1rem; color:#fff;"></h4>
+                <p id="prev-desc" style="margin:0; font-size:0.75rem; color:var(--text-muted);"></p>
               </div>
             </div>
           </div>
-
-          <!-- OPTION 1: ORIGINAL REGIONAL LANGUAGE (ROOT JSON FIELD) -->
-          <div class="form-group full-width">
-            <label style="color:var(--laser-cyan); font-weight:700;">🌐 Original Movie Language (Asal me kis bhasha ki movie hai):</label>
-            <select id="orig-language" onchange="regenerateStandardName()">
-              <option value="ta" selected>Tamil (ta)</option>
-              <option value="hi">Hindi (hi)</option>
-              <option value="te">Telugu (te)</option>
-              <option value="ml">Malayalam (ml)</option>
-              <option value="kn">Kannada (kn)</option>
-              <option value="en">English (en)</option>
-            </select>
-          </div>
-
-          <!-- OPTION 2: MULTI-AUDIO TRACKS PRESENT IN FILE -->
-          <div class="form-group full-width">
-            <label style="color:var(--neon-gold); font-weight:700;">⚡ File Audio Tracks / Multi-Language Sync (File me kya-kya audio hai):</label>
-            <div class="industry-checkbox-panel">
-              <label class="industry-check-label"><input type="checkbox" id="chk-tamil" onchange="regenerateStandardName()"> 🌴 Tamil (data_c01_tamil)</label>
-              <label class="industry-check-label"><input type="checkbox" id="chk-hindi" onchange="regenerateStandardName()"> ✨ Hindi (data_c01_hindi)</label>
-              <label class="industry-check-label"><input type="checkbox" id="chk-telugu" onchange="regenerateStandardName()"> 🏛️ Telugu (data_c01_telugu)</label>
-              <label class="industry-check-label"><input type="checkbox" id="chk-english" onchange="regenerateStandardName()"> 🗽 English (data_c01_english)</label>
-              <label class="industry-check-label"><input type="checkbox" id="chk-malayalam" onchange="regenerateStandardName()"> 🥥 Malayalam (data_c01_malayalam)</label>
-              <label class="industry-check-label"><input type="checkbox" id="chk-kannada" onchange="regenerateStandardName()"> 🏔️ Kannada (data_c01_kannada)</label>
-              <label class="industry-check-label"><input type="checkbox" id="chk-kids" onchange="regenerateStandardName()"> 🧸 Kids (data_c05_kids)</label>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>Quality Format</label>
-            <select id="quality-format" onchange="regenerateStandardName()">
-              <option value="1080p" selected>1080p</option>
-              <option value="2160p">2160p (4K UHD)</option>
-              <option value="720p">720p</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Codec Format</label>
-            <select id="codec-format" onchange="regenerateStandardName()">
-              <option value="x264" selected>x264</option>
-              <option value="AVC">AVC</option>
-              <option value="x265">x265 (HEVC)</option>
-              <option value="HEVC">HEVC</option>
-              <option value="AV1">AV1</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Audio Codec & Mix</label>
-            <input type="text" id="audio-format" value="DD+ 5.1" oninput="regenerateStandardName()" placeholder="e.g. DD 2.0 Multi + English DTS-HD MA 5.1">
-          </div>
-
-          <div class="form-group">
-            <label>Source / OTT Platform</label>
-            <select id="ott-source" onchange="regenerateStandardName()">
-              <option value="AMZN" selected>Amazon Prime (AMZN)</option>
-              <option value="NF">Netflix (NF)</option>
-              <option value="SunNXT">Sun NXT</option>
-              <option value="DSNP">Disney+ Hotstar (DSNP)</option>
-              <option value="SNXT">SonyLIV</option>
-              <option value="ZEE5">Zee5</option>
-              <option value="AHA">Aha</option>
-              <option value="ATVP">Apple TV+ (ATVP)</option>
-              <option value="JC">JioCinema (JC)</option>
-              <option value="SimplySouth">Simply South</option>
-              <option value="Tentkotta">Tentkotta</option>
-              <option value="ManoramaMAX">ManoramaMAX</option>
-              <option value="BluRay REMUX">BluRay REMUX</option>
-              <option value="BluRay">BluRay</option>
-              <option value="WEB-DL">Universal WEB-DL</option>
-            </select>
-          </div>
-
-          <div class="form-group full-width">
-            <div style="display:flex; justify-content:space-between;">
-              <label>File Size Scale (1GB to 50GB)</label>
-              <span id="scale-val" style="color:var(--laser-cyan); font-weight:800;">3GB</span>
-            </div>
-            <div style="display:flex; gap:10px; align-items:center;">
-              <input type="range" id="size-slider" min="1" max="50" value="3" oninput="updateScale(this.value)" style="flex:1;">
-              <input type="text" id="file-size" value="3GB" style="width:75px; text-align:center; font-weight:800;" onchange="manualScale(this.value)">
-            </div>
-          </div>
-
-          <div class="form-group full-width">
-            <label>Google Drive File ID:</label>
-            <input type="text" id="gdrive-url" placeholder="Drive file ID" required>
-          </div>
-
         </div>
-        <button type="submit" class="btn-submit">🚀 COMMIT & SYNC TO GITHUB CHUNKS</button>
+
+        <!-- STEP 4 & 5: LANGUAGES & MULTI-AUDIO SYNC -->
+        <div class="studio-card">
+          <label class="field-label" style="color:var(--laser-cyan); font-weight:800;">4 & 5. LANGUAGES (ORIGINAL & AUDIO TRACKS)</label>
+          <div class="grid-row">
+            <div class="col-6">
+              <label class="field-label">Original Language</label>
+              <select id="orig-language" class="studio-select" onchange="regenerateStandardName(); checkMovieDeduplication();">
+                <option value="ta" selected>Tamil (ta)</option>
+                <option value="te">Telugu (te)</option>
+                <option value="hi">Hindi (hi)</option>
+                <option value="ml">Malayalam (ml)</option>
+                <option value="kn">Kannada (kn)</option>
+                <option value="en">English (en)</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label class="field-label">File Audio Tracks Present</label>
+              <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:6px; margin-top:4px;">
+                <label style="font-size:0.78rem; display:flex; align-items:center; gap:5px;"><input type="checkbox" id="chk-tamil" onchange="regenerateStandardName()"> Tamil</label>
+                <label style="font-size:0.78rem; display:flex; align-items:center; gap:5px;"><input type="checkbox" id="chk-hindi" onchange="regenerateStandardName()"> Hindi</label>
+                <label style="font-size:0.78rem; display:flex; align-items:center; gap:5px;"><input type="checkbox" id="chk-telugu" onchange="regenerateStandardName()"> Telugu</label>
+                <label style="font-size:0.78rem; display:flex; align-items:center; gap:5px;"><input type="checkbox" id="chk-english" onchange="regenerateStandardName()"> English</label>
+                <label style="font-size:0.78rem; display:flex; align-items:center; gap:5px;"><input type="checkbox" id="chk-malayalam" onchange="regenerateStandardName()"> Malayalam</label>
+                <label style="font-size:0.78rem; display:flex; align-items:center; gap:5px;"><input type="checkbox" id="chk-kannada" onchange="regenerateStandardName()"> Kannada</label>
+                <label style="font-size:0.78rem; display:flex; align-items:center; gap:5px;"><input type="checkbox" id="chk-kids" onchange="regenerateStandardName()"> Kids</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 6: PROVIDER SELECTION (NO 'STREAMING' TEXT - PURE LOGO/NAME) -->
+        <div class="studio-card">
+          <label class="field-label" style="color:var(--laser-cyan); font-weight:800;">6. PROVIDER / SOURCE CATALOG</label>
+          <div class="provider-grid" id="provider-grid-container">
+            <!-- Dynamic provider pills injected here -->
+          </div>
+          <input type="hidden" id="selected-provider-id" value="AMZN">
+        </div>
+
+        <!-- STEP 7, 8, 9: TECHNICAL VIDEO & AUDIO SPECS -->
+        <div class="studio-card">
+          <label class="field-label" style="color:var(--laser-cyan); font-weight:800;">7, 8 & 9. FORMAT, CODEC & AUDIO CHANNELS</label>
+          <div class="grid-row">
+            <div class="col-4">
+              <label class="field-label">Resolution / Quality</label>
+              <select id="quality-format" class="studio-select" onchange="onManualSpecChange()">
+                <option value="1080p" selected>1080p (FHD)</option>
+                <option value="2160p">2160p (4K UHD)</option>
+                <option value="720p">720p (HD)</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label class="field-label">Video Codec</label>
+              <select id="codec-format" class="studio-select" onchange="onManualSpecChange()">
+                <option value="H.264" selected>H.264 (x264/AVC)</option>
+                <option value="HEVC">HEVC (H.265/x265)</option>
+                <option value="AV1">AV1</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label class="field-label">Audio Codec & Channels</label>
+              <input type="text" id="audio-format" class="studio-input" value="E-AC-3 5.1" oninput="onManualSpecChange()">
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 10: FILE SIZE (AUTO GB DETECTION) -->
+        <div class="studio-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <label class="field-label" style="color:var(--laser-cyan); font-weight:800; margin:0;">10. FILE SIZE (AUTO-DETECTED)</label>
+            <span id="detected-size-badge" style="color:var(--neon-green); font-size:0.85rem; font-weight:800; font-family:'JetBrains Mono';">3.2 GB</span>
+          </div>
+          <div style="display:flex; gap:12px; align-items:center;">
+            <input type="range" id="size-slider" min="0.5" max="50" step="0.1" value="3.2" class="studio-input" style="flex:1; padding:0;" oninput="syncManualSizeSlider(this.value)">
+            <input type="text" id="file-size-display" class="studio-input" value="3.2 GB" style="width:110px; text-align:center; font-family:'JetBrains Mono'; font-weight:800;" onchange="syncManualSizeInput(this.value)">
+          </div>
+        </div>
+
+        <!-- STEP 11: GOOGLE DRIVE FILE ID (VERSION ID) -->
+        <div class="studio-card">
+          <label class="field-label" style="color:var(--laser-cyan); font-weight:800;">11. GOOGLE DRIVE FILE ID (BECOMES VERSION_ID)</label>
+          <input type="text" id="gdrive-url" class="studio-input" placeholder="e.g. 1aFmu_tpwZdvV_wiA4FR5U6WzORXKIDrQ" required oninput="checkMovieDeduplication()">
+        </div>
+
+        <!-- STEP 12: MEDIA INFORMATION CARD (TECH PREVIEW) -->
+        <div class="studio-card">
+          <label class="field-label" style="color:var(--laser-cyan); font-weight:800;">12. MEDIA INFORMATION CARD</label>
+          <div class="tech-specs-card">
+            <div class="tech-specs-grid">
+              <div class="tech-spec-item"><div class="tech-spec-key">Resolution</div><div class="tech-spec-val" id="spec-disp-res">1920x1080</div></div>
+              <div class="tech-spec-item"><div class="tech-spec-key">Quality</div><div class="tech-spec-val" id="spec-disp-qual">1080p</div></div>
+              <div class="tech-spec-item"><div class="tech-spec-key">Codec</div><div class="tech-spec-val" id="spec-disp-codec">H.264</div></div>
+              <div class="tech-spec-item"><div class="tech-spec-key">FPS</div><div class="tech-spec-val" id="spec-disp-fps">23.976</div></div>
+              <div class="tech-spec-item"><div class="tech-spec-key">Bit Depth</div><div class="tech-spec-val" id="spec-disp-depth">8-bit</div></div>
+              <div class="tech-spec-item"><div class="tech-spec-key">HDR</div><div class="tech-spec-val" id="spec-disp-hdr">No</div></div>
+              <div class="tech-spec-item"><div class="tech-spec-key">Audio</div><div class="tech-spec-val" id="spec-disp-audio">E-AC-3</div></div>
+              <div class="tech-spec-item"><div class="tech-spec-key">Channels</div><div class="tech-spec-val" id="spec-disp-chan">5.1</div></div>
+              <div class="tech-spec-item"><div class="tech-spec-key">Size</div><div class="tech-spec-val" id="spec-disp-size">3.2 GB</div></div>
+              <div class="tech-spec-item"><div class="tech-spec-key">Provider</div><div class="tech-spec-val" id="spec-disp-prov">Amazon Prime</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 13 & 14: FINAL JSON PREVIEW & PIPELINE VALIDATION -->
+        <div class="studio-card">
+          <div class="card-header-collapsible" onclick="toggleJsonPreview()">
+            <span class="card-title" style="color:var(--neon-gold);">13 & 14. FINAL JSON PREVIEW (EXPAND TO VERIFY) ▼</span>
+            <span id="preview-target-badge" style="font-size:0.75rem; color:var(--laser-cyan); font-family:'JetBrains Mono';">Target: catalog.json + movies_001.json</span>
+          </div>
+          <div id="json-preview-container" style="display:none; margin-top:12px;">
+            <pre id="json-preview-box" style="background:#05070c; padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); font-family:'JetBrains Mono'; font-size:0.72rem; color:#8af7ff; max-height:240px; overflow-y:auto; margin:0;"></pre>
+          </div>
+          
+          <div class="pipeline-status-row">
+            <span class="pipeline-step" id="pipe-parse">1. Parse</span>
+            <span class="pipeline-step" id="pipe-validate">2. Validate</span>
+            <span class="pipeline-step" id="pipe-match">3. Match</span>
+            <span class="pipeline-step" id="pipe-catalog">4. Catalog Update</span>
+            <span class="pipeline-step" id="pipe-chunk">5. Chunk Update</span>
+            <span class="pipeline-step" id="pipe-commit">6. GitHub Commit</span>
+          </div>
+        </div>
+
+        <!-- STEP 15: SUBMIT BUTTON -->
+        <button type="submit" id="commit-btn" class="studio-input" style="background:linear-gradient(135deg, var(--laser-cyan), #0066ff); color:#000; font-weight:800; font-size:1rem; cursor:pointer; padding:1rem; border:none; margin-top:0.5rem; letter-spacing:0.5px; border-radius:10px;">
+          🚀 COMMIT MOVIE VERSION TO MASTER REPO
+        </button>
+
       </form>
+    </main>
+  </div>
+
+  <!-- 3. INSTAGRAM-LIKE MOBILE BOTTOM NAVIGATION BAR -->
+  <nav class="mobile-bottom-bar">
+    <div class="mobile-nav-container">
+      <a href="m_view.html" class="m-nav-item">
+        <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="m_view.html?focus=search" class="m-nav-item">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <span>Search</span>
+      </a>
+      <a href="p_push.html" class="m-nav-item active">
+        <div class="m-nav-push-btn">
+          <svg viewBox="0 0 24 24" style="width:24px; height:24px; fill:#000;"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+        </div>
+        <span style="display:none;">Push</span>
+      </a>
+      <a href="d_sync.html" class="m-nav-item">
+        <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+        <span>Library</span>
+      </a>
+      <a href="javascript:void(0)" onclick="configureGithubToken()" class="m-nav-item">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <span>Profile</span>
+      </a>
     </div>
-  </main>
+  </nav>
 
+  <div id="laser-toast"></div>
+
+  <!-- GitHub Core & Studio Scripts -->
   <script src="j_core/gh_core.js"></script>
-  <script>
-    let meta = null;
-    let baseMovieTitle = "";
-    let baseMovieYear = "2024";
-
-    function updateScale(v) {
-      document.getElementById("scale-val").textContent = v + "GB";
-      document.getElementById("file-size").value = v + "GB";
-    }
-
-    function manualScale(v) {
-      const rounded = cleanAndRoundSize(v);
-      const num = parseInt(rounded);
-      document.getElementById("file-size").value = rounded;
-      document.getElementById("size-slider").value = num;
-      document.getElementById("scale-val").textContent = rounded;
-    }
-
-    function cleanAndRoundSize(raw) {
-      if(!raw) return "3GB";
-      const m = String(raw).match(/([\d\.]+)\s*(gb|mb)?/i);
-      if(!m) return "3GB";
-      let num = parseFloat(m[1]);
-      if((m[2] || "gb").toLowerCase() === "mb") num = num / 1024;
-      const rounded = Math.round(num);
-      return (rounded < 1 ? 1 : (rounded > 50 ? 50 : rounded)) + "GB";
-    }
-
-    function parseFileName(name) {
-      if(!name) return;
-      const lower = name.toLowerCase();
-
-      // Multi Audio Track Checkbox Detect
-      const hasTam = lower.includes("tamil") || lower.includes("tam");
-      const hasHin = lower.includes("hindi") || lower.includes("hin");
-      const hasTel = lower.includes("telugu") || lower.includes("tel");
-      const hasEng = lower.includes("english") || lower.includes("eng");
-      const hasMal = lower.includes("malayalam") || lower.includes("mal");
-      const hasKan = lower.includes("kannada") || lower.includes("kan");
-
-      document.getElementById("chk-tamil").checked = hasTam;
-      document.getElementById("chk-hindi").checked = hasHin;
-      document.getElementById("chk-telugu").checked = hasTel;
-      document.getElementById("chk-english").checked = hasEng;
-      document.getElementById("chk-malayalam").checked = hasMal;
-      document.getElementById("chk-kannada").checked = hasKan;
-
-      // Guess Original Language if obvious from filename
-      const origSel = document.getElementById("orig-language");
-      if(hasTam) origSel.value = "ta";
-      else if(hasHin) origSel.value = "hi";
-      else if(hasTel) origSel.value = "te";
-      else if(hasMal) origSel.value = "ml";
-      else if(hasKan) origSel.value = "kn";
-      else if(hasEng) origSel.value = "en";
-
-      if(lower.includes("cartoon") || lower.includes("animation") || lower.includes("tom and jerry") || lower.includes("bheem")) {
-        document.getElementById("chk-kids").checked = true;
-      }
-
-      // Source / OTT
-      const ottSel = document.getElementById("ott-source");
-      if(lower.includes("remux")) ottSel.value = "BluRay REMUX";
-      else if(lower.includes("bluray")) ottSel.value = "BluRay";
-      else if(lower.includes("sunnxt") || lower.includes("sun nxt")) ottSel.value = "SunNXT";
-      else if(lower.includes("amzn") || lower.includes("prime")) ottSel.value = "AMZN";
-      else if(lower.includes("nf") || lower.includes("netflix")) ottSel.value = "NF";
-      else if(lower.includes("hotstar") || lower.includes("dsnp")) ottSel.value = "DSNP";
-      else if(lower.includes("sonyliv")) ottSel.value = "SNXT";
-      else if(lower.includes("zee5")) ottSel.value = "ZEE5";
-      else if(lower.includes("aha")) ottSel.value = "AHA";
-      else if(lower.includes("atvp") || lower.includes("apple")) ottSel.value = "ATVP";
-      else if(lower.includes("jc") || lower.includes("jio")) ottSel.value = "JC";
-      else if(lower.includes("simplysouth")) ottSel.value = "SimplySouth";
-      else if(lower.includes("tentkotta")) ottSel.value = "Tentkotta";
-      else if(lower.includes("manorama")) ottSel.value = "ManoramaMAX";
-
-      // Resolution & Codec
-      if(lower.includes("2160p") || lower.includes("4k")) document.getElementById("quality-format").value = "2160p";
-      else if(lower.includes("720p")) document.getElementById("quality-format").value = "720p";
-      else document.getElementById("quality-format").value = "1080p";
-
-      if(lower.includes("avc")) document.getElementById("codec-format").value = "AVC";
-      else if(lower.includes("x265")) document.getElementById("codec-format").value = "x265";
-      else if(lower.includes("hevc")) document.getElementById("codec-format").value = "HEVC";
-      else document.getElementById("codec-format").value = "x264";
-
-      // Audio Mix
-      let detectedAudios = [];
-      if(lower.includes("dd2 0") || lower.includes("dd2.0") || lower.includes("dd 2.0")) detectedAudios.push("DD 2.0");
-      if(lower.includes("dts-hd ma 5 1") || lower.includes("dts-hd ma 5.1")) detectedAudios.push("DTS-HD MA 5.1");
-      else if(lower.includes("dts-hd")) detectedAudios.push("DTS-HD MA");
-      else if(lower.includes("dts 5 1") || lower.includes("dts 5.1") || lower.includes("dts")) detectedAudios.push("DTS 5.1");
-      if(lower.includes("ddp5 1") || lower.includes("dd+ 5.1") || lower.includes("eac3")) detectedAudios.push("DD+ 5.1");
-      if(lower.includes("atmos") || lower.includes("truehd")) detectedAudios.push("Dolby Atmos");
-      if(lower.includes("aac 2.0") || lower.includes("aac 2 0")) detectedAudios.push("AAC 2.0");
-
-      if(detectedAudios.length > 0) {
-        document.getElementById("audio-format").value = detectedAudios.join(" + ");
-      } else {
-        document.getElementById("audio-format").value = "DD+ 5.1";
-      }
-
-      // Size
-      const sm = name.match(/(\d+\.?\d*)\s*(gb|mb)/i);
-      if(sm) manualScale(sm[0]);
-
-      // Base Title
-      let clean = name.replace(/\.(mkv|mp4|avi)$/i, '').replace(/[\._\-]/g, ' ');
-      const ym = clean.match(/\b(19\d\d|20\d\d)\b/);
-      baseMovieYear = ym ? ym[1] : "2024";
-      let title = ym ? clean.substring(0, ym.index).trim() : clean;
-      title = title.replace(/\b(1080p|720p|2160p|4k|uhd|bluray|remux|avc|web-dl|amzn|ddp5|x264|x265|hevc|hindi|tamil|telugu|english|sunnxt|aac|multi|dd2|0|dts-hd|ma|5|1)\b/gi, '').trim();
-      baseMovieTitle = title;
-
-      regenerateStandardName();
-      searchTMDBAuto(title, baseMovieYear);
-    }
-
-    function regenerateStandardName() {
-      let title = meta ? meta.title : (baseMovieTitle || "Movie");
-      let year = meta && meta.release_date ? meta.release_date.split("-")[0] : baseMovieYear;
-      
-      let langs = [];
-      if(document.getElementById("chk-tamil").checked) langs.push("Tamil");
-      if(document.getElementById("chk-hindi").checked) langs.push("Hindi");
-      if(document.getElementById("chk-telugu").checked) langs.push("Telugu");
-      if(document.getElementById("chk-english").checked) langs.push("English");
-      if(document.getElementById("chk-malayalam").checked) langs.push("Malayalam");
-      if(document.getElementById("chk-kannada").checked) langs.push("Kannada");
-      
-      let langTag = "";
-      if(langs.length === 0) langTag = "[Multi]";
-      else langTag = "[" + langs.join(" + ") + "]";
-
-      let src = "[" + document.getElementById("ott-source").value + "]";
-      let qual = "[" + document.getElementById("quality-format").value + "]";
-      let codec = "[" + document.getElementById("codec-format").value + "]";
-      let aud = "[" + document.getElementById("audio-format").value + "]";
-
-      const standard = `${title} (${year}) ${langTag} ${src} ${qual} ${codec} ${aud}.mkv`;
-      document.getElementById("clean-standard-title").value = standard;
-    }
-
-    async function searchTMDBAuto(query, year) {
-      if(!query || query.length < 2) return;
-      try {
-        const res = await fetch("https://api.themoviedb.org/3/search/movie?api_key=" + TMDB_API_KEY + "&query=" + encodeURIComponent(query) + (year ? ("&year=" + year) : ""));
-        const d = await res.json();
-        const box = document.getElementById("tmdb-suggestions");
-        box.innerHTML = "";
-        if(d.results && d.results.length > 0) {
-          d.results.slice(0, 3).forEach(m => {
-            const item = document.createElement("div");
-            item.style.cssText = "padding:6px; cursor:pointer; color:#fff; font-size:0.8rem; border-bottom:1px solid rgba(255,255,255,0.06);";
-            item.textContent = "🎯 " + m.title + " (" + (m.release_date ? m.release_date.split("-")[0] : "") + ")";
-            item.onclick = () => {
-              document.getElementById("tmdb-id").value = m.id;
-              fetchMetadata(m.id);
-              box.style.display = "none";
-            };
-            box.appendChild(item);
-          });
-          box.style.display = "block";
-          if(!document.getElementById("tmdb-id").value) {
-            document.getElementById("tmdb-id").value = d.results[0].id;
-            fetchMetadata(d.results[0].id);
-          }
-        }
-      } catch(e) {}
-    }
-
-    async function fetchMetadata(tmdbId) {
-      if(!tmdbId) return;
-      try {
-        const res = await fetch("https://api.themoviedb.org/3/movie/" + tmdbId + "?api_key=" + TMDB_API_KEY + "&append_to_response=belongs_to_collection");
-        if(!res.ok) return;
-        const d = await res.json();
-        meta = d;
-        baseMovieTitle = d.title;
-        baseMovieYear = d.release_date ? d.release_date.split("-")[0] : "2024";
-
-        // Auto-select original language from TMDB
-        if(d.original_language) {
-          document.getElementById("orig-language").value = d.original_language;
-        }
-
-        let collName = "";
-        if(d.belongs_to_collection && d.belongs_to_collection.name) {
-          collName = d.belongs_to_collection.name;
-        }
-        document.getElementById("collection-name").value = collName;
-
-        document.getElementById("prev-poster").src = d.poster_path ? ("https://image.tmdb.org/t/p/w200" + d.poster_path) : "";
-        document.getElementById("prev-backdrop").style.backgroundImage = d.backdrop_path ? ("url(https://image.tmdb.org/t/p/w780" + d.backdrop_path + ")") : "none";
-        document.getElementById("prev-title").textContent = d.title + " (" + baseMovieYear + ")";
-        document.getElementById("prev-desc").textContent = "Rating: " + d.vote_average + " • " + (d.genres ? d.genres.map(g => g.name).join(", ") : "");
-        document.getElementById("tmdb-preview-panel").style.display = "block";
-        
-        regenerateStandardName();
-        showLaserToast("TMDB Linked: " + d.title);
-      } catch(e) {}
-    }
-
-    async function handleFormSubmit(e) {
-      e.preventDefault();
-      const token = getStoredToken();
-      if(!token) return showLaserToast("GitHub Token required! Click settings in sidebar.", true);
-      const fileId = extractGDriveId(document.getElementById("gdrive-url").value);
-      if(!fileId) return showLaserToast("Invalid Google Drive ID!", true);
-
-      showLaserToast("Committing movie to GitHub chunks...");
-      const streamUrl = WORKER_BASE + fileId + USER_AGENT;
-      const finalCleanName = document.getElementById("clean-standard-title").value;
-      const chosenOrigLang = document.getElementById("orig-language").value;
-
-      const movieObj = {
-        id: fileId,
-        title: meta ? meta.title : (baseMovieTitle || "Movie"),
-        name: finalCleanName,
-        original_language: chosenOrigLang,
-        year: meta && meta.release_date ? parseInt(meta.release_date.split("-")[0]) : parseInt(baseMovieYear),
-        tmdb_id: meta ? meta.id : 0,
-        collection: document.getElementById("collection-name").value.trim(),
-        poster: meta && meta.poster_path ? ("https://image.tmdb.org/t/p/w500" + meta.poster_path) : "",
-        fanart: meta && meta.backdrop_path ? ("https://image.tmdb.org/t/p/original" + meta.backdrop_path) : "",
-        plot: meta ? meta.overview : "",
-        specs: { 
-          resolution: document.getElementById("quality-format").value, 
-          audio: document.getElementById("audio-format").value,
-          source: document.getElementById("ott-source").value,
-          codec: document.getElementById("codec-format").value,
-          size: document.getElementById("file-size").value 
-        },
-        stream_url: streamUrl,
-        versions: [{ 
-          id: fileId, 
-          name: finalCleanName,
-          quality: document.getElementById("quality-format").value, 
-          audio: document.getElementById("audio-format").value,
-          source: document.getElementById("ott-source").value,
-          stream_url: streamUrl 
-        }]
-      };
-
-      // 1. Central Master Chunk
-      let master = await fetchChunk("chunks/data_c01.json");
-      master.unshift(movieObj);
-      await commitFileDirect("chunks/data_c01.json", master, "Add: " + movieObj.title, token);
-
-      // 2. Multi-Audio / Regional Chunks Sync
-      if(document.getElementById("chk-kids").checked) {
-        let kids = await fetchChunk("chunks/data_c05_kids.json");
-        kids.unshift(movieObj);
-        await commitFileDirect("chunks/data_c05_kids.json", kids, "Sync Kids: " + movieObj.title, token);
-      }
-      if(document.getElementById("chk-tamil").checked) {
-        let tam = await fetchChunk("chunks/data_c01_tamil.json");
-        tam.unshift(movieObj);
-        await commitFileDirect("chunks/data_c01_tamil.json", tam, "Sync Tamil: " + movieObj.title, token);
-      }
-      if(document.getElementById("chk-hindi").checked) {
-        let hin = await fetchChunk("chunks/data_c01_hindi.json");
-        hin.unshift(movieObj);
-        await commitFileDirect("chunks/data_c01_hindi.json", hin, "Sync Hindi: " + movieObj.title, token);
-      }
-      if(document.getElementById("chk-telugu").checked) {
-        let tel = await fetchChunk("chunks/data_c01_telugu.json");
-        tel.unshift(movieObj);
-        await commitFileDirect("chunks/data_c01_telugu.json", tel, "Sync Telugu: " + movieObj.title, token);
-      }
-      if(document.getElementById("chk-english").checked) {
-        let eng = await fetchChunk("chunks/data_c01_english.json");
-        eng.unshift(movieObj);
-        await commitFileDirect("chunks/data_c01_english.json", eng, "Sync English: " + movieObj.title, token);
-      }
-
-      showLaserToast("🎉 Movie Committed Successfully Across Selected Chunks!");
-      localStorage.removeItem("temp_push_id");
-      localStorage.removeItem("temp_push_title");
-      document.getElementById("push-form").reset();
-      document.getElementById("tmdb-preview-panel").style.display = "none";
-    }
-
-    window.onload = () => {
-      const storedId = localStorage.getItem("temp_push_id");
-      const storedTitle = localStorage.getItem("temp_push_title");
-      if(storedId && storedTitle) {
-        document.getElementById("gdrive-url").value = storedId;
-        document.getElementById("raw-name").value = storedTitle;
-        parseFileName(storedTitle);
-        showLaserToast("Auto-Loaded from Drive Queue!");
-      }
-    };
-  </script>
+  <script src="j_core/p_push_engine.js"></script>
 </body>
 </html>
