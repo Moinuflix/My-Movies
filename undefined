@@ -43,6 +43,22 @@
           "audio": "5.1 Surround DTS-HD",
           "channels": "5.1"
         }
+      },
+      {
+        "id": "https://drive.google.com/file/d/1weHEbJBFitRoDKOf_FptK51C01QAlxC8/view?usp=drivesdk",
+        "title": "CHID Test",
+        "track_number": 3,
+        "artist": "Dolby Atmos and Dolby Vision Demo: Leviathan Song",
+        "plot": "Dolby Atmos and Dolby Vision Demo: Leviathan - CHID Test Official 5.1 Surround Video Song.",
+        "thumb": "https://image.tmdb.org/t/p/w780/gAmDbmaT3wFPcDYagm3pINmxzds.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/gAmDbmaT3wFPcDYagm3pINmxzds.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=https://drive.google.com/file/d/1weHEbJBFitRoDKOf_FptK51C01QAlxC8/view?usp=drivesdk|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "codec": "H.264",
+          "audio": "5.1 Surround DTS-HD",
+          "channels": "5.1"
+        }
       }
     ]
   },
