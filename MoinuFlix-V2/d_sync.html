@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MoinuFlix V2 — Drive Sync Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="c_core/ui_style.css">
+  <link rel="stylesheet" href="c_core/ui_components.css">
+  <style>
+    /* Scope: Page-specific Drive Sync Studio enhancements */
+    .stat-badge-row {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-md);
+    }
+    .stat-badge {
+      background-color: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-xs) var(--space-md);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: var(--text-sm);
+    }
+    .stat-badge strong {
+      font-size: var(--text-base);
+      font-weight: 800;
+      font-family: var(--font-mono);
+    }
+    .search-bar-row {
+      display: flex;
+      gap: var(--space-sm);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .cell-filename {
+      color: var(--text-main);
+      font-weight: 600;
+      word-break: break-all;
+      min-width: 220px;
+    }
+    .cell-id {
+      font-family: var(--font-mono);
+      color: var(--accent-cyan);
+      font-size: var(--text-xs);
+      word-break: break-all;
+    }
+    .tag-size {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      background-color: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      padding: 2px 6px;
+      border-radius: var(--radius-xs);
+      white-space: nowrap;
+    }
+    .tag-size.active-size {
+      color: var(--accent-cyan);
+      border-color: var(--accent-cyan-border);
+      background-color: var(--accent-cyan-dim);
+    }
+    .actions-cell {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--space-xs);
+      white-space: nowrap;
+    }
+    @media (max-width: 768px) {
+      .smart-table-wrap {
+        border: none;
+        background: transparent;
+      }
+      .smart-scan-table thead {
+        display: none;
+      }
+      .smart-scan-table, 
+      .smart-scan-table tbody, 
+      .smart-scan-table tr, 
+      .smart-scan-table td {
+        display: block;
+        width: 100%;
+      }
+      .smart-scan-table tr {
+        margin-bottom: var(--space-md);
+        background: var(--bg-surface-elevated);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-md);
+        padding: var(--space-md);
+      }
+      .smart-scan-table td {
+        padding: var(--space-2xs) 0;
+        border: none;
+      }
+      .smart-scan-table td.actions-cell {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: var(--space-xs);
+        padding-top: var(--space-xs);
+        border-top: 1px solid var(--border-subtle);
+      }
+    }
+  </style>
+</head>
+<body class="safe-area-inset">
+
+  <div class="app-shell">
+
+    <!-- DESKTOP SIDEBAR -->
+    <aside class="sidebar" aria-label="Desktop Navigation">
+      <div class="sidebar__brand">
+        <div class="sidebar__brand-logo">
+          MOINU<span>FLIX</span>
+        </div>
+      </div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__nav-section-title">Studios</div>
+        <a href="m_view.html" class="sidebar__nav-item" data-nav="library">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
+          </span>
+          <span>Movies View</span>
+        </a>
+        <a href="d_sync.html" class="sidebar__nav-item is-active" data-nav="sync">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+          </span>
+          <span>Drive Sync</span>
+        </a>
+        <a href="p_push.html" class="sidebar__nav-item" data-nav="push">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+          </span>
+          <span>Push Movie</span>
+        </a>
+        <a href="s_push.html" class="sidebar__nav-item" data-nav="songs">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          </span>
+          <span>5.1 Songs Studio</span>
+        </a>
+        <a href="series.html" class="sidebar__nav-item" data-nav="series">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+          </span>
+          <span>Series Studio</span>
+        </a>
+      </nav>
+      <div style="margin-top:auto; padding:var(--space-md);">
+        <button type="button" class="btn btn--secondary" onclick="configureGithubToken()" style="width:100%; font-size:var(--text-xs);">
+          ⚙️ GitHub Token
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN WORKSPACE -->
+    <main class="workspace">
+      <!-- Workspace Header -->
+      <header class="workspace__header">
+        <div class="workspace__title-group">
+          <h1 class="workspace__title">Drive Sync Studio</h1>
+          <span class="workspace__subtitle">Google Drive arrivals, folder scanner &amp; push queue</span>
+        </div>
+        <div class="workspace__actions">
+          <button type="button" class="btn btn--secondary" onclick="loadQueue()">🔄 Refresh Queue</button>
+        </div>
+      </header>
+
+      <div class="workspace__content">
+
+        <!-- Google Drive Scanner Card -->
+        <section class="studio-card">
+          <div class="studio-card__header">
+            <h2 class="studio-card__title">📂 Google Drive Folder Scanner</h2>
+          </div>
+          <p style="color:var(--text-secondary); font-size:var(--text-sm);">Scan a Google Drive folder and load available media files into the arrival queue.</p>
+          <div class="search-bar-row">
+            <input type="text" id="scan-folder-url" class="input input--mono" style="flex:1; min-width:280px;" placeholder="Paste Google Drive Folder URL or Folder ID">
+            <button type="button" id="btn-scan" class="btn btn--primary" onclick="scanFolder()">
+              <span>🔍 Scan Folder</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Arrival Queue Section -->
+        <section class="studio-card">
+          <div class="studio-card__header">
+            <h2 class="studio-card__title">📥 Arrival Queue</h2>
+          </div>
+          <p style="color:var(--text-secondary); font-size:var(--text-sm);">Pending Drive items waiting for TMDB verification and ingestion in Push Movie.</p>
+
+          <!-- Queue Summary Badges Bar -->
+          <div class="stat-badge-row">
+            <div class="stat-badge">
+              <span style="color:var(--text-muted);">Files Found:</span>
+              <strong id="stat-found" style="color:var(--accent-cyan);">0</strong>
+            </div>
+            <div class="stat-badge">
+              <span style="color:var(--text-muted);">Ready to Push:</span>
+              <strong id="stat-ready" style="color:var(--status-success);">0</strong>
+            </div>
+            <div class="stat-badge">
+              <span style="color:var(--text-muted);">Skipped:</span>
+              <strong id="stat-skipped" style="color:var(--text-muted);">0</strong>
+            </div>
+          </div>
+
+          <!-- Table Container -->
+          <div class="table-responsive smart-table-wrap">
+            <table class="table smart-scan-table">
+              <thead>
+                <tr>
+                  <th style="width: 110px;">Status</th>
+                  <th>Raw Release Filename</th>
+                  <th style="width: 180px;">Drive ID</th>
+                  <th style="width: 120px;">Size</th>
+                  <th style="width: 190px; text-align:right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="queue-body">
+                <tr>
+                  <td colspan="5" style="text-align:center; padding:35px; color:var(--text-muted);">
+                    Checking arrivals queue...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- FIXED MOBILE BOTTOM NAVIGATION -->
+  <nav class="bottom-nav" aria-label="Mobile Navigation">
+    <ul class="bottom-nav__items">
+      <li>
+        <a href="m_view.html" class="bottom-nav__item" data-nav="home">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="m_view.html?focus=search" class="bottom-nav__item" data-nav="search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span>Search</span>
+        </a>
+      </li>
+      <li>
+        <a href="p_push.html" class="bottom-nav__item bottom-nav__item--push" data-nav="push" aria-label="Push Studio">
+          <div class="bottom-nav__push-circle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+          <span>Push</span>
+        </a>
+      </li>
+      <li>
+        <a href="d_sync.html" class="bottom-nav__item is-active" data-nav="sync">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
+          <span>Sync</span>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" onclick="configureGithubToken()" class="bottom-nav__item" data-nav="profile">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Profile</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- MODAL: GITHUB TOKEN CONFIGURATION -->
+  <div class="modal-backdrop" id="modal-gh-config" role="dialog" aria-modal="true" aria-labelledby="modal-gh-title">
+    <div class="modal">
+      <div class="modal__header">
+        <h3 id="modal-gh-title" class="studio-card__title">GitHub Authentication</h3>
+        <button type="button" class="btn btn--secondary btn--icon" data-modal-close aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal__body" style="display:flex; flex-direction:column; gap:var(--space-md);">
+        <div class="form-group">
+          <label class="form-label" for="cfg-gh-token">Personal Access Token (Repo Scope)</label>
+          <input type="password" id="cfg-gh-token" class="input input--mono" placeholder="ghp_...">
+        </div>
+      </div>
+      <div class="modal__footer">
+        <button type="button" class="btn btn--secondary" data-modal-close>Cancel</button>
+        <button type="button" class="btn btn--primary" id="btn-save-gh-token">Save Token</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Master UI Controller -->
+  <script src="c_core/ui.js"></script>
+
+  <!-- Preserved GitHub Operations Core Reference -->
+  <script src="j_core/gh_core.js"></script>
+
+  <!-- Complete Ingestion Engine Script (100% Functionally Preserved) -->
+  <script>
+    let queueItems = [];
+    let skippedCount = 0;
+
+    // Helper: Safe size formatting without inventing values
+    function formatByteSize(bytes) {
+      if (bytes === null || bytes === undefined || bytes === "" || isNaN(Number(bytes))) {
+        return "—";
+      }
+      const b = Number(bytes);
+      if (b <= 0) return "—";
+
+      const mb = b / (1024 * 1024);
+      const gb = b / (1024 * 1024 * 1024);
+
+      if (gb >= 1) {
+        return (gb % 1 === 0 ? gb.toFixed(0) : gb.toFixed(1)) + " GB";
+      }
+      return (mb % 1 === 0 ? mb.toFixed(0) : mb.toFixed(1)) + " MB";
+    }
+
+    // Helper: Safe size extraction from multi-field Worker response
+    function extractSizeFromWorker(fileObj) {
+      const candidate = fileObj.size ?? fileObj.size_bytes ?? fileObj.bytes ?? fileObj.file_size ?? fileObj.fileSize;
+      if (candidate !== undefined && candidate !== null && candidate !== "") {
+        const parsed = Number(candidate);
+        return isNaN(parsed) ? null : parsed;
+      }
+      return null;
+    }
+
+    // Helper: Google Drive Folder ID extractor
+    function extractFolderId(input) {
+      if (!input) return null;
+      input = input.trim();
+      if (typeof extractGDriveId === "function") {
+        const id = extractGDriveId(input);
+        if (id) return id;
+      }
+      const folderMatch = input.match(/folders\/([a-zA-Z0-9_-]+)/);
+      if (folderMatch) return folderMatch[1];
+      const idMatch = input.match(/id=([a-zA-Z0-9_-]+)/);
+      if (idMatch) return idMatch[1];
+      if (/^[a-zA-Z0-9_-]{15,}$/.test(input)) return input;
+      return null;
+    }
+
+    // Update real queue counters
+    function updateCounters() {
+      document.getElementById("stat-found").textContent = queueItems.length + skippedCount;
+      document.getElementById("stat-ready").textContent = queueItems.length;
+      document.getElementById("stat-skipped").textContent = skippedCount;
+    }
+
+    // Load queue preserving inbox_arrivals.json compatibility
+    async function loadQueue() {
+      const tbody = document.getElementById("queue-body");
+      tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:35px; color:var(--text-muted);">Refreshing arrivals from repository...</td></tr>`;
+
+      try {
+        const repo = (typeof GH_REPO !== "undefined") ? GH_REPO : "Moinuflix/My-Movies";
+        const branch = (typeof GH_BRANCH !== "undefined") ? GH_BRANCH : "main";
+        const res = await fetch(`https://raw.githubusercontent.com/${repo}/${branch}/inbox_arrivals.json?t=${Date.now()}`);
+
+        if (res.ok) {
+          const data = await res.json();
+          queueItems = (Array.isArray(data) ? data : []).map(item => ({
+            gdrive_id: item.gdrive_id || item.id || "",
+            title: item.title || item.name || "Untitled",
+            size: extractSizeFromWorker(item)
+          })).filter(i => i.gdrive_id);
+          renderQueue();
+        } else {
+          queueItems = [];
+          renderQueue();
+        }
+      } catch (err) {
+        queueItems = [];
+        renderQueue();
+      }
+    }
+
+    // Safe DOM Renderer (XSS Protected + Desktop/Mobile Adaptive)
+    function renderQueue() {
+      const tbody = document.getElementById("queue-body");
+      tbody.innerHTML = "";
+      updateCounters();
+
+      if (queueItems.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5">
+              <div class="state-box">
+                <span style="font-size: 2rem;">🎉</span>
+                <span class="state-box__title">Queue is empty</span>
+                <span class="state-box__desc">No pending Drive files are waiting to be pushed. Scan a Google Drive folder above to stage new releases.</span>
+              </div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      queueItems.forEach((item, idx) => {
+        const tr = document.createElement("tr");
+
+        // Col 1: Status
+        const tdStatus = document.createElement("td");
+        tdStatus.innerHTML = `<span class="badge badge--auto">READY</span>`;
+        tr.appendChild(tdStatus);
+
+        // Col 2: Raw Release Filename
+        const tdTitle = document.createElement("td");
+        tdTitle.className = "cell-filename";
+        tdTitle.textContent = item.title;
+        tr.appendChild(tdTitle);
+
+        // Col 3: Drive ID
+        const tdId = document.createElement("td");
+        tdId.className = "cell-id";
+        tdId.textContent = item.gdrive_id;
+        tr.appendChild(tdId);
+
+        // Col 4: Size
+        const tdSize = document.createElement("td");
+        const formattedSize = formatByteSize(item.size);
+        const hasSize = formattedSize !== "—";
+        tdSize.innerHTML = `<span class="tag-size ${hasSize ? 'active-size' : ''}">${formattedSize}</span>`;
+        tr.appendChild(tdSize);
+
+        // Col 5: Actions
+        const tdActions = document.createElement("td");
+        tdActions.className = "actions-cell";
+
+        const btnPush = document.createElement("button");
+        btnPush.type = "button";
+        btnPush.className = "btn btn--primary";
+        btnPush.style.height = "32px";
+        btnPush.style.fontSize = "var(--text-xs)";
+        btnPush.style.padding = "0 10px";
+        btnPush.textContent = "➕ Push to Studio";
+        btnPush.onclick = () => pushToStudio(item.gdrive_id, item.title);
+
+        const btnDismiss = document.createElement("button");
+        btnDismiss.type = "button";
+        btnDismiss.className = "btn btn--secondary";
+        btnDismiss.style.height = "32px";
+        btnDismiss.style.fontSize = "var(--text-xs)";
+        btnDismiss.style.padding = "0 8px";
+        btnDismiss.textContent = "✕";
+        btnDismiss.title = "Dismiss from list";
+        btnDismiss.onclick = () => dismissItem(idx);
+
+        tdActions.appendChild(btnPush);
+        tdActions.appendChild(btnDismiss);
+        tr.appendChild(tdActions);
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Google Drive Folder Scanner
+    async function scanFolder() {
+      const input = document.getElementById("scan-folder-url");
+      const folderId = extractFolderId(input.value);
+
+      if (!folderId) {
+        if (typeof MoinuUI !== "undefined") MoinuUI.toast("Please enter a valid Google Drive Folder ID or URL.", "warning");
+        return;
+      }
+
+      const btn = document.getElementById("btn-scan");
+      if (typeof MoinuUI !== "undefined") MoinuUI.setLoading(btn, true, "Scanning...");
+
+      try {
+        const workerUrl = (typeof WORKER_SCAN_ENDPOINT !== "undefined")
+          ? WORKER_SCAN_ENDPOINT
+          : "https://moinuflix-worker.workers.dev/scan-folder";
+
+        const res = await fetch(`${workerUrl}?folder_id=${encodeURIComponent(folderId)}`);
+        if (!res.ok) throw new Error(`Scanner returned status ${res.status}`);
+
+        const data = await res.json();
+        const files = Array.isArray(data.files) ? data.files : (Array.isArray(data) ? data : []);
+
+        let added = 0;
+        files.forEach(f => {
+          const fid = f.id || f.gdrive_id;
+          const fname = f.name || f.title;
+          const fsize = extractSizeFromWorker(f);
+
+          if (fid && fname && !queueItems.some(existing => existing.gdrive_id === fid)) {
+            queueItems.push({
+              gdrive_id: fid,
+              title: fname,
+              size: fsize
+            });
+            added++;
+          }
+        });
+
+        renderQueue();
+        if (typeof MoinuUI !== "undefined") {
+          MoinuUI.toast(`Scan complete! Added ${added} new files to queue.`, "success");
+        }
+      } catch (err) {
+        console.error("Folder scan failed:", err);
+        if (typeof MoinuUI !== "undefined") {
+          MoinuUI.toast(`Scan failed: ${err.message}`, "danger");
+        }
+      } finally {
+        if (typeof MoinuUI !== "undefined") MoinuUI.setLoading(btn, false);
+      }
+    }
+
+    // Hand-off item directly to p_push.html
+    function pushToStudio(id, title) {
+      localStorage.setItem("temp_push_id", id);
+      localStorage.setItem("temp_push_title", title);
+      window.location.href = "p_push.html";
+    }
+
+    // Dismiss an item locally
+    function dismissItem(idx) {
+      queueItems.splice(idx, 1);
+      skippedCount++;
+      renderQueue();
+      if (typeof MoinuUI !== "undefined") MoinuUI.toast("Item dismissed from local queue.", "info", 1500);
+    }
+
+    // Modal Helper for GitHub Token
+    function configureGithubToken() {
+      const cur = localStorage.getItem("moinu_gh_token") || "";
+      const input = document.getElementById("cfg-gh-token");
+      if (input) input.value = cur;
+      if (typeof MoinuUI !== "undefined") MoinuUI.openModal("modal-gh-config");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const saveBtn = document.getElementById("btn-save-gh-token");
+      if (saveBtn) {
+        saveBtn.addEventListener("click", () => {
+          const val = document.getElementById("cfg-gh-token").value.trim();
+          if (val) {
+            localStorage.setItem("moinu_gh_token", val);
+            if (typeof MoinuUI !== "undefined") {
+              MoinuUI.closeModal("modal-gh-config");
+              MoinuUI.toast("GitHub Token stored in LocalStorage.", "success");
+            }
+          }
+        });
+      }
+
+      loadQueue();
+    });
+  </script>
+</body>
+</html>
