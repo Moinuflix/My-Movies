@@ -107,6 +107,29 @@
       white-space: pre-wrap;
       word-break: break-all;
     }
+    .tmdb-suggestion-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 10px;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background var(--transition-fast);
+    }
+    .tmdb-suggestion-item:last-child {
+      border-bottom: none;
+    }
+    .tmdb-suggestion-item:hover {
+      background: rgba(0, 210, 255, 0.08);
+    }
+    .tmdb-suggestion-poster {
+      width: 36px;
+      height: 52px;
+      object-fit: cover;
+      border-radius: 4px;
+      background: #111;
+      flex-shrink: 0;
+    }
   </style>
 </head>
 <body class="safe-area-inset">
@@ -181,7 +204,7 @@
         <!-- Deduplication Status Banner -->
         <div id="match-status-box" class="match-status-banner match-new">
           <span id="match-status-text">🟢 NEW MOVIE: Ready to register new catalog entry</span>
-          <span id="match-target-chunk" style="font-family:var(--font-mono); font-size:var(--text-xs);">Target: chunks/movies_001.json</span>
+          <span id="match-target-chunk" style="font-family:var(--font-mono); font-size:var(--text-xs);">Target: data/chunk_01.json</span>
         </div>
 
         <form id="push-form" onsubmit="executeValidatedCommit(event)">
@@ -193,7 +216,7 @@
             </div>
             <div class="form-group">
               <input type="text" id="raw-name" class="input input--mono" placeholder="Paste: Vikram.2022.Tamil.AMZN.WEB-DL.1080p.SDR.H.264.DDP5.1.23.976fps.8bit-3.2GB.mkv" oninput="parseFileName(this.value)">
-              <div id="tmdb-suggestions" style="display:none; background:var(--bg-primary); border:1px solid var(--accent-cyan); border-radius:var(--radius-md); margin-top:8px; max-height:180px; overflow-y:auto; padding:4px;"></div>
+              <div id="tmdb-suggestions" style="display:none; background:var(--bg-primary); border:1px solid var(--accent-cyan); border-radius:var(--radius-md); margin-top:8px; max-height:280px; overflow-y:auto; padding:4px;"></div>
             </div>
           </section>
 
@@ -215,7 +238,7 @@
             <div class="grid grid--cols-3">
               <div class="form-group">
                 <label class="form-label" for="tmdb-id">TMDB Movie ID</label>
-                <input type="number" id="tmdb-id" class="input input--mono" placeholder="Auto-filled" required oninput="fetchMetadata(this.value)">
+                <input type="number" id="tmdb-id" class="input input--mono" placeholder="Auto-filled via manual selection" required oninput="fetchMetadata(this.value)">
               </div>
               <div class="form-group">
                 <label class="form-label" for="internal-movie-id">Internal Movie ID</label>
@@ -335,7 +358,7 @@
           <!-- 11. Google Drive File ID (Version ID) -->
           <section class="studio-card">
             <div class="studio-card__header">
-              <h2 class="studio-card__title">11. GOOGLE DRIVE FILE ID (BECOMES VERSION_ID)</h2>
+              <h2 class="studio-card__title">11. GOOGLE DRIVE FILE ID</h2>
             </div>
             <div class="form-group">
               <input type="text" id="gdrive-url" class="input input--mono" placeholder="e.g. 1aFmu_tpwZdvV_wiA4FR5U6WzORXKIDrQ" required oninput="checkMovieDeduplication()">
@@ -395,7 +418,7 @@
           <section class="studio-card">
             <div class="studio-card__header" style="cursor:pointer;" onclick="toggleJsonPreview()">
               <h2 class="studio-card__title" style="color:var(--status-warning);">13 &amp; 14. FINAL JSON PREVIEW (EXPAND TO VERIFY) ▼</h2>
-              <span id="preview-target-badge" class="badge badge--auto" style="font-family:var(--font-mono);">Legacy: catalog.json + chunk</span>
+              <span id="preview-target-badge" class="badge badge--auto" style="font-family:var(--font-mono);">Target: data/catalog.json + data/chunk_01.json + data/providers.json</span>
             </div>
             <div id="json-preview-container" style="display:none; margin-top:var(--space-sm);">
               <pre id="json-preview-box" class="preview-box"></pre>
@@ -408,11 +431,11 @@
               <span class="pipeline__separator">&rarr;</span>
               <span class="pipeline__step" id="pipe-match">3. Match</span>
               <span class="pipeline__separator">&rarr;</span>
-              <span class="pipeline__step" id="pipe-catalog">4. Catalog Update</span>
+              <span class="pipeline__step" id="pipe-catalog">4. Catalog Sync</span>
               <span class="pipeline__separator">&rarr;</span>
-              <span class="pipeline__step" id="pipe-chunk">5. Chunk Update</span>
+              <span class="pipeline__step" id="pipe-chunk">5. Chunk Sync</span>
               <span class="pipeline__separator">&rarr;</span>
-              <span class="pipeline__step" id="pipe-commit">6. GitHub Commit</span>
+              <span class="pipeline__step" id="pipe-commit">6. Providers &amp; Commit</span>
             </div>
           </section>
 
@@ -491,7 +514,7 @@
   <!-- Preserved GitHub Operations Core Reference -->
   <script src="j_core/gh_core.js"></script>
 
-  <!-- Full V1 Ingestion Logic Restored in V2 Shell -->
+  <!-- V2 Ingestion Logic -->
   <script>
     // 1. STATE & FIELD OVERRIDES TRACKER (MANUAL always wins)
     const manualOverrides = {
@@ -516,27 +539,23 @@
       hdr: null,
       audio_codec: null,
       channels: null,
-      size_display: null,
-      size_bytes: null
+      size_display: null
     };
 
-    // 2. OFFICIAL PROVIDER CATALOG (Full V1 Preservation)
+    // 2. OFFICIAL PROVIDER CATALOG (Normalized V2 IDs and real logo URLs)
     const PROVIDER_DIRECTORY = [
-      { id: "AMZN", name: "Amazon Prime Video", short_name: "AMZN", type: "ott", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png", regex: /\b(amzn|amazon|prime)\b/i },
-      { id: "NF", name: "Netflix", short_name: "NF", type: "ott", logo: "https://assets.nflxext.com/ffe/siteui/common/icons/nficon2016.png", regex: /\b(nf|netflix)\b/i },
-      { id: "SunNXT", name: "Sun NXT", short_name: "SunNXT", type: "ott", logo: "https://www.sunnxt.com/favicon.ico", regex: /\b(sunnxt|sun\s*nxt)\b/i },
-      { id: "DSNP", name: "Disney+ Hotstar", short_name: "DSNP", type: "ott", logo: "https://secure-media.hotstarext.com/web-assets/prod/images/brand-logos/disney-hotstar-logo-dark.svg", regex: /\b(dsnp|hotstar|disney\+?|disney\.hotstar)\b/i },
-      { id: "SNXT", name: "SonyLIV", short_name: "SonyLIV", type: "ott", logo: "https://www.sonyliv.com/favicon.ico", regex: /\b(snxt|sonyliv|sony\s*liv)\b/i },
-      { id: "ZEE5", name: "ZEE5", short_name: "ZEE5", type: "ott", logo: "https://www.zee5.com/favicon.ico", regex: /\b(zee5|zee\s*5)\b/i },
-      { id: "AHA", name: "Aha Video", short_name: "AHA", type: "ott", logo: "https://www.aha.video/favicon.ico", regex: /\b(aha)\b/i },
-      { id: "ATVP", name: "Apple TV+", short_name: "ATVP", type: "ott", logo: "https://www.apple.com/favicon.ico", regex: /\b(atvp|apple\s*tv\+?)\b/i },
-      { id: "JC", name: "JioCinema", short_name: "JC", type: "ott", logo: "https://www.jiocinema.com/favicon.ico", regex: /\b(jc|jiocinema|jio\s*cinema)\b/i },
-      { id: "SimplySouth", name: "Simply South", short_name: "SimplySouth", type: "ott", logo: "https://www.simplysouth.tv/favicon.ico", regex: /\b(simplysouth|simply\s*south)\b/i },
-      { id: "Tentkotta", name: "Tentkotta", short_name: "Tentkotta", type: "ott", logo: "https://www.tentkotta.com/favicon.ico", regex: /\b(tentkotta)\b/i },
-      { id: "ManoramaMAX", name: "ManoramaMAX", short_name: "ManoramaMAX", type: "ott", logo: "https://www.manoramamax.com/favicon.ico", regex: /\b(manoramamax|manorama\s*max)\b/i },
-      { id: "REMUX", name: "BluRay REMUX", short_name: "REMUX", type: "disc", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Blu-ray_Disc_logo.svg", regex: /\b(remux|bdremux)\b/i },
-      { id: "BluRay", name: "BluRay Disc", short_name: "BluRay", type: "disc", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Blu-ray_Disc_logo.svg", regex: /\b(bluray|bdrip|brrip)\b/i },
-      { id: "WEB-DL", name: "WEB-DL", short_name: "WEB-DL", type: "web", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Generic_Feed_icon.svg", regex: /\b(web-?dl|webrip)\b/i }
+      { id: "amazon_prime_video", name: "Amazon Prime Video", short_name: "AMZN", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png", regex: /\b(amzn|amazon|prime)\b/i },
+      { id: "netflix", name: "Netflix", short_name: "NF", logo: "https://assets.nflxext.com/ffe/siteui/common/icons/nficon2016.png", regex: /\b(nf|netflix)\b/i },
+      { id: "sun_nxt", name: "Sun NXT", short_name: "SunNXT", logo: "https://www.sunnxt.com/favicon.ico", regex: /\b(sunnxt|sun\s*nxt)\b/i },
+      { id: "disney_hotstar", name: "Disney+ Hotstar", short_name: "DSNP", logo: "https://secure-media.hotstarext.com/web-assets/prod/images/brand-logos/disney-hotstar-logo-dark.svg", regex: /\b(dsnp|hotstar|disney\+?|disney\.hotstar)\b/i },
+      { id: "sonyliv", name: "SonyLIV", short_name: "SonyLIV", logo: "https://www.sonyliv.com/favicon.ico", regex: /\b(snxt|sonyliv|sony\s*liv)\b/i },
+      { id: "zee5", name: "ZEE5", short_name: "ZEE5", logo: "https://www.zee5.com/favicon.ico", regex: /\b(zee5|zee\s*5)\b/i },
+      { id: "aha", name: "Aha", short_name: "AHA", logo: "https://www.aha.video/favicon.ico", regex: /\b(aha)\b/i },
+      { id: "apple_tv", name: "Apple TV+", short_name: "ATVP", logo: "https://www.apple.com/favicon.ico", regex: /\b(atvp|apple\s*tv\+?)\b/i },
+      { id: "jiocinema", name: "JioCinema", short_name: "JC", logo: "https://www.jiocinema.com/favicon.ico", regex: /\b(jc|jiocinema|jio\s*cinema)\b/i },
+      { id: "simply_south", name: "Simply South", short_name: "SimplySouth", logo: "https://www.simplysouth.tv/favicon.ico", regex: /\b(simplysouth|simply\s*south)\b/i },
+      { id: "tentkotta", name: "Tentkotta", short_name: "Tentkotta", logo: "https://www.tentkotta.com/favicon.ico", regex: /\b(tentkotta)\b/i },
+      { id: "manoramamax", name: "ManoramaMAX", short_name: "ManoramaMAX", logo: "https://www.manoramamax.com/favicon.ico", regex: /\b(manoramamax|manorama\s*max)\b/i }
     ];
 
     function initProviderSelector() {
@@ -589,7 +608,7 @@
       el.className = mode === "MANUAL" ? "badge badge--manual" : "badge badge--auto";
     }
 
-    // 3. MASTER FILENAME PARSER (Full V1 Preservation)
+    // 3. MASTER FILENAME PARSER
     let tmdbDebounceTimer = null;
 
     function parseFileName(name) {
@@ -651,6 +670,10 @@
         else if (/\b(720p)\b/i.test(raw)) detectedTechSpecs.quality = "720p";
         else if (/\b(576p)\b/i.test(raw)) detectedTechSpecs.quality = "576p";
         else if (/\b(480p)\b/i.test(raw)) detectedTechSpecs.quality = "480p";
+        else if (/\b(web-?dl)\b/i.test(raw)) detectedTechSpecs.quality = "WEB-DL";
+        else if (/\b(webrip)\b/i.test(raw)) detectedTechSpecs.quality = "WEBRip";
+        else if (/\b(remux)\b/i.test(raw)) detectedTechSpecs.quality = "REMUX";
+        else if (/\b(bluray|bdrip|brrip)\b/i.test(raw)) detectedTechSpecs.quality = "BluRay";
         else detectedTechSpecs.quality = null;
 
         document.getElementById("quality-format").value = detectedTechSpecs.quality || "";
@@ -697,7 +720,7 @@
         if (/\b(dts-hd\s*ma|dts-hd)\b/i.test(raw)) audCodec = "DTS-HD MA";
         else if (/\b(dts)\b/i.test(raw)) audCodec = "DTS";
         else if (/\b(truehd|atmos)\b/i.test(raw)) audCodec = "Dolby Atmos / TrueHD";
-        else if (/\b(ddp|e-?ac-?3|dd\+)\b/i.test(raw)) audCodec = "E-AC-3";
+        else if (/\b(ddp|e-?ac-?3|dd\+)\b/i.test(raw)) audCodec = "DDP";
         else if (/\b(ac-?3|dd)\b/i.test(raw)) audCodec = "AC-3";
         else if (/\b(aac)\b/i.test(raw)) audCodec = "AAC";
 
@@ -715,7 +738,7 @@
         else audioInput.value = "";
       }
 
-      // J. File Size (Auto Decimal GB / MB Parsing)
+      // J. File Size (No fake fallback)
       if (!manualOverrides.size) {
         const sizeMatch = raw.match(/([\d\.]+)\s*(gb|mb)\b/i);
         if (sizeMatch) {
@@ -725,14 +748,12 @@
           const formattedGb = Math.round(valGb * 100) / 100;
 
           detectedTechSpecs.size_display = `${formattedGb} GB`;
-          detectedTechSpecs.size_bytes = Math.round(valGb * 1024 * 1024 * 1024);
 
           document.getElementById("detected-size-badge").textContent = `${formattedGb} GB`;
           document.getElementById("file-size-display").value = `${formattedGb} GB`;
           document.getElementById("size-slider").value = formattedGb;
         } else {
           detectedTechSpecs.size_display = null;
-          detectedTechSpecs.size_bytes = null;
           document.getElementById("detected-size-badge").textContent = "—";
           document.getElementById("file-size-display").value = "";
         }
@@ -752,14 +773,14 @@
       regenerateStandardName();
       updateMediaCard();
 
-      // Debounced TMDB Auto-Search
+      // Debounced TMDB Auto-Search (Manual selection only)
       clearTimeout(tmdbDebounceTimer);
       tmdbDebounceTimer = setTimeout(() => {
-        executeTmdbAutoSearch(baseMovieTitle, baseMovieYear);
+        executeTmdbSearch(baseMovieTitle, baseMovieYear);
       }, 400);
     }
 
-    // 4. CLEAN STANDARD TITLE GENERATOR (Full V1 Preservation)
+    // 4. CLEAN STANDARD TITLE GENERATOR
     function regenerateStandardName() {
       const title = (meta && meta.title) ? meta.title : (baseMovieTitle || "Movie");
       const year = (meta && meta.release_date) ? meta.release_date.split("-")[0] : (baseMovieYear || "");
@@ -854,7 +875,6 @@
       manualOverrides.size = true;
       const num = parseFloat(val);
       detectedTechSpecs.size_display = `${num.toFixed(1)} GB`;
-      detectedTechSpecs.size_bytes = Math.round(num * 1024 * 1024 * 1024);
       document.getElementById("detected-size-badge").textContent = `${num.toFixed(1)} GB`;
       document.getElementById("file-size-display").value = `${num.toFixed(1)} GB`;
       renderOverrideTag("size-status-tag", "MANUAL");
@@ -866,10 +886,10 @@
       if (match) onSizeSliderManual(match[1]);
     }
 
-    // 6. TMDB AUTO-SEARCH & METADATA FETCH
-    const TMDB_API_KEY = "4a159f8c6cb4f8d9fa733d1b11dfd93e"; // Fallback public v3 key
+    // 6. TMDB SEARCH — TOP 5 MANUAL SELECTION ONLY
+    const TMDB_API_KEY = "4a159f8c6cb4f8d9fa733d1b11dfd93e";
 
-    async function executeTmdbAutoSearch(title, year) {
+    async function executeTmdbSearch(title, year) {
       if (!title || title.length < 2) return;
       const box = document.getElementById("tmdb-suggestions");
       if (!box) return;
@@ -877,48 +897,64 @@
       try {
         const url = `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(title)}${year ? `&year=${year}` : ""}`;
         const res = await fetch(url);
-        if (!res.ok) return;
+        if (!res.ok) {
+          box.innerHTML = `<div style="padding:10px; color:var(--status-danger); font-size:var(--text-xs);">TMDB search failed</div>`;
+          box.style.display = "block";
+          return;
+        }
+
         const data = await res.json();
         box.innerHTML = "";
 
         if (data.results && data.results.length > 0) {
-          const topMatches = data.results.slice(0, 3);
+          const topMatches = data.results.slice(0, 5);
           topMatches.forEach(m => {
             const item = document.createElement("div");
-            item.style.cssText = "padding:8px; cursor:pointer; color:var(--text-main); font-size:var(--text-xs); border-bottom:1px solid var(--border-subtle);";
-            const rYear = m.release_date ? m.release_date.split("-")[0] : "";
-            item.textContent = `🎯 ${m.title} (${rYear})`;
+            item.className = "tmdb-suggestion-item";
+            const rYear = m.release_date ? m.release_date.split("-")[0] : "N/A";
+            const posterSrc = m.poster_path ? `https://image.tmdb.org/t/p/w92${m.poster_path}` : 'data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'36\\' height=\\'52\\'%3E%3Crect width=\\'100%25\\' height=\\'100%25\\' fill=\\'%23222\\'/ %3E%3C/svg%3E';
+
+            item.innerHTML = `
+              <img src="${posterSrc}" class="tmdb-suggestion-poster" alt="poster" />
+              <div style="flex:1; overflow:hidden;">
+                <div style="color:var(--text-main); font-weight:700; font-size:var(--text-sm); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${m.title} (${rYear})</div>
+                <div style="color:var(--text-muted); font-size:var(--text-xs); margin-top:2px;">
+                  Lang: <strong>${m.original_language || '—'}</strong> | Rating: <strong>${m.vote_average || '—'}</strong> | ID: <code>${m.id}</code>
+                </div>
+              </div>
+            `;
+
+            // Manual Selection Handler
             item.onclick = () => {
               document.getElementById("tmdb-id").value = m.id;
               box.style.display = "none";
+              box.innerHTML = "";
               fetchMetadata(m.id);
             };
+
             box.appendChild(item);
           });
           box.style.display = "block";
-
-          const exactMatch = topMatches.find(m => {
-            const rYear = m.release_date ? m.release_date.split("-")[0] : "";
-            return m.title.toLowerCase() === title.toLowerCase() && (!year || rYear === year);
-          });
-
-          if (exactMatch && !document.getElementById("tmdb-id").value) {
-            document.getElementById("tmdb-id").value = exactMatch.id;
-            fetchMetadata(exactMatch.id);
-          }
         } else {
-          box.style.display = "none";
+          box.innerHTML = `<div style="padding:10px; color:var(--text-secondary); font-size:var(--text-xs);">No TMDB results found</div>`;
+          box.style.display = "block";
         }
       } catch (err) {
         console.error("TMDB search error:", err);
+        box.innerHTML = `<div style="padding:10px; color:var(--status-danger); font-size:var(--text-xs);">TMDB search failed</div>`;
+        box.style.display = "block";
       }
     }
 
+    // Full TMDB Movie Details
     async function fetchMetadata(tmdbId) {
       if (!tmdbId) return;
       try {
         const res = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_API_KEY}&append_to_response=belongs_to_collection`);
-        if (!res.ok) return;
+        if (!res.ok) {
+          MoinuUI.toast("TMDB details fetch failed", "danger");
+          return;
+        }
         const d = await res.json();
         meta = d;
 
@@ -929,9 +965,12 @@
         document.getElementById("collection-name").value = (d.belongs_to_collection && d.belongs_to_collection.name) ? d.belongs_to_collection.name : "";
 
         const posterEl = document.getElementById("prev-poster");
-        if (posterEl) posterEl.src = d.poster_path ? `https://image.tmdb.org/t/p/w200${d.poster_path}` : "";
+        const realPosterUrl = d.poster_path ? `https://image.tmdb.org/t/p/w500${d.poster_path}` : "";
+        if (posterEl) posterEl.src = realPosterUrl;
+
         const titleEl = document.getElementById("prev-title");
         if (titleEl) titleEl.textContent = `${d.title} (${d.release_date ? d.release_date.split("-")[0] : ""})`;
+        
         const descEl = document.getElementById("prev-desc");
         if (descEl) descEl.textContent = `Rating: ${d.vote_average} • ${d.genres ? d.genres.map(g => g.name).join(", ") : ""}`;
         
@@ -942,10 +981,11 @@
         MoinuUI.toast(`TMDB Linked: ${d.title}`, "success");
       } catch (e) {
         console.error("TMDB metadata fetch error:", e);
+        MoinuUI.toast("TMDB metadata fetch error", "danger");
       }
     }
 
-    // 7. DEDUPLICATION CHECK (LEGACY DATA TARGET — TO BE MIGRATED LATER)
+    // 7. V2 DEDUPLICATION CHECK (Starts from ZERO — Strictly data/catalog.json & data/chunk_01.json)
     let currentMatchState = {
       isExisting: false,
       isDuplicateVersion: false,
@@ -955,38 +995,39 @@
 
     async function checkMovieDeduplication() {
       const gdriveId = document.getElementById("gdrive-url").value.trim();
-      const tmdbId = parseInt(document.getElementById("tmdb-id").value) || 0;
+      const tmdbId = parseInt(document.getElementById("tmdb-id").value) || (meta ? meta.id : 0);
+      const targetMovieId = tmdbId ? `movie_${tmdbId}` : null;
       const banner = document.getElementById("match-status-box");
       const bannerText = document.getElementById("match-status-text");
 
       currentMatchState.isExisting = false;
       currentMatchState.isDuplicateVersion = false;
       currentMatchState.existingMovie = null;
+      currentMatchState.chunkFile = "data/chunk_01.json";
 
       try {
         let catalog = typeof fetchChunk === "function" ? await fetchChunk("data/catalog.json") : [];
         if (!Array.isArray(catalog)) catalog = [];
 
-        const effectiveTitle = (meta && meta.title) ? meta.title : baseMovieTitle;
-        let matchedItem = catalog.find(m => (tmdbId && m.tmdb_id === tmdbId) || (m.title.toLowerCase() === effectiveTitle.toLowerCase() && String(m.year) === String(baseMovieYear)));
+        let matchedItem = null;
+        if (targetMovieId) {
+          matchedItem = catalog.find(m => m.id === targetMovieId);
+        }
 
         if (matchedItem) {
           currentMatchState.isExisting = true;
-          currentMatchState.chunkFile = matchedItem.chunk || "chunks/movies_001.json";
+          currentMatchState.chunkFile = matchedItem.chunk || "data/chunk_01.json";
 
           let chunkData = typeof fetchChunk === "function" ? await fetchChunk(currentMatchState.chunkFile) : [];
           if (Array.isArray(chunkData)) {
             let detailed = chunkData.find(x => x.id === matchedItem.id);
             if (detailed) {
               currentMatchState.existingMovie = detailed;
-              if (gdriveId && detailed.versions && detailed.versions.some(v => v.id === gdriveId || v.version_id === gdriveId)) {
+              if (gdriveId && detailed.versions && detailed.versions.some(v => v.drive_id === gdriveId || v.version_id === gdriveId || v.id === gdriveId)) {
                 currentMatchState.isDuplicateVersion = true;
               }
             }
           }
-        } else {
-          const chunkIndex = Math.floor(catalog.length / 100) + 1;
-          currentMatchState.chunkFile = `chunks/movies_${String(chunkIndex).padStart(3, '0')}.json`;
         }
 
         if (currentMatchState.isDuplicateVersion) {
@@ -1010,83 +1051,92 @@
       }
     }
 
-    // 8. FINAL JSON COMPILATION (LEGACY PAYLOAD SHAPE)
-    const WORKER_BASE = "https://moinuflix-worker.workers.dev/stream?id=";
-    const USER_AGENT = "&agent=v2";
+    // 8. V2 DATA COMPILATION (Strict zero-fake schema adhering to Sections E, F, G, H, I, J)
+    const WORKER_BASE_STREAM = "https://gdrive-stream.moinudeentv.workers.dev/?id=";
 
     function constructCommitPayloads() {
       const gdriveId = document.getElementById("gdrive-url").value.trim();
-      const movieId = document.getElementById("internal-movie-id").value || (meta ? `movie_${meta.id}` : `movie_${Date.now()}`);
-      const title = (meta && meta.title) ? meta.title : (baseMovieTitle || "Movie");
+      const tmdbId = meta ? meta.id : (parseInt(document.getElementById("tmdb-id").value) || null);
+      const movieId = tmdbId ? `movie_${tmdbId}` : (document.getElementById("internal-movie-id").value || null);
+      const title = (meta && meta.title) ? meta.title : (baseMovieTitle || "");
+      const originalTitle = (meta && meta.original_title) ? meta.original_title : title;
       const year = (meta && meta.release_date) ? parseInt(meta.release_date.split("-")[0]) : (parseInt(baseMovieYear) || null);
       const provider = getActiveProvider();
-      const streamUrl = gdriveId ? (WORKER_BASE + gdriveId + USER_AGENT) : null;
-      const finalCleanName = document.getElementById("clean-standard-title").value;
+      const rawSourceFilename = document.getElementById("raw-name").value.trim() || document.getElementById("clean-standard-title").value.trim();
 
+      const realPoster = (meta && meta.poster_path) ? `https://image.tmdb.org/t/p/w500${meta.poster_path}` : null;
+      let realFanart = (meta && meta.backdrop_path) ? `https://image.tmdb.org/t/p/original${meta.backdrop_path}` : null;
+      // Backdrop fallback to real poster if TMDB has no backdrop
+      if (!realFanart && realPoster) {
+        realFanart = realPoster;
+      }
+
+      // Generate version ID: unique stable version string
+      const versionId = `version_${Date.now()}`;
+      const playUrl = gdriveId ? `${WORKER_BASE_STREAM}${gdriveId}` : null;
+
+      // Single Version Object
       const versionObj = {
-        id: gdriveId || null,
-        version_id: gdriveId || null,
-        name: finalCleanName,
-        provider: provider ? {
-          id: provider.id,
-          name: provider.name,
-          short_name: provider.short_name,
-          type: provider.type,
-          logo: provider.logo
-        } : null,
-        quality: detectedTechSpecs.quality,
-        resolution: detectedTechSpecs.res,
-        video: {
-          codec: detectedTechSpecs.codec,
-          fps: detectedTechSpecs.fps,
-          bit_depth: detectedTechSpecs.depth,
-          hdr: detectedTechSpecs.hdr
-        },
-        audio: {
-          codec: detectedTechSpecs.audio_codec,
-          format: document.getElementById("audio-format").value || null,
-          channels: detectedTechSpecs.channels,
-          languages: [document.getElementById("orig-language").value]
-        },
-        size_bytes: detectedTechSpecs.size_bytes,
-        size_display: detectedTechSpecs.size_display,
-        stream_url: streamUrl,
-        date_added: new Date().toISOString()
+        version_id: versionId,
+        drive_id: gdriveId || null,
+        filename: rawSourceFilename,
+        resolution: detectedTechSpecs.res || null,
+        quality: detectedTechSpecs.quality || null,
+        codec: detectedTechSpecs.codec || null,
+        fps: detectedTechSpecs.fps || null,
+        bit_depth: detectedTechSpecs.depth || null,
+        hdr: detectedTechSpecs.hdr || null,
+        audio_codec: detectedTechSpecs.audio_codec || null,
+        channels: detectedTechSpecs.channels || null,
+        size: detectedTechSpecs.size_display || null,
+        play_url: playUrl
       };
 
+      // Detailed Chunk Movie Object (data/chunk_01.json)
       let detailedMovieObj = currentMatchState.existingMovie ? JSON.parse(JSON.stringify(currentMatchState.existingMovie)) : {
+        id: movieId,
+        type: "movie",
+        title: title,
+        original_title: originalTitle,
+        year: year,
+        tmdb_id: tmdbId,
+        original_language: document.getElementById("orig-language").value,
+        poster: realPoster,
+        fanart: realFanart,
+        rating: meta ? (Math.round(meta.vote_average * 10) / 10) : null,
+        genres: (meta && meta.genres) ? meta.genres.map(g => g.name) : [],
+        plot: (meta && meta.overview) ? meta.overview : null,
+        collection: (meta && meta.belongs_to_collection && meta.belongs_to_collection.name) ? meta.belongs_to_collection.name : (document.getElementById("collection-name").value.trim() || null),
+        provider: provider ? { id: provider.id, name: provider.name, logo: provider.logo } : null,
+        versions: []
+      };
+
+      // Add or append version
+      detailedMovieObj.versions.push(versionObj);
+
+      // Lightweight Catalog Entry (data/catalog.json) — NO play_url
+      const catalogEntry = {
         id: movieId,
         title: title,
         sort_title: title.toLowerCase().replace(/^(the|a|an)\s+/i, ''),
         year: year,
-        original_language: document.getElementById("orig-language").value,
-        tmdb_id: meta ? meta.id : null,
-        collection: document.getElementById("collection-name").value.trim() || null,
-        poster: (meta && meta.poster_path) ? `https://image.tmdb.org/t/p/w500${meta.poster_path}` : null,
-        fanart: (meta && meta.backdrop_path) ? `https://image.tmdb.org/t/p/original${meta.backdrop_path}` : null,
-        rating: meta ? meta.vote_average : null,
-        plot: meta ? meta.overview : null,
-        genres: (meta && meta.genres) ? meta.genres.map(g => g.name) : [],
-        versions: []
-      };
-
-      detailedMovieObj.versions.push(versionObj);
-
-      const catalogEntry = {
-        id: movieId,
-        title: title,
-        sort_title: detailedMovieObj.sort_title,
-        year: year,
         rating: detailedMovieObj.rating,
-        poster: detailedMovieObj.poster,
+        poster: realPoster,
+        fanart: realFanart,
         genres: detailedMovieObj.genres,
-        provider_logo: provider ? provider.logo : null,
-        provider_name: provider ? provider.name : null,
+        provider: detailedMovieObj.provider,
         chunk: currentMatchState.chunkFile,
         date_added: new Date().toISOString()
       };
 
-      return { catalogEntry, detailedMovieObj, versionObj };
+      // Provider Object for data/providers.json
+      const providerEntry = provider ? {
+        id: provider.id,
+        name: provider.name,
+        logo: provider.logo
+      } : null;
+
+      return { catalogEntry, detailedMovieObj, versionObj, providerEntry };
     }
 
     function renderJsonPreview() {
@@ -1095,9 +1145,12 @@
       const payloads = constructCommitPayloads();
       box.textContent = JSON.stringify({
         operation: currentMatchState.isExisting ? "ADD_VERSION" : "NEW_MOVIE",
-        target_catalog: "catalog.json (Legacy Reference)",
-        target_chunk: currentMatchState.chunkFile,
-        data: payloads
+        target_catalog: "data/catalog.json",
+        target_chunk: "data/chunk_01.json",
+        target_providers: "data/providers.json",
+        catalog_entry: payloads.catalogEntry,
+        chunk_movie_entry: payloads.detailedMovieObj,
+        new_provider: payloads.providerEntry
       }, null, 2);
     }
 
@@ -1107,7 +1160,7 @@
       container.style.display = container.style.display === "none" ? "block" : "none";
     }
 
-    // 9. GITHUB COMMIT HANDLER (Full V1 Workflow Preserved)
+    // 9. GITHUB COMMIT HANDLER (Strictly V2 targets: data/catalog.json, data/chunk_01.json, data/providers.json)
     async function executeValidatedCommit(e) {
       e.preventDefault();
       const token = typeof getStoredToken === "function" ? getStoredToken() : localStorage.getItem("moinu_gh_token");
@@ -1124,70 +1177,94 @@
         }
       };
 
+      // 1. Validate TMDB manual selection & metadata
       setStep("pipe-parse", true);
+      const tmdbIdInput = parseInt(document.getElementById("tmdb-id").value) || 0;
+      if (!meta || !meta.id || meta.id !== tmdbIdInput) {
+        MoinuUI.toast("Please select a verified movie from the TMDB results first!", "danger");
+        return;
+      }
 
+      // 2. Validate Google Drive ID
       const payloads = constructCommitPayloads();
-      if (!payloads.versionObj.id || payloads.versionObj.id.length < 5) {
-        MoinuUI.toast("Invalid Google Drive ID!", "danger");
+      if (!payloads.versionObj.drive_id || payloads.versionObj.drive_id.length < 5) {
+        MoinuUI.toast("Valid Google Drive ID is required!", "danger");
         return;
       }
       setStep("pipe-validate", true);
 
+      // 3. Match / Deduplication Check
       await checkMovieDeduplication();
       if (currentMatchState.isDuplicateVersion) {
-        MoinuUI.toast("Aborted: Version already exists!", "danger");
+        MoinuUI.toast("Aborted: Google Drive version already exists for this movie!", "danger");
         return;
       }
       setStep("pipe-match", true);
 
       try {
-        MoinuUI.toast("Writing catalog & detailed chunk...", "info");
-
-        if (typeof commitFileDirect === "function" && typeof fetchChunk === "function") {
-          // Catalog sync
-          let catalog = await fetchChunk("data/catalog.json");
-          if (!Array.isArray(catalog)) catalog = [];
-          const catIdx = catalog.findIndex(x => x.id === payloads.catalogEntry.id);
-          if (catIdx >= 0) catalog[catIdx] = payloads.catalogEntry;
-          else catalog.unshift(payloads.catalogEntry);
-          await commitFileDirect("catalog.json", catalog, `Catalog: Sync ${payloads.catalogEntry.title}`, token);
-          setStep("pipe-catalog", true);
-
-          // Chunk sync
-          let chunkData = await fetchChunk(currentMatchState.chunkFile);
-          if (!Array.isArray(chunkData)) chunkData = [];
-          const chunkIdx = chunkData.findIndex(x => x.id === payloads.detailedMovieObj.id);
-          if (chunkIdx >= 0) chunkData[chunkIdx] = payloads.detailedMovieObj;
-          else chunkData.unshift(payloads.detailedMovieObj);
-          await commitFileDirect(currentMatchState.chunkFile, chunkData, `Chunk: Update ${payloads.detailedMovieObj.title}`, token);
-          setStep("pipe-chunk", true);
-
-          // Regional Audio Chunks Sync
-          if (document.getElementById("chk-tamil").checked) {
-            let tam = await fetchChunk("chunks/data_c01_tamil.json");
-            if (Array.isArray(tam)) { tam.unshift(payloads.detailedMovieObj); await commitFileDirect("chunks/data_c01_tamil.json", tam, `Sync Tamil: ${payloads.detailedMovieObj.title}`, token); }
-          }
-          if (document.getElementById("chk-hindi").checked) {
-            let hin = await fetchChunk("chunks/data_c01_hindi.json");
-            if (Array.isArray(hin)) { hin.unshift(payloads.detailedMovieObj); await commitFileDirect("chunks/data_c01_hindi.json", hin, `Sync Hindi: ${payloads.detailedMovieObj.title}`, token); }
-          }
-          setStep("pipe-commit", true);
-
-          MoinuUI.toast("🎉 Movie and Version successfully synced to repository!", "success");
-        } else {
-          MoinuUI.toast("Direct commit completed (gh_core staging).", "success");
+        if (typeof commitFileDirect !== "function" || typeof fetchChunk !== "function") {
+          throw new Error("GitHub Core functions (fetchChunk / commitFileDirect) not loaded.");
         }
 
+        // --- Step 4: Write data/catalog.json ---
+        MoinuUI.toast("Writing data/catalog.json...", "info");
+        let catalog = await fetchChunk("data/catalog.json");
+        if (!Array.isArray(catalog)) catalog = [];
+
+        const catIdx = catalog.findIndex(x => x.id === payloads.catalogEntry.id);
+        if (catIdx >= 0) {
+          catalog[catIdx] = payloads.catalogEntry;
+        } else {
+          catalog.unshift(payloads.catalogEntry);
+        }
+        await commitFileDirect("data/catalog.json", catalog, `Catalog: Sync ${payloads.catalogEntry.title} (${payloads.catalogEntry.year})`, token);
+        setStep("pipe-catalog", true);
+
+        // --- Step 5: Write data/chunk_01.json ---
+        MoinuUI.toast("Writing data/chunk_01.json...", "info");
+        let chunkData = await fetchChunk("data/chunk_01.json");
+        if (!Array.isArray(chunkData)) chunkData = [];
+
+        const chunkIdx = chunkData.findIndex(x => x.id === payloads.detailedMovieObj.id);
+        if (chunkIdx >= 0) {
+          chunkData[chunkIdx] = payloads.detailedMovieObj;
+        } else {
+          chunkData.unshift(payloads.detailedMovieObj);
+        }
+        await commitFileDirect("data/chunk_01.json", chunkData, `Chunk: Update ${payloads.detailedMovieObj.title} (${payloads.detailedMovieObj.year})`, token);
+        setStep("pipe-chunk", true);
+
+        // --- Step 6: Write data/providers.json ---
+        if (payloads.providerEntry) {
+          MoinuUI.toast("Updating data/providers.json...", "info");
+          let providers = await fetchChunk("data/providers.json");
+          if (!Array.isArray(providers)) providers = [];
+
+          const existingProvIdx = providers.findIndex(p => p.id === payloads.providerEntry.id);
+          if (existingProvIdx === -1) {
+            providers.push(payloads.providerEntry);
+            await commitFileDirect("data/providers.json", providers, `Providers: Add ${payloads.providerEntry.name}`, token);
+          }
+        }
+        setStep("pipe-commit", true);
+
+        MoinuUI.toast("🎉 V2 Movie and Version committed successfully to GitHub!", "success");
+
+        // Clean-up and reset form
         localStorage.removeItem("temp_push_id");
         localStorage.removeItem("temp_push_title");
         document.getElementById("push-form").reset();
         document.getElementById("tmdb-preview-panel").style.display = "none";
+        meta = null;
+        baseMovieTitle = "";
+        baseMovieYear = "";
         
         Object.keys(manualOverrides).forEach(k => manualOverrides[k] = false);
         initProviderSelector();
         updateMediaCard();
         checkMovieDeduplication();
       } catch (err) {
+        console.error("V2 Commit pipeline error:", err);
         MoinuUI.toast(`Commit failed: ${err.message}`, "danger");
       }
     }
