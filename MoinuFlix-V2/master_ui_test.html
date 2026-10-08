@@ -77,13 +77,13 @@
 
     <!-- MAIN WORKSPACE -->
     <main class="workspace">
-      <!-- 1. Header Area -->
+      <!-- 1. Header Area with Responsive Wrapping -->
       <header class="workspace__header">
         <div class="workspace__title-group">
           <h1 class="workspace__title">Master UI V2 Testbench</h1>
           <span class="workspace__subtitle">Shared Component Visual &amp; Functional Verification</span>
         </div>
-        <div class="test-actions-row">
+        <div class="workspace__actions">
           <button type="button" class="btn btn--secondary btn--icon" title="Toggle Search" aria-label="Search">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           </button>
@@ -93,7 +93,7 @@
 
       <div class="workspace__content">
 
-        <!-- 2. Pipeline Test -->
+        <!-- 2. Pipeline Test with Wrap Support -->
         <section class="studio-card">
           <div class="studio-card__header">
             <h2 class="studio-card__title">Pipeline Component</h2>
@@ -101,20 +101,20 @@
           </div>
           <div class="pipeline">
             <div class="pipeline__step is-done">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-              <span>01 Step Complete</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+              <span>01 Complete</span>
             </div>
-            <span style="color: var(--text-muted);">&rarr;</span>
+            <span class="pipeline__separator">&rarr;</span>
             <div class="pipeline__step is-active">
-              <span>02 Step Active</span>
+              <span>02 Active</span>
             </div>
-            <span style="color: var(--text-muted);">&rarr;</span>
+            <span class="pipeline__separator">&rarr;</span>
             <div class="pipeline__step">
-              <span>03 Step Pending</span>
+              <span>03 Pending</span>
             </div>
-            <span style="color: var(--text-muted);">&rarr;</span>
+            <span class="pipeline__separator">&rarr;</span>
             <div class="pipeline__step">
-              <span>04 Step Pending</span>
+              <span>04 Pending</span>
             </div>
           </div>
         </section>
@@ -281,7 +281,7 @@
           </div>
 
           <div class="state-box" style="border-color: var(--status-danger-border);">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--status-danger);"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--status-danger);"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="12.01"/></svg>
             <span class="state-box__title" style="color: var(--status-danger);">Error State</span>
             <span class="state-box__desc">Failed to connect to provider stream socket endpoint.</span>
           </div>
