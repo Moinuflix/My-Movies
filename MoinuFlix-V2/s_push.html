@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MoinuFlix V2 — 5.1 Songs Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="c_core/ui_style.css">
+  <link rel="stylesheet" href="c_core/ui_components.css">
+  <style>
+    /* Scope: Page-specific 5.1 Songs Studio extensions */
+    .search-row {
+      position: relative;
+      display: flex;
+      gap: var(--space-xs);
+    }
+    .search-results {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-standard);
+      border-radius: var(--radius-md);
+      max-height: 320px;
+      overflow-y: auto;
+      z-index: 30;
+      display: none;
+      box-shadow: var(--shadow-md);
+    }
+    .search-results.open {
+      display: block;
+    }
+    .search-result-item {
+      display: flex;
+      gap: var(--space-sm);
+      padding: 10px 14px;
+      cursor: pointer;
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background-color var(--transition-fast);
+    }
+    .search-result-item:hover {
+      background: var(--bg-surface-hover);
+    }
+    .search-result-poster {
+      width: 40px;
+      height: 58px;
+      border-radius: var(--radius-xs);
+      object-fit: cover;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+    }
+    .movie-summary-banner {
+      display: none;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border-standard);
+      border-radius: var(--radius-lg);
+      background: var(--bg-surface);
+      margin-bottom: var(--space-lg);
+    }
+    .movie-summary-banner.visible {
+      display: block;
+    }
+    .movie-summary-backdrop {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.25) blur(2px);
+      transform: scale(1.05);
+    }
+    .movie-summary-content {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      align-items: center;
+    }
+    .movie-summary-poster {
+      width: 84px;
+      height: 126px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: #000;
+      flex-shrink: 0;
+    }
+    .song-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .song-card {
+      display: flex;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      transition: border-color var(--transition-fast);
+    }
+    .song-card:hover {
+      border-color: var(--accent-cyan-border);
+    }
+    .song-card-aside {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-xs);
+      flex-shrink: 0;
+    }
+    .song-index {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-full);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-standard);
+      color: var(--accent-cyan);
+      font-size: var(--text-xs);
+      font-weight: 800;
+      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .song-thumb-preview {
+      width: 90px;
+      height: 52px;
+      border-radius: var(--radius-xs);
+      object-fit: cover;
+      background: #000;
+      border: 1px solid var(--border-subtle);
+    }
+    .song-body {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .song-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-xs);
+      flex-wrap: wrap;
+    }
+    .song-title {
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .song-artist {
+      font-size: var(--text-xs);
+      color: var(--text-secondary);
+    }
+    .playback-options-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      margin-top: var(--space-2xs);
+      background: var(--bg-primary);
+      padding: var(--space-sm);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+    .playback-option-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .playback-option-label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .song-status {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+    }
+    .song-status.saved {
+      color: var(--status-success);
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      .song-card {
+        flex-direction: column;
+      }
+      .song-card-aside {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+      }
+      .movie-summary-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body class="safe-area-inset">
+
+  <div class="app-shell">
+
+    <!-- DESKTOP SIDEBAR -->
+    <aside class="sidebar" aria-label="Desktop Navigation">
+      <div class="sidebar__brand">
+        <div class="sidebar__brand-logo">
+          MOINU<span>FLIX</span>
+        </div>
+      </div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__nav-section-title">Studios</div>
+        <a href="m_view.html" class="sidebar__nav-item" data-nav="library">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
+          </span>
+          <span>Movies View</span>
+        </a>
+        <a href="d_sync.html" class="sidebar__nav-item" data-nav="sync">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+          </span>
+          <span>Drive Sync</span>
+        </a>
+        <a href="p_push.html" class="sidebar__nav-item" data-nav="push">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+          </span>
+          <span>Push Movie</span>
+        </a>
+        <a href="s_push.html" class="sidebar__nav-item is-active" data-nav="songs">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          </span>
+          <span>5.1 Songs Studio</span>
+        </a>
+        <a href="series.html" class="sidebar__nav-item" data-nav="series">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+          </span>
+          <span>Series Studio</span>
+        </a>
+      </nav>
+      <div style="margin-top:auto; padding:var(--space-md);">
+        <button type="button" class="btn btn--secondary" id="tokenConfigBtn" style="width:100%; font-size:var(--text-xs);">
+          ⚙️ GitHub Token
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN WORKSPACE -->
+    <main class="workspace">
+      <!-- Workspace Header -->
+      <header class="workspace__header">
+        <div class="workspace__title-group">
+          <h1 class="workspace__title">5.1 Songs Studio</h1>
+          <span class="workspace__subtitle">Multi-channel DTS-HD Surround Soundtracks &amp; Dual Source Ingest</span>
+        </div>
+        <div class="workspace__actions">
+          <button type="button" class="btn btn--secondary" onclick="configureGithubToken()">Configure Key</button>
+        </div>
+      </header>
+
+      <div class="workspace__content">
+
+        <!-- STEP 1: TMDB MOVIE SEARCH -->
+        <section class="studio-card">
+          <div class="studio-card__header">
+            <h2 class="studio-card__title" style="color:var(--accent-cyan);">Step 1: Search Movie</h2>
+          </div>
+          <div class="form-group search-row">
+            <input type="text" id="movieSearchInput" class="input" placeholder="Type movie name (e.g. Engeyum Kadhal, Paiyaa)..." autocomplete="off" />
+            <div class="search-results" id="searchResults"></div>
+          </div>
+        </section>
+
+        <!-- MOVIE SUMMARY & BACKDROP PREVIEW -->
+        <div class="movie-summary-banner" id="movieSummary">
+          <div class="movie-summary-backdrop" id="movieSummaryBackdrop"></div>
+          <div class="movie-summary-content">
+            <img class="movie-summary-poster" id="movieSummaryPoster" alt="Poster" />
+            <div>
+              <h2 id="movieSummaryTitle" style="font-size:var(--text-xl); font-weight:800; color:var(--text-main);"></h2>
+              <div style="display:flex; flex-wrap:wrap; gap:var(--space-xs); margin-top:var(--space-xs);">
+                <span class="badge" id="movieSummaryYear" style="background:rgba(0,0,0,0.6); color:var(--text-main); border:1px solid var(--border-subtle);"></span>
+                <span class="badge badge--auto" id="movieSummaryId"></span>
+                <span class="badge" id="movieSummaryLang" style="background:rgba(0,0,0,0.6); color:var(--text-secondary); border:1px solid var(--border-subtle);"></span>
+                <span class="badge badge--manual"><span id="movieSummarySongCount">0</span> Verified Tracks</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: SYNC FROM GITHUB ACTION -->
+        <section class="studio-card" id="folderSection" style="display:none;">
+          <div class="studio-card__header">
+            <h2 class="studio-card__title" style="color:var(--status-warning);">Step 2: Sync IDs from GitHub Action Output</h2>
+          </div>
+          <p style="font-size:var(--text-xs); color:var(--text-secondary);">GitHub Action run hone ke baad seedha button dabayein, saari IDs automatically fetch hokar match ho jayengi:</p>
+          <div style="display:flex; gap:var(--space-sm); align-items:center; flex-wrap:wrap; margin-top:var(--space-xs);">
+            <button type="button" class="btn btn--primary" onclick="syncFromGitHubAction()">⚡ Sync from GitHub Action (extracted_tracks.json)</button>
+            <span id="syncNotice" style="font-size:var(--text-xs); color:var(--text-muted);">Directly connects to repo</span>
+          </div>
+        </section>
+
+        <!-- STEP 3: TRACKS LIST -->
+        <section class="studio-card" id="songsSection" style="display:none;">
+          <div class="studio-card__header">
+            <h2 class="studio-card__title">Verified Tracks (5.1 Audio)</h2>
+            <button type="button" class="btn btn--secondary" onclick="addManualTrack()">+ Add Custom Song</button>
+          </div>
+
+          <div class="song-list" id="songList" style="margin-top:var(--space-md);"></div>
+
+          <div style="margin-top:var(--space-lg); display:none;" id="saveAllBar">
+            <button type="button" class="btn btn--primary" id="saveAllBtn" onclick="saveAllSongsToChunk()" style="width:100%; height:48px; font-size:var(--text-md);">
+              🚀 COMMIT ALBUM PACK TO chunks/data_c03.json
+            </button>
+            <div id="commitStatus" style="font-size:var(--text-xs); text-align:center; margin-top:var(--space-xs); color:var(--text-secondary);"></div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- FIXED MOBILE BOTTOM NAVIGATION -->
+  <nav class="bottom-nav" aria-label="Mobile Navigation">
+    <ul class="bottom-nav__items">
+      <li>
+        <a href="m_view.html" class="bottom-nav__item" data-nav="home">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="m_view.html?focus=search" class="bottom-nav__item" data-nav="search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span>Search</span>
+        </a>
+      </li>
+      <li>
+        <a href="s_push.html" class="bottom-nav__item is-active bottom-nav__item--push" data-nav="push" aria-label="Push Studio">
+          <div class="bottom-nav__push-circle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+          <span>Push</span>
+        </a>
+      </li>
+      <li>
+        <a href="m_view.html" class="bottom-nav__item" data-nav="library">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
+          <span>Library</span>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" onclick="configureGithubToken()" class="bottom-nav__item" data-nav="profile">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Profile</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- MODAL: GITHUB TOKEN CONFIGURATION -->
+  <div class="modal-backdrop" id="modal-gh-config" role="dialog" aria-modal="true" aria-labelledby="modal-gh-title">
+    <div class="modal">
+      <div class="modal__header">
+        <h3 id="modal-gh-title" class="studio-card__title">GitHub Authentication</h3>
+        <button type="button" class="btn btn--secondary btn--icon" data-modal-close aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal__body" style="display:flex; flex-direction:column; gap:var(--space-md);">
+        <div class="form-group">
+          <label class="form-label" for="cfg-gh-token">Personal Access Token (Repo Scope)</label>
+          <input type="password" id="cfg-gh-token" class="input input--mono" placeholder="ghp_...">
+        </div>
+      </div>
+      <div class="modal__footer">
+        <button type="button" class="btn btn--secondary" data-modal-close>Cancel</button>
+        <button type="button" class="btn btn--primary" id="btn-save-gh-token">Save Token</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Master UI Controller -->
+  <script src="c_core/ui.js"></script>
+
+  <!-- Preserved GitHub Operations Core Reference -->
+  <script src="j_core/gh_core.js"></script>
+
+  <!-- Complete 5.1 Songs Studio Logic (Functionally Preserved + Dual Playback + Auto YouTube Fanart) -->
+  <script>
+    const CONFIG = {
+      TMDB_API_KEY: "051ccf72e026820cb53b8b8531b6a2ba",
+      TMDB_BASE: "https://api.themoviedb.org/3",
+      TMDB_IMG_POSTER: "https://image.tmdb.org/t/p/w500",
+      TMDB_IMG_BACKDROP: "https://image.tmdb.org/t/p/original",
+      TMDB_IMG_THUMB: "https://image.tmdb.org/t/p/w780",
+      STREAMER_HOST: "https://gdrive-stream.moinudeentv.workers.dev/?id=",
+      STREAM_HEADER: "|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      GITHUB_OWNER: "Moinuflix",
+      GITHUB_REPOSITORY: "My-Movies",
+      GITHUB_BRANCH: "main",
+      GITHUB_TARGET_FILE: "chunks/data_c03.json",
+      TOKEN_KEY: "moinuflix_gh_token"
+    };
+
+    let state = {
+      selectedMovie: null,
+      songs: []
+    };
+
+    function normalize(str) {
+      return (str || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+    }
+
+    // YouTube Video ID Extractor
+    function extractYouTubeId(url) {
+      if (!url) return null;
+      url = url.trim();
+      const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+      if (match) return match[1];
+      if (/^[\w-]{11}$/.test(url)) return url;
+      return null;
+    }
+
+    // Modal Helper for GitHub Token
+    function configureGithubToken() {
+      const cur = localStorage.getItem(CONFIG.TOKEN_KEY) || "";
+      const input = document.getElementById("cfg-gh-token");
+      if (input) input.value = cur;
+      if (typeof MoinuUI !== "undefined") MoinuUI.openModal("modal-gh-config");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const saveBtn = document.getElementById("btn-save-gh-token");
+      if (saveBtn) {
+        saveBtn.addEventListener("click", () => {
+          const val = document.getElementById("cfg-gh-token").value.trim();
+          if (val) {
+            localStorage.setItem(CONFIG.TOKEN_KEY, val);
+            if (typeof MoinuUI !== "undefined") {
+              MoinuUI.closeModal("modal-gh-config");
+              MoinuUI.toast("GitHub Token Saved!", "success");
+            }
+          }
+        });
+      }
+
+      const cfgBtn = document.getElementById("tokenConfigBtn");
+      if (cfgBtn) {
+        cfgBtn.addEventListener("click", configureGithubToken);
+      }
+    });
+
+    // TMDB Search with Debounce
+    let searchTimer = null;
+    document.getElementById("movieSearchInput").addEventListener("input", (e) => {
+      clearTimeout(searchTimer);
+      const q = e.target.value.trim();
+      const box = document.getElementById("searchResults");
+      if (!q) {
+        box.classList.remove("open");
+        return;
+      }
+      searchTimer = setTimeout(async () => {
+        box.innerHTML = '<div style="padding:12px; font-size:var(--text-xs); color:var(--text-secondary);">Searching catalog…</div>';
+        box.classList.add("open");
+        try {
+          const res = await fetch(`${CONFIG.TMDB_BASE}/search/movie?api_key=${CONFIG.TMDB_API_KEY}&query=${encodeURIComponent(q)}&region=IN&include_adult=false`);
+          const data = await res.json();
+          const results = data.results || [];
+          box.innerHTML = "";
+          results.slice(0, 8).forEach(m => {
+            const item = document.createElement("div");
+            item.className = "search-result-item";
+            item.innerHTML = `
+              <img class="search-result-poster" src="${m.poster_path ? CONFIG.TMDB_IMG_POSTER + m.poster_path : ''}" alt="" />
+              <div>
+                <div style="font-weight:700; font-size:var(--text-sm); color:var(--text-main);">${m.title}</div>
+                <div style="font-size:var(--text-xs); color:var(--text-secondary);">${m.release_date ? m.release_date.slice(0,4) : '—'} • ${(m.original_language || 'IN').toUpperCase()} • TMDB #${m.id}</div>
+              </div>`;
+            item.addEventListener("click", () => selectMovie(m));
+            box.appendChild(item);
+          });
+        } catch (e) {
+          box.innerHTML = '<div style="padding:12px; font-size:var(--text-xs); color:var(--status-danger);">Error loading search.</div>';
+        }
+      }, 300);
+    });
+
+    async function selectMovie(m) {
+      document.getElementById("searchResults").classList.remove("open");
+      document.getElementById("movieSearchInput").value = m.title;
+      const year = m.release_date ? m.release_date.slice(0, 4) : "2011";
+      const poster = m.poster_path ? `${CONFIG.TMDB_IMG_POSTER}${m.poster_path}` : "";
+      const fanart = m.backdrop_path ? `${CONFIG.TMDB_IMG_BACKDROP}${m.backdrop_path}` : poster;
+      const thumb = m.backdrop_path ? `${CONFIG.TMDB_IMG_THUMB}${m.backdrop_path}` : poster;
+
+      state.selectedMovie = {
+        id: m.id,
+        title: m.title,
+        original_title: m.original_title || m.title,
+        year: year,
+        language: (m.original_language || "ta").toLowerCase(),
+        poster: poster,
+        fanart: fanart,
+        thumbnail: thumb
+      };
+
+      document.getElementById("movieSummary").classList.add("visible");
+      document.getElementById("movieSummaryBackdrop").style.backgroundImage = `url('${fanart}')`;
+      document.getElementById("movieSummaryPoster").src = poster;
+      document.getElementById("movieSummaryTitle").textContent = m.title;
+      document.getElementById("movieSummaryYear").textContent = year;
+      document.getElementById("movieSummaryId").textContent = "TMDB #" + m.id;
+      document.getElementById("movieSummaryLang").textContent = state.selectedMovie.language.toUpperCase();
+
+      document.getElementById("folderSection").style.display = "block";
+      document.getElementById("songsSection").style.display = "block";
+
+      loadTracksForMovie(state.selectedMovie);
+    }
+
+    function loadTracksForMovie(movie) {
+      const cleanM = normalize(movie.title);
+      let list = [];
+
+      if (cleanM.includes("engeyumkadhal")) {
+        list = [
+          { title: "Engeyum Kadhal", artist: "Aalap Raju, Devan Ekambaram, Ranina Reddy" },
+          { title: "Thendral Ennum", artist: "P. Unnikrishnan, Harris Jayaraj" },
+          { title: "Nenjil Nenjil", artist: "Harish Raghavendra, Chinmayi" },
+          { title: "Dhimu Dhimu", artist: "Karthik" },
+          { title: "Kulu Kulu Venpani", artist: "Karthik, Ranina Reddy" },
+          { title: "Bathing at Cannes", artist: "Emcee Jesz, Kash, Ranina Reddy" },
+          { title: "Lolita", artist: "Karthik, Prashanthini" }
+        ];
+      } else if (cleanM.includes("paiyaa")) {
+        list = [
+          { title: "Thuli Thuli", artist: "Haricharan, Tanvi Shah" },
+          { title: "Adada Mazhaida", artist: "Rahul Nambiar, Saindhavi" },
+          { title: "En Kadhal Solla", artist: "Yuvan Shankar Raja" },
+          { title: "Poongatre Poongatre", artist: "Benny Dayal" }
+        ];
+      } else {
+        list = [
+          { title: movie.title + " Song 1", artist: "Soundtrack" },
+          { title: movie.title + " Song 2", artist: "Soundtrack" }
+        ];
+      }
+
+      state.songs = list.map(s => ({
+        title: s.title,
+        artist: s.artist,
+        audio: "5.1 Surround DTS-HD",
+        drive_id: "",
+        file_name: "",
+        youtube_url: "",
+        youtube_id: null,
+        fanart: "",
+        fanart_is_manual: false
+      }));
+
+      document.getElementById("movieSummarySongCount").textContent = String(state.songs.length);
+      renderSongList();
+      if (typeof MoinuUI !== "undefined") MoinuUI.toast(`Loaded ${state.songs.length} verified tracks!`, "info");
+    }
+
+    function renderSongList() {
+      const box = document.getElementById("songList");
+      box.innerHTML = "";
+      state.songs.forEach((song, idx) => {
+        const card = document.createElement("div");
+        card.className = "song-card";
+
+        // Determine effective thumbnail: Auto YouTube thumb > movie thumb
+        const currentThumb = song.fanart || (song.youtube_id ? `https://img.youtube.com/vi/${song.youtube_id}/maxresdefault.jpg` : (state.selectedMovie ? state.selectedMovie.thumbnail : ''));
+
+        card.innerHTML = `
+          <div class="song-card-aside">
+            <div class="song-index">${String(idx + 1).padStart(2, '0')}</div>
+            <img src="${currentThumb}" 
+                 class="song-thumb-preview" 
+                 alt="Preview" 
+                 onerror="this.onerror=null; if('${song.youtube_id}') this.src='https://img.youtube.com/vi/${song.youtube_id}/hqdefault.jpg';">
+          </div>
+          <div class="song-body">
+            <div class="song-header-row">
+              <div>
+                <div class="song-title">${song.title}</div>
+                <div class="song-artist">${song.artist} &bull; <span style="color:var(--accent-cyan); font-weight:600;">${song.audio}</span></div>
+              </div>
+              <div>
+                ${song.drive_id ? '<span class="badge badge--success">GDrive Linked</span>' : '<span class="badge badge--manual">Pending Sync</span>'}
+              </div>
+            </div>
+
+            <!-- TWO PLAYBACK OPTIONS: GDrive 5.1 -> YouTube Video directly below -->
+            <div class="playback-options-group">
+              
+              <!-- Option 1: GDrive 5.1 Audio -->
+              <div class="playback-option-row">
+                <div class="playback-option-label">
+                  <span>🎵 GDrive — 5.1 Audio</span>
+                  <span class="badge badge--auto" style="font-size:10px;">Surround Master</span>
+                </div>
+                <input type="text" 
+                       class="input input--mono" 
+                       style="font-size:var(--text-xs); height:36px;" 
+                       placeholder="Drive ID (Auto-Synced from Action)" 
+                       value="${song.drive_id || ''}" 
+                       oninput="onSongDriveIdInput(${idx}, this.value)">
+              </div>
+
+              <!-- Option 2: YouTube Video (Directly Below GDrive) -->
+              <div class="playback-option-row">
+                <div class="playback-option-label">
+                  <span>▶️ YouTube — Video</span>
+                  <span class="badge ${song.fanart_is_manual ? 'badge--manual' : 'badge--auto'}" style="font-size:10px;">
+                    ${song.fanart_is_manual ? 'Fanart: MANUAL' : 'Fanart: AUTO'}
+                  </span>
+                </div>
+                <div style="display:flex; gap:6px;">
+                  <input type="text" 
+                         class="input input--mono" 
+                         style="font-size:var(--text-xs); height:36px; flex:1;" 
+                         placeholder="YouTube URL or Video ID (e.g. https://youtu.be/...)" 
+                         value="${song.youtube_url || ''}" 
+                         oninput="onSongYouTubeInput(${idx}, this.value)">
+                  ${song.youtube_id ? `
+                    <a href="https://www.youtube.com/watch?v=${song.youtube_id}" target="_blank" rel="noopener noreferrer" class="btn btn--secondary" style="height:36px; padding:0 12px; font-size:var(--text-xs); display:flex; align-items:center;">
+                      Open ▶️
+                    </a>
+                  ` : ''}
+                </div>
+              </div>
+
+            </div>
+
+            <div class="song-status ${song.drive_id ? 'saved' : ''}">
+              ${song.drive_id ? '✓ Real ID Linked: ' + song.drive_id + (song.file_name ? ' (' + song.file_name + ')' : '') : '⚠️ Waiting for Action Sync or Manual ID'}
+            </div>
+          </div>`;
+
+        box.appendChild(card);
+      });
+
+      document.getElementById("saveAllBar").style.display = "block";
+    }
+
+    function onSongDriveIdInput(idx, val) {
+      state.songs[idx].drive_id = val.trim();
+      const statusEl = document.querySelectorAll(".song-card")[idx]?.querySelector(".song-status");
+      if (statusEl) {
+        statusEl.className = "song-status " + (state.songs[idx].drive_id ? "saved" : "");
+        statusEl.textContent = state.songs[idx].drive_id ? '✓ Real ID Linked: ' + state.songs[idx].drive_id : '⚠️ Waiting for Action Sync or Manual ID';
+      }
+    }
+
+    function onSongYouTubeInput(idx, val) {
+      const trimmed = val.trim();
+      state.songs[idx].youtube_url = trimmed;
+      const ytid = extractYouTubeId(trimmed);
+      state.songs[idx].youtube_id = ytid;
+
+      // AUTO / MANUAL RULE: Update fanart only when not manually locked
+      if (!state.songs[idx].fanart_is_manual) {
+        if (ytid) {
+          state.songs[idx].fanart = `https://img.youtube.com/vi/${ytid}/maxresdefault.jpg`;
+        } else {
+          state.songs[idx].fanart = "";
+        }
+      }
+
+      renderSongList();
+    }
+
+    // Direct Sync from GitHub Action Output
+    async function syncFromGitHubAction() {
+      const notice = document.getElementById("syncNotice");
+      notice.textContent = "Fetching extracted_tracks.json from repo...";
+      if (typeof MoinuUI !== "undefined") MoinuUI.toast("Reading GitHub Action output file...", "info");
+
+      try {
+        const url = `https://raw.githubusercontent.com/${CONFIG.GITHUB_OWNER}/${CONFIG.GITHUB_REPOSITORY}/${CONFIG.GITHUB_BRANCH}/extracted_tracks.json?t=${Date.now()}`;
+        const res = await fetch(url);
+        if (!res.ok) {
+          if (typeof MoinuUI !== "undefined") MoinuUI.toast("extracted_tracks.json not found! Run the Action first.", "danger");
+          notice.textContent = "Action file not found yet.";
+          return;
+        }
+
+        const files = await res.json();
+        let matched = 0;
+
+        state.songs.forEach(song => {
+          const cleanSong = normalize(song.title);
+          const found = files.find(f => {
+            const cleanName = normalize(f.name);
+            return cleanName.includes(cleanSong) || cleanSong.includes(cleanName);
+          });
+
+          if (found) {
+            song.drive_id = found.id;
+            song.file_name = found.name;
+            matched++;
+          }
+        });
+
+        renderSongList();
+        notice.textContent = `✓ Synced ${matched} tracks from Action!`;
+        if (typeof MoinuUI !== "undefined") MoinuUI.toast(`🎯 Auto-matched ${matched} tracks from GitHub Action!`, "success");
+      } catch (e) {
+        if (typeof MoinuUI !== "undefined") MoinuUI.toast("Error reading action file: " + e.message, "danger");
+      }
+    }
+
+    function addManualTrack() {
+      const t = prompt("Enter song name:");
+      if (t && t.trim()) {
+        state.songs.push({
+          title: t.trim(),
+          artist: state.selectedMovie ? state.selectedMovie.title + " Song" : "Original Track",
+          audio: "5.1 Surround DTS-HD",
+          drive_id: "",
+          file_name: "",
+          youtube_url: "",
+          youtube_id: null,
+          fanart: "",
+          fanart_is_manual: false
+        });
+        document.getElementById("movieSummarySongCount").textContent = String(state.songs.length);
+        renderSongList();
+      }
+    }
+
+    // Save Album Pack to Legacy Chunks
+    async function saveAllSongsToChunk() {
+      const token = localStorage.getItem(CONFIG.TOKEN_KEY);
+      if (!token) {
+        if (typeof MoinuUI !== "undefined") MoinuUI.toast("Set GitHub Token first!", "warning");
+        configureGithubToken();
+        return;
+      }
+      if (!state.selectedMovie) {
+        if (typeof MoinuUI !== "undefined") MoinuUI.toast("Select a movie first!", "warning");
+        return;
+      }
+
+      const validTracks = [];
+      for (let i = 0; i < state.songs.length; i++) {
+        const s = state.songs[i];
+        if (s.drive_id && s.drive_id.length >= 25 && !s.drive_id.includes(".mkv")) {
+          // Derive primary and fallback fanart from YouTube when available
+          const trackFanart = s.fanart || (s.youtube_id ? `https://img.youtube.com/vi/${s.youtube_id}/maxresdefault.jpg` : state.selectedMovie.fanart);
+          const trackThumb = s.youtube_id ? `https://img.youtube.com/vi/${s.youtube_id}/hqdefault.jpg` : state.selectedMovie.thumbnail;
+
+          validTracks.push({
+            id: s.drive_id,
+            title: s.title,
+            track_number: validTracks.length + 1,
+            artist: s.artist,
+            plot: `${state.selectedMovie.title} - ${s.title} Official 5.1 Surround Video Song.`,
+            thumb: trackThumb,
+            fanart: trackFanart,
+            stream_url: `${CONFIG.STREAMER_HOST}${s.drive_id}${CONFIG.STREAM_HEADER}`,
+            youtube_url: s.youtube_url || null,
+            youtube_id: s.youtube_id || null,
+            specs: {
+              resolution: "1080p FHD",
+              codec: "H.264",
+              audio: s.audio || "5.1 Surround DTS-HD",
+              channels: "5.1"
+            }
+          });
+        }
+      }
+
+      if (!validTracks.length) {
+        if (typeof MoinuUI !== "undefined") MoinuUI.toast("No valid Real Drive IDs attached!", "danger");
+        return;
+      }
+
+      const pack = {
+        id: `album_${state.selectedMovie.id}`,
+        title: `${state.selectedMovie.title} (5.1 Surround Soundtracks)`,
+        original_title: state.selectedMovie.title,
+        movie: state.selectedMovie.title,
+        tmdb_id: state.selectedMovie.id,
+        year: state.selectedMovie.year,
+        rating: 8.5,
+        plot: `${state.selectedMovie.title} Complete 5.1 Surround Master Video Pack.`,
+        poster: state.selectedMovie.poster,
+        fanart: state.selectedMovie.fanart,
+        logo: state.selectedMovie.thumbnail,
+        tracks: validTracks
+      };
+
+      if (typeof MoinuUI !== "undefined") MoinuUI.toast("Committing Album Pack to chunks/data_c03.json...", "info");
+      try {
+        const url = `https://api.github.com/repos/${CONFIG.GITHUB_OWNER}/${CONFIG.GITHUB_REPOSITORY}/contents/${CONFIG.GITHUB_TARGET_FILE}`;
+        let existing = [];
+        let sha = null;
+        const gRes = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+        if (gRes.ok) {
+          const meta = await gRes.json();
+          sha = meta.sha;
+          existing = JSON.parse(decodeURIComponent(escape(atob(meta.content))));
+        }
+        const idx = existing.findIndex(a => a.tmdb_id === state.selectedMovie.id || a.movie === state.selectedMovie.title);
+        if (idx >= 0) existing[idx] = pack;
+        else existing.unshift(pack);
+
+        const bin = Array.from(new TextEncoder().encode(JSON.stringify(existing, null, 2))).map(b => String.fromCharCode(b)).join("");
+        const pRes = await fetch(url, {
+          method: "PUT",
+          headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: `MoinuFlix: Ingest 5.1 Album Pack for ${state.selectedMovie.title}`,
+            content: btoa(bin),
+            branch: CONFIG.GITHUB_BRANCH,
+            sha: sha
+          })
+        });
+        if (!pRes.ok) throw new Error("Commit failed");
+        if (typeof MoinuUI !== "undefined") MoinuUI.toast("🎉 Successfully Committed to chunks/data_c03.json!", "success");
+        document.getElementById("commitStatus").textContent = "✓ Saved & synced with GitHub chunks/data_c03.json";
+      } catch (e) {
+        if (typeof MoinuUI !== "undefined") MoinuUI.toast("GitHub Commit Failed: " + e.message, "danger");
+      }
+    }
+  </script>
+</body>
+</html>
