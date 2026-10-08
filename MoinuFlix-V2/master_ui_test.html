@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MoinuFlix V2 — Master UI Test Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="c_core/ui_style.css">
+  <link rel="stylesheet" href="c_core/ui_components.css">
+  <style>
+    /* Lightweight visual helper specifically for test page sandbox */
+    .test-actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      align-items: center;
+    }
+    .test-dummy-poster {
+      background: linear-gradient(135deg, #162032 0%, #0c121e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 700;
+      border: 1px solid var(--border-subtle);
+    }
+  </style>
+</head>
+<body class="safe-area-inset">
+
+  <div class="app-shell">
+
+    <!-- DESKTOP SIDEBAR -->
+    <aside class="sidebar" aria-label="Desktop Navigation">
+      <div class="sidebar__brand">
+        <div class="sidebar__brand-logo">
+          MOINU<span>FLIX</span>
+        </div>
+      </div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__nav-section-title">Navigation</div>
+        <a href="#home" class="sidebar__nav-item is-active" data-nav="home">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </span>
+          <span>Home</span>
+        </a>
+        <a href="#search" class="sidebar__nav-item" data-nav="search">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </span>
+          <span>Search</span>
+        </a>
+        <a href="#push" class="sidebar__nav-item" data-nav="push">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+          </span>
+          <span>Push</span>
+        </a>
+        <a href="#library" class="sidebar__nav-item" data-nav="library">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
+          </span>
+          <span>Library</span>
+        </a>
+        <a href="#profile" class="sidebar__nav-item" data-nav="profile">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+          <span>Profile</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- MAIN WORKSPACE -->
+    <main class="workspace">
+      <!-- 1. Header Area -->
+      <header class="workspace__header">
+        <div class="workspace__title-group">
+          <h1 class="workspace__title">Master UI V2 Testbench</h1>
+          <span class="workspace__subtitle">Shared Component Visual &amp; Functional Verification</span>
+        </div>
+        <div class="test-actions-row">
+          <button type="button" class="btn btn--secondary btn--icon" title="Toggle Search" aria-label="Search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </button>
+          <button type="button" class="btn btn--primary" id="btn-head-test">Live Ping</button>
+        </div>
+      </header>
+
+      <div class="workspace__content">
+
+        <!-- 2. Pipeline Test -->
+        <section class="studio-card">
+          <div class="studio-card__header">
+            <h2 class="studio-card__title">Pipeline Component</h2>
+            <span class="badge badge--auto">Step Verification</span>
+          </div>
+          <div class="pipeline">
+            <div class="pipeline__step is-done">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+              <span>01 Step Complete</span>
+            </div>
+            <span style="color: var(--text-muted);">&rarr;</span>
+            <div class="pipeline__step is-active">
+              <span>02 Step Active</span>
+            </div>
+            <span style="color: var(--text-muted);">&rarr;</span>
+            <div class="pipeline__step">
+              <span>03 Step Pending</span>
+            </div>
+            <span style="color: var(--text-muted);">&rarr;</span>
+            <div class="pipeline__step">
+              <span>04 Step Pending</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Status Badges -->
+        <section class="studio-card">
+          <div class="studio-card__header">
+            <h2 class="studio-card__title">Status Badges</h2>
+          </div>
+          <div class="test-actions-row">
+            <span class="badge badge--auto">AUTO</span>
+            <span class="badge badge--manual">MANUAL</span>
+            <span class="badge badge--success">SUCCESS</span>
+            <span class="badge badge--danger">ERROR</span>
+            <span class="badge badge--manual">WARNING</span>
+            <span class="badge" style="background-color: var(--bg-surface-elevated); border: 1px solid var(--border-standard); color: var(--text-muted);">UNKNOWN</span>
+          </div>
+        </section>
+
+        <!-- 4. Interactive Feedback: Buttons, Toast & Loading -->
+        <section class="studio-card">
+          <div class="studio-card__header">
+            <h2 class="studio-card__title">Buttons &amp; Interactive Toast System</h2>
+          </div>
+          <div class="test-actions-row">
+            <button type="button" class="btn btn--primary" id="btn-toast-success">Success Toast</button>
+            <button type="button" class="btn btn--secondary" id="btn-toast-info">Info Toast</button>
+            <button type="button" class="btn btn--secondary" id="btn-toast-warn" style="border-color: var(--status-warning-border); color: var(--status-warning);">Warning Toast</button>
+            <button type="button" class="btn btn--danger" id="btn-toast-error">Danger Toast</button>
+            <button type="button" class="btn btn--secondary btn--icon" title="Icon Button" aria-label="Settings">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+            <button type="button" class="btn btn--primary" id="btn-toggle-loading">Test Loading State</button>
+          </div>
+        </section>
+
+        <!-- 5. Form Elements -->
+        <section class="studio-card">
+          <div class="studio-card__header">
+            <h2 class="studio-card__title">Form Controls</h2>
+          </div>
+          <div class="grid grid--cols-2">
+            <div class="form-group">
+              <label class="form-label" for="test-input-text">Release Title Input</label>
+              <input type="text" id="test-input-text" class="input" placeholder="e.g. Inception 2010 1080p BluRay...">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="test-input-search">Search Input</label>
+              <input type="search" id="test-input-search" class="input" placeholder="Search catalog...">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="test-select">Select Option</label>
+              <select id="test-select" class="select">
+                <option value="1">Option 01: Standard</option>
+                <option value="2">Option 02: High Definition</option>
+                <option value="3">Option 03: Remux Master</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="test-input-disabled">Disabled Control</label>
+              <input type="text" id="test-input-disabled" class="input" value="Non-editable locked value" disabled>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. Provider Card & Generic Match Card -->
+        <section class="grid grid--cols-2">
+          <div class="studio-card">
+            <div class="studio-card__header">
+              <h2 class="studio-card__title">Provider Card (Dummy UI)</h2>
+            </div>
+            <div class="match-card">
+              <div class="match-card__poster test-dummy-poster">PROVIDER</div>
+              <div class="match-card__body">
+                <span class="match-card__title">StreamProvider Gamma</span>
+                <span class="match-card__meta">Internal Endpoint: /v2/origin-alpha</span>
+                <div style="margin-top: 4px;">
+                  <span class="badge badge--success">Operational</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="studio-card">
+            <div class="studio-card__header">
+              <h2 class="studio-card__title">Metadata Match Card (Test Only)</h2>
+            </div>
+            <div class="match-card">
+              <div class="match-card__poster test-dummy-poster">POSTER</div>
+              <div class="match-card__body">
+                <span class="match-card__title">Demo Movie Title</span>
+                <span class="match-card__meta">Year: 2026 &bull; Action, Sci-Fi &bull; 148 min</span>
+                <div style="margin-top: 4px;">
+                  <span class="badge badge--auto">Matched</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. Technical Info Card -->
+        <section class="studio-card">
+          <div class="studio-card__header">
+            <h2 class="studio-card__title">Technical Metadata Grid (Static Test Data)</h2>
+            <span class="badge badge--auto">Parser Output</span>
+          </div>
+          <div class="tech-card">
+            <div class="tech-card__item">
+              <span class="tech-card__label">Resolution</span>
+              <span class="tech-card__value">1920x1080</span>
+            </div>
+            <div class="tech-card__item">
+              <span class="tech-card__label">Quality</span>
+              <span class="tech-card__value">1080p BluRay</span>
+            </div>
+            <div class="tech-card__item">
+              <span class="tech-card__label">Codec</span>
+              <span class="tech-card__value">HEVC x265</span>
+            </div>
+            <div class="tech-card__item">
+              <span class="tech-card__label">FPS</span>
+              <span class="tech-card__value">23.976</span>
+            </div>
+            <div class="tech-card__item">
+              <span class="tech-card__label">Bit Depth</span>
+              <span class="tech-card__value">10-Bit</span>
+            </div>
+            <div class="tech-card__item">
+              <span class="tech-card__label">HDR</span>
+              <span class="tech-card__value">HDR10 / SDR</span>
+            </div>
+            <div class="tech-card__item">
+              <span class="tech-card__label">Audio</span>
+              <span class="tech-card__value">DTS-HD MA</span>
+            </div>
+            <div class="tech-card__item">
+              <span class="tech-card__label">Channels</span>
+              <span class="tech-card__value">5.1 Discrete</span>
+            </div>
+            <div class="tech-card__item">
+              <span class="tech-card__label">File Size</span>
+              <span class="tech-card__value">8.42 GB</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. Modal & Dialog System -->
+        <section class="studio-card">
+          <div class="studio-card__header">
+            <h2 class="studio-card__title">Modals &amp; Dialogs</h2>
+          </div>
+          <div class="test-actions-row">
+            <button type="button" class="btn btn--primary" id="btn-open-modal">Open Standard Modal</button>
+            <button type="button" class="btn btn--danger" id="btn-open-confirm">Open Confirm Dialog</button>
+          </div>
+        </section>
+
+        <!-- 9. Empty / Error / Success States -->
+        <section class="grid grid--cols-3">
+          <div class="state-box">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            <span class="state-box__title">Empty State</span>
+            <span class="state-box__desc">No media records found in the current workspace queue.</span>
+          </div>
+
+          <div class="state-box" style="border-color: var(--status-danger-border);">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--status-danger);"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span class="state-box__title" style="color: var(--status-danger);">Error State</span>
+            <span class="state-box__desc">Failed to connect to provider stream socket endpoint.</span>
+          </div>
+
+          <div class="state-box" style="border-color: var(--status-success-border);">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--status-success);"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            <span class="state-box__title" style="color: var(--status-success);">Success State</span>
+            <span class="state-box__desc">Record compilation validated and staged for synchronization.</span>
+          </div>
+        </section>
+
+        <!-- 10. Responsive Table Test -->
+        <section class="studio-card">
+          <div class="studio-card__header">
+            <h2 class="studio-card__title">Responsive Table</h2>
+          </div>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Item Identifier</th>
+                  <th>Quality</th>
+                  <th>Audio Channel</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>chunk_item_001</code></td>
+                  <td>1080p Remux</td>
+                  <td>5.1 Discrete</td>
+                  <td><span class="badge badge--success">Ready</span></td>
+                  <td><button type="button" class="btn btn--secondary" style="height: 28px; padding: 0 10px; font-size: 12px;">Inspect</button></td>
+                </tr>
+                <tr>
+                  <td><code>chunk_item_002</code></td>
+                  <td>1080p WEB-DL</td>
+                  <td>Stereo 2.0</td>
+                  <td><span class="badge badge--manual">Pending</span></td>
+                  <td><button type="button" class="btn btn--secondary" style="height: 28px; padding: 0 10px; font-size: 12px;">Inspect</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- FIXED MOBILE BOTTOM NAVIGATION -->
+  <nav class="bottom-nav" aria-label="Mobile Navigation">
+    <ul class="bottom-nav__items">
+      <li>
+        <a href="#home" class="bottom-nav__item is-active" data-nav="home">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="#search" class="bottom-nav__item" data-nav="search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span>Search</span>
+        </a>
+      </li>
+      <li>
+        <a href="#push" class="bottom-nav__item bottom-nav__item--push" data-nav="push" aria-label="Push Studio">
+          <div class="bottom-nav__push-circle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+          <span>Push</span>
+        </a>
+      </li>
+      <li>
+        <a href="#library" class="bottom-nav__item" data-nav="library">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
+          <span>Library</span>
+        </a>
+      </li>
+      <li>
+        <a href="#profile" class="bottom-nav__item" data-nav="profile">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Profile</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- MODAL: STANDARD DEMO -->
+  <div class="modal-backdrop" id="demo-modal" role="dialog" aria-modal="true" aria-labelledby="modal-demo-title">
+    <div class="modal">
+      <div class="modal__header">
+        <h3 id="modal-demo-title" class="studio-card__title">Standard Modal Dialog</h3>
+        <button type="button" class="btn btn--secondary btn--icon" data-modal-close aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal__body">
+        <p>Yeh reusable Master UI V2 Modal window hai. Esc ya backdrop click par yeh close ho jayega.</p>
+      </div>
+      <div class="modal__footer">
+        <button type="button" class="btn btn--secondary" data-modal-close>Close</button>
+        <button type="button" class="btn btn--primary" id="btn-modal-save">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: CONFIRMATION DEMO -->
+  <div class="modal-backdrop" id="demo-confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-confirm-title">
+    <div class="modal">
+      <div class="modal__header">
+        <h3 id="modal-confirm-title" class="studio-card__title" style="color: var(--status-danger);">Confirm Operation</h3>
+        <button type="button" class="btn btn--secondary btn--icon" data-modal-close aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal__body">
+        <p>Kya aap waqai is testing record ko discard karna chahte hain? Yeh operation demo state reset karega.</p>
+      </div>
+      <div class="modal__footer">
+        <button type="button" class="btn btn--secondary" data-modal-close>Cancel</button>
+        <button type="button" class="btn btn--danger" id="btn-confirm-action">Discard</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MASTER UI SCRIPT INTEGRATION -->
+  <script src="c_core/ui.js"></script>
+
+  <!-- TESTBENCH RUNTIME BINDINGS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // 1. Toast Buttons
+      document.getElementById('btn-toast-success').addEventListener('click', function () {
+        MoinuUI.toast('Record successfully committed to catalog queue.', 'success');
+      });
+      document.getElementById('btn-toast-info').addEventListener('click', function () {
+        MoinuUI.toast('Information: Master UI V2 testbed online.', 'info');
+      });
+      document.getElementById('btn-toast-warn').addEventListener('click', function () {
+        MoinuUI.toast('Warning: Discrepancy detected in manual override stream.', 'warning');
+      });
+      document.getElementById('btn-toast-error').addEventListener('click', function () {
+        MoinuUI.toast('Error: Connection timed out while requesting source header.', 'danger');
+      });
+      document.getElementById('btn-head-test').addEventListener('click', function () {
+        MoinuUI.toast('Header ping check responsive.', 'info', 2000);
+      });
+
+      // 2. Loading State Toggle
+      var loadBtn = document.getElementById('btn-toggle-loading');
+      loadBtn.addEventListener('click', function () {
+        MoinuUI.setLoading(loadBtn, true, 'Processing...');
+        setTimeout(function () {
+          MoinuUI.setLoading(loadBtn, false);
+          MoinuUI.toast('Loading state completed.', 'success');
+        }, 1800);
+      });
+
+      // 3. Modals
+      document.getElementById('btn-open-modal').addEventListener('click', function () {
+        MoinuUI.openModal('demo-modal');
+      });
+      document.getElementById('btn-open-confirm').addEventListener('click', function () {
+        MoinuUI.openModal('demo-confirm-dialog');
+      });
+      document.getElementById('btn-modal-save').addEventListener('click', function () {
+        MoinuUI.closeModal('demo-modal');
+        MoinuUI.toast('Changes updated successfully.', 'success');
+      });
+      document.getElementById('btn-confirm-action').addEventListener('click', function () {
+        MoinuUI.closeModal('demo-confirm-dialog');
+        MoinuUI.toast('Operation confirmed and discarded.', 'warning');
+      });
+
+      // 4. Navigation Synchronization
+      var allNavLinks = document.querySelectorAll('[data-nav]');
+      allNavLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var navTarget = this.getAttribute('data-nav');
+          MoinuUI.setActiveNav(navTarget);
+          MoinuUI.toast('Switched view context to: ' + navTarget.toUpperCase(), 'info', 1500);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
