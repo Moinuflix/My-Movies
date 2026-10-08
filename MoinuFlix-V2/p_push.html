@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MoinuFlix V2 — Movie Push Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="c_core/ui_style.css">
+  <link rel="stylesheet" href="c_core/ui_components.css">
+  <style>
+    /* Scope: Page-specific Movie Push Studio enhancements */
+    .studio-grid-main {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: var(--space-lg);
+    }
+    .poster-preview-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .poster-preview-img {
+      width: 100%;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      background-color: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+    }
+    .code-editor-box {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-sm);
+      color: #9cdcfe;
+      white-space: pre-wrap;
+      word-break: break-all;
+      max-height: 280px;
+      overflow-y: auto;
+    }
+    .status-indicator-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 6px;
+    }
+    @media (max-width: 1024px) {
+      .studio-grid-main {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="safe-area-inset">
+
+  <div class="app-shell">
+
+    <!-- DESKTOP SIDEBAR -->
+    <aside class="sidebar" aria-label="Desktop Navigation">
+      <div class="sidebar__brand">
+        <div class="sidebar__brand-logo">
+          MOINU<span>FLIX</span>
+        </div>
+      </div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__nav-section-title">Studios</div>
+        <a href="index.html" class="sidebar__nav-item" data-nav="home">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </span>
+          <span>Home</span>
+        </a>
+        <a href="search.html" class="sidebar__nav-item" data-nav="search">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </span>
+          <span>Search</span>
+        </a>
+        <a href="p_push.html" class="sidebar__nav-item is-active" data-nav="push">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+          </span>
+          <span>Movie Push</span>
+        </a>
+        <a href="m_view.html" class="sidebar__nav-item" data-nav="library">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
+          </span>
+          <span>Library</span>
+        </a>
+        <a href="profile.html" class="sidebar__nav-item" data-nav="profile">
+          <span class="sidebar__nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+          <span>Profile</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- MAIN WORKSPACE -->
+    <main class="workspace">
+      <!-- Workspace Header -->
+      <header class="workspace__header">
+        <div class="workspace__title-group">
+          <h1 class="workspace__title">Movie Push Studio V2</h1>
+          <span class="workspace__subtitle">Automated Parser, TMDB Identity &amp; Multi-Version Catalog Stager</span>
+        </div>
+        <div class="workspace__actions">
+          <button type="button" class="btn btn--secondary" id="btn-config-tokens">GitHub &amp; TMDB Keys</button>
+          <button type="button" class="btn btn--primary" id="btn-pipeline-commit">Commit Release</button>
+        </div>
+      </header>
+
+      <div class="workspace__content">
+
+        <!-- 1. Pipeline Lifecycle -->
+        <section class="studio-card">
+          <div class="studio-card__header">
+            <h2 class="studio-card__title">Pipeline Lifecycle</h2>
+            <span id="dedup-status-badge" class="badge badge--auto">Status: Ready to Parse</span>
+          </div>
+          <div class="pipeline">
+            <div id="step-parse" class="pipeline__step is-active">
+              <span>01 Parse Filename</span>
+            </div>
+            <span class="pipeline__separator">&rarr;</span>
+            <div id="step-tmdb" class="pipeline__step">
+              <span>02 TMDB Match</span>
+            </div>
+            <span class="pipeline__separator">&rarr;</span>
+            <div id="step-dedup" class="pipeline__step">
+              <span>03 Dedup &amp; Version</span>
+            </div>
+            <span class="pipeline__separator">&rarr;</span>
+            <div id="step-payload" class="pipeline__step">
+              <span>04 Compile Payload</span>
+            </div>
+            <span class="pipeline__separator">&rarr;</span>
+            <div id="step-commit" class="pipeline__step">
+              <span>05 GitHub Push</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Main Form & Metadata Workspace -->
+        <div class="studio-grid-main">
+
+          <!-- Left Column: Raw Input, Overrides & Specs -->
+          <div style="display: flex; flex-direction: column; gap: var(--space-lg);">
+
+            <!-- 2. Source Ingestion -->
+            <section class="studio-card">
+              <div class="studio-card__header">
+                <h2 class="studio-card__title">Raw Media Source Ingestion</h2>
+                <span class="badge badge--auto">V1 Engine Preserved</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="raw-filename-input">Raw Release Filename / File Title</label>
+                <input type="text" id="raw-filename-input" class="input input--mono" placeholder="e.g. Leo.2023.1080p.NF.WEB-DL.DDP5.1.Atmos.H.264-Telly.mkv">
+              </div>
+              <div class="grid grid--cols-2">
+                <div class="form-group">
+                  <label class="form-label" for="stream-source-url">Drive Source ID / Stream URL</label>
+                  <input type="text" id="stream-source-url" class="input input--mono" placeholder="Google Drive ID or Direct Worker URL">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="stream-source-size">File Size (Bytes or Readable)</label>
+                  <input type="text" id="stream-source-size" class="input input--mono" placeholder="e.g. 4.82 GB">
+                </div>
+              </div>
+            </section>
+
+            <!-- 3. Technical Specs (Auto-Parsed + Protected Overrides) -->
+            <section class="studio-card">
+              <div class="studio-card__header">
+                <h2 class="studio-card__title">Technical Metadata &amp; Specification</h2>
+                <div style="display: flex; gap: var(--space-xs);">
+                  <span id="badge-quality-mode" class="badge badge--auto">Quality: AUTO</span>
+                  <span id="badge-codec-mode" class="badge badge--auto">Codec: AUTO</span>
+                </div>
+              </div>
+
+              <!-- Technical Summary Grid -->
+              <div class="tech-card" id="tech-summary-grid">
+                <div class="tech-card__item">
+                  <span class="tech-card__label">Quality</span>
+                  <span class="tech-card__value" id="val-quality">Unknown</span>
+                </div>
+                <div class="tech-card__item">
+                  <span class="tech-card__label">Resolution</span>
+                  <span class="tech-card__value" id="val-resolution">Unknown</span>
+                </div>
+                <div class="tech-card__item">
+                  <span class="tech-card__label">Codec</span>
+                  <span class="tech-card__value" id="val-codec">Unknown</span>
+                </div>
+                <div class="tech-card__item">
+                  <span class="tech-card__label">FPS</span>
+                  <span class="tech-card__value" id="val-fps">Unknown</span>
+                </div>
+                <div class="tech-card__item">
+                  <span class="tech-card__label">Bit Depth</span>
+                  <span class="tech-card__value" id="val-bitdepth">Unknown</span>
+                </div>
+                <div class="tech-card__item">
+                  <span class="tech-card__label">HDR / Color</span>
+                  <span class="tech-card__value" id="val-hdr">SDR</span>
+                </div>
+                <div class="tech-card__item">
+                  <span class="tech-card__label">Audio Codec</span>
+                  <span class="tech-card__value" id="val-audiocodec">Unknown</span>
+                </div>
+                <div class="tech-card__item">
+                  <span class="tech-card__label">Channels</span>
+                  <span class="tech-card__value" id="val-channels">Unknown</span>
+                </div>
+                <div class="tech-card__item">
+                  <span class="tech-card__label">Provider Tag</span>
+                  <span class="tech-card__value" id="val-provider">Direct</span>
+                </div>
+              </div>
+
+              <!-- Manual Overrides Form (MANUAL always wins) -->
+              <div class="studio-card__header" style="margin-top: var(--space-sm);">
+                <h3 class="studio-card__title" style="font-size: var(--text-base);">Manual Attribute Overrides</h3>
+                <span class="badge badge--manual">Manual Overrides Never Overwritten</span>
+              </div>
+              <div class="grid grid--cols-3">
+                <div class="form-group">
+                  <label class="form-label" for="override-quality">Quality</label>
+                  <select id="override-quality" class="select" data-manual="false">
+                    <option value="">(Auto-Detect)</option>
+                    <option value="BluRay REMUX">BluRay REMUX</option>
+                    <option value="BluRay">BluRay</option>
+                    <option value="WEB-DL">WEB-DL</option>
+                    <option value="WEBRip">WEBRip</option>
+                    <option value="HDTV">HDTV</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="override-resolution">Resolution</label>
+                  <select id="override-resolution" class="select" data-manual="false">
+                    <option value="">(Auto-Detect)</option>
+                    <option value="4K UHD">4K UHD (2160p)</option>
+                    <option value="1080p">1080p FHD</option>
+                    <option value="720p">720p HD</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="override-codec">Codec</label>
+                  <select id="override-codec" class="select" data-manual="false">
+                    <option value="">(Auto-Detect)</option>
+                    <option value="HEVC x265">HEVC / x265</option>
+                    <option value="AVC x264">AVC / x264</option>
+                    <option value="AV1">AV1</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="override-audio">Audio Codec</label>
+                  <input type="text" id="override-audio" class="input input--mono" placeholder="Auto" data-manual="false">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="override-channels">Audio Channels</label>
+                  <select id="override-channels" class="select" data-manual="false">
+                    <option value="">(Auto-Detect)</option>
+                    <option value="7.1">7.1 TrueHD / Atmos</option>
+                    <option value="5.1">5.1 Discrete Surround</option>
+                    <option value="2.0">2.0 Stereo</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="override-languages">Audio Languages</label>
+                  <input type="text" id="override-languages" class="input" placeholder="e.g. Tamil, Telugu, Hindi" data-manual="false">
+                </div>
+              </div>
+            </section>
+
+            <!-- 4. Compiled JSON Staging Payload -->
+            <section class="studio-card">
+              <div class="studio-card__header">
+                <h2 class="studio-card__title">Compiled Staging JSON (Legacy Schema Reference)</h2>
+                <button type="button" class="btn btn--secondary" style="height: 30px; font-size: var(--text-xs);" id="btn-copy-json">Copy JSON</button>
+              </div>
+              <div id="json-preview-container" class="code-editor-box">// Awaiting parser execution...</div>
+            </section>
+          </div>
+
+          <!-- Right Column: TMDB Card, Metadata Match & Version Check -->
+          <div style="display: flex; flex-direction: column; gap: var(--space-lg);">
+
+            <!-- TMDB Query & Results -->
+            <section class="studio-card">
+              <div class="studio-card__header">
+                <h2 class="studio-card__title">TMDB Identity</h2>
+                <span class="badge badge--auto" id="tmdb-match-badge">Unlinked</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="tmdb-search-input">Search Title / Manual TMDB ID</label>
+                <div style="display: flex; gap: var(--space-xs);">
+                  <input type="text" id="tmdb-search-input" class="input" placeholder="Search film...">
+                  <button type="button" class="btn btn--primary" id="btn-tmdb-search">Fetch</button>
+                </div>
+              </div>
+              <div class="poster-preview-card">
+                <img id="tmdb-poster-display" class="poster-preview-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='300'%3E%3Crect width='100%25' height='100%25' fill='%23161c2d'/%3E%3Ctext x='50%25' y='50%25' fill='%235e6f8d' text-anchor='middle' font-family='sans-serif' font-size='14'%3ENo Poster%3C/text%3E%3C/svg%3E" alt="Movie Poster Preview">
+                <div class="form-group">
+                  <span class="form-label">Identified Title</span>
+                  <span id="tmdb-title-display" style="font-weight: 700; color: var(--text-main);">--</span>
+                </div>
+                <div class="grid grid--cols-2">
+                  <div>
+                    <span class="form-label">TMDB ID</span>
+                    <div id="tmdb-id-display" class="tech-card__value">--</div>
+                  </div>
+                  <div>
+                    <span class="form-label">Release Year</span>
+                    <div id="tmdb-year-display" class="tech-card__value">--</div>
+                  </div>
+                </div>
+                <div>
+                  <span class="form-label">Genres</span>
+                  <div id="tmdb-genres-display" style="font-size: var(--text-xs); color: var(--text-secondary);">--</div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Deduplication & Version Identity Card -->
+            <section class="studio-card">
+              <div class="studio-card__header">
+                <h2 class="studio-card__title">Deduplication &amp; Target</h2>
+              </div>
+              <div class="form-group">
+                <span class="form-label">Catalog Target Mode</span>
+                <div id="dedup-mode-display" style="font-weight: 600; color: var(--accent-cyan);">New Movie Entity</div>
+              </div>
+              <div class="form-group">
+                <span class="form-label">Target Chunk (Legacy)</span>
+                <span id="target-chunk-display" class="tech-card__value">chunk_01.json (Pending)</span>
+              </div>
+              <div class="form-group">
+                <span class="form-label">Generated Version ID</span>
+                <span id="target-version-id" class="tech-card__value">--</span>
+              </div>
+            </section>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- FIXED MOBILE BOTTOM NAVIGATION -->
+  <nav class="bottom-nav" aria-label="Mobile Navigation">
+    <ul class="bottom-nav__items">
+      <li>
+        <a href="index.html" class="bottom-nav__item" data-nav="home">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="search.html" class="bottom-nav__item" data-nav="search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span>Search</span>
+        </a>
+      </li>
+      <li>
+        <a href="p_push.html" class="bottom-nav__item is-active bottom-nav__item--push" data-nav="push" aria-label="Push Studio">
+          <div class="bottom-nav__push-circle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+          <span>Push</span>
+        </a>
+      </li>
+      <li>
+        <a href="m_view.html" class="bottom-nav__item" data-nav="library">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
+          <span>Library</span>
+        </a>
+      </li>
+      <li>
+        <a href="profile.html" class="bottom-nav__item" data-nav="profile">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Profile</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- MODAL: GITHUB & TMDB CONFIGURATION -->
+  <div class="modal-backdrop" id="modal-config" role="dialog" aria-modal="true" aria-labelledby="modal-config-title">
+    <div class="modal">
+      <div class="modal__header">
+        <h3 id="modal-config-title" class="studio-card__title">Authentication &amp; API Tokens</h3>
+        <button type="button" class="btn btn--secondary btn--icon" data-modal-close aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal__body" style="display: flex; flex-direction: column; gap: var(--space-md);">
+        <div class="form-group">
+          <label class="form-label" for="cfg-gh-token">GitHub Personal Access Token (Repo Scope)</label>
+          <input type="password" id="cfg-gh-token" class="input input--mono" placeholder="ghp_...">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cfg-repo-owner">GitHub Repository (Owner/Repo)</label>
+          <input type="text" id="cfg-repo-owner" class="input input--mono" value="Moinuflix/My-Movies">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cfg-tmdb-key">TMDB API Key (v3 Read)</label>
+          <input type="password" id="cfg-tmdb-key" class="input input--mono" placeholder="tmdb_key_...">
+        </div>
+      </div>
+      <div class="modal__footer">
+        <button type="button" class="btn btn--secondary" data-modal-close>Cancel</button>
+        <button type="button" class="btn btn--primary" id="btn-save-tokens">Save Tokens</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MASTER UI SCRIPT -->
+  <script src="c_core/ui.js"></script>
+
+  <!-- MOVIE PUSH STUDIO LOGIC (V1 ENGINE RESTORED & UPGRADED) -->
+  <script>
+    (function () {
+      'use strict';
+
+      // State Object
+      var state = {
+        rawFilename: '',
+        streamUrl: '',
+        fileSize: '',
+        tmdb: null,
+        parsedMeta: {},
+        manualFlags: {
+          quality: false,
+          resolution: false,
+          codec: false,
+          audio: false,
+          channels: false,
+          languages: false
+        },
+        tokens: {
+          ghToken: localStorage.getItem('moinu_gh_token') || '',
+          repo: localStorage.getItem('moinu_repo') || 'Moinuflix/My-Movies',
+          tmdbKey: localStorage.getItem('moinu_tmdb_key') || ''
+        }
+      };
+
+      // V1 Release Filename Parser (Preserved & Token-Safe)
+      function parseReleaseFilename(filename) {
+        if (!filename) return {};
+
+        var clean = filename.replace(/\.(mkv|mp4|avi|ts)$/i, '');
+        var res = {
+          raw: filename,
+          title: '',
+          year: null,
+          quality: null,
+          resolution: null,
+          codec: null,
+          audioCodec: null,
+          channels: null,
+          hdr: 'SDR',
+          provider: 'Direct'
+        };
+
+        // Year detection
+        var yearMatch = clean.match(/\b(19\d{2}|20\d{2})\b/);
+        if (yearMatch) {
+          res.year = yearMatch[1];
+          res.title = clean.substring(0, yearMatch.index).replace(/[._]/g, ' ').trim();
+        } else {
+          res.title = clean.replace(/[._]/g, ' ').trim();
+        }
+
+        // Resolution (Strict: Quality != Resolution)
+        if (/\b(2160p|4k|uhd)\b/i.test(clean)) res.resolution = '4K UHD';
+        else if (/\b1080p\b/i.test(clean)) res.resolution = '1080p';
+        else if (/\b720p\b/i.test(clean)) res.resolution = '720p';
+
+        // Quality
+        if (/\b(remux)\b/i.test(clean)) res.quality = 'BluRay REMUX';
+        else if (/\b(bluray|bdrip)\b/i.test(clean)) res.quality = 'BluRay';
+        else if (/\b(web-dl|webdl)\b/i.test(clean)) res.quality = 'WEB-DL';
+        else if (/\b(webrip)\b/i.test(clean)) res.quality = 'WEBRip';
+        else if (/\b(hdtv)\b/i.test(clean)) res.quality = 'HDTV';
+
+        // Codec
+        if (/\b(hevc|x265|h\.?265)\b/i.test(clean)) res.codec = 'HEVC x265';
+        else if (/\b(avc|x264|h\.?264)\b/i.test(clean)) res.codec = 'AVC x264';
+        else if (/\b(av1)\b/i.test(clean)) res.codec = 'AV1';
+
+        // Audio Codec
+        if (/\b(atmos)\b/i.test(clean)) res.audioCodec = 'Dolby Atmos';
+        else if (/\b(truehd)\b/i.test(clean)) res.audioCodec = 'Dolby TrueHD';
+        else if (/\b(dts-hd\s*ma|dts-hd)\b/i.test(clean)) res.audioCodec = 'DTS-HD MA';
+        else if (/\b(dts)\b/i.test(clean)) res.audioCodec = 'DTS';
+        else if (/\b(ddp|eac3|dd\+)\b/i.test(clean)) res.audioCodec = 'DDP';
+        else if (/\b(ac3|dd)\b/i.test(clean)) res.audioCodec = 'AC3';
+        else if (/\b(aac)\b/i.test(clean)) res.audioCodec = 'AAC';
+
+        // Audio Channels
+        if (/\b(7\.1)\b/.test(clean)) res.channels = '7.1';
+        else if (/\b(5\.1)\b/.test(clean)) res.channels = '5.1';
+        else if (/\b(2\.0)\b/.test(clean)) res.channels = '2.0';
+
+        // HDR
+        if (/\b(dv|dovi|dolby\s*vision)\b/i.test(clean) && /\b(hdr|hdr10)\b/i.test(clean)) res.hdr = 'Dolby Vision / HDR10';
+        else if (/\b(dv|dovi|dolby\s*vision)\b/i.test(clean)) res.hdr = 'Dolby Vision';
+        else if (/\b(hdr10\+|hdr10plus)\b/i.test(clean)) res.hdr = 'HDR10+';
+        else if (/\b(hdr|hdr10)\b/i.test(clean)) res.hdr = 'HDR10';
+
+        // Provider Detection
+        if (/\b(nf|netflix)\b/i.test(clean)) res.provider = 'Netflix';
+        else if (/\b(amzn|prime)\b/i.test(clean)) res.provider = 'Prime Video';
+        else if (/\b(dsnp|hotstar|disney)\b/i.test(clean)) res.provider = 'Disney+ Hotstar';
+        else if (/\b(sonyliv|liv)\b/i.test(clean)) res.provider = 'SonyLIV';
+        else if (/\b(zee5)\b/i.test(clean)) res.provider = 'ZEE5';
+
+        return res;
+      }
+
+      // UI Sync Handler respecting: MANUAL always wins
+      function updateTechnicalDisplay() {
+        var p = state.parsedMeta;
+
+        // Auto updates happen only if manual flag is false
+        var effQuality = state.manualFlags.quality ? document.getElementById('override-quality').value : (p.quality || 'Unknown');
+        var effResolution = state.manualFlags.resolution ? document.getElementById('override-resolution').value : (p.resolution || 'Unknown');
+        var effCodec = state.manualFlags.codec ? document.getElementById('override-codec').value : (p.codec || 'Unknown');
+        var effAudio = state.manualFlags.audio ? document.getElementById('override-audio').value : (p.audioCodec || 'Unknown');
+        var effChannels = state.manualFlags.channels ? document.getElementById('override-channels').value : (p.channels || 'Unknown');
+
+        document.getElementById('val-quality').textContent = effQuality;
+        document.getElementById('val-resolution').textContent = effResolution;
+        document.getElementById('val-codec').textContent = effCodec;
+        document.getElementById('val-audiocodec').textContent = effAudio;
+        document.getElementById('val-channels').textContent = effChannels;
+        document.getElementById('val-hdr').textContent = p.hdr || 'SDR';
+        document.getElementById('val-provider').textContent = p.provider || 'Direct';
+
+        if (!state.manualFlags.quality && p.quality) document.getElementById('override-quality').value = p.quality;
+        if (!state.manualFlags.resolution && p.resolution) document.getElementById('override-resolution').value = p.resolution;
+        if (!state.manualFlags.codec && p.codec) document.getElementById('override-codec').value = p.codec;
+        if (!state.manualFlags.audio && p.audioCodec) document.getElementById('override-audio').value = p.audioCodec;
+        if (!state.manualFlags.channels && p.channels) document.getElementById('override-channels').value = p.channels;
+
+        compileStagingJSON();
+      }
+
+      // Compile Staging Payload (LEGACY DATA TARGET — TO BE MIGRATED LATER)
+      function compileStagingJSON() {
+        var quality = document.getElementById('override-quality').value || state.parsedMeta.quality || 'Unknown';
+        var res = document.getElementById('override-resolution').value || state.parsedMeta.resolution || 'Unknown';
+        var codec = document.getElementById('override-codec').value || state.parsedMeta.codec || 'Unknown';
+        var audio = document.getElementById('override-audio').value || state.parsedMeta.audioCodec || 'Unknown';
+        var ch = document.getElementById('override-channels').value || state.parsedMeta.channels || 'Unknown';
+        var langs = document.getElementById('override-languages').value || 'Tamil';
+
+        var versionId = 'v_' + Date.now().toString(36);
+        document.getElementById('target-version-id').textContent = versionId;
+
+        var payload = {
+          _target_note: "LEGACY DATA TARGET — TO BE MIGRATED LATER IN DATA ARCHITECTURE PHASE",
+          movie_id: state.tmdb ? 'm_' + state.tmdb.id : 'm_unlinked',
+          tmdb_id: state.tmdb ? state.tmdb.id : null,
+          title: state.tmdb ? state.tmdb.title : (state.parsedMeta.title || 'Untitled'),
+          year: state.tmdb ? parseInt(state.tmdb.release_date.substring(0, 4)) : (parseInt(state.parsedMeta.year) || null),
+          version: {
+            version_id: versionId,
+            quality: quality,
+            resolution: res,
+            codec: codec,
+            audio: audio,
+            channels: ch,
+            languages: langs.split(',').map(function (s) { return s.trim(); }),
+            source_id: document.getElementById('stream-source-url').value.trim() || null,
+            size: document.getElementById('stream-source-size').value.trim() || null
+          }
+        };
+
+        document.getElementById('json-preview-container').textContent = JSON.stringify(payload, null, 2);
+      }
+
+      // Bind Inputs & Overrides
+      function initEventListeners() {
+        // Filename Parser trigger
+        var rawInput = document.getElementById('raw-filename-input');
+        rawInput.addEventListener('input', function () {
+          state.rawFilename = this.value.trim();
+          state.parsedMeta = parseReleaseFilename(state.rawFilename);
+
+          if (state.parsedMeta.title && !state.tmdb) {
+            document.getElementById('tmdb-search-input').value = state.parsedMeta.title;
+          }
+
+          updateTechnicalDisplay();
+          document.getElementById('step-parse').className = 'pipeline__step is-done';
+          document.getElementById('step-tmdb').className = 'pipeline__step is-active';
+        });
+
+        // Track Manual Overrides so they never get clobbered
+        var overrideIds = ['override-quality', 'override-resolution', 'override-codec', 'override-audio', 'override-channels', 'override-languages'];
+        overrideIds.forEach(function (id) {
+          var el = document.getElementById(id);
+          el.addEventListener('change', function () {
+            var flagKey = id.replace('override-', '');
+            state.manualFlags[flagKey] = true;
+            updateTechnicalDisplay();
+            MoinuUI.toast('Manual lock applied to ' + flagKey.toUpperCase(), 'warning', 1800);
+          });
+        });
+
+        // TMDB Fetch
+        document.getElementById('btn-tmdb-search').addEventListener('click', function () {
+          var query = document.getElementById('tmdb-search-input').value.trim();
+          if (!query) {
+            MoinuUI.toast('Please enter a movie title to search TMDB.', 'warning');
+            return;
+          }
+          if (!state.tokens.tmdbKey) {
+            MoinuUI.openModal('modal-config');
+            MoinuUI.toast('Please configure your TMDB API Key first.', 'info');
+            return;
+          }
+
+          MoinuUI.setLoading('btn-tmdb-search', true, 'Searching...');
+          fetch('https://api.themoviedb.org/3/search/movie?api_key=' + encodeURIComponent(state.tokens.tmdbKey) + '&query=' + encodeURIComponent(query))
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+              MoinuUI.setLoading('btn-tmdb-search', false);
+              if (data.results && data.results.length > 0) {
+                var first = data.results[0];
+                state.tmdb = first;
+                document.getElementById('tmdb-title-display').textContent = first.title;
+                document.getElementById('tmdb-id-display').textContent = first.id;
+                document.getElementById('tmdb-year-display').textContent = (first.release_date || '').substring(0, 4);
+                document.getElementById('tmdb-genres-display').textContent = 'Genre IDs: ' + first.genre_ids.join(', ');
+                if (first.poster_path) {
+                  document.getElementById('tmdb-poster-display').src = 'https://image.tmdb.org/t/p/w500' + first.poster_path;
+                }
+                document.getElementById('tmdb-match-badge').className = 'badge badge--success';
+                document.getElementById('tmdb-match-badge').textContent = 'Linked';
+                document.getElementById('step-tmdb').className = 'pipeline__step is-done';
+                document.getElementById('step-dedup').className = 'pipeline__step is-active';
+                compileStagingJSON();
+                MoinuUI.toast('TMDB identity resolved: ' + first.title, 'success');
+              } else {
+                MoinuUI.toast('No matches found on TMDB for query.', 'warning');
+              }
+            })
+            .catch(function (err) {
+              MoinuUI.setLoading('btn-tmdb-search', false);
+              MoinuUI.toast('TMDB Request failed: ' + err.message, 'danger');
+            });
+        });
+
+        // Config Modal
+        document.getElementById('btn-config-tokens').addEventListener('click', function () {
+          document.getElementById('cfg-gh-token').value = state.tokens.ghToken;
+          document.getElementById('cfg-repo-owner').value = state.tokens.repo;
+          document.getElementById('cfg-tmdb-key').value = state.tokens.tmdbKey;
+          MoinuUI.openModal('modal-config');
+        });
+
+        document.getElementById('btn-save-tokens').addEventListener('click', function () {
+          state.tokens.ghToken = document.getElementById('cfg-gh-token').value.trim();
+          state.tokens.repo = document.getElementById('cfg-repo-owner').value.trim();
+          state.tokens.tmdbKey = document.getElementById('cfg-tmdb-key').value.trim();
+
+          localStorage.setItem('moinu_gh_token', state.tokens.ghToken);
+          localStorage.setItem('moinu_repo', state.tokens.repo);
+          localStorage.setItem('moinu_tmdb_key', state.tokens.tmdbKey);
+
+          MoinuUI.closeModal('modal-config');
+          MoinuUI.toast('API Credentials saved locally.', 'success');
+        });
+
+        // Commit Release Button
+        document.getElementById('btn-pipeline-commit').addEventListener('click', function () {
+          if (!state.tokens.ghToken) {
+            MoinuUI.openModal('modal-config');
+            MoinuUI.toast('GitHub Personal Access Token required to commit.', 'warning');
+            return;
+          }
+          MoinuUI.toast('Commit pipeline staged for GitHub repo: ' + state.tokens.repo, 'info');
+        });
+
+        // Copy JSON Button
+        document.getElementById('btn-copy-json').addEventListener('click', function () {
+          var text = document.getElementById('json-preview-container').textContent;
+          navigator.clipboard.writeText(text).then(function () {
+            MoinuUI.toast('Payload copied to clipboard.', 'success', 2000);
+          });
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', initEventListeners);
+    })();
+  </script>
+</body>
+</html>
