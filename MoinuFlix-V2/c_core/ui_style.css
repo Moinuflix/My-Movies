@@ -1,0 +1,232 @@
+/* ==========================================================================
+   MoinuFlix V2 — Master UI Foundation Style
+   File: c_core/ui_style.css
+   Scope: Design Tokens, CSS Reset, Typography, Accessibility & Core Viewport
+   ========================================================================== */
+
+/* --- 1. Design Tokens (CSS Variables) --- */
+:root {
+  /* Surfaces & Backgrounds */
+  --bg-primary: #0a0d14;
+  --bg-surface: #101522;
+  --bg-surface-elevated: #161c2d;
+  --bg-surface-hover: #1c2438;
+  --bg-surface-active: #222c44;
+  --bg-backdrop: rgba(6, 9, 15, 0.78);
+
+  /* Primary Accent (Cyan Core) */
+  --accent-cyan: #00d2ff;
+  --accent-cyan-hover: #33dcff;
+  --accent-cyan-dim: rgba(0, 210, 255, 0.12);
+  --accent-cyan-border: rgba(0, 210, 255, 0.3);
+  --accent-cyan-glow: 0 0 20px rgba(0, 210, 255, 0.25);
+
+  /* Semantic Status Accents */
+  --status-success: #05d686;
+  --status-success-dim: rgba(5, 214, 134, 0.12);
+  --status-success-border: rgba(5, 214, 134, 0.3);
+
+  --status-warning: #f5a623;
+  --status-warning-dim: rgba(245, 166, 35, 0.12);
+  --status-warning-border: rgba(245, 166, 35, 0.3);
+
+  --status-danger: #ff3b5c;
+  --status-danger-dim: rgba(255, 59, 92, 0.12);
+  --status-danger-border: rgba(255, 59, 92, 0.3);
+
+  --status-info: #00a8ff;
+  --status-info-dim: rgba(0, 168, 255, 0.12);
+  --status-info-border: rgba(0, 168, 255, 0.3);
+
+  /* Text Hierarchy */
+  --text-main: #f0f4fc;
+  --text-secondary: #9aa8c2;
+  --text-muted: #5e6f8d;
+  --text-inverse: #0a0d14;
+
+  /* Borders & Dividers */
+  --border-subtle: #1a2236;
+  --border-standard: #25304c;
+  --border-focus: var(--accent-cyan);
+
+  /* Typography Font Stacks */
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Font Sizes */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.8125rem;  /* 13px */
+  --text-base: 0.875rem; /* 14px */
+  --text-md: 1rem;       /* 16px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.375rem;   /* 22px */
+  --text-2xl: 1.75rem;   /* 28px */
+
+  /* Spacing Scale */
+  --space-2xs: 0.25rem;  /* 4px */
+  --space-xs: 0.5rem;    /* 8px */
+  --space-sm: 0.75rem;   /* 12px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
+  --space-xl: 2rem;      /* 32px */
+  --space-2xl: 3rem;     /* 48px */
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Elevation Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.6);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Z-Index Hierarchy */
+  --z-base: 1;
+  --z-header: 100;
+  --z-sidebar: 200;
+  --z-bottom-nav: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-toast: 600;
+
+  /* Layout Dimensions */
+  --sidebar-width: 250px;
+  --sidebar-width-collapsed: 72px;
+  --bottom-nav-height: 64px;
+  --header-height: 64px;
+}
+
+/* --- 2. CSS Reset & Box Sizing --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* --- 3. Typography & Hierarchy --- */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-main);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h1 { font-size: var(--text-2xl); }
+h2 { font-size: var(--text-xl); }
+h3 { font-size: var(--text-lg); }
+h4 { font-size: var(--text-md); }
+h5 { font-size: var(--text-base); }
+h6 { font-size: var(--text-sm); }
+
+p {
+  color: var(--text-secondary);
+}
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-cyan-hover);
+}
+
+/* --- 4. Form & Interactive Element Defaults --- */
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* --- 5. Accessibility & Focus States --- */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- 6. Custom Scrollbars --- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-standard);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan-border);
+}
+
+/* --- 7. Viewport & Safe Area Defaults --- */
+.safe-area-inset {
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
