@@ -964,7 +964,7 @@
       currentMatchState.existingMovie = null;
 
       try {
-        let catalog = typeof fetchChunk === "function" ? await fetchChunk("catalog.json") : [];
+        let catalog = typeof fetchChunk === "function" ? await fetchChunk("data/catalog.json") : [];
         if (!Array.isArray(catalog)) catalog = [];
 
         const effectiveTitle = (meta && meta.title) ? meta.title : baseMovieTitle;
@@ -1145,7 +1145,7 @@
 
         if (typeof commitFileDirect === "function" && typeof fetchChunk === "function") {
           // Catalog sync
-          let catalog = await fetchChunk("catalog.json");
+          let catalog = await fetchChunk("data/catalog.json");
           if (!Array.isArray(catalog)) catalog = [];
           const catIdx = catalog.findIndex(x => x.id === payloads.catalogEntry.id);
           if (catIdx >= 0) catalog[catIdx] = payloads.catalogEntry;
