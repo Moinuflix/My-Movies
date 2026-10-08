@@ -1,5 +1,83 @@
 [
   {
+    "id": "1ewxtP7VDqzDmFNVUyEa763_eCI_cimhk",
+    "name": "Mandaadi (2026) [1080p] [Netflix] [Dolby Atmos].mkv",
+    "title": "Mandaadi",
+    "original_title": "மண்டாடி",
+    "original_language": "ta",
+    "year": 2026,
+    "runtime": 153,
+    "tmdb_id": 1465943,
+    "rating": 8,
+    "collection": "",
+    "director": [
+      "Mathimaran Pugazhendhi"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=VOHaf-0DV-U",
+    "cast": [
+      {
+        "name": "Soori",
+        "role": "Muthukaali",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/AncGjHZaaNcpEu6JosiV25IwSSg.jpg"
+      },
+      {
+        "name": "Suhas",
+        "role": "Saattapuli 'Puli'",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/4TZK8EkWiWPiC7wvDu4yFIXP41D.jpg"
+      },
+      {
+        "name": "Mahima Nambiar",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/us0TCjr5IHotLbyr6PKjofEqN2x.jpg"
+      },
+      {
+        "name": "Sathyaraj",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/lnlBZ7V3K3Z3OIsjCd0zkKx26L3.jpg"
+      },
+      {
+        "name": "Mithun Jai Sankar",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/r3ynMua2UoFlLnEP8PEEe3x2PnT.jpg"
+      }
+    ],
+    "plot": "A fishing captain applies his maritime knowledge in a traditional boat race along Tamil Nadu's coast during a festival, leading a six-person team against other crews.",
+    "poster": "https://image.tmdb.org/t/p/w500/cDFW9BI1PSqrBWu8W0ZoeUQivEM.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/dJ4sqrmX2KviF8HBKlLrDedUhnh.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ewxtP7VDqzDmFNVUyEa763_eCI_cimhk|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "Netflix",
+      "codec": "H.264",
+      "audio": "Dolby Atmos",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": "6GB"
+    },
+    "versions": [
+      {
+        "id": "1ewxtP7VDqzDmFNVUyEa763_eCI_cimhk",
+        "name": "Mandaadi (2026) [1080p] [Netflix] [Dolby Atmos].mkv",
+        "quality": "1080p • Netflix • Dolby Atmos [6GB]",
+        "source": "Netflix",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ewxtP7VDqzDmFNVUyEa763_eCI_cimhk|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Netflix",
+          "codec": "H.264",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "6GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "1f4WhMNET1GSYyBhlD1FGramgUUdwQsB6",
     "title": "The Fast and the Furious",
     "name": "The Fast and the Furious (2001) [Tamil + Hindi + Telugu + English + Malayalam + Kannada] [AMZN] [1080p] [x264] [DD+ 5.1].mkv",
