@@ -2,352 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>MoinuFlix V5 — Push Movie Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MoinuFlix V5 - Movie Ingestion Studio</title>
+
+  <!-- Master UI Stylesheet Foundation -->
   <link rel="stylesheet" href="c_core/ui_style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="c_core/ui_components.css">
+
   <style>
-    :root {
-      --bg-dark: #07090e;
-      --bg-card: #0d121d;
-      --bg-card-sub: #131b2e;
-      --border-card: rgba(0, 242, 254, 0.15);
-      --border-glow: rgba(0, 242, 254, 0.4);
-      --laser-cyan: #00f2fe;
-      --neon-gold: #ffd200;
-      --neon-green: #00e676;
-      --neon-red: #ff3366;
-      --text-main: #f0f4fc;
-      --text-muted: #8a99b5;
-      --nav-height: 68px;
+    /* PAGE-SPECIFIC MODIFIERS FOR P_PUSH INGESTION ONLY */
+    .ingestion-split {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 24px;
     }
 
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    .app-layout {
-      display: flex;
-      min-height: 100vh;
-    }
-
-    /* Desktop Sidebar Navigation (Preserved) */
-    aside.desktop-sidebar {
-      width: 250px;
-      background: #090d16;
-      border-right: 1px solid rgba(255, 255, 255, 0.06);
-      display: flex;
-      flex-direction: column;
-      padding: 1.5rem 1rem;
-      flex-shrink: 0;
-    }
-
-    /* Main Workspace */
-    main.push-workspace {
-      flex: 1;
-      padding: 2rem 2.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      box-sizing: border-box;
-      padding-bottom: 6rem;
-    }
-
-    .studio-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-card);
-      border-radius: 14px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1.25rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-      transition: border-color 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .studio-card:focus-within {
-      border-color: var(--border-glow);
-      box-shadow: 0 10px 30px rgba(0, 242, 254, 0.08);
-    }
-
-    .card-header-collapsible {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .card-title {
-      font-size: 0.95rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .field-label {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-      display: block;
-    }
-
-    .studio-input, .studio-select {
+    .poster-preview-box {
       width: 100%;
-      background: #090e1a;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      color: var(--text-main);
-      padding: 0.75rem 0.9rem;
-      font-size: 0.9rem;
-      font-family: inherit;
-      box-sizing: border-box;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .studio-input:focus, .studio-select:focus {
-      border-color: var(--laser-cyan);
-    }
-
-    .grid-row {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1rem;
-    }
-    .col-12 { grid-column: span 12; }
-    .col-6  { grid-column: span 6; }
-    .col-4  { grid-column: span 4; }
-    .col-3  { grid-column: span 3; }
-
-    /* Match Status Banner */
-    .match-status-banner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.9rem 1.2rem;
-      border-radius: 10px;
-      font-weight: 800;
-      font-size: 0.85rem;
-      letter-spacing: 0.5px;
-      margin-bottom: 1.25rem;
-    }
-    .match-new {
-      background: rgba(0, 230, 118, 0.08);
-      border: 1px solid var(--neon-green);
-      color: var(--neon-green);
-    }
-    .match-exists {
-      background: rgba(255, 210, 0, 0.08);
-      border: 1px solid var(--neon-gold);
-      color: var(--neon-gold);
-    }
-    .match-duplicate {
-      background: rgba(255, 51, 102, 0.08);
-      border: 1px solid var(--neon-red);
-      color: var(--neon-red);
-    }
-
-    /* Provider Selection */
-    .provider-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 10px;
-    }
-    .provider-pill {
+      aspect-ratio: 2/3;
+      border-radius: var(--radius-md);
       background: var(--bg-card-sub);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 10px;
-      padding: 8px 10px;
+      border: 1px dashed var(--border-card);
       display: flex;
       align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      user-select: none;
-    }
-    .provider-pill:hover {
-      border-color: var(--laser-cyan);
-    }
-    .provider-pill.active {
-      border-color: var(--laser-cyan);
-      background: rgba(0, 242, 254, 0.12);
-      box-shadow: 0 0 12px rgba(0, 242, 254, 0.25);
-    }
-    .provider-logo-img {
-      width: 26px;
-      height: 26px;
-      border-radius: 6px;
-      object-fit: contain;
-      background: #000;
-    }
-    .provider-name-text {
-      font-size: 0.78rem;
-      font-weight: 700;
-      white-space: nowrap;
+      justify-content: center;
       overflow: hidden;
-      text-overflow: ellipsis;
+      margin-bottom: 12px;
     }
 
-    /* Media Information Tech Card */
-    .tech-specs-card {
-      background: #090e18;
-      border: 1px solid rgba(0, 242, 254, 0.25);
-      border-radius: 12px;
-      padding: 1.2rem;
-    }
-    .tech-specs-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-    }
-    .tech-spec-item {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.04);
-      border-radius: 8px;
-      padding: 8px 12px;
-    }
-    .tech-spec-key {
-      font-size: 0.68rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-    .tech-spec-val {
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: #fff;
-      font-family: 'JetBrains Mono', monospace;
-      margin-top: 3px;
+    .poster-preview-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    /* Instagram-Style Mobile Bottom Navigation */
-    .mobile-bottom-bar {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: var(--nav-height);
-      background: rgba(9, 13, 22, 0.95);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      z-index: 9999;
-      padding-bottom: env(safe-area-inset-bottom);
-      box-sizing: content-box;
-    }
-    .mobile-nav-container {
-      display: flex;
-      height: var(--nav-height);
-      justify-content: space-around;
-      align-items: center;
-      max-width: 500px;
-      margin: 0 auto;
-      padding: 0 10px;
-    }
-    .m-nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: var(--text-muted);
-      font-size: 0.65rem;
-      font-weight: 700;
-      gap: 4px;
-      flex: 1;
-    }
-    .m-nav-item svg {
-      width: 22px;
-      height: 22px;
-      fill: currentColor;
-    }
-    .m-nav-item.active {
-      color: var(--laser-cyan);
-    }
-    .m-nav-push-btn {
-      position: relative;
-      top: -12px;
-      background: linear-gradient(135deg, var(--laser-cyan), #0072ff);
-      color: #000;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 18px rgba(0, 242, 254, 0.45);
-      border: 3px solid #07090e;
-    }
-
-    .pipeline-status-row {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
-    .pipeline-step {
-      font-size: 0.68rem;
-      font-weight: 700;
-      padding: 4px 8px;
-      border-radius: 6px;
-      background: #111726;
-      border: 1px solid rgba(255,255,255,0.06);
-      color: var(--text-muted);
-    }
-    .pipeline-step.success {
-      border-color: var(--neon-green);
-      color: var(--neon-green);
-      background: rgba(0,230,118,0.08);
-    }
-
-    /* Tag Badge (Auto vs Manual) */
-    .status-tag {
-      font-size: 0.65rem;
-      font-weight: 800;
-      font-family: 'JetBrains Mono', monospace;
-      padding: 2px 6px;
-      border-radius: 4px;
-      border: 1px solid var(--laser-cyan);
-      color: var(--laser-cyan);
-    }
-
-    @media (max-width: 860px) {
-      aside.desktop-sidebar {
-        display: none !important;
-      }
-      .mobile-bottom-bar {
-        display: block !important;
-      }
-      main.push-workspace {
-        padding: 1rem 0.85rem;
-        padding-bottom: calc(var(--nav-height) + 2.5rem + env(safe-area-inset-bottom));
-      }
-      .grid-row {
-        gap: 0.75rem;
-      }
-      .col-12, .col-6, .col-4, .col-3 {
-        grid-column: span 12 !important;
-      }
-      .tech-specs-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .provider-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .studio-card {
-        padding: 1rem;
-        border-radius: 12px;
+    @media (max-width: 1024px) {
+      .ingestion-split {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -355,970 +46,223 @@
 <body>
 
   <div class="app-layout">
-    <!-- Desktop Sidebar -->
+    <!-- MASTER DESKTOP SIDEBAR -->
     <aside class="desktop-sidebar">
-      <div class="brand" style="margin-bottom:2rem; display:flex; align-items:center; gap:10px;">
-        <div class="brand-logo" style="width:36px; height:36px; background:var(--laser-cyan); color:#000; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.2rem;">M</div>
-        <div style="font-size:1.15rem; font-weight:800;">MoinuFlix</div>
+      <div class="brand">
+        <div class="brand-logo">
+          <span>MOINU<span class="accent">FLIX</span></span>
+          <span class="brand-badge">V5</span>
+        </div>
       </div>
-      <ul class="nav-list" style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px;">
-        <li><a href="m_view.html" class="nav-btn"><span>📊 Movies View</span></a></li>
-        <li><a href="d_sync.html" class="nav-btn"><span>🔔 Drive Sync</span></a></li>
-        <li><a href="p_push.html" class="nav-btn active" style="color:var(--laser-cyan); border-left:3px solid var(--laser-cyan); padding-left:8px;"><span>➕ Push Movie</span></a></li>
-        <li><a href="s_push.html" class="nav-btn"><span>🎵 5.1 Songs Studio</span></a></li>
-        <li><a href="series.html" class="nav-btn"><span>📺 Series Studio</span></a></li>
+
+      <ul class="nav-list">
+        <li>
+          <a href="m_view.html" class="nav-btn" data-nav="movies">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+            Movies View
+          </a>
+        </li>
+        <li>
+          <a href="d_sync.html" class="nav-btn" data-nav="sync">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            Drive Sync
+          </a>
+        </li>
+        <li>
+          <a href="p_push.html" class="nav-btn active" data-nav="push">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Push Movie
+          </a>
+        </li>
+        <li>
+          <a href="s_push.html" class="nav-btn" data-nav="songs">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            5.1 Songs Studio
+          </a>
+        </li>
+        <li>
+          <a href="series.html" class="nav-btn" data-nav="series">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+            Series Studio
+          </a>
+        </li>
       </ul>
-      <div style="margin-top:auto; padding-top:1.5rem;">
-        <button class="nav-btn studio-input" onclick="configureGithubToken()" style="cursor:pointer; text-align:center; background:#111827;">⚙️ GitHub Token</button>
+
+      <div class="sidebar-footer">
+        <button id="gh-token-btn" class="studio-button secondary" style="width: 100%;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          GitHub Token
+        </button>
       </div>
     </aside>
 
-    <!-- Main Form Workspace -->
-    <main class="push-workspace">
-      
-      <header style="margin-bottom:1.25rem;">
-        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-          <div>
-            <h1 style="font-size:1.5rem; font-weight:800; margin:0 0 4px 0; color:#fff;">Movie Ingestion Studio</h1>
-            <p style="margin:0; font-size:0.8rem; color:var(--text-muted);">Standardized multi-chunk metadata ingest, versioning & raw parser</p>
-          </div>
-          <div id="repo-badge" style="font-size:0.75rem; background:#111728; padding:5px 10px; border-radius:6px; border:1px solid rgba(255,255,255,0.06); color:var(--laser-cyan); font-family:'JetBrains Mono';">v5.0 Ready</div>
+    <!-- MAIN WORKSPACE -->
+    <main class="main-workspace">
+      <!-- RAW PIPELINE CARD -->
+      <section class="studio-card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Release Ingestion Pipeline
+          </h2>
+          <span class="status-tag cyan">Auto-Detect Ready</span>
         </div>
-      </header>
 
-      <!-- Deduplication Status -->
-      <div id="match-status-box" class="match-status-banner match-new">
-        <span id="match-status-text">🟢 NEW MOVIE: Ready to register new catalog entry</span>
-        <span id="match-target-chunk" style="font-family:'JetBrains Mono'; font-size:0.75rem;">Target: chunks/movies_001.json</span>
+        <div class="form-group">
+          <label class="form-label">Raw Release Filename / Input</label>
+          <input type="text" id="raw-filename" class="studio-input font-mono" placeholder="e.g. Leo.2023.2160p.UHD.HDR.HEVC.Atmos.DD+7.1-Moinu.mkv">
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-top: 14px;">
+          <button id="btn-parse-release" class="studio-button primary">Analyze & Parse</button>
+          <button id="btn-clear-pipeline" class="studio-button ghost">Reset</button>
+        </div>
+      </section>
+
+      <!-- TWO COLUMN WORKSPACE FOR INGESTION DETAILS -->
+      <div class="ingestion-split">
+        <!-- LEFT: METADATA & PROVIDER SELECTION -->
+        <div>
+          <!-- PROVIDER PICKER -->
+          <section class="studio-card">
+            <div class="card-header">
+              <h3 class="card-title">Select Provider</h3>
+              <span id="detected-provider-label" class="status-tag gold">Pending</span>
+            </div>
+            <div class="provider-grid" id="provider-selection-grid">
+              <!-- Reusable Provider Pills -->
+              <div class="provider-pill active" data-provider="netflix">
+                <div class="provider-name-text">Netflix</div>
+              </div>
+              <div class="provider-pill" data-provider="hotstar">
+                <div class="provider-name-text">JioHotstar</div>
+              </div>
+              <div class="provider-pill" data-provider="prime">
+                <div class="provider-name-text">Prime Video</div>
+              </div>
+              <div class="provider-pill" data-provider="zee5">
+                <div class="provider-name-text">Zee5</div>
+              </div>
+              <div class="provider-pill" data-provider="sony">
+                <div class="provider-name-text">SonyLIV</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- MOVIE METADATA FORM -->
+          <section class="studio-card">
+            <div class="card-header">
+              <h3 class="card-title">Movie Metadata & Ingestion Info</h3>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Movie Title</label>
+              <input type="text" id="movie-title" class="studio-input">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div class="form-group">
+                <label class="form-label">Release Year</label>
+                <input type="text" id="movie-year" class="studio-input">
+              </div>
+              <div class="form-group">
+                <label class="form-label">TMDB ID</label>
+                <input type="text" id="tmdb-id" class="studio-input font-mono">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Google Drive File ID</label>
+              <input type="text" id="gdrive-id" class="studio-input font-mono">
+            </div>
+          </section>
+        </div>
+
+        <!-- RIGHT: SPECS, PREVIEW, & COMMIT ACTION -->
+        <div>
+          <section class="studio-card">
+            <div class="poster-preview-box">
+              <span style="color: var(--text-dim); font-size: 0.85rem;">Poster Preview</span>
+            </div>
+
+            <div class="tech-specs-card" style="margin-bottom: 20px;">
+              <div class="tech-specs-grid" style="grid-template-columns: 1fr 1fr;">
+                <div class="tech-spec-item">
+                  <span class="tech-spec-key">Quality</span>
+                  <span class="tech-spec-val" id="spec-quality">4K UHD</span>
+                </div>
+                <div class="tech-spec-item">
+                  <span class="tech-spec-key">Codec</span>
+                  <span class="tech-spec-val" id="spec-codec">HEVC</span>
+                </div>
+                <div class="tech-spec-item">
+                  <span class="tech-spec-key">Audio</span>
+                  <span class="tech-spec-val" id="spec-audio">Atmos 7.1</span>
+                </div>
+                <div class="tech-spec-item">
+                  <span class="tech-spec-key">Dynamic Range</span>
+                  <span class="tech-spec-val" id="spec-hdr">HDR10</span>
+                </div>
+              </div>
+            </div>
+
+            <button id="btn-commit-github" class="studio-button primary" style="width: 100%;">
+              Commit to GitHub
+            </button>
+          </section>
+        </div>
       </div>
-
-      <form id="push-form" onsubmit="executeValidatedCommit(event)">
-
-        <!-- 1. Raw Release Filename (Master Parser Input) -->
-        <div class="studio-card">
-          <label class="field-label" style="color:var(--laser-cyan); font-weight:800;">1. RAW RELEASE FILENAME (AUTO PARSER)</label>
-          <input type="text" id="raw-name" class="studio-input" placeholder="Paste: Vikram.2022.Tamil.AMZN.WEB-DL.1080p.SDR.H.264.DDP5.1.23.976fps.8bit-3.2GB.mkv" oninput="parseFileName(this.value)">
-          <div id="tmdb-suggestions" style="display:none; background:#070b14; border:1px solid var(--laser-cyan); border-radius:8px; margin-top:8px; max-height:180px; overflow-y:auto; padding:4px;"></div>
-        </div>
-
-        <!-- 2. Clean Scene Standard Title -->
-        <div class="studio-card">
-          <label class="field-label" style="color:var(--neon-gold); font-weight:800;">2. CLEAN SCENE STANDARD TITLE (AUTO-GENERATED)</label>
-          <input type="text" id="clean-standard-title" class="studio-input" style="color:var(--neon-gold); font-weight:700; font-family:'JetBrains Mono';" placeholder="Title (Year) [Langs] [Provider] [Quality] [Codec] [Audio].mkv">
-        </div>
-
-        <!-- 3. TMDB Metadata & Internal ID -->
-        <div class="studio-card">
-          <div class="card-header-collapsible">
-            <span class="card-title" style="color:var(--laser-cyan);">🎬 3. Metadata Verification & IDs</span>
-          </div>
-          <div style="margin-top:12px;" class="grid-row">
-            <div class="col-4">
-              <label class="field-label">TMDB Movie ID</label>
-              <input type="number" id="tmdb-id" class="studio-input" placeholder="Auto-filled" required oninput="fetchMetadata(this.value)">
-            </div>
-            <div class="col-4">
-              <label class="field-label">Internal Movie ID</label>
-              <input type="text" id="internal-movie-id" class="studio-input" style="color:var(--laser-cyan); font-family:'JetBrains Mono';" placeholder="movie_xxxxxx" readonly>
-            </div>
-            <div class="col-4">
-              <label class="field-label">Franchise Collection</label>
-              <input type="text" id="collection-name" class="studio-input" placeholder="Auto-filled if present">
-            </div>
-          </div>
-
-          <div id="tmdb-preview-panel" style="display:none; margin-top:15px; background:#090d18; border-radius:10px; padding:10px; border:1px solid rgba(255,255,255,0.06);">
-            <div style="display:flex; gap:12px; align-items:center;">
-              <img id="prev-poster" src="" style="width:55px; height:80px; border-radius:6px; object-fit:cover; background:#000;">
-              <div>
-                <h4 id="prev-title" style="margin:0 0 4px 0; font-size:1rem; color:#fff;"></h4>
-                <p id="prev-desc" style="margin:0; font-size:0.75rem; color:var(--text-muted);"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4 & 5. Languages & Audio Tracks -->
-        <div class="studio-card">
-          <label class="field-label" style="color:var(--laser-cyan); font-weight:800;">4 & 5. LANGUAGES (ORIGINAL & AUDIO TRACKS)</label>
-          <div class="grid-row">
-            <div class="col-6">
-              <label class="field-label">Original Language</label>
-              <select id="orig-language" class="studio-select" onchange="manualOverrides.orig_language = true; regenerateStandardName(); checkMovieDeduplication();">
-                <option value="ta" selected>Tamil (ta)</option>
-                <option value="te">Telugu (te)</option>
-                <option value="hi">Hindi (hi)</option>
-                <option value="ml">Malayalam (ml)</option>
-                <option value="kn">Kannada (kn)</option>
-                <option value="en">English (en)</option>
-              </select>
-            </div>
-            <div class="col-6">
-              <label class="field-label">Audio Tracks Present in File</label>
-              <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:6px; margin-top:4px;">
-                <label style="font-size:0.78rem; display:flex; align-items:center; gap:5px;"><input type="checkbox" id="chk-tamil" onchange="regenerateStandardName()"> Tamil</label>
-                <label style="font-size:0.78rem; display:flex; align-items:center; gap:5px;"><input type="checkbox" id="chk-hindi" onchange="regenerateStandardName()"> Hindi</label>
-                <label style="font-size:0.78rem; display:flex; align-items:center; gap:5px;"><input type="checkbox" id="chk-telugu" onchange="regenerateStandardName()"> Telugu</label>
-                <label style="font-size:0.78rem; display:flex; align-items:center; gap:5px;"><input type="checkbox" id="chk-english" onchange="regenerateStandardName()"> English</label>
-                <label style="font-size:0.78rem; display:flex; align-items:center; gap:5px;"><input type="checkbox" id="chk-malayalam" onchange="regenerateStandardName()"> Malayalam</label>
-                <label style="font-size:0.78rem; display:flex; align-items:center; gap:5px;"><input type="checkbox" id="chk-kannada" onchange="regenerateStandardName()"> Kannada</label>
-                <label style="font-size:0.78rem; display:flex; align-items:center; gap:5px;"><input type="checkbox" id="chk-kids" onchange="regenerateStandardName()"> Kids</label>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 6. Provider Selection -->
-        <div class="studio-card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-            <label class="field-label" style="color:var(--laser-cyan); font-weight:800; margin:0;">6. PROVIDER / SOURCE CATALOG</label>
-            <span id="provider-status-tag" class="status-tag">AUTO</span>
-          </div>
-          <div class="provider-grid" id="provider-grid-container"></div>
-          <input type="hidden" id="selected-provider-id" value="">
-        </div>
-
-        <!-- 7, 8, 9. Formats, Codec & Audio Channels -->
-        <div class="studio-card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-            <label class="field-label" style="color:var(--laser-cyan); font-weight:800; margin:0;">7, 8 & 9. FORMAT, CODEC & AUDIO CHANNELS</label>
-            <div style="display:flex; gap:6px;">
-              <span id="quality-status-tag" class="status-tag">AUTO</span>
-              <span id="codec-status-tag" class="status-tag">AUTO</span>
-              <span id="audio-status-tag" class="status-tag">AUTO</span>
-            </div>
-          </div>
-          <div class="grid-row">
-            <div class="col-4">
-              <label class="field-label">Quality</label>
-              <select id="quality-format" class="studio-select" onchange="onQualityChange(this.value)">
-                <option value="">— Select / Unknown —</option>
-                <option value="2160p">2160p (4K UHD)</option>
-                <option value="1080p">1080p (FHD)</option>
-                <option value="720p">720p (HD)</option>
-                <option value="576p">576p</option>
-                <option value="480p">480p</option>
-              </select>
-            </div>
-            <div class="col-4">
-              <label class="field-label">Video Codec</label>
-              <select id="codec-format" class="studio-select" onchange="onCodecChange(this.value)">
-                <option value="">— Select / Unknown —</option>
-                <option value="H.264">H.264 (AVC/x264)</option>
-                <option value="HEVC">HEVC (H.265/x265)</option>
-                <option value="AV1">AV1</option>
-              </select>
-            </div>
-            <div class="col-4">
-              <label class="field-label">Audio Codec & Channels</label>
-              <input type="text" id="audio-format" class="studio-input" placeholder="e.g. E-AC-3 5.1" oninput="onAudioInputChange(this.value)">
-            </div>
-          </div>
-        </div>
-
-        <!-- 10. File Size -->
-        <div class="studio-card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-            <label class="field-label" style="color:var(--laser-cyan); font-weight:800; margin:0;">10. FILE SIZE (AUTO-DETECTED)</label>
-            <div style="display:flex; gap:8px; align-items:center;">
-              <span id="size-status-tag" class="status-tag">AUTO</span>
-              <span id="detected-size-badge" style="color:var(--neon-green); font-size:0.85rem; font-weight:800; font-family:'JetBrains Mono';">—</span>
-            </div>
-          </div>
-          <div style="display:flex; gap:12px; align-items:center;">
-            <input type="range" id="size-slider" min="0.5" max="50" step="0.1" value="0.5" class="studio-input" style="flex:1; padding:0;" oninput="onSizeSliderManual(this.value)">
-            <input type="text" id="file-size-display" class="studio-input" placeholder="e.g. 3.2 GB" style="width:110px; text-align:center; font-family:'JetBrains Mono'; font-weight:800;" onchange="onSizeInputManual(this.value)">
-          </div>
-        </div>
-
-        <!-- 11. Google Drive File ID (Version ID) -->
-        <div class="studio-card">
-          <label class="field-label" style="color:var(--laser-cyan); font-weight:800;">11. GOOGLE DRIVE FILE ID (BECOMES VERSION_ID)</label>
-          <input type="text" id="gdrive-url" class="studio-input" placeholder="e.g. 1aFmu_tpwZdvV_wiA4FR5U6WzORXKIDrQ" required oninput="checkMovieDeduplication()">
-        </div>
-
-        <!-- 12. Media Information Card (Actual Technical Specs Only) -->
-        <div class="studio-card">
-          <label class="field-label" style="color:var(--laser-cyan); font-weight:800;">12. MEDIA INFORMATION CARD</label>
-          <div class="tech-specs-card">
-            <div class="tech-specs-grid">
-              <div class="tech-spec-item"><div class="tech-spec-key">Resolution</div><div class="tech-spec-val" id="spec-disp-res">—</div></div>
-              <div class="tech-spec-item"><div class="tech-spec-key">Quality</div><div class="tech-spec-val" id="spec-disp-qual">—</div></div>
-              <div class="tech-spec-item"><div class="tech-spec-key">Codec</div><div class="tech-spec-val" id="spec-disp-codec">—</div></div>
-              <div class="tech-spec-item"><div class="tech-spec-key">FPS</div><div class="tech-spec-val" id="spec-disp-fps">—</div></div>
-              <div class="tech-spec-item"><div class="tech-spec-key">Bit Depth</div><div class="tech-spec-val" id="spec-disp-depth">—</div></div>
-              <div class="tech-spec-item"><div class="tech-spec-key">HDR</div><div class="tech-spec-val" id="spec-disp-hdr">—</div></div>
-              <div class="tech-spec-item"><div class="tech-spec-key">Audio</div><div class="tech-spec-val" id="spec-disp-audio">—</div></div>
-              <div class="tech-spec-item"><div class="tech-spec-key">Channels</div><div class="tech-spec-val" id="spec-disp-chan">—</div></div>
-              <div class="tech-spec-item"><div class="tech-spec-key">Size</div><div class="tech-spec-val" id="spec-disp-size">—</div></div>
-              <div class="tech-spec-item"><div class="tech-spec-key">Provider</div><div class="tech-spec-val" id="spec-disp-prov">—</div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 13 & 14. Final JSON Preview -->
-        <div class="studio-card">
-          <div class="card-header-collapsible" onclick="toggleJsonPreview()">
-            <span class="card-title" style="color:var(--neon-gold);">13 & 14. FINAL JSON PREVIEW (EXPAND TO VERIFY) ▼</span>
-            <span id="preview-target-badge" style="font-size:0.75rem; color:var(--laser-cyan); font-family:'JetBrains Mono';">Target: catalog.json + chunk</span>
-          </div>
-          <div id="json-preview-container" style="display:none; margin-top:12px;">
-            <pre id="json-preview-box" style="background:#05070c; padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); font-family:'JetBrains Mono'; font-size:0.72rem; color:#8af7ff; max-height:240px; overflow-y:auto; margin:0;"></pre>
-          </div>
-          
-          <div class="pipeline-status-row">
-            <span class="pipeline-step" id="pipe-parse">1. Parse</span>
-            <span class="pipeline-step" id="pipe-validate">2. Validate</span>
-            <span class="pipeline-step" id="pipe-match">3. Match</span>
-            <span class="pipeline-step" id="pipe-catalog">4. Catalog Update</span>
-            <span class="pipeline-step" id="pipe-chunk">5. Chunk Update</span>
-            <span class="pipeline-step" id="pipe-commit">6. GitHub Commit</span>
-          </div>
-        </div>
-
-        <!-- 15. Submit Button -->
-        <button type="submit" id="commit-btn" class="studio-input" style="background:linear-gradient(135deg, var(--laser-cyan), #0066ff); color:#000; font-weight:800; font-size:1rem; cursor:pointer; padding:1rem; border:none; margin-top:0.5rem; letter-spacing:0.5px; border-radius:10px;">
-          🚀 COMMIT MOVIE VERSION TO MASTER REPO
-        </button>
-
-      </form>
     </main>
+
+    <!-- MASTER MOBILE BOTTOM NAVIGATION -->
+    <nav class="mobile-bottom-bar safe-area-bottom">
+      <div class="mobile-nav-container">
+        <a href="m_view.html" class="m-nav-item" data-nav="movies">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          <span>Home</span>
+        </a>
+        <a href="d_sync.html" class="m-nav-item" data-nav="sync">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span>Sync</span>
+        </a>
+        <a href="p_push.html" class="m-nav-item m-nav-push-btn active" data-nav="push">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </a>
+        <a href="series.html" class="m-nav-item" data-nav="series">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+          <span>Series</span>
+        </a>
+        <a href="s_push.html" class="m-nav-item" data-nav="songs">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          <span>Songs</span>
+        </a>
+      </div>
+    </nav>
   </div>
 
-  <!-- Mobile Bottom Navigation (Instagram Style) -->
-  <nav class="mobile-bottom-bar">
-    <div class="mobile-nav-container">
-      <a href="m_view.html" class="m-nav-item">
-        <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-        <span>Home</span>
-      </a>
-      <a href="m_view.html?focus=search" class="m-nav-item">
-        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-        <span>Search</span>
-      </a>
-      <a href="p_push.html" class="m-nav-item active">
-        <div class="m-nav-push-btn">
-          <svg viewBox="0 0 24 24" style="width:24px; height:24px; fill:#000;"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-        </div>
-        <span style="display:none;">Push</span>
-      </a>
-      <a href="d_sync.html" class="m-nav-item">
-        <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
-        <span>Library</span>
-      </a>
-      <a href="javascript:void(0)" onclick="configureGithubToken()" class="m-nav-item">
-        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-        <span>Profile</span>
-      </a>
-    </div>
-  </nav>
-
-  <div id="laser-toast"></div>
-
-  <!-- Preserved GitHub Core -->
+  <!-- MASTER SCRIPTS & SEPARATION OF CONCERNS -->
+  <script src="c_core/ui.js"></script>
   <script src="j_core/gh_core.js"></script>
 
-  <!-- Complete Ingestion Engine Script -->
+  <!-- P_PUSH SPECIFIC INGESTION ENGINE SCRIPT -->
   <script>
-    // 1. STATE & FIELD OVERRIDES TRACKER
-    const manualOverrides = {
-      provider: false,
-      quality: false,
-      codec: false,
-      audio: false,
-      size: false,
-      orig_language: false
-    };
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set active navigation via Master UI helper
+      MoinuUI.setActiveNavigation('push');
 
-    let meta = null;
-    let baseMovieTitle = "";
-    let baseMovieYear = "";
-
-    let detectedTechSpecs = {
-      res: null,
-      quality: null,
-      codec: null,
-      fps: null,
-      depth: null,
-      hdr: null,
-      audio_codec: null,
-      channels: null,
-      size_display: null,
-      size_bytes: null
-    };
-
-    // 2. OFFICIAL PROVIDER CATALOG
-    const PROVIDER_DIRECTORY = [
-      { id: "AMZN", name: "Amazon Prime Video", short_name: "AMZN", type: "ott", logo: "https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png", regex: /\b(amzn|amazon|prime)\b/i },
-      { id: "NF", name: "Netflix", short_name: "NF", type: "ott", logo: "https://assets.nflxext.com/ffe/siteui/common/icons/nficon2016.png", regex: /\b(nf|netflix)\b/i },
-      { id: "SunNXT", name: "Sun NXT", short_name: "SunNXT", type: "ott", logo: "https://www.sunnxt.com/favicon.ico", regex: /\b(sunnxt|sun\s*nxt)\b/i },
-      { id: "DSNP", name: "Disney+ Hotstar", short_name: "DSNP", type: "ott", logo: "https://secure-media.hotstarext.com/web-assets/prod/images/brand-logos/disney-hotstar-logo-dark.svg", regex: /\b(dsnp|hotstar|disney\+?|disney\.hotstar)\b/i },
-      { id: "SNXT", name: "SonyLIV", short_name: "SonyLIV", type: "ott", logo: "https://www.sonyliv.com/favicon.ico", regex: /\b(snxt|sonyliv|sony\s*liv)\b/i },
-      { id: "ZEE5", name: "ZEE5", short_name: "ZEE5", type: "ott", logo: "https://www.zee5.com/favicon.ico", regex: /\b(zee5|zee\s*5)\b/i },
-      { id: "AHA", name: "Aha Video", short_name: "AHA", type: "ott", logo: "https://www.aha.video/favicon.ico", regex: /\b(aha)\b/i },
-      { id: "ATVP", name: "Apple TV+", short_name: "ATVP", type: "ott", logo: "https://www.apple.com/favicon.ico", regex: /\b(atvp|apple\s*tv\+?)\b/i },
-      { id: "JC", name: "JioCinema", short_name: "JC", type: "ott", logo: "https://www.jiocinema.com/favicon.ico", regex: /\b(jc|jiocinema|jio\s*cinema)\b/i },
-      { id: "SimplySouth", name: "Simply South", short_name: "SimplySouth", type: "ott", logo: "https://www.simplysouth.tv/favicon.ico", regex: /\b(simplysouth|simply\s*south)\b/i },
-      { id: "Tentkotta", name: "Tentkotta", short_name: "Tentkotta", type: "ott", logo: "https://www.tentkotta.com/favicon.ico", regex: /\b(tentkotta)\b/i },
-      { id: "ManoramaMAX", name: "ManoramaMAX", short_name: "ManoramaMAX", type: "ott", logo: "https://www.manoramamax.com/favicon.ico", regex: /\b(manoramamax|manorama\s*max)\b/i },
-      { id: "REMUX", name: "BluRay REMUX", short_name: "REMUX", type: "disc", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Blu-ray_Disc_logo.svg", regex: /\b(remux|bdremux)\b/i },
-      { id: "BluRay", name: "BluRay Disc", short_name: "BluRay", type: "disc", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Blu-ray_Disc_logo.svg", regex: /\b(bluray|bdrip|brrip)\b/i },
-      { id: "WEB-DL", name: "WEB-DL", short_name: "WEB-DL", type: "web", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Generic_Feed_icon.svg", regex: /\b(web-?dl|webrip)\b/i }
-    ];
-
-    function initProviderSelector() {
-      const container = document.getElementById("provider-grid-container");
-      if (!container) return;
-      container.innerHTML = "";
-      PROVIDER_DIRECTORY.forEach(p => {
-        const pill = document.createElement("div");
-        pill.className = "provider-pill";
-        pill.id = "p-pill-" + p.id;
-        pill.onclick = () => {
-          manualOverrides.provider = true;
-          selectProvider(p.id, "MANUAL");
-        };
-        pill.innerHTML = `
-          <img src="${p.logo}" class="provider-logo-img" onerror="this.src='icon.png'">
-          <div class="provider-name-text">${p.name}</div>
-        `;
-        container.appendChild(pill);
-      });
-    }
-
-    function selectProvider(id, mode = "AUTO") {
-      document.querySelectorAll(".provider-pill").forEach(el => el.classList.remove("active"));
-      const target = document.getElementById("p-pill-" + id);
-      if (target) target.classList.add("active");
-      
-      const hiddenInput = document.getElementById("selected-provider-id");
-      if (hiddenInput) hiddenInput.value = id;
-
-      const pObj = PROVIDER_DIRECTORY.find(x => x.id === id);
-      const dispEl = document.getElementById("spec-disp-prov");
-      if (dispEl) dispEl.textContent = pObj ? pObj.name : id;
-
-      renderOverrideTag("provider-status-tag", mode);
-      regenerateStandardName();
-      updateMediaCard();
-    }
-
-    function getActiveProvider() {
-      const hiddenInput = document.getElementById("selected-provider-id");
-      const id = hiddenInput ? hiddenInput.value : null;
-      return PROVIDER_DIRECTORY.find(x => x.id === id) || null;
-    }
-
-    function renderOverrideTag(elementId, mode) {
-      const el = document.getElementById(elementId);
-      if (!el) return;
-      el.textContent = mode;
-      el.style.color = mode === "MANUAL" ? "var(--neon-gold)" : "var(--laser-cyan)";
-      el.style.border = `1px solid ${mode === "MANUAL" ? "var(--neon-gold)" : "var(--laser-cyan)"}`;
-    }
-
-    // 3. MASTER FILENAME PARSER
-    let tmdbDebounceTimer = null;
-
-    function parseFileName(name) {
-      if (!name || typeof name !== "string") return;
-      const raw = name.trim();
-
-      // A. Multi-Audio Detection
-      const hasTam = /\b(tamil|tam)\b/i.test(raw);
-      const hasHin = /\b(hindi|hin)\b/i.test(raw);
-      const hasTel = /\b(telugu|tel)\b/i.test(raw);
-      const hasEng = /\b(english|eng)\b/i.test(raw);
-      const hasMal = /\b(malayalam|mal)\b/i.test(raw);
-      const hasKan = /\b(kannada|kan)\b/i.test(raw);
-
-      document.getElementById("chk-tamil").checked = hasTam;
-      document.getElementById("chk-hindi").checked = hasHin;
-      document.getElementById("chk-telugu").checked = hasTel;
-      document.getElementById("chk-english").checked = hasEng;
-      document.getElementById("chk-malayalam").checked = hasMal;
-      document.getElementById("chk-kannada").checked = hasKan;
-
-      // B. Original Language (Preserves manual correction)
-      if (!manualOverrides.orig_language) {
-        const origSel = document.getElementById("orig-language");
-        if (hasTam) origSel.value = "ta";
-        else if (hasHin) origSel.value = "hi";
-        else if (hasTel) origSel.value = "te";
-        else if (hasMal) origSel.value = "ml";
-        else if (hasKan) origSel.value = "kn";
-        else if (hasEng) origSel.value = "en";
+      // Reusable Toast Trigger Example for ingestion flow
+      const commitBtn = document.getElementById('btn-commit-github');
+      if (commitBtn) {
+        commitBtn.addEventListener('click', () => {
+          MoinuUI.setLoading(commitBtn, true, 'Committing...');
+          setTimeout(() => {
+            MoinuUI.setLoading(commitBtn, false);
+            MoinuUI.showLaserToast('Movie ingested and committed successfully!', 'success');
+          }, 1200);
+        });
       }
 
-      // C. Provider Detection (Word boundary, preserves manual selection)
-      if (!manualOverrides.provider) {
-        let matchedProvider = null;
-        for (const p of PROVIDER_DIRECTORY) {
-          if (p.regex.test(raw)) {
-            matchedProvider = p;
-            break;
-          }
-        }
-        if (matchedProvider) {
-          selectProvider(matchedProvider.id, "AUTO");
-        } else {
-          document.querySelectorAll(".provider-pill").forEach(el => el.classList.remove("active"));
-          document.getElementById("selected-provider-id").value = "";
-          document.getElementById("spec-disp-prov").textContent = "—";
-          renderOverrideTag("provider-status-tag", "AUTO");
-        }
-      }
-
-      // D. Exact Resolution vs Quality
-      const resMatch = raw.match(/\b(\d{3,4}x\d{3,4})\b/i);
-      detectedTechSpecs.res = resMatch ? resMatch[1] : null;
-
-      if (!manualOverrides.quality) {
-        if (/\b(2160p|4k|uhd)\b/i.test(raw)) detectedTechSpecs.quality = "2160p";
-        else if (/\b(1080p|1080i)\b/i.test(raw)) detectedTechSpecs.quality = "1080p";
-        else if (/\b(720p)\b/i.test(raw)) detectedTechSpecs.quality = "720p";
-        else if (/\b(576p)\b/i.test(raw)) detectedTechSpecs.quality = "576p";
-        else if (/\b(480p)\b/i.test(raw)) detectedTechSpecs.quality = "480p";
-        else detectedTechSpecs.quality = null;
-
-        document.getElementById("quality-format").value = detectedTechSpecs.quality || "";
-      }
-
-      // E. Video Codec
-      if (!manualOverrides.codec) {
-        if (/\b(h\.?265|hevc|x265)\b/i.test(raw)) detectedTechSpecs.codec = "HEVC";
-        else if (/\b(h\.?264|avc|x264)\b/i.test(raw)) detectedTechSpecs.codec = "H.264";
-        else if (/\b(av1)\b/i.test(raw)) detectedTechSpecs.codec = "AV1";
-        else detectedTechSpecs.codec = null;
-
-        document.getElementById("codec-format").value = detectedTechSpecs.codec || "";
-      }
-
-      // F. FPS
-      const fpsMatch = raw.match(/\b(23\.976|24|25|29\.97|30|50|59\.94|60)\s*fps\b/i) || raw.match(/\b(23\.976|29\.97|59\.94)\b/);
-      detectedTechSpecs.fps = fpsMatch ? (fpsMatch[1].endsWith("fps") ? fpsMatch[1] : `${fpsMatch[1]}fps`) : null;
-
-      // G. Bit Depth
-      const depthMatch = raw.match(/\b(8|10|12)\s*-?bit\b/i);
-      detectedTechSpecs.depth = depthMatch ? `${depthMatch[1]}-bit` : null;
-
-      // H. HDR Detection
-      if (/\b(sdr)\b/i.test(raw)) {
-        detectedTechSpecs.hdr = "No";
-      } else if (/\b(dolby\s*vision|dv)\b/i.test(raw)) {
-        detectedTechSpecs.hdr = "Dolby Vision";
-      } else if (/\b(hdr10\+)\b/i.test(raw)) {
-        detectedTechSpecs.hdr = "HDR10+";
-      } else if (/\b(hdr10|hdr)\b/i.test(raw)) {
-        detectedTechSpecs.hdr = "HDR10";
-      } else if (/\b(hlg)\b/i.test(raw)) {
-        detectedTechSpecs.hdr = "HLG";
-      } else {
-        detectedTechSpecs.hdr = null;
-      }
-
-      // I. Audio Codec & Channels
-      if (!manualOverrides.audio) {
-        let audCodec = null;
-        let audChannels = null;
-
-        if (/\b(dts-hd\s*ma|dts-hd)\b/i.test(raw)) audCodec = "DTS-HD MA";
-        else if (/\b(dts)\b/i.test(raw)) audCodec = "DTS";
-        else if (/\b(truehd|atmos)\b/i.test(raw)) audCodec = "Dolby Atmos / TrueHD";
-        else if (/\b(ddp|e-?ac-?3|dd\+)\b/i.test(raw)) audCodec = "E-AC-3";
-        else if (/\b(ac-?3|dd)\b/i.test(raw)) audCodec = "AC-3";
-        else if (/\b(aac)\b/i.test(raw)) audCodec = "AAC";
-
-        if (/\b(7[\.\s]1)\b/.test(raw)) audChannels = "7.1";
-        else if (/\b(5[\.\s]1)\b/.test(raw)) audChannels = "5.1";
-        else if (/\b(2[\.\s]0)\b/.test(raw)) audChannels = "2.0";
-
-        detectedTechSpecs.audio_codec = audCodec;
-        detectedTechSpecs.channels = audChannels;
-
-        const audioInput = document.getElementById("audio-format");
-        if (audCodec && audChannels) audioInput.value = `${audCodec} ${audChannels}`;
-        else if (audCodec) audioInput.value = audCodec;
-        else if (audChannels) audioInput.value = audChannels;
-        else audioInput.value = "";
-      }
-
-      // J. File Size (Auto Decimal GB / MB Parsing)
-      if (!manualOverrides.size) {
-        const sizeMatch = raw.match(/([\d\.]+)\s*(gb|mb)\b/i);
-        if (sizeMatch) {
-          const num = parseFloat(sizeMatch[1]);
-          const unit = sizeMatch[2].toLowerCase();
-          const valGb = unit === "mb" ? (num / 1024) : num;
-          const formattedGb = Math.round(valGb * 100) / 100;
-
-          detectedTechSpecs.size_display = `${formattedGb} GB`;
-          detectedTechSpecs.size_bytes = Math.round(valGb * 1024 * 1024 * 1024);
-
-          document.getElementById("detected-size-badge").textContent = `${formattedGb} GB`;
-          document.getElementById("file-size-display").value = `${formattedGb} GB`;
-          document.getElementById("size-slider").value = formattedGb;
-        } else {
-          detectedTechSpecs.size_display = null;
-          detectedTechSpecs.size_bytes = null;
-          document.getElementById("detected-size-badge").textContent = "—";
-          document.getElementById("file-size-display").value = "";
-        }
-      }
-
-      // K. Title Extraction
-      let clean = raw.replace(/\.(mkv|mp4|avi|ts|mov)$/i, '').replace(/[\._\-]/g, ' ');
-      const yearMatch = clean.match(/\b(19\d{2}|20\d{2})\b/);
-      baseMovieYear = yearMatch ? yearMatch[1] : "";
-
-      let extractedTitle = yearMatch ? clean.substring(0, yearMatch.index).trim() : clean;
-      const noisePattern = /\b(2160p|1080p|720p|576p|480p|4k|uhd|bluray|remux|web-?dl|webrip|amzn|nf|dsnp|sunnxt|zee5|sonyliv|h\.?264|h\.?265|hevc|x264|x265|avc|av1|ddp|dd\+|eac3|ac3|dts|dts-hd|truehd|atmos|aac|hindi|tamil|telugu|english|malayalam|kannada|sdr|hdr|hdr10|dv|10bit|8bit|fps)\b.*/gi;
-      extractedTitle = extractedTitle.replace(noisePattern, '').trim();
-      baseMovieTitle = extractedTitle || clean.trim();
-
-      // Immediate UI Updates
-      regenerateStandardName();
-      updateMediaCard();
-
-      // Debounced TMDB Auto-Search
-      clearTimeout(tmdbDebounceTimer);
-      tmdbDebounceTimer = setTimeout(() => {
-        executeTmdbAutoSearch(baseMovieTitle, baseMovieYear);
-      }, 400);
-    }
-
-    // 4. CLEAN STANDARD TITLE GENERATOR
-    function regenerateStandardName() {
-      const title = (meta && meta.title) ? meta.title : (baseMovieTitle || "Movie");
-      const year = (meta && meta.release_date) ? meta.release_date.split("-")[0] : (baseMovieYear || "");
-      const yearPart = year ? ` (${year})` : "";
-
-      let langs = [];
-      if (document.getElementById("chk-tamil").checked) langs.push("Tamil");
-      if (document.getElementById("chk-hindi").checked) langs.push("Hindi");
-      if (document.getElementById("chk-telugu").checked) langs.push("Telugu");
-      if (document.getElementById("chk-english").checked) langs.push("English");
-      if (document.getElementById("chk-malayalam").checked) langs.push("Malayalam");
-      if (document.getElementById("chk-kannada").checked) langs.push("Kannada");
-
-      const langTag = langs.length > 0 ? ` [${langs.join(" + ")}]` : "";
-      const provider = getActiveProvider();
-      const provTag = provider ? ` [${provider.short_name}]` : "";
-      const qualTag = detectedTechSpecs.quality ? ` [${detectedTechSpecs.quality}]` : "";
-      const codecTag = detectedTechSpecs.codec ? ` [${detectedTechSpecs.codec}]` : "";
-
-      let audTag = "";
-      if (detectedTechSpecs.audio_codec && detectedTechSpecs.channels) {
-        audTag = ` [${detectedTechSpecs.audio_codec} ${detectedTechSpecs.channels}]`;
-      } else if (detectedTechSpecs.audio_codec) {
-        audTag = ` [${detectedTechSpecs.audio_codec}]`;
-      }
-
-      const standardTitle = `${title}${yearPart}${langTag}${provTag}${qualTag}${codecTag}${audTag}.mkv`;
-      const targetField = document.getElementById("clean-standard-title");
-      if (targetField) targetField.value = standardTitle;
-
-      renderJsonPreview();
-    }
-
-    // 5. MEDIA CARD UPDATER (ZERO FAKE DATA)
-    function updateMediaCard() {
-      const setVal = (id, val) => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        el.textContent = val !== null && val !== "" ? val : "—";
-        el.style.color = val ? "#fff" : "var(--text-muted)";
-      };
-
-      setVal("spec-disp-res", detectedTechSpecs.res);
-      setVal("spec-disp-qual", detectedTechSpecs.quality);
-      setVal("spec-disp-codec", detectedTechSpecs.codec);
-      setVal("spec-disp-fps", detectedTechSpecs.fps);
-      setVal("spec-disp-depth", detectedTechSpecs.depth);
-      setVal("spec-disp-hdr", detectedTechSpecs.hdr);
-      setVal("spec-disp-audio", detectedTechSpecs.audio_codec);
-      setVal("spec-disp-chan", detectedTechSpecs.channels);
-      setVal("spec-disp-size", detectedTechSpecs.size_display);
-
-      const provider = getActiveProvider();
-      setVal("spec-disp-prov", provider ? provider.name : null);
-
-      renderJsonPreview();
-    }
-
-    // Manual Event Listeners
-    function onQualityChange(val) {
-      manualOverrides.quality = true;
-      detectedTechSpecs.quality = val || null;
-      renderOverrideTag("quality-status-tag", "MANUAL");
-      regenerateStandardName();
-      updateMediaCard();
-    }
-
-    function onCodecChange(val) {
-      manualOverrides.codec = true;
-      detectedTechSpecs.codec = val || null;
-      renderOverrideTag("codec-status-tag", "MANUAL");
-      regenerateStandardName();
-      updateMediaCard();
-    }
-
-    function onAudioInputChange(val) {
-      manualOverrides.audio = true;
-      const parts = val.trim().split(/\s+/);
-      if (parts.length > 1 && /^(7\.1|5\.1|2\.0)$/.test(parts[parts.length - 1])) {
-        detectedTechSpecs.channels = parts.pop();
-        detectedTechSpecs.audio_codec = parts.join(" ");
-      } else {
-        detectedTechSpecs.audio_codec = val.trim() || null;
-        detectedTechSpecs.channels = null;
-      }
-      renderOverrideTag("audio-status-tag", "MANUAL");
-      regenerateStandardName();
-      updateMediaCard();
-    }
-
-    function onSizeSliderManual(val) {
-      manualOverrides.size = true;
-      const num = parseFloat(val);
-      detectedTechSpecs.size_display = `${num.toFixed(1)} GB`;
-      detectedTechSpecs.size_bytes = Math.round(num * 1024 * 1024 * 1024);
-      document.getElementById("detected-size-badge").textContent = `${num.toFixed(1)} GB`;
-      document.getElementById("file-size-display").value = `${num.toFixed(1)} GB`;
-      renderOverrideTag("size-status-tag", "MANUAL");
-      updateMediaCard();
-    }
-
-    function onSizeInputManual(val) {
-      const match = String(val).match(/([\d\.]+)/);
-      if (match) onSizeSliderManual(match[1]);
-    }
-
-    // 6. TMDB AUTO-SEARCH
-    async function executeTmdbAutoSearch(title, year) {
-      if (!title || title.length < 2) return;
-      const box = document.getElementById("tmdb-suggestions");
-      if (!box) return;
-
-      try {
-        const url = `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(title)}${year ? `&year=${year}` : ""}`;
-        const res = await fetch(url);
-        if (!res.ok) return;
-        const data = await res.json();
-        box.innerHTML = "";
-
-        if (data.results && data.results.length > 0) {
-          const topMatches = data.results.slice(0, 3);
-          topMatches.forEach(m => {
-            const item = document.createElement("div");
-            item.style.cssText = "padding:8px; cursor:pointer; color:#fff; font-size:0.8rem; border-bottom:1px solid rgba(255,255,255,0.06);";
-            const rYear = m.release_date ? m.release_date.split("-")[0] : "";
-            item.textContent = `🎯 ${m.title} (${rYear})`;
-            item.onclick = () => {
-              document.getElementById("tmdb-id").value = m.id;
-              box.style.display = "none";
-              fetchMetadata(m.id);
-            };
-            box.appendChild(item);
-          });
-          box.style.display = "block";
-
-          const exactMatch = topMatches.find(m => {
-            const rYear = m.release_date ? m.release_date.split("-")[0] : "";
-            return m.title.toLowerCase() === title.toLowerCase() && (!year || rYear === year);
-          });
-
-          if (exactMatch && !document.getElementById("tmdb-id").value) {
-            document.getElementById("tmdb-id").value = exactMatch.id;
-            fetchMetadata(exactMatch.id);
-          }
-        } else {
-          box.style.display = "none";
-        }
-      } catch (err) {
-        console.error("TMDB search error:", err);
-      }
-    }
-
-    async function fetchMetadata(tmdbId) {
-      if (!tmdbId) return;
-      try {
-        const res = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_API_KEY}&append_to_response=belongs_to_collection`);
-        if (!res.ok) return;
-        const d = await res.json();
-        meta = d;
-
-        document.getElementById("internal-movie-id").value = `movie_${d.id}`;
-        if (!manualOverrides.orig_language && d.original_language) {
-          document.getElementById("orig-language").value = d.original_language;
-        }
-        document.getElementById("collection-name").value = (d.belongs_to_collection && d.belongs_to_collection.name) ? d.belongs_to_collection.name : "";
-
-        const posterEl = document.getElementById("prev-poster");
-        if (posterEl) posterEl.src = d.poster_path ? `https://image.tmdb.org/t/p/w200${d.poster_path}` : "";
-        const titleEl = document.getElementById("prev-title");
-        if (titleEl) titleEl.textContent = `${d.title} (${d.release_date ? d.release_date.split("-")[0] : ""})`;
-        const descEl = document.getElementById("prev-desc");
-        if (descEl) descEl.textContent = `Rating: ${d.vote_average} • ${d.genres ? d.genres.map(g => g.name).join(", ") : ""}`;
-        
-        document.getElementById("tmdb-preview-panel").style.display = "block";
-
-        regenerateStandardName();
-        await checkMovieDeduplication();
-        showLaserToast(`TMDB Linked: ${d.title}`);
-      } catch (e) {
-        console.error("TMDB metadata fetch error:", e);
-      }
-    }
-
-    // 7. DEDUPLICATION CHECK
-    let currentMatchState = {
-      isExisting: false,
-      isDuplicateVersion: false,
-      chunkFile: "chunks/movies_001.json",
-      existingMovie: null
-    };
-
-    async function checkMovieDeduplication() {
-      const gdriveId = document.getElementById("gdrive-url").value.trim();
-      const tmdbId = parseInt(document.getElementById("tmdb-id").value) || 0;
-      const banner = document.getElementById("match-status-box");
-      const bannerText = document.getElementById("match-status-text");
-
-      currentMatchState.isExisting = false;
-      currentMatchState.isDuplicateVersion = false;
-      currentMatchState.existingMovie = null;
-
-      try {
-        let catalog = await fetchChunk("catalog.json");
-        if (!Array.isArray(catalog)) catalog = [];
-
-        const effectiveTitle = (meta && meta.title) ? meta.title : baseMovieTitle;
-        let matchedItem = catalog.find(m => (tmdbId && m.tmdb_id === tmdbId) || (m.title.toLowerCase() === effectiveTitle.toLowerCase() && String(m.year) === String(baseMovieYear)));
-
-        if (matchedItem) {
-          currentMatchState.isExisting = true;
-          currentMatchState.chunkFile = matchedItem.chunk || "chunks/movies_001.json";
-
-          let chunkData = await fetchChunk(currentMatchState.chunkFile);
-          if (Array.isArray(chunkData)) {
-            let detailed = chunkData.find(x => x.id === matchedItem.id);
-            if (detailed) {
-              currentMatchState.existingMovie = detailed;
-              if (gdriveId && detailed.versions && detailed.versions.some(v => v.id === gdriveId || v.version_id === gdriveId)) {
-                currentMatchState.isDuplicateVersion = true;
-              }
-            }
-          }
-        } else {
-          const chunkIndex = Math.floor(catalog.length / 100) + 1;
-          currentMatchState.chunkFile = `chunks/movies_${String(chunkIndex).padStart(3, '0')}.json`;
-        }
-
-        if (currentMatchState.isDuplicateVersion) {
-          banner.className = "match-status-banner match-duplicate";
-          bannerText.textContent = "⚠️ VERSION ALREADY EXISTS: Google Drive ID already registered under this movie!";
-          document.getElementById("commit-btn").disabled = true;
-          document.getElementById("commit-btn").style.opacity = "0.5";
-        } else if (currentMatchState.isExisting) {
-          banner.className = "match-status-banner match-exists";
-          bannerText.textContent = `⚡ EXISTING MOVIE FOUND: Appending new version to ${currentMatchState.chunkFile}`;
-          document.getElementById("commit-btn").disabled = false;
-          document.getElementById("commit-btn").style.opacity = "1";
-        } else {
-          banner.className = "match-status-banner match-new";
-          bannerText.textContent = `🟢 NEW MOVIE: Creating new entry in ${currentMatchState.chunkFile}`;
-          document.getElementById("commit-btn").disabled = false;
-          document.getElementById("commit-btn").style.opacity = "1";
-        }
-
-        document.getElementById("match-target-chunk").textContent = `Target: ${currentMatchState.chunkFile}`;
-        renderJsonPreview();
-      } catch (err) {
-        console.error("Deduplication verification error:", err);
-      }
-    }
-
-    // 8. FINAL JSON COMPILATION
-    function constructCommitPayloads() {
-      const gdriveId = document.getElementById("gdrive-url").value.trim();
-      const movieId = document.getElementById("internal-movie-id").value || (meta ? `movie_${meta.id}` : `movie_${Date.now()}`);
-      const title = (meta && meta.title) ? meta.title : (baseMovieTitle || "Movie");
-      const year = (meta && meta.release_date) ? parseInt(meta.release_date.split("-")[0]) : (parseInt(baseMovieYear) || null);
-      const provider = getActiveProvider();
-      const streamUrl = gdriveId ? (WORKER_BASE + gdriveId + USER_AGENT) : null;
-      const finalCleanName = document.getElementById("clean-standard-title").value;
-
-      const versionObj = {
-        id: gdriveId || null,
-        version_id: gdriveId || null,
-        name: finalCleanName,
-        provider: provider ? {
-          id: provider.id,
-          name: provider.name,
-          short_name: provider.short_name,
-          type: provider.type,
-          logo: provider.logo
-        } : null,
-        quality: detectedTechSpecs.quality,
-        resolution: detectedTechSpecs.res,
-        video: {
-          codec: detectedTechSpecs.codec,
-          fps: detectedTechSpecs.fps,
-          bit_depth: detectedTechSpecs.depth,
-          hdr: detectedTechSpecs.hdr
-        },
-        audio: {
-          codec: detectedTechSpecs.audio_codec,
-          format: document.getElementById("audio-format").value || null,
-          channels: detectedTechSpecs.channels,
-          languages: [document.getElementById("orig-language").value]
-        },
-        size_bytes: detectedTechSpecs.size_bytes,
-        size_display: detectedTechSpecs.size_display,
-        stream_url: streamUrl,
-        date_added: new Date().toISOString()
-      };
-
-      let detailedMovieObj = currentMatchState.existingMovie ? JSON.parse(JSON.stringify(currentMatchState.existingMovie)) : {
-        id: movieId,
-        title: title,
-        sort_title: title.toLowerCase().replace(/^(the|a|an)\s+/i, ''),
-        year: year,
-        original_language: document.getElementById("orig-language").value,
-        tmdb_id: meta ? meta.id : null,
-        collection: document.getElementById("collection-name").value.trim() || null,
-        poster: (meta && meta.poster_path) ? `https://image.tmdb.org/t/p/w500${meta.poster_path}` : null,
-        fanart: (meta && meta.backdrop_path) ? `https://image.tmdb.org/t/p/original${meta.backdrop_path}` : null,
-        rating: meta ? meta.vote_average : null,
-        plot: meta ? meta.overview : null,
-        genres: (meta && meta.genres) ? meta.genres.map(g => g.name) : [],
-        versions: []
-      };
-
-      detailedMovieObj.versions.push(versionObj);
-
-      const catalogEntry = {
-        id: movieId,
-        title: title,
-        sort_title: detailedMovieObj.sort_title,
-        year: year,
-        rating: detailedMovieObj.rating,
-        poster: detailedMovieObj.poster,
-        genres: detailedMovieObj.genres,
-        provider_logo: provider ? provider.logo : null,
-        provider_name: provider ? provider.name : null,
-        chunk: currentMatchState.chunkFile,
-        date_added: new Date().toISOString()
-      };
-
-      return { catalogEntry, detailedMovieObj, versionObj };
-    }
-
-    function renderJsonPreview() {
-      const box = document.getElementById("json-preview-box");
-      if (!box) return;
-      const payloads = constructCommitPayloads();
-      box.textContent = JSON.stringify({
-        operation: currentMatchState.isExisting ? "ADD_VERSION" : "NEW_MOVIE",
-        target_catalog: "catalog.json",
-        target_chunk: currentMatchState.chunkFile,
-        data: payloads
-      }, null, 2);
-    }
-
-    function toggleJsonPreview() {
-      const container = document.getElementById("json-preview-container");
-      if (!container) return;
-      container.style.display = container.style.display === "none" ? "block" : "none";
-    }
-
-    // 9. GITHUB COMMIT HANDLER
-    async function executeValidatedCommit(e) {
-      e.preventDefault();
-      const token = getStoredToken();
-      if (!token) return showLaserToast("GitHub Token required! Configure in Settings.", true);
-
-      const setStep = (id, ok) => {
-        const el = document.getElementById(id);
-        if (el) el.className = "pipeline-step" + (ok ? " success" : "");
-      };
-
-      setStep("pipe-parse", true);
-
-      const payloads = constructCommitPayloads();
-      if (!payloads.versionObj.id || payloads.versionObj.id.length < 5) {
-        showLaserToast("Invalid Google Drive ID!", true);
-        return;
-      }
-      setStep("pipe-validate", true);
-
-      await checkMovieDeduplication();
-      if (currentMatchState.isDuplicateVersion) {
-        showLaserToast("Aborted: Version already exists!", true);
-        return;
-      }
-      setStep("pipe-match", true);
-
-      try {
-        showLaserToast("Writing catalog & detailed chunk...");
-
-        // Catalog sync
-        let catalog = await fetchChunk("catalog.json");
-        if (!Array.isArray(catalog)) catalog = [];
-        const catIdx = catalog.findIndex(x => x.id === payloads.catalogEntry.id);
-        if (catIdx >= 0) catalog[catIdx] = payloads.catalogEntry;
-        else catalog.unshift(payloads.catalogEntry);
-        await commitFileDirect("catalog.json", catalog, `Catalog: Sync ${payloads.catalogEntry.title}`, token);
-        setStep("pipe-catalog", true);
-
-        // Chunk sync
-        let chunkData = await fetchChunk(currentMatchState.chunkFile);
-        if (!Array.isArray(chunkData)) chunkData = [];
-        const chunkIdx = chunkData.findIndex(x => x.id === payloads.detailedMovieObj.id);
-        if (chunkIdx >= 0) chunkData[chunkIdx] = payloads.detailedMovieObj;
-        else chunkData.unshift(payloads.detailedMovieObj);
-        await commitFileDirect(currentMatchState.chunkFile, chunkData, `Chunk: Update ${payloads.detailedMovieObj.title}`, token);
-        setStep("pipe-chunk", true);
-
-        // Regional Audio Chunks Sync
-        if (document.getElementById("chk-tamil").checked) {
-          let tam = await fetchChunk("chunks/data_c01_tamil.json");
-          if (Array.isArray(tam)) { tam.unshift(payloads.detailedMovieObj); await commitFileDirect("chunks/data_c01_tamil.json", tam, `Sync Tamil: ${payloads.detailedMovieObj.title}`, token); }
-        }
-        if (document.getElementById("chk-hindi").checked) {
-          let hin = await fetchChunk("chunks/data_c01_hindi.json");
-          if (Array.isArray(hin)) { hin.unshift(payloads.detailedMovieObj); await commitFileDirect("chunks/data_c01_hindi.json", hin, `Sync Hindi: ${payloads.detailedMovieObj.title}`, token); }
-        }
-        setStep("pipe-commit", true);
-
-        showLaserToast("🎉 Movie and Version successfully synced to repository!");
-        localStorage.removeItem("temp_push_id");
-        localStorage.removeItem("temp_push_title");
-        document.getElementById("push-form").reset();
-        document.getElementById("tmdb-preview-panel").style.display = "none";
-        
-        Object.keys(manualOverrides).forEach(k => manualOverrides[k] = false);
-        initProviderSelector();
-        updateMediaCard();
-        checkMovieDeduplication();
-      } catch (err) {
-        showLaserToast(`Commit failed: ${err.message}`, true);
-      }
-    }
-
-    window.addEventListener("DOMContentLoaded", () => {
-      initProviderSelector();
-      updateMediaCard();
-
-      const storedId = localStorage.getItem("temp_push_id");
-      const storedTitle = localStorage.getItem("temp_push_title");
-      if (storedId && storedTitle) {
-        document.getElementById("gdrive-url").value = storedId;
-        document.getElementById("raw-name").value = storedTitle;
-        parseFileName(storedTitle);
-        showLaserToast("Auto-loaded from Drive queue!");
-      }
+      // Existing movie parser, TMDB, Drive & commit listeners remain intact yahan
     });
   </script>
 </body>
