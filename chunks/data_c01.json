@@ -1,77 +1,77 @@
 [
   {
-    "id": "1Kg1TaqiG3N8dMJsS4qaJNBGDsPzVJkd9",
-    "name": "Anegan (2015) [1080p] [WEB-DL] [Dolby Atmos].mkv",
-    "title": "Anegan",
-    "original_title": "அநேகன்",
-    "original_language": "ta",
-    "year": 2015,
-    "runtime": 154,
-    "tmdb_id": 262973,
-    "rating": 6.2,
-    "collection": "",
+    "id": "1k3eVYMfvW2h4tOHVygiN7HgwXOzchL87",
+    "name": "Insidious: Out of the Further (2026) [1080p] [WEB-DL] [Dolby Digital Plus].mkv",
+    "title": "Insidious: Out of the Further",
+    "original_title": "Insidious: Out of the Further",
+    "original_language": "en",
+    "year": 2026,
+    "runtime": 106,
+    "tmdb_id": 1291595,
+    "rating": 7.7,
+    "collection": "Insidious Collection",
     "director": [
-      "K. V. Anand"
+      "Jacob Chase"
     ],
-    "trailer": "",
+    "trailer": "https://www.youtube.com/watch?v=gXjurDkYnEM",
     "cast": [
       {
-        "name": "Dhanush",
-        "role": "Ashwin, Murugappa and Kaali",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/34gv8DThQCh74oZQZe5zoDnaZrw.jpg"
+        "name": "Amelia Eve",
+        "role": "Gemma Hall",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/Am54f1ys9nqZKuFDEkSwkqhRAuo.jpg"
       },
       {
-        "name": "Amyra Dastur",
-        "role": "Madhumitha, Samudhra and Kalyani",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/jUXu3sSVTDZYvWFCmICNfTtMvGZ.jpg"
+        "name": "Island Austin",
+        "role": "Maya Hall",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/663fMDrygvPYcV4L567iHVzEfXD.jpg"
       },
       {
-        "name": "Karthik",
-        "role": "Ravi and Kiran",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/bmC9Pp5OADceT8P8FxCBM1iE3Ci.jpg"
+        "name": "Brandon Perea",
+        "role": "Nick Mendoza",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/hEzljVgsho0Uwd8tg7AGB5Uy3Lr.jpg"
       },
       {
-        "name": "Ashish Vidhyarthi",
-        "role": "Commissioner Gopinath",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/iBUUpfHZIfpC5afHrHwcyGTHKQF.jpg"
+        "name": "Lin Shaye",
+        "role": "Elise Rainier",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/aL87Za52elH81zMiXQn5C7AXAeg.jpg"
       },
       {
-        "name": "Jagan",
-        "role": "Mallika's Husband and Jagan",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/wAZ9meXcyG0dBQFEshgspUIRNIH.jpg"
+        "name": "Maisie Richardson-Sellers",
+        "role": "Clare",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/7Rue8ZtZ8uLb1x0YC9viieunoC0.jpg"
       }
     ],
-    "plot": "Madhumitha is convinced that she and her colleague Ashwin were lovers in their past lives and have been brought together by fate. Is there any truth to this or is she merely hallucinating?",
-    "poster": "https://image.tmdb.org/t/p/w500/iRmgqZjYktrL74HIHNDiH21VSJA.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/A0vwXAbCTjtw9ZeV2N7haZVn27I.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Kg1TaqiG3N8dMJsS4qaJNBGDsPzVJkd9|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "plot": "Gemma, a young mother raising her daughter in the house she grew up in, discovers she can travel into The Further, where she possesses an ability to bring what lives there back to the real world.",
+    "poster": "https://image.tmdb.org/t/p/w500/4tTrW9dXCByS5wt2pXVWb58zNjz.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/p40lmrdI4blcAPZQMTPaiy5v5Ym.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1k3eVYMfvW2h4tOHVygiN7HgwXOzchL87|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
       "resolution": "1080p",
       "source": "WEB-DL",
       "codec": "x265",
-      "audio": "Dolby Atmos",
+      "audio": "Dolby Digital Plus",
       "channels": "5.1",
-      "languages": "",
+      "languages": "Tamil, Telugu, Hindi, Malayalam",
       "size": "11GB"
     },
     "versions": [
       {
-        "id": "1Kg1TaqiG3N8dMJsS4qaJNBGDsPzVJkd9",
-        "name": "Anegan (2015) [1080p] [WEB-DL] [Dolby Atmos].mkv",
-        "quality": "1080p • WEB-DL • Dolby Atmos [11GB]",
+        "id": "1k3eVYMfvW2h4tOHVygiN7HgwXOzchL87",
+        "name": "Insidious: Out of the Further (2026) [1080p] [WEB-DL] [Dolby Digital Plus].mkv",
+        "quality": "1080p • WEB-DL • Dolby Digital Plus Multi [11GB]",
         "source": "WEB-DL",
         "codec": "x265",
         "resolution": "1080p",
-        "audio": "Dolby Atmos",
+        "audio": "Dolby Digital Plus",
         "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Kg1TaqiG3N8dMJsS4qaJNBGDsPzVJkd9|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1k3eVYMfvW2h4tOHVygiN7HgwXOzchL87|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
           "source": "WEB-DL",
           "codec": "x265",
-          "audio": "Dolby Atmos",
+          "audio": "Dolby Digital Plus",
           "channels": "5.1",
-          "languages": "",
+          "languages": "Tamil, Telugu, Hindi, Malayalam",
           "size": "11GB"
         }
       }
