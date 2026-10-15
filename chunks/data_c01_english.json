@@ -1,5 +1,83 @@
 [
   {
+    "id": "1k3eVYMfvW2h4tOHVygiN7HgwXOzchL87",
+    "name": "Insidious: Out of the Further (2026) [1080p] [WEB-DL] [Dolby Digital Plus].mkv",
+    "title": "Insidious: Out of the Further",
+    "original_title": "Insidious: Out of the Further",
+    "original_language": "en",
+    "year": 2026,
+    "runtime": 106,
+    "tmdb_id": 1291595,
+    "rating": 7.7,
+    "collection": "Insidious Collection",
+    "director": [
+      "Jacob Chase"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=gXjurDkYnEM",
+    "cast": [
+      {
+        "name": "Amelia Eve",
+        "role": "Gemma Hall",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/Am54f1ys9nqZKuFDEkSwkqhRAuo.jpg"
+      },
+      {
+        "name": "Island Austin",
+        "role": "Maya Hall",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/663fMDrygvPYcV4L567iHVzEfXD.jpg"
+      },
+      {
+        "name": "Brandon Perea",
+        "role": "Nick Mendoza",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/hEzljVgsho0Uwd8tg7AGB5Uy3Lr.jpg"
+      },
+      {
+        "name": "Lin Shaye",
+        "role": "Elise Rainier",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/aL87Za52elH81zMiXQn5C7AXAeg.jpg"
+      },
+      {
+        "name": "Maisie Richardson-Sellers",
+        "role": "Clare",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/7Rue8ZtZ8uLb1x0YC9viieunoC0.jpg"
+      }
+    ],
+    "plot": "Gemma, a young mother raising her daughter in the house she grew up in, discovers she can travel into The Further, where she possesses an ability to bring what lives there back to the real world.",
+    "poster": "https://image.tmdb.org/t/p/w500/4tTrW9dXCByS5wt2pXVWb58zNjz.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/p40lmrdI4blcAPZQMTPaiy5v5Ym.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1k3eVYMfvW2h4tOHVygiN7HgwXOzchL87|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x265",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil, Telugu, Hindi, Malayalam",
+      "size": "11GB"
+    },
+    "versions": [
+      {
+        "id": "1k3eVYMfvW2h4tOHVygiN7HgwXOzchL87",
+        "name": "Insidious: Out of the Further (2026) [1080p] [WEB-DL] [Dolby Digital Plus].mkv",
+        "quality": "1080p • WEB-DL • Dolby Digital Plus Multi [11GB]",
+        "source": "WEB-DL",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1k3eVYMfvW2h4tOHVygiN7HgwXOzchL87|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Hindi, Malayalam",
+          "size": "11GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "17UrWEVN6kIlNBSaE-O7DvNlf3Op1O52I",
     "title": "It",
     "name": "It (2017) [Hindi + English] [AMZN] [1080p] [x264] [DTS-HD MA].mkv",
