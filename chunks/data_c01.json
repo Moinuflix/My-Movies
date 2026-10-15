@@ -1,5 +1,81 @@
 [
   {
+    "id": "10_4Lgwe84sEL4_v1d3AbTnraF3iICcGH",
+    "name": "The Avengers: A Visual Journey (2012) [1080p] [Netflix] [Dolby Digital Plus].mkv",
+    "title": "The Avengers: A Visual Journey",
+    "original_title": "The Avengers: A Visual Journey",
+    "original_language": "en",
+    "year": 2012,
+    "runtime": 7,
+    "tmdb_id": 448368,
+    "rating": 8,
+    "collection": "",
+    "director": [],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Victoria Alonso",
+        "role": "Self",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/xF7Qe1tqgk9KtY8kThKHBWhMqxc.jpg"
+      },
+      {
+        "name": "Kevin Feige",
+        "role": "Self",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/cQJJ24S5gAIC21ewye4Zu1oJsIi.jpg"
+      },
+      {
+        "name": "Joss Whedon",
+        "role": "Self",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/tAcIXWQWgGzoSsw2BUBuDbCGgii.jpg"
+      },
+      {
+        "name": "Scarlett Johansson",
+        "role": "Self",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/tgxYh3jMs5bY2Ub4d2dcp9iaz1R.jpg"
+      },
+      {
+        "name": "Samuel L. Jackson",
+        "role": "Self",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/AiAYAqwpM5xmiFrAIeQvUXDCVvo.jpg"
+      }
+    ],
+    "plot": "Joss Whedon and others in interviews discussing the aims for this new franchise.",
+    "poster": "https://image.tmdb.org/t/p/w500/2kBT7KONKQTIhkMc2ZtPU11E8Ky.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/eQiRPyEWhYnuqEGfoCsCO173oIw.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=10_4Lgwe84sEL4_v1d3AbTnraF3iICcGH|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "Netflix",
+      "codec": "H.264",
+      "audio": "Dolby Digital Plus",
+      "channels": "7.1",
+      "languages": "Tamil, Telugu, Hindi, Malayalam",
+      "size": "18GB"
+    },
+    "versions": [
+      {
+        "id": "10_4Lgwe84sEL4_v1d3AbTnraF3iICcGH",
+        "name": "The Avengers: A Visual Journey (2012) [1080p] [Netflix] [Dolby Digital Plus].mkv",
+        "quality": "1080p • Netflix • Dolby Digital Plus Multi [18GB]",
+        "source": "Netflix",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
+        "channels": "7.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=10_4Lgwe84sEL4_v1d3AbTnraF3iICcGH|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Netflix",
+          "codec": "H.264",
+          "audio": "Dolby Digital Plus",
+          "channels": "7.1",
+          "languages": "Tamil, Telugu, Hindi, Malayalam",
+          "size": "18GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "16OXdRaOgBinTC80Bwu6AcFZbvnH1kOds",
     "name": "Indru Netru Naalai (2015) [1080p] [Prime Video] [Dolby Atmos].mkv",
     "title": "Indru Netru Naalai",
