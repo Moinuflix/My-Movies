@@ -52,13 +52,13 @@
       "audio": "Dolby Digital Plus",
       "channels": "5.1",
       "languages": "Hindi",
-      "size": ""
+      "size": "10GB"
     },
     "versions": [
       {
         "id": "1J38xZY2w8RVBx3K7pTFsHU0OxA-4y6ma",
         "name": "Chennai Express (2013) [1080p] [BLURAY] [Dolby Digital Plus].mkv",
-        "quality": "1080p • BLURAY • Dolby Digital Plus",
+        "quality": "1080p • BLURAY • Dolby Digital Plus [10GB]",
         "source": "BLURAY",
         "codec": "H.264",
         "resolution": "1080p",
@@ -72,7 +72,7 @@
           "audio": "Dolby Digital Plus",
           "channels": "5.1",
           "languages": "Hindi",
-          "size": ""
+          "size": "10GB"
         }
       }
     ]
