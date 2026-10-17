@@ -1,5 +1,83 @@
 [
   {
+    "id": "10Cb7VH-G2gM95_RRP9eclV_5xLXlUnSA",
+    "name": "The Nun II (2023) [1080p] [WEB-DL] [Dolby Digital Plus].mkv",
+    "title": "The Nun II",
+    "original_title": "The Nun II",
+    "original_language": "en",
+    "year": 2023,
+    "runtime": 110,
+    "tmdb_id": 968051,
+    "rating": 6.6,
+    "collection": "The Nun Collection",
+    "director": [
+      "Michael Chaves"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=QF-oyCwaArU",
+    "cast": [
+      {
+        "name": "Taissa Farmiga",
+        "role": "Sister Irene",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/jMDY4rFh2SFINj0wzoX10Roye3n.jpg"
+      },
+      {
+        "name": "Anna Popplewell",
+        "role": "Kate",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/7GXEPxNCbc6EtnulCEPWnEvKJIN.jpg"
+      },
+      {
+        "name": "Jonas Bloquet",
+        "role": "Maurice Theriault",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/ivbElHgLKv8PaVc2A9zIZSMSPcv.jpg"
+      },
+      {
+        "name": "Storm Reid",
+        "role": "Sister Debra",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/c5ld0nVHZ2dv25Jhn5DpXwTlXyH.jpg"
+      },
+      {
+        "name": "Katelyn Rose Downey",
+        "role": "Sophie",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/50mZMR1gxqFNahFA8nahFnvsWQy.jpg"
+      }
+    ],
+    "plot": "In 1956 France, a priest is violently murdered, and Sister Irene begins to investigate. She once again comes face-to-face with a powerful evil.",
+    "poster": "https://image.tmdb.org/t/p/w500/5gzzkR7y3hnY8AD1wXjCnVlHba5.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/27jtaS1oCiLK5Y7P6iOXG2yj1Nc.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=10Cb7VH-G2gM95_RRP9eclV_5xLXlUnSA|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x265",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil, Telugu, Hindi",
+      "size": "10GB"
+    },
+    "versions": [
+      {
+        "id": "10Cb7VH-G2gM95_RRP9eclV_5xLXlUnSA",
+        "name": "The Nun II (2023) [1080p] [WEB-DL] [Dolby Digital Plus].mkv",
+        "quality": "1080p • WEB-DL • Dolby Digital Plus Multi [10GB]",
+        "source": "WEB-DL",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=10Cb7VH-G2gM95_RRP9eclV_5xLXlUnSA|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Hindi",
+          "size": "10GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "10_4Lgwe84sEL4_v1d3AbTnraF3iICcGH",
     "name": "The Avengers: A Visual Journey (2012) [1080p] [Netflix] [Dolby Digital Plus].mkv",
     "title": "The Avengers: A Visual Journey",
