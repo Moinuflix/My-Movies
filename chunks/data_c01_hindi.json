@@ -1,5 +1,83 @@
 [
   {
+    "id": "1J38xZY2w8RVBx3K7pTFsHU0OxA-4y6ma",
+    "name": "Chennai Express (2013) [1080p] [BLURAY] [Dolby Digital Plus].mkv",
+    "title": "Chennai Express",
+    "original_title": "Chennai Express",
+    "original_language": "hi",
+    "year": 2013,
+    "runtime": 141,
+    "tmdb_id": 205022,
+    "rating": 6.5,
+    "collection": "",
+    "director": [
+      "Rohit Shetty"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=rARol7Dk2zo",
+    "cast": [
+      {
+        "name": "Shah Rukh Khan",
+        "role": "Rahul Mithaiwala",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/tKeQhSyXyzlzxNtxFq24iIvzXrC.jpg"
+      },
+      {
+        "name": "Deepika Padukone",
+        "role": "Meenamma Lochini Azhagusundaram",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/rzvvBQ0r6oiqDdzcsdTRB7jN4Rx.jpg"
+      },
+      {
+        "name": "Nikitin Dheer",
+        "role": "Tangaballi",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/gAHNWVtStTGsqf2uxCegxvn6ILe.jpg"
+      },
+      {
+        "name": "Sathyaraj",
+        "role": "Durgeshwara Azhagusundaram",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/lnlBZ7V3K3Z3OIsjCd0zkKx26L3.jpg"
+      },
+      {
+        "name": "Mukesh Tiwari",
+        "role": "Inspector Shamsher",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/37GTjltEJHpi1lQmLmHKJYTpxjj.jpg"
+      }
+    ],
+    "plot": "Rahul embarks on a journey to a small town in Tamil Nadu to fulfill the last wish of his grandfather: to have his ashes immersed in the Holy water of Rameshwaram. En route, he meets a woman hailing from a unique family down South. As they find love through this journey in the exuberant lands of South India, an unanticipated drive awaits them.",
+    "poster": "https://image.tmdb.org/t/p/w500/9j7XfhBJKNfidMCa8JsNbqU1waV.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/6JpbbREGqdEtePnCwxJRcTNX2jZ.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1J38xZY2w8RVBx3K7pTFsHU0OxA-4y6ma|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "BLURAY",
+      "codec": "H.264",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Hindi",
+      "size": ""
+    },
+    "versions": [
+      {
+        "id": "1J38xZY2w8RVBx3K7pTFsHU0OxA-4y6ma",
+        "name": "Chennai Express (2013) [1080p] [BLURAY] [Dolby Digital Plus].mkv",
+        "quality": "1080p • BLURAY • Dolby Digital Plus",
+        "source": "BLURAY",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1J38xZY2w8RVBx3K7pTFsHU0OxA-4y6ma|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "BLURAY",
+          "codec": "H.264",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Hindi",
+          "size": ""
+        }
+      }
+    ]
+  },
+  {
     "id": "1f4WhMNET1GSYyBhlD1FGramgUUdwQsB6",
     "title": "The Fast and the Furious",
     "name": "The Fast and the Furious (2001) [Tamil + Hindi + Telugu + English + Malayalam + Kannada] [AMZN] [1080p] [x264] [DD+ 5.1].mkv",
