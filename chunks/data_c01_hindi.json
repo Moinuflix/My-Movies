@@ -1,7 +1,7 @@
 [
   {
-    "id": "1J38xZY2w8RVBx3K7pTFsHU0OxA-4y6ma",
-    "name": "Chennai Express (2013) [1080p] [BLURAY] [Dolby Digital Plus].mkv",
+    "id": "12xcxvXvtRcB58NtlriEjsUtp4g8cPhrY",
+    "name": "Chennai Express (2013) [1080p] [BLURAY] [Dolby Atmos].mkv",
     "title": "Chennai Express",
     "original_title": "Chennai Express",
     "original_language": "hi",
@@ -44,35 +44,35 @@
     "plot": "Rahul embarks on a journey to a small town in Tamil Nadu to fulfill the last wish of his grandfather: to have his ashes immersed in the Holy water of Rameshwaram. En route, he meets a woman hailing from a unique family down South. As they find love through this journey in the exuberant lands of South India, an unanticipated drive awaits them.",
     "poster": "https://image.tmdb.org/t/p/w500/9j7XfhBJKNfidMCa8JsNbqU1waV.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/6JpbbREGqdEtePnCwxJRcTNX2jZ.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1J38xZY2w8RVBx3K7pTFsHU0OxA-4y6ma|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=12xcxvXvtRcB58NtlriEjsUtp4g8cPhrY|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
       "resolution": "1080p",
       "source": "BLURAY",
       "codec": "H.264",
-      "audio": "Dolby Digital Plus",
+      "audio": "Dolby Atmos",
       "channels": "5.1",
-      "languages": "Hindi",
-      "size": "10GB"
+      "languages": "Tamil, Hindi, Telugu, Malayalam",
+      "size": ""
     },
     "versions": [
       {
-        "id": "1J38xZY2w8RVBx3K7pTFsHU0OxA-4y6ma",
-        "name": "Chennai Express (2013) [1080p] [BLURAY] [Dolby Digital Plus].mkv",
-        "quality": "1080p • BLURAY • Dolby Digital Plus [10GB]",
+        "id": "12xcxvXvtRcB58NtlriEjsUtp4g8cPhrY",
+        "name": "Chennai Express (2013) [1080p] [BLURAY] [Dolby Atmos].mkv",
+        "quality": "1080p • BLURAY • Dolby Atmos Multi",
         "source": "BLURAY",
         "codec": "H.264",
         "resolution": "1080p",
-        "audio": "Dolby Digital Plus",
+        "audio": "Dolby Atmos",
         "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1J38xZY2w8RVBx3K7pTFsHU0OxA-4y6ma|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=12xcxvXvtRcB58NtlriEjsUtp4g8cPhrY|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
           "source": "BLURAY",
           "codec": "H.264",
-          "audio": "Dolby Digital Plus",
+          "audio": "Dolby Atmos",
           "channels": "5.1",
-          "languages": "Hindi",
-          "size": "10GB"
+          "languages": "Tamil, Hindi, Telugu, Malayalam",
+          "size": ""
         }
       }
     ]
