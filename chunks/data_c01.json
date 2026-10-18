@@ -1,5 +1,83 @@
 [
   {
+    "id": "1vlvcZTd0KsXxNHd2RQaCfm1WQIXhIo4a",
+    "name": "Avatar (2009) [1080p] [BLURAY] [Dolby Digital Plus].mkv",
+    "title": "Avatar",
+    "original_title": "Avatar",
+    "original_language": "en",
+    "year": 2009,
+    "runtime": 162,
+    "tmdb_id": 19995,
+    "rating": 7.6,
+    "collection": "Avatar Collection",
+    "director": [
+      "James Cameron"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=jm2sNLIPPvA",
+    "cast": [
+      {
+        "name": "Sam Worthington",
+        "role": "Jake Sully",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/mflBcox36s9ZPbsZPVOuhf6axaJ.jpg"
+      },
+      {
+        "name": "Zoe Saldaña",
+        "role": "Neytiri",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/vQBwmsSOAd0JDaEcZ5p43J9xzsY.jpg"
+      },
+      {
+        "name": "Sigourney Weaver",
+        "role": "Dr. Grace Augustine",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/wTSnfktNBLd6kwQxgvkqYw6vEon.jpg"
+      },
+      {
+        "name": "Stephen Lang",
+        "role": "Colonel Miles Quaritch",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/gnO5VfkDgA2fsHweD0622LUY3Hu.jpg"
+      },
+      {
+        "name": "Michelle Rodriguez",
+        "role": "Trudy Chacon",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/wVcbrae4eRqGMFZz8Eh52Dl1biP.jpg"
+      }
+    ],
+    "plot": "In the 22nd century, a paraplegic Marine is dispatched to the moon Pandora on a unique mission, but becomes torn between following orders and protecting an alien civilization.",
+    "poster": "https://image.tmdb.org/t/p/w500/gKY6q7SjCkAU6FqvqWybDYgUKIF.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/vL5LR6WdxWPjLPFRLe133jXWsh5.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vlvcZTd0KsXxNHd2RQaCfm1WQIXhIo4a|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "BLURAY",
+      "codec": "x265",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil, Telugu, Hindi, Malayalam",
+      "size": ""
+    },
+    "versions": [
+      {
+        "id": "1vlvcZTd0KsXxNHd2RQaCfm1WQIXhIo4a",
+        "name": "Avatar (2009) [1080p] [BLURAY] [Dolby Digital Plus].mkv",
+        "quality": "1080p • BLURAY • Dolby Digital Plus Multi",
+        "source": "BLURAY",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vlvcZTd0KsXxNHd2RQaCfm1WQIXhIo4a|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "BLURAY",
+          "codec": "x265",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Hindi, Malayalam",
+          "size": ""
+        }
+      }
+    ]
+  },
+  {
     "id": "1Y8_i0niVynmCVyqWI6KNP4i7BubM_p_s",
     "name": "Finding Nemo (2003) [1080p] [BLURAY] [Dolby Atmos].mkv",
     "title": "Finding Nemo",
