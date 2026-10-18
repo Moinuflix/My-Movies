@@ -1,77 +1,77 @@
 [
   {
-    "id": "1vlvcZTd0KsXxNHd2RQaCfm1WQIXhIo4a",
-    "name": "Avatar (2009) [1080p] [BLURAY] [Dolby Digital Plus].mkv",
-    "title": "Avatar",
-    "original_title": "Avatar",
-    "original_language": "en",
-    "year": 2009,
-    "runtime": 162,
-    "tmdb_id": 19995,
-    "rating": 7.6,
-    "collection": "Avatar Collection",
+    "id": "12xcxvXvtRcB58NtlriEjsUtp4g8cPhrY",
+    "name": "Chennai Express (2013) [1080p] [BLURAY] [Dolby Atmos].mkv",
+    "title": "Chennai Express",
+    "original_title": "Chennai Express",
+    "original_language": "hi",
+    "year": 2013,
+    "runtime": 141,
+    "tmdb_id": 205022,
+    "rating": 6.5,
+    "collection": "",
     "director": [
-      "James Cameron"
+      "Rohit Shetty"
     ],
-    "trailer": "https://www.youtube.com/watch?v=jm2sNLIPPvA",
+    "trailer": "https://www.youtube.com/watch?v=rARol7Dk2zo",
     "cast": [
       {
-        "name": "Sam Worthington",
-        "role": "Jake Sully",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/mflBcox36s9ZPbsZPVOuhf6axaJ.jpg"
+        "name": "Shah Rukh Khan",
+        "role": "Rahul Mithaiwala",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/tKeQhSyXyzlzxNtxFq24iIvzXrC.jpg"
       },
       {
-        "name": "Zoe Saldaña",
-        "role": "Neytiri",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/vQBwmsSOAd0JDaEcZ5p43J9xzsY.jpg"
+        "name": "Deepika Padukone",
+        "role": "Meenamma Lochini Azhagusundaram",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/rzvvBQ0r6oiqDdzcsdTRB7jN4Rx.jpg"
       },
       {
-        "name": "Sigourney Weaver",
-        "role": "Dr. Grace Augustine",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/wTSnfktNBLd6kwQxgvkqYw6vEon.jpg"
+        "name": "Nikitin Dheer",
+        "role": "Tangaballi",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/gAHNWVtStTGsqf2uxCegxvn6ILe.jpg"
       },
       {
-        "name": "Stephen Lang",
-        "role": "Colonel Miles Quaritch",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/gnO5VfkDgA2fsHweD0622LUY3Hu.jpg"
+        "name": "Sathyaraj",
+        "role": "Durgeshwara Azhagusundaram",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/lnlBZ7V3K3Z3OIsjCd0zkKx26L3.jpg"
       },
       {
-        "name": "Michelle Rodriguez",
-        "role": "Trudy Chacon",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/wVcbrae4eRqGMFZz8Eh52Dl1biP.jpg"
+        "name": "Mukesh Tiwari",
+        "role": "Inspector Shamsher",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/37GTjltEJHpi1lQmLmHKJYTpxjj.jpg"
       }
     ],
-    "plot": "In the 22nd century, a paraplegic Marine is dispatched to the moon Pandora on a unique mission, but becomes torn between following orders and protecting an alien civilization.",
-    "poster": "https://image.tmdb.org/t/p/w500/gKY6q7SjCkAU6FqvqWybDYgUKIF.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/vL5LR6WdxWPjLPFRLe133jXWsh5.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vlvcZTd0KsXxNHd2RQaCfm1WQIXhIo4a|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "plot": "Rahul embarks on a journey to a small town in Tamil Nadu to fulfill the last wish of his grandfather: to have his ashes immersed in the Holy water of Rameshwaram. En route, he meets a woman hailing from a unique family down South. As they find love through this journey in the exuberant lands of South India, an unanticipated drive awaits them.",
+    "poster": "https://image.tmdb.org/t/p/w500/9j7XfhBJKNfidMCa8JsNbqU1waV.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/6JpbbREGqdEtePnCwxJRcTNX2jZ.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=12xcxvXvtRcB58NtlriEjsUtp4g8cPhrY|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
       "resolution": "1080p",
       "source": "BLURAY",
-      "codec": "x265",
-      "audio": "Dolby Digital Plus",
+      "codec": "H.264",
+      "audio": "Dolby Atmos",
       "channels": "5.1",
-      "languages": "Tamil, Telugu, Hindi, Malayalam",
+      "languages": "Tamil, Hindi, Telugu, Malayalam",
       "size": ""
     },
     "versions": [
       {
-        "id": "1vlvcZTd0KsXxNHd2RQaCfm1WQIXhIo4a",
-        "name": "Avatar (2009) [1080p] [BLURAY] [Dolby Digital Plus].mkv",
-        "quality": "1080p • BLURAY • Dolby Digital Plus Multi",
+        "id": "12xcxvXvtRcB58NtlriEjsUtp4g8cPhrY",
+        "name": "Chennai Express (2013) [1080p] [BLURAY] [Dolby Atmos].mkv",
+        "quality": "1080p • BLURAY • Dolby Atmos Multi",
         "source": "BLURAY",
-        "codec": "x265",
+        "codec": "H.264",
         "resolution": "1080p",
-        "audio": "Dolby Digital Plus",
+        "audio": "Dolby Atmos",
         "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vlvcZTd0KsXxNHd2RQaCfm1WQIXhIo4a|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=12xcxvXvtRcB58NtlriEjsUtp4g8cPhrY|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
           "source": "BLURAY",
-          "codec": "x265",
-          "audio": "Dolby Digital Plus",
+          "codec": "H.264",
+          "audio": "Dolby Atmos",
           "channels": "5.1",
-          "languages": "Tamil, Telugu, Hindi, Malayalam",
+          "languages": "Tamil, Hindi, Telugu, Malayalam",
           "size": ""
         }
       }
