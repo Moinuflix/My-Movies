@@ -1,68 +1,69 @@
 [
   {
-    "id": "1FK3vDhNu7bSzcJopjxO8mM_JY67suVSo",
-    "name": "Mohabbatein (2000) [1080p FHD] [BluRay] [Dolby Atmos].mkv",
-    "title": "Mohabbatein",
-    "original_title": "मोहब्बतें",
+    "id": "13vcHZ7Q8jtJ-LKMYv6OwtD4E_i_LUTbs",
+    "name": "Hum Saath Saath Hain (1999) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
+    "title": "Hum Saath Saath Hain",
+    "original_title": "हम साथ - साथ हैं",
     "original_language": "hi",
-    "year": 2000,
-    "runtime": 216,
-    "tmdb_id": 11518,
-    "rating": 7.1,
+    "year": 1999,
+    "runtime": 177,
+    "tmdb_id": 62883,
+    "rating": 6.1,
     "collection": "",
-    "studio": "BluRay",
+    "studio": "Netflix",
     "genres": [
-      "Drama",
-      "Romance"
+      "Romance",
+      "Family",
+      "Drama"
     ],
     "director": [
-      "Aditya Chopra"
+      "Sooraj Barjatya"
     ],
     "cast": [
       {
-        "name": "Amitabh Bachchan",
-        "role": "Narayan Shankar"
+        "name": "Mohnish Behl",
+        "role": "Vivek Chaturvedi"
       },
       {
-        "name": "Shah Rukh Khan",
-        "role": "Raj Aryan Malhotra"
+        "name": "Salman Khan",
+        "role": "Prem Chaturvedi"
       },
       {
-        "name": "Uday Chopra",
-        "role": "Vicky"
+        "name": "Saif Ali Khan",
+        "role": "Vinod Chaturvedi"
       },
       {
-        "name": "Jugal Hansraj",
-        "role": "Sameer"
+        "name": "Tabu",
+        "role": "Sadhna Sharma Chaturvedi"
       },
       {
-        "name": "Jimmy Shergill",
-        "role": "Karan"
+        "name": "Sonali Bendre",
+        "role": "Preeti Shukla"
       }
     ],
-    "plot": "At a prestigious all-male university, three friends seek love outside of the school grounds; at the same time, a newly-hired music teacher seeks to befriend and loosen up the militantly strict headmaster.",
-    "poster": "https://image.tmdb.org/t/p/w500/dDsYaBazrYKg9bv8qgsEohZQMat.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/s3IfP462ibiQkfU767D4YcMbKTt.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1FK3vDhNu7bSzcJopjxO8mM_JY67suVSo|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "plot": "A wealthy businessman's traditional family celebrate their togetherness when his three sons get married, but slowly find themselves growing apart after a misunderstanding.",
+    "poster": "https://image.tmdb.org/t/p/w500/lEAEzpAfSyBZc5sw1NBnWr5TeZU.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/91f8iV55g4k9GzE1DRmBfJ1deYY.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13vcHZ7Q8jtJ-LKMYv6OwtD4E_i_LUTbs|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
       "resolution": "1080p FHD",
       "audio": "Dolby Atmos",
-      "source": "BluRay",
+      "source": "Netflix",
       "size": "10GB",
       "channels": "5.1",
       "codec": "H.264"
     },
     "versions": [
       {
-        "id": "1FK3vDhNu7bSzcJopjxO8mM_JY67suVSo",
-        "name": "Mohabbatein (2000) [1080p FHD] [BluRay] [Dolby Atmos].mkv",
-        "quality": "1080p FHD • BluRay • Dolby Atmos",
-        "source": "BluRay",
-        "studio": "BluRay",
+        "id": "13vcHZ7Q8jtJ-LKMYv6OwtD4E_i_LUTbs",
+        "name": "Hum Saath Saath Hain (1999) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
+        "quality": "1080p FHD • Netflix • Dolby Atmos",
+        "source": "Netflix",
+        "studio": "Netflix",
         "resolution": "1080p FHD",
         "audio": "Dolby Atmos",
         "size": "10GB",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1FK3vDhNu7bSzcJopjxO8mM_JY67suVSo|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13vcHZ7Q8jtJ-LKMYv6OwtD4E_i_LUTbs|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
   },
