@@ -1,0 +1,64 @@
+{
+  "movies": [
+    {
+      "id": "19995",
+      "title": "Avatar",
+      "year": 2009,
+      "poster": "https://image.tmdb.org/t/p/w780/gKY6q7SjCkAU6FqvqWybDYgUKIF.jpg",
+      "fanart": "https://image.tmdb.org/t/p/original/vL5LR6WdxWPjLPFRLe133jXWsh5.jpg",
+      "rating": 7.9,
+      "original_language": "en",
+      "chunk_file": "chunks/chunk_01.json",
+      "primary_stream_url": "",
+      "available_languages": [
+        "Hindi",
+        "Tamil",
+        "Telugu",
+        "English"
+      ],
+      "version_count": 5,
+      "available_versions": [
+        {
+          "language": "Hindi",
+          "quality": "2160p (4K) DS4K 10bit",
+          "source": "BluRay",
+          "codec": "x265 HEVC",
+          "audio": "DDP 5.1 @ 448 Kbps",
+          "channels": "5.1"
+        },
+        {
+          "language": "Tamil",
+          "quality": "2160p (4K) DS4K 10bit",
+          "source": "BluRay",
+          "codec": "x265 HEVC",
+          "audio": "DDP 5.1 @ 448 Kbps",
+          "channels": "5.1"
+        },
+        {
+          "language": "Telugu",
+          "quality": "2160p (4K) DS4K 10bit",
+          "source": "BluRay",
+          "codec": "x265 HEVC",
+          "audio": "DDP 5.1 @ 448 Kbps",
+          "channels": "5.1"
+        },
+        {
+          "language": "English",
+          "quality": "2160p (4K) DS4K 10bit",
+          "source": "BluRay",
+          "codec": "x265 HEVC",
+          "audio": "DDP 5.1 @ 448 Kbps",
+          "channels": "5.1"
+        },
+        {
+          "language": "Hindi",
+          "quality": "1080p DS4K 10bit",
+          "source": "BluRay",
+          "codec": "x265 HEVC",
+          "audio": "DDP 5.1 @ 448 Kbps",
+          "channels": "5.1"
+        }
+      ]
+    }
+  ]
+}
