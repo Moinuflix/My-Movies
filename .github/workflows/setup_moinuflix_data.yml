@@ -1,0 +1,44 @@
+
+name: Setup MoinuFlix Data Structure
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create starter structure
+        run: |
+          mkdir -p resources/data/categories
+          mkdir -p resources/data/chunks
+          mkdir -p resources/images/sources
+
+          echo '{"movies":[]}' > resources/data/catalog.json
+
+          for lang in tamil hindi malayalam telugu; do
+            echo '{"language":"'${lang}'","movie_ids":[]}' \
+              > "resources/data/categories/${lang}.json"
+          done
+
+          echo '{"movies":[]}' \
+            > resources/data/chunks/chunk_01.json
+
+          echo 'Place original, licensed source images here.' \
+            > resources/images/sources/README.txt
+
+      - name: Commit structure
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add resources/
+          if ! git diff --cached --quiet; then
+            git commit -m "Create MoinuFlix data structure"
+            git push
+          fi
