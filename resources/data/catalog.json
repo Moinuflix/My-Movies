@@ -1,1 +1,32 @@
-{"movies":[]}
+{
+  "movies": [
+    {
+      "id": "920",
+      "title": "Cars",
+      "year": 2006,
+      "poster": "https://image.tmdb.org/t/p/w780/2Touk3m5gzsqr1VsvxypdyHY5ci.jpg",
+      "fanart": "https://image.tmdb.org/t/p/original/sd4xN5xi8tKRPrJOWwNiZEile7f.jpg",
+      "rating": 7.3,
+      "original_language": "en",
+      "chunk_file": "resources/data/chunks/chunk_01.json",
+      "primary_stream_url": "https://drive.google.com/file/d/1ushheQ_CAw_r91b9dkvfNV_aleosCy9u/view?usp=drive_link",
+      "available_languages": [
+        "English"
+      ],
+      "version_count": 1,
+      "available_versions": [
+        {
+          "language": "English",
+          "dubbed": "Hindi Dub [AAC 5.1 ~ 448 Kbps]",
+          "quality": "1080p Standard 10bit",
+          "source": "BluRay",
+          "source_image": "resources/images/sources/bluray.png",
+          "format": "BluRay",
+          "codec": "x265 HEVC",
+          "audio": "AAC 2. @ 448 Kbps @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp",
+          "channels": "5.1"
+        }
+      ]
+    }
+  ]
+}
