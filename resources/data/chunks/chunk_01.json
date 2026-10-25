@@ -11,6 +11,7 @@
       "release_date": "2006-06-08",
       "certification": "UA",
       "original_language": "en",
+      "category": "Hollywood (English)",
       "genres": [
         "Animation",
         "Adventure",
@@ -21,7 +22,8 @@
         "United States of America"
       ],
       "studio": [
-        "Pixar, Walt Disney Pictures"
+        "Pixar",
+        "Walt Disney Pictures"
       ],
       "director": [
         {
@@ -163,7 +165,7 @@
         },
         {
           "source": "Rotten Tomatoes",
-          "value": "75%",
+          "value": 75,
           "unit": "percent"
         },
         {
@@ -180,31 +182,33 @@
           "BluRay"
         ],
         "codec": [
-          "x265 HEVC"
+          "x265"
         ],
         "hdr": [
           "SDR"
         ],
         "audio": [
-          "DDP 5.1"
+          "AAC"
         ],
         "other": [
           "Standard",
           "10bit"
         ],
         "language": [
-          "English"
+          "English",
+          "Hindi"
         ]
       },
       "specs": {
         "resolution": "1080p",
         "source": "BluRay",
-        "codec": "x265 HEVC",
+        "codec": "x265",
         "bit_depth": "10bit",
-        "audio": "DDP 5.1 @ 448 Kbps",
+        "audio": "AAC",
         "channels": "5.1",
         "languages": [
-          "English"
+          "English",
+          "Hindi"
         ],
         "subtitles": [
           "ESub"
@@ -214,18 +218,19 @@
       "versions": [
         {
           "id": "ver-1",
-          "name": "Hindi Dub [AAC 5.1 ~ 448 Kbps]",
+          "name": "Original Track",
           "language": "English",
-          "quality": "1080p Standard 10bit",
+          "quality": "1080p",
           "source": "BluRay",
           "source_image": "resources/images/sources/bluray.png",
-          "codec": "x265 HEVC",
-          "audio": "AAC 2. @ 448 Kbps @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp @ 448 Kbp",
+          "codec": "x265",
+          "audio": "AAC",
+          "channels": "5.1",
           "size": "5 GB",
-          "stream_url": "https://drive.google.com/file/d/1ushheQ_CAw_r91b9dkvfNV_aleosCy9u/view?usp=drive_link"
+          "stream_url": ""
         }
       ],
-      "stream_url": "https://drive.google.com/file/d/1ushheQ_CAw_r91b9dkvfNV_aleosCy9u/view?usp=drive_link",
+      "stream_url": "",
       "soundtrack": {}
     }
   ]
