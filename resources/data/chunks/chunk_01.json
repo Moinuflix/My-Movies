@@ -1,6 +1,195 @@
 {
   "movies": [
     {
+      "id": "1321821",
+      "title": "Pechi",
+      "original_title": "பேச்சி",
+      "year": 2024,
+      "tagline": "Fear has a New Name",
+      "plot": "Five young trekkers and their tour guide embark on a weekend adventure in the Kollimalai hills. Despite warnings, they venture into a restricted area, unknowingly entering the domain of a malevolent spirit, which is hell bent on wreaking havoc in their lives. Did they survive the relentless onslaught and harrowing encounter with the supernatural force in the haunted woods?",
+      "runtime": 110,
+      "release_date": "2024-08-02",
+      "certification": "UA",
+      "original_language": "ta",
+      "category": "Kollywood (Tamil)",
+      "genres": [
+        "Horror"
+      ],
+      "country": [
+        "India"
+      ],
+      "studio": [
+        "Veyilon Entertainment",
+        "Verus Productions"
+      ],
+      "director": [
+        {
+          "name": "Ramachandran B",
+          "job": "Director"
+        }
+      ],
+      "writers": [
+        {
+          "name": "Ramachandran B",
+          "job": "Writer"
+        },
+        {
+          "name": "Ramachandran B",
+          "job": "Story"
+        },
+        {
+          "name": "Vasanth Kumar",
+          "job": "Story"
+        }
+      ],
+      "cast": [
+        {
+          "name": "Gayathrie Shankar",
+          "character": "Meena",
+          "profile": "https://image.tmdb.org/t/p/w185/bJgZlSd5WCIi7kp3IZKS0FDjIL2.jpg"
+        },
+        {
+          "name": "Balasaravanan",
+          "character": "Maari",
+          "profile": "https://image.tmdb.org/t/p/w185/1Hyg5Src1SQnVw9E3g0QHMUydVx.jpg"
+        },
+        {
+          "name": "Preethi Nedumaran",
+          "character": "Charu",
+          "profile": "https://image.tmdb.org/t/p/w185/olA9sHwIBrNaE509sGzGbKebL74.jpg"
+        },
+        {
+          "name": "Dev Ramnath",
+          "character": "Charan",
+          "profile": "https://image.tmdb.org/t/p/w185/wiNiHeqDCheFDX6iSk6bmjoIrA9.jpg"
+        },
+        {
+          "name": "Seeniyammal",
+          "character": "Pechi",
+          "profile": null
+        },
+        {
+          "name": "Jana Nathan",
+          "character": "Sethu",
+          "profile": "https://image.tmdb.org/t/p/w185/bv4vCtq932Rg4YOKDGhVce4DuPC.jpg"
+        },
+        {
+          "name": "Mageshwaran",
+          "character": "Jerry",
+          "profile": null
+        },
+        {
+          "name": "Rajapandi",
+          "character": "Guardsman",
+          "profile": "https://image.tmdb.org/t/p/w185/9vJ1ArGdadHHwr4ZeU57SAiI2DW.jpg"
+        }
+      ],
+      "artwork": {
+        "poster": "https://image.tmdb.org/t/p/w780/6Pla6xHgD0kep7S9z6KfXzi6B4l.jpg",
+        "thumbnail": "https://image.tmdb.org/t/p/w342/6Pla6xHgD0kep7S9z6KfXzi6B4l.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/cAwBPZDaDjllk1Geicgj21cDZTS.jpg",
+        "clearlogo": "",
+        "clearart": null,
+        "banner": null,
+        "landscape": null,
+        "character_art": []
+      },
+      "trailer": "",
+      "external_ids": {
+        "tmdb_id": 1321821,
+        "imdb_id": "tt33034505"
+      },
+      "collection": "",
+      "similar_movies": [],
+      "awards": {
+        "summary": ""
+      },
+      "financials": {
+        "box_office": "N/A"
+      },
+      "ratings": [
+        {
+          "source": "IMDb",
+          "value": 5.8,
+          "out_of": 10
+        },
+        {
+          "source": "Rotten Tomatoes",
+          "value": null,
+          "unit": "percent"
+        },
+        {
+          "source": "TMDb",
+          "value": 7.5,
+          "out_of": 10
+        }
+      ],
+      "tags": {
+        "quality": [
+          "1080p"
+        ],
+        "source": [
+          "AMZN"
+        ],
+        "codec": [
+          "x264"
+        ],
+        "hdr": [
+          "SDR"
+        ],
+        "audio": [
+          "Dolby Atmos"
+        ],
+        "other": [
+          "Standard",
+          "10bit"
+        ],
+        "language": [
+          "Tamil",
+          "Hindi",
+          "Telugu",
+          "Malayalam",
+          "Kannada"
+        ]
+      },
+      "specs": {
+        "resolution": "1080p",
+        "source": "AMZN",
+        "codec": "x264",
+        "bit_depth": "10bit",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "languages": [
+          "Tamil",
+          "Hindi",
+          "Telugu",
+          "Malayalam",
+          "Kannada"
+        ],
+        "subtitles": [
+          "ESub"
+        ],
+        "size": "5 GB"
+      },
+      "versions": [
+        {
+          "id": "ver-1",
+          "name": "Original Audio",
+          "language": "Tamil",
+          "quality": "1080p",
+          "source": "AMZN",
+          "source_image": "resources/images/sources/amazon.png",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "size": "5 GB",
+          "stream_url": "https://dl.dropboxusercontent.com/scl/fi/tcdxrl7k977451pieutrd/Pechi-2024-AMZN-WEB-DL-Hi-Ta-Kn-Ml-Te-1080p-AVC-DDP-5.1-ESub-CineVood.mkv?rlkey=ntil95gnlyj9bezh1w7or5dps&st=usekl1d6&dl=1"
+        }
+      ],
+      "stream_url": "https://dl.dropboxusercontent.com/scl/fi/tcdxrl7k977451pieutrd/Pechi-2024-AMZN-WEB-DL-Hi-Ta-Kn-Ml-Te-1080p-AVC-DDP-5.1-ESub-CineVood.mkv?rlkey=ntil95gnlyj9bezh1w7or5dps&st=usekl1d6&dl=1",
+      "soundtrack": {}
+    },
+    {
       "id": "920",
       "title": "Cars",
       "original_title": "Cars",
