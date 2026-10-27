@@ -61,7 +61,7 @@ jobs:
 
           print(f"Total raw files in Drive: {len(drive_files)}")
 
-          # Drive ID lookup map (ID -> {name, bytes, size_gb, ott})
+          # Drive ID lookup map (ID -> {name, bytes})
           drive_id_map = {}
           for f in drive_files:
               fid = str(f.get("ID", "")).strip()
@@ -75,7 +75,7 @@ jobs:
 
           def parse_ott_and_size(filename, raw_bytes=0):
               fn = filename.lower()
-              
+
               # 1. OTT Source Detection
               source = "WEB-DL"
               if "nf" in fn or "netflix" in fn:
@@ -93,9 +93,9 @@ jobs:
               elif "bluray" in fn or "remux" in fn:
                   source = "BLURAY"
 
-              # 2. Exact GB Size
+              # 2. GB Size
               if raw_bytes and raw_bytes > 0:
-                  gb_val = round(raw_bytes / (1024 ** 3), 1)
+                  gb_val = round(raw_bytes / (1024 ** 3))
                   size_str = f"{gb_val} GB" if gb_val >= 1 else f"{round(raw_bytes / (1024 ** 2))} MB"
               else:
                   sz_match = re.search(r"(\d+(\.\d+)?)\s*(gb|mb)", fn)
@@ -113,29 +113,30 @@ jobs:
               return []
 
           def save_json(filepath, data):
+              os.makedirs(os.path.dirname(filepath), exist_ok=True) if os.path.dirname(filepath) else None
               with open(filepath, "w", encoding="utf-8") as f:
                   json.dump(data, f, indent=2, ensure_ascii=False)
 
-          # --- STEP 2: ENRICH OLD MOVIES IN DATA_C01.JSON ---
+          # --- STEP 2: ENRICH OLD MOVIES IN CHUNKS ---
           print("--- STEP 2: ENRICHING OLD MOVIES IN CHUNKS ---")
-          master_list = load_json("chunks/data_c01.json")
+          master_path = "chunks/data_c01.json" if os.path.exists("chunks/data_c01.json") else "resources/data/chunks/chunk_01.json"
+          master_list = load_json(master_path)
+          movies_iterable = master_list.get("movies", []) if isinstance(master_list, dict) else master_list
           enriched_count = 0
 
-          for movie in master_list:
+          for movie in movies_iterable:
               if not isinstance(movie, dict):
                   continue
 
-              mid = str(movie.get("id", "")).strip()
+              mid = str(movie.get("id", "") or movie.get("gdrive_id", "")).strip()
               movie_name = movie.get("name", "") or movie.get("title", "")
-              
-              # Drive lookup for exact bytes and raw filename
+
               matched_info = drive_id_map.get(mid)
               raw_bytes = matched_info.get("bytes", 0) if matched_info else 0
               real_name = matched_info.get("name", "") if matched_info else movie_name
 
               detected_source, detected_size = parse_ott_and_size(real_name, raw_bytes)
 
-              # Update specs
               movie.setdefault("specs", {})
               curr_source = movie["specs"].get("source")
               curr_size = movie["specs"].get("size")
@@ -150,12 +151,11 @@ jobs:
                       movie["specs"]["size"] = detected_size
                       needs_update = True
 
-              # Update versions array
               versions = movie.get("versions", [])
               if isinstance(versions, list):
                   for v in versions:
                       if isinstance(v, dict):
-                          v_id = str(v.get("id", "")).strip()
+                          v_id = str(v.get("id", "") or v.get("gdrive_id", "")).strip()
                           v_bytes = drive_id_map.get(v_id, {}).get("bytes", 0)
                           v_name = drive_id_map.get(v_id, {}).get("name", v.get("name", ""))
                           v_src, v_sz = parse_ott_and_size(v_name, v_bytes)
@@ -166,8 +166,9 @@ jobs:
               if needs_update:
                   enriched_count += 1
 
-          save_json("chunks/data_c01.json", master_list)
-          print(f"Enriched {enriched_count} existing movies with real OTT and exact sizes!")
+          if os.path.exists(master_path):
+              save_json(master_path, master_list)
+              print(f"Enriched {enriched_count} existing movies in {master_path}!")
 
           # --- STEP 3: AUDIT DRIVE INBOX ARRIVALS ---
           print("--- STEP 3: AUDITING NEW INBOX ARRIVALS ---")
@@ -185,25 +186,22 @@ jobs:
           known_ids = set()
           known_titles = set()
 
-          for x in (master_list + tamil_list + telugu_list + hindi_list + english_list):
+          all_items = movies_iterable + tamil_list + telugu_list + hindi_list + english_list
+          for x in all_items:
               if not isinstance(x, dict): continue
 
-              # Root ID
               if x.get("id"): known_ids.add(str(x.get("id")).strip())
               if x.get("gdrive_id"): known_ids.add(str(x.get("gdrive_id")).strip())
 
-              # Stream URL ?id=
               m = re.search(r'[?&]id=([a-zA-Z0-9_-]+)', x.get("stream_url", ""))
               if m: known_ids.add(m.group(1))
 
-              # Versions Array
               for v in x.get("versions", []):
                   if isinstance(v, dict):
                       if v.get("id"): known_ids.add(str(v.get("id")).strip())
                       vm = re.search(r'[?&]id=([a-zA-Z0-9_-]+)', v.get("stream_url", ""))
                       if vm: known_ids.add(vm.group(1))
 
-              # Titles
               for k in ["title", "original_title", "name"]:
                   val = x.get(k)
                   if val:
@@ -212,7 +210,6 @@ jobs:
                           known_titles.add(c[:10])
 
           inbox = []
-
           for file in drive_files:
               fname = file.get("Path", "")
               fid = str(file.get("ID", "")).strip()
@@ -221,16 +218,14 @@ jobs:
               if not fname.lower().endswith(('.mkv', '.mp4', '.avi', '.ts')):
                   continue
 
-              # 1. Drive ID Match -> Skip
               if fid in known_ids:
                   continue
 
-              # 2. Clean Title Match -> Skip
               clean_name = clean_str(os.path.basename(fname))
               if any(t in clean_name for t in known_titles if len(t) >= 3):
                   continue
 
-              gb_val = round(fbytes / (1024 ** 3), 1)
+              gb_val = round(fbytes / (1024 ** 3))
               clean_size = f"{gb_val} GB"
 
               lower = fname.lower()
@@ -268,68 +263,5 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add chunks/data_c01.json inbox_arrivals.json
+          git add chunks/ inbox_arrivals.json resources/ 2>/dev/null || true
           git diff --staged --quiet || (git commit -m "Auto-Enrich: Updated OTT sources, GB sizes & Inbox Arrivals" && git push origin main)
-                      if len(c) >= 3:
-                          known_titles.add(c[:10])
-
-          inbox = []
-
-          for file in drive_files:
-              fname = file.get("Path", "")
-              fid = str(file.get("ID", "")).strip()
-              fbytes = file.get("Size", 0)
-
-              if not fname.lower().endswith(('.mkv', '.mp4', '.avi', '.ts')):
-                  continue
-
-              # 1. Drive ID Match -> Skip
-              if fid in known_ids:
-                  continue
-
-              # 2. Clean Title Match -> Skip
-              clean_name = clean_str(os.path.basename(fname))
-              if any(t in clean_name for t in known_titles if len(t) >= 3):
-                  continue
-
-              gb_val = round(fbytes / (1024 ** 3))
-              clean_size = f"{gb_val} GB"
-
-              lower = fname.lower()
-              target_cat = "kollywood"
-              target_file = "chunks/data_c01_tamil.json"
-              if "telugu" in lower:
-                  target_cat = "tollywood"
-                  target_file = "chunks/data_c01_telugu.json"
-              elif "hindi" in lower:
-                  target_cat = "bollywood"
-                  target_file = "chunks/data_c01_hindi.json"
-              elif any(x in lower for x in ["english", "hollywood", "dual"]):
-                  target_cat = "hollywood"
-                  target_file = "chunks/data_c01_english.json"
-
-              display_title = os.path.basename(fname).rsplit(".", 1)[0].replace(".", " ")
-
-              inbox.append({
-                  "title": display_title,
-                  "gdrive_id": fid,
-                  "size": clean_size,
-                  "status": "completely_missing",
-                  "target_category": target_cat,
-                  "target_chunk": target_file,
-                  "stream_url": f"https://gdrive-stream.moinudeentv.workers.dev/?id={fid}|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-              })
-
-          print(f"Actually Brand New Missing: {len(inbox)}")
-          with open("inbox_arrivals.json", "w", encoding="utf-8") as f:
-              json.dump(inbox, f, indent=2, ensure_ascii=False)
-          EOF
-
-          python3 scan_arrivals.py
-
-      - name: Commit & Push Changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add inbox_arrivals.json
-          git diff --staged --quiet || (git commit -m "Auto-Audit: Updated Inbox Arrivals" && git push origin main)
