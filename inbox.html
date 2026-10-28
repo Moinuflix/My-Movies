@@ -156,6 +156,25 @@
       border-radius: 10px;
     }
 
+    .passport-box {
+      width: 75px;
+      height: 105px;
+      border: 2px solid var(--laser-cyan);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #020617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+      margin-top: 18px;
+    }
+    .passport-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .tmdb-results-dropdown {
       position: absolute;
       top: 100%;
@@ -312,7 +331,7 @@
       <div class="form-grid">
         <div class="form-group col-12">
           <label>Raw Google Drive Release File Name <span class="required">* (Instant 100% Full Auto-Fill)</span></label>
-          <input type="text" id="raw-filename" placeholder="Paste full raw filename, e.g. Jana Nayagan 2026 1080p WEB-DL Tamil [DTS 5.1 - 1509Kbps] 10GB.mkv" required oninput="handleInstantRawIngest(this.value)">
+          <input type="text" id="raw-filename" placeholder="Paste full raw filename, e.g. Vikram Vedha (2017) Tamil TRUE WEB-DL 1080p-AVC-(DD+5.1- 640Kbps & AAC 2.0) - 9GB-ESub.mkv" required oninput="handleInstantRawIngest(this.value)">
         </div>
 
         <div class="form-group col-6">
@@ -322,7 +341,7 @@
 
         <div class="form-group col-3">
           <label>TMDb Movie ID <span class="required">*</span></label>
-          <input type="number" id="tmdb-id" placeholder="e.g. 1235877" required oninput="fetchTmdbOfficialDetails(this.value)">
+          <input type="number" id="tmdb-id" placeholder="e.g. 432139" required oninput="fetchTmdbOfficialDetails(this.value)">
         </div>
 
         <div class="form-group col-3">
@@ -337,43 +356,50 @@
         </div>
       </div>
 
-      <!-- PART II: METADATA & CAST -->
+      <!-- PART II: METADATA, POSTER & CAST -->
       <div class="section-title">
         <span>Part II: Verified Metadata, Production & Top Cast</span>
       </div>
 
       <div class="form-grid">
-        <div class="form-group col-4">
+        <!-- LIVE PASSPORT SIZE POSTER PREVIEW -->
+        <div class="form-group col-2" style="display:flex; justify-content:center; align-items:flex-start;">
+          <div class="passport-box">
+            <img id="passport-poster-preview" src="https://via.placeholder.com/75x105?text=Poster" alt="Poster">
+          </div>
+        </div>
+
+        <div class="form-group col-5">
           <label>Official Title <span class="required">*</span></label>
           <input type="text" id="movie-title" placeholder="Title" required oninput="updateDashPreview()">
         </div>
 
-        <div class="form-group col-4">
+        <div class="form-group col-5">
           <label>Original Title</label>
           <input type="text" id="movie-orig-title" placeholder="Native Language Title">
         </div>
 
         <div class="form-group col-2">
           <label>Release Year</label>
-          <input type="number" id="movie-year" value="2026" oninput="updateDashPreview()">
+          <input type="number" id="movie-year" value="2017" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-2">
           <label>TMDb Rating</label>
-          <input type="text" id="movie-rating" value="7.5">
+          <input type="text" id="movie-rating" value="7.3">
         </div>
 
-        <div class="form-group col-3">
+        <div class="form-group col-2">
           <label>Original Language</label>
           <input type="text" id="movie-lang" value="ta">
         </div>
 
-        <div class="form-group col-3">
+        <div class="form-group col-2">
           <label>Runtime (Minutes)</label>
-          <input type="number" id="movie-runtime" value="180">
+          <input type="number" id="movie-runtime" value="147">
         </div>
 
-        <div class="form-group col-3">
+        <div class="form-group col-2">
           <label>CBFC Certification</label>
           <select id="movie-cert">
             <option value="U">U</option>
@@ -382,9 +408,9 @@
           </select>
         </div>
 
-        <div class="form-group col-3">
+        <div class="form-group col-2">
           <label>IMDb ID</label>
-          <input type="text" id="movie-imdb-id" placeholder="tt33379543">
+          <input type="text" id="movie-imdb-id" placeholder="tt6148156">
         </div>
 
         <div class="form-group col-6">
@@ -399,7 +425,7 @@
 
         <div class="form-group col-12">
           <label>Genres Array (Kodi Categories) <span class="required">*</span></label>
-          <input type="text" id="movie-genres" placeholder="Action, Drama, Comedy" value="Action, Drama" required>
+          <input type="text" id="movie-genres" placeholder="Action, Crime, Thriller" value="Action, Crime, Thriller" required>
         </div>
 
         <div class="form-group col-12">
@@ -471,7 +497,8 @@
             <option value="6 GB">6 GB</option>
             <option value="7 GB">7 GB</option>
             <option value="8 GB">8 GB</option>
-            <option value="10 GB" selected>10 GB</option>
+            <option value="9 GB">9 GB</option>
+            <option value="10 GB">10 GB</option>
             <option value="12 GB">12 GB</option>
             <option value="14 GB">14 GB</option>
             <option value="16 GB">16 GB</option>
@@ -484,7 +511,7 @@
 
         <div class="form-group col-12">
           <label>Expanded Multi-Audio Specifications</label>
-          <input type="text" id="tech-audio-specs" value="Tamil DTS 5.1 - 1509Kbps" oninput="updateDashPreview()">
+          <input type="text" id="tech-audio-specs" value="DD+ 5.1 - 640Kbps & AAC 2.0" oninput="updateDashPreview()">
         </div>
       </div>
 
@@ -622,7 +649,6 @@
     }
   }
 
-  // Auto clean accidental spaces in GDrive IDs
   function sanitizeDriveInput(el) {
     let clean = el.value.replace(/\s+/g, '');
     const m = clean.match(/[-\w]{25,}/);
@@ -630,7 +656,7 @@
     el.value = clean;
   }
 
-  /* ⚡ INSTANT 100% AUTO INGEST ENGINE */
+  /* ⚡ ACCURATE PARSER ENGINE */
   let rawIngestDebounce = null;
   function handleInstantRawIngest(raw) {
     if (!raw.trim()) return;
@@ -653,15 +679,19 @@
     else if (/bluray|remux/i.test(raw)) handleSourceChange("BluRay");
     else handleSourceChange("WEB-DL");
 
-    // 3. Audio & Bitrate String Extraction (Clean single bracket)
-    const audioMatch = raw.match(/\[(.*?(?:DTS|Atmos|DDP|DD|AC3|AAC|1509Kbps|640Kbps).*?)\]/i) ||
-                       raw.match(/\b(Tamil|Telugu|Hindi|English)\s*\[(.*?)\]/i);
+    // 3. Audio & Bitrate Extraction (Fixes Fake DTS & Captures Full Audio string)
+    let audioDetected = "DD+ 5.1 - 640Kbps";
+    const audioMatch = raw.match(/\((DD\+?5\.1.*?|DTS.*?|Atmos.*?|TrueHD.*?|AAC.*?)\)/i) ||
+                       raw.match(/\[(DD\+?5\.1.*?|DTS.*?|Atmos.*?|TrueHD.*?|AAC.*?)\]/i) ||
+                       raw.match(/\b(DD\+5\.1|DTS\s*5\.1|Atmos|DD\s*5\.1)\b/i);
     if (audioMatch) {
-      let cleanAudio = audioMatch[0].replace(/\[+/g, '').replace(/\]+/g, '').trim();
-      document.getElementById("tech-audio-specs").value = cleanAudio;
+      audioDetected = audioMatch[0].replace(/[\(\)\[\]]/g, '').trim();
+    } else if (/dts/i.test(raw)) {
+      audioDetected = "DTS 5.1 - 1509Kbps";
     }
+    document.getElementById("tech-audio-specs").value = audioDetected;
 
-    // 4. Clean Size Extraction
+    // 4. Exact GB Extraction from Filename (e.g. 9GB -> 9 GB)
     const sizeMatch = raw.match(/(\d+\.?\d*)\s*(gb|mb)/i);
     if (sizeMatch) {
       let num = parseFloat(sizeMatch[1]);
@@ -707,6 +737,13 @@
         return;
       }
     }
+    // Add option dynamically if unusual GB (e.g. 9 GB, 11 GB)
+    const newOpt = document.createElement("option");
+    newOpt.value = val;
+    newOpt.textContent = val;
+    newOpt.selected = true;
+    sel.appendChild(newOpt);
+    updateDashPreview();
   }
 
   function handleSizeSelect(val) {
@@ -788,7 +825,6 @@
     }, 300);
   }
 
-  // Language Code to Full Name Converter
   function getLanguageName(code) {
     const map = {
       'ta': 'Tamil', 'te': 'Telugu', 'hi': 'Hindi', 'en': 'English',
@@ -797,7 +833,7 @@
     return map[code] || 'Multi';
   }
 
-  // Fetch Full TMDb + Cast + Artworks + Dynamic Fanart Backdrop
+  // Fetch Full TMDb + Cast + Artworks + Dynamic Fanart Backdrop + Passport Poster
   async function fetchTmdbOfficialDetails(id) {
     if (!id) return;
     try {
@@ -868,8 +904,13 @@
         castWrap.appendChild(card);
       });
 
-      // 10 Artworks
-      if (d.poster_path) document.getElementById("art-poster").value = `https://image.tmdb.org/t/p/w780${d.poster_path}`;
+      // 10 Artworks & Live Passport Poster
+      if (d.poster_path) {
+        const fullPoster = `https://image.tmdb.org/t/p/w780${d.poster_path}`;
+        document.getElementById("art-poster").value = fullPoster;
+        const passImg = document.getElementById("passport-poster-preview");
+        if (passImg) passImg.src = `https://image.tmdb.org/t/p/w185${d.poster_path}`;
+      }
       if (d.backdrop_path) {
         document.getElementById("art-fanart").value = `https://image.tmdb.org/t/p/original${d.backdrop_path}`;
         document.getElementById("art-landscape").value = `https://image.tmdb.org/t/p/w780${d.backdrop_path}`;
@@ -904,13 +945,12 @@
     else alert("Trailer link missing!");
   }
 
-  // Two-Tier Commit to GitHub (With Space Auto-Sanitizer)
+  // Two-Tier Commit to GitHub
   async function handleFormSubmission(e) {
     e.preventDefault();
     const token = getToken();
     if (!token) return alert("GitHub Token missing! Please click 'Set / Fix PAT Token' at top right.");
 
-    // Critical: Strip out all internal/leading/trailing spaces from Drive ID
     let rawDrive = document.getElementById("drive-file-id").value.trim().replace(/\s+/g, '');
     const m = rawDrive.match(/[-\w]{25,}/);
     const driveId = m ? m[0] : rawDrive;
@@ -943,7 +983,6 @@
     const dashName = document.getElementById("dash-name-preview").textContent;
     const streamUrl = `${WORKER_BASE}${driveId}${USER_AGENT}`;
 
-    // Auto-detect audio bitrate & badge format
     let bitrateVal = "640 Kbps";
     let audioFormatImg = "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png";
     if (/1509/i.test(audio) || /dts/i.test(audio)) {
@@ -1051,7 +1090,6 @@
       };
 
       chunkData.movies = chunkData.movies || [];
-      // Replace if existing ID or push new
       const exIdx = chunkData.movies.findIndex(m => m.id === driveId || m.tmdb_id === fullMovieRecord.tmdb_id);
       if (exIdx >= 0) chunkData.movies[exIdx] = fullMovieRecord;
       else chunkData.movies.push(fullMovieRecord);
@@ -1110,6 +1148,7 @@
 
       showToast(`🎉 SUCCESS: Record committed to ${currentTargetChunk} and catalog.json!`);
       document.getElementById("media-ingest-form").reset();
+      document.getElementById("passport-poster-preview").src = "https://via.placeholder.com/75x105?text=Poster";
       document.getElementById("cast-cards-container").innerHTML = '<div style="font-size:0.8rem; color:var(--text-muted); padding:10px;">Awaiting next movie...</div>';
       loadInitialStats();
     } catch (err) {
