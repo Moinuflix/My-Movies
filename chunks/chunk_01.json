@@ -305,6 +305,113 @@
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1pn1LE4MoDJdxxx_Billa|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
+    },
+    {
+      "id": "243206",
+      "tmdb_id": 243206,
+      "imdb_id": "tt243206",
+      "name": "Pritam and Pedro (2026) [2160p] [WEB-DL] [Hindi 5.1 - 640Kbps] [3 GB].mkv",
+      "title": "Pritam and Pedro",
+      "original_title": "Pritam and Pedro",
+      "year": 2026,
+      "runtime": 45,
+      "release_date": "2026-01-01",
+      "certification": "UA",
+      "original_language": "hi",
+      "genres": [
+        "Action",
+        "Drama"
+      ],
+      "tagline": "",
+      "plot": "The dynamic between the two contrasting personalities, a seasoned cop who prefers old-school methods and a tech-savvy cop who relies on modern technology for investigations, as they navigate their partnership in solving crimes.",
+      "country": [
+        "India"
+      ],
+      "studio": [
+        "MoinuFlix Cinema"
+      ],
+      "director": [
+        {
+          "name": "Director"
+        }
+      ],
+      "writers": [
+        {
+          "name": "Writer"
+        }
+      ],
+      "cast": [
+        {
+          "name": "Lead Actor",
+          "character": "Hero",
+          "profile": null
+        }
+      ],
+      "artwork": {
+        "poster": "https://image.tmdb.org/t/p/w500/uA5hAexR9Xis3BzSOMKjNuYQUsj.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/eAXSlqAJwpdsZ59G10lao9OJ4SG.jpg",
+        "landscape": "https://image.tmdb.org/t/p/original/eAXSlqAJwpdsZ59G10lao9OJ4SG.jpg",
+        "keyart": "https://image.tmdb.org/t/p/original/dZNea0ZgA88deN3RXzk22sHL754.png",
+        "banner": "https://image.tmdb.org/t/p/original/eAXSlqAJwpdsZ59G10lao9OJ4SG.jpg",
+        "clearlogo": "https://image.tmdb.org/t/p/original/dZNea0ZgA88deN3RXzk22sHL754.png",
+        "clearart": null,
+        "thumbnail": "https://image.tmdb.org/t/p/w500/uA5hAexR9Xis3BzSOMKjNuYQUsj.jpg",
+        "title_card": "https://image.tmdb.org/t/p/original/eAXSlqAJwpdsZ59G10lao9OJ4SG.jpg",
+        "intertitle": null,
+        "chapter_cards": [],
+        "character_art": [],
+        "extra_posters": [],
+        "extra_backdrops": []
+      },
+      "trailer": "",
+      "ratings": [
+        {
+          "source": "TMDb",
+          "value": 8.2,
+          "out_of": 10
+        },
+        {
+          "source": "IMDb",
+          "value": 8.2,
+          "out_of": 10
+        }
+      ],
+      "badges": {
+        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/2160p.png",
+        "hdr": "",
+        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web-dl.png",
+        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/atmos.png",
+        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+      },
+      "specs": {
+        "resolution": "2160p",
+        "source": "WEB-DL",
+        "codec": "x265",
+        "bit_depth": "10bit",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "bitrate": "640 Kbps",
+        "languages": "Hindi",
+        "size": "3 GB"
+      },
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HShWhpdZ8bhuHIy6Nbg8-xHv04-Mcwkf|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "versions": [
+        {
+          "id": "1HShWhpdZ8bhuHIy6Nbg8-xHv04-Mcwkf",
+          "name": "Pritam and Pedro (2026) [2160p] [WEB-DL] [Hindi 5.1 - 640 Kbps] [3 GB].mkv",
+          "language": "Hindi",
+          "dubbed": "Hindi 5.1 - 640Kbps",
+          "quality": "2160p",
+          "resolution": "2160p",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "bitrate": "640 Kbps",
+          "size": "3 GB",
+          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HShWhpdZ8bhuHIy6Nbg8-xHv04-Mcwkf|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      ]
     }
   ]
 }
