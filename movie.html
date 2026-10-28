@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoinuFlix — Cinema Details</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tmdb-dark: #032541;
+      --tmdb-darker: #0d253f;
+      --tmdb-blue: #01b4e4;
+      --tmdb-green: #21d07a;
+      --tmdb-gold: #d2d531;
+      --tmdb-red: #db2360;
+      --border-gray: #e2e8f0;
+      --font-stack: 'Source Sans 3', system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-stack); }
+
+    body {
+      background-color: #ffffff;
+      color: #000000;
+      overflow-x: hidden;
+    }
+
+    .tmdb-nav {
+      background: var(--tmdb-dark);
+      padding: 0.85rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .nav-logo {
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+      background: linear-gradient(to right, #90cea1, #01b4e4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .nav-links a { color: #fff; text-decoration: none; }
+    .nav-links a:hover { color: var(--tmdb-blue); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+    .lang-pill {
+      border: 1px solid #fff;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+    }
+
+    .sub-nav {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-gray);
+      padding: 0.5rem 3rem;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #334155;
+    }
+    .sub-nav a { color: inherit; text-decoration: none; }
+    .sub-nav a:hover { color: var(--tmdb-blue); }
+
+    /* HERO BANNER SECTION */
+    .hero-banner-wrap {
+      position: relative;
+      background-size: cover;
+      background-position: center 20%;
+      background-repeat: no-repeat;
+      color: #ffffff;
+      background-color: var(--tmdb-dark);
+      min-height: 540px;
+    }
+
+    .hero-banner-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to right, rgba(3, 37, 65, 1) calc((50vw - 170px) - 340px), rgba(3, 37, 65, 0.84) 50%, rgba(3, 37, 65, 0.84) 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem;
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    /* LEFT POSTER COLUMN */
+    .poster-col {
+      width: 300px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      background: #032541;
+      display: flex;
+      flex-direction: column;
+    }
+    .poster-col img {
+      width: 100%;
+      display: block;
+      min-height: 440px;
+      object-fit: cover;
+      background: #0b1526;
+    }
+    .ott-watch-bar {
+      background: #032541;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .ott-logo-box {
+      width: 36px;
+      height: 36px;
+      background: #00a8e1;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: #fff;
+      text-align: center;
+    }
+    .ott-text-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+    .ott-sub { font-size: 0.75rem; color: #94a3b8; }
+    .ott-action { font-size: 0.88rem; font-weight: 700; color: #ffffff; cursor: pointer; }
+
+    /* RIGHT METADATA DETAILS */
+    .details-col {
+      flex: 1;
+      padding-top: 0.5rem;
+    }
+
+    .movie-headline-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+    .movie-headline-title span {
+      font-weight: 400;
+      color: #cbd5e1;
+    }
+
+    .facts-strip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      margin-top: 6px;
+      flex-wrap: wrap;
+    }
+    .cert-box {
+      border: 1px solid rgba(255,255,255,0.6);
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-size: 0.8rem;
+      color: #e2e8f0;
+      font-weight: 600;
+    }
+
+    /* USER SCORE & ACTIONS */
+    .user-score-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tmdb-circle-score {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #081c22;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      font-weight: 700;
+      border: 4px solid var(--tmdb-green);
+    }
+    .tmdb-circle-score span {
+      font-size: 0.65rem;
+      margin-top: -8px;
+      margin-left: 1px;
+    }
+
+    .score-label-text {
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .emojis-box {
+      font-size: 1.35rem;
+      cursor: pointer;
+      display: flex;
+      gap: 4px;
+      user-select: none;
+    }
+
+    .vibe-pill-btn {
+      background: rgba(1, 180, 228, 0.2);
+      border: 1px solid var(--tmdb-blue);
+      color: #fff;
+      padding: 0.45rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .action-circle-btns {
+      display: flex;
+      gap: 12px;
+      margin-left: 8px;
+    }
+    .circle-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--tmdb-dark);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .circle-btn:hover { background: #0c1e33; transform: scale(1.05); }
+
+    .play-trailer-btn {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .play-trailer-btn:hover { color: var(--tmdb-blue); }
+
+    /* TAGLINE & OVERVIEW */
+    .tagline-text {
+      font-style: italic;
+      color: #94a3b8;
+      margin-top: 1.3rem;
+      font-size: 1.05rem;
+      font-weight: 400;
+    }
+
+    .overview-wrapper {
+      margin-top: 0.8rem;
+    }
+    .overview-wrapper h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .overview-wrapper p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #e2e8f0;
+      max-width: 950px;
+    }
+
+    /* CREW GRID (DIRECTOR, WRITERS, CHARACTERS) */
+    .crew-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(160px, 1fr));
+      gap: 1.5rem 2rem;
+      margin-top: 1.8rem;
+    }
+    .crew-item h5 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .crew-item span {
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    /* LOWER MAIN BODY */
+    .main-body-wrap {
+      max-width: 1300px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .cast-main-col {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .section-heading {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 1rem;
+    }
+
+    .cast-scroll-row {
+      display: flex;
+      gap: 15px;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+    }
+    .cast-scroll-row::-webkit-scrollbar { height: 8px; }
+    .cast-scroll-row::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+    .cast-card {
+      width: 140px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border-gray);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      background: #fff;
+    }
+    .cast-card img {
+      width: 100%;
+      height: 175px;
+      object-fit: cover;
+      background: #e2e8f0;
+    }
+    .cast-card-meta {
+      padding: 10px;
+    }
+    .cast-actor-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #0f172a;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cast-char-name {
+      font-size: 0.8rem;
+      color: #475569;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sidebar-facts-col {
+      width: 280px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .fact-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .fact-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #0f172a;
+    }
+    .fact-val {
+      font-size: 0.9rem;
+      color: #334155;
+      margin-top: 2px;
+    }
+
+    .keywords-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+    .keyword-pill {
+      background: rgba(0, 0, 0, 0.06);
+      border: 1px solid var(--border-gray);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      color: #1e293b;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner { flex-direction: column; align-items: center; text-align: center; }
+      .poster-col { width: 220px; }
+      .user-score-row { justify-content: center; }
+      .main-body-wrap { flex-direction: column; }
+      .sidebar-facts-col { width: 100%; }
+      .crew-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAVBAR -->
+  <header class="tmdb-nav">
+    <div class="nav-brand">
+      <a href="admin.html" class="nav-logo">MOINUFLIX</a>
+      <div class="nav-links">
+        <a href="admin.html">Library</a>
+        <a href="inbox.html">+ Ingest</a>
+      </div>
+    </div>
+    <div class="nav-right">
+      <span class="lang-pill" id="nav-lang">EN</span>
+      <span style="color:#94a3b8; font-size:0.8rem;">Private Vault</span>
+    </div>
+  </header>
+
+  <!-- SUB NAV STRIP -->
+  <div class="sub-nav">
+    <a href="#">Overview ▾</a>
+    <a href="#">Media ▾</a>
+    <a href="#">Cast & Crew ▾</a>
+  </div>
+
+  <!-- HERO BANNER SECTION (CINEMATIC BACKDROP) -->
+  <div class="hero-banner-wrap" id="hero-banner">
+    <div class="hero-inner">
+      
+      <!-- LEFT POSTER COLUMN -->
+      <div class="poster-col">
+        <img id="movie-poster" src="" alt="Poster">
+        <div class="ott-watch-bar">
+          <div class="ott-logo-box" id="ott-badge-text">OTT</div>
+          <div class="ott-text-wrap">
+            <span class="ott-sub" id="ott-spec-sub">Direct Play</span>
+            <span class="ott-action" onclick="triggerPlayerAction()">Watch in Player ➔</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT DETAILS COLUMN -->
+      <div class="details-col">
+        <h1 class="movie-headline-title" id="title-headline">
+          Loading Movie Title... <span>(----)</span>
+        </h1>
+
+        <div class="facts-strip">
+          <span class="cert-box" id="cert-tag">UA</span>
+          <span id="date-tag">----</span>
+          <span>•</span>
+          <span id="genres-tag">Loading genres...</span>
+          <span>•</span>
+          <span id="runtime-tag">--m</span>
+        </div>
+
+        <!-- USER SCORE, EMOJIS & ACTIONS ROW -->
+        <div class="user-score-row">
+          <div class="tmdb-circle-score" id="score-circle">
+            <span id="score-num">--</span><span>%</span>
+          </div>
+          <div class="score-label-text">
+            User<br>Score
+          </div>
+
+          <div class="emojis-box" title="Reactions">😍 🥰 🤯</div>
+
+          <button class="vibe-pill-btn">
+            What's your <strong>Vibe</strong>? ℹ️
+          </button>
+
+          <div class="action-circle-btns">
+            <button class="circle-btn" title="Add to list">☰</button>
+            <button class="circle-btn" title="Mark as favorite">♥</button>
+            <button class="circle-btn" title="Add to watchlist">🔖</button>
+          </div>
+
+          <button class="play-trailer-btn" id="btn-trailer" onclick="playTrailer()">
+            ▶ Play Trailer
+          </button>
+        </div>
+
+        <!-- 1. REAL TAGLINE -->
+        <div class="tagline-text" id="movie-tagline"></div>
+
+        <!-- OVERVIEW -->
+        <div class="overview-wrapper">
+          <h3>Overview</h3>
+          <p id="movie-overview">Fetching plot overview from database...</p>
+        </div>
+
+        <!-- 2. REAL CREW GRID (DIRECTORS, WRITERS, CHARACTERS) -->
+        <div class="crew-grid" id="crew-grid-container"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOWER BODY: CAST ROW & SIDEBAR -->
+  <div class="main-body-wrap">
+    
+    <!-- LEFT: TOP BILLED CAST -->
+    <div class="cast-main-col">
+      <h2 class="section-heading">Top Billed Cast</h2>
+      <div class="cast-scroll-row" id="cast-container">
+        <div style="color:#64748b; font-size:0.9rem; padding:10px;">Loading cast details...</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: METADATA FACTS -->
+    <div class="sidebar-facts-col">
+      <div class="fact-item">
+        <span class="fact-title">Original Title</span>
+        <span class="fact-val" id="fact-orig-title">--</span>
+      </div>
+
+      <div class="fact-item">
+        <span class="fact-title">Original Language</span>
+        <span class="fact-val" id="fact-lang">--</span>
+      </div>
+
+      <div class="fact-item">
+        <span class="fact-title">Production Studio</span>
+        <span class="fact-val" id="fact-studio">--</span>
+      </div>
+
+      <div class="fact-item">
+        <span class="fact-title">Video Quality</span>
+        <span class="fact-val" id="fact-quality">--</span>
+      </div>
+
+      <div class="fact-item">
+        <span class="fact-title">Audio Specs</span>
+        <span class="fact-val" id="fact-audio">--</span>
+      </div>
+
+      <div class="fact-item">
+        <span class="fact-title">Keywords</span>
+        <div class="keywords-wrap" id="keywords-container">
+          <span class="keyword-pill">action</span>
+          <span class="keyword-pill">high definition</span>
+          <span class="keyword-pill">kodi ready</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const GH_REPO = "Moinuflix/My-Movies";
+    const GH_BRANCH = "main";
+    let activeTrailer = "";
+
+    function playTrailer() {
+      if (activeTrailer && activeTrailer.length > 5) {
+        window.open(activeTrailer, "_blank");
+      } else {
+        alert("Trailer link not available for this title.");
+      }
+    }
+
+    function triggerPlayerAction() {
+      alert("Launching in private Kodi player environment!");
+    }
+
+    function formatRuntime(minutes) {
+      if (!minutes) return "2h 00m";
+      const h = Math.floor(minutes / 60);
+      const m = minutes % 60;
+      return `${h}h ${m}m`;
+    }
+
+    function formatDateWithCountry(rawDate) {
+      if (!rawDate) return "N/A";
+      const parts = rawDate.split("-");
+      if (parts.length === 3) {
+        return `${parts[1]}/${parts[2]}/${parts[0]} (IN)`;
+      }
+      return `${rawDate} (IN)`;
+    }
+
+    async function loadMovieData() {
+      const params = new URLSearchParams(window.location.search);
+      const targetId = params.get("id");
+
+      try {
+        const catRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/catalog.json?t=${Date.now()}`);
+        if (!catRes.ok) throw new Error("Catalog not available");
+        const catData = await catRes.json();
+        const catalogList = Array.isArray(catData) ? catData : (catData.movies || []);
+
+        if (catalogList.length === 0) throw new Error("Catalog is empty");
+
+        let matchedCat = null;
+        if (targetId) {
+          matchedCat = catalogList.find(x => String(x.id).trim() === targetId.trim() || String(x.tmdb_id) === targetId.trim());
+        }
+        if (!matchedCat) matchedCat = catalogList[0];
+
+        const targetChunkFile = matchedCat.chunk_file || "resources/data/chunks/chunk_01.json";
+
+        // Fetch detailed record from Chunk
+        const chunkRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${targetChunkFile}?t=${Date.now()}`);
+        let movieRecord = matchedCat;
+
+        if (chunkRes.ok) {
+          const chunkData = await chunkRes.json();
+          const chunkMovies = chunkData.movies || [];
+          const richFound = chunkMovies.find(m => String(m.id).trim() === String(matchedCat.id).trim() || String(m.tmdb_id) === String(matchedCat.tmdb_id));
+          if (richFound) movieRecord = richFound;
+        }
+
+        renderRealMovieDetails(movieRecord);
+      } catch (err) {
+        document.getElementById("title-headline").textContent = "Movie Details Unavailable";
+        document.getElementById("movie-overview").textContent = "Error: " + err.message;
+      }
+    }
+
+    function renderRealMovieDetails(m) {
+      const art = m.artwork || {};
+      const poster = art.poster || m.poster || "https://via.placeholder.com/300x450?text=No+Poster";
+      const fanart = art.fanart || m.fanart || "";
+      const year = m.year || "2026";
+      const origTitle = m.original_title || m.title;
+
+      document.title = `${m.title} (${year}) — MoinuFlix Cinema`;
+      document.getElementById("title-headline").innerHTML = `${m.title} <span>(${year})</span>`;
+      
+      // Fixed Date format: 07/30/2026 (IN)
+      document.getElementById("date-tag").textContent = formatDateWithCountry(m.release_date || `${year}-01-01`);
+      
+      // Fixed Certification: U/A 13+
+      const cert = m.certification || "UA";
+      document.getElementById("cert-tag").textContent = cert === "UA" ? "U/A 13+" : cert;
+      
+      document.getElementById("runtime-tag").textContent = formatRuntime(m.runtime);
+      document.getElementById("genres-tag").textContent = (m.genres || []).join(", ");
+      
+      // 1. Tagline Fix (if missing in chunk, show clean default)
+      const taglineEl = document.getElementById("movie-tagline");
+      if (m.tagline && m.tagline.trim().length > 0) {
+        taglineEl.textContent = m.tagline;
+        taglineEl.style.display = "block";
+      } else {
+        taglineEl.style.display = "none";
+      }
+
+      document.getElementById("movie-overview").textContent = m.plot || "Complete synopsis available in private media catalog.";
+
+      // 2. Score Percentage Calculation (85% User Score)
+      let scoreVal = 85;
+      if (m.ratings && m.ratings[0] && m.ratings[0].value) {
+        scoreVal = Math.round(m.ratings[0].value * 10);
+      } else if (m.rating) {
+        scoreVal = Math.round(m.rating * 10);
+      }
+      document.getElementById("score-num").textContent = scoreVal;
+
+      const scoreCircle = document.getElementById("score-circle");
+      if (scoreVal >= 70) scoreCircle.style.borderColor = "var(--tmdb-green)";
+      else if (scoreVal >= 50) scoreCircle.style.borderColor = "var(--tmdb-gold)";
+      else scoreCircle.style.borderColor = "var(--tmdb-red)";
+
+      // Artwork & Backdrop
+      document.getElementById("movie-poster").src = poster;
+      if (fanart) {
+        document.getElementById("hero-banner").style.backgroundImage = `url('${fanart}')`;
+      }
+
+      // Trailer
+      activeTrailer = m.trailer || "";
+      if (!activeTrailer) {
+        document.getElementById("btn-trailer").style.opacity = "0.4";
+      }
+
+      // 3. Crew Grid (Directors + Writers + Screenplay)
+      const crewWrap = document.getElementById("crew-grid-container");
+      crewWrap.innerHTML = "";
+      const directors = m.director || [];
+      const writers = m.writers || [];
+
+      directors.forEach(d => {
+        const div = document.createElement("div");
+        div.className = "crew-item";
+        div.innerHTML = `<h5>${d.name || d}</h5><span>Director</span>`;
+        crewWrap.appendChild(div);
+      });
+
+      writers.forEach(w => {
+        const div = document.createElement("div");
+        div.className = "crew-item";
+        div.innerHTML = `<h5>${w.name || w}</h5><span>${w.job || 'Writer'}</span>`;
+        crewWrap.appendChild(div);
+      });
+
+      if (directors.length === 0 && writers.length === 0) {
+        crewWrap.innerHTML = `
+          <div class="crew-item"><h5>Production Team</h5><span>Standard Ingest</span></div>
+        `;
+      }
+
+      // Top Billed Cast
+      const castWrap = document.getElementById("cast-container");
+      castWrap.innerHTML = "";
+      const castList = m.cast || [];
+
+      if (castList.length === 0) {
+        castWrap.innerHTML = '<div style="color:#64748b; font-size:0.9rem; padding:10px;">Cast details not available.</div>';
+      } else {
+        castList.slice(0, 15).forEach(c => {
+          const profileImg = c.profile || "https://via.placeholder.com/140x175?text=Cast";
+          const card = document.createElement("div");
+          card.className = "cast-card";
+          card.innerHTML = `
+            <img src="${profileImg}" alt="${c.name}">
+            <div class="cast-card-meta">
+              <div class="cast-actor-name" title="${c.name}">${c.name}</div>
+              <div class="cast-char-name" title="${c.character || ''}">${c.character || 'Cast Member'}</div>
+            </div>
+          `;
+          castWrap.appendChild(card);
+        });
+      }
+
+      // Sidebar Facts (No Stream Links Shown)
+      document.getElementById("fact-orig-title").textContent = origTitle;
+      document.getElementById("fact-lang").textContent = (m.original_language || "ta").toUpperCase();
+      document.getElementById("fact-studio").textContent = Array.isArray(m.studio) ? m.studio.join(", ") : (m.studio || "Cinema Studio");
+      
+      const sp = m.specs || {};
+      document.getElementById("fact-quality").textContent = sp.resolution || "1080p FHD";
+      document.getElementById("fact-audio").textContent = sp.audio || "Multi 5.1";
+      document.getElementById("nav-lang").textContent = (m.original_language || "ta").toUpperCase();
+
+      const srcName = sp.source || (m.versions && m.versions[0] ? m.versions[0].source : "OTT");
+      document.getElementById("ott-badge-text").textContent = srcName.substring(0, 5).toUpperCase();
+      document.getElementById("ott-spec-sub").textContent = `${sp.resolution || '1080p'} • ${sp.size || 'HD'}`;
+    }
+
+    window.addEventListener("DOMContentLoaded", loadMovieData);
+  </script>
+</body>
+</html>
