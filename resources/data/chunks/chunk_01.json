@@ -421,6 +421,111 @@
       ],
       "stream_url": "",
       "soundtrack": {}
+    },
+    {
+      "id": "1weCOQpO5eEMwTbO Ql7krWXGcM5SDFVV",
+      "tmdb_id": 68724,
+      "imdb_id": "tt68724",
+      "name": "Elysium (2013) [2160p] [BluRay] [Tamil 2.0 - 224Kbps + Telugu 2.0 - 224Kbps + Hindi 5.1 - 640Kbps + English 5.1 - 384Kbps] [5 GB].mkv",
+      "title": "Elysium",
+      "original_title": "Elysium",
+      "year": 2013,
+      "runtime": 120,
+      "release_date": "2013-01-01",
+      "certification": "UA",
+      "original_language": "en",
+      "genres": [
+        "Science Fiction",
+        "Action",
+        "Drama",
+        "Thriller"
+      ],
+      "tagline": "",
+      "plot": "In the year 2159, two classes of people exist: the very wealthy who live on a pristine man-made space station called Elysium, and the rest, who live on an overpopulated, ruined Earth. Secretary Rhodes, a hard line government official, will stop at nothing to enforce anti-immigration laws and preserve the luxurious lifestyle of the citizens of Elysium. That doesn’t stop the people of Earth from trying to get in, by any means they can. When unlucky Max is backed into a corner, he agrees to take on a daunting mission that, if successful, will not only save his life, but could bring equality to these polarized worlds.",
+      "country": [
+        "India"
+      ],
+      "studio": [
+        "BluRay"
+      ],
+      "director": [
+        {
+          "name": "Director"
+        }
+      ],
+      "writers": [
+        {
+          "name": "Writer"
+        }
+      ],
+      "cast": [
+        {
+          "name": "Lead Actor",
+          "character": "Main",
+          "profile": null
+        }
+      ],
+      "artwork": {
+        "poster": "https://image.tmdb.org/t/p/w780/aRjuJuPXHtVs6YegfeeQWXGRs1E.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/oo9GyiNKvR4CU1etuYl081UJ1LE.jpg",
+        "clearlogo": "https://assets.fanart.tv/fanart/elysium-5161bc3e36728.png",
+        "clearart": "https://assets.fanart.tv/fanart/elysium-5213797eec2c3.png",
+        "banner": "https://assets.fanart.tv/fanart/elysium-520f380499019.jpg",
+        "landscape": "https://image.tmdb.org/t/p/w780/oo9GyiNKvR4CU1etuYl081UJ1LE.jpg",
+        "keyart": "https://assets.fanart.tv/fanart/elysium-51705ba642207.jpg",
+        "thumbnail": "https://image.tmdb.org/t/p/w342/aRjuJuPXHtVs6YegfeeQWXGRs1E.jpg",
+        "discart": "https://assets.fanart.tv/fanart/elysium-51674a393cc19.png",
+        "title_card": "https://image.tmdb.org/t/p/original/oo9GyiNKvR4CU1etuYl081UJ1LE.jpg",
+        "character_art": [],
+        "extra_posters": [],
+        "extra_backdrops": []
+      },
+      "trailer": "https://www.youtube.com/watch?v=trailer",
+      "ratings": [
+        {
+          "source": "TMDb",
+          "value": 6.5,
+          "out_of": 10
+        }
+      ],
+      "badges": {
+        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
+        "hdr": "",
+        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/bluray.png",
+        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+      },
+      "specs": {
+        "resolution": "1080p",
+        "source": "BluRay",
+        "codec": "x264",
+        "bit_depth": "8bit",
+        "audio": "Tamil 2.0 - 224Kbps + Telugu 2.0 - 224Kbps + Hindi 5.1 - 640Kbps + English 5.1 - 384Kbps",
+        "channels": "5.1",
+        "bitrate": "640 Kbps",
+        "languages": "Tamil, Telugu, Hindi, English",
+        "size": "5 GB"
+      },
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1weCOQpO5eEMwTbO Ql7krWXGcM5SDFVV|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "versions": [
+        {
+          "id": "1weCOQpO5eEMwTbO Ql7krWXGcM5SDFVV",
+          "name": "Elysium (2013) [2160p] [BluRay] [Tamil 2.0 - 224Kbps + Telugu 2.0 - 224Kbps + Hindi 5.1 - 640Kbps + English 5.1 - 384Kbps] [5 GB].mkv",
+          "language": "Multi",
+          "dubbed": "Tamil 2.0 - 224Kbps + Telugu 2.0 - 224Kbps + Hindi 5.1 - 640Kbps + English 5.1 - 384Kbps",
+          "quality": "1080p FHD",
+          "resolution": "1080p",
+          "source": "BluRay",
+          "source_image": "resources/images/sources/bluray.png",
+          "codec": "x264",
+          "audio": "Tamil 2.0 - 224Kbps + Telugu 2.0 - 224Kbps + Hindi 5.1 - 640Kbps + English 5.1 - 384Kbps",
+          "channels": "5.1",
+          "bitrate": "640 Kbps",
+          "size": "5 GB",
+          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1weCOQpO5eEMwTbO Ql7krWXGcM5SDFVV|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      ]
     }
-  ]
+  ],
+  "movie_count": 3
 }
