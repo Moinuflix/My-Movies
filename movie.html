@@ -583,7 +583,21 @@
       </div>
     </div>
   </div>
+<!-- MEDIA / ARTWORK GALLERY SECTION -->
+<div style="max-width: 1300px; margin: 2rem auto; padding: 0 2rem;">
+  <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1rem;">
+    <h2 style="font-size: 1.3rem; font-weight: 700; color: #0f172a;">Media & Artworks</h2>
+    <div style="display:flex; gap:15px; font-size:0.85rem; font-weight:700;">
+      <span style="color:#01b4e4; border-bottom: 2px solid #01b4e4; padding-bottom: 4px; cursor:pointer;">Backdrops & Fanart</span>
+      <span style="color:#64748b; cursor:pointer;">Posters</span>
+    </div>
+  </div>
 
+  <div id="artworks-gallery-row" style="display:flex; gap:15px; overflow-x:auto; padding-bottom: 1rem;">
+    <!-- JavaScript will inject Fanart, Landscape, Title Card, and Poster cards here -->
+  </div>
+</div>
+  
   <script>
     const GH_REPO = "Moinuflix/My-Movies";
     const GH_BRANCH = "main";
@@ -759,6 +773,30 @@
           `;
           castWrap.appendChild(card);
         });
+
+        // Artwork Gallery Injector
+const gallery = document.getElementById("artworks-gallery-row");
+if (gallery && m.artwork) {
+  gallery.innerHTML = "";
+  const artList = [
+    { label: "Backdrop (Original)", url: m.artwork.fanart, w: "320px", h: "180px" },
+    { label: "Landscape (16:9)", url: m.artwork.landscape, w: "320px", h: "180px" },
+    { label: "Title Card", url: m.artwork.title_card, w: "320px", h: "180px" },
+    { label: "Primary Poster", url: m.artwork.poster, w: "120px", h: "180px" }
+  ];
+
+  artList.forEach(item => {
+    if (item.url) {
+      const box = document.createElement("div");
+      box.style.cssText = `width: ${item.w}; flex-shrink: 0; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; background: #032541; box-shadow: 0 2px 6px rgba(0,0,0,0.06);`;
+      box.innerHTML = `
+        <img src="${item.url}" style="width:100%; height:${item.h}; object-fit:cover; display:block;" alt="${item.label}">
+        <div style="padding:6px 10px; font-size:0.75rem; font-weight:700; color:#64748b; background:#fff;">${item.label}</div>
+      `;
+      gallery.appendChild(box);
+    }
+  });
+  
       }
 
       // Sidebar Facts (No Stream Links Shown)
