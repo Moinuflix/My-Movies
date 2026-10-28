@@ -93,6 +93,40 @@
           "size": "10 GB"
         }
       ]
+    },
+    {
+      "id": "243206",
+      "title": "Pritam and Pedro",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w500/uA5hAexR9Xis3BzSOMKjNuYQUsj.jpg",
+      "fanart": "https://image.tmdb.org/t/p/original/eAXSlqAJwpdsZ59G10lao9OJ4SG.jpg",
+      "logo": "https://image.tmdb.org/t/p/original/dZNea0ZgA88deN3RXzk22sHL754.png",
+      "rating": 8.2,
+      "original_language": "hi",
+      "genres": [
+        "Action",
+        "Drama"
+      ],
+      "chunk_file": "chunks/chunk_01.json",
+      "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HShWhpdZ8bhuHIy6Nbg8-xHv04-Mcwkf|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "available_languages": [
+        "Hindi"
+      ],
+      "version_count": 1,
+      "available_versions": [
+        {
+          "language": "Hindi",
+          "quality": "2160p",
+          "source": "WEB-DL",
+          "source_image": "resources/images/sources/web-dl.png",
+          "format": "WEB-DL",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "bitrate": "640 Kbps",
+          "size": "3 GB"
+        }
+      ]
     }
   ]
 }
