@@ -70,15 +70,24 @@
     .govt-title { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.3px; color: #fff; }
     .govt-sub { font-size: 0.82rem; color: var(--laser-cyan); margin-top: 3px; font-weight: 600; }
 
-    .status-badge {
-      background: rgba(56, 189, 248, 0.12);
-      color: var(--laser-cyan);
-      padding: 0.45rem 1rem;
-      border-radius: 30px;
-      font-size: 0.78rem;
-      font-weight: 800;
-      border: 1px solid var(--card-border);
+    .nav-links-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
+
+    .btn-nav-link {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid var(--laser-cyan);
+      color: #fff;
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-nav-link:hover { background: var(--laser-cyan); color: #020617; }
 
     .stats-bar {
       display: grid;
@@ -295,7 +304,13 @@
       <div class="govt-title">MOINUFLIX NATIONAL MEDIA INGESTION PORTAL</div>
       <div class="govt-sub">Govt-Style Form Verification & Two-Tier JSON Cataloging Engine</div>
     </div>
-    <div class="status-badge" id="active-repo-badge">REPO: Moinuflix/My-Movies</div>
+    
+    <!-- DIRECT LINKS TO ADMIN & MOVIE HTML -->
+    <div class="nav-links-box">
+      <a href="admin.html" class="btn-nav-link">🎬 Library Manager (admin.html)</a>
+      <a href="movie.html" class="btn-nav-link">🎞️ Cinema View (movie.html)</a>
+      <button type="button" class="btn-nav-link" onclick="configureToken()">⚙️ Set PAT Token</button>
+    </div>
   </div>
 
   <div class="stats-bar">
@@ -325,7 +340,6 @@
       <!-- PART I: IDENTIFICATION & SEARCH -->
       <div class="section-title">
         <span>Part I: Digital Media Identification & Drive Allocation</span>
-        <button type="button" class="btn btn-govt-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;" onclick="configureToken()">⚙️ Set / Fix PAT Token</button>
       </div>
 
       <div class="form-grid">
@@ -379,9 +393,19 @@
           <input type="text" id="movie-orig-title" placeholder="Native Language Title">
         </div>
 
+        <div class="form-group col-12">
+          <label>Movie Tagline (Quote)</label>
+          <input type="text" id="movie-tagline" placeholder="e.g. Shall I tell you a story?">
+        </div>
+
         <div class="form-group col-2">
           <label>Release Year</label>
           <input type="number" id="movie-year" value="2017" oninput="updateDashPreview()">
+        </div>
+
+        <div class="form-group col-2">
+          <label>Exact Release Date</label>
+          <input type="text" id="movie-release-date" placeholder="YYYY-MM-DD" value="2017-07-21">
         </div>
 
         <div class="form-group col-2">
@@ -408,14 +432,19 @@
           </select>
         </div>
 
-        <div class="form-group col-2">
+        <div class="form-group col-4">
           <label>IMDb ID</label>
           <input type="text" id="movie-imdb-id" placeholder="tt6148156">
         </div>
 
-        <div class="form-group col-6">
+        <div class="form-group col-4">
           <label>Director(s)</label>
           <input type="text" id="movie-director" placeholder="Directors comma separated">
+        </div>
+
+        <div class="form-group col-4">
+          <label>Writer(s) / Screenplay</label>
+          <input type="text" id="movie-writers" placeholder="Writers comma separated">
         </div>
 
         <div class="form-group col-6">
@@ -423,7 +452,7 @@
           <input type="text" id="movie-studio" placeholder="Studios comma separated">
         </div>
 
-        <div class="form-group col-12">
+        <div class="form-group col-6">
           <label>Genres Array (Kodi Categories) <span class="required">*</span></label>
           <input type="text" id="movie-genres" placeholder="Action, Crime, Thriller" value="Action, Crime, Thriller" required>
         </div>
@@ -498,7 +527,7 @@
             <option value="7 GB">7 GB</option>
             <option value="8 GB">8 GB</option>
             <option value="9 GB">9 GB</option>
-            <option value="10 GB">10 GB</option>
+            <option value="10 GB" selected>10 GB</option>
             <option value="12 GB">12 GB</option>
             <option value="14 GB">14 GB</option>
             <option value="16 GB">16 GB</option>
@@ -511,7 +540,7 @@
 
         <div class="form-group col-12">
           <label>Expanded Multi-Audio Specifications</label>
-          <input type="text" id="tech-audio-specs" value="DD+ 5.1 - 640Kbps & AAC 2.0" oninput="updateDashPreview()">
+          <input type="text" id="tech-audio-specs" value="Tamil DTS 5.1 - 1509Kbps" oninput="updateDashPreview()">
         </div>
       </div>
 
@@ -656,18 +685,15 @@
     el.value = clean;
   }
 
-  /* ⚡ ACCURATE PARSER ENGINE */
   let rawIngestDebounce = null;
   function handleInstantRawIngest(raw) {
     if (!raw.trim()) return;
 
-    // 1. Resolution
     const resSel = document.getElementById("tech-resolution");
     if (/\b(2160p|4k|uhd)\b/i.test(raw)) resSel.value = "2160p";
     else if (/\b(720p)\b/i.test(raw)) resSel.value = "720p";
     else resSel.value = "1080p";
 
-    // 2. Video Source
     if (/amaz|amzn|prime/i.test(raw)) handleSourceChange("AMZN");
     else if (/sun\s*nxt|sunnxt/i.test(raw)) handleSourceChange("Sun NXT");
     else if (/nf|netflix/i.test(raw)) handleSourceChange("Netflix");
@@ -679,7 +705,6 @@
     else if (/bluray|remux/i.test(raw)) handleSourceChange("BluRay");
     else handleSourceChange("WEB-DL");
 
-    // 3. Audio & Bitrate Extraction (Fixes Fake DTS & Captures Full Audio string)
     let audioDetected = "DD+ 5.1 - 640Kbps";
     const audioMatch = raw.match(/\((DD\+?5\.1.*?|DTS.*?|Atmos.*?|TrueHD.*?|AAC.*?)\)/i) ||
                        raw.match(/\[(DD\+?5\.1.*?|DTS.*?|Atmos.*?|TrueHD.*?|AAC.*?)\]/i) ||
@@ -691,7 +716,6 @@
     }
     document.getElementById("tech-audio-specs").value = audioDetected;
 
-    // 4. Exact GB Extraction from Filename (e.g. 9GB -> 9 GB)
     const sizeMatch = raw.match(/(\d+\.?\d*)\s*(gb|mb)/i);
     if (sizeMatch) {
       let num = parseFloat(sizeMatch[1]);
@@ -700,7 +724,6 @@
       selectDropdownValue("tech-filesize-select", cleanGb);
     }
 
-    // 5. Title & Year extraction for Auto TMDb Search
     let clean = raw.replace(/\.(mkv|mp4|avi|ts)$/i, '').replace(/[\._\-]/g, ' ');
     const ym = clean.match(/\b(19\d\d|20\d\d)\b/);
     let year = ym ? ym[1] : '';
@@ -710,7 +733,6 @@
 
     updateDashPreview();
 
-    // Trigger Instant TMDb Lookup
     clearTimeout(rawIngestDebounce);
     rawIngestDebounce = setTimeout(async () => {
       if (title.length > 1) {
@@ -737,7 +759,6 @@
         return;
       }
     }
-    // Add option dynamically if unusual GB (e.g. 9 GB, 11 GB)
     const newOpt = document.createElement("option");
     newOpt.value = val;
     newOpt.textContent = val;
@@ -782,7 +803,6 @@
       `${title} (${year}) [${res}] [${src}] [${audio}] [${sz}].mkv`;
   }
 
-  // TMDb Manual Search Dropdown
   let searchTimer = null;
   function handleTmdbSearch(val) {
     clearTimeout(searchTimer);
@@ -833,7 +853,6 @@
     return map[code] || 'Multi';
   }
 
-  // Fetch Full TMDb + Cast + Artworks + Dynamic Fanart Backdrop + Passport Poster
   async function fetchTmdbOfficialDetails(id) {
     if (!id) return;
     try {
@@ -843,40 +862,41 @@
 
       document.getElementById("movie-title").value = d.title || "";
       document.getElementById("movie-orig-title").value = d.original_title || d.title || "";
+      document.getElementById("movie-tagline").value = d.tagline || "";
       document.getElementById("movie-year").value = (d.release_date || "2024").split("-")[0];
+      document.getElementById("movie-release-date").value = d.release_date || `${d.release_date || '2024'}-01-01`;
       document.getElementById("movie-rating").value = d.vote_average ? d.vote_average.toFixed(1) : "7.5";
       document.getElementById("movie-lang").value = d.original_language || "ta";
       document.getElementById("movie-runtime").value = d.runtime || 120;
       document.getElementById("movie-plot").value = d.overview || "";
       document.getElementById("movie-imdb-id").value = d.external_ids?.imdb_id || d.imdb_id || "";
 
-      // Dynamic Fanart Wallpaper
       if (d.backdrop_path) {
         document.getElementById("dynamic-bg").style.backgroundImage = `url('https://image.tmdb.org/t/p/original${d.backdrop_path}')`;
       }
 
-      // Directors & Studios
-      const directors = (d.credits?.crew || []).filter(c => c.job === "Director").map(c => c.name);
+      // Directors & Writers extraction
+      const crewList = d.credits?.crew || [];
+      const directors = crewList.filter(c => c.job === "Director").map(c => c.name);
+      const writers = crewList.filter(c => ["Writer", "Screenplay", "Story", "Dialogue"].includes(c.job)).map(c => c.name);
+
       document.getElementById("movie-director").value = directors.join(", ");
+      document.getElementById("movie-writers").value = [...new Set(writers)].join(", ");
       document.getElementById("movie-studio").value = (d.production_companies || []).map(p => p.name).join(", ");
 
-      // Certification
       const rels = d.release_dates?.results || [];
       const inR = rels.find(r => r.iso_3166_1 === "IN") || rels.find(r => r.iso_3166_1 === "US");
       if (inR && inR.release_dates?.[0]?.certification) {
         document.getElementById("movie-cert").value = inR.release_dates[0].certification;
       }
 
-      // Genres
       const gList = (d.genres || []).map(g => g.name);
       document.getElementById("movie-genres").value = gList.join(", ");
 
-      // Trailer
       const videos = d.videos?.results || [];
       const tr = videos.find(v => v.type === "Trailer" && v.site === "YouTube") || videos[0];
       if (tr) document.getElementById("movie-trailer").value = `https://www.youtube.com/watch?v=${tr.key}`;
 
-      // TOP 10 CAST WITH PHOTOS & LINKS
       const castWrap = document.getElementById("cast-cards-container");
       castWrap.innerHTML = "";
       loadedCastArray = [];
@@ -904,7 +924,6 @@
         castWrap.appendChild(card);
       });
 
-      // 10 Artworks & Live Passport Poster
       if (d.poster_path) {
         const fullPoster = `https://image.tmdb.org/t/p/w780${d.poster_path}`;
         document.getElementById("art-poster").value = fullPoster;
@@ -918,7 +937,6 @@
       }
       if (d.poster_path) document.getElementById("art-thumbnail").value = `https://image.tmdb.org/t/p/w342${d.poster_path}`;
 
-      // Fanart.tv Fallback
       try {
         const faRes = await fetch(`https://webservice.fanart.tv/v3/movies/${id}?api_key=${FANART_KEY}`);
         if (faRes.ok) {
@@ -945,11 +963,10 @@
     else alert("Trailer link missing!");
   }
 
-  // Two-Tier Commit to GitHub
   async function handleFormSubmission(e) {
     e.preventDefault();
     const token = getToken();
-    if (!token) return alert("GitHub Token missing! Please click 'Set / Fix PAT Token' at top right.");
+    if (!token) return alert("GitHub Token missing! Please click 'Set PAT Token' at top right.");
 
     let rawDrive = document.getElementById("drive-file-id").value.trim().replace(/\s+/g, '');
     const m = rawDrive.match(/[-\w]{25,}/);
@@ -962,14 +979,18 @@
     const tmdbId = document.getElementById("tmdb-id").value.trim();
     const title = document.getElementById("movie-title").value.trim();
     const origTitle = document.getElementById("movie-orig-title").value.trim() || title;
+    const tagline = document.getElementById("movie-tagline").value.trim();
     const year = parseInt(document.getElementById("movie-year").value, 10) || 2024;
+    const releaseDate = document.getElementById("movie-release-date").value.trim() || `${year}-01-01`;
     const rating = parseFloat(document.getElementById("movie-rating").value) || 7.5;
     const langCode = document.getElementById("movie-lang").value.trim();
     const fullLang = getLanguageName(langCode);
     const runtime = parseInt(document.getElementById("movie-runtime").value, 10) || 120;
     const cert = document.getElementById("movie-cert").value;
     const imdbId = document.getElementById("movie-imdb-id").value.trim();
+    
     const directors = document.getElementById("movie-director").value.split(",").map(x => ({ name: x.trim() })).filter(x => x.name);
+    const writers = document.getElementById("movie-writers").value.split(",").map(x => ({ name: x.trim(), job: "Writer" })).filter(x => x.name);
     const studios = document.getElementById("movie-studio").value.split(",").map(x => x.trim()).filter(Boolean);
     const genres = document.getElementById("movie-genres").value.split(",").map(x => x.trim()).filter(Boolean);
     const plot = document.getElementById("movie-plot").value;
@@ -1038,16 +1059,16 @@
         original_title: origTitle,
         year: year,
         runtime: runtime,
-        release_date: `${year}-01-01`,
+        release_date: releaseDate,
         certification: cert,
         original_language: langCode,
         genres: genres,
-        tagline: "",
+        tagline: tagline,
         plot: plot,
         country: ["India"],
         studio: studios.length > 0 ? studios : [src],
         director: directors,
-        writers: [],
+        writers: writers,
         cast: loadedCastArray,
         artwork: artworkObj,
         trailer: trailer,
