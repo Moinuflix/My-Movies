@@ -59,6 +59,40 @@
           "channels": "5.1"
         }
       ]
+    },
+    {
+      "id": "23767",
+      "title": "Billa",
+      "year": 2007,
+      "poster": "https://image.tmdb.org/t/p/w500/g9skD62F7y6VJR5nPZOgpz1ckso.jpg",
+      "fanart": "https://image.tmdb.org/t/p/original/42eShFAK1UPPVCey7mcLJjZrXgX.jpg",
+      "logo": "",
+      "rating": 6.6,
+      "original_language": "ta",
+      "genres": [
+        "Action",
+        "Drama"
+      ],
+      "chunk_file": "chunks/chunk_01.json",
+      "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1pn1LE4MoDJdxxx_Billa|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "available_languages": [
+        "Tamil"
+      ],
+      "version_count": 1,
+      "available_versions": [
+        {
+          "language": "Tamil",
+          "quality": "1080p",
+          "source": "WEB-DL",
+          "source_image": "resources/images/sources/web-dl.png",
+          "format": "WEB-DL",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "bitrate": "448 Kbps",
+          "size": "10 GB"
+        }
+      ]
     }
   ]
 }
