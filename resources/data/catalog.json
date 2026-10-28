@@ -101,6 +101,42 @@
           "channels": "5.1"
         }
       ]
+    },
+    {
+      "id": "1weCOQpO5eEMwTbO Ql7krWXGcM5SDFVV",
+      "tmdb_id": 68724,
+      "title": "Elysium",
+      "year": 2013,
+      "poster": "https://image.tmdb.org/t/p/w780/aRjuJuPXHtVs6YegfeeQWXGRs1E.jpg",
+      "fanart": "https://image.tmdb.org/t/p/original/oo9GyiNKvR4CU1etuYl081UJ1LE.jpg",
+      "logo": "https://assets.fanart.tv/fanart/elysium-5161bc3e36728.png",
+      "rating": 6.5,
+      "original_language": "en",
+      "genres": [
+        "Science Fiction",
+        "Action",
+        "Drama",
+        "Thriller"
+      ],
+      "chunk_file": "resources/data/chunks/chunk_01.json",
+      "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1weCOQpO5eEMwTbO Ql7krWXGcM5SDFVV|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "available_languages": [
+        "Multi"
+      ],
+      "version_count": 1,
+      "available_versions": [
+        {
+          "language": "Multi",
+          "dubbed": "Tamil 2.0 - 224Kbps + Telugu 2.0 - 224Kbps + Hindi 5.1 - 640Kbps + English 5.1 - 384Kbps",
+          "quality": "2160p FHD",
+          "source": "WEB-DL",
+          "source_image": "resources/images/sources/web.png",
+          "format": "WEB-DL",
+          "codec": "x264",
+          "audio": "Tamil 2.0 - 224Kbps + Telugu 2.0 - 224Kbps + Hindi 5.1 - 640Kbps + English 5.1 - 384Kbps",
+          "channels": "5.1"
+        }
+      ]
     }
   ]
 }
