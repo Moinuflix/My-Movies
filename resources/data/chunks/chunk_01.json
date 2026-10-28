@@ -1,844 +1,158 @@
 {
-  "movies": [
+  "id": "1HvnXcskgHz0ujSlhzAhuXTyRzeBXKKzo",
+  "tmdb_id": 1235877,
+  "imdb_id": "tt33379543",
+  "name": "Jana Nayagan (2026) [1080p] [WEB-DL] [Tamil DTS 5.1 - 1509Kbps] [10 GB].mkv",
+  "title": "Jana Nayagan",
+  "original_title": "ஜன நாயகன்",
+  "year": 2026,
+  "runtime": 183,
+  "release_date": "2026-01-01",
+  "certification": "A",
+  "original_language": "ta",
+  "genres": [
+    "Action",
+    "Drama"
+  ],
+  "tagline": "The Torch Bearer of Democracy",
+  "plot": "A clash of ideologies. One stands for the people, the other feeds on control. Their paths collided once before. Years later, a child’s silent fear ignites the past, drawing a former police officer into a battle far bigger than personal revenge.",
+  "country": [
+    "India"
+  ],
+  "studio": [
+    "KVN Productions",
+    "The Route"
+  ],
+  "director": [
     {
-      "id": "1321821",
-      "title": "Pechi",
-      "original_title": "பேச்சி",
-      "year": 2024,
-      "tagline": "Fear has a New Name",
-      "plot": "Five young trekkers and their tour guide embark on a weekend adventure in the Kollimalai hills. Despite warnings, they venture into a restricted area, unknowingly entering the domain of a malevolent spirit, which is hell bent on wreaking havoc in their lives. Did they survive the relentless onslaught and harrowing encounter with the supernatural force in the haunted woods?",
-      "runtime": 110,
-      "release_date": "2024-08-02",
-      "certification": "UA",
-      "original_language": "ta",
-      "category": "Kollywood (Tamil)",
-      "genres": [
-        "Horror"
-      ],
-      "country": [
-        "India"
-      ],
-      "studio": [
-        "Veyilon Entertainment",
-        "Verus Productions"
-      ],
-      "director": [
-        {
-          "name": "Ramachandran B",
-          "job": "Director"
-        }
-      ],
-      "writers": [
-        {
-          "name": "Ramachandran B",
-          "job": "Writer"
-        },
-        {
-          "name": "Ramachandran B",
-          "job": "Story"
-        },
-        {
-          "name": "Vasanth Kumar",
-          "job": "Story"
-        }
-      ],
-      "cast": [
-        {
-          "name": "Gayathrie Shankar",
-          "character": "Meena",
-          "profile": "https://image.tmdb.org/t/p/w185/bJgZlSd5WCIi7kp3IZKS0FDjIL2.jpg"
-        },
-        {
-          "name": "Balasaravanan",
-          "character": "Maari",
-          "profile": "https://image.tmdb.org/t/p/w185/1Hyg5Src1SQnVw9E3g0QHMUydVx.jpg"
-        },
-        {
-          "name": "Preethi Nedumaran",
-          "character": "Charu",
-          "profile": "https://image.tmdb.org/t/p/w185/olA9sHwIBrNaE509sGzGbKebL74.jpg"
-        },
-        {
-          "name": "Dev Ramnath",
-          "character": "Charan",
-          "profile": "https://image.tmdb.org/t/p/w185/wiNiHeqDCheFDX6iSk6bmjoIrA9.jpg"
-        },
-        {
-          "name": "Seeniyammal",
-          "character": "Pechi",
-          "profile": null
-        },
-        {
-          "name": "Jana Nathan",
-          "character": "Sethu",
-          "profile": "https://image.tmdb.org/t/p/w185/bv4vCtq932Rg4YOKDGhVce4DuPC.jpg"
-        },
-        {
-          "name": "Mageshwaran",
-          "character": "Jerry",
-          "profile": null
-        },
-        {
-          "name": "Rajapandi",
-          "character": "Guardsman",
-          "profile": "https://image.tmdb.org/t/p/w185/9vJ1ArGdadHHwr4ZeU57SAiI2DW.jpg"
-        }
-      ],
-      "artwork": {
-        "poster": "https://image.tmdb.org/t/p/w780/6Pla6xHgD0kep7S9z6KfXzi6B4l.jpg",
-        "thumbnail": "https://image.tmdb.org/t/p/w342/6Pla6xHgD0kep7S9z6KfXzi6B4l.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/cAwBPZDaDjllk1Geicgj21cDZTS.jpg",
-        "clearlogo": "",
-        "clearart": null,
-        "banner": null,
-        "landscape": null,
-        "character_art": []
-      },
-      "trailer": "",
-      "external_ids": {
-        "tmdb_id": 1321821,
-        "imdb_id": "tt33034505"
-      },
-      "collection": "",
-      "similar_movies": [],
-      "awards": {
-        "summary": ""
-      },
-      "financials": {
-        "box_office": "N/A"
-      },
-      "ratings": [
-        {
-          "source": "IMDb",
-          "value": 5.8,
-          "out_of": 10
-        },
-        {
-          "source": "Rotten Tomatoes",
-          "value": null,
-          "unit": "percent"
-        },
-        {
-          "source": "TMDb",
-          "value": 7.5,
-          "out_of": 10
-        }
-      ],
-      "tags": {
-        "quality": [
-          "1080p"
-        ],
-        "source": [
-          "AMZN"
-        ],
-        "codec": [
-          "x264"
-        ],
-        "hdr": [
-          "SDR"
-        ],
-        "audio": [
-          "Dolby Atmos"
-        ],
-        "other": [
-          "Standard",
-          "10bit"
-        ],
-        "language": [
-          "Tamil",
-          "Hindi",
-          "Telugu",
-          "Malayalam",
-          "Kannada"
-        ]
-      },
-      "specs": {
-        "resolution": "1080p",
-        "source": "AMZN",
-        "codec": "x264",
-        "bit_depth": "10bit",
-        "audio": "Dolby Atmos",
-        "channels": "5.1",
-        "languages": [
-          "Tamil",
-          "Hindi",
-          "Telugu",
-          "Malayalam",
-          "Kannada"
-        ],
-        "subtitles": [
-          "ESub"
-        ],
-        "size": "5 GB"
-      },
-      "versions": [
-        {
-          "id": "ver-1",
-          "name": "Original Audio",
-          "language": "Tamil",
-          "quality": "1080p",
-          "source": "AMZN",
-          "source_image": "resources/images/sources/amazon.png",
-          "codec": "x265",
-          "audio": "Dolby Atmos",
-          "channels": "5.1",
-          "size": "5 GB",
-          "stream_url": "https://dl.dropboxusercontent.com/scl/fi/tcdxrl7k977451pieutrd/Pechi-2024-AMZN-WEB-DL-Hi-Ta-Kn-Ml-Te-1080p-AVC-DDP-5.1-ESub-CineVood.mkv?rlkey=ntil95gnlyj9bezh1w7or5dps&st=usekl1d6&dl=1"
-        }
-      ],
-      "stream_url": "https://dl.dropboxusercontent.com/scl/fi/tcdxrl7k977451pieutrd/Pechi-2024-AMZN-WEB-DL-Hi-Ta-Kn-Ml-Te-1080p-AVC-DDP-5.1-ESub-CineVood.mkv?rlkey=ntil95gnlyj9bezh1w7or5dps&st=usekl1d6&dl=1",
-      "soundtrack": {}
-    },
-    {
-      "id": "920",
-      "title": "Cars",
-      "original_title": "Cars",
-      "year": 2006,
-      "tagline": "Ahhh... it's got that new movie smell.",
-      "plot": "Lightning McQueen, a hotshot rookie race car driven to succeed, discovers that life is about the journey, not the finish line, when he finds himself unexpectedly detoured in the sleepy Route 66 town of Radiator Springs. On route across the country to the big Piston Cup Championship in California to compete against two seasoned pros, McQueen gets to know the town's offbeat characters.",
-      "runtime": 117,
-      "release_date": "2006-06-08",
-      "certification": "UA",
-      "original_language": "en",
-      "category": "Hollywood (English)",
-      "genres": [
-        "Animation",
-        "Adventure",
-        "Comedy",
-        "Family"
-      ],
-      "country": [
-        "United States of America"
-      ],
-      "studio": [
-        "Pixar",
-        "Walt Disney Pictures"
-      ],
-      "director": [
-        {
-          "name": "John Lasseter",
-          "job": "Director"
-        }
-      ],
-      "writers": [
-        {
-          "name": "John Lasseter",
-          "job": "Screenplay"
-        },
-        {
-          "name": "Jørgen Klubien",
-          "job": "Screenplay"
-        },
-        {
-          "name": "Dan Fogelman",
-          "job": "Screenplay"
-        },
-        {
-          "name": "Phil Lorin",
-          "job": "Screenplay"
-        },
-        {
-          "name": "Kiel Murray",
-          "job": "Screenplay"
-        },
-        {
-          "name": "Joe Ranft",
-          "job": "Screenplay"
-        }
-      ],
-      "cast": [
-        {
-          "name": "Owen Wilson",
-          "character": "Lightning McQueen (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/5A46lNOwmpX77jAdhyKxU7e2Hub.jpg"
-        },
-        {
-          "name": "Paul Newman",
-          "character": "Doc Hudson (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/5K9gQEzuQ0DeNO6KKEb5xK8iOVD.jpg"
-        },
-        {
-          "name": "Bonnie Hunt",
-          "character": "Sally Carrera (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/tT9C6uLztgN8OxJULq6F9iEzqlA.jpg"
-        },
-        {
-          "name": "Larry the Cable Guy",
-          "character": "Mater (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/34pX2sQj9DddaQWRBGukSWYdXxS.jpg"
-        },
-        {
-          "name": "Cheech Marin",
-          "character": "Ramone (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/eecHDNRn9K80ZcuSocsMhQb2G1i.jpg"
-        },
-        {
-          "name": "Tony Shalhoub",
-          "character": "Luigi (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/1zfBSuAmOr1xXjNg4WzFWPm5B0Z.jpg"
-        },
-        {
-          "name": "Guido Quaroni",
-          "character": "Guido (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/ie2Q3UcrASkiDKqJOMlhaRaSgFS.jpg"
-        },
-        {
-          "name": "Jenifer Lewis",
-          "character": "Flo (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/htrTYcoJQQpSYo6BrRehe3h46vo.jpg"
-        },
-        {
-          "name": "Paul Dooley",
-          "character": "Sarge (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/7nTdbpU4wIsSDZ8WCPXNJOG9KPI.jpg"
-        },
-        {
-          "name": "Michael Wallis",
-          "character": "Sheriff (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/4TxYHUzqpRhbqjSf162WvpP0Hyu.jpg"
-        },
-        {
-          "name": "George Carlin",
-          "character": "Fillmore (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/2No6PxJbTGtawVJh0ivUiXfVprH.jpg"
-        },
-        {
-          "name": "Katherine Helmond",
-          "character": "Lizzie (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/ewqxAgTyclJLwQi4WWU5QZiCM0Q.jpg"
-        },
-        {
-          "name": "John Ratzenberger",
-          "character": "Mack / Hamm Truck / Abominable Snow Plow / P.T. Flea Car (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/oRtDEOuIO1yDhTz5dORBdxXuLMO.jpg"
-        },
-        {
-          "name": "Joe Ranft",
-          "character": "Red / Peterbilt (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/f1BoWC2JbCcfP1e5hKfGsxkHzVU.jpg"
-        },
-        {
-          "name": "Michael Keaton",
-          "character": "Chick Hicks (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/tYSja1KByFnZ4Hkp3stPqkKHnNL.jpg"
-        }
-      ],
-      "artwork": {
-        "poster": "https://image.tmdb.org/t/p/w780/2Touk3m5gzsqr1VsvxypdyHY5ci.jpg",
-        "thumbnail": "https://image.tmdb.org/t/p/w342/2Touk3m5gzsqr1VsvxypdyHY5ci.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/sd4xN5xi8tKRPrJOWwNiZEile7f.jpg",
-        "clearlogo": "https://assets.fanart.tv/fanart/cars-503b8ddaf365d.png",
-        "clearart": "https://assets.fanart.tv/fanart/cars-53fb719c98545.png",
-        "banner": "https://assets.fanart.tv/fanart/cars-51b500659d604.jpg",
-        "landscape": "https://assets.fanart.tv/fanart/cars-54ecc871e80b9.jpg",
-        "character_art": []
-      },
-      "trailer": "https://www.youtube.com/watch?v=XszNWHhpaTc",
-      "external_ids": {
-        "tmdb_id": 920,
-        "imdb_id": "tt0317219"
-      },
-      "collection": "Cars Collection",
-      "similar_movies": [],
-      "awards": {
-        "summary": "Nominated for 2 Oscars. 28 wins & 34 nominations total"
-      },
-      "financials": {
-        "box_office": "$255,159,210"
-      },
-      "ratings": [
-        {
-          "source": "IMDb",
-          "value": 7.3,
-          "out_of": 10
-        },
-        {
-          "source": "Rotten Tomatoes",
-          "value": 75,
-          "unit": "percent"
-        },
-        {
-          "source": "TMDb",
-          "value": 7.062,
-          "out_of": 10
-        }
-      ],
-      "tags": {
-        "quality": [
-          "1080p"
-        ],
-        "source": [
-          "BluRay"
-        ],
-        "codec": [
-          "x265"
-        ],
-        "hdr": [
-          "SDR"
-        ],
-        "audio": [
-          "AAC"
-        ],
-        "other": [
-          "Standard",
-          "10bit"
-        ],
-        "language": [
-          "English",
-          "Hindi"
-        ]
-      },
-      "specs": {
-        "resolution": "1080p",
-        "source": "BluRay",
-        "codec": "x265",
-        "bit_depth": "10bit",
-        "audio": "AAC",
-        "channels": "5.1",
-        "languages": [
-          "English",
-          "Hindi"
-        ],
-        "subtitles": [
-          "ESub"
-        ],
-        "size": "5 GB"
-      },
-      "versions": [
-        {
-          "id": "ver-1",
-          "name": "Original Track",
-          "language": "English",
-          "quality": "1080p",
-          "source": "BluRay",
-          "source_image": "resources/images/sources/bluray.png",
-          "codec": "x265",
-          "audio": "AAC",
-          "channels": "5.1",
-          "size": "5 GB",
-          "stream_url": ""
-        }
-      ],
-      "stream_url": "",
-      "soundtrack": {}
-    },
-    {
-      "id": "1weCOQpO5eEMwTbO Ql7krWXGcM5SDFVV",
-      "tmdb_id": 68724,
-      "imdb_id": "tt68724",
-      "name": "Elysium (2013) [2160p] [BluRay] [Tamil 2.0 - 224Kbps + Telugu 2.0 - 224Kbps + Hindi 5.1 - 640Kbps + English 5.1 - 384Kbps] [5 GB].mkv",
-      "title": "Elysium",
-      "original_title": "Elysium",
-      "year": 2013,
-      "runtime": 120,
-      "release_date": "2013-01-01",
-      "certification": "UA",
-      "original_language": "en",
-      "genres": [
-        "Science Fiction",
-        "Action",
-        "Drama",
-        "Thriller"
-      ],
-      "tagline": "",
-      "plot": "In the year 2159, two classes of people exist: the very wealthy who live on a pristine man-made space station called Elysium, and the rest, who live on an overpopulated, ruined Earth. Secretary Rhodes, a hard line government official, will stop at nothing to enforce anti-immigration laws and preserve the luxurious lifestyle of the citizens of Elysium. That doesn’t stop the people of Earth from trying to get in, by any means they can. When unlucky Max is backed into a corner, he agrees to take on a daunting mission that, if successful, will not only save his life, but could bring equality to these polarized worlds.",
-      "country": [
-        "India"
-      ],
-      "studio": [
-        "BluRay"
-      ],
-      "director": [
-        {
-          "name": "Director"
-        }
-      ],
-      "writers": [
-        {
-          "name": "Writer"
-        }
-      ],
-      "cast": [
-        {
-          "name": "Lead Actor",
-          "character": "Main",
-          "profile": null
-        }
-      ],
-      "artwork": {
-        "poster": "https://image.tmdb.org/t/p/w780/aRjuJuPXHtVs6YegfeeQWXGRs1E.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/oo9GyiNKvR4CU1etuYl081UJ1LE.jpg",
-        "clearlogo": "https://assets.fanart.tv/fanart/elysium-5161bc3e36728.png",
-        "clearart": "https://assets.fanart.tv/fanart/elysium-5213797eec2c3.png",
-        "banner": "https://assets.fanart.tv/fanart/elysium-520f380499019.jpg",
-        "landscape": "https://image.tmdb.org/t/p/w780/oo9GyiNKvR4CU1etuYl081UJ1LE.jpg",
-        "keyart": "https://assets.fanart.tv/fanart/elysium-51705ba642207.jpg",
-        "thumbnail": "https://image.tmdb.org/t/p/w342/aRjuJuPXHtVs6YegfeeQWXGRs1E.jpg",
-        "discart": "https://assets.fanart.tv/fanart/elysium-51674a393cc19.png",
-        "title_card": "https://image.tmdb.org/t/p/original/oo9GyiNKvR4CU1etuYl081UJ1LE.jpg",
-        "character_art": [],
-        "extra_posters": [],
-        "extra_backdrops": []
-      },
-      "trailer": "https://www.youtube.com/watch?v=trailer",
-      "ratings": [
-        {
-          "source": "TMDb",
-          "value": 6.5,
-          "out_of": 10
-        }
-      ],
-      "badges": {
-        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
-        "hdr": "",
-        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/bluray.png",
-        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
-        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-      },
-      "specs": {
-        "resolution": "1080p",
-        "source": "BluRay",
-        "codec": "x264",
-        "bit_depth": "8bit",
-        "audio": "Tamil 2.0 - 224Kbps + Telugu 2.0 - 224Kbps + Hindi 5.1 - 640Kbps + English 5.1 - 384Kbps",
-        "channels": "5.1",
-        "bitrate": "640 Kbps",
-        "languages": "Tamil, Telugu, Hindi, English",
-        "size": "5 GB"
-      },
-      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1weCOQpO5eEMwTbO Ql7krWXGcM5SDFVV|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-      "versions": [
-        {
-          "id": "1weCOQpO5eEMwTbO Ql7krWXGcM5SDFVV",
-          "name": "Elysium (2013) [2160p] [BluRay] [Tamil 2.0 - 224Kbps + Telugu 2.0 - 224Kbps + Hindi 5.1 - 640Kbps + English 5.1 - 384Kbps] [5 GB].mkv",
-          "language": "Multi",
-          "dubbed": "Tamil 2.0 - 224Kbps + Telugu 2.0 - 224Kbps + Hindi 5.1 - 640Kbps + English 5.1 - 384Kbps",
-          "quality": "1080p FHD",
-          "resolution": "1080p",
-          "source": "BluRay",
-          "source_image": "resources/images/sources/bluray.png",
-          "codec": "x264",
-          "audio": "Tamil 2.0 - 224Kbps + Telugu 2.0 - 224Kbps + Hindi 5.1 - 640Kbps + English 5.1 - 384Kbps",
-          "channels": "5.1",
-          "bitrate": "640 Kbps",
-          "size": "5 GB",
-          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1weCOQpO5eEMwTbO Ql7krWXGcM5SDFVV|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-        }
-      ]
-    },
-    {
-      "id": "1weCOQpO5eEMwTbO Ql7krWXGcM5SDFVV",
-      "tmdb_id": 68724,
-      "imdb_id": "tt1535108",
-      "name": "Elysium (2013) [2160p] [WEB-DL] [Tamil 2.0 - 224Kbps + Telugu 2.0 - 224Kbps + Hindi 5.1 - 640Kbps + English 5.1 - 384Kbps] [5 GB].mkv",
-      "title": "Elysium",
-      "original_title": "Elysium",
-      "year": 2013,
-      "runtime": 109,
-      "release_date": "2013-01-01",
-      "certification": "",
-      "original_language": "en",
-      "genres": [
-        "Science Fiction",
-        "Action",
-        "Drama",
-        "Thriller"
-      ],
-      "tagline": "",
-      "plot": "In the year 2159, two classes of people exist: the very wealthy who live on a pristine man-made space station called Elysium, and the rest, who live on an overpopulated, ruined Earth. Secretary Rhodes, a hard line government official, will stop at nothing to enforce anti-immigration laws and preserve the luxurious lifestyle of the citizens of Elysium. That doesn’t stop the people of Earth from trying to get in, by any means they can. When unlucky Max is backed into a corner, he agrees to take on a daunting mission that, if successful, will not only save his life, but could bring equality to these polarized worlds.",
-      "country": [
-        "India"
-      ],
-      "studio": [
-        "TriStar Pictures",
-        "MRC",
-        "QED International",
-        "Alphacore",
-        "Genre Films"
-      ],
-      "director": [
-        {
-          "name": "Neill Blomkamp"
-        }
-      ],
-      "writers": [],
-      "cast": [
-        {
-          "name": "Matt Damon",
-          "character": "Max",
-          "profile": "https://image.tmdb.org/t/p/w185/aCvBXTAR9B1qRjIRzMBYhhbm1fR.jpg",
-          "link": "https://www.themoviedb.org/person/1892"
-        },
-        {
-          "name": "Jodie Foster",
-          "character": "Delacourt",
-          "profile": "https://image.tmdb.org/t/p/w185/5emVgsLFlU6SmeBIFsF2Y7aqwtG.jpg",
-          "link": "https://www.themoviedb.org/person/1038"
-        },
-        {
-          "name": "Sharlto Copley",
-          "character": "Kruger",
-          "profile": "https://image.tmdb.org/t/p/w185/em89OJJvBRX7kNJJPASmNKQujsC.jpg",
-          "link": "https://www.themoviedb.org/person/82191"
-        },
-        {
-          "name": "Diego Luna",
-          "character": "Julio",
-          "profile": "https://image.tmdb.org/t/p/w185/qwbjcyDN37OHiln4a6P4LP31o7F.jpg",
-          "link": "https://www.themoviedb.org/person/8688"
-        },
-        {
-          "name": "Wagner Moura",
-          "character": "Spider",
-          "profile": "https://image.tmdb.org/t/p/w185/53IbAed4t1dOWxY3iygbRYZBBnm.jpg",
-          "link": "https://www.themoviedb.org/person/52583"
-        },
-        {
-          "name": "Alice Braga",
-          "character": "Frey",
-          "profile": "https://image.tmdb.org/t/p/w185/d9JdgvUiqyWuGQLmozNfGZOpIBz.jpg",
-          "link": "https://www.themoviedb.org/person/8602"
-        },
-        {
-          "name": "William Fichtner",
-          "character": "John Carlyle",
-          "profile": "https://image.tmdb.org/t/p/w185/wWtJOoaNAwPparpzMNuRBjvxwEf.jpg",
-          "link": "https://www.themoviedb.org/person/886"
-        },
-        {
-          "name": "Jose Pablo Cantillo",
-          "character": "Sandro",
-          "profile": "https://image.tmdb.org/t/p/w185/qtNesvN1bAQ779gJBt3LYDsm8f7.jpg",
-          "link": "https://www.themoviedb.org/person/20191"
-        },
-        {
-          "name": "Faran Tahir",
-          "character": "President Patel",
-          "profile": "https://image.tmdb.org/t/p/w185/eVYiHKj9OGRn3MeRqJuwROFqIkg.jpg",
-          "link": "https://www.themoviedb.org/person/57452"
-        },
-        {
-          "name": "Maxwell Perry Cotton",
-          "character": "Young Max",
-          "profile": "https://image.tmdb.org/t/p/w185/mk4x51e1a1vTF3KiOt8AtnN7jRh.jpg",
-          "link": "https://www.themoviedb.org/person/206928"
-        }
-      ],
-      "artwork": {
-        "poster": "https://image.tmdb.org/t/p/w780/aRjuJuPXHtVs6YegfeeQWXGRs1E.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/oo9GyiNKvR4CU1etuYl081UJ1LE.jpg",
-        "clearlogo": "https://assets.fanart.tv/fanart/elysium-5161bc3e36728.png",
-        "clearart": "https://assets.fanart.tv/fanart/elysium-5213797eec2c3.png",
-        "banner": "https://assets.fanart.tv/fanart/elysium-520f380499019.jpg",
-        "landscape": "https://image.tmdb.org/t/p/w780/oo9GyiNKvR4CU1etuYl081UJ1LE.jpg",
-        "keyart": "https://assets.fanart.tv/fanart/elysium-51705ba642207.jpg",
-        "thumbnail": "https://image.tmdb.org/t/p/w342/aRjuJuPXHtVs6YegfeeQWXGRs1E.jpg",
-        "discart": "https://assets.fanart.tv/fanart/elysium-51674a393cc19.png",
-        "title_card": "https://image.tmdb.org/t/p/original/oo9GyiNKvR4CU1etuYl081UJ1LE.jpg",
-        "character_art": [],
-        "extra_posters": [],
-        "extra_backdrops": []
-      },
-      "trailer": "https://www.youtube.com/watch?v=oIBtePb-dGY",
-      "ratings": [
-        {
-          "source": "TMDb",
-          "value": 6.5,
-          "out_of": 10
-        }
-      ],
-      "badges": {
-        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/2160p.png",
-        "hdr": "",
-        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png",
-        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
-        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-      },
-      "specs": {
-        "resolution": "2160p",
-        "source": "WEB-DL",
-        "codec": "x264",
-        "bit_depth": "8bit",
-        "audio": "Tamil 2.0 - 224Kbps + Telugu 2.0 - 224Kbps + Hindi 5.1 - 640Kbps + English 5.1 - 384Kbps",
-        "channels": "5.1",
-        "bitrate": "640 Kbps",
-        "languages": "Multi",
-        "size": "5 GB"
-      },
-      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1weCOQpO5eEMwTbO Ql7krWXGcM5SDFVV|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-      "versions": [
-        {
-          "id": "1weCOQpO5eEMwTbO Ql7krWXGcM5SDFVV",
-          "name": "Elysium (2013) [2160p] [WEB-DL] [Tamil 2.0 - 224Kbps + Telugu 2.0 - 224Kbps + Hindi 5.1 - 640Kbps + English 5.1 - 384Kbps] [5 GB].mkv",
-          "language": "Multi",
-          "dubbed": "Tamil 2.0 - 224Kbps + Telugu 2.0 - 224Kbps + Hindi 5.1 - 640Kbps + English 5.1 - 384Kbps",
-          "quality": "2160p FHD",
-          "resolution": "2160p",
-          "source": "WEB-DL",
-          "source_image": "resources/images/sources/web.png",
-          "codec": "x264",
-          "audio": "Tamil 2.0 - 224Kbps + Telugu 2.0 - 224Kbps + Hindi 5.1 - 640Kbps + English 5.1 - 384Kbps",
-          "channels": "5.1",
-          "bitrate": "640 Kbps",
-          "size": "5 GB",
-          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1weCOQpO5eEMwTbO Ql7krWXGcM5SDFVV|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-        }
-      ]
-    },
-    {
-      "id": "1HvnXcskgHz0ujSl hzAhuXTyRzeBXKKz o",
-      "tmdb_id": 1235877,
-      "imdb_id": "tt33379543",
-      "name": "Jana Nayagan (2026) [1080p] [WEB-DL] [Tamil [DTS 5.1 - 1509Kbps]] [10 GB].mkv",
-      "title": "Jana Nayagan",
-      "original_title": "ஜன நாயகன்",
-      "year": 2026,
-      "runtime": 183,
-      "release_date": "2026-01-01",
-      "certification": "A",
-      "original_language": "ta",
-      "genres": [
-        "Action",
-        "Drama"
-      ],
-      "tagline": "",
-      "plot": "A clash of ideologies. One stands for the people, the other feeds on control. Their paths collided once before. Years later, a child’s silent fear ignites the past, drawing a former police officer into a battle far bigger than personal revenge.",
-      "country": [
-        "India"
-      ],
-      "studio": [
-        "KVN Productions",
-        "The Route"
-      ],
-      "director": [
-        {
-          "name": "H. Vinoth"
-        }
-      ],
-      "writers": [],
-      "cast": [
-        {
-          "name": "Vijay",
-          "character": "Thalapathy Vetri Kondan 'Vetri'",
-          "profile": "https://image.tmdb.org/t/p/w185/zbQ1sDRVRHkroWwvrnqYKMerl66.jpg",
-          "link": "https://www.themoviedb.org/person/91547"
-        },
-        {
-          "name": "Pooja Hegde",
-          "character": "Kayal",
-          "profile": "https://image.tmdb.org/t/p/w185/9wdyzZz0Fu81pnKNDBVOcxkPBIp.jpg",
-          "link": "https://www.themoviedb.org/person/587753"
-        },
-        {
-          "name": "Bobby Deol",
-          "character": "John Himler / Amrish Poojari",
-          "profile": "https://image.tmdb.org/t/p/w185/2npVa3PduichY8e7qBiE54m9VVP.jpg",
-          "link": "https://www.themoviedb.org/person/77235"
-        },
-        {
-          "name": "Mamitha Baiju",
-          "character": "Vijayalakshmi 'Viji'",
-          "profile": "https://image.tmdb.org/t/p/w185/9ySiE3j7ep16fhKi3u5iq5rbOk6.jpg",
-          "link": "https://www.themoviedb.org/person/2191938"
-        },
-        {
-          "name": "Priyamani",
-          "character": "Sheela Rani",
-          "profile": "https://image.tmdb.org/t/p/w185/grcW2eMm77Q2Kj1xX0HvZlRpGRR.jpg",
-          "link": "https://www.themoviedb.org/person/1107197"
-        },
-        {
-          "name": "Prakash Raj",
-          "character": "Roja Rangasamy",
-          "profile": "https://image.tmdb.org/t/p/w185/dJvFZOXmZdkYCOUcKTXQAhBcAoH.jpg",
-          "link": "https://www.themoviedb.org/person/89153"
-        },
-        {
-          "name": "Gautham Vasudev Menon",
-          "character": "Srikanth",
-          "profile": "https://image.tmdb.org/t/p/w185/qOFycWPpr3Hi4kVXKWnTTKCAnGk.jpg",
-          "link": "https://www.themoviedb.org/person/120953"
-        },
-        {
-          "name": "Narain",
-          "character": "Kaleel",
-          "profile": "https://image.tmdb.org/t/p/w185/d0ApUGeFuGXpBkODIc6eLbBkb7B.jpg",
-          "link": "https://www.themoviedb.org/person/587752"
-        },
-        {
-          "name": "Nassar",
-          "character": "CM Arivudai Nambi",
-          "profile": "https://image.tmdb.org/t/p/w185/p3I0tSQY3C5qZW3NzFfbpjKPNL6.jpg",
-          "link": "https://www.themoviedb.org/person/130111"
-        },
-        {
-          "name": "Sunil Varma",
-          "character": "Velu",
-          "profile": "https://image.tmdb.org/t/p/w185/2ueRNLlbB8jaivO6yb7zfIlFhh7.jpg",
-          "link": "https://www.themoviedb.org/person/213428"
-        }
-      ],
-      "artwork": {
-        "poster": "https://image.tmdb.org/t/p/w780/jt8pfSIdi47YpFMMWVRr8w5u2S0.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/v3lNH2gCojWYXVuXcT9FZLBxcSq.jpg",
-        "clearlogo": "",
-        "clearart": "",
-        "banner": "",
-        "landscape": "https://image.tmdb.org/t/p/w780/v3lNH2gCojWYXVuXcT9FZLBxcSq.jpg",
-        "keyart": "",
-        "thumbnail": "https://image.tmdb.org/t/p/w342/jt8pfSIdi47YpFMMWVRr8w5u2S0.jpg",
-        "discart": "",
-        "title_card": "https://image.tmdb.org/t/p/original/v3lNH2gCojWYXVuXcT9FZLBxcSq.jpg",
-        "character_art": [],
-        "extra_posters": [],
-        "extra_backdrops": []
-      },
-      "trailer": "",
-      "ratings": [
-        {
-          "source": "TMDb",
-          "value": 5,
-          "out_of": 10
-        }
-      ],
-      "badges": {
-        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
-        "hdr": "",
-        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png",
-        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
-        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-      },
-      "specs": {
-        "resolution": "1080p",
-        "source": "WEB-DL",
-        "codec": "x264",
-        "bit_depth": "8bit",
-        "audio": "Tamil [DTS 5.1 - 1509Kbps]",
-        "channels": "5.1",
-        "bitrate": "640 Kbps",
-        "languages": "Multi",
-        "size": "10 GB"
-      },
-      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HvnXcskgHz0ujSl hzAhuXTyRzeBXKKz o|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-      "versions": [
-        {
-          "id": "1HvnXcskgHz0ujSl hzAhuXTyRzeBXKKz o",
-          "name": "Jana Nayagan (2026) [1080p] [WEB-DL] [Tamil [DTS 5.1 - 1509Kbps]] [10 GB].mkv",
-          "language": "Multi",
-          "dubbed": "Tamil [DTS 5.1 - 1509Kbps]",
-          "quality": "1080p FHD",
-          "resolution": "1080p",
-          "source": "WEB-DL",
-          "source_image": "resources/images/sources/web.png",
-          "codec": "x264",
-          "audio": "Tamil [DTS 5.1 - 1509Kbps]",
-          "channels": "5.1",
-          "bitrate": "640 Kbps",
-          "size": "10 GB",
-          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HvnXcskgHz0ujSl hzAhuXTyRzeBXKKz o|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-        }
-      ]
+      "name": "H. Vinoth"
     }
   ],
-  "movie_count": 5
+  "writers": [
+    {
+      "name": "H. Vinoth"
+    }
+  ],
+  "cast": [
+    {
+      "name": "Vijay",
+      "character": "Thalapathy Vetri Kondan 'Vetri'",
+      "profile": "https://image.tmdb.org/t/p/w185/zbQ1sDRVRHkroWwvrnqYKMerl66.jpg",
+      "link": "https://www.themoviedb.org/person/91547"
+    },
+    {
+      "name": "Pooja Hegde",
+      "character": "Kayal",
+      "profile": "https://image.tmdb.org/t/p/w185/9wdyzZz0Fu81pnKNDBVOcxkPBIp.jpg",
+      "link": "https://www.themoviedb.org/person/587753"
+    },
+    {
+      "name": "Bobby Deol",
+      "character": "John Himler / Amrish Poojari",
+      "profile": "https://image.tmdb.org/t/p/w185/2npVa3PduichY8e7qBiE54m9VVP.jpg",
+      "link": "https://www.themoviedb.org/person/77235"
+    },
+    {
+      "name": "Mamitha Baiju",
+      "character": "Vijayalakshmi 'Viji'",
+      "profile": "https://image.tmdb.org/t/p/w185/9ySiE3j7ep16fhKi3u5iq5rbOk6.jpg",
+      "link": "https://www.themoviedb.org/person/2191938"
+    },
+    {
+      "name": "Priyamani",
+      "character": "Sheela Rani",
+      "profile": "https://image.tmdb.org/t/p/w185/grcW2eMm77Q2Kj1xX0HvZlRpGRR.jpg",
+      "link": "https://www.themoviedb.org/person/1107197"
+    },
+    {
+      "name": "Prakash Raj",
+      "character": "Roja Rangasamy",
+      "profile": "https://image.tmdb.org/t/p/w185/dJvFZOXmZdkYCOUcKTXQAhBcAoH.jpg",
+      "link": "https://www.themoviedb.org/person/89153"
+    },
+    {
+      "name": "Gautham Vasudev Menon",
+      "character": "Srikanth",
+      "profile": "https://image.tmdb.org/t/p/w185/qOFycWPpr3Hi4kVXKWnTTKCAnGk.jpg",
+      "link": "https://www.themoviedb.org/person/120953"
+    },
+    {
+      "name": "Narain",
+      "character": "Kaleel",
+      "profile": "https://image.tmdb.org/t/p/w185/d0ApUGeFuGXpBkODIc6eLbBkb7B.jpg",
+      "link": "https://www.themoviedb.org/person/587752"
+    },
+    {
+      "name": "Nassar",
+      "character": "CM Arivudai Nambi",
+      "profile": "https://image.tmdb.org/t/p/w185/p3I0tSQY3C5qZW3NzFfbpjKPNL6.jpg",
+      "link": "https://www.themoviedb.org/person/130111"
+    },
+    {
+      "name": "Sunil Varma",
+      "character": "Velu",
+      "profile": "https://image.tmdb.org/t/p/w185/2ueRNLlbB8jaivO6yb7zfIlFhh7.jpg",
+      "link": "https://www.themoviedb.org/person/213428"
+    }
+  ],
+  "artwork": {
+    "poster": "https://image.tmdb.org/t/p/w780/jt8pfSIdi47YpFMMWVRr8w5u2S0.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/v3lNH2gCojWYXVuXcT9FZLBxcSq.jpg",
+    "clearlogo": "",
+    "clearart": "",
+    "banner": "",
+    "landscape": "https://image.tmdb.org/t/p/w780/v3lNH2gCojWYXVuXcT9FZLBxcSq.jpg",
+    "keyart": "",
+    "thumbnail": "https://image.tmdb.org/t/p/w342/jt8pfSIdi47YpFMMWVRr8w5u2S0.jpg",
+    "discart": "",
+    "title_card": "https://image.tmdb.org/t/p/original/v3lNH2gCojWYXVuXcT9FZLBxcSq.jpg",
+    "character_art": [],
+    "extra_posters": [],
+    "extra_backdrops": []
+  },
+  "trailer": "",
+  "ratings": [
+    {
+      "source": "TMDb",
+      "value": 6.6,
+      "out_of": 10
+    }
+  ],
+  "badges": {
+    "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
+    "hdr": "",
+    "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png",
+    "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dts.png",
+    "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+  },
+  "specs": {
+    "resolution": "1080p",
+    "source": "WEB-DL",
+    "codec": "x264",
+    "bit_depth": "8bit",
+    "audio": "Tamil DTS 5.1 - 1509Kbps",
+    "channels": "5.1",
+    "bitrate": "1509 Kbps",
+    "languages": "Tamil",
+    "size": "10 GB"
+  },
+  "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HvnXcskgHz0ujSlhzAhuXTyRzeBXKKzo|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+  "versions": [
+    {
+      "id": "1HvnXcskgHz0ujSlhzAhuXTyRzeBXKKzo",
+      "name": "Jana Nayagan (2026) [1080p] [WEB-DL] [Tamil DTS 5.1 - 1509Kbps] [10 GB].mkv",
+      "language": "Tamil",
+      "dubbed": "Original Tamil DTS 5.1 - 1509Kbps",
+      "quality": "1080p FHD",
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "source_image": "resources/images/sources/web.png",
+      "codec": "x264",
+      "audio": "DTS 5.1",
+      "channels": "5.1",
+      "bitrate": "1509 Kbps",
+      "size": "10 GB",
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HvnXcskgHz0ujSlhzAhuXTyRzeBXKKzo|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+    }
+  ]
 }
