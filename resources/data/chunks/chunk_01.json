@@ -154,5 +154,166 @@
       "size": "10 GB",
       "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HvnXcskgHz0ujSlhzAhuXTyRzeBXKKzo|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
     }
-  ]
+  ],
+  "movies": [
+    {
+      "id": "1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU",
+      "tmdb_id": 432139,
+      "imdb_id": "tt6148156",
+      "name": "Vikram Vedha (2017) [1080p] [WEB-DL] [Tamil DTS 5.1 -  640Kbps] [10 GB].mkv",
+      "title": "Vikram Vedha",
+      "original_title": "விக்ரம் வேதா",
+      "year": 2017,
+      "runtime": 147,
+      "release_date": "2017-01-01",
+      "certification": "UA",
+      "original_language": "ta",
+      "genres": [
+        "Action",
+        "Thriller",
+        "Crime",
+        "Adventure"
+      ],
+      "tagline": "",
+      "plot": "A notorious gangster Vedha surrenders himself to encounter specialist Vikram whom he challenges every step of the way by narrating his life events in the form of riddles that needs to be solved in order to capture him.",
+      "country": [
+        "India"
+      ],
+      "studio": [
+        "Y NOT Studios"
+      ],
+      "director": [
+        {
+          "name": "Pushkar"
+        },
+        {
+          "name": "Gayathri"
+        }
+      ],
+      "writers": [],
+      "cast": [
+        {
+          "name": "R. Madhavan",
+          "character": "Vikram",
+          "profile": "https://image.tmdb.org/t/p/w185/gaDrAdXxIrbBRCd9cX8YvJDEuLb.jpg",
+          "link": "https://www.themoviedb.org/person/85519"
+        },
+        {
+          "name": "Vijay Sethupathi",
+          "character": "Vedha",
+          "profile": "https://image.tmdb.org/t/p/w185/a3HWdfCAbplrvoMNEJCjnkbqqOo.jpg",
+          "link": "https://www.themoviedb.org/person/1123766"
+        },
+        {
+          "name": "Shraddha Srinath",
+          "character": "Priya",
+          "profile": "https://image.tmdb.org/t/p/w185/fzna7CNrtggE9sJLWWOPCHVdCmD.jpg",
+          "link": "https://www.themoviedb.org/person/1619712"
+        },
+        {
+          "name": "Kathir",
+          "character": "Pulli",
+          "profile": "https://image.tmdb.org/t/p/w185/cQNlW5ztPIANrUNRos81cxZuZe5.jpg",
+          "link": "https://www.themoviedb.org/person/1044337"
+        },
+        {
+          "name": "Varalaxmi Sarathkumar",
+          "character": "Chandra",
+          "profile": "https://image.tmdb.org/t/p/w185/vudH16iDpzft1uWIMMgcCRxBTXa.jpg",
+          "link": "https://www.themoviedb.org/person/1118770"
+        },
+        {
+          "name": "Prem",
+          "character": "Simon",
+          "profile": "https://image.tmdb.org/t/p/w185/41ZntbRg0ObcwLPVBxprp8Kz3Ot.jpg",
+          "link": "https://www.themoviedb.org/person/1422294"
+        },
+        {
+          "name": "Hareesh Peradi",
+          "character": "Chetta",
+          "profile": "https://image.tmdb.org/t/p/w185/s6Et5mOEicOPGc3mk4vZLiDQVM6.jpg",
+          "link": "https://www.themoviedb.org/person/1188530"
+        },
+        {
+          "name": "Achyuth Kumar",
+          "character": "SP Surendar",
+          "profile": "https://image.tmdb.org/t/p/w185/zO1MoCgaz0RxILjga8VYXguROMp.jpg",
+          "link": "https://www.themoviedb.org/person/1333834"
+        },
+        {
+          "name": "Vivek Prasanna",
+          "character": "Ravi",
+          "profile": "https://image.tmdb.org/t/p/w185/2Gzfur5QCXWmopdWcLlmNuZcFDt.jpg",
+          "link": "https://www.themoviedb.org/person/1834071"
+        },
+        {
+          "name": "Manikandan",
+          "character": "Santhanam",
+          "profile": "https://image.tmdb.org/t/p/w185/x54nrbLPVxUaStUt5I2om0WuE6j.jpg",
+          "link": "https://www.themoviedb.org/person/1721513"
+        }
+      ],
+      "artwork": {
+        "poster": "https://image.tmdb.org/t/p/w780/se12m3uffluDlkTTZncOzsWKIkg.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/5bm6sq3eunj3It6pqacFrpRQYoy.jpg",
+        "clearlogo": "",
+        "clearart": "",
+        "banner": "",
+        "landscape": "https://image.tmdb.org/t/p/w780/5bm6sq3eunj3It6pqacFrpRQYoy.jpg",
+        "keyart": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w342/se12m3uffluDlkTTZncOzsWKIkg.jpg",
+        "discart": "",
+        "title_card": "https://image.tmdb.org/t/p/original/5bm6sq3eunj3It6pqacFrpRQYoy.jpg",
+        "character_art": [],
+        "extra_posters": [],
+        "extra_backdrops": []
+      },
+      "trailer": "https://www.youtube.com/watch?v=1sVr-uWZPjE",
+      "ratings": [
+        {
+          "source": "TMDb",
+          "value": 7.3,
+          "out_of": 10
+        }
+      ],
+      "badges": {
+        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
+        "hdr": "",
+        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png",
+        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dts.png",
+        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+      },
+      "specs": {
+        "resolution": "1080p",
+        "source": "WEB-DL",
+        "codec": "x264",
+        "bit_depth": "8bit",
+        "audio": "Tamil DTS 5.1 -  640Kbps",
+        "channels": "5.1",
+        "bitrate": "1509 Kbps",
+        "languages": "Tamil",
+        "size": "10 GB"
+      },
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "versions": [
+        {
+          "id": "1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU",
+          "name": "Vikram Vedha (2017) [1080p] [WEB-DL] [Tamil DTS 5.1 -  640Kbps] [10 GB].mkv",
+          "language": "Tamil",
+          "dubbed": "Tamil DTS 5.1 -  640Kbps",
+          "quality": "1080p FHD",
+          "resolution": "1080p",
+          "source": "WEB-DL",
+          "source_image": "resources/images/sources/web.png",
+          "codec": "x264",
+          "audio": "Tamil DTS 5.1 -  640Kbps",
+          "channels": "5.1",
+          "bitrate": "1509 Kbps",
+          "size": "10 GB",
+          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      ]
+    }
+  ],
+  "movie_count": 1
 }
