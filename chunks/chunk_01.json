@@ -198,6 +198,113 @@
         }
       ],
       "updated_at": "2026-10-25T17:47:16.801Z"
+    },
+    {
+      "id": "23767",
+      "tmdb_id": 23767,
+      "imdb_id": "tt23767",
+      "name": "Billa 2007 1080p AMZN WEB-DL DD+5 1 H 264-TR.mkv",
+      "title": "Billa",
+      "original_title": "Billa",
+      "year": 2007,
+      "runtime": 130,
+      "release_date": "2007-01-01",
+      "certification": "UA",
+      "original_language": "ta",
+      "genres": [
+        "Action",
+        "Drama"
+      ],
+      "tagline": "",
+      "plot": "The intertwined stories of an international Don in Malaysia, David Billa, chased by the cops, an Indian police officer, a woman who wants to avenge the death of her brother, and a lowly thief, Velu who shares with Billa, an unusual connection.",
+      "country": [
+        "India"
+      ],
+      "studio": [
+        "MoinuFlix Cinema"
+      ],
+      "director": [
+        {
+          "name": "Director"
+        }
+      ],
+      "writers": [
+        {
+          "name": "Writer"
+        }
+      ],
+      "cast": [
+        {
+          "name": "Lead Actor",
+          "character": "Hero",
+          "profile": null
+        }
+      ],
+      "artwork": {
+        "poster": "https://image.tmdb.org/t/p/w500/g9skD62F7y6VJR5nPZOgpz1ckso.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/42eShFAK1UPPVCey7mcLJjZrXgX.jpg",
+        "landscape": "https://image.tmdb.org/t/p/original/42eShFAK1UPPVCey7mcLJjZrXgX.jpg",
+        "keyart": "https://image.tmdb.org/t/p/w500/g9skD62F7y6VJR5nPZOgpz1ckso.jpg",
+        "banner": "https://image.tmdb.org/t/p/original/42eShFAK1UPPVCey7mcLJjZrXgX.jpg",
+        "clearlogo": "",
+        "clearart": null,
+        "thumbnail": "https://image.tmdb.org/t/p/w500/g9skD62F7y6VJR5nPZOgpz1ckso.jpg",
+        "title_card": "https://image.tmdb.org/t/p/original/42eShFAK1UPPVCey7mcLJjZrXgX.jpg",
+        "intertitle": null,
+        "chapter_cards": [],
+        "character_art": [],
+        "extra_posters": [],
+        "extra_backdrops": []
+      },
+      "trailer": "",
+      "ratings": [
+        {
+          "source": "TMDb",
+          "value": 6.6,
+          "out_of": 10
+        },
+        {
+          "source": "IMDb",
+          "value": 6.6,
+          "out_of": 10
+        }
+      ],
+      "badges": {
+        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
+        "hdr": "",
+        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/bluray.png",
+        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/atmos.png",
+        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+      },
+      "specs": {
+        "resolution": "1080p",
+        "source": "BluRay",
+        "codec": "x265",
+        "bit_depth": "10bit",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "bitrate": "448 Kbps",
+        "languages": "Tamil",
+        "size": "10 GB"
+      },
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1pn1LE4MoDJdxxx_Billa|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "versions": [
+        {
+          "id": "1pn1LE4MoDJdxxx_Billa",
+          "name": "Billa (2007) [1080p] [WEB-DL] [Tamil 5.1 - 448 Kbps] [10 GB].mkv",
+          "language": "Tamil",
+          "dubbed": "Original Track",
+          "quality": "1080p",
+          "resolution": "1080p",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "bitrate": "448 Kbps",
+          "size": "10 GB",
+          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1pn1LE4MoDJdxxx_Billa|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      ]
     }
   ]
 }
