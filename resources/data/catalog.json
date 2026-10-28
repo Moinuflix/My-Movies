@@ -30,5 +30,43 @@
       "audio": "DTS 5.1",
       "channels": "5.1"
     }
+  ],
+  "movies": [
+    {
+      "id": "1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU",
+      "tmdb_id": 432139,
+      "title": "Vikram Vedha",
+      "year": 2017,
+      "poster": "https://image.tmdb.org/t/p/w780/se12m3uffluDlkTTZncOzsWKIkg.jpg",
+      "fanart": "https://image.tmdb.org/t/p/original/5bm6sq3eunj3It6pqacFrpRQYoy.jpg",
+      "logo": "",
+      "rating": 7.3,
+      "original_language": "ta",
+      "genres": [
+        "Action",
+        "Thriller",
+        "Crime",
+        "Adventure"
+      ],
+      "chunk_file": "resources/data/chunks/chunk_01.json",
+      "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "available_languages": [
+        "Tamil"
+      ],
+      "version_count": 1,
+      "available_versions": [
+        {
+          "language": "Tamil",
+          "dubbed": "Tamil DTS 5.1 -  640Kbps",
+          "quality": "1080p FHD",
+          "source": "WEB-DL",
+          "source_image": "resources/images/sources/web.png",
+          "format": "WEB-DL",
+          "codec": "x264",
+          "audio": "Tamil DTS 5.1 -  640Kbps",
+          "channels": "5.1"
+        }
+      ]
+    }
   ]
 }
