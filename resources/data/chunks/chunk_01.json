@@ -25,13 +25,26 @@
     "Trident Arts"
   ],
   "director": [
-    { "name": "Pushkar" },
-    { "name": "Gayathri" }
+    {
+      "name": "Pushkar"
+    },
+    {
+      "name": "Gayathri"
+    }
   ],
   "writers": [
-    { "name": "Pushkar", "job": "Writer" },
-    { "name": "Gayathri", "job": "Writer" },
-    { "name": "Manikandan", "job": "Dialogue" }
+    {
+      "name": "Pushkar",
+      "job": "Writer"
+    },
+    {
+      "name": "Gayathri",
+      "job": "Writer"
+    },
+    {
+      "name": "Manikandan",
+      "job": "Dialogue"
+    }
   ],
   "cast": [
     {
@@ -124,5 +137,189 @@
       "size": "10 GB",
       "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HAZu-5GVjkIInQr79Ekbr0J1pkhUKeU|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
     }
-  ]
+  ],
+  "movies": [
+    {
+      "id": "1ushheQ_CAw_r91b9dkvfNV_aleosCy9u",
+      "tmdb_id": 920,
+      "imdb_id": "tt0317219",
+      "name": "Cars (2006) [1080p] [BluRay] [DD+ 5.1 - 640Kbps] [10 GB].mkv",
+      "title": "Cars",
+      "original_title": "Cars",
+      "year": 2006,
+      "runtime": 117,
+      "release_date": "2006-06-08",
+      "certification": "UA",
+      "original_language": "en",
+      "genres": [
+        "Animation",
+        "Adventure",
+        "Comedy",
+        "Family"
+      ],
+      "tagline": "Ahhh... it's got that new movie smell.",
+      "plot": "Lightning McQueen, a hotshot rookie race car driven to succeed, discovers that life is about the journey, not the finish line, when he finds himself unexpectedly detoured in the sleepy Route 66 town of Radiator Springs. On route across the country to the big Piston Cup Championship in California to compete against two seasoned pros, McQueen gets to know the town's offbeat characters.",
+      "country": [
+        "India"
+      ],
+      "studio": [
+        "Pixar",
+        "Walt Disney Pictures"
+      ],
+      "director": [
+        {
+          "name": "John Lasseter"
+        }
+      ],
+      "writers": [
+        {
+          "name": "Dan Fogelman",
+          "job": "Writer"
+        },
+        {
+          "name": "Joe Ranft",
+          "job": "Writer"
+        },
+        {
+          "name": "John Lasseter",
+          "job": "Writer"
+        },
+        {
+          "name": "Kiel Murray",
+          "job": "Writer"
+        },
+        {
+          "name": "Phil Lorin",
+          "job": "Writer"
+        },
+        {
+          "name": "Jørgen Klubien",
+          "job": "Writer"
+        }
+      ],
+      "cast": [
+        {
+          "name": "Owen Wilson",
+          "character": "Lightning McQueen (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/5A46lNOwmpX77jAdhyKxU7e2Hub.jpg",
+          "link": "https://www.themoviedb.org/person/887"
+        },
+        {
+          "name": "Paul Newman",
+          "character": "Doc Hudson (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/5K9gQEzuQ0DeNO6KKEb5xK8iOVD.jpg",
+          "link": "https://www.themoviedb.org/person/3636"
+        },
+        {
+          "name": "Bonnie Hunt",
+          "character": "Sally Carrera (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/tT9C6uLztgN8OxJULq6F9iEzqlA.jpg",
+          "link": "https://www.themoviedb.org/person/5149"
+        },
+        {
+          "name": "Larry the Cable Guy",
+          "character": "Mater (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/34pX2sQj9DddaQWRBGukSWYdXxS.jpg",
+          "link": "https://www.themoviedb.org/person/15897"
+        },
+        {
+          "name": "Cheech Marin",
+          "character": "Ramone (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/eecHDNRn9K80ZcuSocsMhQb2G1i.jpg",
+          "link": "https://www.themoviedb.org/person/11159"
+        },
+        {
+          "name": "Tony Shalhoub",
+          "character": "Luigi (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/1zfBSuAmOr1xXjNg4WzFWPm5B0Z.jpg",
+          "link": "https://www.themoviedb.org/person/4252"
+        },
+        {
+          "name": "Guido Quaroni",
+          "character": "Guido (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/ie2Q3UcrASkiDKqJOMlhaRaSgFS.jpg",
+          "link": "https://www.themoviedb.org/person/15898"
+        },
+        {
+          "name": "Jenifer Lewis",
+          "character": "Flo (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/htrTYcoJQQpSYo6BrRehe3h46vo.jpg",
+          "link": "https://www.themoviedb.org/person/15899"
+        },
+        {
+          "name": "Paul Dooley",
+          "character": "Sarge (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/7nTdbpU4wIsSDZ8WCPXNJOG9KPI.jpg",
+          "link": "https://www.themoviedb.org/person/15900"
+        },
+        {
+          "name": "Michael Wallis",
+          "character": "Sheriff (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/4TxYHUzqpRhbqjSf162WvpP0Hyu.jpg",
+          "link": "https://www.themoviedb.org/person/15902"
+        }
+      ],
+      "artwork": {
+        "poster": "https://image.tmdb.org/t/p/w780/2Touk3m5gzsqr1VsvxypdyHY5ci.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/sd4xN5xi8tKRPrJOWwNiZEile7f.jpg",
+        "clearlogo": "https://assets.fanart.tv/fanart/cars-503b8ddaf365d.png",
+        "clearart": "https://assets.fanart.tv/fanart/cars-53fb719c98545.png",
+        "banner": "https://assets.fanart.tv/fanart/cars-51b500659d604.jpg",
+        "landscape": "https://image.tmdb.org/t/p/w780/sd4xN5xi8tKRPrJOWwNiZEile7f.jpg",
+        "keyart": "https://assets.fanart.tv/fanart/cars-54ecc871e80b9.jpg",
+        "thumbnail": "https://image.tmdb.org/t/p/w342/2Touk3m5gzsqr1VsvxypdyHY5ci.jpg",
+        "discart": "https://assets.fanart.tv/fanart/cars-5232c0a86d8ca.png",
+        "title_card": "https://image.tmdb.org/t/p/original/sd4xN5xi8tKRPrJOWwNiZEile7f.jpg",
+        "character_art": [],
+        "extra_posters": [],
+        "extra_backdrops": []
+      },
+      "trailer": "https://www.youtube.com/watch?v=XszNWHhpaTc",
+      "ratings": [
+        {
+          "source": "TMDb",
+          "value": 7.1,
+          "out_of": 10
+        }
+      ],
+      "badges": {
+        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
+        "hdr": "",
+        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/bluray.png",
+        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+      },
+      "specs": {
+        "resolution": "1080p",
+        "source": "BluRay",
+        "codec": "x264",
+        "bit_depth": "8bit",
+        "audio": "DD+ 5.1 - 640Kbps",
+        "channels": "5.1",
+        "bitrate": "640 Kbps",
+        "languages": "English",
+        "size": "10 GB"
+      },
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ushheQ_CAw_r91b9dkvfNV_aleosCy9u|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "versions": [
+        {
+          "id": "1ushheQ_CAw_r91b9dkvfNV_aleosCy9u",
+          "name": "Cars (2006) [1080p] [BluRay] [DD+ 5.1 - 640Kbps] [10 GB].mkv",
+          "language": "English",
+          "dubbed": "DD+ 5.1 - 640Kbps",
+          "quality": "1080p FHD",
+          "resolution": "1080p",
+          "source": "BluRay",
+          "source_image": "resources/images/sources/bluray.png",
+          "codec": "x264",
+          "audio": "DD+ 5.1 - 640Kbps",
+          "channels": "5.1",
+          "bitrate": "640 Kbps",
+          "size": "10 GB",
+          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ushheQ_CAw_r91b9dkvfNV_aleosCy9u|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      ]
+    }
+  ],
+  "movie_count": 1
 }
