@@ -1,155 +1,104 @@
 {
-  "id": "1HAZu-5GVjkIInQr79Ekbr0J1pkhUKeU",
-  "tmdb_id": 432139,
-  "imdb_id": "tt6148156",
-  "name": "Vikram Vedha (2017) [1080p] [WEB-DL] [Tamil DTS 5.1 - 1509Kbps] [10 GB].mkv",
-  "title": "Vikram Vedha",
-  "original_title": "விக்ரம் வேதா",
-  "year": 2017,
-  "runtime": 147,
-  "release_date": "2017-07-21",
-  "certification": "UA",
-  "original_language": "ta",
-  "genres": [
-    "Action",
-    "Thriller",
-    "Crime"
-  ],
-  "tagline": "Shall I tell you a story?",
-  "plot": "A notorious gangster Vedha surrenders himself to encounter specialist Vikram whom he challenges every step of the way by narrating his life events in the form of riddles that needs to be solved in order to capture him.",
-  "country": [
-    "India"
-  ],
-  "studio": [
-    "Y NOT Studios",
-    "Trident Arts"
-  ],
-  "director": [
-    {
-      "name": "Pushkar"
-    },
-    {
-      "name": "Gayathri"
-    }
-  ],
-  "writers": [
-    {
-      "name": "Pushkar",
-      "job": "Writer"
-    },
-    {
-      "name": "Gayathri",
-      "job": "Writer"
-    },
-    {
-      "name": "Manikandan",
-      "job": "Dialogue"
-    }
-  ],
-  "cast": [
-    {
-      "name": "R. Madhavan",
-      "character": "Vikram",
-      "profile": "https://image.tmdb.org/t/p/w185/gaDrAdXxIrbBRCd9cX8YvJDEuLb.jpg",
-      "link": "https://www.themoviedb.org/person/85519"
-    },
-    {
-      "name": "Vijay Sethupathi",
-      "character": "Vedha",
-      "profile": "https://image.tmdb.org/t/p/w185/a3HWdfCAbplrvoMNEJCjnkbqqOo.jpg",
-      "link": "https://www.themoviedb.org/person/1123766"
-    },
-    {
-      "name": "Shraddha Srinath",
-      "character": "Priya",
-      "profile": "https://image.tmdb.org/t/p/w185/fzna7CNrtggE9sJLWWOPCHVdCmD.jpg",
-      "link": "https://www.themoviedb.org/person/1619712"
-    },
-    {
-      "name": "Kathir",
-      "character": "Pulli",
-      "profile": "https://image.tmdb.org/t/p/w185/cQNlW5ztPIANrUNRos81cxZuZe5.jpg",
-      "link": "https://www.themoviedb.org/person/1044337"
-    },
-    {
-      "name": "Varalaxmi Sarathkumar",
-      "character": "Chandra",
-      "profile": "https://image.tmdb.org/t/p/w185/vudH16iDpzft1uWIMMgcCRxBTXa.jpg",
-      "link": "https://www.themoviedb.org/person/1118770"
-    }
-  ],
-  "artwork": {
-    "poster": "https://image.tmdb.org/t/p/w780/se12m3uffluDlkTTZncOzsWKIkg.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/5bm6sq3eunj3It6pqacFrpRQYoy.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/5bm6sq3eunj3It6pqacFrpRQYoy.jpg",
-    "clearart": "",
-    "banner": "https://image.tmdb.org/t/p/w1280/5bm6sq3eunj3It6pqacFrpRQYoy.jpg",
-    "landscape": "https://image.tmdb.org/t/p/w780/5bm6sq3eunj3It6pqacFrpRQYoy.jpg",
-    "keyart": "https://image.tmdb.org/t/p/w780/se12m3uffluDlkTTZncOzsWKIkg.jpg",
-    "thumbnail": "https://image.tmdb.org/t/p/w342/se12m3uffluDlkTTZncOzsWKIkg.jpg",
-    "discart": "",
-    "title_card": "https://image.tmdb.org/t/p/original/5bm6sq3eunj3It6pqacFrpRQYoy.jpg",
-    "character_art": [],
-    "extra_posters": [],
-    "extra_backdrops": []
-  },
-  "trailer": "https://www.youtube.com/watch?v=1sVr-uWZPjE",
-  "ratings": [
-    {
-      "source": "TMDb",
-      "value": 7.3,
-      "out_of": 10
-    }
-  ],
-  "badges": {
-    "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
-    "hdr": "",
-    "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png",
-    "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dts.png",
-    "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-  },
-  "specs": {
-    "resolution": "1080p",
-    "source": "WEB-DL",
-    "codec": "x264",
-    "bit_depth": "8bit",
-    "audio": "Tamil DTS 5.1 - 1509Kbps",
-    "channels": "5.1",
-    "bitrate": "1509 Kbps",
-    "languages": "Tamil",
-    "size": "10 GB"
-  },
-  "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HAZu-5GVjkIInQr79Ekbr0J1pkhUKeU|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-  "versions": [
-    {
-      "id": "1HAZu-5GVjkIInQr79Ekbr0J1pkhUKeU",
-      "name": "Vikram Vedha (2017) [1080p] [WEB-DL] [Tamil DTS 5.1 - 1509Kbps] [10 GB].mkv",
-      "language": "Tamil",
-      "dubbed": "Tamil DTS 5.1 - 1509Kbps",
-      "quality": "1080p FHD",
-      "resolution": "1080p",
-      "source": "WEB-DL",
-      "source_image": "resources/images/sources/web.png",
-      "codec": "x264",
-      "audio": "DTS 5.1",
-      "channels": "5.1",
-      "bitrate": "1509 Kbps",
-      "size": "10 GB",
-      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HAZu-5GVjkIInQr79Ekbr0J1pkhUKeU|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-    }
-  ],
+  "chunk_id": "chunk_01",
+  "movie_count": 10,
   "movies": [
+    {
+      "id": "1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU",
+      "tmdb_id": 432139,
+      "name": "Vikram Vedha (2017).mkv",
+      "title": "Vikram Vedha",
+      "original_title": "Vikram Vedha",
+      "year": 2017,
+      "rating": 7.3,
+      "original_language": "ta",
+      "genres": [
+        "Action",
+        "Thriller",
+        "Crime",
+        "Adventure"
+      ],
+      "plot": "A notorious gangster Vedha surrenders himself to encounter specialist Vikram whom he challenges every step of the way by narrating his life events in the form of riddles that needs to be solved in order to capture him.",
+      "cast": [
+        {
+          "name": "R. Madhavan",
+          "character": "Vikram",
+          "profile": "https://image.tmdb.org/t/p/w185/gaDrAdXxIrbBRCd9cX8YvJDEuLb.jpg"
+        },
+        {
+          "name": "Vijay Sethupathi",
+          "character": "Vedha",
+          "profile": "https://image.tmdb.org/t/p/w185/a3HWdfCAbplrvoMNEJCjnkbqqOo.jpg"
+        },
+        {
+          "name": "Shraddha Srinath",
+          "character": "Priya",
+          "profile": "https://image.tmdb.org/t/p/w185/fzna7CNrtggE9sJLWWOPCHVdCmD.jpg"
+        },
+        {
+          "name": "Kathir",
+          "character": "Pulli",
+          "profile": "https://image.tmdb.org/t/p/w185/cQNlW5ztPIANrUNRos81cxZuZe5.jpg"
+        },
+        {
+          "name": "Varalaxmi Sarathkumar",
+          "character": "Chandra",
+          "profile": "https://image.tmdb.org/t/p/w185/vudH16iDpzft1uWIMMgcCRxBTXa.jpg"
+        },
+        {
+          "name": "Prem",
+          "character": "Simon",
+          "profile": "https://image.tmdb.org/t/p/w185/41ZntbRg0ObcwLPVBxprp8Kz3Ot.jpg"
+        },
+        {
+          "name": "Hareesh Peradi",
+          "character": "Chetta",
+          "profile": "https://image.tmdb.org/t/p/w185/s6Et5mOEicOPGc3mk4vZLiDQVM6.jpg"
+        },
+        {
+          "name": "Achyuth Kumar",
+          "character": "SP Surendar",
+          "profile": "https://image.tmdb.org/t/p/w185/zO1MoCgaz0RxILjga8VYXguROMp.jpg"
+        },
+        {
+          "name": "Vivek Prasanna",
+          "character": "Ravi",
+          "profile": "https://image.tmdb.org/t/p/w185/2Gzfur5QCXWmopdWcLlmNuZcFDt.jpg"
+        },
+        {
+          "name": "Manikandan",
+          "character": "Santhanam",
+          "profile": "https://image.tmdb.org/t/p/w185/x54nrbLPVxUaStUt5I2om0WuE6j.jpg"
+        }
+      ],
+      "artwork": {
+        "poster": "https://image.tmdb.org/t/p/w780/se12m3uffluDlkTTZncOzsWKIkg.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/5bm6sq3eunj3It6pqacFrpRQYoy.jpg",
+        "thumbnail": "https://image.tmdb.org/t/p/w780/se12m3uffluDlkTTZncOzsWKIkg.jpg"
+      },
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "specs": {
+        "resolution": "1080p",
+        "source": "WEB-DL",
+        "audio": "5.1",
+        "size": "5 GB"
+      },
+      "versions": [
+        {
+          "id": "1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU",
+          "name": "Vikram Vedha.mkv",
+          "quality": "1080p FHD",
+          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      ]
+    },
     {
       "id": "1ushheQ_CAw_r91b9dkvfNV_aleosCy9u",
       "tmdb_id": 920,
-      "imdb_id": "tt0317219",
-      "name": "Cars (2006) [1080p] [BluRay] [DD+ 5.1 - 640Kbps] [10 GB].mkv",
+      "name": "Cars (2006).mkv",
       "title": "Cars",
       "original_title": "Cars",
       "year": 2006,
-      "runtime": 117,
-      "release_date": "2006-06-08",
-      "certification": "UA",
+      "rating": 7.1,
       "original_language": "en",
       "genres": [
         "Animation",
@@ -157,165 +106,76 @@
         "Comedy",
         "Family"
       ],
-      "tagline": "Ahhh... it's got that new movie smell.",
       "plot": "Lightning McQueen, a hotshot rookie race car driven to succeed, discovers that life is about the journey, not the finish line, when he finds himself unexpectedly detoured in the sleepy Route 66 town of Radiator Springs. On route across the country to the big Piston Cup Championship in California to compete against two seasoned pros, McQueen gets to know the town's offbeat characters.",
-      "country": [
-        "India"
-      ],
-      "studio": [
-        "Pixar",
-        "Walt Disney Pictures"
-      ],
-      "director": [
-        {
-          "name": "John Lasseter"
-        }
-      ],
-      "writers": [
-        {
-          "name": "Dan Fogelman",
-          "job": "Writer"
-        },
-        {
-          "name": "Joe Ranft",
-          "job": "Writer"
-        },
-        {
-          "name": "John Lasseter",
-          "job": "Writer"
-        },
-        {
-          "name": "Kiel Murray",
-          "job": "Writer"
-        },
-        {
-          "name": "Phil Lorin",
-          "job": "Writer"
-        },
-        {
-          "name": "Jørgen Klubien",
-          "job": "Writer"
-        }
-      ],
       "cast": [
         {
           "name": "Owen Wilson",
           "character": "Lightning McQueen (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/5A46lNOwmpX77jAdhyKxU7e2Hub.jpg",
-          "link": "https://www.themoviedb.org/person/887"
+          "profile": "https://image.tmdb.org/t/p/w185/5A46lNOwmpX77jAdhyKxU7e2Hub.jpg"
         },
         {
           "name": "Paul Newman",
           "character": "Doc Hudson (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/5K9gQEzuQ0DeNO6KKEb5xK8iOVD.jpg",
-          "link": "https://www.themoviedb.org/person/3636"
+          "profile": "https://image.tmdb.org/t/p/w185/5K9gQEzuQ0DeNO6KKEb5xK8iOVD.jpg"
         },
         {
           "name": "Bonnie Hunt",
           "character": "Sally Carrera (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/tT9C6uLztgN8OxJULq6F9iEzqlA.jpg",
-          "link": "https://www.themoviedb.org/person/5149"
+          "profile": "https://image.tmdb.org/t/p/w185/tT9C6uLztgN8OxJULq6F9iEzqlA.jpg"
         },
         {
           "name": "Larry the Cable Guy",
           "character": "Mater (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/34pX2sQj9DddaQWRBGukSWYdXxS.jpg",
-          "link": "https://www.themoviedb.org/person/15897"
+          "profile": "https://image.tmdb.org/t/p/w185/34pX2sQj9DddaQWRBGukSWYdXxS.jpg"
         },
         {
           "name": "Cheech Marin",
           "character": "Ramone (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/eecHDNRn9K80ZcuSocsMhQb2G1i.jpg",
-          "link": "https://www.themoviedb.org/person/11159"
+          "profile": "https://image.tmdb.org/t/p/w185/eecHDNRn9K80ZcuSocsMhQb2G1i.jpg"
         },
         {
           "name": "Tony Shalhoub",
           "character": "Luigi (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/1zfBSuAmOr1xXjNg4WzFWPm5B0Z.jpg",
-          "link": "https://www.themoviedb.org/person/4252"
+          "profile": "https://image.tmdb.org/t/p/w185/1zfBSuAmOr1xXjNg4WzFWPm5B0Z.jpg"
         },
         {
           "name": "Guido Quaroni",
           "character": "Guido (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/ie2Q3UcrASkiDKqJOMlhaRaSgFS.jpg",
-          "link": "https://www.themoviedb.org/person/15898"
+          "profile": "https://image.tmdb.org/t/p/w185/ie2Q3UcrASkiDKqJOMlhaRaSgFS.jpg"
         },
         {
           "name": "Jenifer Lewis",
           "character": "Flo (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/htrTYcoJQQpSYo6BrRehe3h46vo.jpg",
-          "link": "https://www.themoviedb.org/person/15899"
+          "profile": "https://image.tmdb.org/t/p/w185/htrTYcoJQQpSYo6BrRehe3h46vo.jpg"
         },
         {
           "name": "Paul Dooley",
           "character": "Sarge (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/7nTdbpU4wIsSDZ8WCPXNJOG9KPI.jpg",
-          "link": "https://www.themoviedb.org/person/15900"
+          "profile": "https://image.tmdb.org/t/p/w185/7nTdbpU4wIsSDZ8WCPXNJOG9KPI.jpg"
         },
         {
           "name": "Michael Wallis",
           "character": "Sheriff (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/4TxYHUzqpRhbqjSf162WvpP0Hyu.jpg",
-          "link": "https://www.themoviedb.org/person/15902"
+          "profile": "https://image.tmdb.org/t/p/w185/4TxYHUzqpRhbqjSf162WvpP0Hyu.jpg"
         }
       ],
       "artwork": {
         "poster": "https://image.tmdb.org/t/p/w780/2Touk3m5gzsqr1VsvxypdyHY5ci.jpg",
         "fanart": "https://image.tmdb.org/t/p/original/sd4xN5xi8tKRPrJOWwNiZEile7f.jpg",
-        "clearlogo": "https://assets.fanart.tv/fanart/cars-503b8ddaf365d.png",
-        "clearart": "https://assets.fanart.tv/fanart/cars-53fb719c98545.png",
-        "banner": "https://assets.fanart.tv/fanart/cars-51b500659d604.jpg",
-        "landscape": "https://image.tmdb.org/t/p/w780/sd4xN5xi8tKRPrJOWwNiZEile7f.jpg",
-        "keyart": "https://assets.fanart.tv/fanart/cars-54ecc871e80b9.jpg",
-        "thumbnail": "https://image.tmdb.org/t/p/w342/2Touk3m5gzsqr1VsvxypdyHY5ci.jpg",
-        "discart": "https://assets.fanart.tv/fanart/cars-5232c0a86d8ca.png",
-        "title_card": "https://image.tmdb.org/t/p/original/sd4xN5xi8tKRPrJOWwNiZEile7f.jpg",
-        "character_art": [],
-        "extra_posters": [],
-        "extra_backdrops": []
-      },
-      "trailer": "https://www.youtube.com/watch?v=XszNWHhpaTc",
-      "ratings": [
-        {
-          "source": "TMDb",
-          "value": 7.1,
-          "out_of": 10
-        }
-      ],
-      "badges": {
-        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
-        "hdr": "",
-        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/bluray.png",
-        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
-        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-      },
-      "specs": {
-        "resolution": "1080p",
-        "source": "BluRay",
-        "codec": "x264",
-        "bit_depth": "8bit",
-        "audio": "DD+ 5.1 - 640Kbps",
-        "channels": "5.1",
-        "bitrate": "640 Kbps",
-        "languages": "English",
-        "size": "10 GB"
+        "thumbnail": "https://image.tmdb.org/t/p/w780/2Touk3m5gzsqr1VsvxypdyHY5ci.jpg"
       },
       "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ushheQ_CAw_r91b9dkvfNV_aleosCy9u|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "specs": {
+        "resolution": "1080p",
+        "source": "WEB-DL",
+        "audio": "5.1",
+        "size": "5 GB"
+      },
       "versions": [
         {
           "id": "1ushheQ_CAw_r91b9dkvfNV_aleosCy9u",
-          "name": "Cars (2006) [1080p] [BluRay] [DD+ 5.1 - 640Kbps] [10 GB].mkv",
-          "language": "English",
-          "dubbed": "DD+ 5.1 - 640Kbps",
+          "name": "Cars.mkv",
           "quality": "1080p FHD",
-          "resolution": "1080p",
-          "source": "BluRay",
-          "source_image": "resources/images/sources/bluray.png",
-          "codec": "x264",
-          "audio": "DD+ 5.1 - 640Kbps",
-          "channels": "5.1",
-          "bitrate": "640 Kbps",
-          "size": "10 GB",
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ushheQ_CAw_r91b9dkvfNV_aleosCy9u|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
@@ -323,160 +183,87 @@
     {
       "id": "17E3QIUWI2zv1QvZFWvnrOJ-TAWjMyT_c",
       "tmdb_id": 1515692,
-      "imdb_id": "tt44090278",
-      "name": "Baththa (2026) [2160p] [Netflix] [DD+ 5.1 - 640Kbps] [14 GB].mkv",
+      "name": "Baththa (2026).mkv",
       "title": "Baththa",
-      "original_title": "பத்தா",
+      "original_title": "Baththa",
       "year": 2026,
-      "runtime": 159,
-      "release_date": "2026-10-01",
-      "certification": "",
+      "rating": 8.2,
       "original_language": "ta",
       "genres": [
         "Drama",
         "Comedy",
         "Action"
       ],
-      "tagline": "",
       "plot": "In 1986 Madras, a timid eight-year-old boy accidentally traps a feared gangster inside a deserted school toilet. As the gangster is forced to confront hunger, loneliness and his own vulnerability, an unlikely bond begins to grow between the two, changing their lives forever.",
-      "country": [
-        "India"
-      ],
-      "studio": [
-        "A for Apple Studios",
-        "Cine1 Studios",
-        "Star Studios"
-      ],
-      "director": [
-        {
-          "name": "Balaji Tharaneetharan"
-        }
-      ],
-      "writers": [
-        {
-          "name": "Balaji Tharaneetharan",
-          "job": "Writer"
-        }
-      ],
       "cast": [
         {
           "name": "Vijay Sethupathi",
           "character": "Bathvachalam 'Baththa'",
-          "profile": "https://image.tmdb.org/t/p/w185/a3HWdfCAbplrvoMNEJCjnkbqqOo.jpg",
-          "link": "https://www.themoviedb.org/person/1123766"
+          "profile": "https://image.tmdb.org/t/p/w185/a3HWdfCAbplrvoMNEJCjnkbqqOo.jpg"
         },
         {
           "name": "Lijomol Jose",
           "character": "Kannima",
-          "profile": "https://image.tmdb.org/t/p/w185/vXFBgF6NMON7L4RzZ6B35lOVYOu.jpg",
-          "link": "https://www.themoviedb.org/person/1620961"
+          "profile": "https://image.tmdb.org/t/p/w185/vXFBgF6NMON7L4RzZ6B35lOVYOu.jpg"
         },
         {
           "name": "Sai Prithviraj",
           "character": "Sabari",
-          "profile": null,
-          "link": "https://www.themoviedb.org/person/6523177"
+          "profile": null
         },
         {
           "name": "Sahasra Sree",
           "character": "Thenmozhi 'Thenu'",
-          "profile": null,
-          "link": "https://www.themoviedb.org/person/4294729"
+          "profile": null
         },
         {
           "name": "Santhy Balachandran",
           "character": "Selvi",
-          "profile": "https://image.tmdb.org/t/p/w185/gLpx6IM3Ifs6m1tytsc3yc4Lw90.jpg",
-          "link": "https://www.themoviedb.org/person/1874536"
+          "profile": "https://image.tmdb.org/t/p/w185/gLpx6IM3Ifs6m1tytsc3yc4Lw90.jpg"
         },
         {
           "name": "Arjun Chidambaram",
           "character": "Jyoti",
-          "profile": "https://image.tmdb.org/t/p/w185/yay74IONzoiC50I2Od5L5a0bcbm.jpg",
-          "link": "https://www.themoviedb.org/person/1321729"
+          "profile": "https://image.tmdb.org/t/p/w185/yay74IONzoiC50I2Od5L5a0bcbm.jpg"
         },
         {
           "name": "Hari Krishnan",
           "character": "Thirunavukarasu",
-          "profile": "https://image.tmdb.org/t/p/w185/2sRRE4rMjDKai32u32oU7IqYvTp.jpg",
-          "link": "https://www.themoviedb.org/person/1655332"
+          "profile": "https://image.tmdb.org/t/p/w185/2sRRE4rMjDKai32u32oU7IqYvTp.jpg"
         },
         {
           "name": "Ajay Ghosh",
           "character": "Konda",
-          "profile": "https://image.tmdb.org/t/p/w185/bvexSjSRhZM8ke753Sq1oZf5pxY.jpg",
-          "link": "https://www.themoviedb.org/person/1289211"
+          "profile": "https://image.tmdb.org/t/p/w185/bvexSjSRhZM8ke753Sq1oZf5pxY.jpg"
         },
         {
           "name": "Deepa Venkat",
           "character": "Konda's wife",
-          "profile": "https://image.tmdb.org/t/p/w185/zXDXPA76H7aFFtNJIhCnsFuQczN.jpg",
-          "link": "https://www.themoviedb.org/person/584120"
+          "profile": "https://image.tmdb.org/t/p/w185/zXDXPA76H7aFFtNJIhCnsFuQczN.jpg"
         },
         {
           "name": "Ramya Pandian",
           "character": "Jayanthi",
-          "profile": "https://image.tmdb.org/t/p/w185/s18aobLUuA4JZVxkWA3mQstbiLV.jpg",
-          "link": "https://www.themoviedb.org/person/1519693"
+          "profile": "https://image.tmdb.org/t/p/w185/s18aobLUuA4JZVxkWA3mQstbiLV.jpg"
         }
       ],
       "artwork": {
         "poster": "https://image.tmdb.org/t/p/w780/n8Df1H1TmcmZfjGgWh5uQyRFzHy.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/5sBnZMT1aJ6cBvehKOzOOLdI6bz.jpg",
-        "clearlogo": "https://image.tmdb.org/t/p/original/4ycOQ94Sh73VboamUUPGe49f24Q.png",
-        "clearart": "",
-        "banner": "",
-        "landscape": "https://image.tmdb.org/t/p/w780/5sBnZMT1aJ6cBvehKOzOOLdI6bz.jpg",
-        "keyart": "",
-        "thumbnail": "https://image.tmdb.org/t/p/w342/n8Df1H1TmcmZfjGgWh5uQyRFzHy.jpg",
-        "discart": "",
-        "title_card": "https://image.tmdb.org/t/p/original/5sBnZMT1aJ6cBvehKOzOOLdI6bz.jpg",
-        "character_art": [],
-        "extra_posters": [],
-        "extra_backdrops": []
-      },
-      "trailer": "https://www.youtube.com/watch?v=QAMyuZSvqWI",
-      "ratings": [
-        {
-          "source": "TMDb",
-          "value": 8.2,
-          "out_of": 10
-        }
-      ],
-      "badges": {
-        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/2160p.png",
-        "hdr": "",
-        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/netflix.png",
-        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
-        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-      },
-      "specs": {
-        "resolution": "2160p",
-        "source": "Netflix",
-        "codec": "x264",
-        "bit_depth": "8bit",
-        "audio": "DD+ 5.1 - 640Kbps",
-        "channels": "5.1",
-        "bitrate": "640 Kbps",
-        "languages": "Tamil",
-        "size": "14 GB"
+        "fanart": "https://image.tmdb.org/t/p/original/xrAtBSFEYzcRRB5kOvtICSuOrok.jpg",
+        "thumbnail": "https://image.tmdb.org/t/p/w780/n8Df1H1TmcmZfjGgWh5uQyRFzHy.jpg"
       },
       "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=17E3QIUWI2zv1QvZFWvnrOJ-TAWjMyT_c|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "specs": {
+        "resolution": "1080p",
+        "source": "WEB-DL",
+        "audio": "5.1",
+        "size": "5 GB"
+      },
       "versions": [
         {
           "id": "17E3QIUWI2zv1QvZFWvnrOJ-TAWjMyT_c",
-          "name": "Baththa (2026) [2160p] [Netflix] [DD+ 5.1 - 640Kbps] [14 GB].mkv",
-          "language": "Tamil",
-          "dubbed": "DD+ 5.1 - 640Kbps",
-          "quality": "2160p FHD",
-          "resolution": "2160p",
-          "source": "Netflix",
-          "source_image": "resources/images/sources/netflix.png",
-          "codec": "x264",
-          "audio": "DD+ 5.1 - 640Kbps",
-          "channels": "5.1",
-          "bitrate": "640 Kbps",
-          "size": "14 GB",
+          "name": "Baththa.mkv",
+          "quality": "1080p FHD",
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=17E3QIUWI2zv1QvZFWvnrOJ-TAWjMyT_c|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
@@ -484,14 +271,11 @@
     {
       "id": "1hOjMoYzmBNLw2LpSzTk4f7KIUhAtcdH_",
       "tmdb_id": 1108427,
-      "imdb_id": "tt27419466",
-      "name": "Moana (2026) [1080p] [BluRay] [Telugu + Tamil + Hindi (DDP 5.1 - 192Kbps) + English (DDP 7.1 - 1509Kbps)] [10 GB].mkv",
+      "name": "Moana (2026).mkv",
       "title": "Moana",
       "original_title": "Moana",
       "year": 2026,
-      "runtime": 115,
-      "release_date": "2026-07-10",
-      "certification": "UA",
+      "rating": 7.5,
       "original_language": "en",
       "genres": [
         "Family",
@@ -499,154 +283,76 @@
         "Comedy",
         "Adventure"
       ],
-      "tagline": "The ocean chose her for a reason.",
       "plot": "Teenage Moana answers the Ocean's call and, for the first time, voyages beyond the reef of her island of Motunui with infamous demigod Maui on an unforgettable journey to restore prosperity to her people.",
-      "telegram_channel": "@Tamiltvtoonsofficial",
-      "country": [
-        "India"
-      ],
-      "studio": [
-        "Walt Disney Pictures",
-        "Seven Bucks Productions",
-        "Flynn Picture Company",
-        "5000 Broadway Productions"
-      ],
-      "director": [
-        {
-          "name": "Thomas Kail"
-        }
-      ],
-      "writers": [
-        {
-          "name": "Jared Bush",
-          "job": "Writer"
-        },
-        {
-          "name": "Dana Ledoux Miller",
-          "job": "Writer"
-        }
-      ],
       "cast": [
         {
           "name": "Catherine Lagaʻaia",
           "character": "Moana",
-          "profile": "https://image.tmdb.org/t/p/w185/tUyT2VfVuRJPqeAbLhFFOtZa4fH.jpg",
-          "link": "https://www.themoviedb.org/person/4247263"
+          "profile": "https://image.tmdb.org/t/p/w185/tUyT2VfVuRJPqeAbLhFFOtZa4fH.jpg"
         },
         {
           "name": "Dwayne Johnson",
           "character": "Maui",
-          "profile": "https://image.tmdb.org/t/p/w185/5QApZVV8FUFlVxQpIK3Ew6cqotq.jpg",
-          "link": "https://www.themoviedb.org/person/18918"
+          "profile": "https://image.tmdb.org/t/p/w185/5QApZVV8FUFlVxQpIK3Ew6cqotq.jpg"
         },
         {
           "name": "Rena Owen",
           "character": "Gramma Tala",
-          "profile": "https://image.tmdb.org/t/p/w185/648ZdDBmlx6OFDFRmgAbh6q5LBo.jpg",
-          "link": "https://www.themoviedb.org/person/7241"
+          "profile": "https://image.tmdb.org/t/p/w185/648ZdDBmlx6OFDFRmgAbh6q5LBo.jpg"
         },
         {
           "name": "John Tui",
           "character": "Chief Tui",
-          "profile": "https://image.tmdb.org/t/p/w185/2jIc9M5kl2GmK8fZtbtUr2s1jkS.jpg",
-          "link": "https://www.themoviedb.org/person/205406"
+          "profile": "https://image.tmdb.org/t/p/w185/2jIc9M5kl2GmK8fZtbtUr2s1jkS.jpg"
         },
         {
           "name": "Frankie Adams",
           "character": "Sina",
-          "profile": "https://image.tmdb.org/t/p/w185/aAUHUSf0lh3OBRoaiCRL9ep8lfL.jpg",
-          "link": "https://www.themoviedb.org/person/1753341"
+          "profile": "https://image.tmdb.org/t/p/w185/aAUHUSf0lh3OBRoaiCRL9ep8lfL.jpg"
         },
         {
           "name": "Jemaine Clement",
           "character": "Tamatoa (voice)",
-          "profile": "https://image.tmdb.org/t/p/w185/6eiNbeurpHb2fxIeT0RrJ0wRI25.jpg",
-          "link": "https://www.themoviedb.org/person/55936"
+          "profile": "https://image.tmdb.org/t/p/w185/6eiNbeurpHb2fxIeT0RrJ0wRI25.jpg"
         },
         {
           "name": "Emma Puahi-Shapazian",
           "character": "Moana (4 years old)",
-          "profile": "https://image.tmdb.org/t/p/w185/iFHiH7MAJja89Grgu47AdvsPhEU.jpg",
-          "link": "https://www.themoviedb.org/person/6337289"
+          "profile": "https://image.tmdb.org/t/p/w185/iFHiH7MAJja89Grgu47AdvsPhEU.jpg"
         },
         {
           "name": "Amaya Masoli",
           "character": "Moana (8 years old)",
-          "profile": "https://image.tmdb.org/t/p/w185/fDqCryVbJGSb6CPLCIxmfbN8wsV.jpg",
-          "link": "https://www.themoviedb.org/person/6337288"
+          "profile": "https://image.tmdb.org/t/p/w185/fDqCryVbJGSb6CPLCIxmfbN8wsV.jpg"
         },
         {
           "name": "Sam Puefua",
           "character": "Village Fisherman",
-          "profile": "https://image.tmdb.org/t/p/w185/iDcFUBYJMMPf2TIynGHu6U23cWI.jpg",
-          "link": "https://www.themoviedb.org/person/1869261"
+          "profile": "https://image.tmdb.org/t/p/w185/iDcFUBYJMMPf2TIynGHu6U23cWI.jpg"
         },
         {
           "name": "Sione Milford",
           "character": "Coconut Farmer",
-          "profile": null,
-          "link": "https://www.themoviedb.org/person/6352141"
+          "profile": null
         }
       ],
       "artwork": {
         "poster": "https://image.tmdb.org/t/p/w780/gaet1xQ2nxrG0V1Ep9T20ZMNEIC.jpg",
         "fanart": "https://image.tmdb.org/t/p/original/c6BPbkO5Npt1OdwttAxCFo06wtH.jpg",
-        "clearlogo": "https://assets.fanart.tv/fanart/moana-69c3be622f9a7.png",
-        "clearart": "https://assets.fanart.tv/fanart/moana-69c3be686f386.png",
-        "banner": "",
-        "landscape": "https://image.tmdb.org/t/p/w780/c6BPbkO5Npt1OdwttAxCFo06wtH.jpg",
-        "keyart": "https://assets.fanart.tv/fanart/moana-691b932f20dcc.jpg",
-        "thumbnail": "https://image.tmdb.org/t/p/w342/gaet1xQ2nxrG0V1Ep9T20ZMNEIC.jpg",
-        "discart": "https://assets.fanart.tv/fanart/moana-6aa640d0bb2a5.png",
-        "title_card": "https://image.tmdb.org/t/p/original/c6BPbkO5Npt1OdwttAxCFo06wtH.jpg",
-        "character_art": [],
-        "extra_posters": [],
-        "extra_backdrops": []
-      },
-      "trailer": "https://www.youtube.com/watch?v=n7f6hlKsxxo",
-      "ratings": [
-        {
-          "source": "TMDb",
-          "value": 7.5,
-          "out_of": 10
-        }
-      ],
-      "badges": {
-        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
-        "hdr": "",
-        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/bluray.png",
-        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dts.png",
-        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-      },
-      "specs": {
-        "resolution": "1080p",
-        "source": "BluRay",
-        "codec": "x264",
-        "bit_depth": "8bit",
-        "audio": "Telugu + Tamil + Hindi (DDP 5.1 - 192Kbps) + English (DDP 7.1 - 1509Kbps)",
-        "channels": "5.1",
-        "bitrate": "1509 Kbps",
-        "languages": "English",
-        "size": "10 GB",
-        "telegram_tag": "@Tamiltvtoonsofficial"
+        "thumbnail": "https://image.tmdb.org/t/p/w780/gaet1xQ2nxrG0V1Ep9T20ZMNEIC.jpg"
       },
       "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1hOjMoYzmBNLw2LpSzTk4f7KIUhAtcdH_|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "specs": {
+        "resolution": "1080p",
+        "source": "WEB-DL",
+        "audio": "5.1",
+        "size": "5 GB"
+      },
       "versions": [
         {
           "id": "1hOjMoYzmBNLw2LpSzTk4f7KIUhAtcdH_",
-          "name": "Moana (2026) [1080p] [BluRay] [Telugu + Tamil + Hindi (DDP 5.1 - 192Kbps) + English (DDP 7.1 - 1509Kbps)] [10 GB].mkv",
-          "language": "English",
-          "dubbed": "Telugu + Tamil + Hindi (DDP 5.1 - 192Kbps) + English (DDP 7.1 - 1509Kbps)",
+          "name": "Moana.mkv",
           "quality": "1080p FHD",
-          "resolution": "1080p",
-          "source": "BluRay",
-          "source_image": "resources/images/sources/bluray.png",
-          "codec": "x264",
-          "audio": "Telugu + Tamil + Hindi (DDP 5.1 - 192Kbps) + English (DDP 7.1 - 1509Kbps)",
-          "channels": "5.1",
-          "bitrate": "1509 Kbps",
-          "size": "10 GB",
-          "telegram_tag": "@Tamiltvtoonsofficial",
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1hOjMoYzmBNLw2LpSzTk4f7KIUhAtcdH_|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
@@ -654,158 +360,87 @@
     {
       "id": "18zWRM2EWrq5GQQKPMI_ks3OI2qdn5IuH",
       "tmdb_id": 1444466,
-      "name": "Awarapan 2 (2026) [1080p] [AMZN] [Tamil 5.1] [7 GB].mkv",
+      "name": "Awarapan 2 (2026).mkv",
       "title": "Awarapan 2",
-      "original_title": "आवारापन 2",
+      "original_title": "Awarapan 2",
       "year": 2026,
-      "runtime": 142,
-      "release_date": "2026-01-01",
-      "certification": "U/A 16+",
+      "rating": 5.1,
       "original_language": "hi",
       "genres": [
         "Action",
         "Drama",
         "Romance"
       ],
-      "tagline": "From the shadows to settle an old debt with death.",
       "plot": "Once a feared gangster, Shivam lives hidden away from his past, with no faith left in God or himself. But when fate pulls him into Bangkok's cartel war and forces him back into the darkness he swore never to return to, Shivam must choose what he is willing to live for, when there is nothing left to lose.",
-      "telegram_channel": "",
-      "country": [
-        "India"
-      ],
-      "studio": [
-        "AMZN"
-      ],
-      "director": [
-        {
-          "name": "Nitin Kakkar"
-        }
-      ],
-      "writers": [
-        {
-          "name": "Balal Siddiqi",
-          "job": "Writer"
-        }
-      ],
       "cast": [
         {
           "name": "Emraan Hashmi",
           "character": "Shivam Pandit",
-          "profile": "https://image.tmdb.org/t/p/w185/kflgvFCFZnpTRbKmJWn5T0G5EKI.jpg",
-          "link": "https://www.themoviedb.org/person/85969"
+          "profile": "https://image.tmdb.org/t/p/w185/kflgvFCFZnpTRbKmJWn5T0G5EKI.jpg"
         },
         {
           "name": "Shabana Azmi",
           "character": "Nafisa Nawaz",
-          "profile": "https://image.tmdb.org/t/p/w185/gy7DpFaZnpU4XOwBc8jhhE8rYYj.jpg",
-          "link": "https://www.themoviedb.org/person/85672"
+          "profile": "https://image.tmdb.org/t/p/w185/gy7DpFaZnpU4XOwBc8jhhE8rYYj.jpg"
         },
         {
           "name": "Disha Patani",
           "character": "Zara",
-          "profile": "https://image.tmdb.org/t/p/w185/jeFgIW3d3BP6MkfnMlmEGP33Oyq.jpg",
-          "link": "https://www.themoviedb.org/person/1546398"
+          "profile": "https://image.tmdb.org/t/p/w185/jeFgIW3d3BP6MkfnMlmEGP33Oyq.jpg"
         },
         {
           "name": "Puran Gabbi",
           "character": "Zorawar",
-          "profile": null,
-          "link": "https://www.themoviedb.org/person/6393639"
+          "profile": null
         },
         {
           "name": "Suvinder Vicky",
           "character": "Jaideep",
-          "profile": "https://image.tmdb.org/t/p/w185/6T3Y0jvLMdMw19ShLZvLNHIkaSD.jpg",
-          "link": "https://www.themoviedb.org/person/1629321"
+          "profile": "https://image.tmdb.org/t/p/w185/6T3Y0jvLMdMw19ShLZvLNHIkaSD.jpg"
         },
         {
           "name": "Vijayant Kohli",
           "character": "Mehmood",
-          "profile": "https://image.tmdb.org/t/p/w185/dzzewlf0Z5dEkVxu4QkH86xUEx4.jpg",
-          "link": "https://www.themoviedb.org/person/1758521"
+          "profile": "https://image.tmdb.org/t/p/w185/dzzewlf0Z5dEkVxu4QkH86xUEx4.jpg"
         },
         {
           "name": "Atul Kumar",
           "character": "Samarth",
-          "profile": "https://image.tmdb.org/t/p/w185/rbPFvPZgqiK21z4uyD5QhRwr7bb.jpg",
-          "link": "https://www.themoviedb.org/person/1517760"
+          "profile": "https://image.tmdb.org/t/p/w185/rbPFvPZgqiK21z4uyD5QhRwr7bb.jpg"
         },
         {
           "name": "Aniruddh Rawal",
           "character": "Sikander",
-          "profile": null,
-          "link": "https://www.themoviedb.org/person/2332932"
+          "profile": null
         },
         {
           "name": "Myrah Shivan",
           "character": "Aliyah (Kid)",
-          "profile": null,
-          "link": "https://www.themoviedb.org/person/6429322"
+          "profile": null
         },
         {
           "name": "Jukreed Kamdee",
           "character": "Genghis",
-          "profile": null,
-          "link": "https://www.themoviedb.org/person/6521699"
+          "profile": null
         }
       ],
       "artwork": {
         "poster": "https://image.tmdb.org/t/p/w780/8V35iNRx9zVH5OHO0lH6IlfGfZY.jpg",
         "fanart": "https://image.tmdb.org/t/p/original/qrYsuB5kPCw0y7IVIuOyEAI1GXh.jpg",
-        "clearlogo": "",
-        "clearart": "",
-        "banner": "",
-        "landscape": "https://image.tmdb.org/t/p/original/qrYsuB5kPCw0y7IVIuOyEAI1GXh.jpg",
-        "keyart": "",
-        "thumbnail": "https://image.tmdb.org/t/p/w780/8V35iNRx9zVH5OHO0lH6IlfGfZY.jpg",
-        "discart": "",
-        "title_card": "https://image.tmdb.org/t/p/original/qrYsuB5kPCw0y7IVIuOyEAI1GXh.jpg",
-        "character_art": [],
-        "extra_posters": [],
-        "extra_backdrops": []
-      },
-      "trailer": "",
-      "ratings": [
-        {
-          "source": "TMDb",
-          "value": 5.1,
-          "out_of": 10
-        }
-      ],
-      "badges": {
-        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
-        "hdr": "",
-        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png",
-        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
-        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-      },
-      "specs": {
-        "resolution": "1080p",
-        "source": "AMZN",
-        "codec": "x264",
-        "bit_depth": "8bit",
-        "audio": "Tamil 5.1",
-        "channels": "5.1",
-        "bitrate": "640 Kbps",
-        "languages": "Tamil",
-        "size": "7 GB",
-        "telegram_tag": ""
+        "thumbnail": "https://image.tmdb.org/t/p/w780/8V35iNRx9zVH5OHO0lH6IlfGfZY.jpg"
       },
       "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=18zWRM2EWrq5GQQKPMI_ks3OI2qdn5IuH|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "specs": {
+        "resolution": "1080p",
+        "source": "WEB-DL",
+        "audio": "5.1",
+        "size": "5 GB"
+      },
       "versions": [
         {
           "id": "18zWRM2EWrq5GQQKPMI_ks3OI2qdn5IuH",
-          "name": "Awarapan 2 (2026) [1080p] [AMZN] [Tamil 5.1] [7 GB].mkv",
-          "language": "Tamil",
+          "name": "Awarapan 2.mkv",
           "quality": "1080p FHD",
-          "resolution": "1080p",
-          "source": "AMZN",
-          "source_image": "resources/images/sources/web.png",
-          "codec": "x264",
-          "audio": "5.1",
-          "channels": "5.1",
-          "size": "7 GB",
-          "telegram_tag": "",
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=18zWRM2EWrq5GQQKPMI_ks3OI2qdn5IuH|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
@@ -813,161 +448,86 @@
     {
       "id": "1HvnXcskgHz0ujSIhzAhuXTyRze8XKKzo1zZ4P7Xbdxk0wbT_NHAbeXUM3XOhPC-IT",
       "tmdb_id": 1235877,
-      "imdb_id": "tt33379543",
-      "name": "Jana Nayagan (2026) [1080p] [WEB-DL] [Tamil DTS-HD Master Audio DD 5.1  (4536Kbps] [7 GB].mkv",
+      "name": "Jana Nayagan (2026).mkv",
       "title": "Jana Nayagan",
-      "original_title": "ஜன நாயகன்",
+      "original_title": "Jana Nayagan",
       "year": 2026,
-      "runtime": 183,
-      "release_date": "2026-07-23",
-      "certification": "A",
+      "rating": 5,
       "original_language": "ta",
       "genres": [
         "Action",
         "Drama"
       ],
-      "tagline": "The Torch Bearer of Democracy",
       "plot": "A clash of ideologies. One stands for the people, the other feeds on control. Their paths collided once before. Years later, a child’s silent fear ignites the past, drawing a former police officer into a battle far bigger than personal revenge.",
-      "telegram_channel": "@TMVEncodes",
-      "country": [
-        "India"
-      ],
-      "studio": [
-        "KVN Productions",
-        "The Route"
-      ],
-      "director": [
-        {
-          "name": "H. Vinoth"
-        }
-      ],
-      "writers": [
-        {
-          "name": "H. Vinoth",
-          "job": "Writer"
-        }
-      ],
       "cast": [
         {
           "name": "Vijay",
           "character": "Thalapathy Vetri Kondan 'Vetri'",
-          "profile": "https://image.tmdb.org/t/p/w185/zbQ1sDRVRHkroWwvrnqYKMerl66.jpg",
-          "link": "https://www.themoviedb.org/person/91547"
+          "profile": "https://image.tmdb.org/t/p/w185/zbQ1sDRVRHkroWwvrnqYKMerl66.jpg"
         },
         {
           "name": "Pooja Hegde",
           "character": "Kayal",
-          "profile": "https://image.tmdb.org/t/p/w185/9wdyzZz0Fu81pnKNDBVOcxkPBIp.jpg",
-          "link": "https://www.themoviedb.org/person/587753"
+          "profile": "https://image.tmdb.org/t/p/w185/9wdyzZz0Fu81pnKNDBVOcxkPBIp.jpg"
         },
         {
           "name": "Bobby Deol",
           "character": "John Himler / Amrish Poojari",
-          "profile": "https://image.tmdb.org/t/p/w185/2npVa3PduichY8e7qBiE54m9VVP.jpg",
-          "link": "https://www.themoviedb.org/person/77235"
+          "profile": "https://image.tmdb.org/t/p/w185/2npVa3PduichY8e7qBiE54m9VVP.jpg"
         },
         {
           "name": "Mamitha Baiju",
           "character": "Vijayalakshmi 'Viji'",
-          "profile": "https://image.tmdb.org/t/p/w185/9ySiE3j7ep16fhKi3u5iq5rbOk6.jpg",
-          "link": "https://www.themoviedb.org/person/2191938"
+          "profile": "https://image.tmdb.org/t/p/w185/9ySiE3j7ep16fhKi3u5iq5rbOk6.jpg"
         },
         {
           "name": "Priyamani",
           "character": "Sheela Rani",
-          "profile": "https://image.tmdb.org/t/p/w185/grcW2eMm77Q2Kj1xX0HvZlRpGRR.jpg",
-          "link": "https://www.themoviedb.org/person/1107197"
+          "profile": "https://image.tmdb.org/t/p/w185/grcW2eMm77Q2Kj1xX0HvZlRpGRR.jpg"
         },
         {
           "name": "Prakash Raj",
           "character": "Roja Rangasamy",
-          "profile": "https://image.tmdb.org/t/p/w185/dJvFZOXmZdkYCOUcKTXQAhBcAoH.jpg",
-          "link": "https://www.themoviedb.org/person/89153"
+          "profile": "https://image.tmdb.org/t/p/w185/dJvFZOXmZdkYCOUcKTXQAhBcAoH.jpg"
         },
         {
           "name": "Gautham Vasudev Menon",
           "character": "Srikanth",
-          "profile": "https://image.tmdb.org/t/p/w185/qOFycWPpr3Hi4kVXKWnTTKCAnGk.jpg",
-          "link": "https://www.themoviedb.org/person/120953"
+          "profile": "https://image.tmdb.org/t/p/w185/qOFycWPpr3Hi4kVXKWnTTKCAnGk.jpg"
         },
         {
           "name": "Narain",
           "character": "Kaleel",
-          "profile": "https://image.tmdb.org/t/p/w185/d0ApUGeFuGXpBkODIc6eLbBkb7B.jpg",
-          "link": "https://www.themoviedb.org/person/587752"
+          "profile": "https://image.tmdb.org/t/p/w185/d0ApUGeFuGXpBkODIc6eLbBkb7B.jpg"
         },
         {
           "name": "Nassar",
           "character": "CM Arivudai Nambi",
-          "profile": "https://image.tmdb.org/t/p/w185/p3I0tSQY3C5qZW3NzFfbpjKPNL6.jpg",
-          "link": "https://www.themoviedb.org/person/130111"
+          "profile": "https://image.tmdb.org/t/p/w185/p3I0tSQY3C5qZW3NzFfbpjKPNL6.jpg"
         },
         {
           "name": "Sunil Varma",
           "character": "Velu",
-          "profile": "https://image.tmdb.org/t/p/w185/2ueRNLlbB8jaivO6yb7zfIlFhh7.jpg",
-          "link": "https://www.themoviedb.org/person/213428"
+          "profile": "https://image.tmdb.org/t/p/w185/2ueRNLlbB8jaivO6yb7zfIlFhh7.jpg"
         }
       ],
       "artwork": {
         "poster": "https://image.tmdb.org/t/p/w780/jt8pfSIdi47YpFMMWVRr8w5u2S0.jpg",
         "fanart": "https://image.tmdb.org/t/p/original/v3lNH2gCojWYXVuXcT9FZLBxcSq.jpg",
-        "clearlogo": "https://image.tmdb.org/t/p/original/fDOECszTh7wpI0d4JOVPTAOjvZg.png",
-        "clearart": "",
-        "banner": "",
-        "landscape": "https://image.tmdb.org/t/p/w780/v3lNH2gCojWYXVuXcT9FZLBxcSq.jpg",
-        "keyart": "",
-        "thumbnail": "https://image.tmdb.org/t/p/w342/jt8pfSIdi47YpFMMWVRr8w5u2S0.jpg",
-        "discart": "",
-        "title_card": "https://image.tmdb.org/t/p/original/v3lNH2gCojWYXVuXcT9FZLBxcSq.jpg",
-        "character_art": [],
-        "extra_posters": [],
-        "extra_backdrops": []
+        "thumbnail": "https://image.tmdb.org/t/p/w780/jt8pfSIdi47YpFMMWVRr8w5u2S0.jpg"
       },
-      "trailer": "https://www.youtube.com/results?search_query=Jana%20Nayagan%202026%20Official%20Trailer",
-      "ratings": [
-        {
-          "source": "TMDb",
-          "value": 5,
-          "out_of": 10
-        }
-      ],
-      "badges": {
-        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
-        "hdr": "",
-        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png",
-        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dts.png",
-        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-      },
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HvnXcskgHz0ujSIhzAhuXTyRze8XKKzo1zZ4P7Xbdxk0wbT_NHAbeXUM3XOhPC-IT|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
       "specs": {
         "resolution": "1080p",
         "source": "WEB-DL",
-        "codec": "x264",
-        "bit_depth": "8bit",
-        "audio": "Tamil DTS-HD Master Audio DD 5.1  (4536Kbps",
-        "channels": "5.1",
-        "bitrate": "1509 Kbps",
-        "languages": "Tamil",
-        "size": "7 GB",
-        "telegram_tag": "@TMVEncodes"
+        "audio": "5.1",
+        "size": "5 GB"
       },
-      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HvnXcskgHz0ujSIhzAhuXTyRze8XKKzo1zZ4P7Xbdxk0wbT_NHAbeXUM3XOhPC-IT|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
       "versions": [
         {
           "id": "1HvnXcskgHz0ujSIhzAhuXTyRze8XKKzo1zZ4P7Xbdxk0wbT_NHAbeXUM3XOhPC-IT",
-          "name": "Jana Nayagan (2026) [1080p] [WEB-DL] [Tamil DTS-HD Master Audio DD 5.1  (4536Kbps] [7 GB].mkv",
-          "language": "Tamil",
-          "dubbed": "Tamil DTS-HD Master Audio DD 5.1  (4536Kbps",
+          "name": "Jana Nayagan.mkv",
           "quality": "1080p FHD",
-          "resolution": "1080p",
-          "source": "WEB-DL",
-          "source_image": "resources/images/sources/web.png",
-          "codec": "x264",
-          "audio": "Tamil DTS-HD Master Audio DD 5.1  (4536Kbps",
-          "channels": "5.1",
-          "bitrate": "1509 Kbps",
-          "size": "7 GB",
-          "telegram_tag": "@TMVEncodes",
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HvnXcskgHz0ujSIhzAhuXTyRze8XKKzo1zZ4P7Xbdxk0wbT_NHAbeXUM3XOhPC-IT|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
@@ -975,146 +535,70 @@
     {
       "id": "1MW2Cy0Seu4jJaR6fs6XBN5zBt0lc2KNW",
       "tmdb_id": 363335,
-      "imdb_id": "tt5639388",
-      "name": "Raaz Reboot (2016) [1080p] [AMZN] [Hindi AAC 2.0 - 224Kbps] [6 GB] [Telly].mkv",
+      "name": "Raaz Reboot (2016).mkv",
       "title": "Raaz Reboot",
-      "original_title": "राज़: रीबूट",
+      "original_title": "Raaz Reboot",
       "year": 2016,
-      "runtime": 127,
-      "release_date": "2016-06-17",
-      "certification": "UA",
+      "rating": 4.1,
       "original_language": "hi",
       "genres": [
         "Horror"
       ],
-      "tagline": "",
       "plot": "Newly-weds Rehaan and Shaina move to Romania after the former is offered a job. When Shaina senses paranormal activity around her, she learns that her husband is harbouring a secret from her.",
-      "telegram_channel": "",
-      "release_group": "Telly",
-      "country": [
-        "India"
-      ],
-      "studio": [
-        "AMZN"
-      ],
-      "director": [
-        {
-          "name": "Vikram Bhatt"
-        }
-      ],
-      "writers": [
-        {
-          "name": "Vikram Bhatt",
-          "job": "Writer"
-        },
-        {
-          "name": "Girish Dhamija",
-          "job": "Writer"
-        }
-      ],
       "cast": [
         {
           "name": "Emraan Hashmi",
           "character": "Aditya Shrivastava",
-          "profile": "https://image.tmdb.org/t/p/w185/kflgvFCFZnpTRbKmJWn5T0G5EKI.jpg",
-          "link": "https://www.themoviedb.org/person/85969"
+          "profile": "https://image.tmdb.org/t/p/w185/kflgvFCFZnpTRbKmJWn5T0G5EKI.jpg"
         },
         {
           "name": "Kriti Kharbanda",
           "character": "Shaina Khanna",
-          "profile": "https://image.tmdb.org/t/p/w185/tesRXnPCcPCN2CHTdb32uhMIG9Z.jpg",
-          "link": "https://www.themoviedb.org/person/1315575"
+          "profile": "https://image.tmdb.org/t/p/w185/tesRXnPCcPCN2CHTdb32uhMIG9Z.jpg"
         },
         {
           "name": "Gaurav Arora",
           "character": "Rehaan Khanna",
-          "profile": "https://image.tmdb.org/t/p/w185/6lL4CEcxcmyZcxGf2wL6CO4NIyT.jpg",
-          "link": "https://www.themoviedb.org/person/1602230"
+          "profile": "https://image.tmdb.org/t/p/w185/6lL4CEcxcmyZcxGf2wL6CO4NIyT.jpg"
         },
         {
           "name": "Suzanna Mukherjee",
           "character": "Shreya",
-          "profile": "https://image.tmdb.org/t/p/w185/1LYl4tKwz0Aw7yryasFxziqPSiQ.jpg",
-          "link": "https://www.themoviedb.org/person/1388817"
+          "profile": "https://image.tmdb.org/t/p/w185/1LYl4tKwz0Aw7yryasFxziqPSiQ.jpg"
         },
         {
           "name": "Tara Sharma",
           "character": "Malini",
-          "profile": "https://image.tmdb.org/t/p/w185/4kO4vzyZosFrELvZjCM0MkNYYGH.jpg",
-          "link": "https://www.themoviedb.org/person/110198"
+          "profile": "https://image.tmdb.org/t/p/w185/4kO4vzyZosFrELvZjCM0MkNYYGH.jpg"
         },
         {
           "name": "Ashwath Bhatt",
           "character": "Trilok Shastri",
-          "profile": "https://image.tmdb.org/t/p/w185/hSJyFIy8Mvj59YQlcluhd9Xf97F.jpg",
-          "link": "https://www.themoviedb.org/person/1278968"
+          "profile": "https://image.tmdb.org/t/p/w185/hSJyFIy8Mvj59YQlcluhd9Xf97F.jpg"
         },
         {
           "name": "Mink Brar",
           "character": "Nisha",
-          "profile": "https://image.tmdb.org/t/p/w185/qQBvL1h1rMELCkhHhm6m4oAURCC.jpg",
-          "link": "https://www.themoviedb.org/person/1641478"
+          "profile": "https://image.tmdb.org/t/p/w185/qQBvL1h1rMELCkhHhm6m4oAURCC.jpg"
         }
       ],
       "artwork": {
         "poster": "https://image.tmdb.org/t/p/w780/9S7KOgIFlr2F3Zv6dFK22rIeR1a.jpg",
         "fanart": "https://image.tmdb.org/t/p/original/r1mVcyEfTR5HZ0g2qxCSZEVp4Ih.jpg",
-        "clearlogo": "https://image.tmdb.org/t/p/original/e2epkyPLyXFciOU5giQRCfzUn8s.png",
-        "clearart": "",
-        "banner": "",
-        "landscape": "https://image.tmdb.org/t/p/w780/r1mVcyEfTR5HZ0g2qxCSZEVp4Ih.jpg",
-        "keyart": "",
-        "thumbnail": "https://image.tmdb.org/t/p/w342/9S7KOgIFlr2F3Zv6dFK22rIeR1a.jpg",
-        "discart": "",
-        "title_card": "https://image.tmdb.org/t/p/original/r1mVcyEfTR5HZ0g2qxCSZEVp4Ih.jpg",
-        "character_art": [],
-        "extra_posters": [],
-        "extra_backdrops": []
-      },
-      "trailer": "https://www.youtube.com/watch?v=V496LGfxr38",
-      "ratings": [
-        {
-          "source": "TMDb",
-          "value": 4.1,
-          "out_of": 10
-        }
-      ],
-      "badges": {
-        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
-        "hdr": "",
-        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/amzn.png",
-        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
-        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/2.0.png"
-      },
-      "specs": {
-        "resolution": "1080p",
-        "source": "AMZN",
-        "codec": "x264",
-        "audio": "Hindi AAC 2.0 - 224Kbps",
-        "channels": "2.0",
-        "bitrate": "224Kbps",
-        "languages": "Hindi",
-        "size": "6 GB",
-        "telegram_tag": "",
-        "ripper": "Telly"
+        "thumbnail": "https://image.tmdb.org/t/p/w780/9S7KOgIFlr2F3Zv6dFK22rIeR1a.jpg"
       },
       "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1MW2Cy0Seu4jJaR6fs6XBN5zBt0lc2KNW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "specs": {
+        "resolution": "1080p",
+        "source": "WEB-DL",
+        "audio": "5.1",
+        "size": "5 GB"
+      },
       "versions": [
         {
           "id": "1MW2Cy0Seu4jJaR6fs6XBN5zBt0lc2KNW",
-          "name": "Raaz Reboot (2016) [1080p] [AMZN] [Hindi AAC 2.0 - 224Kbps] [6 GB] [Telly].mkv",
-          "language": "Hindi",
-          "dubbed": "Hindi AAC 2.0 - 224Kbps",
+          "name": "Raaz Reboot.mkv",
           "quality": "1080p FHD",
-          "resolution": "1080p",
-          "source": "AMZN",
-          "source_image": "resources/images/sources/amzn.png",
-          "codec": "x264",
-          "audio": "Hindi AAC 2.0 - 224Kbps",
-          "channels": "2.0",
-          "bitrate": "224Kbps",
-          "size": "6 GB",
-          "telegram_tag": "",
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1MW2Cy0Seu4jJaR6fs6XBN5zBt0lc2KNW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
@@ -1122,165 +606,86 @@
     {
       "id": "12ZtDt_FNKsmCV4xAdqWHxEryZ9cZ3mKn",
       "tmdb_id": 49074,
-      "name": "Baasha (1995) [2160p] [WEB-DL] [Tamil + Telugu DDP 5.1 + Hindi DDP 2.0] [5 GB].mkv",
+      "name": "Baasha (1995).mkv",
       "title": "Baasha",
-      "original_title": "பாட்ஷா",
+      "original_title": "Baasha",
       "year": 1995,
-      "runtime": 145,
-      "release_date": "1995-01-01",
-      "certification": "U",
+      "rating": 7.6,
       "original_language": "ta",
       "genres": [
         "Action",
         "Crime"
       ],
-      "tagline": "",
       "plot": "Auto rickshaw driver Manickam avoids violence at all costs. When some thugs begin to intimidate Manickam's family, it triggers the revival of Manickam's old self.",
-      "telegram_channel": "",
-      "country": [
-        "India"
-      ],
-      "studio": [
-        "WEB-DL"
-      ],
-      "director": [
-        {
-          "name": "Suresh Krissna"
-        }
-      ],
-      "writers": [
-        {
-          "name": "Balakumaran",
-          "job": "Dialogue"
-        },
-        {
-          "name": "Suresh Krissna",
-          "job": "Story"
-        },
-        {
-          "name": "Suresh Krissna",
-          "job": "Screenplay"
-        }
-      ],
       "cast": [
         {
           "name": "Rajinikanth",
           "character": "Manikkam / Manik Baashha",
-          "profile": "https://image.tmdb.org/t/p/w185/cQBcrXqcQPfXOQfNfgO3slJM2xi.jpg",
-          "link": "https://www.themoviedb.org/person/91555"
+          "profile": "https://image.tmdb.org/t/p/w185/cQBcrXqcQPfXOQfNfgO3slJM2xi.jpg"
         },
         {
           "name": "Nagma",
           "character": "Priya",
-          "profile": "https://image.tmdb.org/t/p/w185/osQbepU8ejfIaeONvAlqsGVCOeC.jpg",
-          "link": "https://www.themoviedb.org/person/229117"
+          "profile": "https://image.tmdb.org/t/p/w185/osQbepU8ejfIaeONvAlqsGVCOeC.jpg"
         },
         {
           "name": "Raghuvaran",
           "character": "Mark Anthony",
-          "profile": "https://image.tmdb.org/t/p/w185/z6IJ61kEaU6cjBHVX2eqxL2nnMx.jpg",
-          "link": "https://www.themoviedb.org/person/237697"
+          "profile": "https://image.tmdb.org/t/p/w185/z6IJ61kEaU6cjBHVX2eqxL2nnMx.jpg"
         },
         {
           "name": "Janagaraj",
           "character": "Gurumurthy",
-          "profile": "https://image.tmdb.org/t/p/w185/tYtzehaD4QhVYWG5gadcEFIAON1.jpg",
-          "link": "https://www.themoviedb.org/person/131258"
+          "profile": "https://image.tmdb.org/t/p/w185/tYtzehaD4QhVYWG5gadcEFIAON1.jpg"
         },
         {
           "name": "Devan",
           "character": "Kesavan",
-          "profile": "https://image.tmdb.org/t/p/w185/TSAMYfaw3yWAXWO3cuqehIkYbO.jpg",
-          "link": "https://www.themoviedb.org/person/283294"
+          "profile": "https://image.tmdb.org/t/p/w185/TSAMYfaw3yWAXWO3cuqehIkYbO.jpg"
         },
         {
           "name": "Vijayakumar",
           "character": "Rangasamy",
-          "profile": "https://image.tmdb.org/t/p/w185/vCgyfUV09TyWOq30Yh2xPmQ0zhi.jpg",
-          "link": "https://www.themoviedb.org/person/237638"
+          "profile": "https://image.tmdb.org/t/p/w185/vCgyfUV09TyWOq30Yh2xPmQ0zhi.jpg"
         },
         {
           "name": "Anandaraj",
           "character": "Indiran",
-          "profile": "https://image.tmdb.org/t/p/w185/gZxzckfurzV0oQOME8b1ATNoMHD.jpg",
-          "link": "https://www.themoviedb.org/person/581072"
+          "profile": "https://image.tmdb.org/t/p/w185/gZxzckfurzV0oQOME8b1ATNoMHD.jpg"
         },
         {
           "name": "Shashikumar",
           "character": "Shiva",
-          "profile": "https://image.tmdb.org/t/p/w185/9rp1IRbvtQaEfYLbAiStqjBb0Fi.jpg",
-          "link": "https://www.themoviedb.org/person/585276"
+          "profile": "https://image.tmdb.org/t/p/w185/9rp1IRbvtQaEfYLbAiStqjBb0Fi.jpg"
         },
         {
           "name": "Sathyapriya",
           "character": "Vijayalakshmi",
-          "profile": "https://image.tmdb.org/t/p/w185/m94jUUyuLafekaxBa6w3h6WVUSP.jpg",
-          "link": "https://www.themoviedb.org/person/582186"
+          "profile": "https://image.tmdb.org/t/p/w185/m94jUUyuLafekaxBa6w3h6WVUSP.jpg"
         },
         {
           "name": "Yuvarani",
           "character": "Geetha",
-          "profile": "https://image.tmdb.org/t/p/w185/pZ9zpZt0GN1NPVJaFciGphdAAcu.jpg",
-          "link": "https://www.themoviedb.org/person/237637"
+          "profile": "https://image.tmdb.org/t/p/w185/pZ9zpZt0GN1NPVJaFciGphdAAcu.jpg"
         }
       ],
       "artwork": {
         "poster": "https://image.tmdb.org/t/p/w780/xPSw9PLzYFKTVphw9ErZcBPKUsd.jpg",
         "fanart": "https://image.tmdb.org/t/p/original/hh2bBmgqzJEY1J7enMKqTsziVRO.jpg",
-        "clearlogo": "https://image.tmdb.org/t/p/original/ljEkWhughQjvWP81WhgCRRM8bWG.png",
-        "clearart": "",
-        "banner": "",
-        "landscape": "https://image.tmdb.org/t/p/original/hh2bBmgqzJEY1J7enMKqTsziVRO.jpg",
-        "keyart": "",
-        "thumbnail": "https://image.tmdb.org/t/p/w780/xPSw9PLzYFKTVphw9ErZcBPKUsd.jpg",
-        "discart": "",
-        "title_card": "https://image.tmdb.org/t/p/original/hh2bBmgqzJEY1J7enMKqTsziVRO.jpg",
-        "character_art": [],
-        "extra_posters": [],
-        "extra_backdrops": []
-      },
-      "trailer": "https://www.youtube.com/results?search_query=Baasha%201995%20Official%20Trailer",
-      "ratings": [
-        {
-          "source": "TMDb",
-          "value": 7.6,
-          "out_of": 10
-        }
-      ],
-      "badges": {
-        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/2160p.png",
-        "hdr": "",
-        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png",
-        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
-        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-      },
-      "specs": {
-        "resolution": "2160p",
-        "source": "WEB-DL",
-        "codec": "x265",
-        "bit_depth": "8bit",
-        "audio": "Tamil + Telugu DDP 5.1 + Hindi DDP 2.0",
-        "channels": "5.1",
-        "bitrate": "640 Kbps",
-        "languages": "Tamil + Telugu DDP 5.1 + Hindi DDP 2.0",
-        "size": "5 GB",
-        "telegram_tag": ""
+        "thumbnail": "https://image.tmdb.org/t/p/w780/xPSw9PLzYFKTVphw9ErZcBPKUsd.jpg"
       },
       "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=12ZtDt_FNKsmCV4xAdqWHxEryZ9cZ3mKn|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "specs": {
+        "resolution": "1080p",
+        "source": "WEB-DL",
+        "audio": "5.1",
+        "size": "5 GB"
+      },
       "versions": [
         {
           "id": "12ZtDt_FNKsmCV4xAdqWHxEryZ9cZ3mKn",
-          "name": "Baasha (1995) [2160p] [WEB-DL] [Tamil + Telugu DDP 5.1 + Hindi DDP 2.0] [5 GB].mkv",
-          "language": "Tamil + Telugu DDP 5.1 + Hindi DDP 2.0",
-          "quality": "2160p FHD",
-          "resolution": "2160p",
-          "source": "WEB-DL",
-          "source_image": "resources/images/sources/web.png",
-          "codec": "x265",
-          "audio": "Tamil + Telugu DDP 5.1 + Hindi DDP 2.0",
-          "channels": "5.1",
-          "size": "5 GB",
-          "telegram_tag": "",
+          "name": "Baasha.mkv",
+          "quality": "1080p FHD",
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=12ZtDt_FNKsmCV4xAdqWHxEryZ9cZ3mKn|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
@@ -1288,167 +693,87 @@
     {
       "id": "13vcHZ7Q8jtJ-LKMYv6OwtD4E_i_LUTbs",
       "tmdb_id": 62883,
-      "name": "Hum Saath Saath Hain (1999) [1080p] [Netflix] [Hindi DDP 5.1] [6 GB].mkv",
+      "name": "Hum Saath Saath Hain (1999).mkv",
       "title": "Hum Saath Saath Hain",
-      "original_title": "हम साथ - साथ हैं",
+      "original_title": "Hum Saath Saath Hain",
       "year": 1999,
-      "runtime": 177,
-      "release_date": "1999-01-01",
-      "certification": "U",
+      "rating": 6.1,
       "original_language": "hi",
       "genres": [
         "Romance",
         "Family",
         "Drama"
       ],
-      "collection": "",
-      "tagline": "",
       "plot": "A wealthy businessman's traditional family celebrate their togetherness when his three sons get married, but slowly find themselves growing apart after a misunderstanding.",
-      "telegram_channel": "",
-      "country": [
-        "India"
-      ],
-      "studio": [
-        "Netflix"
-      ],
-      "director": [
-        {
-          "name": "Sooraj Barjatya"
-        }
-      ],
-      "writers": [
-        {
-          "name": "Sooraj Barjatya",
-          "job": "Screenplay"
-        },
-        {
-          "name": "Sooraj Barjatya",
-          "job": "Dialogue"
-        },
-        {
-          "name": "Sooraj Barjatya",
-          "job": "Story"
-        }
-      ],
       "cast": [
         {
           "name": "Mohnish Behl",
           "character": "Vivek Chaturvedi",
-          "profile": "https://image.tmdb.org/t/p/w185/iiDceTPiwHY4y91gdP3OsEHOo7r.jpg",
-          "link": "https://www.themoviedb.org/person/85683"
+          "profile": "https://image.tmdb.org/t/p/w185/iiDceTPiwHY4y91gdP3OsEHOo7r.jpg"
         },
         {
           "name": "Salman Khan",
           "character": "Prem Chaturvedi",
-          "profile": "https://image.tmdb.org/t/p/w185/gxKwCCcs777HzsXRpdGsBV87pXn.jpg",
-          "link": "https://www.themoviedb.org/person/42802"
+          "profile": "https://image.tmdb.org/t/p/w185/gxKwCCcs777HzsXRpdGsBV87pXn.jpg"
         },
         {
           "name": "Saif Ali Khan",
           "character": "Vinod Chaturvedi",
-          "profile": "https://image.tmdb.org/t/p/w185/kzOy1DoCeLoKJ07nbYnQDObU3yY.jpg",
-          "link": "https://www.themoviedb.org/person/35747"
+          "profile": "https://image.tmdb.org/t/p/w185/kzOy1DoCeLoKJ07nbYnQDObU3yY.jpg"
         },
         {
           "name": "Tabu",
           "character": "Sadhna Sharma Chaturvedi",
-          "profile": "https://image.tmdb.org/t/p/w185/cvt5nvCHr1ICf5u8A2mlzLQ8LsV.jpg",
-          "link": "https://www.themoviedb.org/person/55062"
+          "profile": "https://image.tmdb.org/t/p/w185/cvt5nvCHr1ICf5u8A2mlzLQ8LsV.jpg"
         },
         {
           "name": "Sonali Bendre",
           "character": "Preeti Shukla",
-          "profile": "https://image.tmdb.org/t/p/w185/4xvVvT9RyLvOa2hQjecIhYuSPjx.jpg",
-          "link": "https://www.themoviedb.org/person/35754"
+          "profile": "https://image.tmdb.org/t/p/w185/4xvVvT9RyLvOa2hQjecIhYuSPjx.jpg"
         },
         {
           "name": "Karisma Kapoor",
           "character": "Sapna Bajpai",
-          "profile": "https://image.tmdb.org/t/p/w185/vaa4dSmayH71krkgnECXQsPaRre.jpg",
-          "link": "https://www.themoviedb.org/person/76233"
+          "profile": "https://image.tmdb.org/t/p/w185/vaa4dSmayH71krkgnECXQsPaRre.jpg"
         },
         {
           "name": "Alok Nath",
           "character": "Ramkishan Chaturvedi",
-          "profile": "https://image.tmdb.org/t/p/w185/fMtqIj07e2HD0i5YbV91kgjrZzm.jpg",
-          "link": "https://www.themoviedb.org/person/86784"
+          "profile": "https://image.tmdb.org/t/p/w185/fMtqIj07e2HD0i5YbV91kgjrZzm.jpg"
         },
         {
           "name": "Reema Lagoo",
           "character": "Mamta Awasthi Chaturvedi",
-          "profile": "https://image.tmdb.org/t/p/w185/hQ5r2pPD8T94Dli5oNP6IlwEf1c.jpg",
-          "link": "https://www.themoviedb.org/person/35750"
+          "profile": "https://image.tmdb.org/t/p/w185/hQ5r2pPD8T94Dli5oNP6IlwEf1c.jpg"
         },
         {
           "name": "Neelam Kothari",
           "character": "Sangeeta Chaturvedi Pandey",
-          "profile": "https://image.tmdb.org/t/p/w185/vlW8WHmNxFrTP4LSvwEWkqU4NxQ.jpg",
-          "link": "https://www.themoviedb.org/person/117534"
+          "profile": "https://image.tmdb.org/t/p/w185/vlW8WHmNxFrTP4LSvwEWkqU4NxQ.jpg"
         },
         {
           "name": "Mahesh Thakur",
           "character": "Anand Pandey",
-          "profile": "https://image.tmdb.org/t/p/w185/a25tark0IJAKTo8mPYswshy7hWR.jpg",
-          "link": "https://www.themoviedb.org/person/946248"
+          "profile": "https://image.tmdb.org/t/p/w185/a25tark0IJAKTo8mPYswshy7hWR.jpg"
         }
       ],
       "artwork": {
         "poster": "https://image.tmdb.org/t/p/w780/lEAEzpAfSyBZc5sw1NBnWr5TeZU.jpg",
         "fanart": "https://image.tmdb.org/t/p/original/91f8iV55g4k9GzE1DRmBfJ1deYY.jpg",
-        "clearlogo": "https://image.tmdb.org/t/p/original/qciPQEDEzDhMVdbTBT6ojxx5wBE.png",
-        "clearart": "",
-        "banner": "",
-        "landscape": "https://image.tmdb.org/t/p/original/91f8iV55g4k9GzE1DRmBfJ1deYY.jpg",
-        "keyart": "",
-        "thumbnail": "https://image.tmdb.org/t/p/w780/lEAEzpAfSyBZc5sw1NBnWr5TeZU.jpg",
-        "discart": "",
-        "title_card": "https://image.tmdb.org/t/p/original/91f8iV55g4k9GzE1DRmBfJ1deYY.jpg",
-        "character_art": [],
-        "extra_posters": [],
-        "extra_backdrops": []
-      },
-      "trailer": "https://www.youtube.com/watch?v=_UXCsK3eqWk",
-      "ratings": [
-        {
-          "source": "TMDb",
-          "value": 6.1,
-          "out_of": 10
-        }
-      ],
-      "badges": {
-        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
-        "hdr": "",
-        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png",
-        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
-        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-      },
-      "specs": {
-        "resolution": "1080p",
-        "source": "Netflix",
-        "codec": "x264",
-        "bit_depth": "8bit",
-        "audio": "Hindi DDP 5.1",
-        "channels": "5.1",
-        "bitrate": "640 Kbps",
-        "languages": "Hindi DDP 5.1",
-        "size": "6 GB",
-        "telegram_tag": ""
+        "thumbnail": "https://image.tmdb.org/t/p/w780/lEAEzpAfSyBZc5sw1NBnWr5TeZU.jpg"
       },
       "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13vcHZ7Q8jtJ-LKMYv6OwtD4E_i_LUTbs|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "specs": {
+        "resolution": "1080p",
+        "source": "WEB-DL",
+        "audio": "5.1",
+        "size": "5 GB"
+      },
       "versions": [
         {
           "id": "13vcHZ7Q8jtJ-LKMYv6OwtD4E_i_LUTbs",
-          "name": "Hum Saath Saath Hain (1999) [1080p] [Netflix] [Hindi DDP 5.1] [6 GB].mkv",
-          "language": "Hindi DDP 5.1",
+          "name": "Hum Saath Saath Hain.mkv",
           "quality": "1080p FHD",
-          "resolution": "1080p",
-          "source": "Netflix",
-          "source_image": "resources/images/sources/web.png",
-          "codec": "x264",
-          "audio": "Hindi DDP 5.1",
-          "channels": "5.1",
-          "size": "6 GB",
-          "telegram_tag": "",
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13vcHZ7Q8jtJ-LKMYv6OwtD4E_i_LUTbs|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
@@ -1456,170 +781,89 @@
     {
       "id": "1FK3vDhNu7bSzcJopjxO8mM_JY67suVSo",
       "tmdb_id": 11518,
-      "name": "Mohabbatein (2000) [1080p] [BluRay] [Hindi DDP 5.1] [16 GB].mkv",
+      "name": "Mohabbatein (2000).mkv",
       "title": "Mohabbatein",
-      "original_title": "मोहब्बतें",
+      "original_title": "Mohabbatein",
       "year": 2000,
-      "runtime": 216,
-      "release_date": "2000-01-01",
-      "certification": "U",
+      "rating": 7.1,
       "original_language": "hi",
       "genres": [
         "Drama",
         "Romance"
       ],
-      "collection": "",
-      "tagline": "Some Love Stories... Live Forever.",
       "plot": "At a prestigious all-male university, three friends seek love outside of the school grounds; at the same time, a newly-hired music teacher seeks to befriend and loosen up the militantly strict headmaster.",
-      "telegram_channel": "",
-      "country": [
-        "India"
-      ],
-      "studio": [
-        "BluRay"
-      ],
-      "director": [
-        {
-          "name": "Aditya Chopra"
-        }
-      ],
-      "writers": [
-        {
-          "name": "Aditya Chopra",
-          "job": "Screenplay"
-        },
-        {
-          "name": "Aditya Chopra",
-          "job": "Story"
-        },
-        {
-          "name": "Aditya Chopra",
-          "job": "Dialogue"
-        }
-      ],
       "cast": [
         {
           "name": "Amitabh Bachchan",
           "character": "Narayan Shankar",
-          "profile": "https://image.tmdb.org/t/p/w185/u69PvpWqGkywSm0YjFiw77j9eqS.jpg",
-          "link": "https://www.themoviedb.org/person/35780"
+          "profile": "https://image.tmdb.org/t/p/w185/u69PvpWqGkywSm0YjFiw77j9eqS.jpg"
         },
         {
           "name": "Shah Rukh Khan",
           "character": "Raj Aryan Malhotra",
-          "profile": "https://image.tmdb.org/t/p/w185/tKeQhSyXyzlzxNtxFq24iIvzXrC.jpg",
-          "link": "https://www.themoviedb.org/person/35742"
+          "profile": "https://image.tmdb.org/t/p/w185/tKeQhSyXyzlzxNtxFq24iIvzXrC.jpg"
         },
         {
           "name": "Uday Chopra",
           "character": "Vicky",
-          "profile": "https://image.tmdb.org/t/p/w185/bHmH00vJNavpf5BgSuBeUSPB9bj.jpg",
-          "link": "https://www.themoviedb.org/person/69709"
+          "profile": "https://image.tmdb.org/t/p/w185/bHmH00vJNavpf5BgSuBeUSPB9bj.jpg"
         },
         {
           "name": "Jugal Hansraj",
           "character": "Sameer",
-          "profile": "https://image.tmdb.org/t/p/w185/29l2Okg2DZaPy90I62OlPrWNJe4.jpg",
-          "link": "https://www.themoviedb.org/person/69711"
+          "profile": "https://image.tmdb.org/t/p/w185/29l2Okg2DZaPy90I62OlPrWNJe4.jpg"
         },
         {
           "name": "Jimmy Shergill",
           "character": "Karan",
-          "profile": "https://image.tmdb.org/t/p/w185/A3fJrhIgM7Q5TGwbQYxYBjNsV37.jpg",
-          "link": "https://www.themoviedb.org/person/35792"
+          "profile": "https://image.tmdb.org/t/p/w185/A3fJrhIgM7Q5TGwbQYxYBjNsV37.jpg"
         },
         {
           "name": "Aishwarya Rai Bachchan",
           "character": "Megha",
-          "profile": "https://image.tmdb.org/t/p/w185/59YeZ2zAoBfl3bnloriMyQkgwOK.jpg",
-          "link": "https://www.themoviedb.org/person/87773"
+          "profile": "https://image.tmdb.org/t/p/w185/59YeZ2zAoBfl3bnloriMyQkgwOK.jpg"
         },
         {
           "name": "Preeti Jhangiani",
           "character": "Kiran",
-          "profile": "https://image.tmdb.org/t/p/w185/mFpshXUX3BfPDTVfoKUWKPCMXma.jpg",
-          "link": "https://www.themoviedb.org/person/125205"
+          "profile": "https://image.tmdb.org/t/p/w185/mFpshXUX3BfPDTVfoKUWKPCMXma.jpg"
         },
         {
           "name": "Shamita Shetty",
           "character": "Ishika",
-          "profile": "https://image.tmdb.org/t/p/w185/y6RaI7U7kDfXKMo1bviKYutE09b.jpg",
-          "link": "https://www.themoviedb.org/person/85732"
+          "profile": "https://image.tmdb.org/t/p/w185/y6RaI7U7kDfXKMo1bviKYutE09b.jpg"
         },
         {
           "name": "Kim Sharma",
           "character": "Sanjana",
-          "profile": "https://image.tmdb.org/t/p/w185/5NAg9fNPQkft1NRobDBBTg5sdXp.jpg",
-          "link": "https://www.themoviedb.org/person/87705"
+          "profile": "https://image.tmdb.org/t/p/w185/5NAg9fNPQkft1NRobDBBTg5sdXp.jpg"
         },
         {
           "name": "Anupam Kher",
           "character": "Kake",
-          "profile": "https://image.tmdb.org/t/p/w185/kgU5Ap1Kf9RnicB5DMcXEZqed2f.jpg",
-          "link": "https://www.themoviedb.org/person/6217"
+          "profile": "https://image.tmdb.org/t/p/w185/kgU5Ap1Kf9RnicB5DMcXEZqed2f.jpg"
         }
       ],
       "artwork": {
         "poster": "https://image.tmdb.org/t/p/w780/dDsYaBazrYKg9bv8qgsEohZQMat.jpg",
         "fanart": "https://image.tmdb.org/t/p/original/s3IfP462ibiQkfU767D4YcMbKTt.jpg",
-        "clearlogo": "https://image.tmdb.org/t/p/original/8lhVeLBIWoX4f3cI9B8wsmkI8vY.png",
-        "clearart": "",
-        "banner": "",
-        "landscape": "https://image.tmdb.org/t/p/original/s3IfP462ibiQkfU767D4YcMbKTt.jpg",
-        "keyart": "",
-        "thumbnail": "https://image.tmdb.org/t/p/w780/dDsYaBazrYKg9bv8qgsEohZQMat.jpg",
-        "discart": "",
-        "title_card": "https://image.tmdb.org/t/p/original/s3IfP462ibiQkfU767D4YcMbKTt.jpg",
-        "character_art": [],
-        "extra_posters": [],
-        "extra_backdrops": []
-      },
-      "trailer": "https://www.youtube.com/watch?v=OjlZFIY7VHU",
-      "ratings": [
-        {
-          "source": "TMDb",
-          "value": 7.1,
-          "out_of": 10
-        }
-      ],
-      "badges": {
-        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
-        "hdr": "",
-        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png",
-        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
-        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-      },
-      "specs": {
-        "resolution": "1080p",
-        "source": "BluRay",
-        "codec": "x264",
-        "bit_depth": "8bit",
-        "audio": "Hindi DDP 5.1",
-        "channels": "5.1",
-        "bitrate": "640 Kbps",
-        "languages": "Hindi DDP 5.1",
-        "size": "16 GB",
-        "telegram_tag": ""
+        "thumbnail": "https://image.tmdb.org/t/p/w780/dDsYaBazrYKg9bv8qgsEohZQMat.jpg"
       },
       "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1FK3vDhNu7bSzcJopjxO8mM_JY67suVSo|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "specs": {
+        "resolution": "1080p",
+        "source": "WEB-DL",
+        "audio": "5.1",
+        "size": "5 GB"
+      },
       "versions": [
         {
           "id": "1FK3vDhNu7bSzcJopjxO8mM_JY67suVSo",
-          "name": "Mohabbatein (2000) [1080p] [BluRay] [Hindi DDP 5.1] [16 GB].mkv",
-          "language": "Hindi DDP 5.1",
+          "name": "Mohabbatein.mkv",
           "quality": "1080p FHD",
-          "resolution": "1080p",
-          "source": "BluRay",
-          "source_image": "resources/images/sources/web.png",
-          "codec": "x264",
-          "audio": "Hindi DDP 5.1",
-          "channels": "5.1",
-          "size": "16 GB",
-          "telegram_tag": "",
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1FK3vDhNu7bSzcJopjxO8mM_JY67suVSo|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
     }
-  ],
-  "movie_count": 9
+  ]
 }
