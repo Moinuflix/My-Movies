@@ -1,267 +1,142 @@
-name: Scan Google Drive Arrivals
+import json
+import os
+import re
+import subprocess
 
-on:
-  workflow_dispatch:
+# Rclone Remote & GDrive Folder (Agar direct remote hai toh 'gdrive:' ya 'mydrive:Movies')
+RCLONE_REMOTE = "gdrive:" 
+TMDB_KEY = "051ccf72e026820cb53b8b8531b6a2ba"
 
-permissions:
-  contents: write
+print("🔍 Scanning Google Drive with Rclone...")
 
-jobs:
-  scan:
-    runs-on: ubuntu-latest
+# 1. Fetch JSON list from GDrive
+try:
+    res = subprocess.run(["rclone", "lsjson", RCLONE_REMOTE, "--files-only"], capture_output=True, text=True)
+    if res.returncode != 0:
+        print("❌ Rclone Scan Error:", res.stderr)
+        exit(1)
+    drive_files = json.loads(res.stdout)
+except Exception as e:
+    print("❌ Failed to run rclone:", e)
+    exit(1)
 
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+# 2. Existing IDs nikaalein taaki duplicate add na ho
+existing_ids = set()
+cat_path = "resources/data/catalog.json"
+if os.path.exists(cat_path):
+    try:
+        with open(cat_path, "r", encoding="utf-8") as f:
+            cat = json.load(f)
+            movies = cat if isinstance(cat, list) else cat.get("movies", [])
+            for m in movies:
+                if m.get("id"): existing_ids.add(str(m["id"]).strip())
+    except: pass
 
-      - name: Setup Rclone & Python
-        run: |
-          sudo -v ; curl https://rclone.org/install.sh | sudo bash
-          sudo apt-get install -y python3
+# 3. Read current pending queue
+pending_file = "resources/data/pending_movies.json"
+pending_data = []
+if os.path.exists(pending_file):
+    try:
+        with open(pending_file, "r", encoding="utf-8") as f:
+            pending_data = json.load(f)
+            if not isinstance(pending_data, list): pending_data = []
+            for p in pending_data:
+                if p.get("gdrive_id"): existing_ids.add(str(p["gdrive_id"]).strip())
+    except: pending_data = []
 
-      - name: Configure Rclone
-        env:
-          GDRIVE_TOKEN: ${{ secrets.RCLONE_GDRIVE_TOKEN }}
-        run: |
-          mkdir -p ~/.config/rclone
-          cat << 'EOF' > make_conf.py
-          import os
+video_exts = {".mkv", ".mp4", ".avi", ".ts"}
+added_count = 0
 
-          token = os.environ.get("GDRIVE_TOKEN", "").strip()
-          conf = f"[gdrive]\ntype = drive\nscope = drive\ntoken = {token}\n"
+for f in drive_files:
+    filename = f.get("Name", "")
+    ext = os.path.splitext(filename)[1].lower()
+    if ext not in video_exts:
+        continue
 
-          with open(os.path.expanduser("~/.config/rclone/rclone.conf"), "w", encoding="utf-8") as f:
-              f.write(conf)
-          EOF
-          python3 make_conf.py
+    gid = f.get("ID", "").strip()
+    if not gid or gid in existing_ids:
+        continue
 
-      - name: Auto Audit, Enrich Old Movies & Generate Inbox
-        run: |
-          cat << 'EOF' > scan_and_enrich.py
-          import subprocess
-          import json
-          import os
-          import re
+    size_b = f.get("Size", 0)
+    size_gb = f"{round(size_b / (1024**3))} GB" if size_b >= 1024**3 else f"{round(size_b / (1024**2))} MB"
 
-          print("--- STEP 1: SCANNING GOOGLE DRIVE VIA RCLONE ---")
-          cmd = ["rclone", "lsjson", "gdrive:", "-R", "--files-only"]
-          res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    # Telegram Tag extraction
+    tg_tag = ""
+    tg_match = re.search(r'@[\w_]+', filename)
+    if tg_match: tg_tag = tg_match.group(0)
 
-          if res.returncode != 0:
-              print(f"Rclone Error: {res.stderr}")
-              drive_files = []
-          else:
-              try:
-                  drive_files = json.loads(res.stdout) if res.stdout else []
-              except Exception as e:
-                  print(f"JSON Parse Error: {e}")
-                  drive_files = []
+    # Clean Title & Year
+    clean = re.sub(r'@[\w_]+\s*-\s*', '', filename)
+    clean = re.sub(r'\.(mkv|mp4|avi|ts)$', '', clean, flags=re.I)
+    clean = re.sub(r'[\._\-]', ' ', clean)
+    ym = re.search(r'\b(19\d\d|20\d\d)\b', clean)
+    year = int(ym.group(1)) if ym else 2026
+    cutoff = ym.start() if ym else len(clean)
+    title = clean[:cutoff].strip()
+    title = re.sub(r'\b(2160p|1080p|720p|4k|amaz|amzn|bluray|hevc|h265|x264|x265|dts|web|dl|hybrid)\b', '', title, flags=re.I).strip()
 
-          print(f"Total raw files in Drive: {len(drive_files)}")
+    # Resolution & Source
+    fn_l = filename.lower()
+    res_val = "2160p" if ("2160p" in fn_l or "4k" in fn_l) else ("720p" if "720p" in fn_l else "1080p")
+    src_val = "BluRay" if "bluray" in fn_l else ("AMZN" if ("amzn" in fn_l or "amaz" in fn_l) else "WEB-DL")
+    codec_val = "x265" if ("x265" in fn_l or "hevc" in fn_l) else "x264"
 
-          # Drive ID lookup map (ID -> {name, bytes})
-          drive_id_map = {}
-          for f in drive_files:
-              fid = str(f.get("ID", "")).strip()
-              fname = f.get("Path", "")
-              fbytes = f.get("Size", 0)
-              if fid:
-                  drive_id_map[fid] = {
-                      "name": os.path.basename(fname),
-                      "bytes": fbytes
-                  }
+    # Multi-Audio bracket parser
+    audio_val = "Tamil 5.1"
+    br_audio = re.search(r'\[(.*?(?:Telugu|Tamil|Hindi|English|DDP|DTS|AAC|Atmos|TrueHD).*?)\]', filename, re.I)
+    if br_audio:
+        audio_val = re.sub(r'JHS\s*', '', br_audio.group(1), flags=re.I).replace('~', '-').strip()
 
-          def parse_ott_and_size(filename, raw_bytes=0):
-              fn = filename.lower()
+    std_name = f"{title} ({year}) [{res_val}] [{src_val}] [{audio_val}] [{size_gb}].mkv"
 
-              # 1. OTT Source Detection
-              source = "WEB-DL"
-              if "nf" in fn or "netflix" in fn:
-                  source = "Netflix"
-              elif any(x in fn for x in ["hotstar", "dsnp", "disney"]):
-                  source = "Disney+ Hotstar"
-              elif any(x in fn for x in ["amzn", "prime"]):
-                  source = "Prime Video"
-              elif "sonyliv" in fn or "sony" in fn:
-                  source = "SonyLIV"
-              elif "zee5" in fn:
-                  source = "Zee5"
-              elif "jio" in fn:
-                  source = "JioCinema"
-              elif "bluray" in fn or "remux" in fn:
-                  source = "BLURAY"
+    # TMDb Auto Match Candidate (India region priority)
+    tmdb_candidate = None
+    try:
+        import urllib.request
+        query_url = f"https://api.themoviedb.org/3/search/movie?api_key={TMDB_KEY}&query={urllib.parse.quote(title)}&year={year}&region=IN"
+        req = urllib.request.Request(query_url, headers={"User-Agent": "MoinuFlix-Scanner/1.0"})
+        with urllib.request.urlopen(req, timeout=5) as resp:
+            td = json.loads(resp.read().decode())
+            if td.get("results"):
+                top = td["results"][0]
+                tmdb_candidate = {
+                    "tmdb_id": top["id"],
+                    "title": top.get("title", title),
+                    "year": str(year),
+                    "poster": f"https://image.tmdb.org/t/p/w500{top['poster_path']}" if top.get("poster_path") else "",
+                    "fanart": f"https://image.tmdb.org/t/p/original{top['backdrop_path']}" if top.get("backdrop_path") else "",
+                    "rating": round(top.get("vote_average", 7.5), 1)
+                }
+    except: pass
 
-              # 2. GB Size
-              if raw_bytes and raw_bytes > 0:
-                  gb_val = round(raw_bytes / (1024 ** 3))
-                  size_str = f"{gb_val} GB" if gb_val >= 1 else f"{round(raw_bytes / (1024 ** 2))} MB"
-              else:
-                  sz_match = re.search(r"(\d+(\.\d+)?)\s*(gb|mb)", fn)
-                  size_str = f"{sz_match.group(1)} {sz_match.group(3).upper()}" if sz_match else "10 GB"
+    item = {
+        "gdrive_id": gid,
+        "original_filename": filename,
+        "file_size_bytes": size_b,
+        "file_size_gb": size_gb,
+        "mime_type": "video/x-matroska",
+        "parsed": {
+            "title": title,
+            "year": year,
+            "resolution": res_val,
+            "source": src_val,
+            "codec": codec_val,
+            "telegram_tag": tg_tag,
+            "standard_filename": std_name
+        },
+        "match_status": "matched" if tmdb_candidate else "pending",
+        "tmdb_candidates": [tmdb_candidate] if tmdb_candidate else [],
+        "selected_tmdb_id": tmdb_candidate["tmdb_id"] if tmdb_candidate else None,
+        "approval_status": "pending"
+    }
 
-              return source, size_str
+    pending_data.append(item)
+    existing_ids.add(gid)
+    added_count += 1
+    print(f"  + Added to Queue: {title} ({year}) [{size_gb}]")
 
-          def load_json(filepath):
-              if os.path.exists(filepath):
-                  try:
-                      with open(filepath, "r", encoding="utf-8") as f:
-                          return json.load(f)
-                  except:
-                      pass
-              return []
+os.makedirs("resources/data", exist_ok=True)
+with open(pending_file, "w", encoding="utf-8") as f:
+    json.dump(pending_data, f, indent=2, ensure_ascii=False)
 
-          def save_json(filepath, data):
-              os.makedirs(os.path.dirname(filepath), exist_ok=True) if os.path.dirname(filepath) else None
-              with open(filepath, "w", encoding="utf-8") as f:
-                  json.dump(data, f, indent=2, ensure_ascii=False)
-
-          # --- STEP 2: ENRICH OLD MOVIES IN CHUNKS ---
-          print("--- STEP 2: ENRICHING OLD MOVIES IN CHUNKS ---")
-          master_path = "chunks/data_c01.json" if os.path.exists("chunks/data_c01.json") else "resources/data/chunks/chunk_01.json"
-          master_list = load_json(master_path)
-          movies_iterable = master_list.get("movies", []) if isinstance(master_list, dict) else master_list
-          enriched_count = 0
-
-          for movie in movies_iterable:
-              if not isinstance(movie, dict):
-                  continue
-
-              mid = str(movie.get("id", "") or movie.get("gdrive_id", "")).strip()
-              movie_name = movie.get("name", "") or movie.get("title", "")
-
-              matched_info = drive_id_map.get(mid)
-              raw_bytes = matched_info.get("bytes", 0) if matched_info else 0
-              real_name = matched_info.get("name", "") if matched_info else movie_name
-
-              detected_source, detected_size = parse_ott_and_size(real_name, raw_bytes)
-
-              movie.setdefault("specs", {})
-              curr_source = movie["specs"].get("source")
-              curr_size = movie["specs"].get("size")
-
-              needs_update = False
-              if not curr_source or curr_source == "WEB-DL":
-                  movie["specs"]["source"] = detected_source
-                  needs_update = True
-
-              if not curr_size or curr_size in ["10 GB", "3 GB", "0 GB"]:
-                  if detected_size != "10 GB":
-                      movie["specs"]["size"] = detected_size
-                      needs_update = True
-
-              versions = movie.get("versions", [])
-              if isinstance(versions, list):
-                  for v in versions:
-                      if isinstance(v, dict):
-                          v_id = str(v.get("id", "") or v.get("gdrive_id", "")).strip()
-                          v_bytes = drive_id_map.get(v_id, {}).get("bytes", 0)
-                          v_name = drive_id_map.get(v_id, {}).get("name", v.get("name", ""))
-                          v_src, v_sz = parse_ott_and_size(v_name, v_bytes)
-                          v["source"] = v_src
-                          v["size"] = v_sz
-                          v["quality"] = f"{v.get('resolution', '1080p FHD')} • {v_src} • {v.get('audio', 'Dolby Atmos')}"
-
-              if needs_update:
-                  enriched_count += 1
-
-          if os.path.exists(master_path):
-              save_json(master_path, master_list)
-              print(f"Enriched {enriched_count} existing movies in {master_path}!")
-
-          # --- STEP 3: AUDIT DRIVE INBOX ARRIVALS ---
-          print("--- STEP 3: AUDITING NEW INBOX ARRIVALS ---")
-          tamil_list = load_json("chunks/data_c01_tamil.json")
-          telugu_list = load_json("chunks/data_c01_telugu.json")
-          hindi_list = load_json("chunks/data_c01_hindi.json")
-          english_list = load_json("chunks/data_c01_english.json")
-
-          def clean_str(s):
-              if not s: return ""
-              s = re.sub(r'\[.*?\]|\(.*?\)|\.mkv|\.mp4', ' ', str(s).lower())
-              s = re.sub(r'[^a-zA-Z0-9]', '', s)
-              return s
-
-          known_ids = set()
-          known_titles = set()
-
-          all_items = movies_iterable + tamil_list + telugu_list + hindi_list + english_list
-          for x in all_items:
-              if not isinstance(x, dict): continue
-
-              if x.get("id"): known_ids.add(str(x.get("id")).strip())
-              if x.get("gdrive_id"): known_ids.add(str(x.get("gdrive_id")).strip())
-
-              m = re.search(r'[?&]id=([a-zA-Z0-9_-]+)', x.get("stream_url", ""))
-              if m: known_ids.add(m.group(1))
-
-              for v in x.get("versions", []):
-                  if isinstance(v, dict):
-                      if v.get("id"): known_ids.add(str(v.get("id")).strip())
-                      vm = re.search(r'[?&]id=([a-zA-Z0-9_-]+)', v.get("stream_url", ""))
-                      if vm: known_ids.add(vm.group(1))
-
-              for k in ["title", "original_title", "name"]:
-                  val = x.get(k)
-                  if val:
-                      c = clean_str(val)
-                      if len(c) >= 3:
-                          known_titles.add(c[:10])
-
-          inbox = []
-          for file in drive_files:
-              fname = file.get("Path", "")
-              fid = str(file.get("ID", "")).strip()
-              fbytes = file.get("Size", 0)
-
-              if not fname.lower().endswith(('.mkv', '.mp4', '.avi', '.ts')):
-                  continue
-
-              if fid in known_ids:
-                  continue
-
-              clean_name = clean_str(os.path.basename(fname))
-              if any(t in clean_name for t in known_titles if len(t) >= 3):
-                  continue
-
-              gb_val = round(fbytes / (1024 ** 3))
-              clean_size = f"{gb_val} GB"
-
-              lower = fname.lower()
-              target_cat = "kollywood"
-              target_file = "chunks/data_c01_tamil.json"
-              if "telugu" in lower:
-                  target_cat = "tollywood"
-                  target_file = "chunks/data_c01_telugu.json"
-              elif "hindi" in lower:
-                  target_cat = "bollywood"
-                  target_file = "chunks/data_c01_hindi.json"
-              elif any(x in lower for x in ["english", "hollywood", "dual"]):
-                  target_cat = "hollywood"
-                  target_file = "chunks/data_c01_english.json"
-
-              display_title = os.path.basename(fname).rsplit(".", 1)[0].replace(".", " ")
-
-              inbox.append({
-                  "title": display_title,
-                  "gdrive_id": fid,
-                  "size": clean_size,
-                  "status": "completely_missing",
-                  "target_category": target_cat,
-                  "target_chunk": target_file,
-                  "stream_url": f"https://gdrive-stream.moinudeentv.workers.dev/?id={fid}|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-              })
-
-          print(f"Actually Brand New Missing: {len(inbox)}")
-          save_json("inbox_arrivals.json", inbox)
-          EOF
-
-          python3 scan_and_enrich.py
-
-      - name: Commit & Push Changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add chunks/ inbox_arrivals.json resources/ 2>/dev/null || true
-          git diff --staged --quiet || (git commit -m "Auto-Enrich: Updated OTT sources, GB sizes & Inbox Arrivals" && git push origin main)
+print(f"\n🎉 Done! Added {added_count} new movie arrivals to {pending_file}")
