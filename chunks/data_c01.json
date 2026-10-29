@@ -74,6 +74,26 @@
           "languages": "",
           "size": "13GB"
         }
+      },
+      {
+        "id": "1Kd0_E8eHQnz6W0_lvUd9CfsYRRMSP3CE",
+        "name": "Baththa (2026) [1080p] [Netflix] [Dolby Atmos].mkv",
+        "quality": "1080p • Netflix • Dolby Atmos Multi [10GB]",
+        "source": "Netflix",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Kd0_E8eHQnz6W0_lvUd9CfsYRRMSP3CE|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Netflix",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Hindi, Malayalam",
+          "size": "10GB"
+        }
       }
     ]
   },
