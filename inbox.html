@@ -63,9 +63,7 @@
       transition: background-image 0.8s ease-in-out;
     }
 
-    [data-theme="light"] #dynamic-bg {
-      display: none;
-    }
+    [data-theme="light"] #dynamic-bg { display: none; }
 
     .container {
       max-width: 1280px;
@@ -89,19 +87,12 @@
       gap: 1rem;
     }
 
-    [data-theme="light"] .govt-header {
-      background: linear-gradient(135deg, #032541, #0f172a);
-    }
+    [data-theme="light"] .govt-header { background: linear-gradient(135deg, #032541, #0f172a); }
 
     .govt-title { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.3px; color: #fff; }
     .govt-sub { font-size: 0.82rem; color: #38bdf8; margin-top: 3px; font-weight: 600; }
 
-    .nav-links-box {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+    .nav-links-box { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
     .btn-nav-link {
       background: rgba(56, 189, 248, 0.12);
@@ -137,9 +128,7 @@
       gap: 1rem;
     }
 
-    [data-theme="light"] .stats-bar {
-      background: #f8fafc;
-    }
+    [data-theme="light"] .stats-bar { background: #f8fafc; }
 
     .stat-item { display: flex; flex-direction: column; }
     .stat-label { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
@@ -173,6 +162,7 @@
     .col-12 { grid-column: span 12; }
     .col-8 { grid-column: span 8; }
     .col-6 { grid-column: span 6; }
+    .col-5 { grid-column: span 5; }
     .col-4 { grid-column: span 4; }
     .col-3 { grid-column: span 3; }
     .col-2 { grid-column: span 2; }
@@ -221,11 +211,7 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.4);
       margin-top: 18px;
     }
-    .passport-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .passport-box img { width: 100%; height: 100%; object-fit: cover; }
 
     .tmdb-results-dropdown {
       position: absolute;
@@ -332,7 +318,7 @@
     .toast-error { background: rgba(239, 68, 68, 0.15); color: var(--laser-red); border: 1px solid var(--laser-red); }
 
     @media (max-width: 850px) {
-      .col-8, .col-6, .col-4, .col-3, .col-2 { grid-column: span 12; }
+      .col-8, .col-6, .col-5, .col-4, .col-3, .col-2 { grid-column: span 12; }
       .form-wrapper { padding: 1.2rem; }
     }
   </style>
@@ -345,14 +331,14 @@
   <div class="govt-header">
     <div>
       <div class="govt-title">MOINUFLIX NATIONAL MEDIA INGESTION PORTAL</div>
-      <div class="govt-sub">Govt-Style Form Verification • Regional TMDb (India Priority) • Two-Tier Engine</div>
+      <div class="govt-sub">Govt-Style Form Verification • Dual-API Artwork (TMDb+Fanart) • Language Audio Engine</div>
     </div>
     
     <div class="nav-links-box">
       <a href="admin.html" class="btn-nav-link">🎬 Library Manager (admin.html)</a>
       <a href="pending.html" class="btn-nav-link">📥 Pending Queue (pending.html)</a>
       <a href="movie.html" class="btn-nav-link">🎞️ Cinema View (movie.html)</a>
-      <button type="button" class="theme-toggle-btn" onclick="toggleTheme()" id="theme-btn" title="Toggle Dark/Light Mode">☀️ Light</button>
+      <button type="button" class="theme-toggle-btn" onclick="toggleTheme()" id="theme-btn">☀️ Light</button>
       <button type="button" class="btn-nav-link" onclick="configureToken()">⚙️ Set PAT</button>
     </div>
   </div>
@@ -367,8 +353,8 @@
       <span class="stat-val" id="stat-target-chunk" style="color:var(--laser-cyan);">chunk_01.json</span>
     </div>
     <div class="stat-item">
-      <span class="stat-label">TMDb Region Priority</span>
-      <span class="stat-val" style="color:var(--laser-green);">India 🇮🇳 (IN)</span>
+      <span class="stat-label">Artwork Status</span>
+      <span class="stat-val" style="color:var(--laser-green);">Dual Engine (TMDb + Fanart)</span>
     </div>
     <div class="stat-item">
       <span class="stat-label">PAT Token Status</span>
@@ -389,7 +375,7 @@
       <div class="form-grid">
         <div class="form-group col-12">
           <label>Raw Google Drive Release File Name <span class="required">* (Instant 100% Full Auto-Fill)</span></label>
-          <input type="text" id="raw-filename" placeholder="Paste full raw filename, e.g. @Tamiltvtoonsofficial - Moana (2026) BluRay Hybrid 1080p 8bit x264 [JHS Telugu + Tamil + Hindi (DDP 5.1 ~ 192Kbps) + English (DDP 7.1 ~ 1509Kbps)] ESub [TTT]" required oninput="handleInstantRawIngest(this.value)">
+          <input type="text" id="raw-filename" placeholder="Paste full raw filename, e.g. Raaz.2002.1080p.Hindi.AMZN.Web.DL.AVC.DDP.5.1.ESub.Telly.mkv" required oninput="handleInstantRawIngest(this.value)">
         </div>
 
         <div class="form-group col-4">
@@ -404,7 +390,7 @@
 
         <div class="form-group col-2">
           <label>TMDb Movie ID <span class="required">*</span></label>
-          <input type="number" id="tmdb-id" placeholder="e.g. 1108427" required oninput="fetchTmdbOfficialDetails(this.value)">
+          <input type="number" id="tmdb-id" placeholder="e.g. 20731" required oninput="fetchTmdbOfficialDetails(this.value)">
         </div>
 
         <div class="form-group col-3">
@@ -443,32 +429,32 @@
 
         <div class="form-group col-12">
           <label>Movie Tagline (Quote)</label>
-          <input type="text" id="movie-tagline" placeholder="e.g. The ocean chose her for a reason.">
+          <input type="text" id="movie-tagline" placeholder="e.g. Do You Want To Know The Secret...?">
         </div>
 
         <div class="form-group col-2">
           <label>Release Year</label>
-          <input type="number" id="movie-year" value="2026" oninput="updateDashPreview()">
+          <input type="number" id="movie-year" value="2002" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-2">
           <label>Exact Release Date (IN)</label>
-          <input type="text" id="movie-release-date" placeholder="YYYY-MM-DD" value="2026-07-08">
+          <input type="text" id="movie-release-date" placeholder="YYYY-MM-DD" value="2002-02-01">
         </div>
 
         <div class="form-group col-2">
           <label>TMDb Rating</label>
-          <input type="text" id="movie-rating" value="7.5">
+          <input type="text" id="movie-rating" value="5.8">
         </div>
 
         <div class="form-group col-2">
           <label>Original Language</label>
-          <input type="text" id="movie-lang" value="en">
+          <input type="text" id="movie-lang" value="hi" oninput="handleLanguageInput(this.value)">
         </div>
 
         <div class="form-group col-2">
           <label>Runtime (Minutes)</label>
-          <input type="number" id="movie-runtime" value="115">
+          <input type="number" id="movie-runtime" value="152">
         </div>
 
         <div class="form-group col-2">
@@ -482,7 +468,7 @@
 
         <div class="form-group col-4">
           <label>IMDb ID</label>
-          <input type="text" id="movie-imdb-id" placeholder="tt13622970">
+          <input type="text" id="movie-imdb-id" placeholder="tt0307873">
         </div>
 
         <div class="form-group col-4">
@@ -502,7 +488,7 @@
 
         <div class="form-group col-6">
           <label>Genres Array (Kodi Categories) <span class="required">*</span></label>
-          <input type="text" id="movie-genres" placeholder="Animation, Adventure, Family" value="Animation, Adventure, Family" required>
+          <input type="text" id="movie-genres" placeholder="Thriller, Horror" value="Thriller, Horror" required>
         </div>
 
         <div class="form-group col-12">
@@ -528,7 +514,7 @@
 
       <!-- PART III: TECHNICAL & EXPANDED OTT -->
       <div class="section-title">
-        <span>Part III: Technical Attributes & Multi-Audio Mapping</span>
+        <span>Part III: Technical Attributes & Language-Audio Mapping</span>
       </div>
 
       <div class="form-grid">
@@ -544,9 +530,8 @@
         <div class="form-group col-3">
           <label>Video Source / OTT Platform</label>
           <select id="tech-source" onchange="handleSourceChange(this.value)">
-            <option value="BluRay" selected>BluRay / REMUX</option>
+            <option value="AMZN" selected>Amazon Prime Video (AMZN)</option>
             <option value="WEB-DL">WEB-DL (Generic)</option>
-            <option value="AMZN">Amazon Prime Video (AMZN)</option>
             <option value="Sun NXT">Sun NXT</option>
             <option value="Netflix">Netflix</option>
             <option value="Hotstar">Disney+ Hotstar</option>
@@ -555,12 +540,13 @@
             <option value="Aha">Aha</option>
             <option value="Zee5">Zee5</option>
             <option value="Apple TV+">Apple TV+</option>
+            <option value="BluRay">BluRay / REMUX</option>
           </select>
         </div>
 
         <div class="form-group col-3">
           <label>Source Image Asset Path</label>
-          <input type="text" id="tech-source-image" value="resources/images/sources/bluray.png" readonly style="background-color: rgba(255,255,255,0.05);">
+          <input type="text" id="tech-source-image" value="resources/images/sources/amazon.png" readonly style="background-color: rgba(255,255,255,0.05);">
         </div>
 
         <div class="form-group col-3">
@@ -587,14 +573,14 @@
         </div>
 
         <div class="form-group col-12">
-          <label>Expanded Multi-Audio Specifications</label>
-          <input type="text" id="tech-audio-specs" value="Telugu + Tamil + Hindi (DDP 5.1 - 192Kbps) + English (DDP 7.1 - 1509Kbps)" oninput="updateDashPreview()">
+          <label>Expanded Multi-Audio Specifications (Language + Codec + Channels)</label>
+          <input type="text" id="tech-audio-specs" value="Hindi DDP 5.1 - 640Kbps" oninput="updateDashPreview()">
         </div>
       </div>
 
       <!-- PART IV: 10-ARTWORK SUITE -->
       <div class="section-title">
-        <span>Part IV: Complete 10-Artwork Verification Suite</span>
+        <span>Part IV: Complete 10-Artwork Verification Suite (Dual TMDb + Fanart Engine)</span>
       </div>
 
       <div class="artwork-grid">
@@ -607,7 +593,7 @@
           <input type="text" id="art-fanart" placeholder="Backdrop URL">
         </div>
         <div class="art-item">
-          <span>3. ClearLogo (PNG)</span>
+          <span>3. ClearLogo (PNG - Auto Pulled)</span>
           <input type="text" id="art-clearlogo" placeholder="ClearLogo URL">
         </div>
         <div class="art-item">
@@ -660,7 +646,6 @@
   let currentTargetChunk = "chunk_01.json";
   let loadedCastArray = [];
 
-  // 1. Dark / Light Theme Manager
   function initTheme() {
     const saved = localStorage.getItem("moinuflix_theme") || "dark";
     document.documentElement.setAttribute("data-theme", saved);
@@ -698,9 +683,7 @@
       return;
     }
     try {
-      const r = await fetch("https://api.github.com/user", {
-        headers: { "Authorization": `token ${t}` }
-      });
+      const r = await fetch("https://api.github.com/user", { headers: { "Authorization": `token ${t}` } });
       if (r.ok) {
         const u = await r.json();
         ind.textContent = `Active ✅ (${u.login})`;
@@ -731,7 +714,7 @@
       const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/catalog.json?t=${Date.now()}`);
       if (res.ok) {
         const cat = await res.json();
-        const movies = cat.movies || [];
+        const movies = cat.movies || (Array.isArray(cat) ? cat : []);
         catalogCount = movies.length;
         document.getElementById("stat-catalog-count").textContent = `${catalogCount} Movies`;
         
@@ -743,7 +726,6 @@
       document.getElementById("stat-catalog-count").textContent = "Offline / New";
     }
 
-    // Check if redirected from pending.html
     const pendingSaved = sessionStorage.getItem("moinuflix_edit_pending");
     if (pendingSaved && window.location.search.includes("load_pending")) {
       const pItem = JSON.parse(pendingSaved);
@@ -763,26 +745,65 @@
     el.value = clean;
   }
 
-  /* ⚡ ACCURATE PARSER ENGINE WITH TELEGRAM TAG & MULTI-AUDIO */
+  /* ⚡ DYNAMIC LANGUAGE-AUDIO EXTRACTION ENGINE */
+  function extractLanguageAndAudio(raw, fallbackLang) {
+    // 1. Detect All Languages mentioned in filename
+    const langs = [];
+    if (/\b(hindi)\b/i.test(raw)) langs.push("Hindi");
+    if (/\b(tamil)\b/i.test(raw)) langs.push("Tamil");
+    if (/\b(telugu)\b/i.test(raw)) langs.push("Telugu");
+    if (/\b(english|eng)\b/i.test(raw)) langs.push("English");
+    if (/\b(malayalam)\b/i.test(raw)) langs.push("Malayalam");
+    if (/\b(kannada)\b/i.test(raw)) langs.push("Kannada");
+
+    const primaryLang = langs.length > 0 ? langs.join(" + ") : (fallbackLang || "Hindi");
+
+    // 2. Check for explicit bracketed audio like: [Tamil (DDP 5.1 ~ 640Kbps) + Tamil (AAC 2.0 ~ 128Kbps)]
+    const bracketMatch = raw.match(/\[(.*?(?:DDP|DTS|AAC|Atmos|TrueHD|5\.1|2\.0|7\.1).*?)\]/i);
+    if (bracketMatch && bracketMatch[1].length > 4) {
+      let bStr = bracketMatch[1].replace(/JHS\s*/i, '').replace(/~/g, '-').trim();
+      return bStr;
+    }
+
+    // 3. Simple parenthesized audio: (DD+ 5.1 & AAC 2.0)
+    const parenMatch = raw.match(/\((DD\+?5\.1.*?|DTS.*?|Atmos.*?|TrueHD.*?|AAC.*?)\)/i);
+    let audioCode = "";
+    if (parenMatch) {
+      audioCode = parenMatch[1].replace(/~/g, '-').trim();
+    } else {
+      // Direct token match
+      if (/ddp\s*5\.1|dd\+\s*5\.1/i.test(raw)) audioCode = "DDP 5.1 - 640Kbps";
+      else if (/dts/i.test(raw)) audioCode = "DTS 5.1 - 1509Kbps";
+      else if (/atmos/i.test(raw)) audioCode = "Dolby Atmos 5.1";
+      else if (/aac\s*2\.0/i.test(raw)) audioCode = "AAC 2.0 - 128Kbps";
+      else if (/5\.1/i.test(raw)) audioCode = "DD 5.1 - 448Kbps";
+      else audioCode = "DD+ 5.1 - 640Kbps";
+    }
+
+    // Attach language to audio
+    if (!audioCode.toLowerCase().includes(primaryLang.toLowerCase())) {
+      return `${primaryLang} ${audioCode}`.trim();
+    }
+    return audioCode;
+  }
+
   let rawIngestDebounce = null;
   function handleInstantRawIngest(raw) {
     if (!raw.trim()) return;
 
-    // 1. Extract Telegram Channel Tag (e.g. @Tamiltvtoonsofficial)
-    let tgTag = "";
+    // Telegram Tag
     const tgMatch = raw.match(/@[\w_]+/);
     if (tgMatch) {
-      tgTag = tgMatch[0];
-      document.getElementById("telegram-tag").value = tgTag;
+      document.getElementById("telegram-tag").value = tgMatch[0];
     }
 
-    // 2. Resolution
+    // Resolution
     const resSel = document.getElementById("tech-resolution");
     if (/\b(2160p|4k|uhd)\b/i.test(raw)) resSel.value = "2160p";
     else if (/\b(720p)\b/i.test(raw)) resSel.value = "720p";
     else resSel.value = "1080p";
 
-    // 3. Source Platform
+    // OTT Source
     if (/amaz|amzn|prime/i.test(raw)) handleSourceChange("AMZN");
     else if (/sun\s*nxt|sunnxt/i.test(raw)) handleSourceChange("Sun NXT");
     else if (/nf|netflix/i.test(raw)) handleSourceChange("Netflix");
@@ -794,44 +815,35 @@
     else if (/bluray|remux|bdrip/i.test(raw)) handleSourceChange("BluRay");
     else handleSourceChange("WEB-DL");
 
-    // 4. Expanded Multi-Audio Extraction (e.g. [JHS Telugu + Tamil + Hindi (DDP 5.1 ~ 192Kbps) + English (DDP 7.1 ~ 1509Kbps)])
-    let audioDetected = "DD+ 5.1 - 640Kbps";
-    const bracketAudio = raw.match(/\[(.*?(?:Telugu|Tamil|Hindi|English|DDP|DTS|AAC|Atmos|TrueHD).*?)\]/i);
-    if (bracketAudio && bracketAudio[1].length > 6) {
-      audioDetected = bracketAudio[1].replace(/JHS\s*/i, '').replace(/~/g, '-').trim();
-    } else {
-      const simpleAudio = raw.match(/\((DD\+?5\.1.*?|DTS.*?|Atmos.*?|TrueHD.*?|AAC.*?)\)/i);
-      if (simpleAudio) audioDetected = simpleAudio[1].replace(/~/g, '-').trim();
-    }
-    document.getElementById("tech-audio-specs").value = audioDetected;
+    // Audio with Language
+    const detectedAudio = extractLanguageAndAudio(raw, "Hindi");
+    document.getElementById("tech-audio-specs").value = detectedAudio;
 
-    // 5. File Size Extraction
+    // File Size
     const sizeMatch = raw.match(/(\d+\.?\d*)\s*(gb|mb)/i);
     if (sizeMatch) {
       let num = parseFloat(sizeMatch[1]);
       if (/mb/i.test(sizeMatch[0])) num = num / 1024;
-      let cleanGb = `${Math.round(num)} GB`;
-      selectDropdownValue("tech-filesize-select", cleanGb);
+      selectDropdownValue("tech-filesize-select", `${Math.round(num)} GB`);
     }
 
-    // 6. Title & Year extraction for Auto TMDb Search
-    let clean = raw.replace(/@[\w_]+\s*-\s*/, ''); // Strip telegram prefix
+    // Title & Year Extraction
+    let clean = raw.replace(/@[\w_]+\s*-\s*/, '');
     clean = clean.replace(/\.(mkv|mp4|avi|ts)$/i, '').replace(/[\._\-]/g, ' ');
     const ym = clean.match(/\b(19\d\d|20\d\d)\b/);
     let year = ym ? ym[1] : '';
     let cutoff = ym ? ym.index : clean.length;
     let title = clean.substring(0, cutoff).trim();
-    title = title.replace(/\b(2160p|1080p|720p|4k|amaz|amzn|bluray|hevc|h265|x264|x265|dts|web|dl|hybrid|8bit|10bit)\b/gi, '').trim();
+    title = title.replace(/\b(2160p|1080p|720p|4k|amaz|amzn|bluray|hevc|h265|x264|x265|dts|web|dl|hybrid|8bit|10bit|hindi|tamil|telugu|english)\b/gi, '').trim();
 
     updateDashPreview();
 
-    // Trigger Instant TMDb Lookup with India Priority
+    // Auto TMDb lookup
     clearTimeout(rawIngestDebounce);
     rawIngestDebounce = setTimeout(async () => {
       if (title.length > 1) {
-        showToast(`Auto-detecting TMDb match for "${title}" (${year}) with India priority...`);
+        showToast(`Searching TMDb for "${title}" (${year})...`);
         try {
-          // India priority query
           const sRes = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(title)}${year ? `&year=${year}` : ''}&region=IN`);
           const sData = await sRes.json();
           if (sData.results && sData.results.length > 0) {
@@ -842,6 +854,16 @@
         } catch (_) {}
       }
     }, 400);
+  }
+
+  function handleLanguageInput(val) {
+    const raw = document.getElementById("raw-filename").value;
+    const fullLang = getLanguageName(val);
+    const audioSpecs = document.getElementById("tech-audio-specs");
+    if (!audioSpecs.value.toLowerCase().includes(fullLang.toLowerCase())) {
+      audioSpecs.value = `${fullLang} ${audioSpecs.value}`.trim();
+      updateDashPreview();
+    }
   }
 
   function selectDropdownValue(id, val) {
@@ -861,9 +883,7 @@
     updateDashPreview();
   }
 
-  function handleSizeSelect(val) {
-    updateDashPreview();
-  }
+  function handleSizeSelect() { updateDashPreview(); }
 
   function handleSourceChange(val) {
     document.getElementById("tech-source").value = val;
@@ -887,7 +907,7 @@
 
   function updateDashPreview() {
     const title = document.getElementById("movie-title").value || "Title";
-    const year = document.getElementById("movie-year").value || "2026";
+    const year = document.getElementById("movie-year").value || "2002";
     const res = document.getElementById("tech-resolution").value;
     const src = document.getElementById("tech-source").value;
     let audio = document.getElementById("tech-audio-specs").value.trim();
@@ -944,34 +964,39 @@
       'ta': 'Tamil', 'te': 'Telugu', 'hi': 'Hindi', 'en': 'English',
       'ml': 'Malayalam', 'kn': 'Kannada', 'bn': 'Bengali', 'mr': 'Marathi'
     };
-    return map[code] || 'Multi';
+    return map[code] || 'Hindi';
   }
 
-  /* ⚡ TMDB INDIA REGIONAL FETCH ENGINE */
+  /* ⚡ DUAL-API ARTWORK + TMDB INDIA METADATA ENGINE */
   async function fetchTmdbOfficialDetails(id) {
     if (!id) return;
     try {
-      // 1. Fetch metadata with India Region release dates & credits
-      const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_KEY}&append_to_response=credits,release_dates,images`);
+      const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_KEY}&append_to_response=credits,release_dates,images&include_image_language=en,hi,ta,te,null`);
       if (!res.ok) throw new Error("Movie not found");
       const d = await res.json();
 
       document.getElementById("movie-title").value = d.title || "";
       document.getElementById("movie-orig-title").value = d.original_title || d.title || "";
       document.getElementById("movie-tagline").value = d.tagline || "";
-      document.getElementById("movie-year").value = (d.release_date || "2026").split("-")[0];
+      document.getElementById("movie-year").value = (d.release_date || "2002").split("-")[0];
       document.getElementById("movie-rating").value = d.vote_average ? d.vote_average.toFixed(1) : "7.5";
-      document.getElementById("movie-lang").value = d.original_language || "en";
-      document.getElementById("movie-runtime").value = d.runtime || 115;
+      document.getElementById("movie-lang").value = d.original_language || "hi";
+      document.getElementById("movie-runtime").value = d.runtime || 120;
       document.getElementById("movie-plot").value = d.overview || "";
       document.getElementById("movie-imdb-id").value = d.imdb_id || "";
 
-      // Dynamic Fanart Wallpaper
+      // Ensure audio has language prefix
+      const currentAudio = document.getElementById("tech-audio-specs").value;
+      const langName = getLanguageName(d.original_language);
+      if (!currentAudio.toLowerCase().includes(langName.toLowerCase())) {
+        document.getElementById("tech-audio-specs").value = `${langName} ${currentAudio}`.trim();
+      }
+
       if (d.backdrop_path) {
         document.getElementById("dynamic-bg").style.backgroundImage = `url('https://image.tmdb.org/t/p/original${d.backdrop_path}')`;
       }
 
-      // Directors & Writers
+      // Crew
       const crewList = d.credits?.crew || [];
       const directors = crewList.filter(c => c.job === "Director").map(c => c.name);
       const writers = crewList.filter(c => ["Writer", "Screenplay", "Story", "Dialogue"].includes(c.job)).map(c => c.name);
@@ -980,7 +1005,7 @@
       document.getElementById("movie-writers").value = [...new Set(writers)].join(", ");
       document.getElementById("movie-studio").value = (d.production_companies || []).map(p => p.name).join(", ");
 
-      // CBFC & Exact Theatrical Release Date for INDIA (IN priority)
+      // Release Date & CBFC India
       const rels = d.release_dates?.results || [];
       const inR = rels.find(r => r.iso_3166_1 === "IN") || rels.find(r => r.iso_3166_1 === "US");
       if (inR && inR.release_dates?.[0]) {
@@ -997,13 +1022,14 @@
           }
         }
       } else {
-        document.getElementById("movie-release-date").value = d.release_date || "2026-07-08";
+        document.getElementById("movie-release-date").value = d.release_date || "2002-02-01";
       }
 
       const gList = (d.genres || []).map(g => g.name);
       document.getElementById("movie-genres").value = gList.join(", ");
 
-      // ⚡ Indian Regional Trailer Match (All language videos endpoint)
+      // ⚡ Fallback Trailer Engine
+      let trailerFound = false;
       try {
         const vRes = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${TMDB_KEY}`);
         if (vRes.ok) {
@@ -1013,11 +1039,20 @@
                        ytVideos.find(v => v.type === "Trailer") ||
                        ytVideos.find(v => v.type === "Teaser") ||
                        ytVideos[0];
-          if (best) document.getElementById("movie-trailer").value = `https://www.youtube.com/watch?v=${best.key}`;
+          if (best) {
+            document.getElementById("movie-trailer").value = `https://www.youtube.com/watch?v=${best.key}`;
+            trailerFound = true;
+          }
         }
       } catch (_) {}
 
-      // Top 10 Cast
+      // Fallback Search YouTube if video list is empty on TMDb
+      if (!trailerFound) {
+        const queryClean = encodeURIComponent(`${d.title} ${(d.release_date||'').split('-')[0]} Official Trailer`);
+        document.getElementById("movie-trailer").value = `https://www.youtube.com/results?search_query=${queryClean}`;
+      }
+
+      // Cast
       const castWrap = document.getElementById("cast-cards-container");
       castWrap.innerHTML = "";
       loadedCastArray = [];
@@ -1045,7 +1080,7 @@
         castWrap.appendChild(card);
       });
 
-      // 10 Artworks
+      // Posters & Fanart
       if (d.poster_path) {
         const fullPoster = `https://image.tmdb.org/t/p/w780${d.poster_path}`;
         document.getElementById("art-poster").value = fullPoster;
@@ -1059,13 +1094,27 @@
         document.getElementById("art-titlecard").value = `https://image.tmdb.org/t/p/original${d.backdrop_path}`;
       }
 
-      // Fanart.tv Fallback
+      // ⚡ DUAL API LOGO ENGINE: Step 1 = TMDb Logos Endpoint
+      let logoAssigned = false;
+      const tmdbLogos = d.images?.logos || [];
+      if (tmdbLogos.length > 0) {
+        // Priority to transparent PNG logos
+        const bestLogo = tmdbLogos.find(l => l.file_path && l.file_path.endsWith(".png")) || tmdbLogos[0];
+        if (bestLogo) {
+          document.getElementById("art-clearlogo").value = `https://image.tmdb.org/t/p/original${bestLogo.file_path}`;
+          logoAssigned = true;
+        }
+      }
+
+      // Step 2 = Fanart.tv Fallback for Logo, ClearArt & CD Disc
       try {
         const faRes = await fetch(`https://webservice.fanart.tv/v3/movies/${id}?api_key=${FANART_KEY}`);
         if (faRes.ok) {
           const fa = await faRes.json();
-          const logo = fa.hdmovielogo?.[0]?.url || fa.movielogo?.[0]?.url;
-          if (logo) document.getElementById("art-clearlogo").value = logo;
+          if (!logoAssigned) {
+            const logo = fa.hdmovielogo?.[0]?.url || fa.movielogo?.[0]?.url;
+            if (logo) document.getElementById("art-clearlogo").value = logo;
+          }
           if (fa.hdmovieclearart?.[0]?.url) document.getElementById("art-clearart").value = fa.hdmovieclearart[0].url;
           if (fa.moviebanner?.[0]?.url) document.getElementById("art-banner").value = fa.moviebanner[0].url;
           if (fa.moviethumb?.[0]?.url) document.getElementById("art-keyart").value = fa.moviethumb[0].url;
@@ -1086,7 +1135,7 @@
     else alert("Trailer link missing!");
   }
 
-  /* ⚡ TWO-TIER COMMIT WITH TELEGRAM TAG TO CHUNK & CATALOG */
+  /* ⚡ TWO-TIER COMMIT */
   async function handleFormSubmission(e) {
     e.preventDefault();
     const token = getToken();
@@ -1105,7 +1154,7 @@
     const origTitle = document.getElementById("movie-orig-title").value.trim() || title;
     const tgTag = document.getElementById("telegram-tag").value.trim();
     const tagline = document.getElementById("movie-tagline").value.trim();
-    const year = parseInt(document.getElementById("movie-year").value, 10) || 2026;
+    const year = parseInt(document.getElementById("movie-year").value, 10) || 2002;
     const releaseDate = document.getElementById("movie-release-date").value.trim() || `${year}-01-01`;
     const rating = parseFloat(document.getElementById("movie-rating").value) || 7.5;
     const langCode = document.getElementById("movie-lang").value.trim();
@@ -1162,7 +1211,6 @@
     document.getElementById("btn-submit").textContent = "Writing to GitHub...";
 
     try {
-      // 1. Target Chunk File Commit (Includes Telegram Channel)
       let chunkData = { chunk_id: currentTargetChunk.replace(".json", ""), movie_count: 0, movies: [] };
       let chunkSha = undefined;
 
@@ -1245,9 +1293,9 @@
       
       chunkData.movie_count = chunkData.movies.length;
 
-      await commitDirectToGithub(targetChunkPath, chunkData, `Add ${title} (${tgTag || 'Release'}) to ${currentTargetChunk}`, chunkSha, token);
+      await commitDirectToGithub(targetChunkPath, chunkData, `Add ${title} to ${currentTargetChunk}`, chunkSha, token);
 
-      // 2. Catalog.json Commit
+      // Commit to catalog.json
       let catData = { movies: [] };
       let catSha = undefined;
 
