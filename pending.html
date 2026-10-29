@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoinuFlix — Pending Drive Ingest & Approval Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #080d1a;
+      --card-bg: rgba(15, 23, 42, 0.88);
+      --card-border: rgba(56, 189, 248, 0.22);
+      --laser-cyan: #38bdf8;
+      --laser-green: #10b981;
+      --laser-gold: #f59e0b;
+      --laser-red: #ef4444;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      padding: 1.5rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1350px;
+      margin: 0 auto;
+    }
+
+    /* TOP NAVBAR */
+    .top-header {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 58, 138, 0.85));
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .brand-title { font-size: 1.35rem; font-weight: 800; color: #fff; }
+    .brand-sub { font-size: 0.82rem; color: var(--laser-cyan); margin-top: 3px; font-weight: 600; }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-pill {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid var(--laser-cyan);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-pill:hover { background: var(--laser-cyan); color: #020617; }
+    .btn-green { background: linear-gradient(135deg, var(--laser-green), #059669); color: #fff; border: none; }
+    .btn-green:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); }
+
+    /* STATS STRIP */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1rem 1.4rem;
+    }
+    .stat-lbl { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+    .stat-val { font-size: 1.4rem; font-weight: 800; color: #fff; margin-top: 4px; }
+
+    /* STATUS BANNER */
+    #action-status-banner {
+      display: none;
+      padding: 0.85rem 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid var(--laser-cyan);
+      color: var(--laser-cyan);
+    }
+
+    /* PENDING CARDS LIST */
+    .pending-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .pending-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.25rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      transition: all 0.25s;
+    }
+    .pending-card:hover {
+      border-color: var(--laser-cyan);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .poster-preview {
+      width: 85px;
+      height: 125px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: #020617;
+      border: 1px solid rgba(255,255,255,0.1);
+      flex-shrink: 0;
+    }
+
+    .card-content {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .raw-name-title {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      word-break: break-all;
+    }
+    .parsed-headline {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .dash-preview-box {
+      font-family: monospace;
+      font-size: 0.82rem;
+      color: var(--laser-green);
+      background: rgba(2, 6, 23, 0.8);
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px dashed var(--laser-cyan);
+      word-break: break-all;
+    }
+
+    .tags-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 4px;
+    }
+    .badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+    }
+    .badge-tg { background: rgba(56, 189, 248, 0.2); color: var(--laser-cyan); }
+    .badge-size { background: rgba(245, 158, 11, 0.2); color: var(--laser-gold); }
+
+    .card-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .btn-approve {
+      background: var(--laser-green);
+      color: #020617;
+      border: none;
+      padding: 0.65rem 1.4rem;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-approve:hover { transform: scale(1.03); }
+
+    .btn-edit-form {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid var(--laser-cyan);
+      color: var(--laser-cyan);
+      padding: 0.55rem 1.2rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn-edit-form:hover { background: var(--laser-cyan); color: #020617; }
+
+    .btn-reject {
+      background: transparent;
+      border: 1px solid var(--laser-red);
+      color: var(--laser-red);
+      padding: 0.45rem 1rem;
+      border-radius: 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    @media (max-width: 850px) {
+      .pending-card { flex-direction: column; align-items: flex-start; }
+      .card-actions { width: 100%; flex-direction: row; justify-content: flex-end; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- TOP BAR -->
+  <div class="top-header">
+    <div>
+      <div class="brand-title">MOINUFLIX — PENDING DRIVE ARRIVALS</div>
+      <div class="brand-sub">Auto-Detected Queue • Review, Edit & 1-Click Approval</div>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-pill btn-green" onclick="approveAllPending()">🚀 1-Click Approve All</button>
+      <button class="btn-pill" onclick="loadPendingList()">🔄 Refresh List</button>
+      <a href="inbox.html" class="btn-pill">📝 Form (inbox.html)</a>
+      <a href="admin.html" class="btn-pill">🎬 Library (admin.html)</a>
+      <button class="btn-pill" onclick="configureToken()">⚙️ Token</button>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="stat-card">
+      <div class="stat-lbl">Pending Movies in Queue</div>
+      <div class="stat-val" id="stat-pending-count" style="color:var(--laser-gold);">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">Target Storage Chunk</div>
+      <div class="stat-val" id="stat-target-chunk" style="color:var(--laser-cyan);">chunk_01.json</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-lbl">Catalog Total</div>
+      <div class="stat-val" id="stat-catalog-total">0 Movies</div>
+    </div>
+  </div>
+
+  <!-- PROGRESS STATUS BANNER -->
+  <div id="action-status-banner"></div>
+
+  <!-- PENDING LIST CONTAINER -->
+  <div class="pending-list" id="pending-items-container">
+    <div style="color:var(--text-muted); padding:30px; text-align:center;">Loading pending Google Drive arrivals...</div>
+  </div>
+</div>
+
+<script>
+  const TMDB_KEY = "051ccf72e026820cb53b8b8531b6a2ba";
+  const FANART_KEY = "b207628faa5a1fc82f7dc07575c224f7";
+  const GH_REPO = "Moinuflix/My-Movies";
+  const GH_BRANCH = "main";
+  const WORKER_BASE = "https://gdrive-stream.moinudeentv.workers.dev/?id=";
+  const USER_AGENT = "|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0";
+
+  let pendingList = [];
+  let catalogCount = 0;
+  let currentTargetChunk = "chunk_01.json";
+
+  function getToken() { return (localStorage.getItem("moinuflix_gh_token") || "").trim(); }
+  function configureToken() {
+    const cur = getToken();
+    const input = prompt("Enter your GitHub Personal Access Token (PAT):", cur);
+    if (input !== null) {
+      localStorage.setItem("moinuflix_gh_token", input.trim());
+      alert("Token updated!");
+      loadPendingList();
+    }
+  }
+
+  function showStatus(msg, isError = false) {
+    const b = document.getElementById("action-status-banner");
+    b.style.display = "block";
+    b.style.color = isError ? "var(--laser-red)" : "var(--laser-cyan)";
+    b.style.borderColor = isError ? "var(--laser-red)" : "var(--laser-cyan)";
+    b.textContent = msg;
+  }
+
+  // 1. Fetch Master Catalog stats (to track target chunk limit)
+  async function loadMasterStats() {
+    try {
+      const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/catalog.json?t=${Date.now()}`);
+      if (res.ok) {
+        const cat = await res.json();
+        const movies = cat.movies || [];
+        catalogCount = movies.length;
+        document.getElementById("stat-catalog-total").textContent = `${catalogCount} Movies`;
+        
+        const chunkNum = Math.floor(catalogCount / 50) + 1;
+        currentTargetChunk = `chunk_${String(chunkNum).padStart(2, '0')}.json`;
+        document.getElementById("stat-target-chunk").textContent = currentTargetChunk;
+      }
+    } catch (_) {}
+  }
+
+  // 2. Fetch Pending Arrivals from pending_movies.json
+  async function loadPendingList() {
+    await loadMasterStats();
+    const container = document.getElementById("pending-items-container");
+    container.innerHTML = '<div style="color:var(--text-muted); padding:30px; text-align:center;">Loading pending queue...</div>';
+
+    try {
+      const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/pending_movies.json?t=${Date.now()}`);
+      if (!res.ok) {
+        container.innerHTML = '<div style="color:var(--text-muted); padding:40px; text-align:center;">🎉 No pending arrivals found in resources/data/pending_movies.json!</div>';
+        document.getElementById("stat-pending-count").textContent = "0";
+        return;
+      }
+
+      pendingList = await res.json();
+      document.getElementById("stat-pending-count").textContent = pendingList.length;
+
+      if (!pendingList || pendingList.length === 0) {
+        container.innerHTML = '<div style="color:var(--laser-green); padding:40px; text-align:center;">🎉 All Google Drive files are cleared and synced into library!</div>';
+        return;
+      }
+
+      renderPendingCards();
+    } catch (err) {
+      container.innerHTML = `<div style="color:var(--laser-red); padding:30px; text-align:center;">Error: ${err.message}</div>`;
+    }
+  }
+
+  // 3. Render Cards with auto TMDb details
+  function renderPendingCards() {
+    const container = document.getElementById("pending-items-container");
+    container.innerHTML = "";
+
+    pendingList.forEach((item, index) => {
+      const parsed = item.parsed || {};
+      const title = parsed.title || "Unknown Title";
+      const year = parsed.year || "2026";
+      const size = item.file_size_gb || "10 GB";
+      const tgTag = parsed.telegram_tag || "";
+      const rawName = item.original_filename || "";
+      const dashName = parsed.standard_filename || `${title} (${year}) [1080p] [${size}].mkv`;
+      
+      const candidate = (item.tmdb_candidates && item.tmdb_candidates[0]) ? item.tmdb_candidates[0] : {};
+      const poster = candidate.poster || "https://via.placeholder.com/85x125?text=No+Poster";
+
+      const card = document.createElement("div");
+      card.className = "pending-card";
+      card.innerHTML = `
+        <img src="${poster}" class="poster-preview" alt="">
+        <div class="card-content">
+          <div class="raw-name-title">📁 ${escapeHtml(rawName)}</div>
+          <div class="parsed-headline">${escapeHtml(title)} (${year})</div>
+          <div class="dash-preview-box">${escapeHtml(dashName)}</div>
+          
+          <div class="tags-row">
+            ${tgTag ? `<span class="badge badge-tg">${escapeHtml(tgTag)}</span>` : ''}
+            <span class="badge badge-size">💾 ${escapeHtml(size)}</span>
+            <span class="badge">${escapeHtml(parsed.source || 'WEB-DL')}</span>
+            <span class="badge">${escapeHtml(parsed.resolution || '1080p')}</span>
+            <span class="badge" style="color:var(--laser-cyan);">ID: ${escapeHtml(item.gdrive_id.substring(0, 15))}...</span>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <button class="btn-approve" onclick="approveSingleItem(${index})">✓ Approve & Save</button>
+          <button class="btn-edit-form" onclick="sendToEditForm(${index})">✏️ Edit in Form</button>
+          <button class="btn-reject" onclick="rejectItem(${index})">✕ Dismiss</button>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  // 4. Send Item directly into inbox.html Form via Session Storage
+  function sendToEditForm(index) {
+    const item = pendingList[index];
+    sessionStorage.setItem("moinuflix_edit_pending", JSON.stringify(item));
+    window.location.href = "inbox.html?load_pending=1";
+  }
+
+  // 5. Approve Single Movie (1-Click Auto Commit to Chunk & Catalog)
+  async function approveSingleItem(index) {
+    const token = getToken();
+    if (!token) return alert("GitHub Token missing! Click 'Token' button at top right.");
+
+    const item = pendingList[index];
+    const parsed = item.parsed || {};
+    const title = parsed.title || "Movie";
+    const year = parsed.year || 2026;
+    const driveId = item.gdrive_id.replace(/\s+/g, '');
+    const candidate = (item.tmdb_candidates && item.tmdb_candidates[0]) ? item.tmdb_candidates[0] : {};
+    const tmdbId = item.selected_tmdb_id || candidate.tmdb_id;
+
+    if (!confirm(`Approve and commit "${title}" to Master Catalog and ${currentTargetChunk}?`)) return;
+
+    showStatus(`⚡ Fetching official TMDb metadata for "${title}"...`);
+
+    try {
+      // Fetch full TMDb metadata
+      let movieDetails = {
+        title: title,
+        original_title: title,
+        year: year,
+        runtime: 120,
+        rating: 7.5,
+        certification: "UA",
+        original_language: "ta",
+        genres: ["Action", "Drama"],
+        plot: "",
+        tagline: "",
+        director: [],
+        writers: [],
+        cast: [],
+        poster: candidate.poster || "",
+        fanart: candidate.fanart || "",
+        trailer: ""
+      };
+
+      if (tmdbId) {
+        try {
+          const tRes = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_KEY}&language=en-US&append_to_response=credits,release_dates,videos`);
+          if (tRes.ok) {
+            const td = await tRes.json();
+            movieDetails.title = td.title || title;
+            movieDetails.original_title = td.original_title || td.title;
+            movieDetails.year = parseInt((td.release_date || `${year}`).split("-")[0], 10);
+            movieDetails.runtime = td.runtime || 120;
+            movieDetails.rating = td.vote_average ? parseFloat(td.vote_average.toFixed(1)) : 7.5;
+            movieDetails.original_language = td.original_language || "ta";
+            movieDetails.genres = (td.genres || []).map(g => g.name);
+            movieDetails.plot = td.overview || "";
+            movieDetails.tagline = td.tagline || "";
+            movieDetails.poster = td.poster_path ? `https://image.tmdb.org/t/p/w780${td.poster_path}` : candidate.poster;
+            movieDetails.fanart = td.backdrop_path ? `https://image.tmdb.org/t/p/original${td.backdrop_path}` : "";
+
+            const crew = td.credits?.crew || [];
+            movieDetails.director = crew.filter(c => c.job === "Director").map(c => ({ name: c.name }));
+            movieDetails.writers = crew.filter(c => ["Writer", "Screenplay", "Story"].includes(c.job)).map(c => ({ name: c.name, job: c.job }));
+            movieDetails.cast = (td.credits?.cast || []).slice(0, 10).map(c => ({
+              name: c.name,
+              character: c.character,
+              profile: c.profile_path ? `https://image.tmdb.org/t/p/w185${c.profile_path}` : null,
+              link: `https://www.themoviedb.org/person/${c.id}`
+            }));
+
+            // Regional YouTube Trailer
+            const vids = td.videos?.results || [];
+            const tr = vids.find(v => v.type === "Trailer" && v.site === "YouTube") || vids[0];
+            if (tr) movieDetails.trailer = `https://www.youtube.com/watch?v=${tr.key}`;
+          }
+        } catch (_) {}
+      }
+
+      const streamUrl = `${WORKER_BASE}${driveId}${USER_AGENT}`;
+      const targetChunkPath = `resources/data/chunks/${currentTargetChunk}`;
+      const catalogPath = `resources/data/catalog.json`;
+
+      showStatus(`💾 Committing "${title}" to ${currentTargetChunk}...`);
+
+      // 1. Commit to Target Chunk
+      let chunkData = { chunk_id: currentTargetChunk.replace(".json", ""), movie_count: 0, movies: [] };
+      let chunkSha = undefined;
+
+      const cRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${targetChunkPath}?t=${Date.now()}`, {
+        headers: { "Authorization": `token ${token}` }
+      });
+      if (cRes.ok) {
+        const cJson = await cRes.json();
+        chunkSha = cJson.sha;
+        chunkData = JSON.parse(decodeURIComponent(escape(atob(cJson.content))));
+      }
+
+      const fullMovieRecord = {
+        id: driveId,
+        tmdb_id: tmdbId ? parseInt(tmdbId, 10) : 0,
+        name: parsed.standard_filename || `${movieDetails.title} (${movieDetails.year}).mkv`,
+        title: movieDetails.title,
+        original_title: movieDetails.original_title,
+        year: movieDetails.year,
+        runtime: movieDetails.runtime,
+        release_date: `${movieDetails.year}-01-01`,
+        certification: movieDetails.certification,
+        original_language: movieDetails.original_language,
+        genres: movieDetails.genres,
+        tagline: movieDetails.tagline,
+        plot: movieDetails.plot,
+        telegram_channel: parsed.telegram_tag || "",
+        country: ["India"],
+        studio: [parsed.source || "WEB-DL"],
+        director: movieDetails.director,
+        writers: movieDetails.writers,
+        cast: movieDetails.cast,
+        artwork: {
+          poster: movieDetails.poster,
+          fanart: movieDetails.fanart,
+          clearlogo: "",
+          clearart: "",
+          banner: "",
+          landscape: movieDetails.fanart,
+          keyart: "",
+          thumbnail: movieDetails.poster,
+          discart: "",
+          title_card: movieDetails.fanart,
+          character_art: [],
+          extra_posters: [],
+          extra_backdrops: []
+        },
+        trailer: movieDetails.trailer,
+        ratings: [{ source: "TMDb", value: movieDetails.rating, out_of: 10 }],
+        badges: {
+          quality: `https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/${parsed.resolution || '1080p'}.png`,
+          hdr: "",
+          source: `https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png`,
+          audio_format: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+          audio_channels: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+        },
+        specs: {
+          resolution: parsed.resolution || "1080p",
+          source: parsed.source || "WEB-DL",
+          codec: parsed.codec || "x264",
+          bit_depth: parsed.bit_depth || "8bit",
+          audio: "Tamil 5.1",
+          channels: "5.1",
+          bitrate: "640 Kbps",
+          languages: "Tamil",
+          size: item.file_size_gb || "10 GB",
+          telegram_tag: parsed.telegram_tag || ""
+        },
+        stream_url: streamUrl,
+        versions: [{
+          id: driveId,
+          name: parsed.standard_filename || `${movieDetails.title}.mkv`,
+          language: "Tamil",
+          quality: `${parsed.resolution || '1080p'} FHD`,
+          resolution: parsed.resolution || "1080p",
+          source: parsed.source || "WEB-DL",
+          source_image: "resources/images/sources/web.png",
+          codec: parsed.codec || "x264",
+          audio: "5.1",
+          channels: "5.1",
+          size: item.file_size_gb || "10 GB",
+          stream_url: streamUrl
+        }]
+      };
+
+      chunkData.movies = chunkData.movies || [];
+      const exIdx = chunkData.movies.findIndex(m => m.id === driveId);
+      if (exIdx >= 0) chunkData.movies[exIdx] = fullMovieRecord;
+      else chunkData.movies.push(fullMovieRecord);
+      chunkData.movie_count = chunkData.movies.length;
+
+      await commitGithubFile(targetChunkPath, chunkData, `Approve & Add ${title} to ${currentTargetChunk}`, chunkSha, token);
+
+      // 2. Commit to Master Catalog
+      showStatus(`💾 Updating master catalog.json...`);
+      let catData = { movies: [] };
+      let catSha = undefined;
+
+      const catRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${catalogPath}?t=${Date.now()}`, {
+        headers: { "Authorization": `token ${token}` }
+      });
+      if (catRes.ok) {
+        const catJson = await catRes.json();
+        catSha = catJson.sha;
+        catData = JSON.parse(decodeURIComponent(escape(atob(catJson.content))));
+      }
+
+      const catalogEntry = {
+        id: driveId,
+        tmdb_id: tmdbId ? parseInt(tmdbId, 10) : 0,
+        title: movieDetails.title,
+        year: movieDetails.year,
+        poster: movieDetails.poster,
+        fanart: movieDetails.fanart,
+        logo: "",
+        rating: movieDetails.rating,
+        original_language: movieDetails.original_language,
+        genres: movieDetails.genres,
+        chunk_file: targetChunkPath,
+        primary_stream_url: streamUrl,
+        available_languages: ["Tamil"],
+        version_count: 1,
+        available_versions: [{
+          language: "Tamil",
+          quality: `${parsed.resolution || '1080p'} FHD`,
+          source: parsed.source || "WEB-DL",
+          source_image: "resources/images/sources/web.png",
+          format: parsed.source || "WEB-DL",
+          codec: parsed.codec || "x264",
+          audio: "5.1",
+          channels: "5.1"
+        }]
+      };
+
+      catData.movies = catData.movies || [];
+      const catEx = catData.movies.findIndex(m => m.id === driveId);
+      if (catEx >= 0) catData.movies[catEx] = catalogEntry;
+      else catData.movies.push(catalogEntry);
+
+      await commitGithubFile(catalogPath, catData, `Update catalog index for ${title}`, catSha, token);
+
+      // 3. Remove from pending_movies.json queue
+      showStatus(`🧹 Removing "${title}" from pending queue...`);
+      pendingList.splice(index, 1);
+      
+      let pSha = undefined;
+      const pRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/resources/data/pending_movies.json?t=${Date.now()}`, {
+        headers: { "Authorization": `token ${token}` }
+      });
+      if (pRes.ok) pSha = (await pRes.json()).sha;
+
+      await commitGithubFile("resources/data/pending_movies.json", pendingList, `Remove ${title} from pending queue`, pSha, token);
+
+      showStatus(`🎉 "${title}" successfully committed to Library!`);
+      loadPendingList();
+    } catch (err) {
+      showStatus(`Approval Failed: ${err.message}`, true);
+    }
+  }
+
+  // 6. 1-Click Approve All Queue Items
+  async function approveAllPending() {
+    if (pendingList.length === 0) return alert("Pending list is empty!");
+    if (!confirm(`Are you sure you want to 1-Click Approve all ${pendingList.length} movies in queue?`)) return;
+
+    for (let i = pendingList.length - 1; i >= 0; i--) {
+      await approveSingleItem(i);
+    }
+  }
+
+  // 7. Dismiss / Reject Item from Queue
+  async function rejectItem(index) {
+    const token = getToken();
+    if (!token) return alert("GitHub Token missing!");
+    const title = pendingList[index].parsed?.title || "movie";
+
+    if (!confirm(`Remove "${title}" from pending queue without saving?`)) return;
+
+    pendingList.splice(index, 1);
+    try {
+      let pSha = undefined;
+      const pRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/resources/data/pending_movies.json?t=${Date.now()}`, {
+        headers: { "Authorization": `token ${token}` }
+      });
+      if (pRes.ok) pSha = (await pRes.json()).sha;
+
+      await commitGithubFile("resources/data/pending_movies.json", pendingList, `Dismiss ${title} from queue`, pSha, token);
+      loadPendingList();
+    } catch (e) {
+      alert("Error: " + e.message);
+    }
+  }
+
+  async function commitGithubFile(path, data, msg, sha, token) {
+    const url = `https://api.github.com/repos/${GH_REPO}/contents/${path}`;
+    const jsonStr = JSON.stringify(data, null, 2);
+    const encoded = btoa(unescape(encodeURIComponent(jsonStr)));
+
+    const res = await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Authorization": `token ${token}`,
+        "Accept": "application/vnd.github.v3+json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message: msg, content: encoded, branch: GH_BRANCH, sha: sha })
+    });
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.message || "GitHub API Error");
+    }
+  }
+
+  function escapeHtml(text) {
+    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+    return String(text || '').replace(/[&<>"']/g, m => map[m]);
+  }
+
+  window.addEventListener("DOMContentLoaded", loadPendingList);
+</script>
+</body>
+</html>
