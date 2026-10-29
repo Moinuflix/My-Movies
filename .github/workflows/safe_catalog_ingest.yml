@@ -1,0 +1,252 @@
+name: Safe Two-Tier Separation & Ingestion
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  safe-ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Safe Two-Tier Engine
+        run: |
+          python3 - << 'EOF'
+          import json, os, re
+
+          WORKER_BASE = "https://gdrive-stream.moinudeentv.workers.dev/?id="
+          USER_AGENT = "|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+
+          pending_file = "resources/data/pending_movies.json"
+          catalog_file = "resources/data/catalog.json"
+          chunks_dir = "resources/data/chunks"
+          series_file = "chunks/data_c02.json"
+          songs_file = "chunks/data_c03.json"
+
+          os.makedirs(chunks_dir, exist_ok=True)
+          os.makedirs("chunks", exist_ok=True)
+
+          if not os.path.exists(pending_file):
+              print("No pending file found.")
+              exit(0)
+
+          with open(pending_file, "r", encoding="utf-8") as f:
+              pending_list = json.load(f)
+
+          print(f"Total Pending Items: {len(pending_list)}")
+
+          # Load Existing Databases
+          catalog_data = {"movies": []}
+          if os.path.exists(catalog_file):
+              try:
+                  with open(catalog_file, "r", encoding="utf-8") as f:
+                      catalog_data = json.load(f)
+              except: pass
+
+          cat_movies = catalog_data.get("movies", [])
+          existing_ids = {str(m.get("id")) for m in cat_movies if m.get("id")}
+
+          # Load Series DB
+          series_data = []
+          if os.path.exists(series_file):
+              try:
+                  with open(series_file, "r", encoding="utf-8") as f:
+                      series_data = json.load(f)
+              except: pass
+
+          # Load Songs DB
+          songs_data = []
+          if os.path.exists(songs_file):
+              try:
+                  with open(songs_file, "r", encoding="utf-8") as f:
+                      songs_data = json.load(f)
+              except: pass
+
+          new_movies_count = 0
+          series_count = 0
+          songs_count = 0
+
+          remaining_pending = []
+
+          for item in pending_list:
+              gid = str(item.get("gdrive_id", "")).strip()
+              raw_name = item.get("original_filename", "")
+              fn_lower = raw_name.lower()
+
+              if not gid:
+                  continue
+
+              # 🔍 RULE 1: SEPARATE 5.1 VIDEO SONGS & AUDIO TRACKS
+              if any(k in fn_lower for k in ["video song", "song", "audio track", "soundtrack", ".mp3", ".flac"]):
+                  song_entry = {
+                      "id": gid,
+                      "title": raw_name.rsplit(".", 1)[0].replace(".", " "),
+                      "movie": (item.get("parsed") or {}).get("title") or "Music Video",
+                      "quality": "5.1 Surround" if "5.1" in raw_name else "Lossless",
+                      "size": item.get("file_size_gb") or "500 MB",
+                      "stream_url": f"{WORKER_BASE}{gid}{USER_AGENT}"
+                  }
+                  if not any(s.get("id") == gid for s in songs_data):
+                      songs_data.append(song_entry)
+                      songs_count += 1
+                  continue
+
+              # 🔍 RULE 2: SEPARATE TV / WEB SERIES (S01, E01, Season)
+              tv_match = re.search(r'\b(s\d+\s*e\d+|season\s*\d+|e\d+|episode\s*\d+)\b', fn_lower, re.I)
+              if tv_match:
+                  series_entry = {
+                      "id": gid,
+                      "name": raw_name,
+                      "title": (item.get("parsed") or {}).get("title") or raw_name,
+                      "size": item.get("file_size_gb") or "2 GB",
+                      "stream_url": f"{WORKER_BASE}{gid}{USER_AGENT}"
+                  }
+                  if not any(s.get("id") == gid for s in series_data):
+                      series_data.append(series_entry)
+                      series_count += 1
+                  continue
+
+              # 🎬 RULE 3: GENUINE MOVIES (Catalog -> Chunks strictly 50 limit)
+              if gid in existing_ids:
+                  continue
+
+              parsed = item.get("parsed", {})
+              title = parsed.get("title") or "Movie"
+              year = parsed.get("year") or 2024
+              real_size = item.get("file_size_gb") or "5 GB"
+              res = parsed.get("resolution") or "1080p"
+              src = parsed.get("source") or "WEB-DL"
+              tg_tag = parsed.get("telegram_tag") or ""
+
+              # Parse real audio
+              audio = "Hindi DDP 5.1"
+              if "2.0" in raw_name: audio = "Hindi DDP 2.0"
+              elif "tamil" in fn_lower and "hindi" in fn_lower: audio = "Tamil + Hindi DDP 5.1"
+              elif "tamil" in fn_lower: audio = "Tamil DDP 5.1"
+              elif "telugu" in fn_lower: audio = "Telugu DDP 5.1"
+
+              tmdb_cand = (item.get("tmdb_candidates") or [{}])[0]
+              tmdb_id = item.get("selected_tmdb_id") or tmdb_cand.get("tmdb_id") or 0
+              poster = tmdb_cand.get("poster") or ""
+              fanart = tmdb_cand.get("fanart") or ""
+              rating = tmdb_cand.get("rating") or 7.0
+
+              # 50-limit chunk calculation
+              curr_total = len(cat_movies)
+              chunk_num = (curr_total // 50) + 1
+              chunk_filename = f"chunk_{chunk_num:02d}.json"
+              chunk_path = os.path.join(chunks_dir, chunk_filename)
+
+              stream_url = f"{WORKER_BASE}{gid}{USER_AGENT}"
+              dash_name = f"{title} ({year}) [{res}] [{src}] [{audio}] [{real_size}].mkv"
+
+              # Chunk detailed record
+              chunk_obj = {"chunk_id": f"chunk_{chunk_num:02d}", "movie_count": 0, "movies": []}
+              if os.path.exists(chunk_path):
+                  try:
+                      with open(chunk_path, "r", encoding="utf-8") as cf:
+                          chunk_obj = json.load(cf)
+                  except: pass
+
+              movie_record = {
+                  "id": gid,
+                  "tmdb_id": int(tmdb_id),
+                  "name": dash_name,
+                  "title": title,
+                  "original_title": title,
+                  "year": int(year),
+                  "runtime": 130,
+                  "release_date": f"{year}-01-01",
+                  "original_language": "hi",
+                  "genres": ["Drama", "Action"],
+                  "telegram_channel": tg_tag,
+                  "artwork": {
+                      "poster": poster,
+                      "fanart": fanart,
+                      "clearlogo": "",
+                      "landscape": fanart,
+                      "thumbnail": poster
+                  },
+                  "ratings": [{"source": "TMDb", "value": rating, "out_of": 10}],
+                  "specs": {
+                      "resolution": res,
+                      "source": src,
+                      "codec": "x264",
+                      "audio": audio,
+                      "channels": "2.0" if "2.0" in audio else "5.1",
+                      "size": real_size
+                  },
+                  "stream_url": stream_url,
+                  "versions": [{
+                      "id": gid,
+                      "name": dash_name,
+                      "quality": f"{res} FHD",
+                      "size": real_size,
+                      "stream_url": stream_url
+                  }]
+              }
+
+              chunk_obj["movies"].append(movie_record)
+              chunk_obj["movie_count"] = len(chunk_obj["movies"])
+              with open(chunk_path, "w", encoding="utf-8") as cf:
+                  json.dump(chunk_obj, cf, indent=2, ensure_ascii=False)
+
+              # Lightweight Catalog entry
+              cat_entry = {
+                  "id": gid,
+                  "tmdb_id": int(tmdb_id),
+                  "title": title,
+                  "year": int(year),
+                  "poster": poster,
+                  "fanart": fanart,
+                  "rating": rating,
+                  "original_language": "hi",
+                  "genres": ["Drama", "Action"],
+                  "chunk_file": f"resources/data/chunks/{chunk_filename}",
+                  "primary_stream_url": stream_url,
+                  "available_languages": [audio],
+                  "version_count": 1,
+                  "available_versions": [{
+                      "language": audio,
+                      "quality": f"{res} FHD",
+                      "source": src
+                  }]
+              }
+              cat_movies.append(cat_entry)
+              existing_ids.add(gid)
+              new_movies_count += 1
+
+          # Save Catalog
+          catalog_data["movies"] = cat_movies
+          with open(catalog_file, "w", encoding="utf-8") as f:
+              json.dump(catalog_data, f, indent=2, ensure_ascii=False)
+
+          # Save Series
+          with open(series_file, "w", encoding="utf-8") as f:
+              json.dump(series_data, f, indent=2, ensure_ascii=False)
+
+          # Save Songs
+          with open(songs_file, "w", encoding="utf-8") as f:
+              json.dump(songs_data, f, indent=2, ensure_ascii=False)
+
+          # Clear pending queue
+          with open(pending_file, "w", encoding="utf-8") as f:
+              json.dump([], f, indent=2)
+
+          print(f"🎉 Separation Summary:")
+          print(f"  - Movies ingested to Catalog & Chunks: {new_movies_count}")
+          print(f"  - Series isolated into data_c02.json: {series_count}")
+          print(f"  - 5.1 Songs isolated into data_c03.json: {songs_count}")
+          EOF
+
+      - name: Commit All Divided Files
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add resources/data/ chunks/
+          git commit -m "Safe Ingest: Catalog index first, separated Series & Songs, strictly chunked movies" || echo "No changes"
+          git push origin main
