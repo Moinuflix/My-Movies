@@ -1,7 +1,7 @@
 [
   {
-    "id": "17E3QIUWI2zv1QvZFWvnrOJ-TAWjMyT_c",
-    "name": "Baththa (2026) [4K UHD] [Netflix] [Dolby Atmos].mkv",
+    "id": "1Kd0_E8eHQnz6W0_lvUd9CfsYRRMSP3CE",
+    "name": "Baththa (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
     "title": "Baththa",
     "original_title": "பத்தா",
     "original_language": "ta",
@@ -44,42 +44,22 @@
     "plot": "In 1986 Madras, a timid eight-year-old boy accidentally traps a feared gangster inside a deserted school toilet. As the gangster is forced to confront hunger, loneliness and his own vulnerability, an unlikely bond begins to grow between the two, changing their lives forever.",
     "poster": "https://image.tmdb.org/t/p/w500/n8Df1H1TmcmZfjGgWh5uQyRFzHy.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/5sBnZMT1aJ6cBvehKOzOOLdI6bz.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=17E3QIUWI2zv1QvZFWvnrOJ-TAWjMyT_c|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Kd0_E8eHQnz6W0_lvUd9CfsYRRMSP3CE|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
-      "resolution": "4K UHD",
-      "source": "Netflix",
+      "resolution": "1080p",
+      "source": "WEB-DL",
       "codec": "x265",
       "audio": "Dolby Atmos",
       "channels": "5.1",
-      "languages": "",
-      "size": "13GB"
+      "languages": "Tamil",
+      "size": ""
     },
     "versions": [
       {
-        "id": "17E3QIUWI2zv1QvZFWvnrOJ-TAWjMyT_c",
-        "name": "Baththa (2026) [4K UHD] [Netflix] [Dolby Atmos].mkv",
-        "quality": "4K UHD • Netflix • Dolby Atmos [13GB]",
-        "source": "Netflix",
-        "codec": "x265",
-        "resolution": "4K UHD",
-        "audio": "Dolby Atmos",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=17E3QIUWI2zv1QvZFWvnrOJ-TAWjMyT_c|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "4K UHD",
-          "source": "Netflix",
-          "codec": "x265",
-          "audio": "Dolby Atmos",
-          "channels": "5.1",
-          "languages": "",
-          "size": "13GB"
-        }
-      },
-      {
         "id": "1Kd0_E8eHQnz6W0_lvUd9CfsYRRMSP3CE",
-        "name": "Baththa (2026) [1080p] [Netflix] [Dolby Atmos].mkv",
-        "quality": "1080p • Netflix • Dolby Atmos Multi [10GB]",
-        "source": "Netflix",
+        "name": "Baththa (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
+        "quality": "1080p • WEB-DL • Dolby Atmos",
+        "source": "WEB-DL",
         "codec": "x265",
         "resolution": "1080p",
         "audio": "Dolby Atmos",
@@ -87,12 +67,12 @@
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Kd0_E8eHQnz6W0_lvUd9CfsYRRMSP3CE|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
-          "source": "Netflix",
+          "source": "WEB-DL",
           "codec": "x265",
           "audio": "Dolby Atmos",
           "channels": "5.1",
-          "languages": "Tamil, Telugu, Hindi, Malayalam",
-          "size": "10GB"
+          "languages": "Tamil",
+          "size": ""
         }
       }
     ]
