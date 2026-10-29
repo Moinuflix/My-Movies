@@ -293,22 +293,22 @@
         "Family",
         "Drama"
       ],
+      "collection": "",
       "chunk_file": "resources/data/chunks/chunk_01.json",
       "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13vcHZ7Q8jtJ-LKMYv6OwtD4E_i_LUTbs|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
       "available_languages": [
-        "Hindi"
+        "Hindi DDP 5.1"
       ],
       "version_count": 1,
       "available_versions": [
         {
-          "language": "Hindi",
-          "dubbed": "Hindi DDP 5.1 - 640Kbps",
+          "language": "Hindi DDP 5.1",
           "quality": "1080p FHD",
           "source": "Netflix",
-          "source_image": "resources/images/sources/netflix.png",
+          "source_image": "resources/images/sources/web.png",
           "format": "Netflix",
           "codec": "x264",
-          "audio": "Hindi DDP 5.1 - 640Kbps",
+          "audio": "Hindi DDP 5.1",
           "channels": "5.1"
         }
       ]
