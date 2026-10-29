@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoinuFlix — Library Manager & Auto-Healer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #f8fafc;
+      --card-bg: #ffffff;
+      --text-dark: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --brand-blue: #0284c7;
+      --laser-green: #22c55e;
+      --laser-gold: #eab308;
+      --laser-red: #ef4444;
+      --tmdb-dark: #032541;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-dark);
+      padding: 1.5rem 2rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* TOP BAR */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-badge {
+      background: #0284c7;
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+    .page-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    .action-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      padding: 0.55rem 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      font-size: 0.82rem;
+      outline: none;
+      width: 220px;
+      background: #fff;
+    }
+    .search-box:focus { border-color: var(--brand-blue); }
+
+    .btn-pill {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      padding: 0.55rem 1rem;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--text-dark);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s;
+    }
+    .btn-pill:hover { background: #f1f5f9; }
+    .btn-primary { background: var(--brand-blue); color: #fff; border-color: var(--brand-blue); }
+    .btn-primary:hover { background: #0369a1; }
+    
+    /* SPECIAL AUTO-HEAL TRIGGER BUTTON */
+    .btn-heal {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #fff;
+      border: none;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+    .btn-heal:hover {
+      background: linear-gradient(135deg, #059669, #047857);
+      transform: translateY(-1px);
+    }
+
+    /* LIVE HEAL LOG BOX */
+    #heal-progress-banner {
+      display: none;
+      background: #032541;
+      color: #38bdf8;
+      border: 1px solid #38bdf8;
+      padding: 0.85rem 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    /* POSTER GRID */
+    .movies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.75rem 1.25rem;
+    }
+
+    .movie-card {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .poster-wrap {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #0f172a;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      position: relative;
+      border: 1px solid rgba(0,0,0,0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .movie-card:hover .poster-wrap {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+
+    .poster-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .menu-dots-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(8px);
+      border: none;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .menu-dots-btn:hover { background: rgba(15, 23, 42, 0.95); }
+
+    .score-circle {
+      position: absolute;
+      bottom: -15px;
+      left: 10px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #081c22;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.75rem;
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      z-index: 5;
+    }
+    .score-circle span {
+      font-size: 0.5rem;
+      margin-top: -4px;
+      margin-left: 1px;
+    }
+
+    .card-meta {
+      margin-top: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .movie-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .movie-date {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 1.5rem;
+    }
+    .modal-overlay.active { display: flex; }
+
+    .modal-box {
+      background: #ffffff;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 680px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+      display: flex;
+      flex-direction: column;
+      max-height: 90vh;
+    }
+
+    .modal-hero {
+      width: 100%;
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem;
+    }
+    .modal-hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(180deg, rgba(15,23,42,0.2) 0%, rgba(15,23,42,0.9) 100%);
+    }
+
+    .modal-hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+    }
+    .modal-movie-title { font-size: 1.4rem; font-weight: 800; }
+    .modal-movie-sub { font-size: 0.85rem; color: #94a3b8; margin-top: 4px; }
+
+    .modal-body {
+      padding: 1.5rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .form-row label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .form-row input {
+      padding: 0.65rem 0.85rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 0.88rem;
+      outline: none;
+    }
+
+    .modal-foot {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      background: #f8fafc;
+    }
+
+    @media (max-width: 640px) {
+      .movies-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1.25rem 0.75rem; }
+      body { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- TOP NAVIGATION BAR -->
+  <div class="top-nav">
+    <div class="brand-group">
+      <div class="brand-badge">MOINUFLIX</div>
+      <div class="page-title">Library Manager</div>
+    </div>
+    
+    <div class="action-controls">
+      <input type="text" id="movie-search" class="search-box" placeholder="Search catalog..." oninput="renderGrid()">
+      
+      <!-- ⚡ AUTO-HEAL 1-CLICK BUTTON -->
+      <button class="btn-pill btn-heal" id="btn-auto-heal" onclick="triggerAutoHealMissingData()">
+        ⚡ 1-Click Auto-Fill Missing Data
+      </button>
+
+      <a href="inbox.html" class="btn-pill btn-primary">+ Ingest</a>
+      <button class="btn-pill" onclick="configureToken()">Token</button>
+      <button class="btn-pill" onclick="loadCatalog()">Refresh</button>
+    </div>
+  </div>
+
+  <!-- LIVE HEAL STATUS BANNER -->
+  <div id="heal-progress-banner"></div>
+
+  <!-- EXACT POSTER GRID -->
+  <div class="movies-grid" id="grid-container">
+    <div style="color:var(--text-muted); padding:20px;">Loading catalog...</div>
+  </div>
+</div>
+
+<!-- DETAILS & QUICK EDIT MODAL -->
+<div class="modal-overlay" id="edit-modal">
+  <div class="modal-box">
+    <div class="modal-hero" id="modal-hero-bg">
+      <div class="modal-hero-content">
+        <div class="modal-movie-title" id="modal-title">Movie Title</div>
+        <div class="modal-movie-sub" id="modal-sub">2026 • Action • 85% Complete</div>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <input type="hidden" id="edit-id">
+      <input type="hidden" id="edit-chunk-file">
+
+      <div class="form-row">
+        <label>Official Title</label>
+        <input type="text" id="edit-title">
+      </div>
+
+      <div class="form-row">
+        <label>Trailer URL (YouTube)</label>
+        <input type="text" id="edit-trailer" placeholder="https://www.youtube.com/watch?v=...">
+      </div>
+
+      <div class="form-row">
+        <label>ClearLogo URL (Transparent PNG)</label>
+        <input type="text" id="edit-logo" placeholder="https://image.tmdb.org/.../logo.png">
+      </div>
+
+      <div class="form-row">
+        <label>Genres (Comma Separated)</label>
+        <input type="text" id="edit-genres" placeholder="Action, Drama, Thriller">
+      </div>
+    </div>
+
+    <div class="modal-foot">
+      <button class="btn-pill" onclick="closeModal()">Cancel</button>
+      <button class="btn-pill btn-primary" id="btn-save" onclick="saveMovieEdit()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const TMDB_KEY = "051ccf72e026820cb53b8b8531b6a2ba";
+  const FANART_KEY = "b207628faa5a1fc82f7dc07575c224f7";
+  const GH_REPO = "Moinuflix/My-Movies";
+  const GH_BRANCH = "main";
+  let catalogList = [];
+
+  function getToken() { return (localStorage.getItem("moinuflix_gh_token") || "").trim(); }
+  function configureToken() {
+    const cur = getToken();
+    const input = prompt("Enter GitHub PAT:", cur);
+    if (input !== null) {
+      localStorage.setItem("moinuflix_gh_token", input.trim());
+      alert("Token saved!");
+    }
+  }
+
+  function getScore(m) {
+    let score = 0;
+    const max = 8;
+    if (m.title) score++;
+    if (m.poster) score++;
+    if (m.fanart) score++;
+    if (m.logo && m.logo.length > 5) score++;
+    if (m.genres && m.genres.length > 0) score++;
+    if (m.rating && m.rating > 0) score++;
+    if (m.trailer && m.trailer.length > 5) score++;
+    if (m.chunk_file) score++;
+    return Math.round((score / max) * 100);
+  }
+
+  async function loadCatalog() {
+    try {
+      const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/catalog.json?t=${Date.now()}`);
+      if (!res.ok) throw new Error("Catalog fetch failed");
+      const d = await res.json();
+      catalogList = Array.isArray(d) ? d : (d.movies || []);
+      renderGrid();
+    } catch (e) {
+      document.getElementById("grid-container").innerHTML = `<div style="color:red; padding:20px;">Error: ${e.message}</div>`;
+    }
+  }
+
+  function renderGrid() {
+    const grid = document.getElementById("grid-container");
+    grid.innerHTML = "";
+    const q = (document.getElementById("movie-search").value || "").toLowerCase().trim();
+
+    const filtered = catalogList.filter(m => (m.title || "").toLowerCase().includes(q));
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '<div style="color:var(--text-muted); padding:20px;">No movies found.</div>';
+      return;
+    }
+
+    filtered.forEach(m => {
+      const score = getScore(m);
+      let ringColor = "var(--laser-green)";
+      if (score < 50) ringColor = "var(--laser-red)";
+      else if (score < 80) ringColor = "var(--laser-gold)";
+
+      const poster = m.poster || "https://via.placeholder.com/200x300?text=No+Poster";
+
+      const card = document.createElement("div");
+      card.className = "movie-card";
+      card.innerHTML = `
+        <div class="poster-wrap">
+          <button class="menu-dots-btn" onclick="event.stopPropagation(); openEdit('${m.id}')" title="Actions">•••</button>
+          <img src="${poster}" class="poster-img" loading="lazy" alt="${m.title}">
+          <div class="score-circle" style="border: 2px solid ${ringColor};">
+            ${score}<span>%</span>
+          </div>
+        </div>
+
+        <div class="card-meta">
+          <div class="movie-name" title="${m.title}">${m.title}</div>
+          <div class="movie-date">${m.year ? 'Released: ' + m.year : 'Catalog Synced'}</div>
+        </div>
+      `;
+      card.onclick = () => window.location.href = `movie.html?id=${m.id}`;
+      grid.appendChild(card);
+    });
+  }
+
+  function openEdit(id) {
+    const movie = catalogList.find(m => String(m.id) === String(id));
+    if (!movie) return;
+
+    const score = getScore(movie);
+    document.getElementById("modal-title").textContent = movie.title;
+    document.getElementById("modal-sub").textContent = `${movie.year || '2026'} • ${(movie.genres || []).join(', ')} • ${score}% Data Complete`;
+    document.getElementById("modal-hero-bg").style.backgroundImage = `url('${movie.fanart || movie.poster || ''}')`;
+
+    document.getElementById("edit-id").value = movie.id;
+    document.getElementById("edit-chunk-file").value = movie.chunk_file || "resources/data/chunks/chunk_01.json";
+    document.getElementById("edit-title").value = movie.title || "";
+    document.getElementById("edit-trailer").value = movie.trailer || "";
+    document.getElementById("edit-logo").value = movie.logo || "";
+    document.getElementById("edit-genres").value = (movie.genres || []).join(", ");
+
+    document.getElementById("edit-modal").classList.add("active");
+  }
+
+  function closeModal() {
+    document.getElementById("edit-modal").classList.remove("active");
+  }
+
+  async function saveMovieEdit() {
+    const token = getToken();
+    if (!token) return alert("GitHub Token missing! Click 'Token' button.");
+
+    const id = document.getElementById("edit-id").value;
+    const chunkFile = document.getElementById("edit-chunk-file").value;
+    const newTitle = document.getElementById("edit-title").value.trim();
+    const newTrailer = document.getElementById("edit-trailer").value.trim();
+    const newLogo = document.getElementById("edit-logo").value.trim();
+    const newGenres = document.getElementById("edit-genres").value.split(",").map(x => x.trim()).filter(Boolean);
+
+    const btn = document.getElementById("btn-save");
+    btn.disabled = true;
+    btn.textContent = "Saving...";
+
+    try {
+      const movie = catalogList.find(m => String(m.id) === String(id));
+      if (movie) {
+        movie.title = newTitle;
+        movie.trailer = newTrailer;
+        movie.logo = newLogo;
+        movie.genres = newGenres;
+      }
+      await commitGithub("resources/data/catalog.json", { movies: catalogList }, `Edit: ${newTitle} (Catalog)`, token);
+
+      const cRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${chunkFile}?t=${Date.now()}`);
+      if (cRes.ok) {
+        const cJson = await cRes.json();
+        const cm = (cJson.movies || []).find(m => String(m.id) === String(id));
+        if (cm) {
+          cm.title = newTitle;
+          cm.trailer = newTrailer;
+          cm.genres = newGenres;
+          cm.artwork = cm.artwork || {};
+          cm.artwork.clearlogo = newLogo;
+        }
+        await commitGithub(chunkFile, cJson, `Edit: ${newTitle} (${chunkFile})`, token);
+      }
+
+      alert("Updated successfully!");
+      closeModal();
+      loadCatalog();
+    } catch (e) {
+      alert("Error: " + e.message);
+    }
+    btn.disabled = false;
+    btn.textContent = "Save Changes";
+  }
+
+  /* ⚡ 1-CLICK REGIONAL AUTO-FILL (SUPPORTS TAMIL, TELUGU, HINDI & ENGLISH TRAILERS) */
+  async function triggerAutoHealMissingData() {
+    const token = getToken();
+    if (!token) return alert("GitHub PAT required! Please set token first.");
+
+    if (!confirm("Start 1-Click Auto-Fill? This will fetch Indian regional trailers, taglines, writers, and artworks for all movies.")) return;
+
+    const banner = document.getElementById("heal-progress-banner");
+    const healBtn = document.getElementById("btn-auto-heal");
+    banner.style.display = "block";
+    healBtn.disabled = true;
+
+    banner.textContent = "⚡ Indexing catalog and chunks to detect missing fields...";
+
+    const chunkMap = new Map();
+    catalogList.forEach(m => {
+      const cPath = m.chunk_file || "resources/data/chunks/chunk_01.json";
+      if (!chunkMap.has(cPath)) chunkMap.set(cPath, []);
+      chunkMap.get(cPath).push(m);
+    });
+
+    let totalHealed = 0;
+
+    for (let [chunkPath, catMovies] of chunkMap.entries()) {
+      banner.textContent = `⚡ Processing ${chunkPath} (${catMovies.length} movies)...`;
+      
+      let chunkData = null;
+      try {
+        const cRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${chunkPath}?t=${Date.now()}`);
+        if (cRes.ok) chunkData = await cRes.json();
+      } catch (_) {}
+
+      if (!chunkData || !chunkData.movies) continue;
+
+      let chunkModified = false;
+
+      for (let i = 0; i < chunkData.movies.length; i++) {
+        const m = chunkData.movies[i];
+        const tmdbId = m.tmdb_id;
+        if (!tmdbId || tmdbId === 0) continue;
+
+        m.artwork = m.artwork || {};
+        
+        const isMissingTrailer = !m.trailer || m.trailer.trim().length === 0;
+        const isMissingLogo = !m.artwork.clearlogo || m.artwork.clearlogo.trim().length === 0;
+        const isMissingFanart = !m.artwork.fanart || m.artwork.fanart.trim().length === 0;
+        const isMissingTagline = !m.tagline || m.tagline.trim().length === 0;
+        const isMissingWriters = !m.writers || m.writers.length === 0;
+
+        if (isMissingTrailer || isMissingLogo || isMissingFanart || isMissingTagline || isMissingWriters) {
+          banner.textContent = `🔍 Fetching missing data for: "${m.title}" (TMDb ID: ${tmdbId})...`;
+          
+          try {
+            // 1. Regional Fetch without language lock (captures Indian language credits & assets)
+            const tRes = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_KEY}&append_to_response=credits,images`);
+            if (tRes.ok) {
+              const td = await tRes.json();
+
+              // ⚡ 2. DEDICATED REGIONAL TRAILER ENGINE
+              if (isMissingTrailer) {
+                try {
+                  const vRes = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}/videos?api_key=${TMDB_KEY}`);
+                  if (vRes.ok) {
+                    const vData = await vRes.json();
+                    const ytVideos = (vData.results || []).filter(v => v.site === "YouTube");
+                    
+                    // Priority: Official Trailer > Trailer > Teaser > Any clip
+                    const best = ytVideos.find(v => v.type === "Trailer" && /official/i.test(v.name)) ||
+                                 ytVideos.find(v => v.type === "Trailer") ||
+                                 ytVideos.find(v => v.type === "Teaser") ||
+                                 ytVideos[0];
+                    if (best) {
+                      m.trailer = `https://www.youtube.com/watch?v=${best.key}`;
+                    }
+                  }
+                } catch (_) {}
+              }
+
+              // Auto Fill Tagline
+              if (isMissingTagline && td.tagline) {
+                m.tagline = td.tagline;
+              }
+
+              // Auto Fill Writers
+              if (isMissingWriters && td.credits?.crew) {
+                const writers = td.credits.crew
+                  .filter(c => ["Writer", "Screenplay", "Story", "Dialogue"].includes(c.job))
+                  .map(c => ({ name: c.name, job: c.job }));
+                if (writers.length > 0) m.writers = writers;
+              }
+
+              // Auto Fill Fanart & Landscape
+              if (td.backdrop_path) {
+                if (isMissingFanart) m.artwork.fanart = `https://image.tmdb.org/t/p/original${td.backdrop_path}`;
+                if (!m.artwork.landscape) m.artwork.landscape = `https://image.tmdb.org/t/p/w780${td.backdrop_path}`;
+                if (!m.artwork.title_card) m.artwork.title_card = `https://image.tmdb.org/t/p/original${td.backdrop_path}`;
+              }
+
+              // 3. Fanart.tv for ClearLogo, Banner & DiscArt
+              if (isMissingLogo) {
+                try {
+                  const fRes = await fetch(`https://webservice.fanart.tv/v3/movies/${tmdbId}?api_key=${FANART_KEY}`);
+                  if (fRes.ok) {
+                    const fd = await fRes.json();
+                    const logo = fd.hdmovielogo?.[0]?.url || fd.movielogo?.[0]?.url;
+                    if (logo) m.artwork.clearlogo = logo;
+                    if (!m.artwork.clearart && fd.hdmovieclearart?.[0]?.url) m.artwork.clearart = fd.hdmovieclearart[0].url;
+                    if (!m.artwork.banner && fd.moviebanner?.[0]?.url) m.artwork.banner = fd.moviebanner[0].url;
+                    if (!m.artwork.discart && fd.moviedisc?.[0]?.url) m.artwork.discart = fd.moviedisc[0].url;
+                  }
+                } catch (_) {}
+
+                if (!m.artwork.clearlogo && td.images?.logos?.[0]?.file_path) {
+                  m.artwork.clearlogo = `https://image.tmdb.org/t/p/original${td.images.logos[0].file_path}`;
+                }
+              }
+
+              const catM = catalogList.find(x => String(x.id) === String(m.id));
+              if (catM) {
+                catM.logo = m.artwork.clearlogo || "";
+                catM.fanart = m.artwork.fanart || catM.fanart;
+                catM.trailer = m.trailer || "";
+              }
+
+              chunkModified = true;
+              totalHealed++;
+            }
+          } catch (err) {
+            console.error(`Error healing ${m.title}:`, err);
+          }
+
+          await new Promise(r => setTimeout(r, 200));
+        }
+      }
+
+      if (chunkModified) {
+        banner.textContent = `💾 Saving updated ${chunkPath} to GitHub...`;
+        await commitGithub(chunkPath, chunkData, `Auto-Heal: Filled Indian regional metadata in ${chunkPath}`, token);
+      }
+    }
+
+    banner.textContent = `💾 Committing updated catalog.json...`;
+    await commitGithub("resources/data/catalog.json", { movies: catalogList }, `Auto-Heal: Updated catalog index`, token);
+
+    banner.textContent = `🎉 Auto-Heal Complete! Successfully filled missing data for ${totalHealed} items!`;
+    healBtn.disabled = false;
+    loadCatalog();
+  }
+
+  async function commitGithub(path, data, msg, token) {
+    const url = `https://api.github.com/repos/${GH_REPO}/contents/${path}`;
+    let sha = undefined;
+    try {
+      const gRes = await fetch(`${url}?t=${Date.now()}`, {
+        headers: { "Authorization": `token ${token}` }
+      });
+      if (gRes.ok) {
+        const j = await gRes.json();
+        sha = j.sha;
+      }
+    } catch (_) {}
+
+    const jsonStr = JSON.stringify(data, null, 2);
+    const encoded = btoa(unescape(encodeURIComponent(jsonStr)));
+
+    const putRes = await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Authorization": `token ${token}`,
+        "Accept": "application/vnd.github.v3+json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message: msg, content: encoded, branch: GH_BRANCH, sha: sha })
+    });
+    if (!putRes.ok) {
+      const e = await putRes.json();
+      throw new Error(e.message || "Commit failed");
+    }
+  }
+
+  window.addEventListener("DOMContentLoaded", loadCatalog);
+</script>
+</body>
+</html>
