@@ -211,6 +211,39 @@
           "channels": "5.1"
         }
       ]
+    },
+    {
+      "id": "1MW2Cy0Seu4jJaR6fs6XBN5zBt0lc2KNW",
+      "tmdb_id": 363335,
+      "title": "Raaz Reboot",
+      "year": 2016,
+      "poster": "https://image.tmdb.org/t/p/w780/9S7KOgIFlr2F3Zv6dFK22rIeR1a.jpg",
+      "fanart": "https://image.tmdb.org/t/p/original/r1mVcyEfTR5HZ0g2qxCSZEVp4Ih.jpg",
+      "logo": "https://image.tmdb.org/t/p/original/e2epkyPLyXFciOU5giQRCfzUn8s.png",
+      "rating": 4.1,
+      "original_language": "hi",
+      "genres": [
+        "Horror"
+      ],
+      "chunk_file": "resources/data/chunks/chunk_01.json",
+      "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1MW2Cy0Seu4jJaR6fs6XBN5zBt0lc2KNW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "available_languages": [
+        "Hindi"
+      ],
+      "version_count": 1,
+      "available_versions": [
+        {
+          "language": "Hindi",
+          "dubbed": "Hindi DDP 5.1 - 640Kbps",
+          "quality": "1080p FHD",
+          "source": "AMZN",
+          "source_image": "resources/images/sources/amazon.png",
+          "format": "AMZN",
+          "codec": "x264",
+          "audio": "Hindi DDP 5.1 - 640Kbps",
+          "channels": "5.1"
+        }
+      ]
     }
   ]
 }
