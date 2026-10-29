@@ -1,142 +1,216 @@
-import json
-import os
-import re
-import subprocess
+name: Scan Google Drive Arrivals
 
-# Rclone Remote & GDrive Folder (Agar direct remote hai toh 'gdrive:' ya 'mydrive:Movies')
-RCLONE_REMOTE = "gdrive:" 
-TMDB_KEY = "051ccf72e026820cb53b8b8531b6a2ba"
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/30 * * * *'
 
-print("🔍 Scanning Google Drive with Rclone...")
+permissions:
+  contents: write
 
-# 1. Fetch JSON list from GDrive
-try:
-    res = subprocess.run(["rclone", "lsjson", RCLONE_REMOTE, "--files-only"], capture_output=True, text=True)
-    if res.returncode != 0:
-        print("❌ Rclone Scan Error:", res.stderr)
-        exit(1)
-    drive_files = json.loads(res.stdout)
-except Exception as e:
-    print("❌ Failed to run rclone:", e)
-    exit(1)
+jobs:
+  scan-and-stage:
+    runs-on: ubuntu-latest
 
-# 2. Existing IDs nikaalein taaki duplicate add na ho
-existing_ids = set()
-cat_path = "resources/data/catalog.json"
-if os.path.exists(cat_path):
-    try:
-        with open(cat_path, "r", encoding="utf-8") as f:
-            cat = json.load(f)
-            movies = cat if isinstance(cat, list) else cat.get("movies", [])
-            for m in movies:
-                if m.get("id"): existing_ids.add(str(m["id"]).strip())
-    except: pass
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-# 3. Read current pending queue
-pending_file = "resources/data/pending_movies.json"
-pending_data = []
-if os.path.exists(pending_file):
-    try:
-        with open(pending_file, "r", encoding="utf-8") as f:
-            pending_data = json.load(f)
-            if not isinstance(pending_data, list): pending_data = []
-            for p in pending_data:
-                if p.get("gdrive_id"): existing_ids.add(str(p["gdrive_id"]).strip())
-    except: pending_data = []
+      - name: Setup Rclone & Python
+        run: |
+          sudo -v ; curl https://rclone.org/install.sh | sudo bash
+          sudo apt-get install -y python3
 
-video_exts = {".mkv", ".mp4", ".avi", ".ts"}
-added_count = 0
+      - name: Configure Rclone
+        env:
+          GDRIVE_TOKEN: ${{ secrets.RCLONE_GDRIVE_TOKEN }}
+        run: |
+          mkdir -p ~/.config/rclone
+          cat << 'EOF' > make_conf.py
+          import os
+          token = os.environ.get("GDRIVE_TOKEN", "").strip()
+          conf = f"[gdrive]\ntype = drive\nscope = drive\ntoken = {token}\n"
+          with open(os.path.expanduser("~/.config/rclone/rclone.conf"), "w", encoding="utf-8") as f:
+              f.write(conf)
+          EOF
+          python3 make_conf.py
 
-for f in drive_files:
-    filename = f.get("Name", "")
-    ext = os.path.splitext(filename)[1].lower()
-    if ext not in video_exts:
-        continue
+      - name: Run Drive Scanner & Populate pending_movies.json
+        run: |
+          python3 - << 'EOF'
+          import subprocess
+          import json
+          import os
+          import re
+          import urllib.request
+          import urllib.parse
 
-    gid = f.get("ID", "").strip()
-    if not gid or gid in existing_ids:
-        continue
+          TMDB_KEY = "051ccf72e026820cb53b8b8531b6a2ba"
 
-    size_b = f.get("Size", 0)
-    size_gb = f"{round(size_b / (1024**3))} GB" if size_b >= 1024**3 else f"{round(size_b / (1024**2))} MB"
+          print("--- STEP 1: SCANNING GOOGLE DRIVE VIA RCLONE ---")
+          cmd = ["rclone", "lsjson", "gdrive:", "-R", "--files-only"]
+          res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
-    # Telegram Tag extraction
-    tg_tag = ""
-    tg_match = re.search(r'@[\w_]+', filename)
-    if tg_match: tg_tag = tg_match.group(0)
+          if res.returncode != 0:
+              print(f"Rclone Error: {res.stderr}")
+              drive_files = []
+          else:
+              try:
+                  drive_files = json.loads(res.stdout) if res.stdout else []
+              except Exception as e:
+                  print(f"JSON Parse Error: {e}")
+                  drive_files = []
 
-    # Clean Title & Year
-    clean = re.sub(r'@[\w_]+\s*-\s*', '', filename)
-    clean = re.sub(r'\.(mkv|mp4|avi|ts)$', '', clean, flags=re.I)
-    clean = re.sub(r'[\._\-]', ' ', clean)
-    ym = re.search(r'\b(19\d\d|20\d\d)\b', clean)
-    year = int(ym.group(1)) if ym else 2026
-    cutoff = ym.start() if ym else len(clean)
-    title = clean[:cutoff].strip()
-    title = re.sub(r'\b(2160p|1080p|720p|4k|amaz|amzn|bluray|hevc|h265|x264|x265|dts|web|dl|hybrid)\b', '', title, flags=re.I).strip()
+          print(f"Total raw files detected in Drive: {len(drive_files)}")
 
-    # Resolution & Source
-    fn_l = filename.lower()
-    res_val = "2160p" if ("2160p" in fn_l or "4k" in fn_l) else ("720p" if "720p" in fn_l else "1080p")
-    src_val = "BluRay" if "bluray" in fn_l else ("AMZN" if ("amzn" in fn_l or "amaz" in fn_l) else "WEB-DL")
-    codec_val = "x265" if ("x265" in fn_l or "hevc" in fn_l) else "x264"
+          # 1. Existing IDs collect karein (catalog + chunk_XX) taaki duplicate add na ho
+          existing_ids = set()
 
-    # Multi-Audio bracket parser
-    audio_val = "Tamil 5.1"
-    br_audio = re.search(r'\[(.*?(?:Telugu|Tamil|Hindi|English|DDP|DTS|AAC|Atmos|TrueHD).*?)\]', filename, re.I)
-    if br_audio:
-        audio_val = re.sub(r'JHS\s*', '', br_audio.group(1), flags=re.I).replace('~', '-').strip()
+          cat_path = "resources/data/catalog.json"
+          if os.path.exists(cat_path):
+              try:
+                  with open(cat_path, "r", encoding="utf-8") as f:
+                      cat = json.load(f)
+                      movies = cat if isinstance(cat, list) else cat.get("movies", [])
+                      for m in movies:
+                          if m.get("id"): existing_ids.add(str(m["id"]).strip())
+                          for v in m.get("available_versions", []):
+                              if v.get("id"): existing_ids.add(str(v["id"]).strip())
+              except Exception as e:
+                  print("Catalog read error:", e)
 
-    std_name = f"{title} ({year}) [{res_val}] [{src_val}] [{audio_val}] [{size_gb}].mkv"
+          chunks_dir = "resources/data/chunks"
+          if os.path.isdir(chunks_dir):
+              for c in os.listdir(chunks_dir):
+                  if c.endswith(".json"):
+                      try:
+                          with open(os.path.join(chunks_dir, c), "r", encoding="utf-8") as f:
+                              c_data = json.load(f)
+                              c_movies = c_data if isinstance(c_data, list) else c_data.get("movies", [])
+                              for cm in c_movies:
+                                  if cm.get("id"): existing_ids.add(str(cm["id"]).strip())
+                      except: pass
 
-    # TMDb Auto Match Candidate (India region priority)
-    tmdb_candidate = None
-    try:
-        import urllib.request
-        query_url = f"https://api.themoviedb.org/3/search/movie?api_key={TMDB_KEY}&query={urllib.parse.quote(title)}&year={year}&region=IN"
-        req = urllib.request.Request(query_url, headers={"User-Agent": "MoinuFlix-Scanner/1.0"})
-        with urllib.request.urlopen(req, timeout=5) as resp:
-            td = json.loads(resp.read().decode())
-            if td.get("results"):
-                top = td["results"][0]
-                tmdb_candidate = {
-                    "tmdb_id": top["id"],
-                    "title": top.get("title", title),
-                    "year": str(year),
-                    "poster": f"https://image.tmdb.org/t/p/w500{top['poster_path']}" if top.get("poster_path") else "",
-                    "fanart": f"https://image.tmdb.org/t/p/original{top['backdrop_path']}" if top.get("backdrop_path") else "",
-                    "rating": round(top.get("vote_average", 7.5), 1)
-                }
-    except: pass
+          # 2. Existing pending_movies.json load karein
+          pending_file = "resources/data/pending_movies.json"
+          pending_data = []
+          if os.path.exists(pending_file):
+              try:
+                  with open(pending_file, "r", encoding="utf-8") as f:
+                      txt = f.read().strip()
+                      if txt:
+                          loaded = json.loads(txt)
+                          pending_data = loaded if isinstance(loaded, list) else []
+                          for p in pending_data:
+                              if p.get("gdrive_id"): existing_ids.add(str(p["gdrive_id"]).strip())
+              except Exception as e:
+                  print("Pending read error:", e)
+                  pending_data = []
 
-    item = {
-        "gdrive_id": gid,
-        "original_filename": filename,
-        "file_size_bytes": size_b,
-        "file_size_gb": size_gb,
-        "mime_type": "video/x-matroska",
-        "parsed": {
-            "title": title,
-            "year": year,
-            "resolution": res_val,
-            "source": src_val,
-            "codec": codec_val,
-            "telegram_tag": tg_tag,
-            "standard_filename": std_name
-        },
-        "match_status": "matched" if tmdb_candidate else "pending",
-        "tmdb_candidates": [tmdb_candidate] if tmdb_candidate else [],
-        "selected_tmdb_id": tmdb_candidate["tmdb_id"] if tmdb_candidate else None,
-        "approval_status": "pending"
-    }
+          video_exts = {".mkv", ".mp4", ".avi", ".ts"}
+          added_count = 0
 
-    pending_data.append(item)
-    existing_ids.add(gid)
-    added_count += 1
-    print(f"  + Added to Queue: {title} ({year}) [{size_gb}]")
+          for f in drive_files:
+              fname = f.get("Name", "")
+              fpath = f.get("Path", fname)
+              ext = os.path.splitext(fname)[1].lower()
+              if ext not in video_exts:
+                  continue
 
-os.makedirs("resources/data", exist_ok=True)
-with open(pending_file, "w", encoding="utf-8") as f:
-    json.dump(pending_data, f, indent=2, ensure_ascii=False)
+              gid = str(f.get("ID", "")).strip()
+              if not gid or gid in existing_ids:
+                  continue
 
-print(f"\n🎉 Done! Added {added_count} new movie arrivals to {pending_file}")
+              fbytes = f.get("Size", 0)
+              gb_val = round(fbytes / (1024 ** 3))
+              clean_size = f"{gb_val} GB" if gb_val >= 1 else f"{round(fbytes / (1024 ** 2))} MB"
+
+              # 3. Smart Parsing (Telegram Tag, OTT, Audio, Resolution)
+              tg_tag = ""
+              tg_match = re.search(r'@[\w_]+', fname)
+              if tg_match: tg_tag = tg_match.group(0)
+
+              clean = re.sub(r'@[\w_]+\s*-\s*', '', fname)
+              clean = re.sub(r'\.(mkv|mp4|avi|ts)$', '', clean, flags=re.I)
+              clean = re.sub(r'[\._\-]', ' ', clean)
+              
+              ym = re.search(r'\b(19\d\d|20\d\d)\b', clean)
+              year = int(ym.group(1)) if ym else 2026
+              cutoff = ym.start() if ym else len(clean)
+              title = clean[:cutoff].strip()
+              title = re.sub(r'\b(2160p|1080p|720p|4k|amaz|amzn|bluray|hevc|h265|x264|x265|dts|web|dl|hybrid)\b', '', title, flags=re.I).strip()
+
+              fn_l = fname.lower()
+              res_val = "2160p" if ("2160p" in fn_l or "4k" in fn_l) else ("720p" if "720p" in fn_l else "1080p")
+              src_val = "BluRay" if "bluray" in fn_l else ("AMZN" if ("amzn" in fn_l or "amaz" in fn_l) else ("Netflix" if "netflix" in fn_l or "nf" in fn_l else "WEB-DL"))
+              codec_val = "x265" if ("x265" in fn_l or "hevc" in fn_l) else "x264"
+
+              # Multi-Audio bracket parser
+              audio_val = "Tamil 5.1"
+              br_audio = re.search(r'\[(.*?(?:Telugu|Tamil|Hindi|English|DDP|DTS|AAC|Atmos|TrueHD).*?)\]', fname, re.I)
+              if br_audio:
+                  audio_val = re.sub(r'JHS\s*', '', br_audio.group(1), flags=re.I).replace('~', '-').strip()
+
+              std_name = f"{title} ({year}) [{res_val}] [{src_val}] [{audio_val}] [{clean_size}].mkv"
+
+              # 4. Instant TMDb Candidate Match (India region priority)
+              tmdb_candidate = None
+              try:
+                  query_url = f"https://api.themoviedb.org/3/search/movie?api_key={TMDB_KEY}&query={urllib.parse.quote(title)}&year={year}&region=IN"
+                  req = urllib.request.Request(query_url, headers={"User-Agent": "MoinuFlix-Scanner/1.0"})
+                  with urllib.request.urlopen(req, timeout=5) as resp:
+                      td = json.loads(resp.read().decode())
+                      if td.get("results"):
+                          top = td["results"][0]
+                          tmdb_candidate = {
+                              "tmdb_id": top["id"],
+                              "title": top.get("title", title),
+                              "year": str(year),
+                              "poster": f"https://image.tmdb.org/t/p/w500{top['poster_path']}" if top.get("poster_path") else "",
+                              "fanart": f"https://image.tmdb.org/t/p/original{top['backdrop_path']}" if top.get("backdrop_path") else "",
+                              "rating": round(top.get("vote_average", 7.5), 1)
+                          }
+              except: pass
+
+              pending_entry = {
+                  "gdrive_id": gid,
+                  "original_filename": fname,
+                  "file_size_bytes": fbytes,
+                  "file_size_gb": clean_size,
+                  "mime_type": "video/x-matroska",
+                  "detected_at": f.get("ModTime", ""),
+                  "parsed": {
+                      "title": title,
+                      "year": year,
+                      "resolution": res_val,
+                      "source": src_val,
+                      "codec": codec_val,
+                      "telegram_tag": tg_tag,
+                      "standard_filename": std_name
+                  },
+                  "match_status": "matched" if tmdb_candidate else "pending",
+                  "tmdb_candidates": [tmdb_candidate] if tmdb_candidate else [],
+                  "selected_tmdb_id": tmdb_candidate["tmdb_id"] if tmdb_candidate else None,
+                  "approval_status": "pending"
+              }
+
+              pending_data.append(pending_entry)
+              existing_ids.add(gid)
+              added_count += 1
+              print(f"  + Queued: {title} ({year}) [{clean_size}] {tg_tag}")
+
+          os.makedirs("resources/data", exist_ok=True)
+          with open(pending_file, "w", encoding="utf-8") as pf:
+              json.dump(pending_data, pf, indent=2, ensure_ascii=False)
+
+          print(f"\n🎉 Successfully added {added_count} brand-new arrivals to {pending_file}!")
+          EOF
+
+      - name: Commit & Push Staged Arrivals
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add resources/data/pending_movies.json
+          git diff --staged --quiet || (git commit -m "Auto-Scan: Updated pending_movies.json queue from Google Drive" && git push origin main)
