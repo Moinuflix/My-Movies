@@ -1,5 +1,83 @@
 [
   {
+    "id": "1Kd0_E8eHQnz6W0_lvUd9CfsYRRMSP3CE",
+    "name": "Baththa (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
+    "title": "Baththa",
+    "original_title": "பத்தா",
+    "original_language": "ta",
+    "year": 2026,
+    "runtime": 159,
+    "tmdb_id": 1515692,
+    "rating": 8.2,
+    "collection": "",
+    "director": [
+      "Balaji Tharaneetharan"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=QAMyuZSvqWI",
+    "cast": [
+      {
+        "name": "Vijay Sethupathi",
+        "role": "Bathvachalam 'Baththa'",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/a3HWdfCAbplrvoMNEJCjnkbqqOo.jpg"
+      },
+      {
+        "name": "Lijomol Jose",
+        "role": "Kannima",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/vXFBgF6NMON7L4RzZ6B35lOVYOu.jpg"
+      },
+      {
+        "name": "Sai Prithviraj",
+        "role": "Sabari",
+        "thumbnail": ""
+      },
+      {
+        "name": "Sahasra Sree",
+        "role": "Thenmozhi 'Thenu'",
+        "thumbnail": ""
+      },
+      {
+        "name": "Santhy Balachandran",
+        "role": "Selvi",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/gLpx6IM3Ifs6m1tytsc3yc4Lw90.jpg"
+      }
+    ],
+    "plot": "In 1986 Madras, a timid eight-year-old boy accidentally traps a feared gangster inside a deserted school toilet. As the gangster is forced to confront hunger, loneliness and his own vulnerability, an unlikely bond begins to grow between the two, changing their lives forever.",
+    "poster": "https://image.tmdb.org/t/p/w500/n8Df1H1TmcmZfjGgWh5uQyRFzHy.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/5sBnZMT1aJ6cBvehKOzOOLdI6bz.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Kd0_E8eHQnz6W0_lvUd9CfsYRRMSP3CE|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x265",
+      "audio": "Dolby Atmos",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": ""
+    },
+    "versions": [
+      {
+        "id": "1Kd0_E8eHQnz6W0_lvUd9CfsYRRMSP3CE",
+        "name": "Baththa (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
+        "quality": "1080p • WEB-DL • Dolby Atmos",
+        "source": "WEB-DL",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Kd0_E8eHQnz6W0_lvUd9CfsYRRMSP3CE|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": ""
+        }
+      }
+    ]
+  },
+  {
     "id": "17E3QIUWI2zv1QvZFWvnrOJ-TAWjMyT_c",
     "name": "Baththa (2026) [4K UHD] [Netflix] [Dolby Atmos].mkv",
     "title": "Baththa",
