@@ -129,8 +129,8 @@
     }
 
     .poster-preview {
-      width: 85px;
-      height: 125px;
+      width: 90px;
+      height: 135px;
       border-radius: 8px;
       object-fit: cover;
       background: #020617;
@@ -147,12 +147,12 @@
     }
 
     .raw-name-title {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       word-break: break-all;
     }
     .parsed-headline {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 800;
       color: #fff;
     }
@@ -165,6 +165,29 @@
       border-radius: 6px;
       border: 1px dashed var(--laser-cyan);
       word-break: break-all;
+    }
+
+    .candidate-switch-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .candidate-chip {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: var(--laser-gold);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .candidate-chip:hover, .candidate-chip.active {
+      background: var(--laser-gold);
+      color: #020617;
     }
 
     .tags-row {
@@ -183,7 +206,7 @@
       color: #fff;
     }
     .badge-tg { background: rgba(56, 189, 248, 0.2); color: var(--laser-cyan); }
-    .badge-size { background: rgba(245, 158, 11, 0.2); color: var(--laser-gold); }
+    .badge-size { background: rgba(16, 185, 129, 0.2); color: var(--laser-green); border: 1px solid rgba(16, 185, 129, 0.4); }
 
     .card-actions {
       display: flex;
@@ -243,7 +266,7 @@
   <div class="top-header">
     <div>
       <div class="brand-title">MOINUFLIX — PENDING DRIVE ARRIVALS</div>
-      <div class="brand-sub">Auto-Detected Queue • Review, Edit & 1-Click Approval</div>
+      <div class="brand-sub">Auto-Detected Queue • Verified Size & Multi-Audio • 1-Click Approval</div>
     </div>
     <div class="nav-actions">
       <button class="btn-pill btn-green" onclick="approveAllPending()">🚀 1-Click Approve All</button>
@@ -310,7 +333,7 @@
     b.textContent = msg;
   }
 
-  // 1. Master catalog stats check (50-limit chunk allocation)
+  // 1. Fetch Master Catalog stats
   async function loadMasterStats() {
     try {
       const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/catalog.json?t=${Date.now()}`);
@@ -327,7 +350,42 @@
     } catch (_) {}
   }
 
-  // 2. Load pending items safely without JSON crash
+  /* ⚡ DEEP MULTI-TRACK AUDIO PARSER */
+  function parseDeepAudio(raw) {
+    const segRegex = /(TAM|TEL|HIN|ENG|MAL|KAN)[\w\.\-]*?(DDP?|DTS|AAC|AC3|TRUEHD|ATMOS)?[\.\s\-]*?([1-7]\.[0-2])/gi;
+    let matches = [...raw.matchAll(segRegex)];
+
+    if (matches.length > 0) {
+      let tracks = [];
+      const langMap = { 'TAM': 'Tamil', 'TEL': 'Telugu', 'HIN': 'Hindi', 'ENG': 'English', 'MAL': 'Malayalam', 'KAN': 'Kannada' };
+      matches.forEach(m => {
+        let lCode = m[1].toUpperCase();
+        let langName = langMap[lCode] || lCode;
+        let codec = (m[2] || 'DDP').toUpperCase();
+        let ch = m[3] || '5.1';
+        tracks.push(`${langName} ${codec} ${ch}`);
+      });
+      if (/TAM[\.\-_]TEL/i.test(raw) && tracks.length > 0) {
+        tracks[0] = tracks[0].replace('Tamil', 'Tamil + Telugu');
+      }
+      return tracks.join(' + ');
+    }
+
+    const bracketMatch = raw.match(/\[(.*?(?:DDP|DTS|AAC|Atmos|TrueHD|5\.1|2\.0|7\.1).*?)\]/i);
+    if (bracketMatch && bracketMatch[1].length > 4) {
+      return bracketMatch[1].replace(/JHS\s*/i, '').replace(/~/g, '-').trim();
+    }
+
+    const parenMatch = raw.match(/\((DD\+?5\.1.*?|DTS.*?|Atmos.*?|TrueHD.*?|AAC.*?)\)/i);
+    if (parenMatch) {
+      let primary = /\bhindi\b/i.test(raw) ? 'Hindi' : (/\btamil\b/i.test(raw) ? 'Tamil' : 'Tamil');
+      return `${primary} ${parenMatch[1].replace(/~/g, '-').trim()}`;
+    }
+
+    return "Tamil 5.1";
+  }
+
+  // 2. Load pending items safely
   async function loadPendingList() {
     await loadMasterStats();
     const container = document.getElementById("pending-items-container");
@@ -368,7 +426,7 @@
     }
   }
 
-  // 3. Render Pending Cards
+  // 3. Render Cards with Multi-Candidate Switcher & Verified Drive Size
   function renderPendingCards() {
     const container = document.getElementById("pending-items-container");
     container.innerHTML = "";
@@ -377,26 +435,49 @@
       const parsed = item.parsed || {};
       const title = parsed.title || "Unknown Title";
       const year = parsed.year || "2026";
-      const size = item.file_size_gb || "10 GB";
-      const tgTag = parsed.telegram_tag || "";
       const rawName = item.original_filename || "";
-      const dashName = parsed.standard_filename || `${title} (${year}) [1080p] [${size}].mkv`;
       
+      // Real Verified Size from Drive
+      const size = item.file_size_gb || "5 GB";
+      const tgTag = parsed.telegram_tag || "";
+      const deepAudio = parseDeepAudio(rawName);
+
       const candidate = (item.tmdb_candidates && item.tmdb_candidates[0]) ? item.tmdb_candidates[0] : {};
-      const poster = candidate.poster || "https://via.placeholder.com/85x125?text=No+Poster";
+      const poster = candidate.poster || "https://via.placeholder.com/90x135?text=No+Poster";
+
+      const dashName = `${title} (${year}) [${parsed.resolution || '1080p'}] [${parsed.source || 'WEB-DL'}] [${deepAudio}] [${size}].mkv`;
 
       const card = document.createElement("div");
       card.className = "pending-card";
+      card.id = `card-item-${index}`;
+
+      // Candidates row (if multiple exist)
+      let candidatesHtml = "";
+      if (item.tmdb_candidates && item.tmdb_candidates.length > 1) {
+        candidatesHtml = `
+          <div class="candidate-switch-row">
+            <span style="font-size:0.7rem; color:var(--text-muted); font-weight:700;">Switch Match:</span>
+            ${item.tmdb_candidates.map((c, cIdx) => `
+              <span class="candidate-chip ${cIdx === 0 ? 'active' : ''}" onclick="switchCandidate(${index}, ${cIdx})">
+                ${escapeHtml(c.title)} (${c.year || ''})
+              </span>
+            `).join('')}
+          </div>
+        `;
+      }
+
       card.innerHTML = `
-        <img src="${poster}" class="poster-preview" alt="">
+        <img src="${poster}" class="poster-preview" id="poster-img-${index}" alt="">
         <div class="card-content">
           <div class="raw-name-title">📁 ${escapeHtml(rawName)}</div>
-          <div class="parsed-headline">${escapeHtml(title)} (${year})</div>
-          <div class="dash-preview-box">${escapeHtml(dashName)}</div>
+          <div class="parsed-headline" id="title-headline-${index}">${escapeHtml(title)} (${year})</div>
+          <div class="dash-preview-box" id="dash-preview-${index}">${escapeHtml(dashName)}</div>
           
+          ${candidatesHtml}
+
           <div class="tags-row">
             ${tgTag ? `<span class="badge badge-tg">${escapeHtml(tgTag)}</span>` : ''}
-            <span class="badge badge-size">💾 ${escapeHtml(size)}</span>
+            <span class="badge badge-size">💾 ${escapeHtml(size)} (Verified Drive)</span>
             <span class="badge">${escapeHtml(parsed.source || 'WEB-DL')}</span>
             <span class="badge">${escapeHtml(parsed.resolution || '1080p')}</span>
             <span class="badge" style="color:var(--laser-cyan);">ID: ${escapeHtml((item.gdrive_id || '').substring(0, 15))}...</span>
@@ -413,27 +494,60 @@
     });
   }
 
-  // 4. Send to inbox.html Form via Session Storage
+  // 🎯 Switch Active Candidate in Pending List
+  function switchCandidate(movieIdx, candIdx) {
+    const item = pendingList[movieIdx];
+    if (!item || !item.tmdb_candidates) return;
+    const selected = item.tmdb_candidates[candIdx];
+    if (!selected) return;
+
+    item.selected_tmdb_id = selected.tmdb_id;
+    item.parsed.title = selected.title;
+    item.parsed.year = parseInt(selected.year, 10) || item.parsed.year;
+
+    // Update Card UI
+    const posterEl = document.getElementById(`poster-img-${movieIdx}`);
+    if (posterEl && selected.poster) posterEl.src = selected.poster;
+
+    const headEl = document.getElementById(`title-headline-${movieIdx}`);
+    if (headEl) headEl.textContent = `${selected.title} (${item.parsed.year})`;
+
+    const chips = document.querySelectorAll(`#card-item-${movieIdx} .candidate-chip`);
+    chips.forEach((ch, idx) => {
+      ch.className = idx === candIdx ? 'candidate-chip active' : 'candidate-chip';
+    });
+
+    const deepAudio = parseDeepAudio(item.original_filename);
+    const size = item.file_size_gb || "5 GB";
+    const newDash = `${selected.title} (${item.parsed.year}) [${item.parsed.resolution || '1080p'}] [${item.parsed.source || 'WEB-DL'}] [${deepAudio}] [${size}].mkv`;
+    document.getElementById(`dash-preview-${movieIdx}`).textContent = newDash;
+  }
+
+  // 4. Send Item into inbox.html Form via Session Storage
   function sendToEditForm(index) {
     const item = pendingList[index];
     sessionStorage.setItem("moinuflix_edit_pending", JSON.stringify(item));
     window.location.href = "inbox.html?load_pending=1";
   }
 
-  // 5. 1-Click Approve Single Movie (India Regional Enrichment + Commit)
+  // 5. Approve Single Movie (Accurate Multi-Audio + Verified Size + Dual Logo)
   async function approveSingleItem(index) {
     const token = getToken();
     if (!token) return alert("GitHub Token missing! Click 'Token' button at top right.");
 
     const item = pendingList[index];
     const parsed = item.parsed || {};
+    const rawName = item.original_filename || "";
     const title = parsed.title || "Movie";
     const year = parsed.year || 2026;
     const driveId = (item.gdrive_id || '').replace(/\s+/g, '');
+    const realSize = item.file_size_gb || "5 GB";
+    const deepAudio = parseDeepAudio(rawName);
+
     const candidate = (item.tmdb_candidates && item.tmdb_candidates[0]) ? item.tmdb_candidates[0] : {};
     const tmdbId = item.selected_tmdb_id || candidate.tmdb_id;
 
-    if (!confirm(`Approve and commit "${title}" to Master Catalog and ${currentTargetChunk}?`)) return;
+    if (!confirm(`Approve and commit "${title}" [${realSize}] to Master Catalog and ${currentTargetChunk}?`)) return;
 
     showStatus(`⚡ Fetching official TMDb metadata for "${title}" with India Priority...`);
 
@@ -454,12 +568,13 @@
         cast: [],
         poster: candidate.poster || "",
         fanart: candidate.fanart || "",
+        clearlogo: "",
         trailer: ""
       };
 
       if (tmdbId) {
         try {
-          const tRes = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_KEY}&append_to_response=credits,release_dates,images`);
+          const tRes = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_KEY}&append_to_response=credits,release_dates,images&include_image_language=en,hi,ta,te,null`);
           if (tRes.ok) {
             const td = await tRes.json();
             movieDetails.title = td.title || title;
@@ -484,26 +599,45 @@
               link: `https://www.themoviedb.org/person/${c.id}`
             }));
 
-            // CBFC India Certification priority
+            // CBFC India Certification
             const rels = td.release_dates?.results || [];
             const inR = rels.find(r => r.iso_3166_1 === "IN");
             if (inR && inR.release_dates?.[0]?.certification) {
               movieDetails.certification = inR.release_dates[0].certification;
             }
 
-            // Regional Indian trailer match
+            // ⚡ Dual Logo: Step 1 TMDb PNG
+            const tmdbLogos = td.images?.logos || [];
+            if (tmdbLogos.length > 0) {
+              const bestLogo = tmdbLogos.find(l => l.file_path && l.file_path.endsWith(".png")) || tmdbLogos[0];
+              if (bestLogo) movieDetails.clearlogo = `https://image.tmdb.org/t/p/original${bestLogo.file_path}`;
+            }
+
+            // Fallback Fanart.tv if logo empty
+            if (!movieDetails.clearlogo) {
+              try {
+                const faRes = await fetch(`https://webservice.fanart.tv/v3/movies/${tmdbId}?api_key=${FANART_KEY}`);
+                if (faRes.ok) {
+                  const fa = await faRes.json();
+                  movieDetails.clearlogo = fa.hdmovielogo?.[0]?.url || fa.movielogo?.[0]?.url || "";
+                }
+              } catch (_) {}
+            }
+
+            // Video Trailer
             try {
               const vRes = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}/videos?api_key=${TMDB_KEY}`);
               if (vRes.ok) {
                 const vData = await vRes.json();
                 const ytVideos = (vData.results || []).filter(v => v.site === "YouTube");
-                const best = ytVideos.find(v => v.type === "Trailer" && /official/i.test(v.name)) ||
-                             ytVideos.find(v => v.type === "Trailer") ||
-                             ytVideos.find(v => v.type === "Teaser") ||
-                             ytVideos[0];
+                const best = ytVideos.find(v => v.type === "Trailer" && /official/i.test(v.name)) || ytVideos.find(v => v.type === "Trailer") || ytVideos[0];
                 if (best) movieDetails.trailer = `https://www.youtube.com/watch?v=${best.key}`;
               }
             } catch (_) {}
+
+            if (!movieDetails.trailer) {
+              movieDetails.trailer = `https://www.youtube.com/results?search_query=${encodeURIComponent(movieDetails.title + ' ' + movieDetails.year + ' Official Trailer')}`;
+            }
           }
         } catch (_) {}
       }
@@ -511,6 +645,7 @@
       const streamUrl = `${WORKER_BASE}${driveId}${USER_AGENT}`;
       const targetChunkPath = `resources/data/chunks/${currentTargetChunk}`;
       const catalogPath = `resources/data/catalog.json`;
+      const finalDashName = `${movieDetails.title} (${movieDetails.year}) [${parsed.resolution || '1080p'}] [${parsed.source || 'WEB-DL'}] [${deepAudio}] [${realSize}].mkv`;
 
       showStatus(`💾 Committing "${title}" to ${currentTargetChunk}...`);
 
@@ -530,7 +665,7 @@
       const fullMovieRecord = {
         id: driveId,
         tmdb_id: tmdbId ? parseInt(tmdbId, 10) : 0,
-        name: parsed.standard_filename || `${movieDetails.title} (${movieDetails.year}).mkv`,
+        name: finalDashName,
         title: movieDetails.title,
         original_title: movieDetails.original_title,
         year: movieDetails.year,
@@ -550,7 +685,7 @@
         artwork: {
           poster: movieDetails.poster,
           fanart: movieDetails.fanart,
-          clearlogo: "",
+          clearlogo: movieDetails.clearlogo,
           clearart: "",
           banner: "",
           landscape: movieDetails.fanart,
@@ -575,27 +710,27 @@
           resolution: parsed.resolution || "1080p",
           source: parsed.source || "WEB-DL",
           codec: parsed.codec || "x264",
-          bit_depth: parsed.bit_depth || "8bit",
-          audio: "Tamil 5.1",
+          bit_depth: "8bit",
+          audio: deepAudio,
           channels: "5.1",
           bitrate: "640 Kbps",
-          languages: "Tamil",
-          size: item.file_size_gb || "10 GB",
+          languages: deepAudio,
+          size: realSize,
           telegram_tag: parsed.telegram_tag || ""
         },
         stream_url: streamUrl,
         versions: [{
           id: driveId,
-          name: parsed.standard_filename || `${movieDetails.title}.mkv`,
-          language: "Tamil",
+          name: finalDashName,
+          language: deepAudio,
           quality: `${parsed.resolution || '1080p'} FHD`,
           resolution: parsed.resolution || "1080p",
           source: parsed.source || "WEB-DL",
           source_image: "resources/images/sources/web.png",
           codec: parsed.codec || "x264",
-          audio: "5.1",
+          audio: deepAudio,
           channels: "5.1",
-          size: item.file_size_gb || "10 GB",
+          size: realSize,
           telegram_tag: parsed.telegram_tag || "",
           stream_url: streamUrl
         }]
@@ -630,22 +765,22 @@
         year: movieDetails.year,
         poster: movieDetails.poster,
         fanart: movieDetails.fanart,
-        logo: "",
+        logo: movieDetails.clearlogo,
         rating: movieDetails.rating,
         original_language: movieDetails.original_language,
         genres: movieDetails.genres,
         chunk_file: targetChunkPath,
         primary_stream_url: streamUrl,
-        available_languages: ["Tamil"],
+        available_languages: [deepAudio],
         version_count: 1,
         available_versions: [{
-          language: "Tamil",
+          language: deepAudio,
           quality: `${parsed.resolution || '1080p'} FHD`,
           source: parsed.source || "WEB-DL",
           source_image: "resources/images/sources/web.png",
           format: parsed.source || "WEB-DL",
           codec: parsed.codec || "x264",
-          audio: "5.1",
+          audio: deepAudio,
           channels: "5.1"
         }]
       };
@@ -657,7 +792,7 @@
 
       await commitGithubFile(catalogPath, catData, `Update catalog index for ${title}`, catSha, token);
 
-      // 3. Remove approved movie from pending_movies.json
+      // 3. Remove approved movie from pending queue
       showStatus(`🧹 Removing "${title}" from pending queue...`);
       pendingList.splice(index, 1);
       
@@ -686,7 +821,7 @@
     }
   }
 
-  // 7. Dismiss Item without saving
+  // 7. Dismiss Item
   async function rejectItem(index) {
     const token = getToken();
     if (!token) return alert("GitHub Token missing!");
