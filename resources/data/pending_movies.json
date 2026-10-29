@@ -14425,5 +14425,65 @@
     "tmdb_candidates": [],
     "selected_tmdb_id": null,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1d93Fp_As7S39ri5m7Kxa8OGzB7A02Pqh",
+    "original_filename": "DSP.2022.HQ.1080p.SNXT.WEB.DL.H264.HIN-Multi.DDP5.1.Atmos.448k-DDH.mkv",
+    "file_size_bytes": 6143547322,
+    "file_size_gb": "6 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-10-29T16:15:52.203Z",
+    "parsed": {
+      "title": "DSP",
+      "year": 2022,
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "DSP (2022) [1080p] [WEB-DL] [Tamil 5.1] [6 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 806920,
+        "title": "DSP",
+        "year": "2022",
+        "poster": "https://image.tmdb.org/t/p/w500/A9U4gIzmu60puzuk59C0viwsHhZ.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/ohmqQ0iGZHucI38LnuEZcrHmQYL.jpg",
+        "rating": 6.2
+      }
+    ],
+    "selected_tmdb_id": 806920,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1Txu2PCX14HV-6zuXMWDXgGbhclbAWCUR",
+    "original_filename": "@Tamiltvtoonsofficial - Immortal (2026) SONYLIV WEB-DL 1080p 8bit x264 [Telugu + Tamil + Hindi + Kannada + Malayalam (DDP 5.1 ~ 256Kbps)] ESub [TTT].mkv",
+    "file_size_bytes": 4443480504,
+    "file_size_gb": "4 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-10-29T14:49:47.767Z",
+    "parsed": {
+      "title": "Immortal (",
+      "year": 2026,
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x264",
+      "telegram_tag": "@Tamiltvtoonsofficial",
+      "standard_filename": "Immortal ( (2026) [1080p] [WEB-DL] [Telugu + Tamil + Hindi + Kannada + Malayalam (DDP 5.1 - 256Kbps)] [4 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 1656061,
+        "title": "Immortal Combat",
+        "year": "2026",
+        "poster": "https://image.tmdb.org/t/p/w500/mhRAgvQ04DTE4zQN3OSyc9Lonj3.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/hwg3vj8MAXM8WISFnvjJsXXLHdw.jpg",
+        "rating": 4.5
+      }
+    ],
+    "selected_tmdb_id": 1656061,
+    "approval_status": "pending"
   }
 ]
