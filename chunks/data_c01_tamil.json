@@ -1,53 +1,131 @@
 [
   {
-    "id": "1tPh0Y631boVV_EGyyj6cQZrbgU96iN3n",
-    "name": "Theri (2016) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
-    "title": "Theri",
-    "original_title": "தெறி",
+    "id": "1y_KWhNMYPjAJuEXQn3zEsY4GVy8rCUaD",
+    "name": "Sarkar (2018) [1080p] [Netflix] [Dolby Digital Plus].mkv",
+    "title": "Sarkar",
+    "original_title": "சர்கார்",
     "original_language": "ta",
-    "year": 2016,
-    "runtime": 157,
-    "tmdb_id": 370076,
-    "rating": 6.9,
+    "year": 2018,
+    "runtime": 164,
+    "tmdb_id": 504231,
+    "rating": 5.7,
     "collection": "",
     "director": [
-      "Atlee"
+      "A. R. Murugadoss"
     ],
     "trailer": "",
     "cast": [
       {
         "name": "Vijay",
-        "role": "Vijay Kumar / Joseph Kuruvilla",
+        "role": "Sundar Ramasamy",
         "thumbnail": "https://image.tmdb.org/t/p/w185/zbQ1sDRVRHkroWwvrnqYKMerl66.jpg"
       },
       {
-        "name": "Samantha Ruth Prabhu",
-        "role": "Mithra",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/FFGYlhLQK7FWzPLtmOb1QHTDAh.jpg"
+        "name": "Keerthy Suresh",
+        "role": "Nila",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/fTdgSinsAitdujBBEUEA72GY0pv.jpg"
       },
       {
-        "name": "Amy Jackson",
-        "role": "Annie",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/qMWitVFeHAfDTZWcChsWFtBdYap.jpg"
+        "name": "Varalaxmi Sarathkumar",
+        "role": "Komalavalli aka Pappa",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/vudH16iDpzft1uWIMMgcCRxBTXa.jpg"
       },
       {
-        "name": "Prabhu",
-        "role": "Commissioner",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/1ZG65sdJaLrHjTAme5ETZMyqgnM.jpg"
+        "name": "Prem",
+        "role": "Sundar Ramasamy's Brother",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/41ZntbRg0ObcwLPVBxprp8Kz3Ot.jpg"
       },
       {
-        "name": "Radhika Sarathkumar",
-        "role": "Pappu",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/kEKzT8HAJw8lfFUtWWd0SoQ9kC9.jpg"
+        "name": "Yogi Babu",
+        "role": "Kaushik",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/4UMOPd8NqGfKp19VQHsnIzlSRUl.jpg"
       }
     ],
-    "plot": "When an honest cop, Vijay Kumar's family is ruthlessly slaughtered by a politician and his aides, he decides to change his identity and commits his life to bring his daughter up in a serene atmosphere. But some freak events end up compromising his identity and what he does to save his daughter and avenge the death of his family unfurls as Theri.",
-    "poster": "https://image.tmdb.org/t/p/w500/f6BhexotEqO3GejXa3FopBNGL6M.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/yzoyr6nuB3ChA38MSHjYKlMpU6W.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1tPh0Y631boVV_EGyyj6cQZrbgU96iN3n|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "plot": "NRI corporate Sundar Ramasamy comes to India to vote, only to learn that his vote has already been cast. While he reclaims his right legally, it also sets in motion a chain of events that eventually lead to him entering the political fray, trying to change the system.",
+    "poster": "https://image.tmdb.org/t/p/w500/plaMZ1r11u7D9JTd4vkmhQJlYfa.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/dhifkRV8UMaZgE4lS6yIT82n3xt.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1y_KWhNMYPjAJuEXQn3zEsY4GVy8rCUaD|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
       "resolution": "1080p",
-      "source": "Prime Video",
+      "source": "Netflix",
+      "codec": "H.264",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil, Telugu",
+      "size": ""
+    },
+    "versions": [
+      {
+        "id": "1y_KWhNMYPjAJuEXQn3zEsY4GVy8rCUaD",
+        "name": "Sarkar (2018) [1080p] [Netflix] [Dolby Digital Plus].mkv",
+        "quality": "1080p • Netflix • Dolby Digital Plus Multi",
+        "source": "Netflix",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1y_KWhNMYPjAJuEXQn3zEsY4GVy8rCUaD|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Netflix",
+          "codec": "H.264",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu",
+          "size": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": "1Txu2PCX14HV-6zuXMWDXgGbhclbAWCUR",
+    "name": "Immortal (2026) [1080p] [SonyLIV] [Dolby Digital Plus].mkv",
+    "title": "Immortal",
+    "original_title": "இமார்டல்",
+    "original_language": "ta",
+    "year": 2026,
+    "runtime": 131,
+    "tmdb_id": 1505305,
+    "rating": 7.5,
+    "collection": "",
+    "director": [
+      "Mariyappan Chinna"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "G. V. Prakash Kumar",
+        "role": "Magi",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/ArX3l6CdNo0sGI8b6PFYveR9Azm.jpg"
+      },
+      {
+        "name": "Kayadu Lohar",
+        "role": "Sindhu",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/pHaMPnrfnWvTPZA4IOmZk8BHY0U.jpg"
+      },
+      {
+        "name": "T.M. Karthik",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/1YKFSleIDEQv96san3xRwc8p6WE.jpg"
+      },
+      {
+        "name": "Kumar Natarajan",
+        "role": "",
+        "thumbnail": ""
+      },
+      {
+        "name": "Lollu Sabha Maaran",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/uWeSvoMN2rOxHsEj5qENJSTGMDZ.jpg"
+      }
+    ],
+    "plot": "An unsuspecting man finds himself at the center of a series of mysterious deaths, forcing him to confront a truth that could cost him everything.",
+    "poster": "https://image.tmdb.org/t/p/w500/8Ev68TZqunJ31uvn7cbchALeDkn.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/4akmXHqanJ2r7efr9tyJT08oFMm.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Txu2PCX14HV-6zuXMWDXgGbhclbAWCUR|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "SonyLIV",
       "codec": "H.264",
       "audio": "Dolby Digital Plus",
       "channels": "5.1",
@@ -56,18 +134,18 @@
     },
     "versions": [
       {
-        "id": "1tPh0Y631boVV_EGyyj6cQZrbgU96iN3n",
-        "name": "Theri (2016) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
-        "quality": "1080p • Prime Video • Dolby Digital Plus",
-        "source": "Prime Video",
+        "id": "1Txu2PCX14HV-6zuXMWDXgGbhclbAWCUR",
+        "name": "Immortal (2026) [1080p] [SonyLIV] [Dolby Digital Plus].mkv",
+        "quality": "1080p • SonyLIV • Dolby Digital Plus",
+        "source": "SonyLIV",
         "codec": "H.264",
         "resolution": "1080p",
         "audio": "Dolby Digital Plus",
         "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1tPh0Y631boVV_EGyyj6cQZrbgU96iN3n|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Txu2PCX14HV-6zuXMWDXgGbhclbAWCUR|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
-          "source": "Prime Video",
+          "source": "SonyLIV",
           "codec": "H.264",
           "audio": "Dolby Digital Plus",
           "channels": "5.1",
