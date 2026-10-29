@@ -1,5 +1,83 @@
 [
   {
+    "id": "1Txu2PCX14HV-6zuXMWDXgGbhclbAWCUR",
+    "name": "Immortal (2026) [1080p] [SonyLIV] [Dolby Digital Plus].mkv",
+    "title": "Immortal",
+    "original_title": "இமார்டல்",
+    "original_language": "ta",
+    "year": 2026,
+    "runtime": 131,
+    "tmdb_id": 1505305,
+    "rating": 7.5,
+    "collection": "",
+    "director": [
+      "Mariyappan Chinna"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "G. V. Prakash Kumar",
+        "role": "Magi",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/ArX3l6CdNo0sGI8b6PFYveR9Azm.jpg"
+      },
+      {
+        "name": "Kayadu Lohar",
+        "role": "Sindhu",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/pHaMPnrfnWvTPZA4IOmZk8BHY0U.jpg"
+      },
+      {
+        "name": "T.M. Karthik",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/1YKFSleIDEQv96san3xRwc8p6WE.jpg"
+      },
+      {
+        "name": "Kumar Natarajan",
+        "role": "",
+        "thumbnail": ""
+      },
+      {
+        "name": "Lollu Sabha Maaran",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/uWeSvoMN2rOxHsEj5qENJSTGMDZ.jpg"
+      }
+    ],
+    "plot": "An unsuspecting man finds himself at the center of a series of mysterious deaths, forcing him to confront a truth that could cost him everything.",
+    "poster": "https://image.tmdb.org/t/p/w500/8Ev68TZqunJ31uvn7cbchALeDkn.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/4akmXHqanJ2r7efr9tyJT08oFMm.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Txu2PCX14HV-6zuXMWDXgGbhclbAWCUR|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "SonyLIV",
+      "codec": "H.264",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": ""
+    },
+    "versions": [
+      {
+        "id": "1Txu2PCX14HV-6zuXMWDXgGbhclbAWCUR",
+        "name": "Immortal (2026) [1080p] [SonyLIV] [Dolby Digital Plus].mkv",
+        "quality": "1080p • SonyLIV • Dolby Digital Plus",
+        "source": "SonyLIV",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Txu2PCX14HV-6zuXMWDXgGbhclbAWCUR|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "SonyLIV",
+          "codec": "H.264",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": ""
+        }
+      }
+    ]
+  },
+  {
     "id": "1Kd0_E8eHQnz6W0_lvUd9CfsYRRMSP3CE",
     "name": "Baththa (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
     "title": "Baththa",
