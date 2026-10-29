@@ -7,7 +7,6 @@
       "year": 2017,
       "poster": "https://image.tmdb.org/t/p/w780/se12m3uffluDlkTTZncOzsWKIkg.jpg",
       "fanart": "https://image.tmdb.org/t/p/original/5bm6sq3eunj3It6pqacFrpRQYoy.jpg",
-      "logo": "",
       "rating": 7.3,
       "original_language": "ta",
       "genres": [
@@ -21,20 +20,7 @@
       "available_languages": [
         "Tamil"
       ],
-      "version_count": 1,
-      "available_versions": [
-        {
-          "language": "Tamil",
-          "dubbed": "Tamil DTS 5.1 -  640Kbps",
-          "quality": "1080p FHD",
-          "source": "WEB-DL",
-          "source_image": "resources/images/sources/web.png",
-          "format": "WEB-DL",
-          "codec": "x264",
-          "audio": "Tamil DTS 5.1 -  640Kbps",
-          "channels": "5.1"
-        }
-      ]
+      "version_count": 1
     },
     {
       "id": "1ushheQ_CAw_r91b9dkvfNV_aleosCy9u",
@@ -43,7 +29,6 @@
       "year": 2006,
       "poster": "https://image.tmdb.org/t/p/w780/2Touk3m5gzsqr1VsvxypdyHY5ci.jpg",
       "fanart": "https://image.tmdb.org/t/p/original/sd4xN5xi8tKRPrJOWwNiZEile7f.jpg",
-      "logo": "https://assets.fanart.tv/fanart/cars-503b8ddaf365d.png",
       "rating": 7.1,
       "original_language": "en",
       "genres": [
@@ -57,20 +42,7 @@
       "available_languages": [
         "English"
       ],
-      "version_count": 1,
-      "available_versions": [
-        {
-          "language": "English",
-          "dubbed": "DD+ 5.1 - 640Kbps",
-          "quality": "1080p FHD",
-          "source": "BluRay",
-          "source_image": "resources/images/sources/bluray.png",
-          "format": "BluRay",
-          "codec": "x264",
-          "audio": "DD+ 5.1 - 640Kbps",
-          "channels": "5.1"
-        }
-      ]
+      "version_count": 1
     },
     {
       "id": "17E3QIUWI2zv1QvZFWvnrOJ-TAWjMyT_c",
@@ -78,8 +50,7 @@
       "title": "Baththa",
       "year": 2026,
       "poster": "https://image.tmdb.org/t/p/w780/n8Df1H1TmcmZfjGgWh5uQyRFzHy.jpg",
-      "fanart": "https://image.tmdb.org/t/p/original/5sBnZMT1aJ6cBvehKOzOOLdI6bz.jpg",
-      "logo": "https://image.tmdb.org/t/p/original/4ycOQ94Sh73VboamUUPGe49f24Q.png",
+      "fanart": "https://image.tmdb.org/t/p/original/xrAtBSFEYzcRRB5kOvtICSuOrok.jpg",
       "rating": 8.2,
       "original_language": "ta",
       "genres": [
@@ -92,21 +63,7 @@
       "available_languages": [
         "Tamil"
       ],
-      "version_count": 1,
-      "available_versions": [
-        {
-          "language": "Tamil",
-          "dubbed": "DD+ 5.1 - 640Kbps",
-          "quality": "2160p FHD",
-          "source": "Netflix",
-          "source_image": "resources/images/sources/netflix.png",
-          "format": "Netflix",
-          "codec": "x264",
-          "audio": "DD+ 5.1 - 640Kbps",
-          "channels": "5.1"
-        }
-      ],
-      "trailer": "https://www.youtube.com/watch?v=QAMyuZSvqWI"
+      "version_count": 1
     },
     {
       "id": "1hOjMoYzmBNLw2LpSzTk4f7KIUhAtcdH_",
@@ -115,7 +72,6 @@
       "year": 2026,
       "poster": "https://image.tmdb.org/t/p/w780/gaet1xQ2nxrG0V1Ep9T20ZMNEIC.jpg",
       "fanart": "https://image.tmdb.org/t/p/original/c6BPbkO5Npt1OdwttAxCFo06wtH.jpg",
-      "logo": "https://assets.fanart.tv/fanart/moana-69c3be622f9a7.png",
       "rating": 7.5,
       "original_language": "en",
       "genres": [
@@ -129,20 +85,7 @@
       "available_languages": [
         "English"
       ],
-      "version_count": 1,
-      "available_versions": [
-        {
-          "language": "English",
-          "dubbed": "Telugu + Tamil + Hindi (DDP 5.1 - 192Kbps) + English (DDP 7.1 - 1509Kbps)",
-          "quality": "1080p FHD",
-          "source": "BluRay",
-          "source_image": "resources/images/sources/bluray.png",
-          "format": "BluRay",
-          "codec": "x264",
-          "audio": "Telugu + Tamil + Hindi (DDP 5.1 - 192Kbps) + English (DDP 7.1 - 1509Kbps)",
-          "channels": "5.1"
-        }
-      ]
+      "version_count": 1
     },
     {
       "id": "18zWRM2EWrq5GQQKPMI_ks3OI2qdn5IuH",
@@ -151,7 +94,6 @@
       "year": 2026,
       "poster": "https://image.tmdb.org/t/p/w780/8V35iNRx9zVH5OHO0lH6IlfGfZY.jpg",
       "fanart": "https://image.tmdb.org/t/p/original/qrYsuB5kPCw0y7IVIuOyEAI1GXh.jpg",
-      "logo": "",
       "rating": 5.1,
       "original_language": "hi",
       "genres": [
@@ -164,19 +106,7 @@
       "available_languages": [
         "Tamil"
       ],
-      "version_count": 1,
-      "available_versions": [
-        {
-          "language": "Tamil",
-          "quality": "1080p FHD",
-          "source": "AMZN",
-          "source_image": "resources/images/sources/web.png",
-          "format": "AMZN",
-          "codec": "x264",
-          "audio": "5.1",
-          "channels": "5.1"
-        }
-      ]
+      "version_count": 1
     },
     {
       "id": "1HvnXcskgHz0ujSIhzAhuXTyRze8XKKzo1zZ4P7Xbdxk0wbT_NHAbeXUM3XOhPC-IT",
@@ -185,7 +115,6 @@
       "year": 2026,
       "poster": "https://image.tmdb.org/t/p/w780/jt8pfSIdi47YpFMMWVRr8w5u2S0.jpg",
       "fanart": "https://image.tmdb.org/t/p/original/v3lNH2gCojWYXVuXcT9FZLBxcSq.jpg",
-      "logo": "https://image.tmdb.org/t/p/original/fDOECszTh7wpI0d4JOVPTAOjvZg.png",
       "rating": 5,
       "original_language": "ta",
       "genres": [
@@ -197,20 +126,7 @@
       "available_languages": [
         "Tamil"
       ],
-      "version_count": 1,
-      "available_versions": [
-        {
-          "language": "Tamil",
-          "dubbed": "Tamil DTS-HD Master Audio DD 5.1  (4536Kbps",
-          "quality": "1080p FHD",
-          "source": "WEB-DL",
-          "source_image": "resources/images/sources/web.png",
-          "format": "WEB-DL",
-          "codec": "x264",
-          "audio": "Tamil DTS-HD Master Audio DD 5.1  (4536Kbps",
-          "channels": "5.1"
-        }
-      ]
+      "version_count": 1
     },
     {
       "id": "1MW2Cy0Seu4jJaR6fs6XBN5zBt0lc2KNW",
@@ -219,7 +135,6 @@
       "year": 2016,
       "poster": "https://image.tmdb.org/t/p/w780/9S7KOgIFlr2F3Zv6dFK22rIeR1a.jpg",
       "fanart": "https://image.tmdb.org/t/p/original/r1mVcyEfTR5HZ0g2qxCSZEVp4Ih.jpg",
-      "logo": "https://image.tmdb.org/t/p/original/e2epkyPLyXFciOU5giQRCfzUn8s.png",
       "rating": 4.1,
       "original_language": "hi",
       "genres": [
@@ -230,20 +145,7 @@
       "available_languages": [
         "Hindi"
       ],
-      "version_count": 1,
-      "available_versions": [
-        {
-          "language": "Hindi",
-          "dubbed": "Hindi AAC 2.0 - 224Kbps",
-          "quality": "1080p FHD",
-          "source": "AMZN",
-          "source_image": "resources/images/sources/amzn.png",
-          "format": "AMZN",
-          "codec": "x264",
-          "audio": "Hindi AAC 2.0 - 224Kbps",
-          "channels": "2.0"
-        }
-      ]
+      "version_count": 1
     },
     {
       "id": "12ZtDt_FNKsmCV4xAdqWHxEryZ9cZ3mKn",
@@ -252,7 +154,6 @@
       "year": 1995,
       "poster": "https://image.tmdb.org/t/p/w780/xPSw9PLzYFKTVphw9ErZcBPKUsd.jpg",
       "fanart": "https://image.tmdb.org/t/p/original/hh2bBmgqzJEY1J7enMKqTsziVRO.jpg",
-      "logo": "https://image.tmdb.org/t/p/original/ljEkWhughQjvWP81WhgCRRM8bWG.png",
       "rating": 7.6,
       "original_language": "ta",
       "genres": [
@@ -264,19 +165,7 @@
       "available_languages": [
         "Tamil + Telugu DDP 5.1 + Hindi DDP 2.0"
       ],
-      "version_count": 1,
-      "available_versions": [
-        {
-          "language": "Tamil + Telugu DDP 5.1 + Hindi DDP 2.0",
-          "quality": "2160p FHD",
-          "source": "WEB-DL",
-          "source_image": "resources/images/sources/web.png",
-          "format": "WEB-DL",
-          "codec": "x265",
-          "audio": "Tamil + Telugu DDP 5.1 + Hindi DDP 2.0",
-          "channels": "5.1"
-        }
-      ]
+      "version_count": 1
     },
     {
       "id": "13vcHZ7Q8jtJ-LKMYv6OwtD4E_i_LUTbs",
@@ -285,7 +174,6 @@
       "year": 1999,
       "poster": "https://image.tmdb.org/t/p/w780/lEAEzpAfSyBZc5sw1NBnWr5TeZU.jpg",
       "fanart": "https://image.tmdb.org/t/p/original/91f8iV55g4k9GzE1DRmBfJ1deYY.jpg",
-      "logo": "https://image.tmdb.org/t/p/original/qciPQEDEzDhMVdbTBT6ojxx5wBE.png",
       "rating": 6.1,
       "original_language": "hi",
       "genres": [
@@ -293,25 +181,12 @@
         "Family",
         "Drama"
       ],
-      "collection": "",
       "chunk_file": "resources/data/chunks/chunk_01.json",
       "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13vcHZ7Q8jtJ-LKMYv6OwtD4E_i_LUTbs|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
       "available_languages": [
         "Hindi DDP 5.1"
       ],
-      "version_count": 1,
-      "available_versions": [
-        {
-          "language": "Hindi DDP 5.1",
-          "quality": "1080p FHD",
-          "source": "Netflix",
-          "source_image": "resources/images/sources/web.png",
-          "format": "Netflix",
-          "codec": "x264",
-          "audio": "Hindi DDP 5.1",
-          "channels": "5.1"
-        }
-      ]
+      "version_count": 1
     },
     {
       "id": "1FK3vDhNu7bSzcJopjxO8mM_JY67suVSo",
@@ -320,32 +195,18 @@
       "year": 2000,
       "poster": "https://image.tmdb.org/t/p/w780/dDsYaBazrYKg9bv8qgsEohZQMat.jpg",
       "fanart": "https://image.tmdb.org/t/p/original/s3IfP462ibiQkfU767D4YcMbKTt.jpg",
-      "logo": "https://image.tmdb.org/t/p/original/8lhVeLBIWoX4f3cI9B8wsmkI8vY.png",
       "rating": 7.1,
       "original_language": "hi",
       "genres": [
         "Drama",
         "Romance"
       ],
-      "collection": "",
       "chunk_file": "resources/data/chunks/chunk_01.json",
       "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1FK3vDhNu7bSzcJopjxO8mM_JY67suVSo|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
       "available_languages": [
         "Hindi DDP 5.1"
       ],
-      "version_count": 1,
-      "available_versions": [
-        {
-          "language": "Hindi DDP 5.1",
-          "quality": "1080p FHD",
-          "source": "BluRay",
-          "source_image": "resources/images/sources/web.png",
-          "format": "BluRay",
-          "codec": "x264",
-          "audio": "Hindi DDP 5.1",
-          "channels": "5.1"
-        }
-      ]
+      "version_count": 1
     }
   ]
 }
