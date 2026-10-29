@@ -177,6 +177,40 @@
           "channels": "5.1"
         }
       ]
+    },
+    {
+      "id": "1HvnXcskgHz0ujSIhzAhuXTyRze8XKKzo1zZ4P7Xbdxk0wbT_NHAbeXUM3XOhPC-IT",
+      "tmdb_id": 1235877,
+      "title": "Jana Nayagan",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w780/jt8pfSIdi47YpFMMWVRr8w5u2S0.jpg",
+      "fanart": "https://image.tmdb.org/t/p/original/v3lNH2gCojWYXVuXcT9FZLBxcSq.jpg",
+      "logo": "https://image.tmdb.org/t/p/original/fDOECszTh7wpI0d4JOVPTAOjvZg.png",
+      "rating": 5,
+      "original_language": "ta",
+      "genres": [
+        "Action",
+        "Drama"
+      ],
+      "chunk_file": "resources/data/chunks/chunk_01.json",
+      "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HvnXcskgHz0ujSIhzAhuXTyRze8XKKzo1zZ4P7Xbdxk0wbT_NHAbeXUM3XOhPC-IT|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "available_languages": [
+        "Tamil"
+      ],
+      "version_count": 1,
+      "available_versions": [
+        {
+          "language": "Tamil",
+          "dubbed": "Tamil DTS-HD Master Audio DD 5.1  (4536Kbps",
+          "quality": "1080p FHD",
+          "source": "WEB-DL",
+          "source_image": "resources/images/sources/web.png",
+          "format": "WEB-DL",
+          "codec": "x264",
+          "audio": "Tamil DTS-HD Master Audio DD 5.1  (4536Kbps",
+          "channels": "5.1"
+        }
+      ]
     }
   ]
 }
