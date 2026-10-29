@@ -1,0 +1,160 @@
+name: Mass Ingest 540 Pending Movies
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bulk-approve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Mass Ingest
+        run: |
+          python3 - << 'EOF'
+          import json, os
+
+          WORKER_BASE = "https://gdrive-stream.moinudeentv.workers.dev/?id="
+          USER_AGENT = "|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+
+          pending_file = "resources/data/pending_movies.json"
+          catalog_file = "resources/data/catalog.json"
+          chunks_dir = "resources/data/chunks"
+          os.makedirs(chunks_dir, exist_ok=True)
+
+          if not os.path.exists(pending_file):
+              exit(0)
+
+          with open(pending_file, "r", encoding="utf-8") as f:
+              pending_list = json.load(f)
+
+          catalog_data = {"movies": []}
+          if os.path.exists(catalog_file):
+              try:
+                  with open(catalog_file, "r", encoding="utf-8") as f:
+                      catalog_data = json.load(f)
+              except: pass
+
+          cat_movies = catalog_data.get("movies", [])
+          existing_ids = {str(m.get("id")) for m in cat_movies if m.get("id")}
+
+          for item in pending_list:
+              gid = str(item.get("gdrive_id", "")).strip()
+              if not gid or gid in existing_ids:
+                  continue
+
+              parsed = item.get("parsed", {})
+              raw_name = item.get("original_filename", "")
+              title = parsed.get("title") or "Movie"
+              year = parsed.get("year") or 2024
+              real_size = item.get("file_size_gb") or "5 GB"
+              res = parsed.get("resolution") or "1080p"
+              src = parsed.get("source") or "WEB-DL"
+              tg_tag = parsed.get("telegram_tag") or ""
+
+              audio = "Hindi DDP 5.1"
+              if "2.0" in raw_name: audio = "Hindi DDP 2.0"
+              elif "Tamil" in raw_name: audio = "Tamil DDP 5.1"
+
+              tmdb_cand = (item.get("tmdb_candidates") or [{}])[0]
+              tmdb_id = item.get("selected_tmdb_id") or tmdb_cand.get("tmdb_id") or 0
+              poster = tmdb_cand.get("poster") or ""
+              fanart = tmdb_cand.get("fanart") or ""
+              rating = tmdb_cand.get("rating") or 7.0
+
+              cat_len = len(cat_movies)
+              chunk_num = (cat_len // 50) + 1
+              chunk_filename = f"chunk_{chunk_num:02d}.json"
+              chunk_path = os.path.join(chunks_dir, chunk_filename)
+
+              stream_url = f"{WORKER_BASE}{gid}{USER_AGENT}"
+              dash_name = f"{title} ({year}) [{res}] [{src}] [{audio}] [{real_size}].mkv"
+
+              movie_record = {
+                  "id": gid,
+                  "tmdb_id": int(tmdb_id),
+                  "name": dash_name,
+                  "title": title,
+                  "original_title": title,
+                  "year": int(year),
+                  "runtime": 130,
+                  "release_date": f"{year}-01-01",
+                  "original_language": "hi",
+                  "genres": ["Drama", "Action"],
+                  "telegram_channel": tg_tag,
+                  "artwork": {
+                      "poster": poster,
+                      "fanart": fanart,
+                      "clearlogo": "",
+                      "landscape": fanart,
+                      "thumbnail": poster
+                  },
+                  "ratings": [{"source": "TMDb", "value": rating, "out_of": 10}],
+                  "specs": {
+                      "resolution": res,
+                      "source": src,
+                      "codec": "x264",
+                      "audio": audio,
+                      "channels": "2.0" if "2.0" in audio else "5.1",
+                      "size": real_size
+                  },
+                  "stream_url": stream_url,
+                  "versions": [{
+                      "id": gid,
+                      "name": dash_name,
+                      "quality": f"{res} FHD",
+                      "size": real_size,
+                      "stream_url": stream_url
+                  }]
+              }
+
+              chunk_obj = {"chunk_id": f"chunk_{chunk_num:02d}", "movie_count": 0, "movies": []}
+              if os.path.exists(chunk_path):
+                  try:
+                      with open(chunk_path, "r", encoding="utf-8") as cf:
+                          chunk_obj = json.load(cf)
+                  except: pass
+
+              chunk_obj["movies"].append(movie_record)
+              chunk_obj["movie_count"] = len(chunk_obj["movies"])
+              with open(chunk_path, "w", encoding="utf-8") as cf:
+                  json.dump(chunk_obj, cf, indent=2, ensure_ascii=False)
+
+              cat_entry = {
+                  "id": gid,
+                  "tmdb_id": int(tmdb_id),
+                  "title": title,
+                  "year": int(year),
+                  "poster": poster,
+                  "fanart": fanart,
+                  "rating": rating,
+                  "original_language": "hi",
+                  "genres": ["Drama", "Action"],
+                  "chunk_file": f"resources/data/chunks/{chunk_filename}",
+                  "primary_stream_url": stream_url,
+                  "available_languages": [audio],
+                  "version_count": 1,
+                  "available_versions": [{"language": audio, "quality": f"{res} FHD", "source": src}]
+              }
+              cat_movies.append(cat_entry)
+              existing_ids.add(gid)
+
+          catalog_data["movies"] = cat_movies
+          with open(catalog_file, "w", encoding="utf-8") as f:
+              json.dump(catalog_data, f, indent=2, ensure_ascii=False)
+
+          with open(pending_file, "w", encoding="utf-8") as f:
+              json.dump([], f, indent=2)
+          EOF
+
+      - name: Commit All Chunks & Catalog
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add resources/data/
+          git commit -m "Auto: Bulk approved 540 movies into chunks" || echo "No changes"
+          git push origin main
