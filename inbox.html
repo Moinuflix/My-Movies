@@ -331,14 +331,14 @@
   <div class="govt-header">
     <div>
       <div class="govt-title">MOINUFLIX NATIONAL MEDIA INGESTION PORTAL</div>
-      <div class="govt-sub">Govt-Style Form Verification • Dual-API Artwork (TMDb+Fanart) • Language Audio Engine</div>
+      <div class="govt-sub">Govt-Style Form Verification • Regional TMDb (India Priority) • Two-Tier Engine</div>
     </div>
     
     <div class="nav-links-box">
       <a href="admin.html" class="btn-nav-link">🎬 Library Manager (admin.html)</a>
       <a href="pending.html" class="btn-nav-link">📥 Pending Queue (pending.html)</a>
       <a href="movie.html" class="btn-nav-link">🎞️ Cinema View (movie.html)</a>
-      <button type="button" class="theme-toggle-btn" onclick="toggleTheme()" id="theme-btn">☀️ Light</button>
+      <button type="button" class="theme-toggle-btn" onclick="toggleTheme()" id="theme-btn" title="Toggle Dark/Light Mode">☀️ Light</button>
       <button type="button" class="btn-nav-link" onclick="configureToken()">⚙️ Set PAT</button>
     </div>
   </div>
@@ -353,8 +353,8 @@
       <span class="stat-val" id="stat-target-chunk" style="color:var(--laser-cyan);">chunk_01.json</span>
     </div>
     <div class="stat-item">
-      <span class="stat-label">Artwork Status</span>
-      <span class="stat-val" style="color:var(--laser-green);">Dual Engine (TMDb + Fanart)</span>
+      <span class="stat-label">TMDb Region Priority</span>
+      <span class="stat-val" style="color:var(--laser-green);">India 🇮🇳 (IN)</span>
     </div>
     <div class="stat-item">
       <span class="stat-label">PAT Token Status</span>
@@ -573,14 +573,14 @@
         </div>
 
         <div class="form-group col-12">
-          <label>Expanded Multi-Audio Specifications (Language + Codec + Channels)</label>
+          <label>Expanded Multi-Audio Specifications (Language + Format + Channels + Bitrate)</label>
           <input type="text" id="tech-audio-specs" value="Hindi DDP 5.1 - 640Kbps" oninput="updateDashPreview()">
         </div>
       </div>
 
       <!-- PART IV: 10-ARTWORK SUITE -->
       <div class="section-title">
-        <span>Part IV: Complete 10-Artwork Verification Suite (Dual TMDb + Fanart Engine)</span>
+        <span>Part IV: Complete 10-Artwork Verification Suite (Dual-API Engine)</span>
       </div>
 
       <div class="artwork-grid">
@@ -593,7 +593,7 @@
           <input type="text" id="art-fanart" placeholder="Backdrop URL">
         </div>
         <div class="art-item">
-          <span>3. ClearLogo (PNG - Auto Pulled)</span>
+          <span>3. ClearLogo (PNG - TMDb / Fanart.tv)</span>
           <input type="text" id="art-clearlogo" placeholder="ClearLogo URL">
         </div>
         <div class="art-item">
@@ -745,9 +745,9 @@
     el.value = clean;
   }
 
-  /* ⚡ DYNAMIC LANGUAGE-AUDIO EXTRACTION ENGINE */
+  /* ⚡ DYNAMIC LANGUAGE & MULTI-AUDIO ENGINE */
   function extractLanguageAndAudio(raw, fallbackLang) {
-    // 1. Detect All Languages mentioned in filename
+    // 1. Detect All Languages explicitly in filename
     const langs = [];
     if (/\b(hindi)\b/i.test(raw)) langs.push("Hindi");
     if (/\b(tamil)\b/i.test(raw)) langs.push("Tamil");
@@ -758,20 +758,19 @@
 
     const primaryLang = langs.length > 0 ? langs.join(" + ") : (fallbackLang || "Hindi");
 
-    // 2. Check for explicit bracketed audio like: [Tamil (DDP 5.1 ~ 640Kbps) + Tamil (AAC 2.0 ~ 128Kbps)]
+    // 2. Bracket audio format
     const bracketMatch = raw.match(/\[(.*?(?:DDP|DTS|AAC|Atmos|TrueHD|5\.1|2\.0|7\.1).*?)\]/i);
     if (bracketMatch && bracketMatch[1].length > 4) {
       let bStr = bracketMatch[1].replace(/JHS\s*/i, '').replace(/~/g, '-').trim();
       return bStr;
     }
 
-    // 3. Simple parenthesized audio: (DD+ 5.1 & AAC 2.0)
+    // 3. Parentheses audio format
     const parenMatch = raw.match(/\((DD\+?5\.1.*?|DTS.*?|Atmos.*?|TrueHD.*?|AAC.*?)\)/i);
     let audioCode = "";
     if (parenMatch) {
       audioCode = parenMatch[1].replace(/~/g, '-').trim();
     } else {
-      // Direct token match
       if (/ddp\s*5\.1|dd\+\s*5\.1/i.test(raw)) audioCode = "DDP 5.1 - 640Kbps";
       else if (/dts/i.test(raw)) audioCode = "DTS 5.1 - 1509Kbps";
       else if (/atmos/i.test(raw)) audioCode = "Dolby Atmos 5.1";
@@ -780,7 +779,7 @@
       else audioCode = "DD+ 5.1 - 640Kbps";
     }
 
-    // Attach language to audio
+    // Attach language
     if (!audioCode.toLowerCase().includes(primaryLang.toLowerCase())) {
       return `${primaryLang} ${audioCode}`.trim();
     }
@@ -857,7 +856,6 @@
   }
 
   function handleLanguageInput(val) {
-    const raw = document.getElementById("raw-filename").value;
     const fullLang = getLanguageName(val);
     const audioSpecs = document.getElementById("tech-audio-specs");
     if (!audioSpecs.value.toLowerCase().includes(fullLang.toLowerCase())) {
@@ -1098,7 +1096,6 @@
       let logoAssigned = false;
       const tmdbLogos = d.images?.logos || [];
       if (tmdbLogos.length > 0) {
-        // Priority to transparent PNG logos
         const bestLogo = tmdbLogos.find(l => l.file_path && l.file_path.endsWith(".png")) || tmdbLogos[0];
         if (bestLogo) {
           document.getElementById("art-clearlogo").value = `https://image.tmdb.org/t/p/original${bestLogo.file_path}`;
