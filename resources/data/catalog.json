@@ -234,14 +234,14 @@
       "available_versions": [
         {
           "language": "Hindi",
-          "dubbed": "Hindi DDP 5.1 - 640Kbps",
+          "dubbed": "Hindi AAC 2.0 - 224Kbps",
           "quality": "1080p FHD",
           "source": "AMZN",
-          "source_image": "resources/images/sources/amazon.png",
+          "source_image": "resources/images/sources/amzn.png",
           "format": "AMZN",
           "codec": "x264",
-          "audio": "Hindi DDP 5.1 - 640Kbps",
-          "channels": "5.1"
+          "audio": "Hindi AAC 2.0 - 224Kbps",
+          "channels": "2.0"
         }
       ]
     },
