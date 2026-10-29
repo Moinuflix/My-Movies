@@ -650,7 +650,166 @@
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1hOjMoYzmBNLw2LpSzTk4f7KIUhAtcdH_|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
+    },
+    {
+      "id": "18zWRM2EWrq5GQQKPMI_ks3OI2qdn5IuH",
+      "tmdb_id": 1444466,
+      "name": "Awarapan 2 (2026) [1080p] [AMZN] [Tamil 5.1] [7 GB].mkv",
+      "title": "Awarapan 2",
+      "original_title": "आवारापन 2",
+      "year": 2026,
+      "runtime": 142,
+      "release_date": "2026-01-01",
+      "certification": "U/A 16+",
+      "original_language": "hi",
+      "genres": [
+        "Action",
+        "Drama",
+        "Romance"
+      ],
+      "tagline": "From the shadows to settle an old debt with death.",
+      "plot": "Once a feared gangster, Shivam lives hidden away from his past, with no faith left in God or himself. But when fate pulls him into Bangkok's cartel war and forces him back into the darkness he swore never to return to, Shivam must choose what he is willing to live for, when there is nothing left to lose.",
+      "telegram_channel": "",
+      "country": [
+        "India"
+      ],
+      "studio": [
+        "AMZN"
+      ],
+      "director": [
+        {
+          "name": "Nitin Kakkar"
+        }
+      ],
+      "writers": [
+        {
+          "name": "Balal Siddiqi",
+          "job": "Writer"
+        }
+      ],
+      "cast": [
+        {
+          "name": "Emraan Hashmi",
+          "character": "Shivam Pandit",
+          "profile": "https://image.tmdb.org/t/p/w185/kflgvFCFZnpTRbKmJWn5T0G5EKI.jpg",
+          "link": "https://www.themoviedb.org/person/85969"
+        },
+        {
+          "name": "Shabana Azmi",
+          "character": "Nafisa Nawaz",
+          "profile": "https://image.tmdb.org/t/p/w185/gy7DpFaZnpU4XOwBc8jhhE8rYYj.jpg",
+          "link": "https://www.themoviedb.org/person/85672"
+        },
+        {
+          "name": "Disha Patani",
+          "character": "Zara",
+          "profile": "https://image.tmdb.org/t/p/w185/jeFgIW3d3BP6MkfnMlmEGP33Oyq.jpg",
+          "link": "https://www.themoviedb.org/person/1546398"
+        },
+        {
+          "name": "Puran Gabbi",
+          "character": "Zorawar",
+          "profile": null,
+          "link": "https://www.themoviedb.org/person/6393639"
+        },
+        {
+          "name": "Suvinder Vicky",
+          "character": "Jaideep",
+          "profile": "https://image.tmdb.org/t/p/w185/6T3Y0jvLMdMw19ShLZvLNHIkaSD.jpg",
+          "link": "https://www.themoviedb.org/person/1629321"
+        },
+        {
+          "name": "Vijayant Kohli",
+          "character": "Mehmood",
+          "profile": "https://image.tmdb.org/t/p/w185/dzzewlf0Z5dEkVxu4QkH86xUEx4.jpg",
+          "link": "https://www.themoviedb.org/person/1758521"
+        },
+        {
+          "name": "Atul Kumar",
+          "character": "Samarth",
+          "profile": "https://image.tmdb.org/t/p/w185/rbPFvPZgqiK21z4uyD5QhRwr7bb.jpg",
+          "link": "https://www.themoviedb.org/person/1517760"
+        },
+        {
+          "name": "Aniruddh Rawal",
+          "character": "Sikander",
+          "profile": null,
+          "link": "https://www.themoviedb.org/person/2332932"
+        },
+        {
+          "name": "Myrah Shivan",
+          "character": "Aliyah (Kid)",
+          "profile": null,
+          "link": "https://www.themoviedb.org/person/6429322"
+        },
+        {
+          "name": "Jukreed Kamdee",
+          "character": "Genghis",
+          "profile": null,
+          "link": "https://www.themoviedb.org/person/6521699"
+        }
+      ],
+      "artwork": {
+        "poster": "https://image.tmdb.org/t/p/w780/8V35iNRx9zVH5OHO0lH6IlfGfZY.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/qrYsuB5kPCw0y7IVIuOyEAI1GXh.jpg",
+        "clearlogo": "",
+        "clearart": "",
+        "banner": "",
+        "landscape": "https://image.tmdb.org/t/p/original/qrYsuB5kPCw0y7IVIuOyEAI1GXh.jpg",
+        "keyart": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w780/8V35iNRx9zVH5OHO0lH6IlfGfZY.jpg",
+        "discart": "",
+        "title_card": "https://image.tmdb.org/t/p/original/qrYsuB5kPCw0y7IVIuOyEAI1GXh.jpg",
+        "character_art": [],
+        "extra_posters": [],
+        "extra_backdrops": []
+      },
+      "trailer": "",
+      "ratings": [
+        {
+          "source": "TMDb",
+          "value": 5.1,
+          "out_of": 10
+        }
+      ],
+      "badges": {
+        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
+        "hdr": "",
+        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png",
+        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+      },
+      "specs": {
+        "resolution": "1080p",
+        "source": "AMZN",
+        "codec": "x264",
+        "bit_depth": "8bit",
+        "audio": "Tamil 5.1",
+        "channels": "5.1",
+        "bitrate": "640 Kbps",
+        "languages": "Tamil",
+        "size": "7 GB",
+        "telegram_tag": ""
+      },
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=18zWRM2EWrq5GQQKPMI_ks3OI2qdn5IuH|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "versions": [
+        {
+          "id": "18zWRM2EWrq5GQQKPMI_ks3OI2qdn5IuH",
+          "name": "Awarapan 2 (2026) [1080p] [AMZN] [Tamil 5.1] [7 GB].mkv",
+          "language": "Tamil",
+          "quality": "1080p FHD",
+          "resolution": "1080p",
+          "source": "AMZN",
+          "source_image": "resources/images/sources/web.png",
+          "codec": "x264",
+          "audio": "5.1",
+          "channels": "5.1",
+          "size": "7 GB",
+          "telegram_tag": "",
+          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=18zWRM2EWrq5GQQKPMI_ks3OI2qdn5IuH|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      ]
     }
   ],
-  "movie_count": 3
+  "movie_count": 4
 }
