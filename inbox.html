@@ -10,17 +10,32 @@
   <style>
     :root {
       --bg-dark: #080d1a;
-      --card-bg: rgba(15, 23, 42, 0.88);
-      --card-border: rgba(56, 189, 248, 0.22);
-      --govt-blue: #1d4ed8;
+      --card-bg: rgba(15, 23, 42, 0.92);
+      --card-border: rgba(56, 189, 248, 0.25);
       --laser-cyan: #38bdf8;
       --laser-green: #10b981;
       --laser-gold: #f59e0b;
       --laser-red: #ef4444;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --input-bg: rgba(2, 6, 23, 0.75);
+      --input-bg: rgba(2, 6, 23, 0.85);
       --border-gray: rgba(148, 163, 184, 0.2);
+      --header-bg: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 58, 138, 0.9));
+    }
+
+    body.light-mode {
+      --bg-dark: #f1f5f9;
+      --card-bg: rgba(255, 255, 255, 0.98);
+      --card-border: rgba(2, 132, 199, 0.25);
+      --laser-cyan: #0284c7;
+      --laser-green: #059669;
+      --laser-gold: #d97706;
+      --laser-red: #dc2626;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --input-bg: #f8fafc;
+      --border-gray: rgba(100, 116, 139, 0.25);
+      --header-bg: linear-gradient(135deg, #0f172a, #1e3a8a);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
@@ -32,6 +47,7 @@
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     #dynamic-bg {
@@ -39,25 +55,26 @@
       top: 0; left: 0; width: 100vw; height: 100vh;
       background-size: cover;
       background-position: center;
-      filter: blur(28px) brightness(0.25);
+      filter: blur(28px) brightness(0.22);
       transform: scale(1.05);
       z-index: -1;
       transition: background-image 0.8s ease-in-out;
     }
+    body.light-mode #dynamic-bg { opacity: 0.15; filter: blur(35px); }
 
     .container {
-      max-width: 1280px;
+      max-width: 1300px;
       margin: 0 auto;
       background: var(--card-bg);
       backdrop-filter: blur(20px);
       border: 1px solid var(--card-border);
       border-radius: 18px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
       overflow: hidden;
     }
 
     .govt-header {
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 58, 138, 0.85));
+      background: var(--header-bg);
       border-bottom: 2px solid var(--laser-cyan);
       padding: 1.25rem 2rem;
       display: flex;
@@ -65,20 +82,22 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
+      color: #fff;
     }
 
-    .govt-title { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.3px; color: #fff; }
-    .govt-sub { font-size: 0.82rem; color: var(--laser-cyan); margin-top: 3px; font-weight: 600; }
+    .govt-title { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.3px; }
+    .govt-sub { font-size: 0.82rem; color: #38bdf8; margin-top: 3px; font-weight: 600; }
 
     .nav-links-box {
       display: flex;
       align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .btn-nav-link {
-      background: rgba(56, 189, 248, 0.12);
-      border: 1px solid var(--laser-cyan);
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid #38bdf8;
       color: #fff;
       padding: 0.45rem 0.9rem;
       border-radius: 8px;
@@ -86,21 +105,34 @@
       font-weight: 700;
       text-decoration: none;
       transition: all 0.2s;
+      cursor: pointer;
     }
-    .btn-nav-link:hover { background: var(--laser-cyan); color: #020617; }
+    .btn-nav-link:hover { background: #38bdf8; color: #020617; }
+
+    .btn-theme-toggle {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: #fff;
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
 
     .stats-bar {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      background: rgba(2, 6, 23, 0.6);
+      background: rgba(2, 6, 23, 0.3);
       border-bottom: 1px solid var(--border-gray);
       padding: 0.85rem 2rem;
       gap: 1rem;
     }
+    body.light-mode .stats-bar { background: rgba(241, 245, 249, 0.7); }
 
     .stat-item { display: flex; flex-direction: column; }
     .stat-label { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
-    .stat-val { font-size: 1.15rem; font-weight: 800; color: #fff; }
+    .stat-val { font-size: 1.15rem; font-weight: 800; }
 
     .form-wrapper { padding: 2rem; }
 
@@ -143,7 +175,7 @@
       border: 1px solid var(--border-gray);
       border-radius: 10px;
       font-size: 0.88rem;
-      color: #fff;
+      color: var(--text-main);
       background-color: var(--input-bg);
       outline: none;
       transition: all 0.2s ease;
@@ -155,7 +187,7 @@
     }
 
     .smart-dash-preview {
-      background: rgba(2, 6, 23, 0.85);
+      background: var(--input-bg);
       border: 1px dashed var(--laser-cyan);
       padding: 0.85rem 1.2rem;
       font-family: monospace;
@@ -175,7 +207,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
       margin-top: 18px;
     }
     .passport-box img {
@@ -213,7 +245,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
       gap: 0.75rem;
-      background: rgba(2, 6, 23, 0.5);
+      background: var(--input-bg);
       border: 1px solid var(--border-gray);
       padding: 1rem;
       border-radius: 12px;
@@ -221,7 +253,7 @@
       overflow-y: auto;
     }
     .cast-card {
-      background: rgba(15, 23, 42, 0.7);
+      background: var(--card-bg);
       border: 1px solid var(--border-gray);
       border-radius: 10px;
       padding: 8px;
@@ -231,7 +263,7 @@
     }
     .cast-card img { width: 44px; height: 58px; object-fit: cover; border-radius: 8px; background: #0f172a; }
     .cast-info { display: flex; flex-direction: column; overflow: hidden; }
-    .cast-name { font-size: 0.82rem; font-weight: 700; color: #fff; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
+    .cast-name { font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
     .cast-role { font-size: 0.74rem; color: var(--laser-cyan); text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
     .cast-link { font-size: 0.68rem; color: var(--laser-green); text-decoration: none; margin-top: 2px; }
 
@@ -239,7 +271,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
       gap: 0.75rem;
-      background: rgba(2, 6, 23, 0.5);
+      background: var(--input-bg);
       padding: 1.25rem;
       border: 1px solid var(--border-gray);
       border-radius: 12px;
@@ -302,14 +334,15 @@
   <div class="govt-header">
     <div>
       <div class="govt-title">MOINUFLIX NATIONAL MEDIA INGESTION PORTAL</div>
-      <div class="govt-sub">Govt-Style Form Verification & Two-Tier JSON Cataloging Engine</div>
+      <div class="govt-sub">Govt-Style Form Verification & Two-Tier JSON Cataloging Engine (India Edition)</div>
     </div>
     
-    <!-- DIRECT LINKS TO ADMIN & MOVIE HTML -->
     <div class="nav-links-box">
-      <a href="admin.html" class="btn-nav-link">🎬 Library Manager (admin.html)</a>
-      <a href="movie.html" class="btn-nav-link">🎞️ Cinema View (movie.html)</a>
-      <button type="button" class="btn-nav-link" onclick="configureToken()">⚙️ Set PAT Token</button>
+      <button type="button" class="btn-theme-toggle" onclick="toggleTheme()" id="theme-btn">☀️ Light</button>
+      <a href="pending.html" class="btn-nav-link">📥 Pending Queue</a>
+      <a href="admin.html" class="btn-nav-link">🎬 Library</a>
+      <a href="movie.html" class="btn-nav-link">🎞️ Cinema View</a>
+      <button type="button" class="btn-nav-link" onclick="configureToken()">⚙️ Token</button>
     </div>
   </div>
 
@@ -323,8 +356,8 @@
       <span class="stat-val" id="stat-target-chunk" style="color:var(--laser-cyan);">chunk_01.json</span>
     </div>
     <div class="stat-item">
-      <span class="stat-label">System Architecture</span>
-      <span class="stat-val">Two-Tier JSON</span>
+      <span class="stat-label">Region Engine</span>
+      <span class="stat-val" style="color:var(--laser-green);">🇮🇳 TMDb India</span>
     </div>
     <div class="stat-item">
       <span class="stat-label">PAT Token Status</span>
@@ -345,21 +378,26 @@
       <div class="form-grid">
         <div class="form-group col-12">
           <label>Raw Google Drive Release File Name <span class="required">* (Instant 100% Full Auto-Fill)</span></label>
-          <input type="text" id="raw-filename" placeholder="Paste full raw filename, e.g. Vikram Vedha (2017) Tamil TRUE WEB-DL 1080p-AVC-(DD+5.1- 640Kbps & AAC 2.0) - 9GB-ESub.mkv" required oninput="handleInstantRawIngest(this.value)">
+          <input type="text" id="raw-filename" placeholder="e.g. @Tamiltvtoonsofficial - Moana (2026) BluRay Hybrid 1080p 8bit x264 [JHS Telugu + Tamil + Hindi (DDP 5.1 ~ 192Kbps) + English (DDP 7.1 ~ 1509Kbps)] ESub [TTT].mkv" required oninput="handleInstantRawIngest(this.value)">
         </div>
 
-        <div class="form-group col-6">
+        <div class="form-group col-4">
           <label>Google Drive File ID <span class="required">* (Spaces Auto-Cleaned)</span></label>
           <input type="text" id="drive-file-id" placeholder="Paste GDrive link or File ID" required oninput="sanitizeDriveInput(this)">
         </div>
 
         <div class="form-group col-3">
+          <label>Telegram Channel / Release Tag</label>
+          <input type="text" id="telegram-tag" placeholder="e.g. @Tamiltvtoonsofficial" oninput="updateDashPreview()">
+        </div>
+
+        <div class="form-group col-2">
           <label>TMDb Movie ID <span class="required">*</span></label>
-          <input type="number" id="tmdb-id" placeholder="e.g. 432139" required oninput="fetchTmdbOfficialDetails(this.value)">
+          <input type="number" id="tmdb-id" placeholder="e.g. 1108427" required oninput="fetchTmdbOfficialDetails(this.value)">
         </div>
 
         <div class="form-group col-3">
-          <label>Manual TMDb Search</label>
+          <label>Manual TMDb Search (India)</label>
           <input type="text" id="tmdb-search-input" placeholder="Type title..." oninput="handleTmdbSearch(this.value)">
           <div class="tmdb-results-dropdown" id="tmdb-dropdown"></div>
         </div>
@@ -395,46 +433,46 @@
 
         <div class="form-group col-12">
           <label>Movie Tagline (Quote)</label>
-          <input type="text" id="movie-tagline" placeholder="e.g. Shall I tell you a story?">
+          <input type="text" id="movie-tagline" placeholder="e.g. The ocean chose her for a reason.">
         </div>
 
         <div class="form-group col-2">
           <label>Release Year</label>
-          <input type="number" id="movie-year" value="2017" oninput="updateDashPreview()">
+          <input type="number" id="movie-year" value="2026" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-2">
-          <label>Exact Release Date</label>
-          <input type="text" id="movie-release-date" placeholder="YYYY-MM-DD" value="2017-07-21">
+          <label>Exact Release Date (India)</label>
+          <input type="text" id="movie-release-date" placeholder="YYYY-MM-DD" value="2026-07-08">
         </div>
 
         <div class="form-group col-2">
           <label>TMDb Rating</label>
-          <input type="text" id="movie-rating" value="7.3">
+          <input type="text" id="movie-rating" value="7.5">
         </div>
 
         <div class="form-group col-2">
           <label>Original Language</label>
-          <input type="text" id="movie-lang" value="ta">
+          <input type="text" id="movie-lang" value="en">
         </div>
 
         <div class="form-group col-2">
           <label>Runtime (Minutes)</label>
-          <input type="number" id="movie-runtime" value="147">
+          <input type="number" id="movie-runtime" value="115">
         </div>
 
         <div class="form-group col-2">
-          <label>CBFC Certification</label>
+          <label>CBFC Certification (India)</label>
           <select id="movie-cert">
-            <option value="U">U</option>
-            <option value="UA" selected>UA</option>
+            <option value="U" selected>U</option>
+            <option value="UA">UA</option>
             <option value="A">A</option>
           </select>
         </div>
 
         <div class="form-group col-4">
           <label>IMDb ID</label>
-          <input type="text" id="movie-imdb-id" placeholder="tt6148156">
+          <input type="text" id="movie-imdb-id" placeholder="tt1108427">
         </div>
 
         <div class="form-group col-4">
@@ -454,7 +492,7 @@
 
         <div class="form-group col-6">
           <label>Genres Array (Kodi Categories) <span class="required">*</span></label>
-          <input type="text" id="movie-genres" placeholder="Action, Crime, Thriller" value="Action, Crime, Thriller" required>
+          <input type="text" id="movie-genres" placeholder="Animation, Action, Adventure, Family" value="Animation, Action, Adventure, Family" required>
         </div>
 
         <div class="form-group col-12">
@@ -463,7 +501,7 @@
         </div>
 
         <div class="form-group col-12">
-          <label>Official Trailer (YouTube)</label>
+          <label>Official Indian / Regional Trailer (YouTube)</label>
           <div style="display:flex; gap:10px;">
             <input type="text" id="movie-trailer" placeholder="https://www.youtube.com/watch?v=..." style="flex:1;">
             <button type="button" class="btn btn-govt-secondary" style="padding:0.4rem 1.2rem;" onclick="testTrailer()">Play Trailer ↗</button>
@@ -496,8 +534,9 @@
         <div class="form-group col-3">
           <label>Video Source / OTT Platform</label>
           <select id="tech-source" onchange="handleSourceChange(this.value)">
-            <option value="WEB-DL" selected>WEB-DL (Generic)</option>
-            <option value="AMZN">Amazon Prime Video (Amaz/AMZN)</option>
+            <option value="BluRay" selected>BluRay / REMUX</option>
+            <option value="WEB-DL">WEB-DL (Generic)</option>
+            <option value="AMZN">Amazon Prime Video (AMZN)</option>
             <option value="Sun NXT">Sun NXT</option>
             <option value="Netflix">Netflix</option>
             <option value="Hotstar">Disney+ Hotstar</option>
@@ -506,17 +545,16 @@
             <option value="Aha">Aha</option>
             <option value="Zee5">Zee5</option>
             <option value="Apple TV+">Apple TV+</option>
-            <option value="BluRay">BluRay / REMUX</option>
           </select>
         </div>
 
         <div class="form-group col-3">
           <label>Source Image Asset Path</label>
-          <input type="text" id="tech-source-image" value="resources/images/sources/web.png" readonly style="background-color: rgba(255,255,255,0.05);">
+          <input type="text" id="tech-source-image" value="resources/images/sources/bluray.png" readonly style="background-color: rgba(255,255,255,0.05);">
         </div>
 
         <div class="form-group col-3">
-          <label>Clean Rounded Size (Auto or Select)</label>
+          <label>Clean Rounded Size</label>
           <select id="tech-filesize-select" onchange="handleSizeSelect(this.value)">
             <option value="1 GB">1 GB</option>
             <option value="2 GB">2 GB</option>
@@ -534,13 +572,12 @@
             <option value="18 GB">18 GB</option>
             <option value="20 GB">20 GB</option>
             <option value="25 GB">25 GB</option>
-            <option value="30 GB">30 GB</option>
           </select>
         </div>
 
         <div class="form-group col-12">
           <label>Expanded Multi-Audio Specifications</label>
-          <input type="text" id="tech-audio-specs" value="Tamil DTS 5.1 - 1509Kbps" oninput="updateDashPreview()">
+          <input type="text" id="tech-audio-specs" value="Telugu + Tamil + Hindi DDP 5.1 - 192Kbps + English DDP 7.1 - 1509Kbps" oninput="updateDashPreview()">
         </div>
       </div>
 
@@ -612,11 +649,29 @@
   let currentTargetChunk = "chunk_01.json";
   let loadedCastArray = [];
 
+  // 🌓 DARK / LIGHT THEME TOGGLE
+  function initTheme() {
+    const saved = localStorage.getItem("moinuflix_theme") || "dark";
+    if (saved === "light") {
+      document.body.classList.add("light-mode");
+      document.getElementById("theme-btn").textContent = "🌙 Dark";
+    } else {
+      document.body.classList.remove("light-mode");
+      document.getElementById("theme-btn").textContent = "☀️ Light";
+    }
+  }
+
+  function toggleTheme() {
+    const isLight = document.body.classList.toggle("light-mode");
+    localStorage.setItem("moinuflix_theme", isLight ? "light" : "dark");
+    document.getElementById("theme-btn").textContent = isLight ? "🌙 Dark" : "☀️ Light";
+  }
+
   function getToken() { return (localStorage.getItem("moinuflix_gh_token") || "").trim(); }
 
   function configureToken() {
     const cur = getToken();
-    const input = prompt("Enter your GitHub Personal Access Token (starts with ghp_ or github_pat_):", cur);
+    const input = prompt("Enter your GitHub Personal Access Token (PAT):", cur);
     if (input !== null) {
       localStorage.setItem("moinuflix_gh_token", input.trim());
       checkTokenStatus();
@@ -633,12 +688,7 @@
       return;
     }
     try {
-      const r = await fetch("https://api.github.com/user", {
-        headers: { "Authorization": `token ${t}` }
-      });
-      if (r.ok) {
-        const u = await r.json();
-        ind.textContent = `Active ✅ (${u.login})`;
+      const r = await fetch("https://api.github.com/user", { headers: { "Authorization": `token ${t}` } }); if (r.ok) { const u = await r.json(); ind.textContent = `Active ✅ (${u.login})`;
         ind.style.color = "var(--laser-green)";
       } else {
         ind.textContent = "❌ Bad Credentials";
@@ -660,171 +710,48 @@
   }
 
   async function loadInitialStats() {
+    initTheme();
     checkTokenStatus();
+
+    // Check if redirected from pending.html
+    const pendingSaved = sessionStorage.getItem("moinuflix_edit_pending");
+    if (pendingSaved && window.location.search.includes("load_pending")) {
+      const pItem = JSON.parse(pendingSaved);
+      sessionStorage.removeItem("moinuflix_edit_pending");
+      document.getElementById("drive-file-id").value = pItem.gdrive_id || "";
+      document.getElementById("raw-filename").value = pItem.original_filename || "";
+      handleInstantRawIngest(pItem.original_filename || "");
+      showToast("Loaded from Pending Queue! Ready for review.");
+    }
+
     try {
-      const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/catalog.json?t=${Date.now()}`);
-      if (res.ok) {
-        const cat = await res.json();
-        const movies = cat.movies || [];
-        catalogCount = movies.length;
-        document.getElementById("stat-catalog-count").textContent = `${catalogCount} Movies`;
+      const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/catalog.json?t=${Date.now()}`); if (res.ok) { const cat = await res.json(); const movies = cat.movies \vert{}\vert{} []; catalogCount = movies.length; document.getElementById("stat-catalog-count").textContent = `${catalogCount} Movies`;
         
         const chunkNum = Math.floor(catalogCount / 50) + 1;
-        currentTargetChunk = `chunk_${String(chunkNum).padStart(2, '0')}.json`;
-        document.getElementById("stat-target-chunk").textContent = currentTargetChunk;
-      }
-    } catch (_) {
-      document.getElementById("stat-catalog-count").textContent = "Offline / New";
-    }
-  }
-
-  function sanitizeDriveInput(el) {
-    let clean = el.value.replace(/\s+/g, '');
-    const m = clean.match(/[-\w]{25,}/);
-    if (m) clean = m[0];
-    el.value = clean;
-  }
-
-  let rawIngestDebounce = null;
-  function handleInstantRawIngest(raw) {
-    if (!raw.trim()) return;
-
-    const resSel = document.getElementById("tech-resolution");
-    if (/\b(2160p|4k|uhd)\b/i.test(raw)) resSel.value = "2160p";
-    else if (/\b(720p)\b/i.test(raw)) resSel.value = "720p";
-    else resSel.value = "1080p";
-
-    if (/amaz|amzn|prime/i.test(raw)) handleSourceChange("AMZN");
-    else if (/sun\s*nxt|sunnxt/i.test(raw)) handleSourceChange("Sun NXT");
-    else if (/nf|netflix/i.test(raw)) handleSourceChange("Netflix");
-    else if (/hotstar|dsnp/i.test(raw)) handleSourceChange("Hotstar");
-    else if (/jio/i.test(raw)) handleSourceChange("JioCinema");
-    else if (/sonyliv/i.test(raw)) handleSourceChange("SonyLIV");
-    else if (/aha/i.test(raw)) handleSourceChange("Aha");
-    else if (/zee5/i.test(raw)) handleSourceChange("Zee5");
-    else if (/bluray|remux/i.test(raw)) handleSourceChange("BluRay");
-    else handleSourceChange("WEB-DL");
-
-    let audioDetected = "DD+ 5.1 - 640Kbps";
-    const audioMatch = raw.match(/\((DD\+?5\.1.*?|DTS.*?|Atmos.*?|TrueHD.*?|AAC.*?)\)/i) ||
-                       raw.match(/\[(DD\+?5\.1.*?|DTS.*?|Atmos.*?|TrueHD.*?|AAC.*?)\]/i) ||
-                       raw.match(/\b(DD\+5\.1|DTS\s*5\.1|Atmos|DD\s*5\.1)\b/i);
-    if (audioMatch) {
-      audioDetected = audioMatch[0].replace(/[\(\)\[\]]/g, '').trim();
-    } else if (/dts/i.test(raw)) {
-      audioDetected = "DTS 5.1 - 1509Kbps";
-    }
-    document.getElementById("tech-audio-specs").value = audioDetected;
-
-    const sizeMatch = raw.match(/(\d+\.?\d*)\s*(gb|mb)/i);
-    if (sizeMatch) {
-      let num = parseFloat(sizeMatch[1]);
-      if (/mb/i.test(sizeMatch[0])) num = num / 1024;
-      let cleanGb = `${Math.round(num)} GB`;
-      selectDropdownValue("tech-filesize-select", cleanGb);
+        currentTargetChunk = `chunk_${String(chunkNum).padStart(2, '0')}.json`; document.getElementById("stat-target-chunk").textContent = currentTargetChunk; } } catch (_) { document.getElementById("stat-catalog-count").textContent = "Offline / New"; } }  function sanitizeDriveInput(el) { let clean = el.value.replace(/\s+/g, ''); const m = clean.match(/[-\w]{25,}/); if (m) clean = m[0]; el.value = clean; }  /* ⚡ ADVANCED REGIONAL & TELEGRAM PARSER ENGINE */ let rawIngestDebounce = null; function handleInstantRawIngest(raw) { if (!raw.trim()) return;  // 1. Telegram Channel Tag Extraction const tgMatch = raw.match(/@[\w_]+/i); const tgChannel = tgMatch ? tgMatch[0] : ""; document.getElementById("telegram-tag").value = tgChannel;  // 2. Resolution const resSel = document.getElementById("tech-resolution"); if (/\b(2160p\vert{}4k\vert{}uhd)\b/i.test(raw)) resSel.value = "2160p"; else if (/\b(720p)\b/i.test(raw)) resSel.value = "720p"; else resSel.value = "1080p";  // 3. Source Mapping if (/bluray\vert{}remux/i.test(raw)) handleSourceChange("BluRay"); else if (/amaz\vert{}amzn\vert{}prime/i.test(raw)) handleSourceChange("AMZN"); else if (/sun\s*nxt\vert{}sunnxt/i.test(raw)) handleSourceChange("Sun NXT"); else if (/nf\vert{}netflix/i.test(raw)) handleSourceChange("Netflix"); else if (/hotstar\vert{}dsnp/i.test(raw)) handleSourceChange("Hotstar"); else if (/jio/i.test(raw)) handleSourceChange("JioCinema"); else if (/sonyliv/i.test(raw)) handleSourceChange("SonyLIV"); else if (/aha/i.test(raw)) handleSourceChange("Aha"); else if (/zee5/i.test(raw)) handleSourceChange("Zee5"); else handleSourceChange("WEB-DL");  // 4. Exact Multi-Audio Extraction (Supports DDP 5.1, AAC 2.0, DDP 7.1) let audioDetected = "DD+ 5.1 - 640Kbps"; const audioBracketMatch = raw.match(/\[([A-Z0-9_\s\+\(\)\.~-]+(?:DDP\vert{}DD\+\vert{}DTS\vert{}AAC\vert{}Atmos\vert{}TrueHD)[^\]]+)\]/i);  if (audioBracketMatch) { let cleanAudio = audioBracketMatch[1] .replace(/\b(JHS\vert{}TTT\vert{}ESub\vert{}MSubs\vert{}Olamovis)\b/gi, '') .replace(/~/g, '-') .replace(/\s+/g, ' ') .trim(); if (cleanAudio.length > 5) audioDetected = cleanAudio; } else { const fallbackAudio = raw.match(/\((DD\+?5\.1.*?\vert{}DTS.*?\vert{}Atmos.*?\vert{}TrueHD.*?\vert{}AAC.*?)\)/i); if (fallbackAudio) audioDetected = fallbackAudio[1].replace(/~/g, '-').trim(); } document.getElementById("tech-audio-specs").value = audioDetected;  // 5. Size Extraction const sizeMatch = raw.match(/(\d+\.?\d*)\s*(gb\vert{}mb)/i); if (sizeMatch) { let num = parseFloat(sizeMatch[1]); if (/mb/i.test(sizeMatch[0])) num = num / 1024; selectDropdownValue("tech-filesize-select", `${Math.round(num)} GB`);
     }
 
-    let clean = raw.replace(/\.(mkv|mp4|avi|ts)$/i, '').replace(/[\._\-]/g, ' ');
+    // 6. Clean Title & Year (Strips @channel, [TTT], [JHS], dots)
+    let clean = raw.replace(/@[\w_]+(\s*-\s*)?/gi, '')
+                   .replace(/\[[^\]]+\]/g, ' ')
+                   .replace(/\.(mkv|mp4|avi|ts)$/i, '')
+                   .replace(/[\._\-]/g, ' ');
+
     const ym = clean.match(/\b(19\d\d|20\d\d)\b/);
     let year = ym ? ym[1] : '';
     let cutoff = ym ? ym.index : clean.length;
     let title = clean.substring(0, cutoff).trim();
-    title = title.replace(/\b(2160p|1080p|720p|4k|amaz|amzn|bluray|hevc|h265|x264|x265|dts|web|dl)\b/gi, '').trim();
+    title = title.replace(/\b(2160p|1080p|720p|4k|bluray|hybrid|web|dl|hevc|x264|x265)\b/gi, '').trim();
 
     updateDashPreview();
 
+    // 7. Auto TMDb Search (India Region Priority)
     clearTimeout(rawIngestDebounce);
     rawIngestDebounce = setTimeout(async () => {
       if (title.length > 1) {
-        showToast(`Auto-detecting TMDb match for "${title}" (${year})...`);
+        showToast(`🇮🇳 Auto-searching TMDb India for "${title}" (${year})...`);
         try {
-          const sRes = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(title)}${year ? `&year=${year}` : ''}`);
-          const sData = await sRes.json();
-          if (sData.results && sData.results.length > 0) {
-            const topMatch = sData.results[0];
-            document.getElementById("tmdb-id").value = topMatch.id;
-            fetchTmdbOfficialDetails(topMatch.id);
-          }
-        } catch (_) {}
-      }
-    }, 400);
-  }
-
-  function selectDropdownValue(id, val) {
-    const sel = document.getElementById(id);
-    for (let opt of sel.options) {
-      if (opt.value === val) {
-        sel.value = val;
-        updateDashPreview();
-        return;
-      }
-    }
-    const newOpt = document.createElement("option");
-    newOpt.value = val;
-    newOpt.textContent = val;
-    newOpt.selected = true;
-    sel.appendChild(newOpt);
-    updateDashPreview();
-  }
-
-  function handleSizeSelect(val) {
-    updateDashPreview();
-  }
-
-  function handleSourceChange(val) {
-    document.getElementById("tech-source").value = val;
-    const imgEl = document.getElementById("tech-source-image");
-    const map = {
-      "AMZN": "resources/images/sources/amazon.png",
-      "Sun NXT": "resources/images/sources/sunnxt.png",
-      "Netflix": "resources/images/sources/netflix.png",
-      "Hotstar": "resources/images/sources/hotstar.png",
-      "JioCinema": "resources/images/sources/jiocinema.png",
-      "SonyLIV": "resources/images/sources/sonyliv.png",
-      "Aha": "resources/images/sources/aha.png",
-      "Zee5": "resources/images/sources/zee5.png",
-      "Apple TV+": "resources/images/sources/appletv.png",
-      "BluRay": "resources/images/sources/bluray.png",
-      "WEB-DL": "resources/images/sources/web.png"
-    };
-    imgEl.value = map[val] || "resources/images/sources/web.png";
-    updateDashPreview();
-  }
-
-  function updateDashPreview() {
-    const title = document.getElementById("movie-title").value || "Title";
-    const year = document.getElementById("movie-year").value || "2024";
-    const res = document.getElementById("tech-resolution").value;
-    const src = document.getElementById("tech-source").value;
-    let audio = document.getElementById("tech-audio-specs").value.trim();
-    const sz = document.getElementById("tech-filesize-select").value;
-
-    document.getElementById("dash-name-preview").textContent = 
-      `${title} (${year}) [${res}] [${src}] [${audio}] [${sz}].mkv`;
-  }
-
-  let searchTimer = null;
-  function handleTmdbSearch(val) {
-    clearTimeout(searchTimer);
-    const box = document.getElementById("tmdb-dropdown");
-    if (!val || val.trim().length < 2) {
-      box.style.display = "none";
-      return;
-    }
-    searchTimer = setTimeout(async () => {
-      try {
-        const r = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(val)}`);
-        const d = await r.json();
-        const top5 = (d.results || []).slice(0, 5);
-        if (top5.length === 0) {
-          box.style.display = "none";
-          return;
-        }
-        box.innerHTML = "";
-        top5.forEach(m => {
-          const row = document.createElement("div");
-          row.className = "tmdb-item-row";
-          const p = m.poster_path ? `https://image.tmdb.org/t/p/w92${m.poster_path}` : "https://via.placeholder.com/38x54?text=No";
+          const sRes = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(title)}${year ? `&year=${year}` : ''}&region=IN`); const sData = await sRes.json(); if (sData.results && sData.results.length > 0) { const topMatch = sData.results[0]; document.getElementById("tmdb-id").value = topMatch.id; fetchTmdbOfficialDetails(topMatch.id); } } catch (_) {} } }, 400); }  function selectDropdownValue(id, val) { const sel = document.getElementById(id); for (let opt of sel.options) { if (opt.value === val) { sel.value = val; updateDashPreview(); return; } } const newOpt = document.createElement("option"); newOpt.value = val; newOpt.textContent = val; newOpt.selected = true; sel.appendChild(newOpt); updateDashPreview(); }  function handleSizeSelect(val) { updateDashPreview(); }  function handleSourceChange(val) { document.getElementById("tech-source").value = val; const imgEl = document.getElementById("tech-source-image"); const map = { "AMZN": "resources/images/sources/amazon.png", "Sun NXT": "resources/images/sources/sunnxt.png", "Netflix": "resources/images/sources/netflix.png", "Hotstar": "resources/images/sources/hotstar.png", "JioCinema": "resources/images/sources/jiocinema.png", "SonyLIV": "resources/images/sources/sonyliv.png", "Aha": "resources/images/sources/aha.png", "Zee5": "resources/images/sources/zee5.png", "Apple TV+": "resources/images/sources/appletv.png", "BluRay": "resources/images/sources/bluray.png", "WEB-DL": "resources/images/sources/web.png" }; imgEl.value = map[val] \vert{}\vert{} "resources/images/sources/web.png"; updateDashPreview(); }  function updateDashPreview() { const title = document.getElementById("movie-title").value \vert{}\vert{} "Title"; const year = document.getElementById("movie-year").value \vert{}\vert{} "2026"; const res = document.getElementById("tech-resolution").value; const src = document.getElementById("tech-source").value; let audio = document.getElementById("tech-audio-specs").value.trim(); const sz = document.getElementById("tech-filesize-select").value;  document.getElementById("dash-name-preview").textContent = `${title} (${year}) [${res}] [${src}] [${audio}] [${sz}].mkv`; }  // TMDb Manual Search (India Priority) let searchTimer = null; function handleTmdbSearch(val) { clearTimeout(searchTimer); const box = document.getElementById("tmdb-dropdown"); if (!val \vert{}\vert{} val.trim().length < 2) { box.style.display = "none"; return; } searchTimer = setTimeout(async () => { try { const r = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(val)}&region=IN`); const d = await r.json(); const top5 = (d.results \vert{}\vert{} []).slice(0, 5); if (top5.length === 0) { box.style.display = "none"; return; } box.innerHTML = ""; top5.forEach(m => { const row = document.createElement("div"); row.className = "tmdb-item-row"; const p = m.poster_path ? `https://image.tmdb.org/t/p/w92${m.poster_path}` : "https://via.placeholder.com/38x54?text=No";
           const yr = (m.release_date || "").split("-")[0];
           row.innerHTML = `
             <img src="${p}" alt="">
@@ -853,18 +780,11 @@
     return map[code] || 'Multi';
   }
 
+  // 🇮🇳 FETCH TMDb DETAILS (INDIA REGION & REGIONAL TRAILER ENGINE)
   async function fetchTmdbOfficialDetails(id) {
     if (!id) return;
     try {
-      const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_KEY}&language=en-US&append_to_response=credits,release_dates,videos,external_ids`);
-      if (!res.ok) throw new Error("Movie not found");
-      const d = await res.json();
-
-      document.getElementById("movie-title").value = d.title || "";
-      document.getElementById("movie-orig-title").value = d.original_title || d.title || "";
-      document.getElementById("movie-tagline").value = d.tagline || "";
-      document.getElementById("movie-year").value = (d.release_date || "2024").split("-")[0];
-      document.getElementById("movie-release-date").value = d.release_date || `${d.release_date || '2024'}-01-01`;
+      const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_KEY}&append_to_response=credits,release_dates,videos,external_ids`); if (!res.ok) throw new Error("Movie not found"); const d = await res.json();  document.getElementById("movie-title").value = d.title \vert{}\vert{} ""; document.getElementById("movie-orig-title").value = d.original_title \vert{}\vert{} d.title \vert{}\vert{} ""; document.getElementById("movie-tagline").value = d.tagline \vert{}\vert{} ""; document.getElementById("movie-year").value = (d.release_date \vert{}\vert{} "2026").split("-")[0]; document.getElementById("movie-release-date").value = d.release_date \vert{}\vert{} `${d.release_date || '2026'}-01-01`;
       document.getElementById("movie-rating").value = d.vote_average ? d.vote_average.toFixed(1) : "7.5";
       document.getElementById("movie-lang").value = d.original_language || "ta";
       document.getElementById("movie-runtime").value = d.runtime || 120;
@@ -872,334 +792,15 @@
       document.getElementById("movie-imdb-id").value = d.external_ids?.imdb_id || d.imdb_id || "";
 
       if (d.backdrop_path) {
-        document.getElementById("dynamic-bg").style.backgroundImage = `url('https://image.tmdb.org/t/p/original${d.backdrop_path}')`;
-      }
+        document.getElementById("dynamic-bg").style.backgroundImage = `url('https://image.tmdb.org/t/p/original${d.backdrop_path}')`; }  // Directors & Writers const crewList = d.credits?.crew \vert{}\vert{} []; const directors = crewList.filter(c => c.job === "Director").map(c => c.name); const writers = crewList.filter(c => ["Writer", "Screenplay", "Story", "Dialogue"].includes(c.job)).map(c => c.name);  document.getElementById("movie-director").value = directors.join(", "); document.getElementById("movie-writers").value = [...new Set(writers)].join(", "); document.getElementById("movie-studio").value = (d.production_companies \vert{}\vert{} []).map(p => p.name).join(", ");  // 🇮🇳 Indian CBFC Certification Check const rels = d.release_dates?.results \vert{}\vert{} []; const inR = rels.find(r => r.iso_3166_1 === "IN") \vert{}\vert{} rels.find(r => r.iso_3166_1 === "US"); if (inR && inR.release_dates?.[0]?.certification) { const cVal = inR.release_dates[0].certification.toUpperCase(); if (cVal.includes("A")) document.getElementById("movie-cert").value = "A"; else if (cVal.includes("UA") \vert{}\vert{} cVal.includes("12") \vert{}\vert{} cVal.includes("13") \vert{}\vert{} cVal.includes("15")) document.getElementById("movie-cert").value = "UA"; else document.getElementById("movie-cert").value = "U"; }  const gList = (d.genres \vert{}\vert{} []).map(g => g.name); document.getElementById("movie-genres").value = gList.join(", ");  // 🇮🇳 Regional Multi-Language YouTube Trailer Engine let trailerUrl = ""; try { const vRes = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${TMDB_KEY}`); if (vRes.ok) { const vData = await vRes.json(); const ytVideos = (vData.results \vert{}\vert{} []).filter(v => v.site === "YouTube"); const best = ytVideos.find(v => v.type === "Trailer" && /official/i.test(v.name)) \vert{}\vert{} ytVideos.find(v => v.type === "Trailer") \vert{}\vert{} ytVideos.find(v => v.type === "Teaser") \vert{}\vert{} ytVideos[0]; if (best) trailerUrl = `https://www.youtube.com/watch?v=${best.key}`;
+        }
+      } catch (_) {}
+      document.getElementById("movie-trailer").value = trailerUrl;
 
-      // Directors & Writers extraction
-      const crewList = d.credits?.crew || [];
-      const directors = crewList.filter(c => c.job === "Director").map(c => c.name);
-      const writers = crewList.filter(c => ["Writer", "Screenplay", "Story", "Dialogue"].includes(c.job)).map(c => c.name);
-
-      document.getElementById("movie-director").value = directors.join(", ");
-      document.getElementById("movie-writers").value = [...new Set(writers)].join(", ");
-      document.getElementById("movie-studio").value = (d.production_companies || []).map(p => p.name).join(", ");
-
-      const rels = d.release_dates?.results || [];
-      const inR = rels.find(r => r.iso_3166_1 === "IN") || rels.find(r => r.iso_3166_1 === "US");
-      if (inR && inR.release_dates?.[0]?.certification) {
-        document.getElementById("movie-cert").value = inR.release_dates[0].certification;
-      }
-
-      const gList = (d.genres || []).map(g => g.name);
-      document.getElementById("movie-genres").value = gList.join(", ");
-
-      const videos = d.videos?.results || [];
-      const tr = videos.find(v => v.type === "Trailer" && v.site === "YouTube") || videos[0];
-      if (tr) document.getElementById("movie-trailer").value = `https://www.youtube.com/watch?v=${tr.key}`;
-
+      // Cast
       const castWrap = document.getElementById("cast-cards-container");
       castWrap.innerHTML = "";
       loadedCastArray = [];
       const top10 = (d.credits?.cast || []).slice(0, 10);
       top10.forEach(c => {
-        const photo = c.profile_path ? `https://image.tmdb.org/t/p/w185${c.profile_path}` : "https://via.placeholder.com/44x58?text=Actor";
-        const tmdbPersonUrl = `https://www.themoviedb.org/person/${c.id}`;
-        loadedCastArray.push({
-          name: c.name,
-          character: c.character,
-          profile: c.profile_path ? `https://image.tmdb.org/t/p/w185${c.profile_path}` : null,
-          link: tmdbPersonUrl
-        });
-
-        const card = document.createElement("div");
-        card.className = "cast-card";
-        card.innerHTML = `
-          <img src="${photo}" alt="">
-          <div class="cast-info">
-            <span class="cast-name" title="${c.name}">${c.name}</span>
-            <span class="cast-role" title="${c.character || 'Role'}">${c.character || 'Role'}</span>
-            <a href="${tmdbPersonUrl}" target="_blank" class="cast-link">Profile ↗</a>
-          </div>
-        `;
-        castWrap.appendChild(card);
-      });
-
-      if (d.poster_path) {
-        const fullPoster = `https://image.tmdb.org/t/p/w780${d.poster_path}`;
-        document.getElementById("art-poster").value = fullPoster;
-        const passImg = document.getElementById("passport-poster-preview");
-        if (passImg) passImg.src = `https://image.tmdb.org/t/p/w185${d.poster_path}`;
-      }
-      if (d.backdrop_path) {
-        document.getElementById("art-fanart").value = `https://image.tmdb.org/t/p/original${d.backdrop_path}`;
-        document.getElementById("art-landscape").value = `https://image.tmdb.org/t/p/w780${d.backdrop_path}`;
-        document.getElementById("art-titlecard").value = `https://image.tmdb.org/t/p/original${d.backdrop_path}`;
-      }
-      if (d.poster_path) document.getElementById("art-thumbnail").value = `https://image.tmdb.org/t/p/w342${d.poster_path}`;
-
-      try {
-        const faRes = await fetch(`https://webservice.fanart.tv/v3/movies/${id}?api_key=${FANART_KEY}`);
-        if (faRes.ok) {
-          const fa = await faRes.json();
-          const logo = fa.hdmovielogo?.[0]?.url || fa.movielogo?.[0]?.url;
-          if (logo) document.getElementById("art-clearlogo").value = logo;
-          if (fa.hdmovieclearart?.[0]?.url) document.getElementById("art-clearart").value = fa.hdmovieclearart[0].url;
-          if (fa.moviebanner?.[0]?.url) document.getElementById("art-banner").value = fa.moviebanner[0].url;
-          if (fa.moviethumb?.[0]?.url) document.getElementById("art-keyart").value = fa.moviethumb[0].url;
-          if (fa.moviedisc?.[0]?.url) document.getElementById("art-discart").value = fa.moviedisc[0].url;
-        }
-      } catch (_) {}
-
-      updateDashPreview();
-      showToast(`100% Ingest Ready: "${d.title}" (${d.original_title || ''})`);
-    } catch (e) {
-      showToast(e.message, true);
-    }
-  }
-
-  function testTrailer() {
-    const tr = document.getElementById("movie-trailer").value;
-    if (tr) window.open(tr, "_blank");
-    else alert("Trailer link missing!");
-  }
-
-  async function handleFormSubmission(e) {
-    e.preventDefault();
-    const token = getToken();
-    if (!token) return alert("GitHub Token missing! Please click 'Set PAT Token' at top right.");
-
-    let rawDrive = document.getElementById("drive-file-id").value.trim().replace(/\s+/g, '');
-    const m = rawDrive.match(/[-\w]{25,}/);
-    const driveId = m ? m[0] : rawDrive;
-    
-    if (!driveId || driveId.length < 20) {
-      return alert("Invalid Google Drive File ID! Please verify link.");
-    }
-
-    const tmdbId = document.getElementById("tmdb-id").value.trim();
-    const title = document.getElementById("movie-title").value.trim();
-    const origTitle = document.getElementById("movie-orig-title").value.trim() || title;
-    const tagline = document.getElementById("movie-tagline").value.trim();
-    const year = parseInt(document.getElementById("movie-year").value, 10) || 2024;
-    const releaseDate = document.getElementById("movie-release-date").value.trim() || `${year}-01-01`;
-    const rating = parseFloat(document.getElementById("movie-rating").value) || 7.5;
-    const langCode = document.getElementById("movie-lang").value.trim();
-    const fullLang = getLanguageName(langCode);
-    const runtime = parseInt(document.getElementById("movie-runtime").value, 10) || 120;
-    const cert = document.getElementById("movie-cert").value;
-    const imdbId = document.getElementById("movie-imdb-id").value.trim();
-    
-    const directors = document.getElementById("movie-director").value.split(",").map(x => ({ name: x.trim() })).filter(x => x.name);
-    const writers = document.getElementById("movie-writers").value.split(",").map(x => ({ name: x.trim(), job: "Writer" })).filter(x => x.name);
-    const studios = document.getElementById("movie-studio").value.split(",").map(x => x.trim()).filter(Boolean);
-    const genres = document.getElementById("movie-genres").value.split(",").map(x => x.trim()).filter(Boolean);
-    const plot = document.getElementById("movie-plot").value;
-    const trailer = document.getElementById("movie-trailer").value;
-
-    const res = document.getElementById("tech-resolution").value;
-    const src = document.getElementById("tech-source").value;
-    const srcImg = document.getElementById("tech-source-image").value;
-    const sz = document.getElementById("tech-filesize-select").value;
-    const audio = document.getElementById("tech-audio-specs").value;
-    const dashName = document.getElementById("dash-name-preview").textContent;
-    const streamUrl = `${WORKER_BASE}${driveId}${USER_AGENT}`;
-
-    let bitrateVal = "640 Kbps";
-    let audioFormatImg = "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png";
-    if (/1509/i.test(audio) || /dts/i.test(audio)) {
-      bitrateVal = "1509 Kbps";
-      audioFormatImg = "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dts.png";
-    } else if (/atmos|truehd/i.test(audio)) {
-      bitrateVal = "768 Kbps";
-      audioFormatImg = "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/atmos.png";
-    }
-
-    const artworkObj = {
-      poster: document.getElementById("art-poster").value,
-      fanart: document.getElementById("art-fanart").value,
-      clearlogo: document.getElementById("art-clearlogo").value,
-      clearart: document.getElementById("art-clearart").value,
-      banner: document.getElementById("art-banner").value,
-      landscape: document.getElementById("art-landscape").value,
-      keyart: document.getElementById("art-keyart").value,
-      thumbnail: document.getElementById("art-thumbnail").value,
-      discart: document.getElementById("art-discart").value,
-      title_card: document.getElementById("art-titlecard").value,
-      character_art: [],
-      extra_posters: [],
-      extra_backdrops: []
-    };
-
-    const targetChunkPath = `resources/data/chunks/${currentTargetChunk}`;
-    const catalogPath = `resources/data/catalog.json`;
-
-    document.getElementById("btn-submit").disabled = true;
-    document.getElementById("btn-submit").textContent = "Writing to GitHub...";
-
-    try {
-      // 1. Target Chunk File Commit
-      let chunkData = { chunk_id: currentTargetChunk.replace(".json", ""), movie_count: 0, movies: [] };
-      let chunkSha = undefined;
-
-      const cRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${targetChunkPath}?t=${Date.now()}`, {
-        headers: { "Authorization": `token ${token}` }
-      });
-      if (cRes.ok) {
-        const cJson = await cRes.json();
-        chunkSha = cJson.sha;
-        chunkData = JSON.parse(decodeURIComponent(escape(atob(cJson.content))));
-      }
-
-      const fullMovieRecord = {
-        id: driveId,
-        tmdb_id: parseInt(tmdbId, 10),
-        imdb_id: imdbId,
-        name: dashName,
-        title: title,
-        original_title: origTitle,
-        year: year,
-        runtime: runtime,
-        release_date: releaseDate,
-        certification: cert,
-        original_language: langCode,
-        genres: genres,
-        tagline: tagline,
-        plot: plot,
-        country: ["India"],
-        studio: studios.length > 0 ? studios : [src],
-        director: directors,
-        writers: writers,
-        cast: loadedCastArray,
-        artwork: artworkObj,
-        trailer: trailer,
-        ratings: [{ source: "TMDb", value: rating, out_of: 10 }],
-        badges: {
-          quality: `https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/${res}.png`,
-          hdr: "",
-          source: `https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/${src.toLowerCase().replace(/[^a-z]/g, '')}.png`,
-          audio_format: audioFormatImg,
-          audio_channels: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-        },
-        specs: {
-          resolution: res,
-          source: src,
-          codec: "x264",
-          bit_depth: "8bit",
-          audio: audio,
-          channels: "5.1",
-          bitrate: bitrateVal,
-          languages: fullLang,
-          size: sz
-        },
-        stream_url: streamUrl,
-        versions: [{
-          id: driveId,
-          name: dashName,
-          language: fullLang,
-          dubbed: audio,
-          quality: `${res} FHD`,
-          resolution: res,
-          source: src,
-          source_image: srcImg,
-          codec: "x264",
-          audio: audio,
-          channels: "5.1",
-          bitrate: bitrateVal,
-          size: sz,
-          stream_url: streamUrl
-        }]
-      };
-
-      chunkData.movies = chunkData.movies || [];
-      const exIdx = chunkData.movies.findIndex(m => m.id === driveId || m.tmdb_id === fullMovieRecord.tmdb_id);
-      if (exIdx >= 0) chunkData.movies[exIdx] = fullMovieRecord;
-      else chunkData.movies.push(fullMovieRecord);
-      
-      chunkData.movie_count = chunkData.movies.length;
-
-      await commitDirectToGithub(targetChunkPath, chunkData, `Add ${title} to ${currentTargetChunk}`, chunkSha, token);
-
-      // 2. Catalog.json Commit
-      let catData = { movies: [] };
-      let catSha = undefined;
-
-      const catRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${catalogPath}?t=${Date.now()}`, {
-        headers: { "Authorization": `token ${token}` }
-      });
-      if (catRes.ok) {
-        const catJson = await catRes.json();
-        catSha = catJson.sha;
-        catData = JSON.parse(decodeURIComponent(escape(atob(catJson.content))));
-      }
-
-      const catalogEntry = {
-        id: driveId,
-        tmdb_id: parseInt(tmdbId, 10),
-        title: title,
-        year: year,
-        poster: artworkObj.poster,
-        fanart: artworkObj.fanart,
-        logo: artworkObj.clearlogo,
-        rating: rating,
-        original_language: langCode,
-        genres: genres,
-        chunk_file: targetChunkPath,
-        primary_stream_url: streamUrl,
-        available_languages: [fullLang],
-        version_count: 1,
-        available_versions: [{
-          language: fullLang,
-          dubbed: audio,
-          quality: `${res} FHD`,
-          source: src,
-          source_image: srcImg,
-          format: src,
-          codec: "x264",
-          audio: audio,
-          channels: "5.1"
-        }]
-      };
-
-      catData.movies = catData.movies || [];
-      const catExIdx = catData.movies.findIndex(m => m.id === driveId || m.tmdb_id === catalogEntry.tmdb_id);
-      if (catExIdx >= 0) catData.movies[catExIdx] = catalogEntry;
-      else catData.movies.push(catalogEntry);
-
-      await commitDirectToGithub(catalogPath, catData, `Update catalog.json for ${title}`, catSha, token);
-
-      showToast(`🎉 SUCCESS: Record committed to ${currentTargetChunk} and catalog.json!`);
-      document.getElementById("media-ingest-form").reset();
-      document.getElementById("passport-poster-preview").src = "https://via.placeholder.com/75x105?text=Poster";
-      document.getElementById("cast-cards-container").innerHTML = '<div style="font-size:0.8rem; color:var(--text-muted); padding:10px;">Awaiting next movie...</div>';
-      loadInitialStats();
-    } catch (err) {
-      showToast(`Save Failed: ${err.message}`, true);
-    }
-    document.getElementById("btn-submit").disabled = false;
-    document.getElementById("btn-submit").textContent = "🚀 Commit Record to GitHub (catalog & target chunk)";
-  }
-
-  async function commitDirectToGithub(path, data, msg, sha, token) {
-    const url = `https://api.github.com/repos/${GH_REPO}/contents/${path}`;
-    const jsonStr = JSON.stringify(data, null, 2);
-    const encoded = btoa(unescape(encodeURIComponent(jsonStr)));
-
-    const res = await fetch(url, {
-      method: "PUT",
-      headers: {
-        "Authorization": `token ${token}`,
-        "Accept": "application/vnd.github.v3+json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ message: msg, content: encoded, branch: GH_BRANCH, sha: sha })
-    });
-    if (!res.ok) {
-      const err = await res.json();
-      throw new Error(err.message || "GitHub API Error");
-    }
-  }
-
-  window.addEventListener("DOMContentLoaded", loadInitialStats);
-</script>
-</body>
-</html>
+        const photo = c.profile_path ? `
