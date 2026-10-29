@@ -143,6 +143,40 @@
           "channels": "5.1"
         }
       ]
+    },
+    {
+      "id": "18zWRM2EWrq5GQQKPMI_ks3OI2qdn5IuH",
+      "tmdb_id": 1444466,
+      "title": "Awarapan 2",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w780/8V35iNRx9zVH5OHO0lH6IlfGfZY.jpg",
+      "fanart": "https://image.tmdb.org/t/p/original/qrYsuB5kPCw0y7IVIuOyEAI1GXh.jpg",
+      "logo": "",
+      "rating": 5.1,
+      "original_language": "hi",
+      "genres": [
+        "Action",
+        "Drama",
+        "Romance"
+      ],
+      "chunk_file": "resources/data/chunks/chunk_01.json",
+      "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=18zWRM2EWrq5GQQKPMI_ks3OI2qdn5IuH|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "available_languages": [
+        "Tamil"
+      ],
+      "version_count": 1,
+      "available_versions": [
+        {
+          "language": "Tamil",
+          "quality": "1080p FHD",
+          "source": "AMZN",
+          "source_image": "resources/images/sources/web.png",
+          "format": "AMZN",
+          "codec": "x264",
+          "audio": "5.1",
+          "channels": "5.1"
+        }
+      ]
     }
   ]
 }
