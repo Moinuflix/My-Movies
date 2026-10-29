@@ -310,13 +310,13 @@
     b.textContent = msg;
   }
 
-  // 1. Fetch Master Catalog stats (to track target chunk limit)
+  // 1. Master catalog stats check (50-limit chunk allocation)
   async function loadMasterStats() {
     try {
       const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/catalog.json?t=${Date.now()}`);
       if (res.ok) {
         const cat = await res.json();
-        const movies = cat.movies || [];
+        const movies = cat.movies || (Array.isArray(cat) ? cat : []);
         catalogCount = movies.length;
         document.getElementById("stat-catalog-total").textContent = `${catalogCount} Movies`;
         
@@ -327,7 +327,7 @@
     } catch (_) {}
   }
 
-  // 2. Fetch Pending Arrivals safely (Zero-Byte & Missing File Protected)
+  // 2. Load pending items safely without JSON crash
   async function loadPendingList() {
     await loadMasterStats();
     const container = document.getElementById("pending-items-container");
@@ -343,14 +343,13 @@
         return;
       }
 
-      // Safe text parsing to prevent "Unexpected end of JSON input"
       const text = await res.text();
       if (!text || text.trim().length === 0) {
         pendingList = [];
       } else {
         try {
-          pendingList = JSON.parse(text);
-          if (!Array.isArray(pendingList)) pendingList = [];
+          const parsed = JSON.parse(text);
+          pendingList = Array.isArray(parsed) ? parsed : [];
         } catch (_) {
           pendingList = [];
         }
@@ -369,7 +368,7 @@
     }
   }
 
-  // 3. Render Cards with auto TMDb details
+  // 3. Render Pending Cards
   function renderPendingCards() {
     const container = document.getElementById("pending-items-container");
     container.innerHTML = "";
@@ -414,14 +413,14 @@
     });
   }
 
-  // 4. Send Item directly into inbox.html Form via Session Storage
+  // 4. Send to inbox.html Form via Session Storage
   function sendToEditForm(index) {
     const item = pendingList[index];
     sessionStorage.setItem("moinuflix_edit_pending", JSON.stringify(item));
     window.location.href = "inbox.html?load_pending=1";
   }
 
-  // 5. Approve Single Movie (1-Click Auto Commit to Chunk & Catalog)
+  // 5. 1-Click Approve Single Movie (India Regional Enrichment + Commit)
   async function approveSingleItem(index) {
     const token = getToken();
     if (!token) return alert("GitHub Token missing! Click 'Token' button at top right.");
@@ -485,14 +484,14 @@
               link: `https://www.themoviedb.org/person/${c.id}`
             }));
 
-            // CBFC India Certification
+            // CBFC India Certification priority
             const rels = td.release_dates?.results || [];
             const inR = rels.find(r => r.iso_3166_1 === "IN");
             if (inR && inR.release_dates?.[0]?.certification) {
               movieDetails.certification = inR.release_dates[0].certification;
             }
 
-            // Regional YouTube Trailer
+            // Regional Indian trailer match
             try {
               const vRes = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}/videos?api_key=${TMDB_KEY}`);
               if (vRes.ok) {
@@ -515,7 +514,7 @@
 
       showStatus(`💾 Committing "${title}" to ${currentTargetChunk}...`);
 
-      // 1. Commit to Target Chunk (Includes Telegram Channel)
+      // 1. Commit to Target Chunk File
       let chunkData = { chunk_id: currentTargetChunk.replace(".json", ""), movie_count: 0, movies: [] };
       let chunkSha = undefined;
 
@@ -658,7 +657,7 @@
 
       await commitGithubFile(catalogPath, catData, `Update catalog index for ${title}`, catSha, token);
 
-      // 3. Remove from pending queue
+      // 3. Remove approved movie from pending_movies.json
       showStatus(`🧹 Removing "${title}" from pending queue...`);
       pendingList.splice(index, 1);
       
@@ -677,7 +676,7 @@
     }
   }
 
-  // 6. 1-Click Approve All Queue Items
+  // 6. 1-Click Approve All
   async function approveAllPending() {
     if (pendingList.length === 0) return alert("Pending list is empty!");
     if (!confirm(`Are you sure you want to 1-Click Approve all ${pendingList.length} movies in queue?`)) return;
@@ -687,7 +686,7 @@
     }
   }
 
-  // 7. Dismiss / Reject Item from Queue
+  // 7. Dismiss Item without saving
   async function rejectItem(index) {
     const token = getToken();
     if (!token) return alert("GitHub Token missing!");
