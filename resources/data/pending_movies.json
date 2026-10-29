@@ -1,35 +1,5 @@
 [
   {
-    "gdrive_id": "13vcHZ7Q8jtJ-LKMYv6OwtD4E_i_LUTbs",
-    "original_filename": "Hum.Saath.Saath.Hain.1999.1080p.NF.WEB-DL.x264.DDP 5.1 Msubs ~Daredevil~.mkv",
-    "file_size_bytes": 6845757498,
-    "file_size_gb": "6 GB",
-    "mime_type": "video/x-matroska",
-    "detected_at": "2026-10-25T06:45:43.961Z",
-    "parsed": {
-      "title": "Hum Saath Saath Hain",
-      "year": 1999,
-      "resolution": "1080p",
-      "source": "Netflix",
-      "codec": "x264",
-      "telegram_tag": "",
-      "standard_filename": "Hum Saath Saath Hain (1999) [1080p] [Netflix] [Tamil 5.1] [6 GB].mkv"
-    },
-    "match_status": "matched",
-    "tmdb_candidates": [
-      {
-        "tmdb_id": 62883,
-        "title": "Hum Saath Saath Hain",
-        "year": "1999",
-        "poster": "https://image.tmdb.org/t/p/w500/lEAEzpAfSyBZc5sw1NBnWr5TeZU.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/91f8iV55g4k9GzE1DRmBfJ1deYY.jpg",
-        "rating": 6.1
-      }
-    ],
-    "selected_tmdb_id": 62883,
-    "approval_status": "pending"
-  },
-  {
     "gdrive_id": "1uQBsovfEH2iwPwW2Vl6Sv5dDVTB9WCUP",
     "original_filename": "Na Tum Jaano Na Hum 2002 Hindi 720p DvDrip X264 AC 5.1Hon3y.mkv",
     "file_size_bytes": 2746200143,
