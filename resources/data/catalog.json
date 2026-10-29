@@ -215,7 +215,6 @@
       "year": 2009,
       "poster": "https://image.tmdb.org/t/p/w780/gKY6q7SjCkAU6FqvqWybDYgUKIF.jpg",
       "fanart": "https://image.tmdb.org/t/p/original/vL5LR6WdxWPjLPFRLe133jXWsh5.jpg",
-      "logo": "https://image.tmdb.org/t/p/original/eYBa9fpSvZEYOl88ulP5fnRoCIi.png",
       "rating": 7.6,
       "original_language": "en",
       "genres": [
@@ -231,20 +230,7 @@
         "Telugu",
         "English"
       ],
-      "version_count": 1,
-      "available_versions": [
-        {
-          "language": "Hindi + Tamil + Telugu + English",
-          "dubbed": "Hindi + Tamil + Telugu + English DDP 5.1 - 448Kbps",
-          "quality": "1080p FHD",
-          "source": "BluRay",
-          "source_image": "resources/images/sources/bluray.png",
-          "format": "BluRay",
-          "codec": "x265",
-          "audio": "Hindi + Tamil + Telugu + English DDP 5.1 - 448Kbps",
-          "channels": "5.1"
-        }
-      ]
+      "version_count": 1
     }
   ]
 }
