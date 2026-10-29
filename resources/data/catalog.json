@@ -79,7 +79,7 @@
       "year": 2026,
       "poster": "https://image.tmdb.org/t/p/w780/n8Df1H1TmcmZfjGgWh5uQyRFzHy.jpg",
       "fanart": "https://image.tmdb.org/t/p/original/5sBnZMT1aJ6cBvehKOzOOLdI6bz.jpg",
-      "logo": "",
+      "logo": "https://image.tmdb.org/t/p/original/4ycOQ94Sh73VboamUUPGe49f24Q.png",
       "rating": 8.2,
       "original_language": "ta",
       "genres": [
@@ -105,7 +105,8 @@
           "audio": "DD+ 5.1 - 640Kbps",
           "channels": "5.1"
         }
-      ]
+      ],
+      "trailer": "https://www.youtube.com/watch?v=QAMyuZSvqWI"
     }
   ]
 }
