@@ -971,7 +971,155 @@
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HvnXcskgHz0ujSIhzAhuXTyRze8XKKzo1zZ4P7Xbdxk0wbT_NHAbeXUM3XOhPC-IT|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
+    },
+    {
+      "id": "1MW2Cy0Seu4jJaR6fs6XBN5zBt0lc2KNW",
+      "tmdb_id": 363335,
+      "imdb_id": "tt5639388",
+      "name": "Raaz Reboot (2016) [1080p] [AMZN] [Hindi DDP 5.1 - 640Kbps] [6 GB] [Telly].mkv",
+      "title": "Raaz Reboot",
+      "original_title": "राज़: रीबूट",
+      "year": 2016,
+      "runtime": 127,
+      "release_date": "2016-06-17",
+      "certification": "UA",
+      "original_language": "hi",
+      "genres": [
+        "Horror"
+      ],
+      "tagline": "",
+      "plot": "Newly-weds Rehaan and Shaina move to Romania after the former is offered a job. When Shaina senses paranormal activity around her, she learns that her husband is harbouring a secret from her.",
+      "telegram_channel": "",
+      "release_group": "Telly",
+      "country": [
+        "India"
+      ],
+      "studio": [
+        "AMZN"
+      ],
+      "director": [
+        {
+          "name": "Vikram Bhatt"
+        }
+      ],
+      "writers": [
+        {
+          "name": "Vikram Bhatt",
+          "job": "Writer"
+        },
+        {
+          "name": "Girish Dhamija",
+          "job": "Writer"
+        }
+      ],
+      "cast": [
+        {
+          "name": "Emraan Hashmi",
+          "character": "Aditya Shrivastava",
+          "profile": "https://image.tmdb.org/t/p/w185/kflgvFCFZnpTRbKmJWn5T0G5EKI.jpg",
+          "link": "https://www.themoviedb.org/person/85969"
+        },
+        {
+          "name": "Kriti Kharbanda",
+          "character": "Shaina Khanna",
+          "profile": "https://image.tmdb.org/t/p/w185/tesRXnPCcPCN2CHTdb32uhMIG9Z.jpg",
+          "link": "https://www.themoviedb.org/person/1315575"
+        },
+        {
+          "name": "Gaurav Arora",
+          "character": "Rehaan Khanna",
+          "profile": "https://image.tmdb.org/t/p/w185/6lL4CEcxcmyZcxGf2wL6CO4NIyT.jpg",
+          "link": "https://www.themoviedb.org/person/1602230"
+        },
+        {
+          "name": "Suzanna Mukherjee",
+          "character": "Shreya",
+          "profile": "https://image.tmdb.org/t/p/w185/1LYl4tKwz0Aw7yryasFxziqPSiQ.jpg",
+          "link": "https://www.themoviedb.org/person/1388817"
+        },
+        {
+          "name": "Tara Sharma",
+          "character": "Malini",
+          "profile": "https://image.tmdb.org/t/p/w185/4kO4vzyZosFrELvZjCM0MkNYYGH.jpg",
+          "link": "https://www.themoviedb.org/person/110198"
+        },
+        {
+          "name": "Ashwath Bhatt",
+          "character": "Trilok Shastri",
+          "profile": "https://image.tmdb.org/t/p/w185/hSJyFIy8Mvj59YQlcluhd9Xf97F.jpg",
+          "link": "https://www.themoviedb.org/person/1278968"
+        },
+        {
+          "name": "Mink Brar",
+          "character": "Nisha",
+          "profile": "https://image.tmdb.org/t/p/w185/qQBvL1h1rMELCkhHhm6m4oAURCC.jpg",
+          "link": "https://www.themoviedb.org/person/1641478"
+        }
+      ],
+      "artwork": {
+        "poster": "https://image.tmdb.org/t/p/w780/9S7KOgIFlr2F3Zv6dFK22rIeR1a.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/r1mVcyEfTR5HZ0g2qxCSZEVp4Ih.jpg",
+        "clearlogo": "https://image.tmdb.org/t/p/original/e2epkyPLyXFciOU5giQRCfzUn8s.png",
+        "clearart": "",
+        "banner": "",
+        "landscape": "https://image.tmdb.org/t/p/w780/r1mVcyEfTR5HZ0g2qxCSZEVp4Ih.jpg",
+        "keyart": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w342/9S7KOgIFlr2F3Zv6dFK22rIeR1a.jpg",
+        "discart": "",
+        "title_card": "https://image.tmdb.org/t/p/original/r1mVcyEfTR5HZ0g2qxCSZEVp4Ih.jpg",
+        "character_art": [],
+        "extra_posters": [],
+        "extra_backdrops": []
+      },
+      "trailer": "https://www.youtube.com/watch?v=V496LGfxr38",
+      "ratings": [
+        {
+          "source": "TMDb",
+          "value": 4.1,
+          "out_of": 10
+        }
+      ],
+      "badges": {
+        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
+        "hdr": "",
+        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/amzn.png",
+        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+      },
+      "specs": {
+        "resolution": "1080p",
+        "source": "AMZN",
+        "codec": "x264",
+        "bit_depth": "8bit",
+        "audio": "Hindi DDP 5.1 - 640Kbps",
+        "channels": "5.1",
+        "bitrate": "640 Kbps",
+        "languages": "Hindi",
+        "size": "6 GB",
+        "telegram_tag": "",
+        "ripper": "Telly"
+      },
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1MW2Cy0Seu4jJaR6fs6XBN5zBt0lc2KNW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "versions": [
+        {
+          "id": "1MW2Cy0Seu4jJaR6fs6XBN5zBt0lc2KNW",
+          "name": "Raaz Reboot (2016) [1080p] [AMZN] [Hindi DDP 5.1 - 640Kbps] [6 GB] [Telly].mkv",
+          "language": "Hindi",
+          "dubbed": "Hindi DDP 5.1 - 640Kbps",
+          "quality": "1080p FHD",
+          "resolution": "1080p",
+          "source": "AMZN",
+          "source_image": "resources/images/sources/amazon.png",
+          "codec": "x264",
+          "audio": "Hindi DDP 5.1 - 640Kbps",
+          "channels": "5.1",
+          "bitrate": "640 Kbps",
+          "size": "6 GB",
+          "telegram_tag": "",
+          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1MW2Cy0Seu4jJaR6fs6XBN5zBt0lc2KNW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      ]
     }
   ],
-  "movie_count": 5
+  "movie_count": 6
 }
