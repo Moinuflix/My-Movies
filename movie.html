@@ -10,7 +10,6 @@
   <style>
     :root {
       --tmdb-dark: #032541;
-      --tmdb-darker: #0d253f;
       --tmdb-blue: #01b4e4;
       --tmdb-green: #21d07a;
       --tmdb-gold: #d2d531;
@@ -285,13 +284,11 @@
     }
     .play-trailer-btn:hover { color: var(--tmdb-blue); }
 
-    /* TAGLINE & OVERVIEW */
     .tagline-text {
       font-style: italic;
       color: #94a3b8;
       margin-top: 1.3rem;
       font-size: 1.05rem;
-      font-weight: 400;
     }
 
     .overview-wrapper {
@@ -309,7 +306,6 @@
       max-width: 950px;
     }
 
-    /* CREW GRID (DIRECTOR, WRITERS, CHARACTERS) */
     .crew-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(160px, 1fr));
@@ -414,21 +410,6 @@
       margin-top: 2px;
     }
 
-    .keywords-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }
-    .keyword-pill {
-      background: rgba(0, 0, 0, 0.06);
-      border: 1px solid var(--border-gray);
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 0.78rem;
-      color: #1e293b;
-    }
-
     @media (max-width: 900px) {
       .hero-inner { flex-direction: column; align-items: center; text-align: center; }
       .poster-col { width: 220px; }
@@ -463,7 +444,7 @@
     <a href="#">Cast & Crew ▾</a>
   </div>
 
-  <!-- HERO BANNER SECTION (CINEMATIC BACKDROP) -->
+  <!-- HERO BANNER SECTION -->
   <div class="hero-banner-wrap" id="hero-banner">
     <div class="hero-inner">
       
@@ -494,7 +475,7 @@
           <span id="runtime-tag">--m</span>
         </div>
 
-        <!-- USER SCORE, EMOJIS & ACTIONS ROW -->
+        <!-- USER SCORE & ACTIONS ROW -->
         <div class="user-score-row">
           <div class="tmdb-circle-score" id="score-circle">
             <span id="score-num">--</span><span>%</span>
@@ -520,25 +501,20 @@
           </button>
         </div>
 
-        <!-- 1. REAL TAGLINE -->
         <div class="tagline-text" id="movie-tagline"></div>
 
-        <!-- OVERVIEW -->
         <div class="overview-wrapper">
           <h3>Overview</h3>
           <p id="movie-overview">Fetching plot overview from database...</p>
         </div>
 
-        <!-- 2. REAL CREW GRID (DIRECTORS, WRITERS, CHARACTERS) -->
         <div class="crew-grid" id="crew-grid-container"></div>
       </div>
     </div>
   </div>
 
-  <!-- LOWER BODY: CAST ROW & SIDEBAR -->
+  <!-- LOWER BODY: CAST & SIDEBAR -->
   <div class="main-body-wrap">
-    
-    <!-- LEFT: TOP BILLED CAST -->
     <div class="cast-main-col">
       <h2 class="section-heading">Top Billed Cast</h2>
       <div class="cast-scroll-row" id="cast-container">
@@ -546,7 +522,6 @@
       </div>
     </div>
 
-    <!-- RIGHT: METADATA FACTS -->
     <div class="sidebar-facts-col">
       <div class="fact-item">
         <span class="fact-title">Original Title</span>
@@ -572,32 +547,9 @@
         <span class="fact-title">Audio Specs</span>
         <span class="fact-val" id="fact-audio">--</span>
       </div>
-
-      <div class="fact-item">
-        <span class="fact-title">Keywords</span>
-        <div class="keywords-wrap" id="keywords-container">
-          <span class="keyword-pill">action</span>
-          <span class="keyword-pill">high definition</span>
-          <span class="keyword-pill">kodi ready</span>
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- MEDIA / ARTWORK GALLERY SECTION -->
-<div style="max-width: 1300px; margin: 2rem auto; padding: 0 2rem;">
-  <div style="display:flex; justify-content:space-between; align-items:center; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1rem;">
-    <h2 style="font-size: 1.3rem; font-weight: 700; color: #0f172a;">Media & Artworks</h2>
-    <div style="display:flex; gap:15px; font-size:0.85rem; font-weight:700;">
-      <span style="color:#01b4e4; border-bottom: 2px solid #01b4e4; padding-bottom: 4px; cursor:pointer;">Backdrops & Fanart</span>
-      <span style="color:#64748b; cursor:pointer;">Posters</span>
     </div>
   </div>
 
-  <div id="artworks-gallery-row" style="display:flex; gap:15px; overflow-x:auto; padding-bottom: 1rem;">
-    <!-- JavaScript will inject Fanart, Landscape, Title Card, and Poster cards here -->
-  </div>
-</div>
-  
   <script>
     const GH_REPO = "Moinuflix/My-Movies";
     const GH_BRANCH = "main";
@@ -607,7 +559,7 @@
       if (activeTrailer && activeTrailer.length > 5) {
         window.open(activeTrailer, "_blank");
       } else {
-        alert("Trailer link not available for this title.");
+        alert("Trailer link not available.");
       }
     }
 
@@ -631,40 +583,68 @@
       return `${rawDate} (IN)`;
     }
 
+    async function fetchJsonWithFallback(paths) {
+      for (let p of paths) {
+        try {
+          const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${p.replace(/^\/+/, '')}?t=${Date.now()}`);
+          if (res.ok) return await res.json();
+        } catch (_) {}
+      }
+      return null;
+    }
+
     async function loadMovieData() {
       const params = new URLSearchParams(window.location.search);
-      const targetId = params.get("id");
+      const targetId = (params.get("id") || "").trim().toLowerCase();
 
       try {
-        const catRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/catalog.json?t=${Date.now()}`);
-        if (!catRes.ok) throw new Error("Catalog not available");
-        const catData = await catRes.json();
-        const catalogList = Array.isArray(catData) ? catData : (catData.movies || []);
+        // 1. Fetch catalog.json safely
+        const catData = await fetchJsonWithFallback([
+          "resources/data/catalog.json",
+          "catalog.json"
+        ]);
+        if (!catData) throw new Error("Catalog file could not be read");
 
+        const catalogList = Array.isArray(catData) ? catData : (catData.movies || []);
         if (catalogList.length === 0) throw new Error("Catalog is empty");
 
+        // 2. Find movie in catalog
         let matchedCat = null;
         if (targetId) {
-          matchedCat = catalogList.find(x => String(x.id).trim() === targetId.trim() || String(x.tmdb_id) === targetId.trim());
+          matchedCat = catalogList.find(m => 
+            String(m.id || "").toLowerCase() === targetId ||
+            String(m.tmdb_id || "").toLowerCase() === targetId ||
+            String(m.name || "").toLowerCase().includes(targetId)
+          );
         }
         if (!matchedCat) matchedCat = catalogList[0];
 
-        const targetChunkFile = matchedCat.chunk_file || "resources/data/chunks/chunk_01.json";
+        // Instant render catalog preview so screen is never broken!
+        renderRealMovieDetails(matchedCat);
 
-        // Fetch detailed record from Chunk
-        const chunkRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${targetChunkFile}?t=${Date.now()}`);
-        let movieRecord = matchedCat;
+        // 3. Try to fetch rich chunk data with path fallbacks
+        const chunkPath = matchedCat.chunk_file || "resources/data/chunks/chunk_01.json";
+        const cleanChunkPath = chunkPath.replace("resources/data/", "");
 
-        if (chunkRes.ok) {
-          const chunkData = await chunkRes.json();
-          const chunkMovies = chunkData.movies || [];
-          const richFound = chunkMovies.find(m => String(m.id).trim() === String(matchedCat.id).trim() || String(m.tmdb_id) === String(matchedCat.tmdb_id));
-          if (richFound) movieRecord = richFound;
+        const chunkData = await fetchJsonWithFallback([
+          chunkPath,
+          cleanChunkPath,
+          "resources/data/chunks/chunk_01.json",
+          "chunks/chunk_01.json"
+        ]);
+
+        if (chunkData) {
+          const chunkMovies = chunkData.movies || (Array.isArray(chunkData) ? chunkData : []);
+          const richFound = chunkMovies.find(m => 
+            String(m.id || "").toLowerCase() === String(matchedCat.id || "").toLowerCase() ||
+            String(m.tmdb_id || "").toLowerCase() === String(matchedCat.tmdb_id || "").toLowerCase()
+          );
+          if (richFound) {
+            renderRealMovieDetails(richFound);
+          }
         }
-
-        renderRealMovieDetails(movieRecord);
       } catch (err) {
-        document.getElementById("title-headline").textContent = "Movie Details Unavailable";
+        document.getElementById("title-headline").textContent = "Movie Not Found";
         document.getElementById("movie-overview").textContent = "Error: " + err.message;
       }
     }
@@ -673,23 +653,18 @@
       const art = m.artwork || {};
       const poster = art.poster || m.poster || "https://via.placeholder.com/300x450?text=No+Poster";
       const fanart = art.fanart || m.fanart || "";
-      const year = m.year || "2026";
+      const year = m.year || "2006";
       const origTitle = m.original_title || m.title;
 
       document.title = `${m.title} (${year}) — MoinuFlix Cinema`;
       document.getElementById("title-headline").innerHTML = `${m.title} <span>(${year})</span>`;
-      
-      // Fixed Date format: 07/30/2026 (IN)
       document.getElementById("date-tag").textContent = formatDateWithCountry(m.release_date || `${year}-01-01`);
       
-      // Fixed Certification: U/A 13+
       const cert = m.certification || "UA";
       document.getElementById("cert-tag").textContent = cert === "UA" ? "U/A 13+" : cert;
-      
       document.getElementById("runtime-tag").textContent = formatRuntime(m.runtime);
       document.getElementById("genres-tag").textContent = (m.genres || []).join(", ");
       
-      // 1. Tagline Fix (if missing in chunk, show clean default)
       const taglineEl = document.getElementById("movie-tagline");
       if (m.tagline && m.tagline.trim().length > 0) {
         taglineEl.textContent = m.tagline;
@@ -700,8 +675,8 @@
 
       document.getElementById("movie-overview").textContent = m.plot || "Complete synopsis available in private media catalog.";
 
-      // 2. Score Percentage Calculation (85% User Score)
-      let scoreVal = 85;
+      // Rating percentage
+      let scoreVal = 75;
       if (m.ratings && m.ratings[0] && m.ratings[0].value) {
         scoreVal = Math.round(m.ratings[0].value * 10);
       } else if (m.rating) {
@@ -714,7 +689,7 @@
       else if (scoreVal >= 50) scoreCircle.style.borderColor = "var(--tmdb-gold)";
       else scoreCircle.style.borderColor = "var(--tmdb-red)";
 
-      // Artwork & Backdrop
+      // Artwork
       document.getElementById("movie-poster").src = poster;
       if (fanart) {
         document.getElementById("hero-banner").style.backgroundImage = `url('${fanart}')`;
@@ -724,9 +699,11 @@
       activeTrailer = m.trailer || "";
       if (!activeTrailer) {
         document.getElementById("btn-trailer").style.opacity = "0.4";
+      } else {
+        document.getElementById("btn-trailer").style.opacity = "1";
       }
 
-      // 3. Crew Grid (Directors + Writers + Screenplay)
+      // Crew (Directors & Writers)
       const crewWrap = document.getElementById("crew-grid-container");
       crewWrap.innerHTML = "";
       const directors = m.director || [];
@@ -747,12 +724,10 @@
       });
 
       if (directors.length === 0 && writers.length === 0) {
-        crewWrap.innerHTML = `
-          <div class="crew-item"><h5>Production Team</h5><span>Standard Ingest</span></div>
-        `;
+        crewWrap.innerHTML = '<div class="crew-item"><h5>Production Team</h5><span>Standard Ingest</span></div>';
       }
 
-      // Top Billed Cast
+      // Cast
       const castWrap = document.getElementById("cast-container");
       castWrap.innerHTML = "";
       const castList = m.cast || [];
@@ -773,41 +748,17 @@
           `;
           castWrap.appendChild(card);
         });
-
-        // Artwork Gallery Injector
-const gallery = document.getElementById("artworks-gallery-row");
-if (gallery && m.artwork) {
-  gallery.innerHTML = "";
-  const artList = [
-    { label: "Backdrop (Original)", url: m.artwork.fanart, w: "320px", h: "180px" },
-    { label: "Landscape (16:9)", url: m.artwork.landscape, w: "320px", h: "180px" },
-    { label: "Title Card", url: m.artwork.title_card, w: "320px", h: "180px" },
-    { label: "Primary Poster", url: m.artwork.poster, w: "120px", h: "180px" }
-  ];
-
-  artList.forEach(item => {
-    if (item.url) {
-      const box = document.createElement("div");
-      box.style.cssText = `width: ${item.w}; flex-shrink: 0; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; background: #032541; box-shadow: 0 2px 6px rgba(0,0,0,0.06);`;
-      box.innerHTML = `
-        <img src="${item.url}" style="width:100%; height:${item.h}; object-fit:cover; display:block;" alt="${item.label}">
-        <div style="padding:6px 10px; font-size:0.75rem; font-weight:700; color:#64748b; background:#fff;">${item.label}</div>
-      `;
-      gallery.appendChild(box);
-    }
-  });
-  
       }
 
-      // Sidebar Facts (No Stream Links Shown)
+      // Facts
       document.getElementById("fact-orig-title").textContent = origTitle;
-      document.getElementById("fact-lang").textContent = (m.original_language || "ta").toUpperCase();
+      document.getElementById("fact-lang").textContent = (m.original_language || "en").toUpperCase();
       document.getElementById("fact-studio").textContent = Array.isArray(m.studio) ? m.studio.join(", ") : (m.studio || "Cinema Studio");
       
       const sp = m.specs || {};
       document.getElementById("fact-quality").textContent = sp.resolution || "1080p FHD";
       document.getElementById("fact-audio").textContent = sp.audio || "Multi 5.1";
-      document.getElementById("nav-lang").textContent = (m.original_language || "ta").toUpperCase();
+      document.getElementById("nav-lang").textContent = (m.original_language || "en").toUpperCase();
 
       const srcName = sp.source || (m.versions && m.versions[0] ? m.versions[0].source : "OTT");
       document.getElementById("ott-badge-text").textContent = srcName.substring(0, 5).toUpperCase();
