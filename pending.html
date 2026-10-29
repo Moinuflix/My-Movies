@@ -327,7 +327,7 @@
     } catch (_) {}
   }
 
-  // 2. Fetch Pending Arrivals from pending_movies.json
+  // 2. Fetch Pending Arrivals safely (Zero-Byte & Missing File Protected)
   async function loadPendingList() {
     await loadMasterStats();
     const container = document.getElementById("pending-items-container");
@@ -335,16 +335,30 @@
 
     try {
       const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/pending_movies.json?t=${Date.now()}`);
+      
       if (!res.ok) {
+        pendingList = [];
         container.innerHTML = '<div style="color:var(--text-muted); padding:40px; text-align:center;">🎉 No pending arrivals found in resources/data/pending_movies.json!</div>';
         document.getElementById("stat-pending-count").textContent = "0";
         return;
       }
 
-      pendingList = await res.json();
+      // Safe text parsing to prevent "Unexpected end of JSON input"
+      const text = await res.text();
+      if (!text || text.trim().length === 0) {
+        pendingList = [];
+      } else {
+        try {
+          pendingList = JSON.parse(text);
+          if (!Array.isArray(pendingList)) pendingList = [];
+        } catch (_) {
+          pendingList = [];
+        }
+      }
+
       document.getElementById("stat-pending-count").textContent = pendingList.length;
 
-      if (!pendingList || pendingList.length === 0) {
+      if (pendingList.length === 0) {
         container.innerHTML = '<div style="color:var(--laser-green); padding:40px; text-align:center;">🎉 All Google Drive files are cleared and synced into library!</div>';
         return;
       }
@@ -386,7 +400,7 @@
             <span class="badge badge-size">💾 ${escapeHtml(size)}</span>
             <span class="badge">${escapeHtml(parsed.source || 'WEB-DL')}</span>
             <span class="badge">${escapeHtml(parsed.resolution || '1080p')}</span>
-            <span class="badge" style="color:var(--laser-cyan);">ID: ${escapeHtml(item.gdrive_id.substring(0, 15))}...</span>
+            <span class="badge" style="color:var(--laser-cyan);">ID: ${escapeHtml((item.gdrive_id || '').substring(0, 15))}...</span>
           </div>
         </div>
 
@@ -416,16 +430,15 @@
     const parsed = item.parsed || {};
     const title = parsed.title || "Movie";
     const year = parsed.year || 2026;
-    const driveId = item.gdrive_id.replace(/\s+/g, '');
+    const driveId = (item.gdrive_id || '').replace(/\s+/g, '');
     const candidate = (item.tmdb_candidates && item.tmdb_candidates[0]) ? item.tmdb_candidates[0] : {};
     const tmdbId = item.selected_tmdb_id || candidate.tmdb_id;
 
     if (!confirm(`Approve and commit "${title}" to Master Catalog and ${currentTargetChunk}?`)) return;
 
-    showStatus(`⚡ Fetching official TMDb metadata for "${title}"...`);
+    showStatus(`⚡ Fetching official TMDb metadata for "${title}" with India Priority...`);
 
     try {
-      // Fetch full TMDb metadata
       let movieDetails = {
         title: title,
         original_title: title,
@@ -447,7 +460,7 @@
 
       if (tmdbId) {
         try {
-          const tRes = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_KEY}&language=en-US&append_to_response=credits,release_dates,videos`);
+          const tRes = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_KEY}&append_to_response=credits,release_dates,images`);
           if (tRes.ok) {
             const td = await tRes.json();
             movieDetails.title = td.title || title;
@@ -464,7 +477,7 @@
 
             const crew = td.credits?.crew || [];
             movieDetails.director = crew.filter(c => c.job === "Director").map(c => ({ name: c.name }));
-            movieDetails.writers = crew.filter(c => ["Writer", "Screenplay", "Story"].includes(c.job)).map(c => ({ name: c.name, job: c.job }));
+            movieDetails.writers = crew.filter(c => ["Writer", "Screenplay", "Story", "Dialogue"].includes(c.job)).map(c => ({ name: c.name, job: c.job }));
             movieDetails.cast = (td.credits?.cast || []).slice(0, 10).map(c => ({
               name: c.name,
               character: c.character,
@@ -472,10 +485,26 @@
               link: `https://www.themoviedb.org/person/${c.id}`
             }));
 
+            // CBFC India Certification
+            const rels = td.release_dates?.results || [];
+            const inR = rels.find(r => r.iso_3166_1 === "IN");
+            if (inR && inR.release_dates?.[0]?.certification) {
+              movieDetails.certification = inR.release_dates[0].certification;
+            }
+
             // Regional YouTube Trailer
-            const vids = td.videos?.results || [];
-            const tr = vids.find(v => v.type === "Trailer" && v.site === "YouTube") || vids[0];
-            if (tr) movieDetails.trailer = `https://www.youtube.com/watch?v=${tr.key}`;
+            try {
+              const vRes = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}/videos?api_key=${TMDB_KEY}`);
+              if (vRes.ok) {
+                const vData = await vRes.json();
+                const ytVideos = (vData.results || []).filter(v => v.site === "YouTube");
+                const best = ytVideos.find(v => v.type === "Trailer" && /official/i.test(v.name)) ||
+                             ytVideos.find(v => v.type === "Trailer") ||
+                             ytVideos.find(v => v.type === "Teaser") ||
+                             ytVideos[0];
+                if (best) movieDetails.trailer = `https://www.youtube.com/watch?v=${best.key}`;
+              }
+            } catch (_) {}
           }
         } catch (_) {}
       }
@@ -486,7 +515,7 @@
 
       showStatus(`💾 Committing "${title}" to ${currentTargetChunk}...`);
 
-      // 1. Commit to Target Chunk
+      // 1. Commit to Target Chunk (Includes Telegram Channel)
       let chunkData = { chunk_id: currentTargetChunk.replace(".json", ""), movie_count: 0, movies: [] };
       let chunkSha = undefined;
 
@@ -568,6 +597,7 @@
           audio: "5.1",
           channels: "5.1",
           size: item.file_size_gb || "10 GB",
+          telegram_tag: parsed.telegram_tag || "",
           stream_url: streamUrl
         }]
       };
@@ -628,7 +658,7 @@
 
       await commitGithubFile(catalogPath, catData, `Update catalog index for ${title}`, catSha, token);
 
-      // 3. Remove from pending_movies.json queue
+      // 3. Remove from pending queue
       showStatus(`🧹 Removing "${title}" from pending queue...`);
       pendingList.splice(index, 1);
       
