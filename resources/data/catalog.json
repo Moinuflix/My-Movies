@@ -71,6 +71,41 @@
           "channels": "5.1"
         }
       ]
+    },
+    {
+      "id": "17E3QIUWI2zv1QvZFWvnrOJ-TAWjMyT_c",
+      "tmdb_id": 1515692,
+      "title": "Baththa",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w780/n8Df1H1TmcmZfjGgWh5uQyRFzHy.jpg",
+      "fanart": "https://image.tmdb.org/t/p/original/5sBnZMT1aJ6cBvehKOzOOLdI6bz.jpg",
+      "logo": "",
+      "rating": 8.2,
+      "original_language": "ta",
+      "genres": [
+        "Drama",
+        "Comedy",
+        "Action"
+      ],
+      "chunk_file": "resources/data/chunks/chunk_01.json",
+      "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=17E3QIUWI2zv1QvZFWvnrOJ-TAWjMyT_c|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "available_languages": [
+        "Tamil"
+      ],
+      "version_count": 1,
+      "available_versions": [
+        {
+          "language": "Tamil",
+          "dubbed": "DD+ 5.1 - 640Kbps",
+          "quality": "2160p FHD",
+          "source": "Netflix",
+          "source_image": "resources/images/sources/netflix.png",
+          "format": "Netflix",
+          "codec": "x264",
+          "audio": "DD+ 5.1 - 640Kbps",
+          "channels": "5.1"
+        }
+      ]
     }
   ]
 }
