@@ -107,6 +107,42 @@
         }
       ],
       "trailer": "https://www.youtube.com/watch?v=QAMyuZSvqWI"
+    },
+    {
+      "id": "1hOjMoYzmBNLw2LpSzTk4f7KIUhAtcdH_",
+      "tmdb_id": 1108427,
+      "title": "Moana",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w780/gaet1xQ2nxrG0V1Ep9T20ZMNEIC.jpg",
+      "fanart": "https://image.tmdb.org/t/p/original/c6BPbkO5Npt1OdwttAxCFo06wtH.jpg",
+      "logo": "https://assets.fanart.tv/fanart/moana-69c3be622f9a7.png",
+      "rating": 7.5,
+      "original_language": "en",
+      "genres": [
+        "Family",
+        "Fantasy",
+        "Comedy",
+        "Adventure"
+      ],
+      "chunk_file": "resources/data/chunks/chunk_01.json",
+      "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1hOjMoYzmBNLw2LpSzTk4f7KIUhAtcdH_|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "available_languages": [
+        "English"
+      ],
+      "version_count": 1,
+      "available_versions": [
+        {
+          "language": "English",
+          "dubbed": "Telugu + Tamil + Hindi (DDP 5.1 - 192Kbps) + English (DDP 7.1 - 1509Kbps)",
+          "quality": "1080p FHD",
+          "source": "BluRay",
+          "source_image": "resources/images/sources/bluray.png",
+          "format": "BluRay",
+          "codec": "x264",
+          "audio": "Telugu + Tamil + Hindi (DDP 5.1 - 192Kbps) + English (DDP 7.1 - 1509Kbps)",
+          "channels": "5.1"
+        }
+      ]
     }
   ]
 }
