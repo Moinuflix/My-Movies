@@ -30,36 +30,6 @@
     "approval_status": "pending"
   },
   {
-    "gdrive_id": "1FK3vDhNu7bSzcJopjxO8mM_JY67suVSo",
-    "original_filename": "Mohabbatein 2000 Hindi 1080p Bluray x264 DTS HDMA...Hon3y.mkv",
-    "file_size_bytes": 17184933929,
-    "file_size_gb": "16 GB",
-    "mime_type": "video/x-matroska",
-    "detected_at": "2026-10-25T05:36:49.810Z",
-    "parsed": {
-      "title": "Mohabbatein",
-      "year": 2000,
-      "resolution": "1080p",
-      "source": "BluRay",
-      "codec": "x264",
-      "telegram_tag": "",
-      "standard_filename": "Mohabbatein (2000) [1080p] [BluRay] [Tamil 5.1] [16 GB].mkv"
-    },
-    "match_status": "matched",
-    "tmdb_candidates": [
-      {
-        "tmdb_id": 11518,
-        "title": "Mohabbatein",
-        "year": "2000",
-        "poster": "https://image.tmdb.org/t/p/w500/dDsYaBazrYKg9bv8qgsEohZQMat.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/s3IfP462ibiQkfU767D4YcMbKTt.jpg",
-        "rating": 7.1
-      }
-    ],
-    "selected_tmdb_id": 11518,
-    "approval_status": "pending"
-  },
-  {
     "gdrive_id": "1uQBsovfEH2iwPwW2Vl6Sv5dDVTB9WCUP",
     "original_filename": "Na Tum Jaano Na Hum 2002 Hindi 720p DvDrip X264 AC 5.1Hon3y.mkv",
     "file_size_bytes": 2746200143,
