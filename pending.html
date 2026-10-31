@@ -281,7 +281,7 @@
       cursor: pointer;
     }
 
-    /* ⚡ COMPACT APPROVAL MODAL */
+    /* MODALS */
     .modal-backdrop {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
@@ -403,7 +403,7 @@
   </div>
 </div>
 
-<!-- ⚡ COMPACT PREVIEW APPROVE MODAL -->
+<!-- PREVIEW APPROVE MODAL -->
 <div class="modal-backdrop" id="preview-modal">
   <div class="modal-box">
     <div class="modal-header">
@@ -434,7 +434,7 @@
   </div>
 </div>
 
-<!-- ⚡ BATCH APPROVE SCROLL MODAL (10+ at once) -->
+<!-- BATCH APPROVE MODAL -->
 <div class="modal-backdrop" id="batch-modal">
   <div class="modal-box" style="max-width:700px;">
     <div class="modal-header">
@@ -502,6 +502,7 @@
 
   /* ⚡ DEEP MULTI-TRACK AUDIO PARSER */
   function parseDeepAudio(raw) {
+    if (!raw) return "Hindi DDP 5.1";
     const segRegex = /(TAM|TEL|HIN|ENG|MAL|KAN)[\w\.\-]*?(DDP?|DTS|AAC|AC3|TRUEHD|ATMOS)?[\.\s\-]*?([1-7]\.[0-2])/gi;
     let matches = [...raw.matchAll(segRegex)];
 
@@ -532,14 +533,13 @@
       return `${primary} ${parenMatch[1].replace(/~/g, '-').trim()}`;
     }
 
-    // Direct channel match
     if (/ddp\s*2\.0/i.test(raw)) return "Hindi DDP 2.0";
     if (/ddp\s*5\.1/i.test(raw)) return "Hindi DDP 5.1";
 
     return "Hindi DDP 5.1";
   }
 
-  // 2. Load pending items safely
+  // 2. Load pending items with Auto-Sanitizer (Never crash on backslashes)
   async function loadPendingList() {
     await loadMasterStats();
     const container = document.getElementById("pending-items-container");
@@ -555,14 +555,17 @@
         return;
       }
 
-      const text = await res.text();
+      let text = await res.text();
       if (!text || text.trim().length === 0) {
         pendingList = [];
       } else {
         try {
+          // AUTO-SANITIZER: Clean invalid markdown backslashes \[ and \] before parsing
+          text = text.replace(/\\\[/g, '[').replace(/\\\]/g, ']');
           const parsed = JSON.parse(text);
           pendingList = Array.isArray(parsed) ? parsed : [];
-        } catch (_) {
+        } catch (e) {
+          console.error("JSON parse error:", e);
           pendingList = [];
         }
       }
@@ -580,63 +583,56 @@
     }
   }
 
-  // 3. Render Cards (GDrive ID is completely HIDDEN from display)
+  // 3. Render Cards (Works for both standard and simplified new_name format)
   function renderPendingCards() {
     const container = document.getElementById("pending-items-container");
     container.innerHTML = "";
 
     pendingList.forEach((item, index) => {
       const parsed = item.parsed || {};
-      const title = parsed.title || "Unknown Title";
-      const year = parsed.year || "2026";
-      const rawName = item.original_filename || "";
       
-      // Verified Drive size
-      const size = item.file_size_gb || "5 GB";
+      // Extract title and year cleanly
+      let title = parsed.title;
+      let year = parsed.year;
+      if (!title && item.new_name) {
+        const titleMatch = item.new_name.match(/^(.+?)\s*\((\d{4})\)/);
+        title = titleMatch ? titleMatch[1] : item.new_name.split("[")[0].trim();
+        year = titleMatch ? titleMatch[2] : "2026";
+      }
+      title = title || "Unknown Title";
+      year = year || "2026";
+
+      const rawName = item.original_filename || item.new_name || "";
+      const size = item.file_size_gb || (item.new_name && item.new_name.match(/\[(\d+[\.\d]*\s*(?:GB|MB))\]/i)?.[1]) || "5 GB";
       const tgTag = parsed.telegram_tag || "";
       const deepAudio = parseDeepAudio(rawName);
 
+      // TMDb Poster Fallback
       const candidate = (item.tmdb_candidates && item.tmdb_candidates[0]) ? item.tmdb_candidates[0] : {};
-      const poster = candidate.poster || "https://via.placeholder.com/90x135?text=No+Poster";
+      const tmdbId = item.selected_tmdb_id || item.tmdb_id || candidate.tmdb_id || 0;
+      const poster = candidate.poster || (tmdbId ? `https://image.tmdb.org/t/p/w500/${tmdbId}` : "https://via.placeholder.com/90x135?text=No+Poster");
 
-      const dashName = `${title} (${year}) [${parsed.resolution || '1080p'}] [${parsed.source || 'WEB-DL'}] [${deepAudio}] [${size}].mkv`;
+      const dashName = item.new_name || `${title} (${year}) [${parsed.resolution || '1080p'}] [${parsed.source || 'WEB-DL'}] [${deepAudio}] [${size}].mkv`;
 
       const card = document.createElement("div");
       card.className = "pending-card";
       card.id = `card-item-${index}`;
 
-      // Candidates row (if multiple exist)
-      let candidatesHtml = "";
-      if (item.tmdb_candidates && item.tmdb_candidates.length > 1) {
-        candidatesHtml = `
-          <div class="candidate-switch-row">
-            <span style="font-size:0.7rem; color:var(--text-muted); font-weight:700;">Switch Match:</span>
-            ${item.tmdb_candidates.map((c, cIdx) => `
-              <span class="candidate-chip ${cIdx === 0 ? 'active' : ''}" onclick="switchCandidate(${index}, ${cIdx})">
-                ${escapeHtml(c.title)} (${c.year || ''})
-              </span>
-            `).join('')}
-          </div>
-        `;
-      }
-
       card.innerHTML = `
         <div style="padding:0 5px;">
           <input type="checkbox" class="card-select-cb" data-index="${index}" onchange="updateSelectedCount()">
         </div>
-        <img src="${poster}" class="poster-preview" id="poster-img-${index}" alt="">
+        <img src="${poster}" class="poster-preview" id="poster-img-${index}" alt="" onerror="this.src='https://via.placeholder.com/90x135?text=Poster'">
         <div class="card-content">
           <div class="raw-name-title">📁 ${escapeHtml(rawName)}</div>
           <div class="parsed-headline" id="title-headline-${index}">${escapeHtml(title)} (${year})</div>
           <div class="dash-preview-box" id="dash-preview-${index}">${escapeHtml(dashName)}</div>
-          
-          ${candidatesHtml}
 
           <div class="tags-row">
             ${tgTag ? `<span class="badge badge-tg">${escapeHtml(tgTag)}</span>` : ''}
-            <span class="badge badge-size">💾 ${escapeHtml(size)} (Verified Drive)</span>
-            <span class="badge">${escapeHtml(parsed.source || 'WEB-DL')}</span>
-            <span class="badge">${escapeHtml(parsed.resolution || '1080p')}</span>
+            <span class="badge badge-size">💾 ${escapeHtml(size)}</span>
+            <span class="badge">TMDB: ${escapeHtml(tmdbId || 'N/A')}</span>
+            <span class="badge" style="color:var(--laser-cyan);">${escapeHtml(item.target_chunk || currentTargetChunk)}</span>
           </div>
         </div>
 
@@ -651,49 +647,28 @@
     updateSelectedCount();
   }
 
-  // 🎯 Switch Active Candidate in Card
-  function switchCandidate(movieIdx, candIdx) {
-    const item = pendingList[movieIdx];
-    if (!item || !item.tmdb_candidates) return;
-    const selected = item.tmdb_candidates[candIdx];
-    if (!selected) return;
-
-    item.selected_tmdb_id = selected.tmdb_id;
-    item.parsed.title = selected.title;
-    item.parsed.year = parseInt(selected.year, 10) || item.parsed.year;
-
-    const posterEl = document.getElementById(`poster-img-${movieIdx}`);
-    if (posterEl && selected.poster) posterEl.src = selected.poster;
-
-    const headEl = document.getElementById(`title-headline-${movieIdx}`);
-    if (headEl) headEl.textContent = `${selected.title} (${item.parsed.year})`;
-
-    const chips = document.querySelectorAll(`#card-item-${movieIdx} .candidate-chip`);
-    chips.forEach((ch, idx) => {
-      ch.className = idx === candIdx ? 'candidate-chip active' : 'candidate-chip';
-    });
-
-    const deepAudio = parseDeepAudio(item.original_filename);
-    const size = item.file_size_gb || "5 GB";
-    const newDash = `${selected.title} (${item.parsed.year}) [${item.parsed.resolution || '1080p'}] [${item.parsed.source || 'WEB-DL'}] [${deepAudio}] [${size}].mkv`;
-    document.getElementById(`dash-preview-${movieIdx}`).textContent = newDash;
-  }
-
-  // ⚡ Open Compact Approval Modal (Raw -> Kodi Name)
+  // Open Preview Modal
   function openPreviewModal(index) {
     activeApproveIndex = index;
     const item = pendingList[index];
     const parsed = item.parsed || {};
-    const title = parsed.title || "Movie";
-    const year = parsed.year || 2026;
-    const size = item.file_size_gb || "5 GB";
-    const deepAudio = parseDeepAudio(item.original_filename);
+    
+    let title = parsed.title;
+    let year = parsed.year;
+    if (!title && item.new_name) {
+      const titleMatch = item.new_name.match(/^(.+?)\s*\((\d{4})\)/);
+      title = titleMatch ? titleMatch[1] : item.new_name.split("[")[0].trim();
+      year = titleMatch ? titleMatch[2] : "2026";
+    }
+    title = title || "Movie";
+    year = year || 2026;
 
-    const dashName = `${title} (${year}) [${parsed.resolution || '1080p'}] [${parsed.source || 'WEB-DL'}] [${deepAudio}] [${size}].mkv`;
+    const size = item.file_size_gb || (item.new_name && item.new_name.match(/\[(\d+[\.\d]*\s*(?:GB|MB))\]/i)?.[1]) || "5 GB";
+    const dashName = item.new_name || `${title} (${year}) [1080p] [WEB-DL] [${size}].mkv`;
 
-    document.getElementById("modal-raw-name").textContent = item.original_filename || "N/A";
+    document.getElementById("modal-raw-name").textContent = item.original_filename || item.new_name || "N/A";
     document.getElementById("modal-new-name").textContent = dashName;
-    document.getElementById("modal-chunk").textContent = currentTargetChunk;
+    document.getElementById("modal-chunk").textContent = item.target_chunk || currentTargetChunk;
     document.getElementById("modal-size").textContent = size;
     document.getElementById("modal-source").textContent = parsed.source || "WEB-DL";
 
@@ -712,7 +687,6 @@
     loadPendingList();
   }
 
-  // ⚡ Batch Checkbox Management
   function toggleSelectAll(checked) {
     const cbs = document.querySelectorAll(".card-select-cb");
     cbs.forEach(cb => cb.checked = checked);
@@ -733,7 +707,6 @@
 
     if (!confirm(`Are you sure you want to batch approve ${checked.length} selected movies?`)) return;
 
-    // Show Batch Modal
     const logBox = document.getElementById("batch-log-container");
     logBox.innerHTML = "";
     document.getElementById("btn-batch-done").style.display = "none";
@@ -743,7 +716,7 @@
 
     for (let idx of indicesToProcess) {
       const item = pendingList[idx];
-      const title = item.parsed?.title || item.original_filename;
+      const title = item.parsed?.title || item.new_name || "Movie";
       
       const logEntry = document.createElement("div");
       logEntry.textContent = `⏳ Ingesting: ${title}...`;
@@ -751,7 +724,7 @@
       logBox.scrollTop = logBox.scrollHeight;
 
       try {
-        await approveSingleItem(idx, true); // silent approve
+        await approveSingleItem(idx, true);
         logEntry.textContent = `✅ Synced: ${title}`;
         logEntry.style.color = "var(--laser-green)";
       } catch (e) {
@@ -763,31 +736,37 @@
     document.getElementById("btn-batch-done").style.display = "inline-flex";
   }
 
-  // 4. Send Item into inbox.html Form via Session Storage
   function sendToEditForm(index) {
     const item = pendingList[index];
     sessionStorage.setItem("moinuflix_edit_pending", JSON.stringify(item));
     window.location.href = "inbox.html?load_pending=1";
   }
 
-  // 5. Approve Single Movie (Accurate Multi-Audio + Verified Size + Dual Logo)
   async function approveSingleItem(index, isBatch = false) {
     const token = getToken();
     if (!token) return alert("GitHub Token missing! Click 'Token' button at top right.");
 
     const item = pendingList[index];
     const parsed = item.parsed || {};
-    const rawName = item.original_filename || "";
-    const title = parsed.title || "Movie";
-    const year = parsed.year || 2026;
+    const rawName = item.original_filename || item.new_name || "";
+    
+    let title = parsed.title;
+    let year = parsed.year;
+    if (!title && item.new_name) {
+      const titleMatch = item.new_name.match(/^(.+?)\s*\((\d{4})\)/);
+      title = titleMatch ? titleMatch[1] : item.new_name.split("[")[0].trim();
+      year = titleMatch ? parseInt(titleMatch[2], 10) : 2026;
+    }
+    title = title || "Movie";
+    year = year || 2026;
+
     const driveId = (item.gdrive_id || '').replace(/\s+/g, '');
-    const realSize = item.file_size_gb || "5 GB";
+    const realSize = item.file_size_gb || (item.new_name && item.new_name.match(/\[(\d+[\.\d]*\s*(?:GB|MB))\]/i)?.[1]) || "5 GB";
     const deepAudio = parseDeepAudio(rawName);
 
-    const candidate = (item.tmdb_candidates && item.tmdb_candidates[0]) ? item.tmdb_candidates[0] : {};
-    const tmdbId = item.selected_tmdb_id || candidate.tmdb_id;
+    const tmdbId = item.selected_tmdb_id || item.tmdb_id || 0;
 
-    if (!isBatch) showStatus(`⚡ Fetching official TMDb metadata for "${title}" with India Priority...`);
+    if (!isBatch) showStatus(`⚡ Fetching official TMDb metadata for "${title}"...`);
 
     let movieDetails = {
       title: title,
@@ -799,13 +778,13 @@
       original_language: "ta",
       genres: ["Action", "Drama"],
       collection: "",
-      plot: "",
+      plot: "Streamed via MoinuFlix Private High-Speed Server.",
       tagline: "",
       director: [],
       writers: [],
       cast: [],
-      poster: candidate.poster || "",
-      fanart: candidate.fanart || "",
+      poster: tmdbId ? `https://image.tmdb.org/t/p/w780/${tmdbId}` : "",
+      fanart: "",
       clearlogo: "",
       trailer: ""
     };
@@ -823,9 +802,9 @@
           movieDetails.original_language = td.original_language || "ta";
           movieDetails.genres = (td.genres || []).map(g => g.name);
           movieDetails.collection = td.belongs_to_collection ? td.belongs_to_collection.name : "";
-          movieDetails.plot = td.overview || "";
+          movieDetails.plot = td.overview || movieDetails.plot;
           movieDetails.tagline = td.tagline || "";
-          movieDetails.poster = td.poster_path ? `https://image.tmdb.org/t/p/w780${td.poster_path}` : candidate.poster;
+          movieDetails.poster = td.poster_path ? `https://image.tmdb.org/t/p/w780${td.poster_path}` : movieDetails.poster;
           movieDetails.fanart = td.backdrop_path ? `https://image.tmdb.org/t/p/original${td.backdrop_path}` : "";
 
           const crew = td.credits?.crew || [];
@@ -844,7 +823,6 @@
             movieDetails.certification = inR.release_dates[0].certification;
           }
 
-          // Dual Logo
           const tmdbLogos = td.images?.logos || [];
           if (tmdbLogos.length > 0) {
             const bestLogo = tmdbLogos.find(l => l.file_path && l.file_path.endsWith(".png")) || tmdbLogos[0];
@@ -870,23 +848,20 @@
               if (best) movieDetails.trailer = `https://www.youtube.com/watch?v=${best.key}`;
             }
           } catch (_) {}
-
-          if (!movieDetails.trailer) {
-            movieDetails.trailer = `https://www.youtube.com/results?search_query=${encodeURIComponent(movieDetails.title + ' ' + movieDetails.year + ' Official Trailer')}`;
-          }
         }
       } catch (_) {}
     }
 
     const streamUrl = `${WORKER_BASE}${driveId}${USER_AGENT}`;
-    const targetChunkPath = `resources/data/chunks/${currentTargetChunk}`;
+    const targetChunk = item.target_chunk || currentTargetChunk;
+    const targetChunkPath = targetChunk.startsWith("resources/") ? targetChunk : `resources/data/chunks/${targetChunk.replace(/^chunks\//, '')}`;
     const catalogPath = `resources/data/catalog.json`;
-    const finalDashName = `${movieDetails.title} (${movieDetails.year}) [${parsed.resolution || '1080p'}] [${parsed.source || 'WEB-DL'}] [${deepAudio}] [${realSize}].mkv`;
+    const finalDashName = item.new_name || `${movieDetails.title} (${movieDetails.year}) [${parsed.resolution || '1080p'}] [${parsed.source || 'WEB-DL'}] [${deepAudio}] [${realSize}].mkv`;
 
-    if (!isBatch) showStatus(`💾 Committing "${title}" to ${currentTargetChunk}...`);
+    if (!isBatch) showStatus(`💾 Committing "${title}" to ${targetChunkPath}...`);
 
-    // 1. Commit to Chunk
-    let chunkData = { chunk_id: currentTargetChunk.replace(".json", ""), movie_count: 0, movies: [] };
+    // 1. Commit to Target Chunk
+    let chunkData = { chunk_id: targetChunk.replace(".json", ""), movie_count: 0, movies: [] };
     let chunkSha = undefined;
 
     const cRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${targetChunkPath}?t=${Date.now()}`, {
@@ -979,9 +954,9 @@
     else chunkData.movies.push(fullMovieRecord);
     chunkData.movie_count = chunkData.movies.length;
 
-    await commitGithubFile(targetChunkPath, chunkData, `Approve & Add ${title} to ${currentTargetChunk}`, chunkSha, token);
+    await commitGithubFile(targetChunkPath, chunkData, `Approve & Add ${title} to ${targetChunk}`, chunkSha, token);
 
-    // 2. Commit to Catalog
+    // 2. Commit to Catalog Index
     let catData = { movies: [] };
     let catSha = undefined;
 
@@ -1046,11 +1021,10 @@
     }
   }
 
-  // 6. Dismiss Item
   async function rejectItem(index) {
     const token = getToken();
     if (!token) return alert("GitHub Token missing!");
-    const title = pendingList[index].parsed?.title || "movie";
+    const title = pendingList[index].parsed?.title || pendingList[index].new_name || "movie";
 
     if (!confirm(`Remove "${title}" from pending queue without saving?`)) return;
 
