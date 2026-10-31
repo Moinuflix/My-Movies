@@ -1,5 +1,83 @@
 [
   {
+    "id": "1tMVoylZpQAlv8_0zirgEMS8YZAlrxW6Z",
+    "name": "Sigma (2026) [4K UHD] [Netflix] [Dolby Digital Plus].mkv",
+    "title": "Sigma",
+    "original_title": "சிக்மா",
+    "original_language": "ta",
+    "year": 2026,
+    "runtime": 145,
+    "tmdb_id": 1395215,
+    "rating": 4,
+    "collection": "",
+    "director": [
+      "Jason Sanjay"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Sundeep Kishan",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/qUGN6rvwu9Qef3DGenha2pIEpNY.jpg"
+      },
+      {
+        "name": "Faria Abdullah",
+        "role": "RJ Sam",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/gZo1klQKtU2k15eP2Own84aPZom.jpg"
+      },
+      {
+        "name": "Raju Sundaram",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/zNnOzgKlosRdmO4bG8aDMAYEWWs.jpg"
+      },
+      {
+        "name": "Sampath Raj",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/oQgoihP26Hyg6gMFVpACRAygZli.jpg"
+      },
+      {
+        "name": "Shiv Panditt",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/iLBrhlwv7MO1w8fDZoIald1LDHt.jpg"
+      }
+    ],
+    "plot": "A daring treasure hunter throws caution to the wind, outwitting deadly traps and treacherous allies with sheer nerve and cunning.",
+    "poster": "https://image.tmdb.org/t/p/w500/18Lhkc3nf92bY1cacQomXIqihhN.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/ljNmU4qn8WJbMe9JwH3FAdZiRAi.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1tMVoylZpQAlv8_0zirgEMS8YZAlrxW6Z|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "4K UHD",
+      "source": "Netflix",
+      "codec": "x265",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": "13GB"
+    },
+    "versions": [
+      {
+        "id": "1tMVoylZpQAlv8_0zirgEMS8YZAlrxW6Z",
+        "name": "Sigma (2026) [4K UHD] [Netflix] [Dolby Digital Plus].mkv",
+        "quality": "4K UHD • Netflix • Dolby Digital Plus [13GB]",
+        "source": "Netflix",
+        "codec": "x265",
+        "resolution": "4K UHD",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1tMVoylZpQAlv8_0zirgEMS8YZAlrxW6Z|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "4K UHD",
+          "source": "Netflix",
+          "codec": "x265",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "13GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "1d93Fp_As7S39ri5m7Kxa8OGzB7A02Pqh",
     "name": "DSP (2022) [1080p] [WEB-DL] [Dolby Digital Plus].mkv",
     "title": "DSP",
