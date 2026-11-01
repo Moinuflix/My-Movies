@@ -14425,5 +14425,35 @@
     "tmdb_candidates": [],
     "selected_tmdb_id": null,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1Ivyertgq_hk-cQ5yp5-0X9EVxmiwivHJ",
+    "original_filename": "@PrakyTV - The Paradise (2026) TRUE WEB-DL - 1080p HQ - AVC - UNTOUCHED - [Tamil + Telugu + Hindi + Malayalam + Kannada] - (DD+5.1 - 640Kbps & AAC 2.0) - 10.1GB - ESub.mkv",
+    "file_size_bytes": 10879608596,
+    "file_size_gb": "10 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-01T07:54:35.031Z",
+    "parsed": {
+      "title": "The Paradise (",
+      "year": 2026,
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x264",
+      "telegram_tag": "@PrakyTV",
+      "standard_filename": "The Paradise ( (2026) [1080p] [WEB-DL] [Tamil + Telugu + Hindi + Malayalam + Kannada] [10 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 1376856,
+        "title": "The Paradise",
+        "year": "2026",
+        "poster": "https://image.tmdb.org/t/p/w500/smghVMoMWSIFi5dgIz4w1UIcEcY.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/7AcH5TFppoMusNkCBLaQP6UOODp.jpg",
+        "rating": 4.9
+      }
+    ],
+    "selected_tmdb_id": 1376856,
+    "approval_status": "pending"
   }
 ]
