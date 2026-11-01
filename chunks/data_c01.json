@@ -1,5 +1,83 @@
 [
   {
+    "id": "1Ivyertgq_hk-cQ5yp5-0X9EVxmiwivHJ",
+    "name": "The Paradise (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
+    "title": "The Paradise",
+    "original_title": "ది ప్యారడైజ్",
+    "original_language": "te",
+    "year": 2026,
+    "runtime": 170,
+    "tmdb_id": 1376856,
+    "rating": 4.9,
+    "collection": "",
+    "director": [
+      "Srikanth Odela"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Nani",
+        "role": "Sarakka 'Jadal'",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/jfOH4sUWs3VXuGUlo0VLMYNRBQ4.jpg"
+      },
+      {
+        "name": "Mohan Babu",
+        "role": "Shikanja Maalik",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/zwqcXtnk0ju0nhuhvZXSLL2nLIy.jpg"
+      },
+      {
+        "name": "Kayadu Lohar",
+        "role": "Subbulakshmi 'Subbu'",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/pHaMPnrfnWvTPZA4IOmZk8BHY0U.jpg"
+      },
+      {
+        "name": "Sonali Kulkarni",
+        "role": "Sammakka",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/aQeM6N2JgGFbI5VoltWhkxw6OQC.jpg"
+      },
+      {
+        "name": "Raghav Juyal",
+        "role": "Vikram Maalik",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/ncJa8IBYfDknQLpjeciaQy6dXkH.jpg"
+      }
+    ],
+    "plot": "In 1980s Secunderabad, a marginalized tribe battles discrimination and fights for citizenship under an unexpected leader's guidance, challenging systemic oppression.",
+    "poster": "https://image.tmdb.org/t/p/w500/smghVMoMWSIFi5dgIz4w1UIcEcY.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/7AcH5TFppoMusNkCBLaQP6UOODp.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Ivyertgq_hk-cQ5yp5-0X9EVxmiwivHJ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x265",
+      "audio": "Dolby Atmos",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": ""
+    },
+    "versions": [
+      {
+        "id": "1Ivyertgq_hk-cQ5yp5-0X9EVxmiwivHJ",
+        "name": "The Paradise (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
+        "quality": "1080p • WEB-DL • Dolby Atmos",
+        "source": "WEB-DL",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Ivyertgq_hk-cQ5yp5-0X9EVxmiwivHJ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": ""
+        }
+      }
+    ]
+  },
+  {
     "id": "1tMVoylZpQAlv8_0zirgEMS8YZAlrxW6Z",
     "name": "Sigma (2026) [4K UHD] [Netflix] [Dolby Digital Plus].mkv",
     "title": "Sigma",
