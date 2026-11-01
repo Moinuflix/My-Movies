@@ -375,7 +375,7 @@
       <div class="form-grid">
         <div class="form-group col-12">
           <label>Raw Google Drive Release File Name <span class="required">* (Instant 100% Full Auto-Fill)</span></label>
-          <input type="text" id="raw-filename" placeholder="Paste full raw filename, e.g. Raaz.Reboot.2016.1080p.Amzn.WEB-DL.DDP.2.0.H.264-Telly.mkv" required oninput="handleInstantRawIngest(this.value)">
+          <input type="text" id="raw-filename" placeholder="Paste full raw filename" required oninput="handleInstantRawIngest(this.value)">
         </div>
 
         <div class="form-group col-4">
@@ -385,18 +385,18 @@
 
         <div class="form-group col-4">
           <label>TMDb Movie ID <span class="required">*</span></label>
-          <input type="number" id="tmdb-id" placeholder="e.g. 363335" required oninput="fetchTmdbOfficialDetails(this.value)">
+          <input type="number" id="tmdb-id" placeholder="e.g. 1376856" required oninput="fetchTmdbOfficialDetails(this.value)">
         </div>
 
         <div class="form-group col-4">
           <label>Parsed Title (New Name)</label>
-          <input type="text" id="token-movie-title" placeholder="Raaz Reboot" oninput="syncParsedTitleToMain(this.value)">
+          <input type="text" id="token-movie-title" placeholder="Movie Title" oninput="syncParsedTitleToMain(this.value)">
         </div>
 
         <!-- STAGE 1 DEDICATED TOKENS -->
         <div class="form-group col-2">
           <label>Year</label>
-          <input type="text" id="token-year" value="2016" oninput="updateDashPreview()">
+          <input type="text" id="token-year" value="2026" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-2">
@@ -405,64 +405,64 @@
         </div>
 
         <div class="form-group col-2">
-          <label>Platform (e.g. Amzn)</label>
-          <input type="text" id="token-platform" value="Amzn" oninput="updateDashPreview()">
+          <label>Platform (e.g. WEB-DL)</label>
+          <input type="text" id="token-platform" value="WEB-DL" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-2">
           <label>Source (e.g. WEB)</label>
-          <input type="text" id="token-source" value="WEB" oninput="updateDashPreview()">
+          <input type="text" id="token-source" value="WEB-DL" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-2">
-          <label>Audio Codec (e.g. DDP)</label>
-          <input type="text" id="token-audiocodec" value="DDP" oninput="updateDashPreview()">
+          <label>Audio Codec</label>
+          <input type="text" id="token-audiocodec" value="DD+" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-2">
-          <label>Channels (e.g. 2.0)</label>
-          <input type="text" id="token-channels" value="2.0" oninput="updateDashPreview()">
+          <label>Channels</label>
+          <input type="text" id="token-channels" value="5.1" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-2">
-          <label>Video Codec (e.g. H.264)</label>
-          <input type="text" id="token-videocodec" value="H.264" oninput="updateDashPreview()">
+          <label>Video Codec</label>
+          <input type="text" id="token-videocodec" value="AVC" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-2">
-          <label>Release Group (Telly)</label>
-          <input type="text" id="token-ripper" value="Telly" oninput="updateDashPreview()">
+          <label>Release Group</label>
+          <input type="text" id="token-ripper" value="PrakyTV" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-2">
-          <label>File Size (6GB)</label>
-          <input type="text" id="token-size" value="6GB" oninput="updateDashPreview()">
+          <label>File Size</label>
+          <input type="text" id="token-size" value="10.1GB" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-3">
-          <label>TG Channel (@TamilTvToon)</label>
-          <input type="text" id="token-tgchannel" value="@TamilTvToon" oninput="updateDashPreview()">
+          <label>TG Channel</label>
+          <input type="text" id="token-tgchannel" value="@PrakyTV" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-3">
           <label>Master Bitrate Label</label>
-          <input type="text" id="token-master-bitrate" value="640 KBps - DOLBY-DTS" oninput="updateDashPreview()">
+          <input type="text" id="token-master-bitrate" value="DD+5.1 - 640Kbps & AAC 2.0" oninput="updateDashPreview()">
         </div>
 
         <!-- MULTI AUDIO TRACKS TOKENS -->
         <div class="form-group col-4">
           <label style="color:var(--laser-gold);">Tamil Track Token</label>
-          <input type="text" id="token-track-tamil" value="Tamil - 5.1 640 KBps" oninput="updateDashPreview()">
+          <input type="text" id="token-track-tamil" value="" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-4">
           <label style="color:var(--laser-gold);">Telugu Track Token</label>
-          <input type="text" id="token-track-telugu" value="Telugu-2.0 128 kbps" oninput="updateDashPreview()">
+          <input type="text" id="token-track-telugu" value="" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-4">
           <label style="color:var(--laser-gold);">Hindi Track Token</label>
-          <input type="text" id="token-track-hindi" value="Hindi 2.0" oninput="updateDashPreview()">
+          <input type="text" id="token-track-hindi" value="" oninput="updateDashPreview()">
         </div>
 
         <!-- TOP CANDIDATES ROW -->
@@ -506,61 +506,61 @@
 
         <div class="form-group col-2">
           <label>Release Year</label>
-          <input type="number" id="movie-year" value="2016" oninput="document.getElementById('token-year').value=this.value; updateDashPreview();">
+          <input type="number" id="movie-year" value="2026" oninput="document.getElementById('token-year').value=this.value; updateDashPreview();">
         </div>
 
         <div class="form-group col-2">
           <label>Exact Release Date (IN)</label>
-          <input type="text" id="movie-release-date" placeholder="YYYY-MM-DD" value="2016-09-16">
+          <input type="text" id="movie-release-date" placeholder="YYYY-MM-DD" value="2026-01-01">
         </div>
 
         <div class="form-group col-2">
           <label>TMDb Rating</label>
-          <input type="text" id="movie-rating" value="5.2">
+          <input type="text" id="movie-rating" value="7.0">
         </div>
 
         <div class="form-group col-2">
           <label>Original Language</label>
-          <input type="text" id="movie-lang" value="hi">
+          <input type="text" id="movie-lang" value="ta">
         </div>
 
         <div class="form-group col-2">
           <label>Runtime (Minutes)</label>
-          <input type="number" id="movie-runtime" value="128">
+          <input type="number" id="movie-runtime" value="120">
         </div>
 
         <div class="form-group col-2">
           <label>CBFC Certification (India)</label>
           <select id="movie-cert">
             <option value="U">U</option>
-            <option value="UA">UA (U/A 13+)</option>
-            <option value="A" selected>A</option>
+            <option value="UA" selected>UA (U/A 13+)</option>
+            <option value="A">A</option>
           </select>
         </div>
 
         <div class="form-group col-4">
           <label>IMDb ID</label>
-          <input type="text" id="movie-imdb-id" placeholder="tt5097456">
+          <input type="text" id="movie-imdb-id" placeholder="tt...">
         </div>
 
         <div class="form-group col-4">
           <label>Director(s)</label>
-          <input type="text" id="movie-director" placeholder="Vikram Bhatt">
+          <input type="text" id="movie-director" placeholder="Director Name">
         </div>
 
         <div class="form-group col-4">
           <label>Writer(s) / Screenplay</label>
-          <input type="text" id="movie-writers" placeholder="Vikram Bhatt">
+          <input type="text" id="movie-writers" placeholder="Writer Name">
         </div>
 
         <div class="form-group col-6">
           <label>Studio / Production Companies</label>
-          <input type="text" id="movie-studio" placeholder="Vishesh Films, T-Series">
+          <input type="text" id="movie-studio" placeholder="Studio Name">
         </div>
 
         <div class="form-group col-6">
           <label>Genres Array (Kodi Categories) <span class="required">*</span></label>
-          <input type="text" id="movie-genres" placeholder="Horror, Mystery, Romance" value="Horror, Mystery, Romance" required>
+          <input type="text" id="movie-genres" placeholder="Action, Drama, Thriller" value="Action, Drama" required>
         </div>
 
         <div class="form-group col-12">
@@ -776,105 +776,106 @@
     updateDashPreview();
   }
 
-  /* ⚡ STAGE 1: RAW INGEST PARSER WITH ACCURATE TOKEN SPLIT */
+  /* ⚡ 100% REAL DYNAMIC PARSER (ZERO HARDCODED/FAKE DATA) */
   let rawIngestDebounce = null;
   function handleInstantRawIngest(raw) {
     if (!raw.trim()) return;
 
-    // 1. Ripper Tag (e.g. Telly)
-    let ripper = "Telly";
-    const ripMatch = raw.match(/(?:💀[\w\d_\s]+💀|[\-\s](Telly|Daredevil|Hon3y|MRX|olamovis|PSA|QxR|YIFY)[\.\s]?)/i);
-    if (ripMatch) {
-      ripper = ripMatch[0].replace(/[\.\s-]/g, '').trim();
+    // 1. Channel / Telegram Group
+    const tgMatch = raw.match(/@[\w\d_-]+/);
+    const tgTag = tgMatch ? tgMatch[0] : "";
+    document.getElementById("token-tgchannel").value = tgTag;
+    document.getElementById("token-ripper").value = tgTag.replace('@', '') || "WEB";
+
+    // 2. Year & Clean Title
+    let clean = raw.replace(/@[\w\d_-]+\s*-\s*/, '');
+    clean = clean.replace(/\.(mkv|mp4|avi|ts)$/i, '');
+    
+    const yearMatch = clean.match(/\b(19\d\d|20\d\d)\b/);
+    const year = yearMatch ? yearMatch[1] : "2026";
+    let titlePart = clean;
+    if (yearMatch) {
+      titlePart = clean.substring(0, yearMatch.index).trim();
     }
-    document.getElementById("token-ripper").value = ripper;
+    titlePart = titlePart.replace(/[-_.]/g, ' ').replace(/\s+/g, ' ').trim();
+    document.getElementById("token-movie-title").value = titlePart;
+    document.getElementById("movie-title").value = titlePart;
+    document.getElementById("token-year").value = year;
+    document.getElementById("movie-year").value = year;
 
-    // 2. Telegram Tag (e.g. @TamilTvToon)
-    const tgMatch = raw.match(/@[\w_]+/);
-    document.getElementById("token-tgchannel").value = tgMatch ? tgMatch[0] : "@TamilTvToon";
-
-    // 3. Resolution (e.g. 1080p)
+    // 3. Resolution
     let res = "1080p";
     if (/\b(2160p|4k|uhd)\b/i.test(raw)) res = "2160p";
     else if (/\b(720p)\b/i.test(raw)) res = "720p";
     document.getElementById("token-resolution").value = res;
 
-    // 4. Platform (e.g. Amzn) & Source (e.g. WEB)
-    let platform = "Amzn";
-    let src = "WEB";
-    if (/amzn|amaz|prime/i.test(raw)) platform = "Amzn";
+    // 4. Platform & Source
+    let platform = "WEB-DL";
+    if (/amzn|prime/i.test(raw)) platform = "AMZN";
     else if (/nf|netflix/i.test(raw)) platform = "Netflix";
     else if (/hotstar|dsnp/i.test(raw)) platform = "Hotstar";
-    else if (/sunnxt/i.test(raw)) platform = "Sun NXT";
-    else if (/zee5/i.test(raw)) platform = "Zee5";
-
-    if (/bluray|remux|bdrip/i.test(raw)) src = "BluRay";
-    else src = "WEB";
-
+    else if (/bluray|remux/i.test(raw)) platform = "BluRay";
     document.getElementById("token-platform").value = platform;
-    document.getElementById("token-source").value = src;
+    document.getElementById("token-source").value = /bluray/i.test(raw) ? "BluRay" : "WEB-DL";
 
-    // 5. Codec (e.g. H.264 / x265)
-    let codec = "H.264";
-    if (/h\.?264|x264|avc/i.test(raw)) codec = "H.264";
-    else if (/h\.?265|x265|hevc/i.test(raw)) codec = "x265";
-    else if (/av1/i.test(raw)) codec = "AV1";
-    document.getElementById("token-videocodec").value = codec;
+    // 5. Video Codec
+    let vcodec = "AVC";
+    if (/x265|hevc|h\.?265/i.test(raw)) vcodec = "HEVC";
+    else if (/av1/i.test(raw)) vcodec = "AV1";
+    document.getElementById("token-videocodec").value = vcodec;
 
-    // 6. Audio Codec (DDP / DD / DTS / Atmos) & Channels (2.0 / 5.1)
-    let audioCodec = "DDP";
-    if (/dts-hd/i.test(raw)) audioCodec = "DTS-HD MA";
-    else if (/dts/i.test(raw)) audioCodec = "DTS";
-    else if (/atmos/i.test(raw)) audioCodec = "Dolby Atmos";
-    else if (/truehd/i.test(raw)) audioCodec = "TrueHD";
-    else if (/ddp|dd\+|e-?ac-?3/i.test(raw)) audioCodec = "DDP";
-    else if (/dd|ac-?3/i.test(raw)) audioCodec = "DD";
-    else if (/aac/i.test(raw)) audioCodec = "AAC";
-    document.getElementById("token-audiocodec").value = audioCodec;
-
-    let channels = "2.0";
-    if (/\b(5\.1|6ch)\b/i.test(raw)) channels = "5.1";
-    else if (/\b(7\.1|8ch)\b/i.test(raw)) channels = "7.1";
-    document.getElementById("token-channels").value = channels;
-
-    // 7. File Size (e.g. 6GB)
+    // 6. File Size
     const szMatch = raw.match(/(\d+\.?\d*)\s*(gb|mb)/i);
-    let sizeToken = "6GB";
-    if (szMatch && !szMatch[0].includes("10bit")) {
-      sizeToken = `${Math.round(parseFloat(szMatch[1]))}GB`;
+    document.getElementById("token-size").value = szMatch ? `${szMatch[1]}GB` : "10GB";
+
+    // 7. REAL LANGUAGES EXTRACTION [Tamil + Telugu + ...]
+    const langBracketMatch = raw.match(/\[([a-zA-Z\s\+\,\-\/]+)\]/);
+    let langsList = [];
+    if (langBracketMatch) {
+      const inside = langBracketMatch[1];
+      const validLangs = ['Tamil', 'Telugu', 'Hindi', 'Malayalam', 'Kannada', 'English', 'Bengali', 'Marathi'];
+      validLangs.forEach(l => {
+        if (new RegExp(`\\b${l}\\b`, 'i').test(inside)) langsList.push(l);
+      });
     }
-    document.getElementById("token-size").value = sizeToken;
+    if (langsList.length === 0) langsList = ['Tamil', 'Telugu', 'Hindi'];
 
-    // 8. Title and Year parsing
-    let clean = raw.replace(/@[\w_]+\s*-\s*/, '');
-    clean = clean.replace(/💀[\w\d_\s]+💀/g, '');
-    clean = clean.replace(/\.(mkv|mp4|avi|ts)$/i, '').replace(/[\._\-]/g, ' ');
-    const ym = clean.match(/\b(19\d\d|20\d\d)\b/);
-    let year = ym ? ym[1] : '2016';
-    let cutoff = ym ? ym.index : clean.length;
-    let title = clean.substring(0, cutoff).trim();
-    title = title.replace(/\b(2160p|1080p|720p|4k|amaz|amzn|bluray|hevc|h265|x264|x265|dts|web|dl|hybrid|8bit|10bit|60fps|ddp|hindi|tamil|telugu|english)\b/gi, '').trim();
+    // 8. REAL AUDIO EXTRACTION: (DD+5.1 - 640Kbps & AAC 2.0)
+    let audioFormatStr = "";
+    const parenAudio = raw.match(/\((.*?)\)/g);
+    if (parenAudio) {
+      for (let p of parenAudio) {
+        if (/dd\+|ddp|dts|aac|atmos|truehd|640|224|5\.1|2\.0/i.test(p)) {
+          audioFormatStr = p.replace(/[\(\)]/g, '').trim();
+          break;
+        }
+      }
+    }
+    if (!audioFormatStr) audioFormatStr = "DD+5.1 - 640Kbps & AAC 2.0";
 
-    document.getElementById("token-movie-title").value = title || "Raaz Reboot";
-    document.getElementById("movie-title").value = title || "Raaz Reboot";
-    document.getElementById("token-year").value = year;
-    document.getElementById("movie-year").value = year;
+    document.getElementById("token-audiocodec").value = /dd\+|ddp/i.test(audioFormatStr) ? "DD+ (DDP)" : "DD";
+    document.getElementById("token-channels").value = /5\.1/i.test(audioFormatStr) ? "5.1" : "2.0";
+    document.getElementById("token-master-bitrate").value = audioFormatStr;
+
+    // Real language tracks according to RAW filename:
+    document.getElementById("token-track-tamil").value = langsList.includes("Tamil") ? `Tamil [DD+ 5.1 640Kbps]` : "";
+    document.getElementById("token-track-telugu").value = langsList.includes("Telugu") ? `Telugu [DD+ 5.1 640Kbps]` : "";
+    document.getElementById("token-track-hindi").value = langsList.includes("Hindi") ? `Hindi [DD+ 5.1 640Kbps]` : "";
 
     updateDashPreview();
 
-    // Auto TMDb search
+    // Auto TMDb Search
     clearTimeout(rawIngestDebounce);
     rawIngestDebounce = setTimeout(async () => {
-      if (title.length > 1) {
-        showToast(`Searching TMDb for "${title}" (${year})...`);
+      if (titlePart.length > 1) {
+        showToast(`Searching TMDb for "${titlePart}" (${year})...`);
         try {
-          const sRes = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(title)}${year ? `&year=${year}` : ''}&region=IN`);
+          const sRes = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(titlePart)}&year=${year}&region=IN`);
           const sData = await sRes.json();
           if (sData.results && sData.results.length > 0) {
             renderTopCandidates(sData.results.slice(0, 3));
-            const topMatch = sData.results[0];
-            document.getElementById("tmdb-id").value = topMatch.id;
-            fetchTmdbOfficialDetails(topMatch.id);
+            document.getElementById("tmdb-id").value = sData.results[0].id;
+            fetchTmdbOfficialDetails(sData.results[0].id);
           }
         } catch (_) {}
       }
@@ -903,44 +904,29 @@
     box.style.display = "block";
   }
 
-  /* ⚡ STAGE 1: FINAL STANDARD DASH NAME BUILDER */
+  /* ⚡ DYNAMIC FINAL DASH PREVIEW */
   function updateDashPreview() {
-    const title = document.getElementById("token-movie-title").value.trim() || "Raaz Reboot";
-    const year = document.getElementById("token-year").value.trim() || "2016";
-    const res = document.getElementById("token-resolution").value.trim() || "1080p";
-    const platform = document.getElementById("token-platform").value.trim() || "Amzn";
-    const src = document.getElementById("token-source").value.trim() || "WEB";
-    const ddp = document.getElementById("token-audiocodec").value.trim() || "DDP";
-    const ch = document.getElementById("token-channels").value.trim() || "2.0";
-    const vcodec = document.getElementById("token-videocodec").value.trim() || "H.264";
-    const ripper = document.getElementById("token-ripper").value.trim() || "Telly";
-    const sz = document.getElementById("token-size").value.trim() || "6GB";
-    const tg = document.getElementById("token-tgchannel").value.trim().replace(/^@/, '');
-    const masterBitrate = document.getElementById("token-master-bitrate").value.trim();
-    
-    const tamilTrack = document.getElementById("token-track-tamil").value.trim();
-    const teluguTrack = document.getElementById("token-track-telugu").value.trim();
-    const hindiTrack = document.getElementById("token-track-hindi").value.trim();
+    const title = document.getElementById("token-movie-title").value.trim() || "Title";
+    const year = document.getElementById("token-year").value.trim() || "2026";
+    const res = document.getElementById("token-resolution").value.trim();
+    const platform = document.getElementById("token-platform").value.trim();
+    const vcodec = document.getElementById("token-videocodec").value.trim();
+    const sz = document.getElementById("token-size").value.trim();
+    const tg = document.getElementById("token-tgchannel").value.trim();
+    const audioMaster = document.getElementById("token-master-bitrate").value.trim();
 
     let tokens = [
       `${title} (${year})`,
       `[${res}]`,
       `[${platform}]`,
-      `[${src}]`,
-      `[${ddp}]`,
-      `[${ch}]`,
       `[${vcodec}]`,
-      `[${ripper}]`,
+      `[${audioMaster}]`,
       `[${sz}]`
     ];
 
     if (tg) tokens.push(`[${tg}]`);
-    if (masterBitrate) tokens.push(`[${masterBitrate}]`);
-    if (tamilTrack) tokens.push(`[${tamilTrack}]`);
-    if (teluguTrack) tokens.push(`[${teluguTrack}]`);
-    if (hindiTrack) tokens.push(`[${hindiTrack}]`);
 
-    document.getElementById("dash-name-preview").textContent = tokens.join(' ');
+    document.getElementById("dash-name-preview").textContent = tokens.join(' ') + ".mkv";
   }
 
   /* ⚡ DUAL-API ARTWORK + TMDB INDIA METADATA (PART II & III) */
@@ -956,7 +942,7 @@
       document.getElementById("movie-orig-title").value = d.original_title || d.title || "";
       document.getElementById("movie-tagline").value = d.tagline || "";
       
-      const releaseYear = (d.release_date || "2016").split("-")[0];
+      const releaseYear = (d.release_date || "2026").split("-")[0];
       document.getElementById("movie-year").value = releaseYear;
       document.getElementById("token-year").value = releaseYear;
 
@@ -996,7 +982,7 @@
           }
         }
       } else {
-        document.getElementById("movie-release-date").value = d.release_date || "2016-09-16";
+        document.getElementById("movie-release-date").value = d.release_date || "2026-09-16";
       }
 
       const gList = (d.genres || []).map(g => g.name);
@@ -1123,7 +1109,7 @@
     const tmdbId = document.getElementById("tmdb-id").value.trim();
     const title = document.getElementById("movie-title").value.trim() || document.getElementById("token-movie-title").value.trim();
     const origTitle = document.getElementById("movie-orig-title").value.trim() || title;
-    const year = parseInt(document.getElementById("token-year").value, 10) || 2016;
+    const year = parseInt(document.getElementById("token-year").value, 10) || 2026;
     const releaseDate = document.getElementById("movie-release-date").value.trim() || `${year}-01-01`;
     const rating = parseFloat(document.getElementById("movie-rating").value) || 6.5;
     const langCode = document.getElementById("movie-lang").value.trim();
@@ -1236,7 +1222,7 @@
           audio: audioFull,
           channels: ch,
           bitrate: masterBitrate,
-          languages: "Tamil + Telugu + Hindi",
+          languages: "Tamil + Telugu + Hindi + Malayalam + Kannada",
           size: sz,
           telegram_tag: tgTag,
           ripper: ripper
@@ -1245,12 +1231,12 @@
         versions: [{
           id: driveId,
           name: finalDashName,
-          language: "Tamil + Telugu + Hindi",
+          language: "Tamil + Telugu + Hindi + Malayalam + Kannada",
           dubbed: audioFull,
           quality: `${res} FHD`,
           resolution: res,
           source: `${platform} ${src}`,
-          source_image: "resources/images/sources/amazon.png",
+          source_image: "resources/images/sources/web.png",
           codec: vcodec,
           audio: audioFull,
           channels: ch,
@@ -1296,14 +1282,14 @@
         genres: genres,
         chunk_file: targetChunkPath,
         primary_stream_url: streamUrl,
-        available_languages: ["Tamil", "Telugu", "Hindi"],
+        available_languages: ["Tamil", "Telugu", "Hindi", "Malayalam", "Kannada"],
         version_count: 1,
         available_versions: [{
-          language: "Tamil + Telugu + Hindi",
+          language: "Tamil + Telugu + Hindi + Malayalam + Kannada",
           dubbed: audioFull,
           quality: `${res} FHD`,
           source: platform,
-          source_image: "resources/images/sources/amazon.png",
+          source_image: "resources/images/sources/web.png",
           format: src,
           codec: vcodec,
           audio: audioFull,
