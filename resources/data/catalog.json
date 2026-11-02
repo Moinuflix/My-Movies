@@ -299,6 +299,40 @@
           "channels": "5.1"
         }
       ]
+    },
+    {
+      "id": "1NnepzdhRKrqpLI1nXmQcm7iSe9uwsOOL",
+      "tmdb_id": 127498,
+      "title": "Raaz 3",
+      "year": 2012,
+      "poster": "https://image.tmdb.org/t/p/w780/hn51Wxgjznc5YDHhIwlUH3VyuEU.jpg",
+      "fanart": "https://image.tmdb.org/t/p/original/auQwNrtTT4fdz32dcqGUffpoFN5.jpg",
+      "logo": "https://image.tmdb.org/t/p/original/ogQDWTgfjADn6mMlOsMggeP0zRJ.png",
+      "rating": 5,
+      "original_language": "hi",
+      "genres": [
+        "Horror",
+        "Thriller"
+      ],
+      "collection": "Raaz Collection",
+      "chunk_file": "resources/data/chunks/chunk_01.json",
+      "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1NnepzdhRKrqpLI1nXmQcm7iSe9uwsOOL|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "available_languages": [
+        "Hindi DDP 5.1"
+      ],
+      "version_count": 1,
+      "available_versions": [
+        {
+          "language": "Hindi DDP 5.1",
+          "quality": "1080p FHD",
+          "source": "AMZN",
+          "source_image": "resources/images/sources/web.png",
+          "format": "AMZN",
+          "codec": "x264",
+          "audio": "Hindi DDP 5.1",
+          "channels": "5.1"
+        }
+      ]
     }
   ]
 }
