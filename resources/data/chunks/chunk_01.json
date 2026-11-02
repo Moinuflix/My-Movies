@@ -1,6 +1,6 @@
 {
   "chunk_id": "chunk_01",
-  "movie_count": 13,
+  "movie_count": 14,
   "movies": [
     {
       "id": "1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU",
@@ -1260,6 +1260,141 @@
           "size": "11 GB",
           "telegram_tag": "",
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1h5eSNpOMRHVvqGVxT6F2knVZ-oDFFEWT|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      ]
+    },
+    {
+      "id": "1NnepzdhRKrqpLI1nXmQcm7iSe9uwsOOL",
+      "tmdb_id": 127498,
+      "name": "Raaz 3 (2012) [1080p] [AMZN] [Hindi DDP 5.1] [13 GB].mkv",
+      "title": "Raaz 3",
+      "original_title": "राज़ 3",
+      "year": 2012,
+      "runtime": 139,
+      "release_date": "2012-01-01",
+      "certification": "A",
+      "original_language": "hi",
+      "genres": [
+        "Horror",
+        "Thriller"
+      ],
+      "collection": "Raaz Collection",
+      "tagline": "When Desires Turn Evil",
+      "plot": "When an ingénue's sudden popularity threatens to shove her out of the spotlight, a movie star uses black magic in an attempt to derail her career.",
+      "telegram_channel": "",
+      "country": [
+        "India"
+      ],
+      "studio": [
+        "AMZN"
+      ],
+      "director": [
+        {
+          "name": "Vikram Bhatt"
+        }
+      ],
+      "writers": [
+        {
+          "name": "Shagufta Rafique",
+          "job": "Story"
+        }
+      ],
+      "cast": [
+        {
+          "name": "Bipasha Basu",
+          "character": "Shanaya Shekhar",
+          "profile": "https://image.tmdb.org/t/p/w185/j4p0NOHUNvOCBcfaZiCoyxdJJou.jpg",
+          "link": "https://www.themoviedb.org/person/85035"
+        },
+        {
+          "name": "Emraan Hashmi",
+          "character": "Aditya Arora",
+          "profile": "https://image.tmdb.org/t/p/w185/kflgvFCFZnpTRbKmJWn5T0G5EKI.jpg",
+          "link": "https://www.themoviedb.org/person/85969"
+        },
+        {
+          "name": "Esha Gupta",
+          "character": "Sanjana Krishna",
+          "profile": "https://image.tmdb.org/t/p/w185/zNvRvv4Ifu1kRMzHecSzD3pn62y.jpg",
+          "link": "https://www.themoviedb.org/person/1040950"
+        },
+        {
+          "name": "Manish Chaudhary",
+          "character": "Tara Dutt",
+          "profile": "https://image.tmdb.org/t/p/w185/1l4vmA0IJQLieebZWOOCAFu4ra6.jpg",
+          "link": "https://www.themoviedb.org/person/1040951"
+        },
+        {
+          "name": "Mohan Kapur",
+          "character": "Doctor",
+          "profile": "https://image.tmdb.org/t/p/w185/lL0J5DBOwN1pwLCvuo7uQ0ApjF.jpg",
+          "link": "https://www.themoviedb.org/person/1014905"
+        },
+        {
+          "name": "Jagat Rawat",
+          "character": "Tantrik",
+          "profile": "https://image.tmdb.org/t/p/w185/2h1gByjnmLbcVhcxkvmWWDWPkFP.jpg",
+          "link": "https://www.themoviedb.org/person/1168223"
+        }
+      ],
+      "artwork": {
+        "poster": "https://image.tmdb.org/t/p/w780/hn51Wxgjznc5YDHhIwlUH3VyuEU.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/auQwNrtTT4fdz32dcqGUffpoFN5.jpg",
+        "clearlogo": "https://image.tmdb.org/t/p/original/ogQDWTgfjADn6mMlOsMggeP0zRJ.png",
+        "clearart": "",
+        "banner": "",
+        "landscape": "https://image.tmdb.org/t/p/original/auQwNrtTT4fdz32dcqGUffpoFN5.jpg",
+        "keyart": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w780/hn51Wxgjznc5YDHhIwlUH3VyuEU.jpg",
+        "discart": "",
+        "title_card": "https://image.tmdb.org/t/p/original/auQwNrtTT4fdz32dcqGUffpoFN5.jpg",
+        "character_art": [],
+        "extra_posters": [],
+        "extra_backdrops": []
+      },
+      "trailer": "",
+      "ratings": [
+        {
+          "source": "TMDb",
+          "value": 5,
+          "out_of": 10
+        }
+      ],
+      "badges": {
+        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
+        "hdr": "",
+        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png",
+        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+      },
+      "specs": {
+        "resolution": "1080p",
+        "source": "AMZN",
+        "codec": "x264",
+        "bit_depth": "8bit",
+        "audio": "Hindi DDP 5.1",
+        "channels": "5.1",
+        "bitrate": "640 Kbps",
+        "languages": "Hindi DDP 5.1",
+        "size": "13 GB",
+        "telegram_tag": ""
+      },
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1NnepzdhRKrqpLI1nXmQcm7iSe9uwsOOL|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "versions": [
+        {
+          "id": "1NnepzdhRKrqpLI1nXmQcm7iSe9uwsOOL",
+          "name": "Raaz 3 (2012) [1080p] [AMZN] [Hindi DDP 5.1] [13 GB].mkv",
+          "language": "Hindi DDP 5.1",
+          "quality": "1080p FHD",
+          "resolution": "1080p",
+          "source": "AMZN",
+          "source_image": "resources/images/sources/web.png",
+          "codec": "x264",
+          "audio": "Hindi DDP 5.1",
+          "channels": "5.1",
+          "size": "13 GB",
+          "telegram_tag": "",
+          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1NnepzdhRKrqpLI1nXmQcm7iSe9uwsOOL|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
     }
