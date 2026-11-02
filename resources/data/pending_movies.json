@@ -60,36 +60,6 @@
     "approval_status": "pending"
   },
   {
-    "gdrive_id": "1UnPZWkOs6na1a7oM0xbhUVoVf-FUGL6j",
-    "original_filename": "Maine Pyar Kiya 1989 Hindi 1080p BluRay x264 DTS-HDMA 5.1 - Hon3y.mkv",
-    "file_size_bytes": 17202955409,
-    "file_size_gb": "16 GB",
-    "mime_type": "video/x-matroska",
-    "detected_at": "2026-10-25T05:30:18.222Z",
-    "parsed": {
-      "title": "Maine Pyar Kiya",
-      "year": 1989,
-      "resolution": "1080p",
-      "source": "BluRay",
-      "codec": "x264",
-      "telegram_tag": "",
-      "standard_filename": "Maine Pyar Kiya (1989) [1080p] [BluRay] [Tamil 5.1] [16 GB].mkv"
-    },
-    "match_status": "matched",
-    "tmdb_candidates": [
-      {
-        "tmdb_id": 27624,
-        "title": "Maine Pyar Kiya",
-        "year": "1989",
-        "poster": "https://image.tmdb.org/t/p/w500/aqZ9CEbXVLrEVAZFpT2F7PAE7dV.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/9B6kd0SJtjQBQB9g7vCrGZoiEQp.jpg",
-        "rating": 6
-      }
-    ],
-    "selected_tmdb_id": 27624,
-    "approval_status": "pending"
-  },
-  {
     "gdrive_id": "1rvI7ChehnpuzJdUrmnm4eMpYFYGQx1qC",
     "original_filename": "How to Train Your Dragon (2025) IMAX 1080p BluRay x264 AVC Multi Audio [Org AMZN Hindi-Tamil-Telugu DDP 5.1 ~ 640Kbps + English TrueHD Atmos 7.1] ESub ~ ROEN.mkv",
     "file_size_bytes": 18983499770,
