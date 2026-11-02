@@ -108,7 +108,7 @@
   <div class="govt-header">
     <div>
       <div class="govt-title">MOINUFLIX NATIONAL MEDIA INGESTION PORTAL</div>
-      <div class="govt-sub">Govt-Style Form Verification • 22 Top OTT Auto-Detection • Multi-Version Merge Suite</div>
+      <div class="govt-sub">Govt-Style Form Verification • 22 Top OTT Auto-Detection • Clean Clean Interface</div>
     </div>
     
     <div class="nav-links-box">
@@ -142,7 +142,12 @@
 
     <form id="media-ingest-form" onsubmit="handleFormSubmission(event)">
       
-      <!-- PART I: 100% REAL PARSED TOKENS -->
+      <!-- HIDDEN ID HOLDERS (WORKING SILENTLY IN BACKGROUND) -->
+      <input type="hidden" id="drive-file-id" value="">
+      <input type="hidden" id="tmdb-id" value="">
+      <input type="hidden" id="movie-imdb-id" value="">
+
+      <!-- PART I: 100% REAL PARSED TOKENS (NO RAW IDS SHOWN) -->
       <div class="section-title">
         <span>Part I: Clean Parsed Tokens (100% Editable • 22 OTT Auto-Detection)</span>
       </div>
@@ -153,22 +158,9 @@
           <input type="text" id="raw-filename" placeholder="Paste full raw filename, e.g. Na Tum Jaano Na Hum 2002 Hindi 720p DvDrip X264 AC 5.1Hon3y.mkv" required oninput="handleInstantRawIngest(this.value)">
         </div>
 
-        <div class="form-group col-4">
-          <label>Google Drive File ID <span class="required">*</span></label>
-          <input type="text" id="drive-file-id" placeholder="Paste GDrive link or File ID" required oninput="sanitizeDriveInput(this)">
-        </div>
-
-        <div class="form-group col-4">
-          <label>TMDb Movie ID <span class="required">* (Auto-Detects Existing Versions)</span></label>
-          <div style="display:flex; gap:6px;">
-            <input type="number" id="tmdb-id" placeholder="e.g. 83902" required oninput="fetchTmdbOfficialDetails(this.value)">
-            <button type="button" class="btn-govt-secondary" style="padding:0.4rem 0.8rem; border-radius:8px; cursor:pointer;" onclick="fetchTmdbOfficialDetails(document.getElementById('tmdb-id').value)">Fetch</button>
-          </div>
-        </div>
-
-        <div class="form-group col-4">
-          <label>Movie Title (Editable)</label>
-          <input type="text" id="token-movie-title" placeholder="Title" oninput="syncParsedTitleToMain(this.value)">
+        <div class="form-group col-12">
+          <label>Parsed Movie Title (Editable)</label>
+          <input type="text" id="token-movie-title" placeholder="Movie Title" required oninput="syncParsedTitleToMain(this.value)">
         </div>
 
         <div class="form-group col-2">
@@ -293,17 +285,12 @@
           </select>
         </div>
 
-        <div class="form-group col-4">
-          <label>IMDb ID</label>
-          <input type="text" id="movie-imdb-id" placeholder="tt...">
-        </div>
-
-        <div class="form-group col-4">
+        <div class="form-group col-6">
           <label>Director(s)</label>
           <input type="text" id="movie-director" placeholder="Director">
         </div>
 
-        <div class="form-group col-4">
+        <div class="form-group col-6">
           <label>Writer(s)</label>
           <input type="text" id="movie-writers" placeholder="Writer">
         </div>
@@ -331,7 +318,7 @@
         <div class="form-group col-12">
           <label>Top Cast (Auto-Loaded with Profile Photos)</label>
           <div class="cast-grid" id="cast-cards-container">
-            <div style="font-size:0.8rem; color:var(--text-muted); padding:10px;">Paste raw filename or TMDb ID to load official cast...</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); padding:10px;">Paste raw filename to load official cast...</div>
           </div>
         </div>
       </div>
@@ -428,7 +415,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const editId = urlParams.get("load_id");
         if (editId) {
-          showToast(`Loading movie ID ${editId} for editing...`);
+          showToast(`Loading movie for editing...`);
           const foundCat = cachedCatalogMovies.find(m => m.id === editId);
           if (foundCat && foundCat.chunk_file) {
             const chunkRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${foundCat.chunk_file}?t=${Date.now()}`);
@@ -831,7 +818,7 @@
   async function fetchTmdbOfficialDetails(id) {
     if (!id) return;
     try {
-      showToast(`Loading TMDb #${id} Metadata & Checking Versions...`);
+      showToast(`Loading TMDb Metadata & Checking Versions...`);
       checkForExistingMovie(id);
 
       const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_KEY}&append_to_response=credits,release_dates,images,videos`);
@@ -931,7 +918,7 @@
     let rawDrive = document.getElementById("drive-file-id").value.trim().replace(/\s+/g, '');
     const m = rawDrive.match(/[-\w]{25,}/);
     const driveId = m ? m[0] : rawDrive;
-    if (!driveId || driveId.length < 20) return alert("Invalid Google Drive File ID!");
+    if (!driveId || driveId.length < 20) return alert("Invalid Google Drive File ID! Please paste a valid raw filename or link.");
 
     const tmdbId = document.getElementById("tmdb-id").value.trim();
     const title = document.getElementById("movie-title").value.trim();
@@ -1019,7 +1006,6 @@
       const exIdx = chunkData.movies.findIndex(m => (m.tmdb_id && Number(m.tmdb_id) === Number(tmdbId)) || m.id === driveId);
 
       if (exIdx >= 0) {
-        // Merge mode: Append to versions array avoiding duplicate file IDs
         const existingRec = chunkData.movies[exIdx];
         existingRec.versions = existingRec.versions || [];
         const vIdx = existingRec.versions.findIndex(v => v.id === driveId);
@@ -1028,7 +1014,6 @@
         } else {
           existingRec.versions.push(newVersionObj);
         }
-        // Update specs to latest uploaded
         existingRec.specs = {
           resolution: res,
           source: platform,
@@ -1039,7 +1024,6 @@
           ripper: ripper
         };
       } else {
-        // Standalone Add
         const fullMovieRecord = {
           id: driveId,
           tmdb_id: parseInt(tmdbId, 10),
@@ -1089,7 +1073,7 @@
       chunkData.movie_count = chunkData.movies.length;
       await commitDirectToGithub(targetChunkPath, chunkData, `${isMergeMode ? 'Merge version into' : 'Add'} ${title}`, chunkSha, token);
 
-      // 2. UPDATE CATALOG.JSON (PREVENT DUPLICATE CARDS)
+      // 2. UPDATE CATALOG.JSON (NO DUPLICATE MOVIE CARDS)
       let catData = { movies: [] };
       let catSha = undefined;
 
@@ -1117,10 +1101,8 @@
       };
 
       if (catExIdx >= 0) {
-        // Merge into catalog movie
         const catItem = catData.movies[catExIdx];
         catItem.available_versions = catItem.available_versions || [];
-        // Check duplicate version summary
         const existsSummary = catItem.available_versions.some(v => v.quality === catalogVersionSummary.quality && v.source === catalogVersionSummary.source);
         if (!existsSummary) {
           catItem.available_versions.push(catalogVersionSummary);
@@ -1130,7 +1112,6 @@
           catItem.available_languages.push(audioSpec);
         }
       } else {
-        // Standalone Add Entry
         const catalogEntry = {
           id: driveId,
           tmdb_id: parseInt(tmdbId, 10),
