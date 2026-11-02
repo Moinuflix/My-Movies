@@ -1,6 +1,6 @@
 {
   "chunk_id": "chunk_01",
-  "movie_count": 14,
+  "movie_count": 15,
   "movies": [
     {
       "id": "1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU",
@@ -1395,6 +1395,170 @@
           "size": "13 GB",
           "telegram_tag": "",
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1NnepzdhRKrqpLI1nXmQcm7iSe9uwsOOL|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      ]
+    },
+    {
+      "id": "1UnPZWkOs6na1a7oM0xbhUVoVf-FUGL6j",
+      "tmdb_id": 27624,
+      "name": "Maine Pyar Kiya (1989) [1080p] [BluRay] [Hindi DDP 5.1] [16 GB].mkv",
+      "title": "Maine Pyar Kiya",
+      "original_title": "मैंने प्यार किया",
+      "year": 1989,
+      "runtime": 192,
+      "release_date": "1989-01-01",
+      "certification": "U",
+      "original_language": "hi",
+      "genres": [
+        "Romance",
+        "Drama",
+        "Comedy"
+      ],
+      "collection": "",
+      "tagline": "",
+      "plot": "After Suman's father leaves her in the care of another family while he travels abroad, she falls in love with Prem. However, in order to for them to marry, Prem has to prove to Suman's father that he is not the same as his own dad.",
+      "telegram_channel": "",
+      "country": [
+        "India"
+      ],
+      "studio": [
+        "BluRay"
+      ],
+      "director": [
+        {
+          "name": "Sooraj Barjatya"
+        }
+      ],
+      "writers": [
+        {
+          "name": "Sooraj Barjatya",
+          "job": "Dialogue"
+        },
+        {
+          "name": "Sooraj Barjatya",
+          "job": "Screenplay"
+        }
+      ],
+      "cast": [
+        {
+          "name": "Salman Khan",
+          "character": "Prem Choudhary",
+          "profile": "https://image.tmdb.org/t/p/w185/gxKwCCcs777HzsXRpdGsBV87pXn.jpg",
+          "link": "https://www.themoviedb.org/person/42802"
+        },
+        {
+          "name": "Bhagyashree",
+          "character": "Suman",
+          "profile": "https://image.tmdb.org/t/p/w185/tfxJIJoElKsbOo4k50UphkCFhVQ.jpg",
+          "link": "https://www.themoviedb.org/person/119269"
+        },
+        {
+          "name": "Alok Nath",
+          "character": "Karan",
+          "profile": "https://image.tmdb.org/t/p/w185/fMtqIj07e2HD0i5YbV91kgjrZzm.jpg",
+          "link": "https://www.themoviedb.org/person/86784"
+        },
+        {
+          "name": "Rajeev Verma",
+          "character": "Kishen Kumar Choudhary",
+          "profile": "https://image.tmdb.org/t/p/w185/aJZQAksd12d8cV8Zjo3IUnaH7Rm.jpg",
+          "link": "https://www.themoviedb.org/person/35818"
+        },
+        {
+          "name": "Reema Lagoo",
+          "character": "Kaushalya Choudhary",
+          "profile": "https://image.tmdb.org/t/p/w185/hQ5r2pPD8T94Dli5oNP6IlwEf1c.jpg",
+          "link": "https://www.themoviedb.org/person/35750"
+        },
+        {
+          "name": "Ajit Vachani",
+          "character": "Ranjeet",
+          "profile": "https://image.tmdb.org/t/p/w185/dWQBPrSUPpn8JClyGBJ2g0V04P8.jpg",
+          "link": "https://www.themoviedb.org/person/119270"
+        },
+        {
+          "name": "Harish Patel",
+          "character": "Rahim Chacha",
+          "profile": "https://image.tmdb.org/t/p/w185/g2aHA5J5ODMcBgIwCa72ykcmN85.jpg",
+          "link": "https://www.themoviedb.org/person/53362"
+        },
+        {
+          "name": "Deep Dhillon",
+          "character": "Laal Miyan",
+          "profile": "https://image.tmdb.org/t/p/w185/s5FCe4ScuZ7l5npN6DyAG99GhUN.jpg",
+          "link": "https://www.themoviedb.org/person/82075"
+        },
+        {
+          "name": "Huma Khan",
+          "character": "Gulabiya (Milk delivery maid)",
+          "profile": "https://image.tmdb.org/t/p/w185/wvvy22dFYIRSkcBEWIms1ciXnJr.jpg",
+          "link": "https://www.themoviedb.org/person/119271"
+        },
+        {
+          "name": "Handsome",
+          "character": "'Handsome' Pigeon",
+          "profile": null,
+          "link": "https://www.themoviedb.org/person/119272"
+        }
+      ],
+      "artwork": {
+        "poster": "https://image.tmdb.org/t/p/w780/aqZ9CEbXVLrEVAZFpT2F7PAE7dV.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/9B6kd0SJtjQBQB9g7vCrGZoiEQp.jpg",
+        "clearlogo": "https://image.tmdb.org/t/p/original/vxA9Bcme7rWnEbILhaw4wBErSv4.png",
+        "clearart": "",
+        "banner": "",
+        "landscape": "https://image.tmdb.org/t/p/original/9B6kd0SJtjQBQB9g7vCrGZoiEQp.jpg",
+        "keyart": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w780/aqZ9CEbXVLrEVAZFpT2F7PAE7dV.jpg",
+        "discart": "",
+        "title_card": "https://image.tmdb.org/t/p/original/9B6kd0SJtjQBQB9g7vCrGZoiEQp.jpg",
+        "character_art": [],
+        "extra_posters": [],
+        "extra_backdrops": []
+      },
+      "trailer": "https://www.youtube.com/watch?v=kW3gjVoXv9I",
+      "ratings": [
+        {
+          "source": "TMDb",
+          "value": 6,
+          "out_of": 10
+        }
+      ],
+      "badges": {
+        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
+        "hdr": "",
+        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png",
+        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+      },
+      "specs": {
+        "resolution": "1080p",
+        "source": "BluRay",
+        "codec": "x264",
+        "bit_depth": "8bit",
+        "audio": "Hindi DDP 5.1",
+        "channels": "5.1",
+        "bitrate": "640 Kbps",
+        "languages": "Hindi DDP 5.1",
+        "size": "16 GB",
+        "telegram_tag": ""
+      },
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1UnPZWkOs6na1a7oM0xbhUVoVf-FUGL6j|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "versions": [
+        {
+          "id": "1UnPZWkOs6na1a7oM0xbhUVoVf-FUGL6j",
+          "name": "Maine Pyar Kiya (1989) [1080p] [BluRay] [Hindi DDP 5.1] [16 GB].mkv",
+          "language": "Hindi DDP 5.1",
+          "quality": "1080p FHD",
+          "resolution": "1080p",
+          "source": "BluRay",
+          "source_image": "resources/images/sources/web.png",
+          "codec": "x264",
+          "audio": "Hindi DDP 5.1",
+          "channels": "5.1",
+          "size": "16 GB",
+          "telegram_tag": "",
+          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1UnPZWkOs6na1a7oM0xbhUVoVf-FUGL6j|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
     }
