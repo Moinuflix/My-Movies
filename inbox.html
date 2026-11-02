@@ -53,6 +53,28 @@
     input, select, textarea { padding: 0.75rem 0.9rem; border: 1px solid var(--border-gray); border-radius: 10px; font-size: 0.88rem; color: var(--text-main); background-color: var(--input-bg); outline: none; transition: all 0.2s ease; }
     input:focus, select:focus, textarea:focus { border-color: var(--laser-cyan); box-shadow: 0 0 12px rgba(56, 189, 248, 0.25); }
     .smart-dash-preview { background: var(--dash-bg); border: 1px dashed var(--laser-cyan); padding: 0.85rem 1.2rem; font-family: monospace; font-size: 0.85rem; color: var(--laser-green); word-break: break-all; border-radius: 10px; line-height: 1.5; }
+    
+    /* ⚡ EXISTING VERSIONS BOX */
+    .existing-versions-panel {
+      background: rgba(2, 6, 23, 0.75);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 0.5rem;
+      display: none;
+    }
+    .versions-list { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    .version-item-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 8px;
+      padding: 8px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
     .candidate-strip { display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; }
     .candidate-pill { background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); padding: 4px 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; color: #fff; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
     .candidate-pill:hover { background: var(--laser-cyan); color: #020617; }
@@ -72,6 +94,7 @@
     .btn { padding: 0.8rem 1.8rem; font-size: 0.85rem; font-weight: 800; border-radius: 10px; cursor: pointer; border: 1px solid transparent; text-transform: uppercase; }
     .btn-govt-secondary { background: rgba(56, 189, 248, 0.1); color: var(--laser-cyan); border-color: var(--card-border); }
     .btn-govt-green { background: linear-gradient(135deg, var(--laser-green), #059669); color: #fff; }
+    .btn-govt-gold { background: linear-gradient(135deg, #f59e0b, #d97706); color: #020617; box-shadow: 0 0 20px rgba(245, 158, 11, 0.4); }
     #toast-msg { padding: 0.85rem 1.25rem; margin-bottom: 1.25rem; border-radius: 10px; font-size: 0.85rem; font-weight: 700; display: none; }
     .toast-success { background: rgba(16, 185, 129, 0.15); color: var(--laser-green); border: 1px solid var(--laser-green); }
     .toast-error { background: rgba(239, 68, 68, 0.15); color: var(--laser-red); border: 1px solid var(--laser-red); }
@@ -85,7 +108,7 @@
   <div class="govt-header">
     <div>
       <div class="govt-title">MOINUFLIX NATIONAL MEDIA INGESTION PORTAL</div>
-      <div class="govt-sub">Govt-Style Form Verification • 22 Top OTT Auto-Detection • Admin Edit Enabled</div>
+      <div class="govt-sub">Govt-Style Form Verification • 22 Top OTT Auto-Detection • Multi-Version Merge Suite</div>
     </div>
     
     <div class="nav-links-box">
@@ -109,8 +132,8 @@
       <span class="stat-val" style="color:var(--laser-green);">Universal Multi-Language 🇮🇳</span>
     </div>
     <div class="stat-item">
-      <span class="stat-label">PAT Token Status</span>
-      <span class="stat-val" id="pat-status-indicator" style="color:var(--laser-gold);">Checking...</span>
+      <span class="stat-label">Ingest Mode</span>
+      <span class="stat-val" id="ingest-mode-status" style="color:var(--laser-cyan);">Standard Ingest</span>
     </div>
   </div>
 
@@ -127,7 +150,7 @@
       <div class="form-grid">
         <div class="form-group col-12">
           <label>Raw Google Drive Release File Name <span class="required">* (Instant Full Auto-Fill)</span></label>
-          <input type="text" id="raw-filename" placeholder="Paste full raw filename" required oninput="handleInstantRawIngest(this.value)">
+          <input type="text" id="raw-filename" placeholder="Paste full raw filename, e.g. Na Tum Jaano Na Hum 2002 Hindi 720p DvDrip X264 AC 5.1Hon3y.mkv" required oninput="handleInstantRawIngest(this.value)">
         </div>
 
         <div class="form-group col-4">
@@ -136,7 +159,7 @@
         </div>
 
         <div class="form-group col-4">
-          <label>TMDb Movie ID <span class="required">*</span></label>
+          <label>TMDb Movie ID <span class="required">* (Auto-Detects Existing Versions)</span></label>
           <div style="display:flex; gap:6px;">
             <input type="number" id="tmdb-id" placeholder="e.g. 83902" required oninput="fetchTmdbOfficialDetails(this.value)">
             <button type="button" class="btn-govt-secondary" style="padding:0.4rem 0.8rem; border-radius:8px; cursor:pointer;" onclick="fetchTmdbOfficialDetails(document.getElementById('tmdb-id').value)">Fetch</button>
@@ -188,6 +211,19 @@
         <div class="form-group col-12" id="candidates-box" style="display:none;">
           <label style="color:var(--laser-gold);">🎯 Top TMDb Candidates (Click to Select & Auto-Fill):</label>
           <div class="candidate-strip" id="candidate-strip-inner"></div>
+        </div>
+
+        <!-- ⚡ PART 1 EXISTING VERSIONS VIEWER -->
+        <div class="form-group col-12" id="existing-versions-container" style="display:none;">
+          <div class="existing-versions-panel" id="existing-versions-panel">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-weight:800; font-size:0.85rem; color:var(--laser-gold);">
+                ⚡ Existing Versions in Library (<span id="existing-version-count">0</span>):
+              </span>
+              <button type="button" class="btn-govt-secondary" style="font-size:0.7rem; padding:2px 8px;" onclick="cancelMergeMode()">Cancel Merge (Force New)</button>
+            </div>
+            <div class="versions-list" id="existing-versions-list"></div>
+          </div>
         </div>
 
         <div class="form-group col-12">
@@ -319,7 +355,7 @@
       </div>
 
       <div class="button-row">
-        <button type="reset" class="btn btn-govt-secondary">Reset Form</button>
+        <button type="reset" class="btn btn-govt-secondary" onclick="cancelMergeMode()">Reset Form</button>
         <button type="submit" id="btn-submit" class="btn btn-govt-green">🚀 Commit Record to GitHub (catalog & target chunk)</button>
       </div>
     </form>
@@ -337,6 +373,9 @@
   let catalogCount = 0;
   let currentTargetChunk = "chunk_01.json";
   let loadedCastArray = [];
+  let cachedCatalogMovies = [];
+  let isMergeMode = false;
+  let targetMergeMovie = null;
 
   function getToken() { return (localStorage.getItem("moinuflix_gh_token") || "").trim(); }
 
@@ -371,15 +410,15 @@
     setTimeout(() => { el.style.display = "none"; }, 6000);
   }
 
-  /* ⚡ LOAD INITIAL STATS & SUPPORT ADMIN.HTML EDIT (load_id) */
+  /* ⚡ LOAD INITIAL STATS, CATALOG CACHE & SUPPORT ADMIN EDIT */
   async function loadInitialStats() {
     checkTokenStatus();
     try {
       const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/catalog.json?t=${Date.now()}`);
       if (res.ok) {
         const cat = await res.json();
-        const movies = cat.movies || (Array.isArray(cat) ? cat : []);
-        catalogCount = movies.length;
+        cachedCatalogMovies = cat.movies || (Array.isArray(cat) ? cat : []);
+        catalogCount = cachedCatalogMovies.length;
         document.getElementById("stat-catalog-count").textContent = `${catalogCount} Movies`;
         const chunkNum = Math.floor(catalogCount / 50) + 1;
         currentTargetChunk = `chunk_${String(chunkNum).padStart(2, '0')}.json`;
@@ -390,7 +429,7 @@
         const editId = urlParams.get("load_id");
         if (editId) {
           showToast(`Loading movie ID ${editId} for editing...`);
-          const foundCat = movies.find(m => m.id === editId);
+          const foundCat = cachedCatalogMovies.find(m => m.id === editId);
           if (foundCat && foundCat.chunk_file) {
             const chunkRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${foundCat.chunk_file}?t=${Date.now()}`);
             if (chunkRes.ok) {
@@ -406,7 +445,7 @@
       }
     } catch (_) {}
 
-    // ⚡ SEAMLESS TRIGGER FROM PENDING.HTML (SESSION STORAGE AUTO-INGEST)
+    // ⚡ SEAMLESS TRIGGER FROM PENDING.HTML
     const pendingSaved = sessionStorage.getItem("moinuflix_edit_pending");
     if (pendingSaved && window.location.search.includes("load_pending")) {
       const pItem = JSON.parse(pendingSaved);
@@ -431,6 +470,77 @@
       updateDashPreview();
       showToast("Loaded from Pending Queue with Verified Google Drive Data!");
     }
+  }
+
+  /* ⚡ CHECK FOR EXISTING MOVIE FOR MULTI-VERSION MERGE */
+  async function checkForExistingMovie(tmdbId) {
+    if (!tmdbId || isMergeMode) return;
+    const existing = cachedCatalogMovies.find(m => Number(m.tmdb_id) === Number(tmdbId));
+    if (existing) {
+      isMergeMode = true;
+      targetMergeMovie = existing;
+
+      document.getElementById("ingest-mode-status").textContent = "⚡ MERGE MODE";
+      document.getElementById("ingest-mode-status").style.color = "var(--laser-gold)";
+      
+      const btn = document.getElementById("btn-submit");
+      btn.className = "btn btn-govt-gold";
+      btn.textContent = `⚡ MERGE AS NEW VERSION INTO "${existing.title}"`;
+
+      // Fetch Chunk to display all existing versions
+      if (existing.chunk_file) {
+        try {
+          const cRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${existing.chunk_file}?t=${Date.now()}`);
+          if (cRes.ok) {
+            const cData = await cRes.json();
+            const fullRec = (cData.movies || []).find(m => Number(m.tmdb_id) === Number(tmdbId));
+            if (fullRec && fullRec.versions && fullRec.versions.length > 0) {
+              renderExistingVersions(fullRec.versions);
+            }
+          }
+        } catch (_) {}
+      }
+      showToast(`Found existing movie "${existing.title}"! Merge Mode activated.`);
+    } else {
+      cancelMergeMode();
+    }
+  }
+
+  function renderExistingVersions(versions) {
+    const container = document.getElementById("existing-versions-container");
+    const list = document.getElementById("existing-versions-list");
+    document.getElementById("existing-version-count").textContent = versions.length;
+    list.innerHTML = "";
+
+    versions.forEach((v, idx) => {
+      const item = document.createElement("div");
+      item.className = "version-item-card";
+      item.innerHTML = `
+        <div>
+          <strong style="color:var(--laser-cyan);">V${idx + 1}:</strong> ${v.name || v.quality || 'Version'}
+          <div style="font-size:0.72rem; color:var(--text-muted);">${v.source || ''} • ${v.audio || ''} • ${v.size || ''}</div>
+        </div>
+        <span style="font-size:0.75rem; color:var(--laser-green); font-weight:700;">Saved ✅</span>
+      `;
+      list.appendChild(item);
+    });
+
+    container.style.display = "block";
+    document.getElementById("existing-versions-panel").style.display = "block";
+  }
+
+  function cancelMergeMode() {
+    isMergeMode = false;
+    targetMergeMovie = null;
+    document.getElementById("ingest-mode-status").textContent = "Standard Ingest";
+    document.getElementById("ingest-mode-status").style.color = "var(--laser-cyan)";
+    
+    const btn = document.getElementById("btn-submit");
+    btn.className = "btn btn-govt-green";
+    btn.textContent = "🚀 Commit Record to GitHub (catalog & target chunk)";
+
+    document.getElementById("existing-versions-container").style.display = "none";
+    document.getElementById("existing-versions-panel").style.display = "none";
   }
 
   /* ⚡ POPULATE FORM FIELDS WHEN EDITING AN EXISTING MOVIE FROM ADMIN.HTML */
@@ -479,12 +589,8 @@
     document.getElementById("art-discart").value = art.discart || "";
     document.getElementById("art-titlecard").value = art.title_card || "";
 
-    if (art.poster) {
-      document.getElementById("passport-poster-preview").src = art.poster;
-    }
-    if (art.fanart) {
-      document.getElementById("dynamic-bg").style.backgroundImage = `url('${art.fanart}')`;
-    }
+    if (art.poster) document.getElementById("passport-poster-preview").src = art.poster;
+    if (art.fanart) document.getElementById("dynamic-bg").style.backgroundImage = `url('${art.fanart}')`;
 
     loadedCastArray = m.cast || [];
     const castWrap = document.getElementById("cast-cards-container");
@@ -503,6 +609,10 @@
         `;
         castWrap.appendChild(card);
       });
+    }
+
+    if (m.versions && m.versions.length > 0) {
+      renderExistingVersions(m.versions);
     }
 
     updateDashPreview();
@@ -557,7 +667,7 @@
     return "WEB-DL";
   }
 
-  /* ⚡ 100% ACCURATE REAL PARSER (ZERO FAKE TRACKS & 22 OTT ENGINE) */
+  /* ⚡ 100% ACCURATE REAL PARSER */
   let rawIngestDebounce = null;
   function handleInstantRawIngest(raw) {
     if (!raw.trim()) return;
@@ -717,11 +827,13 @@
     document.getElementById("dash-name-preview").textContent = tokens.filter(Boolean).join(' ') + ".mkv";
   }
 
-  /* ⚡ ROBUST TMDB OFFICIAL METADATA LOADER */
+  /* ⚡ ROBUST TMDB OFFICIAL METADATA LOADER & VERSION CHECK TRIGGER */
   async function fetchTmdbOfficialDetails(id) {
     if (!id) return;
     try {
-      showToast(`Loading TMDb #${id} Metadata & Cast...`);
+      showToast(`Loading TMDb #${id} Metadata & Checking Versions...`);
+      checkForExistingMovie(id);
+
       const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_KEY}&append_to_response=credits,release_dates,images,videos`);
       if (!res.ok) throw new Error("TMDb record not found");
       const d = await res.json();
@@ -810,7 +922,7 @@
     }
   }
 
-  /* ⚡ TWO-TIER COMMIT */
+  /* ⚡ TWO-TIER COMMIT (STANDALONE + SMART MULTI-VERSION MERGE) */
   async function handleFormSubmission(e) {
     e.preventDefault();
     const token = getToken();
@@ -865,14 +977,33 @@
       extra_backdrops: []
     };
 
-    const targetChunkPath = `resources/data/chunks/${currentTargetChunk}`;
+    const newVersionObj = {
+      id: driveId,
+      name: finalDashName,
+      language: audioSpec,
+      dubbed: audioSpec,
+      quality: `${res} HD`,
+      resolution: res,
+      source: platform,
+      source_image: `resources/images/sources/${platform.toLowerCase().replace(/[^a-z]/g, '') || 'web'}.png`,
+      codec: vcodec,
+      audio: audioSpec,
+      size: sz,
+      stream_url: streamUrl
+    };
+
     const catalogPath = `resources/data/catalog.json`;
+    let targetChunkPath = `resources/data/chunks/${currentTargetChunk}`;
+    if (isMergeMode && targetMergeMovie && targetMergeMovie.chunk_file) {
+      targetChunkPath = targetMergeMovie.chunk_file;
+    }
 
     document.getElementById("btn-submit").disabled = true;
-    document.getElementById("btn-submit").textContent = "Writing to GitHub...";
+    document.getElementById("btn-submit").textContent = isMergeMode ? "Merging Version to GitHub..." : "Writing to GitHub...";
 
     try {
-      let chunkData = { chunk_id: currentTargetChunk.replace(".json", ""), movie_count: 0, movies: [] };
+      // 1. UPDATE CHUNK FILE
+      let chunkData = { chunk_id: targetChunkPath.split("/").pop().replace(".json", ""), movie_count: 0, movies: [] };
       let chunkSha = undefined;
 
       const cRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${targetChunkPath}?t=${Date.now()}`, {
@@ -884,38 +1015,21 @@
         chunkData = JSON.parse(decodeURIComponent(escape(atob(cJson.content))));
       }
 
-      const fullMovieRecord = {
-        id: driveId,
-        tmdb_id: parseInt(tmdbId, 10),
-        imdb_id: imdbId,
-        name: finalDashName,
-        title: title,
-        original_title: origTitle,
-        year: year,
-        runtime: runtime,
-        release_date: releaseDate,
-        certification: cert,
-        original_language: langCode,
-        genres: genres,
-        tagline: tagline,
-        plot: plot,
-        release_group: ripper,
-        country: ["India"],
-        studio: studios.length > 0 ? studios : [platform],
-        director: directors,
-        writers: writers,
-        cast: loadedCastArray,
-        artwork: artworkObj,
-        trailer: trailer,
-        ratings: [{ source: "TMDb", value: rating, out_of: 10 }],
-        badges: {
-          quality: `https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/${res || '720p'}.png`,
-          hdr: "",
-          source: `https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/dvd.png`,
-          audio_format: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
-          audio_channels: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-        },
-        specs: {
+      chunkData.movies = chunkData.movies || [];
+      const exIdx = chunkData.movies.findIndex(m => (m.tmdb_id && Number(m.tmdb_id) === Number(tmdbId)) || m.id === driveId);
+
+      if (exIdx >= 0) {
+        // Merge mode: Append to versions array avoiding duplicate file IDs
+        const existingRec = chunkData.movies[exIdx];
+        existingRec.versions = existingRec.versions || [];
+        const vIdx = existingRec.versions.findIndex(v => v.id === driveId);
+        if (vIdx >= 0) {
+          existingRec.versions[vIdx] = newVersionObj;
+        } else {
+          existingRec.versions.push(newVersionObj);
+        }
+        // Update specs to latest uploaded
+        existingRec.specs = {
           resolution: res,
           source: platform,
           codec: vcodec,
@@ -923,33 +1037,59 @@
           languages: audioSpec,
           size: sz,
           ripper: ripper
-        },
-        stream_url: streamUrl,
-        versions: [{
+        };
+      } else {
+        // Standalone Add
+        const fullMovieRecord = {
           id: driveId,
+          tmdb_id: parseInt(tmdbId, 10),
+          imdb_id: imdbId,
           name: finalDashName,
-          language: audioSpec,
-          dubbed: audioSpec,
-          quality: `${res} HD`,
-          resolution: res,
-          source: platform,
-          source_image: "resources/images/sources/dvd.png",
-          codec: vcodec,
-          audio: audioSpec,
-          size: sz,
-          stream_url: streamUrl
-        }]
-      };
+          title: title,
+          original_title: origTitle,
+          year: year,
+          runtime: runtime,
+          release_date: releaseDate,
+          certification: cert,
+          original_language: langCode,
+          genres: genres,
+          tagline: tagline,
+          plot: plot,
+          release_group: ripper,
+          country: ["India"],
+          studio: studios.length > 0 ? studios : [platform],
+          director: directors,
+          writers: writers,
+          cast: loadedCastArray,
+          artwork: artworkObj,
+          trailer: trailer,
+          ratings: [{ source: "TMDb", value: rating, out_of: 10 }],
+          badges: {
+            quality: `https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/${res || '720p'}.png`,
+            hdr: "",
+            source: `https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/dvd.png`,
+            audio_format: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+            audio_channels: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+          },
+          specs: {
+            resolution: res,
+            source: platform,
+            codec: vcodec,
+            audio: audioSpec,
+            languages: audioSpec,
+            size: sz,
+            ripper: ripper
+          },
+          stream_url: streamUrl,
+          versions: [newVersionObj]
+        };
+        chunkData.movies.push(fullMovieRecord);
+      }
 
-      chunkData.movies = chunkData.movies || [];
-      const exIdx = chunkData.movies.findIndex(m => m.id === driveId || m.tmdb_id === fullMovieRecord.tmdb_id);
-      if (exIdx >= 0) chunkData.movies[exIdx] = fullMovieRecord;
-      else chunkData.movies.push(fullMovieRecord);
       chunkData.movie_count = chunkData.movies.length;
+      await commitDirectToGithub(targetChunkPath, chunkData, `${isMergeMode ? 'Merge version into' : 'Add'} ${title}`, chunkSha, token);
 
-      await commitDirectToGithub(targetChunkPath, chunkData, `Add ${title} to ${currentTargetChunk}`, chunkSha, token);
-
-      // Update catalog.json
+      // 2. UPDATE CATALOG.JSON (PREVENT DUPLICATE CARDS)
       let catData = { movies: [] };
       let catSha = undefined;
 
@@ -962,41 +1102,59 @@
         catData = JSON.parse(decodeURIComponent(escape(atob(catJson.content))));
       }
 
-      const catalogEntry = {
-        id: driveId,
-        tmdb_id: parseInt(tmdbId, 10),
-        title: title,
-        year: year,
-        poster: artworkObj.poster,
-        fanart: artworkObj.fanart,
-        logo: artworkObj.clearlogo,
-        rating: rating,
-        original_language: langCode,
-        genres: genres,
-        chunk_file: targetChunkPath,
-        primary_stream_url: streamUrl,
-        available_languages: [audioSpec],
-        version_count: 1,
-        available_versions: [{
-          language: audioSpec,
-          dubbed: audioSpec,
-          quality: `${res} HD`,
-          source: platform,
-          source_image: "resources/images/sources/dvd.png",
-          format: platform,
-          codec: vcodec,
-          audio: audioSpec
-        }]
+      catData.movies = catData.movies || [];
+      const catExIdx = catData.movies.findIndex(m => (m.tmdb_id && Number(m.tmdb_id) === Number(tmdbId)) || m.id === driveId);
+
+      const catalogVersionSummary = {
+        language: audioSpec,
+        dubbed: audioSpec,
+        quality: `${res} HD`,
+        source: platform,
+        source_image: `resources/images/sources/${platform.toLowerCase().replace(/[^a-z]/g, '') || 'web'}.png`,
+        format: platform,
+        codec: vcodec,
+        audio: audioSpec
       };
 
-      catData.movies = catData.movies || [];
-      const catExIdx = catData.movies.findIndex(m => m.id === driveId || m.tmdb_id === catalogEntry.tmdb_id);
-      if (catExIdx >= 0) catData.movies[catExIdx] = catalogEntry;
-      else catData.movies.push(catalogEntry);
+      if (catExIdx >= 0) {
+        // Merge into catalog movie
+        const catItem = catData.movies[catExIdx];
+        catItem.available_versions = catItem.available_versions || [];
+        // Check duplicate version summary
+        const existsSummary = catItem.available_versions.some(v => v.quality === catalogVersionSummary.quality && v.source === catalogVersionSummary.source);
+        if (!existsSummary) {
+          catItem.available_versions.push(catalogVersionSummary);
+        }
+        catItem.version_count = catItem.available_versions.length;
+        if (!catItem.available_languages.includes(audioSpec)) {
+          catItem.available_languages.push(audioSpec);
+        }
+      } else {
+        // Standalone Add Entry
+        const catalogEntry = {
+          id: driveId,
+          tmdb_id: parseInt(tmdbId, 10),
+          title: title,
+          year: year,
+          poster: artworkObj.poster,
+          fanart: artworkObj.fanart,
+          logo: artworkObj.clearlogo,
+          rating: rating,
+          original_language: langCode,
+          genres: genres,
+          chunk_file: targetChunkPath,
+          primary_stream_url: streamUrl,
+          available_languages: [audioSpec],
+          version_count: 1,
+          available_versions: [catalogVersionSummary]
+        };
+        catData.movies.push(catalogEntry);
+      }
 
       await commitDirectToGithub(catalogPath, catData, `Update catalog.json for ${title}`, catSha, token);
 
-      showToast(`🎉 SUCCESS: "${title}" committed to ${currentTargetChunk} & catalog.json!`);
+      showToast(`🎉 SUCCESS: "${title}" ${isMergeMode ? 'version merged' : 'committed'} to ${targetChunkPath.split('/').pop()} & catalog.json!`);
+      cancelMergeMode();
       loadInitialStats();
     } catch (err) {
       showToast(`Save Failed: ${err.message}`, true);
