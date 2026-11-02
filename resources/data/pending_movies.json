@@ -30,36 +30,6 @@
     "approval_status": "pending"
   },
   {
-    "gdrive_id": "1uQBsovfEH2iwPwW2Vl6Sv5dDVTB9WCUP",
-    "original_filename": "Na Tum Jaano Na Hum 2002 Hindi 720p DvDrip X264 AC 5.1Hon3y.mkv",
-    "file_size_bytes": 2746200143,
-    "file_size_gb": "3 GB",
-    "mime_type": "video/x-matroska",
-    "detected_at": "2026-10-25T05:32:41.474Z",
-    "parsed": {
-      "title": "Na Tum Jaano Na Hum",
-      "year": 2002,
-      "resolution": "720p",
-      "source": "WEB-DL",
-      "codec": "x264",
-      "telegram_tag": "",
-      "standard_filename": "Na Tum Jaano Na Hum (2002) [720p] [WEB-DL] [Tamil 5.1] [3 GB].mkv"
-    },
-    "match_status": "matched",
-    "tmdb_candidates": [
-      {
-        "tmdb_id": 83902,
-        "title": "Na Tum Jaano Na Hum",
-        "year": "2002",
-        "poster": "https://image.tmdb.org/t/p/w500/cOIrm9WvMGvbliNZ88bK8hVYUc1.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/lUK6pWQeamOVKeNGJJ6Q4Y9HzOU.jpg",
-        "rating": 5.1
-      }
-    ],
-    "selected_tmdb_id": 83902,
-    "approval_status": "pending"
-  },
-  {
     "gdrive_id": "1rvI7ChehnpuzJdUrmnm4eMpYFYGQx1qC",
     "original_filename": "How to Train Your Dragon (2025) IMAX 1080p BluRay x264 AVC Multi Audio [Org AMZN Hindi-Tamil-Telugu DDP 5.1 ~ 640Kbps + English TrueHD Atmos 7.1] ESub ~ ROEN.mkv",
     "file_size_bytes": 18983499770,
