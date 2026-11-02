@@ -120,36 +120,6 @@
     "approval_status": "pending"
   },
   {
-    "gdrive_id": "1h5eSNpOMRHVvqGVxT6F2knVZ-oDFFEWT",
-    "original_filename": "Raaz - The Mystery Continues 2009 1080p Hindi AMZN WEB-DL DDP 5.1 ESub Telly.mkv",
-    "file_size_bytes": 11695123188,
-    "file_size_gb": "11 GB",
-    "mime_type": "video/x-matroska",
-    "detected_at": "2026-10-25T05:19:09.518Z",
-    "parsed": {
-      "title": "Raaz   The Mystery Continues",
-      "year": 2009,
-      "resolution": "1080p",
-      "source": "AMZN",
-      "codec": "x264",
-      "telegram_tag": "",
-      "standard_filename": "Raaz   The Mystery Continues (2009) [1080p] [AMZN] [Tamil 5.1] [11 GB].mkv"
-    },
-    "match_status": "matched",
-    "tmdb_candidates": [
-      {
-        "tmdb_id": 15980,
-        "title": "Raaz: The Mystery Continues...",
-        "year": "2009",
-        "poster": "https://image.tmdb.org/t/p/w500/muXsgB3xdW68OEQrKr1MzyPuzBS.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/e7eVM6mAEVZ7XZOGKrNTboTK38b.jpg",
-        "rating": 5.6
-      }
-    ],
-    "selected_tmdb_id": 15980,
-    "approval_status": "pending"
-  },
-  {
     "gdrive_id": "1rvI7ChehnpuzJdUrmnm4eMpYFYGQx1qC",
     "original_filename": "How to Train Your Dragon (2025) IMAX 1080p BluRay x264 AVC Multi Audio [Org AMZN Hindi-Tamil-Telugu DDP 5.1 ~ 640Kbps + English TrueHD Atmos 7.1] ESub ~ ROEN.mkv",
     "file_size_bytes": 18983499770,
