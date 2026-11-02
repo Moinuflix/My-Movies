@@ -1,6 +1,6 @@
 {
   "chunk_id": "chunk_01",
-  "movie_count": 11,
+  "movie_count": 12,
   "movies": [
     {
       "id": "1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU",
@@ -950,6 +950,173 @@
           "name": "Avatar.mkv",
           "quality": "1080p FHD",
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vlvcZTd0KsXxNHd2RQaCfm1WQIXhIo4a|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      ]
+    },
+    {
+      "id": "1oWZotLuAmn2CtobbS5RkeAexWtE4ovtw",
+      "tmdb_id": 20731,
+      "name": "Raaz (2002) [1080p] [AMZN] [Hindi DDP 5.1] [7 GB].mkv",
+      "title": "Raaz",
+      "original_title": "राज़",
+      "year": 2002,
+      "runtime": 152,
+      "release_date": "2002-01-01",
+      "certification": "UA",
+      "original_language": "hi",
+      "genres": [
+        "Thriller",
+        "Horror"
+      ],
+      "collection": "Raaz Collection",
+      "tagline": "Do You Want To Know The Secret...?",
+      "plot": "A couple goes for a vacation to the scenic mountains of Ooty to save their crumbling marriage, but the bungalow they are staying at is haunted by a vengeful spirit that holds a secret.",
+      "telegram_channel": "",
+      "country": [
+        "India"
+      ],
+      "studio": [
+        "AMZN"
+      ],
+      "director": [
+        {
+          "name": "Vikram Bhatt"
+        }
+      ],
+      "writers": [
+        {
+          "name": "Girish Dhamija",
+          "job": "Dialogue"
+        },
+        {
+          "name": "Mahesh Bhatt",
+          "job": "Screenplay"
+        },
+        {
+          "name": "Mahesh Bhatt",
+          "job": "Story"
+        }
+      ],
+      "cast": [
+        {
+          "name": "Bipasha Basu",
+          "character": "Sanjana Dhanraj",
+          "profile": "https://image.tmdb.org/t/p/w185/j4p0NOHUNvOCBcfaZiCoyxdJJou.jpg",
+          "link": "https://www.themoviedb.org/person/85035"
+        },
+        {
+          "name": "Dino Morea",
+          "character": "Aditya Dhanraj",
+          "profile": "https://image.tmdb.org/t/p/w185/76sUAgf1NYDEPNqED647RgkcsQX.jpg",
+          "link": "https://www.themoviedb.org/person/86304"
+        },
+        {
+          "name": "Ashutosh Rana",
+          "character": "Professor Agni Swaroop",
+          "profile": "https://image.tmdb.org/t/p/w185/jFlhAoEP3KGEXO3SXCA4YLM2Goc.jpg",
+          "link": "https://www.themoviedb.org/person/86508"
+        },
+        {
+          "name": "Malini Sharma",
+          "character": "Malini Malik",
+          "profile": "https://image.tmdb.org/t/p/w185/mrhxKvceT7LSInyMWRYTA1K42mm.jpg",
+          "link": "https://www.themoviedb.org/person/86501"
+        },
+        {
+          "name": "Shruti Ulfat",
+          "character": "Priya",
+          "profile": "https://image.tmdb.org/t/p/w185/c7UAV4eNHaViPqGSamjej1jtAGd.jpg",
+          "link": "https://www.themoviedb.org/person/86502"
+        },
+        {
+          "name": "Vishwajeet Pradhan",
+          "character": "Ajay",
+          "profile": "https://image.tmdb.org/t/p/w185/fk5mBFnclEBE8AtgUfoa1i79oqt.jpg",
+          "link": "https://www.themoviedb.org/person/562226"
+        },
+        {
+          "name": "Mink Brar",
+          "character": "Nisha",
+          "profile": "https://image.tmdb.org/t/p/w185/qQBvL1h1rMELCkhHhm6m4oAURCC.jpg",
+          "link": "https://www.themoviedb.org/person/1641478"
+        },
+        {
+          "name": "Ali Asgar",
+          "character": "Nisha's Boyfriend",
+          "profile": "https://image.tmdb.org/t/p/w185/a1D5cJMDWTnREMaUcer9oARZWnB.jpg",
+          "link": "https://www.themoviedb.org/person/86504"
+        },
+        {
+          "name": "Anang Desai",
+          "character": "Mr. Dhanraj",
+          "profile": "https://image.tmdb.org/t/p/w185/c5QbV2LHo1AFtavHO6owAObONBC.jpg",
+          "link": "https://www.themoviedb.org/person/86503"
+        },
+        {
+          "name": "Murali Sharma",
+          "character": "Police Inspector",
+          "profile": "https://image.tmdb.org/t/p/w185/8m4L7L9lK4Z2YK4Jg97pMbA0Le5.jpg",
+          "link": "https://www.themoviedb.org/person/85588"
+        }
+      ],
+      "artwork": {
+        "poster": "https://image.tmdb.org/t/p/w780/oc7d4jzqZ2Zat831pVSkvEIVMYa.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/nRTmi69sicoBzypGAZUzaFUoAvc.jpg",
+        "clearlogo": "https://image.tmdb.org/t/p/original/uxkfTK56tuf6ofhMA8mSHaBnogD.png",
+        "clearart": "",
+        "banner": "",
+        "landscape": "https://image.tmdb.org/t/p/original/nRTmi69sicoBzypGAZUzaFUoAvc.jpg",
+        "keyart": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w780/oc7d4jzqZ2Zat831pVSkvEIVMYa.jpg",
+        "discart": "",
+        "title_card": "https://image.tmdb.org/t/p/original/nRTmi69sicoBzypGAZUzaFUoAvc.jpg",
+        "character_art": [],
+        "extra_posters": [],
+        "extra_backdrops": []
+      },
+      "trailer": "https://www.youtube.com/watch?v=O6GUoVApVkc",
+      "ratings": [
+        {
+          "source": "TMDb",
+          "value": 5.8,
+          "out_of": 10
+        }
+      ],
+      "badges": {
+        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
+        "hdr": "",
+        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png",
+        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+      },
+      "specs": {
+        "resolution": "1080p",
+        "source": "AMZN",
+        "codec": "x264",
+        "bit_depth": "8bit",
+        "audio": "Hindi DDP 5.1",
+        "channels": "5.1",
+        "bitrate": "640 Kbps",
+        "languages": "Hindi DDP 5.1",
+        "size": "7 GB",
+        "telegram_tag": ""
+      },
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1oWZotLuAmn2CtobbS5RkeAexWtE4ovtw|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "versions": [
+        {
+          "id": "1oWZotLuAmn2CtobbS5RkeAexWtE4ovtw",
+          "name": "Raaz (2002) [1080p] [AMZN] [Hindi DDP 5.1] [7 GB].mkv",
+          "language": "Hindi DDP 5.1",
+          "quality": "1080p FHD",
+          "resolution": "1080p",
+          "source": "AMZN",
+          "source_image": "resources/images/sources/web.png",
+          "codec": "x264",
+          "audio": "Hindi DDP 5.1",
+          "channels": "5.1",
+          "size": "7 GB",
+          "telegram_tag": "",
+          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1oWZotLuAmn2CtobbS5RkeAexWtE4ovtw|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
     }
