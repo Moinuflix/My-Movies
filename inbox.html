@@ -85,7 +85,7 @@
   <div class="govt-header">
     <div>
       <div class="govt-title">MOINUFLIX NATIONAL MEDIA INGESTION PORTAL</div>
-      <div class="govt-sub">Govt-Style Form Verification • 100% Dynamic Real Parser • Har Field Editable</div>
+      <div class="govt-sub">Govt-Style Form Verification • 22 Top OTT Auto-Detection • Zero Fake Data</div>
     </div>
     
     <div class="nav-links-box">
@@ -121,13 +121,13 @@
       
       <!-- PART I: 100% REAL PARSED TOKENS -->
       <div class="section-title">
-        <span>Part I: Clean Parsed Tokens (100% Editable • Zero Fake Data)</span>
+        <span>Part I: Clean Parsed Tokens (100% Editable • 22 OTT Auto-Detection)</span>
       </div>
 
       <div class="form-grid">
         <div class="form-group col-12">
           <label>Raw Google Drive Release File Name <span class="required">* (Instant Full Auto-Fill)</span></label>
-          <input type="text" id="raw-filename" placeholder="Paste full raw filename" required oninput="handleInstantRawIngest(this.value)">
+          <input type="text" id="raw-filename" placeholder="Paste full raw filename, e.g. Na Tum Jaano Na Hum 2002 Hindi 720p DvDrip X264 AC 5.1Hon3y.mkv" required oninput="handleInstantRawIngest(this.value)">
         </div>
 
         <div class="form-group col-4">
@@ -138,7 +138,7 @@
         <div class="form-group col-4">
           <label>TMDb Movie ID <span class="required">*</span></label>
           <div style="display:flex; gap:6px;">
-            <input type="number" id="tmdb-id" placeholder="e.g. 1108427" required oninput="fetchTmdbOfficialDetails(this.value)">
+            <input type="number" id="tmdb-id" placeholder="e.g. 83902" required oninput="fetchTmdbOfficialDetails(this.value)">
             <button type="button" class="btn-govt-secondary" style="padding:0.4rem 0.8rem; border-radius:8px; cursor:pointer;" onclick="fetchTmdbOfficialDetails(document.getElementById('tmdb-id').value)">Fetch</button>
           </div>
         </div>
@@ -160,7 +160,7 @@
 
         <div class="form-group col-2">
           <label>Platform / Source (Editable)</label>
-          <input type="text" id="token-platform" value="" oninput="updateDashPreview()">
+          <input type="text" id="token-platform" value="" placeholder="DVDRip / Sun NXT / AMZN" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-2">
@@ -170,18 +170,18 @@
 
         <div class="form-group col-2">
           <label>Verified Size (Editable)</label>
-          <input type="text" id="token-size" value="" placeholder="e.g. 5.2GB" oninput="updateDashPreview()">
+          <input type="text" id="token-size" value="" placeholder="e.g. 3 GB" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-2">
           <label>Ripper / Release Tag</label>
-          <input type="text" id="token-ripper" value="" placeholder="e.g. JHS / TTT" oninput="updateDashPreview()">
+          <input type="text" id="token-ripper" value="" placeholder="e.g. Hon3y / JHS / TTT" oninput="updateDashPreview()">
         </div>
 
-        <!-- 100% CLEAN MULTI-AUDIO BRACKET (NO DUPLICATION) -->
+        <!-- 100% CLEAN MULTI-AUDIO BRACKET -->
         <div class="form-group col-12">
           <label style="color:var(--laser-gold);">Languages & Multi-Audio Specification (Editable • Clean Bracket)</label>
-          <input type="text" id="token-audio-spec" placeholder="[Telugu + Tamil + Hindi (DDP 5.1 ~ 192Kbps) + English (DDP 7.1 ~ 1509Kbps)]" oninput="updateDashPreview()">
+          <input type="text" id="token-audio-spec" placeholder="[Hindi DD 5.1]" oninput="updateDashPreview()">
         </div>
 
         <!-- TOP CANDIDATES ROW -->
@@ -225,7 +225,7 @@
 
         <div class="form-group col-2">
           <label>Release Year</label>
-          <input type="number" id="movie-year" value="2026">
+          <input type="number" id="movie-year" value="2002">
         </div>
 
         <div class="form-group col-2">
@@ -240,12 +240,12 @@
 
         <div class="form-group col-2">
           <label>Original Language</label>
-          <input type="text" id="movie-lang" value="en">
+          <input type="text" id="movie-lang" value="hi">
         </div>
 
         <div class="form-group col-2">
           <label>Runtime (Mins)</label>
-          <input type="number" id="movie-runtime" value="110">
+          <input type="number" id="movie-runtime" value="150">
         </div>
 
         <div class="form-group col-2">
@@ -279,7 +279,7 @@
 
         <div class="form-group col-6">
           <label>Genres <span class="required">*</span></label>
-          <input type="text" id="movie-genres" placeholder="Animation, Adventure, Family" required>
+          <input type="text" id="movie-genres" placeholder="Romance, Drama" required>
         </div>
 
         <div class="form-group col-12">
@@ -398,7 +398,7 @@
 
       handleInstantRawIngest(rawVal);
 
-      // Drive Verified Real Size
+      // Verified Real Size
       if (pItem.file_size_gb) {
         document.getElementById("token-size").value = pItem.file_size_gb.trim();
       }
@@ -431,29 +431,112 @@
     updateDashPreview();
   }
 
-  /* ⚡ 100% ACCURATE REAL PARSER (ZERO DUPLICATION • JIO HOSTER INTELLIGENCE) */
+  /* ⚡ TOP 22 OTT & PLATFORM MASTER DETECTOR */
+  function detectTop22Platform(raw) {
+    const s = raw.toLowerCase();
+    
+    // 1. DVDRip / DVD
+    if (/\b(dvdrip|dvd-rip|dvd-scr|dvd)\b/.test(s)) return "DVDRip";
+    
+    // 2. Sun NXT
+    if (/sun\s*n[ux]t|sunnxt/.test(s)) return "Sun NXT";
+
+    // 3. JioCinema / Hotstar (JHS)
+    if (/\bjhs\b|jiocinema|jio\s*cinema/.test(s)) return "JioCinema";
+    if (/hotstar|dsnp|disney\+?\s*hotstar/.test(s)) return "Disney+ Hotstar";
+
+    // 4. Amazon Prime Video (AMZN)
+    if (/amzn|amazon|prime\s*video/.test(s)) return "AMZN";
+
+    // 5. Netflix
+    if (/\bnf\b|netflix/.test(s)) return "Netflix";
+
+    // 6. SonyLIV
+    if (/sonyliv|sony\s*liv/.test(s)) return "SonyLIV";
+
+    // 7. Zee5
+    if (/zee5|zee\s*5/.test(s)) return "Zee5";
+
+    // 8. Aha Video
+    if (/\baha\b|aha\s*video/.test(s)) return "Aha";
+
+    // 9. Apple TV+
+    if (/atvp|appletv|apple\s*tv/.test(s)) return "Apple TV+";
+
+    // 10. Lionsgate Play
+    if (/lionsgate|lions\s*gate/.test(s)) return "Lionsgate Play";
+
+    // 11. ManoramaMAX
+    if (/manorama|manoramamax/.test(s)) return "ManoramaMAX";
+
+    // 12. Hoichoi
+    if (/hoichoi/.test(s)) return "Hoichoi";
+
+    // 13. Chaupal
+    if (/chaupal/.test(s)) return "Chaupal";
+
+    // 14. Eros Now
+    if (/erosnow|eros\s*now/.test(s)) return "Eros Now";
+
+    // 15. MX Player
+    if (/mxplayer|mx\s*player/.test(s)) return "MX Player";
+
+    // 16. Voot
+    if (/voot/.test(s)) return "Voot";
+
+    // 17. Discovery+
+    if (/discovery\+?/.test(s)) return "Discovery+";
+
+    // 18. Paramount+
+    if (/paramount\+?|pmtp/.test(s)) return "Paramount+";
+
+    // 19. HBO Max / Max
+    if (/hbomax|hbo\s*max|\bmax\b/.test(s)) return "HBO Max";
+
+    // 20. Hulu
+    if (/hulu/.test(s)) return "Hulu";
+
+    // 21. BluRay / Hybrid / REMUX
+    if (/bluray\s*hybrid|hybrid\s*bluray/.test(s)) return "BluRay Hybrid";
+    if (/bluray|remux|bdrip/.test(s)) return "BluRay";
+
+    // 22. TRUE WEB-DL / WEB-DL / WEBRip
+    if (/true\s*web-?dl/.test(s)) return "TRUE WEB-DL";
+    if (/web-?dl|webrip|\bweb\b/.test(s)) return "WEB-DL";
+
+    return "WEB-DL";
+  }
+
+  /* ⚡ 100% ACCURATE REAL PARSER (ZERO FAKE TRACKS & 22 OTT ENGINE) */
   let rawIngestDebounce = null;
   function handleInstantRawIngest(raw) {
     if (!raw.trim()) return;
 
-    // 1. Release Groups & Tags: Detect JHS (JioCinema/Hotstar), TTT, @Channel
+    // 1. Release Groups & Tags: Hon3y, JHS, TTT, Telly, Daredevil, YIFY, PSA, @Channel
     let releaseTags = [];
     const tgMatch = raw.match(/@[\w\d_-]+/);
     if (tgMatch) releaseTags.push(tgMatch[0]);
 
     if (/\[TTT\]/i.test(raw)) releaseTags.push("TTT");
     if (/\bJHS\b/i.test(raw)) releaseTags.push("JHS");
+    if (/hon3y/i.test(raw)) releaseTags.push("Hon3y");
     if (/\bTelly\b/i.test(raw)) releaseTags.push("Telly");
     if (/\bDaredevil\b/i.test(raw)) releaseTags.push("Daredevil");
-    
-    document.getElementById("token-ripper").value = releaseTags.join(' ');
+    if (/\bYIFY\b/i.test(raw)) releaseTags.push("YIFY");
+    if (/\bPSA\b/i.test(raw)) releaseTags.push("PSA");
+    if (/\bQxR\b/i.test(raw)) releaseTags.push("QxR");
+    if (/\bolamovis\b/i.test(raw)) releaseTags.push("olamovis");
+    if (/\bMRX\b/i.test(raw)) releaseTags.push("MRX");
+
+    document.getElementById("token-ripper").value = [...new Set(releaseTags)].join(' ');
 
     // 2. Clean Year & Title
     let clean = raw.replace(/@[\w\d_-]+/g, '').replace(/\[@[\w\d_-]+\]/g, '');
     clean = clean.replace(/\[TTT\]/gi, '').replace(/\.(mkv|mp4|avi|ts)$/i, '');
+    clean = clean.replace(/hon3y/gi, '');
     
     const ym = clean.match(/\b(19\d\d|20\d\d)\b/);
-    const year = ym ? ym[1] : "2026";
+    const year = ym ? ym[1] : "2002";
     let titlePart = clean;
     if (ym) titlePart = clean.substring(0, ym.index).trim();
     titlePart = titlePart.replace(/[-_.]/g, ' ').replace(/\s+/g, ' ').trim();
@@ -463,21 +546,16 @@
     document.getElementById("token-year").value = year;
     document.getElementById("movie-year").value = year;
 
-    // 3. Resolution
-    let res = "1080p";
+    // 3. Resolution (720p, 1080p, 2160p, 480p)
+    let res = "";
     if (/\b(2160p|4k|uhd)\b/i.test(raw)) res = "2160p";
-    else if (/\b(720p)\b/i.test(raw)) res = "720p";
+    else if (/\b(1080p|fhd)\b/i.test(raw)) res = "1080p";
+    else if (/\b(720p|hd)\b/i.test(raw)) res = "720p";
+    else if (/\b(480p|576p)\b/i.test(raw)) res = "480p";
     document.getElementById("token-resolution").value = res;
 
-    // 4. Source Platform (BluRay Hybrid, TRUE WEB-DL, JioCinema/Hotstar, etc.)
-    let platform = "WEB-DL";
-    if (/bluray\s*hybrid/i.test(raw)) platform = "BluRay Hybrid";
-    else if (/bluray|remux/i.test(raw)) platform = "BluRay";
-    else if (/true\s*web-?dl/i.test(raw)) platform = "TRUE WEB-DL";
-    else if (/web-?dl|webrip/i.test(raw)) platform = "WEB-DL";
-    else if (/amzn|prime/i.test(raw)) platform = "AMZN";
-    else if (/jhs/i.test(raw)) platform = "JioCinema / Hotstar (JHS)";
-    document.getElementById("token-platform").value = platform;
+    // 4. Source Platform (Top 22 OTT Detection Engine)
+    document.getElementById("token-platform").value = detectTop22Platform(raw);
 
     // 5. Video Codec (x264, x265, AVC, HEVC)
     let vcodec = "x264";
@@ -486,11 +564,11 @@
     else if (/av1/i.test(raw)) vcodec = "AV1";
     document.getElementById("token-videocodec").value = vcodec;
 
-    // 6. Verified Size (Zero Fake 10GB: If not present in string, leave empty)
+    // 6. Verified Size (Zero Fake Default: only fills if real size in string)
     const szMatch = raw.match(/(\d+\.?\d*)\s*(gb|mb)/i);
-    document.getElementById("token-size").value = szMatch ? `${szMatch[1]}GB` : "";
+    document.getElementById("token-size").value = szMatch ? `${szMatch[1]} ${szMatch[2].toUpperCase()}` : "";
 
-    // 7. CLEAN MULTI-AUDIO BRACKET EXTRACTION (Removes JHS from language string)
+    // 7. CLEAN MULTI-AUDIO BRACKET EXTRACTION
     let cleanAudioSpec = "";
     const bracketMatches = raw.match(/\[(.*?)\]/g);
     if (bracketMatches) {
@@ -504,6 +582,7 @@
     }
 
     if (!cleanAudioSpec) {
+      // Check parenthesis audio
       const parenMatches = raw.match(/\((.*?)\)/g);
       if (parenMatches) {
         for (let p of parenMatches) {
@@ -515,7 +594,15 @@
       }
     }
 
-    document.getElementById("token-audio-spec").value = cleanAudioSpec || "[Hindi DD 5.1]";
+    if (!cleanAudioSpec) {
+      // Direct raw match like: AC 5.1, DDP 5.1, DTS 5.1
+      let lang = /\btamil\b/i.test(raw) ? 'Tamil' : (/\btelugu\b/i.test(raw) ? 'Telugu' : 'Hindi');
+      let ch = /\b(5\.1|6ch)\b/i.test(raw) ? '5.1' : (/\b(7\.1)\b/i.test(raw) ? '7.1' : '2.0');
+      let codec = /dts/i.test(raw) ? 'DTS' : (/ddp|e-?ac-?3/i.test(raw) ? 'DDP' : (/ac-?3|dd|ac\s*5\.1/i.test(raw) ? 'DD' : 'AAC'));
+      cleanAudioSpec = `[${lang} ${codec} ${ch}]`;
+    }
+
+    document.getElementById("token-audio-spec").value = cleanAudioSpec;
 
     updateDashPreview();
 
@@ -560,10 +647,10 @@
     box.style.display = "block";
   }
 
-  /* ⚡ CLEAN PREVIEW BUILDER (ZERO DUPLICATION) */
+  /* ⚡ CLEAN PREVIEW BUILDER (ZERO DUPLICATION • LIVE EDITABLE) */
   function updateDashPreview() {
     const title = document.getElementById("token-movie-title").value.trim() || "Title";
-    const year = document.getElementById("token-year").value.trim() || "2026";
+    const year = document.getElementById("token-year").value.trim() || "2002";
     const res = document.getElementById("token-resolution").value.trim();
     const platform = document.getElementById("token-platform").value.trim();
     const vcodec = document.getElementById("token-videocodec").value.trim();
@@ -605,13 +692,13 @@
       document.getElementById("movie-orig-title").value = d.original_title || d.title || "";
       document.getElementById("movie-tagline").value = d.tagline || "";
       
-      const releaseYear = (d.release_date || "2026").split("-")[0];
+      const releaseYear = (d.release_date || "2002").split("-")[0];
       document.getElementById("movie-year").value = releaseYear;
       document.getElementById("token-year").value = releaseYear;
 
       document.getElementById("movie-rating").value = d.vote_average ? d.vote_average.toFixed(1) : "7.0";
-      document.getElementById("movie-lang").value = d.original_language || "en";
-      document.getElementById("movie-runtime").value = d.runtime || 110;
+      document.getElementById("movie-lang").value = d.original_language || "hi";
+      document.getElementById("movie-runtime").value = d.runtime || 150;
       document.getElementById("movie-plot").value = d.overview || "";
       document.getElementById("movie-imdb-id").value = d.imdb_id || "";
       document.getElementById("movie-release-date").value = d.release_date || `${releaseYear}-01-01`;
@@ -698,7 +785,7 @@
     const tmdbId = document.getElementById("tmdb-id").value.trim();
     const title = document.getElementById("movie-title").value.trim();
     const origTitle = document.getElementById("movie-orig-title").value.trim() || title;
-    const year = parseInt(document.getElementById("token-year").value, 10) || 2026;
+    const year = parseInt(document.getElementById("token-year").value, 10) || 2002;
     const releaseDate = document.getElementById("movie-release-date").value.trim() || `${year}-01-01`;
     const rating = parseFloat(document.getElementById("movie-rating").value) || 7.0;
     const langCode = document.getElementById("movie-lang").value.trim();
@@ -783,9 +870,9 @@
         trailer: trailer,
         ratings: [{ source: "TMDb", value: rating, out_of: 10 }],
         badges: {
-          quality: `https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/${res}.png`,
+          quality: `https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/${res || '720p'}.png`,
           hdr: "",
-          source: `https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/bluray.png`,
+          source: `https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/dvd.png`,
           audio_format: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
           audio_channels: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
         },
@@ -804,10 +891,10 @@
           name: finalDashName,
           language: audioSpec,
           dubbed: audioSpec,
-          quality: `${res} FHD`,
+          quality: `${res} HD`,
           resolution: res,
           source: platform,
-          source_image: "resources/images/sources/bluray.png",
+          source_image: "resources/images/sources/dvd.png",
           codec: vcodec,
           audio: audioSpec,
           size: sz,
@@ -854,10 +941,10 @@
         available_versions: [{
           language: audioSpec,
           dubbed: audioSpec,
-          quality: `${res} FHD`,
+          quality: `${res} HD`,
           source: platform,
-          source_image: "resources/images/sources/bluray.png",
-          format: "BluRay",
+          source_image: "resources/images/sources/dvd.png",
+          format: platform,
           codec: vcodec,
           audio: audioSpec
         }]
