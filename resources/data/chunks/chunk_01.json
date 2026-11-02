@@ -1,6 +1,6 @@
 {
   "chunk_id": "chunk_01",
-  "movie_count": 12,
+  "movie_count": 13,
   "movies": [
     {
       "id": "1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU",
@@ -1117,6 +1117,149 @@
           "size": "7 GB",
           "telegram_tag": "",
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1oWZotLuAmn2CtobbS5RkeAexWtE4ovtw|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      ]
+    },
+    {
+      "id": "1h5eSNpOMRHVvqGVxT6F2knVZ-oDFFEWT",
+      "tmdb_id": 15980,
+      "name": "Raaz: The Mystery Continues... (2009) [1080p] [AMZN] [Hindi DDP 5.1] [11 GB].mkv",
+      "title": "Raaz: The Mystery Continues...",
+      "original_title": "राज़ : दि मिस्ट्री कन्टिन्युज",
+      "year": 2009,
+      "runtime": 137,
+      "release_date": "2009-01-01",
+      "certification": "UA",
+      "original_language": "hi",
+      "genres": [
+        "Horror",
+        "Mystery"
+      ],
+      "collection": "Raaz Collection",
+      "tagline": "",
+      "plot": "An artist comes to realize that the woman he has been been painting is real and is being haunted by a ghost.",
+      "telegram_channel": "",
+      "country": [
+        "India"
+      ],
+      "studio": [
+        "AMZN"
+      ],
+      "director": [
+        {
+          "name": "Mohit Suri"
+        }
+      ],
+      "writers": [
+        {
+          "name": "Shagufta Rafique",
+          "job": "Screenplay"
+        },
+        {
+          "name": "Shagufta Rafique",
+          "job": "Dialogue"
+        },
+        {
+          "name": "Mohit Suri",
+          "job": "Story"
+        }
+      ],
+      "cast": [
+        {
+          "name": "Emraan Hashmi",
+          "character": "Prithvi Singh",
+          "profile": "https://image.tmdb.org/t/p/w185/kflgvFCFZnpTRbKmJWn5T0G5EKI.jpg",
+          "link": "https://www.themoviedb.org/person/85969"
+        },
+        {
+          "name": "Kangana Ranaut",
+          "character": "Nandita Chopra",
+          "profile": "https://image.tmdb.org/t/p/w185/GmIRKLKP3xEx1mgF7VrFurIEbz.jpg",
+          "link": "https://www.themoviedb.org/person/85470"
+        },
+        {
+          "name": "Adhyayan Suman",
+          "character": "Yash Dayal",
+          "profile": "https://image.tmdb.org/t/p/w185/cFJFOjpNn4pQIge9Ty52j1UiKmb.jpg",
+          "link": "https://www.themoviedb.org/person/85886"
+        },
+        {
+          "name": "Jackie Shroff",
+          "character": "Veer Pratap Singh",
+          "profile": "https://image.tmdb.org/t/p/w185/sVqe6VioM37LQwgQLd8wnC5vapK.jpg",
+          "link": "https://www.themoviedb.org/person/86014"
+        },
+        {
+          "name": "Dinesh Lamba",
+          "character": "Police Inspector",
+          "profile": null,
+          "link": "https://www.themoviedb.org/person/110236"
+        },
+        {
+          "name": "Anupam Shyam",
+          "character": "Priest",
+          "profile": "https://image.tmdb.org/t/p/w185/jmWDaHQbgAb8W1fW7HQRQmNRwQ7.jpg",
+          "link": "https://www.themoviedb.org/person/223168"
+        }
+      ],
+      "artwork": {
+        "poster": "https://image.tmdb.org/t/p/w780/muXsgB3xdW68OEQrKr1MzyPuzBS.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/e7eVM6mAEVZ7XZOGKrNTboTK38b.jpg",
+        "clearlogo": "",
+        "clearart": "",
+        "banner": "",
+        "landscape": "https://image.tmdb.org/t/p/original/e7eVM6mAEVZ7XZOGKrNTboTK38b.jpg",
+        "keyart": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w780/muXsgB3xdW68OEQrKr1MzyPuzBS.jpg",
+        "discart": "",
+        "title_card": "https://image.tmdb.org/t/p/original/e7eVM6mAEVZ7XZOGKrNTboTK38b.jpg",
+        "character_art": [],
+        "extra_posters": [],
+        "extra_backdrops": []
+      },
+      "trailer": "",
+      "ratings": [
+        {
+          "source": "TMDb",
+          "value": 5.6,
+          "out_of": 10
+        }
+      ],
+      "badges": {
+        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
+        "hdr": "",
+        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png",
+        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+      },
+      "specs": {
+        "resolution": "1080p",
+        "source": "AMZN",
+        "codec": "x264",
+        "bit_depth": "8bit",
+        "audio": "Hindi DDP 5.1",
+        "channels": "5.1",
+        "bitrate": "640 Kbps",
+        "languages": "Hindi DDP 5.1",
+        "size": "11 GB",
+        "telegram_tag": ""
+      },
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1h5eSNpOMRHVvqGVxT6F2knVZ-oDFFEWT|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "versions": [
+        {
+          "id": "1h5eSNpOMRHVvqGVxT6F2knVZ-oDFFEWT",
+          "name": "Raaz: The Mystery Continues... (2009) [1080p] [AMZN] [Hindi DDP 5.1] [11 GB].mkv",
+          "language": "Hindi DDP 5.1",
+          "quality": "1080p FHD",
+          "resolution": "1080p",
+          "source": "AMZN",
+          "source_image": "resources/images/sources/web.png",
+          "codec": "x264",
+          "audio": "Hindi DDP 5.1",
+          "channels": "5.1",
+          "size": "11 GB",
+          "telegram_tag": "",
+          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1h5eSNpOMRHVvqGVxT6F2knVZ-oDFFEWT|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
     }
