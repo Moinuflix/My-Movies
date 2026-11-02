@@ -1,6 +1,6 @@
 {
   "chunk_id": "chunk_01",
-  "movie_count": 15,
+  "movie_count": 16,
   "movies": [
     {
       "id": "1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU",
@@ -1559,6 +1559,169 @@
           "size": "16 GB",
           "telegram_tag": "",
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1UnPZWkOs6na1a7oM0xbhUVoVf-FUGL6j|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      ]
+    },
+    {
+      "id": "1uQBsovfEH2iwPwW2Vl6Sv5dDVTB9WCUP",
+      "tmdb_id": 83902,
+      "name": "Na Tum Jaano Na Hum (2002) [720p] [WEB-DL] [Hindi DDP 5.1] [3 GB].mkv",
+      "title": "Na Tum Jaano Na Hum",
+      "original_title": "ना तुम जानो ना हम",
+      "year": 2002,
+      "runtime": 159,
+      "release_date": "2002-01-01",
+      "certification": "U",
+      "original_language": "hi",
+      "genres": [
+        "Romance",
+        "Drama"
+      ],
+      "collection": "",
+      "tagline": "Sometimes you just leave it to God...",
+      "plot": "Esha and Rahul start a letter based friendship that blossoms into love. They don't exchange names or pictures. Her parents would like Esha to marry Akshay who's eager to tie the knot, so Esha is forced to make a decision...",
+      "telegram_channel": "",
+      "country": [
+        "India"
+      ],
+      "studio": [
+        "WEB-DL"
+      ],
+      "director": [
+        {
+          "name": "Arjun Sablok"
+        }
+      ],
+      "writers": [
+        {
+          "name": "Arjun Sablok",
+          "job": "Screenplay"
+        },
+        {
+          "name": "Pratibha Acharya",
+          "job": "Dialogue"
+        }
+      ],
+      "cast": [
+        {
+          "name": "Saif Ali Khan",
+          "character": "Akshay Kapoor",
+          "profile": "https://image.tmdb.org/t/p/w185/kzOy1DoCeLoKJ07nbYnQDObU3yY.jpg",
+          "link": "https://www.themoviedb.org/person/35747"
+        },
+        {
+          "name": "Hrithik Roshan",
+          "character": "Rahul Sharma",
+          "profile": "https://image.tmdb.org/t/p/w185/d7XGTvyYgmrsA05XOn1YtxYcuY1.jpg",
+          "link": "https://www.themoviedb.org/person/78749"
+        },
+        {
+          "name": "Esha Deol",
+          "character": "Esha Malhotra",
+          "profile": "https://image.tmdb.org/t/p/w185/kf61c4lNSAjExCHQh03x5f0tQWL.jpg",
+          "link": "https://www.themoviedb.org/person/81926"
+        },
+        {
+          "name": "Alok Nath",
+          "character": "Mr. Malhotra",
+          "profile": "https://image.tmdb.org/t/p/w185/fMtqIj07e2HD0i5YbV91kgjrZzm.jpg",
+          "link": "https://www.themoviedb.org/person/86784"
+        },
+        {
+          "name": "Ashima Bhalla",
+          "character": "Tanya",
+          "profile": "https://image.tmdb.org/t/p/w185/4tmXMFGMjJUnH4TYto4pul2dYsc.jpg",
+          "link": "https://www.themoviedb.org/person/585392"
+        },
+        {
+          "name": "Bhavna Ruparel",
+          "character": "",
+          "profile": null,
+          "link": "https://www.themoviedb.org/person/1323187"
+        },
+        {
+          "name": "Shilarna Vaze",
+          "character": "Riya",
+          "profile": null,
+          "link": "https://www.themoviedb.org/person/2050186"
+        },
+        {
+          "name": "Anang Desai",
+          "character": "Akshay's Dad",
+          "profile": "https://image.tmdb.org/t/p/w185/c5QbV2LHo1AFtavHO6owAObONBC.jpg",
+          "link": "https://www.themoviedb.org/person/86503"
+        },
+        {
+          "name": "Smita Jaykar",
+          "character": "Akshay's Mom",
+          "profile": "https://image.tmdb.org/t/p/w185/5YpJqn2u69d9MaEkn0ucD2tbz4x.jpg",
+          "link": "https://www.themoviedb.org/person/43414"
+        },
+        {
+          "name": "Rati Agnihotri",
+          "character": "Maya",
+          "profile": "https://image.tmdb.org/t/p/w185/mIdaxb1LEhEVBARDNFyQ64411FD.jpg",
+          "link": "https://www.themoviedb.org/person/35790"
+        }
+      ],
+      "artwork": {
+        "poster": "https://image.tmdb.org/t/p/w780/cOIrm9WvMGvbliNZ88bK8hVYUc1.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/lUK6pWQeamOVKeNGJJ6Q4Y9HzOU.jpg",
+        "clearlogo": "https://image.tmdb.org/t/p/original/xZGt4jB5K2hfmMTwX1f8huiP23o.png",
+        "clearart": "",
+        "banner": "",
+        "landscape": "https://image.tmdb.org/t/p/original/lUK6pWQeamOVKeNGJJ6Q4Y9HzOU.jpg",
+        "keyart": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w780/cOIrm9WvMGvbliNZ88bK8hVYUc1.jpg",
+        "discart": "",
+        "title_card": "https://image.tmdb.org/t/p/original/lUK6pWQeamOVKeNGJJ6Q4Y9HzOU.jpg",
+        "character_art": [],
+        "extra_posters": [],
+        "extra_backdrops": []
+      },
+      "trailer": "",
+      "ratings": [
+        {
+          "source": "TMDb",
+          "value": 5.1,
+          "out_of": 10
+        }
+      ],
+      "badges": {
+        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/720p.png",
+        "hdr": "",
+        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png",
+        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+      },
+      "specs": {
+        "resolution": "720p",
+        "source": "WEB-DL",
+        "codec": "x264",
+        "bit_depth": "8bit",
+        "audio": "Hindi DDP 5.1",
+        "channels": "5.1",
+        "bitrate": "640 Kbps",
+        "languages": "Hindi DDP 5.1",
+        "size": "3 GB",
+        "telegram_tag": ""
+      },
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1uQBsovfEH2iwPwW2Vl6Sv5dDVTB9WCUP|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "versions": [
+        {
+          "id": "1uQBsovfEH2iwPwW2Vl6Sv5dDVTB9WCUP",
+          "name": "Na Tum Jaano Na Hum (2002) [720p] [WEB-DL] [Hindi DDP 5.1] [3 GB].mkv",
+          "language": "Hindi DDP 5.1",
+          "quality": "720p FHD",
+          "resolution": "720p",
+          "source": "WEB-DL",
+          "source_image": "resources/images/sources/web.png",
+          "codec": "x264",
+          "audio": "Hindi DDP 5.1",
+          "channels": "5.1",
+          "size": "3 GB",
+          "telegram_tag": "",
+          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1uQBsovfEH2iwPwW2Vl6Sv5dDVTB9WCUP|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
     }
