@@ -1,35 +1,5 @@
 [
   {
-    "gdrive_id": "1d93Fp_As7S39ri5m7Kxa8OGzB7A02Pqh",
-    "original_filename": "DSP.2022.HQ.1080p.SNXT.WEB.DL.H264.HIN-Multi.DDP5.1.Atmos.448k-DDH.mkv",
-    "file_size_bytes": 6143547322,
-    "file_size_gb": "6 GB",
-    "mime_type": "video/x-matroska",
-    "detected_at": "2026-10-29T16:15:52.203Z",
-    "parsed": {
-      "title": "DSP",
-      "year": 2022,
-      "resolution": "1080p",
-      "source": "WEB-DL",
-      "codec": "x264",
-      "telegram_tag": "",
-      "standard_filename": "DSP (2022) [1080p] [WEB-DL] [Tamil 5.1] [6 GB].mkv"
-    },
-    "match_status": "matched",
-    "tmdb_candidates": [
-      {
-        "tmdb_id": 806920,
-        "title": "DSP",
-        "year": "2022",
-        "poster": "https://image.tmdb.org/t/p/w500/A9U4gIzmu60puzuk59C0viwsHhZ.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/ohmqQ0iGZHucI38LnuEZcrHmQYL.jpg",
-        "rating": 6.2
-      }
-    ],
-    "selected_tmdb_id": 806920,
-    "approval_status": "pending"
-  },
-  {
     "gdrive_id": "1rvI7ChehnpuzJdUrmnm4eMpYFYGQx1qC",
     "original_filename": "How to Train Your Dragon (2025) IMAX 1080p BluRay x264 AVC Multi Audio [Org AMZN Hindi-Tamil-Telugu DDP 5.1 ~ 640Kbps + English TrueHD Atmos 7.1] ESub ~ ROEN.mkv",
     "file_size_bytes": 18983499770,
