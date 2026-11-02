@@ -49,9 +49,9 @@
       "tmdb_id": 1515692,
       "title": "Baththa",
       "year": 2026,
-      "poster": "https://image.tmdb.org/t/p/w780/n8Df1H1TmcmZfjGgWh5uQyRFzHy.jpg",
-      "fanart": "https://image.tmdb.org/t/p/original/xrAtBSFEYzcRRB5kOvtICSuOrok.jpg",
-      "rating": 8.2,
+      "poster": "https://image.tmdb.org/t/p/w780/7wHBYs8HHmTGe4nXLpMEAoDSK2o.jpg",
+      "fanart": "https://image.tmdb.org/t/p/original/5sBnZMT1aJ6cBvehKOzOOLdI6bz.jpg",
+      "rating": 8.9,
       "original_language": "ta",
       "genres": [
         "Drama",
@@ -239,32 +239,18 @@
       "year": 2002,
       "poster": "https://image.tmdb.org/t/p/w780/oc7d4jzqZ2Zat831pVSkvEIVMYa.jpg",
       "fanart": "https://image.tmdb.org/t/p/original/nRTmi69sicoBzypGAZUzaFUoAvc.jpg",
-      "logo": "https://image.tmdb.org/t/p/original/uxkfTK56tuf6ofhMA8mSHaBnogD.png",
       "rating": 5.8,
       "original_language": "hi",
       "genres": [
         "Thriller",
         "Horror"
       ],
-      "collection": "Raaz Collection",
       "chunk_file": "resources/data/chunks/chunk_01.json",
       "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1oWZotLuAmn2CtobbS5RkeAexWtE4ovtw|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
       "available_languages": [
         "Hindi DDP 5.1"
       ],
-      "version_count": 1,
-      "available_versions": [
-        {
-          "language": "Hindi DDP 5.1",
-          "quality": "1080p FHD",
-          "source": "AMZN",
-          "source_image": "resources/images/sources/web.png",
-          "format": "AMZN",
-          "codec": "x264",
-          "audio": "Hindi DDP 5.1",
-          "channels": "5.1"
-        }
-      ]
+      "version_count": 1
     },
     {
       "id": "1h5eSNpOMRHVvqGVxT6F2knVZ-oDFFEWT",
@@ -273,32 +259,18 @@
       "year": 2009,
       "poster": "https://image.tmdb.org/t/p/w780/muXsgB3xdW68OEQrKr1MzyPuzBS.jpg",
       "fanart": "https://image.tmdb.org/t/p/original/e7eVM6mAEVZ7XZOGKrNTboTK38b.jpg",
-      "logo": "",
       "rating": 5.6,
       "original_language": "hi",
       "genres": [
         "Horror",
         "Mystery"
       ],
-      "collection": "Raaz Collection",
       "chunk_file": "resources/data/chunks/chunk_01.json",
       "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1h5eSNpOMRHVvqGVxT6F2knVZ-oDFFEWT|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
       "available_languages": [
         "Hindi DDP 5.1"
       ],
-      "version_count": 1,
-      "available_versions": [
-        {
-          "language": "Hindi DDP 5.1",
-          "quality": "1080p FHD",
-          "source": "AMZN",
-          "source_image": "resources/images/sources/web.png",
-          "format": "AMZN",
-          "codec": "x264",
-          "audio": "Hindi DDP 5.1",
-          "channels": "5.1"
-        }
-      ]
+      "version_count": 1
     },
     {
       "id": "1NnepzdhRKrqpLI1nXmQcm7iSe9uwsOOL",
@@ -307,32 +279,18 @@
       "year": 2012,
       "poster": "https://image.tmdb.org/t/p/w780/hn51Wxgjznc5YDHhIwlUH3VyuEU.jpg",
       "fanart": "https://image.tmdb.org/t/p/original/auQwNrtTT4fdz32dcqGUffpoFN5.jpg",
-      "logo": "https://image.tmdb.org/t/p/original/ogQDWTgfjADn6mMlOsMggeP0zRJ.png",
       "rating": 5,
       "original_language": "hi",
       "genres": [
         "Horror",
         "Thriller"
       ],
-      "collection": "Raaz Collection",
       "chunk_file": "resources/data/chunks/chunk_01.json",
       "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1NnepzdhRKrqpLI1nXmQcm7iSe9uwsOOL|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
       "available_languages": [
         "Hindi DDP 5.1"
       ],
-      "version_count": 1,
-      "available_versions": [
-        {
-          "language": "Hindi DDP 5.1",
-          "quality": "1080p FHD",
-          "source": "AMZN",
-          "source_image": "resources/images/sources/web.png",
-          "format": "AMZN",
-          "codec": "x264",
-          "audio": "Hindi DDP 5.1",
-          "channels": "5.1"
-        }
-      ]
+      "version_count": 1
     },
     {
       "id": "1UnPZWkOs6na1a7oM0xbhUVoVf-FUGL6j",
@@ -341,7 +299,6 @@
       "year": 1989,
       "poster": "https://image.tmdb.org/t/p/w780/aqZ9CEbXVLrEVAZFpT2F7PAE7dV.jpg",
       "fanart": "https://image.tmdb.org/t/p/original/9B6kd0SJtjQBQB9g7vCrGZoiEQp.jpg",
-      "logo": "https://image.tmdb.org/t/p/original/vxA9Bcme7rWnEbILhaw4wBErSv4.png",
       "rating": 6,
       "original_language": "hi",
       "genres": [
@@ -349,25 +306,12 @@
         "Drama",
         "Comedy"
       ],
-      "collection": "",
       "chunk_file": "resources/data/chunks/chunk_01.json",
       "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1UnPZWkOs6na1a7oM0xbhUVoVf-FUGL6j|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
       "available_languages": [
         "Hindi DDP 5.1"
       ],
-      "version_count": 1,
-      "available_versions": [
-        {
-          "language": "Hindi DDP 5.1",
-          "quality": "1080p FHD",
-          "source": "BluRay",
-          "source_image": "resources/images/sources/web.png",
-          "format": "BluRay",
-          "codec": "x264",
-          "audio": "Hindi DDP 5.1",
-          "channels": "5.1"
-        }
-      ]
+      "version_count": 1
     },
     {
       "id": "1uQBsovfEH2iwPwW2Vl6Sv5dDVTB9WCUP",
@@ -376,32 +320,18 @@
       "year": 2002,
       "poster": "https://image.tmdb.org/t/p/w780/cOIrm9WvMGvbliNZ88bK8hVYUc1.jpg",
       "fanart": "https://image.tmdb.org/t/p/original/lUK6pWQeamOVKeNGJJ6Q4Y9HzOU.jpg",
-      "logo": "https://image.tmdb.org/t/p/original/xZGt4jB5K2hfmMTwX1f8huiP23o.png",
       "rating": 5.1,
       "original_language": "hi",
       "genres": [
         "Romance",
         "Drama"
       ],
-      "collection": "",
       "chunk_file": "resources/data/chunks/chunk_01.json",
       "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1uQBsovfEH2iwPwW2Vl6Sv5dDVTB9WCUP|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
       "available_languages": [
         "Hindi DDP 5.1"
       ],
-      "version_count": 1,
-      "available_versions": [
-        {
-          "language": "Hindi DDP 5.1",
-          "quality": "720p FHD",
-          "source": "WEB-DL",
-          "source_image": "resources/images/sources/web.png",
-          "format": "WEB-DL",
-          "codec": "x264",
-          "audio": "Hindi DDP 5.1",
-          "channels": "5.1"
-        }
-      ]
+      "version_count": 1
     },
     {
       "id": "1d93Fp_As7S39ri5m7Kxa8OGzB7A02Pqh",
@@ -410,32 +340,18 @@
       "year": 2022,
       "poster": "https://image.tmdb.org/t/p/w780/A9U4gIzmu60puzuk59C0viwsHhZ.jpg",
       "fanart": "https://image.tmdb.org/t/p/original/ohmqQ0iGZHucI38LnuEZcrHmQYL.jpg",
-      "logo": "https://image.tmdb.org/t/p/original/jYEanPd61jPBM0YJgIDst5E9HUh.png",
       "rating": 6.2,
       "original_language": "ta",
       "genres": [
         "Action",
         "Drama"
       ],
-      "collection": "",
       "chunk_file": "resources/data/chunks/chunk_01.json",
       "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1d93Fp_As7S39ri5m7Kxa8OGzB7A02Pqh|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
       "available_languages": [
         "Hindi DDP 5.1"
       ],
-      "version_count": 1,
-      "available_versions": [
-        {
-          "language": "Hindi DDP 5.1",
-          "quality": "1080p FHD",
-          "source": "WEB-DL",
-          "source_image": "resources/images/sources/web.png",
-          "format": "WEB-DL",
-          "codec": "x264",
-          "audio": "Hindi DDP 5.1",
-          "channels": "5.1"
-        }
-      ]
+      "version_count": 1
     }
   ]
 }
