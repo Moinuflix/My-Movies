@@ -85,7 +85,7 @@
   <div class="govt-header">
     <div>
       <div class="govt-title">MOINUFLIX NATIONAL MEDIA INGESTION PORTAL</div>
-      <div class="govt-sub">Govt-Style Form Verification • 22 Top OTT Auto-Detection • Zero Fake Data</div>
+      <div class="govt-sub">Govt-Style Form Verification • 22 Top OTT Auto-Detection • Admin Edit Enabled</div>
     </div>
     
     <div class="nav-links-box">
@@ -127,7 +127,7 @@
       <div class="form-grid">
         <div class="form-group col-12">
           <label>Raw Google Drive Release File Name <span class="required">* (Instant Full Auto-Fill)</span></label>
-          <input type="text" id="raw-filename" placeholder="Paste full raw filename, e.g. Na Tum Jaano Na Hum 2002 Hindi 720p DvDrip X264 AC 5.1Hon3y.mkv" required oninput="handleInstantRawIngest(this.value)">
+          <input type="text" id="raw-filename" placeholder="Paste full raw filename" required oninput="handleInstantRawIngest(this.value)">
         </div>
 
         <div class="form-group col-4">
@@ -175,7 +175,7 @@
 
         <div class="form-group col-2">
           <label>Ripper / Release Tag</label>
-          <input type="text" id="token-ripper" value="" placeholder="e.g. Hon3y / JHS / TTT" oninput="updateDashPreview()">
+          <input type="text" id="token-ripper" value="" placeholder="e.g. Hon3y / JHS" oninput="updateDashPreview()">
         </div>
 
         <!-- 100% CLEAN MULTI-AUDIO BRACKET -->
@@ -371,6 +371,7 @@
     setTimeout(() => { el.style.display = "none"; }, 6000);
   }
 
+  /* ⚡ LOAD INITIAL STATS & SUPPORT ADMIN.HTML EDIT (load_id) */
   async function loadInitialStats() {
     checkTokenStatus();
     try {
@@ -383,6 +384,25 @@
         const chunkNum = Math.floor(catalogCount / 50) + 1;
         currentTargetChunk = `chunk_${String(chunkNum).padStart(2, '0')}.json`;
         document.getElementById("stat-target-chunk").textContent = currentTargetChunk;
+
+        // ⚡ AUTO-LOAD MOVIE WHEN CLICKED "EDIT" IN ADMIN.HTML (load_id)
+        const urlParams = new URLSearchParams(window.location.search);
+        const editId = urlParams.get("load_id");
+        if (editId) {
+          showToast(`Loading movie ID ${editId} for editing...`);
+          const foundCat = movies.find(m => m.id === editId);
+          if (foundCat && foundCat.chunk_file) {
+            const chunkRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${foundCat.chunk_file}?t=${Date.now()}`);
+            if (chunkRes.ok) {
+              const chunkJson = await chunkRes.json();
+              const movieRecord = (chunkJson.movies || []).find(m => m.id === editId);
+              if (movieRecord) {
+                populateFormForEditing(movieRecord, foundCat.chunk_file);
+                return;
+              }
+            }
+          }
+        }
       }
     } catch (_) {}
 
@@ -398,7 +418,6 @@
 
       handleInstantRawIngest(rawVal);
 
-      // Verified Real Size
       if (pItem.file_size_gb) {
         document.getElementById("token-size").value = pItem.file_size_gb.trim();
       }
@@ -412,6 +431,82 @@
       updateDashPreview();
       showToast("Loaded from Pending Queue with Verified Google Drive Data!");
     }
+  }
+
+  /* ⚡ POPULATE FORM FIELDS WHEN EDITING AN EXISTING MOVIE FROM ADMIN.HTML */
+  function populateFormForEditing(m, chunkPath) {
+    currentTargetChunk = chunkPath.split("/").pop();
+    document.getElementById("stat-target-chunk").textContent = currentTargetChunk;
+
+    document.getElementById("drive-file-id").value = m.id || "";
+    document.getElementById("tmdb-id").value = m.tmdb_id || "";
+    document.getElementById("token-movie-title").value = m.title || "";
+    document.getElementById("movie-title").value = m.title || "";
+    document.getElementById("movie-orig-title").value = m.original_title || m.title || "";
+    document.getElementById("token-year").value = m.year || "2002";
+    document.getElementById("movie-year").value = m.year || "2002";
+    document.getElementById("movie-rating").value = m.ratings?.[0]?.value || m.rating || "7.0";
+    document.getElementById("movie-lang").value = m.original_language || "hi";
+    document.getElementById("movie-runtime").value = m.runtime || 150;
+    document.getElementById("movie-cert").value = m.certification || "U";
+    document.getElementById("movie-imdb-id").value = m.imdb_id || "";
+    document.getElementById("movie-tagline").value = m.tagline || "";
+    document.getElementById("movie-plot").value = m.plot || "";
+    document.getElementById("movie-trailer").value = m.trailer || "";
+
+    document.getElementById("movie-director").value = (m.director || []).map(d => d.name).join(", ");
+    document.getElementById("movie-writers").value = (m.writers || []).map(w => w.name).join(", ");
+    document.getElementById("movie-studio").value = (m.studio || []).join(", ");
+    document.getElementById("movie-genres").value = (m.genres || []).join(", ");
+
+    document.getElementById("token-resolution").value = m.specs?.resolution || "720p";
+    document.getElementById("token-platform").value = m.specs?.source || "DVDRip";
+    document.getElementById("token-videocodec").value = m.specs?.codec || "x264";
+    document.getElementById("token-size").value = m.specs?.size || "";
+    document.getElementById("token-ripper").value = m.release_group || m.specs?.ripper || "";
+    document.getElementById("token-audio-spec").value = m.specs?.audio || "[Hindi DD 5.1]";
+
+    // Artwork Suite
+    const art = m.artwork || {};
+    document.getElementById("art-poster").value = art.poster || "";
+    document.getElementById("art-fanart").value = art.fanart || "";
+    document.getElementById("art-clearlogo").value = art.clearlogo || "";
+    document.getElementById("art-clearart").value = art.clearart || "";
+    document.getElementById("art-banner").value = art.banner || "";
+    document.getElementById("art-landscape").value = art.landscape || "";
+    document.getElementById("art-keyart").value = art.keyart || "";
+    document.getElementById("art-thumbnail").value = art.thumbnail || "";
+    document.getElementById("art-discart").value = art.discart || "";
+    document.getElementById("art-titlecard").value = art.title_card || "";
+
+    if (art.poster) {
+      document.getElementById("passport-poster-preview").src = art.poster;
+    }
+    if (art.fanart) {
+      document.getElementById("dynamic-bg").style.backgroundImage = `url('${art.fanart}')`;
+    }
+
+    loadedCastArray = m.cast || [];
+    const castWrap = document.getElementById("cast-cards-container");
+    castWrap.innerHTML = "";
+    if (loadedCastArray.length > 0) {
+      loadedCastArray.forEach(c => {
+        const photo = c.profile || "https://via.placeholder.com/44x58?text=Actor";
+        const card = document.createElement("div");
+        card.className = "cast-card";
+        card.innerHTML = `
+          <img src="${photo}" alt="${c.name}">
+          <div class="cast-info">
+            <span class="cast-name">${c.name}</span>
+            <span class="cast-role">${c.character || 'Role'}</span>
+          </div>
+        `;
+        castWrap.appendChild(card);
+      });
+    }
+
+    updateDashPreview();
+    showToast(`Successfully loaded "${m.title}" for editing!`);
   }
 
   function sanitizeDriveInput(el) {
@@ -434,76 +529,31 @@
   /* ⚡ TOP 22 OTT & PLATFORM MASTER DETECTOR */
   function detectTop22Platform(raw) {
     const s = raw.toLowerCase();
-    
-    // 1. DVDRip / DVD
     if (/\b(dvdrip|dvd-rip|dvd-scr|dvd)\b/.test(s)) return "DVDRip";
-    
-    // 2. Sun NXT
     if (/sun\s*n[ux]t|sunnxt/.test(s)) return "Sun NXT";
-
-    // 3. JioCinema / Hotstar (JHS)
     if (/\bjhs\b|jiocinema|jio\s*cinema/.test(s)) return "JioCinema";
     if (/hotstar|dsnp|disney\+?\s*hotstar/.test(s)) return "Disney+ Hotstar";
-
-    // 4. Amazon Prime Video (AMZN)
     if (/amzn|amazon|prime\s*video/.test(s)) return "AMZN";
-
-    // 5. Netflix
     if (/\bnf\b|netflix/.test(s)) return "Netflix";
-
-    // 6. SonyLIV
     if (/sonyliv|sony\s*liv/.test(s)) return "SonyLIV";
-
-    // 7. Zee5
     if (/zee5|zee\s*5/.test(s)) return "Zee5";
-
-    // 8. Aha Video
     if (/\baha\b|aha\s*video/.test(s)) return "Aha";
-
-    // 9. Apple TV+
     if (/atvp|appletv|apple\s*tv/.test(s)) return "Apple TV+";
-
-    // 10. Lionsgate Play
     if (/lionsgate|lions\s*gate/.test(s)) return "Lionsgate Play";
-
-    // 11. ManoramaMAX
     if (/manorama|manoramamax/.test(s)) return "ManoramaMAX";
-
-    // 12. Hoichoi
     if (/hoichoi/.test(s)) return "Hoichoi";
-
-    // 13. Chaupal
     if (/chaupal/.test(s)) return "Chaupal";
-
-    // 14. Eros Now
     if (/erosnow|eros\s*now/.test(s)) return "Eros Now";
-
-    // 15. MX Player
     if (/mxplayer|mx\s*player/.test(s)) return "MX Player";
-
-    // 16. Voot
     if (/voot/.test(s)) return "Voot";
-
-    // 17. Discovery+
     if (/discovery\+?/.test(s)) return "Discovery+";
-
-    // 18. Paramount+
     if (/paramount\+?|pmtp/.test(s)) return "Paramount+";
-
-    // 19. HBO Max / Max
     if (/hbomax|hbo\s*max|\bmax\b/.test(s)) return "HBO Max";
-
-    // 20. Hulu
     if (/hulu/.test(s)) return "Hulu";
-
-    // 21. BluRay / Hybrid / REMUX
     if (/bluray\s*hybrid|hybrid\s*bluray/.test(s)) return "BluRay Hybrid";
     if (/bluray|remux|bdrip/.test(s)) return "BluRay";
-
-    // 22. TRUE WEB-DL / WEB-DL / WEBRip
     if (/true\s*web-?dl/.test(s)) return "TRUE WEB-DL";
     if (/web-?dl|webrip|\bweb\b/.test(s)) return "WEB-DL";
-
     return "WEB-DL";
   }
 
@@ -512,7 +562,6 @@
   function handleInstantRawIngest(raw) {
     if (!raw.trim()) return;
 
-    // 1. Release Groups & Tags: Hon3y, JHS, TTT, Telly, Daredevil, YIFY, PSA, @Channel
     let releaseTags = [];
     const tgMatch = raw.match(/@[\w\d_-]+/);
     if (tgMatch) releaseTags.push(tgMatch[0]);
@@ -530,7 +579,6 @@
 
     document.getElementById("token-ripper").value = [...new Set(releaseTags)].join(' ');
 
-    // 2. Clean Year & Title
     let clean = raw.replace(/@[\w\d_-]+/g, '').replace(/\[@[\w\d_-]+\]/g, '');
     clean = clean.replace(/\[TTT\]/gi, '').replace(/\.(mkv|mp4|avi|ts)$/i, '');
     clean = clean.replace(/hon3y/gi, '');
@@ -546,29 +594,24 @@
     document.getElementById("token-year").value = year;
     document.getElementById("movie-year").value = year;
 
-    // 3. Resolution (720p, 1080p, 2160p, 480p)
-    let res = "";
+    let res = "720p";
     if (/\b(2160p|4k|uhd)\b/i.test(raw)) res = "2160p";
     else if (/\b(1080p|fhd)\b/i.test(raw)) res = "1080p";
     else if (/\b(720p|hd)\b/i.test(raw)) res = "720p";
     else if (/\b(480p|576p)\b/i.test(raw)) res = "480p";
     document.getElementById("token-resolution").value = res;
 
-    // 4. Source Platform (Top 22 OTT Detection Engine)
     document.getElementById("token-platform").value = detectTop22Platform(raw);
 
-    // 5. Video Codec (x264, x265, AVC, HEVC)
     let vcodec = "x264";
     if (/x265|hevc|h\.?265/i.test(raw)) vcodec = "x265";
     else if (/x264|avc|h\.?264/i.test(raw)) vcodec = "x264";
     else if (/av1/i.test(raw)) vcodec = "AV1";
     document.getElementById("token-videocodec").value = vcodec;
 
-    // 6. Verified Size (Zero Fake Default: only fills if real size in string)
     const szMatch = raw.match(/(\d+\.?\d*)\s*(gb|mb)/i);
     document.getElementById("token-size").value = szMatch ? `${szMatch[1]} ${szMatch[2].toUpperCase()}` : "";
 
-    // 7. CLEAN MULTI-AUDIO BRACKET EXTRACTION
     let cleanAudioSpec = "";
     const bracketMatches = raw.match(/\[(.*?)\]/g);
     if (bracketMatches) {
@@ -582,7 +625,6 @@
     }
 
     if (!cleanAudioSpec) {
-      // Check parenthesis audio
       const parenMatches = raw.match(/\((.*?)\)/g);
       if (parenMatches) {
         for (let p of parenMatches) {
@@ -595,7 +637,6 @@
     }
 
     if (!cleanAudioSpec) {
-      // Direct raw match like: AC 5.1, DDP 5.1, DTS 5.1
       let lang = /\btamil\b/i.test(raw) ? 'Tamil' : (/\btelugu\b/i.test(raw) ? 'Telugu' : 'Hindi');
       let ch = /\b(5\.1|6ch)\b/i.test(raw) ? '5.1' : (/\b(7\.1)\b/i.test(raw) ? '7.1' : '2.0');
       let codec = /dts/i.test(raw) ? 'DTS' : (/ddp|e-?ac-?3/i.test(raw) ? 'DDP' : (/ac-?3|dd|ac\s*5\.1/i.test(raw) ? 'DD' : 'AAC'));
@@ -603,10 +644,8 @@
     }
 
     document.getElementById("token-audio-spec").value = cleanAudioSpec;
-
     updateDashPreview();
 
-    // 8. TMDb Search
     clearTimeout(rawIngestDebounce);
     rawIngestDebounce = setTimeout(async () => {
       if (titlePart.length > 1) {
@@ -647,7 +686,7 @@
     box.style.display = "block";
   }
 
-  /* ⚡ CLEAN PREVIEW BUILDER (ZERO DUPLICATION • LIVE EDITABLE) */
+  /* ⚡ CLEAN PREVIEW BUILDER */
   function updateDashPreview() {
     const title = document.getElementById("token-movie-title").value.trim() || "Title";
     const year = document.getElementById("token-year").value.trim() || "2002";
@@ -678,7 +717,7 @@
     document.getElementById("dash-name-preview").textContent = tokens.filter(Boolean).join(' ') + ".mkv";
   }
 
-  /* ⚡ ROBUST TMDB OFFICIAL METADATA, POSTER & CAST LOADER */
+  /* ⚡ ROBUST TMDB OFFICIAL METADATA LOADER */
   async function fetchTmdbOfficialDetails(id) {
     if (!id) return;
     try {
