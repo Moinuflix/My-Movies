@@ -90,36 +90,6 @@
     "approval_status": "pending"
   },
   {
-    "gdrive_id": "1NnepzdhRKrqpLI1nXmQcm7iSe9uwsOOL",
-    "original_filename": "Raaz 3 The Third Dimension 2012 Hindi 1080p AMZN WEB-DL H264 AVC DDP 5.1 Telly.mkv",
-    "file_size_bytes": 13544273128,
-    "file_size_gb": "13 GB",
-    "mime_type": "video/x-matroska",
-    "detected_at": "2026-10-25T05:20:21.268Z",
-    "parsed": {
-      "title": "Raaz 3 The Third Dimension",
-      "year": 2012,
-      "resolution": "1080p",
-      "source": "AMZN",
-      "codec": "x264",
-      "telegram_tag": "",
-      "standard_filename": "Raaz 3 The Third Dimension (2012) [1080p] [AMZN] [Tamil 5.1] [13 GB].mkv"
-    },
-    "match_status": "matched",
-    "tmdb_candidates": [
-      {
-        "tmdb_id": 127498,
-        "title": "Raaz 3",
-        "year": "2012",
-        "poster": "https://image.tmdb.org/t/p/w500/hn51Wxgjznc5YDHhIwlUH3VyuEU.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/auQwNrtTT4fdz32dcqGUffpoFN5.jpg",
-        "rating": 5
-      }
-    ],
-    "selected_tmdb_id": 127498,
-    "approval_status": "pending"
-  },
-  {
     "gdrive_id": "1rvI7ChehnpuzJdUrmnm4eMpYFYGQx1qC",
     "original_filename": "How to Train Your Dragon (2025) IMAX 1080p BluRay x264 AVC Multi Audio [Org AMZN Hindi-Tamil-Telugu DDP 5.1 ~ 640Kbps + English TrueHD Atmos 7.1] ESub ~ ROEN.mkv",
     "file_size_bytes": 18983499770,
