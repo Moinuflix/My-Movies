@@ -14305,5 +14305,65 @@
     ],
     "selected_tmdb_id": 1376856,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1-_sJSM8JKHQucl4BR5CSqPnR8EMH3DjO",
+    "original_filename": "Maharaja Hostel (2026) HQ Aha AMZN.WEB-DL Ml Ta Hi Kn Te 1080p AVC DDP 5.1 ESub CineVood.mkv",
+    "file_size_bytes": 9307421869,
+    "file_size_gb": "9 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-04T18:23:54.261Z",
+    "parsed": {
+      "title": "Maharaja Hostel (",
+      "year": 2026,
+      "resolution": "1080p",
+      "source": "AMZN",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "Maharaja Hostel ( (2026) [1080p] [AMZN] [Tamil 5.1] [9 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 1602830,
+        "title": "Maharaja Hostel",
+        "year": "2026",
+        "poster": "https://image.tmdb.org/t/p/w500/b7k2NhmlnMMRup94QbbCfBuct05.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/joF415KFrGFa7sFZXoBExVP1BwD.jpg",
+        "rating": 3.0
+      }
+    ],
+    "selected_tmdb_id": 1602830,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1LUAYFPZ4iDHy7TUJpKfCJbM13OoqvlOH",
+    "original_filename": "Meesaya Murukku (2017) HQ UnCut WEB-DL Hi Hi Ta 1080p X264 AVC DD 5.1 ESub CineVood.mkv",
+    "file_size_bytes": 8141840966,
+    "file_size_gb": "8 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-04T18:20:41.702Z",
+    "parsed": {
+      "title": "Meesaya Murukku (",
+      "year": 2017,
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "Meesaya Murukku ( (2017) [1080p] [WEB-DL] [Tamil 5.1] [8 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 424336,
+        "title": "Meesaya Murukku",
+        "year": "2017",
+        "poster": "https://image.tmdb.org/t/p/w500/51YxNae9DC5BG39IgCjsKkTIOdV.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/tcyX5DP4CCqE8Qkg7p5M9z5V5P1.jpg",
+        "rating": 6.7
+      }
+    ],
+    "selected_tmdb_id": 424336,
+    "approval_status": "pending"
   }
 ]
