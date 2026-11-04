@@ -14275,5 +14275,35 @@
     ],
     "selected_tmdb_id": 1376856,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1WVEjMXP3B7RZe4vr8TvJUFf1-M33P_8a",
+    "original_filename": "The Paradise (2026) 1080p NF WEB-DL HEVC x265 [Tamil (DD+ 5.1 - 640kbps)] ESub.mkv",
+    "file_size_bytes": 8441112331,
+    "file_size_gb": "8 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-04T08:46:27.132Z",
+    "parsed": {
+      "title": "The Paradise (",
+      "year": 2026,
+      "resolution": "1080p",
+      "source": "Netflix",
+      "codec": "x265",
+      "telegram_tag": "",
+      "standard_filename": "The Paradise ( (2026) [1080p] [Netflix] [Tamil (DD+ 5.1 - 640kbps)] [8 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 1376856,
+        "title": "The Paradise",
+        "year": "2026",
+        "poster": "https://image.tmdb.org/t/p/w500/smghVMoMWSIFi5dgIz4w1UIcEcY.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/7AcH5TFppoMusNkCBLaQP6UOODp.jpg",
+        "rating": 4.8
+      }
+    ],
+    "selected_tmdb_id": 1376856,
+    "approval_status": "pending"
   }
 ]
