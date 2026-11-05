@@ -1,5 +1,83 @@
 [
   {
+    "id": "13Cv7aMOuUfojCJ0ju_bqmNaWczFS1uZH",
+    "name": "A Aa (2016) [1080p] [WEB-DL] [Dolby Digital Plus].mkv",
+    "title": "A Aa",
+    "original_title": "అ ఆ",
+    "original_language": "te",
+    "year": 2016,
+    "runtime": 152,
+    "tmdb_id": 372399,
+    "rating": 6.6,
+    "collection": "",
+    "director": [
+      "Trivikram Srinivas"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=aFNx2ydeowA",
+    "cast": [
+      {
+        "name": "Nithiin",
+        "role": "Anand Vihari",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/dc3SkHyhZbWluuOlwmWICzR1QmA.jpg"
+      },
+      {
+        "name": "Samantha Ruth Prabhu",
+        "role": "Anasuya Ramalingam",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/FFGYlhLQK7FWzPLtmOb1QHTDAh.jpg"
+      },
+      {
+        "name": "Anupama Parameswaran",
+        "role": "Nagavalli",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/8Jyh1J0RUP8DzOvUGC10uYbLmaD.jpg"
+      },
+      {
+        "name": "Naresh",
+        "role": "Ramalingam, Anasuya's father",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/yT9Sgp7y8h3xhlmgzafUwlIXy1H.jpg"
+      },
+      {
+        "name": "Nadhiya",
+        "role": "Mahalakshmi, Anasuya's mother",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/znVhIjakVyBBOhMQ3hOviwQR2kq.jpg"
+      }
+    ],
+    "plot": "The love affair, conspired by creation, between Anasuya Ramalingam and Aanand Vihari.",
+    "poster": "https://image.tmdb.org/t/p/w500/pDkmxToe0sNQGNaur5pYWGWFXEX.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/4eaamvUD8jLRtxwLuxN4LrGxBKn.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13Cv7aMOuUfojCJ0ju_bqmNaWczFS1uZH|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x265",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil, Telugu, Hindi, Malayalam",
+      "size": ""
+    },
+    "versions": [
+      {
+        "id": "13Cv7aMOuUfojCJ0ju_bqmNaWczFS1uZH",
+        "name": "A Aa (2016) [1080p] [WEB-DL] [Dolby Digital Plus].mkv",
+        "quality": "1080p • WEB-DL • Dolby Digital Plus Multi",
+        "source": "WEB-DL",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13Cv7aMOuUfojCJ0ju_bqmNaWczFS1uZH|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Hindi, Malayalam",
+          "size": ""
+        }
+      }
+    ]
+  },
+  {
     "id": "1LUAYFPZ4iDHy7TUJpKfCJbM13OoqvlOH",
     "name": "The Paradise (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
     "title": "The Paradise",
