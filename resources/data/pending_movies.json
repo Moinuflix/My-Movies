@@ -14365,5 +14365,95 @@
     ],
     "selected_tmdb_id": 424336,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1OUWXpkziHFJQCFnIejzplUKg50HTWn9w",
+    "original_filename": "AASHIQUI 2.2013.2160p.UHD.BluRay.x265.HEVC.AAC.5.1.ESubs Anniversary Release.mkv",
+    "file_size_bytes": 6532755490,
+    "file_size_gb": "6 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-05T15:08:08.060Z",
+    "parsed": {
+      "title": "AASHIQUI 2",
+      "year": 2013,
+      "resolution": "2160p",
+      "source": "BluRay",
+      "codec": "x265",
+      "telegram_tag": "",
+      "standard_filename": "AASHIQUI 2 (2013) [2160p] [BluRay] [Tamil 5.1] [6 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 192558,
+        "title": "Aashiqui 2",
+        "year": "2013",
+        "poster": "https://image.tmdb.org/t/p/w500/z18DWXBRxn3kz00sIVhC7ZK39Qm.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/cpMszrx8BFVfmq3ZBrL6RVQvO2V.jpg",
+        "rating": 6.8
+      }
+    ],
+    "selected_tmdb_id": 192558,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1B0KuJxGTX2yR9IWuQrtOGcGdXfnzNjDB",
+    "original_filename": "Aashiqui.2.2013.Hindi.1080p.BluRay.x264.DTS-HDMA.5.1.-.Hon3yHD.mkv",
+    "file_size_bytes": 12898930960,
+    "file_size_gb": "12 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-05T15:06:36.265Z",
+    "parsed": {
+      "title": "Aashiqui 2",
+      "year": 2013,
+      "resolution": "1080p",
+      "source": "BluRay",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "Aashiqui 2 (2013) [1080p] [BluRay] [Tamil 5.1] [12 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 192558,
+        "title": "Aashiqui 2",
+        "year": "2013",
+        "poster": "https://image.tmdb.org/t/p/w500/z18DWXBRxn3kz00sIVhC7ZK39Qm.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/cpMszrx8BFVfmq3ZBrL6RVQvO2V.jpg",
+        "rating": 6.8
+      }
+    ],
+    "selected_tmdb_id": 192558,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1n5RnYIt0-AeqtkJPuv0kajQrsZkI3yy1",
+    "original_filename": "Anniyan (2005) HYBRID UNCUT 1080p AMZN WEB-DL x264 AVC Multi Audio [Org YT Hindi DDP 2.0 ~ 224Kbps + Org AMZN Tamil DDP 5.1 ~ 640Kbps + Org JC Telugu DDP 2.0] ESub ~ BunnyJMB.mkv",
+    "file_size_bytes": 14865374007,
+    "file_size_gb": "14 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-05T14:54:26.229Z",
+    "parsed": {
+      "title": "Anniyan (",
+      "year": 2005,
+      "resolution": "2160p",
+      "source": "AMZN",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "Anniyan ( (2005) [2160p] [AMZN] [Org YT Hindi DDP 2.0 - 224Kbps + Org AMZN Tamil DDP 5.1 - 640Kbps + Org JC Telugu DDP 2.0] [14 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 19978,
+        "title": "Anniyan",
+        "year": "2005",
+        "poster": "https://image.tmdb.org/t/p/w500/fT9m4g5aWvwNVjHf0cUTqtTLJvh.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/ed4iq5kHCDnrsvCaXDItZGEUV6f.jpg",
+        "rating": 7.4
+      }
+    ],
+    "selected_tmdb_id": 19978,
+    "approval_status": "pending"
   }
 ]
