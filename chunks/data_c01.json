@@ -1,77 +1,155 @@
 [
   {
-    "id": "1B0KuJxGTX2yR9IWuQrtOGcGdXfnzNjDB",
-    "name": "Aashiqui 2 (2013) [1080p] [BLURAY] [Dolby Atmos].mkv",
-    "title": "Aashiqui 2",
-    "original_title": "आशिकी २",
-    "original_language": "hi",
-    "year": 2013,
-    "runtime": 132,
-    "tmdb_id": 192558,
-    "rating": 6.8,
-    "collection": "Aashiqui Collection",
+    "id": "13Cv7aMOuUfojCJ0ju_bqmNaWczFS1uZH",
+    "name": "A Aa (2016) [1080p] [WEB-DL] [Dolby Digital Plus].mkv",
+    "title": "A Aa",
+    "original_title": "అ ఆ",
+    "original_language": "te",
+    "year": 2016,
+    "runtime": 152,
+    "tmdb_id": 372399,
+    "rating": 6.6,
+    "collection": "",
     "director": [
-      "Mohit Suri"
+      "Trivikram Srinivas"
     ],
-    "trailer": "",
+    "trailer": "https://www.youtube.com/watch?v=aFNx2ydeowA",
     "cast": [
       {
-        "name": "Aditya Roy Kapur",
-        "role": "Rahul Jaykar aka RJ",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/5rO5U3JnAUGzJJ4ghCosHYNGPYi.jpg"
+        "name": "Nithiin",
+        "role": "Anand Vihari",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/dc3SkHyhZbWluuOlwmWICzR1QmA.jpg"
       },
       {
-        "name": "Shraddha Kapoor",
-        "role": "Aarohi Kesav Shirke",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/dYLAJJjY7ViPlvXimkKjq64abE1.jpg"
+        "name": "Samantha Ruth Prabhu",
+        "role": "Anasuya Ramalingam",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/FFGYlhLQK7FWzPLtmOb1QHTDAh.jpg"
       },
       {
-        "name": "Shaad Randhawa",
-        "role": "Vivek",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/eFUtx2lbDmu6RUaezRsub9O7yGv.jpg"
+        "name": "Anupama Parameswaran",
+        "role": "Nagavalli",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/8Jyh1J0RUP8DzOvUGC10uYbLmaD.jpg"
       },
       {
-        "name": "Mahesh Thakur",
-        "role": "Saigal",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/a25tark0IJAKTo8mPYswshy7hWR.jpg"
+        "name": "Naresh",
+        "role": "Ramalingam, Anasuya's father",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/yT9Sgp7y8h3xhlmgzafUwlIXy1H.jpg"
       },
       {
-        "name": "Salil Acharya",
-        "role": "Aryan",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/nRiaQWdRQpSqbpBf2lvbXzOOoRI.jpg"
+        "name": "Nadhiya",
+        "role": "Mahalakshmi, Anasuya's mother",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/znVhIjakVyBBOhMQ3hOviwQR2kq.jpg"
       }
     ],
-    "plot": "A young woman meets a failing musician who launches her singing career, but their relationship is doomed when people assume he's with her for her fame and fortune.",
-    "poster": "https://image.tmdb.org/t/p/w500/z18DWXBRxn3kz00sIVhC7ZK39Qm.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/cpMszrx8BFVfmq3ZBrL6RVQvO2V.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1B0KuJxGTX2yR9IWuQrtOGcGdXfnzNjDB|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "plot": "The love affair, conspired by creation, between Anasuya Ramalingam and Aanand Vihari.",
+    "poster": "https://image.tmdb.org/t/p/w500/pDkmxToe0sNQGNaur5pYWGWFXEX.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/4eaamvUD8jLRtxwLuxN4LrGxBKn.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13Cv7aMOuUfojCJ0ju_bqmNaWczFS1uZH|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
       "resolution": "1080p",
-      "source": "BLURAY",
-      "codec": "H.264",
-      "audio": "Dolby Atmos",
+      "source": "WEB-DL",
+      "codec": "x265",
+      "audio": "Dolby Digital Plus",
       "channels": "5.1",
-      "languages": "Hindi",
+      "languages": "Tamil, Telugu, Hindi, Malayalam",
       "size": ""
     },
     "versions": [
       {
-        "id": "1B0KuJxGTX2yR9IWuQrtOGcGdXfnzNjDB",
-        "name": "Aashiqui 2 (2013) [1080p] [BLURAY] [Dolby Atmos].mkv",
-        "quality": "1080p • BLURAY • Dolby Atmos",
-        "source": "BLURAY",
-        "codec": "H.264",
+        "id": "13Cv7aMOuUfojCJ0ju_bqmNaWczFS1uZH",
+        "name": "A Aa (2016) [1080p] [WEB-DL] [Dolby Digital Plus].mkv",
+        "quality": "1080p • WEB-DL • Dolby Digital Plus Multi",
+        "source": "WEB-DL",
+        "codec": "x265",
         "resolution": "1080p",
-        "audio": "Dolby Atmos",
+        "audio": "Dolby Digital Plus",
         "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1B0KuJxGTX2yR9IWuQrtOGcGdXfnzNjDB|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13Cv7aMOuUfojCJ0ju_bqmNaWczFS1uZH|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
-          "source": "BLURAY",
-          "codec": "H.264",
-          "audio": "Dolby Atmos",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "Dolby Digital Plus",
           "channels": "5.1",
-          "languages": "Hindi",
+          "languages": "Tamil, Telugu, Hindi, Malayalam",
+          "size": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": "1n5RnYIt0-AeqtkJPuv0kajQrsZkI3yy1",
+    "name": "Anniyan (2005) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
+    "title": "Anniyan",
+    "original_title": "அந்நியன்",
+    "original_language": "ta",
+    "year": 2005,
+    "runtime": 181,
+    "tmdb_id": 19978,
+    "rating": 7.4,
+    "collection": "",
+    "director": [
+      "Shankar"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Vikram",
+        "role": "Ramanujam 'Ambi' Iyengar / Remo / Anniyan",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/o11aBHj4gFkTPgh6zsLHPq67b0b.jpg"
+      },
+      {
+        "name": "Sadha",
+        "role": "Nandini Raghuram",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/odbgKzeByn3Zq5LysHkiXPezElx.jpg"
+      },
+      {
+        "name": "Prakash Raj",
+        "role": "DCP Prabhakar",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/dJvFZOXmZdkYCOUcKTXQAhBcAoH.jpg"
+      },
+      {
+        "name": "Vivek",
+        "role": "Chari Singari",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/bewezDUvFZ3I4vUsHUyTTZl9e2D.jpg"
+      },
+      {
+        "name": "Nedumudi Venu",
+        "role": "Parthasarathy Iyengar",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/d1MdSwIWnTNwk4qSxQ001GqZaaB.jpg"
+      }
+    ],
+    "plot": "Unable to tolerate society's injustices and devastated by rejection from the woman he loves, a meek lawyer develops a split personality: one side a vengeful vigilante killer punishing evildoers, the other a dashing playboy capable of winning her heart. Complications arise when the three sides begin to collide.",
+    "poster": "https://image.tmdb.org/t/p/w500/fT9m4g5aWvwNVjHf0cUTqtTLJvh.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/ed4iq5kHCDnrsvCaXDItZGEUV6f.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1n5RnYIt0-AeqtkJPuv0kajQrsZkI3yy1|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "Prime Video",
+      "codec": "H.264",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil, Telugu, Hindi, Malayalam",
+      "size": ""
+    },
+    "versions": [
+      {
+        "id": "1n5RnYIt0-AeqtkJPuv0kajQrsZkI3yy1",
+        "name": "Anniyan (2005) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
+        "quality": "1080p • Prime Video • Dolby Digital Plus Multi",
+        "source": "Prime Video",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1n5RnYIt0-AeqtkJPuv0kajQrsZkI3yy1|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Prime Video",
+          "codec": "H.264",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Hindi, Malayalam",
           "size": ""
         }
       }
