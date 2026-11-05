@@ -1,5 +1,83 @@
 [
   {
+    "id": "1OUWXpkziHFJQCFnIejzplUKg50HTWn9w",
+    "name": "Aashiqui 2 (2013) [4K UHD] [BLURAY] [Dolby Atmos].mkv",
+    "title": "Aashiqui 2",
+    "original_title": "आशिकी २",
+    "original_language": "hi",
+    "year": 2013,
+    "runtime": 132,
+    "tmdb_id": 192558,
+    "rating": 6.8,
+    "collection": "Aashiqui Collection",
+    "director": [
+      "Mohit Suri"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Aditya Roy Kapur",
+        "role": "Rahul Jaykar aka RJ",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/5rO5U3JnAUGzJJ4ghCosHYNGPYi.jpg"
+      },
+      {
+        "name": "Shraddha Kapoor",
+        "role": "Aarohi Kesav Shirke",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/dYLAJJjY7ViPlvXimkKjq64abE1.jpg"
+      },
+      {
+        "name": "Shaad Randhawa",
+        "role": "Vivek",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/eFUtx2lbDmu6RUaezRsub9O7yGv.jpg"
+      },
+      {
+        "name": "Mahesh Thakur",
+        "role": "Saigal",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/a25tark0IJAKTo8mPYswshy7hWR.jpg"
+      },
+      {
+        "name": "Salil Acharya",
+        "role": "Aryan",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/nRiaQWdRQpSqbpBf2lvbXzOOoRI.jpg"
+      }
+    ],
+    "plot": "A young woman meets a failing musician who launches her singing career, but their relationship is doomed when people assume he's with her for her fame and fortune.",
+    "poster": "https://image.tmdb.org/t/p/w500/z18DWXBRxn3kz00sIVhC7ZK39Qm.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/cpMszrx8BFVfmq3ZBrL6RVQvO2V.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1OUWXpkziHFJQCFnIejzplUKg50HTWn9w|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "4K UHD",
+      "source": "BLURAY",
+      "codec": "x265",
+      "audio": "Dolby Atmos",
+      "channels": "5.1",
+      "languages": "Hindi",
+      "size": ""
+    },
+    "versions": [
+      {
+        "id": "1OUWXpkziHFJQCFnIejzplUKg50HTWn9w",
+        "name": "Aashiqui 2 (2013) [4K UHD] [BLURAY] [Dolby Atmos].mkv",
+        "quality": "4K UHD • BLURAY • Dolby Atmos",
+        "source": "BLURAY",
+        "codec": "x265",
+        "resolution": "4K UHD",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1OUWXpkziHFJQCFnIejzplUKg50HTWn9w|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "4K UHD",
+          "source": "BLURAY",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Hindi",
+          "size": ""
+        }
+      }
+    ]
+  },
+  {
     "id": "13vcHZ7Q8jtJ-LKMYv6OwtD4E_i_LUTbs",
     "name": "Hum Saath Saath Hain (1999) [1080p FHD] [Netflix] [Dolby Atmos].mkv",
     "title": "Hum Saath Saath Hain",
