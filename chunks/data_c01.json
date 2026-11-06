@@ -1,7 +1,7 @@
 [
   {
     "id": "18x6E3UcgctObz-QlMTECtVTkLigcA-Vd",
-    "name": "I'm Game (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
+    "name": "I'm Game (2026) [1080p] [JioCinema] [Dolby Atmos].mkv",
     "title": "I'm Game",
     "original_title": "ഐ ആം ഗെയിം",
     "original_language": "en",
@@ -47,7 +47,7 @@
     "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=18x6E3UcgctObz-QlMTECtVTkLigcA-Vd|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
       "resolution": "1080p",
-      "source": "WEB-DL",
+      "source": "JioCinema",
       "codec": "x265",
       "audio": "Dolby Atmos",
       "channels": "5.1",
@@ -57,9 +57,9 @@
     "versions": [
       {
         "id": "18x6E3UcgctObz-QlMTECtVTkLigcA-Vd",
-        "name": "I'm Game (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
-        "quality": "1080p • WEB-DL • Dolby Atmos",
-        "source": "WEB-DL",
+        "name": "I'm Game (2026) [1080p] [JioCinema] [Dolby Atmos].mkv",
+        "quality": "1080p • JioCinema • Dolby Atmos",
+        "source": "JioCinema",
         "codec": "x265",
         "resolution": "1080p",
         "audio": "Dolby Atmos",
@@ -67,7 +67,7 @@
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=18x6E3UcgctObz-QlMTECtVTkLigcA-Vd|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
-          "source": "WEB-DL",
+          "source": "JioCinema",
           "codec": "x265",
           "audio": "Dolby Atmos",
           "channels": "5.1",
