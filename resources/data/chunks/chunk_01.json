@@ -1,6 +1,6 @@
 {
   "chunk_id": "chunk_01",
-  "movie_count": 17,
+  "movie_count": 18,
   "movies": [
     {
       "id": "1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU",
@@ -1433,6 +1433,167 @@
           "name": "DSP.mkv",
           "quality": "1080p FHD",
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1d93Fp_As7S39ri5m7Kxa8OGzB7A02Pqh|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      ]
+    },
+    {
+      "id": "13Cv7aMOuUfojCJ0ju_bqmNaWczFS1uZH",
+      "tmdb_id": 372399,
+      "name": "A Aa (2016) [2160p] [WEB-DL] [Org HDTV Hindi DDP 5.1 - 384Kbps + Kannada-Bengali DDP 2.0 - 224Kbps + Tamil DDP 5.1 - 192Kbps + Telugu DDP 5.1 - 640Kbps] [11 GB].mkv",
+      "title": "A Aa",
+      "original_title": "అ ఆ",
+      "year": 2016,
+      "runtime": 152,
+      "release_date": "2016-01-01",
+      "certification": "U",
+      "original_language": "te",
+      "genres": [
+        "Family",
+        "Comedy",
+        "Romance",
+        "Drama"
+      ],
+      "collection": "",
+      "tagline": "Anasuya Ramalingam vs Anand Vihari",
+      "plot": "The love affair, conspired by creation, between Anasuya Ramalingam and Aanand Vihari.",
+      "telegram_channel": "",
+      "country": [
+        "India"
+      ],
+      "studio": [
+        "WEB-DL"
+      ],
+      "director": [
+        {
+          "name": "Trivikram Srinivas"
+        }
+      ],
+      "writers": [
+        {
+          "name": "Trivikram Srinivas",
+          "job": "Writer"
+        }
+      ],
+      "cast": [
+        {
+          "name": "Nithiin",
+          "character": "Anand Vihari",
+          "profile": "https://image.tmdb.org/t/p/w185/dc3SkHyhZbWluuOlwmWICzR1QmA.jpg",
+          "link": "https://www.themoviedb.org/person/1001828"
+        },
+        {
+          "name": "Samantha Ruth Prabhu",
+          "character": "Anasuya Ramalingam",
+          "profile": "https://image.tmdb.org/t/p/w185/FFGYlhLQK7FWzPLtmOb1QHTDAh.jpg",
+          "link": "https://www.themoviedb.org/person/225312"
+        },
+        {
+          "name": "Anupama Parameswaran",
+          "character": "Nagavalli",
+          "profile": "https://image.tmdb.org/t/p/w185/8Jyh1J0RUP8DzOvUGC10uYbLmaD.jpg",
+          "link": "https://www.themoviedb.org/person/1470724"
+        },
+        {
+          "name": "Naresh",
+          "character": "Ramalingam, Anasuya's father",
+          "profile": "https://image.tmdb.org/t/p/w185/yT9Sgp7y8h3xhlmgzafUwlIXy1H.jpg",
+          "link": "https://www.themoviedb.org/person/736815"
+        },
+        {
+          "name": "Nadhiya",
+          "character": "Mahalakshmi, Anasuya's mother",
+          "profile": "https://image.tmdb.org/t/p/w185/znVhIjakVyBBOhMQ3hOviwQR2kq.jpg",
+          "link": "https://www.themoviedb.org/person/237986"
+        },
+        {
+          "name": "Hari Teja",
+          "character": "Mangamma, Anasuya's assistant",
+          "profile": "https://image.tmdb.org/t/p/w185/1E3Lm7qECo78u18Wh2O82o6NOWF.jpg",
+          "link": "https://www.themoviedb.org/person/1430792"
+        },
+        {
+          "name": "Ananya",
+          "character": "Bhanumathi (Bhanu), Anand's sister",
+          "profile": "https://image.tmdb.org/t/p/w185/kf4pJajOe6f5eoIQBbii7nFaa3W.jpg",
+          "link": "https://www.themoviedb.org/person/505810"
+        },
+        {
+          "name": "Rao Ramesh",
+          "character": "Pallam Venkanna, Nagavalli’s father",
+          "profile": "https://image.tmdb.org/t/p/w185/jzO0wN21tEcmz0haekvliQU91JM.jpg",
+          "link": "https://www.themoviedb.org/person/586629"
+        },
+        {
+          "name": "Srinivas Avasarala",
+          "character": "Shekhar Banerjee, Anasuya's chosen groom",
+          "profile": "https://image.tmdb.org/t/p/w185/y7gdtDJqvwPrWKLVmDbE9BtPdOY.jpg",
+          "link": "https://www.themoviedb.org/person/1298494"
+        },
+        {
+          "name": "Ajay",
+          "character": "Pallam Venkana's son and Nagavalli's brother (unnamed character)",
+          "profile": "https://image.tmdb.org/t/p/w185/uByCHJa3eaCL0SgFGDYYLlsVggC.jpg",
+          "link": "https://www.themoviedb.org/person/586625"
+        }
+      ],
+      "artwork": {
+        "poster": "https://image.tmdb.org/t/p/w780/pDkmxToe0sNQGNaur5pYWGWFXEX.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/4eaamvUD8jLRtxwLuxN4LrGxBKn.jpg",
+        "clearlogo": "https://image.tmdb.org/t/p/original/6Jkxd5ffZuISTfkcijQfYMFcljd.png",
+        "clearart": "",
+        "banner": "",
+        "landscape": "https://image.tmdb.org/t/p/original/4eaamvUD8jLRtxwLuxN4LrGxBKn.jpg",
+        "keyart": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w780/pDkmxToe0sNQGNaur5pYWGWFXEX.jpg",
+        "discart": "",
+        "title_card": "https://image.tmdb.org/t/p/original/4eaamvUD8jLRtxwLuxN4LrGxBKn.jpg",
+        "character_art": [],
+        "extra_posters": [],
+        "extra_backdrops": []
+      },
+      "trailer": "https://www.youtube.com/watch?v=aFNx2ydeowA",
+      "ratings": [
+        {
+          "source": "TMDb",
+          "value": 6.6,
+          "out_of": 10
+        }
+      ],
+      "badges": {
+        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/2160p.png",
+        "hdr": "",
+        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png",
+        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+      },
+      "specs": {
+        "resolution": "2160p",
+        "source": "WEB-DL",
+        "codec": "x265",
+        "bit_depth": "8bit",
+        "audio": "Org HDTV Hindi DDP 5.1 - 384Kbps + Kannada-Bengali DDP 2.0 - 224Kbps + Tamil DDP 5.1 - 192Kbps + Telugu DDP 5.1 - 640Kbps",
+        "channels": "5.1",
+        "bitrate": "640 Kbps",
+        "languages": "Org HDTV Hindi DDP 5.1 - 384Kbps + Kannada-Bengali DDP 2.0 - 224Kbps + Tamil DDP 5.1 - 192Kbps + Telugu DDP 5.1 - 640Kbps",
+        "size": "11 GB",
+        "telegram_tag": ""
+      },
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13Cv7aMOuUfojCJ0ju_bqmNaWczFS1uZH|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "versions": [
+        {
+          "id": "13Cv7aMOuUfojCJ0ju_bqmNaWczFS1uZH",
+          "name": "A Aa (2016) [2160p] [WEB-DL] [Org HDTV Hindi DDP 5.1 - 384Kbps + Kannada-Bengali DDP 2.0 - 224Kbps + Tamil DDP 5.1 - 192Kbps + Telugu DDP 5.1 - 640Kbps] [11 GB].mkv",
+          "language": "Org HDTV Hindi DDP 5.1 - 384Kbps + Kannada-Bengali DDP 2.0 - 224Kbps + Tamil DDP 5.1 - 192Kbps + Telugu DDP 5.1 - 640Kbps",
+          "quality": "2160p FHD",
+          "resolution": "2160p",
+          "source": "WEB-DL",
+          "source_image": "resources/images/sources/web.png",
+          "codec": "x265",
+          "audio": "Org HDTV Hindi DDP 5.1 - 384Kbps + Kannada-Bengali DDP 2.0 - 224Kbps + Tamil DDP 5.1 - 192Kbps + Telugu DDP 5.1 - 640Kbps",
+          "channels": "5.1",
+          "size": "11 GB",
+          "telegram_tag": "",
+          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13Cv7aMOuUfojCJ0ju_bqmNaWczFS1uZH|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
     }
