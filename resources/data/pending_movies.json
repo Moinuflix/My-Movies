@@ -14515,5 +14515,65 @@
     ],
     "selected_tmdb_id": 1538457,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1lVmtSrRuLsM3gsegxMLXwFmwvLZ6H6xl",
+    "original_filename": "Im Game (2026) 2160p JHS WEB-DL HEVC x265 [Tamil (DD+ 5.1 Atmos - 768kbps)] ESub.mkv",
+    "file_size_bytes": 21389219207,
+    "file_size_gb": "20 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-06T14:41:41.682Z",
+    "parsed": {
+      "title": "Im Game (",
+      "year": 2026,
+      "resolution": "2160p",
+      "source": "WEB-DL",
+      "codec": "x265",
+      "telegram_tag": "",
+      "standard_filename": "Im Game ( (2026) [2160p] [WEB-DL] [Tamil (DD+ 5.1 Atmos - 768kbps)] [20 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 1250502,
+        "title": "I'm Game",
+        "year": "2026",
+        "poster": "https://image.tmdb.org/t/p/w500/m3zmkbaQSQgWVpNBGbfJlLU9jk8.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/o2wSuWembR26tQyAd8lqxHhb2q8.jpg",
+        "rating": 7.2
+      }
+    ],
+    "selected_tmdb_id": 1250502,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "18x6E3UcgctObz-QlMTECtVTkLigcA-Vd",
+    "original_filename": "Im Game (2026) 1080p JHS WEB-DL HEVC x265 [Tamil (DD+ 5.1 Atmos - 768kbps)] ESub.mkv",
+    "file_size_bytes": 7218826268,
+    "file_size_gb": "7 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-06T14:26:54.090Z",
+    "parsed": {
+      "title": "Im Game (",
+      "year": 2026,
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x265",
+      "telegram_tag": "",
+      "standard_filename": "Im Game ( (2026) [1080p] [WEB-DL] [Tamil (DD+ 5.1 Atmos - 768kbps)] [7 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 1250502,
+        "title": "I'm Game",
+        "year": "2026",
+        "poster": "https://image.tmdb.org/t/p/w500/m3zmkbaQSQgWVpNBGbfJlLU9jk8.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/o2wSuWembR26tQyAd8lqxHhb2q8.jpg",
+        "rating": 7.2
+      }
+    ],
+    "selected_tmdb_id": 1250502,
+    "approval_status": "pending"
   }
 ]
