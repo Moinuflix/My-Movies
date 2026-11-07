@@ -14575,5 +14575,35 @@
     ],
     "selected_tmdb_id": 1250502,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "14JZYKj801z6PtWLviflm3Bb3tVhm0t7W",
+    "original_filename": "@PrakyTV - Jailer 2 (2026) Tamil HDRip - 1080p - x264 - (AAC 2.0) - 2.8GB - HC-ESub.mkv",
+    "file_size_bytes": 3048741012,
+    "file_size_gb": "3 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-07T16:59:55.486Z",
+    "parsed": {
+      "title": "Jailer 2 (",
+      "year": 2026,
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x264",
+      "telegram_tag": "@PrakyTV",
+      "standard_filename": "Jailer 2 ( (2026) [1080p] [WEB-DL] [Tamil 5.1] [3 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 1234139,
+        "title": "Jailer 2",
+        "year": "2026",
+        "poster": "https://image.tmdb.org/t/p/w500/upwdEyhhYZ7pT2hD535fr2MGfpx.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/m0ks2o59mOAz6WdCybJ5FAUNTOU.jpg",
+        "rating": 8.2
+      }
+    ],
+    "selected_tmdb_id": 1234139,
+    "approval_status": "pending"
   }
 ]
