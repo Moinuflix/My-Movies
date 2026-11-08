@@ -14605,5 +14605,203 @@
     ],
     "selected_tmdb_id": 1234139,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1Yb6GpaXwzi50bnoOgryR4hUDt3D5GHIX",
+    "original_filename": "Katteri (2022) 1080p NF WEB-DL ×264 [(Tamil) DD+ 5.1 - 640kbps] Esub 4.39GB - JeRi.mkv",
+    "file_size_bytes": 4718201309,
+    "file_size_gb": "4 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-08T05:53:43.962Z",
+    "parsed": {
+      "title": "Katteri (",
+      "year": 2022,
+      "resolution": "1080p",
+      "source": "Netflix",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "Katteri ( (2022) [1080p] [Netflix] [(Tamil) DD+ 5.1 - 640kbps] [4 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 533660,
+        "title": "Kaatteri",
+        "year": "2022",
+        "poster": "https://image.tmdb.org/t/p/w500/yLx2JWbIyYSJurB9BHIMIPBoq6i.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/d6IICHynvPBkYqYiPsl63OOdQBB.jpg",
+        "rating": 3.3
+      }
+    ],
+    "selected_tmdb_id": 533660,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1p77BMKOEYTysbZfn70e_dvRNi3uquUb2",
+    "original_filename": "Dead-End.Job.S01E08.1080p.DS4K.SDR.10bit.NF.WEBRip.HIN-TAM-TEL-ENG-KOR.DDP5.1.Atmos.x265.HEVC-OlaM.mkv",
+    "file_size_bytes": 3271782934,
+    "file_size_gb": "3 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-08T04:29:30.338Z",
+    "parsed": {
+      "title": "Dead End Job S01E08  DS4K SDR 10bit NF WEBRip HIN TAM TEL ENG KOR DDP5 1 Atmos   OlaM",
+      "year": 2026,
+      "resolution": "2160p",
+      "source": "Netflix",
+      "codec": "x265",
+      "telegram_tag": "",
+      "standard_filename": "Dead End Job S01E08  DS4K SDR 10bit NF WEBRip HIN TAM TEL ENG KOR DDP5 1 Atmos   OlaM (2026) [2160p] [Netflix] [Tamil 5.1] [3 GB].mkv"
+    },
+    "match_status": "pending",
+    "tmdb_candidates": [],
+    "selected_tmdb_id": null,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1_4jh82VZVKhRJXm5M3-HRQTJusEFbShQ",
+    "original_filename": "Dead-End.Job.S01E07.1080p.DS4K.SDR.10bit.NF.WEBRip.HIN-TAM-TEL-ENG-KOR.DDP5.1.Atmos.x265.HEVC-OlaM.mkv",
+    "file_size_bytes": 3549472061,
+    "file_size_gb": "3 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-08T04:27:22.609Z",
+    "parsed": {
+      "title": "Dead End Job S01E07  DS4K SDR 10bit NF WEBRip HIN TAM TEL ENG KOR DDP5 1 Atmos   OlaM",
+      "year": 2026,
+      "resolution": "2160p",
+      "source": "Netflix",
+      "codec": "x265",
+      "telegram_tag": "",
+      "standard_filename": "Dead End Job S01E07  DS4K SDR 10bit NF WEBRip HIN TAM TEL ENG KOR DDP5 1 Atmos   OlaM (2026) [2160p] [Netflix] [Tamil 5.1] [3 GB].mkv"
+    },
+    "match_status": "pending",
+    "tmdb_candidates": [],
+    "selected_tmdb_id": null,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1ZSm2IFdpioDVxih_8V9j2rd3y7XXjfJG",
+    "original_filename": "Dead-End.Job.S01E06.1080p.DS4K.SDR.10bit.NF.WEBRip.HIN-TAM-TEL-ENG-KOR.DDP5.1.Atmos.x265.HEVC-OlaM.mkv",
+    "file_size_bytes": 2967059834,
+    "file_size_gb": "3 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-08T04:25:21.839Z",
+    "parsed": {
+      "title": "Dead End Job S01E06  DS4K SDR 10bit NF WEBRip HIN TAM TEL ENG KOR DDP5 1 Atmos   OlaM",
+      "year": 2026,
+      "resolution": "2160p",
+      "source": "Netflix",
+      "codec": "x265",
+      "telegram_tag": "",
+      "standard_filename": "Dead End Job S01E06  DS4K SDR 10bit NF WEBRip HIN TAM TEL ENG KOR DDP5 1 Atmos   OlaM (2026) [2160p] [Netflix] [Tamil 5.1] [3 GB].mkv"
+    },
+    "match_status": "pending",
+    "tmdb_candidates": [],
+    "selected_tmdb_id": null,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "12Cv__Bf0vDIbi2mZOTDdzDsnRFd443Yg",
+    "original_filename": "Dead-End.Job.S01E05.1080p.DS4K.SDR.10bit.NF.WEBRip.HIN-TAM-TEL-ENG-KOR.DDP5.1.Atmos.x265.HEVC-OlaM.mkv",
+    "file_size_bytes": 3466783291,
+    "file_size_gb": "3 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-08T04:23:28.960Z",
+    "parsed": {
+      "title": "Dead End Job S01E05  DS4K SDR 10bit NF WEBRip HIN TAM TEL ENG KOR DDP5 1 Atmos   OlaM",
+      "year": 2026,
+      "resolution": "2160p",
+      "source": "Netflix",
+      "codec": "x265",
+      "telegram_tag": "",
+      "standard_filename": "Dead End Job S01E05  DS4K SDR 10bit NF WEBRip HIN TAM TEL ENG KOR DDP5 1 Atmos   OlaM (2026) [2160p] [Netflix] [Tamil 5.1] [3 GB].mkv"
+    },
+    "match_status": "pending",
+    "tmdb_candidates": [],
+    "selected_tmdb_id": null,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1wmcWU1-KSE8AauW6cqd8fkC9yEpxPDk0",
+    "original_filename": "Dead-End.Job.S01E04.1080p.DS4K.SDR.10bit.NF.WEBRip.HIN-TAM-TEL-ENG-KOR.DDP5.1.Atmos.x265.HEVC-OlaM.mkv",
+    "file_size_bytes": 3049018165,
+    "file_size_gb": "3 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-08T04:21:32.797Z",
+    "parsed": {
+      "title": "Dead End Job S01E04  DS4K SDR 10bit NF WEBRip HIN TAM TEL ENG KOR DDP5 1 Atmos   OlaM",
+      "year": 2026,
+      "resolution": "2160p",
+      "source": "Netflix",
+      "codec": "x265",
+      "telegram_tag": "",
+      "standard_filename": "Dead End Job S01E04  DS4K SDR 10bit NF WEBRip HIN TAM TEL ENG KOR DDP5 1 Atmos   OlaM (2026) [2160p] [Netflix] [Tamil 5.1] [3 GB].mkv"
+    },
+    "match_status": "pending",
+    "tmdb_candidates": [],
+    "selected_tmdb_id": null,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "16pnqFui3A3cNeDO4koURWL4BY06JT9Q3",
+    "original_filename": "Dead-End.Job.S01E03.1080p.DS4K.SDR.10bit.NF.WEBRip.HIN-TAM-TEL-ENG-KOR.DDP5.1.Atmos.x265.HEVC-OlaM.mkv",
+    "file_size_bytes": 3047769385,
+    "file_size_gb": "3 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-08T04:19:39.001Z",
+    "parsed": {
+      "title": "Dead End Job S01E03  DS4K SDR 10bit NF WEBRip HIN TAM TEL ENG KOR DDP5 1 Atmos   OlaM",
+      "year": 2026,
+      "resolution": "2160p",
+      "source": "Netflix",
+      "codec": "x265",
+      "telegram_tag": "",
+      "standard_filename": "Dead End Job S01E03  DS4K SDR 10bit NF WEBRip HIN TAM TEL ENG KOR DDP5 1 Atmos   OlaM (2026) [2160p] [Netflix] [Tamil 5.1] [3 GB].mkv"
+    },
+    "match_status": "pending",
+    "tmdb_candidates": [],
+    "selected_tmdb_id": null,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1UBL4G7LU9zQdr7GLNKkGTf6yQ_ry-J_V",
+    "original_filename": "Dead-End.Job.S01E02.1080p.DS4K.SDR.10bit.NF.WEBRip.HIN-TAM-TEL-ENG-KOR.DDP5.1.Atmos.x265.HEVC-OlaM.mkv",
+    "file_size_bytes": 3428692205,
+    "file_size_gb": "3 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-08T04:17:29.894Z",
+    "parsed": {
+      "title": "Dead End Job S01E02  DS4K SDR 10bit NF WEBRip HIN TAM TEL ENG KOR DDP5 1 Atmos   OlaM",
+      "year": 2026,
+      "resolution": "2160p",
+      "source": "Netflix",
+      "codec": "x265",
+      "telegram_tag": "",
+      "standard_filename": "Dead End Job S01E02  DS4K SDR 10bit NF WEBRip HIN TAM TEL ENG KOR DDP5 1 Atmos   OlaM (2026) [2160p] [Netflix] [Tamil 5.1] [3 GB].mkv"
+    },
+    "match_status": "pending",
+    "tmdb_candidates": [],
+    "selected_tmdb_id": null,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1nWtUGT8UU_pRzItJD9jRKw8rSA643211",
+    "original_filename": "Dead-End.Job.S01E01.1080p.DS4K.SDR.10bit.NF.WEBRip.HIN-TAM-TEL-ENG-KOR.DDP5.1.Atmos.x265.HEVC-OlaM.mkv",
+    "file_size_bytes": 4050617830,
+    "file_size_gb": "4 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-08T04:15:34.228Z",
+    "parsed": {
+      "title": "Dead End Job S01E01  DS4K SDR 10bit NF WEBRip HIN TAM TEL ENG KOR DDP5 1 Atmos   OlaM",
+      "year": 2026,
+      "resolution": "2160p",
+      "source": "Netflix",
+      "codec": "x265",
+      "telegram_tag": "",
+      "standard_filename": "Dead End Job S01E01  DS4K SDR 10bit NF WEBRip HIN TAM TEL ENG KOR DDP5 1 Atmos   OlaM (2026) [2160p] [Netflix] [Tamil 5.1] [4 GB].mkv"
+    },
+    "match_status": "pending",
+    "tmdb_candidates": [],
+    "selected_tmdb_id": null,
+    "approval_status": "pending"
   }
 ]
