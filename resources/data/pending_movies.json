@@ -14803,5 +14803,35 @@
     "tmdb_candidates": [],
     "selected_tmdb_id": null,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "15C41FY-geC0-QgoyFuIDLxcbDJE6v0s7",
+    "original_filename": "Aan.Paavam.Pollathathu.2025.HYBRID.1080p.DS4K.SDR.10bit.JHS.WEBRip.HIN-TAM-TEL-KAN-MAL.DDP5.1.Atmos.x265.HEVC-Ospreay.mkv",
+    "file_size_bytes": 3856422576,
+    "file_size_gb": "4 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-08T06:41:38.020Z",
+    "parsed": {
+      "title": "Aan Paavam Pollathathu",
+      "year": 2025,
+      "resolution": "2160p",
+      "source": "WEB-DL",
+      "codec": "x265",
+      "telegram_tag": "",
+      "standard_filename": "Aan Paavam Pollathathu (2025) [2160p] [WEB-DL] [Tamil 5.1] [4 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 1435139,
+        "title": "Aan Paavam Pollathathu",
+        "year": "2025",
+        "poster": "https://image.tmdb.org/t/p/w500/5eZzBvETRK8uDz3mUK0Feio2T5C.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/d3HvCcvR1JbLrloXYGb0QhRiOma.jpg",
+        "rating": 5.9
+      }
+    ],
+    "selected_tmdb_id": 1435139,
+    "approval_status": "pending"
   }
 ]
