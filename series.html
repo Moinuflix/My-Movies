@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>MoinuFlix — Web Series Bundle Studio</title>
+  <title>MoinuFlix — Web Series Studio Manager</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-dark: #040711;
-      --bg-card: rgba(13, 22, 38, 0.85);
-      --bg-card-hover: rgba(22, 36, 61, 0.95);
-      --bg-input: #091224;
-      --border-color: rgba(56, 189, 248, 0.18);
+      --bg-card: rgba(10, 18, 36, 0.92);
+      --bg-card-hover: rgba(18, 30, 58, 0.95);
+      --bg-input: #070d1e;
+      --border-color: rgba(56, 189, 248, 0.2);
       --electric-blue: #2563eb;
       --laser-cyan: #38bdf8;
-      --laser-cyan-glow: rgba(56, 189, 248, 0.45);
+      --laser-cyan-glow: rgba(56, 189, 248, 0.4);
       --laser-green: #10b981;
       --laser-green-glow: rgba(16, 185, 129, 0.35);
       --laser-red: #ef4444;
@@ -34,7 +34,7 @@
     body {
       background-color: var(--bg-dark);
       background-image: 
-        radial-gradient(circle at 10% 10%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 10% 8%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
         radial-gradient(circle at 90% 90%, rgba(56, 189, 248, 0.1) 0%, transparent 50%);
       color: var(--text-main);
       font-family: var(--font-stack);
@@ -43,9 +43,10 @@
       overflow-x: hidden;
     }
 
+    /* SIDEBAR */
     aside {
       width: 270px;
-      background: rgba(8, 14, 28, 0.96);
+      background: rgba(6, 11, 23, 0.96);
       backdrop-filter: blur(25px);
       border-right: 1px solid var(--border-color);
       display: flex;
@@ -81,13 +82,7 @@
 
     .brand-text { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; }
 
-    .nav-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-
+    .nav-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
     .nav-btn {
       width: 100%;
       background: transparent;
@@ -101,60 +96,36 @@
       font-size: 0.88rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.25s ease;
-      text-align: left;
       text-decoration: none;
+      transition: all 0.25s ease;
     }
-
     .nav-btn:hover { background: rgba(56, 189, 248, 0.08); color: #fff; }
     .nav-btn.active {
       background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(56, 189, 248, 0.12));
       color: #fff;
-      border: 1px solid var(--neon-purple);
-      box-shadow: 0 0 18px rgba(168, 85, 247, 0.35);
+      border: 1px solid var(--laser-cyan);
+      box-shadow: 0 0 18px var(--laser-cyan-glow);
     }
-
     .nav-badge {
       margin-left: auto;
       background: rgba(255, 255, 255, 0.08);
       padding: 0.15rem 0.55rem;
       border-radius: 20px;
       font-size: 0.75rem;
-      color: var(--text-muted);
-      font-weight: 700;
-    }
-
-    .nav-divider {
-      height: 1px;
-      background: var(--border-color);
-      margin: 0.8rem 0;
-      opacity: 0.6;
-    }
-
-    .nav-ext-btn {
       color: var(--laser-cyan);
-      border: 1px dashed rgba(56, 189, 248, 0.35);
-    }
-    .nav-ext-btn:hover {
-      background: rgba(56, 189, 248, 0.08);
-      border-color: var(--laser-cyan);
-      color: #fff;
+      font-weight: 700;
     }
 
     .sidebar-footer {
       margin-top: auto;
       border-top: 1px solid var(--border-color);
       padding-top: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
     }
-
     .btn-token-config {
       width: 100%;
-      background: rgba(168, 85, 247, 0.08);
-      border: 1px solid rgba(168, 85, 247, 0.25);
-      color: var(--neon-purple);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: var(--laser-cyan);
       padding: 0.7rem 0.9rem;
       border-radius: 10px;
       font-size: 0.85rem;
@@ -169,74 +140,222 @@
     main {
       margin-left: 270px;
       flex: 1;
-      padding: 2.5rem 3rem 6rem 3rem;
+      padding: 2.2rem 2.8rem 6rem;
       max-width: 1440px;
       width: calc(100% - 270px);
     }
 
-    header {
+    /* TOP HEADER */
+    .top-header-row {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: center;
       margin-bottom: 1.5rem;
       flex-wrap: wrap;
-      gap: 1.25rem;
+      gap: 1rem;
+    }
+    .lang-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--laser-cyan);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 4px 12px;
+      border-radius: 20px;
     }
 
-    h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.8px; }
-    .section-desc { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem; }
-
-    /* FORMS */
-    .form-container {
+    /* FORM CONTAINERS */
+    .form-box {
       background: var(--bg-card);
       backdrop-filter: blur(25px);
       border: 1px solid var(--border-color);
-      border-radius: 22px;
-      padding: 2.2rem 2.6rem;
-      max-width: 950px;
-      box-shadow: 0 12px 45px rgba(0,0,0,0.5);
-      margin-bottom: 2.5rem;
+      border-radius: 20px;
+      padding: 1.8rem 2.2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 14px 45px rgba(0,0,0,0.55);
     }
 
-    .form-grid {
+    .part-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--laser-cyan);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .part-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.4), transparent);
+    }
+
+    .form-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-      margin-bottom: 1.75rem;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+      margin-bottom: 1rem;
     }
+    .col-12 { grid-column: span 12; }
+    .col-6 { grid-column: span 6; }
+    .col-4 { grid-column: span 4; }
+    .col-3 { grid-column: span 3; }
+    .col-2 { grid-column: span 2; }
 
-    .form-group { display: flex; flex-direction: column; gap: 0.5rem; position: relative; }
-    .form-group.full-width { grid-column: span 2; }
-    label { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
+    .field { display: flex; flex-direction: column; gap: 0.4rem; position: relative; }
+    label { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); }
+    .req { color: var(--laser-red); }
 
-    input, textarea {
+    input, select, textarea {
       background: var(--bg-input);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 0.85rem 1rem;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 10px;
+      padding: 0.75rem 0.9rem;
       color: var(--text-main);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       outline: none;
-      transition: all 0.2s ease;
       font-family: var(--font-stack);
       width: 100%;
+      transition: all 0.2s ease;
     }
-    textarea { font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.5; }
-    input:focus, textarea:focus {
-      border-color: var(--neon-purple);
-      box-shadow: 0 0 14px rgba(168, 85, 247, 0.4);
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--laser-cyan);
+      box-shadow: 0 0 14px var(--laser-cyan-glow);
+    }
+    .input-smart {
+      background: rgba(56, 189, 248, 0.04);
+      border-color: rgba(56, 189, 248, 0.35);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
     }
 
-    .smart-input {
-      border-color: rgba(168, 85, 247, 0.4);
-      background: rgba(168, 85, 247, 0.04);
+    .preview-dash-box {
+      background: #060b17;
+      border: 1px dashed rgba(56, 189, 248, 0.35);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--laser-cyan);
+      word-break: break-all;
     }
 
-    .btn-submit {
-      background: linear-gradient(135deg, var(--neon-purple), #7c3aed);
+    /* TMDB DROPDOWN */
+    .tmdb-results-box {
+      display: none;
+      margin-top: 6px;
+      background: #081126;
+      border: 1px solid var(--laser-cyan);
+      box-shadow: 0 0 20px var(--laser-cyan-glow);
+      border-radius: 12px;
+      padding: 8px;
+      max-height: 250px;
+      overflow-y: auto;
+      z-index: 60;
+    }
+    .tmdb-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+    .tmdb-item:hover { background: #132247; border-color: var(--laser-cyan); }
+    .tmdb-thumb { width: 38px; height: 50px; border-radius: 6px; object-fit: cover; background: #070d1e; flex-shrink: 0; }
+
+    /* PART II METADATA POSTER & DETAILS */
+    .meta-flex-wrapper {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .poster-preview-box {
+      width: 155px;
+      height: 230px;
+      background: #070d1e;
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      flex-shrink: 0;
+      color: var(--text-dim);
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      position: relative;
+    }
+    .poster-preview-box img { width: 100%; height: 100%; object-fit: cover; }
+    .meta-inputs-flex { flex: 1; display: flex; flex-direction: column; gap: 0.85rem; }
+
+    /* PART IV: EPISODE SLOTS MANAGER */
+    .episodes-bundle-container {
+      background: #060b18;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 14px;
+      padding: 1.25rem;
+    }
+    .bundle-header-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .ep-slot-row {
+      display: grid;
+      grid-template-columns: 90px 1fr 180px auto;
+      gap: 0.75rem;
+      align-items: center;
+      background: rgba(13, 24, 48, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.6rem 0.85rem;
+      margin-bottom: 0.5rem;
+      transition: all 0.2s;
+    }
+    .ep-slot-row.exists {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.06);
+    }
+    .slot-id-badge {
+      font-size: 0.78rem;
+      font-weight: 800;
       color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 4px 8px;
+      border-radius: 6px;
+      text-align: center;
+      font-family: var(--font-mono);
+    }
+    .slot-status-pill {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 8px;
+      border-radius: 6px;
+      text-align: center;
+      display: inline-block;
+    }
+    .status-done { background: rgba(16, 185, 129, 0.2); color: var(--laser-green); border: 1px solid var(--laser-green); }
+    .status-empty { background: rgba(148, 163, 184, 0.1); color: var(--text-muted); border: 1px solid rgba(148, 163, 184, 0.25); }
+
+    /* ACTION BUTTONS */
+    .btn-main-action {
+      background: linear-gradient(135deg, var(--laser-cyan), var(--electric-blue));
+      color: #030712;
       border: none;
-      padding: 0.9rem 1.8rem;
+      padding: 0.95rem 1.8rem;
       border-radius: 12px;
       font-weight: 800;
       font-size: 0.95rem;
@@ -244,181 +363,52 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
-      transition: all 0.25s ease;
+      gap: 0.6rem;
+      box-shadow: 0 0 20px var(--laser-cyan-glow);
+      transition: all 0.2s ease;
+      width: 100%;
     }
-    .btn-submit:hover { transform: translateY(-2px); }
+    .btn-main-action:hover { transform: translateY(-2px); }
 
-    .tmdb-results-box {
-      display: none;
-      margin-top: 8px;
-      background: #091224;
-      border: 1px solid var(--neon-purple);
-      border-radius: 12px;
-      padding: 10px;
-      max-height: 260px;
-      overflow-y: auto;
-      z-index: 50;
-    }
-    .tmdb-result-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 8px 10px;
-      border-radius: 10px;
+    .btn-sub {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--laser-cyan);
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
       cursor: pointer;
-      border: 1px solid transparent;
-      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
-    .tmdb-result-item:hover { background: #1e293b; border-color: var(--neon-purple); }
-    .tmdb-result-poster { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; background: #1e293b; flex-shrink: 0; }
-    .tmdb-result-info { flex: 1; overflow: hidden; }
-    .tmdb-result-title { font-weight: 700; color: #fff; font-size: 0.88rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .tmdb-result-meta { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .btn-sub:hover { background: var(--laser-cyan); color: #030712; }
 
-    /* GRID & CARDS */
-    .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.75rem; }
-
-    .movie-card {
+    /* LIBRARY CARDS */
+    .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+    .series-card {
       background: var(--bg-card);
-      backdrop-filter: blur(16px);
       border: 1px solid var(--border-color);
-      border-radius: 18px;
+      border-radius: 16px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
     }
-
-    .movie-card:hover {
-      border-color: var(--neon-purple);
-      transform: translateY(-5px);
-      box-shadow: 0 14px 35px rgba(0,0,0,0.6), 0 0 20px rgba(168, 85, 247, 0.4);
-    }
-
-    .poster-wrap { width: 100%; height: 290px; background: #070d1e; position: relative; overflow: hidden; }
-    .poster-img { width: 100%; height: 100%; object-fit: cover; }
-    .poster-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 0.85rem; font-weight: 600; text-align: center; }
-
-    .pack-status-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      padding: 4px 10px;
-      border-radius: 8px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      backdrop-filter: blur(8px);
-      z-index: 2;
-      background: rgba(16, 185, 129, 0.25);
-      border: 1px solid var(--laser-green);
-      color: var(--laser-green);
-      box-shadow: 0 0 12px var(--laser-green-glow);
-    }
-
-    .universe-badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: rgba(4, 7, 17, 0.85);
-      border: 1px solid var(--neon-purple);
-      color: var(--neon-purple);
-      padding: 4px 9px;
-      border-radius: 8px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      backdrop-filter: blur(8px);
-      z-index: 2;
-    }
-
-    .movie-card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
-    .movie-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-    .movie-meta-row {
-      display: flex;
-      gap: 0.4rem;
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      margin-bottom: 0.65rem;
-      align-items: center;
-      font-weight: 600;
-      flex-wrap: wrap;
-    }
-
-    .spec-chip {
-      background: rgba(168, 85, 247, 0.12);
-      border: 1px solid rgba(168, 85, 247, 0.3);
-      color: var(--neon-purple);
-      padding: 2px 7px;
-      border-radius: 6px;
-      font-size: 0.72rem;
-      font-weight: 700;
-    }
-
-    .card-actions-row { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
-    .btn-action-primary {
-      flex: 1;
-      background: rgba(168, 85, 247, 0.15);
-      color: var(--neon-purple);
-      border: 1px solid rgba(168, 85, 247, 0.3);
-      padding: 0.65rem;
-      border-radius: 10px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-align: center;
-    }
-    .btn-action-primary:hover { background: var(--neon-purple); color: #fff; }
-
-    .btn-delete-item {
-      background: rgba(239, 68, 68, 0.15);
-      color: var(--laser-red);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      padding: 0.65rem 0.8rem;
-      border-radius: 10px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .btn-delete-item:hover { background: var(--laser-red); color: #fff; }
-
-    /* MODAL */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(2, 6, 23, 0.88);
-      backdrop-filter: blur(20px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 200;
-      padding: 1.25rem;
-    }
-    .modal-overlay.active { display: flex; }
-    .modal-card {
-      background: rgba(13, 22, 38, 0.98);
-      border: 1px solid rgba(168, 85, 247, 0.4);
-      border-radius: 24px;
-      width: 100%;
-      max-width: 760px;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 2rem;
-    }
+    .series-card-poster { width: 100%; height: 260px; object-fit: cover; background: #070d1e; }
+    .series-card-content { padding: 1.1rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
 
     #laser-toast {
       position: fixed;
-      top: 25px;
-      right: 25px;
-      background: rgba(13, 22, 38, 0.96);
-      border: 1px solid var(--neon-purple);
-      box-shadow: 0 0 25px rgba(168, 85, 247, 0.45);
+      top: 20px; right: 20px;
+      background: rgba(13, 22, 42, 0.96);
+      border: 1px solid var(--laser-cyan);
+      box-shadow: 0 0 25px var(--laser-cyan-glow);
       color: #fff;
-      padding: 1rem 1.5rem;
-      border-radius: 14px;
-      font-size: 0.9rem;
+      padding: 0.9rem 1.4rem;
+      border-radius: 12px;
+      font-size: 0.88rem;
       font-weight: 700;
       display: none;
       z-index: 300;
@@ -428,29 +418,20 @@
     @media (max-width: 900px) {
       body { flex-direction: column; }
       aside {
-        width: 100%;
-        height: auto;
-        position: sticky;
-        top: 0;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
+        width: 100%; height: auto; position: sticky; top: 0;
+        border-right: none; border-bottom: 1px solid var(--border-color);
         padding: 0.75rem 1rem;
-        z-index: 100;
       }
-      .brand { padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
-      .nav-list { flex-direction: row; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
-      .nav-btn { white-space: nowrap; padding: 0.5rem 0.8rem; font-size: 0.8rem; }
-      .nav-divider { display: none; }
+      .brand { padding-bottom: 0.4rem; margin-bottom: 0.4rem; }
+      .nav-list { flex-direction: row; overflow-x: auto; }
+      .nav-btn { white-space: nowrap; font-size: 0.8rem; padding: 0.45rem 0.75rem; }
       .sidebar-footer { display: none; }
-      main { margin-left: 0; width: 100%; padding: 1.25rem 1rem 6rem 1rem; }
-      .form-container { padding: 1.4rem 1.1rem; }
-      .form-grid { grid-template-columns: 1fr; gap: 0.9rem; }
-      .form-group.full-width { grid-column: span 1; }
-      .movies-grid { grid-template-columns: repeat(auto-fill, minmax(145px, 1fr)); gap: 1rem; }
-      .poster-wrap { height: 210px; }
-      .movie-card-body { padding: 0.85rem; }
-      .movie-title { font-size: 0.95rem; }
-      .modal-card { padding: 1.25rem; border-radius: 18px; }
+      main { margin-left: 0; width: 100%; padding: 1.25rem 1rem 6rem; }
+      .form-box { padding: 1.3rem 1rem; }
+      .meta-flex-wrapper { flex-direction: column; align-items: center; }
+      .poster-preview-box { width: 140px; height: 200px; }
+      .ep-slot-row { grid-template-columns: 1fr; gap: 0.5rem; }
+      .col-12, .col-6, .col-4, .col-3, .col-2 { grid-column: span 12; }
     }
   </style>
 </head>
@@ -458,6 +439,7 @@
 
   <div id="laser-toast"></div>
 
+  <!-- ASIDE / NAVIGATION -->
   <aside>
     <div class="brand">
       <div class="brand-logo">M</div>
@@ -465,7 +447,7 @@
     </div>
     <ul class="nav-list">
       <li>
-        <a href="inbox.html" class="nav-btn nav-ext-btn">
+        <a href="inbox.html" class="nav-btn">
           <span>🎬 Movies Studio ➔</span>
         </a>
       </li>
@@ -476,7 +458,7 @@
         </button>
       </li>
       <li>
-        <a href="songs.html" class="nav-btn nav-ext-btn">
+        <a href="songs.html" class="nav-btn">
           <span>🎵 5.1 Songs ➔</span>
         </a>
       </li>
@@ -489,101 +471,279 @@
     </div>
   </aside>
 
+  <!-- MAIN VIEW -->
   <main>
-    <header>
+    <div class="top-header-row">
       <div>
-        <h1>📺 Web Series Bundle Ingest</h1>
-        <p class="section-desc">Create consolidated Season packs directly in `chunks/data_c02.json`</p>
+        <h1 style="font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px;">📺 Web Series Multi-Part Studio</h1>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 4px;">Consolidated Season packs & individual episode manager for <code>chunks/data_c02.json</code></p>
       </div>
-      <div>
-        <button class="cat-pill" style="border-color:var(--neon-purple); color:var(--neon-purple);" onclick="configureGithubToken()">⚙️ Token</button>
-        <button class="cat-pill" onclick="loadSeriesData()">🔄 Refresh</button>
+      <div style="display: flex; gap: 0.6rem; align-items: center;">
+        <span class="lang-badge">Language 🇮🇳</span>
+        <button class="btn-sub" onclick="loadSeriesData()">🔄 Refresh Catalog</button>
       </div>
-    </header>
-
-    <!-- FORM: SEASON PACK BUNDLE INGESTOR -->
-    <div class="form-container">
-      <form id="series-bundle-form" onsubmit="handleBundleSubmit(event)">
-        <div class="form-grid">
-          
-          <div class="form-group full-width">
-            <label style="color: var(--neon-purple);">⚡ Search TV Show Name (e.g. Naruto, Farzi, Mirzapur, Stranger Things)</label>
-            <input type="text" id="input-series-search" class="smart-input" placeholder="Type TV Show name to search TMDB..." oninput="searchTvShowTmdb(this.value)">
-            <div id="series-suggestions-box" class="tmdb-results-box"></div>
-          </div>
-
-          <div class="form-group">
-            <label>TV Show Title</label>
-            <input type="text" id="input-series-title" placeholder="e.g. Naruto" required>
-          </div>
-
-          <div class="form-group">
-            <label>TMDB TV ID</label>
-            <input type="number" id="input-series-tmdb" placeholder="e.g. 46260" required oninput="fetchTvShowDetails(this.value)">
-          </div>
-
-          <div class="form-group">
-            <label>Season Tag / Name</label>
-            <input type="text" id="input-series-season" placeholder="Season 1" value="Season 1" required>
-          </div>
-
-          <div class="form-group">
-            <label>Release Year</label>
-            <input type="number" id="input-series-year" placeholder="2002" value="2002">
-          </div>
-
-          <!-- THE BUNDLE TEXTAREA -->
-          <div class="form-group full-width">
-            <label style="color: var(--laser-cyan);">📦 Episode Links Bundle (Paste all Google Drive Links or IDs, 1 per line):</label>
-            <textarea id="input-episodes-bundle" rows="8" placeholder="Paste full Google Drive Links or IDs here (1 per line). Examples:
-1XP0iAM3IiiZ0eVYRkKeC9gdk_Y3-rQgq
-https://drive.google.com/file/d/1aYFpSvY5zIh9aBchIAVHnvgujJ6M8LXA/view
-Or format: Episode Title | Drive Link | Size
-Episode 2 - Konohamaru | 1XP0iAM3IiiZ0eVYRkKeC9gdk_Y3-rQgq | 422 MB" required></textarea>
-            <span style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">
-              ⚡ Auto-detects Google Drive IDs, assigns Episode 1, 2, 3... and wraps into clean Kodi Pack Schema!
-            </span>
-          </div>
-
-        </div>
-
-        <button type="submit" class="btn-submit" id="btn-submit-bundle" style="width: 100%;">
-          🚀 PACK & COMMIT COMPLETE SEASON TO DATA_C02.JSON
-        </button>
-      </form>
     </div>
 
-    <!-- EXISTING SERIES LIST -->
-    <header style="margin-top: 2rem;">
-      <div>
-        <h2>📚 Library Seasons & Series</h2>
-        <p class="section-desc">Consolidated TV Packs stored in chunks/data_c02.json</p>
-      </div>
-      <div>
-        <input type="text" id="search-series-input" placeholder="Search series in library..." style="max-width: 250px; padding: 0.6rem 1rem;" oninput="filterSeriesCards()">
-      </div>
-    </header>
+    <!-- MAIN FORM -->
+    <form id="series-full-form" onsubmit="handleFormCommit(event)">
 
-    <div class="movies-grid" id="series-grid"></div>
+      <!-- PART I: CLEAN PARSED TOKENS -->
+      <div class="form-box">
+        <div class="part-title">PART I: CLEAN PARSED TOKENS (100% EDITABLE • 22 OTT AUTO-DETECTION)</div>
+
+        <div class="form-row">
+          <div class="field col-12">
+            <label>Raw Google Drive Release File Name <span class="req">* (Instant Full Auto-Fill)</span></label>
+            <input type="text" id="raw-filename-input" class="input-smart" placeholder="Paste full raw filename, e.g. Dead.End.Job.S01.DS4K.SDR.10bit.NF.WEBRip.HIN.TAM.TEL.ENG.mkv" oninput="parseRawReleaseFilename(this.value)">
+            <div id="tmdb-dropdown" class="tmdb-results-box"></div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field col-12">
+            <label>Parsed Series Title (Editable) <span class="req">*</span></label>
+            <input type="text" id="token-series-title" placeholder="Series Title" required oninput="syncTitleToMeta(); updateDashPreview()">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field col-2">
+            <label>Year (Editable)</label>
+            <input type="number" id="token-year" placeholder="2023" oninput="updateDashPreview()">
+          </div>
+          <div class="field col-2">
+            <label>Season (Editable)</label>
+            <input type="text" id="token-season" placeholder="Season 1" value="Season 1" oninput="onSeasonChange(); updateDashPreview()">
+          </div>
+          <div class="field col-2">
+            <label>Resolution (Editable)</label>
+            <input type="text" id="token-res" placeholder="1080p" value="1080p" oninput="updateDashPreview()">
+          </div>
+          <div class="field col-2">
+            <label>Platform / Source</label>
+            <input type="text" id="token-source" placeholder="Netflix / WEBRip" value="WEBRip" oninput="updateDashPreview()">
+          </div>
+          <div class="field col-2">
+            <label>Video Codec</label>
+            <input type="text" id="token-codec" placeholder="x264 / HEVC / 10bit" value="x264" oninput="updateDashPreview()">
+          </div>
+          <div class="field col-2">
+            <label>Ripper / Release Tag</label>
+            <input type="text" id="token-ripper" placeholder="MoinuFlix" value="MoinuFlix" oninput="updateDashPreview()">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field col-12">
+            <label>Languages & Multi-Audio Specification (Editable • Clean Bracket)</label>
+            <input type="text" id="token-audio" placeholder="[Hindi DD 5.1]" value="[Hindi DD 5.1]" oninput="updateDashPreview()">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field col-12">
+            <label>Final Standard Dash Name Preview (Auto-Updates Live with Every Edit)</label>
+            <div class="preview-dash-box" id="preview-dash-text">Awaiting input...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART II: VERIFIED METADATA, POSTER & TOP CAST -->
+      <div class="form-box">
+        <div class="part-title">PART II: VERIFIED METADATA, POSTER & TOP CAST</div>
+
+        <div class="meta-flex-wrapper">
+          <div class="poster-preview-box" id="poster-box" onclick="document.getElementById('art-poster').focus()" title="Click to view/edit poster URL">
+            <span>No Poster</span>
+          </div>
+
+          <div class="meta-inputs-flex">
+            <div class="form-row">
+              <div class="field col-6">
+                <label>Official Title <span class="req">*</span></label>
+                <input type="text" id="meta-title" placeholder="Official Title" required oninput="syncMetaToToken()">
+              </div>
+              <div class="field col-6">
+                <label>Original Title</label>
+                <input type="text" id="meta-orig-title" placeholder="Native Language Title">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field col-12">
+                <label>Series Tagline</label>
+                <input type="text" id="meta-tagline" placeholder="Series Tagline...">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field col-2">
+                <label>TMDB TV ID <span class="req">*</span></label>
+                <input type="number" id="meta-tmdb-id" placeholder="e.g. 99966" required oninput="fetchTmdbTvDetails(this.value)">
+              </div>
+              <div class="field col-2">
+                <label>First Air Date</label>
+                <input type="text" id="meta-air-date" placeholder="YYYY-MM-DD">
+              </div>
+              <div class="field col-2">
+                <label>TMDB Rating</label>
+                <input type="text" id="meta-rating" placeholder="8.2">
+              </div>
+              <div class="field col-2">
+                <label>Language</label>
+                <input type="text" id="meta-lang" placeholder="hi">
+              </div>
+              <div class="field col-2">
+                <label>Total Episodes</label>
+                <input type="number" id="meta-total-eps" placeholder="8" value="8" oninput="rebuildEpisodeSlots()">
+              </div>
+              <div class="field col-2">
+                <label>Certification / Status</label>
+                <input type="text" id="meta-status" placeholder="Returning Series">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-top: 1rem;">
+          <div class="field col-6">
+            <label>Director(s) / Creator(s)</label>
+            <input type="text" id="meta-creators" placeholder="Creators...">
+          </div>
+          <div class="field col-6">
+            <label>Networks / Platforms</label>
+            <input type="text" id="meta-networks" placeholder="Amazon, Netflix...">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field col-6">
+            <label>Studio / Production Companies</label>
+            <input type="text" id="meta-studios" placeholder="Production Company">
+          </div>
+          <div class="field col-6">
+            <label>Genres <span class="req">*</span></label>
+            <input type="text" id="meta-genres" placeholder="Thriller, Crime, Drama">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field col-12">
+            <label>Plot Synopsis</label>
+            <textarea id="meta-overview" rows="3" placeholder="Synopsis text..."></textarea>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field col-12">
+            <label>Official Trailer (YouTube Link or ID)</label>
+            <input type="text" id="meta-trailer" placeholder="YouTube Link or Video Key">
+          </div>
+        </div>
+      </div>
+
+      <!-- PART III: COMPLETE 10-ARTWORK VERIFICATION SUITE -->
+      <div class="form-box">
+        <div class="part-title">PART III: COMPLETE 10-ARTWORK VERIFICATION SUITE</div>
+
+        <div class="form-row">
+          <div class="field col-4">
+            <label>1. Poster</label>
+            <input type="text" id="art-poster" placeholder="Poster URL" oninput="updateArtPreview()">
+          </div>
+          <div class="field col-4">
+            <label>2. Fanart</label>
+            <input type="text" id="art-fanart" placeholder="Backdrop / Fanart URL">
+          </div>
+          <div class="field col-4">
+            <label>3. ClearLogo</label>
+            <input type="text" id="art-clearlogo" placeholder="ClearLogo PNG">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field col-4">
+            <label>4. ClearArt</label>
+            <input type="text" id="art-clearart" placeholder="ClearArt PNG">
+          </div>
+          <div class="field col-4">
+            <label>5. Wide Banner</label>
+            <input type="text" id="art-banner" placeholder="Wide Banner URL">
+          </div>
+          <div class="field col-4">
+            <label>6. Landscape</label>
+            <input type="text" id="art-landscape" placeholder="Landscape URL">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field col-4">
+            <label>7. KeyArt</label>
+            <input type="text" id="art-keyart" placeholder="KeyArt URL">
+          </div>
+          <div class="field col-4">
+            <label>8. Thumbnail</label>
+            <input type="text" id="art-thumb" placeholder="Thumbnail URL">
+          </div>
+          <div class="field col-4">
+            <label>9. DiscArt</label>
+            <input type="text" id="art-discart" placeholder="DiscArt URL">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field col-12">
+            <label>10. Title Card</label>
+            <input type="text" id="art-titlecard" placeholder="Title Card URL">
+          </div>
+        </div>
+      </div>
+
+      <!-- PART IV: EPISODE SLOTS & EDIT MATRIX -->
+      <div class="form-box">
+        <div class="part-title">PART IV: SEASON & EPISODE BUNDLE MATRIX (INDIVIDUAL LINK SLOTS)</div>
+
+        <div class="episodes-bundle-container">
+          <div class="bundle-header-actions">
+            <div>
+              <span style="font-weight: 700; color: #fff; font-size: 0.9rem;">Episode Link Slots:</span>
+              <span id="slots-count-label" style="font-size: 0.78rem; color: var(--laser-cyan); margin-left: 8px;"></span>
+            </div>
+            <div style="display:flex; gap:0.5rem;">
+              <button type="button" class="btn-sub" onclick="pasteBatchLinks()">📋 Paste Batch Links</button>
+              <button type="button" class="btn-sub" onclick="addSingleEpisodeSlot()">➕ Add Next Slot</button>
+            </div>
+          </div>
+
+          <div id="episodes-slots-list">
+            <!-- Dynamic episode slots -->
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBMIT BUTTON -->
+      <button type="submit" class="btn-main-action" id="btn-save-series">
+        🚀 COMMIT ALL EPISODES & METADATA TO DATA_C02.JSON
+      </button>
+
+    </form>
+
+    <!-- LIBRARY SECTION -->
+    <div style="margin-top: 3.5rem;">
+      <div class="top-header-row">
+        <div>
+          <h2 style="font-size: 1.4rem; font-weight: 800;">📚 Existing Series & Seasons in Library</h2>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">Click 'Edit & Add Episodes' to edit or add missing episodes</p>
+        </div>
+        <input type="text" id="filter-series-box" placeholder="Search series in library..." style="max-width: 260px;" oninput="filterSeriesList()">
+      </div>
+
+      <div class="movies-grid" id="series-grid"></div>
+    </div>
   </main>
 
-  <!-- MODAL: EPISODES LIST -->
-  <div class="modal-overlay" id="series-ep-modal">
-    <div class="modal-card">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.2rem; border-bottom:1px solid var(--border-color); padding-bottom:0.8rem;">
-        <div>
-          <h3 id="modal-series-title" style="font-size:1.3rem; font-weight:800; color:#fff;"></h3>
-          <span style="font-size:0.85rem; color:var(--laser-cyan);" id="modal-series-count"></span>
-        </div>
-        <button type="button" style="background:transparent; border:none; color:#fff; font-size:1.5rem; cursor:pointer;" onclick="closeEpModal()">✕</button>
-      </div>
-      <div id="modal-episodes-list" style="display:flex; flex-direction:column; gap:0.75rem; max-height:500px; overflow-y:auto;"></div>
-    </div>
-  </div>
-
   <script>
-    let seriesData = [];
-    let activeTvMeta = null;
+    let libraryData = [];
     let searchDebounce = null;
 
     const CONFIRM_PIN = "24592";
@@ -595,520 +755,37 @@ Episode 2 - Konohamaru | 1XP0iAM3IiiZ0eVYRkKeC9gdk_Y3-rQgq | 422 MB" required></
 
     function getStoredToken() { return localStorage.getItem('moinuflix_gh_token') || ''; }
     function configureGithubToken() {
-      const current = getStoredToken();
-      const input = prompt('Enter your GitHub Personal Access Token (ghp_...):', current);
-      if (input !== null) {
-        if (input.trim()) {
-          localStorage.setItem('moinuflix_gh_token', input.trim());
-          updateTokenBadge();
-          showLaserToast('GitHub Token Saved!');
+      const cur = getStoredToken();
+      const val = prompt('Enter your GitHub Personal Access Token (ghp_...):', cur);
+      if (val !== null) {
+        if (val.trim()) {
+          localStorage.setItem('moinuflix_gh_token', val.trim());
+          showLaserToast('Token Saved!');
         } else {
           localStorage.removeItem('moinuflix_gh_token');
-          updateTokenBadge();
         }
+        updateTokenBadge();
       }
     }
+
     function updateTokenBadge() {
-      const label = do      color: #fff;
-      border: 1px solid var(--laser-cyan);
-      box-shadow: 0 0 20px var(--laser-cyan-glow);
-    }
-
-    .nav-badge {
-      margin-left: auto;
-      background: rgba(255, 255, 255, 0.08);
-      padding: 0.15rem 0.55rem;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-weight: 700;
-    }
-
-    .sidebar-footer {
-      margin-top: auto;
-      border-top: 1px solid var(--border-color);
-      padding-top: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .btn-token-config {
-      width: 100%;
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      color: var(--laser-cyan);
-      padding: 0.7rem 0.9rem;
-      border-radius: 10px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    main {
-      margin-left: 270px;
-      flex: 1;
-      padding: 2.5rem 3rem 6rem 3rem;
-      max-width: 1440px;
-      width: calc(100% - 270px);
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-    }
-
-    h1 { font-size: 1.95rem; font-weight: 800; letter-spacing: -0.8px; }
-    .section-desc { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem; }
-
-    /* FORM STYLING */
-    .form-container {
-      background: var(--bg-card);
-      backdrop-filter: blur(25px);
-      border: 1px solid var(--border-color);
-      border-radius: 22px;
-      padding: 2.2rem 2.6rem;
-      max-width: 900px;
-      box-shadow: 0 12px 45px rgba(0,0,0,0.5);
-      margin-bottom: 2.5rem;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .form-group { display: flex; flex-direction: column; gap: 0.5rem; position: relative; }
-    .form-group.full-width { grid-column: span 2; }
-    label { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
-
-    input, select {
-      background: var(--bg-input);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 0.85rem 1rem;
-      color: var(--text-main);
-      font-size: 0.9rem;
-      outline: none;
-      transition: all 0.2s ease;
-      font-family: var(--font-stack);
-      width: 100%;
-    }
-    input:focus, select:focus {
-      border-color: var(--laser-cyan);
-      box-shadow: 0 0 14px var(--laser-cyan-glow);
-    }
-
-    .smart-input {
-      border-color: rgba(56, 189, 248, 0.4);
-      background: rgba(56, 189, 248, 0.04);
-    }
-
-    .tag-container { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-    .smart-tag {
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      color: var(--laser-cyan);
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 0.75rem;
-      font-family: monospace;
-      font-weight: 700;
-    }
-
-    .btn-submit {
-      background: linear-gradient(135deg, var(--laser-cyan), var(--electric-blue));
-      color: #030712;
-      border: none;
-      padding: 0.85rem 1.8rem;
-      border-radius: 12px;
-      font-weight: 800;
-      font-size: 0.9rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      box-shadow: 0 0 18px var(--laser-cyan-glow);
-      transition: all 0.25s ease;
-    }
-    .btn-submit:hover { transform: translateY(-2px); }
-
-    .tmdb-results-box {
-      display: none;
-      margin-top: 8px;
-      background: #0b1329;
-      border: 1px solid var(--laser-cyan);
-      box-shadow: 0 0 20px var(--laser-cyan-glow);
-      border-radius: 14px;
-      padding: 10px;
-      max-height: 280px;
-      overflow-y: auto;
-      z-index: 50;
-    }
-    .tmdb-result-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 8px 10px;
-      border-radius: 10px;
-      cursor: pointer;
-      border: 1px solid transparent;
-      transition: all 0.2s;
-    }
-    .tmdb-result-item:hover { background: #1e293b; border-color: var(--laser-cyan); }
-    .tmdb-result-poster { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; background: #1e293b; flex-shrink: 0; }
-    .tmdb-result-info { flex: 1; overflow: hidden; }
-    .tmdb-result-title { font-weight: 700; color: #fff; font-size: 0.88rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .tmdb-result-meta { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-    /* SERIES GRID & CARDS */
-    .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.75rem; }
-    .movie-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(16px);
-      border: 1px solid var(--border-color);
-      border-radius: 18px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-    }
-    .movie-card:hover {
-      border-color: var(--laser-cyan);
-      transform: translateY(-5px);
-      box-shadow: 0 14px 35px rgba(0,0,0,0.6), 0 0 20px var(--laser-cyan-glow);
-    }
-    .poster-wrap { width: 100%; height: 290px; background: #070d1e; position: relative; overflow: hidden; }
-    .poster-img { width: 100%; height: 100%; object-fit: cover; }
-    .poster-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 0.85rem; font-weight: 600; text-align: center; }
-
-    .universe-badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: rgba(3, 7, 18, 0.9);
-      border: 1px solid var(--laser-cyan);
-      color: var(--laser-cyan);
-      padding: 4px 9px;
-      border-radius: 8px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      backdrop-filter: blur(8px);
-      z-index: 2;
-    }
-
-    .pack-status-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      padding: 4px 10px;
-      border-radius: 8px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      backdrop-filter: blur(8px);
-      z-index: 2;
-      background: rgba(16, 185, 129, 0.25);
-      border: 1px solid var(--laser-green);
-      color: var(--laser-green);
-      box-shadow: 0 0 12px var(--laser-green-glow);
-    }
-
-    .movie-card-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
-    .movie-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-    .movie-meta-row {
-      display: flex;
-      gap: 0.4rem;
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      margin-bottom: 0.65rem;
-      align-items: center;
-      font-weight: 600;
-      flex-wrap: wrap;
-    }
-
-    .spec-chip {
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      color: var(--laser-cyan);
-      padding: 2px 7px;
-      border-radius: 6px;
-      font-size: 0.72rem;
-      font-weight: 700;
-    }
-    .spec-chip.chip-gold {
-      background: rgba(245, 158, 11, 0.12);
-      border-color: rgba(245, 158, 11, 0.3);
-      color: var(--gold-lcu);
-    }
-
-    .card-actions-row { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
-    .btn-action-primary {
-      flex: 1;
-      background: rgba(56, 189, 248, 0.12);
-      color: var(--laser-cyan);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      padding: 0.65rem;
-      border-radius: 10px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-align: center;
-    }
-    .btn-action-primary:hover { background: var(--laser-cyan); color: #030712; }
-
-    .btn-delete-item {
-      background: rgba(239, 68, 68, 0.15);
-      color: var(--laser-red);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      padding: 0.65rem 0.8rem;
-      border-radius: 10px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .btn-delete-item:hover { background: var(--laser-red); color: #fff; }
-
-    /* MODAL OVERLAY */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(2, 6, 23, 0.88);
-      backdrop-filter: blur(20px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 200;
-      padding: 1.25rem;
-    }
-    .modal-overlay.active { display: flex; }
-    .modal-card {
-      background: rgba(15, 23, 42, 0.98);
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      border-radius: 24px;
-      width: 100%;
-      max-width: 720px;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 2rem;
-    }
-
-    #laser-toast {
-      position: fixed;
-      top: 25px;
-      right: 25px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid var(--laser-cyan);
-      box-shadow: 0 0 25px var(--laser-cyan-glow);
-      color: #fff;
-      padding: 1rem 1.5rem;
-      border-radius: 14px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      display: none;
-      z-index: 300;
-      max-width: 90%;
-    }
-
-    /* MOBILE RESPONSIVENESS */
-    @media (max-width: 900px) {
-      body { flex-direction: column; }
-      aside {
-        width: 100%;
-        height: auto;
-        position: sticky;
-        top: 0;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-        padding: 0.75rem 1rem;
-        z-index: 100;
-      }
-      .brand { padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
-      .nav-list {
-        flex-direction: row;
-        overflow-x: auto;
-        padding-bottom: 4px;
-        -webkit-overflow-scrolling: touch;
-      }
-      .nav-btn { white-space: nowrap; padding: 0.5rem 0.8rem; font-size: 0.8rem; }
-      .sidebar-footer { display: none; }
-      main { margin-left: 0; width: 100%; padding: 1.25rem 1rem 6rem 1rem; }
-      .form-container { padding: 1.4rem 1.1rem; }
-      .form-grid { grid-template-columns: 1fr; gap: 0.9rem; }
-      .form-group.full-width { grid-column: span 1; }
-      .movies-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
-      .poster-wrap { height: 210px; }
-      .movie-card-body { padding: 0.85rem; }
-      .movie-title { font-size: 0.95rem; }
-      .modal-card { padding: 1.25rem; border-radius: 18px; }
-    }
-  </style>
-</head>
-<body>
-
-  <div id="laser-toast"></div>
-
-  <aside>
-    <div class="brand">
-      <div class="brand-logo">M</div>
-      <div class="brand-text">MoinuFlix</div>
-    </div>
-    <ul class="nav-list">
-      <li>
-        <a href="inbox.html" class="nav-btn">
-          <span>🎬 Movies Manager</span>
-        </a>
-      </li>
-      <li>
-        <a href="series.html" class="nav-btn active">
-          <span>📺 Web Series</span>
-          <span class="nav-badge" id="badge-series-count">0</span>
-        </a>
-      </li>
-    </ul>
-
-    <div class="sidebar-footer">
-      <button class="btn-token-config" onclick="configureGithubToken()">
-        <span id="token-status-label">⚙️ GitHub Token</span>
-      </button>
-    </div>
-  </aside>
-
-  <main>
-    <header>
-      <div>
-        <h1>📺 Web Series Studio Manager</h1>
-        <p class="section-desc">Manage episodes, cloud seasons, and chunk sync for `chunks/data_c02.json`</p>
-      </div>
-      <div>
-        <button class="btn-action-primary" style="padding: 0.6rem 1.2rem;" onclick="configureGithubToken()">⚙️ Token Config</button>
-      </div>
-    </header>
-
-    <!-- INGESTION FORM -->
-    <div class="form-container">
-      <form id="series-ingest-form" onsubmit="handleSeriesSubmit(event)">
-        <div class="form-grid">
-          
-          <div class="form-group full-width">
-            <label style="color: var(--laser-cyan);">⚡ Release File Name (Auto-detects TV Show, Season & Episode)</label>
-            <input type="text" id="input-series-filename" class="smart-input" placeholder="e.g. Farzi.S01E01.1080p.Prime.WEB-DL.DDP5.1.Atmos.x265.mkv" oninput="parseSeriesSmartFileName(this.value)">
-            <div id="series-suggestions-box" class="tmdb-results-box">
-              <div style="font-size: 0.75rem; color: var(--laser-cyan); font-weight: 700; margin-bottom: 6px;">🎯 Click your TV Show to auto-select TMDB TV ID:</div>
-              <div id="series-suggestions-list"></div>
-            </div>
-            <div class="tag-container" id="series-smart-tags"></div>
-          </div>
-
-          <div class="form-group">
-            <label>TV Show Title</label>
-            <input type="text" id="input-series-title" placeholder="e.g. Farzi" required>
-          </div>
-
-          <div class="form-group">
-            <label>TMDB TV ID</label>
-            <input type="number" id="input-series-tmdb" placeholder="e.g. 99966" required oninput="fetchTvShowDetails(this.value)">
-          </div>
-
-          <div class="form-group">
-            <label>Season Name / Tag</label>
-            <input type="text" id="input-series-season" placeholder="Season 1" value="Season 1" required>
-          </div>
-
-          <div class="form-group">
-            <label>Episode Number</label>
-            <input type="number" id="input-series-episode" placeholder="1" value="1" required>
-          </div>
-
-          <div class="form-group full-width">
-            <label>Google Drive Link or Stream File ID</label>
-            <input type="text" id="input-series-gdrive" placeholder="Paste full Google Drive link or File ID" required>
-          </div>
-
-        </div>
-
-        <button type="submit" class="btn-submit" id="btn-submit-series" style="width: 100%;">
-          🚀 SAVE EPISODE TO DATA_C02.JSON
-        </button>
-      </form>
-    </div>
-
-    <!-- EXISTING SERIES LIST -->
-    <header style="margin-top: 2rem;">
-      <div>
-        <h2 style="font-size: 1.4rem; font-weight: 800;">📚 Active Series in Library</h2>
-        <p class="section-desc">Packs grouped by series title & seasons</p>
-      </div>
-      <div>
-        <input type="text" id="search-series-input" placeholder="Search series..." style="max-width: 250px; padding: 0.6rem 1rem;" oninput="filterSeriesCards()">
-      </div>
-    </header>
-
-    <div class="movies-grid" id="series-grid"></div>
-  </main>
-
-  <script>
-    let seriesData = [];
-    let activeTvMeta = null;
-    let searchDebounce = null;
-
-    const CONFIRM_PASS = "24592";
-    const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
-    const GH_REPO = 'Moinuflix/My-Movies';
-    const GH_BRANCH = 'main';
-    const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';
-    const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';
-
-    function getStoredToken() { return localStorage.getItem('moinuflix_gh_token') || ''; }
-    function configureGithubToken() {
-      const current = getStoredToken();
-      const input = prompt('Enter your GitHub Personal Access Token (ghp_...):', current);
-      if (input !== null) {
-        if (input.trim()) {
-          localStorage.setItem('moinuflix_gh_token', input.trim());
-          updateTokenBadge();
-          showLaserToast('GitHub Token Saved!');
-        } else {
-          localStorage.removeItem('moinuflix_gh_token');
-          updateTokenBadge();
-        }
-      }
-    }
-    function updateTokenBadge() {
-      const label = document.getElementById('token-status-label');
-      if (!label) return;
+      const lbl = document.getElementById('token-status-label');
+      if (!lbl) return;
       if (getStoredToken()) {
-        label.textContent = 'Token: Active ✅';
-        label.style.color = 'var(--laser-green)';
+        lbl.textContent = 'Token: Active ✅';
+        lbl.style.color = 'var(--laser-green)';
       } else {
-        label.textContent = '⚙️ GitHub Token';
-        label.style.color = 'var(--laser-cyan)';
+        lbl.textContent = '⚙️ GitHub Token';
+        lbl.style.color = 'var(--laser-cyan)';
       }
     }
 
-    function showLaserToast(msg, isError = false) {
+    function showLaserToast(msg, isErr = false) {
       const toast = document.getElementById('laser-toast');
-      toast.style.borderColor = isError ? 'var(--laser-red)' : 'var(--laser-cyan)';
-      toast.innerHTML = (isError ? '❌ ' : '⚡ ') + escapeHtml(msg);
+      toast.style.borderColor = isErr ? 'var(--laser-red)' : 'var(--laser-cyan)';
+      toast.innerHTML = (isErr ? '❌ ' : '⚡ ') + msg;
       toast.style.display = 'block';
       setTimeout(() => { toast.style.display = 'none'; }, 4000);
-    }
-
-    function escapeHtml(str) {
-      if (!str) return '';
-      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
     function extractGDriveId(url) {
@@ -1123,299 +800,465 @@ Episode 2 - Konohamaru | 1XP0iAM3IiiZ0eVYRkKeC9gdk_Y3-rQgq | 422 MB" required></
       return clean;
     }
 
-    // Smart Parser for TV Shows
-    function parseSeriesSmartFileName(filename) {
-      if (!filename || !filename.trim()) {
-        document.getElementById('series-smart-tags').innerHTML = '';
-        document.getElementById('series-suggestions-box').style.display = 'none';
+    function syncTitleToMeta() {
+      const t = document.getElementById('token-series-title').value;
+      document.getElementById('meta-title').value = t;
+    }
+
+    function syncMetaToToken() {
+      const t = document.getElementById('meta-title').value;
+      document.getElementById('token-series-title').value = t;
+      updateDashPreview();
+    }
+
+    /* PART I: FIXED PARSER (DS4K, SDR, NF, WEBRIP, MULTI-AUDIO DETECTION) */
+    function parseRawReleaseFilename(rawName) {
+      if (!rawName || !rawName.trim()) {
+        document.getElementById('tmdb-dropdown').style.display = 'none';
         return;
       }
 
-      let raw = filename.replace(/\.(mkv|mp4|avi|ts)$/i, '').replace(/[\._\-]/g, ' ');
+      let raw = rawName.replace(/\.(mkv|mp4|avi|ts)$/i, '').replace(/[\._\-]/g, ' ');
 
       // Extract Season & Episode
       const seMatch = raw.match(/\bS(\d+)\s*E(\d+)\b/i);
+      const sOnlyMatch = raw.match(/\bS(\d+)\b/i);
       const eMatch = raw.match(/\bE(\d+)\b/i);
+      const yMatch = raw.match(/\b(19\d\d|20\d\d)\b/);
 
-      let seasonNum = seMatch ? parseInt(seMatch[1]) : 1;
+      let seasonNum = seMatch ? parseInt(seMatch[1]) : (sOnlyMatch ? parseInt(sOnlyMatch[1]) : 1);
       let epNum = seMatch ? parseInt(seMatch[2]) : (eMatch ? parseInt(eMatch[1]) : 1);
+      let year = yMatch ? yMatch[1] : '';
 
-      document.getElementById('input-series-season').value = `Season ${seasonNum}`;
-      document.getElementById('input-series-episode').value = epNum;
+      // Title cutoff point
+      let cutIdx = raw.length;
+      if (seMatch && seMatch.index < cutIdx) cutIdx = seMatch.index;
+      else if (sOnlyMatch && sOnlyMatch.index < cutIdx) cutIdx = sOnlyMatch.index;
+      else if (eMatch && eMatch.index < cutIdx) cutIdx = eMatch.index;
+      else if (yMatch && yMatch.index < cutIdx) cutIdx = yMatch.index;
 
-      // Extract clean title
-      let cutoffIndex = raw.length;
-      if (seMatch && seMatch.index < cutoffIndex) cutoffIndex = seMatch.index;
-      else if (eMatch && eMatch.index < cutoffIndex) cutoffIndex = eMatch.index;
+      // Check quality/tag tokens cutoff if S01 was absent
+      const tagCutMatch = raw.match(/\b(DS4K|4K|2160p|1080p|720p|SDR|HDR|NF|WEBRip|WEB-DL|BluRay)\b/i);
+      if (tagCutMatch && tagCutMatch.index < cutIdx) {
+        cutIdx = tagCutMatch.index;
+      }
 
-      let cleanTitle = raw.substring(0, cutoffIndex).trim();
-      cleanTitle = cleanTitle.replace(/\b(1080p|720p|2160p|4k|uhd|bluray|web-dl|web|dts|atmos|ddp|x264|x265|hevc|hindi|tamil|telugu)\b/gi, '').trim();
+      let cleanTitle = raw.substring(0, cutIdx).trim();
 
-      document.getElementById('input-series-title').value = cleanTitle;
+      // Clean leftover noise from title
+      cleanTitle = cleanTitle.replace(/\b(DS4K|4K|2160p|1080p|720p|SDR|HDR|WEBRip|WEB-DL|BluRay|NF|Netflix|Prime|Hotstar|DDP5|DTS|Atmos|x264|x265|HEVC|10bit|HIN|TAM|TEL|ENG|KOR)\b/gi, '').trim();
 
-      const tags = [`Season ${seasonNum}`, `Episode ${epNum}`];
-      if (filename.includes('2160p') || filename.includes('4K')) tags.push('4K UHD');
-      else tags.push('1080p FHD');
+      document.getElementById('token-series-title').value = cleanTitle;
+      document.getElementById('meta-title').value = cleanTitle;
+      document.getElementById('token-season').value = `Season ${seasonNum}`;
+      if (year) document.getElementById('token-year').value = year;
 
-      document.getElementById('series-smart-tags').innerHTML = tags.map(t => `<span class="smart-tag">✔ ${t}</span>`).join(' ');
+      // RESOLUTION FIX: Handle DS4K, 4K, 2160p, 1080p, 720p
+      if (/DS4K|2160p|4K\b/i.test(rawName)) {
+        document.getElementById('token-res').value = '4K UHD';
+      } else if (/720p/i.test(rawName)) {
+        document.getElementById('token-res').value = '720p HD';
+      } else {
+        document.getElementById('token-res').value = '1080p FHD';
+      }
 
+      // SOURCE / PLATFORM FIX: Detect NF, Netflix, Prime, Hotstar, WEBRip, WEB-DL
+      let sourceStr = 'WEB-DL';
+      if (/WEBRip/i.test(rawName)) sourceStr = 'WEBRip';
+      else if (/BluRay|Remux/i.test(rawName)) sourceStr = 'BluRay';
+
+      if (/\bNF\b|Netflix/i.test(rawName)) sourceStr = `Netflix ${sourceStr}`;
+      else if (/Prime|AMZN/i.test(rawName)) sourceStr = `Prime ${sourceStr}`;
+      else if (/Hotstar|DSNP/i.test(rawName)) sourceStr = `Hotstar ${sourceStr}`;
+      document.getElementById('token-source').value = sourceStr;
+
+      // CODEC FIX: 10bit, x265, HEVC, x264, SDR, HDR
+      let codecStr = 'x264';
+      if (/x265|hevc/i.test(rawName)) codecStr = 'HEVC';
+      if (/10bit/i.test(rawName)) codecStr += ' 10bit';
+      if (/HDR/i.test(rawName)) codecStr += ' HDR';
+      else if (/SDR/i.test(rawName)) codecStr += ' SDR';
+      document.getElementById('token-codec').value = codecStr.trim();
+
+      // AUDIO / LANGUAGE FIX
+      let audioLangs = [];
+      if (/HIN/i.test(rawName)) audioLangs.push('Hin');
+      if (/TAM/i.test(rawName)) audioLangs.push('Tam');
+      if (/TEL/i.test(rawName)) audioLangs.push('Tel');
+      if (/ENG/i.test(rawName)) audioLangs.push('Eng');
+      if (/KOR/i.test(rawName)) audioLangs.push('Kor');
+
+      let audioTech = 'DD+ 5.1';
+      if (/Atmos/i.test(rawName)) audioTech = 'Atmos 5.1';
+      else if (/DTS/i.test(rawName)) audioTech = 'DTS-HD';
+      else if (/AAC/i.test(rawName)) audioTech = 'AAC 2.0';
+
+      let langStr = audioLangs.length ? audioLangs.join('-') + ' ' : 'Hindi ';
+      document.getElementById('token-audio').value = `[${langStr}${audioTech}]`;
+
+      updateDashPreview();
+
+      // Trigger TMDB search with clean Title
       clearTimeout(searchDebounce);
       searchDebounce = setTimeout(() => {
-        searchTvShowTmdb(cleanTitle);
+        searchTmdbShows(cleanTitle);
       }, 350);
     }
 
-    async function searchTvShowTmdb(query) {
-      if (!query || query.length < 2) return;
-      try {
-        const res = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(query)}&language=en-US`);
-        const data = await res.json();
-        const box = document.getElementById('series-suggestions-box');
-        const list = document.getElementById('series-suggestions-list');
-        list.innerHTML = '';
+    function updateDashPreview() {
+      const t = document.getElementById('token-series-title').value.trim() || 'Title';
+      const s = document.getElementById('token-season').value.trim() || 'Season 1';
+      const y = document.getElementById('token-year').value.trim() || '2023';
+      const r = document.getElementById('token-res').value.trim() || '1080p';
+      const src = document.getElementById('token-source').value.trim() || 'WEB-DL';
+      const a = document.getElementById('token-audio').value.trim() || '';
+      const rip = document.getElementById('token-ripper').value.trim() || 'MoinuFlix';
+      document.getElementById('preview-dash-text').textContent = `${t} - ${s} (${y}) ${r} ${src} ${a} [${rip}]`;
+    }
 
-        if (data.results && data.results.length > 0) {
-          data.results.slice(0, 5).forEach(show => {
-            const y = show.first_air_date ? show.first_air_date.split('-')[0] : 'N/A';
+    /* TMDB TV SEARCH & AUTO-FILL FIX */
+    async function searchTmdbShows(q) {
+      if (!q || q.length < 2) return;
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(q)}&language=en-US`);
+        const d = await res.json();
+        const drop = document.getElementById('tmdb-dropdown');
+        drop.innerHTML = '';
+        if (d.results && d.results.length > 0) {
+          // If first result matches very closely, auto-select it
+          const topResult = d.results[0];
+
+          d.results.slice(0, 5).forEach((show, index) => {
+            const yr = show.first_air_date ? show.first_air_date.split('-')[0] : 'N/A';
             const poster = show.poster_path ? `https://image.tmdb.org/t/p/w92${show.poster_path}` : '';
-            const item = document.createElement('div');
-            item.className = 'tmdb-result-item';
-            item.innerHTML = `
-              ${poster ? `<img src="${poster}" class="tmdb-result-poster">` : '<div class="tmdb-result-poster"></div>'}
-              <div class="tmdb-result-info">
-                <div class="tmdb-result-title">${escapeHtml(show.name)} (${y})</div>
-                <div class="tmdb-result-meta">TMDB ID: <b>${show.id}</b> • ★ ${show.vote_average ? show.vote_average.toFixed(1) : 'N/A'}</div>
+            const row = document.createElement('div');
+            row.className = 'tmdb-item';
+            row.innerHTML = `
+              <img src="${poster || ''}" class="tmdb-thumb">
+              <div style="flex:1; overflow:hidden;">
+                <div style="font-weight:700; color:#fff; font-size:0.85rem;">${show.name} (${yr})</div>
+                <div style="font-size:0.75rem; color:var(--text-muted);">TMDB ID: <b>${show.id}</b> • ★ ${show.vote_average ? show.vote_average.toFixed(1) : 'N/A'}</div>
               </div>
             `;
-            item.onclick = () => {
-              document.getElementById('input-series-tmdb').value = show.id;
-              document.getElementById('input-series-title').value = show.name;
-              fetchTvShowDetails(show.id);
-              box.style.display = 'none';
-              showLaserToast(`Selected: "${show.name}"`);
+            row.onclick = () => {
+              document.getElementById('meta-tmdb-id').value = show.id;
+              fetchTmdbTvDetails(show.id);
+              drop.style.display = 'none';
             };
-            list.appendChild(item);
+            drop.appendChild(row);
           });
-          box.style.display = 'block';
+          drop.style.display = 'block';
+
+          // Auto-fill top result immediately if TMDB ID is empty
+          if (!document.getElementById('meta-tmdb-id').value) {
+            document.getElementById('meta-tmdb-id').value = topResult.id;
+            fetchTmdbTvDetails(topResult.id);
+          }
         } else {
-          box.style.display = 'none';
+          drop.style.display = 'none';
         }
       } catch(e) {
-        document.getElementById('series-suggestions-box').style.display = 'none';
+        document.getElementById('tmdb-dropdown').style.display = 'none';
       }
     }
 
-    async function fetchTvShowDetails(tmdbId) {
+    async function fetchTmdbTvDetails(tmdbId) {
       if (!tmdbId) return;
       try {
-        const res = await fetch(`https://api.themoviedb.org/3/tv/${tmdbId}?api_key=${TMDB_API_KEY}&language=en-US`);
+        const res = await fetch(`https://api.themoviedb.org/3/tv/${tmdbId}?api_key=${TMDB_API_KEY}&append_to_response=videos,images&language=en-US`);
         if (!res.ok) return;
-        const data = await res.json();
-        activeTvMeta = {
-          title: data.name,
-          poster: data.poster_path ? `https://image.tmdb.org/t/p/w500${data.poster_path}` : '',
-          fanart: data.backdrop_path ? `https://image.tmdb.org/t/p/original${data.backdrop_path}` : '',
-          overview: data.overview || ''
-        };
-      } catch(e) {}
-    }
+        const d = await res.json();
 
-    async function loadSeriesData() {
-      updateTokenBadge();
-      try {
-        const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/chunks/data_c02.json?t=${Date.now()}`);
-        if (res.ok) {
-          seriesData = await res.json();
-        } else {
-          seriesData = [];
+        document.getElementById('meta-title').value = d.name || '';
+        document.getElementById('token-series-title').value = d.name || '';
+        document.getElementById('meta-orig-title').value = d.original_name || '';
+        document.getElementById('meta-tagline').value = d.tagline || '';
+        document.getElementById('meta-air-date').value = d.first_air_date || '';
+        if (d.first_air_date) document.getElementById('token-year').value = d.first_air_date.split('-')[0];
+        document.getElementById('meta-rating').value = d.vote_average ? d.vote_average.toFixed(1) : '';
+        document.getElementById('meta-lang').value = d.original_language || 'en';
+        document.getElementById('meta-status').value = d.status || 'Active';
+        document.getElementById('meta-overview').value = d.overview || '';
+        document.getElementById('meta-genres').value = (d.genres || []).map(g => g.name).join(', ');
+        document.getElementById('meta-creators').value = (d.created_by || []).map(c => c.name).join(', ');
+        document.getElementById('meta-networks').value = (d.networks || []).map(n => n.name).join(', ');
+        document.getElementById('meta-studios').value = (d.production_companies || []).map(p => p.name).join(', ');
+
+        // POSTER & ARTWORKS AUTO-LOAD
+        const posterUrl = d.poster_path ? `https://image.tmdb.org/t/p/w500${d.poster_path}` : '';
+        const fanartUrl = d.backdrop_path ? `https://image.tmdb.org/t/p/original${d.backdrop_path}` : '';
+        
+        document.getElementById('art-poster').value = posterUrl;
+        document.getElementById('art-fanart').value = fanartUrl;
+        document.getElementById('art-landscape').value = fanartUrl;
+        document.getElementById('art-thumb').value = posterUrl;
+
+        // Force visual update on the poster box
+        updateArtPreview();
+
+        // Season total count detection
+        const seasonStr = document.getElementById('token-season').value;
+        const sMatch = seasonStr.match(/\d+/);
+        const sNum = sMatch ? parseInt(sMatch[0]) : 1;
+        const seasonObj = (d.seasons || []).find(s => s.season_number === sNum);
+        if (seasonObj && seasonObj.episode_count) {
+          document.getElementById('meta-total-eps').value = seasonObj.episode_count;
         }
-      } catch(e) {
-        seriesData = [];
+
+        updateDashPreview();
+        rebuildEpisodeSlots();
+        showLaserToast(`Loaded: "${d.name}" with Poster!`);
+      } catch(err) {
+        console.error(err);
       }
-      document.getElementById('badge-series-count').textContent = seriesData.length;
-      renderSeriesGrid();
     }
 
-    function renderSeriesGrid(filter = '') {
-      const container = document.getElementById('series-grid');
-      container.innerHTML = '';
-
-      if (!seriesData || seriesData.length === 0) {
-        container.innerHTML = '<div style="color:var(--text-muted); padding:30px;">No web series found in chunks/data_c02.json</div>';
-        return;
+    function updateArtPreview() {
+      const p = document.getElementById('art-poster').value.trim();
+      const box = document.getElementById('poster-box');
+      if (p) {
+        box.innerHTML = `<img src="${p}" alt="Poster" onerror="this.parentElement.innerHTML='<span>Image Error</span>'">`;
+      } else {
+        box.innerHTML = `<span>No Poster</span>`;
       }
+    }
 
-      // Group by Show
-      const groups = new Map();
-      seriesData.forEach((item, index) => {
-        const key = item.tmdb_id ? String(item.tmdb_id) : (item.title || item.name).toLowerCase().trim();
-        if (!groups.has(key)) {
-          groups.set(key, {
-            title: item.title || item.name,
-            tmdb_id: item.tmdb_id || '',
-            seasons: item.seasons || 'Season 1',
-            poster: item.poster || '',
-            episodes: []
-          });
+    /* PART IV: EPISODE SLOTS & LINK MATRIX */
+    function onSeasonChange() {
+      rebuildEpisodeSlots();
+    }
+
+    function rebuildEpisodeSlots() {
+      const list = document.getElementById('episodes-slots-list');
+      const totalCount = parseInt(document.getElementById('meta-total-eps').value) || 8;
+      const tmdbId = document.getElementById('meta-tmdb-id').value.trim();
+      const seriesTitle = document.getElementById('meta-title').value.trim();
+      const seasonTag = document.getElementById('token-season').value.trim();
+
+      // Find existing episodes in libraryData
+      const existingMap = new Map();
+      libraryData.forEach(item => {
+        const matchId = tmdbId && String(item.tmdb_id) === String(tmdbId);
+        const matchTitle = (item.title || item.name || '').toLowerCase().trim() === seriesTitle.toLowerCase().trim();
+        const matchSeason = (item.seasons || '').toLowerCase().trim() === seasonTag.toLowerCase().trim();
+
+        if ((matchId || matchTitle) && matchSeason) {
+          const epNum = item.episode_number || parseEpisodeNumber(item.name || item.title);
+          if (epNum) {
+            existingMap.set(parseInt(epNum), item.gdrive_url || item.id || '');
+          }
         }
-        const g = groups.get(key);
-        g.episodes.push({ ...item, rawIndex: index });
       });
 
-      groups.forEach((group, gKey) => {
-        if (filter && !group.title.toLowerCase().includes(filter.toLowerCase())) return;
-
-        const card = document.createElement('div');
-        card.className = 'movie-card';
-        card.innerHTML = `
-          <div class="poster-wrap">
-            <div class="universe-badge">📺 SERIES</div>
-            <div class="pack-status-badge">🟢 ${group.episodes.length} EPS</div>
-            ${group.poster ? `<img src="${group.poster}" class="poster-img" loading="lazy">` : '<div class="poster-placeholder">No Poster</div>'}
-          </div>
-          <div class="movie-card-body">
-            <div>
-              <div class="movie-title">${escapeHtml(group.title)}</div>
-              <div class="movie-meta-row">
-                <span class="spec-chip chip-gold">${escapeHtml(group.seasons)}</span>
-                <span>•</span>
-                <span style="color:var(--laser-green); font-weight:700;">${group.episodes.length} Episodes</span>
-              </div>
-            </div>
-            <div class="card-actions-row">
-              <button type="button" class="btn-action-primary" onclick="openEpisodesModal('${gKey}')">📂 VIEW EPS</button>
-            </div>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function openEpisodesModal(gKey) {
-      let modal = document.getElementById('series-ep-modal');
-      if (!modal) {
-        modal = document.createElement('div');
-        modal.id = 'series-ep-modal';
-        modal.className = 'modal-overlay';
-        modal.innerHTML = `
-          <div class="modal-card">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.2rem; border-bottom:1px solid var(--border-color); padding-bottom:0.8rem;">
-              <div>
-                <h3 id="modal-series-title" style="font-size:1.3rem; font-weight:800; color:#fff;"></h3>
-                <span style="font-size:0.8rem; color:var(--laser-cyan);" id="modal-series-count"></span>
-              </div>
-              <button type="button" style="background:transparent; border:none; color:#fff; font-size:1.4rem; cursor:pointer;" onclick="this.closest('.modal-overlay').classList.remove('active')">✕</button>
-            </div>
-            <div id="modal-episodes-list" style="display:flex; flex-direction:column; gap:0.75rem; max-height:450px; overflow-y:auto;"></div>
-          </div>
-        `;
-        document.body.appendChild(modal);
-      }
-
-      const matched = seriesData.filter((item, idx) => {
-        item.rawIndex = idx;
-        return (item.tmdb_id && String(item.tmdb_id) === String(gKey)) || (item.title || item.name).toLowerCase().trim() === gKey.toLowerCase().trim();
-      });
-
-      document.getElementById('modal-series-title').textContent = matched[0]?.title || matched[0]?.name || 'Series';
-      document.getElementById('modal-series-count').textContent = `Total Episodes: ${matched.length}`;
-
-      const list = document.getElementById('modal-episodes-list');
       list.innerHTML = '';
-
-      matched.forEach(ep => {
-        const row = document.createElement('div');
-        row.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.03); padding:10px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);';
-        row.innerHTML = `
-          <div style="flex:1; overflow:hidden;">
-            <div style="font-weight:700; color:#fff; font-size:0.9rem;">${escapeHtml(ep.name || ep.title)}</div>
-            <div style="font-size:0.75rem; color:var(--text-dim);">${escapeHtml(ep.seasons || 'Season 1')} • Stream Ready</div>
-          </div>
-          <div style="display:flex; gap:8px;">
-            <button class="btn-action-primary" style="flex:none; padding:5px 12px; font-size:0.75rem;" onclick="copyStream('${escapeHtml(ep.stream_url || ep.gdrive_url)}')">📋 Link</button>
-            <button class="btn-delete-item" style="flex:none; padding:5px 10px; font-size:0.75rem;" onclick="deleteSeriesEpisode(${ep.rawIndex})">🗑️</button>
-          </div>
-        `;
-        list.appendChild(row);
-      });
-
-      modal.classList.add('active');
+      for (let i = 1; i <= totalCount; i++) {
+        const hasLink = existingMap.get(i) || '';
+        renderSlotRow(i, hasLink);
+      }
+      updateSlotsLabel();
     }
 
-    async function handleSeriesSubmit(e) {
+    function parseEpisodeNumber(str) {
+      if (!str) return null;
+      const m = str.match(/(?:Episode|Ep|E)\s*(\d+)/i);
+      return m ? parseInt(m[1]) : null;
+    }
+
+    function renderSlotRow(epNum, existingVal = '') {
+      const list = document.getElementById('episodes-slots-list');
+      const isDone = !!existingVal;
+      const row = document.createElement('div');
+      row.className = `ep-slot-row ${isDone ? 'exists' : ''}`;
+      row.id = `slot-row-${epNum}`;
+      row.innerHTML = `
+        <div class="slot-id-badge">EP ${epNum}</div>
+        <div>
+          <input type="text" class="input-smart ep-link-input" data-ep="${epNum}" 
+                 placeholder="Paste Drive Link or ID for Episode ${epNum}..." 
+                 value="${escapeHtml(existingVal)}" 
+                 oninput="checkRowState(this, ${epNum})">
+        </div>
+        <div style="text-align:center;">
+          <span class="slot-status-pill ${isDone ? 'status-done' : 'status-empty'}" id="status-pill-${epNum}">
+            ${isDone ? `🟢 Already Added (Ep ${epNum})` : `⚪ Missing / Empty`}
+          </span>
+        </div>
+        <div>
+          <button type="button" style="background:transparent; border:none; color:var(--laser-red); cursor:pointer; font-size:1.1rem;" onclick="clearSlot(${epNum})">✕</button>
+        </div>
+      `;
+      list.appendChild(row);
+    }
+
+    function checkRowState(input, epNum) {
+      const val = input.value.trim();
+      const row = document.getElementById(`slot-row-${epNum}`);
+      const pill = document.getElementById(`status-pill-${epNum}`);
+      if (val) {
+        row.classList.add('exists');
+        pill.className = 'slot-status-pill status-done';
+        pill.textContent = `🟢 Link Ready (Ep ${epNum})`;
+      } else {
+        row.classList.remove('exists');
+        pill.className = 'slot-status-pill status-empty';
+        pill.textContent = `⚪ Missing / Empty`;
+      }
+      updateSlotsLabel();
+    }
+
+    function clearSlot(epNum) {
+      const input = document.querySelector(`.ep-link-input[data-ep="${epNum}"]`);
+      if (input) {
+        input.value = '';
+        checkRowState(input, epNum);
+      }
+    }
+
+    function addSingleEpisodeSlot() {
+      const inputs = document.querySelectorAll('.ep-link-input');
+      const nextEp = inputs.length + 1;
+      document.getElementById('meta-total-eps').value = nextEp;
+      renderSlotRow(nextEp, '');
+      updateSlotsLabel();
+    }
+
+    function updateSlotsLabel() {
+      const all = document.querySelectorAll('.ep-link-input');
+      let filled = 0;
+      all.forEach(inp => { if (inp.value.trim()) filled++; });
+      document.getElementById('slots-count-label').textContent = `${filled} of ${all.length} Episodes Linked`;
+    }
+
+    function pasteBatchLinks() {
+      const raw = prompt('Paste Google Drive links or File IDs (1 per line):');
+      if (!raw || !raw.trim()) return;
+
+      const lines = raw.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+      const inputs = document.querySelectorAll('.ep-link-input');
+
+      let lIdx = 0;
+      inputs.forEach(inp => {
+        if (!inp.value.trim() && lIdx < lines.length) {
+          const fileId = extractGDriveId(lines[lIdx]);
+          inp.value = fileId;
+          const ep = inp.getAttribute('data-ep');
+          checkRowState(inp, ep);
+          lIdx++;
+        }
+      });
+      showLaserToast(`Auto-assigned ${lIdx} episode links!`);
+    }
+
+    /* EDIT EXISTING SERIES FROM LIBRARY CARD */
+    function editSeriesInForm(groupKey) {
+      const matched = libraryData.filter(item => {
+        const k = item.tmdb_id ? String(item.tmdb_id) : (item.title || item.name || '').toLowerCase().trim();
+        return k === groupKey;
+      });
+
+      if (!matched.length) return;
+      const base = matched[0];
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      document.getElementById('token-series-title').value = base.title || base.name || '';
+      document.getElementById('meta-title').value = base.title || base.name || '';
+      document.getElementById('meta-tmdb-id').value = base.tmdb_id || '';
+      document.getElementById('token-season').value = base.seasons || 'Season 1';
+      document.getElementById('meta-overview').value = base.overview || '';
+      document.getElementById('art-poster').value = base.poster || '';
+      document.getElementById('art-fanart').value = base.fanart || '';
+      updateArtPreview();
+
+      if (base.tmdb_id) {
+        fetchTmdbTvDetails(base.tmdb_id);
+      } else {
+        rebuildEpisodeSlots();
+      }
+      showLaserToast(`Loaded "${base.title || base.name}" for editing!`);
+    }
+
+    /* COMMIT TO DATA_C02.JSON */
+    async function handleFormCommit(e) {
       e.preventDefault();
       const token = getStoredToken();
       if (!token) return showLaserToast('GitHub Token required! Click ⚙️ Token.', true);
 
-      const title = document.getElementById('input-series-title').value.trim();
-      const tmdbId = document.getElementById('input-series-tmdb').value.trim();
-      const season = document.getElementById('input-series-season').value.trim();
-      const epNum = document.getElementById('input-series-episode').value.trim();
-      const rawGdrive = document.getElementById('input-series-gdrive').value.trim();
-      const fileId = extractGDriveId(rawGdrive);
+      const title = document.getElementById('meta-title').value.trim();
+      const tmdbId = parseInt(document.getElementById('meta-tmdb-id').value.trim()) || 0;
+      const seasonTag = document.getElementById('token-season').value.trim() || 'Season 1';
+      const year = document.getElementById('token-year').value.trim() || '2023';
+      const poster = document.getElementById('art-poster').value.trim();
+      const fanart = document.getElementById('art-fanart').value.trim();
+      const overview = document.getElementById('meta-overview').value.trim() || `Streaming via MoinuFlix.`;
+      const genres = document.getElementById('meta-genres').value.trim();
+      const resVal = document.getElementById('token-res').value.trim() || '1080p FHD';
+      const audioVal = document.getElementById('token-audio').value.trim() || 'Dolby Digital 5.1';
 
-      if (!fileId) return showLaserToast('Valid Google Drive link or ID required!', true);
+      const inputs = document.querySelectorAll('.ep-link-input');
+      const validSlots = [];
 
-      if (!activeTvMeta || String(activeTvMeta.tmdb_id) !== String(tmdbId)) {
-        await fetchTvShowDetails(tmdbId);
+      inputs.forEach(inp => {
+        const ep = parseInt(inp.getAttribute('data-ep'));
+        const val = extractGDriveId(inp.value);
+        if (val) {
+          validSlots.push({ epNum: ep, fileId: val });
+        }
+      });
+
+      if (validSlots.length === 0) {
+        return showLaserToast('Kam az kam 1 Episode ka Google Drive ID/Link enter karein!', true);
       }
 
-      const streamUrl = `${WORKER_BASE}${fileId}${USER_AGENT}`;
-      const epTitle = `${title} - ${season} - Episode ${epNum}`;
+      showLaserToast(`Saving ${validSlots.length} episodes for "${title}"...`);
 
-      const newEp = {
-        id: fileId,
-        name: epTitle,
-        title: title,
-        tmdb_id: parseInt(tmdbId) || 0,
-        seasons: season,
-        episode_number: parseInt(epNum) || 1,
-        poster: activeTvMeta ? activeTvMeta.poster : '',
-        fanart: activeTvMeta ? activeTvMeta.fanart : '',
-        overview: activeTvMeta ? activeTvMeta.overview : `Streaming via MoinuFlix.`,
-        stream_url: streamUrl,
-        gdrive_url: fileId,
-        specs: {
-          resolution: "1080p FHD",
-          audio: "Dolby Digital Plus 5.1",
-          source: "WEB-DL"
+      validSlots.forEach(slot => {
+        const epTitle = `${title} - ${seasonTag} - Episode ${slot.epNum}`;
+        const streamUrl = `${WORKER_BASE}${slot.fileId}${USER_AGENT}`;
+
+        const newEpObj = {
+          id: slot.fileId,
+          name: epTitle,
+          title: title,
+          tmdb_id: tmdbId,
+          seasons: seasonTag,
+          episode_number: slot.epNum,
+          year: year,
+          poster: poster,
+          fanart: fanart,
+          overview: overview,
+          genres: genres,
+          stream_url: streamUrl,
+          gdrive_url: slot.fileId,
+          specs: {
+            resolution: resVal,
+            audio: audioVal,
+            source: "WEB-DL"
+          }
+        };
+
+        const existIdx = libraryData.findIndex(item => {
+          const matchId = tmdbId && item.tmdb_id === tmdbId;
+          const matchTitle = (item.title || item.name || '').toLowerCase() === title.toLowerCase();
+          const matchSeason = (item.seasons || '').toLowerCase() === seasonTag.toLowerCase();
+          const matchEp = (item.episode_number || parseEpisodeNumber(item.name || item.title)) === slot.epNum;
+          return (matchId || matchTitle) && matchSeason && matchEp;
+        });
+
+        if (existIdx >= 0) {
+          libraryData[existIdx] = newEpObj;
+        } else {
+          libraryData.unshift(newEpObj);
         }
-      };
-
-      showLaserToast(`Saving "${epTitle}"...`);
-
-      seriesData.unshift(newEp);
+      });
 
       try {
-        await commitFileDirect('chunks/data_c02.json', seriesData, `Studio Add: ${epTitle}`, token);
-        showLaserToast(`🎉 Episode saved to data_c02.json!`);
-        document.getElementById('series-ingest-form').reset();
-        document.getElementById('series-smart-tags').innerHTML = '';
-        activeTvMeta = null;
+        await commitFileDirect('chunks/data_c02.json', libraryData, `Studio Sync: ${title} (${seasonTag}) [${validSlots.length} Eps]`, token);
+        showLaserToast(`🎉 Saved successfully to chunks/data_c02.json!`);
         loadSeriesData();
+        rebuildEpisodeSlots();
       } catch(err) {
         showLaserToast(`Save Error: ${err.message}`, true);
-      }
-    }
-
-    async function deleteSeriesEpisode(index) {
-      const pass = prompt('Enter confirmation PIN to delete episode:');
-      if (pass !== CONFIRM_PASS) return showLaserToast('Incorrect PIN!', true);
-
-      const token = getStoredToken();
-      if (!token) return showLaserToast('GitHub Token missing!', true);
-
-      const deletedTitle = seriesData[index]?.name || 'Episode';
-      seriesData.splice(index, 1);
-
-      try {
-        await commitFileDirect('chunks/data_c02.json', seriesData, `Studio Delete: Removed ${deletedTitle}`, token);
-        showLaserToast(`Deleted "${deletedTitle}"`);
-        const modal = document.getElementById('series-ep-modal');
-        if (modal) modal.classList.remove('active');
-        loadSeriesData();
-      } catch(e) {
-        showLaserToast(`Delete Failed: ${e.message}`, true);
       }
     }
 
@@ -1455,18 +1298,82 @@ Episode 2 - Konohamaru | 1XP0iAM3IiiZ0eVYRkKeC9gdk_Y3-rQgq | 422 MB" required></
       }
     }
 
-    async function copyStream(url) {
-      if (!url) return showLaserToast('No URL', true);
-      await navigator.clipboard.writeText(url);
-      showLaserToast('Link Copied!');
+    async function loadSeriesData() {
+      updateTokenBadge();
+      try {
+        const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/chunks/data_c02.json?t=${Date.now()}`);
+        if (res.ok) {
+          libraryData = await res.json();
+        } else {
+          libraryData = [];
+        }
+      } catch(e) {
+        libraryData = [];
+      }
+      document.getElementById('badge-series-count').textContent = libraryData.length;
+      renderSeriesGrid();
     }
 
-    function filterSeriesCards() {
-      const q = document.getElementById('search-series-input').value.trim();
+    function renderSeriesGrid(filter = '') {
+      const container = document.getElementById('series-grid');
+      container.innerHTML = '';
+
+      if (!libraryData.length) {
+        container.innerHTML = '<div style="color:var(--text-muted); padding:20px;">No series found in data_c02.json</div>';
+        return;
+      }
+
+      const groups = new Map();
+      libraryData.forEach(item => {
+        const key = item.tmdb_id ? String(item.tmdb_id) : (item.title || item.name || '').toLowerCase().trim();
+        if (!groups.has(key)) {
+          groups.set(key, {
+            title: item.title || item.name || 'Series',
+            tmdb_id: item.tmdb_id || '',
+            season: item.seasons || 'Season 1',
+            poster: item.poster || '',
+            episodes: []
+          });
+        }
+        groups.get(key).episodes.push(item);
+      });
+
+      groups.forEach((grp, key) => {
+        if (filter && !grp.title.toLowerCase().includes(filter.toLowerCase())) return;
+
+        const card = document.createElement('div');
+        card.className = 'series-card';
+        card.innerHTML = `
+          <img src="${grp.poster || ''}" class="series-card-poster" loading="lazy">
+          <div class="series-card-content">
+            <div>
+              <div style="font-weight:700; font-size:1rem; color:#fff; margin-bottom:4px;">${escapeHtml(grp.title)}</div>
+              <div style="font-size:0.78rem; color:var(--laser-cyan); font-weight:700;">${escapeHtml(grp.season)} • ${grp.episodes.length} Episodes</div>
+            </div>
+            <div style="margin-top:1rem; display:flex; gap:0.5rem;">
+              <button type="button" class="btn-sub" style="flex:1; justify-content:center;" onclick="editSeriesInForm('${key}')">✏️ Edit & Add Episodes</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function filterSeriesList() {
+      const q = document.getElementById('filter-series-box').value.trim();
       renderSeriesGrid(q);
     }
 
-    window.addEventListener('DOMContentLoaded', loadSeriesData);
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadSeriesData();
+      rebuildEpisodeSlots();
+      updateTokenBadge();
+    });
   </script>
 </body>
 </html>
