@@ -10,15 +10,15 @@
   <style>
     :root {
       --bg-dark: #040711;
-      --bg-card: rgba(10, 18, 36, 0.92);
-      --bg-card-hover: rgba(18, 30, 58, 0.95);
+      --bg-card: rgba(10, 18, 36, 0.94);
+      --bg-card-hover: rgba(18, 30, 58, 0.98);
       --bg-input: #070d1e;
-      --border-color: rgba(56, 189, 248, 0.2);
+      --border-color: rgba(56, 189, 248, 0.22);
       --electric-blue: #2563eb;
       --laser-cyan: #38bdf8;
-      --laser-cyan-glow: rgba(56, 189, 248, 0.4);
+      --laser-cyan-glow: rgba(56, 189, 248, 0.45);
       --laser-green: #10b981;
-      --laser-green-glow: rgba(16, 185, 129, 0.35);
+      --laser-green-glow: rgba(16, 185, 129, 0.4);
       --laser-red: #ef4444;
       --neon-gold: #f59e0b;
       --neon-purple: #a855f7;
@@ -34,8 +34,8 @@
     body {
       background-color: var(--bg-dark);
       background-image: 
-        radial-gradient(circle at 10% 8%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 90% 90%, rgba(56, 189, 248, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 10% 8%, rgba(168, 85, 247, 0.14) 0%, transparent 45%),
+        radial-gradient(circle at 90% 90%, rgba(56, 189, 248, 0.12) 0%, transparent 50%);
       color: var(--text-main);
       font-family: var(--font-stack);
       display: flex;
@@ -46,7 +46,7 @@
     /* SIDEBAR */
     aside {
       width: 270px;
-      background: rgba(6, 11, 23, 0.96);
+      background: rgba(6, 11, 23, 0.97);
       backdrop-filter: blur(25px);
       border-right: 1px solid var(--border-color);
       display: flex;
@@ -292,7 +292,6 @@
       color: var(--text-dim);
       font-size: 0.78rem;
       font-weight: 700;
-      cursor: pointer;
       position: relative;
     }
     .poster-preview-box img { width: 100%; height: 100%; object-fit: cover; }
@@ -315,7 +314,7 @@
     }
     .ep-slot-row {
       display: grid;
-      grid-template-columns: 90px 1fr 180px auto;
+      grid-template-columns: 85px 1fr 185px auto;
       gap: 0.75rem;
       align-items: center;
       background: rgba(13, 24, 48, 0.65);
@@ -439,7 +438,7 @@
 
   <div id="laser-toast"></div>
 
-  <!-- ASIDE / NAVIGATION -->
+  <!-- NAVIGATION -->
   <aside>
     <div class="brand">
       <div class="brand-logo">M</div>
@@ -476,11 +475,11 @@
     <div class="top-header-row">
       <div>
         <h1 style="font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px;">📺 Web Series Multi-Part Studio</h1>
-        <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 4px;">Consolidated Season packs & individual episode manager for <code>chunks/data_c02.json</code></p>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 4px;">Consolidated Season packs for Kodi in <code>chunks/data_c02.json</code></p>
       </div>
       <div style="display: flex; gap: 0.6rem; align-items: center;">
-        <span class="lang-badge">Language 🇮🇳</span>
-        <button class="btn-sub" onclick="loadSeriesData()">🔄 Refresh Catalog</button>
+        <span class="lang-badge">Kodi Schema 📦</span>
+        <button class="btn-sub" onclick="loadSeriesData()">🔄 Refresh Library</button>
       </div>
     </div>
 
@@ -489,12 +488,12 @@
 
       <!-- PART I: CLEAN PARSED TOKENS -->
       <div class="form-box">
-        <div class="part-title">PART I: CLEAN PARSED TOKENS (100% EDITABLE • 22 OTT AUTO-DETECTION)</div>
+        <div class="part-title">PART I: CLEAN PARSED TOKENS (100% EDITABLE • OTT & RESOLUTION FIX)</div>
 
         <div class="form-row">
           <div class="field col-12">
-            <label>Raw Google Drive Release File Name <span class="req">* (Instant Full Auto-Fill)</span></label>
-            <input type="text" id="raw-filename-input" class="input-smart" placeholder="Paste full raw filename, e.g. Dead.End.Job.S01.DS4K.SDR.10bit.NF.WEBRip.HIN.TAM.TEL.ENG.mkv" oninput="parseRawReleaseFilename(this.value)">
+            <label>Raw Google Drive Release File Name <span class="req">* (Instant Auto-Fill & TMDB Sync)</span></label>
+            <input type="text" id="raw-filename-input" class="input-smart" placeholder="Paste raw filename, e.g. Dead.End.Job.S01.DS4K.SDR.10bit.NF.WEBRip.HIN.TAM.TEL.ENG.mkv" oninput="parseRawReleaseFilename(this.value)">
             <div id="tmdb-dropdown" class="tmdb-results-box"></div>
           </div>
         </div>
@@ -509,23 +508,23 @@
         <div class="form-row">
           <div class="field col-2">
             <label>Year (Editable)</label>
-            <input type="number" id="token-year" placeholder="2023" oninput="updateDashPreview()">
+            <input type="number" id="token-year" placeholder="2026" oninput="updateDashPreview()">
           </div>
           <div class="field col-2">
             <label>Season (Editable)</label>
             <input type="text" id="token-season" placeholder="Season 1" value="Season 1" oninput="onSeasonChange(); updateDashPreview()">
           </div>
           <div class="field col-2">
-            <label>Resolution (Editable)</label>
-            <input type="text" id="token-res" placeholder="1080p" value="1080p" oninput="updateDashPreview()">
+            <label>Resolution (Auto Fix)</label>
+            <input type="text" id="token-res" placeholder="4K UHD" value="1080p" oninput="updateDashPreview()">
           </div>
           <div class="field col-2">
             <label>Platform / Source</label>
-            <input type="text" id="token-source" placeholder="Netflix / WEBRip" value="WEBRip" oninput="updateDashPreview()">
+            <input type="text" id="token-source" placeholder="Netflix WEBRip" value="WEB-DL" oninput="updateDashPreview()">
           </div>
           <div class="field col-2">
             <label>Video Codec</label>
-            <input type="text" id="token-codec" placeholder="x264 / HEVC / 10bit" value="x264" oninput="updateDashPreview()">
+            <input type="text" id="token-codec" placeholder="HEVC 10bit SDR" value="x264" oninput="updateDashPreview()">
           </div>
           <div class="field col-2">
             <label>Ripper / Release Tag</label>
@@ -535,8 +534,8 @@
 
         <div class="form-row">
           <div class="field col-12">
-            <label>Languages & Multi-Audio Specification (Editable • Clean Bracket)</label>
-            <input type="text" id="token-audio" placeholder="[Hindi DD 5.1]" value="[Hindi DD 5.1]" oninput="updateDashPreview()">
+            <label>Languages & Multi-Audio Specification</label>
+            <input type="text" id="token-audio" placeholder="[Hin-Tam-Tel-Eng-Kor Atmos 5.1]" value="[Hindi DD 5.1]" oninput="updateDashPreview()">
           </div>
         </div>
 
@@ -553,7 +552,7 @@
         <div class="part-title">PART II: VERIFIED METADATA, POSTER & TOP CAST</div>
 
         <div class="meta-flex-wrapper">
-          <div class="poster-preview-box" id="poster-box" onclick="document.getElementById('art-poster').focus()" title="Click to view/edit poster URL">
+          <div class="poster-preview-box" id="poster-box" title="Poster Preview">
             <span>No Poster</span>
           </div>
 
@@ -579,7 +578,7 @@
             <div class="form-row">
               <div class="field col-2">
                 <label>TMDB TV ID <span class="req">*</span></label>
-                <input type="number" id="meta-tmdb-id" placeholder="e.g. 99966" required oninput="fetchTmdbTvDetails(this.value)">
+                <input type="number" id="meta-tmdb-id" placeholder="e.g. 289517" required oninput="fetchTmdbTvDetails(this.value)">
               </div>
               <div class="field col-2">
                 <label>First Air Date</label>
@@ -587,7 +586,7 @@
               </div>
               <div class="field col-2">
                 <label>TMDB Rating</label>
-                <input type="text" id="meta-rating" placeholder="8.2">
+                <input type="text" id="meta-rating" placeholder="7.5">
               </div>
               <div class="field col-2">
                 <label>Language</label>
@@ -598,7 +597,7 @@
                 <input type="number" id="meta-total-eps" placeholder="8" value="8" oninput="rebuildEpisodeSlots()">
               </div>
               <div class="field col-2">
-                <label>Certification / Status</label>
+                <label>Status</label>
                 <input type="text" id="meta-status" placeholder="Returning Series">
               </div>
             </div>
@@ -612,7 +611,7 @@
           </div>
           <div class="field col-6">
             <label>Networks / Platforms</label>
-            <input type="text" id="meta-networks" placeholder="Amazon, Netflix...">
+            <input type="text" id="meta-networks" placeholder="Netflix, Prime...">
           </div>
         </div>
 
@@ -623,7 +622,7 @@
           </div>
           <div class="field col-6">
             <label>Genres <span class="req">*</span></label>
-            <input type="text" id="meta-genres" placeholder="Thriller, Crime, Drama">
+            <input type="text" id="meta-genres" placeholder="Mystery, Drama, Thriller">
           </div>
         </div>
 
@@ -699,9 +698,9 @@
         </div>
       </div>
 
-      <!-- PART IV: EPISODE SLOTS & EDIT MATRIX -->
+      <!-- PART IV: EPISODE SLOTS & ONE-CLICK AUTO-FILL -->
       <div class="form-box">
-        <div class="part-title">PART IV: SEASON & EPISODE BUNDLE MATRIX (INDIVIDUAL LINK SLOTS)</div>
+        <div class="part-title">PART IV: SEASON & EPISODE BUNDLE MATRIX (AUTO-DETECTS EXISTING & MISSING)</div>
 
         <div class="episodes-bundle-container">
           <div class="bundle-header-actions">
@@ -709,7 +708,8 @@
               <span style="font-weight: 700; color: #fff; font-size: 0.9rem;">Episode Link Slots:</span>
               <span id="slots-count-label" style="font-size: 0.78rem; color: var(--laser-cyan); margin-left: 8px;"></span>
             </div>
-            <div style="display:flex; gap:0.5rem;">
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <button type="button" class="btn-sub" onclick="autoLoadExistingEpisodes()">⚡ One-Click Pull Existing</button>
               <button type="button" class="btn-sub" onclick="pasteBatchLinks()">📋 Paste Batch Links</button>
               <button type="button" class="btn-sub" onclick="addSingleEpisodeSlot()">➕ Add Next Slot</button>
             </div>
@@ -723,7 +723,7 @@
 
       <!-- SUBMIT BUTTON -->
       <button type="submit" class="btn-main-action" id="btn-save-series">
-        🚀 COMMIT ALL EPISODES & METADATA TO DATA_C02.JSON
+        🚀 COMMIT TV PACK TO DATA_C02.JSON (KODI SINGLE SHOW ENTRY)
       </button>
 
     </form>
@@ -732,8 +732,8 @@
     <div style="margin-top: 3.5rem;">
       <div class="top-header-row">
         <div>
-          <h2 style="font-size: 1.4rem; font-weight: 800;">📚 Existing Series & Seasons in Library</h2>
-          <p style="color: var(--text-muted); font-size: 0.85rem;">Click 'Edit & Add Episodes' to edit or add missing episodes</p>
+          <h2 style="font-size: 1.4rem; font-weight: 800;">📚 Existing Series & TV Packs in Library</h2>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">One card per TV Show — clean Kodi list without duplicates</p>
         </div>
         <input type="text" id="filter-series-box" placeholder="Search series in library..." style="max-width: 260px;" oninput="filterSeriesList()">
       </div>
@@ -745,6 +745,7 @@
   <script>
     let libraryData = [];
     let searchDebounce = null;
+    let tmdbEpisodesCache = [];
 
     const CONFIRM_PIN = "24592";
     const TMDB_API_KEY = '051ccf72e026820cb53b8b8531b6a2ba';
@@ -811,7 +812,7 @@
       updateDashPreview();
     }
 
-    /* PART I: FIXED PARSER (DS4K, SDR, NF, WEBRIP, MULTI-AUDIO DETECTION) */
+    /* PART I: FIXED PARSER (DS4K, SDR, NF, WEBRIP, MULTI-AUDIO) */
     function parseRawReleaseFilename(rawName) {
       if (!rawName || !rawName.trim()) {
         document.getElementById('tmdb-dropdown').style.display = 'none';
@@ -830,22 +831,19 @@
       let epNum = seMatch ? parseInt(seMatch[2]) : (eMatch ? parseInt(eMatch[1]) : 1);
       let year = yMatch ? yMatch[1] : '';
 
-      // Title cutoff point
+      // Cutoff clean title before Season or Quality flags
       let cutIdx = raw.length;
       if (seMatch && seMatch.index < cutIdx) cutIdx = seMatch.index;
       else if (sOnlyMatch && sOnlyMatch.index < cutIdx) cutIdx = sOnlyMatch.index;
       else if (eMatch && eMatch.index < cutIdx) cutIdx = eMatch.index;
       else if (yMatch && yMatch.index < cutIdx) cutIdx = yMatch.index;
 
-      // Check quality/tag tokens cutoff if S01 was absent
       const tagCutMatch = raw.match(/\b(DS4K|4K|2160p|1080p|720p|SDR|HDR|NF|WEBRip|WEB-DL|BluRay)\b/i);
       if (tagCutMatch && tagCutMatch.index < cutIdx) {
         cutIdx = tagCutMatch.index;
       }
 
       let cleanTitle = raw.substring(0, cutIdx).trim();
-
-      // Clean leftover noise from title
       cleanTitle = cleanTitle.replace(/\b(DS4K|4K|2160p|1080p|720p|SDR|HDR|WEBRip|WEB-DL|BluRay|NF|Netflix|Prime|Hotstar|DDP5|DTS|Atmos|x264|x265|HEVC|10bit|HIN|TAM|TEL|ENG|KOR)\b/gi, '').trim();
 
       document.getElementById('token-series-title').value = cleanTitle;
@@ -853,7 +851,7 @@
       document.getElementById('token-season').value = `Season ${seasonNum}`;
       if (year) document.getElementById('token-year').value = year;
 
-      // RESOLUTION FIX: Handle DS4K, 4K, 2160p, 1080p, 720p
+      // RESOLUTION FIX: DS4K, 4K, 2160p
       if (/DS4K|2160p|4K\b/i.test(rawName)) {
         document.getElementById('token-res').value = '4K UHD';
       } else if (/720p/i.test(rawName)) {
@@ -862,7 +860,7 @@
         document.getElementById('token-res').value = '1080p FHD';
       }
 
-      // SOURCE / PLATFORM FIX: Detect NF, Netflix, Prime, Hotstar, WEBRip, WEB-DL
+      // SOURCE / PLATFORM FIX
       let sourceStr = 'WEB-DL';
       if (/WEBRip/i.test(rawName)) sourceStr = 'WEBRip';
       else if (/BluRay|Remux/i.test(rawName)) sourceStr = 'BluRay';
@@ -872,7 +870,7 @@
       else if (/Hotstar|DSNP/i.test(rawName)) sourceStr = `Hotstar ${sourceStr}`;
       document.getElementById('token-source').value = sourceStr;
 
-      // CODEC FIX: 10bit, x265, HEVC, x264, SDR, HDR
+      // CODEC FIX
       let codecStr = 'x264';
       if (/x265|hevc/i.test(rawName)) codecStr = 'HEVC';
       if (/10bit/i.test(rawName)) codecStr += ' 10bit';
@@ -888,35 +886,35 @@
       if (/ENG/i.test(rawName)) audioLangs.push('Eng');
       if (/KOR/i.test(rawName)) audioLangs.push('Kor');
 
-      let audioTech = 'DD+ 5.1';
-      if (/Atmos/i.test(rawName)) audioTech = 'Atmos 5.1';
-      else if (/DTS/i.test(rawName)) audioTech = 'DTS-HD';
+      let audioTech = 'Atmos 5.1';
+      if (/DTS/i.test(rawName)) audioTech = 'DTS-HD';
       else if (/AAC/i.test(rawName)) audioTech = 'AAC 2.0';
+      else if (/DD\+|DDP/i.test(rawName)) audioTech = 'DD+ 5.1';
 
       let langStr = audioLangs.length ? audioLangs.join('-') + ' ' : 'Hindi ';
       document.getElementById('token-audio').value = `[${langStr}${audioTech}]`;
 
       updateDashPreview();
 
-      // Trigger TMDB search with clean Title
+      // Trigger search
       clearTimeout(searchDebounce);
       searchDebounce = setTimeout(() => {
         searchTmdbShows(cleanTitle);
-      }, 350);
+      }, 300);
     }
 
     function updateDashPreview() {
       const t = document.getElementById('token-series-title').value.trim() || 'Title';
       const s = document.getElementById('token-season').value.trim() || 'Season 1';
-      const y = document.getElementById('token-year').value.trim() || '2023';
-      const r = document.getElementById('token-res').value.trim() || '1080p';
-      const src = document.getElementById('token-source').value.trim() || 'WEB-DL';
+      const y = document.getElementById('token-year').value.trim() || '2026';
+      const r = document.getElementById('token-res').value.trim() || '4K UHD';
+      const src = document.getElementById('token-source').value.trim() || 'Netflix WEBRip';
       const a = document.getElementById('token-audio').value.trim() || '';
       const rip = document.getElementById('token-ripper').value.trim() || 'MoinuFlix';
       document.getElementById('preview-dash-text').textContent = `${t} - ${s} (${y}) ${r} ${src} ${a} [${rip}]`;
     }
 
-    /* TMDB TV SEARCH & AUTO-FILL FIX */
+    /* TMDB TV SEARCH & AUTO FILL */
     async function searchTmdbShows(q) {
       if (!q || q.length < 2) return;
       try {
@@ -925,10 +923,9 @@
         const drop = document.getElementById('tmdb-dropdown');
         drop.innerHTML = '';
         if (d.results && d.results.length > 0) {
-          // If first result matches very closely, auto-select it
           const topResult = d.results[0];
 
-          d.results.slice(0, 5).forEach((show, index) => {
+          d.results.slice(0, 5).forEach(show => {
             const yr = show.first_air_date ? show.first_air_date.split('-')[0] : 'N/A';
             const poster = show.poster_path ? `https://image.tmdb.org/t/p/w92${show.poster_path}` : '';
             const row = document.createElement('div');
@@ -949,7 +946,7 @@
           });
           drop.style.display = 'block';
 
-          // Auto-fill top result immediately if TMDB ID is empty
+          // Auto-select if currently empty
           if (!document.getElementById('meta-tmdb-id').value) {
             document.getElementById('meta-tmdb-id').value = topResult.id;
             fetchTmdbTvDetails(topResult.id);
@@ -984,19 +981,18 @@
         document.getElementById('meta-networks').value = (d.networks || []).map(n => n.name).join(', ');
         document.getElementById('meta-studios').value = (d.production_companies || []).map(p => p.name).join(', ');
 
-        // POSTER & ARTWORKS AUTO-LOAD
+        // Artworks
         const posterUrl = d.poster_path ? `https://image.tmdb.org/t/p/w500${d.poster_path}` : '';
         const fanartUrl = d.backdrop_path ? `https://image.tmdb.org/t/p/original${d.backdrop_path}` : '';
-        
         document.getElementById('art-poster').value = posterUrl;
         document.getElementById('art-fanart').value = fanartUrl;
         document.getElementById('art-landscape').value = fanartUrl;
         document.getElementById('art-thumb').value = posterUrl;
+        document.getElementById('art-clearlogo').value = posterUrl;
 
-        // Force visual update on the poster box
         updateArtPreview();
 
-        // Season total count detection
+        // Season total detection
         const seasonStr = document.getElementById('token-season').value;
         const sMatch = seasonStr.match(/\d+/);
         const sNum = sMatch ? parseInt(sMatch[0]) : 1;
@@ -1005,11 +1001,26 @@
           document.getElementById('meta-total-eps').value = seasonObj.episode_count;
         }
 
+        // Fetch Season episodes metadata for plots & titles
+        fetchSeasonEpisodesMeta(tmdbId, sNum);
+
         updateDashPreview();
         rebuildEpisodeSlots();
         showLaserToast(`Loaded: "${d.name}" with Poster!`);
       } catch(err) {
         console.error(err);
+      }
+    }
+
+    async function fetchSeasonEpisodesMeta(tmdbId, seasonNum) {
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/tv/${tmdbId}/season/${seasonNum}?api_key=${TMDB_API_KEY}&language=en-US`);
+        if (res.ok) {
+          const sData = await res.json();
+          tmdbEpisodesCache = sData.episodes || [];
+        }
+      } catch(e) {
+        tmdbEpisodesCache = [];
       }
     }
 
@@ -1023,9 +1034,18 @@
       }
     }
 
-    /* PART IV: EPISODE SLOTS & LINK MATRIX */
+    /* PART IV: EPISODE SLOTS & AUTO-PULL */
     function onSeasonChange() {
+      const tmdbId = document.getElementById('meta-tmdb-id').value;
+      const sMatch = document.getElementById('token-season').value.match(/\d+/);
+      const sNum = sMatch ? parseInt(sMatch[0]) : 1;
+      if (tmdbId) fetchSeasonEpisodesMeta(tmdbId, sNum);
       rebuildEpisodeSlots();
+    }
+
+    function autoLoadExistingEpisodes() {
+      rebuildEpisodeSlots();
+      showLaserToast('Existing episodes auto-filled!');
     }
 
     function rebuildEpisodeSlots() {
@@ -1034,18 +1054,28 @@
       const tmdbId = document.getElementById('meta-tmdb-id').value.trim();
       const seriesTitle = document.getElementById('meta-title').value.trim();
       const seasonTag = document.getElementById('token-season').value.trim();
+      const sNum = (seasonTag.match(/\d+/) || [1])[0];
 
-      // Find existing episodes in libraryData
+      // Find in existing libraryData
       const existingMap = new Map();
       libraryData.forEach(item => {
         const matchId = tmdbId && String(item.tmdb_id) === String(tmdbId);
         const matchTitle = (item.title || item.name || '').toLowerCase().trim() === seriesTitle.toLowerCase().trim();
-        const matchSeason = (item.seasons || '').toLowerCase().trim() === seasonTag.toLowerCase().trim();
 
-        if ((matchId || matchTitle) && matchSeason) {
-          const epNum = item.episode_number || parseEpisodeNumber(item.name || item.title);
-          if (epNum) {
-            existingMap.set(parseInt(epNum), item.gdrive_url || item.id || '');
+        if (matchId || matchTitle) {
+          // Check if item has Kodi pack schema `episodes: [...]`
+          if (Array.isArray(item.episodes)) {
+            item.episodes.forEach(ep => {
+              if (String(ep.season || 1) === String(sNum)) {
+                existingMap.set(parseInt(ep.episode), ep.id || ep.gdrive_url || '');
+              }
+            });
+          } else {
+            // Flat object fallback
+            const epNum = item.episode_number || parseEpisodeNumber(item.name || item.title);
+            if (epNum) {
+              existingMap.set(parseInt(epNum), item.gdrive_url || item.id || '');
+            }
           }
         }
       });
@@ -1151,110 +1181,131 @@
 
     /* EDIT EXISTING SERIES FROM LIBRARY CARD */
     function editSeriesInForm(groupKey) {
-      const matched = libraryData.filter(item => {
-        const k = item.tmdb_id ? String(item.tmdb_id) : (item.title || item.name || '').toLowerCase().trim();
-        return k === groupKey;
+      const base = libraryData.find(item => {
+        const k = item.tmdb_id ? String(item.tmdb_id) : (item.id || item.title || '').toLowerCase().trim();
+        return k === groupKey || String(item.tmdb_id) === groupKey;
       });
 
-      if (!matched.length) return;
-      const base = matched[0];
+      if (!base) return;
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      document.getElementById('token-series-title').value = base.title || base.name || '';
-      document.getElementById('meta-title').value = base.title || base.name || '';
+      document.getElementById('token-series-title').value = base.title || '';
+      document.getElementById('meta-title').value = base.title || '';
+      document.getElementById('meta-orig-title').value = base.original_title || '';
       document.getElementById('meta-tmdb-id').value = base.tmdb_id || '';
-      document.getElementById('token-season').value = base.seasons || 'Season 1';
-      document.getElementById('meta-overview').value = base.overview || '';
+      document.getElementById('token-year').value = base.year || '';
+      document.getElementById('meta-rating').value = base.rating || '';
+      document.getElementById('meta-overview').value = base.plot || base.overview || '';
       document.getElementById('art-poster').value = base.poster || '';
       document.getElementById('art-fanart').value = base.fanart || '';
+      document.getElementById('art-clearlogo').value = base.logo || '';
       updateArtPreview();
+
+      if (Array.isArray(base.episodes) && base.episodes.length > 0) {
+        document.getElementById('meta-total-eps').value = base.episodes.length;
+        const firstEp = base.episodes[0];
+        if (firstEp && firstEp.specs) {
+          if (firstEp.specs.resolution) document.getElementById('token-res').value = firstEp.specs.resolution;
+          if (firstEp.specs.codec) document.getElementById('token-codec').value = firstEp.specs.codec;
+          if (firstEp.specs.audio) document.getElementById('token-audio').value = firstEp.specs.audio;
+        }
+      }
 
       if (base.tmdb_id) {
         fetchTmdbTvDetails(base.tmdb_id);
       } else {
         rebuildEpisodeSlots();
       }
-      showLaserToast(`Loaded "${base.title || base.name}" for editing!`);
+      showLaserToast(`Loaded "${base.title}" for editing!`);
     }
 
-    /* COMMIT TO DATA_C02.JSON */
+    /* FORM SUBMIT: CLEAN KODI PACK CREATION */
     async function handleFormCommit(e) {
       e.preventDefault();
       const token = getStoredToken();
       if (!token) return showLaserToast('GitHub Token required! Click ⚙️ Token.', true);
 
       const title = document.getElementById('meta-title').value.trim();
+      const origTitle = document.getElementById('meta-orig-title').value.trim() || title;
       const tmdbId = parseInt(document.getElementById('meta-tmdb-id').value.trim()) || 0;
       const seasonTag = document.getElementById('token-season').value.trim() || 'Season 1';
-      const year = document.getElementById('token-year').value.trim() || '2023';
+      const sNum = parseInt((seasonTag.match(/\d+/) || [1])[0]);
+      const year = parseInt(document.getElementById('token-year').value.trim()) || 2026;
+      const rating = parseFloat(document.getElementById('meta-rating').value.trim()) || 8.0;
       const poster = document.getElementById('art-poster').value.trim();
       const fanart = document.getElementById('art-fanart').value.trim();
-      const overview = document.getElementById('meta-overview').value.trim() || `Streaming via MoinuFlix.`;
-      const genres = document.getElementById('meta-genres').value.trim();
-      const resVal = document.getElementById('token-res').value.trim() || '1080p FHD';
-      const audioVal = document.getElementById('token-audio').value.trim() || 'Dolby Digital 5.1';
+      const logo = document.getElementById('art-clearlogo').value.trim() || poster;
+      const plot = document.getElementById('meta-overview').value.trim() || `Streaming via MoinuFlix.`;
+      const resVal = document.getElementById('token-res').value.trim() || '4K UHD';
+      const codecVal = document.getElementById('token-codec').value.trim() || 'HEVC 10bit SDR';
+      const audioVal = document.getElementById('token-audio').value.trim() || 'Atmos 5.1';
 
       const inputs = document.querySelectorAll('.ep-link-input');
-      const validSlots = [];
+      const episodesList = [];
 
       inputs.forEach(inp => {
         const ep = parseInt(inp.getAttribute('data-ep'));
         const val = extractGDriveId(inp.value);
         if (val) {
-          validSlots.push({ epNum: ep, fileId: val });
+          const tmdbEp = tmdbEpisodesCache.find(x => x.episode_number === ep);
+          const epName = tmdbEp ? tmdbEp.name : `Episode ${ep}`;
+          const epPlot = tmdbEp ? tmdbEp.overview : plot;
+          const epThumb = (tmdbEp && tmdbEp.still_path) ? `https://image.tmdb.org/t/p/w780${tmdbEp.still_path}` : fanart;
+
+          episodesList.push({
+            id: val,
+            title: `Episode ${ep}`,
+            season: sNum,
+            episode: ep,
+            plot: epPlot || plot,
+            thumb: epThumb || fanart,
+            fanart: fanart,
+            stream_url: `${WORKER_BASE}${val}${USER_AGENT}`,
+            specs: {
+              resolution: resVal,
+              codec: codecVal,
+              audio: audioVal,
+              channels: "5.1"
+            }
+          });
         }
       });
 
-      if (validSlots.length === 0) {
-        return showLaserToast('Kam az kam 1 Episode ka Google Drive ID/Link enter karein!', true);
+      if (episodesList.length === 0) {
+        return showLaserToast('Kam az kam 1 Episode ka Google Drive Link enter karein!', true);
       }
 
-      showLaserToast(`Saving ${validSlots.length} episodes for "${title}"...`);
+      showLaserToast(`Packaging ${episodesList.length} episodes for "${title}" into Kodi Pack...`);
 
-      validSlots.forEach(slot => {
-        const epTitle = `${title} - ${seasonTag} - Episode ${slot.epNum}`;
-        const streamUrl = `${WORKER_BASE}${slot.fileId}${USER_AGENT}`;
+      // Single Kodi TV Show Object Schema
+      const newShowPack = {
+        id: `tv_${tmdbId || Date.now()}`,
+        title: title,
+        original_title: origTitle,
+        year: year,
+        tmdb_id: tmdbId,
+        rating: rating,
+        plot: plot,
+        poster: poster,
+        fanart: fanart,
+        logo: logo,
+        episodes: episodesList
+      };
 
-        const newEpObj = {
-          id: slot.fileId,
-          name: epTitle,
-          title: title,
-          tmdb_id: tmdbId,
-          seasons: seasonTag,
-          episode_number: slot.epNum,
-          year: year,
-          poster: poster,
-          fanart: fanart,
-          overview: overview,
-          genres: genres,
-          stream_url: streamUrl,
-          gdrive_url: slot.fileId,
-          specs: {
-            resolution: resVal,
-            audio: audioVal,
-            source: "WEB-DL"
-          }
-        };
-
-        const existIdx = libraryData.findIndex(item => {
-          const matchId = tmdbId && item.tmdb_id === tmdbId;
-          const matchTitle = (item.title || item.name || '').toLowerCase() === title.toLowerCase();
-          const matchSeason = (item.seasons || '').toLowerCase() === seasonTag.toLowerCase();
-          const matchEp = (item.episode_number || parseEpisodeNumber(item.name || item.title)) === slot.epNum;
-          return (matchId || matchTitle) && matchSeason && matchEp;
-        });
-
-        if (existIdx >= 0) {
-          libraryData[existIdx] = newEpObj;
-        } else {
-          libraryData.unshift(newEpObj);
-        }
+      // Remove ANY old single-row duplicates (like the 8 duplicate Dead-End Job lines)
+      libraryData = libraryData.filter(item => {
+        const isSameTmdb = tmdbId && item.tmdb_id === tmdbId;
+        const isSameTitle = (item.title || item.name || '').toLowerCase().trim() === title.toLowerCase().trim();
+        return !isSameTmdb && !isSameTitle;
       });
 
+      // Insert consolidated pack at beginning
+      libraryData.unshift(newShowPack);
+
       try {
-        await commitFileDirect('chunks/data_c02.json', libraryData, `Studio Sync: ${title} (${seasonTag}) [${validSlots.length} Eps]`, token);
-        showLaserToast(`🎉 Saved successfully to chunks/data_c02.json!`);
+        await commitFileDirect('chunks/data_c02.json', libraryData, `Kodi TV Pack: ${title} (${episodesList.length} Eps)`, token);
+        showLaserToast(`🎉 Saved clean Kodi pack to chunks/data_c02.json!`);
         loadSeriesData();
         rebuildEpisodeSlots();
       } catch(err) {
@@ -1323,19 +1374,20 @@
         return;
       }
 
+      // Group shows cleanly
       const groups = new Map();
       libraryData.forEach(item => {
-        const key = item.tmdb_id ? String(item.tmdb_id) : (item.title || item.name || '').toLowerCase().trim();
+        const key = item.tmdb_id ? String(item.tmdb_id) : (item.id || item.title || '').toLowerCase().trim();
         if (!groups.has(key)) {
+          const epCount = Array.isArray(item.episodes) ? item.episodes.length : 1;
           groups.set(key, {
             title: item.title || item.name || 'Series',
             tmdb_id: item.tmdb_id || '',
             season: item.seasons || 'Season 1',
             poster: item.poster || '',
-            episodes: []
+            episodesCount: epCount
           });
         }
-        groups.get(key).episodes.push(item);
       });
 
       groups.forEach((grp, key) => {
@@ -1348,7 +1400,7 @@
           <div class="series-card-content">
             <div>
               <div style="font-weight:700; font-size:1rem; color:#fff; margin-bottom:4px;">${escapeHtml(grp.title)}</div>
-              <div style="font-size:0.78rem; color:var(--laser-cyan); font-weight:700;">${escapeHtml(grp.season)} • ${grp.episodes.length} Episodes</div>
+              <div style="font-size:0.78rem; color:var(--laser-cyan); font-weight:700;">🟢 ${grp.episodesCount} Episodes (Kodi Pack)</div>
             </div>
             <div style="margin-top:1rem; display:flex; gap:0.5rem;">
               <button type="button" class="btn-sub" style="flex:1; justify-content:center;" onclick="editSeriesInForm('${key}')">✏️ Edit & Add Episodes</button>
