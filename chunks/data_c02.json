@@ -1,15 +1,157 @@
 [
   {
+    "id": "tv_289517",
+    "title": "Dead-End Job",
+    "original_title": "꿀알바",
+    "year": 2026,
+    "tmdb_id": 289517,
+    "rating": 7.7,
+    "plot": "Drowning in debt, a young man takes lucrative part-time jobs from a mysterious agency — only to find his hustle for more money turning nightmarish.",
+    "poster": "https://image.tmdb.org/t/p/w500/wUvzMC7EToPgci31ZZRCeqCmQ6d.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/gWedDgBsZkuOho2qe3q2sTQmbpO.jpg",
+    "logo": "https://image.tmdb.org/t/p/w500/wUvzMC7EToPgci31ZZRCeqCmQ6d.jpg",
+    "episodes": [
+      {
+        "id": "1nWtUGT8UU_pRzItJD9jRKw8rSA643211",
+        "title": "Episode 1",
+        "season": 1,
+        "episode": 1,
+        "plot": "In debt and out of options, Byeon Hyeok-jun accepts a suspicious convenience store job paying 50 times minimum wage — and quickly learns why.",
+        "thumb": "https://image.tmdb.org/t/p/w780/r2O7FQMY4xTiihG2mUWmR8RI1Kz.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/gWedDgBsZkuOho2qe3q2sTQmbpO.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1nWtUGT8UU_pRzItJD9jRKw8rSA643211|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "1UBL4G7LU9zQdr7GLNKkGTf6yQ_ry-J_V",
+        "title": "Episode 2",
+        "season": 1,
+        "episode": 2,
+        "plot": "Scared and confused after his last job, Hyeok-jun is now offered a new opportunity with one bizarre rule: Never lose sight of the clown.",
+        "thumb": "https://image.tmdb.org/t/p/w780/xCJ0yfn7roK0Mniop8jVqzcxuL.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/gWedDgBsZkuOho2qe3q2sTQmbpO.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1UBL4G7LU9zQdr7GLNKkGTf6yQ_ry-J_V|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "16pnqFui3A3cNeDO4koURWL4BY06JT9Q3",
+        "title": "Episode 3",
+        "season": 1,
+        "episode": 3,
+        "plot": "Hyeok-jun swears off risky jobs — until a milk delivery gig pays 200 times minimum wage. This time, he's fully prepared for whatever comes his way.",
+        "thumb": "https://image.tmdb.org/t/p/w780/rXfSz8razLRylVNeECiMm9sxMAg.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/gWedDgBsZkuOho2qe3q2sTQmbpO.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=16pnqFui3A3cNeDO4koURWL4BY06JT9Q3|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "1wmcWU1-KSE8AauW6cqd8fkC9yEpxPDk0",
+        "title": "Episode 4",
+        "season": 1,
+        "episode": 4,
+        "plot": "After learning about Hyeok-jun's new job and the agency, his sister Ji-yoon's curiosity leads her to a night shift where her worst fears come to life.",
+        "thumb": "https://image.tmdb.org/t/p/w780/axIKIcmnWG1upBGxKRZ73CjO9qD.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/gWedDgBsZkuOho2qe3q2sTQmbpO.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1wmcWU1-KSE8AauW6cqd8fkC9yEpxPDk0|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "12Cv__Bf0vDIbi2mZOTDdzDsnRFd443Yg",
+        "title": "Episode 5",
+        "season": 1,
+        "episode": 5,
+        "plot": "Posing as another applicant, Hyeok-jun joins a clinical trial where an unexpected encounter with his friend turns the job into a rescue mission.",
+        "thumb": "https://image.tmdb.org/t/p/w780/1Tf5Gy7rANjPcae1vNCDT5sn3rU.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/gWedDgBsZkuOho2qe3q2sTQmbpO.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=12Cv__Bf0vDIbi2mZOTDdzDsnRFd443Yg|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "1ZSm2IFdpioDVxih_8V9j2rd3y7XXjfJG",
+        "title": "Episode 6",
+        "season": 1,
+        "episode": 6,
+        "plot": "With more questions than answers, Hyeok-jun accepts a night-shift job at a construction site and uncovers the real horror behind the mysterious agency.",
+        "thumb": "https://image.tmdb.org/t/p/w780/kUcD3sWbMzEGoRhDiJeKeDMuIFB.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/gWedDgBsZkuOho2qe3q2sTQmbpO.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ZSm2IFdpioDVxih_8V9j2rd3y7XXjfJG|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "1_4jh82VZVKhRJXm5M3-HRQTJusEFbShQ",
+        "title": "Episode 7",
+        "season": 1,
+        "episode": 7,
+        "plot": "Warned that this final gig will be unlike any before it, Hyeok-jun joins a fairy-tale parade at a theme park where the answers he seeks await.",
+        "thumb": "https://image.tmdb.org/t/p/w780/8A0q3zPFkiE4sBX4hPYUhXRcBcq.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/gWedDgBsZkuOho2qe3q2sTQmbpO.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1_4jh82VZVKhRJXm5M3-HRQTJusEFbShQ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1"
+        }
+      },
+      {
+        "id": "1p77BMKOEYTysbZfn70e_dvRNi3uquUb2",
+        "title": "Episode 8",
+        "season": 1,
+        "episode": 8,
+        "plot": "A nightmarish carnival brings everyone together as Hyeok-jun faces a life-changing decision. Can he finally quit his dead-end job for good?",
+        "thumb": "https://image.tmdb.org/t/p/w780/f0LN2ZtxqokcsVLrk2b4XrgURuT.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/gWedDgBsZkuOho2qe3q2sTQmbpO.jpg",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1p77BMKOEYTysbZfn70e_dvRNi3uquUb2|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "5.1"
+        }
+      }
+    ]
+  },
+  {
     "id": "tv_99966",
     "title": "All of Us Are Dead",
     "original_title": "지금 우리 학교는",
     "year": 2022,
     "tmdb_id": 99966,
     "rating": 8.3,
-    "plot": "A high school becomes ground zero for a zombie virus outbreak. Trapped students must fight their way out — or turn into one of the rabid infected.",
+    "plot": "A high school becomes ground zero for a zombie virus outbreak. Trapped students must fight their way out or turn into one of the infected.",
     "poster": "https://image.tmdb.org/t/p/w500/pTEFqAjLd5YTsMD6NSUxV6Dq7A6.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/8hp2CuGnw1iP5dLBVMAPUv23swx.jpg",
-    "logo": "https://image.tmdb.org/t/p/w500/pTEFqAjLd5YTsMD6NSUxV6Dq7A6.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
+    "logo": "https://image.tmdb.org/t/p/original/cEc7XPbGxSKXfiZU0z8czFOImI2.png",
     "episodes": [
       {
         "id": "1EsuyM9QK48JkETNDmsGOmYhhrQkvRqgW",
@@ -17,8 +159,8 @@
         "season": 1,
         "episode": 1,
         "plot": "Inside Lee Byeong-chan's science lab, a student incurs a seemingly harmless bite. Shortly after, a fast-spreading outbreak soaks the school in blood.",
-        "thumb": "https://image.tmdb.org/t/p/w780/eTCe1kQo3Rzm1sqcOycSEgKzF3z.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/8hp2CuGnw1iP5dLBVMAPUv23swx.jpg",
+        "thumb": "https://image.tmdb.org/t/p/w780/5rkG6uT8xWj2sO5s5L8I0fGz5hS.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1EsuyM9QK48JkETNDmsGOmYhhrQkvRqgW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
@@ -33,8 +175,8 @@
         "season": 1,
         "episode": 2,
         "plot": "The infected multiply in droves. Scrambling for their lives, Nam On-jo and Lee Cheong-san find safety with others inside a classroom — but not for long.",
-        "thumb": "https://image.tmdb.org/t/p/w780/s1ejjHUlB4S6SxkOkGmPQ7CfRgu.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/8hp2CuGnw1iP5dLBVMAPUv23swx.jpg",
+        "thumb": "https://image.tmdb.org/t/p/w780/6xK4FqCeq2MvH2eYvW6u0L8L4Z.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1m7PkSuxNk_5xzrV1WgRytpD1JRSKp3eM|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
@@ -49,8 +191,8 @@
         "season": 1,
         "episode": 3,
         "plot": "When one of the group is scratched while fighting a zombie, Lee Na-yeon demands they kick him out. Outside, the virus swallows up the city.",
-        "thumb": "https://image.tmdb.org/t/p/w780/cvNAL8Osgrca3uXUS4qGy8qrgNY.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/8hp2CuGnw1iP5dLBVMAPUv23swx.jpg",
+        "thumb": "https://image.tmdb.org/t/p/w780/mJjVqN6pT4V9C7lG5h7kL3eR5t.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1MkbKk_oW1TFW60krx5Kx7IihsgL9-tym|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
@@ -65,8 +207,8 @@
         "season": 1,
         "episode": 4,
         "plot": "In need of a cellphone, two students take a risky journey to the teachers' office. Byeong-chan passes on critical information to Detective Song Jae-ik.",
-        "thumb": "https://image.tmdb.org/t/p/w780/2MA0irna8738Zr6FO9v9YfygdNV.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/8hp2CuGnw1iP5dLBVMAPUv23swx.jpg",
+        "thumb": "https://image.tmdb.org/t/p/w780/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1cWYRLr2JH4HM9pih89iU8o6sS_K8PM5f|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
@@ -81,8 +223,8 @@
         "season": 1,
         "episode": 5,
         "plot": "Martial law is imposed on the city. When Cheong-san is separated from the rest of the group, On-jo leads a mission to use a drone to locate him.",
-        "thumb": "https://image.tmdb.org/t/p/w780/inEDM5TP6uk0CFnvRwedE8yVvrU.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/8hp2CuGnw1iP5dLBVMAPUv23swx.jpg",
+        "thumb": "https://image.tmdb.org/t/p/w780/pTEFqAjLd5YTsMD6NSUxV6Dq7A6.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1JomVfF99RC1W7YSUSiBjXGIALaZYZhwj|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
@@ -97,8 +239,8 @@
         "season": 1,
         "episode": 6,
         "plot": "The group clears a path to Cheong-san using sound to draw away zombies, but a new type of threat surfaces. Nam So-ju breaks out of the quarantine camp.",
-        "thumb": "https://image.tmdb.org/t/p/w780/e6b835B0LWhflIrq2knNQL3VLCX.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/8hp2CuGnw1iP5dLBVMAPUv23swx.jpg",
+        "thumb": "https://image.tmdb.org/t/p/w780/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1MKND1nbNqX9jRi94xDmf3FStEBN2zN7U|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
@@ -113,8 +255,8 @@
         "season": 1,
         "episode": 7,
         "plot": "To make it out of the music room and onto the roof, the students put into action their most perilous plan yet. Elsewhere, Jae-ik comes across a setback.",
-        "thumb": "https://image.tmdb.org/t/p/w780/jm5s8jAhUPQBUJJPH8wOpEnlt0v.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/8hp2CuGnw1iP5dLBVMAPUv23swx.jpg",
+        "thumb": "https://image.tmdb.org/t/p/w780/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1tILCemFiuYdY00wAfvqWxCjPnxD5h2da|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
@@ -129,8 +271,8 @@
         "season": 1,
         "episode": 8,
         "plot": "Jae-ik and his crew run into a student from the school. Na-yeon works up the courage to face her peers. The group shares confessions around a fire.",
-        "thumb": "https://image.tmdb.org/t/p/w780/gO0onHP51fbSTITwJJ289kUriDL.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/8hp2CuGnw1iP5dLBVMAPUv23swx.jpg",
+        "thumb": "https://image.tmdb.org/t/p/w780/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1iHpMoskcj8NDNiraDR5b-lL8fdkV62u5|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
@@ -145,8 +287,8 @@
         "season": 1,
         "episode": 9,
         "plot": "A disturbance at the camp shifts the military's understanding of the virus. A thunderstorm provides cover as the group agrees to keep on moving.",
-        "thumb": "https://image.tmdb.org/t/p/w780/hTjFMfoL9Js4gQrMqRNxZPM8VRo.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/8hp2CuGnw1iP5dLBVMAPUv23swx.jpg",
+        "thumb": "https://image.tmdb.org/t/p/w780/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1yE4D-NWcjUwQQwGjUlbFHDgHSRApgvae|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
@@ -161,8 +303,8 @@
         "season": 1,
         "episode": 10,
         "plot": "The auditorium quickly becomes a trap for the two newly united teams of survivors. Byeong-chan's video logs reveal a drastic solution to the crisis.",
-        "thumb": "https://image.tmdb.org/t/p/w780/fd5lPDdoXgKOKe39LrWoBTiMEJE.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/8hp2CuGnw1iP5dLBVMAPUv23swx.jpg",
+        "thumb": "https://image.tmdb.org/t/p/w780/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1EY_NdG8AA2-RxL3ToUbUb4b84xGqZ0aJ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
@@ -177,8 +319,8 @@
         "season": 1,
         "episode": 11,
         "plot": "Though a surprise protector provides the group safe passage to their next stop, Yoon Gwi-nam is not far behind. The military makes a grave decision.",
-        "thumb": "https://image.tmdb.org/t/p/w780/1v95gKxVA5vPevto1iQB7s8Xa7i.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/8hp2CuGnw1iP5dLBVMAPUv23swx.jpg",
+        "thumb": "https://image.tmdb.org/t/p/w780/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1RBSb60AlCvTuEXLpXRk6D0V08HKzFw2U|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
@@ -194,7 +336,7 @@
         "episode": 12,
         "plot": "The students make it to the quarantine camp, each of them weighed down by tragic loss. Months later, they hang on to hope for a survivor.",
         "thumb": "https://image.tmdb.org/t/p/w780/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/8hp2CuGnw1iP5dLBVMAPUv23swx.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/qXf3fb6dXPOIUWRtnMvCAxA9MUN.jpg",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Qrsks3E8uO4_W_mK7P__nr6Q1Gdgazgc|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
@@ -204,166 +346,6 @@
         }
       }
     ]
-  },
-  {
-    "id": "1p77BMKOEYTysbZfn70e_dvRNi3uquUb2",
-    "name": "Dead-End Job - Season 1 - Episode 8",
-    "title": "Dead-End Job",
-    "tmdb_id": 289517,
-    "seasons": "Season 1",
-    "episode_number": 8,
-    "year": "2026",
-    "poster": "https://image.tmdb.org/t/p/w500/wUvzMC7EToPgci31ZZRCeqCmQ6d.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/gWedDgBsZkuOho2qe3q2sTQmbpO.jpg",
-    "overview": "Drowning in debt, a young man takes lucrative part-time jobs from a mysterious agency — only to find his hustle for more money turning nightmarish.",
-    "genres": "Mystery, Drama",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1p77BMKOEYTysbZfn70e_dvRNi3uquUb2|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1p77BMKOEYTysbZfn70e_dvRNi3uquUb2",
-    "specs": {
-      "resolution": "DS4K",
-      "audio": "[Hin-Tam-Tel-Eng-Kor Atmos 5.1]",
-      "source": "WEB-DL"
-    }
-  },
-  {
-    "id": "1_4jh82VZVKhRJXm5M3-HRQTJusEFbShQ",
-    "name": "Dead-End Job - Season 1 - Episode 7",
-    "title": "Dead-End Job",
-    "tmdb_id": 289517,
-    "seasons": "Season 1",
-    "episode_number": 7,
-    "year": "2026",
-    "poster": "https://image.tmdb.org/t/p/w500/wUvzMC7EToPgci31ZZRCeqCmQ6d.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/gWedDgBsZkuOho2qe3q2sTQmbpO.jpg",
-    "overview": "Drowning in debt, a young man takes lucrative part-time jobs from a mysterious agency — only to find his hustle for more money turning nightmarish.",
-    "genres": "Mystery, Drama",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1_4jh82VZVKhRJXm5M3-HRQTJusEFbShQ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1_4jh82VZVKhRJXm5M3-HRQTJusEFbShQ",
-    "specs": {
-      "resolution": "DS4K",
-      "audio": "[Hin-Tam-Tel-Eng-Kor Atmos 5.1]",
-      "source": "WEB-DL"
-    }
-  },
-  {
-    "id": "1ZSm2IFdpioDVxih_8V9j2rd3y7XXjfJG",
-    "name": "Dead-End Job - Season 1 - Episode 6",
-    "title": "Dead-End Job",
-    "tmdb_id": 289517,
-    "seasons": "Season 1",
-    "episode_number": 6,
-    "year": "2026",
-    "poster": "https://image.tmdb.org/t/p/w500/wUvzMC7EToPgci31ZZRCeqCmQ6d.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/gWedDgBsZkuOho2qe3q2sTQmbpO.jpg",
-    "overview": "Drowning in debt, a young man takes lucrative part-time jobs from a mysterious agency — only to find his hustle for more money turning nightmarish.",
-    "genres": "Mystery, Drama",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ZSm2IFdpioDVxih_8V9j2rd3y7XXjfJG|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1ZSm2IFdpioDVxih_8V9j2rd3y7XXjfJG",
-    "specs": {
-      "resolution": "DS4K",
-      "audio": "[Hin-Tam-Tel-Eng-Kor Atmos 5.1]",
-      "source": "WEB-DL"
-    }
-  },
-  {
-    "id": "12Cv__Bf0vDIbi2mZOTDdzDsnRFd443Yg",
-    "name": "Dead-End Job - Season 1 - Episode 5",
-    "title": "Dead-End Job",
-    "tmdb_id": 289517,
-    "seasons": "Season 1",
-    "episode_number": 5,
-    "year": "2026",
-    "poster": "https://image.tmdb.org/t/p/w500/wUvzMC7EToPgci31ZZRCeqCmQ6d.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/gWedDgBsZkuOho2qe3q2sTQmbpO.jpg",
-    "overview": "Drowning in debt, a young man takes lucrative part-time jobs from a mysterious agency — only to find his hustle for more money turning nightmarish.",
-    "genres": "Mystery, Drama",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=12Cv__Bf0vDIbi2mZOTDdzDsnRFd443Yg|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "12Cv__Bf0vDIbi2mZOTDdzDsnRFd443Yg",
-    "specs": {
-      "resolution": "DS4K",
-      "audio": "[Hin-Tam-Tel-Eng-Kor Atmos 5.1]",
-      "source": "WEB-DL"
-    }
-  },
-  {
-    "id": "1wmcWU1-KSE8AauW6cqd8fkC9yEpxPDk0",
-    "name": "Dead-End Job - Season 1 - Episode 4",
-    "title": "Dead-End Job",
-    "tmdb_id": 289517,
-    "seasons": "Season 1",
-    "episode_number": 4,
-    "year": "2026",
-    "poster": "https://image.tmdb.org/t/p/w500/wUvzMC7EToPgci31ZZRCeqCmQ6d.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/gWedDgBsZkuOho2qe3q2sTQmbpO.jpg",
-    "overview": "Drowning in debt, a young man takes lucrative part-time jobs from a mysterious agency — only to find his hustle for more money turning nightmarish.",
-    "genres": "Mystery, Drama",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1wmcWU1-KSE8AauW6cqd8fkC9yEpxPDk0|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1wmcWU1-KSE8AauW6cqd8fkC9yEpxPDk0",
-    "specs": {
-      "resolution": "DS4K",
-      "audio": "[Hin-Tam-Tel-Eng-Kor Atmos 5.1]",
-      "source": "WEB-DL"
-    }
-  },
-  {
-    "id": "16pnqFui3A3cNeDO4koURWL4BY06JT9Q3",
-    "name": "Dead-End Job - Season 1 - Episode 3",
-    "title": "Dead-End Job",
-    "tmdb_id": 289517,
-    "seasons": "Season 1",
-    "episode_number": 3,
-    "year": "2026",
-    "poster": "https://image.tmdb.org/t/p/w500/wUvzMC7EToPgci31ZZRCeqCmQ6d.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/gWedDgBsZkuOho2qe3q2sTQmbpO.jpg",
-    "overview": "Drowning in debt, a young man takes lucrative part-time jobs from a mysterious agency — only to find his hustle for more money turning nightmarish.",
-    "genres": "Mystery, Drama",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=16pnqFui3A3cNeDO4koURWL4BY06JT9Q3|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "16pnqFui3A3cNeDO4koURWL4BY06JT9Q3",
-    "specs": {
-      "resolution": "DS4K",
-      "audio": "[Hin-Tam-Tel-Eng-Kor Atmos 5.1]",
-      "source": "WEB-DL"
-    }
-  },
-  {
-    "id": "1UBL4G7LU9zQdr7GLNKkGTf6yQ_ry-J_V",
-    "name": "Dead-End Job - Season 1 - Episode 2",
-    "title": "Dead-End Job",
-    "tmdb_id": 289517,
-    "seasons": "Season 1",
-    "episode_number": 2,
-    "year": "2026",
-    "poster": "https://image.tmdb.org/t/p/w500/wUvzMC7EToPgci31ZZRCeqCmQ6d.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/gWedDgBsZkuOho2qe3q2sTQmbpO.jpg",
-    "overview": "Drowning in debt, a young man takes lucrative part-time jobs from a mysterious agency — only to find his hustle for more money turning nightmarish.",
-    "genres": "Mystery, Drama",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1UBL4G7LU9zQdr7GLNKkGTf6yQ_ry-J_V|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1UBL4G7LU9zQdr7GLNKkGTf6yQ_ry-J_V",
-    "specs": {
-      "resolution": "DS4K",
-      "audio": "[Hin-Tam-Tel-Eng-Kor Atmos 5.1]",
-      "source": "WEB-DL"
-    }
-  },
-  {
-    "id": "1nWtUGT8UU_pRzItJD9jRKw8rSA643211",
-    "name": "Dead-End Job - Season 1 - Episode 1",
-    "title": "Dead-End Job",
-    "tmdb_id": 289517,
-    "seasons": "Season 1",
-    "episode_number": 1,
-    "year": "2026",
-    "poster": "https://image.tmdb.org/t/p/w500/wUvzMC7EToPgci31ZZRCeqCmQ6d.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/gWedDgBsZkuOho2qe3q2sTQmbpO.jpg",
-    "overview": "Drowning in debt, a young man takes lucrative part-time jobs from a mysterious agency — only to find his hustle for more money turning nightmarish.",
-    "genres": "Mystery, Drama",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1nWtUGT8UU_pRzItJD9jRKw8rSA643211|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "gdrive_url": "1nWtUGT8UU_pRzItJD9jRKw8rSA643211",
-    "specs": {
-      "resolution": "DS4K",
-      "audio": "[Hin-Tam-Tel-Eng-Kor Atmos 5.1]",
-      "source": "WEB-DL"
-    }
   },
   {
     "id": "tv_243206",
