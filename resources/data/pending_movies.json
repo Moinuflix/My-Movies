@@ -14863,5 +14863,65 @@
     ],
     "selected_tmdb_id": 47940,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1vB5v-Qbd-pCy6ZF43QVK6CuSXPTRvsIL",
+    "original_filename": "Other Mommy (2026) 1080p iTunes WEB-DL [Org AMZN Hindi DDP 5.1 ~ 640Kbps + English DDP Atmos 5.1] H.264 ~ DUDU - SăM_404𝖷.mkv",
+    "file_size_bytes": 7975473163,
+    "file_size_gb": "7 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-10T16:02:30.727Z",
+    "parsed": {
+      "title": "Other Mommy (",
+      "year": 2026,
+      "resolution": "1080p",
+      "source": "AMZN",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "Other Mommy ( (2026) [1080p] [AMZN] [Org AMZN Hindi DDP 5.1 - 640Kbps + English DDP Atmos 5.1] [7 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 1400837,
+        "title": "Other Mommy",
+        "year": "2026",
+        "poster": "https://image.tmdb.org/t/p/w500/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/ncm7djsVTHQQMX2HEbEVxMUFchG.jpg",
+        "rating": 5.8
+      }
+    ],
+    "selected_tmdb_id": 1400837,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1dYl1dYIKTvj6EPtIj68icSW-3TcP0Pg9",
+    "original_filename": "@PrakyTV - Achcham Yenbadhu Madamaiyada (2016) Tamil TRUE WEB-DL - 1080p HQ - AVC - UNTOUCHED - (DD+5.1 - 640Kbps & AAC 2.0) - 7.6GB - ESub.mkv",
+    "file_size_bytes": 8190898370,
+    "file_size_gb": "8 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-10T10:55:32.550Z",
+    "parsed": {
+      "title": "Achcham Yenbadhu Madamaiyada (",
+      "year": 2016,
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x264",
+      "telegram_tag": "@PrakyTV",
+      "standard_filename": "Achcham Yenbadhu Madamaiyada ( (2016) [1080p] [WEB-DL] [Tamil 5.1] [8 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 330417,
+        "title": "Achcham Yenbadhu Madamaiyada",
+        "year": "2016",
+        "poster": "https://image.tmdb.org/t/p/w500/lxTQc8uFNroe5CaFXho4uK9tuHk.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/AvwVlInp1p82iO0n0o4gQ4Q15sq.jpg",
+        "rating": 5.1
+      }
+    ],
+    "selected_tmdb_id": 330417,
+    "approval_status": "pending"
   }
 ]
