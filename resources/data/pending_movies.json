@@ -14833,5 +14833,35 @@
     ],
     "selected_tmdb_id": 1435139,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "12NiO2d_5M3addrT8ytpR4OX8qZkgYY2O",
+    "original_filename": "Padayappa.1999.Tamil.1080p.AMZN.WEB-DL.Hybrid.DTS5.1.H.264-UNiTYhub.mkv",
+    "file_size_bytes": 14652705744,
+    "file_size_gb": "14 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-10T00:18:30.430Z",
+    "parsed": {
+      "title": "Padayappa",
+      "year": 1999,
+      "resolution": "1080p",
+      "source": "AMZN",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "Padayappa (1999) [1080p] [AMZN] [Tamil 5.1] [14 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 47940,
+        "title": "Padayappa",
+        "year": "1999",
+        "poster": "https://image.tmdb.org/t/p/w500/8PSYF0AtpLbSlTDneCUo7zP4qL1.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/c4GW20T51X7xxBlCuJPSzxXuLTp.jpg",
+        "rating": 7.4
+      }
+    ],
+    "selected_tmdb_id": 47940,
+    "approval_status": "pending"
   }
 ]
