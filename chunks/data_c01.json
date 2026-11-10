@@ -1,5 +1,83 @@
 [
   {
+    "id": "1vB5v-Qbd-pCy6ZF43QVK6CuSXPTRvsIL",
+    "name": "Other Mommy (2026) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
+    "title": "Other Mommy",
+    "original_title": "Other Mommy",
+    "original_language": "en",
+    "year": 2026,
+    "runtime": 93,
+    "tmdb_id": 1400837,
+    "rating": 5.8,
+    "collection": "",
+    "director": [
+      "Rob Savage"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=-mnTITqqiT0",
+    "cast": [
+      {
+        "name": "Jessica Chastain",
+        "role": "Mommy / Other Mommy",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/mR1ELpP0T2Q1ZRSaADPgtrbPGla.jpg"
+      },
+      {
+        "name": "Jay Duplass",
+        "role": "Daddo",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/eUY0JDlqzf5pE9pmdvv4IPU3NYn.jpg"
+      },
+      {
+        "name": "Arabella Olivia Clark",
+        "role": "Bela",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/bwTovaznMIXo9Je01soHBCzmFxn.jpg"
+      },
+      {
+        "name": "Karen Allen",
+        "role": "Grandma Ruth",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/eJszpndpRzrXbSlz7RUlApoTykn.jpg"
+      },
+      {
+        "name": "Arian Moayed",
+        "role": "Uncle Frank",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/hYBqwt0HelUqgKSd1VDUAyvfDME.jpg"
+      }
+    ],
+    "plot": "Young Bela forms a relationship with a sinister entity in her home that looks uncannily like her own mother, drawing her into a terrifying and increasingly dark world.",
+    "poster": "https://image.tmdb.org/t/p/w500/fGRNCssTRrhYZxNzykGGCoMsAVq.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/ncm7djsVTHQQMX2HEbEVxMUFchG.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vB5v-Qbd-pCy6ZF43QVK6CuSXPTRvsIL|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "Prime Video",
+      "codec": "x265",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": "8GB"
+    },
+    "versions": [
+      {
+        "id": "1vB5v-Qbd-pCy6ZF43QVK6CuSXPTRvsIL",
+        "name": "Other Mommy (2026) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
+        "quality": "1080p • Prime Video • Dolby Digital Plus [8GB]",
+        "source": "Prime Video",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vB5v-Qbd-pCy6ZF43QVK6CuSXPTRvsIL|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Prime Video",
+          "codec": "x265",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "8GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "1dYl1dYIKTvj6EPtIj68icSW-3TcP0Pg9",
     "name": "Achcham Yenbadhu Madamaiyada (2016) [1080p] [WEB-DL] [Dolby Atmos].mkv",
     "title": "Achcham Yenbadhu Madamaiyada",
