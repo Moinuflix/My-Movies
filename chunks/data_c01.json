@@ -1,128 +1,156 @@
 [
   {
-    "id": "1A32Ail1kL5g0lmdC3NgKvjM-igdV3Utb",
-    "name": "Vettaikaaran (2009) [1080p] [BLURAY] [Dolby Digital].mkv",
-    "title": "Vettaikaaran",
-    "original_title": "வேட்டைக்காரன்",
-    "original_language": "ta",
-    "year": 2009,
-    "runtime": 166,
-    "tmdb_id": 63635,
-    "rating": 4.8,
-    "collection": "",
+    "id": "19rMfhQoQDg-BrDw-0FDhQLDqpxmbOWuP",
+    "name": "The Fast and the Furious (2001) [1080p] [Netflix] [Dolby Digital Plus].mkv",
+    "title": "The Fast and the Furious",
+    "original_title": "The Fast and the Furious",
+    "original_language": "en",
+    "year": 2001,
+    "runtime": 106,
+    "tmdb_id": 9799,
+    "rating": 7,
+    "collection": "The Fast and the Furious Collection",
     "director": [
-      "Babusivan"
+      "Rob Cohen"
     ],
-    "trailer": "",
+    "trailer": "https://www.youtube.com/watch?v=iIU1xlDbbQk",
     "cast": [
       {
-        "name": "Vijay",
-        "role": "'Police' Ravi",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/zbQ1sDRVRHkroWwvrnqYKMerl66.jpg"
+        "name": "Paul Walker",
+        "role": "Brian O'Conner",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/q2PLqKHYCs35HR7QybaNPH3JT96.jpg"
       },
       {
-        "name": "Anushka Shetty",
-        "role": "'Susi' Susheela",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/zpe6Es8kdNOXuPdXiJvqxzsmN6z.jpg"
+        "name": "Vin Diesel",
+        "role": "Dominic Toretto",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/nZdVry7lnUkE24PnXakok9okvL4.jpg"
       },
       {
-        "name": "Salim Ghouse",
-        "role": "Vedanayagam",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/5r5mqwcsi0diDlHQO5nHRD2Nyzj.jpg"
+        "name": "Michelle Rodriguez",
+        "role": "Letty Ortiz",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/wVcbrae4eRqGMFZz8Eh52Dl1biP.jpg"
       },
       {
-        "name": "Sathyan",
-        "role": "Sugu",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/11dbFufMpNyhPsZc6X8NYjMqe9X.jpg"
+        "name": "Jordana Brewster",
+        "role": "Mia Toretto",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/ceL0zxeVbWfCfhoIDZIE1NYqBWb.jpg"
       },
       {
-        "name": "Sanchita Padukone",
-        "role": "Uma",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/qjNM4wqZPKsETgiTiFqhSNudKKD.jpg"
+        "name": "Rick Yune",
+        "role": "Johnny Tran",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/iC6qDOLaL7osc4eCZlm9AT9Ffxi.jpg"
       }
     ],
-    "plot": "Police-Ravi is a student aspiring to become a police officer,becomes hunted when he helps his friend out of trouble.The hunted becomes the Hunter to secure his future.",
-    "poster": "https://image.tmdb.org/t/p/w500/Izeu2M0T0EMqtJWziKraltXvAU.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/6Ri679LLogY38LdtuazN9GukiK.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1A32Ail1kL5g0lmdC3NgKvjM-igdV3Utb|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "plot": "Dominic Toretto is a Los Angeles street racer suspected of masterminding a series of big-rig hijackings. When undercover cop Brian O'Conner infiltrates Toretto's iconoclastic crew, he falls for Toretto's sister and must choose a side: the gang or the LAPD.",
+    "poster": "https://image.tmdb.org/t/p/w500/gqY0ITBgT7A82poL9jv851qdnIb.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/jY9ef5nqY4xIIMu3yzW3qamUCoi.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=19rMfhQoQDg-BrDw-0FDhQLDqpxmbOWuP|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
       "resolution": "1080p",
-      "source": "BLURAY",
-      "codec": "x265",
-      "audio": "Dolby Digital",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": "7GB"
+      "source": "Netflix",
+      "codec": "H.264",
+      "audio": "Dolby Digital Plus",
+      "channels": "7.1",
+      "languages": "Tamil, Telugu, Hindi, Malayalam",
+      "size": "16GB"
     },
     "versions": [
       {
-        "id": "1A32Ail1kL5g0lmdC3NgKvjM-igdV3Utb",
-        "name": "Vettaikaaran (2009) [1080p] [BLURAY] [Dolby Digital].mkv",
-        "quality": "1080p • BLURAY • Dolby Digital [7GB]",
-        "source": "BLURAY",
-        "codec": "x265",
+        "id": "19rMfhQoQDg-BrDw-0FDhQLDqpxmbOWuP",
+        "name": "The Fast and the Furious (2001) [1080p] [Netflix] [Dolby Digital Plus].mkv",
+        "quality": "1080p • Netflix • Dolby Digital Plus Multi [16GB]",
+        "source": "Netflix",
+        "codec": "H.264",
         "resolution": "1080p",
-        "audio": "Dolby Digital",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1A32Ail1kL5g0lmdC3NgKvjM-igdV3Utb|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "audio": "Dolby Digital Plus",
+        "channels": "7.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=19rMfhQoQDg-BrDw-0FDhQLDqpxmbOWuP|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
-          "source": "BLURAY",
-          "codec": "x265",
-          "audio": "Dolby Digital",
-          "channels": "5.1",
-          "languages": "Tamil",
-          "size": "7GB"
+          "source": "Netflix",
+          "codec": "H.264",
+          "audio": "Dolby Digital Plus",
+          "channels": "7.1",
+          "languages": "Tamil, Telugu, Hindi, Malayalam",
+          "size": "16GB"
         }
       }
     ]
   },
   {
-    "id": "15ZdRlpYTTzp1BtZel3FjznNGeDJ4AQlf",
-    "name": "Motu Patlu & the Mystery of Nagmani (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
-    "title": "Motu Patlu & the Mystery of Nagmani",
-    "original_title": "Motu Patlu & the Mystery of Nagmani",
-    "original_language": "hi",
-    "year": 2026,
-    "runtime": 66,
-    "tmdb_id": 1817236,
-    "rating": 7.5,
-    "collection": "",
-    "director": [],
-    "trailer": "",
-    "cast": [],
-    "plot": "Motu and Patlu chase John into a time portal after he steals a precious diamond locket, sending them 900 years into the past into the ancient city of Andherius.",
-    "poster": "https://image.tmdb.org/t/p/w500/xyV3uXSuGz6O1EtEXn94jQZV4rm.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/mdI9891jh9o7fhvKiyBRHdMCnj3.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=15ZdRlpYTTzp1BtZel3FjznNGeDJ4AQlf|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "id": "1LAG1F9HNhNhammHZYdyCI5C6_1Sz7eE7",
+    "name": "The Fate of the Furious (2017) [1080p] [BLURAY] [Dolby Digital Plus].mkv",
+    "title": "The Fate of the Furious",
+    "original_title": "The Fate of the Furious",
+    "original_language": "en",
+    "year": 2017,
+    "runtime": 136,
+    "tmdb_id": 337339,
+    "rating": 6.8,
+    "collection": "The Fast and the Furious Collection",
+    "director": [
+      "F. Gary Gray"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=iVdIiOKBPkg",
+    "cast": [
+      {
+        "name": "Vin Diesel",
+        "role": "Dominic Toretto",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/nZdVry7lnUkE24PnXakok9okvL4.jpg"
+      },
+      {
+        "name": "Jason Statham",
+        "role": "Deckard Shaw",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/8l6lmrmKFDvhDjMJPj6tBpJdhaA.jpg"
+      },
+      {
+        "name": "Dwayne Johnson",
+        "role": "Luke Hobbs",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/5QApZVV8FUFlVxQpIK3Ew6cqotq.jpg"
+      },
+      {
+        "name": "Michelle Rodriguez",
+        "role": "Letty Ortiz",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/wVcbrae4eRqGMFZz8Eh52Dl1biP.jpg"
+      },
+      {
+        "name": "Tyrese Gibson",
+        "role": "Roman Pearce",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/jxoy4fbXNKFQtBdK73cLXEz3ufS.jpg"
+      }
+    ],
+    "plot": "When a mysterious woman seduces Dom into the world of crime and a betrayal of those closest to him, the crew face trials that will test them as never before.",
+    "poster": "https://image.tmdb.org/t/p/w500/dImWM7GJqryWJO9LHa3XQ8DD5NH.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/3IJ8kG8i84PncXkSovu0PaZQfjM.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1LAG1F9HNhNhammHZYdyCI5C6_1Sz7eE7|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
       "resolution": "1080p",
-      "source": "WEB-DL",
-      "codec": "H.264",
-      "audio": "Dolby Atmos",
-      "channels": "5.1",
-      "languages": "Tamil, Telugu, Hindi, Malayalam",
-      "size": "8GB"
+      "source": "BLURAY",
+      "codec": "x265",
+      "audio": "Dolby Digital Plus",
+      "channels": "7.1",
+      "languages": "Tamil",
+      "size": "14GB"
     },
     "versions": [
       {
-        "id": "15ZdRlpYTTzp1BtZel3FjznNGeDJ4AQlf",
-        "name": "Motu Patlu & the Mystery of Nagmani (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
-        "quality": "1080p • WEB-DL • Dolby Atmos Multi [8GB]",
-        "source": "WEB-DL",
-        "codec": "H.264",
+        "id": "1LAG1F9HNhNhammHZYdyCI5C6_1Sz7eE7",
+        "name": "The Fate of the Furious (2017) [1080p] [BLURAY] [Dolby Digital Plus].mkv",
+        "quality": "1080p • BLURAY • Dolby Digital Plus [14GB]",
+        "source": "BLURAY",
+        "codec": "x265",
         "resolution": "1080p",
-        "audio": "Dolby Atmos",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=15ZdRlpYTTzp1BtZel3FjznNGeDJ4AQlf|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "audio": "Dolby Digital Plus",
+        "channels": "7.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1LAG1F9HNhNhammHZYdyCI5C6_1Sz7eE7|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "Dolby Atmos",
-          "channels": "5.1",
-          "languages": "Tamil, Telugu, Hindi, Malayalam",
-          "size": "8GB"
+          "source": "BLURAY",
+          "codec": "x265",
+          "audio": "Dolby Digital Plus",
+          "channels": "7.1",
+          "languages": "Tamil",
+          "size": "14GB"
         }
       }
     ]
