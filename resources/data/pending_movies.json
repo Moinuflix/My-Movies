@@ -14974,5 +14974,65 @@
     ],
     "selected_tmdb_id": 337339,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "19rMfhQoQDg-BrDw-0FDhQLDqpxmbOWuP",
+    "original_filename": "The Fast and the Furious (2001) 1080p BluRay [Org NF (Tamil + Telugu + Hindi) - DDP 5.1 - 640Kbps + English DDP 7.1] x264 - playHD - TamilTvToons.mkv",
+    "file_size_bytes": 17221313928,
+    "file_size_gb": "16 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-11T12:11:45.713Z",
+    "parsed": {
+      "title": "The Fast and the Furious (",
+      "year": 2001,
+      "resolution": "1080p",
+      "source": "BluRay",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "The Fast and the Furious ( (2001) [1080p] [BluRay] [Org NF (Tamil + Telugu + Hindi) - DDP 5.1 - 640Kbps + English DDP 7.1] [16 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 9799,
+        "title": "The Fast and the Furious",
+        "year": "2001",
+        "poster": "https://image.tmdb.org/t/p/w500/gqY0ITBgT7A82poL9jv851qdnIb.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/jY9ef5nqY4xIIMu3yzW3qamUCoi.jpg",
+        "rating": 7.0
+      }
+    ],
+    "selected_tmdb_id": 9799,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1A32Ail1kL5g0lmdC3NgKvjM-igdV3Utb",
+    "original_filename": "Vettaikaaran (2009) BluRay (1080p x265 10bit EAC3 5.1 Tamil) - NazzY.mkv",
+    "file_size_bytes": 7314718734,
+    "file_size_gb": "7 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-11T12:04:26.558Z",
+    "parsed": {
+      "title": "Vettaikaaran (",
+      "year": 2009,
+      "resolution": "1080p",
+      "source": "BluRay",
+      "codec": "x265",
+      "telegram_tag": "",
+      "standard_filename": "Vettaikaaran ( (2009) [1080p] [BluRay] [Tamil 5.1] [7 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 63635,
+        "title": "Vettaikaaran",
+        "year": "2009",
+        "poster": "https://image.tmdb.org/t/p/w500/Izeu2M0T0EMqtJWziKraltXvAU.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/6Ri679LLogY38LdtuazN9GukiK.jpg",
+        "rating": 4.8
+      }
+    ],
+    "selected_tmdb_id": 63635,
+    "approval_status": "pending"
   }
 ]
