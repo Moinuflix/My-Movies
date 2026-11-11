@@ -14923,5 +14923,26 @@
     ],
     "selected_tmdb_id": 330417,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "15ZdRlpYTTzp1BtZel3FjznNGeDJ4AQlf",
+    "original_filename": "[AtozCartoonsPremium] Motu Patlu & the Mystery of Nagmani (2026) Movie [Hin-Tam-Tel-Mal-Kan-Mar-Ben-Eng] Multi Audio 1080p JHS WEB-DL AAC 2.0 H264 ɢᴏᴀᴛ ꪎ ᴢᴀɪᴅ.mkv",
+    "file_size_bytes": 2158665808,
+    "file_size_gb": "2 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-11T02:56:27.832Z",
+    "parsed": {
+      "title": "[AtozCartoonsPremium] Motu Patlu & the Mystery of Nagmani (",
+      "year": 2026,
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "[AtozCartoonsPremium] Motu Patlu & the Mystery of Nagmani ( (2026) [1080p] [WEB-DL] [Tamil 5.1] [2 GB].mkv"
+    },
+    "match_status": "pending",
+    "tmdb_candidates": [],
+    "selected_tmdb_id": null,
+    "approval_status": "pending"
   }
 ]
