@@ -14944,5 +14944,35 @@
     "tmdb_candidates": [],
     "selected_tmdb_id": null,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1LAG1F9HNhNhammHZYdyCI5C6_1Sz7eE7",
+    "original_filename": "The Fate of the Furious (2017) 1080p BluRay HDR [Tamil DDP 5.1 + English DDP 7.1] x265 HQMUX~CineFlix.mkv",
+    "file_size_bytes": 15008220590,
+    "file_size_gb": "14 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-11T11:19:27.422Z",
+    "parsed": {
+      "title": "The Fate of the Furious (",
+      "year": 2017,
+      "resolution": "1080p",
+      "source": "BluRay",
+      "codec": "x265",
+      "telegram_tag": "",
+      "standard_filename": "The Fate of the Furious ( (2017) [1080p] [BluRay] [Tamil DDP 5.1 + English DDP 7.1] [14 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 337339,
+        "title": "The Fate of the Furious",
+        "year": "2017",
+        "poster": "https://image.tmdb.org/t/p/w500/dImWM7GJqryWJO9LHa3XQ8DD5NH.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/3IJ8kG8i84PncXkSovu0PaZQfjM.jpg",
+        "rating": 6.8
+      }
+    ],
+    "selected_tmdb_id": 337339,
+    "approval_status": "pending"
   }
 ]
