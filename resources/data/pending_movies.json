@@ -15034,5 +15034,35 @@
     ],
     "selected_tmdb_id": 63635,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "12YWkpdUKLE7dvmncXYvfxTpBXTUDltjF",
+    "original_filename": "@Tamiltvtoonsofficial - Jailer 2 (2026) AMZN WEB-DL 1080p 8bit x264 [Telugu + Tamil + Hindi + Kannada + Malayalam (DDP 5.1 ~ 640Kbps)] ESub [TTT].mkv",
+    "file_size_bytes": 13692431229,
+    "file_size_gb": "13 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-12T00:56:34.271Z",
+    "parsed": {
+      "title": "Jailer 2 (",
+      "year": 2026,
+      "resolution": "1080p",
+      "source": "AMZN",
+      "codec": "x264",
+      "telegram_tag": "@Tamiltvtoonsofficial",
+      "standard_filename": "Jailer 2 ( (2026) [1080p] [AMZN] [Telugu + Tamil + Hindi + Kannada + Malayalam (DDP 5.1 - 640Kbps)] [13 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 1234139,
+        "title": "Jailer 2",
+        "year": "2026",
+        "poster": "https://image.tmdb.org/t/p/w500/upwdEyhhYZ7pT2hD535fr2MGfpx.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/m0ks2o59mOAz6WdCybJ5FAUNTOU.jpg",
+        "rating": 8.0
+      }
+    ],
+    "selected_tmdb_id": 1234139,
+    "approval_status": "pending"
   }
 ]
