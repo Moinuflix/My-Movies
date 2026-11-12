@@ -1,7 +1,7 @@
 [
   {
-    "id": "12YWkpdUKLE7dvmncXYvfxTpBXTUDltjF",
-    "name": "Jailer 2 (2026) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
+    "id": "1U6hZxSfzu9pcLfv5dzA9rDF7exHTWYOU",
+    "name": "Jailer 2 (2026) [4K UHD] [Prime Video] [Dolby Digital Plus].mkv",
     "title": "Jailer 2",
     "original_title": "ஜெயிலர் 2",
     "original_language": "ta",
@@ -13,7 +13,7 @@
     "director": [
       "Nelson"
     ],
-    "trailer": "",
+    "trailer": "https://www.youtube.com/watch?v=3vkHWYL2JmA",
     "cast": [
       {
         "name": "Rajinikanth",
@@ -41,38 +41,38 @@
         "thumbnail": "https://image.tmdb.org/t/p/w185/m4bnX5VQs2DfvQsLmfbKbBxUkC9.jpg"
       }
     ],
-    "plot": "When a dangerous syndicate expands its reach to threaten his family's peace, retired jailer Tiger Muthuvel Pandian goes undercover as a driver. Operating from the shadows, he takes on ruthless new enemies to protect his home.",
-    "poster": "https://image.tmdb.org/t/p/w500/ggksxezKElvrpiL8grnGFBTAueP.jpg",
+    "plot": "When a dangerous syndicate threatens his family, retired jailer Tiger Muthuvel Pandian goes undercover as a driver to battle enemies from the shadows.",
+    "poster": "https://image.tmdb.org/t/p/w500/yUol4BeSJyWkEgETyLUZokGriSE.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/m0ks2o59mOAz6WdCybJ5FAUNTOU.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=12YWkpdUKLE7dvmncXYvfxTpBXTUDltjF|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1U6hZxSfzu9pcLfv5dzA9rDF7exHTWYOU|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "specs": {
-      "resolution": "1080p",
+      "resolution": "4K UHD",
       "source": "Prime Video",
-      "codec": "H.264",
+      "codec": "x265",
       "audio": "Dolby Digital Plus",
       "channels": "5.1",
-      "languages": "Tamil",
-      "size": "13GB"
+      "languages": "Tamil, Telugu, Hindi, Malayalam",
+      "size": "20GB"
     },
     "versions": [
       {
-        "id": "12YWkpdUKLE7dvmncXYvfxTpBXTUDltjF",
-        "name": "Jailer 2 (2026) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
-        "quality": "1080p • Prime Video • Dolby Digital Plus [13GB]",
+        "id": "1U6hZxSfzu9pcLfv5dzA9rDF7exHTWYOU",
+        "name": "Jailer 2 (2026) [4K UHD] [Prime Video] [Dolby Digital Plus].mkv",
+        "quality": "4K UHD • Prime Video • Dolby Digital Plus Multi [20GB]",
         "source": "Prime Video",
-        "codec": "H.264",
-        "resolution": "1080p",
+        "codec": "x265",
+        "resolution": "4K UHD",
         "audio": "Dolby Digital Plus",
         "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=12YWkpdUKLE7dvmncXYvfxTpBXTUDltjF|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1U6hZxSfzu9pcLfv5dzA9rDF7exHTWYOU|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
-          "resolution": "1080p",
+          "resolution": "4K UHD",
           "source": "Prime Video",
-          "codec": "H.264",
+          "codec": "x265",
           "audio": "Dolby Digital Plus",
           "channels": "5.1",
-          "languages": "Tamil",
-          "size": "13GB"
+          "languages": "Tamil, Telugu, Hindi, Malayalam",
+          "size": "20GB"
         }
       }
     ]
