@@ -843,7 +843,8 @@
       "audio": "DD+ 5.1",
       "source": "AMZN",
       "codec": "x264",
-      "size": "12GB"
+      "size": "12GB",
+      "languages": "Tamil, Telugu, Hindi, Kannada, Malayalam, English"
     },
     "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1oePAWlWHnGDnI7cHziwOCdvPhn6jNlss|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "versions": [
@@ -854,6 +855,26 @@
         "audio": "DD+ 5.1",
         "source": "AMZN",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1oePAWlWHnGDnI7cHziwOCdvPhn6jNlss|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+      },
+      {
+        "id": "1aFmu_tpwZdvV_wiA4FR5U6WzORXKIDrQ",
+        "name": "The Nun (2018) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
+        "quality": "1080p • Prime Video • Dolby Digital Plus Multi",
+        "source": "Prime Video",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1aFmu_tpwZdvV_wiA4FR5U6WzORXKIDrQ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Prime Video",
+          "codec": "H.264",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Hindi, Kannada, Malayalam, English",
+          "size": ""
+        }
       }
     ]
   },
@@ -990,6 +1011,24 @@
         "audio": "Dolby Atmos",
         "size": "9GB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13W0E0Nq8mRkWuSbk-pqS-VdiRsij7rT3|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+      },
+      {
+        "id": "1ndTModhQdMnSyGeWjx5i9Dm_tvb6VcaL",
+        "name": "The Mummy Returns (2001) 1080p EAC3.mkv",
+        "quality": "1080p",
+        "source": "WEB-DL",
+        "codec": "H.264",
+        "resolution": "1080p FHD",
+        "audio": "Dolby Digital Plus",
+        "channels": "2.0",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ndTModhQdMnSyGeWjx5i9Dm_tvb6VcaL|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "Dolby Digital Plus",
+          "channels": "2.0"
+        }
       }
     ]
   },
@@ -1249,85 +1288,6 @@
         }
       }
     ]
-  },
-  {
-    "id": "1aFmu_tpwZdvV_wiA4FR5U6WzORXKIDrQ",
-    "name": "The Nun (2018) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
-    "title": "The Nun",
-    "original_title": "The Nun",
-    "original_language": "en",
-    "year": 2018,
-    "runtime": 96,
-    "tmdb_id": 439079,
-    "rating": 5.9,
-    "collection": "The Nun Collection",
-    "director": [
-      "Corin Hardy"
-    ],
-    "trailer": "https://www.youtube.com/watch?v=UvMVjwwZOF4",
-    "cast": [
-      {
-        "name": "Taissa Farmiga",
-        "role": "Sister Irene",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/jMDY4rFh2SFINj0wzoX10Roye3n.jpg"
-      },
-      {
-        "name": "Demián Bichir",
-        "role": "Father Burke",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/dur9tX8tbDDJE5mSOZkuW2VDGz4.jpg"
-      },
-      {
-        "name": "Bonnie Aarons",
-        "role": "The Nun / Valak",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/iEtWuoXKx4ZKbIWwJp1V76Heavy.jpg"
-      },
-      {
-        "name": "Jonas Bloquet",
-        "role": "Maurice Theriault",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/ivbElHgLKv8PaVc2A9zIZSMSPcv.jpg"
-      },
-      {
-        "name": "Ingrid Bisu",
-        "role": "Sister Oana",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/ndXpP6itF7oSDQwIoHLVZCekNSg.jpg"
-      }
-    ],
-    "plot": "A priest with a dark past and a novice nearing her final vows are sent by the Vatican to Romania to investigate a nun's death and face a demonic force.",
-    "poster": "https://image.tmdb.org/t/p/w500/sFC1ElvoKGdHJIWRpNB3xWJ9lJA.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/cMnVmutb5mVgIBeiMOncAbwNjvG.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1aFmu_tpwZdvV_wiA4FR5U6WzORXKIDrQ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p",
-      "source": "Prime Video",
-      "codec": "H.264",
-      "audio": "Dolby Digital Plus",
-      "channels": "5.1",
-      "languages": "Tamil, Telugu, Hindi, Kannada, Malayalam, English",
-      "size": ""
-    },
-    "versions": [
-      {
-        "id": "1aFmu_tpwZdvV_wiA4FR5U6WzORXKIDrQ",
-        "name": "The Nun (2018) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
-        "quality": "1080p • Prime Video • Dolby Digital Plus Multi",
-        "source": "Prime Video",
-        "codec": "H.264",
-        "resolution": "1080p",
-        "audio": "Dolby Digital Plus",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1aFmu_tpwZdvV_wiA4FR5U6WzORXKIDrQ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p",
-          "source": "Prime Video",
-          "codec": "H.264",
-          "audio": "Dolby Digital Plus",
-          "channels": "5.1",
-          "languages": "Tamil, Telugu, Hindi, Kannada, Malayalam, English",
-          "size": ""
-        }
-      }
-    ],
-    "soundtrack": {}
   },
   {
     "id": "1xZkqN1xmpHuTlwzU9ldW7jqSgK2MpB5C",
@@ -5928,88 +5888,6 @@
         "audio": "Dolby Digital Plus",
         "channels": "2.0",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1gy9eD3LExZWrEJecUUhGPSQhgufnwi3D|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p FHD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "Dolby Digital Plus",
-          "channels": "2.0"
-        }
-      }
-    ],
-    "original_language": "en"
-  },
-  {
-    "id": "1ndTModhQdMnSyGeWjx5i9Dm_tvb6VcaL",
-    "name": "The Mummy Returns (2001) 1080p EAC3.mkv",
-    "title": "The Mummy Returns",
-    "original_title": "The Mummy Returns",
-    "year": 2001,
-    "runtime": 130,
-    "tmdb_id": 1734,
-    "imdb_id": "tt0209163",
-    "imdb_url": "https://www.imdb.com/title/tt0209163/",
-    "rating": 6.414,
-    "director": [
-      "Stephen Sommers"
-    ],
-    "cast": [
-      {
-        "name": "Brendan Fraser",
-        "role": "Rick O'Connell",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/tFj5PaWWQbb8rHBBhu1EHklznph.jpg"
-      },
-      {
-        "name": "Rachel Weisz",
-        "role": "Evelyn O'Connell / Nefertiri",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/9tfHL5tholha1YF6bSKt422ETPM.jpg"
-      },
-      {
-        "name": "John Hannah",
-        "role": "Jonathan Carnahan",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/8GzJhaZrChZpv84SU4vAsvsR3cl.jpg"
-      },
-      {
-        "name": "Oded Fehr",
-        "role": "Ardeth Bay",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/xt50Z02mO5pLTW0cNLZhIsiequJ.jpg"
-      },
-      {
-        "name": "Arnold Vosloo",
-        "role": "Imhotep",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/o23Z1EvWEYR7PArq2w5UpreVipV.jpg"
-      }
-    ],
-    "plot": "Rick and Evelyn O’Connell, along with their 8-year-old son Alex, discover the key to the legendary Scorpion King’s might: the fabled Bracelet of Anubis. Unfortunately, a newly resurrected Imhotep has designs on the bracelet as well, and isn’t above kidnapping its new bearer, Alex, to gain control of Anubis’s otherworldly army.",
-    "poster": "https://image.tmdb.org/t/p/w500/kdJsW7hcy1lrj7tdMPycTAQPAiR.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/7s7WkAFPBsMTprYMbqbgKoppQsR.jpg",
-    "logo": "https://image.tmdb.org/t/p/original/j4KikNYOhCIEnf2rJA3Zccyhr0Y.png",
-    "trailer": "https://www.youtube.com/watch?v=BOh3mbolnfA",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ndTModhQdMnSyGeWjx5i9Dm_tvb6VcaL|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "badges": {
-      "quality": "https://img.icons8.com/color/96/full-hd.png",
-      "source": "https://img.icons8.com/ios-filled/100/ffffff/cloud-download.png",
-      "audio_format": "https://img.icons8.com/color/96/dolby-digital.png",
-      "audio_channels": "https://img.icons8.com/ios-filled/100/ffffff/2-0.png"
-    },
-    "specs": {
-      "resolution": "1080p Full HD",
-      "source": "WEB-DL",
-      "codec": "H.264",
-      "audio": "Dolby Digital Plus",
-      "channels": "2.0"
-    },
-    "versions": [
-      {
-        "id": "1ndTModhQdMnSyGeWjx5i9Dm_tvb6VcaL",
-        "name": "The Mummy Returns (2001) 1080p EAC3.mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
-        "codec": "H.264",
-        "resolution": "1080p FHD",
-        "audio": "Dolby Digital Plus",
-        "channels": "2.0",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1ndTModhQdMnSyGeWjx5i9Dm_tvb6VcaL|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
         "specs": {
           "resolution": "1080p FHD",
           "source": "WEB-DL",
