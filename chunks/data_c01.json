@@ -1,5 +1,83 @@
 [
   {
+    "id": "12YWkpdUKLE7dvmncXYvfxTpBXTUDltjF",
+    "name": "Jailer 2 (2026) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
+    "title": "Jailer 2",
+    "original_title": "ஜெயிலர் 2",
+    "original_language": "ta",
+    "year": 2026,
+    "runtime": 163,
+    "tmdb_id": 1234139,
+    "rating": 8,
+    "collection": "Jailer Collection",
+    "director": [
+      "Nelson"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Rajinikanth",
+        "role": "Muthuvel 'Tiger' Pandian",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/cQBcrXqcQPfXOQfNfgO3slJM2xi.jpg"
+      },
+      {
+        "name": "S. J. Suryah",
+        "role": "Bodhi Kalpak",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/7Q8510XwxPU1193cteaFQsiq2rv.jpg"
+      },
+      {
+        "name": "Suraj Venjaramoodu",
+        "role": "Dileep",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/2FUs0wmR3eHBd8g4GVbCmhkUzeI.jpg"
+      },
+      {
+        "name": "Ramya Krishnan",
+        "role": "Vijayalakshmi 'Viji' Pandian",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/7C1bj7z3XhqxjDIGoCs6MFJdSVa.jpg"
+      },
+      {
+        "name": "Vidya Balan",
+        "role": "Kantha Kalpak",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/m4bnX5VQs2DfvQsLmfbKbBxUkC9.jpg"
+      }
+    ],
+    "plot": "When a dangerous syndicate expands its reach to threaten his family's peace, retired jailer Tiger Muthuvel Pandian goes undercover as a driver. Operating from the shadows, he takes on ruthless new enemies to protect his home.",
+    "poster": "https://image.tmdb.org/t/p/w500/ggksxezKElvrpiL8grnGFBTAueP.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/m0ks2o59mOAz6WdCybJ5FAUNTOU.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=12YWkpdUKLE7dvmncXYvfxTpBXTUDltjF|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "Prime Video",
+      "codec": "H.264",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": "13GB"
+    },
+    "versions": [
+      {
+        "id": "12YWkpdUKLE7dvmncXYvfxTpBXTUDltjF",
+        "name": "Jailer 2 (2026) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
+        "quality": "1080p • Prime Video • Dolby Digital Plus [13GB]",
+        "source": "Prime Video",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=12YWkpdUKLE7dvmncXYvfxTpBXTUDltjF|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Prime Video",
+          "codec": "H.264",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "13GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "19rMfhQoQDg-BrDw-0FDhQLDqpxmbOWuP",
     "name": "The Fast and the Furious (2001) [1080p] [Netflix] [Dolby Digital Plus].mkv",
     "title": "The Fast and the Furious",
