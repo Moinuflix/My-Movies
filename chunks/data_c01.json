@@ -74,65 +74,7 @@
           "languages": "Tamil, Telugu, Hindi, Malayalam",
           "size": "20GB"
         }
-      }
-    ]
-  },
-  {
-    "id": "12YWkpdUKLE7dvmncXYvfxTpBXTUDltjF",
-    "name": "Jailer 2 (2026) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
-    "title": "Jailer 2",
-    "original_title": "ஜெயிலர் 2",
-    "original_language": "ta",
-    "year": 2026,
-    "runtime": 163,
-    "tmdb_id": 1234139,
-    "rating": 8,
-    "collection": "Jailer Collection",
-    "director": [
-      "Nelson"
-    ],
-    "trailer": "",
-    "cast": [
-      {
-        "name": "Rajinikanth",
-        "role": "Muthuvel 'Tiger' Pandian",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/cQBcrXqcQPfXOQfNfgO3slJM2xi.jpg"
       },
-      {
-        "name": "S. J. Suryah",
-        "role": "Bodhi Kalpak",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/7Q8510XwxPU1193cteaFQsiq2rv.jpg"
-      },
-      {
-        "name": "Suraj Venjaramoodu",
-        "role": "Dileep",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/2FUs0wmR3eHBd8g4GVbCmhkUzeI.jpg"
-      },
-      {
-        "name": "Ramya Krishnan",
-        "role": "Vijayalakshmi 'Viji' Pandian",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/7C1bj7z3XhqxjDIGoCs6MFJdSVa.jpg"
-      },
-      {
-        "name": "Vidya Balan",
-        "role": "Kantha Kalpak",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/m4bnX5VQs2DfvQsLmfbKbBxUkC9.jpg"
-      }
-    ],
-    "plot": "When a dangerous syndicate expands its reach to threaten his family's peace, retired jailer Tiger Muthuvel Pandian goes undercover as a driver. Operating from the shadows, he takes on ruthless new enemies to protect his home.",
-    "poster": "https://image.tmdb.org/t/p/w500/ggksxezKElvrpiL8grnGFBTAueP.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/m0ks2o59mOAz6WdCybJ5FAUNTOU.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=12YWkpdUKLE7dvmncXYvfxTpBXTUDltjF|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p",
-      "source": "Prime Video",
-      "codec": "H.264",
-      "audio": "Dolby Digital Plus",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": "13GB"
-    },
-    "versions": [
       {
         "id": "12YWkpdUKLE7dvmncXYvfxTpBXTUDltjF",
         "name": "Jailer 2 (2026) [1080p] [Prime Video] [Dolby Digital Plus].mkv",
@@ -230,6 +172,14 @@
           "languages": "Tamil, Telugu, Hindi, Malayalam",
           "size": "16GB"
         }
+      },
+      {
+        "id": "1f4WhMNET1GSYyBhlD1FGramgUUdwQsB6",
+        "name": "The Fast and the Furious (2001) [Tamil + Hindi + Telugu + English + Malayalam + Kannada] [AMZN] [1080p] [x264] [DD+ 5.1].mkv",
+        "quality": "1080p",
+        "audio": "DD+ 5.1",
+        "source": "AMZN",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1f4WhMNET1GSYyBhlD1FGramgUUdwQsB6|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
   },
@@ -796,6 +746,17 @@
           "languages": "Tamil",
           "size": "10GB"
         }
+      },
+      {
+        "id": "1siebBwqgfCwPoDH6ucx4-G7gmNct2bGL",
+        "name": "Meesaya Murukku 2 (2026) [1080p FHD] [WEB-DL] [Dolby Atmos].mkv",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
+        "source": "WEB-DL",
+        "studio": "WEB-DL",
+        "resolution": "1080p FHD",
+        "audio": "Dolby Atmos",
+        "size": "2GB",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1siebBwqgfCwPoDH6ucx4-G7gmNct2bGL|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
   },
@@ -1108,65 +1069,7 @@
           "languages": "Tamil",
           "size": ""
         }
-      }
-    ]
-  },
-  {
-    "id": "1Ivyertgq_hk-cQ5yp5-0X9EVxmiwivHJ",
-    "name": "The Paradise (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
-    "title": "The Paradise",
-    "original_title": "ది ప్యారడైజ్",
-    "original_language": "te",
-    "year": 2026,
-    "runtime": 170,
-    "tmdb_id": 1376856,
-    "rating": 4.9,
-    "collection": "",
-    "director": [
-      "Srikanth Odela"
-    ],
-    "trailer": "",
-    "cast": [
-      {
-        "name": "Nani",
-        "role": "Sarakka 'Jadal'",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/jfOH4sUWs3VXuGUlo0VLMYNRBQ4.jpg"
       },
-      {
-        "name": "Mohan Babu",
-        "role": "Shikanja Maalik",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/zwqcXtnk0ju0nhuhvZXSLL2nLIy.jpg"
-      },
-      {
-        "name": "Kayadu Lohar",
-        "role": "Subbulakshmi 'Subbu'",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/pHaMPnrfnWvTPZA4IOmZk8BHY0U.jpg"
-      },
-      {
-        "name": "Sonali Kulkarni",
-        "role": "Sammakka",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/aQeM6N2JgGFbI5VoltWhkxw6OQC.jpg"
-      },
-      {
-        "name": "Raghav Juyal",
-        "role": "Vikram Maalik",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/ncJa8IBYfDknQLpjeciaQy6dXkH.jpg"
-      }
-    ],
-    "plot": "In 1980s Secunderabad, a marginalized tribe battles discrimination and fights for citizenship under an unexpected leader's guidance, challenging systemic oppression.",
-    "poster": "https://image.tmdb.org/t/p/w500/smghVMoMWSIFi5dgIz4w1UIcEcY.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/7AcH5TFppoMusNkCBLaQP6UOODp.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Ivyertgq_hk-cQ5yp5-0X9EVxmiwivHJ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p",
-      "source": "WEB-DL",
-      "codec": "x265",
-      "audio": "Dolby Atmos",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": ""
-    },
-    "versions": [
       {
         "id": "1Ivyertgq_hk-cQ5yp5-0X9EVxmiwivHJ",
         "name": "The Paradise (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
@@ -1498,65 +1401,7 @@
           "languages": "Tamil",
           "size": ""
         }
-      }
-    ]
-  },
-  {
-    "id": "17E3QIUWI2zv1QvZFWvnrOJ-TAWjMyT_c",
-    "name": "Baththa (2026) [4K UHD] [Netflix] [Dolby Atmos].mkv",
-    "title": "Baththa",
-    "original_title": "பத்தா",
-    "original_language": "ta",
-    "year": 2026,
-    "runtime": 159,
-    "tmdb_id": 1515692,
-    "rating": 8.2,
-    "collection": "",
-    "director": [
-      "Balaji Tharaneetharan"
-    ],
-    "trailer": "https://www.youtube.com/watch?v=QAMyuZSvqWI",
-    "cast": [
-      {
-        "name": "Vijay Sethupathi",
-        "role": "Bathvachalam 'Baththa'",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/a3HWdfCAbplrvoMNEJCjnkbqqOo.jpg"
       },
-      {
-        "name": "Lijomol Jose",
-        "role": "Kannima",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/vXFBgF6NMON7L4RzZ6B35lOVYOu.jpg"
-      },
-      {
-        "name": "Sai Prithviraj",
-        "role": "Sabari",
-        "thumbnail": ""
-      },
-      {
-        "name": "Sahasra Sree",
-        "role": "Thenmozhi 'Thenu'",
-        "thumbnail": ""
-      },
-      {
-        "name": "Santhy Balachandran",
-        "role": "Selvi",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/gLpx6IM3Ifs6m1tytsc3yc4Lw90.jpg"
-      }
-    ],
-    "plot": "In 1986 Madras, a timid eight-year-old boy accidentally traps a feared gangster inside a deserted school toilet. As the gangster is forced to confront hunger, loneliness and his own vulnerability, an unlikely bond begins to grow between the two, changing their lives forever.",
-    "poster": "https://image.tmdb.org/t/p/w500/n8Df1H1TmcmZfjGgWh5uQyRFzHy.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/5sBnZMT1aJ6cBvehKOzOOLdI6bz.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=17E3QIUWI2zv1QvZFWvnrOJ-TAWjMyT_c|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "4K UHD",
-      "source": "Netflix",
-      "codec": "x265",
-      "audio": "Dolby Atmos",
-      "channels": "5.1",
-      "languages": "",
-      "size": "13GB"
-    },
-    "versions": [
       {
         "id": "17E3QIUWI2zv1QvZFWvnrOJ-TAWjMyT_c",
         "name": "Baththa (2026) [4K UHD] [Netflix] [Dolby Atmos].mkv",
@@ -1576,94 +1421,6 @@
           "languages": "",
           "size": "13GB"
         }
-      },
-      {
-        "id": "1Kd0_E8eHQnz6W0_lvUd9CfsYRRMSP3CE",
-        "name": "Baththa (2026) [1080p] [Netflix] [Dolby Atmos].mkv",
-        "quality": "1080p • Netflix • Dolby Atmos Multi [10GB]",
-        "source": "Netflix",
-        "codec": "x265",
-        "resolution": "1080p",
-        "audio": "Dolby Atmos",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Kd0_E8eHQnz6W0_lvUd9CfsYRRMSP3CE|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p",
-          "source": "Netflix",
-          "codec": "x265",
-          "audio": "Dolby Atmos",
-          "channels": "5.1",
-          "languages": "Tamil, Telugu, Hindi, Malayalam",
-          "size": "10GB"
-        }
-      }
-    ]
-  },
-  {
-    "id": "1siebBwqgfCwPoDH6ucx4-G7gmNct2bGL",
-    "name": "Meesaya Murukku 2 (2026) [1080p FHD] [WEB-DL] [Dolby Atmos].mkv",
-    "title": "Meesaya Murukku 2",
-    "original_title": "மீசைய முருக்கு 2",
-    "original_language": "ta",
-    "year": 2026,
-    "runtime": 138,
-    "tmdb_id": 1538457,
-    "rating": 7,
-    "collection": "Meesaya Murukku Collection",
-    "studio": "WEB-DL",
-    "genres": [
-      "Comedy",
-      "Romance",
-      "Drama"
-    ],
-    "director": [
-      "HipHop Tamizha Adhi"
-    ],
-    "cast": [
-      {
-        "name": "HipHop Tamizha Adhi",
-        "role": "Jeeva/Tiger Shiva"
-      },
-      {
-        "name": "Ketika Sharma",
-        "role": "Laila Singh"
-      },
-      {
-        "name": "Chaithra J Achar",
-        "role": "Latchumi"
-      },
-      {
-        "name": "Ramya Ranganathan",
-        "role": "Vaani"
-      },
-      {
-        "name": "Harshath Khan",
-        "role": "Harshath"
-      }
-    ],
-    "plot": "After facing rejection in love and getting into a fight, Jeeva learns about his father Siva's struggles and sacrifices. Inspired by his grandfather's legacy and father's dedication, Jeeva changes his outlook and works hard toward his musical dream. Through determination and perseverance, Jeeva earns recognition in the music industry and brings pride to his family.",
-    "poster": "https://image.tmdb.org/t/p/w500/qD1QwmInB9ezd2peVb5EbhaM4Mo.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/8iG6naruSFn4CuSWB01F0JuImCc.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1siebBwqgfCwPoDH6ucx4-G7gmNct2bGL|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p FHD",
-      "audio": "Dolby Atmos",
-      "source": "WEB-DL",
-      "size": "2GB",
-      "channels": "5.1",
-      "codec": "H.264"
-    },
-    "versions": [
-      {
-        "id": "1siebBwqgfCwPoDH6ucx4-G7gmNct2bGL",
-        "name": "Meesaya Murukku 2 (2026) [1080p FHD] [WEB-DL] [Dolby Atmos].mkv",
-        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
-        "source": "WEB-DL",
-        "studio": "WEB-DL",
-        "resolution": "1080p FHD",
-        "audio": "Dolby Atmos",
-        "size": "2GB",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1siebBwqgfCwPoDH6ucx4-G7gmNct2bGL|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
   },
@@ -1877,6 +1634,26 @@
           "languages": "Tamil, Hindi, Telugu, Malayalam",
           "size": ""
         }
+      },
+      {
+        "id": "1J38xZY2w8RVBx3K7pTFsHU0OxA-4y6ma",
+        "name": "Chennai Express (2013) [1080p] [BLURAY] [Dolby Digital Plus].mkv",
+        "quality": "1080p • BLURAY • Dolby Digital Plus",
+        "source": "BLURAY",
+        "codec": "H.264",
+        "resolution": "1080p",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1J38xZY2w8RVBx3K7pTFsHU0OxA-4y6ma|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "BLURAY",
+          "codec": "H.264",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Hindi",
+          "size": ""
+        }
       }
     ]
   },
@@ -1955,6 +1732,14 @@
           "languages": "Tamil",
           "size": ""
         }
+      },
+      {
+        "id": "1-Gvszi2sTEjjrjDopdkIbLjrUj24Xxc8",
+        "name": "Finding Nemo (2003) [Multi] [AMZN] [1080p] [x264] [DD+ 5.1].mkv",
+        "quality": "1080p",
+        "audio": "DD+ 5.1",
+        "source": "AMZN",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1-Gvszi2sTEjjrjDopdkIbLjrUj24Xxc8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
   },
@@ -2032,84 +1817,6 @@
           "channels": "5.1",
           "languages": "Tamil, Telugu, Hindi",
           "size": "10GB"
-        }
-      }
-    ]
-  },
-  {
-    "id": "1J38xZY2w8RVBx3K7pTFsHU0OxA-4y6ma",
-    "name": "Chennai Express (2013) [1080p] [BLURAY] [Dolby Digital Plus].mkv",
-    "title": "Chennai Express",
-    "original_title": "Chennai Express",
-    "original_language": "hi",
-    "year": 2013,
-    "runtime": 141,
-    "tmdb_id": 205022,
-    "rating": 6.5,
-    "collection": "",
-    "director": [
-      "Rohit Shetty"
-    ],
-    "trailer": "https://www.youtube.com/watch?v=rARol7Dk2zo",
-    "cast": [
-      {
-        "name": "Shah Rukh Khan",
-        "role": "Rahul Mithaiwala",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/tKeQhSyXyzlzxNtxFq24iIvzXrC.jpg"
-      },
-      {
-        "name": "Deepika Padukone",
-        "role": "Meenamma Lochini Azhagusundaram",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/rzvvBQ0r6oiqDdzcsdTRB7jN4Rx.jpg"
-      },
-      {
-        "name": "Nikitin Dheer",
-        "role": "Tangaballi",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/gAHNWVtStTGsqf2uxCegxvn6ILe.jpg"
-      },
-      {
-        "name": "Sathyaraj",
-        "role": "Durgeshwara Azhagusundaram",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/lnlBZ7V3K3Z3OIsjCd0zkKx26L3.jpg"
-      },
-      {
-        "name": "Mukesh Tiwari",
-        "role": "Inspector Shamsher",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/37GTjltEJHpi1lQmLmHKJYTpxjj.jpg"
-      }
-    ],
-    "plot": "Rahul embarks on a journey to a small town in Tamil Nadu to fulfill the last wish of his grandfather: to have his ashes immersed in the Holy water of Rameshwaram. En route, he meets a woman hailing from a unique family down South. As they find love through this journey in the exuberant lands of South India, an unanticipated drive awaits them.",
-    "poster": "https://image.tmdb.org/t/p/w500/9j7XfhBJKNfidMCa8JsNbqU1waV.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/6JpbbREGqdEtePnCwxJRcTNX2jZ.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1J38xZY2w8RVBx3K7pTFsHU0OxA-4y6ma|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p",
-      "source": "BLURAY",
-      "codec": "H.264",
-      "audio": "Dolby Digital Plus",
-      "channels": "5.1",
-      "languages": "Hindi",
-      "size": ""
-    },
-    "versions": [
-      {
-        "id": "1J38xZY2w8RVBx3K7pTFsHU0OxA-4y6ma",
-        "name": "Chennai Express (2013) [1080p] [BLURAY] [Dolby Digital Plus].mkv",
-        "quality": "1080p • BLURAY • Dolby Digital Plus",
-        "source": "BLURAY",
-        "codec": "H.264",
-        "resolution": "1080p",
-        "audio": "Dolby Digital Plus",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1J38xZY2w8RVBx3K7pTFsHU0OxA-4y6ma|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p",
-          "source": "BLURAY",
-          "codec": "H.264",
-          "audio": "Dolby Digital Plus",
-          "channels": "5.1",
-          "languages": "Hindi",
-          "size": ""
         }
       }
     ]
@@ -2427,36 +2134,6 @@
     ]
   },
   {
-    "id": "1-Gvszi2sTEjjrjDopdkIbLjrUj24Xxc8",
-    "title": "Finding Nemo",
-    "name": "Finding Nemo (2003) [Multi] [AMZN] [1080p] [x264] [DD+ 5.1].mkv",
-    "original_language": "en",
-    "year": 2003,
-    "tmdb_id": 12,
-    "collection": "Finding Nemo Collection",
-    "poster": "https://image.tmdb.org/t/p/w500/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/eCynaAOgYYiw5yN5lBwz3IxqvaW.jpg",
-    "plot": "Nemo, an adventurous young clownfish, is unexpectedly taken from his Great Barrier Reef home to a dentist's office aquarium. It's up to his worrisome father Marlin and a friendly but forgetful fish Dory to bring Nemo home -- meeting vegetarian sharks, surfer dude turtles, hypnotic jellyfish, hungry seagulls, and more along the way.",
-    "specs": {
-      "resolution": "1080p",
-      "audio": "DD+ 5.1",
-      "source": "AMZN",
-      "codec": "x264",
-      "size": "3GB"
-    },
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1-Gvszi2sTEjjrjDopdkIbLjrUj24Xxc8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "versions": [
-      {
-        "id": "1-Gvszi2sTEjjrjDopdkIbLjrUj24Xxc8",
-        "name": "Finding Nemo (2003) [Multi] [AMZN] [1080p] [x264] [DD+ 5.1].mkv",
-        "quality": "1080p",
-        "audio": "DD+ 5.1",
-        "source": "AMZN",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1-Gvszi2sTEjjrjDopdkIbLjrUj24Xxc8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-      }
-    ]
-  },
-  {
     "id": "1s4GtNRzhUdBRfcYrF2LFlhS3LTKH1PQQ",
     "title": "3 Day Test",
     "name": "3 Day Test (2012) [Multi] [AMZN] [1080p] [x264] [DD+ 5.1].mkv",
@@ -2513,36 +2190,6 @@
         "audio": "DD+ 5.1",
         "source": "AMZN",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1GaGrMAFqgcnGChMG1EYWafl5L4PP-tGW|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-      }
-    ]
-  },
-  {
-    "id": "1f4WhMNET1GSYyBhlD1FGramgUUdwQsB6",
-    "title": "The Fast and the Furious",
-    "name": "The Fast and the Furious (2001) [Tamil + Hindi + Telugu + English + Malayalam + Kannada] [AMZN] [1080p] [x264] [DD+ 5.1].mkv",
-    "original_language": "en",
-    "year": 2001,
-    "tmdb_id": 9799,
-    "collection": "The Fast and the Furious Collection",
-    "poster": "https://image.tmdb.org/t/p/w500/gqY0ITBgT7A82poL9jv851qdnIb.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/jY9ef5nqY4xIIMu3yzW3qamUCoi.jpg",
-    "plot": "Dominic Toretto is a Los Angeles street racer suspected of masterminding a series of big-rig hijackings. When undercover cop Brian O'Conner infiltrates Toretto's iconoclastic crew, he falls for Toretto's sister and must choose a side: the gang or the LAPD.",
-    "specs": {
-      "resolution": "1080p",
-      "audio": "DD+ 5.1",
-      "source": "AMZN",
-      "codec": "x264",
-      "size": "10GB"
-    },
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1f4WhMNET1GSYyBhlD1FGramgUUdwQsB6|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "versions": [
-      {
-        "id": "1f4WhMNET1GSYyBhlD1FGramgUUdwQsB6",
-        "name": "The Fast and the Furious (2001) [Tamil + Hindi + Telugu + English + Malayalam + Kannada] [AMZN] [1080p] [x264] [DD+ 5.1].mkv",
-        "quality": "1080p",
-        "audio": "DD+ 5.1",
-        "source": "AMZN",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1f4WhMNET1GSYyBhlD1FGramgUUdwQsB6|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
   },
@@ -2718,7 +2365,7 @@
       "codec": "H.264",
       "audio": "Dolby Atmos",
       "channels": "5.1",
-      "languages": "Tamil",
+      "languages": "Tamil, Telugu, Hindi, Malayalam",
       "size": "13GB"
     },
     "versions": [
@@ -2761,6 +2408,27 @@
           "languages": "Tamil, Telugu, Hindi, Malayalam",
           "size": "9GB"
         }
+      },
+      {
+        "id": "1Mo4VttVz3i3FszpZjS70wS5Zd1xtGT5H",
+        "name": "Sardar 2 (2026) [1080p] [WEB-DL] [AAC].mkv",
+        "quality": "1080p • WEB-DL • AAC",
+        "source": "WEB-DL",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "AAC",
+        "channels": "2.0",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Mo4VttVz3i3FszpZjS70wS5Zd1xtGT5H|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "AAC",
+          "channels": "2.0",
+          "languages": "Tamil",
+          "size": "19GB"
+        },
+        "size": "18.5 GB"
       }
     ]
   },
@@ -2811,37 +2479,7 @@
           "languages": "Tamil",
           "size": ""
         }
-      }
-    ]
-  },
-  {
-    "id": "1HyQE5eqvV8BewCdbR9Xq3jbh1eUX0zXN",
-    "name": "Dolby Presents: Amaze (2014) [4K UHD] [WEB-DL] [Dolby Atmos].mkv",
-    "title": "Dolby Presents: Amaze",
-    "original_title": "Dolby Presents: Amaze",
-    "original_language": "en",
-    "year": 2014,
-    "runtime": 1,
-    "tmdb_id": 1047826,
-    "rating": 7.5,
-    "collection": "",
-    "director": [],
-    "trailer": "https://www.youtube.com/watch?v=kvAfmYNtugQ",
-    "cast": [],
-    "plot": "Enter a new world of sound with Dolby Atmos®. A leap forward from surround sound, it transports you into the story with moving audio that fills the cinema and flows all around you — even overhead — to deliver the premier sound of entertainment. You’ll feel like you’re inside the action as the sounds of people, places, things, and music come alive with breathtaking realism and move throughout the space. Immersive and emotive, Dolby Atmos is sound you can feel — sound that creates a powerfully moving entertainment experience.",
-    "poster": "https://image.tmdb.org/t/p/w500/1durwQj4FvYnI7mAtjI3HzkknuO.jpg",
-    "fanart": "",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1HyQE5eqvV8BewCdbR9Xq3jbh1eUX0zXN|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "4K UHD",
-      "source": "WEB-DL",
-      "codec": "x265",
-      "audio": "Dolby Atmos",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": ""
-    },
-    "versions": [
+      },
       {
         "id": "1HyQE5eqvV8BewCdbR9Xq3jbh1eUX0zXN",
         "name": "Dolby Presents: Amaze (2014) [4K UHD] [WEB-DL] [Dolby Atmos].mkv",
@@ -2861,6 +2499,48 @@
           "languages": "Tamil",
           "size": ""
         }
+      },
+      {
+        "id": "1py7RRrVsXvTvmdcuf4JCnpphLDTFyWxj",
+        "name": "Dolby Presents: Amaze (2014) [1080p] [WEB-DL] [Dolby Atmos].mkv",
+        "quality": "1080p • WEB-DL • Dolby Atmos",
+        "source": "WEB-DL",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1py7RRrVsXvTvmdcuf4JCnpphLDTFyWxj|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": ""
+        },
+        "size": "10 GB"
+      },
+      {
+        "id": "1mtoiZgISqDqnErLVNeS5W9KxCxIaixbu",
+        "name": "Dolby Presents: Amaze (2014) [4K UHD] [Netflix] [Dolby Atmos].mkv",
+        "quality": "4K UHD • Netflix • Dolby Atmos",
+        "source": "Netflix",
+        "codec": "x265",
+        "resolution": "4K UHD",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1mtoiZgISqDqnErLVNeS5W9KxCxIaixbu|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "4K UHD",
+          "source": "Netflix",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": ""
+        },
+        "size": "10 GB"
       }
     ]
   },
@@ -2951,6 +2631,58 @@
         "audio": "DD+ 5.1",
         "source": "BluRay",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1RntSjIHCAdZkqSmkq73Tq-HwVaXDwDnz|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+      },
+      {
+        "id": "1exAZYsaqaBxFkDvWH74zf-r9SNWA-y_B",
+        "name": "Vikram.2022.1080p.10bit.DSNP.WEBRip.Multi.DDP5.1.H.265.Homelander.[60FPS].mkv",
+        "quality": "1080p FHD • WEB-DL • AAC",
+        "source": "WEB-DL",
+        "codec": "H.264",
+        "resolution": "1080p FHD",
+        "audio": "AAC",
+        "channels": "2.0",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1exAZYsaqaBxFkDvWH74zf-r9SNWA-y_B|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "2.0",
+          "size": "11.7 GB"
+        },
+        "size": "11.7 GB"
+      },
+      {
+        "id": "1tMbv0Zxy8LYW4EvTTf5NF5kyF7ySYAhD",
+        "name": "Vikram (2022) [1080p] [x265] [Dolby Atmos].mkv",
+        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
+        "source": "WEB-DL",
+        "codec": "x265",
+        "resolution": "1080p FHD",
+        "audio": "Dolby Atmos",
+        "channels": "7.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1tMbv0Zxy8LYW4EvTTf5NF5kyF7ySYAhD|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "quality": "1080p",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "7.1",
+          "languages": "Tamil",
+          "size": "11.7 GB"
+        },
+        "size": "10 GB"
+      },
+      {
+        "id": "1eiZ4-4ZQ5ROJHQMYGI8OYkP17aviv46o",
+        "name": "Vikram (2022) [1080p FHD] [Disney+ Hotstar] [Dolby Atmos].mkv",
+        "quality": "1080p FHD • Disney+ Hotstar • Dolby Atmos",
+        "source": "Disney+ Hotstar",
+        "resolution": "1080p FHD",
+        "audio": "Dolby Atmos",
+        "size": "10 GB",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1eiZ4-4ZQ5ROJHQMYGI8OYkP17aviv46o|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
   },
@@ -2981,36 +2713,6 @@
         "audio": "DD+ 5.1",
         "source": "AMZN",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1EoB6EhN-gihW8JbQpPyTN8LHEEJO4Hv7|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-      }
-    ]
-  },
-  {
-    "id": "1174iMZEfCfLTQGaaHVnZl7A1_cLQilgY",
-    "title": "Pechi",
-    "name": "Pechi (2024) [Tamil] [AMZN] [1080p] [AVC] [DD+ 5.1].mkv",
-    "original_language": "ta",
-    "year": 2024,
-    "tmdb_id": 1321821,
-    "collection": "",
-    "poster": "https://image.tmdb.org/t/p/w500/6Pla6xHgD0kep7S9z6KfXzi6B4l.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/cAwBPZDaDjllk1Geicgj21cDZTS.jpg",
-    "plot": "Five young trekkers and their tour guide embark on a weekend adventure in the Kollimalai hills. Despite warnings, they venture into a restricted area, unknowingly entering the domain of a malevolent spirit, which is hell bent on wreaking havoc in their lives. Did they survive the relentless onslaught and harrowing encounter with the supernatural force in the haunted woods?",
-    "specs": {
-      "resolution": "1080p",
-      "audio": "DD+ 5.1",
-      "source": "AMZN",
-      "codec": "AVC",
-      "size": "6GB"
-    },
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1174iMZEfCfLTQGaaHVnZl7A1_cLQilgY|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "versions": [
-      {
-        "id": "1174iMZEfCfLTQGaaHVnZl7A1_cLQilgY",
-        "name": "Pechi (2024) [Tamil] [AMZN] [1080p] [AVC] [DD+ 5.1].mkv",
-        "quality": "1080p",
-        "audio": "DD+ 5.1",
-        "source": "AMZN",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1174iMZEfCfLTQGaaHVnZl7A1_cLQilgY|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
   },
@@ -3371,6 +3073,27 @@
         "audio": "Dolby Atmos",
         "size": "4.5 GB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1r-3HRa6ST9BwUwA7nCDKzXnN7Ignt144|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+      },
+      {
+        "id": "1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8",
+        "name": "Thalaivar Thambi Thalaimaiyil (2026) 2160p NF WEB-DL HEVC x265 [Tamil + Telugu + Malayalam + Kannada (DD+ 5 1 - 640kbps)] ESub [2160p] [14 GB].mkv",
+        "quality": "4K UHD • Netflix • Dolby Digital",
+        "source": "Netflix",
+        "codec": "HEVC",
+        "resolution": "4K UHD",
+        "audio": "Dolby Digital",
+        "channels": "5.1",
+        "size": "14.4 GB",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "4K UHD",
+          "source": "WEB-DL",
+          "codec": "HEVC",
+          "audio": "Dolby Digital",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "14.4 GB"
+        }
       }
     ]
   },
@@ -4600,79 +4323,6 @@
     ]
   },
   {
-    "id": "1py7RRrVsXvTvmdcuf4JCnpphLDTFyWxj",
-    "name": "Dolby Presents: Amaze (2014) [1080p] [WEB-DL] [Dolby Atmos].mkv",
-    "title": "Dolby Presents: Amaze",
-    "original_title": "Dolby Presents: Amaze",
-    "original_language": "en",
-    "year": 2014,
-    "runtime": 1,
-    "tmdb_id": 1047826,
-    "rating": 7.5,
-    "collection": "",
-    "director": [],
-    "trailer": "https://www.youtube.com/watch?v=kvAfmYNtugQ",
-    "cast": [],
-    "plot": "Enter a new world of sound with Dolby Atmos®. A leap forward from surround sound, it transports you into the story with moving audio that fills the cinema and flows all around you — even overhead — to deliver the premier sound of entertainment. You’ll feel like you’re inside the action as the sounds of people, places, things, and music come alive with breathtaking realism and move throughout the space. Immersive and emotive, Dolby Atmos is sound you can feel — sound that creates a powerfully moving entertainment experience.",
-    "poster": "https://image.tmdb.org/t/p/w500/1durwQj4FvYnI7mAtjI3HzkknuO.jpg",
-    "fanart": "",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1py7RRrVsXvTvmdcuf4JCnpphLDTFyWxj|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p",
-      "source": "WEB-DL",
-      "codec": "x265",
-      "audio": "Dolby Atmos",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": ""
-    },
-    "versions": [
-      {
-        "id": "1py7RRrVsXvTvmdcuf4JCnpphLDTFyWxj",
-        "name": "Dolby Presents: Amaze (2014) [1080p] [WEB-DL] [Dolby Atmos].mkv",
-        "quality": "1080p • WEB-DL • Dolby Atmos",
-        "source": "WEB-DL",
-        "codec": "x265",
-        "resolution": "1080p",
-        "audio": "Dolby Atmos",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1py7RRrVsXvTvmdcuf4JCnpphLDTFyWxj|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p",
-          "source": "WEB-DL",
-          "codec": "x265",
-          "audio": "Dolby Atmos",
-          "channels": "5.1",
-          "languages": "Tamil",
-          "size": ""
-        },
-        "size": "10 GB"
-      },
-      {
-        "id": "1mtoiZgISqDqnErLVNeS5W9KxCxIaixbu",
-        "name": "Dolby Presents: Amaze (2014) [4K UHD] [Netflix] [Dolby Atmos].mkv",
-        "quality": "4K UHD • Netflix • Dolby Atmos",
-        "source": "Netflix",
-        "codec": "x265",
-        "resolution": "4K UHD",
-        "audio": "Dolby Atmos",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1mtoiZgISqDqnErLVNeS5W9KxCxIaixbu|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "4K UHD",
-          "source": "Netflix",
-          "codec": "x265",
-          "audio": "Dolby Atmos",
-          "channels": "5.1",
-          "languages": "Tamil",
-          "size": ""
-        },
-        "size": "10 GB"
-      }
-    ],
-    "soundtrack": {}
-  },
-  {
     "id": "1vqn1WZL-_HVHP8iYKeTia8MTUtxxXzrM",
     "name": "Bāhubali: The Beginning (2015) [1080p] [BLURAY] [Dolby Atmos].mkv",
     "title": "Bāhubali: The Beginning",
@@ -5278,85 +4928,6 @@
       }
     ],
     "soundtrack": {}
-  },
-  {
-    "id": "1Mo4VttVz3i3FszpZjS70wS5Zd1xtGT5H",
-    "name": "Sardar 2 (2026) [1080p] [WEB-DL] [AAC].mkv",
-    "title": "Sardar 2",
-    "original_title": "சர்தார் 2",
-    "original_language": "ta",
-    "year": 2026,
-    "runtime": 165,
-    "tmdb_id": 1317872,
-    "rating": 7.5,
-    "collection": "Sardar - A Spy Story",
-    "director": [
-      "P. S. Mithran"
-    ],
-    "trailer": "",
-    "cast": [
-      {
-        "name": "Karthi",
-        "role": "Agent “Sardar” Chandra Bose / Inspector Vijay Prakash",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/ycxl56NbjNkJZkYbUMdwGdnBIg7.jpg"
-      },
-      {
-        "name": "S. J. Suryah",
-        "role": "Yoganandan \"Yogi\" a.k.a Black Dagger",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/7Q8510XwxPU1193cteaFQsiq2rv.jpg"
-      },
-      {
-        "name": "Malavika Mohanan",
-        "role": "Agent “Zara”",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/ukA3kk56Eqhn8g42an73CgdpXC5.jpg"
-      },
-      {
-        "name": "Ashika Ranganath",
-        "role": "Faiza",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/eZrmfpxV1KCcKPiX6zWCyJLpaOc.jpg"
-      },
-      {
-        "name": "Rajisha Vijayan",
-        "role": "Indhra Rani",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/u5Oq0XHQeHeZLg0NbPZCyCo3Uc6.jpg"
-      }
-    ],
-    "plot": "When the mysterious Black Dagger threatens national security, Inspector Vijay embarks on his most dangerous mission yet. As the battle unfolds, the extraordinary origin of legendary spy Sardar is finally revealed, uncovering the sacrifices that forged a legend and the secrets that could shape the future.",
-    "poster": "https://image.tmdb.org/t/p/w500/muGsRtsNrG1gnlF2fPYrBa4TGlr.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/i39M5xz57fEkPLtuiAXqWwMNMyN.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Mo4VttVz3i3FszpZjS70wS5Zd1xtGT5H|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p",
-      "source": "WEB-DL",
-      "codec": "x265",
-      "audio": "AAC",
-      "channels": "2.0",
-      "languages": "Tamil",
-      "size": "19GB"
-    },
-    "versions": [
-      {
-        "id": "1Mo4VttVz3i3FszpZjS70wS5Zd1xtGT5H",
-        "name": "Sardar 2 (2026) [1080p] [WEB-DL] [AAC].mkv",
-        "quality": "1080p • WEB-DL • AAC",
-        "source": "WEB-DL",
-        "codec": "x265",
-        "resolution": "1080p",
-        "audio": "AAC",
-        "channels": "2.0",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Mo4VttVz3i3FszpZjS70wS5Zd1xtGT5H|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p",
-          "source": "WEB-DL",
-          "codec": "x265",
-          "audio": "AAC",
-          "channels": "2.0",
-          "languages": "Tamil",
-          "size": "19GB"
-        },
-        "size": "18.5 GB"
-      }
-    ]
   },
   {
     "id": "1cySTu58oZljadhvqv0M6U2eCR3q8J7rf",
@@ -6787,91 +6358,6 @@
           "size": ""
         },
         "size": "6.7 GB"
-      }
-    ]
-  },
-  {
-    "id": "1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8",
-    "name": "Thalaivar Thambi Thalaimaiyil (2026) 2160p NF WEB-DL HEVC x265 [Tamil + Telugu + Malayalam + Kannada (DD+ 5 1 - 640kbps)] ESub [2160p] [14 GB].mkv",
-    "title": "Thalaivar Thambi Thalaimaiyil",
-    "original_title": "தலைவர் தம்பி தலைமையில்",
-    "original_language": "ta",
-    "year": 2026,
-    "runtime": 113,
-    "tmdb_id": 869140,
-    "rating": 6.5,
-    "director": [
-      "Nithish Sahadev"
-    ],
-    "cast": [
-      {
-        "name": "Jiiva",
-        "role": "Jeeva Rathnam",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/2WWVp0eQZs1BqGl4NdhElifrcc9.jpg"
-      },
-      {
-        "name": "Prathana Nathan",
-        "role": "Sowmya/Sowmi",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/qJBSz9cy3J7AeLoekiTLJ1MNvfM.jpg"
-      },
-      {
-        "name": "Ilavarasu",
-        "role": "Ilavarasu",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/gWCREhajMvlOE49g79zyvwdpf5E.jpg"
-      },
-      {
-        "name": "Thambi Ramaiah",
-        "role": "Mani",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/murNGZdySdA7uKgLBeMwOK4wEdg.jpg"
-      },
-      {
-        "name": "Jenson Dhivakar",
-        "role": "Thavidu",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/4QAdVaCP4l1BA39Fc35WwH7mv4T.jpg"
-      }
-    ],
-    "plot": "A village official attending a wedding becomes entangled in an escalating family dispute over power and old resentments, testing his leadership as he tries to contain the situation.",
-    "poster": "https://image.tmdb.org/t/p/w500/wqofJvDrFv65QgyVmNI4loi9jZZ.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/cpOUDK8BBJyvrUuLN8YTRttXEab.jpg",
-    "trailer": "",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "badges": {
-      "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/4k.png",
-      "hdr": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/hdr/hdr.png",
-      "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web.png",
-      "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
-      "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-    },
-    "specs": {
-      "resolution": "4K UHD",
-      "source": "Netflix",
-      "codec": "HEVC",
-      "audio": "Dolby Digital",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": "14.4 GB"
-    },
-    "versions": [
-      {
-        "id": "1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8",
-        "name": "Thalaivar Thambi Thalaimaiyil (2026) 2160p NF WEB-DL HEVC x265 [Tamil + Telugu + Malayalam + Kannada (DD+ 5 1 - 640kbps)] ESub [2160p] [14 GB].mkv",
-        "quality": "4K UHD • Netflix • Dolby Digital",
-        "source": "Netflix",
-        "codec": "HEVC",
-        "resolution": "4K UHD",
-        "audio": "Dolby Digital",
-        "channels": "5.1",
-        "size": "14.4 GB",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "4K UHD",
-          "source": "WEB-DL",
-          "codec": "HEVC",
-          "audio": "Dolby Digital",
-          "channels": "5.1",
-          "languages": "Tamil",
-          "size": "14.4 GB"
-        }
       }
     ]
   },
@@ -17269,125 +16755,6 @@
           "size": "10.6 GB"
         },
         "size": "10.6 GB"
-      }
-    ]
-  },
-  {
-    "id": "1exAZYsaqaBxFkDvWH74zf-r9SNWA-y_B",
-    "name": "Vikram.2022.1080p.10bit.DSNP.WEBRip.Multi.DDP5.1.H.265.Homelander.[60FPS].mkv",
-    "title": "Vikram",
-    "original_title": "Vikram",
-    "year": 2022,
-    "runtime": 174,
-    "tmdb_id": 743563,
-    "imdb_id": "tt9179430",
-    "imdb_url": "https://www.imdb.com/title/tt9179430/",
-    "rating": 7.6,
-    "collection": "Lokesh Cinematic Universe (LCU)",
-    "director": [
-      "Lokesh Kanagaraj"
-    ],
-    "cast": [
-      {
-        "name": "Kamal Haasan",
-        "role": "Karnan / Arun Kumar Vikram",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/17zscZgz4wOlGDd3Gziw4YbI3G.jpg"
-      },
-      {
-        "name": "Fahadh Faasil",
-        "role": "Amar",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/wmkwZWFHqMptqdt4HacMIAe8OBP.jpg"
-      },
-      {
-        "name": "Vijay Sethupathi",
-        "role": "Sandhanam",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/a3HWdfCAbplrvoMNEJCjnkbqqOo.jpg"
-      },
-      {
-        "name": "Narain",
-        "role": "Bejoy",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/d0ApUGeFuGXpBkODIc6eLbBkb7B.jpg"
-      },
-      {
-        "name": "Chemban Vinod Jose",
-        "role": "Police Chief Jose",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/4bCAqhHMcPeoI41Emi4BBSXwZaj.jpg"
-      }
-    ],
-    "plot": "Amar is assigned to investigate a case of serial killings. When Amar investigates the case, he realizes it is not what it seems to be and following down this path will lead to nothing but war between everyone involved.",
-    "poster": "https://image.tmdb.org/t/p/w500/774UV1aCURb4s4JfEFg3IEMu5Zj.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/dkIX4dSMuVqjfrPGunBJUR7K3LQ.jpg",
-    "logo": "https://image.tmdb.org/t/p/original/803y6O9H2q2Jj5SkbRTysZ2zlmx.png",
-    "trailer": {
-      "youtube_url": ""
-    },
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1exAZYsaqaBxFkDvWH74zf-r9SNWA-y_B|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "badges": {
-      "quality": "https://img.icons8.com/color/96/full-hd.png",
-      "source": "https://img.icons8.com/ios-filled/100/ffffff/cloud-download.png",
-      "audio_format": "https://img.icons8.com/color/96/dolby-digital.png",
-      "audio_channels": "https://img.icons8.com/ios-filled/100/ffffff/2-0.png"
-    },
-    "specs": {
-      "resolution": "1080p Full HD",
-      "source": "WEB-DL",
-      "codec": "H.264",
-      "audio": "AAC",
-      "channels": "2.0",
-      "size": "11.7 GB"
-    },
-    "versions": [
-      {
-        "id": "1exAZYsaqaBxFkDvWH74zf-r9SNWA-y_B",
-        "name": "Vikram.2022.1080p.10bit.DSNP.WEBRip.Multi.DDP5.1.H.265.Homelander.[60FPS].mkv",
-        "quality": "1080p FHD • WEB-DL • AAC",
-        "source": "WEB-DL",
-        "codec": "H.264",
-        "resolution": "1080p FHD",
-        "audio": "AAC",
-        "channels": "2.0",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1exAZYsaqaBxFkDvWH74zf-r9SNWA-y_B|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p FHD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "AAC",
-          "channels": "2.0",
-          "size": "11.7 GB"
-        },
-        "size": "11.7 GB"
-      },
-      {
-        "id": "1tMbv0Zxy8LYW4EvTTf5NF5kyF7ySYAhD",
-        "name": "Vikram (2022) [1080p] [x265] [Dolby Atmos].mkv",
-        "quality": "1080p FHD • WEB-DL • Dolby Atmos",
-        "source": "WEB-DL",
-        "codec": "x265",
-        "resolution": "1080p FHD",
-        "audio": "Dolby Atmos",
-        "channels": "7.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1tMbv0Zxy8LYW4EvTTf5NF5kyF7ySYAhD|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p FHD",
-          "quality": "1080p",
-          "source": "WEB-DL",
-          "codec": "x265",
-          "audio": "Dolby Atmos",
-          "channels": "7.1",
-          "languages": "Tamil",
-          "size": "11.7 GB"
-        },
-        "size": "10 GB"
-      },
-      {
-        "id": "1eiZ4-4ZQ5ROJHQMYGI8OYkP17aviv46o",
-        "name": "Vikram (2022) [1080p FHD] [Disney+ Hotstar] [Dolby Atmos].mkv",
-        "quality": "1080p FHD • Disney+ Hotstar • Dolby Atmos",
-        "source": "Disney+ Hotstar",
-        "resolution": "1080p FHD",
-        "audio": "Dolby Atmos",
-        "size": "10 GB",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1eiZ4-4ZQ5ROJHQMYGI8OYkP17aviv46o|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
   },
