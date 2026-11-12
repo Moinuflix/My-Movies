@@ -1588,6 +1588,44 @@
         "audio": "DD+ 5.1",
         "source": "BluRay",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1RntSjIHCAdZkqSmkq73Tq-HwVaXDwDnz|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+      },
+      {
+        "id": "1exAZYsaqaBxFkDvWH74zf-r9SNWA-y_B",
+        "name": "Vikram.2022.1080p.10bit.DSNP.WEBRip.Multi.DDP5.1.H.265.Homelander.[60FPS].mkv",
+        "quality": "1080p",
+        "source": "WEB-DL",
+        "codec": "H.264",
+        "resolution": "1080p FHD",
+        "audio": "AAC",
+        "channels": "2.0",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1exAZYsaqaBxFkDvWH74zf-r9SNWA-y_B|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "AAC",
+          "channels": "2.0"
+        }
+      },
+      {
+        "id": "1tMbv0Zxy8LYW4EvTTf5NF5kyF7ySYAhD",
+        "name": "Vikram (2022) [1080p] [x265] [Dolby Atmos].mkv",
+        "quality": "1080p",
+        "source": "WEB-DL",
+        "codec": "x265",
+        "resolution": "1080p FHD",
+        "audio": "Dolby Atmos",
+        "channels": "7.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1tMbv0Zxy8LYW4EvTTf5NF5kyF7ySYAhD|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "quality": "1080p",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "7.1",
+          "languages": "Tamil"
+        }
       }
     ]
   },
@@ -1618,36 +1656,6 @@
         "audio": "DD+ 5.1",
         "source": "AMZN",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1EoB6EhN-gihW8JbQpPyTN8LHEEJO4Hv7|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
-      }
-    ]
-  },
-  {
-    "id": "1174iMZEfCfLTQGaaHVnZl7A1_cLQilgY",
-    "title": "Pechi",
-    "name": "Pechi (2024) [Tamil] [AMZN] [1080p] [AVC] [DD+ 5.1].mkv",
-    "original_language": "ta",
-    "year": 2024,
-    "tmdb_id": 1321821,
-    "collection": "",
-    "poster": "https://image.tmdb.org/t/p/w500/6Pla6xHgD0kep7S9z6KfXzi6B4l.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/cAwBPZDaDjllk1Geicgj21cDZTS.jpg",
-    "plot": "Five young trekkers and their tour guide embark on a weekend adventure in the Kollimalai hills. Despite warnings, they venture into a restricted area, unknowingly entering the domain of a malevolent spirit, which is hell bent on wreaking havoc in their lives. Did they survive the relentless onslaught and harrowing encounter with the supernatural force in the haunted woods?",
-    "specs": {
-      "resolution": "1080p",
-      "audio": "DD+ 5.1",
-      "source": "AMZN",
-      "codec": "AVC",
-      "size": "6GB"
-    },
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1174iMZEfCfLTQGaaHVnZl7A1_cLQilgY|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "versions": [
-      {
-        "id": "1174iMZEfCfLTQGaaHVnZl7A1_cLQilgY",
-        "name": "Pechi (2024) [Tamil] [AMZN] [1080p] [AVC] [DD+ 5.1].mkv",
-        "quality": "1080p",
-        "audio": "DD+ 5.1",
-        "source": "AMZN",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1174iMZEfCfLTQGaaHVnZl7A1_cLQilgY|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
       }
     ]
   },
@@ -1978,6 +1986,27 @@
         "audio": "Dolby Atmos",
         "size": "10GB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1r-3HRa6ST9BwUwA7nCDKzXnN7Ignt144|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+      },
+      {
+        "id": "1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8",
+        "name": "Thalaivar Thambi Thalaimaiyil (2026) 2160p NF WEB-DL HEVC x265 [Tamil + Telugu + Malayalam + Kannada (DD+ 5 1 - 640kbps)] ESub [2160p] [14 GB].mkv",
+        "quality": "4K UHD",
+        "source": "WEB-DL",
+        "codec": "HEVC",
+        "resolution": "4K UHD",
+        "audio": "Dolby Digital",
+        "channels": "5.1",
+        "size": "14 GB",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "4K UHD",
+          "source": "WEB-DL",
+          "codec": "HEVC",
+          "audio": "Dolby Digital",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "14 GB"
+        }
       }
     ]
   },
@@ -2389,6 +2418,26 @@
         "audio": "Dolby Atmos",
         "size": "14GB",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1zCtth5aLCgozic3F6JHjeaDVPyCeJ_fs|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+      },
+      {
+        "id": "1xZkqN1xmpHuTlwzU9ldW7jqSgK2MpB5C",
+        "name": "Magudam (2026) [1080p] [Prime Video] [Dolby Atmos].mkv",
+        "quality": "1080p • Prime Video • Dolby Atmos [11 GB]",
+        "source": "Prime Video",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "Dolby Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1xZkqN1xmpHuTlwzU9ldW7jqSgK2MpB5C|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Prime Video",
+          "codec": "x265",
+          "audio": "Dolby Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "11 GB"
+        }
       }
     ]
   },
@@ -3577,84 +3626,6 @@
     ]
   },
   {
-    "id": "1xZkqN1xmpHuTlwzU9ldW7jqSgK2MpB5C",
-    "name": "Magudam (2026) [1080p] [Prime Video] [Dolby Atmos].mkv",
-    "title": "Magudam",
-    "original_title": "மகுடம்",
-    "original_language": "ta",
-    "year": 2026,
-    "runtime": 184,
-    "tmdb_id": 1506833,
-    "rating": 7.5,
-    "collection": "",
-    "director": [
-      "Vishal Krishna"
-    ],
-    "trailer": "https://www.youtube.com/watch?v=jEAQp6jjmQA",
-    "cast": [
-      {
-        "name": "Vishal Krishna",
-        "role": "Linga",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/39NsHSvIygBnkUpAB4Wx3A9g4GF.jpg"
-      },
-      {
-        "name": "Anjali",
-        "role": "",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/aTLJCkl6mBXnb5ekKQytd7zTfne.jpg"
-      },
-      {
-        "name": "Dushara Vijayan",
-        "role": "",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/5C5V9qdYil7LVCp8LqctZCEsu1n.jpg"
-      },
-      {
-        "name": "John Vijay",
-        "role": "",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/1H4uUEI32DmZWfTGmWnXyu0BrU7.jpg"
-      },
-      {
-        "name": "Jayaprakash",
-        "role": "",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/eyYfMqy7NsED7SYrAzaso9ZjLT5.jpg"
-      }
-    ],
-    "plot": "Peaceful medical representative and shipping harbor worker Linga's life changes because of betrayal and conflict in a coastal community.",
-    "poster": "https://image.tmdb.org/t/p/w500/uPsJfQHRw5QiwQqOoOQWkfBmnhE.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/p5LmNUM4T9xLqbeu7nBY47VUh3W.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1xZkqN1xmpHuTlwzU9ldW7jqSgK2MpB5C|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p",
-      "source": "Prime Video",
-      "codec": "x265",
-      "audio": "Dolby Atmos",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": "11 GB"
-    },
-    "versions": [
-      {
-        "id": "1xZkqN1xmpHuTlwzU9ldW7jqSgK2MpB5C",
-        "name": "Magudam (2026) [1080p] [Prime Video] [Dolby Atmos].mkv",
-        "quality": "1080p • Prime Video • Dolby Atmos [11 GB]",
-        "source": "Prime Video",
-        "codec": "x265",
-        "resolution": "1080p",
-        "audio": "Dolby Atmos",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1xZkqN1xmpHuTlwzU9ldW7jqSgK2MpB5C|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p",
-          "source": "Prime Video",
-          "codec": "x265",
-          "audio": "Dolby Atmos",
-          "channels": "5.1",
-          "languages": "Tamil",
-          "size": "11 GB"
-        }
-      }
-    ]
-  },
-  {
     "id": "1cySTu58oZljadhvqv0M6U2eCR3q8J7rf",
     "name": "DC (2026) [4K UHD] [WEB-DL] [Dolby Atmos].mkv",
     "title": "DC",
@@ -4669,91 +4640,6 @@
     ]
   },
   {
-    "id": "1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8",
-    "name": "Thalaivar Thambi Thalaimaiyil (2026) 2160p NF WEB-DL HEVC x265 [Tamil + Telugu + Malayalam + Kannada (DD+ 5 1 - 640kbps)] ESub [2160p] [14 GB].mkv",
-    "title": "Thalaivar Thambi Thalaimaiyil",
-    "original_title": "தலைவர் தம்பி தலைமையில்",
-    "original_language": "ta",
-    "year": 2026,
-    "runtime": 113,
-    "tmdb_id": 869140,
-    "rating": 6.5,
-    "director": [
-      "Nithish Sahadev"
-    ],
-    "cast": [
-      {
-        "name": "Jiiva",
-        "role": "Jeeva Rathnam",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/1AsFMY3Fha7BvYmw4jShQtNTZjp.jpg"
-      },
-      {
-        "name": "Prathana Nathan",
-        "role": "Sowmya/Sowmi",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/qJBSz9cy3J7AeLoekiTLJ1MNvfM.jpg"
-      },
-      {
-        "name": "Ilavarasu",
-        "role": "Ilavarasu",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/gWCREhajMvlOE49g79zyvwdpf5E.jpg"
-      },
-      {
-        "name": "Thambi Ramaiah",
-        "role": "Mani",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/murNGZdySdA7uKgLBeMwOK4wEdg.jpg"
-      },
-      {
-        "name": "Jenson Dhivakar",
-        "role": "Thavidu",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/4QAdVaCP4l1BA39Fc35WwH7mv4T.jpg"
-      }
-    ],
-    "plot": "A village official attending a wedding becomes entangled in an escalating family dispute over power and old resentments, testing his leadership as he tries to contain the situation.",
-    "poster": "https://image.tmdb.org/t/p/w500/wqofJvDrFv65QgyVmNI4loi9jZZ.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/cpOUDK8BBJyvrUuLN8YTRttXEab.jpg",
-    "trailer": "",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "badges": {
-      "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/4k.png",
-      "hdr": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/hdr/hdr.png",
-      "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web.png",
-      "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
-      "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-    },
-    "specs": {
-      "resolution": "4K UHD",
-      "source": "WEB-DL",
-      "codec": "HEVC",
-      "audio": "Dolby Digital",
-      "channels": "5.1",
-      "languages": "Tamil",
-      "size": "14 GB"
-    },
-    "versions": [
-      {
-        "id": "1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8",
-        "name": "Thalaivar Thambi Thalaimaiyil (2026) 2160p NF WEB-DL HEVC x265 [Tamil + Telugu + Malayalam + Kannada (DD+ 5 1 - 640kbps)] ESub [2160p] [14 GB].mkv",
-        "quality": "4K UHD",
-        "source": "WEB-DL",
-        "codec": "HEVC",
-        "resolution": "4K UHD",
-        "audio": "Dolby Digital",
-        "channels": "5.1",
-        "size": "14 GB",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1oDojLMIJrdfVYBMF3fnEwGPWSEzW2WG8|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "4K UHD",
-          "source": "WEB-DL",
-          "codec": "HEVC",
-          "audio": "Dolby Digital",
-          "channels": "5.1",
-          "languages": "Tamil",
-          "size": "14 GB"
-        }
-      }
-    ]
-  },
-  {
     "id": "1kUM76p3XoiptI25k0GjawE0qs-q3YMxk",
     "name": "Kaappaan (2019) 1080p AMZN WEB-DL AVC x264 [Tamil (DD+ 5 1 - 640kbps)] ESub [1080p] [11 GB].mkv",
     "title": "Kaappaan",
@@ -4834,6 +4720,25 @@
           "channels": "5.1",
           "languages": "Tamil",
           "size": "11 GB"
+        }
+      },
+      {
+        "id": "17sDq6S0qTtYZmx8GD4oaRy09W-jeYxnn",
+        "name": "Kaappaan (2019) [1080p] [H.264] [Dolby Digital Plus].mkv",
+        "quality": "1080p",
+        "source": "WEB-DL",
+        "codec": "H.264",
+        "resolution": "1080p FHD",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=17sDq6S0qTtYZmx8GD4oaRy09W-jeYxnn|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "languages": "Tamil"
         }
       }
     ]
@@ -11205,91 +11110,6 @@
     "original_language": "ta"
   },
   {
-    "id": "17sDq6S0qTtYZmx8GD4oaRy09W-jeYxnn",
-    "name": "Kaappaan (2019) [1080p] [H.264] [Dolby Digital Plus].mkv",
-    "title": "Kaappaan",
-    "original_title": "காப்பான்",
-    "year": 2019,
-    "runtime": 166,
-    "tmdb_id": 533885,
-    "imdb_id": "tt8411144",
-    "imdb_url": "https://www.imdb.com/title/tt8411144/",
-    "rating": 5.5,
-    "director": [
-      "K. V. Anand"
-    ],
-    "cast": [
-      {
-        "name": "Suriya",
-        "role": "Kathiravan \"Kathir\"",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/hIFXv3gIjlNS78gJmaguEOxvfPH.jpg"
-      },
-      {
-        "name": "Mohanlal",
-        "role": "Chandrakanth Varma",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/wvoBULQimwguAGPOHZ8TDoy7jBJ.jpg"
-      },
-      {
-        "name": "Arya",
-        "role": "Abhishek Chandrakanth Varma \"Abhi\"",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/tX9cHKPa52Iz8M3dvUFW9uqbqUK.jpg"
-      },
-      {
-        "name": "Sayesha Saigal",
-        "role": "Anjali",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/tljdnHl3nN61rlvTDESAJcY1wtT.jpg"
-      },
-      {
-        "name": "Samuthirakani",
-        "role": "Joseph",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/z8mU71yAUfVLgKWHorsTIsyQwnt.jpg"
-      }
-    ],
-    "plot": "A Special Protection Group officer has to identify the threat to the prime minister, who he is protecting, and also the nation.",
-    "poster": "https://image.tmdb.org/t/p/w500/vfw7EO15wqhzf9pWrVhjqn53YKg.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/ezLKRd0uhoCAEnkXKopuVd2t3E9.jpg",
-    "logo": "",
-    "trailer": "https://www.youtube.com/watch?v=j_eduSGN3RQ",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=17sDq6S0qTtYZmx8GD4oaRy09W-jeYxnn|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "badges": {
-      "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
-      "hdr": "",
-      "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/web.png",
-      "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
-      "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-    },
-    "specs": {
-      "resolution": "1080p FHD",
-      "source": "WEB-DL",
-      "codec": "H.264",
-      "audio": "Dolby Digital Plus",
-      "channels": "5.1",
-      "languages": "Tamil"
-    },
-    "versions": [
-      {
-        "id": "17sDq6S0qTtYZmx8GD4oaRy09W-jeYxnn",
-        "name": "Kaappaan (2019) [1080p] [H.264] [Dolby Digital Plus].mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
-        "codec": "H.264",
-        "resolution": "1080p FHD",
-        "audio": "Dolby Digital Plus",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=17sDq6S0qTtYZmx8GD4oaRy09W-jeYxnn|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p FHD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "Dolby Digital Plus",
-          "channels": "5.1",
-          "languages": "Tamil"
-        }
-      }
-    ],
-    "original_language": "ta"
-  },
-  {
     "id": "1Vgn6oBFVidhhM0Y2SuVfR6sB1GPsCJqi",
     "name": "Kandhakottai (2009) [4K UHD] [x265] [Dolby Digital Plus].mkv",
     "title": "Kandhakottai",
@@ -12668,111 +12488,6 @@
           "codec": "H.264",
           "audio": "AAC",
           "channels": "2.0"
-        }
-      }
-    ],
-    "original_language": "ta"
-  },
-  {
-    "id": "1exAZYsaqaBxFkDvWH74zf-r9SNWA-y_B",
-    "name": "Vikram.2022.1080p.10bit.DSNP.WEBRip.Multi.DDP5.1.H.265.Homelander.[60FPS].mkv",
-    "title": "Vikram",
-    "original_title": "Vikram",
-    "year": 2022,
-    "runtime": 174,
-    "tmdb_id": 743563,
-    "imdb_id": "tt9179430",
-    "imdb_url": "https://www.imdb.com/title/tt9179430/",
-    "rating": 7.6,
-    "collection": "Lokesh Cinematic Universe (LCU)",
-    "director": [
-      "Lokesh Kanagaraj"
-    ],
-    "cast": [
-      {
-        "name": "Kamal Haasan",
-        "role": "Karnan / Arun Kumar Vikram",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/17zscZgz4wOlGDd3Gziw4YbI3G.jpg"
-      },
-      {
-        "name": "Fahadh Faasil",
-        "role": "Amar",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/wmkwZWFHqMptqdt4HacMIAe8OBP.jpg"
-      },
-      {
-        "name": "Vijay Sethupathi",
-        "role": "Sandhanam",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/a3HWdfCAbplrvoMNEJCjnkbqqOo.jpg"
-      },
-      {
-        "name": "Narain",
-        "role": "Bejoy",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/d0ApUGeFuGXpBkODIc6eLbBkb7B.jpg"
-      },
-      {
-        "name": "Chemban Vinod Jose",
-        "role": "Police Chief Jose",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/4bCAqhHMcPeoI41Emi4BBSXwZaj.jpg"
-      }
-    ],
-    "plot": "Amar is assigned to investigate a case of serial killings. When Amar investigates the case, he realizes it is not what it seems to be and following down this path will lead to nothing but war between everyone involved.",
-    "poster": "https://image.tmdb.org/t/p/w500/774UV1aCURb4s4JfEFg3IEMu5Zj.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/dkIX4dSMuVqjfrPGunBJUR7K3LQ.jpg",
-    "logo": "https://image.tmdb.org/t/p/original/803y6O9H2q2Jj5SkbRTysZ2zlmx.png",
-    "trailer": {
-      "youtube_url": ""
-    },
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1exAZYsaqaBxFkDvWH74zf-r9SNWA-y_B|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "badges": {
-      "quality": "https://img.icons8.com/color/96/full-hd.png",
-      "source": "https://img.icons8.com/ios-filled/100/ffffff/cloud-download.png",
-      "audio_format": "https://img.icons8.com/color/96/dolby-digital.png",
-      "audio_channels": "https://img.icons8.com/ios-filled/100/ffffff/2-0.png"
-    },
-    "specs": {
-      "resolution": "1080p Full HD",
-      "source": "WEB-DL",
-      "codec": "H.264",
-      "audio": "AAC",
-      "channels": "2.0"
-    },
-    "versions": [
-      {
-        "id": "1exAZYsaqaBxFkDvWH74zf-r9SNWA-y_B",
-        "name": "Vikram.2022.1080p.10bit.DSNP.WEBRip.Multi.DDP5.1.H.265.Homelander.[60FPS].mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
-        "codec": "H.264",
-        "resolution": "1080p FHD",
-        "audio": "AAC",
-        "channels": "2.0",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1exAZYsaqaBxFkDvWH74zf-r9SNWA-y_B|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p FHD",
-          "source": "WEB-DL",
-          "codec": "H.264",
-          "audio": "AAC",
-          "channels": "2.0"
-        }
-      },
-      {
-        "id": "1tMbv0Zxy8LYW4EvTTf5NF5kyF7ySYAhD",
-        "name": "Vikram (2022) [1080p] [x265] [Dolby Atmos].mkv",
-        "quality": "1080p",
-        "source": "WEB-DL",
-        "codec": "x265",
-        "resolution": "1080p FHD",
-        "audio": "Dolby Atmos",
-        "channels": "7.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1tMbv0Zxy8LYW4EvTTf5NF5kyF7ySYAhD|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p FHD",
-          "quality": "1080p",
-          "source": "WEB-DL",
-          "codec": "x265",
-          "audio": "Dolby Atmos",
-          "channels": "7.1",
-          "languages": "Tamil"
         }
       }
     ],
