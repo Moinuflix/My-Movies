@@ -1,5 +1,109 @@
 [
   {
+    "id": "1e-wmCNf1d3NnLX10O1gEr6KhGODZkqgd",
+    "name": "Blast.2026.1080p.NF.WEB-DL.MULTi.DDP.5.1.H264-CloudMovieZ.Top.mkv",
+    "title": "Blast",
+    "original_title": "Blast",
+    "year": 2026,
+    "runtime": 143,
+    "tmdb_id": 1515729,
+    "imdb_id": "tt37971394",
+    "imdb_url": "https://www.imdb.com/title/tt37971394/",
+    "rating": 7.292,
+    "director": [
+      "Subash K Raj"
+    ],
+    "cast": [
+      {
+        "name": "Arjun Sarja",
+        "role": "Rajaraman",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/fQ0yTvyDdykFxfHNYKNfRKzlCyz.jpg"
+      },
+      {
+        "name": "Abhirami",
+        "role": "Neelaveni",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/fLeOMTryyBPFrz5Wdxv3zBtx3V9.jpg"
+      },
+      {
+        "name": "Preity Mukhundhan",
+        "role": "Nila",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/3Rx9ci7YYwrSraXWMaBDW3iB4es.jpg"
+      },
+      {
+        "name": "Vivek Prasanna",
+        "role": "Ilango",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/2Gzfur5QCXWmopdWcLlmNuZcFDt.jpg"
+      },
+      {
+        "name": "John Kokken",
+        "role": "Varun Dhayalan",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/3dIc5cYnlzLYjaZYTOkrTIAg2D1.jpg"
+      }
+    ],
+    "plot": "A seemingly ordinary family must unleash their hidden martial arts skills when they clash with a ruthless criminal gang tied to corruption and violence.",
+    "poster": "https://image.tmdb.org/t/p/w500/lpsUpXieodUhN6DlK9ZDnjkysLk.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/xsoKAonKy1zk5XoQoUG1dUXDCKH.jpg",
+    "logo": "https://image.tmdb.org/t/p/original/gJszeb6UUvPAZDOWgutJbzbZ1Cn.png",
+    "trailer": "https://www.youtube.com/watch?v=aM5OLvxFBO4",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1e-wmCNf1d3NnLX10O1gEr6KhGODZkqgd|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "badges": {
+      "quality": "https://img.icons8.com/color/96/full-hd.png",
+      "source": "https://img.icons8.com/ios-filled/100/ffffff/cloud-download.png",
+      "audio_format": "https://img.icons8.com/color/96/dolby-digital.png",
+      "audio_channels": "https://img.icons8.com/ios-filled/100/ffffff/5-1.png"
+    },
+    "specs": {
+      "resolution": "1080p Full HD",
+      "source": "Netflix",
+      "codec": "H.264",
+      "audio": "Dolby Digital Plus",
+      "channels": "5.1",
+      "size": "8.1 GB"
+    },
+    "versions": [
+      {
+        "id": "1e-wmCNf1d3NnLX10O1gEr6KhGODZkqgd",
+        "name": "Blast.2026.1080p.NF.WEB-DL.MULTi.DDP.5.1.H264-CloudMovieZ.Top.mkv",
+        "quality": "1080p FHD • Netflix • Dolby Digital Plus",
+        "source": "Netflix",
+        "codec": "H.264",
+        "resolution": "1080p FHD",
+        "audio": "Dolby Digital Plus",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1e-wmCNf1d3NnLX10O1gEr6KhGODZkqgd|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p FHD",
+          "source": "WEB-DL",
+          "codec": "H.264",
+          "audio": "Dolby Digital Plus",
+          "channels": "5.1",
+          "size": "8.1 GB"
+        },
+        "size": "8.1 GB"
+      },
+      {
+        "id": "tg_17",
+        "name": "Blast (2026) [1080p] [WEB-DL] [x265] [2GB] [Tamil DDP 5.1].mkv",
+        "quality": "1080p • WEB-DL • DDP 5.1 [2GB]",
+        "source": "WEB-DL",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "DDP 5.1",
+        "channels": "5.1",
+        "stream_url": "https://tg-stream.moinudeentv.workers.dev/?msg_id=17|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "DDP 5.1",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "2GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "1U6hZxSfzu9pcLfv5dzA9rDF7exHTWYOU",
     "name": "Jailer 2 (2026) [4K UHD] [Prime Video] [Dolby Digital Plus].mkv",
     "title": "Jailer 2",
