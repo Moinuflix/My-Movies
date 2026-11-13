@@ -443,7 +443,7 @@
       cursor: pointer;
     }
 
-    /* STUDIO INGESTION CARDS (Part I & Part II) */
+    /* STUDIO INGESTION CARDS (Part I, Part II & Part III) */
     .studio-section-card {
       background: var(--bg-card);
       backdrop-filter: blur(25px);
@@ -1189,7 +1189,7 @@
       <header class="section-header">
         <div>
           <h1>Movies & Packs</h1>
-          <p class="section-desc">Kodi Protected • Native Industry First • Multi-Audio Auto-Tagged</p>
+          <p class="section-desc">Kodi Protected • GDrive + Telegram F2L • Multi-Audio Auto-Tagged</p>
         </div>
         <div style="display: flex; gap: 0.5rem; width: 100%; max-width: 420px;">
           <button type="button" class="btn-clean-duplicates" id="btn-connect-packs">
@@ -1227,7 +1227,7 @@
       <header class="section-header">
         <div>
           <h1>Studio Ingestion Hub</h1>
-          <p class="section-desc">22-OTT Token Parser • TMDb Deep Metadata • Kodi Protected</p>
+          <p class="section-desc">22-OTT Token Parser • TMDb Deep Metadata • GDrive & Telegram F2L</p>
         </div>
       </header>
 
@@ -1236,7 +1236,7 @@
         <button type="button" class="hub-tab-btn gold-tab" data-hub="folder-batch">📁 Batch Folder Scraper</button>
       </div>
 
-      <!-- TAB 1: SINGLE MOVIE FORM (PART I & PART II) -->
+      <!-- TAB 1: SINGLE MOVIE FORM (PART I, II & III) -->
       <div id="hub-tab-movie" class="hub-content active">
         <form id="movie-form">
           <!-- PART I: CLEAN PARSED TOKENS -->
@@ -1248,8 +1248,8 @@
 
             <div class="form-grid">
               <div class="form-group full-width">
-                <label style="color: var(--laser-cyan);">Raw Google Drive Release File Name * (Instant Full Auto-Fill)</label>
-                <input type="text" id="input-smart-filename" class="smart-input" placeholder="e.g. Leo.2023.720p.WEB-DL.x264.Hindi.AAC.2.0-Moinu.mkv">
+                <label style="color: var(--laser-cyan);">Raw Release File Name * (Instant Full Auto-Fill)</label>
+                <input type="text" id="input-smart-filename" class="smart-input" placeholder="e.g. Love_Today_2022.720p.DS4K.SDR.10bit.NF.WEBRip.TAM-TEL-KAN-MAL.AAC5.1.x265.HEVC-Immortal.mkv">
                 <div id="tmdb-suggestions-box" class="tmdb-results-box">
                   <div style="font-size: 0.74rem; color: var(--laser-cyan); font-weight: 700; margin-bottom: 6px;">🎯 Top TMDb Candidates (Click to Select & Auto-Fill):</div>
                   <div id="tmdb-suggestions-list"></div>
@@ -1258,12 +1258,12 @@
 
               <div class="form-group">
                 <label>Parsed Movie Title (Editable)</label>
-                <input type="text" id="input-parsed-title" placeholder="e.g. Leo">
+                <input type="text" id="input-parsed-title" placeholder="e.g. Love Today">
               </div>
 
               <div class="form-group">
                 <label>Year (Editable)</label>
-                <input type="number" id="input-parsed-year" placeholder="e.g. 2023">
+                <input type="number" id="input-parsed-year" placeholder="e.g. 2022">
               </div>
             </div>
 
@@ -1320,12 +1320,12 @@
 
               <div class="form-group">
                 <label>Verified Size (Editable)</label>
-                <input type="text" id="input-filesize" placeholder="e.g. 2.4 GB">
+                <input type="text" id="input-filesize" placeholder="e.g. 1.65 GB">
               </div>
 
               <div class="form-group">
                 <label>Ripper / Release Tag</label>
-                <input type="text" id="input-ripper-tag" placeholder="e.g. Moinu, Telly, EVO">
+                <input type="text" id="input-ripper-tag" placeholder="e.g. Immortal, Moinu, Telly">
               </div>
 
               <div class="form-group">
@@ -1334,6 +1334,7 @@
                   <option value="DDP 5.1 Atmos">DDP 5.1 Atmos</option>
                   <option value="DDP 5.1" selected>DDP 5.1</option>
                   <option value="AC3 5.1">AC3 5.1</option>
+                  <option value="AAC 5.1">AAC 5.1</option>
                   <option value="AAC 2.0">AAC 2.0</option>
                   <option value="TrueHD 7.1 Atmos">TrueHD 7.1 Atmos</option>
                 </select>
@@ -1383,11 +1384,11 @@
                 <div class="form-grid">
                   <div class="form-group">
                     <label>Official Title *</label>
-                    <input type="text" id="meta-official-title" placeholder="e.g. Leo">
+                    <input type="text" id="meta-official-title" placeholder="e.g. Love Today">
                   </div>
                   <div class="form-group">
                     <label>Original Title</label>
-                    <input type="text" id="meta-original-title" placeholder="e.g. லியோ">
+                    <input type="text" id="meta-original-title" placeholder="e.g. லவ் டுடே">
                   </div>
                   <div class="form-group full-width">
                     <label>Movie Tagline</label>
@@ -1398,15 +1399,15 @@
                 <div class="form-grid-3">
                   <div class="form-group">
                     <label>Release Year</label>
-                    <input type="number" id="meta-release-year" placeholder="2023">
+                    <input type="number" id="meta-release-year" placeholder="2022">
                   </div>
                   <div class="form-group">
                     <label>Release Date</label>
-                    <input type="text" id="meta-release-date" placeholder="2023-10-19">
+                    <input type="text" id="meta-release-date" placeholder="2022-11-04">
                   </div>
                   <div class="form-group">
                     <label>TMDb Rating</label>
-                    <input type="text" id="meta-rating" placeholder="7.3">
+                    <input type="text" id="meta-rating" placeholder="7.9">
                   </div>
                   <div class="form-group">
                     <label>Original Language</label>
@@ -1414,7 +1415,7 @@
                   </div>
                   <div class="form-group">
                     <label>Runtime (Mins)</label>
-                    <input type="number" id="meta-runtime" placeholder="164">
+                    <input type="number" id="meta-runtime" placeholder="154">
                   </div>
                   <div class="form-group">
                     <label>Certification</label>
@@ -1425,19 +1426,19 @@
                 <div class="form-grid">
                   <div class="form-group">
                     <label>Director(s)</label>
-                    <input type="text" id="meta-directors" placeholder="e.g. Lokesh Kanagaraj">
+                    <input type="text" id="meta-directors" placeholder="e.g. Pradeep Ranganathan">
                   </div>
                   <div class="form-group">
                     <label>Writer(s)</label>
-                    <input type="text" id="meta-writers" placeholder="e.g. Lokesh Kanagaraj, Rathna Kumar">
+                    <input type="text" id="meta-writers" placeholder="e.g. Pradeep Ranganathan">
                   </div>
                   <div class="form-group">
                     <label>Studio / Production Companies</label>
-                    <input type="text" id="meta-studios" placeholder="e.g. Seven Screen Studios">
+                    <input type="text" id="meta-studios" placeholder="e.g. AGS Entertainment">
                   </div>
                   <div class="form-group">
                     <label>Genres *</label>
-                    <input type="text" id="meta-genres" placeholder="e.g. Action, Crime, Thriller">
+                    <input type="text" id="meta-genres" placeholder="e.g. Comedy, Drama, Romance">
                   </div>
                   <div class="form-group full-width">
                     <label>Plot Synopsis</label>
@@ -1460,11 +1461,11 @@
             </div>
           </div>
 
-          <!-- PART III: GOOGLE DRIVE SOURCE & COMMIT -->
+          <!-- PART III: GOOGLE DRIVE OR TELEGRAM F2L SOURCE & COMMIT -->
           <div class="studio-section-card">
             <div class="studio-part-header">
-              <div class="studio-part-title">Part III: Drive File Source (Kodi Protected)</div>
-              <span class="studio-part-badge">Stream URL Hidden</span>
+              <div class="studio-part-title">Part III: Drive / Telegram Source (Kodi Protected)</div>
+              <span class="studio-part-badge">GDrive + Telegram F2L Auto-Detect</span>
             </div>
 
             <div class="form-grid">
@@ -1473,8 +1474,8 @@
                 <input type="text" id="input-direct-download-url" placeholder="Paste direct HTTP/HTTPS file URL (Optional)">
               </div>
               <div class="form-group full-width">
-                <label>Google Drive Link / Raw File ID *</label>
-                <input type="text" id="input-gdrive-url" placeholder="Paste full GD link or File ID">
+                <label>Google Drive Link / File ID OR Telegram Link / Msg ID *</label>
+                <input type="text" id="input-gdrive-url" placeholder="Paste GD Link/ID OR Telegram Link (https://t.me/c/3973856652/10) / Msg ID (10)">
               </div>
             </div>
 
@@ -1489,8 +1490,8 @@
       <!-- TAB 2: SMART BATCH FOLDER SCRAPER -->
       <div id="hub-tab-folder-batch" class="hub-content" style="display: none;">
         <div class="studio-section-card" style="border-color: rgba(245, 158, 11, 0.4); max-width: 1100px;">
-          <div style="font-size: 1.05rem; font-weight: 800; color: var(--gold-lcu); margin-bottom: 0.4rem;">📁 Google Drive Batch Importer</div>
-          <p style="color: var(--text-muted); font-size: 0.82rem; margin-bottom: 1.2rem;">Step 1: Paste JSON/Folder ➔ Step 2: Verify TMDb IDs ➔ Step 3: Bulk Commit to GitHub.</p>
+          <div style="font-size: 1.05rem; font-weight: 800; color: var(--gold-lcu); margin-bottom: 0.4rem;">📁 Google Drive & Telegram Batch Importer</div>
+          <p style="color: var(--text-muted); font-size: 0.82rem; margin-bottom: 1.2rem;">Step 1: Paste JSON/Folder/Telegram Links ➔ Step 2: Verify TMDb IDs ➔ Step 3: Bulk Commit to GitHub.</p>
 
           <div class="form-grid" style="margin-bottom: 1rem;">
             <div class="form-group full-width">
@@ -1498,8 +1499,8 @@
               <input type="text" id="input-batch-folder-url" placeholder="https://drive.google.com/drive/folders/1qSbkXGLBE6OxRF2pwiNekNDHPnyQQm-w">
             </div>
             <div class="form-group full-width">
-              <label>Paste Raw JSON List [{"name": "...", "id": "..."}] or Line-by-Line `FileName | DriveID`:</label>
-              <textarea id="input-batch-manual-json" rows="4" placeholder='[{"name": "Leo.2023.1080p.mkv", "id": "1H4hepCl_..."}, {"name": "Pushpa.2.2024.4k.mkv", "id": "1qSbk..."}]'></textarea>
+              <label>Paste Raw JSON List [{"name": "...", "id": "..."}] or Line-by-Line `FileName | DriveID or TelegramLink`:</label>
+              <textarea id="input-batch-manual-json" rows="4" placeholder='Love.Today.2022.720p.mkv | https://t.me/c/3973856652/10&#10;Leo.2023.1080p.mkv | 1H4hepCl_...'></textarea>
             </div>
           </div>
 
@@ -1521,7 +1522,7 @@
                   <tr style="border-bottom: 1px solid var(--border-color); background: rgba(15, 23, 42, 0.96); position: sticky; top: 0; z-index: 20;">
                     <th style="padding: 10px; color: var(--text-dim); width: 36px;">#</th>
                     <th style="padding: 10px; color: var(--text-dim);">File Name</th>
-                    <th style="padding: 10px; color: var(--text-dim); width: 150px;">Drive ID</th>
+                    <th style="padding: 10px; color: var(--text-dim); width: 150px;">Source / ID</th>
                     <th style="padding: 10px; color: var(--text-dim); width: 220px;">TMDb Match & ID</th>
                     <th style="padding: 10px; color: var(--text-dim); width: 46px; text-align: center;">Del</th>
                   </tr>
@@ -1648,6 +1649,7 @@
     const GH_BRANCH = 'main';
     const GH_RAW_BASE = `https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/`;
     const WORKER_BASE = 'https://gdrive-stream.moinudeentv.workers.dev/?id=';
+    const TG_WORKER_BASE = 'https://tg-stream.moinudeentv.workers.dev/?msg_id=';
     const USER_AGENT = '|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0';
 
     /* EXACT TMDB ID + EXACT TITLE MATCHING FOR PACKS */
@@ -1850,6 +1852,47 @@
       return clean;
     }
 
+    /* UNIFIED SOURCE PARSER: AUTO-DETECTS TELEGRAM F2L OR GOOGLE DRIVE */
+    function parseMediaSource(rawInput) {
+      if (!rawInput) return null;
+      const clean = rawInput.trim();
+
+      // 1. Check Telegram Link (https://t.me/c/3973856652/10)
+      const tgLinkMatch = clean.match(/t\.me\/(?:c\/\d+|[^\/]+)\/(\d+)/i);
+      if (tgLinkMatch && tgLinkMatch[1]) {
+        const msgId = tgLinkMatch[1];
+        return {
+          type: 'telegram',
+          id: `tg_${msgId}`,
+          streamUrl: `${TG_WORKER_BASE}${msgId}${USER_AGENT}`,
+          label: `Telegram F2L (#${msgId})`
+        };
+      }
+
+      // 2. Check tg:10, msg_id=10, or pure message ID digits (e.g. 10)
+      const tgPrefixMatch = clean.match(/^(?:tg:|msg_id=)?(\d{1,10})$/i);
+      if (tgPrefixMatch && tgPrefixMatch[1]) {
+        const msgId = tgPrefixMatch[1];
+        return {
+          type: 'telegram',
+          id: `tg_${msgId}`,
+          streamUrl: `${TG_WORKER_BASE}${msgId}${USER_AGENT}`,
+          label: `Telegram F2L (#${msgId})`
+        };
+      }
+
+      // 3. Otherwise treat as Google Drive Link / ID
+      const gdriveId = extractGDriveId(clean);
+      if (!gdriveId || gdriveId.startsWith('DRIVE_AUTO_')) return null;
+
+      return {
+        type: 'gdrive',
+        id: gdriveId,
+        streamUrl: `${WORKER_BASE}${gdriveId}${USER_AGENT}`,
+        label: 'Google Drive'
+      };
+    }
+
     function escapeHtml(str) {
       if (!str) return '';
       return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -1906,7 +1949,7 @@
       const audioPreset = document.getElementById('input-audio-preset').value || 'DDP 5.1';
       let raw = input.value.replace(/^\[|\]$/g, '').trim();
 
-      const presetRegex = /\s*(DDP 5\.1 Atmos|DDP 5\.1|AC3 5\.1|AAC 2\.0|TrueHD 7\.1 Atmos)$/i;
+      const presetRegex = /\s*(DDP 5\.1 Atmos|DDP 5\.1|AC3 5\.1|AAC 5\.1|AAC 2\.0|TrueHD 7\.1 Atmos)$/i;
       let langPart = raw.replace(presetRegex, '').trim();
       let langs = langPart ? langPart.split('+').map(s => s.trim()).filter(Boolean) : [];
 
@@ -2176,18 +2219,23 @@
         name: movie.name || `${movie.title}.mkv`,
         quality: movie.specs?.resolution || '1080p',
         source: movie.specs?.source || 'WEB-DL',
-        audio: movie.specs?.audio || 'Dolby Atmos'
+        audio: movie.specs?.audio || 'Dolby Atmos',
+        stream_url: movie.stream_url || ''
       }];
 
-      const verHtml = versions.map((v, i) => `
+      const verHtml = versions.map((v, i) => {
+        const isTg = (v.stream_url || '').includes('tg-stream') || String(v.id || '').startsWith('tg_');
+        const badgeLabel = isTg ? '✈️ TG F2L Ready' : '✅ GDrive Ready';
+        return `
         <div class="pack-movie-item">
           <div style="min-width:0; flex:1;">
             <div style="font-weight:700; color:#fff; font-size:0.84rem; word-break:break-word;">${i + 1}. ${escapeHtml(v.name || v.quality)}</div>
             <div style="font-size:0.74rem; color:var(--laser-cyan); margin-top:2px;">${escapeHtml(v.quality || '')} • ${escapeHtml(v.specs?.languages || movie.specs?.languages || '')}</div>
           </div>
-          <span class="kodi-ready-pill">✅ Kodi Ready</span>
+          <span class="kodi-ready-pill">${badgeLabel}</span>
         </div>
-      `).join('');
+      `;
+      }).join('');
 
       document.getElementById('info-modal-body').innerHTML = `
         <div style="display:flex; gap:1rem; margin-bottom:1rem; align-items:flex-start;">
@@ -2283,7 +2331,6 @@
           result.push(movie);
         } else {
           const master = map.get(key);
-          // Fill missing poster/metadata if duplicate had better metadata
           if (!master.poster && movie.poster) master.poster = movie.poster;
           if (!master.fanart && movie.fanart) master.fanart = movie.fanart;
           if (!master.plot && movie.plot) master.plot = movie.plot;
@@ -2299,7 +2346,6 @@
             }
           });
 
-          // Mark Multi-Audio if merged versions span different languages
           const allLangs = new Set();
           master.versions.forEach(v => {
             const lStr = v.specs?.languages || '';
@@ -2327,11 +2373,10 @@
         return showLaserToast('No duplicate movies found! Library is already clean.');
       }
 
-      showLaserToast(`Merging ${mergedCount} duplicate movies (e.g. Jailer 2)...`);
+      showLaserToast(`Merging ${mergedCount} duplicate movies...`);
       try {
         await commitFileDirect('chunks/data_c01.json', mergedMaster, `Studio Auto-Merge: Combined ${mergedCount} duplicate entries`, token);
 
-        // Also clean duplicates in language chunks if present
         const langChunks = [
           { path: 'chunks/data_c01_tamil.json', arr: tamilData },
           { path: 'chunks/data_c01_telugu.json', arr: teluguData },
@@ -2507,6 +2552,7 @@
       if (fn.includes('truehd') || (fn.includes('atmos') && fn.includes('7.1'))) audioPreset = "TrueHD 7.1 Atmos";
       else if (fn.includes('atmos')) audioPreset = "DDP 5.1 Atmos";
       else if (fn.includes('ac3') || fn.includes('dd5.1')) audioPreset = "AC3 5.1";
+      else if (fn.includes('aac5') || (fn.includes('aac') && fn.includes('5.1'))) audioPreset = "AAC 5.1";
       else if (fn.includes('aac') || fn.includes('2.0')) audioPreset = "AAC 2.0";
 
       let langs = [];
@@ -2811,7 +2857,7 @@
       document.getElementById('btn-cancel-merge').style.display = 'none';
     }
 
-    /* BATCH FOLDER SCRAPER */
+    /* BATCH FOLDER SCRAPER (SUPPORTS GDRIVE & TELEGRAM LINKS) */
     async function loadFilesToReviewTable() {
       const folderInput = document.getElementById('input-batch-folder-url').value.trim();
       const rawJsonText = document.getElementById('input-batch-manual-json').value.trim();
@@ -2828,7 +2874,7 @@
           rawJsonText.split('\n').forEach(line => {
             const parts = line.split('|').map(s => s.trim());
             if (parts.length >= 2 && parts[0] && parts[1]) {
-              rawFiles.push({ name: parts[0], id: extractGDriveId(parts[1]) });
+              rawFiles.push({ name: parts[0], id: parts[1] });
             }
           });
         }
@@ -2851,7 +2897,7 @@
       }
 
       if (rawFiles.length === 0) {
-        return showLaserToast('No valid files found! Paste valid JSON array or check folder.', true);
+        return showLaserToast('No valid files found! Paste valid JSON array or line list.', true);
       }
 
       showLaserToast(`Auto-matching ${rawFiles.length} files with TMDb...`);
@@ -2859,7 +2905,8 @@
 
       for (const f of rawFiles) {
         const fileName = f.name || f.title;
-        const driveId = extractGDriveId(f.id);
+        const parsedSrc = parseMediaSource(String(f.id));
+        const driveId = parsedSrc ? parsedSrc.id : extractGDriveId(String(f.id));
         const { movieTitle, year } = extractTitleYearFromFilename(fileName);
         let matchedTmdbId = f.tmdb_id || '';
         let matchedTitle = movieTitle;
@@ -2877,7 +2924,9 @@
 
         stageReviewList.push({
           fileName,
+          rawSource: String(f.id),
           driveId,
+          sourceLabel: parsedSrc ? parsedSrc.label : 'Google Drive',
           tmdbId: matchedTmdbId,
           matchedTitle,
           specs: parseSpecsFromFileName(fileName)
@@ -2900,7 +2949,10 @@
         tr.innerHTML = `
           <td style="padding: 10px; color: var(--text-dim);">${idx + 1}</td>
           <td style="padding: 10px; color: #fff; font-weight:600; word-break:break-word;">${escapeHtml(row.fileName)}</td>
-          <td style="padding: 10px; font-family:monospace; color:var(--laser-cyan); font-size:0.74rem;">${escapeHtml(row.driveId)}</td>
+          <td style="padding: 10px; font-family:monospace; color:var(--laser-cyan); font-size:0.74rem;">
+            <div>${escapeHtml(row.driveId)}</div>
+            <div style="font-size:0.68rem; color:var(--gold-lcu);">${escapeHtml(row.sourceLabel || '')}</div>
+          </td>
           <td style="padding: 10px;">
             <div style="font-size:0.74rem; color:var(--laser-green); margin-bottom:4px;">${escapeHtml(row.matchedTitle || 'Unmatched')}</div>
             <input type="number" class="batch-tmdb-input" value="${escapeHtml(row.tmdbId)}" placeholder="TMDb ID" style="padding:5px 8px; font-size:0.78rem; border-radius:8px;">
@@ -2942,9 +2994,14 @@
           if (!meta) continue;
 
           const specs = row.specs;
-          const streamUrl = `${WORKER_BASE}${row.driveId}${USER_AGENT}`;
-          const versionObj = {
+          const parsedBatchSrc = parseMediaSource(row.rawSource || row.driveId) || {
             id: row.driveId,
+            streamUrl: `${WORKER_BASE}${row.driveId}${USER_AGENT}`
+          };
+          const streamUrl = parsedBatchSrc.streamUrl;
+
+          const versionObj = {
+            id: parsedBatchSrc.id,
             name: row.fileName,
             quality: `${specs.quality} • ${specs.source} • ${specs.audio}`,
             source: specs.source,
@@ -2970,13 +3027,13 @@
 
           if (existing) {
             existing.versions = existing.versions || [];
-            if (!existing.versions.some(v => v.id === row.driveId)) {
+            if (!existing.versions.some(v => v.id === parsedBatchSrc.id || v.stream_url === streamUrl)) {
               existing.versions.push(versionObj);
             }
             finalMovieObj = existing;
           } else {
             finalMovieObj = {
-              id: row.driveId,
+              id: parsedBatchSrc.id,
               name: row.fileName,
               title: meta.title,
               original_title: meta.original_title,
@@ -3042,7 +3099,7 @@
       }
     }
 
-    /* SINGLE MOVIE FORM SUBMIT (USES EDITABLE PART I & PART II VALUES) */
+    /* SINGLE MOVIE FORM SUBMIT (SUPPORTS BOTH GDRIVE & TELEGRAM F2L) */
     async function handleMovieSubmit(e) {
       e.preventDefault();
       const tmdbId = document.getElementById('input-tmdb-id').value.trim();
@@ -3095,10 +3152,13 @@
         }
       }
 
-      const fileId = extractGDriveId(rawGdrive);
-      if (!fileId || fileId.startsWith('DRIVE_AUTO_')) {
-        return showLaserToast('Valid Google Drive link/ID required!', true);
+      const parsedSource = parseMediaSource(rawGdrive);
+      if (!parsedSource) {
+        return showLaserToast('Valid Google Drive link/ID OR Telegram Link/Msg ID required!', true);
       }
+
+      const fileId = parsedSource.id;
+      const streamUrl = parsedSource.streamUrl;
 
       if (!fetchedTmdbMetadata || String(fetchedTmdbMetadata.tmdb_id) !== tmdbId) {
         await fetchTmdbMetadata(tmdbId);
@@ -3111,9 +3171,8 @@
       const audioPreset = document.getElementById('input-audio-preset').value;
       const audioBracket = document.getElementById('input-audio-bracket').value.trim();
       const fileSize = document.getElementById('input-filesize').value.trim();
-      const streamUrl = `${WORKER_BASE}${fileId}${USER_AGENT}`;
 
-      const cleanLangs = audioBracket.replace(/^\[|\]$/g, '').replace(/\s*(DDP 5\.1 Atmos|DDP 5\.1|AC3 5\.1|AAC 2\.0|TrueHD 7\.1 Atmos)$/i, '').replace(/\s*\+\s*/g, ', ').trim() || 'Tamil';
+      const cleanLangs = audioBracket.replace(/^\[|\]$/g, '').replace(/\s*(DDP 5\.1 Atmos|DDP 5\.1|AC3 5\.1|AAC 5\.1|AAC 2\.0|TrueHD 7\.1 Atmos)$/i, '').replace(/\s*\+\s*/g, ', ').trim() || 'Tamil';
       const channels = audioPreset.includes('7.1') ? '7.1' : (audioPreset.includes('2.0') ? '2.0' : '5.1');
 
       const baseMeta = fetchedTmdbMetadata || {};
@@ -3163,7 +3222,6 @@
       else if (lang === 'te') targetCategoryChunk = "chunks/data_c01_telugu.json";
       else if (lang === 'hi') targetCategoryChunk = "chunks/data_c01_hindi.json";
 
-      // Check if an existing movie with same TMDb ID exists even if user didn't click dock
       const autoMatchExisting = moviesData.find(m => String(m.tmdb_id) === String(tmdbId));
       const activeMergeTarget = (isMergeMode && targetExistingMovie) ? targetExistingMovie : autoMatchExisting;
 
@@ -3173,7 +3231,7 @@
         if (!alreadyExists) {
           activeMergeTarget.versions.push(versionObj);
         }
-        openPreviewModal('chunks/data_c01.json', activeMergeTarget, finalDashName, `${activeMergeTarget.title} (Merged ${quality})`, moviesData, true, targetCategoryChunk);
+        openPreviewModal('chunks/data_c01.json', activeMergeTarget, finalDashName, `${activeMergeTarget.title} (Merged ${quality})`, moviesData, true, targetCategoryChunk, parsedSource.label);
       } else {
         const fullMovie = {
           id: fileId,
@@ -3202,12 +3260,12 @@
           specs: versionObj.specs,
           versions: [versionObj]
         };
-        openPreviewModal('chunks/data_c01.json', fullMovie, finalDashName, fullMovie.title, moviesData, false, targetCategoryChunk);
+        openPreviewModal('chunks/data_c01.json', fullMovie, finalDashName, fullMovie.title, moviesData, false, targetCategoryChunk, parsedSource.label);
       }
     }
 
     /* COMMIT PREVIEW MODAL — NO STREAM LINK SHOWN */
-    function openPreviewModal(targetChunk, newEntry, dashFileName, title, activeDataArray, isUpdate = false, secondCategoryChunk = null) {
+    function openPreviewModal(targetChunk, newEntry, dashFileName, title, activeDataArray, isUpdate = false, secondCategoryChunk = null, sourceLabel = 'Google Drive') {
       pendingCommit = { targetChunk, newEntry, activeDataArray, title, isUpdate, secondCategoryChunk };
 
       const details = document.getElementById('modal-preview-details');
@@ -3215,7 +3273,7 @@
         <div class="preview-item"><span class="preview-item-label">Target Chunk</span><span class="preview-item-val" style="color: var(--laser-cyan);">${escapeHtml(targetChunk)} ${secondCategoryChunk ? `+ ${escapeHtml(secondCategoryChunk)}` : ''}</span></div>
         <div class="preview-item"><span class="preview-item-label">Official Title</span><span class="preview-item-val">${escapeHtml(title)}</span></div>
         <div class="preview-item"><span class="preview-item-label">Standard Dash Name</span><span class="preview-item-val" style="color: var(--laser-green);">${escapeHtml(dashFileName)}</span></div>
-        <div class="preview-item"><span class="preview-item-label">Kodi Stream Route</span><span class="preview-item-val" style="color: var(--gold-lcu);">🔒 Encrypted / Hidden (Kodi Active)</span></div>
+        <div class="preview-item"><span class="preview-item-label">Kodi Stream Route</span><span class="preview-item-val" style="color: var(--gold-lcu);">🔒 ${escapeHtml(sourceLabel)} (Kodi Protected)</span></div>
       `;
       document.getElementById('preview-modal').classList.add('active');
     }
@@ -3330,7 +3388,7 @@
       document.getElementById('input-audio-preset').addEventListener('change', () => {
         const input = document.getElementById('input-audio-bracket');
         const preset = document.getElementById('input-audio-preset').value;
-        const cleanLangs = input.value.replace(/^\[|\]$/g, '').replace(/\s*(DDP 5\.1 Atmos|DDP 5\.1|AC3 5\.1|AAC 2\.0|TrueHD 7\.1 Atmos)$/i, '').trim() || 'Tamil';
+        const cleanLangs = input.value.replace(/^\[|\]$/g, '').replace(/\s*(DDP 5\.1 Atmos|DDP 5\.1|AC3 5\.1|AAC 5\.1|AAC 2\.0|TrueHD 7\.1 Atmos)$/i, '').trim() || 'Tamil';
         input.value = `[${cleanLangs} ${preset}]`;
         updateFinalDashPreview();
       });
