@@ -15094,5 +15094,35 @@
     ],
     "selected_tmdb_id": 1234139,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1qeypL3vomKZB4hBeDJro053rETG30R1b",
+    "original_filename": "@Tamiltvtoonsofficial - Ranabaali (2026) NF WEB-DL 2160p HDR AV1 [Telugu + Tamil + Hindi + Kannada + Malayalam (DDP 5.1 ~ 640Kbps)] ESub [TTT].mkv",
+    "file_size_bytes": 20717351385,
+    "file_size_gb": "19 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-13T02:08:28.956Z",
+    "parsed": {
+      "title": "Ranabaali (",
+      "year": 2026,
+      "resolution": "2160p",
+      "source": "Netflix",
+      "codec": "x264",
+      "telegram_tag": "@Tamiltvtoonsofficial",
+      "standard_filename": "Ranabaali ( (2026) [2160p] [Netflix] [Telugu + Tamil + Hindi + Kannada + Malayalam (DDP 5.1 - 640Kbps)] [19 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 1389379,
+        "title": "Ranabaali",
+        "year": "2026",
+        "poster": "https://image.tmdb.org/t/p/w500/cXaCyYYbafVyMrs8rwKmxezBYPJ.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/xpImgnsxuqb3VOp0QRtXTS5uBRi.jpg",
+        "rating": 4.7
+      }
+    ],
+    "selected_tmdb_id": 1389379,
+    "approval_status": "pending"
   }
 ]
