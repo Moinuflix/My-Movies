@@ -1656,6 +1656,26 @@
         "audio": "DD+ 5.1",
         "source": "AMZN",
         "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1EoB6EhN-gihW8JbQpPyTN8LHEEJO4Hv7|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+      },
+      {
+        "id": "tg_10",
+        "name": "Love Today (2022) [2160p] [Netflix] [x265] [Tamil + Telugu + Malayalam + Kannada AAC 5.1].mkv",
+        "quality": "2160p • Netflix • AAC 5.1",
+        "source": "Netflix",
+        "codec": "x265",
+        "resolution": "2160p",
+        "audio": "AAC 5.1",
+        "channels": "5.1",
+        "stream_url": "https://tg-stream.moinudeentv.workers.dev/?msg_id=10|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "2160p",
+          "source": "Netflix",
+          "codec": "x265",
+          "audio": "AAC 5.1",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Malayalam, Kannada",
+          "size": ""
+        }
       }
     ]
   },
