@@ -15124,5 +15124,35 @@
     ],
     "selected_tmdb_id": 1389379,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1d0tD4gXud9LqO1V7G_dp7nUWpQ8B3OU5",
+    "original_filename": "Sandakkari.2026.1080p.ASTRO.WEB-DL.Tamil.DD5.1.H.264-JeRi.mkv",
+    "file_size_bytes": 5342263986,
+    "file_size_gb": "5 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-15T07:44:38.680Z",
+    "parsed": {
+      "title": "Sandakkari",
+      "year": 2026,
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "Sandakkari (2026) [1080p] [WEB-DL] [Tamil 5.1] [5 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 1627516,
+        "title": "Sandakari",
+        "year": "2026",
+        "poster": "https://image.tmdb.org/t/p/w500/uAxbv8F1m0J2sYUihklnRQpqge1.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/zHdeIe0REV8FdAalSR75HtWLDql.jpg",
+        "rating": 0.0
+      }
+    ],
+    "selected_tmdb_id": 1627516,
+    "approval_status": "pending"
   }
 ]
