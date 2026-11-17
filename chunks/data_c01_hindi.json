@@ -1,5 +1,103 @@
 [
   {
+    "id": "https://tg-stream.moinudeentv.workers.dev/?msg_id=22|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "name": "Maa Behen (2026) [1080p] [WEB-DL] [x265] [Tamil DDP 5.1].mkv",
+    "title": "Maa Behen",
+    "original_title": "माँ बहन",
+    "tagline": "",
+    "original_language": "hi",
+    "year": 2026,
+    "release_date": "2026-06-04",
+    "runtime": 127,
+    "certification": "U/A 13+",
+    "tmdb_id": 1363988,
+    "rating": 4.5,
+    "collection": "",
+    "director": [
+      "Suresh Triveni"
+    ],
+    "writers": [
+      "Pooja Tolani",
+      "Suresh Triveni"
+    ],
+    "studios": [
+      "Abundantia Entertainment"
+    ],
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Thriller"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Madhuri Dixit",
+        "role": "Rekha",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/gxQjVzLxpxiu5gncrmtGiAaULUi.jpg"
+      },
+      {
+        "name": "Triptii Dimri",
+        "role": "Jaya",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/d4eKm8PqGPHdInHB6zzFDclJbxc.jpg"
+      },
+      {
+        "name": "Dharna Durga",
+        "role": "Sushma",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/nVNhprIE4MTOpiDBi9938lwOXll.jpg"
+      },
+      {
+        "name": "Ravi Kishan",
+        "role": "Charitra Kumar Gupta",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/rkUTRk0tuA98RepP9jhgcCbhHqy.jpg"
+      },
+      {
+        "name": "Paresh Rawal",
+        "role": "Chandru Dwivedi",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/xFVHMvDC8s4Ab2sLXrdVxMxZ33b.jpg"
+      },
+      {
+        "name": "Jatin Sarna",
+        "role": "Sukumar Sinha",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/bnKqppKcRxSiEPiq2Fmbriibf5N.jpg"
+      }
+    ],
+    "plot": "When trouble knocks on her door, a mother and her estranged daughters attempt to cover up a crime in a nosy colony where no secret is safe.",
+    "poster": "https://image.tmdb.org/t/p/w500/EgZ6zjG0NAy04Bueb6dF1Zxg4X.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/gzjtbuyZo9g6JaPCf055Cmsd7fS.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=https://tg-stream.moinudeentv.workers.dev/?msg_id=22|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x265",
+      "audio": "DDP 5.1",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": ""
+    },
+    "versions": [
+      {
+        "id": "https://tg-stream.moinudeentv.workers.dev/?msg_id=22|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "name": "Maa Behen (2026) [1080p] [WEB-DL] [x265] [Tamil DDP 5.1].mkv",
+        "quality": "1080p • WEB-DL • DDP 5.1",
+        "source": "WEB-DL",
+        "codec": "x265",
+        "resolution": "1080p",
+        "audio": "DDP 5.1",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=https://tg-stream.moinudeentv.workers.dev/?msg_id=22|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "DDP 5.1",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": ""
+        }
+      }
+    ]
+  },
+  {
     "id": "15ZdRlpYTTzp1BtZel3FjznNGeDJ4AQlf",
     "name": "Motu Patlu & the Mystery of Nagmani (2026) [1080p] [WEB-DL] [Dolby Atmos].mkv",
     "title": "Motu Patlu & the Mystery of Nagmani",
