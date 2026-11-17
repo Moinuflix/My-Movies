@@ -15154,5 +15154,35 @@
     ],
     "selected_tmdb_id": 1627516,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1h6rSMMJvjyK5_g13FiRXGe0cLxskhXcd",
+    "original_filename": "Chandramukhi (2005) 1080p - BluRay - AVC - x264 - [Tamil (DTS5.1 - 1509kbps)] ESub.mkv",
+    "file_size_bytes": 13640209782,
+    "file_size_gb": "13 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-17T17:49:30.143Z",
+    "parsed": {
+      "title": "Chandramukhi (",
+      "year": 2005,
+      "resolution": "1080p",
+      "source": "BluRay",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "Chandramukhi ( (2005) [1080p] [BluRay] [Tamil (DTS5.1 - 1509kbps)] [13 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 53122,
+        "title": "Chandramukhi",
+        "year": "2005",
+        "poster": "https://image.tmdb.org/t/p/w500/ro3TcXw9v542zIaOyelysYj3Gi5.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/zmn7qWSs4JqLAUzxNojS1Lq7ThB.jpg",
+        "rating": 6.9
+      }
+    ],
+    "selected_tmdb_id": 53122,
+    "approval_status": "pending"
   }
 ]
