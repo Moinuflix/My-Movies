@@ -1,5 +1,103 @@
 [
   {
+    "id": "tg_47",
+    "name": "Aayitha Ezhuthu (2004) [1080p] [WEB-DL] [x264] [3GB] [Tamil DDP 5.1]-PrakyTV.mkv",
+    "title": "Aayitha Ezhuthu",
+    "original_title": "ஆயுத எழுத்து",
+    "tagline": "",
+    "original_language": "ta",
+    "year": 2004,
+    "release_date": "2004-05-21",
+    "runtime": 155,
+    "certification": "UA",
+    "tmdb_id": 63825,
+    "rating": 7,
+    "collection": "",
+    "director": [
+      "Mani Ratnam"
+    ],
+    "writers": [
+      "Sujatha Rangarajan",
+      "Mani Ratnam"
+    ],
+    "studios": [
+      "Madras Talkies"
+    ],
+    "genres": [
+      "Action",
+      "Drama",
+      "Thriller"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=kiuOvdYBCzI",
+    "cast": [
+      {
+        "name": "Suriya",
+        "role": "Michael Vasanth",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/tgHFBhOfaV0Wck48y8BFhAlVvQx.jpg"
+      },
+      {
+        "name": "R. Madhavan",
+        "role": "Inbasekaran",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/gaDrAdXxIrbBRCd9cX8YvJDEuLb.jpg"
+      },
+      {
+        "name": "Siddharth",
+        "role": "Arjun Balakrishnan",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/9XrTuJp9lnB1rsBPzTaoXdp1ig8.jpg"
+      },
+      {
+        "name": "Meera Jasmine",
+        "role": "Sashi",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/df5WMEEpEIsCIebDCfnLcP1UHuL.jpg"
+      },
+      {
+        "name": "Esha Deol",
+        "role": "Geethanjali",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/kf61c4lNSAjExCHQh03x5f0tQWL.jpg"
+      },
+      {
+        "name": "Trisha Krishnan",
+        "role": "Meera",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/8YkgaUlTshiDWHymBOEXZ948Yyn.jpg"
+      }
+    ],
+    "plot": "A goon, who dreams of making it big in life, a student leader, who strives to keep politicians away from college election and a third guy who wants to settle abroad. Their lives change after an incident on a bridge.",
+    "poster": "https://image.tmdb.org/t/p/w500/7SJMzuXWaVwjUHfGJaMzU0cTtJB.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/cWtejSPmLXq0C5CqIdCHtvIMRfr.jpg",
+    "stream_url": "https://tg-stream.moinudeentv.workers.dev/?msg_id=47|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x264",
+      "audio": "DDP 5.1",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": "3GB"
+    },
+    "versions": [
+      {
+        "id": "tg_47",
+        "name": "Aayitha Ezhuthu (2004) [1080p] [WEB-DL] [x264] [3GB] [Tamil DDP 5.1]-PrakyTV.mkv",
+        "quality": "1080p • WEB-DL • DDP 5.1 [3GB]",
+        "source": "WEB-DL",
+        "codec": "x264",
+        "resolution": "1080p",
+        "audio": "DDP 5.1",
+        "channels": "5.1",
+        "stream_url": "https://tg-stream.moinudeentv.workers.dev/?msg_id=47|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "WEB-DL",
+          "codec": "x264",
+          "audio": "DDP 5.1",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "3GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "https://tg-stream.moinudeentv.workers.dev/?msg_id=22|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
     "name": "Maa Behen (2026) [1080p] [WEB-DL] [x265] [Tamil DDP 5.1].mkv",
     "title": "Maa Behen",
