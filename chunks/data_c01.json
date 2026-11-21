@@ -1,104 +1,5 @@
 [
   {
-    "id": "1Y8rT-v8UmnT27l0_93WxdoffCpyxDw07",
-    "name": "Jurassic World: Fallen Kingdom (2018) [1080p] [WEB-DL] [x264] [28GB] [Tamil + Telugu + Hindi + Malayalam DDP 5.1].mkv",
-    "title": "Jurassic World: Fallen Kingdom",
-    "original_title": "Jurassic World: Fallen Kingdom",
-    "tagline": "The park is gone.",
-    "original_language": "en",
-    "year": 2018,
-    "release_date": "2018-06-06",
-    "runtime": 129,
-    "certification": "UA",
-    "tmdb_id": 351286,
-    "rating": 6.5,
-    "collection": "",
-    "director": [
-      "J. A. Bayona"
-    ],
-    "writers": [
-      "Derek Connolly",
-      "Colin Trevorrow"
-    ],
-    "studios": [
-      "Amblin Entertainment",
-      "Universal Pictures"
-    ],
-    "genres": [
-      "Adventure",
-      "Science Fiction",
-      "Thriller"
-    ],
-    "trailer": "https://www.youtube.com/watch?v=1FJD7jZqZEk",
-    "cast": [
-      {
-        "name": "Chris Pratt",
-        "role": "Owen Grady",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/cRH6HPAQ98PlOwwEvhYO4CM9lwu.jpg"
-      },
-      {
-        "name": "Bryce Dallas Howard",
-        "role": "Claire Dearing",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/6yhDkPXythZavS6Wk57XQ2sg5AW.jpg"
-      },
-      {
-        "name": "Rafe Spall",
-        "role": "Eli Mills",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/zcqUqAvO7RQnitcCNNfTVPaiQtS.jpg"
-      },
-      {
-        "name": "Justice Smith",
-        "role": "Franklin Webb",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/htJrcOzYkLVcnF4ExT4O1bDN5e5.jpg"
-      },
-      {
-        "name": "Daniella Pineda",
-        "role": "Zia Rodriguez",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/o8h5qbyy8A0zKTRN57YOlQOafyQ.jpg"
-      },
-      {
-        "name": "James Cromwell",
-        "role": "Benjamin Lockwood",
-        "thumbnail": "https://image.tmdb.org/t/p/w185/vpNQQbM5PtxsYmVm4oh79SGFyUK.jpg"
-      }
-    ],
-    "plot": "Three years after Jurassic World was destroyed, Isla Nublar now sits abandoned. When the island's dormant volcano begins roaring to life, Owen and Claire mount a campaign to rescue the remaining dinosaurs from this extinction-level event.",
-    "poster": "https://image.tmdb.org/t/p/w500/x2Us3jR6ToMJjbcPbLimYoxf6xr.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/gBmrsugfWpiXRh13Vo3j0WW55qD.jpg",
-    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Y8rT-v8UmnT27l0_93WxdoffCpyxDw07|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-    "specs": {
-      "resolution": "1080p",
-      "source": "WEB-DL",
-      "codec": "x264",
-      "audio": "DDP 5.1",
-      "channels": "5.1",
-      "languages": "Tamil, Telugu, Hindi, Malayalam",
-      "size": "28GB"
-    },
-    "versions": [
-      {
-        "id": "1Y8rT-v8UmnT27l0_93WxdoffCpyxDw07",
-        "name": "Jurassic World: Fallen Kingdom (2018) [1080p] [WEB-DL] [x264] [28GB] [Tamil + Telugu + Hindi + Malayalam DDP 5.1].mkv",
-        "quality": "1080p • WEB-DL • DDP 5.1 [28GB]",
-        "source": "WEB-DL",
-        "codec": "x264",
-        "resolution": "1080p",
-        "audio": "DDP 5.1",
-        "channels": "5.1",
-        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Y8rT-v8UmnT27l0_93WxdoffCpyxDw07|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
-        "specs": {
-          "resolution": "1080p",
-          "source": "WEB-DL",
-          "codec": "x264",
-          "audio": "DDP 5.1",
-          "channels": "5.1",
-          "languages": "Tamil, Telugu, Hindi, Malayalam",
-          "size": "28GB"
-        }
-      }
-    ]
-  },
-  {
     "id": "1wEJErhe_L06GiBrbKvSWVcsWeI9bqaxr",
     "name": "Mufasa: The Lion King (2024) [2160p] [Prime Video] [x265] [12GB] [Tamil + Telugu + Hindi + Malayalam DDP 5.1 Atmos]-KiNGOFTHEJUNGLE.mkv",
     "title": "Mufasa: The Lion King",
@@ -23893,6 +23794,26 @@
           "size": "6.7 GB"
         },
         "size": "6.7 GB"
+      },
+      {
+        "id": "1vm68xIQ0za0IRXj2dLw32zFnQc-mLH7c",
+        "name": "Jurassic World: Fallen Kingdom (2018) [2160p] [WEB-DL] [x265] [28GB] [Tamil DDP 5.1 Atmos].mkv",
+        "quality": "2160p • WEB-DL • DDP 5.1 Atmos [28GB]",
+        "source": "WEB-DL",
+        "codec": "x265",
+        "resolution": "2160p",
+        "audio": "DDP 5.1 Atmos",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1vm68xIQ0za0IRXj2dLw32zFnQc-mLH7c|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "2160p",
+          "source": "WEB-DL",
+          "codec": "x265",
+          "audio": "DDP 5.1 Atmos",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "28GB"
+        }
       }
     ]
   },
