@@ -15244,5 +15244,65 @@
     ],
     "selected_tmdb_id": 351286,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1GWQrWu6l0qU5zHSL5msvjWXyDZvm2vWq",
+    "original_filename": "Doctor.2021.Tamil.2160p.SNXT.WEB-DL.DDP.5.1.Atmos.HEVC-Telly.mkv",
+    "file_size_bytes": 9808588821,
+    "file_size_gb": "9 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-21T05:10:35.580Z",
+    "parsed": {
+      "title": "Doctor",
+      "year": 2021,
+      "resolution": "2160p",
+      "source": "WEB-DL",
+      "codec": "x265",
+      "telegram_tag": "",
+      "standard_filename": "Doctor (2021) [2160p] [WEB-DL] [Tamil 5.1] [9 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 673692,
+        "title": "Doctor",
+        "year": "2021",
+        "poster": "https://image.tmdb.org/t/p/w500/ySPT0USsuDFG9pqHjI50GYOeQmj.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/vP9I3436K6AYvO1UR9R9YMsT6NY.jpg",
+        "rating": 6.3
+      }
+    ],
+    "selected_tmdb_id": 673692,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1vm68xIQ0za0IRXj2dLw32zFnQc-mLH7c",
+    "original_filename": "Jurassic World Fallen Kingdom 2018 UHD BluRay 1080p DV HDR10 [ Tamil + Telugu + Hindi ] - DDP ~ 640Kbps + English DD 5.1 Atmos ] x265 - SM737 ~ FLASH.mkv",
+    "file_size_bytes": 7434324217,
+    "file_size_gb": "7 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-21T04:22:53.778Z",
+    "parsed": {
+      "title": "Jurassic World Fallen Kingdom",
+      "year": 2018,
+      "resolution": "1080p",
+      "source": "BluRay",
+      "codec": "x265",
+      "telegram_tag": "",
+      "standard_filename": "Jurassic World Fallen Kingdom (2018) [1080p] [BluRay] [Tamil + Telugu + Hindi] [7 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 351286,
+        "title": "Jurassic World: Fallen Kingdom",
+        "year": "2018",
+        "poster": "https://image.tmdb.org/t/p/w500/x2Us3jR6ToMJjbcPbLimYoxf6xr.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/gBmrsugfWpiXRh13Vo3j0WW55qD.jpg",
+        "rating": 6.5
+      }
+    ],
+    "selected_tmdb_id": 351286,
+    "approval_status": "pending"
   }
 ]
