@@ -1,5 +1,103 @@
 [
   {
+    "id": "1GWQrWu6l0qU5zHSL5msvjWXyDZvm2vWq",
+    "name": "Doctor (2021) [2160p] [WEB-DL] [x264] [12GB] [Tamil + Telugu + Hindi + Malayalam DDP 5.1].mkv",
+    "title": "Doctor",
+    "original_title": "டாக்டர்",
+    "tagline": "A journey into the world of kidnapping.",
+    "original_language": "ta",
+    "year": 2021,
+    "release_date": "2021-10-09",
+    "runtime": 150,
+    "certification": "UA",
+    "tmdb_id": 673692,
+    "rating": 6.3,
+    "collection": "",
+    "director": [
+      "Nelson"
+    ],
+    "writers": [
+      "Nelson"
+    ],
+    "studios": [
+      "Sivakarthikeyan Productions",
+      "KJR Studios"
+    ],
+    "genres": [
+      "Thriller",
+      "Comedy",
+      "Action"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Sivakarthikeyan",
+        "role": "Dr. Varun",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/jgy9y3V8QqZmu5r8sMxrGCzXuyp.jpg"
+      },
+      {
+        "name": "Vinay Rai",
+        "role": "Terry",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/8xRUq54pt2p6SHc80ezhXnm9nnf.jpg"
+      },
+      {
+        "name": "Priyanka Arul Mohan",
+        "role": "Padmini",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/rvEEKFnjJqJQuEvfPPeDkLkaAna.jpg"
+      },
+      {
+        "name": "Yogi Babu",
+        "role": "Prathap",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/4UMOPd8NqGfKp19VQHsnIzlSRUl.jpg"
+      },
+      {
+        "name": "Archana Chandhoke",
+        "role": "Sumathi",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/aN00n3PpC011dHLIj7z9DB9JY9W.jpg"
+      },
+      {
+        "name": "Ilavarasu",
+        "role": "Padmini's father",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/gWCREhajMvlOE49g79zyvwdpf5E.jpg"
+      }
+    ],
+    "plot": "An army doctor helps his love interest's family to find their kidnapped daughter using a unique strategy: conducting a kidnapping of their own.",
+    "poster": "https://image.tmdb.org/t/p/w500/ySPT0USsuDFG9pqHjI50GYOeQmj.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/vP9I3436K6AYvO1UR9R9YMsT6NY.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1GWQrWu6l0qU5zHSL5msvjWXyDZvm2vWq|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "2160p",
+      "source": "WEB-DL",
+      "codec": "x264",
+      "audio": "DDP 5.1",
+      "channels": "5.1",
+      "languages": "Tamil, Telugu, Hindi, Malayalam",
+      "size": "12GB"
+    },
+    "versions": [
+      {
+        "id": "1GWQrWu6l0qU5zHSL5msvjWXyDZvm2vWq",
+        "name": "Doctor (2021) [2160p] [WEB-DL] [x264] [12GB] [Tamil + Telugu + Hindi + Malayalam DDP 5.1].mkv",
+        "quality": "2160p • WEB-DL • DDP 5.1 [12GB]",
+        "source": "WEB-DL",
+        "codec": "x264",
+        "resolution": "2160p",
+        "audio": "DDP 5.1",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1GWQrWu6l0qU5zHSL5msvjWXyDZvm2vWq|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "2160p",
+          "source": "WEB-DL",
+          "codec": "x264",
+          "audio": "DDP 5.1",
+          "channels": "5.1",
+          "languages": "Tamil, Telugu, Hindi, Malayalam",
+          "size": "12GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "tg_49",
     "name": "Anbil Avan (2026) [1080p] [WEB-DL] [x264] [3GB] [Tamil + Hindi DDP 5.1].mkv",
     "title": "Anbil Avan",
