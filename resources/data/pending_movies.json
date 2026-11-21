@@ -15184,5 +15184,65 @@
     ],
     "selected_tmdb_id": 53122,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1wEJErhe_L06GiBrbKvSWVcsWeI9bqaxr",
+    "original_filename": "Mufasa.The.Lion.King.2024.REPACK.2160p.AMZN.WEB-DL.HIN-ENG-TAM-TEL.DDP5.1.Atmos.H.265-KiNGOFTHEJUNGLE.mkv",
+    "file_size_bytes": 14843953976,
+    "file_size_gb": "14 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-21T02:03:00.641Z",
+    "parsed": {
+      "title": "Mufasa The Lion King",
+      "year": 2024,
+      "resolution": "2160p",
+      "source": "AMZN",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "Mufasa The Lion King (2024) [2160p] [AMZN] [Tamil 5.1] [14 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 762509,
+        "title": "Mufasa: The Lion King",
+        "year": "2024",
+        "poster": "https://image.tmdb.org/t/p/w500/jbOSUAWMGzGL1L4EaUF8K6zYFo7.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/1w8kutrRucTd3wlYyu5QlUDMiG1.jpg",
+        "rating": 7.3
+      }
+    ],
+    "selected_tmdb_id": 762509,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1Y8rT-v8UmnT27l0_93WxdoffCpyxDw07",
+    "original_filename": "Jurassic World Fallen Kingdom 2018 1080p Blu-ray REMUX AVC [ ( Tamil + Telugu + Hindi ) - DDP 5.1 ~ 640Kbps + English DTS-HDMA 7.1 ] - x264 ~ playBD ~ FLASH.mkv",
+    "file_size_bytes": 28922317832,
+    "file_size_gb": "27 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-21T02:22:41.022Z",
+    "parsed": {
+      "title": "Jurassic World Fallen Kingdom",
+      "year": 2018,
+      "resolution": "1080p",
+      "source": "WEB-DL",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "Jurassic World Fallen Kingdom (2018) [1080p] [WEB-DL] [( Tamil + Telugu + Hindi ) - DDP 5.1 - 640Kbps + English DTS-HDMA 7.1] [27 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 351286,
+        "title": "Jurassic World: Fallen Kingdom",
+        "year": "2018",
+        "poster": "https://image.tmdb.org/t/p/w500/x2Us3jR6ToMJjbcPbLimYoxf6xr.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/gBmrsugfWpiXRh13Vo3j0WW55qD.jpg",
+        "rating": 6.5
+      }
+    ],
+    "selected_tmdb_id": 351286,
+    "approval_status": "pending"
   }
 ]
