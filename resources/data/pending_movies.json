@@ -15304,5 +15304,116 @@
     ],
     "selected_tmdb_id": 351286,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1aUb_PjPnd0XXyHu0KrEFYQw5t0bNQO0A",
+    "original_filename": "Bhagavanth.Kesari.I.Dont.Care.2023.1080p.AMZN.WEB-DL.MULTI.DDP5.1.H.264-BeAsT.mkv",
+    "file_size_bytes": 14411619292,
+    "file_size_gb": "13 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-23T04:42:30.380Z",
+    "parsed": {
+      "title": "Bhagavanth Kesari I Dont Care",
+      "year": 2023,
+      "resolution": "1080p",
+      "source": "AMZN",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "Bhagavanth Kesari I Dont Care (2023) [1080p] [AMZN] [Tamil 5.1] [13 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 979669,
+        "title": "Bhagavanth Kesari",
+        "year": "2023",
+        "poster": "https://image.tmdb.org/t/p/w500/4jZMZQ9oYqEAYODAeWUNJL79aIe.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/yIehWVVlvqdWB1NNFgI266CHuMa.jpg",
+        "rating": 4.9
+      }
+    ],
+    "selected_tmdb_id": 979669,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1ms3To67IrjWuaYXV6CQCp2f5c81t-o5l",
+    "original_filename": "How.to.Train.Your.Dragon.2025.2160p.AMZN.WEB-DLHIN-ENG-TAM-TEL.DDP5.1.Atmos.H.265-BYNDR-002.mkv",
+    "file_size_bytes": 16655847691,
+    "file_size_gb": "16 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-23T04:29:09.110Z",
+    "parsed": {
+      "title": "How to Train Your Dragon",
+      "year": 2025,
+      "resolution": "2160p",
+      "source": "AMZN",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "How to Train Your Dragon (2025) [2160p] [AMZN] [Tamil 5.1] [16 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 1087192,
+        "title": "How to Train Your Dragon",
+        "year": "2025",
+        "poster": "https://image.tmdb.org/t/p/w500/53dsJ3oEnBhTBVMigWJ9tkA5bzJ.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/8J6UlIFcU7eZfq9iCLbgc8Auklg.jpg",
+        "rating": 7.9
+      }
+    ],
+    "selected_tmdb_id": 1087192,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1Y7EJikYmx5XB8-bP3E_hNynsHeVoVjPV",
+    "original_filename": "Bhagavanth.Kesari.Hindi.2023.2160p.AMZN.WEB-DL.DDP5.1.H.265-Telly.mkv",
+    "file_size_bytes": 18203833258,
+    "file_size_gb": "17 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-23T04:23:19.082Z",
+    "parsed": {
+      "title": "Bhagavanth Kesari Hindi",
+      "year": 2023,
+      "resolution": "2160p",
+      "source": "AMZN",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "Bhagavanth Kesari Hindi (2023) [2160p] [AMZN] [Tamil 5.1] [17 GB].mkv"
+    },
+    "match_status": "pending",
+    "tmdb_candidates": [],
+    "selected_tmdb_id": null,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "16ySCE4x_kObXk81HZvjJyDE5RmD1PQ1-",
+    "original_filename": "@Tamiltvtoonsofficial - MCA - Middle Class Abbayi (2017) 1080p AMZN HDTV Uncut 8bit x264 [Org Telugu (DDP 5.1 ~ 640Kbps) + Hindi (DDP 5.1 ~ 384Kbps)] MSub [TTT].mkv",
+    "file_size_bytes": 8584260141,
+    "file_size_gb": "8 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-23T11:29:32.911Z",
+    "parsed": {
+      "title": "MCA   Middle Class Abbayi (",
+      "year": 2017,
+      "resolution": "2160p",
+      "source": "AMZN",
+      "codec": "x264",
+      "telegram_tag": "@Tamiltvtoonsofficial",
+      "standard_filename": "MCA   Middle Class Abbayi ( (2017) [2160p] [AMZN] [Org Telugu (DDP 5.1 - 640Kbps) + Hindi (DDP 5.1 - 384Kbps)] [8 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 485869,
+        "title": "M.C.A",
+        "year": "2017",
+        "poster": "https://image.tmdb.org/t/p/w500/oYzWaKkNBpqq1EsSWr5BS6BWBbv.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/rVGvbHS8iVrmABi8eDY9sZ8IO17.jpg",
+        "rating": 5.2
+      }
+    ],
+    "selected_tmdb_id": 485869,
+    "approval_status": "pending"
   }
 ]
