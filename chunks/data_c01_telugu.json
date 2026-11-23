@@ -1,5 +1,102 @@
 [
   {
+    "id": "16ySCE4x_kObXk81HZvjJyDE5RmD1PQ1-",
+    "name": "M.C.A (2017) [1080p] [Prime Video] [x264] [Hindi + Telugu DDP 5.1].mkv",
+    "title": "M.C.A",
+    "original_title": "ఎమ్.సీ.ఏ",
+    "tagline": "",
+    "original_language": "te",
+    "year": 2017,
+    "release_date": "2017-12-21",
+    "runtime": 143,
+    "certification": "UA",
+    "tmdb_id": 485869,
+    "rating": 5.2,
+    "collection": "",
+    "director": [
+      "Venu Sriram"
+    ],
+    "writers": [
+      "Venu Sriram"
+    ],
+    "studios": [
+      "Sri Venkateswara Creations"
+    ],
+    "genres": [
+      "Action",
+      "Comedy",
+      "Family"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=DM-JS8fbmgA",
+    "cast": [
+      {
+        "name": "Nani",
+        "role": "Nani",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/jfOH4sUWs3VXuGUlo0VLMYNRBQ4.jpg"
+      },
+      {
+        "name": "Bhumika Chawla",
+        "role": "Jyothi (Nani's Sister in Law)",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/bHYS02elIbafREPXW77aTWgN58f.jpg"
+      },
+      {
+        "name": "Sai Pallavi",
+        "role": "Pallavi aka Chinni",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/qAPdGKUIUEzLibdgVCey7oKvvME.jpg"
+      },
+      {
+        "name": "Vijay Varma",
+        "role": "Warrangal Shiva",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/A46ekiPFC3vA1442FJmiIudpxX1.jpg"
+      },
+      {
+        "name": "Rajeev Kanakala",
+        "role": "Nani’s Elder Brother",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/29Czs1esSU744TOe3ddDzCuCa0g.jpg"
+      },
+      {
+        "name": "Naresh",
+        "role": "Nani’s Uncle",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/yT9Sgp7y8h3xhlmgzafUwlIXy1H.jpg"
+      }
+    ],
+    "plot": "Nani's brother and his friends are his world. But he shares a love-hate relationship with his sister-in-law Jyothi. What happens when Shiva threatens his family, is what 'MCA' is all about.",
+    "poster": "https://image.tmdb.org/t/p/w500/oYzWaKkNBpqq1EsSWr5BS6BWBbv.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/rVGvbHS8iVrmABi8eDY9sZ8IO17.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=16ySCE4x_kObXk81HZvjJyDE5RmD1PQ1-|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "Prime Video",
+      "codec": "x264",
+      "audio": "DDP 5.1",
+      "channels": "5.1",
+      "languages": "Hindi, Telugu",
+      "size": ""
+    },
+    "versions": [
+      {
+        "id": "16ySCE4x_kObXk81HZvjJyDE5RmD1PQ1-",
+        "name": "M.C.A (2017) [1080p] [Prime Video] [x264] [Hindi + Telugu DDP 5.1].mkv",
+        "quality": "1080p • Prime Video • DDP 5.1",
+        "source": "Prime Video",
+        "codec": "x264",
+        "resolution": "1080p",
+        "audio": "DDP 5.1",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=16ySCE4x_kObXk81HZvjJyDE5RmD1PQ1-|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Prime Video",
+          "codec": "x264",
+          "audio": "DDP 5.1",
+          "channels": "5.1",
+          "languages": "Hindi, Telugu",
+          "size": ""
+        }
+      }
+    ]
+  },
+  {
     "id": "1aUb_PjPnd0XXyHu0KrEFYQw5t0bNQO0A",
     "name": "Bhagavanth Kesari (2023) [1080p] [Prime Video] [x265] [Tamil + Telugu + Hindi + Malayalam DDP 5.1]-BeAsT.mkv",
     "title": "Bhagavanth Kesari",
