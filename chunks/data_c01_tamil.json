@@ -1,5 +1,104 @@
 [
   {
+    "id": "1hhenxWuva4i_uLsrUQ-ydBkIy4SHI8xI",
+    "name": "Drones (2026) [1080p] [Prime Video] [x264] [10GB] [Tamil AC3 5.1].mkv",
+    "title": "Drones",
+    "original_title": "Drones",
+    "tagline": "",
+    "original_language": "ta",
+    "year": 2026,
+    "release_date": "2026-10-16",
+    "runtime": 152,
+    "certification": "UA",
+    "tmdb_id": 1728763,
+    "rating": 7.5,
+    "collection": "",
+    "director": [
+      "Raghav Mirdath"
+    ],
+    "writers": [
+      "Raghav Mirdath"
+    ],
+    "studios": [
+      "GM Morgan Films"
+    ],
+    "genres": [
+      "Romance",
+      "Comedy",
+      "Mystery",
+      "Horror",
+      "Fantasy"
+    ],
+    "trailer": "",
+    "cast": [
+      {
+        "name": "Siddhi Idnani",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/o33B4YJHbHWsm5W6hhtldG3ErrD.jpg"
+      },
+      {
+        "name": "Anjali Nair",
+        "role": "Rush",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/rQRqtpmpO4aedH3UPP3qv35uYn.jpg"
+      },
+      {
+        "name": "Dravid Selvam",
+        "role": "Kish",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/4sMEDUu0Zv2VGSus4KfnErSt1NW.jpg"
+      },
+      {
+        "name": "KPY Kuraishi",
+        "role": "The Mad Scientist",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/cOo8s8LoePDtZkeM5KZhRnOxA6P.jpg"
+      },
+      {
+        "name": "Devadarshini",
+        "role": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/gSq4nM6z82LfI4yjL116P1RDkb0.jpg"
+      },
+      {
+        "name": "Cinemawala Sathish",
+        "role": "Koomapatti Madhavan",
+        "thumbnail": ""
+      }
+    ],
+    "plot": "A sleepwalking student, a mysterious miniature artist, an ancient witch, a doll house of trapped souls, and a cop cursed by love collide in a surreal world.",
+    "poster": "https://image.tmdb.org/t/p/w500/k14luImbnzAhFZzqFKgvVrnOF4D.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/7bIrEDdkZCMjLf2pz9YS8t8r2D2.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1hhenxWuva4i_uLsrUQ-ydBkIy4SHI8xI|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "Prime Video",
+      "codec": "x264",
+      "audio": "AC3 5.1",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": "10GB"
+    },
+    "versions": [
+      {
+        "id": "1hhenxWuva4i_uLsrUQ-ydBkIy4SHI8xI",
+        "name": "Drones (2026) [1080p] [Prime Video] [x264] [10GB] [Tamil AC3 5.1].mkv",
+        "quality": "1080p • Prime Video • AC3 5.1 [10GB]",
+        "source": "Prime Video",
+        "codec": "x264",
+        "resolution": "1080p",
+        "audio": "AC3 5.1",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1hhenxWuva4i_uLsrUQ-ydBkIy4SHI8xI|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Prime Video",
+          "codec": "x264",
+          "audio": "AC3 5.1",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "10GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "1GWQrWu6l0qU5zHSL5msvjWXyDZvm2vWq",
     "name": "Doctor (2021) [2160p] [WEB-DL] [x264] [12GB] [Tamil + Telugu + Hindi + Malayalam DDP 5.1].mkv",
     "title": "Doctor",
