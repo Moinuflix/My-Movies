@@ -15445,5 +15445,35 @@
     ],
     "selected_tmdb_id": 1728763,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1q8OSrTd-kEeuJzppYTg-2WgXBZjgdFHd",
+    "original_filename": "@Tamiltvtoonsofficial - Resident Evil (2026) IT WEB-DL 2160p 10bit SDR x265 [AMZN Telugu + Tamil + Hindi (DDP Atmos 5.1 ~ 640Kbps) + English (DDP Atmos 5.1 ~ 768Kbps)] ESub.mkv",
+    "file_size_bytes": 10349786163,
+    "file_size_gb": "10 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-24T01:37:29.145Z",
+    "parsed": {
+      "title": "Resident Evil (",
+      "year": 2026,
+      "resolution": "2160p",
+      "source": "AMZN",
+      "codec": "x265",
+      "telegram_tag": "@Tamiltvtoonsofficial",
+      "standard_filename": "Resident Evil ( (2026) [2160p] [AMZN] [AMZN Telugu + Tamil + Hindi (DDP Atmos 5.1 - 640Kbps) + English (DDP Atmos 5.1 - 768Kbps)] [10 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 1423191,
+        "title": "Resident Evil",
+        "year": "2026",
+        "poster": "https://image.tmdb.org/t/p/w500/gAgWJhUSQWCgtKR8170nMkYlBda.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/3icyRAqgakNcQn6aDVz9libFmBA.jpg",
+        "rating": 7.5
+      }
+    ],
+    "selected_tmdb_id": 1423191,
+    "approval_status": "pending"
   }
 ]
