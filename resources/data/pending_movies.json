@@ -15415,5 +15415,35 @@
     ],
     "selected_tmdb_id": 485869,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1hhenxWuva4i_uLsrUQ-ydBkIy4SHI8xI",
+    "original_filename": "@Tamiltvtoonsofficial - Drones (2026) 1080p AMZN WEB-DL 8bit x264 [Telugu + Hindi + Kannada + Malayalam (DDP 2.0 ~ 224Kbps) + Tamil (DDP 5.1 ~ 640Kbps)] ESub [TTT].mkv",
+    "file_size_bytes": 9731707892,
+    "file_size_gb": "9 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-23T15:18:25.505Z",
+    "parsed": {
+      "title": "Drones (",
+      "year": 2026,
+      "resolution": "2160p",
+      "source": "AMZN",
+      "codec": "x264",
+      "telegram_tag": "@Tamiltvtoonsofficial",
+      "standard_filename": "Drones ( (2026) [2160p] [AMZN] [Telugu + Hindi + Kannada + Malayalam (DDP 2.0 - 224Kbps) + Tamil (DDP 5.1 - 640Kbps)] [9 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 1728763,
+        "title": "Drones",
+        "year": "2026",
+        "poster": "https://image.tmdb.org/t/p/w500/k14luImbnzAhFZzqFKgvVrnOF4D.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/7bIrEDdkZCMjLf2pz9YS8t8r2D2.jpg",
+        "rating": 0.0
+      }
+    ],
+    "selected_tmdb_id": 1728763,
+    "approval_status": "pending"
   }
 ]
