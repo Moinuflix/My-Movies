@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MoinuFlix — TG Stealth Vault (resources/data/tg)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #030712; --card: rgba(15, 23, 42, 0.94); --input: #0b1329;
+      --border: rgba(56, 189, 248, 0.24); --cyan: #38bdf8; --blue: #2563eb;
+      --green: #10b981; --gold: #f59e0b; --red: #ef4444; --purple: #a855f7;
+      --text: #f8fafc; --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    body { background: var(--bg); color: var(--text); padding: 1rem; min-height: 100vh; }
+    .wrap { max-width: 1120px; margin: 0 auto; }
+    .topbar {
+      background: linear-gradient(135deg, rgba(15,23,42,0.96), rgba(30,58,138,0.88));
+      border: 1px solid var(--border); border-radius: 18px; padding: 1.15rem 1.4rem;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.1rem;
+    }
+    .title { font-size: 1.15rem; font-weight: 800; color: #fff; }
+    .sub { font-size: 0.77rem; color: var(--cyan); font-weight: 600; margin-top: 2px; }
+    .btn {
+      border: 1px solid var(--border); background: rgba(56,189,248,0.12); color: #fff;
+      padding: 0.55rem 0.95rem; border-radius: 11px; font-size: 0.8rem; font-weight: 700;
+      cursor: pointer; display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
+    }
+    .btn-cyan { background: linear-gradient(135deg, var(--cyan), var(--blue)); color: #030712; border: none; }
+    .btn-green { background: linear-gradient(135deg, var(--green), #059669); color: #fff; border: none; }
+    .btn-purple { background: linear-gradient(135deg, #c084fc, #7e22ce); color: #fff; border: none; }
+    .btn-red { background: rgba(239,68,68,0.15); border-color: rgba(239,68,68,0.45); color: #fca5a5; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 1.1rem; flex-wrap: wrap; }
+    .tab { padding: 0.65rem 1.1rem; border-radius: 12px; font-size: 0.84rem; font-weight: 800; background: rgba(15,23,42,0.85); border: 1px solid var(--border); color: var(--muted); cursor: pointer; }
+    .tab.active { background: linear-gradient(135deg, rgba(56,189,248,0.22), rgba(37,99,235,0.28)); border-color: var(--cyan); color: #fff; }
+    .grid-3 { display: grid; grid-template-columns: 1.3fr 0.85fr 0.85fr; gap: 0.9rem; }
+    @media (max-width: 780px) { .grid-3 { grid-template-columns: 1fr; } }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 1.2rem; margin-bottom: 1.1rem; }
+    .card-head { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; gap: 8px; }
+    .card-title { font-size: 0.96rem; font-weight: 800; color: var(--cyan); }
+    label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--muted); margin-bottom: 5px; }
+    input { width: 100%; background: var(--input); border: 1px solid var(--border); border-radius: 11px; padding: 0.68rem 0.85rem; color: #fff; font-size: 0.85rem; outline: none; margin-bottom: 0.75rem; }
+    .status-bar { padding: 0.75rem 1rem; border-radius: 12px; font-size: 0.82rem; font-weight: 700; margin-bottom: 1rem; background: rgba(56,189,248,0.1); border: 1px solid var(--border); color: var(--cyan); display: none; }
+    .item-card { background: rgba(11,19,41,0.94); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1rem; margin-bottom: 0.85rem; }
+    .item-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+    .badge { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 0.7rem; font-weight: 800; margin-right: 5px; margin-bottom: 4px; background: rgba(56,189,248,0.16); color: var(--cyan); }
+    .badge-gold { background: rgba(245,158,11,0.18); color: #fcd34d; }
+    .badge-purple { background: rgba(168,85,247,0.18); color: #d8b4fe; }
+    .badge-green { background: rgba(16,185,129,0.18); color: #6ee7b7; }
+    .badge-red { background: rgba(239,68,68,0.18); color: #fca5a5; }
+    .code-line { font-family: monospace; font-size: 0.78rem; padding: 6px 9px; border-radius: 8px; margin-top: 6px; word-break: break-all; }
+    .line-old { background: rgba(239,68,68,0.08); border: 1px dashed rgba(239,68,68,0.35); color: #fca5a5; }
+    .line-new { background: rgba(16,185,129,0.08); border: 1px dashed rgba(16,185,129,0.4); color: #6ee7b7; }
+    .line-stealth { background: rgba(168,85,247,0.1); border: 1px dashed rgba(168,85,247,0.45); color: #e9d5ff; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div>
+      <div class="title">🛡️ MOINUFLIX — `resources/data/tg/` STEALTH VAULT</div>
+      <div class="sub">Isolated TG Folder • Auto GB Note • Linked to Step 3 Studio</div>
+    </div>
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <button class="btn btn-cyan" onclick="syncVaultFolder()">🔄 Sync `tg/`</button>
+      <button class="btn" onclick="toggleConfig()">⚙️ GitHub Setup</button>
+      <a href="https://moinuflix.github.io/My-Movies/managment.html" target="_blank" class="btn btn-purple">🎬 Open Step 3 Studio ↗</a>
+    </div>
+  </div>
+
+  <div id="status-banner" class="status-bar"></div>
+
+  <div class="card" id="config-panel">
+    <div class="card-head">
+      <div class="card-title">🔐 GitHub Folder Setup (`Moinuflix/My-Movies/resources/data/tg/`)</div>
+      <span id="cfg-badge" style="font-size:0.75rem; font-weight:800; color:var(--gold);">⚠️ Setup Required</span>
+    </div>
+    <div class="grid-3">
+      <div>
+        <label>GitHub Repo (owner/repo)</label>
+        <input type="text" id="cfg-repo" value="Moinuflix/My-Movies">
+      </div>
+      <div>
+        <label>Isolated Folder Path</label>
+        <input type="text" id="cfg-folder" value="resources/data/tg">
+      </div>
+      <div>
+        <label>GitHub Personal Access Token (PAT - ghp_...)</label>
+        <input type="password" id="cfg-gh-token" placeholder="ghp_xxxxxxxxxxxx">
+      </div>
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <button class="btn btn-green" onclick="saveConfig()">💾 Save GitHub Setup</button>
+      <button class="btn btn-red" onclick="clearConfig()">🗑️ Clear Token</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="card-title">➕ Add Release to Step 1 (`resources/data/tg/step1_pending.json`)</div>
+      <span style="font-size:0.74rem; color:var(--gold); font-weight:700;">💾 Auto-detects GB/MB from filename</span>
+    </div>
+    <div class="grid-3">
+      <div>
+        <label>Telegram Msg Link or ID (e.g. `https://t.me/c/3973856652/66` or `66`) *</label>
+        <input type="text" id="in-msg-id" placeholder="https://t.me/c/3973856652/66">
+      </div>
+      <div>
+        <label>File Size in GB (Auto-detected)</label>
+        <input type="text" id="in-size-gb" placeholder="e.g. 3.5 GB">
+      </div>
+      <div>
+        <label>Release Tag Suffix</label>
+        <input type="text" id="in-tag" value="@ttt" oninput="livePreview()">
+      </div>
+    </div>
+    <div>
+      <label>Old / Raw Filename *</label>
+      <input type="text" id="in-raw-name" placeholder="www.TamilRangers.Online - Bridge To Terabhithia (2008) 1080p - BluRay - HEVC 10bit - Multi Audios ... - 3.5GB - H265 ].mkv" oninput="onRawInput()">
+    </div>
+    <div id="live-preview-box" style="display:none; margin-bottom:0.85rem;">
+      <div class="code-line line-new" id="prev-new-name"></div>
+      <div class="code-line line-stealth" id="prev-stealth-name"></div>
+    </div>
+    <button class="btn btn-green" onclick="addSingleToStep1()">📥 Save to `step1_pending.json`</button>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" id="tab-step1" onclick="switchTab('step1')">⏳ STEP 1: Pending Queue (<span id="cnt-step1">0</span>)</button>
+    <button class="tab" id="tab-step2" onclick="switchTab('step2')">🗄️ STEP 2: Permanent "Data" Archive (<span id="cnt-step2">0</span>)</button>
+  </div>
+
+  <div class="card" id="view-step1">
+    <div class="card-head">
+      <div class="card-title">⏳ STEP 1: Pending Queue (`step1_pending.json`)</div>
+      <span style="font-size:0.75rem; color:var(--muted);">Stores: `tg_msg_id` + `size_gb` + `old_name` + `new_name` + `stealth_name`</span>
+    </div>
+    <div id="list-step1"></div>
+  </div>
+
+  <div class="card" id="view-step2" style="display:none;">
+    <div class="card-head">
+      <div class="card-title">🗄️ STEP 2: Permanent Audit Archive (`step2_data_archive.json` ➔ `"Data"`)</div>
+      <input type="text" id="search-step2" placeholder="Search raw name, stealth ID, GB, or ID..." oninput="renderStep2()" style="width:270px; margin:0;">
+    </div>
+    <div id="list-step2"></div>
+  </div>
+</div>
+
+<script>
+  const STEP3_STUDIO_URL = "https://moinuflix.github.io/My-Movies/managment.html";
+  let step1List = [], step2Data = { Data: [] }, step1Sha, step2Sha, currentStealthPreview = "";
+
+  function showStatus(msg, isErr = false) {
+    const el = document.getElementById("status-banner");
+    el.style.display = "block";
+    el.style.borderColor = isErr ? "var(--red)" : "var(--cyan)";
+    el.style.color = isErr ? "#fca5a5" : "var(--cyan)";
+    el.textContent = msg;
+  }
+
+  function getCfg() {
+    const folder = (localStorage.getItem("mf_tg_folder") || "resources/data/tg").replace(/^\/+|\/+$/g, "");
+    return {
+      repo: (localStorage.getItem("mf_tg_repo") || "Moinuflix/My-Movies").trim(),
+      folder: folder || "resources/data/tg",
+      ghToken: (localStorage.getItem("mf_tg_gh") || "").trim()
+    };
+  }
+
+  function loadCfgUI() {
+    const c = getCfg();
+    document.getElementById("cfg-repo").value = c.repo;
+    document.getElementById("cfg-folder").value = c.folder;
+    document.getElementById("cfg-gh-token").value = c.ghToken;
+    const b = document.getElementById("cfg-badge");
+    if (c.repo && c.ghToken) {
+      b.textContent = `✅ Connected: ${c.repo}/${c.folder}/`;
+      b.style.color = "var(--green)";
+      document.getElementById("config-panel").style.display = "none";
+      syncVaultFolder();
+    } else {
+      b.textContent = "⚠️ Enter GitHub Token";
+      b.style.color = "var(--gold)";
+    }
+  }
+
+  function toggleConfig() {
+    const p = document.getElementById("config-panel");
+    p.style.display = p.style.display === "none" ? "block" : "none";
+  }
+
+  function saveConfig() {
+    localStorage.setItem("mf_tg_repo", document.getElementById("cfg-repo").value.trim() || "Moinuflix/My-Movies");
+    localStorage.setItem("mf_tg_folder", document.getElementById("cfg-folder").value.trim() || "resources/data/tg");
+    localStorage.setItem("mf_tg_gh", document.getElementById("cfg-gh-token").value.trim());
+    loadCfgUI();
+  }
+
+  function clearConfig() {
+    localStorage.removeItem("mf_tg_gh");
+    loadCfgUI();
+    showStatus("🗑️ GitHub Token cleared.");
+  }
+
+  function switchTab(tab) {
+    document.getElementById("tab-step1").classList.toggle("active", tab === "step1");
+    document.getElementById("tab-step2").classList.toggle("active", tab === "step2");
+    document.getElementById("view-step1").style.display = tab === "step1" ? "block" : "none";
+    document.getElementById("view-step2").style.display = tab === "step2" ? "block" : "none";
+  }
+
+  function detectSizeGb(raw) {
+    const m = raw.match(/(\d+(?:\.\d+)?)\s*(gb|mb)/i);
+    if (!m) return "";
+    const val = parseFloat(m[1]);
+    return m[2].toLowerCase() === "mb" ? `${(val / 1024).toFixed(2)} GB` : `${val} GB`;
+  }
+
+  function generateStealthName() {
+    const ts = Date.now();
+    const chars = "0123456789abcdef";
+    let hex = "";
+    for (let i = 0; i < 12; i++) hex += chars[Math.floor(Math.random() * chars.length)];
+    return `u-t-s-${ts}-e-n-d-${hex}`;
+  }
+
+  function formatCleanBracketName(rawName, tag = "@ttt") {
+    let clean = rawName.trim()
+      .replace(/^(?:www\.[^\s\-]+\s*-\s*|@[^\s\-]+\s*-\s*)/i, "")
+      .replace(/\.(mkv|mp4|avi|webm)$/i, "").trim();
+
+    const ym = clean.match(/\b(19\d\d|20\d\d)\b/);
+    let title = clean, year = "2026", rest = "";
+    if (ym) {
+      title = clean.substring(0, ym.index).replace(/[\s\-._]+$/g, "").trim();
+      year = ym[1];
+      rest = clean.substring(ym.index + 4).replace(/^[\s\-._]+/g, "").trim();
+    }
+
+    const tokens = [];
+    for (let p of rest.split(/(\[[^\]]+\]|\([^\)]+\))/)) {
+      p = p.replace(/^[\s\-._\]]+|[\s\-._\]]+$/g, "");
+      if (!p || p === "+") continue;
+      if ((p.startsWith("[") && p.endsWith("]")) || (p.startsWith("(") && p.endsWith(")"))) {
+        const inner = p.slice(1, -1).trim();
+        if (inner) tokens.push(`[${inner}]`);
+      } else {
+        for (let s of p.split(/\s+-\s+|\s{2,}/)) {
+          s = s.replace(/^[\s\-._\[\]\(\)]+|[\s\-._\[\]\(\)]+$/g, "");
+          if (!s || s === "+") continue;
+          if (/^HEVC\s+10bit$/i.test(s)) tokens.push("[HEVC]", "[10bit]");
+          else tokens.push(`[${s}]`);
+        }
+      }
+    }
+    if (tag && tag.trim()) tokens.push(`[${tag.trim()}]`);
+    return `${title} (${year}) ${tokens.join(" ")}.mkv`;
+  }
+
+  function extractMsgId(input) {
+    const m = input.trim().match(/(\d+)$/);
+    return m ? m[1] : "";
+  }
+
+  function onRawInput() {
+    const raw = document.getElementById("in-raw-name").value.trim();
+    const detected = detectSizeGb(raw);
+    if (detected && !document.getElementById("in-size-gb").dataset.manual) {
+      document.getElementById("in-size-gb").value = detected;
+    }
+    livePreview();
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("in-size-gb").addEventListener("input", function() {
+      this.dataset.manual = this.value.trim() ? "1" : "";
+    });
+  });
+
+  function livePreview() {
+    const raw = document.getElementById("in-raw-name").value.trim();
+    const tag = document.getElementById("in-tag").value.trim();
+    const box = document.getElementById("live-preview-box");
+    if (!raw) { box.style.display = "none"; currentStealthPreview = ""; return; }
+    if (!currentStealthPreview) currentStealthPreview = generateStealthName();
+    document.getElementById("prev-new-name").textContent = `✨ New Clean Name: ${formatCleanBracketName(raw, tag)}`;
+    document.getElementById("prev-stealth-name").textContent = `🛡️ Stealth ID: ${currentStealthPreview}`;
+    box.style.display = "block";
+  }
+
+  async function ghReadJson(fileName, fallback) {
+    const cfg = getCfg();
+    const url = `https://api.github.com/repos/${cfg.repo}/contents/${cfg.folder}/${fileName}?t=${Date.now()}`;
+    const res = await fetch(url, { headers: { "Authorization": `Bearer ${cfg.ghToken}`, "Accept": "application/vnd.github.v3+json" } });
+    if (res.status === 404) return { data: fallback, sha: undefined };
+    if (!res.ok) throw new Error(`GitHub Read Error (${fileName}): ${res.status}`);
+    const json = await res.json();
+    return { data: JSON.parse(decodeURIComponent(escape(atob(json.content)))), sha: json.sha };
+  }
+
+  async function ghWriteJson(fileName, dataObj, sha, commitMsg) {
+    const cfg = getCfg();
+    const url = `https://api.github.com/repos/${cfg.repo}/contents/${cfg.folder}/${fileName}`;
+    const body = { message: commitMsg, content: btoa(unescape(encodeURIComponent(JSON.stringify(dataObj, null, 2)))), branch: "main" };
+    if (sha) body.sha = sha;
+    const res = await fetch(url, {
+      method: "PUT",
+      headers: { "Authorization": `Bearer ${cfg.ghToken}`, "Accept": "application/vnd.github.v3+json", "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
+    if (!res.ok) throw new Error((await res.json()).message || `Write failed: ${fileName}`);
+    return (await res.json()).content.sha;
+  }
+
+  async function syncVaultFolder() {
+    const cfg = getCfg();
+    if (!cfg.ghToken) return showStatus("⚠️ Pehle GitHub Setup mein PAT Token save karein.", true);
+    showStatus(`⏳ Syncing ${cfg.folder}/...`);
+    try {
+      const r1 = await ghReadJson("step1_pending.json", []);
+      step1List = Array.isArray(r1.data) ? r1.data : [];
+      step1Sha = r1.sha;
+      const r2 = await ghReadJson("step2_data_archive.json", { Data: [] });
+      step2Data = (r2.data && Array.isArray(r2.data.Data)) ? r2.data : { Data: [] };
+      step2Sha = r2.sha;
+      renderAll();
+      showStatus(`✅ Synced (${cfg.folder}/)! Step 1: ${step1List.length} | Step 2 "Data": ${step2Data.Data.length}`);
+    } catch (e) { showStatus(`❌ Sync Error: ${e.message}`, true); }
+  }
+
+  async function addSingleToStep1() {
+    const cfg = getCfg();
+    if (!cfg.ghToken) return showStatus("⚠️ GitHub Token save karein!", true);
+    const msgId = extractMsgId(document.getElementById("in-msg-id").value);
+    const rawName = document.getElementById("in-raw-name").value.trim();
+    const tag = document.getElementById("in-tag").value.trim();
+    let sizeGb = document.getElementById("in-size-gb").value.trim() || detectSizeGb(rawName) || "N/A";
+    if (sizeGb !== "N/A" && !/gb|mb/i.test(sizeGb)) sizeGb = `${sizeGb} GB`;
+
+    if (!msgId || !rawName) return showStatus("⚠️ Telegram Message ID aur Raw Filename dono daalein!", true);
+    if (step1List.some(x => String(x.tg_msg_id) === msgId) || step2Data.Data.some(x => String(x.tg_msg_id) === msgId)) {
+      return showStatus(`⚠️ Msg ID #${msgId} pehle se मौजूद hai!`, true);
+    }
+
+    const stealthName = currentStealthPreview || generateStealthName();
+    const newName = formatCleanBracketName(rawName, tag);
+    step1List.unshift({ tg_msg_id: msgId, size_gb: sizeGb, old_name: rawName, new_name: newName, stealth_name: stealthName, added_at: new Date().toISOString() });
+
+    showStatus(`⏳ Saving TG #${msgId} (${sizeGb})...`);
+    try {
+      step1Sha = await ghWriteJson("step1_pending.json", step1List, step1Sha, `TG Step 1: Added #${msgId} (${sizeGb})`);
+      document.getElementById("in-msg-id").value = "";
+      document.getElementById("in-raw-name").value = "";
+      const sz = document.getElementById("in-size-gb"); sz.value = ""; sz.dataset.manual = "";
+      document.getElementById("live-preview-box").style.display = "none";
+      currentStealthPreview = "";
+      renderAll();
+      showStatus(`✅ Saved TG #${msgId} (${sizeGb}) to ${cfg.folder}/step1_pending.json!`);
+    } catch (e) { showStatus(`❌ Save Error: ${e.message}`, true); }
+  }
+
+  async function processStep1Item(idx, actionType) {
+    const item = step1List[idx];
+    if (!item) return;
+    showStatus(`⏳ Moving TG #${item.tg_msg_id} to Step 2 ("Data")...`);
+    step2Data.Data.unshift({
+      tg_msg_id: item.tg_msg_id, size_gb: item.size_gb || "N/A",
+      raw_name: item.old_name, tg_stealth_name: item.stealth_name, clean_name: item.new_name,
+      status: actionType, archived_at: new Date().toISOString()
+    });
+    step1List.splice(idx, 1);
+    try {
+      step2Sha = await ghWriteJson("step2_data_archive.json", step2Data, step2Sha, `TG Step 2 Data (${actionType}): #${item.tg_msg_id}`);
+      step1Sha = await ghWriteJson("step1_pending.json", step1List, step1Sha, `TG Step 1 Removed #${item.tg_msg_id}`);
+      renderAll();
+      if (actionType === "passed_to_step3") {
+        navigator.clipboard?.writeText(item.new_name);
+        window.open(`${STEP3_STUDIO_URL}?tg_id=${encodeURIComponent(item.tg_msg_id)}&size=${encodeURIComponent(item.size_gb || '')}&name=${encodeURIComponent(item.new_name)}&stealth=${encodeURIComponent(item.stealth_name)}`, "_blank");
+        showStatus(`🚀 Passed TG #${item.tg_msg_id}! Saved to Data & Opening Step 3 Studio...`);
+      } else {
+        showStatus(`🗄️ Archived in Step 2 ("Data" key)!`);
+      }
+    } catch (e) { showStatus(`❌ GitHub Error: ${e.message}`, true); }
+  }
+
+  function renderAll() {
+    document.getElementById("cnt-step1").textContent = step1List.length;
+    document.getElementById("cnt-step2").textContent = step2Data.Data.length;
+    renderStep1(); renderStep2();
+  }
+
+  function renderStep1() {
+    const box = document.getElementById("list-step1");
+    if (!step1List.length) { box.innerHTML = `<div style="text-align:center; color:var(--muted); padding:2rem;">Step 1 Pending Queue empty hai.</div>`; return; }
+    box.innerHTML = "";
+    step1List.forEach((it, idx) => {
+      const div = document.createElement("div");
+      div.className = "item-card";
+      div.innerHTML = `
+        <div class="item-top">
+          <div><span class="badge">⚡ TG #${it.tg_msg_id}</span><span class="badge badge-gold">💾 ${it.size_gb || "N/A"}</span><span class="badge badge-purple">🛡️ ${it.stealth_name}</span></div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn-green" onclick="processStep1Item(${idx}, 'passed_to_step3')">🚀 Pass to Step 3</button>
+            <button class="btn btn-red" onclick="processStep1Item(${idx}, 'removed_archived')">🗄️ Remove ➔ Data</button>
+          </div>
+        </div>
+        <div class="code-line line-old"><b>OLD RAW:</b> ${it.old_name}</div>
+        <div class="code-line line-new"><b>NEW CLEAN:</b> ${it.new_name}</div>`;
+      box.appendChild(div);
+    });
+  }
+
+  function renderStep2() {
+    const q = (document.getElementById("search-step2").value || "").toLowerCase();
+    const box = document.getElementById("list-step2");
+    const filtered = step2Data.Data.filter(x => (x.raw_name || "").toLowerCase().includes(q) || (x.tg_stealth_name || "").toLowerCase().includes(q) || (x.size_gb || "").toLowerCase().includes(q) || String(x.tg_msg_id || "").includes(q));
+    if (!filtered.length) { box.innerHTML = `<div style="text-align:center; color:var(--muted); padding:2rem;">Step 2 "Data" archive mein koi record nahi hai.</div>`; return; }
+    box.innerHTML = "";
+    filtered.forEach(it => {
+      const isPassed = it.status === "passed_to_step3";
+      const div = document.createElement("div");
+      div.className = "item-card";
+      div.innerHTML = `
+        <div class="item-top">
+          <div><span class="badge">⚡ TG #${it.tg_msg_id}</span><span class="badge badge-gold">💾 ${it.size_gb || "N/A"}</span><span class="badge ${isPassed ? 'badge-green' : 'badge-red'}">${isPassed ? '✅ PASSED TO STEP 3' : '🗄️ ARCHIVED'}</span></div>
+          <a href="${STEP3_STUDIO_URL}?tg_id=${encodeURIComponent(it.tg_msg_id)}&size=${encodeURIComponent(it.size_gb || '')}&name=${encodeURIComponent(it.clean_name || it.raw_name)}" target="_blank" class="btn">🎬 Open Step 3 ↗</a>
+        </div>
+        <div class="code-line line-old"><b>RAW NAME:</b> ${it.raw_name}</div>
+        <div class="code-line line-stealth"><b>TG STEALTH NAME:</b> ${it.tg_stealth_name}</div>`;
+      box.appendChild(div);
+    });
+  }
+
+  window.addEventListener("DOMContentLoaded", loadCfgUI);
+</script>
+</body>
+</html>
