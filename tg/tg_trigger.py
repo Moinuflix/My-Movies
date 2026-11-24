@@ -1,4 +1,4 @@
-import os, re, time, uuid, json, base64, urllib.request
+import os, re, time, uuid, json, base64, urllib.request, urllib.error
 
 BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "").strip()
 BIN_CHANNEL_ID = str(os.environ.get("TG_BIN_CHANNEL", "")).strip()
@@ -43,10 +43,11 @@ def gh_read(file_name, fallback):
     url = f"https://api.github.com/repos/{GH_REPO}/contents/{FOLDER_PATH}/{file_name}"
     headers = {"Authorization": f"Bearer {GH_TOKEN}", "Accept": "application/vnd.github.v3+json"}
     try:
-        with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=15) as r:
+        with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=30) as r:
             d = json.loads(r.read().decode("utf-8"))
             return json.loads(base64.b64decode(d["content"]).decode("utf-8")), d["sha"]
-    except Exception:
+    except Exception as e:
+        print(f"ℹ️ gh_read ({file_name}): {e}")
         return fallback, None
 
 def gh_write(file_name, obj, sha, msg):
@@ -63,22 +64,35 @@ def gh_write(file_name, obj, sha, msg):
     }
     if sha:
         body["sha"] = sha
-    urllib.request.urlopen(urllib.request.Request(url, data=json.dumps(body).encode("utf-8"), headers=headers, method="PUT"), timeout=20)
+    urllib.request.urlopen(urllib.request.Request(url, data=json.dumps(body).encode("utf-8"), headers=headers, method="PUT"), timeout=30)
 
-def tg_api(method, payload=None):
+def tg_api(method, payload=None, retries=3):
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/{method}"
-    req = urllib.request.Request(
-        url,
-        data=json.dumps(payload).encode("utf-8") if payload else None,
-        headers={"Content-Type": "application/json"} if payload else {}
-    )
-    with urllib.request.urlopen(req, timeout=20) as r:
-        return json.loads(r.read().decode("utf-8"))
+    for attempt in range(1, retries + 1):
+        try:
+            req = urllib.request.Request(
+                url,
+                data=json.dumps(payload).encode("utf-8") if payload else None,
+                headers={"Content-Type": "application/json", "User-Agent": "MoinuFlix-Vault/1.0"}
+            )
+            with urllib.request.urlopen(req, timeout=60) as r:
+                return json.loads(r.read().decode("utf-8"))
+        except Exception as e:
+            print(f"⚠️ TG API ({method}) attempt {attempt}/{retries} failed: {e}")
+            if attempt == retries:
+                raise
+            time.sleep(3 * attempt)
 
 def main():
     if not BOT_TOKEN:
         raise RuntimeError("TG_BOT_TOKEN secret missing!")
 
+    print("1️⃣ Clearing any old webhook & verifying Bot...")
+    tg_api("deleteWebhook", {"drop_pending_updates": False})
+    me = tg_api("getMe")
+    print(f"🤖 Connected Bot: @{me.get('result', {}).get('username')}")
+
+    print("2️⃣ Reading GitHub vault state...")
     step1, s1_sha = gh_read("step1_pending.json", [])
     step2, _ = gh_read("step2_data_archive.json", {"Data": []})
     state, st_sha = gh_read("bot_offset.json", {"offset": 0})
@@ -86,20 +100,25 @@ def main():
     known_ids = {str(x.get("tg_msg_id")) for x in step1} | {str(x.get("tg_msg_id")) for x in step2.get("Data", [])}
     offset = int(state.get("offset", 0))
 
-    updates = tg_api("getUpdates", {"offset": offset + 1, "limit": 100, "allowed_updates": ["channel_post", "message"]})
+    print(f"3️⃣ Fetching Telegram updates (offset={offset})...")
+    updates = tg_api("getUpdates", {"offset": offset + 1, "limit": 100, "timeout": 5, "allowed_updates": ["channel_post", "message"]})
     if not updates.get("ok"):
         raise RuntimeError(f"Telegram API Error: {updates}")
+
+    results = updates.get("result", [])
+    print(f"📩 Total updates received: {len(results)}")
 
     added = 0
     max_update_id = offset
 
-    for upd in updates.get("result", []):
+    for upd in results:
         max_update_id = max(max_update_id, int(upd["update_id"]))
         post = upd.get("channel_post") or upd.get("message")
         if not post:
             continue
 
         chat_id = str(post.get("chat", {}).get("id", ""))
+        print(f"   • Post #{post.get('message_id')} from chat_id={chat_id}")
         if BIN_CHANNEL_ID and chat_id != BIN_CHANNEL_ID:
             continue
 
@@ -123,7 +142,6 @@ def main():
         stealth_id = make_stealth_id()
         clean_name = format_clean_name(raw_name, "@ttt")
 
-        # Mask caption inside Telegram BIN Channel
         try:
             tg_api("editMessageCaption", {"chat_id": chat_id, "message_id": int(msg_id), "caption": stealth_id})
         except Exception as e:
@@ -148,7 +166,7 @@ def main():
         gh_write("step1_pending.json", step1, s1_sha, f"GitHub Action: Added {added} TG items to Step 1")
         print(f"🚀 Pushed {added} items to tg/step1_pending.json!")
     else:
-        print("✅ No new Telegram channel posts found.")
+        print("✅ Done — no new unmasked channel posts to add.")
 
 if __name__ == "__main__":
     main()
