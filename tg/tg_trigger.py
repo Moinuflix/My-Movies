@@ -1,18 +1,10 @@
-# MoinuFlix — Telegram BIN Channel Auto-Trigger & Stealth Masker
-# Target Folder: Moinuflix/My-Movies/resources/data/tg/
-# Colab Run: !pip install -q pyrogram tgcrypto
+import os, re, time, uuid, json, base64, urllib.request
 
-import os, re, time, uuid, json, base64, asyncio, urllib.request
-from pyrogram import Client
-
-API_ID = int(os.environ.get("TG_API_ID") or input("1. Enter TG_API_ID: ").strip())
-API_HASH = os.environ.get("TG_API_HASH") or input("2. Enter TG_API_HASH: ").strip()
-BIN_CHANNEL = int(os.environ.get("TG_BIN_CHANNEL") or input("3. Private BIN Channel ID (-100...): ").strip())
-GH_TOKEN = os.environ.get("GH_TOKEN") or input("4. GitHub PAT Token (ghp_...): ").strip()
-SCAN_LIMIT = int(os.environ.get("SCAN_LIMIT") or input("5. Last kitne messages scan karne hain (default 20): ").strip() or "20")
-
-GH_REPO = "Moinuflix/My-Movies"
-FOLDER_PATH = "resources/data/tg"
+BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "").strip()
+BIN_CHANNEL_ID = str(os.environ.get("TG_BIN_CHANNEL", "")).strip()
+GH_TOKEN = os.environ.get("GITHUB_TOKEN", "").strip()
+GH_REPO = os.environ.get("GITHUB_REPOSITORY", "Moinuflix/My-Movies").strip()
+FOLDER_PATH = "tg"
 
 def make_stealth_id():
     return f"u-t-s-{int(time.time() * 1000)}-e-n-d-{uuid.uuid4().hex[:12]}"
@@ -73,62 +65,90 @@ def gh_write(file_name, obj, sha, msg):
         body["sha"] = sha
     urllib.request.urlopen(urllib.request.Request(url, data=json.dumps(body).encode("utf-8"), headers=headers, method="PUT"), timeout=20)
 
-async def run_tg_trigger():
+def tg_api(method, payload=None):
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/{method}"
+    req = urllib.request.Request(
+        url,
+        data=json.dumps(payload).encode("utf-8") if payload else None,
+        headers={"Content-Type": "application/json"} if payload else {}
+    )
+    with urllib.request.urlopen(req, timeout=20) as r:
+        return json.loads(r.read().decode("utf-8"))
+
+def main():
+    if not BOT_TOKEN:
+        raise RuntimeError("TG_BOT_TOKEN secret missing!")
+
     step1, s1_sha = gh_read("step1_pending.json", [])
     step2, _ = gh_read("step2_data_archive.json", {"Data": []})
+    state, st_sha = gh_read("bot_offset.json", {"offset": 0})
 
-    # Duplicate check against both Step 1 and Step 2 ("Data")
     known_ids = {str(x.get("tg_msg_id")) for x in step1} | {str(x.get("tg_msg_id")) for x in step2.get("Data", [])}
+    offset = int(state.get("offset", 0))
+
+    updates = tg_api("getUpdates", {"offset": offset + 1, "limit": 100, "allowed_updates": ["channel_post", "message"]})
+    if not updates.get("ok"):
+        raise RuntimeError(f"Telegram API Error: {updates}")
+
     added = 0
+    max_update_id = offset
 
-    async with Client("moinu_tg_vault_session", api_id=API_ID, api_hash=API_HASH) as app:
-        async for msg in app.get_chat_history(BIN_CHANNEL, limit=SCAN_LIMIT):
-            media = msg.video or msg.document
-            if not media:
-                continue
+    for upd in updates.get("result", []):
+        max_update_id = max(max_update_id, int(upd["update_id"]))
+        post = upd.get("channel_post") or upd.get("message")
+        if not post:
+            continue
 
-            msg_id_str = str(msg.id)
-            if msg_id_str in known_ids:
-                continue
+        chat_id = str(post.get("chat", {}).get("id", ""))
+        if BIN_CHANNEL_ID and chat_id != BIN_CHANNEL_ID:
+            continue
 
-            raw_name = getattr(media, "file_name", None) or (msg.caption or "").strip()
-            if not raw_name or raw_name.startswith("u-t-s-"):
-                continue
+        media = post.get("video") or post.get("document")
+        if not media:
+            continue
 
-            size_bytes = getattr(media, "file_size", 0) or 0
-            # Skip > 4 GB & split parts
-            if size_bytes > 4 * (1024 ** 3) or raw_name.lower().endswith((".001", ".002", ".zip")):
-                continue
+        msg_id = str(post["message_id"])
+        if msg_id in known_ids:
+            continue
 
-            size_gb = f"{round(size_bytes / (1024 ** 3), 2)} GB" if size_bytes else "N/A"
-            stealth_id = make_stealth_id()
-            clean_name = format_clean_name(raw_name, "@ttt")
+        raw_name = media.get("file_name") or (post.get("caption") or "").split("\n")[0].strip()
+        if not raw_name or raw_name.startswith("u-t-s-"):
+            continue
 
-            # Mask caption inside Telegram BIN Channel
-            try:
-                await app.edit_message_caption(BIN_CHANNEL, msg.id, stealth_id)
-            except Exception as e:
-                print(f"⚠️ Caption edit note (#{msg_id_str}): {e}")
+        size_bytes = int(media.get("file_size") or 0)
+        if size_bytes > 4 * (1024 ** 3) or raw_name.lower().endswith((".001", ".002", ".zip")):
+            continue
 
-            step1.insert(0, {
-                "tg_msg_id": msg_id_str,
-                "size_gb": size_gb,
-                "old_name": raw_name,
-                "new_name": clean_name,
-                "stealth_name": stealth_id,
-                "added_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
-            })
-            known_ids.add(msg_id_str)
-            added += 1
-            print(f"✅ TG #{msg_id_str} ({size_gb}) Masked -> {stealth_id}")
-            print(f"   🎬 Clean Name -> {clean_name}")
-            await asyncio.sleep(1.2)
+        size_gb = f"{round(size_bytes / (1024 ** 3), 2)} GB" if size_bytes else "N/A"
+        stealth_id = make_stealth_id()
+        clean_name = format_clean_name(raw_name, "@ttt")
+
+        # Mask caption inside Telegram BIN Channel
+        try:
+            tg_api("editMessageCaption", {"chat_id": chat_id, "message_id": int(msg_id), "caption": stealth_id})
+        except Exception as e:
+            print(f"⚠️ Caption mask note (#{msg_id}): {e}")
+
+        step1.insert(0, {
+            "tg_msg_id": msg_id,
+            "size_gb": size_gb,
+            "old_name": raw_name,
+            "new_name": clean_name,
+            "stealth_name": stealth_id,
+            "added_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+        })
+        known_ids.add(msg_id)
+        added += 1
+        print(f"✅ TG #{msg_id} ({size_gb}) Masked -> {stealth_id}")
+
+    if max_update_id > offset:
+        gh_write("bot_offset.json", {"offset": max_update_id}, st_sha, f"Update TG offset: {max_update_id}")
 
     if added > 0:
-        gh_write("step1_pending.json", step1, s1_sha, f"TG Trigger: Added {added} items to Step 1")
-        print(f"\n🚀 Successfully pushed {added} items to {FOLDER_PATH}/step1_pending.json!")
+        gh_write("step1_pending.json", step1, s1_sha, f"GitHub Action: Added {added} TG items to Step 1")
+        print(f"🚀 Pushed {added} items to tg/step1_pending.json!")
     else:
-        print("\n✅ Koi naya unmasked file nahi mila.")
+        print("✅ No new Telegram channel posts found.")
 
 if __name__ == "__main__":
-    asyncio.run(run_tg_trigger())
+    main()
