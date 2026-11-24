@@ -1,0 +1,28 @@
+name: TG Stealth Vault Auto-Sync
+
+on:
+  schedule:
+    - cron: '*/15 * * * *' # Har 15 minute mein automatic check karega
+  workflow_dispatch:       # Manual "Run workflow" button ke liye
+
+permissions:
+  contents: write
+
+jobs:
+  sync-tg-vault:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Telegram Stealth Trigger
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_BIN_CHANNEL: ${{ secrets.TG_BIN_CHANNEL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python tg/tg_trigger.py
