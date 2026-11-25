@@ -1,3 +1,13 @@
 {
-  "Data": []
+  "Data": [
+    {
+      "tg_msg_id": "71",
+      "size_gb": "3.62 GB",
+      "raw_name": "Spider_Man_Brand_New_Day_2026_1080p_DS4K_BCORE_WEB_DL_IMAX_HDR10.mkv",
+      "tg_stealth_name": "u-t-s-1795569334897-e-n-d-b1845949b0de",
+      "clean_name": "Spider_Man_Brand_New_Day_2026_1080p_DS4K_BCORE_WEB_DL_IMAX_HDR10 (2026) [@ttt].mkv",
+      "status": "passed_to_step3",
+      "archived_at": "2026-11-25T01:19:28.424Z"
+    }
+  ]
 }
