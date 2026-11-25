@@ -93,6 +93,26 @@
           "languages": "Hindi, Telugu",
           "size": ""
         }
+      },
+      {
+        "id": "1VAC6I95iMxF6bM15W9pu11bh34pA_eNu",
+        "name": "M.C.A (2017) [1080p] [Prime Video] [x264] [13] [Tamil DDP 5.1].mkv",
+        "quality": "1080p • Prime Video • DDP 5.1 [13]",
+        "source": "Prime Video",
+        "codec": "x264",
+        "resolution": "1080p",
+        "audio": "DDP 5.1",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1VAC6I95iMxF6bM15W9pu11bh34pA_eNu|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Prime Video",
+          "codec": "x264",
+          "audio": "DDP 5.1",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "13"
+        }
       }
     ]
   },
