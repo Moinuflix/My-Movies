@@ -69,6 +69,8 @@
     .btn-pill:hover { background: var(--laser-cyan); color: #020617; }
     .btn-green { background: linear-gradient(135deg, var(--laser-green), #059669); color: #fff; border: none; }
     .btn-green:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); }
+    .btn-purple { background: rgba(168, 85, 247, 0.2); border-color: var(--laser-purple); color: #e9d5ff; }
+    .btn-purple:hover { background: var(--laser-purple); color: #fff; }
 
     /* SOURCE SWITCHER TABS */
     .source-tabs { display: flex; gap: 10px; margin-bottom: 1.25rem; flex-wrap: wrap; }
@@ -320,13 +322,15 @@
   <div class="top-header">
     <div>
       <div class="brand-title">MOINUFLIX — UNIFIED PENDING ARRIVALS</div>
-      <div class="brand-sub">GDrive + Telegram Stealth Vault • Single Master Catalog (`source_type` Tagged) • 50-Limit Chunks</div>
+      <div class="brand-sub">GitHub Action Auto-TMDb • GDrive + Telegram Stealth Vault • Single Master Catalog</div>
     </div>
     <div class="nav-actions">
-      <button class="btn-pill btn-green" onclick="triggerBatchSelectedApproval()">🚀 1-Click Approve Selected</button>
-      <button class="btn-pill" onclick="loadPendingList()">🔄 Refresh All</button>
-      <a href="inbox.html" class="btn-pill">📝 Form (inbox.html)</a>
-      <a href="admin.html" class="btn-pill">🎬 Library (admin.html)</a>
+      <button class="btn-pill btn-purple" onclick="triggerGithubWorkflow('tg_vault_sync.yml', 'Telegram Stealth Vault')">⚡ Trigger TG Action</button>
+      <button class="btn-pill" onclick="triggerGithubWorkflow('scan_drive.yml', 'Google Drive Scanner')">⚡ Trigger Drive Action</button>
+      <button class="btn-pill btn-green" onclick="triggerBatchSelectedApproval()">🚀 Approve Selected</button>
+      <button class="btn-pill" onclick="loadPendingList()">🔄 Refresh</button>
+      <a href="inbox.html" class="btn-pill">📝 Form</a>
+      <a href="admin.html" class="btn-pill">🎬 Library</a>
       <button class="btn-pill" onclick="configureToken()">⚙️ Token</button>
     </div>
   </div>
@@ -461,6 +465,37 @@
     b.textContent = msg;
   }
 
+  /* ⚡ DIRECT GITHUB ACTION DISPATCHER (NO MANUAL WORKFLOW TAB NEEDED) */
+  async function triggerGithubWorkflow(workflowFile, label) {
+    const token = getToken();
+    if (!token) return alert("GitHub Token missing! Please click 'Token' button first.");
+
+    showStatus(`⚡ Dispatching GitHub Action: ${label} (${workflowFile})...`);
+    try {
+      const res = await fetch(`https://api.github.com/repos/${GH_REPO}/actions/workflows/${workflowFile}/dispatches`, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Accept": "application/vnd.github.v3+json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ ref: GH_BRANCH })
+      });
+
+      if (res.status === 204 || res.ok) {
+        showStatus(`🚀 ${label} started on GitHub! Auto-refreshing list in 18 seconds...`);
+        if (workflowFile.includes("tg")) switchQueueSource("telegram");
+        else switchQueueSource("gdrive");
+        setTimeout(() => loadPendingList(), 18000);
+      } else {
+        const err = await res.json();
+        throw new Error(err.message || "Workflow dispatch failed");
+      }
+    } catch (e) {
+      showStatus(`❌ Action Trigger Error: ${e.message}`, true);
+    }
+  }
+
   function switchQueueSource(src) {
     activeSource = src;
     document.getElementById("tab-gdrive").className = `src-tab ${src === 'gdrive' ? 'active-gdrive' : ''}`;
@@ -469,7 +504,6 @@
     renderPendingCards();
   }
 
-  // 1. Fetch Master Catalog stats
   async function loadMasterStats() {
     try {
       const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/catalog.json?t=${Date.now()}`);
@@ -486,7 +520,6 @@
     } catch (_) {}
   }
 
-  /* ⚡ DEEP MULTI-TRACK AUDIO PARSER */
   function parseDeepAudio(raw) {
     if (!raw) return "Hindi DDP 5.1";
     const segRegex = /(TAM|TEL|HIN|ENG|MAL|KAN)[\w\.\-]*?(DDP?|DTS|AAC|AC3|TRUEHD|ATMOS)?[\.\s\-]*?([1-7]\.[0-2])/gi;
@@ -525,14 +558,12 @@
     return "Hindi DDP 5.1";
   }
 
-  // 2. Load BOTH Google Drive & Telegram Pending Queues
   async function loadPendingList() {
     await loadMasterStats();
     const container = document.getElementById("pending-items-container");
     container.innerHTML = '<div style="color:var(--text-muted); padding:30px; text-align:center;">Loading GDrive & Telegram pending queues...</div>';
 
     try {
-      // Load Google Drive pending_movies.json
       const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/pending_movies.json?t=${Date.now()}`);
       if (res.ok) {
         let text = await res.text();
@@ -543,7 +574,6 @@
         } else pendingList = [];
       } else pendingList = [];
 
-      // Load Telegram Stealth Vault tg/step1_pending.json
       const tgRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/tg/step1_pending.json?t=${Date.now()}`);
       if (tgRes.ok) {
         const tgParsed = await tgRes.json();
@@ -559,7 +589,6 @@
     }
   }
 
-  // 3. Render Cards for Active Source Tab
   function renderPendingCards() {
     const isTg = activeSource === "telegram";
     const activeList = isTg ? tgPendingList : pendingList;
@@ -583,7 +612,7 @@
       let year = parsed.year;
       if (!title && baseName) {
         const titleMatch = baseName.match(/^(.+?)\s*\((\d{4})\)/);
-        title = titleMatch ? titleMatch[1].replace(/[_.-]+/g, ' ').trim() : baseName.split("[")[0].trim();
+        title = titleMatch ? titleMatch[1].replace(/[-_.()\[\]]+/g, ' ').replace(/\s+/g, ' ').trim() : baseName.split("[")[0].trim();
         year = titleMatch ? titleMatch[2] : "2026";
       }
       title = title || "Unknown Title";
@@ -596,9 +625,10 @@
       const tgTag = parsed.telegram_tag || "";
       const deepAudio = parseDeepAudio(rawName);
 
-      const candidate = (!isTg && item.tmdb_candidates && item.tmdb_candidates[0]) ? item.tmdb_candidates[0] : {};
-      const tmdbId = (!isTg && (item.selected_tmdb_id || item.tmdb_id || candidate.tmdb_id)) || 0;
-      const poster = candidate.poster || "https://via.placeholder.com/90x135?text=No+Poster";
+      // Use GitHub Action pre-fetched poster & tmdb_id for BOTH GDrive & Telegram
+      const candidate = (item.tmdb_candidates && item.tmdb_candidates[0]) ? item.tmdb_candidates[0] : {};
+      const tmdbId = item.selected_tmdb_id || item.tmdb_id || candidate.tmdb_id || 0;
+      const poster = item.poster || candidate.poster || "https://via.placeholder.com/90x135?text=No+Poster";
 
       const dashName = item.new_name || `${title} (${year}) [${parsed.resolution || '1080p'}] [${parsed.source || 'WEB-DL'}] [${deepAudio}] [${size}].mkv`;
 
@@ -622,7 +652,7 @@
               : `<span class="badge badge-gdrive">📁 GDrive</span>`}
             ${tgTag ? `<span class="badge badge-gdrive">${escapeHtml(tgTag)}</span>` : ''}
             <span class="badge badge-size">💾 ${escapeHtml(size)}</span>
-            ${tmdbId ? `<span class="badge">TMDB: ${escapeHtml(tmdbId)}</span>` : ''}
+            ${tmdbId ? `<span class="badge" style="color:var(--laser-gold);">TMDB: ${escapeHtml(tmdbId)}</span>` : ''}
             <span class="badge" style="color:var(--laser-cyan);">${escapeHtml(item.target_chunk || currentTargetChunk)}</span>
           </div>
         </div>
@@ -638,7 +668,6 @@
     updateSelectedCount();
   }
 
-  // Open Preview Modal
   function openPreviewModal(index) {
     activeApproveIndex = index;
     const isTg = activeSource === "telegram";
@@ -740,7 +769,11 @@
       stealth_name: item.stealth_name,
       original_filename: item.old_name,
       new_name: item.new_name,
-      file_size_gb: item.size_gb
+      file_size_gb: item.size_gb,
+      tmdb_id: item.tmdb_id || 0,
+      media_type: item.media_type || "movie",
+      poster: item.poster || "",
+      tmdb_candidates: item.tmdb_candidates || []
     } : { ...item, source_type: "gdrive" };
 
     sessionStorage.setItem("moinuflix_edit_pending", JSON.stringify(payload));
@@ -762,7 +795,7 @@
     const baseName = item.new_name || rawName;
     if (!title && baseName) {
       const titleMatch = baseName.match(/^(.+?)\s*\((\d{4})\)/);
-      title = titleMatch ? titleMatch[1].replace(/[_.-]+/g, ' ').trim() : baseName.split("[")[0].trim();
+      title = titleMatch ? titleMatch[1].replace(/[-_.()\[\]]+/g, ' ').replace(/\s+/g, ' ').trim() : baseName.split("[")[0].trim();
       year = titleMatch ? parseInt(titleMatch[2], 10) : 2026;
     }
     title = title || "Movie";
@@ -774,7 +807,8 @@
       : (item.file_size_gb || (item.new_name && item.new_name.match(/\[(\d+[\.\d]*\s*(?:GB|MB))\]/i)?.[1]) || "5 GB");
     const deepAudio = parseDeepAudio(rawName);
 
-    let tmdbId = (!isTg && (item.selected_tmdb_id || item.tmdb_id)) || 0;
+    let tmdbId = item.selected_tmdb_id || item.tmdb_id || (item.tmdb_candidates && item.tmdb_candidates[0]?.tmdb_id) || 0;
+    let mediaType = item.media_type || (item.tmdb_candidates && item.tmdb_candidates[0]?.media_type) || "movie";
 
     if (!isBatch) showStatus(`⚡ Fetching official TMDb metadata for "${title}"...`);
 
@@ -793,7 +827,7 @@
       director: [],
       writers: [],
       cast: [],
-      poster: "",
+      poster: item.poster || "",
       fanart: "",
       clearlogo: "",
       trailer: ""
@@ -801,21 +835,27 @@
 
     try {
       if (!tmdbId && title) {
-        const sRes = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(title)}`);
+        const sRes = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${TMDB_KEY}&query=${encodeURIComponent(title)}&include_adult=false`);
         if (sRes.ok) {
           const sData = await sRes.json();
-          if (sData.results && sData.results[0]) tmdbId = sData.results[0].id;
+          const valid = (sData.results || []).filter(x => x.media_type === "movie" || x.media_type === "tv");
+          if (valid[0]) {
+            tmdbId = valid[0].id;
+            mediaType = valid[0].media_type || "movie";
+          }
         }
       }
 
       if (tmdbId) {
-        const tRes = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_KEY}&append_to_response=credits,release_dates,images&include_image_language=en,hi,ta,te,null`);
+        const endpoint = mediaType === "tv" ? "tv" : "movie";
+        const tRes = await fetch(`https://api.themoviedb.org/3/${endpoint}/${tmdbId}?api_key=${TMDB_KEY}&append_to_response=credits,release_dates,images&include_image_language=en,hi,ta,te,null`);
         if (tRes.ok) {
           const td = await tRes.json();
-          movieDetails.title = td.title || title;
-          movieDetails.original_title = td.original_title || td.title;
-          movieDetails.year = parseInt((td.release_date || `${year}`).split("-")[0], 10);
-          movieDetails.runtime = td.runtime || 120;
+          movieDetails.title = td.title || td.name || title;
+          movieDetails.original_title = td.original_title || td.original_name || movieDetails.title;
+          const rawDate = td.release_date || td.first_air_date || `${year}-01-01`;
+          movieDetails.year = parseInt(rawDate.split("-")[0], 10);
+          movieDetails.runtime = td.runtime || (td.episode_run_time && td.episode_run_time[0]) || 120;
           movieDetails.rating = td.vote_average ? parseFloat(td.vote_average.toFixed(1)) : 7.5;
           movieDetails.original_language = td.original_language || "ta";
           movieDetails.genres = (td.genres || []).map(g => g.name);
@@ -858,7 +898,7 @@
           }
 
           try {
-            const vRes = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}/videos?api_key=${TMDB_KEY}`);
+            const vRes = await fetch(`https://api.themoviedb.org/3/${endpoint}/${tmdbId}/videos?api_key=${TMDB_KEY}`);
             if (vRes.ok) {
               const vData = await vRes.json();
               const ytVideos = (vData.results || []).filter(v => v.site === "YouTube");
