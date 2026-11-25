@@ -25,4 +25,4 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_BIN_CHANNEL: ${{ secrets.TG_BIN_CHANNEL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python tg/tg_trigger.py
+        run: python .github/scripts/tg_trigger.py
