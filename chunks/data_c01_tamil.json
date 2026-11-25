@@ -5666,13 +5666,14 @@
       "codec": "H.264",
       "audio": "Dolby Digital",
       "channels": "5.1",
-      "languages": "Tamil"
+      "languages": "Tamil",
+      "size": "12.4 GB"
     },
     "versions": [
       {
         "id": "1sT8c_r2BwkIwDYkba13DeDTOi8wIkZu_",
         "name": "Ghilli (2004) [1080p] [H.264] [Dolby Digital].mkv",
-        "quality": "1080p",
+        "quality": "1080p FHD • WEB-DL • Dolby Digital",
         "source": "WEB-DL",
         "codec": "H.264",
         "resolution": "1080p FHD",
@@ -5686,11 +5687,33 @@
           "codec": "H.264",
           "audio": "Dolby Digital",
           "channels": "5.1",
-          "languages": "Tamil"
+          "languages": "Tamil",
+          "size": "12.4 GB"
+        },
+        "size": "12.4 GB"
+      },
+      {
+        "id": "1VAC6I95iMxF6bM15W9pu11bh34pA_eNu",
+        "name": "Ghilli (2004) [1080p] [Prime Video] [x264] [Tamil DDP 5.1].mkv",
+        "quality": "1080p • Prime Video • DDP 5.1",
+        "source": "Prime Video",
+        "codec": "x264",
+        "resolution": "1080p",
+        "audio": "DDP 5.1",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1VAC6I95iMxF6bM15W9pu11bh34pA_eNu|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Prime Video",
+          "codec": "x264",
+          "audio": "DDP 5.1",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": ""
         }
       }
     ],
-    "original_language": "ta"
+    "collection": ""
   },
   {
     "id": "1c0J7keRIoBT0XQqxQ2F_qLhEgs4vVdth",
