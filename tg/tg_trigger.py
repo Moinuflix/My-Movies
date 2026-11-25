@@ -16,10 +16,12 @@ def extract_clean_title_year(raw_name):
     clean = re.sub(r"\.(mkv|mp4|avi|webm|ts)$", "", clean, flags=re.I).strip()
     ym = re.search(r"\b(19\d\d|20\d\d)\b", clean)
     raw_title = clean[:ym.start()] if ym else clean
+    # Saare khule brackets '(', ')', '[', ']', '_', '-' ko clean space banayein
     title = re.sub(r"[-_.()\[\]]+", " ", raw_title).strip()
     title = re.sub(r"\s+", " ", title)
     year = ym.group(1) if ym else "2026"
-    return title, year, (clean[ym.end():].strip(" -._") if ym else "")
+    rest = clean[ym.end():].strip(" -._") if ym else ""
+    return title, year, rest
 
 def format_clean_name(raw_name, tag="@ttt"):
     title, year, rest = extract_clean_title_year(raw_name)
@@ -43,8 +45,9 @@ def format_clean_name(raw_name, tag="@ttt"):
     return f"{title} ({year}) {' '.join(tokens)}.mkv"
 
 def auto_fetch_tmdb(title, year):
+    """TMDb Multi-Search (Movies + TV Specials dono pakadne ke liye)"""
     if not title:
-        return {"tmdb_id": 0, "poster": "", "candidates": []}
+        return {"tmdb_id": 0, "media_type": "movie", "poster": "", "candidates": []}
     try:
         q = urllib.parse.quote(title)
         url = f"https://api.themoviedb.org/3/search/multi?api_key={TMDB_KEY}&query={q}&include_adult=false"
@@ -52,26 +55,28 @@ def auto_fetch_tmdb(title, year):
             data = json.loads(r.read().decode("utf-8"))
             results = [x for x in data.get("results", []) if x.get("media_type") in ("movie", "tv")]
             if not results:
-                return {"tmdb_id": 0, "poster": "", "candidates": []}
+                return {"tmdb_id": 0, "media_type": "movie", "poster": "", "candidates": []}
             top = results[0]
             candidates = []
-            for c in results[:4]:
+            for c in results[:5]:
                 c_title = c.get("title") or c.get("name") or title
                 c_date = c.get("release_date") or c.get("first_air_date") or ""
                 candidates.append({
                     "tmdb_id": c.get("id", 0),
+                    "media_type": c.get("media_type", "movie"),
                     "title": c_title,
                     "year": c_date[:4] if c_date else year,
                     "poster": f"https://image.tmdb.org/t/p/w500{c['poster_path']}" if c.get("poster_path") else ""
                 })
             return {
                 "tmdb_id": top.get("id", 0),
+                "media_type": top.get("media_type", "movie"),
                 "poster": f"https://image.tmdb.org/t/p/w780{top['poster_path']}" if top.get("poster_path") else "",
                 "candidates": candidates
             }
     except Exception as e:
         print(f"⚠️ TMDb auto-fetch note ({title}): {e}")
-        return {"tmdb_id": 0, "poster": "", "candidates": []}
+        return {"tmdb_id": 0, "media_type": "movie", "poster": "", "candidates": []}
 
 def gh_read(file_name, fallback):
     url = f"https://api.github.com/repos/{GH_REPO}/contents/{FOLDER_PATH}/{file_name}"
@@ -185,6 +190,7 @@ def main():
             "new_name": clean_name,
             "stealth_name": stealth_id,
             "tmdb_id": tmdb_info["tmdb_id"],
+            "media_type": tmdb_info["media_type"],
             "poster": tmdb_info["poster"],
             "tmdb_candidates": tmdb_info["candidates"],
             "parsed": {"title": clean_title, "year": year},
