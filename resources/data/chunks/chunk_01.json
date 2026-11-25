@@ -1,6 +1,6 @@
 {
   "chunk_id": "chunk_01",
-  "movie_count": 20,
+  "movie_count": 21,
   "movies": [
     {
       "id": "1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU",
@@ -1904,6 +1904,151 @@
           "audio": "[Telugu + Hindi + Kannada + Malayalam (DDP 2.0 - 224Kbps) + Tamil (DDP 5.1 - 640Kbps)]",
           "size": "9 GB",
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1hhenxWuva4i_uLsrUQ-ydBkIy4SHI8xI|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      ]
+    },
+    {
+      "id": "72",
+      "source_type": "telegram",
+      "tmdb_id": 338502,
+      "imdb_id": "",
+      "name": "Mr & Mrs Office (2026) [1080p] [WEB-DL] [x264] [Hindi AAC 2.0] [1.86 GB] [@SKLink_files].mkv",
+      "title": "Mr & Mrs Office",
+      "original_title": "Mr & Mrs Office",
+      "year": 2026,
+      "runtime": 120,
+      "release_date": "2026-11-18",
+      "certification": "U",
+      "original_language": "ta",
+      "genres": [
+        "Comedy",
+        "Drama"
+      ],
+      "tagline": "Strangers at Work. Married at Home.",
+      "plot": "Mr & Mrs Office explores the comedic and chaotic worlds of work-life balance, relationships, and corporate dynamics. The plot centers around a couple navigating the daily grind, combining relatable office tropes with domestic humor and romance.",
+      "release_group": "@SKLink_files",
+      "country": [
+        "India"
+      ],
+      "studio": [
+        "Box Office Studio"
+      ],
+      "director": [
+        {
+          "name": "Manimaran Thirunavukkarasu"
+        }
+      ],
+      "writers": [],
+      "cast": [
+        {
+          "name": "Magizh Thirumeni",
+          "character": "Chandra Bose",
+          "profile": "https://image.tmdb.org/t/p/w185/c5Kd7mKy1Jv7itxBMxkujG8zmet.jpg",
+          "link": "https://www.themoviedb.org/person/1147871"
+        },
+        {
+          "name": "Smeha Manimegalai",
+          "character": "Aishwarya",
+          "profile": "https://image.tmdb.org/t/p/w185/pBAJuYhfb1TKKk3Mwo9V9FP2SH1.jpg",
+          "link": "https://www.themoviedb.org/person/5279011"
+        },
+        {
+          "name": "Pradeep Antony",
+          "character": "Arivu",
+          "profile": null,
+          "link": "https://www.themoviedb.org/person/3165771"
+        },
+        {
+          "name": "Sanam Shetty",
+          "character": "Paulin",
+          "profile": "https://image.tmdb.org/t/p/w185/9SYEdr4fUq5dVemnXV3S4lrC4Np.jpg",
+          "link": "https://www.themoviedb.org/person/1064129"
+        },
+        {
+          "name": "Ritika Ramesh",
+          "character": "Rinosha",
+          "profile": null,
+          "link": "https://www.themoviedb.org/person/3585159"
+        },
+        {
+          "name": "Aashik Gopinath",
+          "character": "Jarvo",
+          "profile": "https://image.tmdb.org/t/p/w185/4yDG9Kp2rhArgHIRRmguiuoPrvI.jpg",
+          "link": "https://www.themoviedb.org/person/6591390"
+        },
+        {
+          "name": "VJ Annamalai",
+          "character": "Imrose",
+          "profile": null,
+          "link": "https://www.themoviedb.org/person/6374786"
+        },
+        {
+          "name": "Aniruth",
+          "character": "Appu",
+          "profile": null,
+          "link": "https://www.themoviedb.org/person/5276719"
+        },
+        {
+          "name": "Kathadi Ramamurthy",
+          "character": "",
+          "profile": "https://image.tmdb.org/t/p/w185/dqWTS3knYL13dXdXW0DX78SkwXN.jpg",
+          "link": "https://www.themoviedb.org/person/1457504"
+        },
+        {
+          "name": "Sri Durga",
+          "character": "",
+          "profile": null,
+          "link": "https://www.themoviedb.org/person/1503385"
+        }
+      ],
+      "artwork": {
+        "poster": "https://image.tmdb.org/t/p/w780/demMPIRzA47Px0NaNW0b1F9yxMq.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/pIGIxY4n2xl80wHv6kdyuRIhO3t.jpg",
+        "clearlogo": "",
+        "clearart": "",
+        "banner": "",
+        "landscape": "https://image.tmdb.org/t/p/w780/pIGIxY4n2xl80wHv6kdyuRIhO3t.jpg",
+        "keyart": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w342/demMPIRzA47Px0NaNW0b1F9yxMq.jpg",
+        "discart": "",
+        "title_card": "https://image.tmdb.org/t/p/original/pIGIxY4n2xl80wHv6kdyuRIhO3t.jpg",
+        "character_art": [],
+        "extra_posters": [],
+        "extra_backdrops": []
+      },
+      "trailer": "",
+      "ratings": [
+        {
+          "source": "TMDb",
+          "value": 7,
+          "out_of": 10
+        }
+      ],
+      "specs": {
+        "resolution": "1080p",
+        "source": "Telegram",
+        "codec": "x264",
+        "audio": "[Hindi AAC 2.0]",
+        "languages": "[Hindi AAC 2.0]",
+        "size": "1.86 GB",
+        "ripper": "@SKLink_files"
+      },
+      "stream_url": "https://tg-stream.moinudeentv.workers.dev/?msg_id=72|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "versions": [
+        {
+          "id": "72",
+          "source_type": "telegram",
+          "name": "Mr & Mrs Office (2026) [1080p] [WEB-DL] [x264] [Hindi AAC 2.0] [1.86 GB] [@SKLink_files].mkv",
+          "language": "[Hindi AAC 2.0]",
+          "dubbed": "[Hindi AAC 2.0]",
+          "quality": "1080p HD",
+          "resolution": "1080p",
+          "source": "Telegram",
+          "source_image": "resources/images/sources/webdl.png",
+          "codec": "x264",
+          "audio": "[Hindi AAC 2.0]",
+          "size": "1.86 GB",
+          "stream_url": "https://tg-stream.moinudeentv.workers.dev/?msg_id=72|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
     }
