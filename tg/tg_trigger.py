@@ -1,22 +1,28 @@
-import os, re, time, uuid, json, base64, urllib.request, urllib.error
+import os, re, time, uuid, json, base64, urllib.request, urllib.parse, urllib.error
 
 BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "").strip()
 BIN_CHANNEL_ID = str(os.environ.get("TG_BIN_CHANNEL", "")).strip()
 GH_TOKEN = os.environ.get("GITHUB_TOKEN", "").strip()
 GH_REPO = os.environ.get("GITHUB_REPOSITORY", "Moinuflix/My-Movies").strip()
+TMDB_KEY = "051ccf72e026820cb53b8b8531b6a2ba"
 FOLDER_PATH = "tg"
 
 def make_stealth_id():
     return f"u-t-s-{int(time.time() * 1000)}-e-n-d-{uuid.uuid4().hex[:12]}"
 
-def format_clean_name(raw_name, tag="@ttt"):
+def extract_clean_title_year(raw_name):
     clean = re.sub(r"^(?:www\.[^\s\-]+\s*-\s*|@[^\s\-]+\s*-\s*)", "", raw_name.strip(), flags=re.I)
-    clean = re.sub(r"\.(mkv|mp4|avi|webm)$", "", clean, flags=re.I).strip()
+    clean = re.sub(r"@[\w\d_-]+", "", clean)
+    clean = re.sub(r"\.(mkv|mp4|avi|webm|ts)$", "", clean, flags=re.I).strip()
     ym = re.search(r"\b(19\d\d|20\d\d)\b", clean)
-    title = clean[:ym.start()].strip(" -._") if ym else clean
+    raw_title = clean[:ym.start()] if ym else clean
+    title = re.sub(r"[-_.()\[\]]+", " ", raw_title).strip()
+    title = re.sub(r"\s+", " ", title)
     year = ym.group(1) if ym else "2026"
-    rest = clean[ym.end():].strip(" -._") if ym else ""
+    return title, year, (clean[ym.end():].strip(" -._") if ym else "")
 
+def format_clean_name(raw_name, tag="@ttt"):
+    title, year, rest = extract_clean_title_year(raw_name)
     tokens = []
     for part in re.split(r"(\[[^\]]+\]|\([^\)]+\))", rest):
         part = part.strip(" -._]")
@@ -27,17 +33,45 @@ def format_clean_name(raw_name, tag="@ttt"):
             if inner:
                 tokens.append(f"[{inner}]")
         else:
-            for sub in re.split(r"\s+-\s+|\s{2,}", part):
+            for sub in re.split(r"\s+-\s+|\s{2,}|_", part):
                 sub = sub.strip(" -._[]()")
                 if not sub or sub == "+":
                     continue
-                if re.fullmatch(r"HEVC\s+10bit", sub, flags=re.I):
-                    tokens.extend(["[HEVC]", "[10bit]"])
-                else:
-                    tokens.append(f"[{sub}]")
+                tokens.append(f"[{sub}]")
     if tag:
         tokens.append(f"[{tag}]")
     return f"{title} ({year}) {' '.join(tokens)}.mkv"
+
+def auto_fetch_tmdb(title, year):
+    if not title:
+        return {"tmdb_id": 0, "poster": "", "candidates": []}
+    try:
+        q = urllib.parse.quote(title)
+        url = f"https://api.themoviedb.org/3/search/multi?api_key={TMDB_KEY}&query={q}&include_adult=false"
+        with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "MoinuFlix/1.0"}), timeout=15) as r:
+            data = json.loads(r.read().decode("utf-8"))
+            results = [x for x in data.get("results", []) if x.get("media_type") in ("movie", "tv")]
+            if not results:
+                return {"tmdb_id": 0, "poster": "", "candidates": []}
+            top = results[0]
+            candidates = []
+            for c in results[:4]:
+                c_title = c.get("title") or c.get("name") or title
+                c_date = c.get("release_date") or c.get("first_air_date") or ""
+                candidates.append({
+                    "tmdb_id": c.get("id", 0),
+                    "title": c_title,
+                    "year": c_date[:4] if c_date else year,
+                    "poster": f"https://image.tmdb.org/t/p/w500{c['poster_path']}" if c.get("poster_path") else ""
+                })
+            return {
+                "tmdb_id": top.get("id", 0),
+                "poster": f"https://image.tmdb.org/t/p/w780{top['poster_path']}" if top.get("poster_path") else "",
+                "candidates": candidates
+            }
+    except Exception as e:
+        print(f"⚠️ TMDb auto-fetch note ({title}): {e}")
+        return {"tmdb_id": 0, "poster": "", "candidates": []}
 
 def gh_read(file_name, fallback):
     url = f"https://api.github.com/repos/{GH_REPO}/contents/{FOLDER_PATH}/{file_name}"
@@ -47,8 +81,7 @@ def gh_read(file_name, fallback):
             d = json.loads(r.read().decode("utf-8"))
             raw_txt = base64.b64decode(d["content"]).decode("utf-8").strip()
             return (json.loads(raw_txt) if raw_txt else fallback), d["sha"]
-    except Exception as e:
-        print(f"ℹ️ gh_read ({file_name}): {e}")
+    except Exception:
         return fallback, None
 
 def gh_write(file_name, obj, sha, msg):
@@ -65,12 +98,8 @@ def gh_write(file_name, obj, sha, msg):
     }
     if sha:
         body["sha"] = sha
-    try:
-        with urllib.request.urlopen(urllib.request.Request(url, data=json.dumps(body).encode("utf-8"), headers=headers, method="PUT"), timeout=30) as r:
-            print(f"✅ GitHub Saved: {FOLDER_PATH}/{file_name} (HTTP {r.status})")
-    except urllib.error.HTTPError as e:
-        err_body = e.read().decode("utf-8", errors="ignore")
-        raise RuntimeError(f"GitHub Write Error ({file_name}) HTTP {e.code}: {err_body}")
+    with urllib.request.urlopen(urllib.request.Request(url, data=json.dumps(body).encode("utf-8"), headers=headers, method="PUT"), timeout=30) as r:
+        print(f"✅ GitHub Saved: {FOLDER_PATH}/{file_name} (HTTP {r.status})")
 
 def tg_api(method, payload=None, retries=3):
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/{method}"
@@ -84,7 +113,6 @@ def tg_api(method, payload=None, retries=3):
             with urllib.request.urlopen(req, timeout=60) as r:
                 return json.loads(r.read().decode("utf-8"))
         except Exception as e:
-            print(f"⚠️ TG API ({method}) attempt {attempt}/{retries}: {e}")
             if attempt == retries:
                 raise
             time.sleep(3 * attempt)
@@ -140,7 +168,9 @@ def main():
 
         size_gb = f"{round(size_bytes / (1024 ** 3), 2)} GB" if size_bytes else "N/A"
         stealth_id = cap_line if cap_line.startswith("u-t-s-") else make_stealth_id()
+        clean_title, year, _ = extract_clean_title_year(raw_name)
         clean_name = format_clean_name(raw_name, "@ttt")
+        tmdb_info = auto_fetch_tmdb(clean_title, year)
 
         if not cap_line.startswith("u-t-s-"):
             try:
@@ -154,14 +184,18 @@ def main():
             "old_name": raw_name,
             "new_name": clean_name,
             "stealth_name": stealth_id,
+            "tmdb_id": tmdb_info["tmdb_id"],
+            "poster": tmdb_info["poster"],
+            "tmdb_candidates": tmdb_info["candidates"],
+            "parsed": {"title": clean_title, "year": year},
             "added_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
         })
         known_ids.add(msg_id)
         added += 1
-        print(f"✅ Queued TG #{msg_id} ({size_gb}): {clean_name}")
+        print(f"✅ TG #{msg_id} ({size_gb}) | TMDb: {tmdb_info['tmdb_id']} | {clean_name}")
 
     if added > 0:
-        gh_write("step1_pending.json", step1, s1_sha, f"TG Vault: Added {added} items to Step 1")
+        gh_write("step1_pending.json", step1, s1_sha, f"TG Vault: Auto-added {added} items with TMDb")
 
     if max_update_id > offset:
         gh_write("bot_offset.json", {"offset": max_update_id}, st_sha, f"TG Vault: Offset {max_update_id}")
