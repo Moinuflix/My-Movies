@@ -422,6 +422,40 @@
           "audio": "[Telugu + Hindi + Kannada + Malayalam (DDP 2.0 - 224Kbps) + Tamil (DDP 5.1 - 640Kbps)]"
         }
       ]
+    },
+    {
+      "id": "72",
+      "tmdb_id": 338502,
+      "title": "Mr & Mrs Office",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w780/demMPIRzA47Px0NaNW0b1F9yxMq.jpg",
+      "fanart": "https://image.tmdb.org/t/p/original/pIGIxY4n2xl80wHv6kdyuRIhO3t.jpg",
+      "logo": "",
+      "rating": 7,
+      "original_language": "ta",
+      "genres": [
+        "Comedy",
+        "Drama"
+      ],
+      "source_type": "telegram",
+      "chunk_file": "resources/data/chunks/chunk_01.json",
+      "primary_stream_url": "https://tg-stream.moinudeentv.workers.dev/?msg_id=72|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "available_languages": [
+        "[Hindi AAC 2.0]"
+      ],
+      "version_count": 1,
+      "available_versions": [
+        {
+          "language": "[Hindi AAC 2.0]",
+          "dubbed": "[Hindi AAC 2.0]",
+          "quality": "1080p HD",
+          "source": "Telegram",
+          "source_image": "resources/images/sources/webdl.png",
+          "format": "Telegram",
+          "codec": "x264",
+          "audio": "[Hindi AAC 2.0]"
+        }
+      ]
     }
   ]
 }
