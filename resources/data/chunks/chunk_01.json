@@ -1,6 +1,6 @@
 {
   "chunk_id": "chunk_01",
-  "movie_count": 18,
+  "movie_count": 19,
   "movies": [
     {
       "id": "1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU",
@@ -1594,6 +1594,170 @@
           "size": "11 GB",
           "telegram_tag": "",
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=13Cv7aMOuUfojCJ0ju_bqmNaWczFS1uZH|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      ]
+    },
+    {
+      "id": "1Y8_i0niVynmCVyqWI6KNP4i7BubM_p_s",
+      "tmdb_id": 12,
+      "imdb_id": "tt0266543",
+      "name": "Finding Nemo (2003) [1080p] [BluRay] [x264] [Org Hindi BD 5.1 - 640Kbps + English TrueHD Atmos 7.1] [13 GB].mkv",
+      "title": "Finding Nemo",
+      "original_title": "Finding Nemo",
+      "year": 2003,
+      "runtime": 100,
+      "release_date": "2003-05-30",
+      "certification": "U",
+      "original_language": "en",
+      "genres": [
+        "Animation",
+        "Family",
+        "Adventure"
+      ],
+      "tagline": "There are 3.7 trillion fish in the ocean. They're looking for one.",
+      "plot": "Nemo, an adventurous young clownfish, is unexpectedly taken from his Great Barrier Reef home to a dentist's office aquarium. It's up to his worrisome father Marlin and a friendly but forgetful fish Dory to bring Nemo home -- meeting vegetarian sharks, surfer dude turtles, hypnotic jellyfish, hungry seagulls, and more along the way.",
+      "release_group": "",
+      "country": [
+        "India"
+      ],
+      "studio": [
+        "Pixar"
+      ],
+      "director": [
+        {
+          "name": "Andrew Stanton"
+        }
+      ],
+      "writers": [
+        {
+          "name": "Andrew Stanton",
+          "job": "Writer"
+        },
+        {
+          "name": "Bob Peterson",
+          "job": "Writer"
+        },
+        {
+          "name": "David Reynolds",
+          "job": "Writer"
+        }
+      ],
+      "cast": [
+        {
+          "name": "Albert Brooks",
+          "character": "Marlin (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/8iDSGu5l93N7benjf6b3AysBore.jpg",
+          "link": "https://www.themoviedb.org/person/13"
+        },
+        {
+          "name": "Ellen DeGeneres",
+          "character": "Dory (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/z8IEEid4z63CBlJtxrTKEfsW7NA.jpg",
+          "link": "https://www.themoviedb.org/person/14"
+        },
+        {
+          "name": "Alexander Gould",
+          "character": "Nemo (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/zzfj8LHhSiRntnyThvOBirEEmII.jpg",
+          "link": "https://www.themoviedb.org/person/12"
+        },
+        {
+          "name": "Willem Dafoe",
+          "character": "Gill (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/ui8e4sgZAwMPi3hzEO53jyBJF9B.jpg",
+          "link": "https://www.themoviedb.org/person/5293"
+        },
+        {
+          "name": "Geoffrey Rush",
+          "character": "Nigel (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/npXFjaFQzBNroCEPllGPTZ5IisA.jpg",
+          "link": "https://www.themoviedb.org/person/118"
+        },
+        {
+          "name": "Brad Garrett",
+          "character": "Bloat (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/813ffbpoaoaJRdoe1yrbivboWKp.jpg",
+          "link": "https://www.themoviedb.org/person/18"
+        },
+        {
+          "name": "Allison Janney",
+          "character": "Peach (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/AnpevvFjyFPRL3vDGo7o1Woina1.jpg",
+          "link": "https://www.themoviedb.org/person/19"
+        },
+        {
+          "name": "Austin Pendleton",
+          "character": "Gurgle (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/nrXfqtXDDYzSFNLPQnfLkus4I7s.jpg",
+          "link": "https://www.themoviedb.org/person/6168"
+        },
+        {
+          "name": "Stephen Root",
+          "character": "Bubbles (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/2Zwi6AydqQQ9InVdhjYcfJXNzkp.jpg",
+          "link": "https://www.themoviedb.org/person/17401"
+        },
+        {
+          "name": "Vicki Lewis",
+          "character": "Deb / Flo (voice)",
+          "profile": "https://image.tmdb.org/t/p/w185/dwTjtleLh1uu8n9AvUCv0n3mi2R.jpg",
+          "link": "https://www.themoviedb.org/person/14723"
+        }
+      ],
+      "artwork": {
+        "poster": "https://image.tmdb.org/t/p/w780/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/eCynaAOgYYiw5yN5lBwz3IxqvaW.jpg",
+        "clearlogo": "https://image.tmdb.org/t/p/original/zKzmHE9bnqB3KuWLPFwXpbBqDcn.png",
+        "clearart": "",
+        "banner": "",
+        "landscape": "https://image.tmdb.org/t/p/w780/eCynaAOgYYiw5yN5lBwz3IxqvaW.jpg",
+        "keyart": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w342/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg",
+        "discart": "",
+        "title_card": "https://image.tmdb.org/t/p/original/eCynaAOgYYiw5yN5lBwz3IxqvaW.jpg",
+        "character_art": [],
+        "extra_posters": [],
+        "extra_backdrops": []
+      },
+      "trailer": "",
+      "ratings": [
+        {
+          "source": "TMDb",
+          "value": 7.8,
+          "out_of": 10
+        }
+      ],
+      "badges": {
+        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
+        "hdr": "",
+        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/dvd.png",
+        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+      },
+      "specs": {
+        "resolution": "1080p",
+        "source": "BluRay",
+        "codec": "x264",
+        "audio": "[Org Hindi BD 5.1 - 640Kbps + English TrueHD Atmos 7.1]",
+        "languages": "[Org Hindi BD 5.1 - 640Kbps + English TrueHD Atmos 7.1]",
+        "size": "13 GB",
+        "ripper": ""
+      },
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Y8_i0niVynmCVyqWI6KNP4i7BubM_p_s|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "versions": [
+        {
+          "id": "1Y8_i0niVynmCVyqWI6KNP4i7BubM_p_s",
+          "name": "Finding Nemo (2003) [1080p] [BluRay] [x264] [Org Hindi BD 5.1 - 640Kbps + English TrueHD Atmos 7.1] [13 GB].mkv",
+          "language": "[Org Hindi BD 5.1 - 640Kbps + English TrueHD Atmos 7.1]",
+          "dubbed": "[Org Hindi BD 5.1 - 640Kbps + English TrueHD Atmos 7.1]",
+          "quality": "1080p HD",
+          "resolution": "1080p",
+          "source": "BluRay",
+          "source_image": "resources/images/sources/bluray.png",
+          "codec": "x264",
+          "audio": "[Org Hindi BD 5.1 - 640Kbps + English TrueHD Atmos 7.1]",
+          "size": "13 GB",
+          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Y8_i0niVynmCVyqWI6KNP4i7BubM_p_s|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
     }
