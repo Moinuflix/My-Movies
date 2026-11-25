@@ -386,6 +386,42 @@
           "audio": "[Org Hindi BD 5.1 - 640Kbps + English TrueHD Atmos 7.1]"
         }
       ]
+    },
+    {
+      "id": "1hhenxWuva4i_uLsrUQ-ydBkIy4SHI8xI",
+      "tmdb_id": 1728763,
+      "title": "Drones",
+      "year": 2026,
+      "poster": "https://image.tmdb.org/t/p/w780/k14luImbnzAhFZzqFKgvVrnOF4D.jpg",
+      "fanart": "https://image.tmdb.org/t/p/original/7bIrEDdkZCMjLf2pz9YS8t8r2D2.jpg",
+      "logo": "",
+      "rating": 7,
+      "original_language": "ta",
+      "genres": [
+        "Romance",
+        "Comedy",
+        "Mystery",
+        "Horror",
+        "Fantasy"
+      ],
+      "chunk_file": "resources/data/chunks/chunk_01.json",
+      "primary_stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1hhenxWuva4i_uLsrUQ-ydBkIy4SHI8xI|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "available_languages": [
+        "[Telugu + Hindi + Kannada + Malayalam (DDP 2.0 - 224Kbps) + Tamil (DDP 5.1 - 640Kbps)]"
+      ],
+      "version_count": 1,
+      "available_versions": [
+        {
+          "language": "[Telugu + Hindi + Kannada + Malayalam (DDP 2.0 - 224Kbps) + Tamil (DDP 5.1 - 640Kbps)]",
+          "dubbed": "[Telugu + Hindi + Kannada + Malayalam (DDP 2.0 - 224Kbps) + Tamil (DDP 5.1 - 640Kbps)]",
+          "quality": "1080p HD",
+          "source": "AMZN",
+          "source_image": "resources/images/sources/amzn.png",
+          "format": "AMZN",
+          "codec": "x264",
+          "audio": "[Telugu + Hindi + Kannada + Malayalam (DDP 2.0 - 224Kbps) + Tamil (DDP 5.1 - 640Kbps)]"
+        }
+      ]
     }
   ]
 }
