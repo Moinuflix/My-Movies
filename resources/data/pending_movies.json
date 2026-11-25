@@ -15496,5 +15496,35 @@
     "tmdb_candidates": [],
     "selected_tmdb_id": null,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1PJKA1jTkUlWfBbDwNsLAUfi9guzkXJ_Z",
+    "original_filename": "Spider-Man Brand New Day (2026) 1080p BluRay [Hindi-Tamil-Telugu-Kannada-Malayalam AMZN DDP 5.1 + English DTS-HD MA 5.1] x264 (MTeam-UNiTYhub).mkv",
+    "file_size_bytes": 18626282552,
+    "file_size_gb": "17 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-25T15:50:21.417Z",
+    "parsed": {
+      "title": "Spider Man Brand New Day (",
+      "year": 2026,
+      "resolution": "1080p",
+      "source": "BluRay",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "Spider Man Brand New Day ( (2026) [1080p] [BluRay] [Hindi-Tamil-Telugu-Kannada-Malayalam AMZN DDP 5.1 + English DTS-HD MA 5.1] [17 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 969681,
+        "title": "Spider-Man: Brand New Day",
+        "year": "2026",
+        "poster": "https://image.tmdb.org/t/p/w500/bjiS5ipwxb9JFy3XRRN4OAilSeX.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/r08LxMJCbf1SiJIWeyH9aJmdqwC.jpg",
+        "rating": 8.5
+      }
+    ],
+    "selected_tmdb_id": 969681,
+    "approval_status": "pending"
   }
 ]
