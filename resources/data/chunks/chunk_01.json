@@ -1,6 +1,6 @@
 {
   "chunk_id": "chunk_01",
-  "movie_count": 19,
+  "movie_count": 20,
   "movies": [
     {
       "id": "1HAZu-5GVjkI￾InQr79Ekbr0J1pkhUKeU",
@@ -1758,6 +1758,152 @@
           "audio": "[Org Hindi BD 5.1 - 640Kbps + English TrueHD Atmos 7.1]",
           "size": "13 GB",
           "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1Y8_i0niVynmCVyqWI6KNP4i7BubM_p_s|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
+        }
+      ]
+    },
+    {
+      "id": "1hhenxWuva4i_uLsrUQ-ydBkIy4SHI8xI",
+      "tmdb_id": 1728763,
+      "imdb_id": "tt43723233",
+      "name": "Drones (2026) [1080p] [AMZN] [x264] [Telugu + Hindi + Kannada + Malayalam (DDP 2.0 - 224Kbps) + Tamil (DDP 5.1 - 640Kbps)] [9 GB] [@Tamiltvtoonsofficial] [TTT].mkv",
+      "title": "Drones",
+      "original_title": "Drones",
+      "year": 2026,
+      "runtime": 152,
+      "release_date": "2026-10-16",
+      "certification": "U",
+      "original_language": "ta",
+      "genres": [
+        "Romance",
+        "Comedy",
+        "Mystery",
+        "Horror",
+        "Fantasy"
+      ],
+      "tagline": "",
+      "plot": "A sleepwalking student, a mysterious miniature artist, an ancient witch, a doll house of trapped souls, and a cop cursed by love collide in a surreal world.",
+      "release_group": "@Tamiltvtoonsofficial TTT",
+      "country": [
+        "India"
+      ],
+      "studio": [
+        "GM Morgan Films"
+      ],
+      "director": [
+        {
+          "name": "Raghav Mirdath"
+        }
+      ],
+      "writers": [
+        {
+          "name": "Raghav Mirdath",
+          "job": "Writer"
+        }
+      ],
+      "cast": [
+        {
+          "name": "Siddhi Idnani",
+          "character": "",
+          "profile": "https://image.tmdb.org/t/p/w185/o33B4YJHbHWsm5W6hhtldG3ErrD.jpg",
+          "link": "https://www.themoviedb.org/person/2071224"
+        },
+        {
+          "name": "Anjali Nair",
+          "character": "Rush",
+          "profile": "https://image.tmdb.org/t/p/w185/rQRqtpmpO4aedH3UPP3qv35uYn.jpg",
+          "link": "https://www.themoviedb.org/person/2266224"
+        },
+        {
+          "name": "Dravid Selvam",
+          "character": "Kish",
+          "profile": "https://image.tmdb.org/t/p/w185/4sMEDUu0Zv2VGSus4KfnErSt1NW.jpg",
+          "link": "https://www.themoviedb.org/person/3892684"
+        },
+        {
+          "name": "KPY Kuraishi",
+          "character": "The Mad Scientist",
+          "profile": "https://image.tmdb.org/t/p/w185/cOo8s8LoePDtZkeM5KZhRnOxA6P.jpg",
+          "link": "https://www.themoviedb.org/person/3741267"
+        },
+        {
+          "name": "Devadarshini",
+          "character": "",
+          "profile": "https://image.tmdb.org/t/p/w185/gSq4nM6z82LfI4yjL116P1RDkb0.jpg",
+          "link": "https://www.themoviedb.org/person/237689"
+        },
+        {
+          "name": "Cinemawala Sathish",
+          "character": "Koomapatti Madhavan",
+          "profile": null,
+          "link": "https://www.themoviedb.org/person/6377765"
+        },
+        {
+          "name": "Sassi Selvaraj",
+          "character": "Cerlac Homes",
+          "profile": "https://image.tmdb.org/t/p/w185/w70WWvDF352bpP00gMrLae1MMgl.jpg",
+          "link": "https://www.themoviedb.org/person/3595060"
+        },
+        {
+          "name": "RJ Deepak",
+          "character": "",
+          "profile": null,
+          "link": "https://www.themoviedb.org/person/6337073"
+        }
+      ],
+      "artwork": {
+        "poster": "https://image.tmdb.org/t/p/w780/k14luImbnzAhFZzqFKgvVrnOF4D.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/7bIrEDdkZCMjLf2pz9YS8t8r2D2.jpg",
+        "clearlogo": "",
+        "clearart": "",
+        "banner": "",
+        "landscape": "https://image.tmdb.org/t/p/w780/7bIrEDdkZCMjLf2pz9YS8t8r2D2.jpg",
+        "keyart": "",
+        "thumbnail": "https://image.tmdb.org/t/p/w342/k14luImbnzAhFZzqFKgvVrnOF4D.jpg",
+        "discart": "",
+        "title_card": "https://image.tmdb.org/t/p/original/7bIrEDdkZCMjLf2pz9YS8t8r2D2.jpg",
+        "character_art": [],
+        "extra_posters": [],
+        "extra_backdrops": []
+      },
+      "trailer": "",
+      "ratings": [
+        {
+          "source": "TMDb",
+          "value": 7,
+          "out_of": 10
+        }
+      ],
+      "badges": {
+        "quality": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/1080p.png",
+        "hdr": "",
+        "source": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/dvd.png",
+        "audio_format": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
+        "audio_channels": "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
+      },
+      "specs": {
+        "resolution": "1080p",
+        "source": "AMZN",
+        "codec": "x264",
+        "audio": "[Telugu + Hindi + Kannada + Malayalam (DDP 2.0 - 224Kbps) + Tamil (DDP 5.1 - 640Kbps)]",
+        "languages": "[Telugu + Hindi + Kannada + Malayalam (DDP 2.0 - 224Kbps) + Tamil (DDP 5.1 - 640Kbps)]",
+        "size": "9 GB",
+        "ripper": "@Tamiltvtoonsofficial TTT"
+      },
+      "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1hhenxWuva4i_uLsrUQ-ydBkIy4SHI8xI|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+      "versions": [
+        {
+          "id": "1hhenxWuva4i_uLsrUQ-ydBkIy4SHI8xI",
+          "name": "Drones (2026) [1080p] [AMZN] [x264] [Telugu + Hindi + Kannada + Malayalam (DDP 2.0 - 224Kbps) + Tamil (DDP 5.1 - 640Kbps)] [9 GB] [@Tamiltvtoonsofficial] [TTT].mkv",
+          "language": "[Telugu + Hindi + Kannada + Malayalam (DDP 2.0 - 224Kbps) + Tamil (DDP 5.1 - 640Kbps)]",
+          "dubbed": "[Telugu + Hindi + Kannada + Malayalam (DDP 2.0 - 224Kbps) + Tamil (DDP 5.1 - 640Kbps)]",
+          "quality": "1080p HD",
+          "resolution": "1080p",
+          "source": "AMZN",
+          "source_image": "resources/images/sources/amzn.png",
+          "codec": "x264",
+          "audio": "[Telugu + Hindi + Kannada + Malayalam (DDP 2.0 - 224Kbps) + Tamil (DDP 5.1 - 640Kbps)]",
+          "size": "9 GB",
+          "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1hhenxWuva4i_uLsrUQ-ydBkIy4SHI8xI|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0"
         }
       ]
     }
