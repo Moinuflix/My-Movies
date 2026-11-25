@@ -1,5 +1,45 @@
 [
   {
+    "tg_msg_id": "74",
+    "size_gb": "2.12 GB",
+    "old_name": "@Tamiltvtoonsofficial_Ice_Cream_Man_2026_1080p_JHS_WEB_DL_8bit_x264.mkv",
+    "new_name": " (2026) [@ttt].mkv",
+    "stealth_name": "u-t-s-1795574289739-e-n-d-385fe2374617",
+    "tmdb_id": 0,
+    "media_type": "movie",
+    "poster": "",
+    "tmdb_candidates": [],
+    "parsed": {
+      "title": "",
+      "year": "2026"
+    },
+    "added_at": "2026-11-25T02:38:10Z"
+  },
+  {
+    "tg_msg_id": "72",
+    "size_gb": "1.86 GB",
+    "old_name": "@SKLink_files : Mr & Mrs Office (2026) S01 EP (05-08) TR.mkv",
+    "new_name": ": Mr & Mrs Office (2026) [S01 EP] [05-08] [TR] [@ttt].mkv",
+    "stealth_name": "u-t-s-1795574289185-e-n-d-893bf43f06da",
+    "tmdb_id": 338502,
+    "media_type": "tv",
+    "poster": "https://image.tmdb.org/t/p/w780/demMPIRzA47Px0NaNW0b1F9yxMq.jpg",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 338502,
+        "media_type": "tv",
+        "title": "Mr & Mrs Office",
+        "year": "2026",
+        "poster": "https://image.tmdb.org/t/p/w500/demMPIRzA47Px0NaNW0b1F9yxMq.jpg"
+      }
+    ],
+    "parsed": {
+      "title": ": Mr & Mrs Office",
+      "year": "2026"
+    },
+    "added_at": "2026-11-25T02:38:09Z"
+  },
+  {
     "tg_msg_id": "70",
     "size_gb": "1.85 GB",
     "old_name": "@PrakyTV - Motu Patlu and The Mighty Magnathor (2024) HQ.mkv",
