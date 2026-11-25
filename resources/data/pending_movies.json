@@ -15475,5 +15475,26 @@
     ],
     "selected_tmdb_id": 1423191,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1VAC6I95iMxF6bM15W9pu11bh34pA_eNu",
+    "original_filename": "Ghillli (2004) 1080p AMZN WEB-DL AVC [Tamil DTS 5.1] x264 640kbps CineFlix).mkv",
+    "file_size_bytes": 13282752535,
+    "file_size_gb": "12 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-25T04:49:29.434Z",
+    "parsed": {
+      "title": "Ghillli (",
+      "year": 2004,
+      "resolution": "1080p",
+      "source": "AMZN",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "Ghillli ( (2004) [1080p] [AMZN] [Tamil DTS 5.1] [12 GB].mkv"
+    },
+    "match_status": "pending",
+    "tmdb_candidates": [],
+    "selected_tmdb_id": null,
+    "approval_status": "pending"
   }
 ]
