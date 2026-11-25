@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MoinuFlix — Pending Drive Ingest & Approval Portal</title>
+  <title>MoinuFlix — Unified Pending Ingest & Approval Portal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,6 +16,7 @@
       --laser-green: #10b981;
       --laser-gold: #f59e0b;
       --laser-red: #ef4444;
+      --laser-purple: #a855f7;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
     }
@@ -29,10 +30,7 @@
       min-height: 100vh;
     }
 
-    .container {
-      max-width: 1350px;
-      margin: 0 auto;
-    }
+    .container { max-width: 1350px; margin: 0 auto; }
 
     /* TOP NAVBAR */
     .top-header {
@@ -45,18 +43,13 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .brand-title { font-size: 1.35rem; font-weight: 800; color: #fff; }
     .brand-sub { font-size: 0.82rem; color: var(--laser-cyan); margin-top: 3px; font-weight: 600; }
 
-    .nav-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
+    .nav-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 
     .btn-pill {
       background: rgba(56, 189, 248, 0.12);
@@ -77,12 +70,28 @@
     .btn-green { background: linear-gradient(135deg, var(--laser-green), #059669); color: #fff; border: none; }
     .btn-green:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); }
 
+    /* SOURCE SWITCHER TABS */
+    .source-tabs { display: flex; gap: 10px; margin-bottom: 1.25rem; flex-wrap: wrap; }
+    .src-tab {
+      padding: 0.7rem 1.3rem;
+      border-radius: 12px;
+      font-size: 0.86rem;
+      font-weight: 800;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .src-tab.active-gdrive { background: rgba(16, 185, 129, 0.2); border-color: var(--laser-green); color: #fff; }
+    .src-tab.active-tg { background: rgba(168, 85, 247, 0.22); border-color: var(--laser-purple); color: #fff; }
+
     /* STATS STRIP */
     .stats-strip {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
     .stat-card {
       background: var(--card-bg);
@@ -102,7 +111,7 @@
       border: 1px solid var(--card-border);
       padding: 0.75rem 1.5rem;
       border-radius: 12px;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       flex-wrap: wrap;
       gap: 10px;
     }
@@ -126,7 +135,7 @@
       display: none;
       padding: 0.85rem 1.5rem;
       border-radius: 12px;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       font-size: 0.85rem;
       font-weight: 700;
       background: rgba(56, 189, 248, 0.15);
@@ -135,11 +144,7 @@
     }
 
     /* PENDING CARDS LIST */
-    .pending-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
+    .pending-list { display: flex; flex-direction: column; gap: 1.25rem; }
 
     .pending-card {
       background: var(--card-bg);
@@ -174,16 +179,8 @@
       gap: 6px;
     }
 
-    .raw-name-title {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      word-break: break-all;
-    }
-    .parsed-headline {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #fff;
-    }
+    .raw-name-title { font-size: 0.78rem; color: var(--text-muted); word-break: break-all; }
+    .parsed-headline { font-size: 1.15rem; font-weight: 800; color: #fff; }
     .dash-preview-box {
       font-family: monospace;
       font-size: 0.82rem;
@@ -195,36 +192,7 @@
       word-break: break-all;
     }
 
-    .candidate-switch-row {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-top: 4px;
-    }
-    .candidate-chip {
-      background: rgba(245, 158, 11, 0.12);
-      border: 1px solid rgba(245, 158, 11, 0.4);
-      color: var(--laser-gold);
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .candidate-chip:hover, .candidate-chip.active {
-      background: var(--laser-gold);
-      color: #020617;
-    }
-
-    .tags-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-top: 4px;
-    }
+    .tags-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 4px; }
     .badge {
       font-size: 0.72rem;
       font-weight: 700;
@@ -233,15 +201,11 @@
       background: rgba(255,255,255,0.06);
       color: #fff;
     }
-    .badge-tg { background: rgba(56, 189, 248, 0.2); color: var(--laser-cyan); }
+    .badge-tg { background: rgba(168, 85, 247, 0.22); color: #e9d5ff; border: 1px solid rgba(168, 85, 247, 0.45); }
+    .badge-gdrive { background: rgba(56, 189, 248, 0.2); color: var(--laser-cyan); }
     .badge-size { background: rgba(16, 185, 129, 0.2); color: var(--laser-green); border: 1px solid rgba(16, 185, 129, 0.4); }
 
-    .card-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      flex-shrink: 0;
-    }
+    .card-actions { display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
     .btn-approve {
       background: var(--laser-green);
       color: #020617;
@@ -355,30 +319,40 @@
   <!-- TOP BAR -->
   <div class="top-header">
     <div>
-      <div class="brand-title">MOINUFLIX — PENDING DRIVE ARRIVALS</div>
-      <div class="brand-sub">Auto-Detected Queue • Verified Size & Multi-Audio • 1-Click Approval</div>
+      <div class="brand-title">MOINUFLIX — UNIFIED PENDING ARRIVALS</div>
+      <div class="brand-sub">GDrive + Telegram Stealth Vault • Single Master Catalog (`source_type` Tagged) • 50-Limit Chunks</div>
     </div>
     <div class="nav-actions">
       <button class="btn-pill btn-green" onclick="triggerBatchSelectedApproval()">🚀 1-Click Approve Selected</button>
-      <button class="btn-pill" onclick="loadPendingList()">🔄 Refresh List</button>
+      <button class="btn-pill" onclick="loadPendingList()">🔄 Refresh All</button>
       <a href="inbox.html" class="btn-pill">📝 Form (inbox.html)</a>
       <a href="admin.html" class="btn-pill">🎬 Library (admin.html)</a>
       <button class="btn-pill" onclick="configureToken()">⚙️ Token</button>
     </div>
   </div>
 
+  <!-- SOURCE SWITCHER TABS -->
+  <div class="source-tabs">
+    <button class="src-tab active-gdrive" id="tab-gdrive" onclick="switchQueueSource('gdrive')">
+      📁 Google Drive Queue (<span id="cnt-gdrive">0</span>)
+    </button>
+    <button class="src-tab" id="tab-telegram" onclick="switchQueueSource('telegram')">
+      🛡️ Telegram Stealth Vault (<span id="cnt-tg">0</span>)
+    </button>
+  </div>
+
   <!-- STATS -->
   <div class="stats-strip">
     <div class="stat-card">
-      <div class="stat-lbl">Pending Movies in Queue</div>
+      <div class="stat-lbl">Active Queue Pending</div>
       <div class="stat-val" id="stat-pending-count" style="color:var(--laser-gold);">0</div>
     </div>
     <div class="stat-card">
-      <div class="stat-lbl">Target Storage Chunk</div>
+      <div class="stat-lbl">Target Storage Chunk (50-Limit)</div>
       <div class="stat-val" id="stat-target-chunk" style="color:var(--laser-cyan);">chunk_01.json</div>
     </div>
     <div class="stat-card">
-      <div class="stat-lbl">Catalog Total</div>
+      <div class="stat-lbl">Master Catalog Total</div>
       <div class="stat-val" id="stat-catalog-total">0 Movies</div>
     </div>
   </div>
@@ -387,7 +361,7 @@
   <div class="batch-toolbar">
     <label class="select-all-box">
       <input type="checkbox" id="chk-select-all" onchange="toggleSelectAll(this.checked)">
-      <span>Select All In Queue</span>
+      <span>Select All In Active Queue</span>
     </label>
     <div style="font-size:0.8rem; color:var(--text-muted);">
       <span id="selected-count-label" style="color:var(--laser-cyan); font-weight:800;">0</span> selected for batch approval
@@ -399,7 +373,7 @@
 
   <!-- PENDING LIST CONTAINER -->
   <div class="pending-list" id="pending-items-container">
-    <div style="color:var(--text-muted); padding:30px; text-align:center;">Loading pending Google Drive arrivals...</div>
+    <div style="color:var(--text-muted); padding:30px; text-align:center;">Loading pending arrivals...</div>
   </div>
 </div>
 
@@ -407,12 +381,12 @@
 <div class="modal-backdrop" id="preview-modal">
   <div class="modal-box">
     <div class="modal-header">
-      <div class="modal-title" id="modal-heading">✓ Confirm Ingest to Library</div>
+      <div class="modal-title" id="modal-heading">✓ Confirm Ingest to Master Catalog</div>
       <button class="btn-close-modal" onclick="closeModal()">✕</button>
     </div>
 
     <div class="compare-box">
-      <span class="compare-lbl">Original Drive Filename:</span>
+      <span class="compare-lbl">Original Filename:</span>
       <span class="compare-raw" id="modal-raw-name">...</span>
     </div>
 
@@ -421,7 +395,8 @@
       <span class="compare-new" id="modal-new-name">...</span>
     </div>
 
-    <div style="display:flex; justify-content:space-between; font-size:0.82rem; background:rgba(2,6,23,0.4); padding:8px 12px; border-radius:8px;">
+    <div style="display:flex; justify-content:space-between; font-size:0.82rem; background:rgba(2,6,23,0.4); padding:8px 12px; border-radius:8px; flex-wrap:wrap; gap:8px;">
+      <span>Source Tag: <strong id="modal-src-type" style="color:var(--laser-purple);">gdrive</strong></span>
       <span>Target Chunk: <strong id="modal-chunk" style="color:var(--laser-cyan);">chunk_01.json</strong></span>
       <span>Verified Size: <strong id="modal-size" style="color:var(--laser-green);">5 GB</strong></span>
       <span>Source: <strong id="modal-source" style="color:#fff;">WEB-DL</strong></span>
@@ -457,14 +432,17 @@
   const GH_REPO = "Moinuflix/My-Movies";
   const GH_BRANCH = "main";
   const WORKER_BASE = "https://gdrive-stream.moinudeentv.workers.dev/?id=";
+  const TG_WORKER_BASE = "https://tg-stream.moinudeentv.workers.dev/?msg_id=";
   const USER_AGENT = "|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0";
 
-  let pendingList = [];
+  let activeSource = "gdrive"; // "gdrive" | "telegram"
+  let pendingList = [];        // Google Drive pending
+  let tgPendingList = [];      // Telegram Stealth Vault pending
   let catalogCount = 0;
   let currentTargetChunk = "chunk_01.json";
   let activeApproveIndex = null;
 
-  function getToken() { return (localStorage.getItem("moinuflix_gh_token") || "").trim(); }
+  function getToken() { return (localStorage.getItem("moinuflix_gh_token") || localStorage.getItem("mf_tg_gh") || "").trim(); }
   function configureToken() {
     const cur = getToken();
     const input = prompt("Enter your GitHub Personal Access Token (PAT):", cur);
@@ -481,6 +459,14 @@
     b.style.color = isError ? "var(--laser-red)" : "var(--laser-cyan)";
     b.style.borderColor = isError ? "var(--laser-red)" : "var(--laser-cyan)";
     b.textContent = msg;
+  }
+
+  function switchQueueSource(src) {
+    activeSource = src;
+    document.getElementById("tab-gdrive").className = `src-tab ${src === 'gdrive' ? 'active-gdrive' : ''}`;
+    document.getElementById("tab-telegram").className = `src-tab ${src === 'telegram' ? 'active-tg' : ''}`;
+    document.getElementById("chk-select-all").checked = false;
+    renderPendingCards();
   }
 
   // 1. Fetch Master Catalog stats
@@ -539,43 +525,33 @@
     return "Hindi DDP 5.1";
   }
 
-  // 2. Load pending items with Auto-Sanitizer (Never crash on backslashes)
+  // 2. Load BOTH Google Drive & Telegram Pending Queues
   async function loadPendingList() {
     await loadMasterStats();
     const container = document.getElementById("pending-items-container");
-    container.innerHTML = '<div style="color:var(--text-muted); padding:30px; text-align:center;">Loading pending queue...</div>';
+    container.innerHTML = '<div style="color:var(--text-muted); padding:30px; text-align:center;">Loading GDrive & Telegram pending queues...</div>';
 
     try {
+      // Load Google Drive pending_movies.json
       const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/pending_movies.json?t=${Date.now()}`);
-      
-      if (!res.ok) {
-        pendingList = [];
-        container.innerHTML = '<div style="color:var(--text-muted); padding:40px; text-align:center;">🎉 No pending arrivals found in resources/data/pending_movies.json!</div>';
-        document.getElementById("stat-pending-count").textContent = "0";
-        return;
-      }
-
-      let text = await res.text();
-      if (!text || text.trim().length === 0) {
-        pendingList = [];
-      } else {
-        try {
-          // AUTO-SANITIZER: Clean invalid markdown backslashes \[ and \] before parsing
+      if (res.ok) {
+        let text = await res.text();
+        if (text && text.trim().length > 0) {
           text = text.replace(/\\\[/g, '[').replace(/\\\]/g, ']');
           const parsed = JSON.parse(text);
           pendingList = Array.isArray(parsed) ? parsed : [];
-        } catch (e) {
-          console.error("JSON parse error:", e);
-          pendingList = [];
-        }
-      }
+        } else pendingList = [];
+      } else pendingList = [];
 
-      document.getElementById("stat-pending-count").textContent = pendingList.length;
+      // Load Telegram Stealth Vault tg/step1_pending.json
+      const tgRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/tg/step1_pending.json?t=${Date.now()}`);
+      if (tgRes.ok) {
+        const tgParsed = await tgRes.json();
+        tgPendingList = Array.isArray(tgParsed) ? tgParsed : [];
+      } else tgPendingList = [];
 
-      if (pendingList.length === 0) {
-        container.innerHTML = '<div style="color:var(--laser-green); padding:40px; text-align:center;">🎉 All Google Drive files are cleared and synced into library!</div>';
-        return;
-      }
+      document.getElementById("cnt-gdrive").textContent = pendingList.length;
+      document.getElementById("cnt-tg").textContent = tgPendingList.length;
 
       renderPendingCards();
     } catch (err) {
@@ -583,34 +559,46 @@
     }
   }
 
-  // 3. Render Cards (Works for both standard and simplified new_name format)
+  // 3. Render Cards for Active Source Tab
   function renderPendingCards() {
+    const isTg = activeSource === "telegram";
+    const activeList = isTg ? tgPendingList : pendingList;
+    document.getElementById("stat-pending-count").textContent = activeList.length;
+
     const container = document.getElementById("pending-items-container");
     container.innerHTML = "";
 
-    pendingList.forEach((item, index) => {
+    if (activeList.length === 0) {
+      container.innerHTML = `<div style="color:var(--laser-green); padding:40px; text-align:center;">🎉 All ${isTg ? 'Telegram Stealth' : 'Google Drive'} files are cleared and synced into library!</div>`;
+      updateSelectedCount();
+      return;
+    }
+
+    activeList.forEach((item, index) => {
       const parsed = item.parsed || {};
-      
-      // Extract title and year cleanly
+      const rawName = isTg ? (item.old_name || "") : (item.original_filename || item.new_name || "");
+      const baseName = item.new_name || rawName;
+
       let title = parsed.title;
       let year = parsed.year;
-      if (!title && item.new_name) {
-        const titleMatch = item.new_name.match(/^(.+?)\s*\((\d{4})\)/);
-        title = titleMatch ? titleMatch[1] : item.new_name.split("[")[0].trim();
+      if (!title && baseName) {
+        const titleMatch = baseName.match(/^(.+?)\s*\((\d{4})\)/);
+        title = titleMatch ? titleMatch[1].replace(/[_.-]+/g, ' ').trim() : baseName.split("[")[0].trim();
         year = titleMatch ? titleMatch[2] : "2026";
       }
       title = title || "Unknown Title";
       year = year || "2026";
 
-      const rawName = item.original_filename || item.new_name || "";
-      const size = item.file_size_gb || (item.new_name && item.new_name.match(/\[(\d+[\.\d]*\s*(?:GB|MB))\]/i)?.[1]) || "5 GB";
+      const size = isTg
+        ? (item.size_gb || "N/A")
+        : (item.file_size_gb || (item.new_name && item.new_name.match(/\[(\d+[\.\d]*\s*(?:GB|MB))\]/i)?.[1]) || "5 GB");
+
       const tgTag = parsed.telegram_tag || "";
       const deepAudio = parseDeepAudio(rawName);
 
-      // TMDb Poster Fallback
-      const candidate = (item.tmdb_candidates && item.tmdb_candidates[0]) ? item.tmdb_candidates[0] : {};
-      const tmdbId = item.selected_tmdb_id || item.tmdb_id || candidate.tmdb_id || 0;
-      const poster = candidate.poster || (tmdbId ? `https://image.tmdb.org/t/p/w500/${tmdbId}` : "https://via.placeholder.com/90x135?text=No+Poster");
+      const candidate = (!isTg && item.tmdb_candidates && item.tmdb_candidates[0]) ? item.tmdb_candidates[0] : {};
+      const tmdbId = (!isTg && (item.selected_tmdb_id || item.tmdb_id || candidate.tmdb_id)) || 0;
+      const poster = candidate.poster || "https://via.placeholder.com/90x135?text=No+Poster";
 
       const dashName = item.new_name || `${title} (${year}) [${parsed.resolution || '1080p'}] [${parsed.source || 'WEB-DL'}] [${deepAudio}] [${size}].mkv`;
 
@@ -629,9 +617,12 @@
           <div class="dash-preview-box" id="dash-preview-${index}">${escapeHtml(dashName)}</div>
 
           <div class="tags-row">
-            ${tgTag ? `<span class="badge badge-tg">${escapeHtml(tgTag)}</span>` : ''}
+            ${isTg
+              ? `<span class="badge badge-tg">⚡ TG #${escapeHtml(item.tg_msg_id)} • 🛡️ ${escapeHtml(item.stealth_name || '')}</span>`
+              : `<span class="badge badge-gdrive">📁 GDrive</span>`}
+            ${tgTag ? `<span class="badge badge-gdrive">${escapeHtml(tgTag)}</span>` : ''}
             <span class="badge badge-size">💾 ${escapeHtml(size)}</span>
-            <span class="badge">TMDB: ${escapeHtml(tmdbId || 'N/A')}</span>
+            ${tmdbId ? `<span class="badge">TMDB: ${escapeHtml(tmdbId)}</span>` : ''}
             <span class="badge" style="color:var(--laser-cyan);">${escapeHtml(item.target_chunk || currentTargetChunk)}</span>
           </div>
         </div>
@@ -639,7 +630,7 @@
         <div class="card-actions">
           <button class="btn-approve" onclick="openPreviewModal(${index})">✓ Approve</button>
           <button class="btn-edit-form" onclick="sendToEditForm(${index})">✏️ Edit in Form</button>
-          <button class="btn-reject" onclick="rejectItem(${index})">✕ Dismiss</button>
+          <button class="btn-reject" onclick="rejectItem(${index})">${isTg ? '🗄️ Archive ➔ Data' : '✕ Dismiss'}</button>
         </div>
       `;
       container.appendChild(card);
@@ -650,9 +641,11 @@
   // Open Preview Modal
   function openPreviewModal(index) {
     activeApproveIndex = index;
-    const item = pendingList[index];
+    const isTg = activeSource === "telegram";
+    const item = isTg ? tgPendingList[index] : pendingList[index];
     const parsed = item.parsed || {};
-    
+    const rawName = isTg ? item.old_name : (item.original_filename || item.new_name || "N/A");
+
     let title = parsed.title;
     let year = parsed.year;
     if (!title && item.new_name) {
@@ -663,14 +656,15 @@
     title = title || "Movie";
     year = year || 2026;
 
-    const size = item.file_size_gb || (item.new_name && item.new_name.match(/\[(\d+[\.\d]*\s*(?:GB|MB))\]/i)?.[1]) || "5 GB";
+    const size = isTg ? (item.size_gb || "N/A") : (item.file_size_gb || "5 GB");
     const dashName = item.new_name || `${title} (${year}) [1080p] [WEB-DL] [${size}].mkv`;
 
-    document.getElementById("modal-raw-name").textContent = item.original_filename || item.new_name || "N/A";
+    document.getElementById("modal-raw-name").textContent = rawName;
     document.getElementById("modal-new-name").textContent = dashName;
+    document.getElementById("modal-src-type").textContent = isTg ? `telegram (#${item.tg_msg_id})` : "gdrive";
     document.getElementById("modal-chunk").textContent = item.target_chunk || currentTargetChunk;
     document.getElementById("modal-size").textContent = size;
-    document.getElementById("modal-source").textContent = parsed.source || "WEB-DL";
+    document.getElementById("modal-source").textContent = isTg ? "Telegram" : (parsed.source || "WEB-DL");
 
     const confirmBtn = document.getElementById("modal-btn-confirm");
     confirmBtn.onclick = () => {
@@ -682,14 +676,13 @@
   }
 
   function closeModal() { document.getElementById("preview-modal").style.display = "none"; }
-  function closeBatchModal() { 
+  function closeBatchModal() {
     document.getElementById("batch-modal").style.display = "none";
     loadPendingList();
   }
 
   function toggleSelectAll(checked) {
-    const cbs = document.querySelectorAll(".card-select-cb");
-    cbs.forEach(cb => cb.checked = checked);
+    document.querySelectorAll(".card-select-cb").forEach(cb => cb.checked = checked);
     updateSelectedCount();
   }
 
@@ -712,12 +705,14 @@
     document.getElementById("btn-batch-done").style.display = "none";
     document.getElementById("batch-modal").style.display = "flex";
 
+    const isTg = activeSource === "telegram";
+    const activeList = isTg ? tgPendingList : pendingList;
     const indicesToProcess = checked.map(cb => parseInt(cb.dataset.index, 10)).sort((a,b) => b - a);
 
     for (let idx of indicesToProcess) {
-      const item = pendingList[idx];
-      const title = item.parsed?.title || item.new_name || "Movie";
-      
+      const item = activeList[idx];
+      const title = item.parsed?.title || item.new_name || item.old_name || "Movie";
+
       const logEntry = document.createElement("div");
       logEntry.textContent = `⏳ Ingesting: ${title}...`;
       logBox.appendChild(logEntry);
@@ -737,8 +732,18 @@
   }
 
   function sendToEditForm(index) {
-    const item = pendingList[index];
-    sessionStorage.setItem("moinuflix_edit_pending", JSON.stringify(item));
+    const isTg = activeSource === "telegram";
+    const item = isTg ? tgPendingList[index] : pendingList[index];
+    const payload = isTg ? {
+      source_type: "telegram",
+      tg_msg_id: item.tg_msg_id,
+      stealth_name: item.stealth_name,
+      original_filename: item.old_name,
+      new_name: item.new_name,
+      file_size_gb: item.size_gb
+    } : { ...item, source_type: "gdrive" };
+
+    sessionStorage.setItem("moinuflix_edit_pending", JSON.stringify(payload));
     window.location.href = "inbox.html?load_pending=1";
   }
 
@@ -746,25 +751,30 @@
     const token = getToken();
     if (!token) return alert("GitHub Token missing! Click 'Token' button at top right.");
 
-    const item = pendingList[index];
+    const isTg = activeSource === "telegram";
+    const item = isTg ? tgPendingList[index] : pendingList[index];
     const parsed = item.parsed || {};
-    const rawName = item.original_filename || item.new_name || "";
-    
+    const sourceType = isTg ? "telegram" : "gdrive";
+    const rawName = isTg ? (item.old_name || "") : (item.original_filename || item.new_name || "");
+
     let title = parsed.title;
     let year = parsed.year;
-    if (!title && item.new_name) {
-      const titleMatch = item.new_name.match(/^(.+?)\s*\((\d{4})\)/);
-      title = titleMatch ? titleMatch[1] : item.new_name.split("[")[0].trim();
+    const baseName = item.new_name || rawName;
+    if (!title && baseName) {
+      const titleMatch = baseName.match(/^(.+?)\s*\((\d{4})\)/);
+      title = titleMatch ? titleMatch[1].replace(/[_.-]+/g, ' ').trim() : baseName.split("[")[0].trim();
       year = titleMatch ? parseInt(titleMatch[2], 10) : 2026;
     }
     title = title || "Movie";
     year = year || 2026;
 
-    const driveId = (item.gdrive_id || '').replace(/\s+/g, '');
-    const realSize = item.file_size_gb || (item.new_name && item.new_name.match(/\[(\d+[\.\d]*\s*(?:GB|MB))\]/i)?.[1]) || "5 GB";
+    const driveId = isTg ? String(item.tg_msg_id).trim() : (item.gdrive_id || '').replace(/\s+/g, '');
+    const realSize = isTg
+      ? (item.size_gb || "1.5 GB")
+      : (item.file_size_gb || (item.new_name && item.new_name.match(/\[(\d+[\.\d]*\s*(?:GB|MB))\]/i)?.[1]) || "5 GB");
     const deepAudio = parseDeepAudio(rawName);
 
-    const tmdbId = item.selected_tmdb_id || item.tmdb_id || 0;
+    let tmdbId = (!isTg && (item.selected_tmdb_id || item.tmdb_id)) || 0;
 
     if (!isBatch) showStatus(`⚡ Fetching official TMDb metadata for "${title}"...`);
 
@@ -783,14 +793,22 @@
       director: [],
       writers: [],
       cast: [],
-      poster: tmdbId ? `https://image.tmdb.org/t/p/w780/${tmdbId}` : "",
+      poster: "",
       fanart: "",
       clearlogo: "",
       trailer: ""
     };
 
-    if (tmdbId) {
-      try {
+    try {
+      if (!tmdbId && title) {
+        const sRes = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(title)}`);
+        if (sRes.ok) {
+          const sData = await sRes.json();
+          if (sData.results && sData.results[0]) tmdbId = sData.results[0].id;
+        }
+      }
+
+      if (tmdbId) {
         const tRes = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_KEY}&append_to_response=credits,release_dates,images&include_image_language=en,hi,ta,te,null`);
         if (tRes.ok) {
           const td = await tRes.json();
@@ -849,18 +867,18 @@
             }
           } catch (_) {}
         }
-      } catch (_) {}
-    }
+      }
+    } catch (_) {}
 
-    const streamUrl = `${WORKER_BASE}${driveId}${USER_AGENT}`;
+    const streamUrl = isTg ? `${TG_WORKER_BASE}${driveId}${USER_AGENT}` : `${WORKER_BASE}${driveId}${USER_AGENT}`;
     const targetChunk = item.target_chunk || currentTargetChunk;
     const targetChunkPath = targetChunk.startsWith("resources/") ? targetChunk : `resources/data/chunks/${targetChunk.replace(/^chunks\//, '')}`;
     const catalogPath = `resources/data/catalog.json`;
     const finalDashName = item.new_name || `${movieDetails.title} (${movieDetails.year}) [${parsed.resolution || '1080p'}] [${parsed.source || 'WEB-DL'}] [${deepAudio}] [${realSize}].mkv`;
 
-    if (!isBatch) showStatus(`💾 Committing "${title}" to ${targetChunkPath}...`);
+    if (!isBatch) showStatus(`💾 Committing "${movieDetails.title}" (${sourceType}) to ${targetChunkPath}...`);
 
-    // 1. Commit to Target Chunk
+    // 1. Commit to Target Chunk (50-Limit)
     let chunkData = { chunk_id: targetChunk.replace(".json", ""), movie_count: 0, movies: [] };
     let chunkSha = undefined;
 
@@ -873,8 +891,26 @@
       chunkData = JSON.parse(decodeURIComponent(escape(atob(cJson.content))));
     }
 
+    const versionEntry = {
+      id: driveId,
+      source_type: sourceType,
+      name: finalDashName,
+      language: deepAudio,
+      quality: `${parsed.resolution || '1080p'} FHD`,
+      resolution: parsed.resolution || "1080p",
+      source: isTg ? "Telegram" : (parsed.source || "WEB-DL"),
+      source_image: "resources/images/sources/web.png",
+      codec: parsed.codec || "x264",
+      audio: deepAudio,
+      channels: "5.1",
+      size: realSize,
+      telegram_tag: parsed.telegram_tag || "",
+      stream_url: streamUrl
+    };
+
     const fullMovieRecord = {
       id: driveId,
+      source_type: sourceType,
       tmdb_id: tmdbId ? parseInt(tmdbId, 10) : 0,
       name: finalDashName,
       title: movieDetails.title,
@@ -890,7 +926,7 @@
       plot: movieDetails.plot,
       telegram_channel: parsed.telegram_tag || "",
       country: ["India"],
-      studio: [parsed.source || "WEB-DL"],
+      studio: [isTg ? "Telegram" : (parsed.source || "WEB-DL")],
       director: movieDetails.director,
       writers: movieDetails.writers,
       cast: movieDetails.cast,
@@ -911,52 +947,31 @@
       },
       trailer: movieDetails.trailer,
       ratings: [{ source: "TMDb", value: movieDetails.rating, out_of: 10 }],
-      badges: {
-        quality: `https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/resolution/${parsed.resolution || '1080p'}.png`,
-        hdr: "",
-        source: `https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/source/webdl.png`,
-        audio_format: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/dolbydigital.png",
-        audio_channels: "https://raw.githubusercontent.com/jurialmunkey/skin.arctic.horizon.2/main/media/flags/audio/5.1.png"
-      },
       specs: {
         resolution: parsed.resolution || "1080p",
-        source: parsed.source || "WEB-DL",
+        source: isTg ? "Telegram" : (parsed.source || "WEB-DL"),
         codec: parsed.codec || "x264",
-        bit_depth: "8bit",
         audio: deepAudio,
-        channels: "5.1",
-        bitrate: "640 Kbps",
         languages: deepAudio,
-        size: realSize,
-        telegram_tag: parsed.telegram_tag || ""
+        size: realSize
       },
       stream_url: streamUrl,
-      versions: [{
-        id: driveId,
-        name: finalDashName,
-        language: deepAudio,
-        quality: `${parsed.resolution || '1080p'} FHD`,
-        resolution: parsed.resolution || "1080p",
-        source: parsed.source || "WEB-DL",
-        source_image: "resources/images/sources/web.png",
-        codec: parsed.codec || "x264",
-        audio: deepAudio,
-        channels: "5.1",
-        size: realSize,
-        telegram_tag: parsed.telegram_tag || "",
-        stream_url: streamUrl
-      }]
+      versions: [versionEntry]
     };
 
     chunkData.movies = chunkData.movies || [];
-    const exIdx = chunkData.movies.findIndex(m => m.id === driveId);
-    if (exIdx >= 0) chunkData.movies[exIdx] = fullMovieRecord;
-    else chunkData.movies.push(fullMovieRecord);
+    const exIdx = chunkData.movies.findIndex(m => (tmdbId && Number(m.tmdb_id) === Number(tmdbId)) || m.id === driveId);
+    if (exIdx >= 0) {
+      chunkData.movies[exIdx].versions = chunkData.movies[exIdx].versions || [];
+      chunkData.movies[exIdx].versions.push(versionEntry);
+    } else {
+      chunkData.movies.push(fullMovieRecord);
+    }
     chunkData.movie_count = chunkData.movies.length;
 
-    await commitGithubFile(targetChunkPath, chunkData, `Approve & Add ${title} to ${targetChunk}`, chunkSha, token);
+    await commitGithubFile(targetChunkPath, chunkData, `Approve (${sourceType}): ${movieDetails.title} -> ${targetChunk}`, chunkSha, token);
 
-    // 2. Commit to Catalog Index
+    // 2. Commit to Single Master Catalog Index (With 1-Line `source_type` Tag)
     let catData = { movies: [] };
     let catSha = undefined;
 
@@ -981,6 +996,7 @@
       original_language: movieDetails.original_language,
       genres: movieDetails.genres,
       collection: movieDetails.collection,
+      source_type: sourceType,
       chunk_file: targetChunkPath,
       primary_stream_url: streamUrl,
       available_languages: [deepAudio],
@@ -988,9 +1004,9 @@
       available_versions: [{
         language: deepAudio,
         quality: `${parsed.resolution || '1080p'} FHD`,
-        source: parsed.source || "WEB-DL",
+        source: isTg ? "Telegram" : (parsed.source || "WEB-DL"),
         source_image: "resources/images/sources/web.png",
-        format: parsed.source || "WEB-DL",
+        format: isTg ? "Telegram" : (parsed.source || "WEB-DL"),
         codec: parsed.codec || "x264",
         audio: deepAudio,
         channels: "5.1"
@@ -998,25 +1014,60 @@
     };
 
     catData.movies = catData.movies || [];
-    const catEx = catData.movies.findIndex(m => m.id === driveId);
-    if (catEx >= 0) catData.movies[catEx] = catalogEntry;
-    else catData.movies.push(catalogEntry);
+    const catEx = catData.movies.findIndex(m => (tmdbId && Number(m.tmdb_id) === Number(tmdbId)) || m.id === driveId);
+    if (catEx >= 0) {
+      catData.movies[catEx].version_count = (catData.movies[catEx].version_count || 1) + 1;
+      catData.movies[catEx].source_type = sourceType;
+      catData.movies[catEx].primary_stream_url = streamUrl;
+    } else {
+      catData.movies.push(catalogEntry);
+    }
 
-    await commitGithubFile(catalogPath, catData, `Update catalog index for ${title}`, catSha, token);
+    await commitGithubFile(catalogPath, catData, `Catalog (${sourceType}): ${movieDetails.title}`, catSha, token);
 
-    // 3. Remove approved movie from pending queue
-    pendingList.splice(index, 1);
-    
-    let pSha = undefined;
-    const pRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/resources/data/pending_movies.json?t=${Date.now()}`, {
-      headers: { "Authorization": `token ${token}` }
-    });
-    if (pRes.ok) pSha = (await pRes.json()).sha;
+    // 3. Remove approved item from its respective queue (and archive TG item in "Data" key)
+    if (isTg) {
+      let archData = { Data: [] }, archSha;
+      const aRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/tg/step2_data_archive.json?t=${Date.now()}`, {
+        headers: { "Authorization": `token ${token}` }
+      });
+      if (aRes.ok) {
+        const aj = await aRes.json();
+        archSha = aj.sha;
+        archData = JSON.parse(decodeURIComponent(escape(atob(aj.content))));
+      }
+      archData.Data = archData.Data || [];
+      archData.Data.unshift({
+        tg_msg_id: item.tg_msg_id,
+        size_gb: realSize,
+        raw_name: item.old_name,
+        tg_stealth_name: item.stealth_name,
+        clean_name: finalDashName,
+        chunk_file: targetChunkPath,
+        status: "published_live",
+        archived_at: new Date().toISOString()
+      });
+      await commitGithubFile("tg/step2_data_archive.json", archData, `TG Data Archive: #${item.tg_msg_id}`, archSha, token);
 
-    await commitGithubFile("resources/data/pending_movies.json", pendingList, `Remove ${title} from pending queue`, pSha, token);
+      tgPendingList.splice(index, 1);
+      let s1Sha;
+      const s1Res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/tg/step1_pending.json?t=${Date.now()}`, {
+        headers: { "Authorization": `token ${token}` }
+      });
+      if (s1Res.ok) s1Sha = (await s1Res.json()).sha;
+      await commitGithubFile("tg/step1_pending.json", tgPendingList, `TG Step 1 Approved #${item.tg_msg_id}`, s1Sha, token);
+    } else {
+      pendingList.splice(index, 1);
+      let pSha;
+      const pRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/resources/data/pending_movies.json?t=${Date.now()}`, {
+        headers: { "Authorization": `token ${token}` }
+      });
+      if (pRes.ok) pSha = (await pRes.json()).sha;
+      await commitGithubFile("resources/data/pending_movies.json", pendingList, `Remove ${movieDetails.title} from pending queue`, pSha, token);
+    }
 
     if (!isBatch) {
-      showStatus(`🎉 "${title}" successfully committed to Library!`);
+      showStatus(`🎉 "${movieDetails.title}" (${sourceType}) successfully committed to Master Catalog!`);
       loadPendingList();
     }
   }
@@ -1024,22 +1075,62 @@
   async function rejectItem(index) {
     const token = getToken();
     if (!token) return alert("GitHub Token missing!");
-    const title = pendingList[index].parsed?.title || pendingList[index].new_name || "movie";
+    const isTg = activeSource === "telegram";
 
-    if (!confirm(`Remove "${title}" from pending queue without saving?`)) return;
+    if (isTg) {
+      const item = tgPendingList[index];
+      if (!confirm(`Move TG #${item.tg_msg_id} to Step 2 Permanent "Data" Archive?`)) return;
 
-    pendingList.splice(index, 1);
-    try {
-      let pSha = undefined;
-      const pRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/resources/data/pending_movies.json?t=${Date.now()}`, {
-        headers: { "Authorization": `token ${token}` }
-      });
-      if (pRes.ok) pSha = (await pRes.json()).sha;
+      try {
+        let archData = { Data: [] }, archSha;
+        const aRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/tg/step2_data_archive.json?t=${Date.now()}`, {
+          headers: { "Authorization": `token ${token}` }
+        });
+        if (aRes.ok) {
+          const aj = await aRes.json();
+          archSha = aj.sha;
+          archData = JSON.parse(decodeURIComponent(escape(atob(aj.content))));
+        }
+        archData.Data = archData.Data || [];
+        archData.Data.unshift({
+          tg_msg_id: item.tg_msg_id,
+          size_gb: item.size_gb || "N/A",
+          raw_name: item.old_name,
+          tg_stealth_name: item.stealth_name,
+          status: "removed_archived",
+          archived_at: new Date().toISOString()
+        });
+        await commitGithubFile("tg/step2_data_archive.json", archData, `TG Step 2 Archived #${item.tg_msg_id}`, archSha, token);
 
-      await commitGithubFile("resources/data/pending_movies.json", pendingList, `Dismiss ${title} from queue`, pSha, token);
-      loadPendingList();
-    } catch (e) {
-      alert("Error: " + e.message);
+        tgPendingList.splice(index, 1);
+        let s1Sha;
+        const s1Res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/tg/step1_pending.json?t=${Date.now()}`, {
+          headers: { "Authorization": `token ${token}` }
+        });
+        if (s1Res.ok) s1Sha = (await s1Res.json()).sha;
+        await commitGithubFile("tg/step1_pending.json", tgPendingList, `TG Step 1 Removed #${item.tg_msg_id}`, s1Sha, token);
+
+        loadPendingList();
+      } catch (e) {
+        alert("Error: " + e.message);
+      }
+    } else {
+      const title = pendingList[index].parsed?.title || pendingList[index].new_name || "movie";
+      if (!confirm(`Remove "${title}" from pending queue without saving?`)) return;
+
+      pendingList.splice(index, 1);
+      try {
+        let pSha;
+        const pRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/resources/data/pending_movies.json?t=${Date.now()}`, {
+          headers: { "Authorization": `token ${token}` }
+        });
+        if (pRes.ok) pSha = (await pRes.json()).sha;
+
+        await commitGithubFile("resources/data/pending_movies.json", pendingList, `Dismiss ${title} from queue`, pSha, token);
+        loadPendingList();
+      } catch (e) {
+        alert("Error: " + e.message);
+      }
     }
   }
 
