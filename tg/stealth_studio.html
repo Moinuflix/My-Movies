@@ -1,610 +1,701 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>MoinuFlix — All-in-One TG Stealth Vault + TMDb + 50-Chunk Publisher</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoinuFlix — TG Stealth Vault & National Ingestion Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #030712; --card: rgba(15, 23, 42, 0.95); --input: #0b1329;
-      --border: rgba(56, 189, 248, 0.25); --cyan: #38bdf8; --blue: #2563eb;
-      --green: #10b981; --gold: #f59e0b; --red: #ef4444; --purple: #a855f7;
-      --text: #f8fafc; --muted: #94a3b8;
+      --bg-dark: #080d1a;
+      --card-bg: rgba(15, 23, 42, 0.94);
+      --card-border: rgba(56, 189, 248, 0.25);
+      --laser-cyan: #38bdf8;
+      --laser-green: #10b981;
+      --laser-gold: #f59e0b;
+      --laser-red: #ef4444;
+      --laser-purple: #a855f7;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --input-bg: rgba(2, 6, 23, 0.85);
+      --border-gray: rgba(148, 163, 184, 0.25);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
-    body { background: var(--bg); color: var(--text); padding: 1rem; min-height: 100vh; }
-    .wrap { max-width: 1150px; margin: 0 auto; }
-    .topbar {
-      background: linear-gradient(135deg, rgba(15,23,42,0.96), rgba(30,58,138,0.88));
-      border: 1px solid var(--border); border-radius: 18px; padding: 1.15rem 1.4rem;
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.1rem;
-    }
-    .title { font-size: 1.15rem; font-weight: 800; color: #fff; }
-    .sub { font-size: 0.76rem; color: var(--cyan); font-weight: 600; margin-top: 2px; }
-    .btn {
-      border: 1px solid var(--border); background: rgba(56,189,248,0.12); color: #fff;
-      padding: 0.55rem 0.95rem; border-radius: 11px; font-size: 0.8rem; font-weight: 700;
-      cursor: pointer; display: inline-flex; align-items: center; gap: 6px; text-decoration: none;
-    }
-    .btn-cyan { background: linear-gradient(135deg, var(--cyan), var(--blue)); color: #030712; border: none; }
-    .btn-green { background: linear-gradient(135deg, var(--green), #059669); color: #fff; border: none; }
-    .btn-purple { background: linear-gradient(135deg, #c084fc, #7e22ce); color: #fff; border: none; }
-    .btn-red { background: rgba(239,68,68,0.15); border-color: rgba(239,68,68,0.45); color: #fca5a5; }
-    .tabs { display: flex; gap: 8px; margin-bottom: 1.1rem; flex-wrap: wrap; }
-    .tab { padding: 0.65rem 1.1rem; border-radius: 12px; font-size: 0.84rem; font-weight: 800; background: rgba(15,23,42,0.85); border: 1px solid var(--border); color: var(--muted); cursor: pointer; }
-    .tab.active { background: linear-gradient(135deg, rgba(56,189,248,0.22), rgba(37,99,235,0.28)); border-color: var(--cyan); color: #fff; }
-    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.85rem; }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
-    @media (max-width: 780px) { .grid-3, .grid-2 { grid-template-columns: 1fr; } }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 1.2rem; margin-bottom: 1.1rem; }
-    .card-head { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; gap: 8px; }
-    .card-title { font-size: 0.96rem; font-weight: 800; color: var(--cyan); }
-    label { display: block; font-size: 0.74rem; font-weight: 700; color: var(--muted); margin-bottom: 4px; }
-    input, textarea, select { width: 100%; background: var(--input); border: 1px solid var(--border); border-radius: 11px; padding: 0.65rem 0.82rem; color: #fff; font-size: 0.84rem; outline: none; margin-bottom: 0.7rem; }
-    .status-bar { padding: 0.75rem 1rem; border-radius: 12px; font-size: 0.82rem; font-weight: 700; margin-bottom: 1rem; background: rgba(56,189,248,0.1); border: 1px solid var(--border); color: var(--cyan); display: none; }
-    .item-card { background: rgba(11,19,41,0.94); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1rem; margin-bottom: 0.85rem; }
-    .item-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
-    .badge { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 0.7rem; font-weight: 800; margin-right: 5px; margin-bottom: 4px; background: rgba(56,189,248,0.16); color: var(--cyan); }
+    body { background-color: var(--bg-dark); color: var(--text-main); padding: 1.25rem; min-height: 100vh; position: relative; overflow-x: hidden; }
+    #dynamic-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-size: cover; background-position: center; filter: blur(28px) brightness(0.22); transform: scale(1.05); z-index: -1; transition: background-image 0.8s ease-in-out; }
+    .container { max-width: 1280px; margin: 0 auto; background: var(--card-bg); backdrop-filter: blur(20px); border: 1px solid var(--card-border); border-radius: 18px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); overflow: hidden; }
+    .govt-header { background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 58, 138, 0.88)); border-bottom: 2px solid var(--laser-cyan); padding: 1.2rem 1.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .govt-title { font-size: 1.25rem; font-weight: 800; color: #fff; }
+    .govt-sub { font-size: 0.78rem; color: #38bdf8; margin-top: 3px; font-weight: 600; }
+    .nav-links-box { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .btn-nav-link { background: rgba(56, 189, 248, 0.14); border: 1px solid #38bdf8; color: #fff; padding: 0.48rem 0.9rem; border-radius: 9px; font-size: 0.78rem; font-weight: 700; cursor: pointer; }
+    .btn-nav-link:hover { background: #38bdf8; color: #020617; }
+    .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); background: rgba(2, 6, 23, 0.45); border-bottom: 1px solid var(--border-gray); padding: 0.8rem 1.8rem; gap: 1rem; }
+    .stat-item { display: flex; flex-direction: column; }
+    .stat-label { font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+    .stat-val { font-size: 1.05rem; font-weight: 800; color: var(--text-main); }
+    .inner-wrap { padding: 1.5rem 1.8rem; }
+
+    .tabs { display: flex; gap: 8px; margin-bottom: 1.2rem; flex-wrap: wrap; }
+    .tab-btn { padding: 0.6rem 1.1rem; border-radius: 10px; font-size: 0.82rem; font-weight: 800; background: rgba(2, 6, 23, 0.7); border: 1px solid var(--card-border); color: var(--text-muted); cursor: pointer; }
+    .tab-btn.active { background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(37, 99, 235, 0.3)); border-color: var(--laser-cyan); color: #fff; }
+
+    .vault-card { background: rgba(2, 6, 23, 0.75); border: 1px solid var(--border-gray); border-radius: 14px; padding: 1rem; margin-bottom: 0.85rem; }
+    .vault-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .badge { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 0.72rem; font-weight: 800; margin-right: 5px; background: rgba(56,189,248,0.16); color: var(--laser-cyan); }
     .badge-gold { background: rgba(245,158,11,0.18); color: #fcd34d; }
     .badge-purple { background: rgba(168,85,247,0.18); color: #d8b4fe; }
     .badge-green { background: rgba(16,185,129,0.18); color: #6ee7b7; }
-    .badge-red { background: rgba(239,68,68,0.18); color: #fca5a5; }
-    .code-line { font-family: monospace; font-size: 0.77rem; padding: 6px 9px; border-radius: 8px; margin-top: 6px; word-break: break-all; }
+    .code-line { font-family: monospace; font-size: 0.78rem; padding: 6px 10px; border-radius: 8px; margin-top: 6px; word-break: break-all; }
     .line-old { background: rgba(239,68,68,0.08); border: 1px dashed rgba(239,68,68,0.35); color: #fca5a5; }
     .line-new { background: rgba(16,185,129,0.08); border: 1px dashed rgba(16,185,129,0.4); color: #6ee7b7; }
     .line-stealth { background: rgba(168,85,247,0.1); border: 1px dashed rgba(168,85,247,0.45); color: #e9d5ff; }
-    .pub-modal { border: 2px solid var(--cyan); background: #070d1f; }
-    .poster-preview { width: 120px; border-radius: 12px; border: 1px solid var(--border); }
-    .cast-grid { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; }
-    .cast-chip { min-width: 95px; background: #0b1329; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 6px; text-align: center; font-size: 0.7rem; }
-    .cast-chip img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; margin-bottom: 4px; }
+
+    .section-title { font-size: 0.9rem; font-weight: 800; color: var(--laser-cyan); text-transform: uppercase; padding-bottom: 0.4rem; border-bottom: 1px solid var(--card-border); margin: 1.4rem 0 1rem; display: flex; justify-content: space-between; align-items: center; }
+    .form-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; margin-bottom: 1rem; }
+    .col-12 { grid-column: span 12; } .col-6 { grid-column: span 6; } .col-5 { grid-column: span 5; } .col-4 { grid-column: span 4; } .col-3 { grid-column: span 3; } .col-2 { grid-column: span 2; }
+    @media (max-width: 820px) { .col-6, .col-5, .col-4, .col-3, .col-2 { grid-column: span 12; } }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    label { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); }
+    input, select, textarea { padding: 0.68rem 0.85rem; border: 1px solid var(--border-gray); border-radius: 10px; font-size: 0.85rem; color: var(--text-main); background-color: var(--input-bg); outline: none; }
+    input:focus, select:focus, textarea:focus { border-color: var(--laser-cyan); }
+    .smart-dash-preview { background: var(--input-bg); border: 1px dashed var(--laser-cyan); padding: 0.8rem 1rem; font-family: monospace; font-size: 0.84rem; color: var(--laser-green); word-break: break-all; border-radius: 10px; }
+    .candidate-strip { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
+    .candidate-pill { background: rgba(56, 189, 248, 0.14); border: 1px solid rgba(56, 189, 248, 0.35); padding: 4px 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; color: #fff; cursor: pointer; }
+    .candidate-pill:hover { background: var(--laser-cyan); color: #020617; }
+    .passport-box { width: 95px; height: 135px; border: 2px solid var(--laser-cyan); border-radius: 8px; overflow: hidden; background: #020617; }
+    .passport-box img { width: 100%; height: 100%; object-fit: cover; }
+    .cast-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.7rem; background: var(--input-bg); border: 1px solid var(--border-gray); padding: 0.9rem; border-radius: 12px; max-height: 320px; overflow-y: auto; }
+    .cast-card { background: var(--card-bg); border: 1px solid var(--border-gray); border-radius: 9px; padding: 7px; display: flex; gap: 9px; align-items: center; }
+    .cast-card img { width: 42px; height: 55px; object-fit: cover; border-radius: 7px; }
+    .artwork-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.7rem; background: var(--input-bg); padding: 1rem; border: 1px solid var(--border-gray); border-radius: 12px; }
+    .art-item { font-size: 0.74rem; display: flex; flex-direction: column; gap: 0.25rem; }
+    .art-item input { font-size: 0.74rem; padding: 0.45rem; font-family: monospace; }
+    .btn { padding: 0.65rem 1.2rem; font-size: 0.8rem; font-weight: 800; border-radius: 10px; cursor: pointer; border: none; }
+    .btn-green { background: linear-gradient(135deg, var(--laser-green), #059669); color: #fff; }
+    .btn-gold { background: linear-gradient(135deg, #f59e0b, #d97706); color: #020617; }
+    .btn-red { background: rgba(239, 68, 68, 0.16); border: 1px solid rgba(239, 68, 68, 0.45); color: #fca5a5; }
+    .btn-secondary { background: rgba(56, 189, 248, 0.12); border: 1px solid var(--card-border); color: var(--laser-cyan); }
+    #toast-msg { padding: 0.8rem 1.1rem; margin-bottom: 1rem; border-radius: 10px; font-size: 0.84rem; font-weight: 700; display: none; }
+    .toast-success { background: rgba(16, 185, 129, 0.15); color: var(--laser-green); border: 1px solid var(--laser-green); }
+    .toast-error { background: rgba(239, 68, 68, 0.15); color: var(--laser-red); border: 1px solid var(--laser-red); }
   </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="topbar">
+
+<div id="dynamic-bg"></div>
+
+<div class="container">
+  <div class="govt-header">
     <div>
-      <div class="title">🛡️ MOINUFLIX — MERGED TG VAULT + TMDb + 50-CHUNK PUBLISHER</div>
-      <div class="sub">Saves Separately in `tg/catalog.json` & `tg/chunks/chunk_XX.json` (Max 50/Chunk)</div>
+      <div class="govt-title">🛡️ MOINUFLIX — TG STEALTH VAULT + INGESTION STUDIO</div>
+      <div class="govt-sub">Isolated `tg/` Storage • 22 OTT Auto-Parser • TMDb & 10-Artwork Suite • 50-Limit Auto-Chunks</div>
     </div>
-    <div style="display:flex; gap:8px; flex-wrap:wrap;">
-      <button class="btn btn-cyan" onclick="syncAll()">🔄 Sync `tg/`</button>
-      <button class="btn" onclick="toggleConfig()">⚙️ Setup</button>
+    <div class="nav-links-box">
+      <button type="button" class="btn-nav-link" onclick="syncAllVault()">🔄 Sync `tg/`</button>
+      <button type="button" class="btn-nav-link" onclick="configureToken()">⚙️ Set PAT (<span id="pat-status">Check</span>)</button>
     </div>
   </div>
 
-  <div id="status-banner" class="status-bar"></div>
-
-  <!-- SETUP PANEL -->
-  <div class="card" id="config-panel">
-    <div class="card-head">
-      <div class="card-title">🔐 Setup (`Moinuflix/My-Movies` ➔ `tg/` Isolated Zone)</div>
-      <span id="cfg-badge" style="font-size:0.75rem; font-weight:800; color:var(--gold);">⚠️ Setup Required</span>
-    </div>
-    <div class="grid-3">
-      <div>
-        <label>GitHub Repo</label>
-        <input type="text" id="cfg-repo" value="Moinuflix/My-Movies">
-      </div>
-      <div>
-        <label>GitHub PAT Token (ghp_...)</label>
-        <input type="password" id="cfg-gh-token" placeholder="ghp_xxxxxxxxxxxx">
-      </div>
-      <div>
-        <label>TMDb API Key (v3 auth)</label>
-        <input type="password" id="cfg-tmdb-key" placeholder="a1b2c3d4e5...">
-      </div>
-    </div>
-    <div>
-      <label>Cloudflare TG Worker Base URL</label>
-      <input type="text" id="cfg-worker" value="https://tg-stream.moinudeentv.workers.dev">
-    </div>
-    <button class="btn btn-green" onclick="saveConfig()">💾 Save Setup</button>
+  <div class="stats-bar">
+    <div class="stat-item"><span class="stat-label">TG Pending Queue</span><span class="stat-val" id="stat-pending" style="color:var(--laser-gold);">0</span></div>
+    <div class="stat-item"><span class="stat-label">TG Catalog Total</span><span class="stat-val" id="stat-catalog-count">0 Movies</span></div>
+    <div class="stat-item"><span class="stat-label">Target Chunk (50-Limit)</span><span class="stat-val" id="stat-target-chunk" style="color:var(--laser-cyan);">tg/chunks/chunk_01.json</span></div>
+    <div class="stat-item"><span class="stat-label">Ingest Mode</span><span class="stat-val" id="ingest-mode-status" style="color:var(--laser-green);">TG Separate Save ✅</span></div>
   </div>
 
-  <!-- MERGED STEP 3 TMDb + 50-CHUNK PUBLISH STUDIO (OPENS ON "PASS & PUBLISH") -->
-  <div class="card pub-modal" id="publish-box" style="display:none;">
-    <div class="card-head">
-      <div class="card-title">🎬 Step 3: TMDb Auto-Fill & Publish to `tg/catalog.json` + `tg/chunks/` (50/Chunk)</div>
-      <button class="btn btn-red" onclick="closePublishBox()">✖ Close</button>
+  <div class="inner-wrap">
+    <div id="toast-msg"></div>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="tab-btn active" id="tab-pending" onclick="switchTab('pending')">⏳ STEP 1: TG Pending (<span id="cnt-pending">0</span>)</button>
+      <button class="tab-btn" id="tab-studio" onclick="switchTab('studio')">🎬 STEP 3: TMDb & Publish Studio</button>
+      <button class="tab-btn" id="tab-archive" onclick="switchTab('archive')">🗄️ STEP 2: Permanent "Data" (<span id="cnt-archive">0</span>)</button>
+      <button class="tab-btn" id="tab-live" onclick="switchTab('live')">📦 TG Live Catalog (<span id="cnt-live">0</span>)</button>
     </div>
 
-    <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:0.8rem;">
-      <img id="pub-poster-img" class="poster-preview" src="" alt="Poster" style="display:none;">
-      <div style="flex:1; min-width:260px;">
-        <div class="grid-3">
-          <div>
-            <label>TG Msg ID</label>
-            <input type="text" id="pub-tg-id" readonly>
+    <!-- TAB 1: STEP 1 PENDING QUEUE -->
+    <div id="view-pending">
+      <div id="pending-list-box"></div>
+    </div>
+
+    <!-- TAB 2: MERGED STEP 3 STUDIO (EXACT SAME METHOD, SAVES IN tg/) -->
+    <div id="view-studio" style="display:none;">
+      <form id="media-ingest-form" onsubmit="handleFormSubmission(event)">
+        <input type="hidden" id="tg-msg-id" value="">
+        <input type="hidden" id="tg-stealth-id" value="">
+        <input type="hidden" id="tmdb-id" value="">
+        <input type="hidden" id="movie-imdb-id" value="">
+
+        <div class="section-title">
+          <span>Part I: Clean Parsed Tokens (22 OTT Auto-Detection • TG Msg #<span id="badge-active-tg">None</span>)</span>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group col-12">
+            <label>Raw Release File Name *</label>
+            <input type="text" id="raw-filename" required oninput="handleInstantRawIngest(this.value)">
           </div>
-          <div>
-            <label>Verified Size (GB)</label>
-            <input type="text" id="pub-size">
+          <div class="form-group col-12">
+            <label>Parsed Movie Title (Editable)</label>
+            <input type="text" id="token-movie-title" required oninput="document.getElementById('movie-title').value=this.value; updateDashPreview();">
           </div>
-          <div>
-            <label>TMDb ID *</label>
-            <div style="display:flex; gap:6px;">
-              <input type="text" id="pub-tmdb-id" placeholder="432139">
-              <button class="btn btn-cyan" onclick="fetchTmdbById()" style="margin-bottom:0.7rem;">Fetch</button>
-            </div>
+          <div class="form-group col-2"><label>Year</label><input type="text" id="token-year" oninput="updateDashPreview()"></div>
+          <div class="form-group col-2"><label>Resolution</label><input type="text" id="token-resolution" oninput="updateDashPreview()"></div>
+          <div class="form-group col-2"><label>Platform / Source</label><input type="text" id="token-platform" oninput="updateDashPreview()"></div>
+          <div class="form-group col-2"><label>Video Codec</label><input type="text" id="token-videocodec" oninput="updateDashPreview()"></div>
+          <div class="form-group col-2"><label>Verified Size</label><input type="text" id="token-size" oninput="updateDashPreview()"></div>
+          <div class="form-group col-2"><label>Ripper / Tag</label><input type="text" id="token-ripper" oninput="updateDashPreview()"></div>
+          <div class="form-group col-12">
+            <label style="color:var(--laser-gold);">Languages & Multi-Audio Specification (Clean Bracket)</label>
+            <input type="text" id="token-audio-spec" placeholder="[Tamil DDP 5.1]" oninput="updateDashPreview()">
+          </div>
+          <div class="form-group col-12" id="candidates-box" style="display:none;">
+            <label style="color:var(--laser-gold);">🎯 Top TMDb Candidates (Click to Auto-Fill):</label>
+            <div class="candidate-strip" id="candidate-strip-inner"></div>
+          </div>
+          <div class="form-group col-12">
+            <label>Final Standard Dash Name Preview</label>
+            <div class="smart-dash-preview" id="dash-name-preview">Awaiting input...</div>
           </div>
         </div>
-        <div class="grid-2">
-          <div>
-            <label>Search Movie on TMDb</label>
-            <div style="display:flex; gap:6px;">
-              <input type="text" id="pub-search-q" placeholder="Movie title...">
-              <button class="btn btn-purple" onclick="searchTmdb()" style="margin-bottom:0.7rem;">🔍 Search</button>
-            </div>
+
+        <div class="section-title"><span>Part II: Verified Metadata, Poster & Top Cast</span></div>
+        <div class="form-grid">
+          <div class="form-group col-2"><div class="passport-box"><img id="passport-poster-preview" src="https://via.placeholder.com/95x135?text=No+Poster" alt="Poster"></div></div>
+          <div class="form-group col-5"><label>Official Title *</label><input type="text" id="movie-title" required oninput="document.getElementById('token-movie-title').value=this.value; updateDashPreview();"></div>
+          <div class="form-group col-5"><label>Original Title</label><input type="text" id="movie-orig-title"></div>
+          <div class="form-group col-12"><label>Movie Tagline</label><input type="text" id="movie-tagline"></div>
+          <div class="form-group col-2"><label>Release Year</label><input type="number" id="movie-year" value="2026"></div>
+          <div class="form-group col-2"><label>Release Date</label><input type="text" id="movie-release-date"></div>
+          <div class="form-group col-2"><label>TMDb Rating</label><input type="text" id="movie-rating" value="7.0"></div>
+          <div class="form-group col-2"><label>Language</label><input type="text" id="movie-lang" value="ta"></div>
+          <div class="form-group col-2"><label>Runtime</label><input type="number" id="movie-runtime" value="150"></div>
+          <div class="form-group col-2">
+            <label>Certification</label>
+            <select id="movie-cert"><option value="U" selected>U</option><option value="UA">UA</option><option value="A">A</option></select>
           </div>
-          <div>
-            <label>Final Kodi Filename (`name`)</label>
-            <input type="text" id="pub-clean-name">
+          <div class="form-group col-6"><label>Director(s)</label><input type="text" id="movie-director"></div>
+          <div class="form-group col-6"><label>Writer(s)</label><input type="text" id="movie-writers"></div>
+          <div class="form-group col-6"><label>Studio</label><input type="text" id="movie-studio"></div>
+          <div class="form-group col-6"><label>Genres *</label><input type="text" id="movie-genres" required></div>
+          <div class="form-group col-12"><label>Plot Synopsis</label><textarea id="movie-plot" rows="2"></textarea></div>
+          <div class="form-group col-12"><label>Official Trailer (YouTube)</label><input type="text" id="movie-trailer"></div>
+          <div class="form-group col-12">
+            <label>Top Cast (Auto-Loaded)</label>
+            <div class="cast-grid" id="cast-cards-container"><div style="font-size:0.8rem; color:var(--text-muted);">Pass a movie from Step 1 to auto-load cast...</div></div>
           </div>
         </div>
-      </div>
+
+        <div class="section-title"><span>Part III: Complete 10-Artwork Verification Suite</span></div>
+        <div class="artwork-grid">
+          <div class="art-item"><span>1. Poster</span><input type="text" id="art-poster"></div>
+          <div class="art-item"><span>2. Fanart</span><input type="text" id="art-fanart"></div>
+          <div class="art-item"><span>3. ClearLogo</span><input type="text" id="art-clearlogo"></div>
+          <div class="art-item"><span>4. ClearArt</span><input type="text" id="art-clearart"></div>
+          <div class="art-item"><span>5. Wide Banner</span><input type="text" id="art-banner"></div>
+          <div class="art-item"><span>6. Landscape</span><input type="text" id="art-landscape"></div>
+          <div class="art-item"><span>7. KeyArt</span><input type="text" id="art-keyart"></div>
+          <div class="art-item"><span>8. Thumbnail</span><input type="text" id="art-thumbnail"></div>
+          <div class="art-item"><span>9. DiscArt</span><input type="text" id="art-discart"></div>
+          <div class="art-item"><span>10. Title Card</span><input type="text" id="art-titlecard"></div>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:1.25rem;">
+          <button type="button" class="btn btn-secondary" onclick="switchTab('pending')">⬅ Back to Step 1</button>
+          <button type="submit" id="btn-submit" class="btn btn-green">🚀 Commit Record to `tg/catalog.json` & `tg/chunks/` (50-Limit)</button>
+        </div>
+      </form>
     </div>
 
-    <div id="tmdb-results" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:0.8rem;"></div>
+    <!-- TAB 3: STEP 2 PERMANENT DATA ARCHIVE -->
+    <div id="view-archive" style="display:none;"><div id="archive-list-box"></div></div>
 
-    <div class="grid-3">
-      <div><label>Official Title *</label><input type="text" id="pub-title"></div>
-      <div><label>Original Title</label><input type="text" id="pub-orig-title"></div>
-      <div><label>Release Year</label><input type="number" id="pub-year"></div>
-    </div>
-    <div class="grid-3">
-      <div><label>TMDb Rating</label><input type="number" step="0.1" id="pub-rating"></div>
-      <div><label>Original Language (e.g. ta, hi, en)</label><input type="text" id="pub-lang"></div>
-      <div><label>Genres (comma separated)</label><input type="text" id="pub-genres"></div>
-    </div>
-    <div class="grid-3">
-      <div><label>Resolution</label><input type="text" id="pub-res" value="1080p"></div>
-      <div><label>Source</label><input type="text" id="pub-source" value="WEB-DL"></div>
-      <div><label>Audio</label><input type="text" id="pub-audio" value="5.1"></div>
-    </div>
-    <div class="grid-2">
-      <div><label>Available Languages (comma separated)</label><input type="text" id="pub-avail-langs" value="Tamil"></div>
-      <div><label>Stream URL (Auto-Generated)</label><input type="text" id="pub-stream-url"></div>
-    </div>
-    <div>
-      <label>Plot Synopsis</label>
-      <textarea id="pub-plot" rows="2"></textarea>
-    </div>
-    <div style="margin-bottom:0.8rem;">
-      <label>Top Cast (Auto-Loaded)</label>
-      <div class="cast-grid" id="pub-cast-list"></div>
-    </div>
-
-    <button class="btn btn-green" onclick="commitMergedPublish()" style="font-size:0.9rem; padding:0.75rem 1.3rem;">
-      🚀 Publish to `tg/catalog.json` + `tg/chunks/` (50 Limit) & Archive in Step 2
-    </button>
-  </div>
-
-  <!-- TABS -->
-  <div class="tabs">
-    <button class="tab active" id="tab-step1" onclick="switchTab('step1')">⏳ STEP 1: TG Pending (<span id="cnt-step1">0</span>)</button>
-    <button class="tab" id="tab-step2" onclick="switchTab('step2')">🗄️ STEP 2: Permanent "Data" (<span id="cnt-step2">0</span>)</button>
-    <button class="tab" id="tab-live" onclick="switchTab('live')">🎬 TG Catalog Live (<span id="cnt-live">0</span>)</button>
-  </div>
-
-  <div class="card" id="view-step1">
-    <div class="card-head">
-      <div class="card-title">⏳ STEP 1: TG Pending Queue (`tg/step1_pending.json`)</div>
-    </div>
-    <div id="list-step1"></div>
-  </div>
-
-  <div class="card" id="view-step2" style="display:none;">
-    <div class="card-head">
-      <div class="card-title">🗄️ STEP 2: Permanent Audit (`tg/step2_data_archive.json` ➔ `"Data"`)</div>
-    </div>
-    <div id="list-step2"></div>
-  </div>
-
-  <div class="card" id="view-live" style="display:none;">
-    <div class="card-head">
-      <div class="card-title">🎬 TG Live Catalog (`tg/catalog.json` + Auto 50-Movie Chunks)</div>
-    </div>
-    <div id="list-live"></div>
+    <!-- TAB 4: LIVE TG CATALOG -->
+    <div id="view-live" style="display:none;"><div id="live-list-box"></div></div>
   </div>
 </div>
 
 <script>
-  const FOLDER = "tg";
+  const TMDB_KEY = "051ccf72e026820cb53b8b8531b6a2ba";
+  const GH_REPO = "Moinuflix/My-Movies";
+  const GH_BRANCH = "main";
+  const TG_FOLDER = "tg";
+  const TG_WORKER_BASE = "https://tg-stream.moinudeentv.workers.dev/?msg_id=";
+  const USER_AGENT = "|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0";
   const CHUNK_LIMIT = 50;
-  let step1List = [], step2Data = { Data: [] }, tgCatalog = { movies: [] };
-  let s1Sha, s2Sha, catSha;
-  let activePendingIdx = -1;
-  let currentPosterUrl = "", currentFanartUrl = "", currentCast = [];
 
-  function showStatus(msg, isErr = false) {
-    const el = document.getElementById("status-banner");
-    el.style.display = "block";
-    el.style.borderColor = isErr ? "var(--red)" : "var(--cyan)";
-    el.style.color = isErr ? "#fca5a5" : "var(--cyan)";
-    el.textContent = msg;
-  }
+  let pendingList = [], archiveData = { Data: [] }, cachedCatalogMovies = [];
+  let pendingSha, archiveSha, catalogSha;
+  let loadedCastArray = [], activePendingIndex = -1;
+  let isMergeMode = false, targetMergeMovie = null;
 
-  function getCfg() {
-    return {
-      repo: (localStorage.getItem("mf_tg_repo") || "Moinuflix/My-Movies").trim(),
-      ghToken: (localStorage.getItem("mf_tg_gh") || "").trim(),
-      tmdbKey: (localStorage.getItem("mf_tg_tmdb") || "").trim(),
-      worker: (localStorage.getItem("mf_tg_worker") || "https://tg-stream.moinudeentv.workers.dev").replace(/\/+$/, "")
-    };
-  }
+  function getToken() { return (localStorage.getItem("moinuflix_gh_token") || localStorage.getItem("mf_tg_gh") || "").trim(); }
 
-  function loadCfgUI() {
-    const c = getCfg();
-    document.getElementById("cfg-repo").value = c.repo;
-    document.getElementById("cfg-gh-token").value = c.ghToken;
-    document.getElementById("cfg-tmdb-key").value = c.tmdbKey;
-    document.getElementById("cfg-worker").value = c.worker;
-    const b = document.getElementById("cfg-badge");
-    if (c.ghToken && c.tmdbKey) {
-      b.textContent = `✅ Connected (${c.repo}/${FOLDER}/ + TMDb)`;
-      b.style.color = "var(--green)";
-      document.getElementById("config-panel").style.display = "none";
-      syncAll();
-    } else if (c.ghToken) {
-      b.textContent = "⚠️ Add TMDb API Key for Auto-Poster";
-      syncAll();
+  function configureToken() {
+    const input = prompt("Enter GitHub Personal Access Token (PAT):", getToken());
+    if (input !== null) {
+      localStorage.setItem("moinuflix_gh_token", input.trim());
+      syncAllVault();
     }
   }
 
-  function toggleConfig() {
-    const p = document.getElementById("config-panel");
-    p.style.display = p.style.display === "none" ? "block" : "none";
+  function showToast(msg, isError = false) {
+    const el = document.getElementById("toast-msg");
+    el.className = isError ? "toast-error" : "toast-success";
+    el.textContent = (isError ? "❌ " : "✅ ") + msg;
+    el.style.display = "block";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => { el.style.display = "none"; }, 6000);
   }
 
-  function saveConfig() {
-    localStorage.setItem("mf_tg_repo", document.getElementById("cfg-repo").value.trim() || "Moinuflix/My-Movies");
-    localStorage.setItem("mf_tg_gh", document.getElementById("cfg-gh-token").value.trim());
-    localStorage.setItem("mf_tg_tmdb", document.getElementById("cfg-tmdb-key").value.trim());
-    localStorage.setItem("mf_tg_worker", document.getElementById("cfg-worker").value.trim());
-    loadCfgUI();
-  }
-
-  function switchTab(tab) {
-    ["step1", "step2", "live"].forEach(t => {
-      document.getElementById(`tab-${t}`).classList.toggle("active", t === tab);
-      document.getElementById(`view-${t}`).style.display = t === tab ? "block" : "none";
+  function switchTab(t) {
+    ["pending", "studio", "archive", "live"].forEach(k => {
+      document.getElementById(`tab-${k}`).classList.toggle("active", k === t);
+      document.getElementById(`view-${k}`).style.display = k === t ? "block" : "none";
     });
   }
 
-  async function ghRead(relPath, fallback) {
-    const cfg = getCfg();
-    const url = `https://api.github.com/repos/${cfg.repo}/contents/${relPath}?t=${Date.now()}`;
-    const res = await fetch(url, { headers: { "Authorization": `Bearer ${cfg.ghToken}`, "Accept": "application/vnd.github.v3+json" } });
+  async function ghReadJson(path, fallback) {
+    const token = getToken();
+    const headers = token ? { "Authorization": `token ${token}` } : {};
+    const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${path}?t=${Date.now()}`, { headers });
     if (res.status === 404) return { data: fallback, sha: undefined };
-    if (!res.ok) throw new Error(`Read failed (${relPath}): ${res.status}`);
+    if (!res.ok) throw new Error(`Read failed (${path}): ${res.status}`);
     const j = await res.json();
     return { data: JSON.parse(decodeURIComponent(escape(atob(j.content)))), sha: j.sha };
   }
 
-  async function ghWrite(relPath, obj, sha, msg) {
-    const cfg = getCfg();
-    const url = `https://api.github.com/repos/${cfg.repo}/contents/${relPath}`;
-    const body = { message: msg, content: btoa(unescape(encodeURIComponent(JSON.stringify(obj, null, 2)))), branch: "main" };
-    if (sha) body.sha = sha;
-    const res = await fetch(url, {
+  async function commitDirectToGithub(path, data, msg, sha) {
+    const token = getToken();
+    if (!token) throw new Error("GitHub PAT missing! Click 'Set PAT'.");
+    const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${path}`, {
       method: "PUT",
-      headers: { "Authorization": `Bearer ${cfg.ghToken}`, "Accept": "application/vnd.github.v3+json", "Content-Type": "application/json" },
-      body: JSON.stringify(body)
+      headers: { "Authorization": `token ${token}`, "Accept": "application/vnd.github.v3+json", "Content-Type": "application/json" },
+      body: JSON.stringify({ message: msg, content: btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2)))), branch: GH_BRANCH, sha })
     });
-    if (!res.ok) throw new Error((await res.json()).message || `Write failed (${relPath})`);
+    if (!res.ok) throw new Error((await res.json()).message || "GitHub Write Error");
     return (await res.json()).content.sha;
   }
 
-  async function syncAll() {
-    const cfg = getCfg();
-    if (!cfg.ghToken) return showStatus("⚠️ Setup mein GitHub PAT Token save karein.", true);
-    showStatus("⏳ Syncing `tg/` Vault & Catalog...");
+  async function syncAllVault() {
+    const st = document.getElementById("pat-status");
+    st.textContent = getToken() ? "Active ✅" : "Missing ❌";
     try {
-      const r1 = await ghRead(`${FOLDER}/step1_pending.json`, []);
-      step1List = Array.isArray(r1.data) ? r1.data : []; s1Sha = r1.sha;
+      const r1 = await ghReadJson(`${TG_FOLDER}/step1_pending.json`, []);
+      pendingList = Array.isArray(r1.data) ? r1.data : []; pendingSha = r1.sha;
 
-      const r2 = await ghRead(`${FOLDER}/step2_data_archive.json`, { Data: [] });
-      step2Data = (r2.data && Array.isArray(r2.data.Data)) ? r2.data : { Data: [] }; s2Sha = r2.sha;
+      const r2 = await ghReadJson(`${TG_FOLDER}/step2_data_archive.json`, { Data: [] });
+      archiveData = (r2.data && Array.isArray(r2.data.Data)) ? r2.data : { Data: [] }; archiveSha = r2.sha;
 
-      const rc = await ghRead(`${FOLDER}/catalog.json`, { movies: [] });
-      tgCatalog = (rc.data && Array.isArray(rc.data.movies)) ? rc.data : { movies: [] }; catSha = rc.sha;
+      const rc = await ghReadJson(`${TG_FOLDER}/catalog.json`, { movies: [] });
+      cachedCatalogMovies = rc.data.movies || (Array.isArray(rc.data) ? rc.data : []); catalogSha = rc.sha;
 
-      renderAll();
-      showStatus(`✅ Synced! Pending: ${step1List.length} | Data Archive: ${step2Data.Data.length} | TG Live Movies: ${tgCatalog.movies.length}`);
-    } catch (e) { showStatus(`❌ Error: ${e.message}`, true); }
+      const chunkNum = Math.floor(cachedCatalogMovies.length / CHUNK_LIMIT) + 1;
+      document.getElementById("stat-target-chunk").textContent = `${TG_FOLDER}/chunks/chunk_${String(chunkNum).padStart(2, '0')}.json`;
+      document.getElementById("stat-pending").textContent = pendingList.length;
+      document.getElementById("stat-catalog-count").textContent = `${cachedCatalogMovies.length} Movies`;
+      document.getElementById("cnt-pending").textContent = pendingList.length;
+      document.getElementById("cnt-archive").textContent = archiveData.Data.length;
+      document.getElementById("cnt-live").textContent = cachedCatalogMovies.length;
+
+      renderVaultLists();
+    } catch (e) { showToast(e.message, true); }
   }
 
-  /* OPEN MERGED TMDb + PUBLISH PANEL */
-  function openPublishBox(idx) {
-    const it = step1List[idx];
-    if (!it) return;
-    activePendingIdx = idx;
-    const cfg = getCfg();
-
-    const cleanTitle = (it.new_name || it.old_name)
-      .replace(/\(\d{4}\).*/, "")
-      .replace(/\[.*?\]/g, "")
-      .replace(/[_.-]+/g, " ")
-      .trim();
-
-    document.getElementById("pub-tg-id").value = it.tg_msg_id;
-    document.getElementById("pub-size").value = it.size_gb || "1.5 GB";
-    document.getElementById("pub-clean-name").value = it.new_name;
-    document.getElementById("pub-search-q").value = cleanTitle;
-    document.getElementById("pub-title").value = cleanTitle;
-    document.getElementById("pub-stream-url").value = `${cfg.worker}/?msg_id=${it.tg_msg_id}|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0`;
-
-    const resM = (it.old_name || "").match(/\b(2160p|4k|1080p|720p|480p)\b/i);
-    document.getElementById("pub-res").value = resM ? resM[1] : "1080p";
-    const srcM = (it.old_name || "").match(/\b(WEB-DL|WEBRip|BluRay|HDRip|DVDRip)\b/i);
-    document.getElementById("pub-source").value = srcM ? srcM[1] : "WEB-DL";
-
-    document.getElementById("publish-box").style.display = "block";
-    document.getElementById("publish-box").scrollIntoView({ behavior: "smooth" });
-    if (cfg.tmdbKey && cleanTitle) searchTmdb();
-  }
-
-  function closePublishBox() {
-    document.getElementById("publish-box").style.display = "none";
-    activePendingIdx = -1;
-  }
-
-  async function searchTmdb() {
-    const key = getCfg().tmdbKey;
-    const q = document.getElementById("pub-search-q").value.trim();
-    if (!key) return showStatus("⚠️ Setup mein TMDb API Key daalein!", true);
-    if (!q) return;
-    const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${encodeURIComponent(q)}`);
-    const data = await res.json();
-    const box = document.getElementById("tmdb-results");
-    box.innerHTML = "";
-    (data.results || []).slice(0, 5).forEach((m, i) => {
-      const b = document.createElement("button");
-      b.className = "btn";
-      b.textContent = `${m.title} (${(m.release_date || "").slice(0, 4)})`;
-      b.onclick = () => { document.getElementById("pub-tmdb-id").value = m.id; fetchTmdbById(); };
-      box.appendChild(b);
-      if (i === 0) { document.getElementById("pub-tmdb-id").value = m.id; fetchTmdbById(); }
-    });
-  }
-
-  async function fetchTmdbById() {
-    const key = getCfg().tmdbKey;
-    const id = document.getElementById("pub-tmdb-id").value.trim();
-    if (!key || !id) return;
-    const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&append_to_response=credits`);
-    const m = await res.json();
-
-    document.getElementById("pub-title").value = m.title || "";
-    document.getElementById("pub-orig-title").value = m.original_title || m.title || "";
-    document.getElementById("pub-year").value = parseInt((m.release_date || "2026").slice(0, 4), 10);
-    document.getElementById("pub-rating").value = Number((m.vote_average || 0).toFixed(1));
-    document.getElementById("pub-lang").value = m.original_language || "ta";
-    document.getElementById("pub-genres").value = (m.genres || []).map(g => g.name).join(", ");
-    document.getElementById("pub-plot").value = m.overview || "";
-
-    currentPosterUrl = m.poster_path ? `https://image.tmdb.org/t/p/w780${m.poster_path}` : "";
-    currentFanartUrl = m.backdrop_path ? `https://image.tmdb.org/t/p/original${m.backdrop_path}` : currentPosterUrl;
-
-    const pImg = document.getElementById("pub-poster-img");
-    if (currentPosterUrl) { pImg.src = currentPosterUrl; pImg.style.display = "block"; }
-
-    currentCast = ((m.credits && m.credits.cast) || []).slice(0, 10).map(c => ({
-      name: c.name,
-      character: c.character || "",
-      profile: c.profile_path ? `https://image.tmdb.org/t/p/w185${c.profile_path}` : ""
-    }));
-
-    const castBox = document.getElementById("pub-cast-list");
-    castBox.innerHTML = currentCast.map(c => `
-      <div class="cast-chip">
-        <img src="${c.profile || 'https://via.placeholder.com/48'}" alt="">
-        <div style="font-weight:700; color:#fff;">${c.name}</div>
-        <div style="color:var(--muted);">${c.character}</div>
-      </div>`).join("");
-  }
-
-  /* AUTO-50 CHUNK ROUTING + EXACT SCHEMA PUBLISH */
-  async function commitMergedPublish() {
-    if (activePendingIdx < 0) return;
-    const item = step1List[activePendingIdx];
-    const tgId = document.getElementById("pub-tg-id").value.trim();
-    const tmdbId = parseInt(document.getElementById("pub-tmdb-id").value || "0", 10);
-    const title = document.getElementById("pub-title").value.trim();
-    const origTitle = document.getElementById("pub-orig-title").value.trim() || title;
-    const year = parseInt(document.getElementById("pub-year").value || "2026", 10);
-    const rating = parseFloat(document.getElementById("pub-rating").value || "0");
-    const origLang = document.getElementById("pub-lang").value.trim() || "ta";
-    const genres = document.getElementById("pub-genres").value.split(",").map(s => s.trim()).filter(Boolean);
-    const availLangs = document.getElementById("pub-avail-langs").value.split(",").map(s => s.trim()).filter(Boolean);
-    const plot = document.getElementById("pub-plot").value.trim();
-    const cleanName = document.getElementById("pub-clean-name").value.trim();
-    const streamUrl = document.getElementById("pub-stream-url").value.trim();
-    const resVal = document.getElementById("pub-res").value.trim();
-    const srcVal = document.getElementById("pub-source").value.trim();
-    const audVal = document.getElementById("pub-audio").value.trim();
-    const sizeVal = document.getElementById("pub-size").value.trim();
-
-    if (!title) return showStatus("⚠️ Official Title required!", true);
-
-    showStatus("⏳ Checking 50-Movie Chunk Slot & Publishing...");
-
-    try {
-      // Find first chunk with < 50 movies (chunk_01.json, chunk_02.json, ...)
-      let chunkNum = 1;
-      let targetChunkId = "chunk_01";
-      let targetChunkPath = `${FOLDER}/chunks/chunk_01.json`;
-      let chunkObj = { chunk_id: "chunk_01", movie_count: 0, movies: [] };
-      let chunkSha = undefined;
-
-      while (true) {
-        const padded = String(chunkNum).padStart(2, "0");
-        targetChunkId = `chunk_${padded}`;
-        targetChunkPath = `${FOLDER}/chunks/${targetChunkId}.json`;
-        const r = await ghRead(targetChunkPath, { chunk_id: targetChunkId, movie_count: 0, movies: [] });
-        const list = (r.data && Array.isArray(r.data.movies)) ? r.data.movies : [];
-        if (list.length < CHUNK_LIMIT) {
-          chunkObj = { chunk_id: targetChunkId, movie_count: list.length, movies: list };
-          chunkSha = r.sha;
-          break;
-        }
-        chunkNum++;
-      }
-
-      // 1. Chunk Movie Entry (Exact Schema)
-      const chunkMovieEntry = {
-        id: tgId,
-        tmdb_id: tmdbId,
-        name: cleanName,
-        title: title,
-        original_title: origTitle,
-        year: year,
-        rating: rating,
-        original_language: origLang,
-        genres: genres,
-        plot: plot,
-        cast: currentCast,
-        artwork: {
-          poster: currentPosterUrl,
-          fanart: currentFanartUrl,
-          thumbnail: currentPosterUrl
-        },
-        stream_url: streamUrl,
-        specs: {
-          resolution: resVal,
-          source: srcVal,
-          audio: audVal,
-          size: sizeVal
-        },
-        versions: [
-          {
-            id: tgId,
-            name: cleanName,
-            quality: resVal,
-            stream_url: streamUrl
-          }
-        ]
-      };
-
-      chunkObj.movies.push(chunkMovieEntry);
-      chunkObj.movie_count = chunkObj.movies.length;
-
-      // 2. Catalog Pointer Entry (Exact Schema)
-      const catalogEntry = {
-        id: tgId,
-        tmdb_id: tmdbId,
-        title: title,
-        year: year,
-        poster: currentPosterUrl,
-        fanart: currentFanartUrl,
-        rating: rating,
-        original_language: origLang,
-        genres: genres,
-        chunk_file: targetChunkPath,
-        primary_stream_url: streamUrl,
-        available_languages: availLangs,
-        version_count: 1
-      };
-
-      tgCatalog.movies.unshift(catalogEntry);
-
-      // 3. Step 2 Permanent "Data" Archive
-      step2Data.Data.unshift({
-        tg_msg_id: item.tg_msg_id,
-        size_gb: sizeVal,
-        raw_name: item.old_name,
-        tg_stealth_name: item.stealth_name,
-        clean_name: cleanName,
-        chunk_file: targetChunkPath,
-        status: "published_live",
-        archived_at: new Date().toISOString()
-      });
-
-      // 4. Remove from Step 1 Pending
-      step1List.splice(activePendingIdx, 1);
-
-      // Write all 4 files cleanly
-      await ghWrite(targetChunkPath, chunkObj, chunkSha, `TG Chunk (${targetChunkId}): Added ${title} (#${tgId})`);
-      catSha = await ghWrite(`${FOLDER}/catalog.json`, tgCatalog, catSha, `TG Catalog: Added ${title} -> ${targetChunkId}`);
-      s2Sha = await ghWrite(`${FOLDER}/step2_data_archive.json`, step2Data, s2Sha, `TG Step 2 Data: Published #${tgId}`);
-      s1Sha = await ghWrite(`${FOLDER}/step1_pending.json`, step1List, s1Sha, `TG Step 1 Removed #${tgId}`);
-
-      closePublishBox();
-      renderAll();
-      showStatus(`🎉 Published "${title}" to ${targetChunkPath} (${chunkObj.movie_count}/50) + tg/catalog.json!`);
-    } catch (e) {
-      showStatus(`❌ Publish Error: ${e.message}`, true);
-    }
-  }
-
-  async function archiveOnly(idx) {
-    const item = step1List[idx];
-    if (!item) return;
-    step2Data.Data.unshift({
-      tg_msg_id: item.tg_msg_id, size_gb: item.size_gb || "N/A",
-      raw_name: item.old_name, tg_stealth_name: item.stealth_name,
-      status: "removed_archived", archived_at: new Date().toISOString()
-    });
-    step1List.splice(idx, 1);
-    s2Sha = await ghWrite(`${FOLDER}/step2_data_archive.json`, step2Data, s2Sha, `TG Step 2 Archived #${item.tg_msg_id}`);
-    s1Sha = await ghWrite(`${FOLDER}/step1_pending.json`, step1List, s1Sha, `TG Step 1 Removed #${item.tg_msg_id}`);
-    renderAll();
-    showStatus(`🗄️ Archived #${item.tg_msg_id} in Step 2 ("Data")!`);
-  }
-
-  function renderAll() {
-    document.getElementById("cnt-step1").textContent = step1List.length;
-    document.getElementById("cnt-step2").textContent = step2Data.Data.length;
-    document.getElementById("cnt-live").textContent = tgCatalog.movies.length;
-
-    const b1 = document.getElementById("list-step1");
-    b1.innerHTML = step1List.length ? step1List.map((it, idx) => `
-      <div class="item-card">
-        <div class="item-top">
-          <div>
-            <span class="badge">⚡ TG #${it.tg_msg_id}</span>
-            <span class="badge badge-gold">💾 ${it.size_gb || "N/A"}</span>
-            <span class="badge badge-purple">🛡️ ${it.stealth_name}</span>
-          </div>
+  function renderVaultLists() {
+    document.getElementById("pending-list-box").innerHTML = pendingList.length ? pendingList.map((it, idx) => `
+      <div class="vault-card">
+        <div class="vault-top">
+          <div><span class="badge">⚡ TG #${it.tg_msg_id}</span><span class="badge badge-gold">💾 ${it.size_gb || 'N/A'}</span><span class="badge badge-purple">🛡️ ${it.stealth_name}</span></div>
           <div style="display:flex; gap:8px;">
-            <button class="btn btn-green" onclick="openPublishBox(${idx})">🎬 Pass & Publish (TMDb)</button>
-            <button class="btn btn-red" onclick="archiveOnly(${idx})">🗄️ Remove ➔ Data</button>
+            <button class="btn btn-green" onclick="loadPendingIntoStudio(${idx})">🚀 Pass to Studio (Auto TMDb)</button>
+            <button class="btn btn-red" onclick="archivePendingItem(${idx})">🗄️ Remove ➔ Data</button>
           </div>
         </div>
         <div class="code-line line-old"><b>OLD RAW:</b> ${it.old_name}</div>
         <div class="code-line line-new"><b>NEW CLEAN:</b> ${it.new_name}</div>
-      </div>`).join("") : `<div style="text-align:center; color:var(--muted); padding:2rem;">Step 1 Pending Queue empty hai.</div>`;
+      </div>`).join("") : `<div style="text-align:center; color:var(--text-muted); padding:2rem;">Step 1 TG Pending Queue empty hai.</div>`;
 
-    const b2 = document.getElementById("list-step2");
-    b2.innerHTML = step2Data.Data.length ? step2Data.Data.map(it => `
-      <div class="item-card">
-        <div>
-          <span class="badge">⚡ TG #${it.tg_msg_id}</span>
-          <span class="badge badge-gold">💾 ${it.size_gb || "N/A"}</span>
-          <span class="badge badge-green">${it.chunk_file || it.status}</span>
-        </div>
+    document.getElementById("archive-list-box").innerHTML = archiveData.Data.length ? archiveData.Data.map(it => `
+      <div class="vault-card">
+        <div><span class="badge">⚡ TG #${it.tg_msg_id}</span><span class="badge badge-gold">💾 ${it.size_gb || 'N/A'}</span><span class="badge badge-green">${it.chunk_file || it.status}</span></div>
         <div class="code-line line-old"><b>RAW:</b> ${it.raw_name}</div>
-        <div class="code-line line-stealth"><b>STEALTH:</b> ${it.tg_stealth_name}</div>
-      </div>`).join("") : `<div style="text-align:center; color:var(--muted); padding:2rem;">Step 2 Data empty hai.</div>`;
+        <div class="code-line line-stealth"><b>TG STEALTH NAME:</b> ${it.tg_stealth_name}</div>
+      </div>`).join("") : `<div style="text-align:center; color:var(--text-muted); padding:2rem;">Step 2 Data Archive empty hai.</div>`;
 
-    const b3 = document.getElementById("list-live");
-    b3.innerHTML = tgCatalog.movies.length ? tgCatalog.movies.map(m => `
-      <div class="item-card">
-        <div>
-          <span class="badge">⚡ TG #${m.id}</span>
-          <span class="badge badge-green">📦 ${m.chunk_file}</span>
-          <span class="badge badge-gold">⭐ ${m.rating}</span>
-        </div>
+    document.getElementById("live-list-box").innerHTML = cachedCatalogMovies.length ? cachedCatalogMovies.map(m => `
+      <div class="vault-card">
+        <div><span class="badge">⚡ TG #${m.id}</span><span class="badge badge-green">📦 ${m.chunk_file}</span><span class="badge badge-gold">⭐ ${m.rating}</span><span class="badge badge-purple">Versions: ${m.version_count || 1}</span></div>
         <div style="font-weight:800; margin-top:6px;">${m.title} (${m.year})</div>
         <div class="code-line line-new">${m.primary_stream_url}</div>
-      </div>`).join("") : `<div style="text-align:center; color:var(--muted); padding:2rem;">Abhi koi movie live nahi hai.</div>`;
+      </div>`).join("") : `<div style="text-align:center; color:var(--text-muted); padding:2rem;">Abhi TG Catalog mein koi movie nahi hai.</div>`;
   }
 
-  window.addEventListener("DOMContentLoaded", loadCfgUI);
+  /* PASS FROM STEP 1 INTO MERGED STEP 3 STUDIO */
+  function loadPendingIntoStudio(idx) {
+    const it = pendingList[idx];
+    if (!it) return;
+    activePendingIndex = idx;
+    document.getElementById("tg-msg-id").value = it.tg_msg_id;
+    document.getElementById("tg-stealth-id").value = it.stealth_name;
+    document.getElementById("badge-active-tg").textContent = `${it.tg_msg_id} (${it.size_gb || 'N/A'})`;
+    document.getElementById("raw-filename").value = it.old_name;
+
+    switchTab("studio");
+    handleInstantRawIngest(it.old_name);
+    if (it.size_gb && it.size_gb !== "N/A") {
+      document.getElementById("token-size").value = it.size_gb;
+      updateDashPreview();
+    }
+  }
+
+  async function archivePendingItem(idx) {
+    const it = pendingList[idx];
+    if (!it) return;
+    archiveData.Data.unshift({ tg_msg_id: it.tg_msg_id, size_gb: it.size_gb || "N/A", raw_name: it.old_name, tg_stealth_name: it.stealth_name, status: "removed_archived", archived_at: new Date().toISOString() });
+    pendingList.splice(idx, 1);
+    archiveSha = await commitDirectToGithub(`${TG_FOLDER}/step2_data_archive.json`, archiveData, `TG Step 2 Archived #${it.tg_msg_id}`, archiveSha);
+    pendingSha = await commitDirectToGithub(`${TG_FOLDER}/step1_pending.json`, pendingList, `TG Step 1 Removed #${it.tg_msg_id}`, pendingSha);
+    syncAllVault();
+    showToast(`Archived TG #${it.tg_msg_id} in Step 2 ("Data")!`);
+  }
+
+  /* 22 OTT DETECTOR & INSTANT PARSER (FROM YOUR PORTAL) */
+  function detectTop22Platform(raw) {
+    const s = raw.toLowerCase();
+    if (/\b(dvdrip|dvd)\b/.test(s)) return "DVDRip";
+    if (/sun\s*n[ux]t|sunnxt/.test(s)) return "Sun NXT";
+    if (/\bjhs\b|jiocinema|jiohs/.test(s)) return "JioCinema";
+    if (/hotstar|dsnp/.test(s)) return "Disney+ Hotstar";
+    if (/amzn|amazon|prime/.test(s)) return "AMZN";
+    if (/\bnf\b|netflix/.test(s)) return "Netflix";
+    if (/sonyliv/.test(s)) return "SonyLIV";
+    if (/zee5/.test(s)) return "Zee5";
+    if (/\baha\b/.test(s)) return "Aha";
+    if (/bluray|remux|bdrip/.test(s)) return "BluRay";
+    if (/web-?dl|webrip/.test(s)) return "WEB-DL";
+    return "WEB-DL";
+  }
+
+  let debounceTimer = null;
+  function handleInstantRawIngest(raw) {
+    if (!raw.trim()) return;
+    let tags = [];
+    const tgM = raw.match(/@[\w\d_-]+/);
+    if (tgM) tags.push(tgM[0]);
+    if (/\[TTT\]|\bTTT\b/i.test(raw)) tags.push("TTT");
+    if (/\bJHS\b|JIOHS/i.test(raw)) tags.push("JHS");
+    if (/hon3y/i.test(raw)) tags.push("Hon3y");
+    document.getElementById("token-ripper").value = [...new Set(tags)].join(" ");
+
+    let clean = raw.replace(/@[\w\d_-]+/g, "").replace(/\.(mkv|mp4|avi|ts)$/i, "");
+    const ym = clean.match(/\b(19\d\d|20\d\d)\b/);
+    const year = ym ? ym[1] : "2026";
+    let titlePart = ym ? clean.substring(0, ym.index) : clean;
+    titlePart = titlePart.replace(/[-_.]/g, " ").replace(/\s+/g, " ").trim();
+
+    document.getElementById("token-movie-title").value = titlePart;
+    document.getElementById("movie-title").value = titlePart;
+    document.getElementById("token-year").value = year;
+    document.getElementById("movie-year").value = year;
+
+    let res = "1080p";
+    if (/\b(2160p|4k)\b/i.test(raw)) res = "2160p";
+    else if (/\b(1080p)\b/i.test(raw)) res = "1080p";
+    else if (/\b(720p)\b/i.test(raw)) res = "720p";
+    else if (/\b(480p)\b/i.test(raw)) res = "480p";
+    document.getElementById("token-resolution").value = res;
+    document.getElementById("token-platform").value = detectTop22Platform(raw);
+    document.getElementById("token-videocodec").value = /x265|hevc|h\.?265/i.test(raw) ? "x265" : "x264";
+
+    const szM = raw.match(/(\d+\.?\d*)\s*(gb|mb)/i);
+    if (szM && !document.getElementById("token-size").value) {
+      document.getElementById("token-size").value = `${szM[1]} ${szM[2].toUpperCase()}`;
+    }
+
+    let lang = /\btamil\b/i.test(raw) ? "Tamil" : (/\btelugu\b/i.test(raw) ? "Telugu" : (/\bhindi\b/i.test(raw) ? "Hindi" : "Multi"));
+    let ch = /\b5\.1\b/i.test(raw) ? "5.1" : "2.0";
+    let codec = /ddp|e-?ac-?3/i.test(raw) ? "DDP" : (/dd|ac-?3/i.test(raw) ? "DD" : "AAC");
+    document.getElementById("token-audio-spec").value = `[${lang} ${codec} ${ch}]`;
+    updateDashPreview();
+
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(async () => {
+      if (titlePart.length > 1) {
+        const sRes = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(titlePart)}&include_adult=false`);
+        const sData = await sRes.json();
+        if (sData.results && sData.results.length > 0) {
+          const strip = document.getElementById("candidate-strip-inner");
+          strip.innerHTML = "";
+          sData.results.slice(0, 4).forEach(c => {
+            const pill = document.createElement("div");
+            pill.className = "candidate-pill";
+            pill.textContent = `🎬 ${c.title} (${(c.release_date || "").slice(0, 4)}) • ★ ${(c.vote_average || 0).toFixed(1)}`;
+            pill.onclick = () => { document.getElementById("tmdb-id").value = c.id; fetchTmdbOfficialDetails(c.id); };
+            strip.appendChild(pill);
+          });
+          document.getElementById("candidates-box").style.display = "block";
+          document.getElementById("tmdb-id").value = sData.results[0].id;
+          fetchTmdbOfficialDetails(sData.results[0].id);
+        }
+      }
+    }, 350);
+  }
+
+  function updateDashPreview() {
+    const title = document.getElementById("token-movie-title").value.trim() || "Title";
+    const year = document.getElementById("token-year").value.trim() || "2026";
+    const res = document.getElementById("token-resolution").value.trim();
+    const platform = document.getElementById("token-platform").value.trim();
+    const vcodec = document.getElementById("token-videocodec").value.trim();
+    const sz = document.getElementById("token-size").value.trim();
+    const ripper = document.getElementById("token-ripper").value.trim();
+    let audio = document.getElementById("token-audio-spec").value.trim();
+    if (audio && !audio.startsWith("[")) audio = `[${audio}]`;
+
+    let tokens = [`${title} (${year})`, res ? `[${res}]` : "", platform ? `[${platform}]` : "", vcodec ? `[${vcodec}]` : "", audio, sz ? `[${sz}]` : ""];
+    if (ripper) ripper.split(/\s+/).forEach(r => { if (r) tokens.push(`[${r.replace(/^\[|\]$/g, "")}]`); });
+    document.getElementById("dash-name-preview").textContent = tokens.filter(Boolean).join(" ") + ".mkv";
+  }
+
+  async function fetchTmdbOfficialDetails(id) {
+    const existing = cachedCatalogMovies.find(m => Number(m.tmdb_id) === Number(id));
+    isMergeMode = Boolean(existing);
+    targetMergeMovie = existing || null;
+    const btn = document.getElementById("btn-submit");
+    if (isMergeMode) {
+      btn.className = "btn btn-gold";
+      btn.textContent = `⚡ MERGE AS NEW VERSION INTO "${existing.title}" (${TG_FOLDER}/)`;
+    } else {
+      btn.className = "btn btn-green";
+      btn.textContent = `🚀 Commit Record to ${TG_FOLDER}/catalog.json & ${TG_FOLDER}/chunks/ (50-Limit)`;
+    }
+
+    const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_KEY}&append_to_response=credits,images,videos`);
+    const d = await res.json();
+
+    document.getElementById("movie-title").value = d.title || "";
+    document.getElementById("token-movie-title").value = d.title || "";
+    document.getElementById("movie-orig-title").value = d.original_title || d.title || "";
+    document.getElementById("movie-tagline").value = d.tagline || "";
+    const yr = (d.release_date || "2026").split("-")[0];
+    document.getElementById("movie-year").value = yr;
+    document.getElementById("token-year").value = yr;
+    document.getElementById("movie-release-date").value = d.release_date || `${yr}-01-01`;
+    document.getElementById("movie-rating").value = (d.vote_average || 7.0).toFixed(1);
+    document.getElementById("movie-lang").value = d.original_language || "ta";
+    document.getElementById("movie-runtime").value = d.runtime || 150;
+    document.getElementById("movie-imdb-id").value = d.imdb_id || "";
+    document.getElementById("movie-plot").value = d.overview || "";
+    document.getElementById("movie-genres").value = (d.genres || []).map(g => g.name).join(", ");
+    document.getElementById("movie-studio").value = (d.production_companies || []).map(p => p.name).join(", ");
+
+    const crew = d.credits?.crew || [];
+    document.getElementById("movie-director").value = crew.filter(c => c.job === "Director").map(c => c.name).join(", ");
+    document.getElementById("movie-writers").value = [...new Set(crew.filter(c => ["Writer", "Screenplay", "Story"].includes(c.job)).map(c => c.name))].join(", ");
+
+    const yt = (d.videos?.results || []).find(v => v.site === "YouTube" && v.type === "Trailer");
+    if (yt) document.getElementById("movie-trailer").value = `https://www.youtube.com/watch?v=${yt.key}`;
+
+    if (d.backdrop_path) {
+      document.getElementById("dynamic-bg").style.backgroundImage = `url('https://image.tmdb.org/t/p/original${d.backdrop_path}')`;
+      document.getElementById("art-fanart").value = `https://image.tmdb.org/t/p/original${d.backdrop_path}`;
+      document.getElementById("art-landscape").value = `https://image.tmdb.org/t/p/w780${d.backdrop_path}`;
+      document.getElementById("art-titlecard").value = `https://image.tmdb.org/t/p/original${d.backdrop_path}`;
+    }
+    if (d.poster_path) {
+      document.getElementById("art-poster").value = `https://image.tmdb.org/t/p/w780${d.poster_path}`;
+      document.getElementById("art-thumbnail").value = `https://image.tmdb.org/t/p/w342${d.poster_path}`;
+      document.getElementById("passport-poster-preview").src = `https://image.tmdb.org/t/p/w185${d.poster_path}`;
+    }
+    const logos = d.images?.logos || [];
+    if (logos.length) document.getElementById("art-clearlogo").value = `https://image.tmdb.org/t/p/original${logos[0].file_path}`;
+
+    const castWrap = document.getElementById("cast-cards-container");
+    castWrap.innerHTML = "";
+    loadedCastArray = [];
+    (d.credits?.cast || []).slice(0, 10).forEach(c => {
+      const photo = c.profile_path ? `https://image.tmdb.org/t/p/w185${c.profile_path}` : "https://via.placeholder.com/42x55?text=Actor";
+      loadedCastArray.push({ name: c.name, character: c.character, profile: c.profile_path ? `https://image.tmdb.org/t/p/w185${c.profile_path}` : null });
+      castWrap.innerHTML += `<div class="cast-card"><img src="${photo}"><div><div style="font-size:0.8rem;font-weight:700;">${c.name}</div><div style="font-size:0.72rem;color:var(--laser-cyan);">${c.character || ""}</div></div></div>`;
+    });
+    updateDashPreview();
+  }
+
+  /* COMMIT TO SEPARATE tg/catalog.json & tg/chunks/chunk_XX.json (MAX 50 PER CHUNK) */
+  async function handleFormSubmission(e) {
+    e.preventDefault();
+    const tgId = document.getElementById("tg-msg-id").value.trim();
+    const stealthId = document.getElementById("tg-stealth-id").value.trim();
+    if (!tgId) return showToast("TG Message ID missing! Select a movie from Step 1.", true);
+
+    const tmdbId = parseInt(document.getElementById("tmdb-id").value || "0", 10);
+    const title = document.getElementById("movie-title").value.trim();
+    const origTitle = document.getElementById("movie-orig-title").value.trim() || title;
+    const year = parseInt(document.getElementById("token-year").value, 10) || 2026;
+    const rating = parseFloat(document.getElementById("movie-rating").value) || 7.0;
+    const langCode = document.getElementById("movie-lang").value.trim();
+    const genres = document.getElementById("movie-genres").value.split(",").map(x => x.trim()).filter(Boolean);
+    const plot = document.getElementById("movie-plot").value;
+    const res = document.getElementById("token-resolution").value.trim();
+    const platform = document.getElementById("token-platform").value.trim();
+    const vcodec = document.getElementById("token-videocodec").value.trim();
+    const sz = document.getElementById("token-size").value.trim();
+    const ripper = document.getElementById("token-ripper").value.trim();
+    const audioSpec = document.getElementById("token-audio-spec").value.trim();
+    const finalDashName = document.getElementById("dash-name-preview").textContent;
+    const streamUrl = `${TG_WORKER_BASE}${tgId}${USER_AGENT}`;
+
+    const artworkObj = {
+      poster: document.getElementById("art-poster").value,
+      fanart: document.getElementById("art-fanart").value,
+      clearlogo: document.getElementById("art-clearlogo").value,
+      clearart: document.getElementById("art-clearart").value,
+      banner: document.getElementById("art-banner").value,
+      landscape: document.getElementById("art-landscape").value,
+      keyart: document.getElementById("art-keyart").value,
+      thumbnail: document.getElementById("art-thumbnail").value,
+      discart: document.getElementById("art-discart").value,
+      title_card: document.getElementById("art-titlecard").value
+    };
+
+    const newVersionObj = {
+      id: tgId,
+      name: finalDashName,
+      quality: `${res} FHD`,
+      resolution: res,
+      source: platform,
+      codec: vcodec,
+      audio: audioSpec,
+      size: sz,
+      stream_url: streamUrl
+    };
+
+    const btn = document.getElementById("btn-submit");
+    btn.disabled = true;
+    btn.textContent = "⏳ Saving to tg/catalog.json & tg/chunks/...";
+
+    try {
+      // Find chunk with < 50 movies
+      let targetChunkPath = "";
+      let chunkData = null;
+      let chunkSha = undefined;
+
+      if (isMergeMode && targetMergeMovie && targetMergeMovie.chunk_file) {
+        targetChunkPath = targetMergeMovie.chunk_file;
+        const r = await ghReadJson(targetChunkPath, { chunk_id: "chunk_01", movie_count: 0, movies: [] });
+        chunkData = r.data; chunkSha = r.sha;
+      } else {
+        let cNum = 1;
+        while (true) {
+          const cid = `chunk_${String(cNum).padStart(2, "0")}`;
+          const cPath = `${TG_FOLDER}/chunks/${cid}.json`;
+          const r = await ghReadJson(cPath, { chunk_id: cid, movie_count: 0, movies: [] });
+          const list = r.data.movies || [];
+          if (list.length < CHUNK_LIMIT) {
+            targetChunkPath = cPath;
+            chunkData = { chunk_id: cid, movie_count: list.length, movies: list };
+            chunkSha = r.sha;
+            break;
+          }
+          cNum++;
+        }
+      }
+
+      const exIdx = chunkData.movies.findIndex(m => (tmdbId && Number(m.tmdb_id) === tmdbId) || m.id === tgId);
+      if (exIdx >= 0) {
+        chunkData.movies[exIdx].versions = chunkData.movies[exIdx].versions || [];
+        chunkData.movies[exIdx].versions.push(newVersionObj);
+      } else {
+        chunkData.movies.push({
+          id: tgId,
+          tmdb_id: tmdbId,
+          imdb_id: document.getElementById("movie-imdb-id").value,
+          name: finalDashName,
+          title: title,
+          original_title: origTitle,
+          year: year,
+          runtime: parseInt(document.getElementById("movie-runtime").value, 10) || 150,
+          release_date: document.getElementById("movie-release-date").value,
+          certification: document.getElementById("movie-cert").value,
+          rating: rating,
+          original_language: langCode,
+          genres: genres,
+          tagline: document.getElementById("movie-tagline").value,
+          plot: plot,
+          studio: document.getElementById("movie-studio").value.split(",").map(s => s.trim()).filter(Boolean),
+          director: document.getElementById("movie-director").value.split(",").map(s => ({ name: s.trim() })).filter(x => x.name),
+          writers: document.getElementById("movie-writers").value.split(",").map(s => ({ name: s.trim(), job: "Writer" })).filter(x => x.name),
+          cast: loadedCastArray,
+          artwork: artworkObj,
+          trailer: document.getElementById("movie-trailer").value,
+          stream_url: streamUrl,
+          specs: { resolution: res, source: platform, codec: vcodec, audio: audioSpec, size: sz, ripper: ripper },
+          versions: [newVersionObj]
+        });
+      }
+      chunkData.movie_count = chunkData.movies.length;
+      await commitDirectToGithub(targetChunkPath, chunkData, `TG Chunk (${chunkData.chunk_id}): ${title}`, chunkSha);
+
+      // Update tg/catalog.json
+      const catExIdx = cachedCatalogMovies.findIndex(m => (tmdbId && Number(m.tmdb_id) === tmdbId) || m.id === tgId);
+      if (catExIdx >= 0) {
+        cachedCatalogMovies[catExIdx].version_count = (cachedCatalogMovies[catExIdx].version_count || 1) + 1;
+        if (!cachedCatalogMovies[catExIdx].available_languages.includes(audioSpec)) {
+          cachedCatalogMovies[catExIdx].available_languages.push(audioSpec);
+        }
+      } else {
+        cachedCatalogMovies.push({
+          id: tgId,
+          tmdb_id: tmdbId,
+          title: title,
+          year: year,
+          poster: artworkObj.poster,
+          fanart: artworkObj.fanart,
+          rating: rating,
+          original_language: langCode,
+          genres: genres,
+          chunk_file: targetChunkPath,
+          primary_stream_url: streamUrl,
+          available_languages: [audioSpec],
+          version_count: 1
+        });
+      }
+      catalogSha = await commitDirectToGithub(`${TG_FOLDER}/catalog.json`, { movies: cachedCatalogMovies }, `TG Catalog: ${title}`, catalogSha);
+
+      // Move from Step 1 Pending -> Step 2 Permanent "Data" Archive
+      if (activePendingIndex >= 0 && pendingList[activePendingIndex]) {
+        const pItem = pendingList[activePendingIndex];
+        archiveData.Data.unshift({
+          tg_msg_id: pItem.tg_msg_id,
+          size_gb: sz || pItem.size_gb,
+          raw_name: pItem.old_name,
+          tg_stealth_name: stealthId || pItem.stealth_name,
+          clean_name: finalDashName,
+          chunk_file: targetChunkPath,
+          status: "published_live",
+          archived_at: new Date().toISOString()
+        });
+        pendingList.splice(activePendingIndex, 1);
+        archiveSha = await commitDirectToGithub(`${TG_FOLDER}/step2_data_archive.json`, archiveData, `TG Step 2 Data: Published #${tgId}`, archiveSha);
+        pendingSha = await commitDirectToGithub(`${TG_FOLDER}/step1_pending.json`, pendingList, `TG Step 1 Removed #${tgId}`, pendingSha);
+        activePendingIndex = -1;
+      }
+
+      await syncAllVault();
+      switchTab("live");
+      showToast(`🎉 Published "${title}" to ${targetChunkPath} (${chunkData.movie_count}/50) & tg/catalog.json!`);
+    } catch (err) {
+      showToast(`Save Failed: ${err.message}`, true);
+    }
+    btn.disabled = false;
+  }
+
+  window.addEventListener("DOMContentLoaded", syncAllVault);
 </script>
 </body>
 </html>
