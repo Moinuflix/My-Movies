@@ -15526,5 +15526,95 @@
     ],
     "selected_tmdb_id": 969681,
     "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1qQ5uc_-x0t2oA1-SdeTJUR6tOVj_e1pY",
+    "original_filename": "Nilavuku En Mel Ennadi Kobam (2025) 2160p AMZN WEB-DL HEVC x265 [Tamil (DD+ 5.1 - 640kbps)] ESub.mkv",
+    "file_size_bytes": 15116493014,
+    "file_size_gb": "14 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-26T11:54:07.293Z",
+    "parsed": {
+      "title": "Nilavuku En Mel Ennadi Kobam (",
+      "year": 2025,
+      "resolution": "2160p",
+      "source": "AMZN",
+      "codec": "x265",
+      "telegram_tag": "",
+      "standard_filename": "Nilavuku En Mel Ennadi Kobam ( (2025) [2160p] [AMZN] [Tamil (DD+ 5.1 - 640kbps)] [14 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 1222049,
+        "title": "Nilavuku En Mel Ennadi Kobam",
+        "year": "2025",
+        "poster": "https://image.tmdb.org/t/p/w500/j5krlz9U40ZWaspQXa5CtQUikXl.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/o5pSgHibKD0vPtXiGztSTZTWiHs.jpg",
+        "rating": 6.0
+      }
+    ],
+    "selected_tmdb_id": 1222049,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "19t2DRHCGhvoAvm4hPiHOFNiwqFnopqD5",
+    "original_filename": "Lucky.Baskhar.2024.2160p.NF.WEB-DL.Multi.DD+5.1.H.265-MRX.mkv",
+    "file_size_bytes": 17138830283,
+    "file_size_gb": "16 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-26T11:24:21.408Z",
+    "parsed": {
+      "title": "Lucky Baskhar",
+      "year": 2024,
+      "resolution": "2160p",
+      "source": "Netflix",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "Lucky Baskhar (2024) [2160p] [Netflix] [Tamil 5.1] [16 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 1239511,
+        "title": "Lucky Baskhar",
+        "year": "2024",
+        "poster": "https://image.tmdb.org/t/p/w500/a47JQFl9L7VDa79tEvnTOJe0rPa.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/q8UyN4XhpmChtneZXdZ8fktQka6.jpg",
+        "rating": 7.6
+      }
+    ],
+    "selected_tmdb_id": 1239511,
+    "approval_status": "pending"
+  },
+  {
+    "gdrive_id": "1zhPz2eaTzKU0ze5gC7ef7zTFa18HerOQ",
+    "original_filename": "Gethu.2016.1080p.AMZN.WEB-DL.Tamil.DDP.5.1.640K.H264-JeRi.mkv",
+    "file_size_bytes": 8512436061,
+    "file_size_gb": "8 GB",
+    "mime_type": "video/x-matroska",
+    "detected_at": "2026-11-26T11:18:00.126Z",
+    "parsed": {
+      "title": "Gethu",
+      "year": 2016,
+      "resolution": "1080p",
+      "source": "AMZN",
+      "codec": "x264",
+      "telegram_tag": "",
+      "standard_filename": "Gethu (2016) [1080p] [AMZN] [Tamil 5.1] [8 GB].mkv"
+    },
+    "match_status": "matched",
+    "tmdb_candidates": [
+      {
+        "tmdb_id": 367778,
+        "title": "Gethu",
+        "year": "2016",
+        "poster": "https://image.tmdb.org/t/p/w500/m51VXfDtP3JZXELE0X5AwKefYxs.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/yU3hByP08ng6KNwJcjlLel1y81f.jpg",
+        "rating": 4.0
+      }
+    ],
+    "selected_tmdb_id": 367778,
+    "approval_status": "pending"
   }
 ]
