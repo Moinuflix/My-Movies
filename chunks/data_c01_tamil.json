@@ -1,5 +1,101 @@
 [
   {
+    "id": "1zhPz2eaTzKU0ze5gC7ef7zTFa18HerOQ",
+    "name": "Gethu (2016) [1080p] [Prime Video] [x264] [8GB] [Tamil DDP 5.1]-JeRi.mkv",
+    "title": "Gethu",
+    "original_title": "கெத்து",
+    "tagline": "",
+    "original_language": "ta",
+    "year": 2016,
+    "release_date": "2016-01-14",
+    "runtime": 118,
+    "certification": "U",
+    "tmdb_id": 367778,
+    "rating": 4,
+    "collection": "",
+    "director": [
+      "Krish Thirukumaran"
+    ],
+    "writers": [
+      "Krish Thirukumaran"
+    ],
+    "studios": [
+      "Red Giant Movies"
+    ],
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "trailer": "https://www.youtube.com/watch?v=9lzrzEPds2w",
+    "cast": [
+      {
+        "name": "Sathyaraj",
+        "role": "Thulasi Raman",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/lnlBZ7V3K3Z3OIsjCd0zkKx26L3.jpg"
+      },
+      {
+        "name": "Udhayanidhi Stalin",
+        "role": "Sethu Raman",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/oxWu9Kwx4g00bmGWs7De5Oqny3k.jpg"
+      },
+      {
+        "name": "Vikranth",
+        "role": "Craig aka Bull",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/ksMHimRUMXLwJqrZsgGx9TzyQiN.jpg"
+      },
+      {
+        "name": "Amy Jackson",
+        "role": "Nandhini Ramanujan",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/qMWitVFeHAfDTZWcChsWFtBdYap.jpg"
+      },
+      {
+        "name": "Karunakaran",
+        "role": "Kanagu",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/3unnOmeQ0r4GhAY1EDbZaCdt1N.jpg"
+      },
+      {
+        "name": "Avinash",
+        "role": "Craig's Boss",
+        "thumbnail": "https://image.tmdb.org/t/p/w185/uvDw1elYkPDooFNnq6yHJKBhz6s.jpg"
+      }
+    ],
+    "plot": "A hitman comes to a hill town to plot the murder of a top scientist. A young man and his righteous father stand in his way.",
+    "poster": "https://image.tmdb.org/t/p/w500/m51VXfDtP3JZXELE0X5AwKefYxs.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/yU3hByP08ng6KNwJcjlLel1y81f.jpg",
+    "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1zhPz2eaTzKU0ze5gC7ef7zTFa18HerOQ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+    "specs": {
+      "resolution": "1080p",
+      "source": "Prime Video",
+      "codec": "x264",
+      "audio": "DDP 5.1",
+      "channels": "5.1",
+      "languages": "Tamil",
+      "size": "8GB"
+    },
+    "versions": [
+      {
+        "id": "1zhPz2eaTzKU0ze5gC7ef7zTFa18HerOQ",
+        "name": "Gethu (2016) [1080p] [Prime Video] [x264] [8GB] [Tamil DDP 5.1]-JeRi.mkv",
+        "quality": "1080p • Prime Video • DDP 5.1 [8GB]",
+        "source": "Prime Video",
+        "codec": "x264",
+        "resolution": "1080p",
+        "audio": "DDP 5.1",
+        "channels": "5.1",
+        "stream_url": "https://gdrive-stream.moinudeentv.workers.dev/?id=1zhPz2eaTzKU0ze5gC7ef7zTFa18HerOQ|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0",
+        "specs": {
+          "resolution": "1080p",
+          "source": "Prime Video",
+          "codec": "x264",
+          "audio": "DDP 5.1",
+          "channels": "5.1",
+          "languages": "Tamil",
+          "size": "8GB"
+        }
+      }
+    ]
+  },
+  {
     "id": "1hhenxWuva4i_uLsrUQ-ydBkIy4SHI8xI",
     "name": "Drones (2026) [1080p] [Prime Video] [x264] [10GB] [Tamil AC3 5.1].mkv",
     "title": "Drones",
