@@ -126,34 +126,35 @@
     ]
   },
   {
-    "file_id": "1rqJZO6nj77I1ZldXZ9ez97nXAqDy_XcV",
+    "file_id": "1zwhgd0b0WKlyX8gtDa0k5IM7-PLtuvGg",
     "source": "gd",
-    "tmdb_id": 247504,
-    "clean_name": "Veeram",
-    "title": "Veeram",
-    "original_title": "வீரம்",
-    "new_name": "Veeram (2014) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [11 GB].mkv",
-    "year": 2014,
-    "orig_lang": "ta",
-    "rating": 5.3,
+    "tmdb_id": 362045,
+    "clean_name": "Bajirao Mastani",
+    "title": "Bajirao Mastani",
+    "original_title": "बाजीराव मस्तानी",
+    "new_name": "Bajirao Mastani (2015) [2160p 4K] [DD+2.0 - 224Kbps & AAC 2.0] [ESub] [9.5 GB].mkv",
+    "year": 2015,
+    "orig_lang": "hi",
+    "rating": 7.2,
     "genres": [
-      "Action",
-      "Comedy"
+      "History",
+      "Romance",
+      "Drama"
     ],
-    "plot": "A straightforward man, who uses violence to settle disputes, decides to mend his ways for the sake of his lover, but when he learns that her family is in danger, he decides to save them at all cost.",
-    "size": "11 GB",
-    "size_gb": 11,
-    "poster": "https://image.tmdb.org/t/p/original/tLeL3TODjce9mC6KxpP45EPxZjm.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/4wTcPRyHlWdpCpIUmfPDrMvMBZ6.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/doPGQZ7pyKdMN0MGwW7uSTwwkU5.png",
-    "added_at": "2026-11-27T16:36:57.509Z",
+    "plot": "Peshwa Bajirao married to Kashibai, falls in love with Mastani, a warrior princess in distress. They struggle to make their love triumph amid opposition from his conservative family.",
+    "size": "10 GB",
+    "size_gb": 10,
+    "poster": "https://image.tmdb.org/t/p/original/eXKHjELZAbF7cVd9fzYMhvSsXDI.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/wqe6GXolmOtRTYxImtZQkKH35EA.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/hrfr3DuxSbIpEoQNtQ9W4O9xrC3.png",
+    "added_at": "2026-11-27T16:37:02.190Z",
     "versions": [
       {
-        "file_id": "1rqJZO6nj77I1ZldXZ9ez97nXAqDy_XcV",
+        "file_id": "1zwhgd0b0WKlyX8gtDa0k5IM7-PLtuvGg",
         "source": "gd",
-        "new_name": "Veeram (2014) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [11 GB].mkv",
-        "size": "11 GB",
-        "size_gb": 11
+        "new_name": "Bajirao Mastani (2015) [2160p 4K] [DD+2.0 - 224Kbps & AAC 2.0] [ESub] [9.5 GB].mkv",
+        "size": "10 GB",
+        "size_gb": 10
       }
     ]
   }
