@@ -223,5 +223,39 @@
         "size_gb": 12
       }
     ]
+  },
+  {
+    "file_id": "13Cv7aMOuUfojCJ0ju_bqmNaWczFS1uZH",
+    "source": "gd",
+    "tmdb_id": 372399,
+    "clean_name": "A Aa",
+    "title": "A Aa",
+    "original_title": "అ ఆ",
+    "new_name": "A Aa (2016) [1080p] [WEB-DL] [x265 HEVC] [Org HDTV Hindi DDP 5.1 ~ 384Kbps + Kannada-Bengali DDP 2.0 ~ 224Kbps + Tamil DDP 5.1 ~ 192Kbps + Telugu DDP 5.1 ~ 640Kbps] [ESub] [11 GB].mkv",
+    "year": 2016,
+    "orig_lang": "te",
+    "rating": 6.6,
+    "genres": [
+      "Family",
+      "Comedy",
+      "Romance",
+      "Drama"
+    ],
+    "plot": "The love affair, conspired by creation, between Anasuya Ramalingam and Aanand Vihari.",
+    "size": "11 GB",
+    "size_gb": 11,
+    "poster": "https://image.tmdb.org/t/p/original/pDkmxToe0sNQGNaur5pYWGWFXEX.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/4eaamvUD8jLRtxwLuxN4LrGxBKn.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/6Jkxd5ffZuISTfkcijQfYMFcljd.png",
+    "added_at": "2026-11-27T17:07:11.161Z",
+    "versions": [
+      {
+        "file_id": "13Cv7aMOuUfojCJ0ju_bqmNaWczFS1uZH",
+        "source": "gd",
+        "new_name": "A Aa (2016) [1080p] [WEB-DL] [x265 HEVC] [Org HDTV Hindi DDP 5.1 ~ 384Kbps + Kannada-Bengali DDP 2.0 ~ 224Kbps + Tamil DDP 5.1 ~ 192Kbps + Telugu DDP 5.1 ~ 640Kbps] [ESub] [11 GB].mkv",
+        "size": "11 GB",
+        "size_gb": 11
+      }
+    ]
   }
 ]
