@@ -93,34 +93,35 @@
     ]
   },
   {
-    "file_id": "1p-fQQvkAJK8huTmdpwGlM9q082qaNtRG",
+    "file_id": "17UrWEVN6kIlNBSaE-O7DvNlf3Op1O52I",
     "source": "gd",
-    "tmdb_id": 538858,
-    "clean_name": "Tumbbad",
-    "title": "Tumbbad",
-    "original_title": "तुम्बाड",
-    "new_name": "Tumbbad (2018) [1080p] [AMZN] [AVC] [Tamil] [DD+ 5.1] [7 GB].mkv",
-    "year": 2018,
-    "orig_lang": "hi",
-    "rating": 7.6,
+    "tmdb_id": 346364,
+    "clean_name": "It",
+    "title": "It",
+    "original_title": "It",
+    "new_name": "It (2017) [1080p] [AMZN] [MoviesAnywhere] [x264] [Hindi + English] [DTS-HD MA] [13 GB].mkv",
+    "year": 2017,
+    "orig_lang": "en",
+    "rating": 7.2,
     "genres": [
-      "Fantasy",
-      "Horror"
+      "Horror",
+      "Thriller",
+      "Drama"
     ],
-    "plot": "India, 1918. On the outskirts of Tumbbad, a cursed village where it always rains, Vinayak, along with his mother and his brother, care of a mysterious old woman who keeps the secret of an ancestral treasure that Vinayak gets obsessed with.",
-    "size": "7 GB",
-    "size_gb": 7,
-    "poster": "https://image.tmdb.org/t/p/original/z1xOCxw780WFJC5uCTMfCkQ4Agi.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/l0YKBu3LaehIFzBNjseLjx7MbaN.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/tRv8HkqgbWoPltMsN2hDSES2ny1.png",
-    "added_at": "2026-11-27T16:30:36.636Z",
+    "plot": "In a small town in Maine, seven children known as The Losers Club come face to face with life problems, bullies and a monster that takes the shape of a clown called Pennywise.",
+    "size": "13 GB",
+    "size_gb": 13,
+    "poster": "https://image.tmdb.org/t/p/original/9E2y5Q7WlCVNEhP5GiVTjhEhx1o.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/tcheoA2nPATCm2vvXw2hVQoaEFD.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/cPiNTussFYDw6O3IUjpZdvPSuZa.png",
+    "added_at": "2026-11-27T16:30:40.498Z",
     "versions": [
       {
-        "file_id": "1p-fQQvkAJK8huTmdpwGlM9q082qaNtRG",
+        "file_id": "17UrWEVN6kIlNBSaE-O7DvNlf3Op1O52I",
         "source": "gd",
-        "new_name": "Tumbbad (2018) [1080p] [AMZN] [AVC] [Tamil] [DD+ 5.1] [7 GB].mkv",
-        "size": "7 GB",
-        "size_gb": 7
+        "new_name": "It (2017) [1080p] [AMZN] [MoviesAnywhere] [x264] [Hindi + English] [DTS-HD MA] [13 GB].mkv",
+        "size": "13 GB",
+        "size_gb": 13
       }
     ]
   }
