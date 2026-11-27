@@ -93,35 +93,35 @@
     ]
   },
   {
-    "file_id": "1nB_zsrp7aH67Wffu1I4jLJT0yAuW-wYK",
+    "file_id": "1dZ0osyO2iVUFyr2VUNJaWQ8QEV85tBFP",
     "source": "gd",
-    "tmdb_id": 20049,
-    "clean_name": "Ayan",
-    "title": "Ayan",
-    "original_title": "அயன்",
-    "new_name": "Ayan (2009) [1080p] [BluRay] [Dolby Atmos] [11 GB].mkv",
-    "year": 2009,
-    "orig_lang": "ta",
-    "rating": 7,
+    "tmdb_id": 71676,
+    "clean_name": "Ghost Rider: Spirit of Vengeance",
+    "title": "Ghost Rider: Spirit of Vengeance",
+    "original_title": "Ghost Rider: Spirit of Vengeance",
+    "new_name": "Ghost Rider: Spirit of Vengeance (2011) [1080p] [BluRay] [DTS 5.1] [12 GB].mkv",
+    "year": 2011,
+    "orig_lang": "en",
+    "rating": 5,
     "genres": [
       "Action",
-      "Romance",
-      "Comedy"
+      "Fantasy",
+      "Thriller"
     ],
-    "plot": "Deva works for Arumugam, a smuggler, who has taken care of him for many years. However, when his best friend gets killed, Deva decides to help the police to nab a dangerous drug lord.",
-    "size": "11 GB",
-    "size_gb": 11,
-    "poster": "https://image.tmdb.org/t/p/original/49UwEe5U1GuRC6W7difviwCgde2.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/j6QRBOCh2hc1XUQ16E5hwF0xIOI.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/9AaQolqRUKcp14zwsL8iIqFRUsD.png",
-    "added_at": "2026-11-27T16:29:42.346Z",
+    "plot": "When the devil resurfaces with aims to take over the world in human form, Johnny Blaze reluctantly comes out of hiding to transform into the flame-spewing supernatural hero Ghost Rider -- and rescue a 10-year-old boy from an unsavory end.",
+    "size": "12 GB",
+    "size_gb": 12,
+    "poster": "https://image.tmdb.org/t/p/original/xEoBT6lYfQNpSpTm8gJMTrQytiw.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/ebNcAJfWsSbbv7VhboAvpUdOduJ.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/6rIQU19Zl1VbiyXWPEQUcpqEen6.png",
+    "added_at": "2026-11-27T16:29:47.376Z",
     "versions": [
       {
-        "file_id": "1nB_zsrp7aH67Wffu1I4jLJT0yAuW-wYK",
+        "file_id": "1dZ0osyO2iVUFyr2VUNJaWQ8QEV85tBFP",
         "source": "gd",
-        "new_name": "Ayan (2009) [1080p] [BluRay] [Dolby Atmos] [11 GB].mkv",
-        "size": "11 GB",
-        "size_gb": 11
+        "new_name": "Ghost Rider: Spirit of Vengeance (2011) [1080p] [BluRay] [DTS 5.1] [12 GB].mkv",
+        "size": "12 GB",
+        "size_gb": 12
       }
     ]
   }
