@@ -126,34 +126,35 @@
     ]
   },
   {
-    "file_id": "1xg33RnfY6WBS24eZ2fRA1TZbABHSI5-f",
+    "file_id": "1tT5hunrID0LHliRpyRj2LdzwhCdUqriy",
     "source": "gd",
-    "tmdb_id": 1241624,
-    "clean_name": "Ghost Train",
-    "title": "Ghost Train",
-    "original_title": "괴기열차",
-    "new_name": "Ghost Train (2025) [1080p] [AMZN] [x264] [7 GB].mkv",
-    "year": 2025,
-    "orig_lang": "ko",
-    "rating": 7.2,
+    "tmdb_id": 27205,
+    "clean_name": "Inception",
+    "title": "Inception",
+    "original_title": "Inception",
+    "new_name": "Inception (2010) [2160p 4K] [BluRay] [x265 HEVC] [Telugu (DD+2.0 - 224k) + Eng + Tam + Hin] [ESub] [4 GB].mkv",
+    "year": 2010,
+    "orig_lang": "en",
+    "rating": 8.4,
     "genres": [
-      "Horror",
-      "Mystery"
+      "Action",
+      "Science Fiction",
+      "Crime"
     ],
-    "plot": "Da-kyung, a horror YouTuber desperate for views, uploads a video about the eerie urban legends surrounding Gwanglim Station—the site of the highest number of missing person cases in the country. The video goes viral overnight. Despite everyone's warnings, Da-kyung's thirst for views only grows stronger. But as she digs deeper, she uncovers a shocking secret behind the station…",
-    "size": "7 GB",
-    "size_gb": 7,
-    "poster": "https://image.tmdb.org/t/p/original/rOTXYy5ScOHdaC2YMQowVwQex5s.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/tIelKFZsCHcL9s9JY0M6b0FfYiX.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/e42fonus69wUlTgqmtW0QKPTwxG.png",
-    "added_at": "2026-11-27T16:35:04.383Z",
+    "plot": "Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: \"inception\", the implantation of another person's idea into a target's subconscious.",
+    "size": "4 GB",
+    "size_gb": 4,
+    "poster": "https://image.tmdb.org/t/p/original/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/8ZTVqvKDQ8emSGUEMjsS4yHAwrp.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/eS5TjZsO30LTfZISyBbPiXshAKd.png",
+    "added_at": "2026-11-27T16:35:09.004Z",
     "versions": [
       {
-        "file_id": "1xg33RnfY6WBS24eZ2fRA1TZbABHSI5-f",
+        "file_id": "1tT5hunrID0LHliRpyRj2LdzwhCdUqriy",
         "source": "gd",
-        "new_name": "Ghost Train (2025) [1080p] [AMZN] [x264] [7 GB].mkv",
-        "size": "7 GB",
-        "size_gb": 7
+        "new_name": "Inception (2010) [2160p 4K] [BluRay] [x265 HEVC] [Telugu (DD+2.0 - 224k) + Eng + Tam + Hin] [ESub] [4 GB].mkv",
+        "size": "4 GB",
+        "size_gb": 4
       }
     ]
   }
