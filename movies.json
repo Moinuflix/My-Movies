@@ -158,33 +158,35 @@
     ]
   },
   {
-    "file_id": "1oGxstme1j2gkaCu9UnT-Qjo7U_JKe0-h",
+    "file_id": "1Pp0UAE-SuBRHDd8XYgLHlg6dx4YIxjrZ",
     "source": "gd",
-    "tmdb_id": 1398967,
-    "clean_name": "Once Upon a Time in Madras",
-    "title": "Once Upon a Time in Madras",
-    "original_title": "ஒன்ஸ் அபான் எ டைம் இன் மெட்ராஸ்",
-    "new_name": "Once Upon a Time in Madras (2024) [1080p] [WEB-DL] [DD+5.1 - 192Kbps & AAC 2.0] [ESub] [1.8 GB].mkv",
-    "year": 2024,
-    "orig_lang": "ta",
-    "rating": 7.5,
+    "tmdb_id": 1424217,
+    "clean_name": "Court: State vs. A Nobody",
+    "title": "Court: State vs. A Nobody",
+    "original_title": "కోర్ట్: State vs. A Nobody",
+    "new_name": "Court State vs A Nobody (2025) [1080p] [HQ] [WEB-DL] [Tam+Tel+Hin+Mal+Kan] [8.5 GB].mkv",
+    "year": 2025,
+    "orig_lang": "te",
+    "rating": 7.4,
     "genres": [
-      "Thriller"
+      "Drama",
+      "Romance",
+      "Crime"
     ],
-    "plot": "In Chennai, along the Koovam River, 9-year-old Dinesh's life ends tragically when he's shot by retired army officer Krishnaraja in a fit of rage. Confusion ensues as the police investigation fails to identify the shooter. Krishnaraja disposes of the gun in the river, but its discoveries by a few people sets off a chain of events with unforeseen consequences.",
-    "size": "2 GB",
-    "size_gb": 2,
-    "poster": "https://image.tmdb.org/t/p/original/waJePev0h6x1zORqCm4A54rfS8p.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/vWkfGnXTaRCrwL60GTarwImLOuQ.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/acmdRgmGOZPDpy20Bct65TU6dTB.png",
-    "added_at": "2026-11-27T16:38:10.810Z",
+    "plot": "A determined lawyer takes on a high-stakes case to defend a 19-year-old boy, challenging a system that has already branded him guilty.",
+    "size": "9 GB",
+    "size_gb": 9,
+    "poster": "https://image.tmdb.org/t/p/original/4pEX67LJd7ZIqYWtksBtOgQEGcQ.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/efMmUfbqfMTtheqjcWiHDtxcXbA.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/gWvacLzupLUy4jkZ3yxnC4wre45.png",
+    "added_at": "2026-11-27T16:38:14.426Z",
     "versions": [
       {
-        "file_id": "1oGxstme1j2gkaCu9UnT-Qjo7U_JKe0-h",
+        "file_id": "1Pp0UAE-SuBRHDd8XYgLHlg6dx4YIxjrZ",
         "source": "gd",
-        "new_name": "Once Upon a Time in Madras (2024) [1080p] [WEB-DL] [DD+5.1 - 192Kbps & AAC 2.0] [ESub] [1.8 GB].mkv",
-        "size": "2 GB",
-        "size_gb": 2
+        "new_name": "Court State vs A Nobody (2025) [1080p] [HQ] [WEB-DL] [Tam+Tel+Hin+Mal+Kan] [8.5 GB].mkv",
+        "size": "9 GB",
+        "size_gb": 9
       }
     ]
   }
