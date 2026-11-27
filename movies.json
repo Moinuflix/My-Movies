@@ -158,35 +158,36 @@
     ]
   },
   {
-    "file_id": "1JMlW5FQnKu1EGmfJaB7Wgv58LiN3eC5n",
+    "file_id": "149gLkY7NSvWYPtsl_tIzkDjgFD2dA2aG",
     "source": "gd",
-    "tmdb_id": 1114668,
-    "clean_name": "Soodhu Kavvum 2: Nadum Naatu Makkalum...",
-    "title": "Soodhu Kavvum 2: Nadum Naatu Makkalum...",
-    "original_title": "சூது கவ்வும் 2: நாடும் நாட்டு மக்களும்...",
-    "new_name": "Soodhu Kavvum 2 (2024) [1080p] [WEB-DL] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [6.5 GB].mkv",
+    "tmdb_id": 942386,
+    "clean_name": "The Smile Man",
+    "title": "The Smile Man",
+    "original_title": "தி ஸ்மைல் மேன்",
+    "new_name": "The Smile Man (2024) [1080p] [DD+5.1 - 192Kbps & AAC 2.0] [ESub] [2.7 GB].mkv",
     "year": 2024,
     "orig_lang": "ta",
-    "rating": 3.5,
+    "rating": 7.5,
     "genres": [
-      "Comedy",
       "Crime",
-      "Thriller"
+      "Mystery",
+      "Thriller",
+      "Drama"
     ],
-    "plot": "A gang of kidnappers find they have bitten off more than they can chew.",
-    "size": "7 GB",
-    "size_gb": 7,
-    "poster": "https://image.tmdb.org/t/p/original/bGf8gAI99KDm53Buwb9hf3ygf4o.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/7v0o4NcYDovpecRp7VA9OKiYiEQ.jpg",
-    "clearlogo": "",
-    "added_at": "2026-11-27T16:37:59.058Z",
+    "plot": "A police officer who is diagnosed with Alzheimer's disease must solve one last case before he loses all his memories. He must run against time to catch the notorious serial killer who he believes has a mysterious role in his own personal life.",
+    "size": "3 GB",
+    "size_gb": 3,
+    "poster": "https://image.tmdb.org/t/p/original/p8J4IroY8tzRrtEckuetnMKLc42.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/r1xx1HzUxlSozLFjlewPmMirgNc.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/afaWclwm1tWa5opdbx4iDFqb14l.png",
+    "added_at": "2026-11-27T16:38:03.350Z",
     "versions": [
       {
-        "file_id": "1JMlW5FQnKu1EGmfJaB7Wgv58LiN3eC5n",
+        "file_id": "149gLkY7NSvWYPtsl_tIzkDjgFD2dA2aG",
         "source": "gd",
-        "new_name": "Soodhu Kavvum 2 (2024) [1080p] [WEB-DL] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [6.5 GB].mkv",
-        "size": "7 GB",
-        "size_gb": 7
+        "new_name": "The Smile Man (2024) [1080p] [DD+5.1 - 192Kbps & AAC 2.0] [ESub] [2.7 GB].mkv",
+        "size": "3 GB",
+        "size_gb": 3
       }
     ]
   }
