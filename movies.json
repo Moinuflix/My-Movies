@@ -126,34 +126,35 @@
     ]
   },
   {
-    "file_id": "1M4BEryziWtZjU58kxeqj1yKuMmZyUuzu",
+    "file_id": "1qhihv_iHAhiImfXBWxiLgtf-pCF7mGa3",
     "source": "gd",
-    "tmdb_id": 1232546,
-    "clean_name": "Until Dawn",
-    "title": "Until Dawn",
-    "original_title": "Until Dawn",
-    "new_name": "Until Dawn (2025) [1080p] [BluRay] [AMZN] [x265 HEVC] [AMZN Hin-Tam-Tel DDP 5.1 - 640k + Eng DDP 7.1] [ESub] [8 GB].mkv",
-    "year": 2025,
+    "tmdb_id": 157336,
+    "clean_name": "Interstellar",
+    "title": "Interstellar",
+    "original_title": "Interstellar",
+    "new_name": "Interstellar (2014) [1080p] [AMZN] [x265 HEVC] [DD+5.1] [5.5 GB].mkv",
+    "year": 2014,
     "orig_lang": "en",
-    "rating": 6.2,
+    "rating": 8.5,
     "genres": [
-      "Horror",
-      "Mystery"
+      "Adventure",
+      "Drama",
+      "Science Fiction"
     ],
-    "plot": "One year after her sister Melanie mysteriously disappeared, Clover and her friends head into the remote valley where she vanished in search of answers. Exploring an abandoned visitor center, they find themselves stalked by a masked killer and horrifically murdered one by one...only to wake up and find themselves back at the beginning of the same evening.",
-    "size": "8 GB",
-    "size_gb": 8,
-    "poster": "https://image.tmdb.org/t/p/original/bLY5yN4MKVynZ2HMZWElTOGBgBe.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/3xKJ0nyUTlySmMBCpOcsuSnFPI1.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/uOKq9fQUttyJ75JgxFqdLBqFMMZ.png",
-    "added_at": "2026-11-27T16:34:27.907Z",
+    "plot": "The adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
+    "size": "5.5 GB",
+    "size_gb": 5.5,
+    "poster": "https://image.tmdb.org/t/p/original/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/8sNiAPPYU14PUepFNeSNGUTiHW.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/4Hu4w5p0mwL2Wvyk3gqu2JRDGHl.png",
+    "added_at": "2026-11-27T16:34:31.809Z",
     "versions": [
       {
-        "file_id": "1M4BEryziWtZjU58kxeqj1yKuMmZyUuzu",
+        "file_id": "1qhihv_iHAhiImfXBWxiLgtf-pCF7mGa3",
         "source": "gd",
-        "new_name": "Until Dawn (2025) [1080p] [BluRay] [AMZN] [x265 HEVC] [AMZN Hin-Tam-Tel DDP 5.1 - 640k + Eng DDP 7.1] [ESub] [8 GB].mkv",
-        "size": "8 GB",
-        "size_gb": 8
+        "new_name": "Interstellar (2014) [1080p] [AMZN] [x265 HEVC] [DD+5.1] [5.5 GB].mkv",
+        "size": "5.5 GB",
+        "size_gb": 5.5
       }
     ]
   }
