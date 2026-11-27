@@ -93,33 +93,34 @@
     ]
   },
   {
-    "file_id": "1w_-PhsK_7KjFOSXAuLbKyKSRmaCW2Kgx",
+    "file_id": "19mNfhe0zhEaJR9o_7AofkEP4ZSHdcKUm",
     "source": "gd",
-    "tmdb_id": 1685882,
-    "clean_name": "Modha Rathri",
-    "title": "Modha Rathri",
-    "original_title": "மொத ராத்திரி",
-    "new_name": "Modha Rathri (2026) [2160p 4K] [Netflix] [Dolby Atmos] [13 GB].mkv",
-    "year": 2026,
-    "orig_lang": "ta",
-    "rating": 7.6,
+    "tmdb_id": 17478,
+    "clean_name": "Dhoom",
+    "title": "Dhoom",
+    "original_title": "धूम",
+    "new_name": "Dhoom (2004) [1080p] [BluRay] [DTS-HD Master / 1509k DTS] [13 GB].mkv",
+    "year": 2004,
+    "orig_lang": "hi",
+    "rating": 6.2,
     "genres": [
-      "Comedy",
+      "Action",
+      "Crime",
       "Drama",
-      "Family"
+      "Thriller"
     ],
-    "plot": "Two strangers are brought together at an unusual wedding where, in one night, too many surprises unfold and several lies are told, spiraling into chaos that changes everything.",
+    "plot": "A gang of bikers headed by the cool-headed and arrogant Kabir is on a robbing spree in Mumbai.  ACP Jai Dixit is put in charge of the case and he recruits a bumbling bike mechanic and racer to help Jai nab them.",
     "size": "13 GB",
     "size_gb": 13,
-    "poster": "https://image.tmdb.org/t/p/original/3VuNFeniljhEe9MDW12MnDbETgH.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/aT8Uk5uQKBJ3Syt63SNdlPUwqI9.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/wgQxSo5TER4exYbRzi5xQxSbjpq.png",
-    "added_at": "2026-11-27T16:28:21.638Z",
+    "poster": "https://image.tmdb.org/t/p/original/A3GBoQROHP0WjU9RXzlDU0iG3be.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/7XkAU2MTHV1ifbINbcSS3P1mwG2.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/gSdYoccc6EIN4OadKFUNt9BQa6J.png",
+    "added_at": "2026-11-27T16:28:25.541Z",
     "versions": [
       {
-        "file_id": "1w_-PhsK_7KjFOSXAuLbKyKSRmaCW2Kgx",
+        "file_id": "19mNfhe0zhEaJR9o_7AofkEP4ZSHdcKUm",
         "source": "gd",
-        "new_name": "Modha Rathri (2026) [2160p 4K] [Netflix] [Dolby Atmos] [13 GB].mkv",
+        "new_name": "Dhoom (2004) [1080p] [BluRay] [DTS-HD Master / 1509k DTS] [13 GB].mkv",
         "size": "13 GB",
         "size_gb": 13
       }
