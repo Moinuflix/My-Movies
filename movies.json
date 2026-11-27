@@ -257,5 +257,37 @@
         "size_gb": 3.8
       }
     ]
+  },
+  {
+    "file_id": "46",
+    "source": "gd",
+    "tmdb_id": 43410,
+    "clean_name": "Yuva",
+    "title": "Yuva",
+    "original_title": "युवा",
+    "new_name": "Yuva (2004) [1080p] [WEB-DL] [x264] [Hindi 5.1] [ESub] [2.8 GB].mkv",
+    "year": 2004,
+    "orig_lang": "hi",
+    "rating": 6.5,
+    "genres": [
+      "Drama",
+      "Crime"
+    ],
+    "plot": "An accident on a bridge ties together three young men from different social classes, sparking a course of events that will forever alter their lives.",
+    "size": "2.8 GB",
+    "size_gb": 2.8,
+    "poster": "https://image.tmdb.org/t/p/original/m3h7iSCBBFT40IZYuh3IjJN6fjE.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/xDs2K2VNBz7UemiUt3rywvdLHKx.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/ltXTbgZaKETNs9WEEFLOtaI1sSb.png",
+    "added_at": "2026-11-27T16:48:47.753Z",
+    "versions": [
+      {
+        "file_id": "46",
+        "source": "gd",
+        "new_name": "Yuva (2004) [1080p] [WEB-DL] [x264] [Hindi 5.1] [ESub] [2.8 GB].mkv",
+        "size": "2.8 GB",
+        "size_gb": 2.8
+      }
+    ]
   }
 ]
