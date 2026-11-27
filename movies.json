@@ -158,34 +158,33 @@
     ]
   },
   {
-    "file_id": "1ljMAreRE9y9J0LYwEs3aVCQGqOpE2HU1",
+    "file_id": "1arSBQLGfrd3uiZBn62kPo8z5jAjfIehv",
     "source": "gd",
-    "tmdb_id": 63821,
-    "clean_name": "Deepavali",
-    "title": "Deepavali",
-    "original_title": "தீபாவளி",
-    "new_name": "Deepavali (2007) [1080p] [WEB-DL] [AVC] [DD+5.1 - 192Kbps & AAC 2.0] [8.3 GB].mkv",
-    "year": 2007,
+    "tmdb_id": 922360,
+    "clean_name": "Nirangal Moondru",
+    "title": "Nirangal Moondru",
+    "original_title": "நிறங்கள் மூன்று",
+    "new_name": "Nirangal Moondru (2024) [1080p] [WEB-DL] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [7.1 GB].mkv",
+    "year": 2024,
     "orig_lang": "ta",
-    "rating": 5.1,
+    "rating": 5.7,
     "genres": [
-      "Action",
-      "Drama"
+      "Thriller"
     ],
-    "plot": "Susi, who suffers from post traumatic event disorder, falls in love with Billu. After Susi undergoes the treatment for her cure, she is unable to recognize Billu..",
-    "size": "8 GB",
-    "size_gb": 8,
-    "poster": "https://image.tmdb.org/t/p/original/lTalxE0qHzsAYb85hVysWs6UNaU.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/yK5ftR1Vw8f3yElGMbCBGVmBuUx.jpg",
-    "clearlogo": "",
-    "added_at": "2026-11-27T16:37:26.505Z",
+    "plot": "On a trippy day, the fates of 3 people - Vetri an aspiring filmmaker, Vasanth a reputed teacher and Selvam a corrupt and crooked cop collide, leading to various revelations, where Shree, an anxious youngster discovers that his girlfriend Parvathy has gone missing under mysterious circumstances, gives them the lead.",
+    "size": "7 GB",
+    "size_gb": 7,
+    "poster": "https://image.tmdb.org/t/p/original/sGzSgkWpNIXooUaiXRObhKqdtaN.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/5wr1g2g4cj5lkEDmAbEbT92sU8t.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/vwxN1Y4M5AUoyAUzBKvTI5UPKa2.png",
+    "added_at": "2026-11-27T16:37:31.369Z",
     "versions": [
       {
-        "file_id": "1ljMAreRE9y9J0LYwEs3aVCQGqOpE2HU1",
+        "file_id": "1arSBQLGfrd3uiZBn62kPo8z5jAjfIehv",
         "source": "gd",
-        "new_name": "Deepavali (2007) [1080p] [WEB-DL] [AVC] [DD+5.1 - 192Kbps & AAC 2.0] [8.3 GB].mkv",
-        "size": "8 GB",
-        "size_gb": 8
+        "new_name": "Nirangal Moondru (2024) [1080p] [WEB-DL] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [7.1 GB].mkv",
+        "size": "7 GB",
+        "size_gb": 7
       }
     ]
   }
