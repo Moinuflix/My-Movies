@@ -126,35 +126,34 @@
     ]
   },
   {
-    "file_id": "1DxOoGCo4YdI9K-MIx0oneVKeATjrJ4qi",
+    "file_id": "1puY-DT9teCt99IjECDARgOufNEZniuTn",
     "source": "gd",
-    "tmdb_id": 391059,
-    "clean_name": "Vetrivel",
-    "title": "Vetrivel",
-    "original_title": "வெற்றிவேல்",
-    "new_name": "Vetrivel (2016) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [8.6 GB].mkv",
-    "year": 2016,
+    "tmdb_id": 49074,
+    "clean_name": "Baasha",
+    "title": "Baasha",
+    "original_title": "பாட்ஷா",
+    "new_name": "Baashha (1995) [1080p] [WEB-DL] [AVC] [DD5.1 - 448Kbps & AAC 2.0] [ESub] [10 GB].mkv",
+    "year": 1995,
     "orig_lang": "ta",
-    "rating": 5,
+    "rating": 7.6,
     "genres": [
       "Action",
-      "Comedy",
-      "Family"
+      "Crime"
     ],
-    "plot": "A brother attempts to get his younger brother married to the girl he loves by kidnapping her, but the plan goes so wrong and results in messy situations...",
-    "size": "9 GB",
-    "size_gb": 9,
-    "poster": "https://image.tmdb.org/t/p/original/ewSPmhF6ICIN58DgfZlkqs5I14p.jpg",
-    "fanart": "",
-    "clearlogo": "",
-    "added_at": "2026-11-27T16:36:23.278Z",
+    "plot": "Auto rickshaw driver Manickam avoids violence at all costs. When some thugs begin to intimidate Manickam's family, it triggers the revival of Manickam's old self.",
+    "size": "10 GB",
+    "size_gb": 10,
+    "poster": "https://image.tmdb.org/t/p/original/xPSw9PLzYFKTVphw9ErZcBPKUsd.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/hh2bBmgqzJEY1J7enMKqTsziVRO.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/ljEkWhughQjvWP81WhgCRRM8bWG.png",
+    "added_at": "2026-11-27T16:36:27.484Z",
     "versions": [
       {
-        "file_id": "1DxOoGCo4YdI9K-MIx0oneVKeATjrJ4qi",
+        "file_id": "1puY-DT9teCt99IjECDARgOufNEZniuTn",
         "source": "gd",
-        "new_name": "Vetrivel (2016) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [8.6 GB].mkv",
-        "size": "9 GB",
-        "size_gb": 9
+        "new_name": "Baashha (1995) [1080p] [WEB-DL] [AVC] [DD5.1 - 448Kbps & AAC 2.0] [ESub] [10 GB].mkv",
+        "size": "10 GB",
+        "size_gb": 10
       }
     ]
   }
