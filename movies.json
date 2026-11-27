@@ -93,33 +93,35 @@
     ]
   },
   {
-    "file_id": "10Cb7VH-G2gM95_RRP9eclV_5xLXlUnSA",
+    "file_id": "1-Gvszi2sTEjjrjDopdkIbLjrUj24Xxc8",
     "source": "gd",
-    "tmdb_id": 968051,
-    "clean_name": "The Nun II",
-    "title": "The Nun II",
-    "original_title": "The Nun II",
-    "new_name": "The Nun II (2023) [1080p] [WEB-DL] [10 GB].mkv",
-    "year": 2023,
+    "tmdb_id": 12,
+    "clean_name": "Finding Nemo",
+    "title": "Finding Nemo",
+    "original_title": "Finding Nemo",
+    "new_name": "Finding Nemo (2003) [1080p] [AMZN] [x264] [DD+ 5.1] [3 GB].mkv",
+    "year": 2003,
     "orig_lang": "en",
-    "rating": 6.6,
+    "rating": 7.8,
     "genres": [
-      "Horror"
+      "Animation",
+      "Family",
+      "Adventure"
     ],
-    "plot": "In 1956 France, a priest is violently murdered, and Sister Irene begins to investigate. She once again comes face-to-face with a powerful evil.",
-    "size": "10 GB",
-    "size_gb": 10,
-    "poster": "https://image.tmdb.org/t/p/original/5gzzkR7y3hnY8AD1wXjCnVlHba5.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/27jtaS1oCiLK5Y7P6iOXG2yj1Nc.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/ocIyH3eMVU1BBajc0YHENjYzqCL.png",
-    "added_at": "2026-11-27T16:31:25.731Z",
+    "plot": "Nemo, an adventurous young clownfish, is unexpectedly taken from his Great Barrier Reef home to a dentist's office aquarium. It's up to his worrisome father Marlin and a friendly but forgetful fish Dory to bring Nemo home -- meeting vegetarian sharks, surfer dude turtles, hypnotic jellyfish, hungry seagulls, and more along the way.",
+    "size": "3 GB",
+    "size_gb": 3,
+    "poster": "https://image.tmdb.org/t/p/original/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/eCynaAOgYYiw5yN5lBwz3IxqvaW.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/gRweHvOoM7hKg3q8iExsXzAhsBv.png",
+    "added_at": "2026-11-27T16:31:29.796Z",
     "versions": [
       {
-        "file_id": "10Cb7VH-G2gM95_RRP9eclV_5xLXlUnSA",
+        "file_id": "1-Gvszi2sTEjjrjDopdkIbLjrUj24Xxc8",
         "source": "gd",
-        "new_name": "The Nun II (2023) [1080p] [WEB-DL] [10 GB].mkv",
-        "size": "10 GB",
-        "size_gb": 10
+        "new_name": "Finding Nemo (2003) [1080p] [AMZN] [x264] [DD+ 5.1] [3 GB].mkv",
+        "size": "3 GB",
+        "size_gb": 3
       }
     ]
   }
