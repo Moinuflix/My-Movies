@@ -93,35 +93,33 @@
     ]
   },
   {
-    "file_id": "1RntSjIHCAdZkqSmkq73Tq-HwVaXDwDnz",
+    "file_id": "1174iMZEfCfLTQGaaHVnZl7A1_cLQilgY",
     "source": "gd",
-    "tmdb_id": 743563,
-    "clean_name": "Vikram",
-    "title": "Vikram",
-    "original_title": "விக்ரம்",
-    "new_name": "Vikram (2022) [1080p] [BluRay] [x265 HEVC] [Tamil] [DD+ 5.1] [3 GB].mkv",
-    "year": 2022,
+    "tmdb_id": 1321821,
+    "clean_name": "Pechi",
+    "title": "Pechi",
+    "original_title": "பேச்சி",
+    "new_name": "Pechi (2024) [1080p] [AMZN] [AVC] [Tamil] [DD+ 5.1] [6 GB].mkv",
+    "year": 2024,
     "orig_lang": "ta",
-    "rating": 7.6,
+    "rating": 7.5,
     "genres": [
-      "Action",
-      "Crime",
-      "Thriller"
+      "Horror"
     ],
-    "plot": "Amar is assigned to investigate a case of serial killings. When Amar investigates the case, he realizes it is not what it seems to be and following down this path will lead to nothing but war between everyone involved.",
-    "size": "3 GB",
-    "size_gb": 3,
-    "poster": "https://image.tmdb.org/t/p/original/774UV1aCURb4s4JfEFg3IEMu5Zj.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/dkIX4dSMuVqjfrPGunBJUR7K3LQ.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/803y6O9H2q2Jj5SkbRTysZ2zlmx.png",
-    "added_at": "2026-11-27T16:30:11.485Z",
+    "plot": "Five young trekkers and their tour guide embark on a weekend adventure in the Kollimalai hills. Despite warnings, they venture into a restricted area, unknowingly entering the domain of a malevolent spirit, which is hell bent on wreaking havoc in their lives. Did they survive the relentless onslaught and harrowing encounter with the supernatural force in the haunted woods?",
+    "size": "6 GB",
+    "size_gb": 6,
+    "poster": "https://image.tmdb.org/t/p/original/6Pla6xHgD0kep7S9z6KfXzi6B4l.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/cAwBPZDaDjllk1Geicgj21cDZTS.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/a1GVJENCVklomsoj8bV0aslrgxe.png",
+    "added_at": "2026-11-27T16:30:15.689Z",
     "versions": [
       {
-        "file_id": "1RntSjIHCAdZkqSmkq73Tq-HwVaXDwDnz",
+        "file_id": "1174iMZEfCfLTQGaaHVnZl7A1_cLQilgY",
         "source": "gd",
-        "new_name": "Vikram (2022) [1080p] [BluRay] [x265 HEVC] [Tamil] [DD+ 5.1] [3 GB].mkv",
-        "size": "3 GB",
-        "size_gb": 3
+        "new_name": "Pechi (2024) [1080p] [AMZN] [AVC] [Tamil] [DD+ 5.1] [6 GB].mkv",
+        "size": "6 GB",
+        "size_gb": 6
       }
     ]
   }
