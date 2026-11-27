@@ -158,33 +158,34 @@
     ]
   },
   {
-    "file_id": "16_gTrHSHLMOaESlQE6az84Ou5UeEyk18",
+    "file_id": "1otHQ1fcHb_pHMMZevZ8msuTAn7gNbwSB",
     "source": "gd",
-    "tmdb_id": 78686,
-    "clean_name": "Thaandavam",
-    "title": "Thaandavam",
-    "original_title": "தாண்டவம்",
-    "new_name": "Thaandavam (2012) [1080p] [HQ] [BluRay] [x264] [DTS5.1 - 1509Kbps & AAC] [ESub] [15.3 GB].mkv",
-    "year": 2012,
+    "tmdb_id": 63641,
+    "clean_name": "Sachein",
+    "title": "Sachein",
+    "original_title": "சச்சின்",
+    "new_name": "Sachein (2005) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [10.9 GB].mkv",
+    "year": 2005,
     "orig_lang": "ta",
-    "rating": 5.8,
+    "rating": 6.7,
     "genres": [
-      "Action"
+      "Drama",
+      "Romance"
     ],
-    "plot": "A blind man with his 'Echolocation' power takes on a revenge mission.",
-    "size": "15 GB",
-    "size_gb": 15,
-    "poster": "https://image.tmdb.org/t/p/original/tCUGqY1zN8JX7Vg5iK4oDUD3FBn.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/q3hJe22wXjoHV0K3qUGfcgHgx6r.jpg",
-    "clearlogo": "",
-    "added_at": "2026-11-27T16:37:39.557Z",
+    "plot": "A happy-go-lucky college student falls in love with a beautiful young woman at first sight, but decides to use a unique approach to get close to her, as she has many admirers in the college. How will their relationship evolve?",
+    "size": "11 GB",
+    "size_gb": 11,
+    "poster": "https://image.tmdb.org/t/p/original/9AUF9tuykPsiAkjqewliulPNT4y.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/lPjDk0AwYul5Qy0ce8nODW3j7UE.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/waa6BFK6o5rG8OuycLttMhLEJSx.png",
+    "added_at": "2026-11-27T16:37:42.846Z",
     "versions": [
       {
-        "file_id": "16_gTrHSHLMOaESlQE6az84Ou5UeEyk18",
+        "file_id": "1otHQ1fcHb_pHMMZevZ8msuTAn7gNbwSB",
         "source": "gd",
-        "new_name": "Thaandavam (2012) [1080p] [HQ] [BluRay] [x264] [DTS5.1 - 1509Kbps & AAC] [ESub] [15.3 GB].mkv",
-        "size": "15 GB",
-        "size_gb": 15
+        "new_name": "Sachein (2005) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [10.9 GB].mkv",
+        "size": "11 GB",
+        "size_gb": 11
       }
     ]
   }
