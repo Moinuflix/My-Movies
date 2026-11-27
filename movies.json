@@ -93,35 +93,35 @@
     ]
   },
   {
-    "file_id": "1f4WhMNET1GSYyBhlD1FGramgUUdwQsB6",
+    "file_id": "1GaGrMAFqgcnGChMG1EYWafl5L4PP-tGW",
     "source": "gd",
-    "tmdb_id": 9799,
-    "clean_name": "The Fast and the Furious",
-    "title": "The Fast and the Furious",
-    "original_title": "The Fast and the Furious",
-    "new_name": "The Fast and the Furious (2001) [1080p] [AMZN] [Tam+Hin+Tel+Eng+Mal+Kan] [DD+ 5.1] [10 GB].mkv",
-    "year": 2001,
+    "tmdb_id": 584,
+    "clean_name": "2 Fast 2 Furious",
+    "title": "2 Fast 2 Furious",
+    "original_title": "2 Fast 2 Furious",
+    "new_name": "2 Fast 2 Furious (2003) [1080p] [AMZN] [x264] [DD+ 5.1] [3 GB].mkv",
+    "year": 2003,
     "orig_lang": "en",
-    "rating": 7,
+    "rating": 6.5,
     "genres": [
       "Action",
       "Crime",
       "Thriller"
     ],
-    "plot": "Dominic Toretto is a Los Angeles street racer suspected of masterminding a series of big-rig hijackings. When undercover cop Brian O'Conner infiltrates Toretto's iconoclastic crew, he falls for Toretto's sister and must choose a side: the gang or the LAPD.",
-    "size": "10 GB",
-    "size_gb": 10,
-    "poster": "https://image.tmdb.org/t/p/original/gqY0ITBgT7A82poL9jv851qdnIb.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/jY9ef5nqY4xIIMu3yzW3qamUCoi.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/kf17mvLnyFitDBoCm6ymISDfkxF.png",
-    "added_at": "2026-11-27T16:30:52.393Z",
+    "plot": "It's a major double-cross when former police officer Brian O'Conner teams up with his ex-con buddy Roman Pearce to transport a shipment of \"dirty\" money for shady Miami-based import-export dealer Carter Verone. But the guys are actually working with undercover agent Monica Fuentes to bring Verone down.",
+    "size": "3 GB",
+    "size_gb": 3,
+    "poster": "https://image.tmdb.org/t/p/original/6nDZExrDKIXvSAghsFKVFRVJuSf.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/90ooE5SbUEO0OVJHewNO7pgySb6.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/bwJyzbmiVoNMkAcGOdwLHph5cZ8.png",
+    "added_at": "2026-11-27T16:30:56.111Z",
     "versions": [
       {
-        "file_id": "1f4WhMNET1GSYyBhlD1FGramgUUdwQsB6",
+        "file_id": "1GaGrMAFqgcnGChMG1EYWafl5L4PP-tGW",
         "source": "gd",
-        "new_name": "The Fast and the Furious (2001) [1080p] [AMZN] [Tam+Hin+Tel+Eng+Mal+Kan] [DD+ 5.1] [10 GB].mkv",
-        "size": "10 GB",
-        "size_gb": 10
+        "new_name": "2 Fast 2 Furious (2003) [1080p] [AMZN] [x264] [DD+ 5.1] [3 GB].mkv",
+        "size": "3 GB",
+        "size_gb": 3
       }
     ]
   }
