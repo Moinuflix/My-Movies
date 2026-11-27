@@ -1228,6 +1228,9 @@
       const err = await res.json();
       throw new Error(err.message || "GitHub API Error");
     }
+    function escapeHtml(text) {
+    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+    return String(text || '').replace(/[&<>"']/g, m => map[m]);
   }
 
   window.addEventListener("DOMContentLoaded", loadPendingList);
