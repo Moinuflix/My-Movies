@@ -126,34 +126,36 @@
     ]
   },
   {
-    "file_id": "1OFVgzonnAghm9Rj1LQRTm3rgFcFhFcbe",
+    "file_id": "1sT8c_r2BwkIwDYkba13DeDTOi8wIkZu_",
     "source": "gd",
-    "tmdb_id": 17888,
-    "clean_name": "Dasavatharam",
-    "title": "Dasavatharam",
-    "original_title": "தசாவதாரம்",
-    "new_name": "Dasavathaaram (2008) [1080p] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [13.5 GB].mkv",
-    "year": 2008,
+    "tmdb_id": 63647,
+    "clean_name": "Ghilli",
+    "title": "Ghilli",
+    "original_title": "கில்லி",
+    "new_name": "Ghilli (2004) [1080p] [WEB-DL] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [12.2 GB].mkv",
+    "year": 2004,
     "orig_lang": "ta",
-    "rating": 6.7,
+    "rating": 7.1,
     "genres": [
       "Action",
-      "Adventure"
+      "Comedy",
+      "Family",
+      "Romance"
     ],
-    "plot": "Bio-technologist Govind K Somaiyya sets about on a precarious journey to India to retrieve a vial containing a deadly virus and prevent it from reaching the wrong hands of an ex-CIA agent and deadly assassins.",
-    "size": "14 GB",
-    "size_gb": 14,
-    "poster": "https://image.tmdb.org/t/p/original/6JVJEJmFb0cL7r7p00BvNDeC70Y.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/sVImmZxxflmCxhsMEgWyoPWoTTe.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/dKgiWU3ex9AqMWCPEh3HbWLBJmX.png",
-    "added_at": "2026-11-27T16:35:21.878Z",
+    "plot": "Muthu Pandi, a village strongman, decides to marry Dhanalakshmi, and begins his quest by eliminating everyone who opposes their union - starting with both her brothers. In desperation, Dhanalakshmi decides to escape from the village, and in the process is unwittingly assisted by a university Kabaddi player Velu.",
+    "size": "12 GB",
+    "size_gb": 12,
+    "poster": "https://image.tmdb.org/t/p/original/aUvUohnBgX5sbuMKNyKDAPAoVNc.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/wSFbFtoEmb9vziQVatktYi585gf.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/fnoMkdQyQmxxC1vkeQdcwqJHEYb.png",
+    "added_at": "2026-11-27T16:35:26.009Z",
     "versions": [
       {
-        "file_id": "1OFVgzonnAghm9Rj1LQRTm3rgFcFhFcbe",
+        "file_id": "1sT8c_r2BwkIwDYkba13DeDTOi8wIkZu_",
         "source": "gd",
-        "new_name": "Dasavathaaram (2008) [1080p] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [13.5 GB].mkv",
-        "size": "14 GB",
-        "size_gb": 14
+        "new_name": "Ghilli (2004) [1080p] [WEB-DL] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [12.2 GB].mkv",
+        "size": "12 GB",
+        "size_gb": 12
       }
     ]
   }
