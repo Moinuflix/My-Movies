@@ -60,33 +60,35 @@
     ]
   },
   {
-    "file_id": "1NeITWwUCLPi0ffGQCqEQ84ctYPzUNcm-",
+    "file_id": "1xsCOHdZ-xBanF97tJY4XjHSH5Mik4wss",
     "source": "gd",
-    "tmdb_id": 453068,
-    "clean_name": "Sketch",
-    "title": "Sketch",
-    "original_title": "ஸ்கெட்ச்",
-    "new_name": "Sketch (2018) [1080p] [AMZN] [Dolby Atmos] [9 GB].mkv",
-    "year": 2018,
+    "tmdb_id": 1297181,
+    "clean_name": "Madharaasi",
+    "title": "Madharaasi",
+    "original_title": "மதராஸி",
+    "new_name": "Madharaasi (2025) [1080p] [AMZN] [Dolby Atmos] [9.9 GB].mkv",
+    "year": 2025,
     "orig_lang": "ta",
-    "rating": 5.1,
+    "rating": 6.9,
     "genres": [
-      "Action"
+      "Action",
+      "Romance",
+      "Thriller"
     ],
-    "plot": "The fate of four friends, who work at a garage, witness drastic changes after they lock horns with a dreaded gangster in town",
-    "size": "9 GB",
-    "size_gb": 9,
-    "poster": "https://image.tmdb.org/t/p/original/meJjODI5tTJAvyxhmnDyW8qLPRj.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/81FtdZvwNqbEpSZdtlkAYscoIQG.jpg",
-    "clearlogo": "",
-    "added_at": "2026-11-27T16:26:56.198Z",
+    "plot": "A man with a psychological disorder overcomes trauma and confronts his nemesis in a fast-paced action film with romance and unique elements, exploring themes of resilience and redemption.",
+    "size": "10 GB",
+    "size_gb": 10,
+    "poster": "https://image.tmdb.org/t/p/original/dw3Dllz1gV7186m7clqNDnI9R28.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/nmPzYjRPAd3iVOgrLXlvh6HuvRN.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/aEdtszLvENQDH5MZPkPJN60siQ7.png",
+    "added_at": "2026-11-27T16:26:59.874Z",
     "versions": [
       {
-        "file_id": "1NeITWwUCLPi0ffGQCqEQ84ctYPzUNcm-",
+        "file_id": "1xsCOHdZ-xBanF97tJY4XjHSH5Mik4wss",
         "source": "gd",
-        "new_name": "Sketch (2018) [1080p] [AMZN] [Dolby Atmos] [9 GB].mkv",
-        "size": "9 GB",
-        "size_gb": 9
+        "new_name": "Madharaasi (2025) [1080p] [AMZN] [Dolby Atmos] [9.9 GB].mkv",
+        "size": "10 GB",
+        "size_gb": 10
       }
     ]
   }
