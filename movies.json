@@ -158,35 +158,33 @@
     ]
   },
   {
-    "file_id": "1nZg9HErvYN5N2Y7TokLMqmu8h8U_b4Fq",
+    "file_id": "16_gTrHSHLMOaESlQE6az84Ou5UeEyk18",
     "source": "gd",
-    "tmdb_id": 329134,
-    "clean_name": "Massu Engira Masilamani",
-    "title": "Massu Engira Masilamani",
-    "original_title": "மாஸ் என்கிற மாசிலாமணி",
-    "new_name": "Massu Engira Masilamani (2015) [1080p] [WEB-DL] [DD+5.1 - 640Kbps & AAC 2.0] [10.3 GB].mkv",
-    "year": 2015,
+    "tmdb_id": 78686,
+    "clean_name": "Thaandavam",
+    "title": "Thaandavam",
+    "original_title": "தாண்டவம்",
+    "new_name": "Thaandavam (2012) [1080p] [HQ] [BluRay] [x264] [DTS5.1 - 1509Kbps & AAC] [ESub] [15.3 GB].mkv",
+    "year": 2012,
     "orig_lang": "ta",
-    "rating": 5.1,
+    "rating": 5.8,
     "genres": [
-      "Comedy",
-      "Thriller",
-      "Horror"
+      "Action"
     ],
-    "plot": "A conman gains the power to see and communicate with ghosts and decides to use it to make money. His happy-go-lucky lifestyle goes for a toss when a ghost who is his look-alike approaches him with an offer.",
-    "size": "10 GB",
-    "size_gb": 10,
-    "poster": "https://image.tmdb.org/t/p/original/qXJTn2ZMhrbs4TawcZfoI2Ifwws.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/6kDSk9rv4csmLTBtNJdmhnZ6cnT.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/cnjrz4Qh7cUhlFApOK511cMeIXO.png",
-    "added_at": "2026-11-27T16:37:35.270Z",
+    "plot": "A blind man with his 'Echolocation' power takes on a revenge mission.",
+    "size": "15 GB",
+    "size_gb": 15,
+    "poster": "https://image.tmdb.org/t/p/original/tCUGqY1zN8JX7Vg5iK4oDUD3FBn.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/q3hJe22wXjoHV0K3qUGfcgHgx6r.jpg",
+    "clearlogo": "",
+    "added_at": "2026-11-27T16:37:39.557Z",
     "versions": [
       {
-        "file_id": "1nZg9HErvYN5N2Y7TokLMqmu8h8U_b4Fq",
+        "file_id": "16_gTrHSHLMOaESlQE6az84Ou5UeEyk18",
         "source": "gd",
-        "new_name": "Massu Engira Masilamani (2015) [1080p] [WEB-DL] [DD+5.1 - 640Kbps & AAC 2.0] [10.3 GB].mkv",
-        "size": "10 GB",
-        "size_gb": 10
+        "new_name": "Thaandavam (2012) [1080p] [HQ] [BluRay] [x264] [DTS5.1 - 1509Kbps & AAC] [ESub] [15.3 GB].mkv",
+        "size": "15 GB",
+        "size_gb": 15
       }
     ]
   }
