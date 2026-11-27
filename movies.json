@@ -93,34 +93,34 @@
     ]
   },
   {
-    "file_id": "1nTKdZfbCPH3hcy2BpxF0THWne9gH99H5",
+    "file_id": "1EoB6EhN-gihW8JbQpPyTN8LHEEJO4Hv7",
     "source": "gd",
-    "tmdb_id": 393518,
-    "clean_name": "Album",
-    "title": "Album",
-    "original_title": "Albüm",
-    "new_name": "Album (2016) [1080p] [WEB-DL] [Dolby Atmos] [5 GB].mkv",
-    "year": 2016,
-    "orig_lang": "tr",
-    "rating": 5.5,
+    "tmdb_id": 1032627,
+    "clean_name": "Love Today",
+    "title": "Love Today",
+    "original_title": "லவ் டுடே",
+    "new_name": "Love Today (2022) [1080p] [AMZN] [AVC] [Tamil] [DD+ 5.1] [6 GB].mkv",
+    "year": 2022,
+    "orig_lang": "ta",
+    "rating": 6.9,
     "genres": [
-      "Drama",
-      "Comedy"
+      "Comedy",
+      "Romance"
     ],
-    "plot": "A couple in their late 30’s sets out to prepare a fake photo album of a pseudo pregnancy period in order to prove their biological tie to the baby they’re planning to adopt.",
-    "size": "5 GB",
-    "size_gb": 5,
-    "poster": "https://image.tmdb.org/t/p/original/brGIZV0NBviWVo0rNU2aYWU6q93.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/tdJkzbd9xytGWuqFgxqz8549Lbj.jpg",
-    "clearlogo": "",
-    "added_at": "2026-11-27T16:29:55.745Z",
+    "plot": "A young couple is made to exchange their phones for a day. What follows is a hilarious and emotional sequence of events that puts their lives in misery.",
+    "size": "6 GB",
+    "size_gb": 6,
+    "poster": "https://image.tmdb.org/t/p/original/iRfIti4RhDFZ11UyCmz5Mk5wtGI.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/tLYTWKiSHoR0yVz8ScrQDa1Youu.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/shcyXNkrDd5eR1ThvfT6DWy5u4y.png",
+    "added_at": "2026-11-27T16:29:59.233Z",
     "versions": [
       {
-        "file_id": "1nTKdZfbCPH3hcy2BpxF0THWne9gH99H5",
+        "file_id": "1EoB6EhN-gihW8JbQpPyTN8LHEEJO4Hv7",
         "source": "gd",
-        "new_name": "Album (2016) [1080p] [WEB-DL] [Dolby Atmos] [5 GB].mkv",
-        "size": "5 GB",
-        "size_gb": 5
+        "new_name": "Love Today (2022) [1080p] [AMZN] [AVC] [Tamil] [DD+ 5.1] [6 GB].mkv",
+        "size": "6 GB",
+        "size_gb": 6
       }
     ]
   }
