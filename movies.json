@@ -126,34 +126,36 @@
     ]
   },
   {
-    "file_id": "1rlESC-sqZn4F2YZpkNVJ7Ez0CC83J97A",
+    "file_id": "19idDy99TXlinKREeljs2pMzYnGFFCugF",
     "source": "gd",
-    "tmdb_id": 69566,
-    "clean_name": "Peranmai",
-    "title": "Peranmai",
-    "original_title": "பேராண்மை",
-    "new_name": "Peranmai (2009) [1080p] [BluRay] [x264] [DTS5.1 - 1509Kbps & AAC] [ESub] [14.4 GB].mkv",
-    "year": 2009,
+    "tmdb_id": 30086,
+    "clean_name": "Jeans",
+    "title": "Jeans",
+    "original_title": "ஜீன்ஸ்",
+    "new_name": "Jeans (1998) [1080p] [WEB-DL] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [12.2 GB].mkv",
+    "year": 1998,
     "orig_lang": "ta",
-    "rating": 6.4,
+    "rating": 6.3,
     "genres": [
-      "Action",
-      "Adventure"
+      "Comedy",
+      "Drama",
+      "Romance",
+      "Music"
     ],
-    "plot": "A communist forest ranger from a tribal community is tasked with whipping five spoiled female cadets into shape. Their bonding trip into the woods turns deadly when they come across foreign mercenaries plotting to sabotage a government satellite launch.",
-    "size": "14 GB",
-    "size_gb": 14,
-    "poster": "https://image.tmdb.org/t/p/original/gP2CMKlkiIociCaP3MwsXA3Fm0S.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/wyZjYHYHnBIs10v7BNsVipW2Mnz.jpg",
-    "clearlogo": "",
-    "added_at": "2026-11-27T16:35:47.003Z",
+    "plot": "The father of twin brothers wants to get them married to only twin sisters. But one of the brothers falls in love with a woman does not have a twin sister.",
+    "size": "12 GB",
+    "size_gb": 12,
+    "poster": "https://image.tmdb.org/t/p/original/uICyDD1FuQIjAm0M0gL6wq5RgPZ.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/fQZXSRTvK2vd8WMOhP6VrjWPPdD.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/aqmijl4K7nYnaSmb0INudpbXym5.png",
+    "added_at": "2026-11-27T16:35:50.641Z",
     "versions": [
       {
-        "file_id": "1rlESC-sqZn4F2YZpkNVJ7Ez0CC83J97A",
+        "file_id": "19idDy99TXlinKREeljs2pMzYnGFFCugF",
         "source": "gd",
-        "new_name": "Peranmai (2009) [1080p] [BluRay] [x264] [DTS5.1 - 1509Kbps & AAC] [ESub] [14.4 GB].mkv",
-        "size": "14 GB",
-        "size_gb": 14
+        "new_name": "Jeans (1998) [1080p] [WEB-DL] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [12.2 GB].mkv",
+        "size": "12 GB",
+        "size_gb": 12
       }
     ]
   }
