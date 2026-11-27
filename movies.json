@@ -114,7 +114,7 @@
     "poster": "https://image.tmdb.org/t/p/original/2XUHC4lp3tDsgfFLFygNZ2x2Um9.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/vBVYYc5PgXCICNlBmS7cCvxOc3H.jpg",
     "clearlogo": "https://image.tmdb.org/t/p/original/spap9Ql11ETN9TlJlKzzksZmAVb.png",
-    "added_at": "2026-11-27T16:32:13.810Z",
+    "added_at": "2026-11-27T16:32:01.564Z",
     "versions": [
       {
         "file_id": "18zTZTBbrZNwh1pP2F97hzLplc3sGzPxW",
@@ -122,13 +122,38 @@
         "new_name": "Im Scared Video Video Song LEO 1080 P 60FP mkv (2026) [Dolby 5.1 Surround] [112 MB].mkv",
         "size": "112 MB",
         "size_gb": 0.11
-      },
+      }
+    ]
+  },
+  {
+    "file_id": "1q5qQACTdGesrfgu56_G4xgOFMRJvMXak",
+    "source": "gd",
+    "tmdb_id": 1142921,
+    "clean_name": "Tere Ishk Mein",
+    "title": "Tere Ishk Mein",
+    "original_title": "तेरे इश्क़ में",
+    "new_name": "Tere Ishk Mein (2025) [1080p] [Netflix] [x264] [DDP5.1] [8 GB].mkv",
+    "year": 2025,
+    "orig_lang": "hi",
+    "rating": 5.3,
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "plot": "A psychology student attempts to rehabilitate a volatile young man, before evolving into a doomed romance.",
+    "size": "8 GB",
+    "size_gb": 8,
+    "poster": "https://image.tmdb.org/t/p/original/7FsHlW9z7gDhDE4EXAE2WcXUVQj.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/3FgFKX1gW21LzjT0Yniflaqmhpr.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/mVAPQB033NXoB7yVyAlQHRalN56.png",
+    "added_at": "2026-11-27T16:32:47.292Z",
+    "versions": [
       {
-        "file_id": "1wyGcJellyXwu781UfWoUgv2ifUF53XMI",
+        "file_id": "1q5qQACTdGesrfgu56_G4xgOFMRJvMXak",
         "source": "gd",
-        "new_name": "Naa Ready Video Video Song LEO 108 0P 60FPS mkv (2026) [Dolby 5.1 Surround] [512 MB].mkv",
-        "size": "512 MB",
-        "size_gb": 0.5
+        "new_name": "Tere Ishk Mein (2025) [1080p] [Netflix] [x264] [DDP5.1] [8 GB].mkv",
+        "size": "8 GB",
+        "size_gb": 8
       }
     ]
   }
