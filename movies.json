@@ -93,33 +93,32 @@
     ]
   },
   {
-    "file_id": "1DduxvogyKP4Tbpg-trz2ifGkHcMW-Nzm",
+    "file_id": "1VgiSXaEiCSt2gRWEakdkgDbUyE4WsflG",
     "source": "gd",
-    "tmdb_id": 76341,
-    "clean_name": "Mad Max: Fury Road",
-    "title": "Mad Max: Fury Road",
-    "original_title": "Mad Max: Fury Road",
-    "new_name": "Mad Max: Fury Road (2015) [1080p] [AMZN] [Dolby Atmos] [9.9 GB].mkv",
-    "year": 2015,
-    "orig_lang": "en",
-    "rating": 7.6,
+    "tmdb_id": 1590380,
+    "clean_name": "Ram and Leela",
+    "title": "Ram and Leela",
+    "original_title": "Ram and Leela",
+    "new_name": "Ram and Leela (2026) [1080p] [AMZN] [DDP 5.1 Tam+Tel+Hin+Mal] [10.2 GB].mkv",
+    "year": 2026,
+    "orig_lang": "ta",
+    "rating": 6,
     "genres": [
-      "Action",
-      "Adventure",
-      "Science Fiction"
+      "Romance",
+      "Comedy"
     ],
-    "plot": "An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken, and most everyone is crazed fighting for the necessities of life. Within this world exist two rebels on the run who just might be able to restore order.",
+    "plot": "A repeatedly unlucky man finally finds the woman of his dreams, only for an unexpected twist to challenge his understanding of love and commitment.",
     "size": "10 GB",
     "size_gb": 10,
-    "poster": "https://image.tmdb.org/t/p/original/ulcAi4dKpAjHwYGS08vNyx9H6I9.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/uT895WNwm0aIJRtGizcQhrejWUo.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/uiXCDDtRTsB18nIes9IEyZglP3m.png",
-    "added_at": "2026-11-27T16:29:13.794Z",
+    "poster": "https://image.tmdb.org/t/p/original/j1X0t57PguWBcaa8LAOaAHGyjcK.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/w0hg42XRWiaWlGPvQI8Defwn5En.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/znZh9KZuqKTR8m67PvBoa2YIllj.png",
+    "added_at": "2026-11-27T16:29:18.094Z",
     "versions": [
       {
-        "file_id": "1DduxvogyKP4Tbpg-trz2ifGkHcMW-Nzm",
+        "file_id": "1VgiSXaEiCSt2gRWEakdkgDbUyE4WsflG",
         "source": "gd",
-        "new_name": "Mad Max: Fury Road (2015) [1080p] [AMZN] [Dolby Atmos] [9.9 GB].mkv",
+        "new_name": "Ram and Leela (2026) [1080p] [AMZN] [DDP 5.1 Tam+Tel+Hin+Mal] [10.2 GB].mkv",
         "size": "10 GB",
         "size_gb": 10
       }
