@@ -93,35 +93,35 @@
     ]
   },
   {
-    "file_id": "1AAys6JpxKj78ii6oyKQOK2l1kKR9Zjhd",
+    "file_id": "1DduxvogyKP4Tbpg-trz2ifGkHcMW-Nzm",
     "source": "gd",
-    "tmdb_id": 1450599,
-    "clean_name": "K.O.",
-    "title": "K.O.",
-    "original_title": "K.O.",
-    "new_name": "K O (2025) [1080p] [BluRay] [Dolby Atmos] [450 MB].mkv",
-    "year": 2025,
-    "orig_lang": "fr",
-    "rating": 6.5,
+    "tmdb_id": 76341,
+    "clean_name": "Mad Max: Fury Road",
+    "title": "Mad Max: Fury Road",
+    "original_title": "Mad Max: Fury Road",
+    "new_name": "Mad Max: Fury Road (2015) [1080p] [AMZN] [Dolby Atmos] [9.9 GB].mkv",
+    "year": 2015,
+    "orig_lang": "en",
+    "rating": 7.6,
     "genres": [
       "Action",
-      "Drama",
-      "Adventure"
+      "Adventure",
+      "Science Fiction"
     ],
-    "plot": "A former fighter must find the missing son of an opponent he accidentally killed years ago, taking on a brutally violent crime gang in Marseille.",
-    "size": "500 MB",
-    "size_gb": 0.49,
-    "poster": "https://image.tmdb.org/t/p/original/qcM2sUiAeP4zXwx4ADSvgc9S58k.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/rU9kRB3rBU5O7AMReZCiuIy7zmE.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/qXIHcpVXLNmGZhf0k5SLBMiezl7.png",
-    "added_at": "2026-11-27T16:29:09.380Z",
+    "plot": "An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken, and most everyone is crazed fighting for the necessities of life. Within this world exist two rebels on the run who just might be able to restore order.",
+    "size": "10 GB",
+    "size_gb": 10,
+    "poster": "https://image.tmdb.org/t/p/original/ulcAi4dKpAjHwYGS08vNyx9H6I9.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/uT895WNwm0aIJRtGizcQhrejWUo.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/uiXCDDtRTsB18nIes9IEyZglP3m.png",
+    "added_at": "2026-11-27T16:29:13.794Z",
     "versions": [
       {
-        "file_id": "1AAys6JpxKj78ii6oyKQOK2l1kKR9Zjhd",
+        "file_id": "1DduxvogyKP4Tbpg-trz2ifGkHcMW-Nzm",
         "source": "gd",
-        "new_name": "K O (2025) [1080p] [BluRay] [Dolby Atmos] [450 MB].mkv",
-        "size": "500 MB",
-        "size_gb": 0.49
+        "new_name": "Mad Max: Fury Road (2015) [1080p] [AMZN] [Dolby Atmos] [9.9 GB].mkv",
+        "size": "10 GB",
+        "size_gb": 10
       }
     ]
   }
