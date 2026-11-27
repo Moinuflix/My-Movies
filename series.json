@@ -1,33 +1,31 @@
 [
   {
-    "id": "tmdb_99966",
-    "tmdb_id": 99966,
-    "clean_name": "All of Us Are Dead",
-    "title": "All of Us Are Dead",
-    "original_title": "지금 우리 학교는",
-    "year": 2022,
-    "orig_lang": "ko",
-    "rating": 8.3,
+    "id": "tmdb_243192",
+    "tmdb_id": 243192,
+    "clean_name": "Muldens mysterier",
+    "title": "Muldens mysterier",
+    "original_title": "Muldens mysterier",
+    "year": 2018,
+    "orig_lang": "da",
+    "rating": 7.5,
     "genres": [
-      "Action & Adventure",
-      "Drama",
-      "Sci-Fi & Fantasy"
+      "Documentary"
     ],
-    "plot": "A high school becomes ground zero for a zombie virus outbreak. Trapped students must fight their way out — or turn into one of the rabid infected.",
-    "poster": "https://image.tmdb.org/t/p/original/738vdQ3diENL2NJ7XvST6kMd6D7.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/jZAtLKNZbQZZLm9OLcY9rdZZV5F.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/i3NbH6xn7Y76LV2QmPnG3t6w1Su.png",
+    "plot": "Streamed via MoinuFlix Private 4K & 5.1 Server.",
+    "poster": "https://image.tmdb.org/t/p/original/tvQABP0FFXTXDW2SMCh8HuNpyGe.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/3JAYyXuvWJJ2XMtXyQD7eDwiC3d.jpg",
+    "clearlogo": "",
     "episodes": [
       {
-        "file_id": "1R9sTuVwXyZ0123456789AbCdEfGhIjKl",
+        "file_id": "1Q8rStUvWxYz0123456789AbCdEfGhIjK",
         "source": "gd",
         "season": 1,
-        "episode": 3,
-        "title": "Episode 3",
-        "new_name": "All of Us Are Dead S01E03 1080p NF WE B-DL DDP5 1 x264-Telly mkv (2026) S01E03 [1080p] [Netflix] [x264] [DDP5.1] [2.7 GB].mkv",
-        "plot": "When one of the group is scratched while fighting a zombie, Lee Na-yeon demands they kick him out. Outside, the virus swallows up the city.",
-        "thumb": "https://image.tmdb.org/t/p/original/cvNAL8Osgrca3uXUS4qGy8qrgNY.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/jZAtLKNZbQZZLm9OLcY9rdZZV5F.jpg"
+        "episode": 6,
+        "title": "Episode 6",
+        "new_name": "Pritam and Pedro (2026) S01E06 [2160p 4K] [JioHotstar] [HIN-TAM-TEL-KAN-MAL DDP5.1.Atmos] [2.6 GB].mkv",
+        "plot": "Streamed via MoinuFlix Private 4K & 5.1 Server.",
+        "thumb": "https://image.tmdb.org/t/p/original/3JAYyXuvWJJ2XMtXyQD7eDwiC3d.jpg",
+        "fanart": "https://image.tmdb.org/t/p/original/3JAYyXuvWJJ2XMtXyQD7eDwiC3d.jpg"
       }
     ]
   }
