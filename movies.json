@@ -93,35 +93,34 @@
     ]
   },
   {
-    "file_id": "12xcxvXvtRcB58NtlriEjsUtp4g8cPhrY",
+    "file_id": "15A1YLKNYsR_sro9xjobneKxaFFky6sZX",
     "source": "gd",
-    "tmdb_id": 205022,
-    "clean_name": "Chennai Express",
-    "title": "Chennai Express",
-    "original_title": "Chennai Express",
-    "new_name": "Chennai Express (2013) [1080p] [BluRay] [Dolby Atmos] [Tamil+Hin+Tel+Mal] [14 GB].mkv",
-    "year": 2013,
-    "orig_lang": "hi",
-    "rating": 6.5,
+    "tmdb_id": 1601310,
+    "clean_name": "Eesha",
+    "title": "Eesha",
+    "original_title": "ఈశా",
+    "new_name": "Eesha (2025) [1080p] [WEB-DL] [Dolby Atmos] [10 GB].mkv",
+    "year": 2025,
+    "orig_lang": "te",
+    "rating": 2.5,
     "genres": [
-      "Romance",
-      "Comedy",
-      "Action"
+      "Horror",
+      "Thriller"
     ],
-    "plot": "Rahul embarks on a journey to a small town in Tamil Nadu to fulfill the last wish of his grandfather: to have his ashes immersed in the Holy water of Rameshwaram. En route, he meets a woman hailing from a unique family down South. As they find love through this journey in the exuberant lands of South India, an unanticipated drive awaits them.",
-    "size": "14 GB",
-    "size_gb": 14,
-    "poster": "https://image.tmdb.org/t/p/original/9j7XfhBJKNfidMCa8JsNbqU1waV.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/6JpbbREGqdEtePnCwxJRcTNX2jZ.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/1Ch5mF02b7uu9OX38NjpQhQIjfQ.png",
-    "added_at": "2026-11-27T16:31:40.800Z",
+    "plot": "Four friends set out to challenge blind beliefs, only to be drawn into a mysterious spiritual encounter that changes their lives forever.",
+    "size": "10 GB",
+    "size_gb": 10,
+    "poster": "https://image.tmdb.org/t/p/original/87MhKILHPwcForDY0HxzII4tPvA.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/s9KTqzmvfdGwWKTT46MmcIoPpI3.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/b1ONpdk3QBqWPsMdBRw0pCVRqmJ.png",
+    "added_at": "2026-11-27T16:31:44.725Z",
     "versions": [
       {
-        "file_id": "12xcxvXvtRcB58NtlriEjsUtp4g8cPhrY",
+        "file_id": "15A1YLKNYsR_sro9xjobneKxaFFky6sZX",
         "source": "gd",
-        "new_name": "Chennai Express (2013) [1080p] [BluRay] [Dolby Atmos] [Tamil+Hin+Tel+Mal] [14 GB].mkv",
-        "size": "14 GB",
-        "size_gb": 14
+        "new_name": "Eesha (2025) [1080p] [WEB-DL] [Dolby Atmos] [10 GB].mkv",
+        "size": "10 GB",
+        "size_gb": 10
       }
     ]
   }
