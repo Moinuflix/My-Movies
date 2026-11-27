@@ -126,35 +126,36 @@
     ]
   },
   {
-    "file_id": "1CISSbxDNglwXOnO7cP8inUCii-wl9Ocb",
+    "file_id": "1LRbF4Z8hyqNkeDb8OP7H7xpi5xUsYi_t",
     "source": "gd",
-    "tmdb_id": 353486,
-    "clean_name": "Jumanji: Welcome to the Jungle",
-    "title": "Jumanji: Welcome to the Jungle",
-    "original_title": "Jumanji: Welcome to the Jungle",
-    "new_name": "Jumanji Welcome to the Jungle (2017) [1080p] [AMZN] [AMZN Hindi DDP 5.1 - 640k + Eng DTS-HDMA 5.1] [9 GB].mkv",
-    "year": 2017,
+    "tmdb_id": 26842,
+    "clean_name": "The Message",
+    "title": "The Message",
+    "original_title": "The Message",
+    "new_name": "The Message (1977) [1080p] [BluRay] [x264] [Tamil AAC 2.0 + English DTS 5.1] [11 GB].mkv",
+    "year": 1976,
     "orig_lang": "en",
-    "rating": 6.8,
+    "rating": 7.1,
     "genres": [
       "Adventure",
-      "Comedy",
-      "Fantasy"
+      "Drama",
+      "Action",
+      "History"
     ],
-    "plot": "Four teenagers in detention discover an old video game console with a game they’ve never heard of. When they decide to play, they are immediately sucked into the jungle world of Jumanji in the bodies of their avatars. They’ll have to complete the adventure of their lives filled with fun, thrills and danger or be stuck in the game forever!",
-    "size": "9 GB",
-    "size_gb": 9,
-    "poster": "https://image.tmdb.org/t/p/original/pSgXKPU5h6U89ipF7HBYajvYt7j.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/zZKmEmRDc7ZjFucPm2UGNgDRlDc.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/A5R94rW4L9HUruWbw3ra5xFQaKB.png",
-    "added_at": "2026-11-27T16:33:59.501Z",
+    "plot": "In sixth-century Mecca, Prophet Muhammad receives his first revelation from God as a messenger. Three years later, he's not alone in his quest and publicly declares his prophecy. Muhammad is fought by Abu Sufian and his wife Hind, rulers of Mecca. Muhammad's followers are hunted and tortured but he continues his calling.",
+    "size": "11 GB",
+    "size_gb": 11,
+    "poster": "https://image.tmdb.org/t/p/original/qVCBMg4ZuLPnWhIWJHD9IP4nIuY.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/rqODzehgQ8Hl0tcUd7qIcy8Pc9Z.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/nQw5RqheL5COxotHDzt29xf6JfR.png",
+    "added_at": "2026-11-27T16:34:03.669Z",
     "versions": [
       {
-        "file_id": "1CISSbxDNglwXOnO7cP8inUCii-wl9Ocb",
+        "file_id": "1LRbF4Z8hyqNkeDb8OP7H7xpi5xUsYi_t",
         "source": "gd",
-        "new_name": "Jumanji Welcome to the Jungle (2017) [1080p] [AMZN] [AMZN Hindi DDP 5.1 - 640k + Eng DTS-HDMA 5.1] [9 GB].mkv",
-        "size": "9 GB",
-        "size_gb": 9
+        "new_name": "The Message (1977) [1080p] [BluRay] [x264] [Tamil AAC 2.0 + English DTS 5.1] [11 GB].mkv",
+        "size": "11 GB",
+        "size_gb": 11
       }
     ]
   }
