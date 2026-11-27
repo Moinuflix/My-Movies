@@ -126,33 +126,35 @@
     ]
   },
   {
-    "file_id": "1YhmToItP7drO82lF1OPWbk2-JnVOxhlq",
+    "file_id": "1ko5F47CRLSKnRXnXA42gK4NOcCKRjDcC",
     "source": "gd",
-    "tmdb_id": 1038392,
-    "clean_name": "The Conjuring: Last Rites",
-    "title": "The Conjuring: Last Rites",
-    "original_title": "The Conjuring: Last Rites",
-    "new_name": "The Conjuring-Last Rites (2025) [1080p] [IMAX] [AMZN] [AMZN Hin-Tam-Tel DDP 5.1 - 640k + Eng TrueHD Atmos 7.1] [18 GB].mkv",
-    "year": 2025,
+    "tmdb_id": 564,
+    "clean_name": "The Mummy",
+    "title": "The Mummy",
+    "original_title": "The Mummy",
+    "new_name": "The Mummy (1999) [1080p] [BluRay] [Netflix] [x264] [Org NF Hin-Tam-Tel DDP 5.1 - 640k + Eng DTS-X 7.1] [17 GB].mkv",
+    "year": 1999,
     "orig_lang": "en",
     "rating": 7,
     "genres": [
-      "Horror"
+      "Adventure",
+      "Action",
+      "Fantasy"
     ],
-    "plot": "Paranormal investigators Ed and Lorraine Warren take on one last terrifying case involving mysterious entities they must confront.",
-    "size": "18 GB",
-    "size_gb": 18,
-    "poster": "https://image.tmdb.org/t/p/original/umvkcIb0XAk486TEmx1V5aVzhbm.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/i8MupUe4xgmYXoRNAQMYvuoexSU.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/6TO2hgAcc7FoWExNX6I6IgXtp9Q.png",
-    "added_at": "2026-11-27T16:34:15.560Z",
+    "plot": "Dashing legionnaire Rick O'Connell stumbles upon the hidden ruins of Hamunaptra while in the midst of a battle to claim the area in 1920s Egypt. It has been over three thousand years since former High Priest Imhotep suffered a fate worse than death as a punishment for a forbidden love—along with a curse that guarantees eternal doom upon the world if he is ever awoken.",
+    "size": "17 GB",
+    "size_gb": 17,
+    "poster": "https://image.tmdb.org/t/p/original/yhIsVvcUm7QxzLfT6HW2wLf5ajY.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/8zLS8p1tRyWFLRFfmgQq0j5WE6z.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/3UGycN6SP7PPmB5ZWIf9bphm2UM.png",
+    "added_at": "2026-11-27T16:34:19.592Z",
     "versions": [
       {
-        "file_id": "1YhmToItP7drO82lF1OPWbk2-JnVOxhlq",
+        "file_id": "1ko5F47CRLSKnRXnXA42gK4NOcCKRjDcC",
         "source": "gd",
-        "new_name": "The Conjuring-Last Rites (2025) [1080p] [IMAX] [AMZN] [AMZN Hin-Tam-Tel DDP 5.1 - 640k + Eng TrueHD Atmos 7.1] [18 GB].mkv",
-        "size": "18 GB",
-        "size_gb": 18
+        "new_name": "The Mummy (1999) [1080p] [BluRay] [Netflix] [x264] [Org NF Hin-Tam-Tel DDP 5.1 - 640k + Eng DTS-X 7.1] [17 GB].mkv",
+        "size": "17 GB",
+        "size_gb": 17
       }
     ]
   }
