@@ -126,34 +126,34 @@
     ]
   },
   {
-    "file_id": "1f0whg9PBSASoloaWYW5GAq6lHRziv4Dx",
+    "file_id": "1rlESC-sqZn4F2YZpkNVJ7Ez0CC83J97A",
     "source": "gd",
-    "tmdb_id": 191121,
-    "clean_name": "Raanjhanaa",
-    "title": "Raanjhanaa",
-    "original_title": "रान्झाना",
-    "new_name": "Ambikapathy (2013) [1080p] [WEB-DL] [DD5.1 - 448Kbps & AAC 2.0] [ESub] [11.6 GB].mkv",
-    "year": 2013,
-    "orig_lang": "hi",
-    "rating": 6.7,
+    "tmdb_id": 69566,
+    "clean_name": "Peranmai",
+    "title": "Peranmai",
+    "original_title": "பேராண்மை",
+    "new_name": "Peranmai (2009) [1080p] [BluRay] [x264] [DTS5.1 - 1509Kbps & AAC] [ESub] [14.4 GB].mkv",
+    "year": 2009,
+    "orig_lang": "ta",
+    "rating": 6.4,
     "genres": [
-      "Drama",
-      "Romance"
+      "Action",
+      "Adventure"
     ],
-    "plot": "A small-town boy needs to break through the class divide to gain acceptance from his childhood sweetheart who is in love with big city ideals.",
-    "size": "12 GB",
-    "size_gb": 12,
-    "poster": "https://image.tmdb.org/t/p/original/54CjAPWZczqfAMhQ926KqBgpLWN.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/lnB3JiuzIjaHIwvsF0O7pVsTFro.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/er6r9F6AVygxxK1giuKMZWV0KRE.png",
-    "added_at": "2026-11-27T16:35:43.070Z",
+    "plot": "A communist forest ranger from a tribal community is tasked with whipping five spoiled female cadets into shape. Their bonding trip into the woods turns deadly when they come across foreign mercenaries plotting to sabotage a government satellite launch.",
+    "size": "14 GB",
+    "size_gb": 14,
+    "poster": "https://image.tmdb.org/t/p/original/gP2CMKlkiIociCaP3MwsXA3Fm0S.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/wyZjYHYHnBIs10v7BNsVipW2Mnz.jpg",
+    "clearlogo": "",
+    "added_at": "2026-11-27T16:35:47.003Z",
     "versions": [
       {
-        "file_id": "1f0whg9PBSASoloaWYW5GAq6lHRziv4Dx",
+        "file_id": "1rlESC-sqZn4F2YZpkNVJ7Ez0CC83J97A",
         "source": "gd",
-        "new_name": "Ambikapathy (2013) [1080p] [WEB-DL] [DD5.1 - 448Kbps & AAC 2.0] [ESub] [11.6 GB].mkv",
-        "size": "12 GB",
-        "size_gb": 12
+        "new_name": "Peranmai (2009) [1080p] [BluRay] [x264] [DTS5.1 - 1509Kbps & AAC] [ESub] [14.4 GB].mkv",
+        "size": "14 GB",
+        "size_gb": 14
       }
     ]
   }
