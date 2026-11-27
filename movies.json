@@ -126,35 +126,34 @@
     ]
   },
   {
-    "file_id": "1gGJtZSVk4FZ_a74Y7QjE6RI3OQ4d0Yp6",
+    "file_id": "1V7mY4bAaf7eRWJBlVMoH6LQKdp2Eh4mc",
     "source": "gd",
-    "tmdb_id": 570670,
-    "clean_name": "The Invisible Man",
-    "title": "The Invisible Man",
-    "original_title": "The Invisible Man",
-    "new_name": "The Invisible Man (2020) [1080p] [BluRay] [x265 HEVC] [Org Hindi BD DDP 7.1 - 768Kbps + English AAC 7.1] [ESub] [4 GB].mkv",
-    "year": 2020,
+    "tmdb_id": 1304313,
+    "clean_name": "Lee Cronin's The Mummy",
+    "title": "Lee Cronin's The Mummy",
+    "original_title": "Lee Cronin's The Mummy",
+    "new_name": "Lee Cronins The Mummy (2026) [1080p] [WEB-DL] [x264] [DDP5.1] [9 GB].mkv",
+    "year": 2026,
     "orig_lang": "en",
-    "rating": 7.1,
+    "rating": 7.8,
     "genres": [
-      "Thriller",
-      "Science Fiction",
-      "Horror"
+      "Horror",
+      "Mystery"
     ],
-    "plot": "When Cecilia's abusive ex takes his own life and leaves her his fortune, she suspects his death was a hoax. As a series of coincidences turn lethal, Cecilia works to prove that she is being hunted by someone nobody can see.",
-    "size": "4 GB",
-    "size_gb": 4,
-    "poster": "https://image.tmdb.org/t/p/original/5EufsDwXdY2CVttYOk2WtYhgKpa.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/tweDJNQzBGgsWVF5MC8JhSAk07p.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/uhCrTWK0SiZ1XkuW7ruUuzTJGhh.png",
-    "added_at": "2026-11-27T16:34:51.479Z",
+    "plot": "The young daughter of a journalist disappears into the desert without a trace—eight years later, the broken family is shocked when she is returned to them, as what should be a joyful reunion turns into a living nightmare.",
+    "size": "9 GB",
+    "size_gb": 9,
+    "poster": "https://image.tmdb.org/t/p/original/1q308iixueCU4pFtSYugNOevtNx.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/xugEpZk9YQ0DIz1aFvH5HGkqpZK.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/c03UF3dIm6Wl6hFYPmL2N4X2gxQ.png",
+    "added_at": "2026-11-27T16:34:55.337Z",
     "versions": [
       {
-        "file_id": "1gGJtZSVk4FZ_a74Y7QjE6RI3OQ4d0Yp6",
+        "file_id": "1V7mY4bAaf7eRWJBlVMoH6LQKdp2Eh4mc",
         "source": "gd",
-        "new_name": "The Invisible Man (2020) [1080p] [BluRay] [x265 HEVC] [Org Hindi BD DDP 7.1 - 768Kbps + English AAC 7.1] [ESub] [4 GB].mkv",
-        "size": "4 GB",
-        "size_gb": 4
+        "new_name": "Lee Cronins The Mummy (2026) [1080p] [WEB-DL] [x264] [DDP5.1] [9 GB].mkv",
+        "size": "9 GB",
+        "size_gb": 9
       }
     ]
   }
