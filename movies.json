@@ -93,36 +93,34 @@
     ]
   },
   {
-    "file_id": "19mNfhe0zhEaJR9o_7AofkEP4ZSHdcKUm",
+    "file_id": "1dQkZ73zz5G7kH7dNYNqNs7Wt31UxetGz",
     "source": "gd",
-    "tmdb_id": 17478,
-    "clean_name": "Dhoom",
-    "title": "Dhoom",
-    "original_title": "धूम",
-    "new_name": "Dhoom (2004) [1080p] [BluRay] [DTS-HD Master / 1509k DTS] [13 GB].mkv",
-    "year": 2004,
+    "tmdb_id": 44977,
+    "clean_name": "Dhoom 3",
+    "title": "Dhoom 3",
+    "original_title": "धूम ३",
+    "new_name": "Dhoom 3 (2013) [1080p] [Netflix] [Dolby Atmos] [8 GB].mkv",
+    "year": 2013,
     "orig_lang": "hi",
-    "rating": 6.2,
+    "rating": 6,
     "genres": [
       "Action",
-      "Crime",
-      "Drama",
-      "Thriller"
+      "Crime"
     ],
-    "plot": "A gang of bikers headed by the cool-headed and arrogant Kabir is on a robbing spree in Mumbai.  ACP Jai Dixit is put in charge of the case and he recruits a bumbling bike mechanic and racer to help Jai nab them.",
-    "size": "13 GB",
-    "size_gb": 13,
-    "poster": "https://image.tmdb.org/t/p/original/A3GBoQROHP0WjU9RXzlDU0iG3be.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/7XkAU2MTHV1ifbINbcSS3P1mwG2.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/gSdYoccc6EIN4OadKFUNt9BQa6J.png",
-    "added_at": "2026-11-27T16:28:25.541Z",
+    "plot": "To avenge his father's death, a circus entertainer trained in magic and acrobatics robs banks to take down a corrupt bank owner. Two cops from Mumbai are assigned to the case.",
+    "size": "8 GB",
+    "size_gb": 8,
+    "poster": "https://image.tmdb.org/t/p/original/rUVTM5EQUQ2I0fcfE46AkvBYWae.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/asmCFd6BnqPkwIj0jHzcJXgNJvi.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/mkb2ac5FnIUePucH9B3v7A41gVz.png",
+    "added_at": "2026-11-27T16:28:29.850Z",
     "versions": [
       {
-        "file_id": "19mNfhe0zhEaJR9o_7AofkEP4ZSHdcKUm",
+        "file_id": "1dQkZ73zz5G7kH7dNYNqNs7Wt31UxetGz",
         "source": "gd",
-        "new_name": "Dhoom (2004) [1080p] [BluRay] [DTS-HD Master / 1509k DTS] [13 GB].mkv",
-        "size": "13 GB",
-        "size_gb": 13
+        "new_name": "Dhoom 3 (2013) [1080p] [Netflix] [Dolby Atmos] [8 GB].mkv",
+        "size": "8 GB",
+        "size_gb": 8
       }
     ]
   }
