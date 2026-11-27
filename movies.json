@@ -126,34 +126,36 @@
     ]
   },
   {
-    "file_id": "1jNFHKtTb5YSUVgRYRC-zRIh_Ui8xrprW",
+    "file_id": "1FcgYg5gDwMNvkVb1M46lecS5MJiAP_7Q",
     "source": "gd",
-    "tmdb_id": 1196364,
-    "clean_name": "Thamma",
-    "title": "Thamma",
-    "original_title": "थम्मा",
-    "new_name": "Thamma (2025) [1080p] [WEB-DL] [AMZN] [x264] [HIN-TEL DDP5.1] [8 GB].mkv",
-    "year": 2025,
-    "orig_lang": "hi",
-    "rating": 6.5,
+    "tmdb_id": 904557,
+    "clean_name": "Thunivu",
+    "title": "Thunivu",
+    "original_title": "துணிவு",
+    "new_name": "Thunivu (2023) [2160p 4K] [10bit] [DS4K] [WEBRip] [Netflix] [x265 HEVC] [DDP5.1] [5.5 GB].mkv",
+    "year": 2023,
+    "orig_lang": "ta",
+    "rating": 5.7,
     "genres": [
-      "Horror",
+      "Action",
+      "Crime",
+      "Thriller",
       "Comedy"
     ],
-    "plot": "Two destined lovers battle supernatural forces, family ties, and nature itself to defend their forbidden romance in a mystical world where ancient powers and prophecies threaten to keep them apart.",
-    "size": "8 GB",
-    "size_gb": 8,
-    "poster": "https://image.tmdb.org/t/p/original/udkbDwBbysCGEydt0FHnl9dVO2k.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/e5bFtChejaGio218NejT0jXgSux.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/mO5B3zAx54qxl716CmkLp7oGEQu.png",
-    "added_at": "2026-11-27T16:32:51.006Z",
+    "plot": "A gang goes to rob a bank only to find that there's already a criminal mastermind holding it for ransom, but his identities and motives behind the heist remains mysterious. As they plan to collect the bounty and disappear without a trace, their crimes and their past slowly catches up with them.",
+    "size": "5.5 GB",
+    "size_gb": 5.5,
+    "poster": "https://image.tmdb.org/t/p/original/5Cdi9MFxEGsfphvDxV4TyY4znP6.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/oeqw3D9a8qyrSNtkZIK1QaCxBMe.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/bh7BoaKrStP500uotmaSFH6Os0V.png",
+    "added_at": "2026-11-27T16:32:55.160Z",
     "versions": [
       {
-        "file_id": "1jNFHKtTb5YSUVgRYRC-zRIh_Ui8xrprW",
+        "file_id": "1FcgYg5gDwMNvkVb1M46lecS5MJiAP_7Q",
         "source": "gd",
-        "new_name": "Thamma (2025) [1080p] [WEB-DL] [AMZN] [x264] [HIN-TEL DDP5.1] [8 GB].mkv",
-        "size": "8 GB",
-        "size_gb": 8
+        "new_name": "Thunivu (2023) [2160p 4K] [10bit] [DS4K] [WEBRip] [Netflix] [x265 HEVC] [DDP5.1] [5.5 GB].mkv",
+        "size": "5.5 GB",
+        "size_gb": 5.5
       }
     ]
   }
