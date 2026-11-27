@@ -158,35 +158,36 @@
     ]
   },
   {
-    "file_id": "1vMBY0tcOmUzve5wLpGiED_yBOqWleFjl",
+    "file_id": "1weCOQpO5eEMwTbOQl7krWXGcM5SDFVV0",
     "source": "gd",
-    "tmdb_id": 456287,
-    "clean_name": "Mersal",
-    "title": "Mersal",
-    "original_title": "மெர்சல்",
-    "new_name": "Mersal (2017) [2160p 4K] [x265 HEVC] [DTS] [MSub] [10 GB].mkv",
-    "year": 2017,
-    "orig_lang": "ta",
-    "rating": 7.3,
+    "tmdb_id": 68724,
+    "clean_name": "Elysium",
+    "title": "Elysium",
+    "original_title": "Elysium",
+    "new_name": "Elysium (2013) [2160p 4K] [BluRay] [x264] [Tamil + Tel (DD 2.0 - 224k) + Hin (DD+5.1 - 640k) + Eng (DD+5.1 - 384k)] [4.6 GB].mkv",
+    "year": 2013,
+    "orig_lang": "en",
+    "rating": 6.5,
     "genres": [
-      "Thriller",
+      "Science Fiction",
       "Action",
-      "Crime"
+      "Drama",
+      "Thriller"
     ],
-    "plot": "A few individuals in the medical profession are murdered or kidnapped, and the cop investigating the case suspects a doctor and arrests him. But is he the one who is behind these crimes? And why are they being committed?",
-    "size": "10 GB",
-    "size_gb": 10,
-    "poster": "https://image.tmdb.org/t/p/original/65Q1wpRPZ5E3UVUv2V5JBbJQCcj.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/7IJE6cNsbXYE2HzZSUQBj0RtUfv.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/kcrHdCw2u19kfEwVacLGdbAfgbn.png",
-    "added_at": "2026-11-27T16:39:08.201Z",
+    "plot": "In the year 2159, two classes of people exist: the very wealthy who live on a pristine man-made space station called Elysium, and the rest, who live on an overpopulated, ruined Earth. Secretary Rhodes, a hard line government official, will stop at nothing to enforce anti-immigration laws and preserve the luxurious lifestyle of the citizens of Elysium. That doesn’t stop the people of Earth from trying to get in, by any means they can. When unlucky Max is backed into a corner, he agrees to take on a daunting mission that, if successful, will not only save his life, but could bring equality to these polarized worlds.",
+    "size": "5 GB",
+    "size_gb": 5,
+    "poster": "https://image.tmdb.org/t/p/original/aRjuJuPXHtVs6YegfeeQWXGRs1E.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/oo9GyiNKvR4CU1etuYl081UJ1LE.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/rDlAW6L5Jxth9xZaKBvxhMm5rjY.png",
+    "added_at": "2026-11-27T16:39:12.012Z",
     "versions": [
       {
-        "file_id": "1vMBY0tcOmUzve5wLpGiED_yBOqWleFjl",
+        "file_id": "1weCOQpO5eEMwTbOQl7krWXGcM5SDFVV0",
         "source": "gd",
-        "new_name": "Mersal (2017) [2160p 4K] [x265 HEVC] [DTS] [MSub] [10 GB].mkv",
-        "size": "10 GB",
-        "size_gb": 10
+        "new_name": "Elysium (2013) [2160p 4K] [BluRay] [x264] [Tamil + Tel (DD 2.0 - 224k) + Hin (DD+5.1 - 640k) + Eng (DD+5.1 - 384k)] [4.6 GB].mkv",
+        "size": "5 GB",
+        "size_gb": 5
       }
     ]
   }
