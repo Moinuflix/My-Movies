@@ -158,36 +158,35 @@
     ]
   },
   {
-    "file_id": "1HAZu-5GVjkI-InQr79Ekbr0J1pkhUKeU",
+    "file_id": "1X2zL-GzXAX6wVQ9mriT0K717c7RtklEc",
     "source": "gd",
-    "tmdb_id": 432139,
-    "clean_name": "Vikram Vedha",
-    "title": "Vikram Vedha",
-    "original_title": "விக்ரம் வேதா",
-    "new_name": "Vikram Vedha (2017) [1080p] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [9 GB].mkv",
-    "year": 2017,
-    "orig_lang": "ta",
-    "rating": 7.2,
+    "tmdb_id": 1424217,
+    "clean_name": "Court: State vs. A Nobody",
+    "title": "Court: State vs. A Nobody",
+    "original_title": "కోర్ట్: State vs. A Nobody",
+    "new_name": "Court-State vs A Nobody (2025) [2160p 4K] [SDR] [HQ] [WEB-DL] [x265 HEVC] [Tam+Tel+Hin+Mal+Kan] [15 GB].mkv",
+    "year": 2025,
+    "orig_lang": "te",
+    "rating": 7.4,
     "genres": [
-      "Action",
-      "Thriller",
-      "Crime",
-      "Adventure"
+      "Drama",
+      "Romance",
+      "Crime"
     ],
-    "plot": "A notorious gangster Vedha surrenders himself to encounter specialist Vikram whom he challenges every step of the way by narrating his life events in the form of riddles that needs to be solved in order to capture him.",
-    "size": "9 GB",
-    "size_gb": 9,
-    "poster": "https://image.tmdb.org/t/p/original/se12m3uffluDlkTTZncOzsWKIkg.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/5bm6sq3eunj3It6pqacFrpRQYoy.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/f7DkTvZxJ8TrAfarNtyT6mNEPf.png",
-    "added_at": "2026-11-27T16:38:44.752Z",
+    "plot": "A determined lawyer takes on a high-stakes case to defend a 19-year-old boy, challenging a system that has already branded him guilty.",
+    "size": "15 GB",
+    "size_gb": 15,
+    "poster": "https://image.tmdb.org/t/p/original/4pEX67LJd7ZIqYWtksBtOgQEGcQ.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/efMmUfbqfMTtheqjcWiHDtxcXbA.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/gWvacLzupLUy4jkZ3yxnC4wre45.png",
+    "added_at": "2026-11-27T16:38:48.159Z",
     "versions": [
       {
-        "file_id": "1HAZu-5GVjkI-InQr79Ekbr0J1pkhUKeU",
+        "file_id": "1X2zL-GzXAX6wVQ9mriT0K717c7RtklEc",
         "source": "gd",
-        "new_name": "Vikram Vedha (2017) [1080p] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [9 GB].mkv",
-        "size": "9 GB",
-        "size_gb": 9
+        "new_name": "Court-State vs A Nobody (2025) [2160p 4K] [SDR] [HQ] [WEB-DL] [x265 HEVC] [Tam+Tel+Hin+Mal+Kan] [15 GB].mkv",
+        "size": "15 GB",
+        "size_gb": 15
       }
     ]
   }
