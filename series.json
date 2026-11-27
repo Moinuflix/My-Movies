@@ -28,5 +28,33 @@
         "fanart": "https://image.tmdb.org/t/p/original/3JAYyXuvWJJ2XMtXyQD7eDwiC3d.jpg"
       }
     ]
+  },
+  {
+    "id": "tmdb_214041",
+    "tmdb_id": 214041,
+    "clean_name": "あなたのコネのおかげです",
+    "title": "あなたのコネのおかげです",
+    "original_title": "あなたのコネのおかげです",
+    "year": 2021,
+    "orig_lang": "ja",
+    "rating": 7.5,
+    "genres": [],
+    "plot": "A Japanese variety show from Fuji TV.",
+    "poster": "",
+    "fanart": "",
+    "clearlogo": "",
+    "episodes": [
+      {
+        "file_id": "1FkFICI40yWFNEeYycAnPwydk5IBSMETU",
+        "source": "gd",
+        "season": 1,
+        "episode": 1,
+        "title": "全力!他力本願バラエティ!凄い映像撮れちゃいました",
+        "new_name": "Vadhandhi The Fable of Velonie (2026) [1080p] [AMZN] [DDP5.1] [3.2 GB].mkv",
+        "plot": "A Japanese variety show from Fuji TV",
+        "thumb": "",
+        "fanart": ""
+      }
+    ]
   }
 ]
