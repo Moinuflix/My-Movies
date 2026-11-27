@@ -93,13 +93,13 @@
     ]
   },
   {
-    "file_id": "1tMbv0Zxy8LYW4EvTTf5NF5kyF7ySYAhD",
+    "file_id": "1exAZYsaqaBxFkDvWH74zf-r9SNWA-y_B",
     "source": "gd",
     "tmdb_id": 743563,
     "clean_name": "Vikram",
     "title": "Vikram",
     "original_title": "விக்ரம்",
-    "new_name": "Vikram (2022) [1080p] [x265 HEVC] [Dolby Atmos 7.1] [10 GB].mkv",
+    "new_name": "Vikram (2022) [1080p] [60FPS] [10bit] [WEBRip] [Hotstar] [x265 HEVC] [DDP5.1] [11.7 GB].mkv",
     "year": 2022,
     "orig_lang": "ta",
     "rating": 7.6,
@@ -109,19 +109,19 @@
       "Thriller"
     ],
     "plot": "Amar is assigned to investigate a case of serial killings. When Amar investigates the case, he realizes it is not what it seems to be and following down this path will lead to nothing but war between everyone involved.",
-    "size": "10 GB",
-    "size_gb": 10,
+    "size": "11.7 GB",
+    "size_gb": 11.7,
     "poster": "https://image.tmdb.org/t/p/original/774UV1aCURb4s4JfEFg3IEMu5Zj.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/dkIX4dSMuVqjfrPGunBJUR7K3LQ.jpg",
     "clearlogo": "https://image.tmdb.org/t/p/original/803y6O9H2q2Jj5SkbRTysZ2zlmx.png",
-    "added_at": "2026-11-27T16:30:03.904Z",
+    "added_at": "2026-11-27T16:30:07.651Z",
     "versions": [
       {
-        "file_id": "1tMbv0Zxy8LYW4EvTTf5NF5kyF7ySYAhD",
+        "file_id": "1exAZYsaqaBxFkDvWH74zf-r9SNWA-y_B",
         "source": "gd",
-        "new_name": "Vikram (2022) [1080p] [x265 HEVC] [Dolby Atmos 7.1] [10 GB].mkv",
-        "size": "10 GB",
-        "size_gb": 10
+        "new_name": "Vikram (2022) [1080p] [60FPS] [10bit] [WEBRip] [Hotstar] [x265 HEVC] [DDP5.1] [11.7 GB].mkv",
+        "size": "11.7 GB",
+        "size_gb": 11.7
       }
     ]
   }
