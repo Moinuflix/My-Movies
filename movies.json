@@ -28,36 +28,34 @@
     ]
   },
   {
-    "file_id": "1weCOQpO5eEMwTbOQl7krWXGcM5SDFVV0",
+    "file_id": "11_SsRsQdt5FwwS3ol6U17h0BKD98x5x",
     "source": "gd",
-    "tmdb_id": 68724,
-    "clean_name": "Elysium",
-    "title": "Elysium",
-    "original_title": "Elysium",
-    "new_name": "Elysium (2013) [1080p] [BluRay] [x264] [Tamil + Tel (DD 2.0 - 224k) + Hin (DD+5.1 - 640k) + Eng (DD+5.1 - 384k)] [5 GB].mkv",
-    "year": 2013,
-    "orig_lang": "en",
-    "rating": 6.5,
+    "tmdb_id": 564147,
+    "clean_name": "K.G.F: Chapter 1",
+    "title": "K.G.F: Chapter 1",
+    "original_title": "ಕೆಜಿಎಫ್ ಅಧ್ಯಾಯ ೧",
+    "new_name": "K G F Chapter 1 (2018) [1080p] [REMUX] [Untouched] [MoviesAnywhere] [(Tel+Tam+Hin+Mal) DDP 5.1 - 640k] [32.33 GB].mkv",
+    "year": 2018,
+    "orig_lang": "kn",
+    "rating": 7.5,
     "genres": [
-      "Science Fiction",
       "Action",
-      "Drama",
       "Thriller"
     ],
-    "plot": "In the year 2159, two classes of people exist: the very wealthy who live on a pristine man-made space station called Elysium, and the rest, who live on an overpopulated, ruined Earth. Secretary Rhodes, a hard line government official, will stop at nothing to enforce anti-immigration laws and preserve the luxurious lifestyle of the citizens of Elysium. That doesn’t stop the people of Earth from trying to get in, by any means they can. When unlucky Max is backed into a corner, he agrees to take on a daunting mission that, if successful, will not only save his life, but could bring equality to these polarized worlds.",
-    "size": "5 GB",
-    "size_gb": 5,
-    "poster": "https://image.tmdb.org/t/p/original/aRjuJuPXHtVs6YegfeeQWXGRs1E.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/oo9GyiNKvR4CU1etuYl081UJ1LE.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/mL8LvLveSsmwIO814NajRJ1k0Vb.png",
-    "added_at": "2026-11-27T16:18:26.015Z",
+    "plot": "A period drama set in the 1970s, KGF follows the story of a fierce rebel who rises against the brutal oppression in Kolar Gold Fields and becomes the symbol of hope to legions of downtrodden people.",
+    "size": "32 GB",
+    "size_gb": 32,
+    "poster": "https://image.tmdb.org/t/p/original/ltHlJwvxKv7d0ooCiKSAvfwV9tX.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/4i1ofsSpfTuswHXcgPtXbZrSnoe.jpg",
+    "clearlogo": "",
+    "added_at": "2026-11-27T16:21:37.689Z",
     "versions": [
       {
-        "file_id": "1weCOQpO5eEMwTbOQl7krWXGcM5SDFVV0",
+        "file_id": "11_SsRsQdt5FwwS3ol6U17h0BKD98x5x",
         "source": "gd",
-        "new_name": "Elysium (2013) [1080p] [BluRay] [x264] [Tamil + Tel (DD 2.0 - 224k) + Hin (DD+5.1 - 640k) + Eng (DD+5.1 - 384k)] [5 GB].mkv",
-        "size": "5 GB",
-        "size_gb": 5
+        "new_name": "K G F Chapter 1 (2018) [1080p] [REMUX] [Untouched] [MoviesAnywhere] [(Tel+Tam+Hin+Mal) DDP 5.1 - 640k] [32.33 GB].mkv",
+        "size": "32 GB",
+        "size_gb": 32
       }
     ]
   }
