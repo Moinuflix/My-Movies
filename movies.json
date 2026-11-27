@@ -126,34 +126,35 @@
     ]
   },
   {
-    "file_id": "1c0J7keRIoBT0XQqxQ2F_qLhEgs4vVdth",
+    "file_id": "11J3-KOVacXFuwdEJbFo87Sw273u4G6t1",
     "source": "gd",
-    "tmdb_id": 66275,
-    "clean_name": "Thambikku Entha Ooru",
-    "title": "Thambikku Entha Ooru",
-    "original_title": "தம்பிக்கு எந்த ஊரு",
-    "new_name": "Thambikku Entha Ooru (1984) [1080p] [Untouched] [x264] [Tamil- 1080p HD AVC UNTOUCHED-x264-AAC- 4.7GB-ESub] [ESub] [4.7 GB].mkv",
-    "year": 1984,
+    "tmdb_id": 1008633,
+    "clean_name": "Brother",
+    "title": "Brother",
+    "original_title": "பிரதர்",
+    "new_name": "Brother (2024) [1080p] [WEB-DL] [DD+5.1 - 192Kbps & AAC 2.0] [ESub] [2.3 GB].mkv",
+    "year": 2024,
     "orig_lang": "ta",
-    "rating": 7,
+    "rating": 6.5,
     "genres": [
-      "Romance",
+      "Drama",
+      "Family",
       "Comedy"
     ],
-    "plot": "Seeing Balu's spendthrift and carefree attitude, his father sends him to his friend's house in a village to get reformed. Things get complicated when he gets entangled in a love triangle.",
-    "size": "5 GB",
-    "size_gb": 5,
-    "poster": "https://image.tmdb.org/t/p/original/wNoMLQy2uRegvOK6rUWJfEmJ9vn.jpg",
-    "fanart": "",
-    "clearlogo": "",
-    "added_at": "2026-11-27T16:35:31.435Z",
+    "plot": "Karthik, an unwavering idealist, goes on a journey to restore harmony in the fractured family and prove himself, when his pursuit of justice inadvertently clashes with family loyalty.",
+    "size": "2 GB",
+    "size_gb": 2,
+    "poster": "https://image.tmdb.org/t/p/original/hTVmE8Hou72Es4XQnTR9CDkJgq4.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/azukzBMEcJGrSR0ZxOFTSdNM1Mq.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/HNm1RenBC5O4AQ5elaffl9ZbB2.png",
+    "added_at": "2026-11-27T16:35:35.799Z",
     "versions": [
       {
-        "file_id": "1c0J7keRIoBT0XQqxQ2F_qLhEgs4vVdth",
+        "file_id": "11J3-KOVacXFuwdEJbFo87Sw273u4G6t1",
         "source": "gd",
-        "new_name": "Thambikku Entha Ooru (1984) [1080p] [Untouched] [x264] [Tamil- 1080p HD AVC UNTOUCHED-x264-AAC- 4.7GB-ESub] [ESub] [4.7 GB].mkv",
-        "size": "5 GB",
-        "size_gb": 5
+        "new_name": "Brother (2024) [1080p] [WEB-DL] [DD+5.1 - 192Kbps & AAC 2.0] [ESub] [2.3 GB].mkv",
+        "size": "2 GB",
+        "size_gb": 2
       }
     ]
   }
