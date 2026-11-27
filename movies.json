@@ -58,5 +58,37 @@
         "size_gb": 32
       }
     ]
+  },
+  {
+    "file_id": "1xm3E_QAXPTsIIhM8lT4AHlkSOB0viAo1",
+    "source": "gd",
+    "tmdb_id": 47940,
+    "clean_name": "Padayappa",
+    "title": "Padayappa",
+    "original_title": "படையப்பா",
+    "new_name": "Padayappa (1999) [2160p 4K] [WEB-DL] [AMZN] [x264] [1080p-Tamil - DDP2.0 (224Kbps)] [ESub] [11.5 GB].mkv",
+    "year": 1999,
+    "orig_lang": "ta",
+    "rating": 7.4,
+    "genres": [
+      "Drama",
+      "Action"
+    ],
+    "plot": "Padayappa, a mechanical engineer whose father gives up his property to his foster brother, and then dies of shock soon after. Neelambari initially loves Padayappa, but plans to humiliate him after his family humiliates her father. The rest of the plot deals with Padayappa overcoming all the obstacles placed by Neelambari.",
+    "size": "12 GB",
+    "size_gb": 12,
+    "poster": "https://image.tmdb.org/t/p/original/8PSYF0AtpLbSlTDneCUo7zP4qL1.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/c4GW20T51X7xxBlCuJPSzxXuLTp.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/7U50yGaT3xqq7Yx6jkBizwFjpXk.png",
+    "added_at": "2026-11-27T16:22:00.742Z",
+    "versions": [
+      {
+        "file_id": "1xm3E_QAXPTsIIhM8lT4AHlkSOB0viAo1",
+        "source": "gd",
+        "new_name": "Padayappa (1999) [2160p 4K] [WEB-DL] [AMZN] [x264] [1080p-Tamil - DDP2.0 (224Kbps)] [ESub] [11.5 GB].mkv",
+        "size": "12 GB",
+        "size_gb": 12
+      }
+    ]
   }
 ]
