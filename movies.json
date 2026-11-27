@@ -93,34 +93,35 @@
     ]
   },
   {
-    "file_id": "1k3eVYMfvW2h4tOHVygiN7HgwXOzchL87",
+    "file_id": "16OXdRaOgBinTC80Bwu6AcFZbvnH1kOds",
     "source": "gd",
-    "tmdb_id": 1291595,
-    "clean_name": "Insidious: Out of the Further",
-    "title": "Insidious: Out of the Further",
-    "original_title": "Insidious: Out of the Further",
-    "new_name": "Insidious: Out of the Further (2026) [1080p] [WEB-DL] [DDP Multi Tam+Tel+Hin+Mal] [11 GB].mkv",
-    "year": 2026,
-    "orig_lang": "en",
+    "tmdb_id": 330418,
+    "clean_name": "Indru Netru Naalai",
+    "title": "Indru Netru Naalai",
+    "original_title": "இன்று நேற்று நாளை",
+    "new_name": "Indru Netru Naalai (2015) [1080p] [AMZN] [Dolby Atmos] [07 GB].mkv",
+    "year": 2015,
+    "orig_lang": "ta",
     "rating": 7.7,
     "genres": [
-      "Horror",
+      "Comedy",
+      "Science Fiction",
       "Thriller"
     ],
-    "plot": "Gemma, a young mother raising her daughter in the house she grew up in, discovers she can travel into The Further, where she possesses an ability to bring what lives there back to the real world.",
-    "size": "11 GB",
-    "size_gb": 11,
-    "poster": "https://image.tmdb.org/t/p/original/4tTrW9dXCByS5wt2pXVWb58zNjz.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/p40lmrdI4blcAPZQMTPaiy5v5Ym.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/f65DhAYFi98FsRi4RWHTKkFtChu.png",
-    "added_at": "2026-11-27T16:31:08.640Z",
+    "plot": "Elango and his astrologer friend Pulivetti Arumugam come in possession of a time machine and start profiting from it. However, their meddling with time prevents the death of a gangster, who begins to wreck havoc in their lives.",
+    "size": "7 GB",
+    "size_gb": 7,
+    "poster": "https://image.tmdb.org/t/p/original/ArHCLV73pRLxRQbdYYh9tLOeLUe.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/sQYXs0FyAPhQf6UUas9YBgq64qh.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/7xZ7KDu5bHdnqMQCTltaLrhYKxJ.png",
+    "added_at": "2026-11-27T16:31:13.161Z",
     "versions": [
       {
-        "file_id": "1k3eVYMfvW2h4tOHVygiN7HgwXOzchL87",
+        "file_id": "16OXdRaOgBinTC80Bwu6AcFZbvnH1kOds",
         "source": "gd",
-        "new_name": "Insidious: Out of the Further (2026) [1080p] [WEB-DL] [DDP Multi Tam+Tel+Hin+Mal] [11 GB].mkv",
-        "size": "11 GB",
-        "size_gb": 11
+        "new_name": "Indru Netru Naalai (2015) [1080p] [AMZN] [Dolby Atmos] [07 GB].mkv",
+        "size": "7 GB",
+        "size_gb": 7
       }
     ]
   }
