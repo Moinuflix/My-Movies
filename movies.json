@@ -93,35 +93,35 @@
     ]
   },
   {
-    "file_id": "1gTSyWVQl2O5Sql2Pn5HEgExpj7rDq9Rc",
+    "file_id": "1AAys6JpxKj78ii6oyKQOK2l1kKR9Zjhd",
     "source": "gd",
-    "tmdb_id": 37645,
-    "clean_name": "22 Bullets",
-    "title": "22 Bullets",
-    "original_title": "L'Immortel",
-    "new_name": "22 Bullets (2010) [1080p] [AMZN] [Dolby Atmos] [7.7 GB].mkv",
-    "year": 2010,
+    "tmdb_id": 1450599,
+    "clean_name": "K.O.",
+    "title": "K.O.",
+    "original_title": "K.O.",
+    "new_name": "K O (2025) [1080p] [BluRay] [Dolby Atmos] [450 MB].mkv",
+    "year": 2025,
     "orig_lang": "fr",
-    "rating": 6.7,
+    "rating": 6.5,
     "genres": [
+      "Action",
       "Drama",
-      "Crime",
-      "Thriller"
+      "Adventure"
     ],
-    "plot": "A retired mobster goes on a revenge spree after being left for dead with 22 bullets in his body by his former childhood friend.",
-    "size": "8 GB",
-    "size_gb": 8,
-    "poster": "https://image.tmdb.org/t/p/original/4spRV4Qw0YGaWBHYJ6enu84sR81.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/ulv4h7NglaqDl68RZKnpvOPqT2t.jpg",
-    "clearlogo": "https://assets.fanart.tv/fanart/22-bullets-558350b920603.png",
-    "added_at": "2026-11-27T16:29:05.282Z",
+    "plot": "A former fighter must find the missing son of an opponent he accidentally killed years ago, taking on a brutally violent crime gang in Marseille.",
+    "size": "500 MB",
+    "size_gb": 0.49,
+    "poster": "https://image.tmdb.org/t/p/original/qcM2sUiAeP4zXwx4ADSvgc9S58k.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/rU9kRB3rBU5O7AMReZCiuIy7zmE.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/qXIHcpVXLNmGZhf0k5SLBMiezl7.png",
+    "added_at": "2026-11-27T16:29:09.380Z",
     "versions": [
       {
-        "file_id": "1gTSyWVQl2O5Sql2Pn5HEgExpj7rDq9Rc",
+        "file_id": "1AAys6JpxKj78ii6oyKQOK2l1kKR9Zjhd",
         "source": "gd",
-        "new_name": "22 Bullets (2010) [1080p] [AMZN] [Dolby Atmos] [7.7 GB].mkv",
-        "size": "8 GB",
-        "size_gb": 8
+        "new_name": "K O (2025) [1080p] [BluRay] [Dolby Atmos] [450 MB].mkv",
+        "size": "500 MB",
+        "size_gb": 0.49
       }
     ]
   }
