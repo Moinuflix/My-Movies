@@ -887,4 +887,344 @@
 
     const payload = isTg ? {
       source_type: "telegram",
-      tg_msg_id: item.tg_msg
+      tg_msg_id: item.tg_msg_id,
+      stealth_name: item.stealth_name,
+      original_filename: item.old_name,
+      new_name: item.new_name,
+      file_size_gb: item.size_gb,
+      tmdb_id: item.tmdb_id || 0,
+      media_type: item.media_type || (seInfo.isSeries ? "tv" : "movie"),
+      poster: item.poster || "",
+      tmdb_candidates: item.tmdb_candidates || []
+    } : { ...item, source_type: "gdrive" };
+
+    sessionStorage.setItem("moinuflix_edit_pending", JSON.stringify(payload));
+    window.location.href = seInfo.isSeries ? "series.html?load_pending=1" : "inbox.html?load_pending=1";
+  }
+
+  async function approveSingleItem(index, isBatch = false) {
+    const token = getToken();
+    if (!token) return alert("GitHub Token missing! Click 'Token' button at top right.");
+
+    const isTg = activeSource === "telegram";
+    const isImp = activeSource === "imported";
+    const item = getActiveQueueArray()[index];
+    if (!item) return;
+    const parsed = item.parsed || {};
+    const srcCode = isTg ? "tg" : (item.source || "gd");
+    const rawName = isTg ? (item.old_name || "") : (item.original_filename || item.old_name || item.new_name || "");
+    const baseName = item.new_name || rawName;
+    const seInfo = detectSeriesInfo(item, rawName, baseName);
+
+    let title = parsed.title;
+    let year = parsed.year;
+    if (!title && baseName) {
+      const titleMatch = baseName.match(/^(.+?)\s*(?:\((\d{4})\)|S\d{1,2}E\d{1,3})/i);
+      title = titleMatch ? titleMatch[1].replace(/[-_.()\[\]]+/g, ' ').replace(/\s+/g, ' ').trim() : baseName.split("[")[0].trim();
+      year = titleMatch && titleMatch[2] ? parseInt(titleMatch[2], 10) : 2026;
+    }
+    title = title || "Untitled";
+    year = year || 2026;
+
+    const fileId = isTg ? String(item.tg_msg_id).trim() : String(item.gdrive_id || item.file_id || "").replace(/\s+/g, '');
+    const realSize = isTg
+      ? (item.size_gb || "2.5 GB")
+      : (item.file_size_gb || item.size || (baseName.match(/\[(\d+[\.\d]*\s*(?:GB|MB))\]/i)?.[1]) || "5 GB");
+    const sizeNumMatch = String(realSize).match(/(\d+(?:\.\d+)?)\s*(GB|MB)/i);
+    const sizeGbNum = item.size_gb || (sizeNumMatch ? parseFloat((parseFloat(sizeNumMatch[1]) / (sizeNumMatch[2].toUpperCase() === "MB" ? 1024 : 1)).toFixed(2)) : 5.0);
+
+    const deepAudio = parseDeepAudio(rawName);
+    let tmdbId = item.selected_tmdb_id || item.tmdb_id || (item.tmdb_candidates && item.tmdb_candidates[0]?.tmdb_id) || 0;
+
+    if (!isBatch) showStatus(`⚡ Fetching official TMDb 4K metadata for "${title}"...`);
+
+    let meta = {
+      clean_name: title,
+      original_title: title,
+      year: year,
+      rating: 7.5,
+      orig_lang: "hi",
+      genres: ["Drama"],
+      plot: "Streamed via MoinuFlix Private 4K & 5.1 Server.",
+      poster: item.poster || "",
+      fanart: "",
+      clearlogo: "",
+      ep_title: `Episode ${seInfo.episode}`,
+      ep_plot: "Streamed via MoinuFlix Private 4K & 5.1 Server.",
+      ep_thumb: ""
+    };
+
+    try {
+      if (!tmdbId && title) {
+        const epSearch = seInfo.isSeries ? "tv" : "movie";
+        const sRes = await fetch(`https://api.themoviedb.org/3/search/${epSearch}?api_key=${TMDB_KEY}&query=${encodeURIComponent(title)}&include_adult=false`);
+        if (sRes.ok) {
+          const sData = await sRes.json();
+          if (sData.results && sData.results[0]) tmdbId = sData.results[0].id;
+        }
+      }
+
+      if (tmdbId) {
+        const endpoint = seInfo.isSeries ? "tv" : "movie";
+        const tRes = await fetch(`https://api.themoviedb.org/3/${endpoint}/${tmdbId}?api_key=${TMDB_KEY}&append_to_response=images&include_image_language=en,hi,ta,te,ko,ja,null`);
+        if (tRes.ok) {
+          const td = await tRes.json();
+          meta.clean_name = td.title || td.name || title;
+          meta.original_title = td.original_title || td.original_name || meta.clean_name;
+          const rawDate = td.release_date || td.first_air_date || `${year}-01-01`;
+          meta.year = parseInt(rawDate.split("-")[0], 10);
+          meta.rating = td.vote_average ? parseFloat(td.vote_average.toFixed(1)) : 7.5;
+          meta.orig_lang = (td.original_language || "hi").toLowerCase();
+          meta.genres = (td.genres || []).map(g => g.name);
+          meta.plot = td.overview || meta.plot;
+          meta.ep_plot = meta.plot;
+          meta.poster = td.poster_path ? `https://image.tmdb.org/t/p/original${td.poster_path}` : meta.poster;
+          meta.fanart = td.backdrop_path ? `https://image.tmdb.org/t/p/original${td.backdrop_path}` : "";
+
+          const tmdbLogos = td.images?.logos || [];
+          if (tmdbLogos.length > 0) {
+            const bestLogo = tmdbLogos.find(l => l.file_path && l.file_path.endsWith(".png")) || tmdbLogos[0];
+            if (bestLogo) meta.clearlogo = `https://image.tmdb.org/t/p/original${bestLogo.file_path}`;
+          }
+
+          if (!meta.clearlogo) {
+            try {
+              const faType = seInfo.isSeries ? "tv" : "movies";
+              const faRes = await fetch(`https://webservice.fanart.tv/v3/${faType}/${tmdbId}?api_key=${FANART_KEY}`);
+              if (faRes.ok) {
+                const fa = await faRes.json();
+                meta.clearlogo = fa.hdmovielogo?.[0]?.url || fa.hdtvlogo?.[0]?.url || fa.movielogo?.[0]?.url || fa.clearlogo?.[0]?.url || "";
+              }
+            } catch (_) {}
+          }
+
+          if (seInfo.isSeries) {
+            try {
+              const epRes = await fetch(`https://api.themoviedb.org/3/tv/${tmdbId}/season/${seInfo.season}/episode/${seInfo.episode}?api_key=${TMDB_KEY}`);
+              if (epRes.ok) {
+                const epd = await epRes.json();
+                if (epd.name) meta.ep_title = epd.name;
+                if (epd.overview) meta.ep_plot = epd.overview;
+                if (epd.still_path) meta.ep_thumb = `https://image.tmdb.org/t/p/original${epd.still_path}`;
+              }
+            } catch (_) {}
+          }
+        }
+      }
+    } catch (_) {}
+
+    const finalDashName = item.new_name || `${meta.clean_name} (${meta.year}) [${parsed.resolution || '1080p'}] [${isTg ? 'Telegram' : (parsed.source || 'WEB-DL')}] [${deepAudio}] [${realSize}].mkv`;
+
+    if (seInfo.isSeries) {
+      if (!isBatch) showStatus(`📺 Committing "${meta.clean_name}" S${seInfo.season}E${seInfo.episode} to series.json...`);
+      let seriesArr = [];
+      const sGet = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/series.json?t=${Date.now()}`);
+      if (sGet.ok) {
+        const parsedS = await sGet.json();
+        seriesArr = Array.isArray(parsedS) ? parsedS : [];
+      }
+
+      const epRecord = {
+        file_id: fileId,
+        source: srcCode,
+        season: seInfo.season,
+        episode: seInfo.episode,
+        title: meta.ep_title,
+        new_name: finalDashName,
+        plot: meta.ep_plot,
+        thumb: meta.ep_thumb || meta.fanart || meta.poster,
+        fanart: meta.fanart || meta.poster
+      };
+
+      let sIdx = seriesArr.findIndex(s => (tmdbId && Number(s.tmdb_id) === Number(tmdbId)) || String(s.clean_name || s.title).toLowerCase() === meta.clean_name.toLowerCase());
+      if (sIdx >= 0) {
+        seriesArr[sIdx].episodes = seriesArr[sIdx].episodes || [];
+        const epEx = seriesArr[sIdx].episodes.findIndex(e => Number(e.season) === seInfo.season && Number(e.episode) === seInfo.episode);
+        if (epEx >= 0) seriesArr[sIdx].episodes[epEx] = epRecord;
+        else seriesArr[sIdx].episodes.push(epRecord);
+        seriesArr[sIdx].episodes.sort((a, b) => (a.season - b.season) || (a.episode - b.episode));
+      } else {
+        seriesArr.push({
+          id: tmdbId ? `tmdb_${tmdbId}` : fileId,
+          tmdb_id: tmdbId ? parseInt(tmdbId, 10) : 0,
+          clean_name: meta.clean_name,
+          title: meta.clean_name,
+          original_title: meta.original_title,
+          year: meta.year,
+          orig_lang: meta.orig_lang,
+          rating: meta.rating,
+          genres: meta.genres,
+          plot: meta.plot,
+          poster: meta.poster,
+          fanart: meta.fanart,
+          clearlogo: meta.clearlogo,
+          episodes: [epRecord]
+        });
+      }
+
+      await commitGithubFile("series.json", seriesArr, `Series (${srcCode}): ${meta.clean_name} S${seInfo.season}E${seInfo.episode}`, token);
+    } else {
+      if (!isBatch) showStatus(`🎬 Committing "${meta.clean_name}" (${meta.orig_lang}) to movies.json...`);
+      let moviesArr = [];
+      const mGet = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/movies.json?t=${Date.now()}`);
+      if (mGet.ok) {
+        const parsedM = await mGet.json();
+        moviesArr = Array.isArray(parsedM) ? parsedM : [];
+      }
+
+      const versionEntry = {
+        file_id: fileId,
+        source: srcCode,
+        new_name: finalDashName,
+        size: realSize,
+        size_gb: sizeGbNum
+      };
+
+      const mIdx = moviesArr.findIndex(m => (tmdbId && Number(m.tmdb_id) === Number(tmdbId)) || String(m.file_id || m.id) === fileId);
+      if (mIdx >= 0) {
+        moviesArr[mIdx].versions = moviesArr[mIdx].versions || [];
+        const vEx = moviesArr[mIdx].versions.findIndex(v => String(v.file_id || v.id) === fileId);
+        if (vEx >= 0) moviesArr[mIdx].versions[vEx] = versionEntry;
+        else moviesArr[mIdx].versions.push(versionEntry);
+        moviesArr[mIdx].added_at = new Date().toISOString();
+      } else {
+        moviesArr.push({
+          file_id: fileId,
+          source: srcCode,
+          tmdb_id: tmdbId ? parseInt(tmdbId, 10) : 0,
+          clean_name: meta.clean_name,
+          title: meta.clean_name,
+          original_title: meta.original_title,
+          new_name: finalDashName,
+          year: meta.year,
+          orig_lang: meta.orig_lang,
+          rating: meta.rating,
+          genres: meta.genres,
+          plot: meta.plot,
+          size: realSize,
+          size_gb: sizeGbNum,
+          poster: meta.poster,
+          fanart: meta.fanart,
+          clearlogo: meta.clearlogo,
+          added_at: new Date().toISOString(),
+          versions: [versionEntry]
+        });
+      }
+
+      await commitGithubFile("movies.json", moviesArr, `Movie (${srcCode}/${meta.orig_lang}): ${meta.clean_name}`, token);
+    }
+
+    // COMMIT TO name_registry.json
+    let regArr = [];
+    const rGet = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/name_registry.json?t=${Date.now()}`);
+    if (rGet.ok) {
+      const parsedR = await rGet.json();
+      regArr = Array.isArray(parsedR) ? parsedR : [];
+    }
+
+    const regEntry = {
+      source: srcCode,
+      file_id: fileId,
+      tmdb_id: tmdbId ? parseInt(tmdbId, 10) : 0,
+      cat: seInfo.isSeries ? "SERIES" : "MOVIE",
+      orig_lang: meta.orig_lang,
+      old_name: rawName || finalDashName,
+      new_name: finalDashName,
+      size_gb: sizeGbNum,
+      approved_at: new Date().toISOString()
+    };
+
+    const rIdx = regArr.findIndex(r => String(r.file_id) === fileId);
+    if (rIdx >= 0) regArr[rIdx] = regEntry;
+    else regArr.unshift(regEntry);
+
+    await commitGithubFile("name_registry.json", regArr, `Registry: ${meta.clean_name} (${fileId})`, token);
+
+    // REMOVE ONLY FROM THE ACTIVE QUEUE
+    if (isTg) {
+      tgPendingList.splice(index, 1);
+      await commitGithubFile("tg/step1_pending.json", tgPendingList, `TG Approved #${fileId}`, token);
+    } else if (isImp) {
+      importedPendingList.splice(index, 1);
+      persistImportedQueue();
+    } else {
+      pendingList.splice(index, 1);
+      await commitGithubFile("resources/data/pending_movies.json", pendingList, `Remove ${meta.clean_name} from pending`, token);
+    }
+
+    if (!isBatch) {
+      showStatus(`🎉 "${meta.clean_name}" committed to ${seInfo.isSeries ? 'series.json' : 'movies.json'} & name_registry.json!`);
+      renderPendingCards();
+      loadMasterStats();
+    }
+  }
+
+  async function rejectItem(index) {
+    const isTg = activeSource === "telegram";
+    const isImp = activeSource === "imported";
+
+    if (isImp) {
+      const title = importedPendingList[index]?.new_name || importedPendingList[index]?.old_name || "item";
+      if (!confirm(`Remove "${title}" from Imported JSON Queue?`)) return;
+      importedPendingList.splice(index, 1);
+      persistImportedQueue();
+      renderPendingCards();
+      return;
+    }
+
+    const token = getToken();
+    if (!token) return alert("GitHub Token missing!");
+
+    if (isTg) {
+      const item = tgPendingList[index];
+      if (!item) return;
+      if (!confirm(`Remove TG #${item.tg_msg_id} from Telegram queue?`)) return;
+      tgPendingList.splice(index, 1);
+      await commitGithubFile("tg/step1_pending.json", tgPendingList, `TG Dismissed #${item.tg_msg_id}`, token);
+      loadPendingList();
+    } else {
+      const item = pendingList[index];
+      if (!item) return;
+      const title = item.parsed?.title || item.new_name || "item";
+      if (!confirm(`Remove "${title}" from Google Drive queue?`)) return;
+      pendingList.splice(index, 1);
+      await commitGithubFile("resources/data/pending_movies.json", pendingList, `Dismiss ${title}`, token);
+      loadPendingList();
+    }
+  }
+
+  async function commitGithubFile(path, data, msg, token) {
+    const url = `https://api.github.com/repos/${GH_REPO}/contents/${path}`;
+    let sha = undefined;
+    try {
+      const gRes = await fetch(`${url}?t=${Date.now()}`, {
+        headers: { "Authorization": `token ${token}`, "Accept": "application/vnd.github.v3+json" }
+      });
+      if (gRes.ok) {
+        const gJson = await gRes.json();
+        sha = gJson.sha;
+      }
+    } catch (_) {}
+
+    const jsonStr = JSON.stringify(data, null, 2);
+    const encoded = btoa(unescape(encodeURIComponent(jsonStr)));
+
+    const res = await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Authorization": `token ${token}`,
+        "Accept": "application/vnd.github.v3+json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message: msg, content: encoded, branch: GH_BRANCH, sha: sha })
+    });
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.message || "GitHub API Error");
+    }
+  }
+
+  window.addEventListener("DOMContentLoaded", loadPendingList);
+</script>
+</body>
+</html>
