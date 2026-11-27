@@ -75,7 +75,6 @@
     .btn-red { background: rgba(239, 68, 68, 0.18); border-color: var(--laser-red); color: #fca5a5; }
     .btn-red:hover { background: var(--laser-red); color: #fff; }
 
-    /* SOURCE SWITCHER TABS (3 SEPARATE QUEUES) */
     .source-tabs { display: flex; gap: 10px; margin-bottom: 1.25rem; flex-wrap: wrap; }
     .src-tab {
       padding: 0.7rem 1.3rem;
@@ -324,8 +323,8 @@
   <!-- TOP BAR -->
   <div class="top-header">
     <div>
-      <div class="brand-title">MOINUFLIX — UNIFIED 3-FILE APPROVAL STUDIO</div>
-      <div class="brand-sub">Isolated Queues (GDrive • Telegram • Imported JSON) • Auto-TMDb • movies.json &amp; series.json</div>
+      <div class="brand-title">MOINUFLIX — UNIFIED APPROVAL STUDIO</div>
+      <div class="brand-sub">Clean ID-Only Schema (GDrive • Telegram • Imported JSON) • movies.json, series.json &amp; name_registry.json</div>
     </div>
     <div class="nav-actions">
       <input type="file" id="json-import-input" accept=".json" style="display:none" onchange="handleJsonImport(event)">
@@ -335,13 +334,14 @@
       <button class="btn-pill" onclick="triggerGithubWorkflow('scan_drive.yml', 'Google Drive Scanner')">⚡ Drive Action</button>
       <button class="btn-pill btn-green" onclick="triggerBatchSelectedApproval()">🚀 Approve Selected</button>
       <button class="btn-pill" onclick="loadPendingList()">🔄 Refresh</button>
-      <a href="inbox.html" class="btn-pill">📝 Form</a>
-      <a href="admin.html" class="btn-pill">🎬 Library</a>
+      <a href="inbox.html" class="btn-pill">🎬 Movies</a>
+      <a href="series.html" class="btn-pill">📺 Series</a>
+      <a href="admin.html" class="btn-pill">🗂️ Library</a>
       <button class="btn-pill" onclick="configureToken()">⚙️ Token</button>
     </div>
   </div>
 
-  <!-- 3 SEPARATE QUEUE TABS (NEVER MIXED) -->
+  <!-- 3 SEPARATE QUEUE TABS -->
   <div class="source-tabs">
     <button class="src-tab active-gdrive" id="tab-gdrive" onclick="switchQueueSource('gdrive')">
       📁 Google Drive Queue (<span id="cnt-gdrive">0</span>)
@@ -394,12 +394,12 @@
 <div class="modal-backdrop" id="preview-modal">
   <div class="modal-box">
     <div class="modal-header">
-      <div class="modal-title" id="modal-heading">✓ Confirm Ingest to Unified JSON</div>
+      <div class="modal-title" id="modal-heading">✓ Confirm Ingest to Master JSON</div>
       <button class="btn-close-modal" onclick="closeModal()">✕</button>
     </div>
 
     <div class="compare-box">
-      <span class="compare-lbl">Original Filename (old_name):</span>
+      <span class="compare-lbl">Original Filename (to name_registry.json):</span>
       <span class="compare-raw" id="modal-raw-name">...</span>
     </div>
 
@@ -430,7 +430,7 @@
       <button class="btn-close-modal" onclick="closeBatchModal()">✕</button>
     </div>
     <div style="font-size:0.85rem; color:var(--text-muted);">
-      Auto-fetching TMDb 4K Art + Language &amp; writing to <strong>movies.json</strong>, <strong>series.json</strong> &amp; <strong>name_registry.json</strong>...
+      Auto-fetching TMDb 4K Art + Language &amp; writing clean ID records to <strong>movies.json</strong>, <strong>series.json</strong> &amp; <strong>name_registry.json</strong>...
     </div>
     <div class="batch-progress-scroll" id="batch-log-container"></div>
     <div style="display:flex; justify-content:flex-end; margin-top:10px;">
@@ -444,14 +444,12 @@
   const FANART_KEY = "b207628faa5a1fc82f7dc07575c224f7";
   const GH_REPO = "Moinuflix/My-Movies";
   const GH_BRANCH = "main";
-  const WORKER_BASE = "https://gdrive-stream.moinudeentv.workers.dev/?id=";
-  const USER_AGENT = "|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0";
   const IMPORTED_STORAGE_KEY = "moinuflix_imported_json_queue_v1";
 
-  let activeSource = "gdrive"; // "gdrive" | "telegram" | "imported"
-  let pendingList = [];          // Google Drive live GitHub queue
-  let tgPendingList = [];        // Telegram Stealth Vault live GitHub queue
-  let importedPendingList = [];  // Dedicated Isolated Imported JSON queue
+  let activeSource = "gdrive";
+  let pendingList = [];
+  let tgPendingList = [];
+  let importedPendingList = [];
   let registryList = [];
   let activeApproveIndex = null;
 
@@ -510,7 +508,6 @@
     };
   }
 
-  /* 📥 IMPORT LOCAL JSON INTO ITS OWN DEDICATED TAB (NEVER MIXES WITH GDRIVE/TG) */
   function handleJsonImport(event) {
     const file = event.target.files[0];
     if (!file) return;
@@ -536,14 +533,13 @@
             original_filename: row.old_name || row.original_filename || row.new_name || "",
             new_name: row.new_name || row.old_name || "",
             file_size_gb: row.size || (row.size_gb ? `${row.size_gb} GB` : "5 GB"),
-            size_gb: row.size_gb || 0,
-            target_chunk: row.target_chunk || ""
+            size_gb: row.size_gb || 0
           });
           added++;
         });
         persistImportedQueue();
         switchQueueSource("imported");
-        showStatus(`📥 Imported ${added} items into the separate "Imported JSON Queue" tab (GDrive & Telegram queues untouched)!`);
+        showStatus(`📥 Imported ${added} items into the separate "Imported JSON Queue" tab!`);
       } catch (err) {
         alert("JSON Parse Error: " + err.message);
       }
@@ -940,6 +936,7 @@
       fanart: "",
       clearlogo: "",
       ep_title: `Episode ${seInfo.episode}`,
+      ep_plot: "Streamed via MoinuFlix Private 4K & 5.1 Server.",
       ep_thumb: ""
     };
 
@@ -966,6 +963,7 @@
           meta.orig_lang = (td.original_language || "hi").toLowerCase();
           meta.genres = (td.genres || []).map(g => g.name);
           meta.plot = td.overview || meta.plot;
+          meta.ep_plot = meta.plot;
           meta.poster = td.poster_path ? `https://image.tmdb.org/t/p/original${td.poster_path}` : meta.poster;
           meta.fanart = td.backdrop_path ? `https://image.tmdb.org/t/p/original${td.backdrop_path}` : "";
 
@@ -992,6 +990,7 @@
               if (epRes.ok) {
                 const epd = await epRes.json();
                 if (epd.name) meta.ep_title = epd.name;
+                if (epd.overview) meta.ep_plot = epd.overview;
                 if (epd.still_path) meta.ep_thumb = `https://image.tmdb.org/t/p/original${epd.still_path}`;
               }
             } catch (_) {}
@@ -1001,7 +1000,6 @@
     } catch (_) {}
 
     const finalDashName = item.new_name || `${meta.clean_name} (${meta.year}) [${parsed.resolution || '1080p'}] [${isTg ? 'Telegram' : (parsed.source || 'WEB-DL')}] [${deepAudio}] [${realSize}].mkv`;
-    const streamUrl = `${WORKER_BASE}${fileId}${srcCode === "tg" ? "&source=tg" : ""}${USER_AGENT}`;
 
     if (seInfo.isSeries) {
       if (!isBatch) showStatus(`📺 Committing "${meta.clean_name}" S${seInfo.season}E${seInfo.episode} to series.json...`);
@@ -1016,21 +1014,17 @@
         seriesArr = Array.isArray(parsedS) ? parsedS : [];
       }
 
+      // CLEAN EPISODE RECORD (ID-ONLY SCHEMA — NO STREAM_URL, NO OLD_NAME)
       const epRecord = {
-        id: fileId,
         file_id: fileId,
         source: srcCode,
         season: seInfo.season,
         episode: seInfo.episode,
         title: meta.ep_title,
-        clean_name: meta.ep_title,
-        old_name: rawName,
         new_name: finalDashName,
-        size: realSize,
-        size_gb: sizeGbNum,
+        plot: meta.ep_plot,
         thumb: meta.ep_thumb || meta.fanart || meta.poster,
-        fanart: meta.fanart || meta.poster,
-        stream_url: streamUrl
+        fanart: meta.fanart || meta.poster
       };
 
       let sIdx = seriesArr.findIndex(s => (tmdbId && Number(s.tmdb_id) === Number(tmdbId)) || String(s.clean_name || s.title).toLowerCase() === meta.clean_name.toLowerCase());
@@ -1046,6 +1040,7 @@
           tmdb_id: tmdbId ? parseInt(tmdbId, 10) : 0,
           clean_name: meta.clean_name,
           title: meta.clean_name,
+          original_title: meta.original_title,
           year: meta.year,
           orig_lang: meta.orig_lang,
           rating: meta.rating,
@@ -1072,20 +1067,16 @@
         moviesArr = Array.isArray(parsedM) ? parsedM : [];
       }
 
+      // CLEAN VERSION RECORD (ID-ONLY SCHEMA — NO STREAM_URL, NO OLD_NAME)
       const versionEntry = {
-        id: fileId,
         file_id: fileId,
         source: srcCode,
-        old_name: rawName,
         new_name: finalDashName,
-        resolution: parsed.resolution || (finalDashName.includes("2160p") ? "2160p" : "1080p"),
-        audio: deepAudio,
         size: realSize,
-        size_gb: sizeGbNum,
-        stream_url: streamUrl
+        size_gb: sizeGbNum
       };
 
-      const mIdx = moviesArr.findIndex(m => (tmdbId && Number(m.tmdb_id) === Number(tmdbId)) || String(m.id) === fileId);
+      const mIdx = moviesArr.findIndex(m => (tmdbId && Number(m.tmdb_id) === Number(tmdbId)) || String(m.file_id || m.id) === fileId);
       if (mIdx >= 0) {
         moviesArr[mIdx].versions = moviesArr[mIdx].versions || [];
         const vEx = moviesArr[mIdx].versions.findIndex(v => String(v.file_id || v.id) === fileId);
@@ -1094,14 +1085,12 @@
         moviesArr[mIdx].added_at = new Date().toISOString();
       } else {
         moviesArr.push({
-          id: fileId,
           file_id: fileId,
           source: srcCode,
           tmdb_id: tmdbId ? parseInt(tmdbId, 10) : 0,
           clean_name: meta.clean_name,
           title: meta.clean_name,
           original_title: meta.original_title,
-          old_name: rawName,
           new_name: finalDashName,
           year: meta.year,
           orig_lang: meta.orig_lang,
@@ -1114,7 +1103,6 @@
           fanart: meta.fanart,
           clearlogo: meta.clearlogo,
           added_at: new Date().toISOString(),
-          stream_url: streamUrl,
           versions: [versionEntry]
         });
       }
@@ -1122,7 +1110,7 @@
       await commitGithubFile("movies.json", moviesArr, `Movie (${srcCode}/${meta.orig_lang}): ${meta.clean_name}`, mSha, token);
     }
 
-    // COMMIT TO name_registry.json
+    // COMMIT TO name_registry.json (WITH OLD_NAME & CAT)
     let regArr = [], rSha;
     const rGet = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/name_registry.json?t=${Date.now()}`, {
       headers: { "Authorization": `token ${token}` }
@@ -1140,7 +1128,7 @@
       tmdb_id: tmdbId ? parseInt(tmdbId, 10) : 0,
       cat: seInfo.isSeries ? "SERIES" : "MOVIE",
       orig_lang: meta.orig_lang,
-      old_name: rawName,
+      old_name: rawName || finalDashName,
       new_name: finalDashName,
       size_gb: sizeGbNum,
       approved_at: new Date().toISOString()
@@ -1152,7 +1140,7 @@
 
     await commitGithubFile("name_registry.json", regArr, `Registry: ${meta.clean_name} (${fileId})`, rSha, token);
 
-    // REMOVE ONLY FROM THE ACTIVE QUEUE (NO CROSS-CONTAMINATION)
+    // REMOVE ONLY FROM THE ACTIVE QUEUE
     if (isTg) {
       tgPendingList.splice(index, 1);
       let s1Sha;
@@ -1240,11 +1228,6 @@
       const err = await res.json();
       throw new Error(err.message || "GitHub API Error");
     }
-  }
-
-  function escapeHtml(text) {
-    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
-    return String(text || '').replace(/[&<>"']/g, m => map[m]);
   }
 
   window.addEventListener("DOMContentLoaded", loadPendingList);
