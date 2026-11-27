@@ -191,5 +191,37 @@
         "size_gb": 18
       }
     ]
+  },
+  {
+    "file_id": "1FqCVS6fohhfsYsY09QpLZa2ZWcACzk9W",
+    "source": "gd",
+    "tmdb_id": 75064,
+    "clean_name": "Kanchana",
+    "title": "Kanchana",
+    "original_title": "முனி 2: காஞ்சனா",
+    "new_name": "Kanchana (2011) [1080p] [WEB-DL] [AVC] [Hindi 5.1] [12 GB].mkv",
+    "year": 2011,
+    "orig_lang": "ta",
+    "rating": 5.6,
+    "genres": [
+      "Horror",
+      "Comedy"
+    ],
+    "plot": "When three spirits possess a timid young man and start making him act like a woman, his mother consults an exorcist who unearths a heartbreaking tale of societal injustice, murder and vengeance.",
+    "size": "12 GB",
+    "size_gb": 12,
+    "poster": "https://image.tmdb.org/t/p/original/imGP0yeKkK8u8LCboD3ufUvaFnT.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/1Vx5e9s6X8dCCfghY4jIioe8hX5.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/wStF44O4KRd1cYgauQYwqn2lxUP.png",
+    "added_at": "2026-11-27T17:06:52.734Z",
+    "versions": [
+      {
+        "file_id": "1FqCVS6fohhfsYsY09QpLZa2ZWcACzk9W",
+        "source": "gd",
+        "new_name": "Kanchana (2011) [1080p] [WEB-DL] [AVC] [Hindi 5.1] [12 GB].mkv",
+        "size": "12 GB",
+        "size_gb": 12
+      }
+    ]
   }
 ]
