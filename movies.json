@@ -48,7 +48,7 @@
     "poster": "https://image.tmdb.org/t/p/original/ltHlJwvxKv7d0ooCiKSAvfwV9tX.jpg",
     "fanart": "https://image.tmdb.org/t/p/original/4i1ofsSpfTuswHXcgPtXbZrSnoe.jpg",
     "clearlogo": "",
-    "added_at": "2026-11-27T16:21:37.689Z",
+    "added_at": "2026-11-27T16:33:08.492Z",
     "versions": [
       {
         "file_id": "11_SsRsQdt5FwwS3ol6U17h0BKD98x5x",
@@ -56,6 +56,13 @@
         "new_name": "K G F Chapter 1 (2018) [1080p] [REMUX] [Untouched] [MoviesAnywhere] [(Tel+Tam+Hin+Mal) DDP 5.1 - 640k] [32.33 GB].mkv",
         "size": "32 GB",
         "size_gb": 32
+      },
+      {
+        "file_id": "1SX7x1-0_xrXtDdKXmuQbQ9yqvuyT7kLk",
+        "source": "gd",
+        "new_name": "K G F Chapter 1 (2018) [1080p] [WEB-DL] [AMZN] [x264] [DDP5.1] [10 GB].mkv",
+        "size": "10 GB",
+        "size_gb": 10
       }
     ]
   },
@@ -122,37 +129,6 @@
         "new_name": "Im Scared Video Video Song LEO 1080 P 60FP mkv (2026) [Dolby 5.1 Surround] [112 MB].mkv",
         "size": "112 MB",
         "size_gb": 0.11
-      }
-    ]
-  },
-  {
-    "file_id": "1_jnc9HA0WX6uVj_N0pez_iByMwbAAUss",
-    "source": "gd",
-    "tmdb_id": 540468,
-    "clean_name": "Geetha Govindam",
-    "title": "Geetha Govindam",
-    "original_title": "గీత గోవిందం",
-    "new_name": "Geetha Govindam (2018) [2160p 4K] [ZEE5] [x265 HEVC] [Tel + Hin (DDP5.1 - 192Kbps)] [ESub] [3 GB].mkv",
-    "year": 2018,
-    "orig_lang": "te",
-    "rating": 6.9,
-    "genres": [
-      "Romance"
-    ],
-    "plot": "Vijay Govind, a young college lecturer who dreams of marriage falls for Geetha, a level-headed woman who's wary of strangers and isn't easy to convince. While things seem to go smoothly, Vijay makes a terrible mistake which not only derails any hope for his love story, but also potential repercussions with his family.",
-    "size": "3 GB",
-    "size_gb": 3,
-    "poster": "https://image.tmdb.org/t/p/original/4pPnvasj2vwcs8EMmUPUUBhNycT.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/2pJ9xW1mA7zRfrg9On9e8AekrQM.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/yu2jKIs19g5ptImsK1JpLBQfZMd.png",
-    "added_at": "2026-11-27T16:33:03.268Z",
-    "versions": [
-      {
-        "file_id": "1_jnc9HA0WX6uVj_N0pez_iByMwbAAUss",
-        "source": "gd",
-        "new_name": "Geetha Govindam (2018) [2160p 4K] [ZEE5] [x265 HEVC] [Tel + Hin (DDP5.1 - 192Kbps)] [ESub] [3 GB].mkv",
-        "size": "3 GB",
-        "size_gb": 3
       }
     ]
   }
