@@ -93,34 +93,35 @@
     ]
   },
   {
-    "file_id": "1aLn1QLYCd6vhYncqOOiXgQiWLVGs52kt",
+    "file_id": "1U_kUjmAfo4e1h85sVM4s-LGTNWxyBZh5",
     "source": "gd",
-    "tmdb_id": 438731,
-    "clean_name": "Vivegam",
-    "title": "Vivegam",
-    "original_title": "விவேகம்",
-    "new_name": "Vivegam (2017) [1080p] [WEB-DL] [Dolby Atmos] [5.3 GB].mkv",
-    "year": 2017,
+    "tmdb_id": 202616,
+    "clean_name": "Thalaivaa",
+    "title": "Thalaivaa",
+    "original_title": "தலைவா",
+    "new_name": "Thalaivaa (2013) [1080p] [BluRay] [DTS- HD Master / 1509k DTS] [15 GB].mkv",
+    "year": 2013,
     "orig_lang": "ta",
-    "rating": 4.9,
+    "rating": 5.5,
     "genres": [
       "Action",
+      "Drama",
       "Thriller"
     ],
-    "plot": "A group of counter-terrorism agents are brought in to track down a man who was once the head of their squad, and is believed to have gone rogue.",
-    "size": "5.3 GB",
-    "size_gb": 5.3,
-    "poster": "https://image.tmdb.org/t/p/original/o31Fh66VeAmLWQ3HNObzTjbrWMH.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/hp4PssT8aYm7EMSvZ07bklF657w.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/lONt2i8lqFG6FFZN4iMJgO6O6h5.png",
-    "added_at": "2026-11-27T16:27:46.365Z",
+    "plot": "Vishwa runs a small business in Sydney, unaware that his father is a gangster in Mumbai. When his father is killed by a rival, Vishwa takes over his crime syndicate with revenge on his mind.",
+    "size": "15 GB",
+    "size_gb": 15,
+    "poster": "https://image.tmdb.org/t/p/original/5h2SfwKTbbp0T21kjrOPU3QMaHn.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/hQ0XzOn6dYLtGKiddS9kRbkAIdf.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/mctXcpR1lgp0Yx0C8s0hYclIr8v.png",
+    "added_at": "2026-11-27T16:27:50.458Z",
     "versions": [
       {
-        "file_id": "1aLn1QLYCd6vhYncqOOiXgQiWLVGs52kt",
+        "file_id": "1U_kUjmAfo4e1h85sVM4s-LGTNWxyBZh5",
         "source": "gd",
-        "new_name": "Vivegam (2017) [1080p] [WEB-DL] [Dolby Atmos] [5.3 GB].mkv",
-        "size": "5.3 GB",
-        "size_gb": 5.3
+        "new_name": "Thalaivaa (2013) [1080p] [BluRay] [DTS- HD Master / 1509k DTS] [15 GB].mkv",
+        "size": "15 GB",
+        "size_gb": 15
       }
     ]
   }
