@@ -126,36 +126,34 @@
     ]
   },
   {
-    "file_id": "1FcgYg5gDwMNvkVb1M46lecS5MJiAP_7Q",
+    "file_id": "1zhsiJ92JAy7ydzzh-9bfC9DvoLJIp-vi",
     "source": "gd",
-    "tmdb_id": 904557,
-    "clean_name": "Thunivu",
-    "title": "Thunivu",
-    "original_title": "துணிவு",
-    "new_name": "Thunivu (2023) [2160p 4K] [10bit] [DS4K] [WEBRip] [Netflix] [x265 HEVC] [DDP5.1] [5.5 GB].mkv",
-    "year": 2023,
-    "orig_lang": "ta",
-    "rating": 5.7,
+    "tmdb_id": 256040,
+    "clean_name": "Bāhubali: The Beginning",
+    "title": "Bāhubali: The Beginning",
+    "original_title": "బాహుబలి:ద బిగినింగ్",
+    "new_name": "Baahubali - The Beginning (2015) [1080p] [60FPS] [BluRay] [(Tam+Tel+Mal) DTS 5.1 + Hin AAC 7.1 - 768k] [20 GB].mkv",
+    "year": 2015,
+    "orig_lang": "te",
+    "rating": 7.6,
     "genres": [
       "Action",
-      "Crime",
-      "Thriller",
-      "Comedy"
+      "Drama"
     ],
-    "plot": "A gang goes to rob a bank only to find that there's already a criminal mastermind holding it for ransom, but his identities and motives behind the heist remains mysterious. As they plan to collect the bounty and disappear without a trace, their crimes and their past slowly catches up with them.",
-    "size": "5.5 GB",
-    "size_gb": 5.5,
-    "poster": "https://image.tmdb.org/t/p/original/5Cdi9MFxEGsfphvDxV4TyY4znP6.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/oeqw3D9a8qyrSNtkZIK1QaCxBMe.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/bh7BoaKrStP500uotmaSFH6Os0V.png",
-    "added_at": "2026-11-27T16:32:55.160Z",
+    "plot": "The young Shivudu is left as a foundling in a small village by his mother. By the time he’s grown up, it has become apparent that he possesses exceptional gifts. He meets the beautiful warrior princess Avanthika and learns that her queen has been held captive for the last 25 years. Shividu sets off to rescue her, discovering his own origins in the process.",
+    "size": "20 GB",
+    "size_gb": 20,
+    "poster": "https://image.tmdb.org/t/p/original/9BAjt8nSSms62uOVYn1t3C3dVto.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/e9ZEuHGHZ06AToHlfN1L7nejJ7W.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/cw4i9YEzAP9X2rSOrcmrYHb1CCg.png",
+    "added_at": "2026-11-27T16:32:58.871Z",
     "versions": [
       {
-        "file_id": "1FcgYg5gDwMNvkVb1M46lecS5MJiAP_7Q",
+        "file_id": "1zhsiJ92JAy7ydzzh-9bfC9DvoLJIp-vi",
         "source": "gd",
-        "new_name": "Thunivu (2023) [2160p 4K] [10bit] [DS4K] [WEBRip] [Netflix] [x265 HEVC] [DDP5.1] [5.5 GB].mkv",
-        "size": "5.5 GB",
-        "size_gb": 5.5
+        "new_name": "Baahubali - The Beginning (2015) [1080p] [60FPS] [BluRay] [(Tam+Tel+Mal) DTS 5.1 + Hin AAC 7.1 - 768k] [20 GB].mkv",
+        "size": "20 GB",
+        "size_gb": 20
       }
     ]
   }
