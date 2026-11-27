@@ -156,5 +156,37 @@
         "size_gb": 12
       }
     ]
+  },
+  {
+    "file_id": "1YpfDbm8sHmEmDT1oH65KJ04ZW-D75Huv",
+    "source": "gd",
+    "tmdb_id": 66274,
+    "clean_name": "Naan Sigappu Manithan",
+    "title": "Naan Sigappu Manithan",
+    "original_title": "நான் சிகப்பு மனிதன்",
+    "new_name": "Naan Sigappu Manithan (1985) [2160p 4K] [WEB-DL] [AVC] [DD+2.0 - 224Kbps & AAC] [6.7 GB].mkv",
+    "year": 1985,
+    "orig_lang": "ta",
+    "rating": 6.4,
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "plot": "A young man turns into a vigilante to fight injustice after his loved ones are killed.",
+    "size": "7 GB",
+    "size_gb": 7,
+    "poster": "https://image.tmdb.org/t/p/original/yeXqE0aLqmdSwfCutMwiJFzTboe.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/kKe7T9dKmvXtvSlGfGnuvRBXWTW.jpg",
+    "clearlogo": "",
+    "added_at": "2026-11-27T16:37:10.655Z",
+    "versions": [
+      {
+        "file_id": "1YpfDbm8sHmEmDT1oH65KJ04ZW-D75Huv",
+        "source": "gd",
+        "new_name": "Naan Sigappu Manithan (1985) [2160p 4K] [WEB-DL] [AVC] [DD+2.0 - 224Kbps & AAC] [6.7 GB].mkv",
+        "size": "7 GB",
+        "size_gb": 7
+      }
+    ]
   }
 ]
