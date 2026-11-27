@@ -60,34 +60,35 @@
     ]
   },
   {
-    "file_id": "1bC5ofWvV0NqraaNN7Ww7OSCbZJ8tz-qY",
+    "file_id": "1YW6P3dHo3pGh7dWnwPamEyC9hnlsWY-2",
     "source": "gd",
-    "tmdb_id": 1257957,
-    "clean_name": "Bison Kaalamaadan",
-    "title": "Bison Kaalamaadan",
-    "original_title": "பைசன் காளமாடன்",
-    "new_name": "Bison Kaalamaadan (2025) [1080p] [WEB-DL] [Netflix] [Tamil DDP 5.1 - 640Kbps] [9.5 GB].mkv",
+    "tmdb_id": 1318308,
+    "clean_name": "Aaryan",
+    "title": "Aaryan",
+    "original_title": "ஆர்யன்",
+    "new_name": "Aaryan (2025) [1080p] [WEB-DL] [AMZN] [Tamil DDP 5.1 - 640Kbps + Telugu DDP 5.1 - 640Kbps] [7.5 GB].mkv",
     "year": 2025,
     "orig_lang": "ta",
-    "rating": 7.5,
+    "rating": 5.4,
     "genres": [
-      "Drama",
-      "Action"
+      "Action",
+      "Thriller",
+      "Crime"
     ],
-    "plot": "A young man fights to overcome violence plaguing his village and succeed as a professional kabaddi player.",
-    "size": "9.5 GB",
-    "size_gb": 9.5,
-    "poster": "https://image.tmdb.org/t/p/original/5IPFJ2XFbYjdIw4912ZufCMolX.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/6xEk8ZbqCgmicmeICyYGospXU7R.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/4aiOzNzUej2sYDVytYNnfPOIbiM.png",
-    "added_at": "2026-11-27T16:24:51.807Z",
+    "plot": "A struggling writer announces he'll commit the perfect crime, sparking a tense pursuit as police try to prevent his methodically planned killing spree.",
+    "size": "7.5 GB",
+    "size_gb": 7.5,
+    "poster": "https://image.tmdb.org/t/p/original/rRjh3zumdW89fNMe4tdjmALB1xG.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/mRyCfbc3vZblB8slswmwovrEhTR.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/8AWpSkrr5ANTTSZvxWmnazUNJJf.png",
+    "added_at": "2026-11-27T16:24:55.695Z",
     "versions": [
       {
-        "file_id": "1bC5ofWvV0NqraaNN7Ww7OSCbZJ8tz-qY",
+        "file_id": "1YW6P3dHo3pGh7dWnwPamEyC9hnlsWY-2",
         "source": "gd",
-        "new_name": "Bison Kaalamaadan (2025) [1080p] [WEB-DL] [Netflix] [Tamil DDP 5.1 - 640Kbps] [9.5 GB].mkv",
-        "size": "9.5 GB",
-        "size_gb": 9.5
+        "new_name": "Aaryan (2025) [1080p] [WEB-DL] [AMZN] [Tamil DDP 5.1 - 640Kbps + Telugu DDP 5.1 - 640Kbps] [7.5 GB].mkv",
+        "size": "7.5 GB",
+        "size_gb": 7.5
       }
     ]
   }
