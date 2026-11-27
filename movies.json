@@ -93,34 +93,33 @@
     ]
   },
   {
-    "file_id": "1BfW3Q1_I7-a4f3LpSJgeAEgh84GabtI_",
+    "file_id": "1aFmu_tpwZdvV_wiA4FR5U6WzORXKIDrQ",
     "source": "gd",
-    "tmdb_id": 616896,
-    "clean_name": "Petromax",
-    "title": "Petromax",
-    "original_title": "பெட்ரோமாக்ஸ்",
-    "new_name": "Petromax (2019) [1080p] [AMZN] [Dolby Atmos] [18 GB].mkv",
-    "year": 2019,
-    "orig_lang": "ta",
-    "rating": 6,
+    "tmdb_id": 439079,
+    "clean_name": "The Nun",
+    "title": "The Nun",
+    "original_title": "The Nun",
+    "new_name": "The Nun (2018) [1080p] [AMZN] [20.5 GB].mkv",
+    "year": 2018,
+    "orig_lang": "en",
+    "rating": 5.9,
     "genres": [
-      "Comedy",
       "Horror"
     ],
-    "plot": "A man struggles to sell his house that is haunted so he arranges four people to live in the house for a few days to prove that there are no ghosts.",
-    "size": "18 GB",
-    "size_gb": 18,
-    "poster": "https://image.tmdb.org/t/p/original/m8LQrSxh3I8FDZ2erJsqK4cGnyI.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/9wRa2155bUWhvugNaFPDF2wiuNu.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/qeqrIiJyWW5pYTECYUuI6DnZKaZ.png",
-    "added_at": "2026-11-27T16:31:17.691Z",
+    "plot": "A priest with a dark past and a novice nearing her final vows are sent by the Vatican to Romania to investigate a nun's death and face a demonic force.",
+    "size": "20.5 GB",
+    "size_gb": 20.5,
+    "poster": "https://image.tmdb.org/t/p/original/sFC1ElvoKGdHJIWRpNB3xWJ9lJA.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/cMnVmutb5mVgIBeiMOncAbwNjvG.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/8Lm3hGwh9x0Sgpk8cgxWXGMvkmR.png",
+    "added_at": "2026-11-27T16:31:21.897Z",
     "versions": [
       {
-        "file_id": "1BfW3Q1_I7-a4f3LpSJgeAEgh84GabtI_",
+        "file_id": "1aFmu_tpwZdvV_wiA4FR5U6WzORXKIDrQ",
         "source": "gd",
-        "new_name": "Petromax (2019) [1080p] [AMZN] [Dolby Atmos] [18 GB].mkv",
-        "size": "18 GB",
-        "size_gb": 18
+        "new_name": "The Nun (2018) [1080p] [AMZN] [20.5 GB].mkv",
+        "size": "20.5 GB",
+        "size_gb": 20.5
       }
     ]
   }
