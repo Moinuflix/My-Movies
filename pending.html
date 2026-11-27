@@ -72,7 +72,10 @@
     .btn-purple:hover { background: var(--laser-purple); color: #fff; }
     .btn-gold { background: rgba(245, 158, 11, 0.2); border-color: var(--laser-gold); color: #fde68a; }
     .btn-gold:hover { background: var(--laser-gold); color: #020617; }
+    .btn-red { background: rgba(239, 68, 68, 0.18); border-color: var(--laser-red); color: #fca5a5; }
+    .btn-red:hover { background: var(--laser-red); color: #fff; }
 
+    /* SOURCE SWITCHER TABS (3 SEPARATE QUEUES) */
     .source-tabs { display: flex; gap: 10px; margin-bottom: 1.25rem; flex-wrap: wrap; }
     .src-tab {
       padding: 0.7rem 1.3rem;
@@ -87,6 +90,7 @@
     }
     .src-tab.active-gdrive { background: rgba(16, 185, 129, 0.2); border-color: var(--laser-green); color: #fff; }
     .src-tab.active-tg { background: rgba(168, 85, 247, 0.22); border-color: var(--laser-purple); color: #fff; }
+    .src-tab.active-imported { background: rgba(245, 158, 11, 0.24); border-color: var(--laser-gold); color: #fff; }
 
     .stats-strip {
       display: grid;
@@ -202,6 +206,7 @@
     }
     .badge-tg { background: rgba(168, 85, 247, 0.22); color: #e9d5ff; border: 1px solid rgba(168, 85, 247, 0.45); }
     .badge-gdrive { background: rgba(56, 189, 248, 0.2); color: var(--laser-cyan); }
+    .badge-imported { background: rgba(245, 158, 11, 0.22); color: #fde68a; border: 1px solid rgba(245, 158, 11, 0.45); }
     .badge-size { background: rgba(16, 185, 129, 0.2); color: var(--laser-green); border: 1px solid rgba(16, 185, 129, 0.4); }
     .badge-series { background: rgba(245, 158, 11, 0.22); color: #fde68a; border: 1px solid rgba(245, 158, 11, 0.45); }
     .badge-dup { background: rgba(239, 68, 68, 0.22); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.5); }
@@ -320,12 +325,12 @@
   <div class="top-header">
     <div>
       <div class="brand-title">MOINUFLIX — UNIFIED 3-FILE APPROVAL STUDIO</div>
-      <div class="brand-sub">Auto-TMDb • movies.json (5 Langs) • series.json (Auto S/E) • name_registry.json Duplicate Guard</div>
+      <div class="brand-sub">Isolated Queues (GDrive • Telegram • Imported JSON) • Auto-TMDb • movies.json &amp; series.json</div>
     </div>
     <div class="nav-actions">
       <input type="file" id="json-import-input" accept=".json" style="display:none" onchange="handleJsonImport(event)">
       <button class="btn-pill btn-gold" onclick="document.getElementById('json-import-input').click()">📥 Import JSON</button>
-      <button class="btn-pill" id="btn-save-imported" style="display:none; border-color:var(--laser-gold);" onclick="saveQueueToGithub()">💾 Sync Queue to GitHub</button>
+      <button class="btn-pill btn-red" id="btn-clear-imported" style="display:none;" onclick="clearImportedQueue()">🗑️ Clear Imported</button>
       <button class="btn-pill btn-purple" onclick="triggerGithubWorkflow('tg_vault_sync.yml', 'Telegram Stealth Vault')">⚡ TG Action</button>
       <button class="btn-pill" onclick="triggerGithubWorkflow('scan_drive.yml', 'Google Drive Scanner')">⚡ Drive Action</button>
       <button class="btn-pill btn-green" onclick="triggerBatchSelectedApproval()">🚀 Approve Selected</button>
@@ -336,20 +341,23 @@
     </div>
   </div>
 
-  <!-- SOURCE SWITCHER TABS -->
+  <!-- 3 SEPARATE QUEUE TABS (NEVER MIXED) -->
   <div class="source-tabs">
     <button class="src-tab active-gdrive" id="tab-gdrive" onclick="switchQueueSource('gdrive')">
-      📁 Google Drive / Imported Queue (<span id="cnt-gdrive">0</span>)
+      📁 Google Drive Queue (<span id="cnt-gdrive">0</span>)
     </button>
     <button class="src-tab" id="tab-telegram" onclick="switchQueueSource('telegram')">
       🛡️ Telegram Stealth Vault (<span id="cnt-tg">0</span>)
+    </button>
+    <button class="src-tab" id="tab-imported" onclick="switchQueueSource('imported')">
+      📥 Imported JSON Queue (<span id="cnt-imported">0</span>)
     </button>
   </div>
 
   <!-- STATS -->
   <div class="stats-strip">
     <div class="stat-card">
-      <div class="stat-lbl">Active Queue Pending</div>
+      <div class="stat-lbl">Active Tab Pending</div>
       <div class="stat-val" id="stat-pending-count" style="color:var(--laser-gold);">0</div>
     </div>
     <div class="stat-card">
@@ -366,10 +374,10 @@
   <div class="batch-toolbar">
     <label class="select-all-box">
       <input type="checkbox" id="chk-select-all" onchange="toggleSelectAll(this.checked)">
-      <span>Select All In Active Queue</span>
+      <span>Select All In Active Tab Only</span>
     </label>
     <div style="font-size:0.8rem; color:var(--text-muted);">
-      <span id="selected-count-label" style="color:var(--laser-cyan); font-weight:800;">0</span> selected for batch commit to <strong>movies.json / series.json</strong>
+      <span id="selected-count-label" style="color:var(--laser-cyan); font-weight:800;">0</span> selected in <strong id="active-queue-label">Google Drive Queue</strong>
     </div>
   </div>
 
@@ -438,12 +446,38 @@
   const GH_BRANCH = "main";
   const WORKER_BASE = "https://gdrive-stream.moinudeentv.workers.dev/?id=";
   const USER_AGENT = "|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0";
+  const IMPORTED_STORAGE_KEY = "moinuflix_imported_json_queue_v1";
 
-  let activeSource = "gdrive"; // "gdrive" | "telegram"
-  let pendingList = [];
-  let tgPendingList = [];
+  let activeSource = "gdrive"; // "gdrive" | "telegram" | "imported"
+  let pendingList = [];          // Google Drive live GitHub queue
+  let tgPendingList = [];        // Telegram Stealth Vault live GitHub queue
+  let importedPendingList = [];  // Dedicated Isolated Imported JSON queue
   let registryList = [];
   let activeApproveIndex = null;
+
+  function loadSavedImportedQueue() {
+    try {
+      const raw = localStorage.getItem(IMPORTED_STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) importedPendingList = parsed;
+      }
+    } catch (_) {}
+  }
+
+  function persistImportedQueue() {
+    try {
+      localStorage.setItem(IMPORTED_STORAGE_KEY, JSON.stringify(importedPendingList));
+    } catch (_) {}
+    document.getElementById("cnt-imported").textContent = importedPendingList.length;
+    document.getElementById("btn-clear-imported").style.display = importedPendingList.length > 0 ? "inline-flex" : "none";
+  }
+
+  function getActiveQueueArray() {
+    if (activeSource === "telegram") return tgPendingList;
+    if (activeSource === "imported") return importedPendingList;
+    return pendingList;
+  }
 
   function getToken() { return (localStorage.getItem("moinuflix_gh_token") || localStorage.getItem("mf_tg_gh") || "").trim(); }
   function configureToken() {
@@ -464,15 +498,6 @@
     b.textContent = msg;
   }
 
-  function getLangCategoryBadge(origLang) {
-    const l = String(origLang || "").toLowerCase();
-    if (l === "hi") return "🇮🇳 Bollywood (hi)";
-    if (["te", "ta", "ml", "kn"].includes(l)) return `🌴 South Indian (${l})`;
-    if (l === "en") return "🌎 Hollywood (en)";
-    if (["ko", "ja"].includes(l)) return `🇰🇷 Korean/Anime (${l})`;
-    return `🌐 World Cinema (${l || "auto"})`;
-  }
-
   function detectSeriesInfo(item, rawName, baseName) {
     const cat = String(item.cat || item.media_type || "").toUpperCase();
     const combined = `${rawName} ${baseName}`;
@@ -485,7 +510,7 @@
     };
   }
 
-  /* 📥 IMPORT LOCAL JSON (e.g., pending_for_html.json from PDF extraction) */
+  /* 📥 IMPORT LOCAL JSON INTO ITS OWN DEDICATED TAB (NEVER MIXES WITH GDRIVE/TG) */
   function handleJsonImport(event) {
     const file = event.target.files[0];
     if (!file) return;
@@ -497,13 +522,13 @@
         if (!Array.isArray(arr) || arr.length === 0) {
           return alert("Invalid or empty JSON array!");
         }
-        const existingIds = new Set(pendingList.map(x => String(x.gdrive_id || x.file_id || x.id || "")));
+        const existingIds = new Set(importedPendingList.map(x => String(x.gdrive_id || x.file_id || x.id || "")));
         let added = 0;
         arr.forEach(row => {
           const gid = String(row.gdrive_id || row.file_id || row.id || "").trim();
           if (gid && existingIds.has(gid)) return;
           if (gid) existingIds.add(gid);
-          pendingList.push({
+          importedPendingList.push({
             cat: row.cat || "MOVIE",
             source: row.source || "gd",
             gdrive_id: gid,
@@ -516,33 +541,23 @@
           });
           added++;
         });
-        document.getElementById("cnt-gdrive").textContent = pendingList.length;
-        document.getElementById("btn-save-imported").style.display = "inline-flex";
-        switchQueueSource("gdrive");
-        showStatus(`📥 Imported ${added} items from ${file.name}! Click "Sync Queue to GitHub" to save permanently, or select & Approve directly.`);
+        persistImportedQueue();
+        switchQueueSource("imported");
+        showStatus(`📥 Imported ${added} items into the separate "Imported JSON Queue" tab (GDrive & Telegram queues untouched)!`);
       } catch (err) {
         alert("JSON Parse Error: " + err.message);
       }
+      event.target.value = "";
     };
     reader.readAsText(file);
   }
 
-  async function saveQueueToGithub() {
-    const token = getToken();
-    if (!token) return alert("GitHub Token missing! Click 'Token' button first.");
-    showStatus("💾 Saving imported queue to resources/data/pending_movies.json...");
-    try {
-      let pSha;
-      const pRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/resources/data/pending_movies.json?t=${Date.now()}`, {
-        headers: { "Authorization": `token ${token}` }
-      });
-      if (pRes.ok) pSha = (await pRes.json()).sha;
-      await commitGithubFile("resources/data/pending_movies.json", pendingList, `Import ${pendingList.length} pending items`, pSha, token);
-      document.getElementById("btn-save-imported").style.display = "none";
-      showStatus(`✅ Saved ${pendingList.length} items to GitHub pending queue!`);
-    } catch (e) {
-      showStatus(`❌ Save Error: ${e.message}`, true);
-    }
+  function clearImportedQueue() {
+    if (!confirm(`Clear all ${importedPendingList.length} items from the Imported JSON Queue?`)) return;
+    importedPendingList = [];
+    persistImportedQueue();
+    if (activeSource === "imported") renderPendingCards();
+    showStatus("🗑️ Imported JSON Queue cleared.");
   }
 
   async function triggerGithubWorkflow(workflowFile, label) {
@@ -579,6 +594,14 @@
     activeSource = src;
     document.getElementById("tab-gdrive").className = `src-tab ${src === 'gdrive' ? 'active-gdrive' : ''}`;
     document.getElementById("tab-telegram").className = `src-tab ${src === 'telegram' ? 'active-tg' : ''}`;
+    document.getElementById("tab-imported").className = `src-tab ${src === 'imported' ? 'active-imported' : ''}`;
+
+    const labelMap = {
+      gdrive: "Google Drive Queue",
+      telegram: "Telegram Stealth Vault",
+      imported: "Imported JSON Queue"
+    };
+    document.getElementById("active-queue-label").textContent = labelMap[src] || "Active Queue";
     document.getElementById("chk-select-all").checked = false;
     renderPendingCards();
   }
@@ -638,6 +661,8 @@
   }
 
   async function loadPendingList() {
+    loadSavedImportedQueue();
+    persistImportedQueue();
     await loadMasterStats();
     const container = document.getElementById("pending-items-container");
     container.innerHTML = '<div style="color:var(--text-muted); padding:30px; text-align:center;">Loading GDrive & Telegram pending queues...</div>';
@@ -661,6 +686,7 @@
 
       document.getElementById("cnt-gdrive").textContent = pendingList.length;
       document.getElementById("cnt-tg").textContent = tgPendingList.length;
+      document.getElementById("cnt-imported").textContent = importedPendingList.length;
 
       renderPendingCards();
     } catch (err) {
@@ -670,14 +696,18 @@
 
   function renderPendingCards() {
     const isTg = activeSource === "telegram";
-    const activeList = isTg ? tgPendingList : pendingList;
+    const isImp = activeSource === "imported";
+    const activeList = getActiveQueueArray();
     document.getElementById("stat-pending-count").textContent = activeList.length;
 
     const container = document.getElementById("pending-items-container");
     container.innerHTML = "";
 
     if (activeList.length === 0) {
-      container.innerHTML = `<div style="color:var(--laser-green); padding:40px; text-align:center;">🎉 All ${isTg ? 'Telegram Stealth' : 'Google Drive'} files are cleared! Click "📥 Import JSON" to load pending_for_html.json.</div>`;
+      const emptyMsg = isImp
+        ? '📥 Imported JSON Queue is empty. Click "📥 Import JSON" above to load pending_for_html.json.'
+        : `🎉 All ${isTg ? 'Telegram Stealth' : 'Google Drive'} files are cleared!`;
+      container.innerHTML = `<div style="color:var(--laser-green); padding:40px; text-align:center;">${emptyMsg}</div>`;
       updateSelectedCount();
       return;
     }
@@ -713,6 +743,10 @@
       const poster = item.poster || candidate.poster || "https://via.placeholder.com/90x135?text=Auto+TMDb";
       const dashName = item.new_name || `${title} (${year}) [${parsed.resolution || '1080p'}] [${parsed.source || 'WEB-DL'}] [${deepAudio}] [${size}].mkv`;
 
+      let srcBadge = `<span class="badge badge-gdrive">📁 GD: ${escapeHtml(fileId.slice(0, 12))}...</span>`;
+      if (isTg) srcBadge = `<span class="badge badge-tg">⚡ TG #${escapeHtml(fileId)}</span>`;
+      else if (isImp) srcBadge = `<span class="badge badge-imported">📥 JSON Import: ${escapeHtml(fileId.slice(0, 12))}...</span>`;
+
       const card = document.createElement("div");
       card.className = "pending-card";
       card.id = `card-item-${index}`;
@@ -728,9 +762,7 @@
           <div class="dash-preview-box">${escapeHtml(dashName)}</div>
 
           <div class="tags-row">
-            ${isTg
-              ? `<span class="badge badge-tg">⚡ TG #${escapeHtml(fileId)}</span>`
-              : `<span class="badge badge-gdrive">📁 GD: ${escapeHtml(fileId.slice(0, 12))}...</span>`}
+            ${srcBadge}
             <span class="badge ${seInfo.isSeries ? 'badge-series' : ''}">${seInfo.isSeries ? '📺 series.json' : '🎬 movies.json'}</span>
             <span class="badge badge-size">💾 ${escapeHtml(size)}</span>
             ${tmdbId ? `<span class="badge" style="color:var(--laser-gold);">TMDB: ${escapeHtml(tmdbId)}</span>` : ''}
@@ -752,7 +784,7 @@
   function openPreviewModal(index) {
     activeApproveIndex = index;
     const isTg = activeSource === "telegram";
-    const item = isTg ? tgPendingList[index] : pendingList[index];
+    const item = getActiveQueueArray()[index];
     const parsed = item.parsed || {};
     const rawName = isTg ? item.old_name : (item.original_filename || item.old_name || item.new_name || "N/A");
     const seInfo = detectSeriesInfo(item, rawName, item.new_name || rawName);
@@ -772,7 +804,7 @@
 
     document.getElementById("modal-raw-name").textContent = rawName;
     document.getElementById("modal-new-name").textContent = dashName;
-    document.getElementById("modal-src-type").textContent = isTg ? `tg (#${item.tg_msg_id})` : "gd";
+    document.getElementById("modal-src-type").textContent = isTg ? `tg (#${item.tg_msg_id})` : (item.source || "gd");
     document.getElementById("modal-chunk").textContent = seInfo.isSeries ? "series.json" : "movies.json";
     document.getElementById("modal-size").textContent = size;
     document.getElementById("modal-source").textContent = seInfo.isSeries ? `SERIES (S${seInfo.season}E${seInfo.episode})` : "MOVIE";
@@ -788,7 +820,8 @@
   function closeModal() { document.getElementById("preview-modal").style.display = "none"; }
   function closeBatchModal() {
     document.getElementById("batch-modal").style.display = "none";
-    loadPendingList();
+    renderPendingCards();
+    loadMasterStats();
   }
 
   function toggleSelectAll(checked) {
@@ -808,15 +841,14 @@
     const token = getToken();
     if (!token) return alert("GitHub Token missing! Please click 'Token' button.");
 
-    if (!confirm(`Batch approve ${checked.length} selected items into movies.json / series.json & name_registry.json?`)) return;
+    if (!confirm(`Batch approve ${checked.length} selected items from "${activeSource.toUpperCase()}" queue into movies.json / series.json & name_registry.json?`)) return;
 
     const logBox = document.getElementById("batch-log-container");
     logBox.innerHTML = "";
     document.getElementById("btn-batch-done").style.display = "none";
     document.getElementById("batch-modal").style.display = "flex";
 
-    const isTg = activeSource === "telegram";
-    const activeList = isTg ? tgPendingList : pendingList;
+    const activeList = getActiveQueueArray();
     const indicesToProcess = checked.map(cb => parseInt(cb.dataset.index, 10)).sort((a,b) => b - a);
 
     for (let idx of indicesToProcess) {
@@ -843,7 +875,7 @@
 
   function sendToEditForm(index) {
     const isTg = activeSource === "telegram";
-    const item = isTg ? tgPendingList[index] : pendingList[index];
+    const item = getActiveQueueArray()[index];
     const payload = isTg ? {
       source_type: "telegram",
       tg_msg_id: item.tg_msg_id,
@@ -866,7 +898,8 @@
     if (!token) return alert("GitHub Token missing! Click 'Token' button at top right.");
 
     const isTg = activeSource === "telegram";
-    const item = isTg ? tgPendingList[index] : pendingList[index];
+    const isImp = activeSource === "imported";
+    const item = getActiveQueueArray()[index];
     const parsed = item.parsed || {};
     const srcCode = isTg ? "tg" : (item.source || "gd");
     const rawName = isTg ? (item.old_name || "") : (item.original_filename || item.old_name || item.new_name || "");
@@ -892,7 +925,6 @@
 
     const deepAudio = parseDeepAudio(rawName);
     let tmdbId = item.selected_tmdb_id || item.tmdb_id || (item.tmdb_candidates && item.tmdb_candidates[0]?.tmdb_id) || 0;
-    let mediaType = seInfo.isSeries ? "tv" : (item.media_type || "movie");
 
     if (!isBatch) showStatus(`⚡ Fetching official TMDb 4K metadata for "${title}"...`);
 
@@ -972,7 +1004,6 @@
     const streamUrl = `${WORKER_BASE}${fileId}${srcCode === "tg" ? "&source=tg" : ""}${USER_AGENT}`;
 
     if (seInfo.isSeries) {
-      // COMMIT TO series.json
       if (!isBatch) showStatus(`📺 Committing "${meta.clean_name}" S${seInfo.season}E${seInfo.episode} to series.json...`);
       let seriesArr = [], sSha;
       const sGet = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/series.json?t=${Date.now()}`, {
@@ -1029,7 +1060,6 @@
 
       await commitGithubFile("series.json", seriesArr, `Series (${srcCode}): ${meta.clean_name} S${seInfo.season}E${seInfo.episode}`, sSha, token);
     } else {
-      // COMMIT TO movies.json
       if (!isBatch) showStatus(`🎬 Committing "${meta.clean_name}" (${meta.orig_lang}) to movies.json...`);
       let moviesArr = [], mSha;
       const mGet = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/movies.json?t=${Date.now()}`, {
@@ -1092,7 +1122,7 @@
       await commitGithubFile("movies.json", moviesArr, `Movie (${srcCode}/${meta.orig_lang}): ${meta.clean_name}`, mSha, token);
     }
 
-    // COMMIT TO name_registry.json (MASTER DUPLICATE GUARD)
+    // COMMIT TO name_registry.json
     let regArr = [], rSha;
     const rGet = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/name_registry.json?t=${Date.now()}`, {
       headers: { "Authorization": `token ${token}` }
@@ -1122,7 +1152,7 @@
 
     await commitGithubFile("name_registry.json", regArr, `Registry: ${meta.clean_name} (${fileId})`, rSha, token);
 
-    // REMOVE FROM PENDING QUEUE
+    // REMOVE ONLY FROM THE ACTIVE QUEUE (NO CROSS-CONTAMINATION)
     if (isTg) {
       tgPendingList.splice(index, 1);
       let s1Sha;
@@ -1131,6 +1161,9 @@
       });
       if (s1Res.ok) s1Sha = (await s1Res.json()).sha;
       await commitGithubFile("tg/step1_pending.json", tgPendingList, `TG Approved #${fileId}`, s1Sha, token);
+    } else if (isImp) {
+      importedPendingList.splice(index, 1);
+      persistImportedQueue();
     } else {
       pendingList.splice(index, 1);
       let pSha;
@@ -1143,18 +1176,30 @@
 
     if (!isBatch) {
       showStatus(`🎉 "${meta.clean_name}" committed to ${seInfo.isSeries ? 'series.json' : 'movies.json'} & name_registry.json!`);
-      loadPendingList();
+      renderPendingCards();
+      loadMasterStats();
     }
   }
 
   async function rejectItem(index) {
+    const isTg = activeSource === "telegram";
+    const isImp = activeSource === "imported";
+
+    if (isImp) {
+      const title = importedPendingList[index]?.new_name || importedPendingList[index]?.old_name || "item";
+      if (!confirm(`Remove "${title}" from Imported JSON Queue?`)) return;
+      importedPendingList.splice(index, 1);
+      persistImportedQueue();
+      renderPendingCards();
+      return;
+    }
+
     const token = getToken();
     if (!token) return alert("GitHub Token missing!");
-    const isTg = activeSource === "telegram";
 
     if (isTg) {
       const item = tgPendingList[index];
-      if (!confirm(`Remove TG #${item.tg_msg_id} from pending queue?`)) return;
+      if (!confirm(`Remove TG #${item.tg_msg_id} from Telegram queue?`)) return;
       tgPendingList.splice(index, 1);
       let s1Sha;
       const s1Res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/tg/step1_pending.json?t=${Date.now()}`, {
@@ -1165,7 +1210,7 @@
       loadPendingList();
     } else {
       const title = pendingList[index].parsed?.title || pendingList[index].new_name || "item";
-      if (!confirm(`Remove "${title}" from pending queue?`)) return;
+      if (!confirm(`Remove "${title}" from Google Drive queue?`)) return;
       pendingList.splice(index, 1);
       let pSha;
       const pRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/resources/data/pending_movies.json?t=${Date.now()}`, {
