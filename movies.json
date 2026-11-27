@@ -93,35 +93,34 @@
     ]
   },
   {
-    "file_id": "16OXdRaOgBinTC80Bwu6AcFZbvnH1kOds",
+    "file_id": "1BfW3Q1_I7-a4f3LpSJgeAEgh84GabtI_",
     "source": "gd",
-    "tmdb_id": 330418,
-    "clean_name": "Indru Netru Naalai",
-    "title": "Indru Netru Naalai",
-    "original_title": "இன்று நேற்று நாளை",
-    "new_name": "Indru Netru Naalai (2015) [1080p] [AMZN] [Dolby Atmos] [07 GB].mkv",
-    "year": 2015,
+    "tmdb_id": 616896,
+    "clean_name": "Petromax",
+    "title": "Petromax",
+    "original_title": "பெட்ரோமாக்ஸ்",
+    "new_name": "Petromax (2019) [1080p] [AMZN] [Dolby Atmos] [18 GB].mkv",
+    "year": 2019,
     "orig_lang": "ta",
-    "rating": 7.7,
+    "rating": 6,
     "genres": [
       "Comedy",
-      "Science Fiction",
-      "Thriller"
+      "Horror"
     ],
-    "plot": "Elango and his astrologer friend Pulivetti Arumugam come in possession of a time machine and start profiting from it. However, their meddling with time prevents the death of a gangster, who begins to wreck havoc in their lives.",
-    "size": "7 GB",
-    "size_gb": 7,
-    "poster": "https://image.tmdb.org/t/p/original/ArHCLV73pRLxRQbdYYh9tLOeLUe.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/sQYXs0FyAPhQf6UUas9YBgq64qh.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/7xZ7KDu5bHdnqMQCTltaLrhYKxJ.png",
-    "added_at": "2026-11-27T16:31:13.161Z",
+    "plot": "A man struggles to sell his house that is haunted so he arranges four people to live in the house for a few days to prove that there are no ghosts.",
+    "size": "18 GB",
+    "size_gb": 18,
+    "poster": "https://image.tmdb.org/t/p/original/m8LQrSxh3I8FDZ2erJsqK4cGnyI.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/9wRa2155bUWhvugNaFPDF2wiuNu.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/qeqrIiJyWW5pYTECYUuI6DnZKaZ.png",
+    "added_at": "2026-11-27T16:31:17.691Z",
     "versions": [
       {
-        "file_id": "16OXdRaOgBinTC80Bwu6AcFZbvnH1kOds",
+        "file_id": "1BfW3Q1_I7-a4f3LpSJgeAEgh84GabtI_",
         "source": "gd",
-        "new_name": "Indru Netru Naalai (2015) [1080p] [AMZN] [Dolby Atmos] [07 GB].mkv",
-        "size": "7 GB",
-        "size_gb": 7
+        "new_name": "Petromax (2019) [1080p] [AMZN] [Dolby Atmos] [18 GB].mkv",
+        "size": "18 GB",
+        "size_gb": 18
       }
     ]
   }
