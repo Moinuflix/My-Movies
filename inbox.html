@@ -107,12 +107,13 @@
   <div class="govt-header">
     <div>
       <div class="govt-title">MOINUFLIX QUICK MOVIE INGESTION (PHASE 1)</div>
-      <div class="govt-sub">1-Screen Fast Entry • Auto-TMDb Background Fetch • movies.json &amp; name_registry.json</div>
+      <div class="govt-sub">Clean ID-Only Schema • Auto-TMDb Background Fetch • movies.json &amp; name_registry.json</div>
     </div>
     
     <div class="nav-links-box">
-      <a href="admin.html" class="btn-nav-link">🎬 Library Manager</a>
       <a href="pending.html" class="btn-nav-link">📥 Pending Queue</a>
+      <a href="series.html" class="btn-nav-link">📺 Web Series</a>
+      <a href="admin.html" class="btn-nav-link">🎬 Library Manager</a>
       <button type="button" class="btn-nav-link" onclick="configureToken()">⚙️ Set PAT (<span id="pat-status-indicator">Check</span>)</button>
     </div>
   </div>
@@ -153,7 +154,7 @@
         </div>
 
         <div class="form-group col-6">
-          <label>Raw Release File Name (old_name) <span class="required">*</span></label>
+          <label>Raw Release File Name (for name_registry.json) <span class="required">*</span></label>
           <input type="text" id="raw-filename" placeholder="Full raw filename..." required oninput="handleInstantRawIngest(this.value)">
         </div>
 
@@ -248,8 +249,6 @@
   const FANART_KEY = "b207628faa5a1fc82f7dc07575c224f7";
   const GH_REPO = "Moinuflix/My-Movies";
   const GH_BRANCH = "main";
-  const WORKER_BASE = "https://gdrive-stream.moinudeentv.workers.dev/?id=";
-  const USER_AGENT = "|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0";
 
   let cachedMoviesList = [];
   let cachedTmdbMeta = null;
@@ -379,7 +378,7 @@
       item.innerHTML = `
         <div>
           <strong style="color:var(--laser-cyan);">V${idx + 1}:</strong> ${v.new_name || v.name || 'Version'}
-          <div style="font-size:0.72rem; color:var(--text-muted);">${v.audio || ''} • ${v.size || ''}</div>
+          <div style="font-size:0.72rem; color:var(--text-muted);">${v.size || ''}</div>
         </div>
         <span style="font-size:0.75rem; color:var(--laser-green); font-weight:700;">Saved ✅</span>
       `;
@@ -406,18 +405,19 @@
 
   function populateFormForEditing(m) {
     document.getElementById("drive-file-id").value = m.file_id || m.id || "";
-    document.getElementById("raw-filename").value = m.old_name || m.new_name || "";
+    document.getElementById("raw-filename").value = m.new_name || "";
     document.getElementById("tmdb-id").value = m.tmdb_id || "";
     document.getElementById("tmdb-id-visible").value = m.tmdb_id || "";
     document.getElementById("token-movie-title").value = m.title || m.clean_name || "";
     document.getElementById("token-year").value = m.year || "2026";
+    document.getElementById("token-size").value = m.size || "";
 
-    const v0 = (m.versions && m.versions[0]) || {};
-    document.getElementById("token-resolution").value = v0.resolution || "1080p";
-    document.getElementById("token-platform").value = v0.source || "WEB-DL";
-    document.getElementById("token-videocodec").value = v0.codec || "x264";
-    document.getElementById("token-size").value = m.size || v0.size || "";
-    document.getElementById("token-audio-spec").value = v0.audio || "[Hindi 5.1]";
+    const firstNewName = m.new_name || "";
+    const brs = [...firstNewName.matchAll(/\[([^\]]+)\]/g)].map(x => x[1]);
+    if (brs[0]) document.getElementById("token-resolution").value = brs[0];
+    if (brs[1]) document.getElementById("token-platform").value = brs[1];
+    if (brs[2]) document.getElementById("token-videocodec").value = brs[2];
+    if (brs[3]) document.getElementById("token-audio-spec").value = `[${brs[3]}]`;
 
     if (m.new_name) document.getElementById("dash-name-preview").textContent = m.new_name;
     if (m.versions && m.versions.length > 0) renderExistingVersions(m.versions);
@@ -629,6 +629,7 @@
     } catch (_) {}
   }
 
+  /* COMMIT TO movies.json & name_registry.json (ULTRA-CLEAN ID-ONLY SCHEMA) */
   async function handleFormSubmission(e) {
     e.preventDefault();
     const token = getToken();
@@ -656,26 +657,17 @@
     const fanartUrl = cachedTmdbMeta?.fanart || "";
     const clearlogoUrl = cachedTmdbMeta?.clearlogo || "";
 
-    const res = document.getElementById("token-resolution").value.trim() || "1080p";
-    const vcodec = document.getElementById("token-videocodec").value.trim() || "x264";
     const sz = document.getElementById("token-size").value.trim() || "5 GB";
     const szMatch = sz.match(/(\d+(?:\.\d+)?)\s*(GB|MB)/i);
     const sizeGbNum = szMatch ? parseFloat((parseFloat(szMatch[1]) / (szMatch[2].toUpperCase() === "MB" ? 1024 : 1)).toFixed(2)) : 5.0;
-    const audioSpec = document.getElementById("token-audio-spec").value.trim();
-    const streamUrl = `${WORKER_BASE}${fileId}${USER_AGENT}`;
 
+    // CLEAN VERSION OBJECT (NO STREAM_URL, NO OLD_NAME, NO SPECS BLOAT)
     const newVersionObj = {
-      id: fileId,
       file_id: fileId,
       source: "gd",
-      old_name: rawName,
       new_name: finalDashName,
-      resolution: res,
-      codec: vcodec,
-      audio: audioSpec,
       size: sz,
-      size_gb: sizeGbNum,
-      stream_url: streamUrl
+      size_gb: sizeGbNum
     };
 
     document.getElementById("btn-submit").disabled = true;
@@ -693,7 +685,7 @@
         moviesArr = Array.isArray(parsedM) ? parsedM : [];
       }
 
-      const mIdx = moviesArr.findIndex(m => (tmdbId && Number(m.tmdb_id) === tmdbId) || String(m.id) === fileId);
+      const mIdx = moviesArr.findIndex(m => (tmdbId && Number(m.tmdb_id) === tmdbId) || String(m.file_id || m.id) === fileId);
       if (mIdx >= 0) {
         moviesArr[mIdx].versions = moviesArr[mIdx].versions || [];
         const vIdx = moviesArr[mIdx].versions.findIndex(v => String(v.file_id || v.id) === fileId);
@@ -702,14 +694,12 @@
         moviesArr[mIdx].added_at = new Date().toISOString();
       } else {
         moviesArr.push({
-          id: fileId,
           file_id: fileId,
           source: "gd",
           tmdb_id: tmdbId,
           clean_name: title,
           title: title,
           original_title: origTitle,
-          old_name: rawName,
           new_name: finalDashName,
           year: year,
           orig_lang: origLang,
@@ -722,13 +712,13 @@
           fanart: fanartUrl,
           clearlogo: clearlogoUrl,
           added_at: new Date().toISOString(),
-          stream_url: streamUrl,
           versions: [newVersionObj]
         });
       }
 
       await commitDirectToGithub("movies.json", moviesArr, `${isMergeMode ? 'Merge' : 'Add'} Movie: ${title} (${origLang})`, mSha, token);
 
+      // MASTER REGISTRY ENTRY (CAT: MOVIE, OLD_NAME + NEW_NAME)
       let regArr = [], rSha;
       const rGet = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/name_registry.json?t=${Date.now()}`, {
         headers: { "Authorization": `token ${token}` }
@@ -746,7 +736,7 @@
         tmdb_id: tmdbId,
         cat: "MOVIE",
         orig_lang: origLang,
-        old_name: rawName,
+        old_name: rawName || finalDashName,
         new_name: finalDashName,
         size_gb: sizeGbNum,
         approved_at: new Date().toISOString()
