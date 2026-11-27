@@ -126,35 +126,35 @@
     ]
   },
   {
-    "file_id": "1ndTModhQdMnSyGeWjx5i9Dm_tvb6VcaL",
+    "file_id": "17wzzukX1yeGeU3GRXOnA032H4PK94wFd",
     "source": "gd",
-    "tmdb_id": 1734,
-    "clean_name": "The Mummy Returns",
-    "title": "The Mummy Returns",
-    "original_title": "The Mummy Returns",
-    "new_name": "The Mummy Returns (2001) [1080p] [BluRay] [Netflix] [Org NF Hin-Tam-Tel DDP 5.1 - 640k + Eng DTS-X 7.1] [18 GB].mkv",
-    "year": 2001,
+    "tmdb_id": 24428,
+    "clean_name": "The Avengers",
+    "title": "The Avengers",
+    "original_title": "The Avengers",
+    "new_name": "The Avengers (2012) [1080p] [BluRay] [x264] [Org Hindi BD 5.1 - 640Kbps + Eng DTS- HDMA 7.1] [16 GB].mkv",
+    "year": 2012,
     "orig_lang": "en",
-    "rating": 6.4,
+    "rating": 8.1,
     "genres": [
-      "Adventure",
+      "Science Fiction",
       "Action",
-      "Fantasy"
+      "Adventure"
     ],
-    "plot": "Rick and Evelyn O’Connell, along with their 8-year-old son Alex, discover the key to the legendary Scorpion King’s might: the fabled Bracelet of Anubis. Unfortunately, a newly resurrected Imhotep has designs on the bracelet as well, and isn’t above kidnapping its new bearer, Alex, to gain control of Anubis’s otherworldly army.",
-    "size": "18 GB",
-    "size_gb": 18,
-    "poster": "https://image.tmdb.org/t/p/original/kdJsW7hcy1lrj7tdMPycTAQPAiR.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/7s7WkAFPBsMTprYMbqbgKoppQsR.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/8q4Bm79S8gRdcyYP3NKquIvC0UM.png",
-    "added_at": "2026-11-27T16:33:40.906Z",
+    "plot": "When an unexpected enemy emerges and threatens global safety and security, Nick Fury, director of the international peacekeeping agency known as S.H.I.E.L.D., finds himself in need of a team to pull the world back from the brink of disaster. Spanning the globe, a daring recruitment effort begins!",
+    "size": "16 GB",
+    "size_gb": 16,
+    "poster": "https://image.tmdb.org/t/p/original/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/9BBTo63ANSmhC4e6r62OJFuK2GL.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/2VLCNzMOGayRGdiSGyaOD0MzA3Y.png",
+    "added_at": "2026-11-27T16:33:44.500Z",
     "versions": [
       {
-        "file_id": "1ndTModhQdMnSyGeWjx5i9Dm_tvb6VcaL",
+        "file_id": "17wzzukX1yeGeU3GRXOnA032H4PK94wFd",
         "source": "gd",
-        "new_name": "The Mummy Returns (2001) [1080p] [BluRay] [Netflix] [Org NF Hin-Tam-Tel DDP 5.1 - 640k + Eng DTS-X 7.1] [18 GB].mkv",
-        "size": "18 GB",
-        "size_gb": 18
+        "new_name": "The Avengers (2012) [1080p] [BluRay] [x264] [Org Hindi BD 5.1 - 640Kbps + Eng DTS- HDMA 7.1] [16 GB].mkv",
+        "size": "16 GB",
+        "size_gb": 16
       }
     ]
   }
