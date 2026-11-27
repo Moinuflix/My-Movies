@@ -93,35 +93,34 @@
     ]
   },
   {
-    "file_id": "1Eriycyw5ZZ507Lor0RoNn22F-oZv78XL",
+    "file_id": "1zUJpd78XuGptCedNunMXLfLBRC8gXP8z",
     "source": "gd",
-    "tmdb_id": 280142,
-    "clean_name": "Yaan",
-    "title": "Yaan",
-    "original_title": "யான்",
-    "new_name": "Yaan (2014) [1080p] [Netflix] [Dolby Atmos] [327 MB].mkv",
-    "year": 2014,
+    "tmdb_id": 402778,
+    "clean_name": "Remo",
+    "title": "Remo",
+    "original_title": "ரெமோ",
+    "new_name": "Remo (2016) [1080p] [Netflix] [Dolby Atmos] [9 GB].mkv",
+    "year": 2016,
     "orig_lang": "ta",
-    "rating": 5,
+    "rating": 5.7,
     "genres": [
-      "Romance",
-      "Action",
-      "Thriller"
+      "Comedy",
+      "Romance"
     ],
-    "plot": "Chandru, a jobless man, vows to get a job after the father of his girlfriend opposes their relationship. His joy on getting a job in an Islamic nation ends when he is nabbed there for carrying drugs.",
-    "size": "400 MB",
-    "size_gb": 0.39,
-    "poster": "https://image.tmdb.org/t/p/original/2nuHMinkBUUnrrH0db1nJJX47hs.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/AnIE41cj6VDemX0wh6Nc8iHdBhj.jpg",
-    "clearlogo": "",
-    "added_at": "2026-11-27T16:28:44.970Z",
+    "plot": "An aspiring actor dresses up as a female nurse to bag a role in a film, and more importantly, woo the love of his life.",
+    "size": "9 GB",
+    "size_gb": 9,
+    "poster": "https://image.tmdb.org/t/p/original/bhnpnKHsurKVtqbUGAVqB28Jqqr.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/t1VDCUayWT128fU6AWOSc6P8jIC.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/6ZfkkpokYnSyWp0VscpGTSs2Trx.png",
+    "added_at": "2026-11-27T16:28:49.283Z",
     "versions": [
       {
-        "file_id": "1Eriycyw5ZZ507Lor0RoNn22F-oZv78XL",
+        "file_id": "1zUJpd78XuGptCedNunMXLfLBRC8gXP8z",
         "source": "gd",
-        "new_name": "Yaan (2014) [1080p] [Netflix] [Dolby Atmos] [327 MB].mkv",
-        "size": "400 MB",
-        "size_gb": 0.39
+        "new_name": "Remo (2016) [1080p] [Netflix] [Dolby Atmos] [9 GB].mkv",
+        "size": "9 GB",
+        "size_gb": 9
       }
     ]
   }
