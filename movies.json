@@ -91,5 +91,38 @@
         "size_gb": 10
       }
     ]
+  },
+  {
+    "file_id": "1XRzIcyNQqAUkZa2w3DmzfOLHgrX8BUsE",
+    "source": "gd",
+    "tmdb_id": 330420,
+    "clean_name": "Puli",
+    "title": "Puli",
+    "original_title": "புலி",
+    "new_name": "Puli (2015) [2160p 4K] [WEB-DL] [12.9 GB].mkv",
+    "year": 2015,
+    "orig_lang": "ta",
+    "rating": 4.1,
+    "genres": [
+      "Fantasy",
+      "Action",
+      "Adventure"
+    ],
+    "plot": "A virtuous soldier Magadheera aka Puli (Tiger) vows to save his people from the rule of a cruel queen and her treacherous Marshal. Does good triumph over evil?",
+    "size": "13 GB",
+    "size_gb": 13,
+    "poster": "https://image.tmdb.org/t/p/original/stSvPGauOU75qO17xh1TNpwZPyb.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/ntHGUdeosYWniQbYc13Gm2jAL3c.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/es66zSGOE3kPjOOIusyDpIb2xBN.png",
+    "added_at": "2026-11-27T16:27:03.785Z",
+    "versions": [
+      {
+        "file_id": "1XRzIcyNQqAUkZa2w3DmzfOLHgrX8BUsE",
+        "source": "gd",
+        "new_name": "Puli (2015) [2160p 4K] [WEB-DL] [12.9 GB].mkv",
+        "size": "13 GB",
+        "size_gb": 13
+      }
+    ]
   }
 ]
