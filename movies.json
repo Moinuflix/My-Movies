@@ -158,33 +158,34 @@
     ]
   },
   {
-    "file_id": "1ruTXSqOE9dVTpQ-KbOAi-SXYDsiugCQn",
+    "file_id": "1olFefrujaz4gi3qq43Nij6bcMf9OH7jr",
     "source": "gd",
-    "tmdb_id": 78857,
-    "clean_name": "Dharmam Vellum",
-    "title": "Dharmam Vellum",
-    "original_title": "Dharmam Vellum",
-    "new_name": "Dharmam Vellum (1989) [2160p 4K] [WEB-DL] [AVC] [DD+2.0 - 224Kbps & AAC] [ESub] [9 GB].mkv",
-    "year": 1989,
+    "tmdb_id": 1411454,
+    "clean_name": "Yamakaathaghi",
+    "title": "Yamakaathaghi",
+    "original_title": "எமகாதகி",
+    "new_name": "Yamakaathaghi (2025) [1080p] [DD+5.1 - 192Kbps & AAC 2.0] [ESub] [1.6 GB].mkv",
+    "year": 2025,
     "orig_lang": "ta",
-    "rating": 10,
+    "rating": 6,
     "genres": [
+      "Horror",
       "Drama"
     ],
-    "plot": "Saradha, a single mother, kills 13 people in an abandoned circuit house and is sentenced to death. Her son, Vijay, grows up to be a police officer and sets out to solve the mystery behind her actions.",
-    "size": "9 GB",
-    "size_gb": 9,
-    "poster": "https://image.tmdb.org/t/p/original/yngR0FPaWCvEVMIW7yMlF4QbQFX.jpg",
-    "fanart": "",
-    "clearlogo": "",
-    "added_at": "2026-11-27T16:38:24.763Z",
+    "plot": "A young girl's spirit lingers at a rural funeral home, unwilling to depart. Her mysterious death sparks an unsettling supernatural investigation.",
+    "size": "2 GB",
+    "size_gb": 2,
+    "poster": "https://image.tmdb.org/t/p/original/kSIDeFZZG1JACozVAnHX4RdXN07.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/lSqOtz1YBYtLOORa54sc0iNHm75.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/9LaHeZi5X0OLvZ34VrNHvNI1HxL.png",
+    "added_at": "2026-11-27T16:38:29.254Z",
     "versions": [
       {
-        "file_id": "1ruTXSqOE9dVTpQ-KbOAi-SXYDsiugCQn",
+        "file_id": "1olFefrujaz4gi3qq43Nij6bcMf9OH7jr",
         "source": "gd",
-        "new_name": "Dharmam Vellum (1989) [2160p 4K] [WEB-DL] [AVC] [DD+2.0 - 224Kbps & AAC] [ESub] [9 GB].mkv",
-        "size": "9 GB",
-        "size_gb": 9
+        "new_name": "Yamakaathaghi (2025) [1080p] [DD+5.1 - 192Kbps & AAC 2.0] [ESub] [1.6 GB].mkv",
+        "size": "2 GB",
+        "size_gb": 2
       }
     ]
   }
