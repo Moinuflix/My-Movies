@@ -93,34 +93,35 @@
     ]
   },
   {
-    "file_id": "1zCtth5aLCgozic3F6JHjeaDVPyCeJ_fs",
+    "file_id": "1gTSyWVQl2O5Sql2Pn5HEgExpj7rDq9Rc",
     "source": "gd",
-    "tmdb_id": 1506833,
-    "clean_name": "Magudam",
-    "title": "Magudam",
-    "original_title": "மகுடம்",
-    "new_name": "Magudam (2026) [1080p] [Netflix] [Dolby Atmos] [14 GB].mkv",
-    "year": 2026,
-    "orig_lang": "ta",
-    "rating": 4,
+    "tmdb_id": 37645,
+    "clean_name": "22 Bullets",
+    "title": "22 Bullets",
+    "original_title": "L'Immortel",
+    "new_name": "22 Bullets (2010) [1080p] [AMZN] [Dolby Atmos] [7.7 GB].mkv",
+    "year": 2010,
+    "orig_lang": "fr",
+    "rating": 6.7,
     "genres": [
-      "Action",
+      "Drama",
+      "Crime",
       "Thriller"
     ],
-    "plot": "Peaceful medical representative and shipping harbor worker Linga's life changes because of betrayal and conflict in a coastal community.",
-    "size": "13 GB",
-    "size_gb": 13,
-    "poster": "https://image.tmdb.org/t/p/original/oM0daQezJfdK8ADtwi1SMCy1BJA.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/p5LmNUM4T9xLqbeu7nBY47VUh3W.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/AtR4zoLxOMXsCWQmHj8uXhR1MOm.png",
-    "added_at": "2026-11-27T16:29:01.434Z",
+    "plot": "A retired mobster goes on a revenge spree after being left for dead with 22 bullets in his body by his former childhood friend.",
+    "size": "8 GB",
+    "size_gb": 8,
+    "poster": "https://image.tmdb.org/t/p/original/4spRV4Qw0YGaWBHYJ6enu84sR81.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/ulv4h7NglaqDl68RZKnpvOPqT2t.jpg",
+    "clearlogo": "https://assets.fanart.tv/fanart/22-bullets-558350b920603.png",
+    "added_at": "2026-11-27T16:29:05.282Z",
     "versions": [
       {
-        "file_id": "1zCtth5aLCgozic3F6JHjeaDVPyCeJ_fs",
+        "file_id": "1gTSyWVQl2O5Sql2Pn5HEgExpj7rDq9Rc",
         "source": "gd",
-        "new_name": "Magudam (2026) [1080p] [Netflix] [Dolby Atmos] [14 GB].mkv",
-        "size": "13 GB",
-        "size_gb": 13
+        "new_name": "22 Bullets (2010) [1080p] [AMZN] [Dolby Atmos] [7.7 GB].mkv",
+        "size": "8 GB",
+        "size_gb": 8
       }
     ]
   }
