@@ -126,35 +126,35 @@
     ]
   },
   {
-    "file_id": "1oShEqAKMfrZetclW4WBQ-JPiEdv7jxsy",
+    "file_id": "1MKhZOokL9rQ05tecPDnLGMep2QrG1MHZ",
     "source": "gd",
-    "tmdb_id": 155,
-    "clean_name": "The Dark Knight",
-    "title": "The Dark Knight",
-    "original_title": "The Dark Knight",
-    "new_name": "The Dark Knight (2008) [2160p 4K] [IMAX] [AMZN] [AMZN (Tam+Tel+Hin) DDP 2.0 - 224k + Eng DDP 5.1] [19 GB].mkv",
-    "year": 2008,
+    "tmdb_id": 49026,
+    "clean_name": "The Dark Knight Rises",
+    "title": "The Dark Knight Rises",
+    "original_title": "The Dark Knight Rises",
+    "new_name": "The Dark Knight Rises (2012) [1080p] [IMAX] [AMZN] [AMZN (Tam+Tel+Hin) DDP 5.1 - 640k + Eng DDP 5.1] [16 GB].mkv",
+    "year": 2012,
     "orig_lang": "en",
-    "rating": 8.5,
+    "rating": 7.8,
     "genres": [
       "Action",
-      "Thriller",
-      "Crime"
+      "Crime",
+      "Thriller"
     ],
-    "plot": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
-    "size": "19 GB",
-    "size_gb": 19,
-    "poster": "https://image.tmdb.org/t/p/original/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/cfT29Im5VDvjE0RpyKOSdCKZal7.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/nO5Uix3Qr4WjOyU1BMPv0okyNWm.png",
-    "added_at": "2026-11-27T16:34:07.541Z",
+    "plot": "Following the death of District Attorney Harvey Dent, Batman assumes responsibility for Dent's crimes to protect the late attorney's reputation and is subsequently hunted by the Gotham City Police Department. Eight years later, Batman encounters the mysterious Selina Kyle and the villainous Bane, a new terrorist leader who overwhelms Gotham's finest. The Dark Knight resurfaces to protect a city that has branded him an enemy.",
+    "size": "16 GB",
+    "size_gb": 16,
+    "poster": "https://image.tmdb.org/t/p/original/hr0L2aueqlP2BYUblTTjmtn0hw4.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/c3OHQncTAnKFhdOTX7D3LTW6son.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/A0QGz3heDFbLT3YCXa2jUKfWnbx.png",
+    "added_at": "2026-11-27T16:34:11.446Z",
     "versions": [
       {
-        "file_id": "1oShEqAKMfrZetclW4WBQ-JPiEdv7jxsy",
+        "file_id": "1MKhZOokL9rQ05tecPDnLGMep2QrG1MHZ",
         "source": "gd",
-        "new_name": "The Dark Knight (2008) [2160p 4K] [IMAX] [AMZN] [AMZN (Tam+Tel+Hin) DDP 2.0 - 224k + Eng DDP 5.1] [19 GB].mkv",
-        "size": "19 GB",
-        "size_gb": 19
+        "new_name": "The Dark Knight Rises (2012) [1080p] [IMAX] [AMZN] [AMZN (Tam+Tel+Hin) DDP 5.1 - 640k + Eng DDP 5.1] [16 GB].mkv",
+        "size": "16 GB",
+        "size_gb": 16
       }
     ]
   }
