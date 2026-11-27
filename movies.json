@@ -126,31 +126,35 @@
     ]
   },
   {
-    "file_id": "1tCT3u490297zhHuxS4RJZaEiYegzBJQj",
+    "file_id": "1r0OlfljJscybQD59J2Mbk5ev0tJ4OFuq",
     "source": "gd",
-    "tmdb_id": 280148,
-    "clean_name": "Vanmam",
-    "title": "Vanmam",
-    "original_title": "வன்மம்",
-    "new_name": "Vanmam (2014) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [9 GB].mkv",
-    "year": 2014,
-    "orig_lang": "ta",
-    "rating": 4.8,
-    "genres": [],
-    "plot": "Two friends turn bitter foes after a fall out and their enmity is exploited by a man who has scores to settle.",
-    "size": "10 GB",
-    "size_gb": 10,
-    "poster": "https://image.tmdb.org/t/p/original/boEVtgGCeQCum1H3dHMdOsj0poi.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/mBp62fok2IERhhG1ldQaz84JCLM.jpg",
-    "clearlogo": "",
-    "added_at": "2026-11-27T16:36:31.501Z",
+    "tmdb_id": 678391,
+    "clean_name": "HIT: The First Case",
+    "title": "HIT: The First Case",
+    "original_title": "హిట్: ది ఫస్ట్ కేస్",
+    "new_name": "HIT (2020) [1080p] [Untouched] [WEB-DL] [AVC] [Tamil (Org) + Telugu] [ESub] [2.8 GB].mkv",
+    "year": 2020,
+    "orig_lang": "te",
+    "rating": 6.7,
+    "genres": [
+      "Crime",
+      "Thriller",
+      "Action"
+    ],
+    "plot": "Vikram Rudraraju is a 30-year-old cop working for the Telangana State Police. While Vikram is battling with his own traumatic past, the stakes get high when a girl called Preethi mysteriously disappears in Hyderabad and Vikram has to solve the case at any cost.",
+    "size": "3 GB",
+    "size_gb": 3,
+    "poster": "https://image.tmdb.org/t/p/original/dMxentLHEJPBMQCPXHrUKluODpe.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/A45uq2S4JHBVLGaMWrtawOLp08i.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/j0qVO1A7WjSbFEAETeyJaUGUP5o.png",
+    "added_at": "2026-11-27T16:36:36.888Z",
     "versions": [
       {
-        "file_id": "1tCT3u490297zhHuxS4RJZaEiYegzBJQj",
+        "file_id": "1r0OlfljJscybQD59J2Mbk5ev0tJ4OFuq",
         "source": "gd",
-        "new_name": "Vanmam (2014) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [9 GB].mkv",
-        "size": "10 GB",
-        "size_gb": 10
+        "new_name": "HIT (2020) [1080p] [Untouched] [WEB-DL] [AVC] [Tamil (Org) + Telugu] [ESub] [2.8 GB].mkv",
+        "size": "3 GB",
+        "size_gb": 3
       }
     ]
   }
