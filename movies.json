@@ -93,35 +93,33 @@
     ]
   },
   {
-    "file_id": "17UrWEVN6kIlNBSaE-O7DvNlf3Op1O52I",
+    "file_id": "1hYIwbeJci3h6mX4Hbzr67h6XE7F9ljbQ",
     "source": "gd",
-    "tmdb_id": 346364,
-    "clean_name": "It",
-    "title": "It",
-    "original_title": "It",
-    "new_name": "It (2017) [1080p] [AMZN] [MoviesAnywhere] [x264] [Hindi + English] [DTS-HD MA] [13 GB].mkv",
-    "year": 2017,
+    "tmdb_id": 1212763,
+    "clean_name": "Evil Dead Burn",
+    "title": "Evil Dead Burn",
+    "original_title": "Evil Dead Burn",
+    "new_name": "Evil Dead Burn (2026) [1080p] [AMZN] [x264] [Tamil+Hindi+Telugu+English] [Dolby Atmos] [7 GB].mkv",
+    "year": 2026,
     "orig_lang": "en",
-    "rating": 7.2,
+    "rating": 7.5,
     "genres": [
-      "Horror",
-      "Thriller",
-      "Drama"
+      "Horror"
     ],
-    "plot": "In a small town in Maine, seven children known as The Losers Club come face to face with life problems, bullies and a monster that takes the shape of a clown called Pennywise.",
-    "size": "13 GB",
-    "size_gb": 13,
-    "poster": "https://image.tmdb.org/t/p/original/9E2y5Q7WlCVNEhP5GiVTjhEhx1o.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/tcheoA2nPATCm2vvXw2hVQoaEFD.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/cPiNTussFYDw6O3IUjpZdvPSuZa.png",
-    "added_at": "2026-11-27T16:30:40.498Z",
+    "plot": "After her husband's abrupt death, Alice seeks solace with his remaining family — descendants of a leading researcher on demonic possession. As her in-laws transform one by one into creatures that feed on fear, she comes to discover that the vows she took in life survive even in death.",
+    "size": "7 GB",
+    "size_gb": 7,
+    "poster": "https://image.tmdb.org/t/p/original/uRxrNXQWkHoENm3nwVOZDYSCx2F.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/o0jkkpcN81QqSl8DMLScBCXyUH9.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/kl8vB2c5XMs68dtP9gjDGUP9Tsj.png",
+    "added_at": "2026-11-27T16:30:44.360Z",
     "versions": [
       {
-        "file_id": "17UrWEVN6kIlNBSaE-O7DvNlf3Op1O52I",
+        "file_id": "1hYIwbeJci3h6mX4Hbzr67h6XE7F9ljbQ",
         "source": "gd",
-        "new_name": "It (2017) [1080p] [AMZN] [MoviesAnywhere] [x264] [Hindi + English] [DTS-HD MA] [13 GB].mkv",
-        "size": "13 GB",
-        "size_gb": 13
+        "new_name": "Evil Dead Burn (2026) [1080p] [AMZN] [x264] [Tamil+Hindi+Telugu+English] [Dolby Atmos] [7 GB].mkv",
+        "size": "7 GB",
+        "size_gb": 7
       }
     ]
   }
