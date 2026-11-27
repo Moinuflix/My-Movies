@@ -126,35 +126,34 @@
     ]
   },
   {
-    "file_id": "1zwhgd0b0WKlyX8gtDa0k5IM7-PLtuvGg",
+    "file_id": "1jRbPmoAF1chui0NebvFbVYh6qG_VV5Aq",
     "source": "gd",
-    "tmdb_id": 362045,
-    "clean_name": "Bajirao Mastani",
-    "title": "Bajirao Mastani",
-    "original_title": "बाजीराव मस्तानी",
-    "new_name": "Bajirao Mastani (2015) [2160p 4K] [DD+2.0 - 224Kbps & AAC 2.0] [ESub] [9.5 GB].mkv",
-    "year": 2015,
-    "orig_lang": "hi",
-    "rating": 7.2,
+    "tmdb_id": 38637,
+    "clean_name": "Vaaranam Aayiram",
+    "title": "Vaaranam Aayiram",
+    "original_title": "வாரணம் ஆயிரம்",
+    "new_name": "Vaaranam Aayiram (2008) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [12 GB].mkv",
+    "year": 2008,
+    "orig_lang": "ta",
+    "rating": 7.3,
     "genres": [
-      "History",
-      "Romance",
-      "Drama"
+      "Drama",
+      "Romance"
     ],
-    "plot": "Peshwa Bajirao married to Kashibai, falls in love with Mastani, a warrior princess in distress. They struggle to make their love triumph amid opposition from his conservative family.",
-    "size": "10 GB",
-    "size_gb": 10,
-    "poster": "https://image.tmdb.org/t/p/original/eXKHjELZAbF7cVd9fzYMhvSsXDI.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/wqe6GXolmOtRTYxImtZQkKH35EA.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/hrfr3DuxSbIpEoQNtQ9W4O9xrC3.png",
-    "added_at": "2026-11-27T16:37:02.190Z",
+    "plot": "A son deals with the death of his father and examines how their relationship influences him through growing up, romance, tragedy and adventure.",
+    "size": "12 GB",
+    "size_gb": 12,
+    "poster": "https://image.tmdb.org/t/p/original/3PxkiDTObsws7pzkdUiHCjOxVA4.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/f27VwvczS7VqAwDwVChQrQqprFX.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/mStG8eTjy8SgsOjLUXqQHxo38mW.png",
+    "added_at": "2026-11-27T16:37:06.141Z",
     "versions": [
       {
-        "file_id": "1zwhgd0b0WKlyX8gtDa0k5IM7-PLtuvGg",
+        "file_id": "1jRbPmoAF1chui0NebvFbVYh6qG_VV5Aq",
         "source": "gd",
-        "new_name": "Bajirao Mastani (2015) [2160p 4K] [DD+2.0 - 224Kbps & AAC 2.0] [ESub] [9.5 GB].mkv",
-        "size": "10 GB",
-        "size_gb": 10
+        "new_name": "Vaaranam Aayiram (2008) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [12 GB].mkv",
+        "size": "12 GB",
+        "size_gb": 12
       }
     ]
   }
