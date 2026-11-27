@@ -126,36 +126,36 @@
     ]
   },
   {
-    "file_id": "1-6054OJrO3pk2jAGp9rcW0K56KL3kuXw",
+    "file_id": "1syi1WUC5EwLrDaIBtD8PSQRRhmk02VDH",
     "source": "gd",
-    "tmdb_id": 10137,
-    "clean_name": "Stuart Little",
-    "title": "Stuart Little",
-    "original_title": "Stuart Little",
-    "new_name": "Stuart Little (1999) [1080p] [BluRay] [Old Dub (Tamil+Hindi) MP3 2.0 + Eng DDP 5.1] [4 GB].mkv",
-    "year": 1999,
+    "tmdb_id": 135397,
+    "clean_name": "Jurassic World",
+    "title": "Jurassic World",
+    "original_title": "Jurassic World",
+    "new_name": "Jurassic World (2015) [1080p] [BluRay] [Org Hindi BD DTS 5.1 - 768k + AAC 7.1 English] [6.7 GB].mkv",
+    "year": 2015,
     "orig_lang": "en",
-    "rating": 6.1,
+    "rating": 6.7,
     "genres": [
-      "Family",
-      "Fantasy",
-      "Comedy",
-      "Adventure"
+      "Adventure",
+      "Science Fiction",
+      "Thriller",
+      "Action"
     ],
-    "plot": "When the Littles adopt Stuart, the mouse, George is initially unwelcoming to his new brother, and the family cat, Snowbell, is even less enthusiastic. Stuart resolves to face these difficulties with as much pluck and courage as he can muster.",
-    "size": "4 GB",
-    "size_gb": 4,
-    "poster": "https://image.tmdb.org/t/p/original/362lcwTJlNyAhitTlp2UraECISR.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/dECKGAenue36W50HYhd3Jh1OJs.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/h2E3gejtNhlqsH8gPn3InA0kbdB.png",
-    "added_at": "2026-11-27T16:33:48.696Z",
+    "plot": "Twenty-two years after the events of Jurassic Park, Isla Nublar now features a fully functioning dinosaur theme park, Jurassic World, as originally envisioned by John Hammond.",
+    "size": "6.7 GB",
+    "size_gb": 6.7,
+    "poster": "https://image.tmdb.org/t/p/original/bkXjL03yWPmiuFqxWEp4zSYVZBY.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/dF6FjTZzRTENfB4R17HDN20jLT2.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/vleUbBFlEGdxaazvzBMoZ5dHDoY.png",
+    "added_at": "2026-11-27T16:33:52.131Z",
     "versions": [
       {
-        "file_id": "1-6054OJrO3pk2jAGp9rcW0K56KL3kuXw",
+        "file_id": "1syi1WUC5EwLrDaIBtD8PSQRRhmk02VDH",
         "source": "gd",
-        "new_name": "Stuart Little (1999) [1080p] [BluRay] [Old Dub (Tamil+Hindi) MP3 2.0 + Eng DDP 5.1] [4 GB].mkv",
-        "size": "4 GB",
-        "size_gb": 4
+        "new_name": "Jurassic World (2015) [1080p] [BluRay] [Org Hindi BD DTS 5.1 - 768k + AAC 7.1 English] [6.7 GB].mkv",
+        "size": "6.7 GB",
+        "size_gb": 6.7
       }
     ]
   }
