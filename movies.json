@@ -60,35 +60,37 @@
     ]
   },
   {
-    "file_id": "1gy9eD3LExZWrEJecUUhGPSQhgufnwi3D",
+    "file_id": "1OTj2H7F-ORJNLHoGNBw6JTVaZyQGdB1C",
     "source": "gd",
-    "tmdb_id": 295693,
-    "clean_name": "The Boss Baby",
-    "title": "The Boss Baby",
-    "original_title": "The Boss Baby",
-    "new_name": "The Boss Baby (2017) [2160p 4K] [BluRay] [x264] [Hindi DD 2.0 - 224Kbps + English DTS-HDMA 7.1] [4 GB].mkv",
-    "year": 2017,
-    "orig_lang": "en",
-    "rating": 6.4,
+    "tmdb_id": 949716,
+    "clean_name": "Vidaamuyarchi",
+    "title": "Vidaamuyarchi",
+    "original_title": "விடாமுயற்சி",
+    "new_name": "Vidaamuyarchi (2025) [2160p 4K] [WEB-DL] [Netflix] [Tam+Tel+Hin+Kan+Mal DDP 5.1 - 640Kbps] [15.2 GB].mkv",
+    "year": 2025,
+    "orig_lang": "ta",
+    "rating": 6.1,
     "genres": [
-      "Animation",
-      "Comedy",
-      "Family"
+      "Action",
+      "Drama",
+      "Mystery",
+      "Thriller",
+      "Crime"
     ],
-    "plot": "A story about how a new baby's arrival impacts a family, told from the point of view of a delightfully unreliable narrator, a wildly imaginative 7 year old named Tim.",
-    "size": "4 GB",
-    "size_gb": 4,
-    "poster": "https://image.tmdb.org/t/p/original/9MsQJKe4cUAGxc7R2NGaFQLqOPc.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/8280R0bDR1FusPyThAOmAcSC4nu.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/4ClQ9oVQzTIaOp0twxhXrrIGWap.png",
-    "added_at": "2026-11-27T16:24:39.979Z",
+    "plot": "While struggling with his broken marriage, Arjun is pulled into a desperate search for his wife, Kayal, when she goes missing during a road trip.",
+    "size": "15.2 GB",
+    "size_gb": 15.2,
+    "poster": "https://image.tmdb.org/t/p/original/yx7AYFLoupzBfdfEAlDFuOiei2A.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/k4cFld0vF83NSCWICwQpBKE0d34.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/iM3IqzbKRuchR3F39kWiF3bqUSM.png",
+    "added_at": "2026-11-27T16:24:44.289Z",
     "versions": [
       {
-        "file_id": "1gy9eD3LExZWrEJecUUhGPSQhgufnwi3D",
+        "file_id": "1OTj2H7F-ORJNLHoGNBw6JTVaZyQGdB1C",
         "source": "gd",
-        "new_name": "The Boss Baby (2017) [2160p 4K] [BluRay] [x264] [Hindi DD 2.0 - 224Kbps + English DTS-HDMA 7.1] [4 GB].mkv",
-        "size": "4 GB",
-        "size_gb": 4
+        "new_name": "Vidaamuyarchi (2025) [2160p 4K] [WEB-DL] [Netflix] [Tam+Tel+Hin+Kan+Mal DDP 5.1 - 640Kbps] [15.2 GB].mkv",
+        "size": "15.2 GB",
+        "size_gb": 15.2
       }
     ]
   }
