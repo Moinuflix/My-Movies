@@ -297,5 +297,37 @@
         "size_gb": 3.8
       }
     ]
+  },
+  {
+    "file_id": "1h5eSNpOMRHVvqGVxT6F2knVZ-oDFFEWT",
+    "source": "gd",
+    "tmdb_id": 15980,
+    "clean_name": "Raaz: The Mystery Continues...",
+    "title": "Raaz: The Mystery Continues...",
+    "original_title": "राज़ : दि मिस्ट्री कन्टिन्युज",
+    "new_name": "Raaz: The Mystery Continues... (2009) [1080p] [AMZN] [x264] [Hindi 5.1] [ESub] [11GB].mkv",
+    "year": 2009,
+    "orig_lang": "hi",
+    "rating": 5.6,
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "plot": "An artist comes to realize that the woman he has been been painting is real and is being haunted by a ghost.",
+    "size": "11GB",
+    "size_gb": 11,
+    "poster": "https://image.tmdb.org/t/p/original/bdVUWduDhrV7bGlHN1TR6NyEQ9r.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/e7eVM6mAEVZ7XZOGKrNTboTK38b.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/lXdcGju2NQS2JEFFnnknxtjpaMs.png",
+    "added_at": "2026-11-27T17:13:37.155Z",
+    "versions": [
+      {
+        "file_id": "1h5eSNpOMRHVvqGVxT6F2knVZ-oDFFEWT",
+        "source": "gd",
+        "new_name": "Raaz: The Mystery Continues... (2009) [1080p] [AMZN] [x264] [Hindi 5.1] [ESub] [11GB].mkv",
+        "size": "11GB",
+        "size_gb": 11
+      }
+    ]
   }
 ]
