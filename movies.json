@@ -93,34 +93,34 @@
     ]
   },
   {
-    "file_id": "1mrZcy_4O_jawOFfb8zXUjW12JHbws1K3",
+    "file_id": "1nTKdZfbCPH3hcy2BpxF0THWne9gH99H5",
     "source": "gd",
-    "tmdb_id": 263475,
-    "clean_name": "Kaththi",
-    "title": "Kaththi",
-    "original_title": "கத்தி",
-    "new_name": "Kaththi (2014) [1080p] [BluRay] [AVC] [Tamil] [DTS 5.1 - 1509k] [14 GB].mkv",
-    "year": 2014,
-    "orig_lang": "ta",
-    "rating": 6.8,
+    "tmdb_id": 393518,
+    "clean_name": "Album",
+    "title": "Album",
+    "original_title": "Albüm",
+    "new_name": "Album (2016) [1080p] [WEB-DL] [Dolby Atmos] [5 GB].mkv",
+    "year": 2016,
+    "orig_lang": "tr",
+    "rating": 5.5,
     "genres": [
-      "Action",
-      "Drama"
+      "Drama",
+      "Comedy"
     ],
-    "plot": "A case of mistaken identity embroils an escaped convict in a fight against a large corporation intent on seizing a village's land.",
-    "size": "14 GB",
-    "size_gb": 14,
-    "poster": "https://image.tmdb.org/t/p/original/y8hvai0Y96Fz1yqyvtAG0hnATuZ.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/iOnnXN8XPMWrh7flteI1mCftYBZ.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/nz7YYmh691KgfceHOHHpXThuYJN.png",
-    "added_at": "2026-11-27T16:29:51.904Z",
+    "plot": "A couple in their late 30’s sets out to prepare a fake photo album of a pseudo pregnancy period in order to prove their biological tie to the baby they’re planning to adopt.",
+    "size": "5 GB",
+    "size_gb": 5,
+    "poster": "https://image.tmdb.org/t/p/original/brGIZV0NBviWVo0rNU2aYWU6q93.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/tdJkzbd9xytGWuqFgxqz8549Lbj.jpg",
+    "clearlogo": "",
+    "added_at": "2026-11-27T16:29:55.745Z",
     "versions": [
       {
-        "file_id": "1mrZcy_4O_jawOFfb8zXUjW12JHbws1K3",
+        "file_id": "1nTKdZfbCPH3hcy2BpxF0THWne9gH99H5",
         "source": "gd",
-        "new_name": "Kaththi (2014) [1080p] [BluRay] [AVC] [Tamil] [DTS 5.1 - 1509k] [14 GB].mkv",
-        "size": "14 GB",
-        "size_gb": 14
+        "new_name": "Album (2016) [1080p] [WEB-DL] [Dolby Atmos] [5 GB].mkv",
+        "size": "5 GB",
+        "size_gb": 5
       }
     ]
   }
