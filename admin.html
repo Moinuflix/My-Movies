@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MoinuFlix — Library Manager & Auto-Fill Suite</title>
+  <title>MoinuFlix — Unified Library Manager (Movies & Series)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,6 +16,7 @@
       --laser-green: #10b981;
       --laser-gold: #f59e0b;
       --laser-red: #ef4444;
+      --laser-purple: #a855f7;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
     }
@@ -45,11 +46,11 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .brand-title { font-size: 1.4rem; font-weight: 800; color: #fff; }
-    .brand-sub { font-size: 0.82rem; color: var(--laser-cyan); font-weight: 600; }
+    .brand-sub { font-size: 0.82rem; color: var(--laser-cyan); font-weight: 600; margin-top: 3px; }
 
     .header-actions {
       display: flex;
@@ -66,7 +67,7 @@
       border-radius: 10px;
       font-size: 0.85rem;
       outline: none;
-      width: 240px;
+      width: 230px;
     }
     .search-input:focus { border-color: var(--laser-cyan); }
 
@@ -88,6 +89,30 @@
     .btn-pill:hover { background: var(--laser-cyan); color: #020617; }
     .btn-green { background: linear-gradient(135deg, var(--laser-green), #059669); color: #fff; border: none; }
     .btn-green:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); }
+
+    /* LIBRARY TYPE SWITCHER */
+    .lib-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .lib-tab-btn {
+      padding: 0.65rem 1.3rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .lib-tab-btn.active {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: var(--laser-cyan);
+      color: #fff;
+    }
 
     /* STATS & FILTER TABS */
     .filter-tabs-row {
@@ -123,7 +148,7 @@
     /* MOVIES GRID */
     .movies-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
       gap: 1.25rem;
     }
 
@@ -168,17 +193,22 @@
       border-radius: 6px;
     }
 
-    .chunk-badge {
+    .src-badge {
       position: absolute;
       top: 8px;
       right: 8px;
-      background: rgba(2, 6, 23, 0.85);
-      border: 1px solid var(--laser-cyan);
-      color: var(--laser-cyan);
+      background: rgba(2, 6, 23, 0.88);
+      border: 1px solid var(--laser-green);
+      color: var(--laser-green);
       font-size: 0.65rem;
       font-weight: 800;
       padding: 2px 6px;
       border-radius: 6px;
+      text-transform: uppercase;
+    }
+    .src-badge.tg {
+      border-color: var(--laser-purple);
+      color: #e9d5ff;
     }
 
     .movie-card-body {
@@ -224,6 +254,17 @@
       text-decoration: none;
     }
     .btn-card-action:hover { background: var(--laser-cyan); color: #020617; }
+    .btn-card-del {
+      padding: 5px 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 1px solid rgba(239, 68, 68, 0.45);
+      background: rgba(239, 68, 68, 0.14);
+      color: #fca5a5;
+    }
+    .btn-card-del:hover { background: var(--laser-red); color: #fff; }
 
     /* AUTO-FILL PROGRESS MODAL */
     .modal-overlay {
@@ -250,7 +291,7 @@
       gap: 1rem;
     }
     .modal-scroll {
-      max-height: 250px;
+      max-height: 260px;
       overflow-y: auto;
       background: #020617;
       border: 1px solid var(--card-border);
@@ -270,48 +311,57 @@
   <!-- TOP BAR -->
   <div class="top-header">
     <div>
-      <div class="brand-title">MOINUFLIX — LIBRARY MANAGER</div>
-      <div class="brand-sub">Master Catalog Index • Two-Tier Auto-Fill Engine • Kodi STRM Sync</div>
+      <div class="brand-title">MOINUFLIX — UNIFIED LIBRARY MANAGER</div>
+      <div class="brand-sub">Clean ID-Only Master Catalog • movies.json, series.json &amp; name_registry.json</div>
     </div>
     <div class="header-actions">
-      <input type="text" class="search-input" id="search-input" placeholder="Search catalog..." oninput="handleSearch(this.value)">
-      <button class="btn-pill btn-green" onclick="startAutoFillMissingData()">⚡ 1-Click Auto-Fill Missing Data</button>
-      <a href="inbox.html" class="btn-pill">+ Ingest</a>
+      <input type="text" class="search-input" id="search-input" placeholder="Search library..." oninput="applyFilters()">
+      <button class="btn-pill btn-green" onclick="startAutoFillMissingData()">⚡ Auto-Fill Missing Art &amp; Lang</button>
       <a href="pending.html" class="btn-pill">📥 Pending</a>
+      <a href="inbox.html" class="btn-pill">🎬 Movies</a>
+      <a href="series.html" class="btn-pill">📺 Series</a>
       <button class="btn-pill" onclick="configureToken()">⚙️ Token</button>
-      <button class="btn-pill" onclick="loadCatalog()">🔄 Refresh</button>
+      <button class="btn-pill" onclick="loadLibrary()">🔄 Refresh</button>
     </div>
   </div>
 
-  <!-- STATS & FILTER TABS -->
+  <!-- MOVIES VS SERIES TABS -->
+  <div class="lib-tabs">
+    <button class="lib-tab-btn active" id="tab-movies" onclick="switchLibTab('movies')">🎬 Movies (<span id="count-movies-tab">0</span>)</button>
+    <button class="lib-tab-btn" id="tab-series" onclick="switchLibTab('series')">📺 Web Series (<span id="count-series-tab">0</span>)</button>
+  </div>
+
+  <!-- LANGUAGE FILTER TABS -->
   <div class="filter-tabs-row">
     <div class="category-pills">
-      <button class="cat-btn active" onclick="filterCategory('all', this)">All Movies (<span id="count-all">0</span>)</button>
-      <button class="cat-btn" onclick="filterCategory('hindi', this)">Hindi</button>
-      <button class="cat-btn" onclick="filterCategory('tamil', this)">Tamil</button>
-      <button class="cat-btn" onclick="filterCategory('telugu', this)">Telugu</button>
-      <button class="cat-btn" onclick="filterCategory('english', this)">English</button>
+      <button class="cat-btn active" onclick="filterLanguage('all', this)">All Languages (<span id="count-all">0</span>)</button>
+      <button class="cat-btn" onclick="filterLanguage('hi', this)">Hindi</button>
+      <button class="cat-btn" onclick="filterLanguage('ta', this)">Tamil</button>
+      <button class="cat-btn" onclick="filterLanguage('te', this)">Telugu</button>
+      <button class="cat-btn" onclick="filterLanguage('en', this)">English</button>
+      <button class="cat-btn" onclick="filterLanguage('ml', this)">Malayalam</button>
+      <button class="cat-btn" onclick="filterLanguage('ko', this)">Korean</button>
     </div>
     <div style="font-size:0.85rem; color:var(--text-muted);">
-      Total Catalog: <strong id="total-movies-lbl" style="color:var(--laser-cyan);">0 Movies</strong>
+      Registry Guard: <strong id="total-registry-lbl" style="color:var(--laser-green);">0 Tracked Files</strong>
     </div>
   </div>
 
   <!-- GRID CONTAINER -->
   <div class="movies-grid" id="movies-container">
-    <div style="color:var(--text-muted); padding:40px; text-align:center; grid-column:1/-1;">Loading library catalog...</div>
+    <div style="color:var(--text-muted); padding:40px; text-align:center; grid-column:1/-1;">Loading movies.json &amp; series.json...</div>
   </div>
 </div>
 
-<!-- ⚡ AUTO-FILL PROGRESS MODAL -->
+<!-- AUTO-FILL PROGRESS MODAL -->
 <div class="modal-overlay" id="autofill-modal">
   <div class="modal-content">
     <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--card-border); padding-bottom:8px;">
-      <h3 style="color:#fff; font-size:1.1rem;">⚡ Auto-Filling Missing TMDb Metadata & Chunks</h3>
+      <h3 style="color:#fff; font-size:1.1rem;">⚡ Auto-Filling Missing TMDb 4K Art &amp; Languages</h3>
       <button style="background:transparent; border:none; color:#fff; font-size:1.2rem; cursor:pointer;" onclick="closeModal()">✕</button>
     </div>
     <p style="font-size:0.82rem; color:var(--text-muted);">
-      Scanning movies in catalog.json with missing cast, posters, or chunk details. Enforcing 50-movie limits per chunk...
+      Filling missing posters, 4K fanart, clearlogos, and original language codes without touching your file IDs or bracketed release names...
     </p>
     <div class="modal-scroll" id="autofill-log"></div>
     <div style="display:flex; justify-content:flex-end;">
@@ -322,79 +372,140 @@
 
 <script>
   const TMDB_KEY = "051ccf72e026820cb53b8b8531b6a2ba";
+  const FANART_KEY = "b207628faa5a1fc82f7dc07575c224f7";
   const GH_REPO = "Moinuflix/My-Movies";
   const GH_BRANCH = "main";
-  const WORKER_BASE = "https://gdrive-stream.moinudeentv.workers.dev/?id=";
-  const USER_AGENT = "|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0";
 
-  let allCatalogMovies = [];
-  let currentFilter = "all";
+  let allMovies = [];
+  let allSeries = [];
+  let registryList = [];
+  let activeTab = "movies";
+  let activeLang = "all";
 
-  function getToken() { return (localStorage.getItem("moinuflix_gh_token") || "").trim(); }
+  function getToken() { return (localStorage.getItem("moinuflix_gh_token") || localStorage.getItem("mf_tg_gh") || "").trim(); }
   function configureToken() {
     const cur = getToken();
     const input = prompt("Enter your GitHub Personal Access Token (PAT):", cur);
     if (input !== null) {
       localStorage.setItem("moinuflix_gh_token", input.trim());
       alert("Token updated!");
-      loadCatalog();
+      loadLibrary();
     }
   }
 
-  // 1. Load Catalog Index
-  async function loadCatalog() {
+  async function loadLibrary() {
     const container = document.getElementById("movies-container");
-    container.innerHTML = '<div style="color:var(--text-muted); padding:40px; text-align:center; grid-column:1/-1;">Loading catalog...</div>';
+    container.innerHTML = '<div style="color:var(--text-muted); padding:40px; text-align:center; grid-column:1/-1;">Loading movies.json, series.json &amp; name_registry.json...</div>';
 
     try {
-      const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/catalog.json?t=${Date.now()}`);
-      if (!res.ok) throw new Error("catalog.json not found on GitHub");
+      const [mRes, sRes, rRes] = await Promise.all([
+        fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/movies.json?t=${Date.now()}`),
+        fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/series.json?t=${Date.now()}`),
+        fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/name_registry.json?t=${Date.now()}`)
+      ]);
 
-      const catData = await res.json();
-      allCatalogMovies = catData.movies || (Array.isArray(catData) ? catData : []);
+      if (mRes.ok) {
+        const md = await mRes.json();
+        allMovies = Array.isArray(md) ? md : [];
+      }
+      if (sRes.ok) {
+        const sd = await sRes.json();
+        allSeries = Array.isArray(sd) ? sd : [];
+      }
+      if (rRes.ok) {
+        const rd = await rRes.json();
+        registryList = Array.isArray(rd) ? rd : [];
+      }
 
-      document.getElementById("total-movies-lbl").textContent = `${allCatalogMovies.length} Movies`;
-      document.getElementById("count-all").textContent = allCatalogMovies.length;
+      document.getElementById("count-movies-tab").textContent = allMovies.length;
+      document.getElementById("count-series-tab").textContent = allSeries.length;
+      document.getElementById("total-registry-lbl").textContent = `${registryList.length} Tracked Files`;
 
-      renderMovies(allCatalogMovies);
+      applyFilters();
     } catch (err) {
       container.innerHTML = `<div style="color:var(--laser-red); padding:40px; text-align:center; grid-column:1/-1;">Error loading library: ${err.message}</div>`;
     }
   }
 
-  // 2. Render Cards
-  function renderMovies(movies) {
+  function switchLibTab(tab) {
+    activeTab = tab;
+    document.getElementById("tab-movies").className = `lib-tab-btn ${tab === 'movies' ? 'active' : ''}`;
+    document.getElementById("tab-series").className = `lib-tab-btn ${tab === 'series' ? 'active' : ''}`;
+    applyFilters();
+  }
+
+  function filterLanguage(langCode, btn) {
+    activeLang = langCode;
+    document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    applyFilters();
+  }
+
+  function applyFilters() {
+    const baseList = activeTab === "series" ? allSeries : allMovies;
+    document.getElementById("count-all").textContent = baseList.length;
+
+    const q = document.getElementById("search-input").value.toLowerCase().trim();
+    const filtered = baseList.filter(item => {
+      const title = (item.clean_name || item.title || "").toLowerCase();
+      const lang = (item.orig_lang || item.original_language || "hi").toLowerCase();
+      const matchSearch = !q || title.includes(q);
+      const matchLang = activeLang === "all" || lang === activeLang;
+      return matchSearch && matchLang;
+    });
+
+    renderCards(filtered);
+  }
+
+  function renderCards(items) {
     const container = document.getElementById("movies-container");
     container.innerHTML = "";
 
-    if (movies.length === 0) {
-      container.innerHTML = '<div style="color:var(--text-muted); padding:40px; text-align:center; grid-column:1/-1;">No movies found.</div>';
+    if (items.length === 0) {
+      container.innerHTML = `<div style="color:var(--text-muted); padding:40px; text-align:center; grid-column:1/-1;">No ${activeTab} found matching filter.</div>`;
       return;
     }
 
-    movies.forEach(movie => {
-      const poster = movie.poster || "https://via.placeholder.com/185x275?text=No+Poster";
-      const rating = movie.rating ? `${movie.rating} ★` : "7.5 ★";
-      const chunkLabel = (movie.chunk_file || "chunk_01.json").replace("resources/data/chunks/", "").replace("chunks/", "");
-      const playUrl = `movie.html?id=${movie.id}`;
+    items.forEach((item, idx) => {
+      const title = item.clean_name || item.title || "Untitled";
+      const poster = item.poster || "https://via.placeholder.com/195x290?text=No+Poster";
+      const rating = item.rating ? `${item.rating} ★` : "7.5 ★";
+      const lang = (item.orig_lang || item.original_language || "hi").toUpperCase();
+      const itemId = item.file_id || item.id || "";
+
+      let srcBadge = "";
+      let countTag = "";
+      let editUrl = `inbox.html?load_id=${encodeURIComponent(itemId)}`;
+
+      if (activeTab === "series") {
+        const epCount = Array.isArray(item.episodes) ? item.episodes.length : 0;
+        srcBadge = `<span class="src-badge">${epCount} EPS</span>`;
+        countTag = `${epCount} Eps`;
+        editUrl = "series.html";
+      } else {
+        const src = (item.source || "gd").toLowerCase();
+        const vCount = Array.isArray(item.versions) ? item.versions.length : 1;
+        srcBadge = `<span class="src-badge ${src === 'tg' ? 'tg' : ''}">${src.toUpperCase()}${vCount > 1 ? ` • ${vCount}V` : ''}</span>`;
+        countTag = item.size || `${item.size_gb || 5} GB`;
+      }
 
       const card = document.createElement("div");
       card.className = "movie-card";
       card.innerHTML = `
         <div class="poster-wrap">
-          <img src="${poster}" class="poster-img" loading="lazy" alt="${escapeHtml(movie.title)}">
+          <img src="${poster}" class="poster-img" loading="lazy" alt="${escapeHtml(title)}">
           <span class="rating-badge">${rating}</span>
-          <span class="chunk-badge">${chunkLabel}</span>
+          ${srcBadge}
         </div>
         <div class="movie-card-body">
-          <div class="card-title" title="${escapeHtml(movie.title)}">${escapeHtml(movie.title)}</div>
+          <div class="card-title" title="${escapeHtml(title)}">${escapeHtml(title)}</div>
           <div class="card-meta">
-            <span>${movie.year || '2024'}</span>
-            <span style="text-transform:uppercase;">${movie.original_language || 'hi'}</span>
+            <span>${item.year || '2026'} • ${lang}</span>
+            <span>${escapeHtml(countTag)}</span>
           </div>
           <div class="card-actions-row">
-            <a href="${playUrl}" class="btn-card-action">▶ Play</a>
-            <a href="inbox.html?load_id=${movie.id}" class="btn-card-action">✏️ Edit</a>
+            <a href="${editUrl}" class="btn-card-action">✏️ Edit</a>
+            <button type="button" class="btn-card-del" onclick="deleteLibraryItem('${escapeHtml(itemId)}', ${item.tmdb_id || 0}, '${escapeHtml(title)}')">🗑️</button>
           </div>
         </div>
       `;
@@ -402,32 +513,39 @@
     });
   }
 
-  // 3. Search & Filter
-  function handleSearch(val) {
-    const q = val.toLowerCase().trim();
-    const filtered = allCatalogMovies.filter(m => (m.title || '').toLowerCase().includes(q));
-    renderMovies(filtered);
+  async function deleteLibraryItem(itemId, tmdbId, title) {
+    const token = getToken();
+    if (!token) return alert("GitHub Token required!");
+    if (!confirm(`Delete "${title}" from ${activeTab}.json AND name_registry.json?`)) return;
+
+    try {
+      if (activeTab === "series") {
+        allSeries = allSeries.filter(s => !(String(s.id || s.file_id) === String(itemId) || (tmdbId && Number(s.tmdb_id) === Number(tmdbId))));
+        await commitGithubFile("series.json", allSeries, `Delete Series: ${title}`, token);
+      } else {
+        allMovies = allMovies.filter(m => !(String(m.file_id || m.id) === String(itemId) || (tmdbId && Number(m.tmdb_id) === Number(tmdbId))));
+        await commitGithubFile("movies.json", allMovies, `Delete Movie: ${title}`, token);
+      }
+
+      registryList = registryList.filter(r => !(String(r.file_id) === String(itemId) || (tmdbId && Number(r.tmdb_id) === Number(tmdbId))));
+      await commitGithubFile("name_registry.json", registryList, `Registry Remove: ${title}`, token);
+
+      loadLibrary();
+    } catch (e) {
+      alert("Delete Failed: " + e.message);
+    }
   }
 
-  function filterCategory(cat, btn) {
-    currentFilter = cat;
-    document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    if (cat === "all") return renderMovies(allCatalogMovies);
-    
-    const langMap = { "hindi": "hi", "tamil": "ta", "telugu": "te", "english": "en" };
-    const code = langMap[cat];
-    const filtered = allCatalogMovies.filter(m => (m.original_language || '').toLowerCase() === code);
-    renderMovies(filtered);
-  }
-
-  // 4. ⚡ 1-Click Auto-Fill Missing Data (Catalog -> Strict 50 Chunks)
   async function startAutoFillMissingData() {
     const token = getToken();
     if (!token) return alert("GitHub Token required! Please click 'Token' button at top right.");
 
-    if (!confirm(`Run 1-Click Auto-Fill to populate rich metadata, cast photos, and strict 50-item chunks for all ${allCatalogMovies.length} movies?`)) return;
+    const targetList = activeTab === "series" ? allSeries : allMovies;
+    const targetFile = activeTab === "series" ? "series.json" : "movies.json";
+    const tmdbEndpoint = activeTab === "series" ? "tv" : "movie";
+    const faEndpoint = activeTab === "series" ? "tv" : "movies";
+
+    if (!confirm(`Scan all ${targetList.length} items in ${targetFile} and fill missing 4K posters, fanart, clearlogos, and original language codes?`)) return;
 
     const modal = document.getElementById("autofill-modal");
     const logBox = document.getElementById("autofill-log");
@@ -445,147 +563,85 @@
       logBox.scrollTop = logBox.scrollHeight;
     };
 
-    log("🚀 Starting Two-Tier Auto-Fill Engine...");
+    log(`🚀 Scanning ${targetList.length} items in ${targetFile}...`);
+    let updatedCount = 0;
 
     try {
-      // Chunk map to track 50-items per chunk
-      const chunkMap = new Map();
-      let updatedCatalog = [];
+      for (let i = 0; i < targetList.length; i++) {
+        const item = targetList[i];
+        const title = item.clean_name || item.title || "Item";
+        const needsFill = !item.poster || !item.fanart || !item.clearlogo || !item.orig_lang || !item.tmdb_id;
 
-      for (let i = 0; i < allCatalogMovies.length; i++) {
-        const movie = allCatalogMovies[i];
-        const chunkIndex = Math.floor(i / 50) + 1;
-        const chunkFilename = `chunk_${String(chunkIndex).padStart(2, '0')}.json`;
-        const chunkPath = `resources/data/chunks/${chunkFilename}`;
+        if (!needsFill) continue;
 
-        log(`[${i+1}/${allCatalogMovies.length}] Verifying: ${movie.title} (${chunkFilename})...`);
+        log(`[${i + 1}/${targetList.length}] Updating: ${title}...`, "var(--laser-cyan)");
 
-        let tmdbId = movie.tmdb_id;
-        let poster = movie.poster;
-        let fanart = movie.fanart;
-        let rating = movie.rating || 7.5;
-        let castList = [];
-        let plot = "";
-
-        // Query TMDb if ID exists
-        if (tmdbId) {
-          try {
-            const tRes = await fetch(`https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_KEY}&append_to_response=credits`);
-            if (tRes.ok) {
-              const td = await tRes.json();
-              poster = td.poster_path ? `https://image.tmdb.org/t/p/w780${td.poster_path}` : poster;
-              fanart = td.backdrop_path ? `https://image.tmdb.org/t/p/original${td.backdrop_path}` : fanart;
-              rating = td.vote_average ? parseFloat(td.vote_average.toFixed(1)) : rating;
-              plot = td.overview || "";
-              castList = (td.credits?.cast || []).slice(0, 10).map(c => ({
-                name: c.name,
-                character: c.character,
-                profile: c.profile_path ? `https://image.tmdb.org/t/p/w185${c.profile_path}` : null
-              }));
+        let tmdbId = item.tmdb_id;
+        if (!tmdbId) {
+          const sRes = await fetch(`https://api.themoviedb.org/3/search/${tmdbEndpoint}?api_key=${TMDB_KEY}&query=${encodeURIComponent(title)}&include_adult=false`);
+          if (sRes.ok) {
+            const sd = await sRes.json();
+            if (sd.results && sd.results[0]) {
+              tmdbId = sd.results[0].id;
+              item.tmdb_id = tmdbId;
             }
-          } catch (_) {}
+          }
         }
 
-        const streamUrl = `${WORKER_BASE}${movie.id}${USER_AGENT}`;
+        if (tmdbId) {
+          const dRes = await fetch(`https://api.themoviedb.org/3/${tmdbEndpoint}/${tmdbId}?api_key=${TMDB_KEY}&append_to_response=images&include_image_language=en,hi,ta,te,ko,ja,null`);
+          if (dRes.ok) {
+            const td = await dRes.json();
+            item.clean_name = td.title || td.name || title;
+            item.title = item.clean_name;
+            item.orig_lang = (td.original_language || item.orig_lang || "hi").toLowerCase();
+            item.rating = td.vote_average ? parseFloat(td.vote_average.toFixed(1)) : (item.rating || 7.5);
+            if (!item.genres || item.genres.length === 0) item.genres = (td.genres || []).map(g => g.name);
+            if (!item.plot) item.plot = td.overview || "";
+            if (td.poster_path && !item.poster) item.poster = `https://image.tmdb.org/t/p/original${td.poster_path}`;
+            if (td.backdrop_path && !item.fanart) item.fanart = `https://image.tmdb.org/t/p/original${td.backdrop_path}`;
 
-        // Detailed chunk movie object
-        const fullRecord = {
-          id: movie.id,
-          tmdb_id: tmdbId ? parseInt(tmdbId, 10) : 0,
-          name: `${movie.title} (${movie.year || '2024'}).mkv`,
-          title: movie.title,
-          original_title: movie.title,
-          year: movie.year || 2024,
-          rating: rating,
-          original_language: movie.original_language || 'hi',
-          genres: movie.genres || ["Action", "Drama"],
-          plot: plot,
-          cast: castList,
-          artwork: {
-            poster: poster,
-            fanart: fanart,
-            thumbnail: poster
-          },
-          stream_url: streamUrl,
-          specs: {
-            resolution: "1080p",
-            source: "WEB-DL",
-            audio: "5.1",
-            size: "5 GB"
-          },
-          versions: [{
-            id: movie.id,
-            name: `${movie.title}.mkv`,
-            quality: "1080p FHD",
-            stream_url: streamUrl
-          }]
-        };
-
-        if (!chunkMap.has(chunkPath)) chunkMap.set(chunkPath, []);
-        chunkMap.get(chunkPath).push(fullRecord);
-
-        // Updated catalog lightweight object
-        updatedCatalog.push({
-          id: movie.id,
-          tmdb_id: tmdbId ? parseInt(tmdbId, 10) : 0,
-          title: movie.title,
-          year: movie.year || 2024,
-          poster: poster,
-          fanart: fanart,
-          rating: rating,
-          original_language: movie.original_language || 'hi',
-          genres: movie.genres || ["Action", "Drama"],
-          chunk_file: chunkPath,
-          primary_stream_url: streamUrl,
-          available_languages: movie.available_languages || ["Hindi"],
-          version_count: 1
-        });
+            if (!item.clearlogo) {
+              const logos = td.images?.logos || [];
+              const best = logos.find(l => l.file_path && l.file_path.endsWith(".png")) || logos[0];
+              if (best) item.clearlogo = `https://image.tmdb.org/t/p/original${best.file_path}`;
+            }
+            if (!item.clearlogo) {
+              try {
+                const faRes = await fetch(`https://webservice.fanart.tv/v3/${faEndpoint}/${tmdbId}?api_key=${FANART_KEY}`);
+                if (faRes.ok) {
+                  const fa = await faRes.json();
+                  item.clearlogo = fa.hdmovielogo?.[0]?.url || fa.hdtvlogo?.[0]?.url || fa.movielogo?.[0]?.url || fa.clearlogo?.[0]?.url || "";
+                }
+              } catch (_) {}
+            }
+            updatedCount++;
+          }
+        }
       }
 
-      // Commit All Chunks to GitHub
-      for (let [chunkPath, moviesInChunk] of chunkMap.entries()) {
-        log(`💾 Writing ${moviesInChunk.length} records to ${chunkPath}...`, "var(--laser-cyan)");
-        
-        let chunkSha = undefined;
-        try {
-          const res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${chunkPath}?t=${Date.now()}`, {
-            headers: { "Authorization": `token ${token}` }
-          });
-          if (res.ok) chunkSha = (await res.json()).sha;
-        } catch (_) {}
-
-        const chunkData = {
-          chunk_id: chunkPath.split("/").pop().replace(".json", ""),
-          movie_count: moviesInChunk.length,
-          movies: moviesInChunk
-        };
-
-        await commitGithubFile(chunkPath, chunkData, `Auto-Fill: Enforce 50-limit chunk in ${chunkPath}`, chunkSha, token);
+      if (updatedCount > 0) {
+        log(`💾 Committing ${updatedCount} enriched items to ${targetFile}...`, "var(--laser-green)");
+        await commitGithubFile(targetFile, targetList, `Auto-Fill: Enriched ${updatedCount} items in ${targetFile}`, token);
       }
 
-      // Commit Updated Catalog.json
-      log("💾 Updating Master catalog.json...", "var(--laser-green)");
-      let catSha = undefined;
-      try {
-        const catRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/resources/data/catalog.json?t=${Date.now()}`, {
-          headers: { "Authorization": `token ${token}` }
-        });
-        if (catRes.ok) catSha = (await catRes.json()).sha;
-      } catch (_) {}
-
-      await commitGithubFile("resources/data/catalog.json", { movies: updatedCatalog }, "Auto-Fill: Updated master catalog with chunk pointers", catSha, token);
-
-      log("🎉 100% COMPLETE: All chunks and catalog synced smoothly!", "var(--laser-green)");
+      log(`🎉 DONE! Enriched ${updatedCount} items in ${targetFile}.`, "var(--laser-green)");
       doneBtn.style.display = "inline-flex";
-      loadCatalog();
+      loadLibrary();
     } catch (err) {
       log(`❌ Error: ${err.message}`, "var(--laser-red)");
       doneBtn.style.display = "inline-flex";
     }
   }
 
-  async function commitGithubFile(path, data, msg, sha, token) {
+  async function commitGithubFile(path, data, msg, token) {
     const url = `https://api.github.com/repos/${GH_REPO}/contents/${path}`;
+    let sha = undefined;
+    try {
+      const gRes = await fetch(`${url}?t=${Date.now()}`, { headers: { "Authorization": `token ${token}` } });
+      if (gRes.ok) sha = (await gRes.json()).sha;
+    } catch (_) {}
+
     const jsonStr = JSON.stringify(data, null, 2);
     const encoded = btoa(unescape(encodeURIComponent(jsonStr)));
 
@@ -610,7 +666,7 @@
     return String(text || '').replace(/[&<>"']/g, m => map[m]);
   }
 
-  window.addEventListener("DOMContentLoaded", loadCatalog);
+  window.addEventListener("DOMContentLoaded", loadLibrary);
 </script>
 </body>
 </html>
