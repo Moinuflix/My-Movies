@@ -93,33 +93,36 @@
     ]
   },
   {
-    "file_id": "1174iMZEfCfLTQGaaHVnZl7A1_cLQilgY",
+    "file_id": "1ZEi2INnKAc2oNyJRAzOirSYZVencxf-P",
     "source": "gd",
-    "tmdb_id": 1321821,
-    "clean_name": "Pechi",
-    "title": "Pechi",
-    "original_title": "பேச்சி",
-    "new_name": "Pechi (2024) [1080p] [AMZN] [AVC] [Tamil] [DD+ 5.1] [6 GB].mkv",
+    "tmdb_id": 927342,
+    "clean_name": "Amaran",
+    "title": "Amaran",
+    "original_title": "அமரன்",
+    "new_name": "Amaran (2024) [1080p] [Netflix] [x264] [Tamil] [DD+ 5.1] [7 GB].mkv",
     "year": 2024,
     "orig_lang": "ta",
-    "rating": 7.5,
+    "rating": 7.4,
     "genres": [
-      "Horror"
+      "Action",
+      "Drama",
+      "Adventure",
+      "War"
     ],
-    "plot": "Five young trekkers and their tour guide embark on a weekend adventure in the Kollimalai hills. Despite warnings, they venture into a restricted area, unknowingly entering the domain of a malevolent spirit, which is hell bent on wreaking havoc in their lives. Did they survive the relentless onslaught and harrowing encounter with the supernatural force in the haunted woods?",
-    "size": "6 GB",
-    "size_gb": 6,
-    "poster": "https://image.tmdb.org/t/p/original/6Pla6xHgD0kep7S9z6KfXzi6B4l.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/cAwBPZDaDjllk1Geicgj21cDZTS.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/a1GVJENCVklomsoj8bV0aslrgxe.png",
-    "added_at": "2026-11-27T16:30:15.689Z",
+    "plot": "A heroic true story of Major Mukund Varadarajan, an Indian Army officer who displayed extraordinary bravery during a counterterrorism mission in Kashmir’s Shopian district. The film captures his courage in protecting his nation and the devotion of his wife Indhu Rebecaa Varghese.",
+    "size": "7 GB",
+    "size_gb": 7,
+    "poster": "https://image.tmdb.org/t/p/original/kcspKUpofalIuPgAndZOMJz0hwg.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/7cNE2qydew1c8fqnlhWjkE3DHc2.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/7TbIRD06EKOwVhWSSH763kMjQLH.png",
+    "added_at": "2026-11-27T16:30:19.466Z",
     "versions": [
       {
-        "file_id": "1174iMZEfCfLTQGaaHVnZl7A1_cLQilgY",
+        "file_id": "1ZEi2INnKAc2oNyJRAzOirSYZVencxf-P",
         "source": "gd",
-        "new_name": "Pechi (2024) [1080p] [AMZN] [AVC] [Tamil] [DD+ 5.1] [6 GB].mkv",
-        "size": "6 GB",
-        "size_gb": 6
+        "new_name": "Amaran (2024) [1080p] [Netflix] [x264] [Tamil] [DD+ 5.1] [7 GB].mkv",
+        "size": "7 GB",
+        "size_gb": 7
       }
     ]
   }
