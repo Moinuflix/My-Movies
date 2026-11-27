@@ -126,35 +126,34 @@
     ]
   },
   {
-    "file_id": "1AjG6v5nyth9YQRL7kvw_sS1dnYZUZsNj",
+    "file_id": "1f0whg9PBSASoloaWYW5GAq6lHRziv4Dx",
     "source": "gd",
-    "tmdb_id": 224330,
-    "clean_name": "Raja Rani",
-    "title": "Raja Rani",
-    "original_title": "ராஜா ராணி",
-    "new_name": "Raja Rani (2013) [1080p] [HQ] [BluRay] [DTS5.1 - 1509Kbps & AAC] [ESub] [15.5 GB].mkv",
+    "tmdb_id": 191121,
+    "clean_name": "Raanjhanaa",
+    "title": "Raanjhanaa",
+    "original_title": "रान्झाना",
+    "new_name": "Ambikapathy (2013) [1080p] [WEB-DL] [DD5.1 - 448Kbps & AAC 2.0] [ESub] [11.6 GB].mkv",
     "year": 2013,
-    "orig_lang": "ta",
-    "rating": 7.2,
+    "orig_lang": "hi",
+    "rating": 6.7,
     "genres": [
-      "Romance",
-      "Comedy",
-      "Drama"
+      "Drama",
+      "Romance"
     ],
-    "plot": "John and Regina, who dislike each other, are forced to get married and lead troubled lives. However, things take a turn when the couple suffers a sudden tragedy.",
-    "size": "16 GB",
-    "size_gb": 16,
-    "poster": "https://image.tmdb.org/t/p/original/szdy0Tmyc5zrz025JSTWx6EYICR.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/bGupHntcldWhH1gUWAV3sjjhGE6.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/uwH4jMxENxXd7lEIG28ead4XoSZ.png",
-    "added_at": "2026-11-27T16:35:39.546Z",
+    "plot": "A small-town boy needs to break through the class divide to gain acceptance from his childhood sweetheart who is in love with big city ideals.",
+    "size": "12 GB",
+    "size_gb": 12,
+    "poster": "https://image.tmdb.org/t/p/original/54CjAPWZczqfAMhQ926KqBgpLWN.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/lnB3JiuzIjaHIwvsF0O7pVsTFro.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/er6r9F6AVygxxK1giuKMZWV0KRE.png",
+    "added_at": "2026-11-27T16:35:43.070Z",
     "versions": [
       {
-        "file_id": "1AjG6v5nyth9YQRL7kvw_sS1dnYZUZsNj",
+        "file_id": "1f0whg9PBSASoloaWYW5GAq6lHRziv4Dx",
         "source": "gd",
-        "new_name": "Raja Rani (2013) [1080p] [HQ] [BluRay] [DTS5.1 - 1509Kbps & AAC] [ESub] [15.5 GB].mkv",
-        "size": "16 GB",
-        "size_gb": 16
+        "new_name": "Ambikapathy (2013) [1080p] [WEB-DL] [DD5.1 - 448Kbps & AAC 2.0] [ESub] [11.6 GB].mkv",
+        "size": "12 GB",
+        "size_gb": 12
       }
     ]
   }
