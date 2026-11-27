@@ -257,5 +257,38 @@
         "size_gb": 11
       }
     ]
+  },
+  {
+    "file_id": "45",
+    "source": "gd",
+    "tmdb_id": 1368337,
+    "clean_name": "The Odyssey",
+    "title": "The Odyssey",
+    "original_title": "The Odyssey",
+    "new_name": "The Odyssey (2026) [1080p] [BluRay] [x264] [Tamil + Telugu + Hindi + Eng] [ESub] [3.8 GB].mkv",
+    "year": 2026,
+    "orig_lang": "en",
+    "rating": 8,
+    "genres": [
+      "Adventure",
+      "Action",
+      "Fantasy"
+    ],
+    "plot": "Odysseus, the legendary King of Ithaca, embarks on a long and perilous journey home following the Trojan War. Throughout his voyage, he is forced to confront the whims of gods, mythological monsters, and trials that stretch both his cunning and his humanity to the breaking point.",
+    "size": "3.8 GB",
+    "size_gb": 3.8,
+    "poster": "https://image.tmdb.org/t/p/original/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/c7btGYblBnfAaw713WvFM0Kimc7.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/ibyel48H9YBCyilpzPMhSDDpFef.png",
+    "added_at": "2026-11-27T17:09:09.998Z",
+    "versions": [
+      {
+        "file_id": "45",
+        "source": "gd",
+        "new_name": "The Odyssey (2026) [1080p] [BluRay] [x264] [Tamil + Telugu + Hindi + Eng] [ESub] [3.8 GB].mkv",
+        "size": "3.8 GB",
+        "size_gb": 3.8
+      }
+    ]
   }
 ]
