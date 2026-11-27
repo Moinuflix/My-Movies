@@ -126,34 +126,35 @@
     ]
   },
   {
-    "file_id": "1oiNjn8T7voD4YuX9xgDekSSjHE8q5zsw",
+    "file_id": "1k0o0j8AMQ3Xx0s4psG4x3yQdkZNkPxSm",
     "source": "gd",
-    "tmdb_id": 1465245,
-    "clean_name": "Ten Hours",
-    "title": "Ten Hours",
-    "original_title": "டென் ஹவர்ஸ்",
-    "new_name": "Ten Hours (2025) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC] [ESub] [6.2 GB].mkv",
+    "tmdb_id": 1259024,
+    "clean_name": "Good Bad Ugly",
+    "title": "Good Bad Ugly",
+    "original_title": "குட் பேட் அக்லி",
+    "new_name": "Good Bad Ugly (2025) [1080p] [HQ] [Tam+Tel+Hin+Mal+Kan] [8 GB].mkv",
     "year": 2025,
     "orig_lang": "ta",
-    "rating": 7.6,
+    "rating": 5.7,
     "genres": [
+      "Action",
       "Crime",
-      "Thriller"
+      "Comedy"
     ],
-    "plot": "A bus murder investigation unfolds, revealing possible scenarios and suspects. As everyone undergoes questioning, hidden layers of the case begin to surface.",
-    "size": "6 GB",
-    "size_gb": 6,
-    "poster": "https://image.tmdb.org/t/p/original/5dYmfe3UtKyWZs4GNlLPS4pweEa.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/1GbJDREvDhpaAs6BJXLbY3X5Gsw.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/bSKXhyvfCnn1VUfK3jwAhbtKcoB.png",
-    "added_at": "2026-11-27T16:36:49.204Z",
+    "plot": "AK, a powerful gangster, surrenders to the police, in hopes that his wife and son will live a peaceful life. When he is released 17 years later, he learns that his son is falsely accused of serious crimes. To protect him, he is forced to go back to his old ways, facing enemies, both old and new.",
+    "size": "8 GB",
+    "size_gb": 8,
+    "poster": "https://image.tmdb.org/t/p/original/8DbYYluzdiGDAZzsaP7DWGbwfLd.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/16tXEu1C3GCZZ0uPcA91DlWINbj.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/5ROih2dwnVjSxmeEl3sn2DG46sP.png",
+    "added_at": "2026-11-27T16:36:53.309Z",
     "versions": [
       {
-        "file_id": "1oiNjn8T7voD4YuX9xgDekSSjHE8q5zsw",
+        "file_id": "1k0o0j8AMQ3Xx0s4psG4x3yQdkZNkPxSm",
         "source": "gd",
-        "new_name": "Ten Hours (2025) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC] [ESub] [6.2 GB].mkv",
-        "size": "6 GB",
-        "size_gb": 6
+        "new_name": "Good Bad Ugly (2025) [1080p] [HQ] [Tam+Tel+Hin+Mal+Kan] [8 GB].mkv",
+        "size": "8 GB",
+        "size_gb": 8
       }
     ]
   }
