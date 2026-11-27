@@ -60,34 +60,35 @@
     ]
   },
   {
-    "file_id": "1DYhOHSLUA2SglyKok1WC4HMMGaPCAlJq",
+    "file_id": "1gy9eD3LExZWrEJecUUhGPSQhgufnwi3D",
     "source": "gd",
-    "tmdb_id": 1196348,
-    "clean_name": "The Girlfriend",
-    "title": "The Girlfriend",
-    "original_title": "ది గర్ల్‌ఫ్రెండ్‌",
-    "new_name": "The Girlfriend (2025) [1080p] [AMZN] [Tel+Tam+Hin+Mal DDP 5.1 Atmos - 768k] [5.4 GB].mkv",
-    "year": 2025,
-    "orig_lang": "te",
-    "rating": 6.3,
+    "tmdb_id": 295693,
+    "clean_name": "The Boss Baby",
+    "title": "The Boss Baby",
+    "original_title": "The Boss Baby",
+    "new_name": "The Boss Baby (2017) [2160p 4K] [BluRay] [x264] [Hindi DD 2.0 - 224Kbps + English DTS-HDMA 7.1] [4 GB].mkv",
+    "year": 2017,
+    "orig_lang": "en",
+    "rating": 6.4,
     "genres": [
-      "Romance",
-      "Drama"
+      "Animation",
+      "Comedy",
+      "Family"
     ],
-    "plot": "A college literature student falls for a charming man with a domineering streak, forcing her to confront the toxic truth of his desire.",
-    "size": "5.4 GB",
-    "size_gb": 5.4,
-    "poster": "https://image.tmdb.org/t/p/original/bP6n6t2toFPAc615iMw26OAHDFJ.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/eI3IR2OVtAcgwwmE4gphZ8539Kx.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/7wlpqBt8dOZgsxMyGs3T7StYijU.png",
-    "added_at": "2026-11-27T16:24:35.630Z",
+    "plot": "A story about how a new baby's arrival impacts a family, told from the point of view of a delightfully unreliable narrator, a wildly imaginative 7 year old named Tim.",
+    "size": "4 GB",
+    "size_gb": 4,
+    "poster": "https://image.tmdb.org/t/p/original/9MsQJKe4cUAGxc7R2NGaFQLqOPc.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/8280R0bDR1FusPyThAOmAcSC4nu.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/4ClQ9oVQzTIaOp0twxhXrrIGWap.png",
+    "added_at": "2026-11-27T16:24:39.979Z",
     "versions": [
       {
-        "file_id": "1DYhOHSLUA2SglyKok1WC4HMMGaPCAlJq",
+        "file_id": "1gy9eD3LExZWrEJecUUhGPSQhgufnwi3D",
         "source": "gd",
-        "new_name": "The Girlfriend (2025) [1080p] [AMZN] [Tel+Tam+Hin+Mal DDP 5.1 Atmos - 768k] [5.4 GB].mkv",
-        "size": "5.4 GB",
-        "size_gb": 5.4
+        "new_name": "The Boss Baby (2017) [2160p 4K] [BluRay] [x264] [Hindi DD 2.0 - 224Kbps + English DTS-HDMA 7.1] [4 GB].mkv",
+        "size": "4 GB",
+        "size_gb": 4
       }
     ]
   }
