@@ -126,35 +126,34 @@
     ]
   },
   {
-    "file_id": "1cBRaKRSwKW6NiuIW9p8DRaq2cnfCPyyA",
+    "file_id": "1OFVgzonnAghm9Rj1LQRTm3rgFcFhFcbe",
     "source": "gd",
-    "tmdb_id": 1060046,
-    "clean_name": "HIT: The Third Case",
-    "title": "HIT: The Third Case",
-    "original_title": "హిట్: ది థర్డ్ కేస్",
-    "new_name": "HIT: The Third Case (2025) [Tam+Tel+Hin+Mal+Kan] [10 GB].mkv",
-    "year": 2025,
-    "orig_lang": "te",
+    "tmdb_id": 17888,
+    "clean_name": "Dasavatharam",
+    "title": "Dasavatharam",
+    "original_title": "தசாவதாரம்",
+    "new_name": "Dasavathaaram (2008) [1080p] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [13.5 GB].mkv",
+    "year": 2008,
+    "orig_lang": "ta",
     "rating": 6.7,
     "genres": [
-      "Crime",
-      "Thriller",
-      "Action"
+      "Action",
+      "Adventure"
     ],
-    "plot": "The Homicide Intervention Team (HIT) sends ruthless police officer Arjun Sarkaar to find a group of killers and stop their grisly murder spree.",
-    "size": "10 GB",
-    "size_gb": 10,
-    "poster": "https://image.tmdb.org/t/p/original/wT9tGyFol4RBwkjESXUWeBdnLJn.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/xzpXvyetmrdR3NSRN9uy0xO3lR1.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/qCGDcbfUBsZq95kx6ulCPqvlInu.png",
-    "added_at": "2026-11-27T16:35:17.567Z",
+    "plot": "Bio-technologist Govind K Somaiyya sets about on a precarious journey to India to retrieve a vial containing a deadly virus and prevent it from reaching the wrong hands of an ex-CIA agent and deadly assassins.",
+    "size": "14 GB",
+    "size_gb": 14,
+    "poster": "https://image.tmdb.org/t/p/original/6JVJEJmFb0cL7r7p00BvNDeC70Y.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/sVImmZxxflmCxhsMEgWyoPWoTTe.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/dKgiWU3ex9AqMWCPEh3HbWLBJmX.png",
+    "added_at": "2026-11-27T16:35:21.878Z",
     "versions": [
       {
-        "file_id": "1cBRaKRSwKW6NiuIW9p8DRaq2cnfCPyyA",
+        "file_id": "1OFVgzonnAghm9Rj1LQRTm3rgFcFhFcbe",
         "source": "gd",
-        "new_name": "HIT: The Third Case (2025) [Tam+Tel+Hin+Mal+Kan] [10 GB].mkv",
-        "size": "10 GB",
-        "size_gb": 10
+        "new_name": "Dasavathaaram (2008) [1080p] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [13.5 GB].mkv",
+        "size": "14 GB",
+        "size_gb": 14
       }
     ]
   }
