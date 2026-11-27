@@ -126,35 +126,33 @@
     ]
   },
   {
-    "file_id": "1MKhZOokL9rQ05tecPDnLGMep2QrG1MHZ",
+    "file_id": "1YhmToItP7drO82lF1OPWbk2-JnVOxhlq",
     "source": "gd",
-    "tmdb_id": 49026,
-    "clean_name": "The Dark Knight Rises",
-    "title": "The Dark Knight Rises",
-    "original_title": "The Dark Knight Rises",
-    "new_name": "The Dark Knight Rises (2012) [1080p] [IMAX] [AMZN] [AMZN (Tam+Tel+Hin) DDP 5.1 - 640k + Eng DDP 5.1] [16 GB].mkv",
-    "year": 2012,
+    "tmdb_id": 1038392,
+    "clean_name": "The Conjuring: Last Rites",
+    "title": "The Conjuring: Last Rites",
+    "original_title": "The Conjuring: Last Rites",
+    "new_name": "The Conjuring-Last Rites (2025) [1080p] [IMAX] [AMZN] [AMZN Hin-Tam-Tel DDP 5.1 - 640k + Eng TrueHD Atmos 7.1] [18 GB].mkv",
+    "year": 2025,
     "orig_lang": "en",
-    "rating": 7.8,
+    "rating": 7,
     "genres": [
-      "Action",
-      "Crime",
-      "Thriller"
+      "Horror"
     ],
-    "plot": "Following the death of District Attorney Harvey Dent, Batman assumes responsibility for Dent's crimes to protect the late attorney's reputation and is subsequently hunted by the Gotham City Police Department. Eight years later, Batman encounters the mysterious Selina Kyle and the villainous Bane, a new terrorist leader who overwhelms Gotham's finest. The Dark Knight resurfaces to protect a city that has branded him an enemy.",
-    "size": "16 GB",
-    "size_gb": 16,
-    "poster": "https://image.tmdb.org/t/p/original/hr0L2aueqlP2BYUblTTjmtn0hw4.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/c3OHQncTAnKFhdOTX7D3LTW6son.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/A0QGz3heDFbLT3YCXa2jUKfWnbx.png",
-    "added_at": "2026-11-27T16:34:11.446Z",
+    "plot": "Paranormal investigators Ed and Lorraine Warren take on one last terrifying case involving mysterious entities they must confront.",
+    "size": "18 GB",
+    "size_gb": 18,
+    "poster": "https://image.tmdb.org/t/p/original/umvkcIb0XAk486TEmx1V5aVzhbm.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/i8MupUe4xgmYXoRNAQMYvuoexSU.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/6TO2hgAcc7FoWExNX6I6IgXtp9Q.png",
+    "added_at": "2026-11-27T16:34:15.560Z",
     "versions": [
       {
-        "file_id": "1MKhZOokL9rQ05tecPDnLGMep2QrG1MHZ",
+        "file_id": "1YhmToItP7drO82lF1OPWbk2-JnVOxhlq",
         "source": "gd",
-        "new_name": "The Dark Knight Rises (2012) [1080p] [IMAX] [AMZN] [AMZN (Tam+Tel+Hin) DDP 5.1 - 640k + Eng DDP 5.1] [16 GB].mkv",
-        "size": "16 GB",
-        "size_gb": 16
+        "new_name": "The Conjuring-Last Rites (2025) [1080p] [IMAX] [AMZN] [AMZN Hin-Tam-Tel DDP 5.1 - 640k + Eng TrueHD Atmos 7.1] [18 GB].mkv",
+        "size": "18 GB",
+        "size_gb": 18
       }
     ]
   }
