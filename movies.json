@@ -126,36 +126,35 @@
     ]
   },
   {
-    "file_id": "1syi1WUC5EwLrDaIBtD8PSQRRhmk02VDH",
+    "file_id": "1hWeC7a9itUwpH1rmROHSkUwqcs06ZzP6",
     "source": "gd",
-    "tmdb_id": 135397,
-    "clean_name": "Jurassic World",
-    "title": "Jurassic World",
-    "original_title": "Jurassic World",
-    "new_name": "Jurassic World (2015) [1080p] [BluRay] [Org Hindi BD DTS 5.1 - 768k + AAC 7.1 English] [6.7 GB].mkv",
-    "year": 2015,
+    "tmdb_id": 575265,
+    "clean_name": "Mission: Impossible - The Final Reckoning",
+    "title": "Mission: Impossible - The Final Reckoning",
+    "original_title": "Mission: Impossible - The Final Reckoning",
+    "new_name": "Mission Impossible The Final Reckoning (2025) [IMAX] [(Tam+Tel+Hin) DDP 5.1 - 640k + Eng DDP 7.1] [16 GB].mkv",
+    "year": 2025,
     "orig_lang": "en",
-    "rating": 6.7,
+    "rating": 7.2,
     "genres": [
-      "Adventure",
-      "Science Fiction",
+      "Action",
       "Thriller",
-      "Action"
+      "Adventure"
     ],
-    "plot": "Twenty-two years after the events of Jurassic Park, Isla Nublar now features a fully functioning dinosaur theme park, Jurassic World, as originally envisioned by John Hammond.",
-    "size": "6.7 GB",
-    "size_gb": 6.7,
-    "poster": "https://image.tmdb.org/t/p/original/bkXjL03yWPmiuFqxWEp4zSYVZBY.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/dF6FjTZzRTENfB4R17HDN20jLT2.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/vleUbBFlEGdxaazvzBMoZ5dHDoY.png",
-    "added_at": "2026-11-27T16:33:52.131Z",
+    "plot": "Ethan Hunt and team continue their search for the terrifying AI known as the Entity — which has infiltrated intelligence networks all over the globe — with the world's governments and a mysterious ghost from Hunt's past on their trail. Joined by new allies and armed with the means to shut the Entity down for good, Hunt is in a race against time to prevent the world as we know it from changing forever.",
+    "size": "16 GB",
+    "size_gb": 16,
+    "poster": "https://image.tmdb.org/t/p/original/iKPsC9EFUafRP9SrUznI61getVP.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/538U9snNc2fpnOmYXAPUh3zn31H.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/7yXEfWFDGpqIfq9wdpMOHcHbi8g.png",
+    "added_at": "2026-11-27T16:33:55.969Z",
     "versions": [
       {
-        "file_id": "1syi1WUC5EwLrDaIBtD8PSQRRhmk02VDH",
+        "file_id": "1hWeC7a9itUwpH1rmROHSkUwqcs06ZzP6",
         "source": "gd",
-        "new_name": "Jurassic World (2015) [1080p] [BluRay] [Org Hindi BD DTS 5.1 - 768k + AAC 7.1 English] [6.7 GB].mkv",
-        "size": "6.7 GB",
-        "size_gb": 6.7
+        "new_name": "Mission Impossible The Final Reckoning (2025) [IMAX] [(Tam+Tel+Hin) DDP 5.1 - 640k + Eng DDP 7.1] [16 GB].mkv",
+        "size": "16 GB",
+        "size_gb": 16
       }
     ]
   }
