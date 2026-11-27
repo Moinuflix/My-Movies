@@ -93,34 +93,36 @@
     ]
   },
   {
-    "file_id": "1ZwRGntTg2vM-ch0z95aNbAWpwJMS97xS",
+    "file_id": "13LHtaaQN8cQrvQ1gPZ7AwSwQBnAmSWDU",
     "source": "gd",
-    "tmdb_id": 912378,
-    "clean_name": "Dridam",
-    "title": "Dridam",
-    "original_title": "ദൃഢം",
-    "new_name": "Dridam (2026) [2160p 4K] [Netflix] [Dolby Atmos] [9 GB].mkv",
-    "year": 2026,
-    "orig_lang": "ml",
-    "rating": 5.6,
+    "tmdb_id": 14194,
+    "clean_name": "Dhoom 2",
+    "title": "Dhoom 2",
+    "original_title": "धूम २",
+    "new_name": "Dhoom 2 (2006) [1080p] [Netflix] [Dolby Atmos] [11.1 GB].mkv",
+    "year": 2006,
+    "orig_lang": "hi",
+    "rating": 6.6,
     "genres": [
-      "Crime",
-      "Thriller"
+      "Drama",
+      "Action",
+      "Thriller",
+      "Crime"
     ],
-    "plot": "A police officer arrives at a seemingly peaceful station but faces pressure when human remains are discovered. Given only a week to solve the murder, he must navigate demands from his department and an anxious public seeking swift justice.",
-    "size": "9 GB",
-    "size_gb": 9,
-    "poster": "https://image.tmdb.org/t/p/original/9JqWaizfeplMDEZGuJAZZUO4Xtp.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/sRVg5yfJJQ2emGhl6XPYJssilu.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/esPR0hSqoyuAiiFq0qpu2KsIgSe.png",
-    "added_at": "2026-11-27T16:28:33.763Z",
+    "plot": "Jai and Ali return, this time on the trail of an international thief who steals priceless artifacts and has chosen Mumbai as his next target.",
+    "size": "11 GB",
+    "size_gb": 11,
+    "poster": "https://image.tmdb.org/t/p/original/3zJLnrP9g9LSMpX5C1wau49gGUv.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/5vWEcjru7dUIuTgMbwOVfuGMU60.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/nW8WSMHPee3Bs1DFN7th56DqWju.png",
+    "added_at": "2026-11-27T16:28:37.480Z",
     "versions": [
       {
-        "file_id": "1ZwRGntTg2vM-ch0z95aNbAWpwJMS97xS",
+        "file_id": "13LHtaaQN8cQrvQ1gPZ7AwSwQBnAmSWDU",
         "source": "gd",
-        "new_name": "Dridam (2026) [2160p 4K] [Netflix] [Dolby Atmos] [9 GB].mkv",
-        "size": "9 GB",
-        "size_gb": 9
+        "new_name": "Dhoom 2 (2006) [1080p] [Netflix] [Dolby Atmos] [11.1 GB].mkv",
+        "size": "11 GB",
+        "size_gb": 11
       }
     ]
   }
