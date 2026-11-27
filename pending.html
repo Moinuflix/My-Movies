@@ -32,7 +32,6 @@
 
     .container { max-width: 1350px; margin: 0 auto; }
 
-    /* TOP NAVBAR */
     .top-header {
       background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 58, 138, 0.85));
       border: 1px solid var(--card-border);
@@ -71,8 +70,9 @@
     .btn-green:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); }
     .btn-purple { background: rgba(168, 85, 247, 0.2); border-color: var(--laser-purple); color: #e9d5ff; }
     .btn-purple:hover { background: var(--laser-purple); color: #fff; }
+    .btn-gold { background: rgba(245, 158, 11, 0.2); border-color: var(--laser-gold); color: #fde68a; }
+    .btn-gold:hover { background: var(--laser-gold); color: #020617; }
 
-    /* SOURCE SWITCHER TABS */
     .source-tabs { display: flex; gap: 10px; margin-bottom: 1.25rem; flex-wrap: wrap; }
     .src-tab {
       padding: 0.7rem 1.3rem;
@@ -88,7 +88,6 @@
     .src-tab.active-gdrive { background: rgba(16, 185, 129, 0.2); border-color: var(--laser-green); color: #fff; }
     .src-tab.active-tg { background: rgba(168, 85, 247, 0.22); border-color: var(--laser-purple); color: #fff; }
 
-    /* STATS STRIP */
     .stats-strip {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -102,9 +101,8 @@
       padding: 1rem 1.4rem;
     }
     .stat-lbl { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
-    .stat-val { font-size: 1.4rem; font-weight: 800; color: #fff; margin-top: 4px; }
+    .stat-val { font-size: 1.35rem; font-weight: 800; color: #fff; margin-top: 4px; }
 
-    /* BATCH CONTROLS STRIP */
     .batch-toolbar {
       display: flex;
       justify-content: space-between;
@@ -145,7 +143,6 @@
       color: var(--laser-cyan);
     }
 
-    /* PENDING CARDS LIST */
     .pending-list { display: flex; flex-direction: column; gap: 1.25rem; }
 
     .pending-card {
@@ -206,6 +203,8 @@
     .badge-tg { background: rgba(168, 85, 247, 0.22); color: #e9d5ff; border: 1px solid rgba(168, 85, 247, 0.45); }
     .badge-gdrive { background: rgba(56, 189, 248, 0.2); color: var(--laser-cyan); }
     .badge-size { background: rgba(16, 185, 129, 0.2); color: var(--laser-green); border: 1px solid rgba(16, 185, 129, 0.4); }
+    .badge-series { background: rgba(245, 158, 11, 0.22); color: #fde68a; border: 1px solid rgba(245, 158, 11, 0.45); }
+    .badge-dup { background: rgba(239, 68, 68, 0.22); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.5); }
 
     .card-actions { display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
     .btn-approve {
@@ -247,7 +246,6 @@
       cursor: pointer;
     }
 
-    /* MODALS */
     .modal-backdrop {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
@@ -321,12 +319,15 @@
   <!-- TOP BAR -->
   <div class="top-header">
     <div>
-      <div class="brand-title">MOINUFLIX — UNIFIED PENDING ARRIVALS</div>
-      <div class="brand-sub">GitHub Action Auto-TMDb • GDrive + Telegram Stealth Vault • Single Master Catalog</div>
+      <div class="brand-title">MOINUFLIX — UNIFIED 3-FILE APPROVAL STUDIO</div>
+      <div class="brand-sub">Auto-TMDb • movies.json (5 Langs) • series.json (Auto S/E) • name_registry.json Duplicate Guard</div>
     </div>
     <div class="nav-actions">
-      <button class="btn-pill btn-purple" onclick="triggerGithubWorkflow('tg_vault_sync.yml', 'Telegram Stealth Vault')">⚡ Trigger TG Action</button>
-      <button class="btn-pill" onclick="triggerGithubWorkflow('scan_drive.yml', 'Google Drive Scanner')">⚡ Trigger Drive Action</button>
+      <input type="file" id="json-import-input" accept=".json" style="display:none" onchange="handleJsonImport(event)">
+      <button class="btn-pill btn-gold" onclick="document.getElementById('json-import-input').click()">📥 Import JSON</button>
+      <button class="btn-pill" id="btn-save-imported" style="display:none; border-color:var(--laser-gold);" onclick="saveQueueToGithub()">💾 Sync Queue to GitHub</button>
+      <button class="btn-pill btn-purple" onclick="triggerGithubWorkflow('tg_vault_sync.yml', 'Telegram Stealth Vault')">⚡ TG Action</button>
+      <button class="btn-pill" onclick="triggerGithubWorkflow('scan_drive.yml', 'Google Drive Scanner')">⚡ Drive Action</button>
       <button class="btn-pill btn-green" onclick="triggerBatchSelectedApproval()">🚀 Approve Selected</button>
       <button class="btn-pill" onclick="loadPendingList()">🔄 Refresh</button>
       <a href="inbox.html" class="btn-pill">📝 Form</a>
@@ -338,7 +339,7 @@
   <!-- SOURCE SWITCHER TABS -->
   <div class="source-tabs">
     <button class="src-tab active-gdrive" id="tab-gdrive" onclick="switchQueueSource('gdrive')">
-      📁 Google Drive Queue (<span id="cnt-gdrive">0</span>)
+      📁 Google Drive / Imported Queue (<span id="cnt-gdrive">0</span>)
     </button>
     <button class="src-tab" id="tab-telegram" onclick="switchQueueSource('telegram')">
       🛡️ Telegram Stealth Vault (<span id="cnt-tg">0</span>)
@@ -352,12 +353,12 @@
       <div class="stat-val" id="stat-pending-count" style="color:var(--laser-gold);">0</div>
     </div>
     <div class="stat-card">
-      <div class="stat-lbl">Target Storage Chunk (50-Limit)</div>
-      <div class="stat-val" id="stat-target-chunk" style="color:var(--laser-cyan);">chunk_01.json</div>
+      <div class="stat-lbl">Live Unified Catalog</div>
+      <div class="stat-val" id="stat-catalog-total" style="color:var(--laser-cyan);">0 Movies • 0 Series</div>
     </div>
     <div class="stat-card">
-      <div class="stat-lbl">Master Catalog Total</div>
-      <div class="stat-val" id="stat-catalog-total">0 Movies</div>
+      <div class="stat-lbl">Name Registry Guard</div>
+      <div class="stat-val" id="stat-registry-total" style="color:var(--laser-green);">0 Tracked Files</div>
     </div>
   </div>
 
@@ -368,7 +369,7 @@
       <span>Select All In Active Queue</span>
     </label>
     <div style="font-size:0.8rem; color:var(--text-muted);">
-      <span id="selected-count-label" style="color:var(--laser-cyan); font-weight:800;">0</span> selected for batch approval
+      <span id="selected-count-label" style="color:var(--laser-cyan); font-weight:800;">0</span> selected for batch commit to <strong>movies.json / series.json</strong>
     </div>
   </div>
 
@@ -385,30 +386,30 @@
 <div class="modal-backdrop" id="preview-modal">
   <div class="modal-box">
     <div class="modal-header">
-      <div class="modal-title" id="modal-heading">✓ Confirm Ingest to Master Catalog</div>
+      <div class="modal-title" id="modal-heading">✓ Confirm Ingest to Unified JSON</div>
       <button class="btn-close-modal" onclick="closeModal()">✕</button>
     </div>
 
     <div class="compare-box">
-      <span class="compare-lbl">Original Filename:</span>
+      <span class="compare-lbl">Original Filename (old_name):</span>
       <span class="compare-raw" id="modal-raw-name">...</span>
     </div>
 
     <div class="compare-box">
-      <span class="compare-lbl">Standard Kodi Dash Name (New Master Record):</span>
+      <span class="compare-lbl">Standard Kodi Dash Name (new_name):</span>
       <span class="compare-new" id="modal-new-name">...</span>
     </div>
 
     <div style="display:flex; justify-content:space-between; font-size:0.82rem; background:rgba(2,6,23,0.4); padding:8px 12px; border-radius:8px; flex-wrap:wrap; gap:8px;">
-      <span>Source Tag: <strong id="modal-src-type" style="color:var(--laser-purple);">gdrive</strong></span>
-      <span>Target Chunk: <strong id="modal-chunk" style="color:var(--laser-cyan);">chunk_01.json</strong></span>
-      <span>Verified Size: <strong id="modal-size" style="color:var(--laser-green);">5 GB</strong></span>
-      <span>Source: <strong id="modal-source" style="color:#fff;">WEB-DL</strong></span>
+      <span>Source: <strong id="modal-src-type" style="color:var(--laser-purple);">gd</strong></span>
+      <span>Target File: <strong id="modal-chunk" style="color:var(--laser-cyan);">movies.json</strong></span>
+      <span>Size: <strong id="modal-size" style="color:var(--laser-green);">5 GB</strong></span>
+      <span>Category: <strong id="modal-source" style="color:#fff;">MOVIE</strong></span>
     </div>
 
     <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:10px;">
       <button class="btn-pill" style="background:transparent; border-color:var(--card-border);" onclick="closeModal()">Cancel</button>
-      <button class="btn-pill btn-green" id="modal-btn-confirm">🚀 Commit & Write Now</button>
+      <button class="btn-pill btn-green" id="modal-btn-confirm">🚀 Commit to GitHub Now</button>
     </div>
   </div>
 </div>
@@ -421,7 +422,7 @@
       <button class="btn-close-modal" onclick="closeBatchModal()">✕</button>
     </div>
     <div style="font-size:0.85rem; color:var(--text-muted);">
-      Committing selected files to Master Catalog and 50-limit Chunks...
+      Auto-fetching TMDb 4K Art + Language &amp; writing to <strong>movies.json</strong>, <strong>series.json</strong> &amp; <strong>name_registry.json</strong>...
     </div>
     <div class="batch-progress-scroll" id="batch-log-container"></div>
     <div style="display:flex; justify-content:flex-end; margin-top:10px;">
@@ -436,14 +437,12 @@
   const GH_REPO = "Moinuflix/My-Movies";
   const GH_BRANCH = "main";
   const WORKER_BASE = "https://gdrive-stream.moinudeentv.workers.dev/?id=";
-  const TG_WORKER_BASE = "https://tg-stream.moinudeentv.workers.dev/?msg_id=";
   const USER_AGENT = "|User-Agent=Kodi-MoinuTV-PrivatePlayer/1.0";
 
   let activeSource = "gdrive"; // "gdrive" | "telegram"
-  let pendingList = [];        // Google Drive pending
-  let tgPendingList = [];      // Telegram Stealth Vault pending
-  let catalogCount = 0;
-  let currentTargetChunk = "chunk_01.json";
+  let pendingList = [];
+  let tgPendingList = [];
+  let registryList = [];
   let activeApproveIndex = null;
 
   function getToken() { return (localStorage.getItem("moinuflix_gh_token") || localStorage.getItem("mf_tg_gh") || "").trim(); }
@@ -465,7 +464,87 @@
     b.textContent = msg;
   }
 
-  /* ⚡ DIRECT GITHUB ACTION DISPATCHER (NO MANUAL WORKFLOW TAB NEEDED) */
+  function getLangCategoryBadge(origLang) {
+    const l = String(origLang || "").toLowerCase();
+    if (l === "hi") return "🇮🇳 Bollywood (hi)";
+    if (["te", "ta", "ml", "kn"].includes(l)) return `🌴 South Indian (${l})`;
+    if (l === "en") return "🌎 Hollywood (en)";
+    if (["ko", "ja"].includes(l)) return `🇰🇷 Korean/Anime (${l})`;
+    return `🌐 World Cinema (${l || "auto"})`;
+  }
+
+  function detectSeriesInfo(item, rawName, baseName) {
+    const cat = String(item.cat || item.media_type || "").toUpperCase();
+    const combined = `${rawName} ${baseName}`;
+    const seMatch = combined.match(/\bS(\d{1,2})[\s._-]*E(\d{1,3})\b/i) || combined.match(/Season\s*(\d{1,2}).*?Episode\s*(\d{1,3})/i);
+    const isSeries = cat === "SERIES" || cat === "TV" || Boolean(seMatch);
+    return {
+      isSeries,
+      season: seMatch ? parseInt(seMatch[1], 10) : 1,
+      episode: seMatch ? parseInt(seMatch[2], 10) : 1
+    };
+  }
+
+  /* 📥 IMPORT LOCAL JSON (e.g., pending_for_html.json from PDF extraction) */
+  function handleJsonImport(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        const imported = JSON.parse(e.target.result);
+        const arr = Array.isArray(imported) ? imported : (imported.items || imported.movies || []);
+        if (!Array.isArray(arr) || arr.length === 0) {
+          return alert("Invalid or empty JSON array!");
+        }
+        const existingIds = new Set(pendingList.map(x => String(x.gdrive_id || x.file_id || x.id || "")));
+        let added = 0;
+        arr.forEach(row => {
+          const gid = String(row.gdrive_id || row.file_id || row.id || "").trim();
+          if (gid && existingIds.has(gid)) return;
+          if (gid) existingIds.add(gid);
+          pendingList.push({
+            cat: row.cat || "MOVIE",
+            source: row.source || "gd",
+            gdrive_id: gid,
+            tmdb_id: row.tmdb_id || 0,
+            original_filename: row.old_name || row.original_filename || row.new_name || "",
+            new_name: row.new_name || row.old_name || "",
+            file_size_gb: row.size || (row.size_gb ? `${row.size_gb} GB` : "5 GB"),
+            size_gb: row.size_gb || 0,
+            target_chunk: row.target_chunk || ""
+          });
+          added++;
+        });
+        document.getElementById("cnt-gdrive").textContent = pendingList.length;
+        document.getElementById("btn-save-imported").style.display = "inline-flex";
+        switchQueueSource("gdrive");
+        showStatus(`📥 Imported ${added} items from ${file.name}! Click "Sync Queue to GitHub" to save permanently, or select & Approve directly.`);
+      } catch (err) {
+        alert("JSON Parse Error: " + err.message);
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  async function saveQueueToGithub() {
+    const token = getToken();
+    if (!token) return alert("GitHub Token missing! Click 'Token' button first.");
+    showStatus("💾 Saving imported queue to resources/data/pending_movies.json...");
+    try {
+      let pSha;
+      const pRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/resources/data/pending_movies.json?t=${Date.now()}`, {
+        headers: { "Authorization": `token ${token}` }
+      });
+      if (pRes.ok) pSha = (await pRes.json()).sha;
+      await commitGithubFile("resources/data/pending_movies.json", pendingList, `Import ${pendingList.length} pending items`, pSha, token);
+      document.getElementById("btn-save-imported").style.display = "none";
+      showStatus(`✅ Saved ${pendingList.length} items to GitHub pending queue!`);
+    } catch (e) {
+      showStatus(`❌ Save Error: ${e.message}`, true);
+    }
+  }
+
   async function triggerGithubWorkflow(workflowFile, label) {
     const token = getToken();
     if (!token) return alert("GitHub Token missing! Please click 'Token' button first.");
@@ -506,22 +585,31 @@
 
   async function loadMasterStats() {
     try {
-      const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/catalog.json?t=${Date.now()}`);
-      if (res.ok) {
-        const cat = await res.json();
-        const movies = cat.movies || (Array.isArray(cat) ? cat : []);
-        catalogCount = movies.length;
-        document.getElementById("stat-catalog-total").textContent = `${catalogCount} Movies`;
-        
-        const chunkNum = Math.floor(catalogCount / 50) + 1;
-        currentTargetChunk = `chunk_${String(chunkNum).padStart(2, '0')}.json`;
-        document.getElementById("stat-target-chunk").textContent = currentTargetChunk;
+      let mCount = 0, sCount = 0;
+      const [mRes, sRes, rRes] = await Promise.all([
+        fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/movies.json?t=${Date.now()}`),
+        fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/series.json?t=${Date.now()}`),
+        fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/name_registry.json?t=${Date.now()}`)
+      ]);
+      if (mRes.ok) {
+        const mData = await mRes.json();
+        mCount = Array.isArray(mData) ? mData.length : 0;
       }
+      if (sRes.ok) {
+        const sData = await sRes.json();
+        sCount = Array.isArray(sData) ? sData.length : 0;
+      }
+      if (rRes.ok) {
+        const rData = await rRes.json();
+        registryList = Array.isArray(rData) ? rData : [];
+      }
+      document.getElementById("stat-catalog-total").textContent = `${mCount} Movies • ${sCount} Series`;
+      document.getElementById("stat-registry-total").textContent = `${registryList.length} Tracked Files`;
     } catch (_) {}
   }
 
   function parseDeepAudio(raw) {
-    if (!raw) return "Hindi DDP 5.1";
+    if (!raw) return "Hindi 5.1";
     const segRegex = /(TAM|TEL|HIN|ENG|MAL|KAN)[\w\.\-]*?(DDP?|DTS|AAC|AC3|TRUEHD|ATMOS)?[\.\s\-]*?([1-7]\.[0-2])/gi;
     let matches = [...raw.matchAll(segRegex)];
 
@@ -546,16 +634,7 @@
       return bracketMatch[1].replace(/JHS\s*/i, '').replace(/~/g, '-').trim();
     }
 
-    const parenMatch = raw.match(/\((DD\+?5\.1.*?|DTS.*?|Atmos.*?|TrueHD.*?|AAC.*?)\)/i);
-    if (parenMatch) {
-      let primary = /\bhindi\b/i.test(raw) ? 'Hindi' : (/\btamil\b/i.test(raw) ? 'Tamil' : 'Tamil');
-      return `${primary} ${parenMatch[1].replace(/~/g, '-').trim()}`;
-    }
-
-    if (/ddp\s*2\.0/i.test(raw)) return "Hindi DDP 2.0";
-    if (/ddp\s*5\.1/i.test(raw)) return "Hindi DDP 5.1";
-
-    return "Hindi DDP 5.1";
+    return "Hindi 5.1";
   }
 
   async function loadPendingList() {
@@ -598,38 +677,40 @@
     container.innerHTML = "";
 
     if (activeList.length === 0) {
-      container.innerHTML = `<div style="color:var(--laser-green); padding:40px; text-align:center;">🎉 All ${isTg ? 'Telegram Stealth' : 'Google Drive'} files are cleared and synced into library!</div>`;
+      container.innerHTML = `<div style="color:var(--laser-green); padding:40px; text-align:center;">🎉 All ${isTg ? 'Telegram Stealth' : 'Google Drive'} files are cleared! Click "📥 Import JSON" to load pending_for_html.json.</div>`;
       updateSelectedCount();
       return;
     }
 
+    const regIds = new Set(registryList.map(r => String(r.file_id || r.gdrive_id || "")));
+
     activeList.forEach((item, index) => {
       const parsed = item.parsed || {};
-      const rawName = isTg ? (item.old_name || "") : (item.original_filename || item.new_name || "");
+      const rawName = isTg ? (item.old_name || "") : (item.original_filename || item.old_name || item.new_name || "");
       const baseName = item.new_name || rawName;
+      const seInfo = detectSeriesInfo(item, rawName, baseName);
 
       let title = parsed.title;
       let year = parsed.year;
       if (!title && baseName) {
-        const titleMatch = baseName.match(/^(.+?)\s*\((\d{4})\)/);
+        const titleMatch = baseName.match(/^(.+?)\s*(?:\((\d{4})\)|S\d{1,2}E\d{1,3})/i);
         title = titleMatch ? titleMatch[1].replace(/[-_.()\[\]]+/g, ' ').replace(/\s+/g, ' ').trim() : baseName.split("[")[0].trim();
-        year = titleMatch ? titleMatch[2] : "2026";
+        year = titleMatch && titleMatch[2] ? titleMatch[2] : "2026";
       }
       title = title || "Unknown Title";
       year = year || "2026";
 
+      const fileId = isTg ? String(item.tg_msg_id || "") : String(item.gdrive_id || item.file_id || "");
+      const isDuplicate = fileId && regIds.has(fileId);
+
       const size = isTg
         ? (item.size_gb || "N/A")
-        : (item.file_size_gb || (item.new_name && item.new_name.match(/\[(\d+[\.\d]*\s*(?:GB|MB))\]/i)?.[1]) || "5 GB");
+        : (item.file_size_gb || item.size || (item.new_name && item.new_name.match(/\[(\d+[\.\d]*\s*(?:GB|MB))\]/i)?.[1]) || "5 GB");
 
-      const tgTag = parsed.telegram_tag || "";
       const deepAudio = parseDeepAudio(rawName);
-
-      // Use GitHub Action pre-fetched poster & tmdb_id for BOTH GDrive & Telegram
       const candidate = (item.tmdb_candidates && item.tmdb_candidates[0]) ? item.tmdb_candidates[0] : {};
       const tmdbId = item.selected_tmdb_id || item.tmdb_id || candidate.tmdb_id || 0;
-      const poster = item.poster || candidate.poster || "https://via.placeholder.com/90x135?text=No+Poster";
-
+      const poster = item.poster || candidate.poster || "https://via.placeholder.com/90x135?text=Auto+TMDb";
       const dashName = item.new_name || `${title} (${year}) [${parsed.resolution || '1080p'}] [${parsed.source || 'WEB-DL'}] [${deepAudio}] [${size}].mkv`;
 
       const card = document.createElement("div");
@@ -640,27 +721,27 @@
         <div style="padding:0 5px;">
           <input type="checkbox" class="card-select-cb" data-index="${index}" onchange="updateSelectedCount()">
         </div>
-        <img src="${poster}" class="poster-preview" id="poster-img-${index}" alt="" onerror="this.src='https://via.placeholder.com/90x135?text=Poster'">
+        <img src="${poster}" class="poster-preview" alt="" onerror="this.src='https://via.placeholder.com/90x135?text=TMDb'">
         <div class="card-content">
           <div class="raw-name-title">📁 ${escapeHtml(rawName)}</div>
-          <div class="parsed-headline" id="title-headline-${index}">${escapeHtml(title)} (${year})</div>
-          <div class="dash-preview-box" id="dash-preview-${index}">${escapeHtml(dashName)}</div>
+          <div class="parsed-headline">${escapeHtml(title)} (${year}) ${seInfo.isSeries ? `• S${String(seInfo.season).padStart(2,'0')}E${String(seInfo.episode).padStart(2,'0')}` : ''}</div>
+          <div class="dash-preview-box">${escapeHtml(dashName)}</div>
 
           <div class="tags-row">
             ${isTg
-              ? `<span class="badge badge-tg">⚡ TG #${escapeHtml(item.tg_msg_id)} • 🛡️ ${escapeHtml(item.stealth_name || '')}</span>`
-              : `<span class="badge badge-gdrive">📁 GDrive</span>`}
-            ${tgTag ? `<span class="badge badge-gdrive">${escapeHtml(tgTag)}</span>` : ''}
+              ? `<span class="badge badge-tg">⚡ TG #${escapeHtml(fileId)}</span>`
+              : `<span class="badge badge-gdrive">📁 GD: ${escapeHtml(fileId.slice(0, 12))}...</span>`}
+            <span class="badge ${seInfo.isSeries ? 'badge-series' : ''}">${seInfo.isSeries ? '📺 series.json' : '🎬 movies.json'}</span>
             <span class="badge badge-size">💾 ${escapeHtml(size)}</span>
             ${tmdbId ? `<span class="badge" style="color:var(--laser-gold);">TMDB: ${escapeHtml(tmdbId)}</span>` : ''}
-            <span class="badge" style="color:var(--laser-cyan);">${escapeHtml(item.target_chunk || currentTargetChunk)}</span>
+            ${isDuplicate ? `<span class="badge badge-dup">⚠️ Already in Registry</span>` : ''}
           </div>
         </div>
 
         <div class="card-actions">
           <button class="btn-approve" onclick="openPreviewModal(${index})">✓ Approve</button>
           <button class="btn-edit-form" onclick="sendToEditForm(${index})">✏️ Edit in Form</button>
-          <button class="btn-reject" onclick="rejectItem(${index})">${isTg ? '🗄️ Archive ➔ Data' : '✕ Dismiss'}</button>
+          <button class="btn-reject" onclick="rejectItem(${index})">${isTg ? '🗄️ Archive' : '✕ Dismiss'}</button>
         </div>
       `;
       container.appendChild(card);
@@ -673,7 +754,8 @@
     const isTg = activeSource === "telegram";
     const item = isTg ? tgPendingList[index] : pendingList[index];
     const parsed = item.parsed || {};
-    const rawName = isTg ? item.old_name : (item.original_filename || item.new_name || "N/A");
+    const rawName = isTg ? item.old_name : (item.original_filename || item.old_name || item.new_name || "N/A");
+    const seInfo = detectSeriesInfo(item, rawName, item.new_name || rawName);
 
     let title = parsed.title;
     let year = parsed.year;
@@ -685,18 +767,17 @@
     title = title || "Movie";
     year = year || 2026;
 
-    const size = isTg ? (item.size_gb || "N/A") : (item.file_size_gb || "5 GB");
+    const size = isTg ? (item.size_gb || "N/A") : (item.file_size_gb || item.size || "5 GB");
     const dashName = item.new_name || `${title} (${year}) [1080p] [WEB-DL] [${size}].mkv`;
 
     document.getElementById("modal-raw-name").textContent = rawName;
     document.getElementById("modal-new-name").textContent = dashName;
-    document.getElementById("modal-src-type").textContent = isTg ? `telegram (#${item.tg_msg_id})` : "gdrive";
-    document.getElementById("modal-chunk").textContent = item.target_chunk || currentTargetChunk;
+    document.getElementById("modal-src-type").textContent = isTg ? `tg (#${item.tg_msg_id})` : "gd";
+    document.getElementById("modal-chunk").textContent = seInfo.isSeries ? "series.json" : "movies.json";
     document.getElementById("modal-size").textContent = size;
-    document.getElementById("modal-source").textContent = isTg ? "Telegram" : (parsed.source || "WEB-DL");
+    document.getElementById("modal-source").textContent = seInfo.isSeries ? `SERIES (S${seInfo.season}E${seInfo.episode})` : "MOVIE";
 
-    const confirmBtn = document.getElementById("modal-btn-confirm");
-    confirmBtn.onclick = () => {
+    document.getElementById("modal-btn-confirm").onclick = () => {
       closeModal();
       approveSingleItem(activeApproveIndex);
     };
@@ -722,12 +803,12 @@
 
   async function triggerBatchSelectedApproval() {
     const checked = Array.from(document.querySelectorAll(".card-select-cb:checked"));
-    if (checked.length === 0) return alert("Please select at least 1 movie to approve!");
+    if (checked.length === 0) return alert("Please select at least 1 item to approve!");
 
     const token = getToken();
     if (!token) return alert("GitHub Token missing! Please click 'Token' button.");
 
-    if (!confirm(`Are you sure you want to batch approve ${checked.length} selected movies?`)) return;
+    if (!confirm(`Batch approve ${checked.length} selected items into movies.json / series.json & name_registry.json?`)) return;
 
     const logBox = document.getElementById("batch-log-container");
     logBox.innerHTML = "";
@@ -740,7 +821,7 @@
 
     for (let idx of indicesToProcess) {
       const item = activeList[idx];
-      const title = item.parsed?.title || item.new_name || item.old_name || "Movie";
+      const title = item.parsed?.title || item.new_name || item.old_name || "Item";
 
       const logEntry = document.createElement("div");
       logEntry.textContent = `⏳ Ingesting: ${title}...`;
@@ -787,315 +868,269 @@
     const isTg = activeSource === "telegram";
     const item = isTg ? tgPendingList[index] : pendingList[index];
     const parsed = item.parsed || {};
-    const sourceType = isTg ? "telegram" : "gdrive";
-    const rawName = isTg ? (item.old_name || "") : (item.original_filename || item.new_name || "");
+    const srcCode = isTg ? "tg" : (item.source || "gd");
+    const rawName = isTg ? (item.old_name || "") : (item.original_filename || item.old_name || item.new_name || "");
+    const baseName = item.new_name || rawName;
+    const seInfo = detectSeriesInfo(item, rawName, baseName);
 
     let title = parsed.title;
     let year = parsed.year;
-    const baseName = item.new_name || rawName;
     if (!title && baseName) {
-      const titleMatch = baseName.match(/^(.+?)\s*\((\d{4})\)/);
+      const titleMatch = baseName.match(/^(.+?)\s*(?:\((\d{4})\)|S\d{1,2}E\d{1,3})/i);
       title = titleMatch ? titleMatch[1].replace(/[-_.()\[\]]+/g, ' ').replace(/\s+/g, ' ').trim() : baseName.split("[")[0].trim();
-      year = titleMatch ? parseInt(titleMatch[2], 10) : 2026;
+      year = titleMatch && titleMatch[2] ? parseInt(titleMatch[2], 10) : 2026;
     }
-    title = title || "Movie";
+    title = title || "Untitled";
     year = year || 2026;
 
-    const driveId = isTg ? String(item.tg_msg_id).trim() : (item.gdrive_id || '').replace(/\s+/g, '');
+    const fileId = isTg ? String(item.tg_msg_id).trim() : String(item.gdrive_id || item.file_id || "").replace(/\s+/g, '');
     const realSize = isTg
-      ? (item.size_gb || "1.5 GB")
-      : (item.file_size_gb || (item.new_name && item.new_name.match(/\[(\d+[\.\d]*\s*(?:GB|MB))\]/i)?.[1]) || "5 GB");
+      ? (item.size_gb || "2.5 GB")
+      : (item.file_size_gb || item.size || (baseName.match(/\[(\d+[\.\d]*\s*(?:GB|MB))\]/i)?.[1]) || "5 GB");
+    const sizeNumMatch = String(realSize).match(/(\d+(?:\.\d+)?)\s*(GB|MB)/i);
+    const sizeGbNum = item.size_gb || (sizeNumMatch ? parseFloat((parseFloat(sizeNumMatch[1]) / (sizeNumMatch[2].toUpperCase() === "MB" ? 1024 : 1)).toFixed(2)) : 5.0);
+
     const deepAudio = parseDeepAudio(rawName);
-
     let tmdbId = item.selected_tmdb_id || item.tmdb_id || (item.tmdb_candidates && item.tmdb_candidates[0]?.tmdb_id) || 0;
-    let mediaType = item.media_type || (item.tmdb_candidates && item.tmdb_candidates[0]?.media_type) || "movie";
+    let mediaType = seInfo.isSeries ? "tv" : (item.media_type || "movie");
 
-    if (!isBatch) showStatus(`⚡ Fetching official TMDb metadata for "${title}"...`);
+    if (!isBatch) showStatus(`⚡ Fetching official TMDb 4K metadata for "${title}"...`);
 
-    let movieDetails = {
-      title: title,
+    let meta = {
+      clean_name: title,
       original_title: title,
       year: year,
-      runtime: 120,
       rating: 7.5,
-      certification: "UA",
-      original_language: "ta",
-      genres: ["Action", "Drama"],
-      collection: "",
-      plot: "Streamed via MoinuFlix Private High-Speed Server.",
-      tagline: "",
-      director: [],
-      writers: [],
-      cast: [],
+      orig_lang: "hi",
+      genres: ["Drama"],
+      plot: "Streamed via MoinuFlix Private 4K & 5.1 Server.",
       poster: item.poster || "",
       fanart: "",
       clearlogo: "",
-      trailer: ""
+      ep_title: `Episode ${seInfo.episode}`,
+      ep_thumb: ""
     };
 
     try {
       if (!tmdbId && title) {
-        const sRes = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${TMDB_KEY}&query=${encodeURIComponent(title)}&include_adult=false`);
+        const epSearch = seInfo.isSeries ? "tv" : "movie";
+        const sRes = await fetch(`https://api.themoviedb.org/3/search/${epSearch}?api_key=${TMDB_KEY}&query=${encodeURIComponent(title)}&include_adult=false`);
         if (sRes.ok) {
           const sData = await sRes.json();
-          const valid = (sData.results || []).filter(x => x.media_type === "movie" || x.media_type === "tv");
-          if (valid[0]) {
-            tmdbId = valid[0].id;
-            mediaType = valid[0].media_type || "movie";
-          }
+          if (sData.results && sData.results[0]) tmdbId = sData.results[0].id;
         }
       }
 
       if (tmdbId) {
-        const endpoint = mediaType === "tv" ? "tv" : "movie";
-        const tRes = await fetch(`https://api.themoviedb.org/3/${endpoint}/${tmdbId}?api_key=${TMDB_KEY}&append_to_response=credits,release_dates,images&include_image_language=en,hi,ta,te,null`);
+        const endpoint = seInfo.isSeries ? "tv" : "movie";
+        const tRes = await fetch(`https://api.themoviedb.org/3/${endpoint}/${tmdbId}?api_key=${TMDB_KEY}&append_to_response=images&include_image_language=en,hi,ta,te,ko,ja,null`);
         if (tRes.ok) {
           const td = await tRes.json();
-          movieDetails.title = td.title || td.name || title;
-          movieDetails.original_title = td.original_title || td.original_name || movieDetails.title;
+          meta.clean_name = td.title || td.name || title;
+          meta.original_title = td.original_title || td.original_name || meta.clean_name;
           const rawDate = td.release_date || td.first_air_date || `${year}-01-01`;
-          movieDetails.year = parseInt(rawDate.split("-")[0], 10);
-          movieDetails.runtime = td.runtime || (td.episode_run_time && td.episode_run_time[0]) || 120;
-          movieDetails.rating = td.vote_average ? parseFloat(td.vote_average.toFixed(1)) : 7.5;
-          movieDetails.original_language = td.original_language || "ta";
-          movieDetails.genres = (td.genres || []).map(g => g.name);
-          movieDetails.collection = td.belongs_to_collection ? td.belongs_to_collection.name : "";
-          movieDetails.plot = td.overview || movieDetails.plot;
-          movieDetails.tagline = td.tagline || "";
-          movieDetails.poster = td.poster_path ? `https://image.tmdb.org/t/p/w780${td.poster_path}` : movieDetails.poster;
-          movieDetails.fanart = td.backdrop_path ? `https://image.tmdb.org/t/p/original${td.backdrop_path}` : "";
-
-          const crew = td.credits?.crew || [];
-          movieDetails.director = crew.filter(c => c.job === "Director").map(c => ({ name: c.name }));
-          movieDetails.writers = crew.filter(c => ["Writer", "Screenplay", "Story", "Dialogue"].includes(c.job)).map(c => ({ name: c.name, job: c.job }));
-          movieDetails.cast = (td.credits?.cast || []).slice(0, 10).map(c => ({
-            name: c.name,
-            character: c.character,
-            profile: c.profile_path ? `https://image.tmdb.org/t/p/w185${c.profile_path}` : null,
-            link: `https://www.themoviedb.org/person/${c.id}`
-          }));
-
-          const rels = td.release_dates?.results || [];
-          const inR = rels.find(r => r.iso_3166_1 === "IN");
-          if (inR && inR.release_dates?.[0]?.certification) {
-            movieDetails.certification = inR.release_dates[0].certification;
-          }
+          meta.year = parseInt(rawDate.split("-")[0], 10);
+          meta.rating = td.vote_average ? parseFloat(td.vote_average.toFixed(1)) : 7.5;
+          meta.orig_lang = (td.original_language || "hi").toLowerCase();
+          meta.genres = (td.genres || []).map(g => g.name);
+          meta.plot = td.overview || meta.plot;
+          meta.poster = td.poster_path ? `https://image.tmdb.org/t/p/original${td.poster_path}` : meta.poster;
+          meta.fanart = td.backdrop_path ? `https://image.tmdb.org/t/p/original${td.backdrop_path}` : "";
 
           const tmdbLogos = td.images?.logos || [];
           if (tmdbLogos.length > 0) {
             const bestLogo = tmdbLogos.find(l => l.file_path && l.file_path.endsWith(".png")) || tmdbLogos[0];
-            if (bestLogo) movieDetails.clearlogo = `https://image.tmdb.org/t/p/original${bestLogo.file_path}`;
+            if (bestLogo) meta.clearlogo = `https://image.tmdb.org/t/p/original${bestLogo.file_path}`;
           }
 
-          if (!movieDetails.clearlogo) {
+          if (!meta.clearlogo) {
             try {
-              const faRes = await fetch(`https://webservice.fanart.tv/v3/movies/${tmdbId}?api_key=${FANART_KEY}`);
+              const faType = seInfo.isSeries ? "tv" : "movies";
+              const faRes = await fetch(`https://webservice.fanart.tv/v3/${faType}/${tmdbId}?api_key=${FANART_KEY}`);
               if (faRes.ok) {
                 const fa = await faRes.json();
-                movieDetails.clearlogo = fa.hdmovielogo?.[0]?.url || fa.movielogo?.[0]?.url || "";
+                meta.clearlogo = fa.hdmovielogo?.[0]?.url || fa.hdtvlogo?.[0]?.url || fa.movielogo?.[0]?.url || fa.clearlogo?.[0]?.url || "";
               }
             } catch (_) {}
           }
 
-          try {
-            const vRes = await fetch(`https://api.themoviedb.org/3/${endpoint}/${tmdbId}/videos?api_key=${TMDB_KEY}`);
-            if (vRes.ok) {
-              const vData = await vRes.json();
-              const ytVideos = (vData.results || []).filter(v => v.site === "YouTube");
-              const best = ytVideos.find(v => v.type === "Trailer" && /official/i.test(v.name)) || ytVideos.find(v => v.type === "Trailer") || ytVideos[0];
-              if (best) movieDetails.trailer = `https://www.youtube.com/watch?v=${best.key}`;
-            }
-          } catch (_) {}
+          if (seInfo.isSeries) {
+            try {
+              const epRes = await fetch(`https://api.themoviedb.org/3/tv/${tmdbId}/season/${seInfo.season}/episode/${seInfo.episode}?api_key=${TMDB_KEY}`);
+              if (epRes.ok) {
+                const epd = await epRes.json();
+                if (epd.name) meta.ep_title = epd.name;
+                if (epd.still_path) meta.ep_thumb = `https://image.tmdb.org/t/p/original${epd.still_path}`;
+              }
+            } catch (_) {}
+          }
         }
       }
     } catch (_) {}
 
-    const streamUrl = isTg ? `${TG_WORKER_BASE}${driveId}${USER_AGENT}` : `${WORKER_BASE}${driveId}${USER_AGENT}`;
-    const targetChunk = item.target_chunk || currentTargetChunk;
-    const targetChunkPath = targetChunk.startsWith("resources/") ? targetChunk : `resources/data/chunks/${targetChunk.replace(/^chunks\//, '')}`;
-    const catalogPath = `resources/data/catalog.json`;
-    const finalDashName = item.new_name || `${movieDetails.title} (${movieDetails.year}) [${parsed.resolution || '1080p'}] [${parsed.source || 'WEB-DL'}] [${deepAudio}] [${realSize}].mkv`;
+    const finalDashName = item.new_name || `${meta.clean_name} (${meta.year}) [${parsed.resolution || '1080p'}] [${isTg ? 'Telegram' : (parsed.source || 'WEB-DL')}] [${deepAudio}] [${realSize}].mkv`;
+    const streamUrl = `${WORKER_BASE}${fileId}${srcCode === "tg" ? "&source=tg" : ""}${USER_AGENT}`;
 
-    if (!isBatch) showStatus(`💾 Committing "${movieDetails.title}" (${sourceType}) to ${targetChunkPath}...`);
-
-    // 1. Commit to Target Chunk (50-Limit)
-    let chunkData = { chunk_id: targetChunk.replace(".json", ""), movie_count: 0, movies: [] };
-    let chunkSha = undefined;
-
-    const cRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${targetChunkPath}?t=${Date.now()}`, {
-      headers: { "Authorization": `token ${token}` }
-    });
-    if (cRes.ok) {
-      const cJson = await cRes.json();
-      chunkSha = cJson.sha;
-      chunkData = JSON.parse(decodeURIComponent(escape(atob(cJson.content))));
-    }
-
-    const versionEntry = {
-      id: driveId,
-      source_type: sourceType,
-      name: finalDashName,
-      language: deepAudio,
-      quality: `${parsed.resolution || '1080p'} FHD`,
-      resolution: parsed.resolution || "1080p",
-      source: isTg ? "Telegram" : (parsed.source || "WEB-DL"),
-      source_image: "resources/images/sources/web.png",
-      codec: parsed.codec || "x264",
-      audio: deepAudio,
-      channels: "5.1",
-      size: realSize,
-      telegram_tag: parsed.telegram_tag || "",
-      stream_url: streamUrl
-    };
-
-    const fullMovieRecord = {
-      id: driveId,
-      source_type: sourceType,
-      tmdb_id: tmdbId ? parseInt(tmdbId, 10) : 0,
-      name: finalDashName,
-      title: movieDetails.title,
-      original_title: movieDetails.original_title,
-      year: movieDetails.year,
-      runtime: movieDetails.runtime,
-      release_date: `${movieDetails.year}-01-01`,
-      certification: movieDetails.certification,
-      original_language: movieDetails.original_language,
-      genres: movieDetails.genres,
-      collection: movieDetails.collection,
-      tagline: movieDetails.tagline,
-      plot: movieDetails.plot,
-      telegram_channel: parsed.telegram_tag || "",
-      country: ["India"],
-      studio: [isTg ? "Telegram" : (parsed.source || "WEB-DL")],
-      director: movieDetails.director,
-      writers: movieDetails.writers,
-      cast: movieDetails.cast,
-      artwork: {
-        poster: movieDetails.poster,
-        fanart: movieDetails.fanart,
-        clearlogo: movieDetails.clearlogo,
-        clearart: "",
-        banner: "",
-        landscape: movieDetails.fanart,
-        keyart: "",
-        thumbnail: movieDetails.poster,
-        discart: "",
-        title_card: movieDetails.fanart,
-        character_art: [],
-        extra_posters: [],
-        extra_backdrops: []
-      },
-      trailer: movieDetails.trailer,
-      ratings: [{ source: "TMDb", value: movieDetails.rating, out_of: 10 }],
-      specs: {
-        resolution: parsed.resolution || "1080p",
-        source: isTg ? "Telegram" : (parsed.source || "WEB-DL"),
-        codec: parsed.codec || "x264",
-        audio: deepAudio,
-        languages: deepAudio,
-        size: realSize
-      },
-      stream_url: streamUrl,
-      versions: [versionEntry]
-    };
-
-    chunkData.movies = chunkData.movies || [];
-    const exIdx = chunkData.movies.findIndex(m => (tmdbId && Number(m.tmdb_id) === Number(tmdbId)) || m.id === driveId);
-    if (exIdx >= 0) {
-      chunkData.movies[exIdx].versions = chunkData.movies[exIdx].versions || [];
-      chunkData.movies[exIdx].versions.push(versionEntry);
-    } else {
-      chunkData.movies.push(fullMovieRecord);
-    }
-    chunkData.movie_count = chunkData.movies.length;
-
-    await commitGithubFile(targetChunkPath, chunkData, `Approve (${sourceType}): ${movieDetails.title} -> ${targetChunk}`, chunkSha, token);
-
-    // 2. Commit to Single Master Catalog Index (With 1-Line `source_type` Tag)
-    let catData = { movies: [] };
-    let catSha = undefined;
-
-    const catRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${catalogPath}?t=${Date.now()}`, {
-      headers: { "Authorization": `token ${token}` }
-    });
-    if (catRes.ok) {
-      const catJson = await catRes.json();
-      catSha = catJson.sha;
-      catData = JSON.parse(decodeURIComponent(escape(atob(catJson.content))));
-    }
-
-    const catalogEntry = {
-      id: driveId,
-      tmdb_id: tmdbId ? parseInt(tmdbId, 10) : 0,
-      title: movieDetails.title,
-      year: movieDetails.year,
-      poster: movieDetails.poster,
-      fanart: movieDetails.fanart,
-      logo: movieDetails.clearlogo,
-      rating: movieDetails.rating,
-      original_language: movieDetails.original_language,
-      genres: movieDetails.genres,
-      collection: movieDetails.collection,
-      source_type: sourceType,
-      chunk_file: targetChunkPath,
-      primary_stream_url: streamUrl,
-      available_languages: [deepAudio],
-      version_count: 1,
-      available_versions: [{
-        language: deepAudio,
-        quality: `${parsed.resolution || '1080p'} FHD`,
-        source: isTg ? "Telegram" : (parsed.source || "WEB-DL"),
-        source_image: "resources/images/sources/web.png",
-        format: isTg ? "Telegram" : (parsed.source || "WEB-DL"),
-        codec: parsed.codec || "x264",
-        audio: deepAudio,
-        channels: "5.1"
-      }]
-    };
-
-    catData.movies = catData.movies || [];
-    const catEx = catData.movies.findIndex(m => (tmdbId && Number(m.tmdb_id) === Number(tmdbId)) || m.id === driveId);
-    if (catEx >= 0) {
-      catData.movies[catEx].version_count = (catData.movies[catEx].version_count || 1) + 1;
-      catData.movies[catEx].source_type = sourceType;
-      catData.movies[catEx].primary_stream_url = streamUrl;
-    } else {
-      catData.movies.push(catalogEntry);
-    }
-
-    await commitGithubFile(catalogPath, catData, `Catalog (${sourceType}): ${movieDetails.title}`, catSha, token);
-
-    // 3. Remove approved item from its respective queue (and archive TG item in "Data" key)
-    if (isTg) {
-      let archData = { Data: [] }, archSha;
-      const aRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/tg/step2_data_archive.json?t=${Date.now()}`, {
+    if (seInfo.isSeries) {
+      // COMMIT TO series.json
+      if (!isBatch) showStatus(`📺 Committing "${meta.clean_name}" S${seInfo.season}E${seInfo.episode} to series.json...`);
+      let seriesArr = [], sSha;
+      const sGet = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/series.json?t=${Date.now()}`, {
         headers: { "Authorization": `token ${token}` }
       });
-      if (aRes.ok) {
-        const aj = await aRes.json();
-        archSha = aj.sha;
-        archData = JSON.parse(decodeURIComponent(escape(atob(aj.content))));
+      if (sGet.ok) {
+        const sj = await sGet.json();
+        sSha = sj.sha;
+        const parsedS = JSON.parse(decodeURIComponent(escape(atob(sj.content))));
+        seriesArr = Array.isArray(parsedS) ? parsedS : [];
       }
-      archData.Data = archData.Data || [];
-      archData.Data.unshift({
-        tg_msg_id: item.tg_msg_id,
-        size_gb: realSize,
-        raw_name: item.old_name,
-        tg_stealth_name: item.stealth_name,
-        clean_name: finalDashName,
-        chunk_file: targetChunkPath,
-        status: "published_live",
-        archived_at: new Date().toISOString()
-      });
-      await commitGithubFile("tg/step2_data_archive.json", archData, `TG Data Archive: #${item.tg_msg_id}`, archSha, token);
 
+      const epRecord = {
+        id: fileId,
+        file_id: fileId,
+        source: srcCode,
+        season: seInfo.season,
+        episode: seInfo.episode,
+        title: meta.ep_title,
+        clean_name: meta.ep_title,
+        old_name: rawName,
+        new_name: finalDashName,
+        size: realSize,
+        size_gb: sizeGbNum,
+        thumb: meta.ep_thumb || meta.fanart || meta.poster,
+        fanart: meta.fanart || meta.poster,
+        stream_url: streamUrl
+      };
+
+      let sIdx = seriesArr.findIndex(s => (tmdbId && Number(s.tmdb_id) === Number(tmdbId)) || String(s.clean_name || s.title).toLowerCase() === meta.clean_name.toLowerCase());
+      if (sIdx >= 0) {
+        seriesArr[sIdx].episodes = seriesArr[sIdx].episodes || [];
+        const epEx = seriesArr[sIdx].episodes.findIndex(e => Number(e.season) === seInfo.season && Number(e.episode) === seInfo.episode);
+        if (epEx >= 0) seriesArr[sIdx].episodes[epEx] = epRecord;
+        else seriesArr[sIdx].episodes.push(epRecord);
+        seriesArr[sIdx].episodes.sort((a, b) => (a.season - b.season) || (a.episode - b.episode));
+      } else {
+        seriesArr.push({
+          id: tmdbId ? `tmdb_${tmdbId}` : fileId,
+          tmdb_id: tmdbId ? parseInt(tmdbId, 10) : 0,
+          clean_name: meta.clean_name,
+          title: meta.clean_name,
+          year: meta.year,
+          orig_lang: meta.orig_lang,
+          rating: meta.rating,
+          genres: meta.genres,
+          plot: meta.plot,
+          poster: meta.poster,
+          fanart: meta.fanart,
+          clearlogo: meta.clearlogo,
+          episodes: [epRecord]
+        });
+      }
+
+      await commitGithubFile("series.json", seriesArr, `Series (${srcCode}): ${meta.clean_name} S${seInfo.season}E${seInfo.episode}`, sSha, token);
+    } else {
+      // COMMIT TO movies.json
+      if (!isBatch) showStatus(`🎬 Committing "${meta.clean_name}" (${meta.orig_lang}) to movies.json...`);
+      let moviesArr = [], mSha;
+      const mGet = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/movies.json?t=${Date.now()}`, {
+        headers: { "Authorization": `token ${token}` }
+      });
+      if (mGet.ok) {
+        const mj = await mGet.json();
+        mSha = mj.sha;
+        const parsedM = JSON.parse(decodeURIComponent(escape(atob(mj.content))));
+        moviesArr = Array.isArray(parsedM) ? parsedM : [];
+      }
+
+      const versionEntry = {
+        id: fileId,
+        file_id: fileId,
+        source: srcCode,
+        old_name: rawName,
+        new_name: finalDashName,
+        resolution: parsed.resolution || (finalDashName.includes("2160p") ? "2160p" : "1080p"),
+        audio: deepAudio,
+        size: realSize,
+        size_gb: sizeGbNum,
+        stream_url: streamUrl
+      };
+
+      const mIdx = moviesArr.findIndex(m => (tmdbId && Number(m.tmdb_id) === Number(tmdbId)) || String(m.id) === fileId);
+      if (mIdx >= 0) {
+        moviesArr[mIdx].versions = moviesArr[mIdx].versions || [];
+        const vEx = moviesArr[mIdx].versions.findIndex(v => String(v.file_id || v.id) === fileId);
+        if (vEx >= 0) moviesArr[mIdx].versions[vEx] = versionEntry;
+        else moviesArr[mIdx].versions.push(versionEntry);
+        moviesArr[mIdx].added_at = new Date().toISOString();
+      } else {
+        moviesArr.push({
+          id: fileId,
+          file_id: fileId,
+          source: srcCode,
+          tmdb_id: tmdbId ? parseInt(tmdbId, 10) : 0,
+          clean_name: meta.clean_name,
+          title: meta.clean_name,
+          original_title: meta.original_title,
+          old_name: rawName,
+          new_name: finalDashName,
+          year: meta.year,
+          orig_lang: meta.orig_lang,
+          rating: meta.rating,
+          genres: meta.genres,
+          plot: meta.plot,
+          size: realSize,
+          size_gb: sizeGbNum,
+          poster: meta.poster,
+          fanart: meta.fanart,
+          clearlogo: meta.clearlogo,
+          added_at: new Date().toISOString(),
+          stream_url: streamUrl,
+          versions: [versionEntry]
+        });
+      }
+
+      await commitGithubFile("movies.json", moviesArr, `Movie (${srcCode}/${meta.orig_lang}): ${meta.clean_name}`, mSha, token);
+    }
+
+    // COMMIT TO name_registry.json (MASTER DUPLICATE GUARD)
+    let regArr = [], rSha;
+    const rGet = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/name_registry.json?t=${Date.now()}`, {
+      headers: { "Authorization": `token ${token}` }
+    });
+    if (rGet.ok) {
+      const rj = await rGet.json();
+      rSha = rj.sha;
+      const parsedR = JSON.parse(decodeURIComponent(escape(atob(rj.content))));
+      regArr = Array.isArray(parsedR) ? parsedR : [];
+    }
+
+    const regEntry = {
+      source: srcCode,
+      file_id: fileId,
+      tmdb_id: tmdbId ? parseInt(tmdbId, 10) : 0,
+      cat: seInfo.isSeries ? "SERIES" : "MOVIE",
+      orig_lang: meta.orig_lang,
+      old_name: rawName,
+      new_name: finalDashName,
+      size_gb: sizeGbNum,
+      approved_at: new Date().toISOString()
+    };
+
+    const rIdx = regArr.findIndex(r => String(r.file_id) === fileId);
+    if (rIdx >= 0) regArr[rIdx] = regEntry;
+    else regArr.unshift(regEntry);
+
+    await commitGithubFile("name_registry.json", regArr, `Registry: ${meta.clean_name} (${fileId})`, rSha, token);
+
+    // REMOVE FROM PENDING QUEUE
+    if (isTg) {
       tgPendingList.splice(index, 1);
       let s1Sha;
       const s1Res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/tg/step1_pending.json?t=${Date.now()}`, {
         headers: { "Authorization": `token ${token}` }
       });
       if (s1Res.ok) s1Sha = (await s1Res.json()).sha;
-      await commitGithubFile("tg/step1_pending.json", tgPendingList, `TG Step 1 Approved #${item.tg_msg_id}`, s1Sha, token);
+      await commitGithubFile("tg/step1_pending.json", tgPendingList, `TG Approved #${fileId}`, s1Sha, token);
     } else {
       pendingList.splice(index, 1);
       let pSha;
@@ -1103,11 +1138,11 @@
         headers: { "Authorization": `token ${token}` }
       });
       if (pRes.ok) pSha = (await pRes.json()).sha;
-      await commitGithubFile("resources/data/pending_movies.json", pendingList, `Remove ${movieDetails.title} from pending queue`, pSha, token);
+      await commitGithubFile("resources/data/pending_movies.json", pendingList, `Remove ${meta.clean_name} from pending`, pSha, token);
     }
 
     if (!isBatch) {
-      showStatus(`🎉 "${movieDetails.title}" (${sourceType}) successfully committed to Master Catalog!`);
+      showStatus(`🎉 "${meta.clean_name}" committed to ${seInfo.isSeries ? 'series.json' : 'movies.json'} & name_registry.json!`);
       loadPendingList();
     }
   }
@@ -1119,58 +1154,26 @@
 
     if (isTg) {
       const item = tgPendingList[index];
-      if (!confirm(`Move TG #${item.tg_msg_id} to Step 2 Permanent "Data" Archive?`)) return;
-
-      try {
-        let archData = { Data: [] }, archSha;
-        const aRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/tg/step2_data_archive.json?t=${Date.now()}`, {
-          headers: { "Authorization": `token ${token}` }
-        });
-        if (aRes.ok) {
-          const aj = await aRes.json();
-          archSha = aj.sha;
-          archData = JSON.parse(decodeURIComponent(escape(atob(aj.content))));
-        }
-        archData.Data = archData.Data || [];
-        archData.Data.unshift({
-          tg_msg_id: item.tg_msg_id,
-          size_gb: item.size_gb || "N/A",
-          raw_name: item.old_name,
-          tg_stealth_name: item.stealth_name,
-          status: "removed_archived",
-          archived_at: new Date().toISOString()
-        });
-        await commitGithubFile("tg/step2_data_archive.json", archData, `TG Step 2 Archived #${item.tg_msg_id}`, archSha, token);
-
-        tgPendingList.splice(index, 1);
-        let s1Sha;
-        const s1Res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/tg/step1_pending.json?t=${Date.now()}`, {
-          headers: { "Authorization": `token ${token}` }
-        });
-        if (s1Res.ok) s1Sha = (await s1Res.json()).sha;
-        await commitGithubFile("tg/step1_pending.json", tgPendingList, `TG Step 1 Removed #${item.tg_msg_id}`, s1Sha, token);
-
-        loadPendingList();
-      } catch (e) {
-        alert("Error: " + e.message);
-      }
+      if (!confirm(`Remove TG #${item.tg_msg_id} from pending queue?`)) return;
+      tgPendingList.splice(index, 1);
+      let s1Sha;
+      const s1Res = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/tg/step1_pending.json?t=${Date.now()}`, {
+        headers: { "Authorization": `token ${token}` }
+      });
+      if (s1Res.ok) s1Sha = (await s1Res.json()).sha;
+      await commitGithubFile("tg/step1_pending.json", tgPendingList, `TG Dismissed #${item.tg_msg_id}`, s1Sha, token);
+      loadPendingList();
     } else {
-      const title = pendingList[index].parsed?.title || pendingList[index].new_name || "movie";
-      if (!confirm(`Remove "${title}" from pending queue without saving?`)) return;
-
+      const title = pendingList[index].parsed?.title || pendingList[index].new_name || "item";
+      if (!confirm(`Remove "${title}" from pending queue?`)) return;
       pendingList.splice(index, 1);
-      try {
-        let pSha;
-        const pRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/resources/data/pending_movies.json?t=${Date.now()}`, {
-          headers: { "Authorization": `token ${token}` }
-        });
-        if (pRes.ok) pSha = (await pRes.json()).sha;
-
-        await commitGithubFile("resources/data/pending_movies.json", pendingList, `Dismiss ${title} from queue`, pSha, token);
-        loadPendingList();
-      } catch (e) {
-        alert("Error: " + e.message);
-      }
+      let pSha;
+      const pRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/resources/data/pending_movies.json?t=${Date.now()}`, {
+        headers: { "Authorization": `token ${token}` }
+      });
+      if (pRes.ok) pSha = (await pRes.json()).sha;
+      await commitGithubFile("resources/data/pending_movies.json", pendingList, `Dismiss ${title}`, pSha, token);
+      loadPendingList();
     }
   }
 
