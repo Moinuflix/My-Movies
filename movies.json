@@ -93,33 +93,35 @@
     ]
   },
   {
-    "file_id": "1o4hkUvoWac6yr59iA5CSB3qGXFfdtZWX",
+    "file_id": "1NhU8f-5NVYoAhQj7qQoLGcgNYjVjh7nE",
     "source": "gd",
-    "tmdb_id": 1303331,
-    "clean_name": "Dhamaal 4",
-    "title": "Dhamaal 4",
-    "original_title": "धमाल ४",
-    "new_name": "Dhamaal 4 (2026) [2160p 4K] [Netflix] [Dolby Digital Plus Hindi] [8 GB].mkv",
-    "year": 2026,
-    "orig_lang": "hi",
-    "rating": 3.9,
+    "tmdb_id": 572802,
+    "clean_name": "Aquaman and the Lost Kingdom",
+    "title": "Aquaman and the Lost Kingdom",
+    "original_title": "Aquaman and the Lost Kingdom",
+    "new_name": "Aquaman and the Lost Kingdom (2023) [1080p] [BluRay] [Dolby Atmos] [15 GB].mkv",
+    "year": 2023,
+    "orig_lang": "en",
+    "rating": 6.5,
     "genres": [
-      "Comedy"
+      "Action",
+      "Adventure",
+      "Fantasy"
     ],
-    "plot": "The Dhamaal boys are back for another treasure hunt, facing hilarious challenges in their quest for the Treasure of Life.",
-    "size": "8 GB",
-    "size_gb": 8,
-    "poster": "https://image.tmdb.org/t/p/original/qUkP6Njgg1RQGMkmNcfsnmFET1e.jpg",
-    "fanart": "https://image.tmdb.org/t/p/original/95sjD0dRajtU6SKD6Gq6PtrGoGY.jpg",
-    "clearlogo": "https://image.tmdb.org/t/p/original/wXQzxJdXWIPCfhJrf2FCMckpMPc.png",
-    "added_at": "2026-11-27T16:27:20.046Z",
+    "plot": "Black Manta seeks revenge on Aquaman for his father's death. Wielding the Black Trident's power, he becomes a formidable foe. To defend Atlantis, Arthur (Aquaman) forges an alliance with his imprisoned brother. They must protect the kingdom.",
+    "size": "15 GB",
+    "size_gb": 15,
+    "poster": "https://image.tmdb.org/t/p/original/7lTnXOy0iNtBAdRP3TZvaKJ77F6.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/bckxSN9ueOgm0gJpVJmPQrecWul.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/zkB0olBwq8ZrrYHThaNCDuE6j6A.png",
+    "added_at": "2026-11-27T16:27:23.745Z",
     "versions": [
       {
-        "file_id": "1o4hkUvoWac6yr59iA5CSB3qGXFfdtZWX",
+        "file_id": "1NhU8f-5NVYoAhQj7qQoLGcgNYjVjh7nE",
         "source": "gd",
-        "new_name": "Dhamaal 4 (2026) [2160p 4K] [Netflix] [Dolby Digital Plus Hindi] [8 GB].mkv",
-        "size": "8 GB",
-        "size_gb": 8
+        "new_name": "Aquaman and the Lost Kingdom (2023) [1080p] [BluRay] [Dolby Atmos] [15 GB].mkv",
+        "size": "15 GB",
+        "size_gb": 15
       }
     ]
   }
