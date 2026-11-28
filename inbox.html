@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MoinuFlix — OTT Studio Ingestion (22 OTT • DVD9 • PDF→JSON • Chain)</title>
+  <title>MoinuFlix — OTT Stage &amp; 1-Time Batch Uploader</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-dark: #060913;
-      --panel-bg: rgba(13, 20, 38, 0.92);
-      --card-bg: rgba(20, 30, 56, 0.78);
-      --border: rgba(56, 189, 248, 0.22);
+      --panel-bg: rgba(13, 20, 38, 0.94);
+      --card-bg: rgba(20, 30, 56, 0.82);
+      --border: rgba(56, 189, 248, 0.24);
       --cyan: #38bdf8;
       --green: #10b981;
       --gold: #f59e0b;
@@ -20,7 +20,7 @@
       --red: #ef4444;
       --text: #f8fafc;
       --muted: #94a3b8;
-      --input-bg: rgba(4, 9, 22, 0.88);
+      --input-bg: rgba(4, 9, 22, 0.9);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
@@ -43,7 +43,7 @@
     }
 
     .app-shell {
-      max-width: 1240px;
+      max-width: 1260px;
       margin: 0 auto;
       background: var(--panel-bg);
       border: 1px solid var(--border);
@@ -53,7 +53,7 @@
     }
 
     .studio-header {
-      background: linear-gradient(120deg, rgba(15, 23, 42, 0.98), rgba(29, 78, 216, 0.45), rgba(88, 28, 135, 0.35));
+      background: linear-gradient(120deg, rgba(15, 23, 42, 0.98), rgba(29, 78, 216, 0.42), rgba(88, 28, 135, 0.35));
       border-bottom: 1px solid var(--border);
       padding: 1.2rem 1.75rem;
       display: flex;
@@ -63,13 +63,13 @@
       gap: 0.9rem;
     }
 
-    .studio-title { font-size: 1.25rem; font-weight: 800; letter-spacing: 0.2px; }
+    .studio-title { font-size: 1.22rem; font-weight: 800; }
     .studio-sub { font-size: 0.78rem; color: var(--cyan); margin-top: 3px; font-weight: 600; }
 
     .chain-nav { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 
     .pill-btn {
-      background: rgba(15, 23, 42, 0.8);
+      background: rgba(15, 23, 42, 0.85);
       border: 1px solid rgba(56, 189, 248, 0.35);
       color: var(--text);
       padding: 0.45rem 0.85rem;
@@ -84,14 +84,12 @@
       transition: 0.18s ease;
     }
     .pill-btn:hover { background: var(--cyan); color: #040916; border-color: var(--cyan); }
-    .pill-purple { border-color: rgba(168, 85, 247, 0.6); color: #e9d5ff; }
+    .pill-purple { border-color: rgba(168, 85, 247, 0.65); color: #e9d5ff; }
     .pill-purple:hover { background: var(--purple); color: #fff; }
-    .pill-gold { border-color: rgba(245, 158, 11, 0.65); color: #fde68a; }
-    .pill-gold:hover { background: var(--gold); color: #040916; }
 
     .kpi-strip {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
       gap: 0.85rem;
       padding: 0.9rem 1.75rem;
       background: rgba(2, 6, 23, 0.55);
@@ -111,7 +109,7 @@
 
     .drawer-card {
       display: none;
-      background: rgba(4, 9, 22, 0.88);
+      background: rgba(4, 9, 22, 0.9);
       border: 1px solid rgba(56, 189, 248, 0.35);
       border-radius: 14px;
       padding: 1rem 1.2rem;
@@ -126,7 +124,7 @@
       margin-bottom: 0.65rem;
     }
     .drawer-list {
-      max-height: 220px;
+      max-height: 210px;
       overflow-y: auto;
       font-family: monospace;
       font-size: 0.78rem;
@@ -137,6 +135,43 @@
       white-space: pre-wrap;
       line-height: 1.45;
       color: #cbd5e1;
+    }
+
+    .stage-panel {
+      background: rgba(4, 9, 22, 0.78);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 14px;
+      padding: 1rem 1.2rem;
+      margin-top: 1.35rem;
+    }
+    .stage-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 0.7rem;
+      max-height: 240px;
+      overflow-y: auto;
+    }
+    .stage-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      border-radius: 9px;
+      padding: 7px 11px;
+      font-size: 0.78rem;
+    }
+    .tag-badge {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--cyan);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 800;
     }
 
     .section-hdr {
@@ -219,7 +254,18 @@
       border-top: 1px solid rgba(148, 163, 184, 0.2);
     }
 
-    .btn-primary {
+    .btn-stage {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff;
+      border: none;
+      padding: 0.78rem 1.35rem;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .btn-upload-once {
       background: linear-gradient(135deg, var(--green), #059669);
       color: #fff;
       border: none;
@@ -234,7 +280,7 @@
       background: rgba(56, 189, 248, 0.1);
       color: var(--cyan);
       border: 1px solid var(--border);
-      padding: 0.78rem 1.25rem;
+      padding: 0.78rem 1.2rem;
       border-radius: 10px;
       font-size: 0.82rem;
       font-weight: 800;
@@ -262,18 +308,16 @@
 
 <div id="dynamic-bg"></div>
 <input type="file" id="json-file-input" accept=".json,application/json" style="display:none;" onchange="onJsonFileSelected(event)">
-<input type="file" id="pdf-file-input" accept=".pdf,application/pdf" style="display:none;" onchange="onPdfFileSelected(event)">
 
 <div class="app-shell">
   <div class="studio-header">
     <div>
-      <div class="studio-title">MOINUFLIX OTT INGESTION STUDIO</div>
-      <div class="studio-sub">22 OTT Platforms • DVD9 &amp; Disc/Web Sources • PDF → JSON • GitHub Index Viewer • Chain</div>
+      <div class="studio-title">MOINUFLIX STAGE &amp; 1-TIME BATCH UPLOADER</div>
+      <div class="studio-sub">Stage Many → Upload Once at Finish • Auto Route: Movies / Kids / Series / Songs / Registry</div>
     </div>
 
     <div class="chain-nav">
       <button type="button" class="pill-btn pill-purple" onclick="openTriggerPrompt()">⚡ Trigger (GD/TG/Import)</button>
-      <button type="button" class="pill-btn pill-gold" onclick="document.getElementById('pdf-file-input').click()">📄 PDF → JSON</button>
       <button type="button" class="pill-btn" onclick="toggleGitHubDataDrawer()">📚 Show GitHub Data</button>
       <a href="series.html" class="pill-btn">📺 Series</a>
       <a href="songs.html" class="pill-btn">🎵 Songs</a>
@@ -285,57 +329,57 @@
 
   <div class="kpi-strip">
     <div class="kpi-box">
+      <div class="kpi-lbl">Staged (Unsaved)</div>
+      <div class="kpi-val" id="kpi-staged" style="color:var(--gold);">0</div>
+    </div>
+    <div class="kpi-box">
+      <div class="kpi-lbl">Auto Route Target</div>
+      <div class="kpi-val" id="kpi-auto-route" style="color:var(--cyan);">movies.json</div>
+    </div>
+    <div class="kpi-box">
       <div class="kpi-lbl">General Movies</div>
-      <div class="kpi-val" id="kpi-movies" style="color:var(--cyan);">0</div>
+      <div class="kpi-val" id="kpi-movies" style="color:var(--green);">0</div>
     </div>
     <div class="kpi-box">
       <div class="kpi-lbl">Kids Movies</div>
-      <div class="kpi-val" id="kpi-kids" style="color:var(--gold);">0</div>
-    </div>
-    <div class="kpi-box">
-      <div class="kpi-lbl">Next Safe ID #</div>
-      <div class="kpi-val" id="kpi-next-id" style="color:var(--green);">001</div>
-    </div>
-    <div class="kpi-box">
-      <div class="kpi-lbl">Source / Target</div>
-      <div class="kpi-val" id="kpi-target" style="color:#e9d5ff;">GD → movies.json</div>
+      <div class="kpi-val" id="kpi-kids" style="color:#e9d5ff;">0</div>
     </div>
   </div>
 
   <div class="body-pad">
     <div id="toast"></div>
 
-    <!-- EXISTING GITHUB DATA VIEWER (SHOWS NUMBERS WITHOUT DELETING ANYTHING) -->
+    <!-- NUMBERED GITHUB VIEWER (NO DELETE) -->
     <div class="drawer-card" id="gh-drawer">
       <div class="drawer-head">
-        <span style="font-size:0.84rem; font-weight:800; color:var(--cyan);" id="gh-drawer-title">Existing GitHub Items (Numbered View)</span>
+        <span style="font-size:0.84rem; font-weight:800; color:var(--cyan);" id="gh-drawer-title">GitHub Index (Numbered)</span>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
           <button type="button" class="pill-btn" onclick="refreshGitHubIndex('movies.json')">movies.json</button>
           <button type="button" class="pill-btn" onclick="refreshGitHubIndex('kids_movies.json')">kids_movies.json</button>
-          <button type="button" class="pill-btn" onclick="copyGitHubIndexText()">📋 Copy List</button>
+          <button type="button" class="pill-btn" onclick="refreshGitHubIndex('series.json')">series.json</button>
+          <button type="button" class="pill-btn" onclick="refreshGitHubIndex('songs.json')">songs.json</button>
           <button type="button" class="pill-btn" onclick="document.getElementById('gh-drawer').style.display='none'">✕ Close</button>
         </div>
       </div>
-      <div class="drawer-list" id="gh-drawer-content">Click "Show GitHub Data" to load numbered items...</div>
+      <div class="drawer-list" id="gh-drawer-content">Click "Show GitHub Data" to inspect numbered entries...</div>
     </div>
 
-    <!-- PDF -> JSON / LOADED QUEUE DRAWER -->
+    <!-- TRIGGERED / IMPORTED QUEUE DRAWER -->
     <div class="drawer-card" id="queue-drawer" style="border-color:rgba(168, 85, 247, 0.45);">
       <div class="drawer-head">
-        <span style="font-size:0.84rem; font-weight:800; color:#e9d5ff;" id="queue-drawer-title">Parsed / Loaded Items</span>
+        <span style="font-size:0.84rem; font-weight:800; color:#e9d5ff;" id="queue-drawer-title">Loaded Queue Items</span>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
-          <button type="button" class="pill-btn pill-gold" onclick="downloadDrawerJson()">💾 Download JSON</button>
+          <button type="button" class="pill-btn" onclick="downloadJsonFile(drawerItems, 'moinuflix_queue.json')">💾 Save JSON</button>
           <button type="button" class="pill-btn" onclick="document.getElementById('queue-drawer').style.display='none'">✕ Close</button>
         </div>
       </div>
-      <div id="queue-chips" style="display:flex; gap:7px; flex-wrap:wrap; margin-bottom:8px;"></div>
-      <div class="drawer-list" id="queue-json-preview"></div>
+      <div id="queue-chips" style="display:flex; gap:7px; flex-wrap:wrap;"></div>
     </div>
 
-    <form id="ingest-form" onsubmit="onSubmitForm(event)">
+    <form id="ingest-form" onsubmit="onStageItemSubmit(event)">
       <input type="hidden" id="tmdb-id" value="">
 
-      <div class="section-hdr">1. Source, OTT Audience, ID &amp; Raw Filename</div>
+      <div class="section-hdr">1. Source, Bucket Routing, ID &amp; Raw Filename</div>
 
       <div class="grid-12">
         <div class="field c2">
@@ -346,19 +390,14 @@
           </select>
         </div>
 
-        <div class="field c2">
-          <label>Audience</label>
-          <select id="aud-select" onchange="onAudChange()">
-            <option value="general">general</option>
-            <option value="kids">kids</option>
-          </select>
-        </div>
-
-        <div class="field c2">
-          <label>Target File</label>
-          <select id="target-select" onchange="updateKpiTarget()">
-            <option value="movies.json">movies.json</option>
-            <option value="kids_movies.json">kids_movies.json</option>
+        <div class="field c3">
+          <label>Bucket / Type (Auto)</label>
+          <select id="bucket-select" onchange="onBucketChange()">
+            <option value="auto">✨ Auto (Movie/Kids/Series/Song)</option>
+            <option value="movies.json">🎬 General Movie (movies.json)</option>
+            <option value="kids_movies.json">🧸 Kids Movie (kids_movies.json)</option>
+            <option value="series.json">📺 Series (series.json)</option>
+            <option value="songs.json">🎵 Song (songs.json)</option>
           </select>
         </div>
 
@@ -367,17 +406,17 @@
           <input type="text" id="file-id-input" placeholder="Drive ID/Link or TG Msg ID..." required oninput="autoDetectSrc()">
         </div>
 
-        <div class="field c3">
-          <label>TMDb ID</label>
-          <input type="text" id="tmdb-visible" placeholder="Auto / Manual TMDb ID" oninput="syncTmdbId(this.value)">
+        <div class="field c4">
+          <label>TMDb Search / ID (Optional — Safe Match)</label>
+          <input type="text" id="tmdb-visible" placeholder="TMDb ID or search title..." oninput="onTmdbInput(this.value)">
         </div>
 
         <div class="field c12">
-          <label>Raw Release File Name (Preserved As-Is in name_registry.json) <span class="req">*</span></label>
-          <input type="text" id="raw-name-input" placeholder="Paste raw filename (e.g. Movie (2025) 1080p DVD9 ...mkv)" required oninput="autoDetectSrc(); parseRawInput(this.value)">
+          <label>Raw Release File Name (Kept As-Is in name_registry.json) <span class="req">*</span></label>
+          <input type="text" id="raw-name-input" placeholder="Paste raw filename..." required oninput="autoDetectSrc(); parseRawInput(this.value)">
         </div>
 
-        <div class="section-hdr c12">2. Metadata, 22 OTT Platforms, DVD9 / Source &amp; Audio</div>
+        <div class="section-hdr c12">2. Metadata, 22 OTT Platforms, Resolution (1080p / DS4K) &amp; Audio</div>
 
         <div class="field c6">
           <label>Clean Name (clean_name)</label>
@@ -391,7 +430,7 @@
 
         <div class="field c2">
           <label>Resolution</label>
-          <input type="text" id="res-input" placeholder="2160p / 1080p / 720p" oninput="onMetaFieldEdit()">
+          <input type="text" id="res-input" placeholder="1080p / DS4K / 2160p" oninput="onMetaFieldEdit()">
         </div>
 
         <div class="field c2">
@@ -400,9 +439,9 @@
         </div>
 
         <div class="field c4">
-          <label>OTT Platform (22 Platforms — No Confusion)</label>
+          <label>OTT Platform (22 Platforms)</label>
           <select id="ott-select" onchange="onMetaFieldEdit()">
-            <option value="">— None / Disc —</option>
+            <option value="">— None —</option>
             <option value="Netflix">Netflix</option>
             <option value="Prime Video">Prime Video</option>
             <option value="JioHotstar">JioHotstar</option>
@@ -431,7 +470,7 @@
         <div class="field c4">
           <label>Source / Disc Format (Includes DVD9)</label>
           <select id="format-select" onchange="onMetaFieldEdit()">
-            <option value="">— Auto / None —</option>
+            <option value="">— None —</option>
             <option value="WEB-DL">WEB-DL</option>
             <option value="WEBRip">WEBRip</option>
             <option value="BluRay">BluRay</option>
@@ -480,10 +519,25 @@
       </div>
 
       <div class="action-bar">
-        <button type="button" class="btn-ghost" onclick="resetAllFields()">Reset</button>
-        <button type="submit" id="submit-btn" class="btn-primary">🚀 Commit (Append / Merge Only)</button>
+        <button type="button" class="btn-ghost" onclick="resetAllFields()">Clear Form</button>
+        <button type="submit" class="btn-stage">➕ Save to Stage (No GitHub Commit Yet)</button>
+        <button type="button" id="upload-once-btn" class="btn-upload-once" onclick="finishAndUploadAllOnce()">🚀 Finish &amp; Upload All Once</button>
       </div>
     </form>
+
+    <!-- STAGED ITEMS LIST -->
+    <div class="stage-panel">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
+        <span style="font-size:0.86rem; font-weight:800; color:var(--green);">
+          📦 Staged Batch (<span id="stage-count-label">0</span> items — uploaded once when you click "Finish &amp; Upload All Once")
+        </span>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button type="button" class="pill-btn" onclick="downloadJsonFile(stagedItems, 'moinuflix_staged_' + new Date().toISOString().slice(0,10) + '.json')">💾 Backup JSON</button>
+          <button type="button" class="pill-btn" onclick="clearStagedList()">🗑️ Clear Stage</button>
+        </div>
+      </div>
+      <div class="stage-list" id="stage-list"></div>
+    </div>
   </div>
 </div>
 
@@ -491,6 +545,7 @@
   const TMDB_KEY = "051ccf72e026820cb53b8b8531b6a2ba";
   const GH_REPO = "Moinuflix/My-Movies";
   const GH_BRANCH = "main";
+  const STAGE_STORAGE_KEY = "moinuflix_staged_batch_v1";
 
   const LANG_MAP = {
     en: "English", hi: "Hindi", ta: "Tamil", te: "Telugu",
@@ -500,10 +555,11 @@
 
   let moviesCache = [];
   let kidsCache = [];
-  let tmdbCache = null;
+  let stagedItems = [];
   let drawerItems = [];
+  let tmdbCache = null;
   let srcLocked = false;
-  let audLocked = false;
+  let bucketLocked = false;
   let renameLocked = false;
   let searchTimer = null;
 
@@ -534,20 +590,50 @@
     el.textContent = (isErr ? "❌ " : "✅ ") + msg;
     el.style.display = "block";
     window.scrollTo({ top: 0, behavior: "smooth" });
-    setTimeout(() => { el.style.display = "none"; }, 6000);
+    setTimeout(() => { el.style.display = "none"; }, 6500);
   }
 
-  function updateKpiTarget() {
-    const src = document.getElementById("src-select").value.toUpperCase();
-    const tgt = document.getElementById("target-select").value;
-    document.getElementById("kpi-target").textContent = `${src} → ${tgt}`;
+  function detectAutoBucket(rawText, titleText, genres = []) {
+    const comb = `${rawText || ""} ${titleText || ""}`.trim();
+    const gStr = Array.isArray(genres) ? genres.join(" ") : String(genres || "");
+
+    if (/\.(mp3|flac|wav|m4a|ogg|aac)\b|\b(song|audio\s*track|lyric\s*video|album)\b/i.test(comb)) {
+      return "songs.json";
+    }
+    if (/\bS\d{1,2}\s*E\d{1,3}\b|\bSeason\s*\d+\b|\bEpisode\s*\d+\b|\bWeb\s*Series\b/i.test(comb)) {
+      return "series.json";
+    }
+    if (/\b(kids|children|cartoon|toon|chhota bheem|motu patlu|doraemon|shinchan|oggy|peppa)\b/i.test(comb) ||
+        (/\b(animation|family)\b/i.test(gStr) && /\b(kids|cartoon|children|junior)\b/i.test(comb))) {
+      return "kids_movies.json";
+    }
+    return "movies.json";
+  }
+
+  function resolveTargetBucket() {
+    const sel = document.getElementById("bucket-select").value;
+    if (sel !== "auto") return sel;
+    return detectAutoBucket(
+      document.getElementById("raw-name-input").value,
+      document.getElementById("clean-name-input").value,
+      tmdbCache?.genres || []
+    );
+  }
+
+  function updateAutoRouteBadge() {
+    const tgt = resolveTargetBucket();
+    document.getElementById("kpi-auto-route").textContent = tgt;
+  }
+
+  function onBucketChange() {
+    bucketLocked = document.getElementById("bucket-select").value !== "auto";
+    updateAutoRouteBadge();
   }
 
   function setSrc(val, auto = false) {
     const v = String(val || "gd").toLowerCase() === "tg" ? "tg" : "gd";
     document.getElementById("src-select").value = v;
     if (!auto) srcLocked = true;
-    updateKpiTarget();
   }
 
   function onSrcChange() { setSrc(document.getElementById("src-select").value, false); }
@@ -567,37 +653,68 @@
     setSrc("gd", true);
   }
 
-  function setAud(val, auto = false) {
-    const v = String(val || "general").toLowerCase() === "kids" ? "kids" : "general";
-    document.getElementById("aud-select").value = v;
-    if (!auto || !audLocked) {
-      document.getElementById("target-select").value = v === "kids" ? "kids_movies.json" : "movies.json";
-    }
-    if (!auto) audLocked = true;
-    updateNextIdKpi();
-    updateKpiTarget();
+  function loadStageFromStorage() {
+    try {
+      const raw = localStorage.getItem(STAGE_STORAGE_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      if (Array.isArray(parsed)) stagedItems = parsed;
+    } catch (_) { stagedItems = []; }
+    renderStageList();
   }
 
-  function onAudChange() { setAud(document.getElementById("aud-select").value, false); }
-
-  function calcNextId(arr) {
-    let maxNum = 0;
-    for (const row of (arr || [])) {
-      const n = parseInt(String(row.id || ""), 10);
-      if (!isNaN(n) && n > maxNum) maxNum = n;
+  function saveStageToStorage() {
+    try { localStorage.setItem(STAGE_STORAGE_KEY, JSON.stringify(stagedItems)); } catch (_) {}
+    renderStageList();
+    if (stagedItems.length > 5) {
+      downloadJsonFile(stagedItems, `moinuflix_stage_backup_${new Date().toISOString().slice(0, 10)}.json`);
     }
-    return String(maxNum + 1).padStart(3, "0");
   }
 
-  function updateNextIdKpi() {
-    const tgt = document.getElementById("target-select").value;
-    const arr = tgt === "kids_movies.json" ? kidsCache : moviesCache;
-    document.getElementById("kpi-next-id").textContent = calcNextId(arr);
+  function renderStageList() {
+    document.getElementById("kpi-staged").textContent = String(stagedItems.length);
+    document.getElementById("stage-count-label").textContent = String(stagedItems.length);
+    const box = document.getElementById("stage-list");
+    box.innerHTML = "";
+    if (!stagedItems.length) {
+      box.innerHTML = `<div style="color:var(--muted); font-size:0.78rem;">No staged items yet. Fill the form and click "Save to Stage".</div>`;
+      return;
+    }
+    stagedItems.forEach((st, idx) => {
+      const row = document.createElement("div");
+      row.className = "stage-row";
+      row.innerHTML = `
+        <div>
+          <span class="tag-badge">#${String(idx + 1).padStart(3, "0")}</span>
+          <span class="tag-badge">${st.source.toUpperCase()}</span>
+          <span class="tag-badge" style="color:var(--gold); border-color:rgba(245,158,11,0.4);">${st.targetBucket}</span>
+          <strong style="margin-left:6px;">${escapeHtml(st.new_name)}</strong>
+        </div>
+        <button type="button" class="pill-btn" onclick="removeStagedAt(${idx})">✕</button>
+      `;
+      box.appendChild(row);
+    });
+  }
+
+  function escapeHtml(s) {
+    return String(s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  }
+
+  function removeStagedAt(idx) {
+    stagedItems.splice(idx, 1);
+    saveStageToStorage();
+  }
+
+  function clearStagedList() {
+    if (!stagedItems.length) return;
+    if (!confirm("Clear all staged items?")) return;
+    stagedItems = [];
+    saveStageToStorage();
   }
 
   async function loadCounts() {
     refreshTokenBadge();
-    updateKpiTarget();
+    loadStageFromStorage();
+    updateAutoRouteBadge();
     try {
       const [mR, kR] = await Promise.all([
         fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/movies.json?t=${Date.now()}`),
@@ -613,52 +730,38 @@
         kidsCache = Array.isArray(kd) ? kd : [];
         document.getElementById("kpi-kids").textContent = String(kidsCache.length);
       }
-      updateNextIdKpi();
     } catch (_) {}
   }
 
   async function toggleGitHubDataDrawer() {
-    const drawer = document.getElementById("gh-drawer");
-    drawer.style.display = "block";
-    await refreshGitHubIndex(document.getElementById("target-select").value);
+    document.getElementById("gh-drawer").style.display = "block";
+    await refreshGitHubIndex("movies.json");
   }
 
   async function refreshGitHubIndex(fileName) {
-    const target = fileName || "movies.json";
-    document.getElementById("gh-drawer-title").textContent = `Existing ${target} (Numbered — No Delete)`;
+    document.getElementById("gh-drawer-title").textContent = `Existing ${fileName} (Numbered — Zero Delete)`;
     document.getElementById("gh-drawer-content").textContent = "Loading...";
     try {
-      const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${target}?t=${Date.now()}`);
+      const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${fileName}?t=${Date.now()}`);
       if (!res.ok) {
-        document.getElementById("gh-drawer-content").textContent = `${target} not found yet on GitHub (starts at #001).`;
+        document.getElementById("gh-drawer-content").textContent = `${fileName} not created yet on GitHub.`;
         return;
       }
       const arr = await res.json();
       if (!Array.isArray(arr) || !arr.length) {
-        document.getElementById("gh-drawer-content").textContent = `${target} is empty (next ID: 001).`;
+        document.getElementById("gh-drawer-content").textContent = `${fileName} is empty.`;
         return;
       }
-      const lines = arr.map((m, idx) => {
-        const num = String(idx + 1).padStart(3, "0");
-        const recId = m.id || num;
-        const tmdb = m.tmdb_id || "-";
-        const title = m.clean_name || m.title || "Untitled";
+      const lines = arr.map((m, i) => {
+        const idxStr = String(i + 1).padStart(3, "0");
+        const title = m.clean_name || m.title || m.name || "Untitled";
         const yr = m.year || "-";
-        const vCount = Array.isArray(m.versions) ? m.versions.length : 0;
-        return `#${num} [id:${recId} | tmdb:${tmdb} | v:${vCount}] ${title} (${yr})`;
+        return `#${idxStr} [id:${m.id || idxStr} | tmdb:${m.tmdb_id || "-"}] ${title} (${yr})`;
       });
-      document.getElementById("gh-drawer-content").textContent =
-        `Total: ${arr.length} | Next ID: ${calcNextId(arr)}\n\n` + lines.join("\n");
+      document.getElementById("gh-drawer-content").textContent = `Total: ${arr.length}\n\n` + lines.join("\n");
     } catch (e) {
       document.getElementById("gh-drawer-content").textContent = "Error: " + e.message;
     }
-  }
-
-  function copyGitHubIndexText() {
-    const txt = document.getElementById("gh-drawer-content").textContent || "";
-    if (!txt) return;
-    navigator.clipboard?.writeText(txt);
-    showToast("Numbered GitHub list copied!");
   }
 
   function downloadJsonFile(obj, fname) {
@@ -671,12 +774,6 @@
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-  }
-
-  function downloadDrawerJson() {
-    if (!drawerItems.length) return showToast("No items to export!", true);
-    downloadJsonFile(drawerItems, `moinuflix_export_${new Date().toISOString().slice(0, 10)}.json`);
-    showToast(`Exported ${drawerItems.length} items as JSON!`);
   }
 
   async function openTriggerPrompt() {
@@ -756,89 +853,36 @@
     reader.readAsText(f);
   }
 
-  // Extract readable lines from PDF bytes and build JSON objects
-  function onPdfFileSelected(ev) {
-    const f = ev.target.files?.[0];
-    if (!f) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      try {
-        const bytes = new Uint8Array(reader.result);
-        const latin = new TextDecoder("latin1").decode(bytes);
-        const chunks = [];
-
-        // Extract text inside PDF (...) literals
-        const litMatches = latin.matchAll(/\(([^()\\]{2,200})\)/g);
-        for (const m of litMatches) {
-          const cleaned = m[1].replace(/[^\x20-\x7E]/g, " ").replace(/\s+/g, " ").trim();
-          if (cleaned.length >= 3 && !/^[0-9.\-\s]+$/.test(cleaned)) {
-            chunks.push(cleaned);
-          }
-        }
-
-        const uniqueLines = [...new Set(chunks)];
-        const builtJson = uniqueLines.map((line, idx) => {
-          const ym = line.match(/\b(19\d\d|20\d\d)\b/);
-          const yr = ym ? parseInt(ym[1], 10) : 0;
-          const title = (ym ? line.slice(0, ym.index) : line.split("[")[0])
-            .replace(/[-_]+/g, " ").replace(/\s{2,}/g, " ").trim() || line;
-          const isKids = /\b(kids|cartoon|animation|family)\b/i.test(line);
-          return {
-            id: String(idx + 1).padStart(3, "0"),
-            audience: isKids ? "kids" : "general",
-            clean_name: title,
-            year: yr,
-            raw_line: line,
-            source_pdf: f.name
-          };
-        });
-
-        presentDrawerItems(builtJson, `PDF → JSON (${f.name})`);
-        if (builtJson.length > 5) {
-          downloadJsonFile(builtJson, `${f.name.replace(/\.pdf$/i, "")}.json`);
-          showToast(`PDF se ${builtJson.length} items JSON mein ban gaye aur download ho gaye!`);
-        }
-      } catch (err) {
-        showToast("PDF Parse Error: " + err.message, true);
-      }
-      ev.target.value = "";
-    };
-    reader.readAsArrayBuffer(f);
-  }
-
   function presentDrawerItems(items, label) {
     drawerItems = Array.isArray(items) ? items : [];
     const drawer = document.getElementById("queue-drawer");
     const chips = document.getElementById("queue-chips");
-    const preview = document.getElementById("queue-json-preview");
     document.getElementById("queue-drawer-title").textContent = `${label} — ${drawerItems.length} Items`;
     chips.innerHTML = "";
-
     drawerItems.slice(0, 60).forEach((it, idx) => {
       const b = document.createElement("button");
       b.type = "button";
       b.className = "cand-chip";
-      const txt = it.clean_name || it.old_name || it.original_filename || it.new_name || it.raw_line || `Item ${idx + 1}`;
-      b.textContent = `#${idx + 1} ${txt.slice(0, 38)}`;
+      const txt = it.old_name || it.original_filename || it.new_name || it.clean_name || `Item ${idx + 1}`;
+      b.textContent = `#${idx + 1} ${txt.slice(0, 40)}`;
       b.onclick = () => fillFormFromObject(it);
       chips.appendChild(b);
     });
-
-    preview.textContent = JSON.stringify(drawerItems.slice(0, 25), null, 2) +
-      (drawerItems.length > 25 ? `\n... (${drawerItems.length - 25} more items in JSON)` : "");
     drawer.style.display = "block";
-
     if (drawerItems.length > 5) {
-      downloadJsonFile(drawerItems, `moinuflix_list_${new Date().toISOString().slice(0, 10)}.json`);
+      downloadJsonFile(drawerItems, `moinuflix_loaded_${new Date().toISOString().slice(0, 10)}.json`);
       showToast(`Loaded ${drawerItems.length} items (>5) — saved to local JSON!`);
     }
   }
 
   function fillFormFromObject(it) {
     srcLocked = false;
-    audLocked = false;
+    bucketLocked = false;
     renameLocked = false;
+    tmdbCache = null;
+    document.getElementById("tmdb-id").value = "";
     document.getElementById("rename-input").value = "";
+    document.getElementById("bucket-select").value = "auto";
 
     const isTg = it._src === "tg" || String(it.source || "").toLowerCase() === "tg" || Boolean(it.tg_msg_id);
     setSrc(isTg ? "tg" : "gd", true);
@@ -847,18 +891,17 @@
     const fid = isTg ? (it.tg_msg_id || it.file_id || "") : (it.gdrive_id || it.file_id || "");
     if (fid) document.getElementById("file-id-input").value = String(fid);
 
-    const raw = it.old_name || it.original_filename || it.raw_line || it.new_name || "";
+    const raw = it.old_name || it.original_filename || it.new_name || "";
     document.getElementById("raw-name-input").value = raw;
-
-    const isKids = it.audience === "kids" || /\b(kids|cartoon|animation|family)\b/i.test(raw);
-    setAud(isKids ? "kids" : "general", true);
-
-    parseRawInput(raw, Boolean(it.tmdb_id || it.selected_tmdb_id));
-    if (it.clean_name) document.getElementById("clean-name-input").value = it.clean_name;
-    if (it.year) document.getElementById("year-input").value = String(it.year);
+    parseRawInput(raw, true);
 
     const tmdb = it.selected_tmdb_id || it.tmdb_id || it.tmdb_candidates?.[0]?.tmdb_id || "";
-    if (tmdb) syncTmdbId(tmdb);
+    if (tmdb) {
+      document.getElementById("tmdb-id").value = tmdb;
+      document.getElementById("tmdb-visible").value = tmdb;
+      fetchTmdbById(tmdb);
+    }
+    updateAutoRouteBadge();
     updateNamePreview();
   }
 
@@ -933,30 +976,26 @@
     const s = String(raw || "").trim();
     if (!s) return;
 
-    if (!audLocked) {
-      const isKids = /\b(kids|cartoon|animation|family)\b/i.test(s);
-      setAud(isKids ? "kids" : "general", true);
-    }
-
     const ym = s.match(/\b(19\d\d|20\d\d)\b/);
     const yr = ym ? ym[1] : "";
     document.getElementById("year-input").value = yr;
 
     let title = ym ? s.slice(0, ym.index) : s.split("[")[0].split("(")[0].split(" - ")[0];
-    title = title.replace(/^\[[^\]]+\]\s*/g, "").replace(/\.(mkv|mp4|avi|ts|m4v|webm)$/i, "").replace(/[-_]+/g, " ").replace(/\s{2,}/g, " ").trim();
+    title = title.replace(/^\[[^\]]+\]\s*/g, "").replace(/\.(mkv|mp4|avi|ts|m4v|webm|mp3|flac)$/i, "").replace(/[-_]+/g, " ").replace(/\s{2,}/g, " ").trim();
     if (title) document.getElementById("clean-name-input").value = title;
 
     let res = "";
-    if (/2160p|\b4k\b|uhd/i.test(s)) res = "2160p";
+    if (/\bds4k\b/i.test(s)) res = "DS4K";
+    else if (/2160p|\b4k\b|uhd/i.test(s)) res = "2160p";
     else if (/1080p/i.test(s)) res = "1080p";
     else if (/720p/i.test(s)) res = "720p";
     document.getElementById("res-input").value = res;
 
     const ott = detectOtt22(s);
-    if (ott) document.getElementById("ott-select").value = ott;
+    document.getElementById("ott-select").value = ott;
 
     const fmt = detectFormat(s);
-    if (fmt) document.getElementById("format-select").value = fmt;
+    document.getElementById("format-select").value = fmt;
 
     const has10 = /\b10bit\b/i.test(s);
     let codec = "";
@@ -971,24 +1010,32 @@
     document.getElementById("langs-input").value = extractLangs(s).join(" + ");
     document.getElementById("audio-input").value = extractAudio(s);
 
+    updateAutoRouteBadge();
     updateNamePreview();
 
     if (!skipSearch && title.length > 1) {
       clearTimeout(searchTimer);
-      searchTimer = setTimeout(() => searchTmdb(title, yr), 350);
+      searchTimer = setTimeout(() => searchTmdbSafe(title, yr), 400);
     }
   }
 
-  function syncTmdbId(val) {
-    document.getElementById("tmdb-id").value = val;
-    document.getElementById("tmdb-visible").value = val;
-    if (val) fetchTmdb(val);
+  function onTmdbInput(val) {
+    const clean = String(val || "").trim();
+    if (/^\d+$/.test(clean)) {
+      document.getElementById("tmdb-id").value = clean;
+      fetchTmdbById(clean);
+    } else {
+      document.getElementById("tmdb-id").value = "";
+    }
   }
 
-  async function searchTmdb(title, yr) {
+  // Safe TMDb search: only shows clickable candidates so nothing wrong is auto-forced silently
+  async function searchTmdbSafe(title, yr) {
+    const cleanQ = String(title || "").replace(/\b(1080p|720p|2160p|4k|ds4k|bluray|web-?dl|dvd9|x264|x265|hevc|avc)\b/gi, "").trim();
+    if (cleanQ.length < 2) return;
     const qYr = yr ? `&year=${encodeURIComponent(yr)}` : "";
     try {
-      const r = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(title)}${qYr}&include_adult=false`);
+      const r = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(cleanQ)}${qYr}&include_adult=false`);
       if (!r.ok) return;
       const d = await r.json();
       const list = (d.results || []).slice(0, 4);
@@ -1000,15 +1047,19 @@
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "cand-chip";
-        btn.textContent = `${item.title}${y ? ` (${y})` : ""} [${item.id}]`;
-        btn.onclick = () => syncTmdbId(item.id);
+        btn.textContent = `Pick: ${item.title}${y ? ` (${y})` : ""} [#${item.id}]`;
+        btn.onclick = () => {
+          document.getElementById("tmdb-id").value = item.id;
+          document.getElementById("tmdb-visible").value = String(item.id);
+          fetchTmdbById(item.id);
+        };
         wrap.appendChild(btn);
       });
       wrap.style.display = "flex";
     } catch (_) {}
   }
 
-  async function fetchTmdb(id) {
+  async function fetchTmdbById(id) {
     try {
       const r = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_KEY}&append_to_response=images`);
       if (!r.ok) return;
@@ -1023,9 +1074,6 @@
       if (yr) document.getElementById("year-input").value = yr;
       if (!document.getElementById("langs-input").value.trim() && langFull) {
         document.getElementById("langs-input").value = langFull;
-      }
-      if (!audLocked && genres.some(g => /animation|family/i.test(g)) && /\b(kids|cartoon|children)\b/i.test(document.getElementById("raw-name-input").value)) {
-        setAud("kids", true);
       }
 
       const logos = d.images?.logos || [];
@@ -1051,6 +1099,7 @@
         document.getElementById("match-sub").textContent = `TMDb #${id} • ${langFull || "N/A"} • ${genres.join(", ")}`;
         document.getElementById("match-card").style.display = "flex";
       }
+      updateAutoRouteBadge();
       updateNamePreview();
     } catch (_) {}
   }
@@ -1061,6 +1110,7 @@
   }
 
   function onMetaFieldEdit() {
+    updateAutoRouteBadge();
     if (!renameLocked) updateNamePreview();
   }
 
@@ -1083,6 +1133,8 @@
 
     const srcCombo = [ott, fmt].filter(Boolean).join(" ");
     const audioCombo = [langs, audio].filter(Boolean).join(" ").trim();
+    const tgt = resolveTargetBucket();
+    const ext = tgt === "songs.json" ? ".mp3" : ".mkv";
 
     const parts = [
       yr ? `${title} (${yr})` : title,
@@ -1093,32 +1145,28 @@
       sz ? `[${sz}]` : ""
     ];
 
-    document.getElementById("name-preview").textContent = parts.filter(Boolean).join(" ") + ".mkv";
+    document.getElementById("name-preview").textContent = parts.filter(Boolean).join(" ") + ext;
   }
 
   function resetAllFields() {
     srcLocked = false;
-    audLocked = false;
+    bucketLocked = false;
     renameLocked = false;
     tmdbCache = null;
     document.getElementById("tmdb-id").value = "";
     document.getElementById("tmdb-visible").value = "";
     document.getElementById("rename-input").value = "";
+    document.getElementById("bucket-select").value = "auto";
     document.getElementById("match-card").style.display = "none";
     document.getElementById("cand-wrap").style.display = "none";
     setSrc("gd", true);
-    setAud("general", true);
+    updateAutoRouteBadge();
     document.getElementById("name-preview").textContent = "Awaiting input...";
   }
 
-  async function onSubmitForm(e) {
+  function onStageItemSubmit(e) {
     e.preventDefault();
-    const token = getToken();
-    if (!token) return alert("GitHub PAT missing! Click PAT button first.");
-
     const src = document.getElementById("src-select").value === "tg" ? "tg" : "gd";
-    const aud = document.getElementById("aud-select").value === "kids" ? "kids" : "general";
-    const tgt = document.getElementById("target-select").value;
     const rawId = document.getElementById("file-id-input").value.trim().replace(/\s+/g, "");
     const itemId = src === "tg" ? rawId : (rawId.match(/[-\w]{25,}/) || [rawId])[0];
     if (!itemId) return alert("File ID required!");
@@ -1132,60 +1180,65 @@
     const audio = document.getElementById("audio-input").value.trim().replace(/^\[|\]$/g, "");
     const sz = document.getElementById("size-input").value.trim().replace(/^\[|\]$/g, "");
     const lang = tmdbCache?.lang || document.getElementById("langs-input").value.trim();
+    const targetBucket = resolveTargetBucket();
 
-    const verObj = {
+    stagedItems.push({
       source: src,
       id: itemId,
+      targetBucket,
+      tmdb_id: tmdbId,
+      clean_name: title,
+      year: yr,
+      lang,
+      genres: tmdbCache?.genres || [],
+      plot: tmdbCache?.plot || "",
+      poster: tmdbCache?.poster || "",
+      fanart: tmdbCache?.fanart || "",
+      clearlogo: tmdbCache?.clearlogo || "",
+      old_name: rawName,
       new_name: finalName,
       resolution: res,
-      audio: audio,
+      audio,
       size: sz
-    };
+    });
 
-    const btn = document.getElementById("submit-btn");
+    saveStageToStorage();
+    showToast(`Staged #${String(stagedItems.length).padStart(3, "0")} → ${targetBucket} (not uploaded yet)`);
+  }
+
+  function nextPadId(arr) {
+    let maxN = 0;
+    for (const r of (arr || [])) {
+      const n = parseInt(String(r.id || ""), 10);
+      if (!isNaN(n) && n > maxN) maxN = n;
+    }
+    return String(maxN + 1).padStart(3, "0");
+  }
+
+  // Single-commit per affected target file at Finish
+  async function finishAndUploadAllOnce() {
+    if (!stagedItems.length) return alert("Stage is empty! Save items to stage first.");
+    const token = getToken();
+    if (!token) return alert("GitHub PAT missing! Click PAT button first.");
+
+    const btn = document.getElementById("upload-once-btn");
     btn.disabled = true;
-    btn.textContent = `Saving to ${tgt}...`;
+    btn.textContent = "Uploading Once...";
 
     try {
-      let arr = [];
-      const gRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${tgt}?t=${Date.now()}`);
-      if (gRes.ok) {
-        const parsed = await gRes.json();
-        if (Array.isArray(parsed)) arr = parsed;
+      const buckets = [...new Set(stagedItems.map(x => x.targetBucket))];
+      const loadedFiles = {};
+
+      for (const b of buckets) {
+        const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${b}?t=${Date.now()}`);
+        if (res.ok) {
+          const parsed = await res.json();
+          loadedFiles[b] = Array.isArray(parsed) ? parsed : [];
+        } else {
+          loadedFiles[b] = [];
+        }
       }
 
-      const idx = arr.findIndex(m =>
-        (tmdbId && Number(m.tmdb_id) === tmdbId) ||
-        (Array.isArray(m.versions) && m.versions.some(v => String(v.id) === itemId))
-      );
-
-      if (idx >= 0) {
-        arr[idx].versions = Array.isArray(arr[idx].versions) ? arr[idx].versions : [];
-        const vIdx = arr[idx].versions.findIndex(v => String(v.id) === itemId);
-        if (vIdx >= 0) arr[idx].versions[vIdx] = verObj;
-        else arr[idx].versions.push(verObj);
-        arr[idx].new_name = finalName;
-      } else {
-        arr.push({
-          id: calcNextId(arr),
-          tmdb_id: tmdbId,
-          audience: aud,
-          clean_name: title,
-          year: yr,
-          lang: lang,
-          genres: tmdbCache?.genres || [],
-          plot: tmdbCache?.plot || "",
-          new_name: finalName,
-          poster: tmdbCache?.poster || "",
-          fanart: tmdbCache?.fanart || "",
-          clearlogo: tmdbCache?.clearlogo || "",
-          versions: [verObj]
-        });
-      }
-
-      await putGitHubJson(tgt, arr, `Ingest (${aud}/${src}): ${title}`, token);
-
-      // Update name_registry.json preserving raw old_name without deleting anything
       let regArr = [];
       const rRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/name_registry.json?t=${Date.now()}`);
       if (rRes.ok) {
@@ -1193,30 +1246,134 @@
         if (Array.isArray(pr)) regArr = pr;
       }
 
-      const regEntry = {
-        source: src,
-        audience: aud,
-        file_id: itemId,
-        tmdb_id: tmdbId,
-        cat: aud === "kids" ? "KIDS_MOVIE" : "MOVIE",
-        old_name: rawName,
-        new_name: finalName,
-        approved_at: new Date().toISOString()
-      };
-      const rIdx = regArr.findIndex(r => String(r.file_id) === itemId);
-      if (rIdx >= 0) regArr[rIdx] = regEntry;
-      else regArr.unshift(regEntry);
+      for (const st of stagedItems) {
+        const arr = loadedFiles[st.targetBucket];
 
-      await putGitHubJson("name_registry.json", regArr, `Registry (${aud}/${src}): ${title} (${itemId})`, token);
+        if (st.targetBucket === "songs.json") {
+          const sIdx = arr.findIndex(x => String(x.id) === st.id || String(x.title || "").toLowerCase() === st.clean_name.toLowerCase());
+          const songObj = {
+            id: sIdx >= 0 ? arr[sIdx].id : nextPadId(arr),
+            title: st.clean_name,
+            year: st.year,
+            lang: st.lang,
+            new_name: st.new_name,
+            source: st.source,
+            file_id: st.id,
+            size: st.size
+          };
+          if (sIdx >= 0) arr[sIdx] = { ...arr[sIdx], ...songObj };
+          else arr.push(songObj);
+        } else if (st.targetBucket === "series.json") {
+          const seMatch = st.old_name.match(/S(\d{1,2})\s*E(\d{1,3})/i);
+          const sNum = seMatch ? parseInt(seMatch[1], 10) : 1;
+          const eNum = seMatch ? parseInt(seMatch[2], 10) : 1;
+          const epObj = {
+            source: st.source,
+            id: st.id,
+            season: sNum,
+            episode: eNum,
+            new_name: st.new_name,
+            resolution: st.resolution,
+            audio: st.audio,
+            size: st.size
+          };
+          let serIdx = arr.findIndex(x => (st.tmdb_id && Number(x.tmdb_id) === st.tmdb_id) || String(x.clean_name || x.title || "").toLowerCase() === st.clean_name.toLowerCase());
+          if (serIdx >= 0) {
+            arr[serIdx].episodes = Array.isArray(arr[serIdx].episodes) ? arr[serIdx].episodes : [];
+            const eIdx = arr[serIdx].episodes.findIndex(ep => Number(ep.season) === sNum && Number(ep.episode) === eNum);
+            if (eIdx >= 0) arr[serIdx].episodes[eIdx] = epObj;
+            else arr[serIdx].episodes.push(epObj);
+          } else {
+            arr.push({
+              id: nextPadId(arr),
+              tmdb_id: st.tmdb_id,
+              clean_name: st.clean_name,
+              year: st.year,
+              lang: st.lang,
+              genres: st.genres,
+              plot: st.plot,
+              new_name: st.new_name,
+              poster: st.poster,
+              fanart: st.fanart,
+              clearlogo: st.clearlogo,
+              episodes: [epObj]
+            });
+          }
+        } else {
+          // movies.json or kids_movies.json
+          const aud = st.targetBucket === "kids_movies.json" ? "kids" : "general";
+          const verObj = {
+            source: st.source,
+            id: st.id,
+            new_name: st.new_name,
+            resolution: st.resolution,
+            audio: st.audio,
+            size: st.size
+          };
+          const mIdx = arr.findIndex(m =>
+            (st.tmdb_id && Number(m.tmdb_id) === st.tmdb_id) ||
+            (Array.isArray(m.versions) && m.versions.some(v => String(v.id) === st.id))
+          );
+          if (mIdx >= 0) {
+            arr[mIdx].versions = Array.isArray(arr[mIdx].versions) ? arr[mIdx].versions : [];
+            const vIdx = arr[mIdx].versions.findIndex(v => String(v.id) === st.id);
+            if (vIdx >= 0) arr[mIdx].versions[vIdx] = verObj;
+            else arr[mIdx].versions.push(verObj);
+            arr[mIdx].new_name = st.new_name;
+          } else {
+            arr.push({
+              id: nextPadId(arr),
+              tmdb_id: st.tmdb_id,
+              audience: aud,
+              clean_name: st.clean_name,
+              year: st.year,
+              lang: st.lang,
+              genres: st.genres,
+              plot: st.plot,
+              new_name: st.new_name,
+              poster: st.poster,
+              fanart: st.fanart,
+              clearlogo: st.clearlogo,
+              versions: [verObj]
+            });
+          }
+        }
 
-      showToast(`Saved "${title}" to ${tgt} & name_registry.json (existing items untouched)!`);
+        const catCode = st.targetBucket === "kids_movies.json"
+          ? "KIDS_MOVIE"
+          : (st.targetBucket === "series.json" ? "SERIES" : (st.targetBucket === "songs.json" ? "SONG" : "MOVIE"));
+
+        const regRow = {
+          source: st.source,
+          file_id: st.id,
+          tmdb_id: st.tmdb_id,
+          cat: catCode,
+          old_name: st.old_name,
+          new_name: st.new_name,
+          approved_at: new Date().toISOString()
+        };
+        const rIdx = regArr.findIndex(r => String(r.file_id) === st.id);
+        if (rIdx >= 0) regArr[rIdx] = regRow;
+        else regArr.unshift(regRow);
+      }
+
+      // 1 commit per affected target file + 1 commit for name_registry.json
+      for (const b of buckets) {
+        await putGitHubJson(b, loadedFiles[b], `Batch Sync (${stagedItems.length} staged) → ${b}`, token);
+      }
+      await putGitHubJson("name_registry.json", regArr, `Registry Sync (${stagedItems.length} staged)`, token);
+
+      const uploadedCount = stagedItems.length;
+      stagedItems = [];
+      saveStageToStorage();
       await loadCounts();
+      showToast(`Uploaded ${uploadedCount} staged items in 1 batch across ${buckets.join(", ")} + name_registry.json!`);
     } catch (err) {
-      showToast("Error: " + err.message, true);
+      showToast("Batch Upload Error: " + err.message, true);
     }
 
     btn.disabled = false;
-    btn.textContent = "🚀 Commit (Append / Merge Only)";
+    btn.textContent = "🚀 Finish & Upload All Once";
   }
 
   async function putGitHubJson(path, data, msg, token) {
