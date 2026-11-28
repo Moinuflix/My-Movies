@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MoinuFlix — Unified Library Manager (Movies & Series)</title>
+  <title>MoinuFlix — Unified Library Manager (Movies, Kids & Series)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -30,12 +30,8 @@
       min-height: 100vh;
     }
 
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
+    .container { max-width: 1400px; margin: 0 auto; }
 
-    /* TOP HEADER */
     .top-header {
       background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 58, 138, 0.85));
       border: 1px solid var(--card-border);
@@ -52,12 +48,7 @@
     .brand-title { font-size: 1.4rem; font-weight: 800; color: #fff; }
     .brand-sub { font-size: 0.82rem; color: var(--laser-cyan); font-weight: 600; margin-top: 3px; }
 
-    .header-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
+    .header-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 
     .search-input {
       background: rgba(2, 6, 23, 0.7);
@@ -90,13 +81,7 @@
     .btn-green { background: linear-gradient(135deg, var(--laser-green), #059669); color: #fff; border: none; }
     .btn-green:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); }
 
-    /* LIBRARY TYPE SWITCHER */
-    .lib-tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 1.25rem;
-      flex-wrap: wrap;
-    }
+    .lib-tabs { display: flex; gap: 10px; margin-bottom: 1.25rem; flex-wrap: wrap; }
     .lib-tab-btn {
       padding: 0.65rem 1.3rem;
       border-radius: 12px;
@@ -114,7 +99,6 @@
       color: #fff;
     }
 
-    /* STATS & FILTER TABS */
     .filter-tabs-row {
       display: flex;
       justify-content: space-between;
@@ -124,11 +108,7 @@
       margin-bottom: 1.5rem;
     }
 
-    .category-pills {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
+    .category-pills { display: flex; gap: 8px; flex-wrap: wrap; }
     .cat-btn {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -145,7 +125,6 @@
       border-color: var(--laser-cyan);
     }
 
-    /* MOVIES GRID */
     .movies-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
@@ -168,17 +147,8 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.6);
     }
 
-    .poster-wrap {
-      width: 100%;
-      aspect-ratio: 2/3;
-      background: #020617;
-      position: relative;
-    }
-    .poster-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .poster-wrap { width: 100%; aspect-ratio: 2/3; background: #020617; position: relative; }
+    .poster-img { width: 100%; height: 100%; object-fit: cover; }
 
     .rating-badge {
       position: absolute;
@@ -206,40 +176,13 @@
       border-radius: 6px;
       text-transform: uppercase;
     }
-    .src-badge.tg {
-      border-color: var(--laser-purple);
-      color: #e9d5ff;
-    }
+    .src-badge.tg { border-color: var(--laser-purple); color: #e9d5ff; }
 
-    .movie-card-body {
-      padding: 0.85rem;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      flex: 1;
-    }
+    .movie-card-body { padding: 0.85rem; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+    .card-title { font-size: 0.88rem; font-weight: 800; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .card-meta { font-size: 0.74rem; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center; }
 
-    .card-title {
-      font-size: 0.88rem;
-      font-weight: 800;
-      color: #fff;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .card-meta {
-      font-size: 0.74rem;
-      color: var(--text-muted);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .card-actions-row {
-      display: flex;
-      gap: 6px;
-      margin-top: 8px;
-    }
+    .card-actions-row { display: flex; gap: 6px; margin-top: 8px; }
     .btn-card-action {
       flex: 1;
       padding: 5px;
@@ -266,7 +209,6 @@
     }
     .btn-card-del:hover { background: var(--laser-red); color: #fff; }
 
-    /* AUTO-FILL PROGRESS MODAL */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
@@ -308,30 +250,28 @@
 <body>
 
 <div class="container">
-  <!-- TOP BAR -->
   <div class="top-header">
     <div>
       <div class="brand-title">MOINUFLIX — UNIFIED LIBRARY MANAGER</div>
-      <div class="brand-sub">Clean ID-Only Master Catalog • movies.json, series.json &amp; name_registry.json</div>
+      <div class="brand-sub">movies.json • kids_movies.json • series.json • name_registry.json</div>
     </div>
     <div class="header-actions">
       <input type="text" class="search-input" id="search-input" placeholder="Search library..." oninput="applyFilters()">
       <button class="btn-pill btn-green" onclick="startAutoFillMissingData()">⚡ Auto-Fill Missing Art &amp; Lang</button>
       <a href="pending.html" class="btn-pill">📥 Pending</a>
-      <a href="inbox.html" class="btn-pill">🎬 Movies</a>
+      <a href="inbox.html" class="btn-pill">🎬 Ingest</a>
       <a href="series.html" class="btn-pill">📺 Series</a>
       <button class="btn-pill" onclick="configureToken()">⚙️ Token</button>
       <button class="btn-pill" onclick="loadLibrary()">🔄 Refresh</button>
     </div>
   </div>
 
-  <!-- MOVIES VS SERIES TABS -->
   <div class="lib-tabs">
     <button class="lib-tab-btn active" id="tab-movies" onclick="switchLibTab('movies')">🎬 Movies (<span id="count-movies-tab">0</span>)</button>
+    <button class="lib-tab-btn" id="tab-kids" onclick="switchLibTab('kids')">🧸 Kids Movies (<span id="count-kids-tab">0</span>)</button>
     <button class="lib-tab-btn" id="tab-series" onclick="switchLibTab('series')">📺 Web Series (<span id="count-series-tab">0</span>)</button>
   </div>
 
-  <!-- LANGUAGE FILTER TABS -->
   <div class="filter-tabs-row">
     <div class="category-pills">
       <button class="cat-btn active" onclick="filterLanguage('all', this)">All Languages (<span id="count-all">0</span>)</button>
@@ -347,13 +287,11 @@
     </div>
   </div>
 
-  <!-- GRID CONTAINER -->
   <div class="movies-grid" id="movies-container">
-    <div style="color:var(--text-muted); padding:40px; text-align:center; grid-column:1/-1;">Loading movies.json &amp; series.json...</div>
+    <div style="color:var(--text-muted); padding:40px; text-align:center; grid-column:1/-1;">Loading library...</div>
   </div>
 </div>
 
-<!-- AUTO-FILL PROGRESS MODAL -->
 <div class="modal-overlay" id="autofill-modal">
   <div class="modal-content">
     <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--card-border); padding-bottom:8px;">
@@ -361,7 +299,7 @@
       <button style="background:transparent; border:none; color:#fff; font-size:1.2rem; cursor:pointer;" onclick="closeModal()">✕</button>
     </div>
     <p style="font-size:0.82rem; color:var(--text-muted);">
-      Filling missing posters, 4K fanart, clearlogos, and original language codes without touching your file IDs or bracketed release names...
+      Filling missing posters, 4K fanart, clearlogos, and real language codes without touching file IDs or release names...
     </p>
     <div class="modal-scroll" id="autofill-log"></div>
     <div style="display:flex; justify-content:flex-end;">
@@ -376,7 +314,18 @@
   const GH_REPO = "Moinuflix/My-Movies";
   const GH_BRANCH = "main";
 
+  const LANG_TO_CODE = {
+    hindi: "hi", hi: "hi",
+    tamil: "ta", ta: "ta",
+    telugu: "te", te: "te",
+    english: "en", en: "en",
+    malayalam: "ml", ml: "ml",
+    korean: "ko", ko: "ko",
+    japanese: "ja", ja: "ja"
+  };
+
   let allMovies = [];
+  let allKidsMovies = [];
   let allSeries = [];
   let registryList = [];
   let activeTab = "movies";
@@ -393,31 +342,30 @@
     }
   }
 
+  function normalizeLangCode(item) {
+    const raw = String(item.orig_lang || item.original_language || item.lang || "").toLowerCase().trim();
+    return LANG_TO_CODE[raw] || raw.slice(0, 2);
+  }
+
   async function loadLibrary() {
     const container = document.getElementById("movies-container");
-    container.innerHTML = '<div style="color:var(--text-muted); padding:40px; text-align:center; grid-column:1/-1;">Loading movies.json, series.json &amp; name_registry.json...</div>';
+    container.innerHTML = '<div style="color:var(--text-muted); padding:40px; text-align:center; grid-column:1/-1;">Loading movies.json, kids_movies.json, series.json &amp; name_registry.json...</div>';
 
     try {
-      const [mRes, sRes, rRes] = await Promise.all([
+      const [mRes, kRes, sRes, rRes] = await Promise.all([
         fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/movies.json?t=${Date.now()}`),
+        fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/kids_movies.json?t=${Date.now()}`),
         fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/series.json?t=${Date.now()}`),
         fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/name_registry.json?t=${Date.now()}`)
       ]);
 
-      if (mRes.ok) {
-        const md = await mRes.json();
-        allMovies = Array.isArray(md) ? md : [];
-      }
-      if (sRes.ok) {
-        const sd = await sRes.json();
-        allSeries = Array.isArray(sd) ? sd : [];
-      }
-      if (rRes.ok) {
-        const rd = await rRes.json();
-        registryList = Array.isArray(rd) ? rd : [];
-      }
+      allMovies = mRes.ok && Array.isArray(await mRes.clone().json()) ? await mRes.json() : [];
+      allKidsMovies = kRes.ok && Array.isArray(await kRes.clone().json()) ? await kRes.json() : [];
+      allSeries = sRes.ok && Array.isArray(await sRes.clone().json()) ? await sRes.json() : [];
+      registryList = rRes.ok && Array.isArray(await rRes.clone().json()) ? await rRes.json() : [];
 
       document.getElementById("count-movies-tab").textContent = allMovies.length;
+      document.getElementById("count-kids-tab").textContent = allKidsMovies.length;
       document.getElementById("count-series-tab").textContent = allSeries.length;
       document.getElementById("total-registry-lbl").textContent = `${registryList.length} Tracked Files`;
 
@@ -430,6 +378,7 @@
   function switchLibTab(tab) {
     activeTab = tab;
     document.getElementById("tab-movies").className = `lib-tab-btn ${tab === 'movies' ? 'active' : ''}`;
+    document.getElementById("tab-kids").className = `lib-tab-btn ${tab === 'kids' ? 'active' : ''}`;
     document.getElementById("tab-series").className = `lib-tab-btn ${tab === 'series' ? 'active' : ''}`;
     applyFilters();
   }
@@ -442,15 +391,17 @@
   }
 
   function applyFilters() {
-    const baseList = activeTab === "series" ? allSeries : allMovies;
+    const baseList = activeTab === "series"
+      ? allSeries
+      : (activeTab === "kids" ? allKidsMovies : allMovies);
     document.getElementById("count-all").textContent = baseList.length;
 
     const q = document.getElementById("search-input").value.toLowerCase().trim();
     const filtered = baseList.filter(item => {
       const title = (item.clean_name || item.title || "").toLowerCase();
-      const lang = (item.orig_lang || item.original_language || "hi").toLowerCase();
+      const langCode = normalizeLangCode(item);
       const matchSearch = !q || title.includes(q);
-      const matchLang = activeLang === "all" || lang === activeLang;
+      const matchLang = activeLang === "all" || langCode === activeLang;
       return matchSearch && matchLang;
     });
 
@@ -466,12 +417,13 @@
       return;
     }
 
-    items.forEach((item, idx) => {
+    items.forEach(item => {
       const title = item.clean_name || item.title || "Untitled";
       const poster = item.poster || "https://via.placeholder.com/195x290?text=No+Poster";
-      const rating = item.rating ? `${item.rating} ★` : "7.5 ★";
-      const lang = (item.orig_lang || item.original_language || "hi").toUpperCase();
-      const itemId = item.file_id || item.id || "";
+      const rating = item.rating ? `${item.rating} ★` : "";
+      const lang = normalizeLangCode(item).toUpperCase() || "—";
+      const firstVer = Array.isArray(item.versions) && item.versions[0] ? item.versions[0] : {};
+      const itemId = item.file_id || item.id || firstVer.id || "";
 
       let srcBadge = "";
       let countTag = "";
@@ -483,10 +435,10 @@
         countTag = `${epCount} Eps`;
         editUrl = "series.html";
       } else {
-        const src = (item.source || "gd").toLowerCase();
+        const src = (firstVer.source || item.source || "gd").toLowerCase();
         const vCount = Array.isArray(item.versions) ? item.versions.length : 1;
         srcBadge = `<span class="src-badge ${src === 'tg' ? 'tg' : ''}">${src.toUpperCase()}${vCount > 1 ? ` • ${vCount}V` : ''}</span>`;
-        countTag = item.size || `${item.size_gb || 5} GB`;
+        countTag = firstVer.size || item.size || (item.size_gb ? `${item.size_gb} GB` : "");
       }
 
       const card = document.createElement("div");
@@ -494,13 +446,13 @@
       card.innerHTML = `
         <div class="poster-wrap">
           <img src="${poster}" class="poster-img" loading="lazy" alt="${escapeHtml(title)}">
-          <span class="rating-badge">${rating}</span>
+          ${rating ? `<span class="rating-badge">${escapeHtml(rating)}</span>` : ""}
           ${srcBadge}
         </div>
         <div class="movie-card-body">
           <div class="card-title" title="${escapeHtml(title)}">${escapeHtml(title)}</div>
           <div class="card-meta">
-            <span>${item.year || '2026'} • ${lang}</span>
+            <span>${escapeHtml(String(item.year || "—"))} • ${escapeHtml(lang)}</span>
             <span>${escapeHtml(countTag)}</span>
           </div>
           <div class="card-actions-row">
@@ -516,12 +468,15 @@
   async function deleteLibraryItem(itemId, tmdbId, title) {
     const token = getToken();
     if (!token) return alert("GitHub Token required!");
-    if (!confirm(`Delete "${title}" from ${activeTab}.json AND name_registry.json?`)) return;
+    if (!confirm(`Delete "${title}" from library AND name_registry.json?`)) return;
 
     try {
       if (activeTab === "series") {
         allSeries = allSeries.filter(s => !(String(s.id || s.file_id) === String(itemId) || (tmdbId && Number(s.tmdb_id) === Number(tmdbId))));
         await commitGithubFile("series.json", allSeries, `Delete Series: ${title}`, token);
+      } else if (activeTab === "kids") {
+        allKidsMovies = allKidsMovies.filter(m => !(String(m.file_id || m.id) === String(itemId) || (tmdbId && Number(m.tmdb_id) === Number(tmdbId))));
+        await commitGithubFile("kids_movies.json", allKidsMovies, `Delete Kids Movie: ${title}`, token);
       } else {
         allMovies = allMovies.filter(m => !(String(m.file_id || m.id) === String(itemId) || (tmdbId && Number(m.tmdb_id) === Number(tmdbId))));
         await commitGithubFile("movies.json", allMovies, `Delete Movie: ${title}`, token);
@@ -540,12 +495,16 @@
     const token = getToken();
     if (!token) return alert("GitHub Token required! Please click 'Token' button at top right.");
 
-    const targetList = activeTab === "series" ? allSeries : allMovies;
-    const targetFile = activeTab === "series" ? "series.json" : "movies.json";
+    const targetList = activeTab === "series"
+      ? allSeries
+      : (activeTab === "kids" ? allKidsMovies : allMovies);
+    const targetFile = activeTab === "series"
+      ? "series.json"
+      : (activeTab === "kids" ? "kids_movies.json" : "movies.json");
     const tmdbEndpoint = activeTab === "series" ? "tv" : "movie";
     const faEndpoint = activeTab === "series" ? "tv" : "movies";
 
-    if (!confirm(`Scan all ${targetList.length} items in ${targetFile} and fill missing 4K posters, fanart, clearlogos, and original language codes?`)) return;
+    if (!confirm(`Scan all ${targetList.length} items in ${targetFile} and fill missing 4K posters, fanart, clearlogos, and real language codes?`)) return;
 
     const modal = document.getElementById("autofill-modal");
     const logBox = document.getElementById("autofill-log");
@@ -570,7 +529,7 @@
       for (let i = 0; i < targetList.length; i++) {
         const item = targetList[i];
         const title = item.clean_name || item.title || "Item";
-        const needsFill = !item.poster || !item.fanart || !item.clearlogo || !item.orig_lang || !item.tmdb_id;
+        const needsFill = !item.poster || !item.fanart || !item.clearlogo || !normalizeLangCode(item) || !item.tmdb_id;
 
         if (!needsFill) continue;
 
@@ -594,8 +553,12 @@
             const td = await dRes.json();
             item.clean_name = td.title || td.name || title;
             item.title = item.clean_name;
-            item.orig_lang = (td.original_language || item.orig_lang || "hi").toLowerCase();
-            item.rating = td.vote_average ? parseFloat(td.vote_average.toFixed(1)) : (item.rating || 7.5);
+            if (!item.orig_lang && td.original_language) {
+              item.orig_lang = String(td.original_language).toLowerCase();
+            }
+            if (!item.rating && td.vote_average) {
+              item.rating = parseFloat(td.vote_average.toFixed(1));
+            }
             if (!item.genres || item.genres.length === 0) item.genres = (td.genres || []).map(g => g.name);
             if (!item.plot) item.plot = td.overview || "";
             if (td.poster_path && !item.poster) item.poster = `https://image.tmdb.org/t/p/original${td.poster_path}`;
