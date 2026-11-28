@@ -131,7 +131,7 @@
     "clean_name": "Elysium",
     "title": "Elysium",
     "original_title": "Elysium",
-    "new_name": "Elysium (2013) [2160p 4K] [BluRay] [x264] [Tamil + Tel (DD 2.0 - 224k) + Hin (DD+5.1 - 640k) + Eng (DD+5.1 - 384k)] [4.6 GB].mkv",
+    "new_name": "Elysium (2013) [1080p] [BluRay] [x264] [Tamil + Telugu + Hindi + English DD 2.0 - 224k + DD+5.1 - 640k + DD+5.1 - 384k] [4.6GB].mkv",
     "year": 2013,
     "orig_lang": "en",
     "rating": 6.5,
@@ -155,6 +155,14 @@
         "new_name": "Elysium (2013) [2160p 4K] [BluRay] [x264] [Tamil + Tel (DD 2.0 - 224k) + Hin (DD+5.1 - 640k) + Eng (DD+5.1 - 384k)] [4.6 GB].mkv",
         "size": "5 GB",
         "size_gb": 5
+      },
+      {
+        "source": "gd",
+        "id": "1weCOQpO5eEMwTbOQl7krWXGcM5SDFVV0",
+        "new_name": "Elysium (2013) [1080p] [BluRay] [x264] [Tamil + Telugu + Hindi + English DD 2.0 - 224k + DD+5.1 - 640k + DD+5.1 - 384k] [4.6GB].mkv",
+        "resolution": "1080p",
+        "audio": "DD 2.0 - 224k + DD+5.1 - 640k + DD+5.1 - 384k",
+        "size": "4.6GB"
       }
     ]
   },
@@ -347,6 +355,34 @@
         "resolution": "1080p",
         "audio": "DD+5.1 - 640Kbps + AAC 2.0",
         "size": "9.3GB"
+      }
+    ]
+  },
+  {
+    "id": "003",
+    "tmdb_id": 456287,
+    "audience": "general",
+    "clean_name": "Mersal",
+    "year": 2017,
+    "lang": "Tamil",
+    "genres": [
+      "Thriller",
+      "Action",
+      "Crime"
+    ],
+    "plot": "A few individuals in the medical profession are murdered or kidnapped, and the cop investigating the case suspects a doctor and arrests him. But is he the one who is behind these crimes? And why are they being committed?",
+    "new_name": "Mersal (2017) [2160p] [x265] [Tamil DTS + DD5.1] [10GB].mkv",
+    "poster": "https://image.tmdb.org/t/p/original/65Q1wpRPZ5E3UVUv2V5JBbJQCcj.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/7IJE6cNsbXYE2HzZSUQBj0RtUfv.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/kcrHdCw2u19kfEwVacLGdbAfgbn.png",
+    "versions": [
+      {
+        "source": "gd",
+        "id": "1vMBY0tcOmUzve5wLpGiED_yBOqWleFjl",
+        "new_name": "Mersal (2017) [2160p] [x265] [Tamil DTS + DD5.1] [10GB].mkv",
+        "resolution": "2160p",
+        "audio": "DTS + DD5.1",
+        "size": "10GB"
       }
     ]
   }
