@@ -80,6 +80,8 @@
     .btn-pill:hover { background: var(--laser-cyan); color: #020617; }
     .btn-green { background: linear-gradient(135deg, var(--laser-green), #059669); color: #fff; border: none; }
     .btn-green:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); }
+    .btn-trigger { background: linear-gradient(135deg, var(--laser-purple), #7e22ce); color: #fff; border: 1px solid #e9d5ff; }
+    .btn-trigger:hover { filter: brightness(1.12); }
 
     .lib-tabs { display: flex; gap: 10px; margin-bottom: 1.25rem; flex-wrap: wrap; }
     .lib-tab-btn {
@@ -257,12 +259,13 @@
     </div>
     <div class="header-actions">
       <input type="text" class="search-input" id="search-input" placeholder="Search library..." oninput="applyFilters()">
-      <button class="btn-pill btn-green" onclick="startAutoFillMissingData()">⚡ Auto-Fill Missing Art &amp; Lang</button>
+      <button type="button" class="btn-pill btn-trigger" onclick="triggerFixMissingIds()">⚡ Fix Missing IDs &amp; Sync</button>
+      <button type="button" class="btn-pill btn-green" onclick="startAutoFillMissingData()">⚡ Auto-Fill Missing Art &amp; Lang</button>
       <a href="pending.html" class="btn-pill">📥 Pending</a>
       <a href="inbox.html" class="btn-pill">🎬 Ingest</a>
       <a href="series.html" class="btn-pill">📺 Series</a>
-      <button class="btn-pill" onclick="configureToken()">⚙️ Token</button>
-      <button class="btn-pill" onclick="loadLibrary()">🔄 Refresh</button>
+      <button type="button" class="btn-pill" onclick="configureToken()">⚙️ Token</button>
+      <button type="button" class="btn-pill" onclick="loadLibrary()">🔄 Refresh</button>
     </div>
   </div>
 
@@ -295,11 +298,11 @@
 <div class="modal-overlay" id="autofill-modal">
   <div class="modal-content">
     <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--card-border); padding-bottom:8px;">
-      <h3 style="color:#fff; font-size:1.1rem;">⚡ Auto-Filling Missing TMDb 4K Art &amp; Languages</h3>
+      <h3 style="color:#fff; font-size:1.1rem;" id="modal-heading">⚡ Library Sync</h3>
       <button style="background:transparent; border:none; color:#fff; font-size:1.2rem; cursor:pointer;" onclick="closeModal()">✕</button>
     </div>
-    <p style="font-size:0.82rem; color:var(--text-muted);">
-      Filling missing posters, 4K fanart, clearlogos, and real language codes without touching file IDs or release names...
+    <p style="font-size:0.82rem; color:var(--text-muted);" id="modal-subtext">
+      Processing records without deleting any existing items...
     </p>
     <div class="modal-scroll" id="autofill-log"></div>
     <div style="display:flex; justify-content:flex-end;">
@@ -345,6 +348,109 @@
   function normalizeLangCode(item) {
     const raw = String(item.orig_lang || item.original_language || item.lang || "").toLowerCase().trim();
     return LANG_TO_CODE[raw] || raw.slice(0, 2);
+  }
+
+  // Repairs missing root `id` numbers and missing `versions[].id` without deleting anything
+  function repairMissingIdsInList(list) {
+    if (!Array.isArray(list)) return { items: [], fixedCount: 0 };
+    let maxNum = 0;
+    for (const row of list) {
+      if (!row || typeof row !== "object") continue;
+      const n = parseInt(String(row.id || ""), 10);
+      if (!isNaN(n) && n > maxNum) maxNum = n;
+    }
+
+    let fixedCount = 0;
+    const out = list.map(row => {
+      if (!row || typeof row !== "object") return row;
+      const copy = { ...row };
+      let changed = false;
+
+      const curId = String(copy.id || "").trim();
+      if (!curId) {
+        maxNum += 1;
+        copy.id = String(maxNum).padStart(3, "0");
+        changed = true;
+      }
+
+      if (Array.isArray(copy.versions)) {
+        copy.versions = copy.versions.map(v => {
+          if (!v || typeof v !== "object") return v;
+          const vCopy = { ...v };
+          const fallbackId = String(vCopy.id || vCopy.file_id || copy.file_id || "").trim();
+          if (!vCopy.id && fallbackId) {
+            vCopy.id = fallbackId;
+            changed = true;
+          }
+          if (!vCopy.file_id && vCopy.id) {
+            vCopy.file_id = String(vCopy.id);
+          }
+          return vCopy;
+        });
+      }
+
+      if (changed) fixedCount += 1;
+      return copy;
+    });
+
+    return { items: out, fixedCount };
+  }
+
+  async function triggerFixMissingIds() {
+    const token = getToken();
+    if (!token) return alert("GitHub Token required! Click 'Token' first.");
+
+    const targetList = activeTab === "series"
+      ? allSeries
+      : (activeTab === "kids" ? allKidsMovies : allMovies);
+    const targetFile = activeTab === "series"
+      ? "series.json"
+      : (activeTab === "kids" ? "kids_movies.json" : "movies.json");
+
+    const { items: repaired, fixedCount } = repairMissingIdsInList(targetList);
+    if (fixedCount === 0) {
+      return alert(`${targetFile} mein koi missing ID number nahi mila — sab pehle se set hain!`);
+    }
+
+    if (!confirm(`${fixedCount} items mein missing ID numbers add/fix honge (${targetFile}) bina kuch delete kiye. Commit karein?`)) {
+      return;
+    }
+
+    const modal = document.getElementById("autofill-modal");
+    const logBox = document.getElementById("autofill-log");
+    const doneBtn = document.getElementById("btn-autofill-done");
+    document.getElementById("modal-heading").textContent = "⚡ Fixing Missing IDs";
+    document.getElementById("modal-subtext").textContent = "Assigning sequential IDs & version IDs while keeping all records intact...";
+    logBox.innerHTML = "";
+    doneBtn.style.display = "none";
+    modal.style.display = "flex";
+
+    const log = (msg, color = "#fff") => {
+      const d = document.createElement("div");
+      d.textContent = msg;
+      d.style.color = color;
+      logBox.appendChild(d);
+      logBox.scrollTop = logBox.scrollHeight;
+    };
+
+    try {
+      repaired.forEach((it, idx) => {
+        const before = targetList[idx]?.id || "";
+        const after = it.id || "";
+        if (String(before) !== String(after)) {
+          log(`✔ [${after}] ${it.clean_name || it.title || "Item"} — ID assigned`, "var(--laser-green)");
+        }
+      });
+
+      log(`💾 Committing ${targetFile} (${fixedCount} IDs fixed)...`, "var(--laser-cyan)");
+      await commitGithubFile(targetFile, repaired, `Fix missing IDs (${fixedCount}) in ${targetFile}`, token);
+      log(`🎉 DONE! ${fixedCount} missing IDs saved in ${targetFile}.`, "var(--laser-green)");
+      doneBtn.style.display = "inline-flex";
+      await loadLibrary();
+    } catch (err) {
+      log(`❌ Error: ${err.message}`, "var(--laser-red)");
+      doneBtn.style.display = "inline-flex";
+    }
   }
 
   async function loadLibrary() {
@@ -424,6 +530,7 @@
       const lang = normalizeLangCode(item).toUpperCase() || "—";
       const firstVer = Array.isArray(item.versions) && item.versions[0] ? item.versions[0] : {};
       const itemId = item.file_id || item.id || firstVer.id || "";
+      const serialTag = item.id ? `#${item.id} • ` : "";
 
       let srcBadge = "";
       let countTag = "";
@@ -450,7 +557,7 @@
           ${srcBadge}
         </div>
         <div class="movie-card-body">
-          <div class="card-title" title="${escapeHtml(title)}">${escapeHtml(title)}</div>
+          <div class="card-title" title="${escapeHtml(title)}">${escapeHtml(serialTag + title)}</div>
           <div class="card-meta">
             <span>${escapeHtml(String(item.year || "—"))} • ${escapeHtml(lang)}</span>
             <span>${escapeHtml(countTag)}</span>
@@ -509,6 +616,8 @@
     const modal = document.getElementById("autofill-modal");
     const logBox = document.getElementById("autofill-log");
     const doneBtn = document.getElementById("btn-autofill-done");
+    document.getElementById("modal-heading").textContent = "⚡ Auto-Filling Missing TMDb 4K Art & Languages";
+    document.getElementById("modal-subtext").textContent = "Filling missing artwork and original language codes without touching existing fields...";
 
     logBox.innerHTML = "";
     doneBtn.style.display = "none";
