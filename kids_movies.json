@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "id": "001",
+    "tmdb_id": 1148677,
+    "audience": "kids",
+    "clean_name": "Doraemon the Movie Nobita's Earth Symphony (",
+    "year": 2024,
+    "lang": "Tamil + Telugu + Hindi",
+    "genres": [],
+    "plot": "",
+    "new_name": "Doraemon the Movie - Nobita's Earth Symphony (2024) [1080p] [BluRay] [Hin+Tam+Tel DD 2.0 - 224k + Jap 5.1] [9.2 GB].mkv",
+    "poster": "",
+    "fanart": "",
+    "clearlogo": "",
+    "versions": [
+      {
+        "source": "gd",
+        "id": "19keUJNo-uOIPm3rD4YYEOb_MzY7I6-4w",
+        "new_name": "Doraemon the Movie - Nobita's Earth Symphony (2024) [1080p] [BluRay] [Hin+Tam+Tel DD 2.0 - 224k + Jap 5.1] [9.2 GB].mkv",
+        "resolution": "1080p",
+        "audio": "DD 2.0 - 224k",
+        "size": "9.2 GB"
+      }
+    ]
+  }
+]
