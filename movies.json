@@ -3409,13 +3409,11 @@
     "clearlogo": "https://image.tmdb.org/t/p/original/gRweHvOoM7hKg3q8iExsXzAhsBv.png",
     "versions": [
       {
-        "source": "gd",
-        "id": "1Y8_i0niVynmCVyqWI6KNP4i7BubM_p_s",
         "file_id": "1Y8_i0niVynmCVyqWI6KNP4i7BubM_p_s",
-        "new_name": "Finding Nemo (2003) [1080p] [BluRay] [Dolby Atmos 7.1] [8 GB].mkv",
-        "resolution": "1080p",
-        "audio": "Atmos 7.1",
-        "size": "8 GB"
+        "source": "gd",
+        "new_name": "Finding Nemo (2003) [1080p] [BluRay] [Org Hindi BD 5.1 - 640Kbps + English TrueHD Atmos 7.1] [13 GB].mkv",
+        "size": "13 GB",
+        "size_gb": 13
       },
       {
         "source": "gd",
@@ -3429,7 +3427,8 @@
     ],
     "title": "Finding Nemo",
     "orig_lang": "en",
-    "rating": 7.8
+    "rating": 7.8,
+    "added_at": "2026-11-28T06:15:30.348Z"
   },
   {
     "id": "104",
