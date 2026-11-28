@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MoinuFlix — Quick Ingestion (Clean Kodi Brackets)</title>
+  <title>MoinuFlix — Quick Movie Ingestion (Plan A • OTT Kids & General)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -36,10 +36,10 @@
     .btn-nav-link:hover { background: #38bdf8; color: #020617; }
     .btn-trigger { background: linear-gradient(135deg, var(--laser-purple), #7e22ce); border: 1px solid #d8b4fe; color: #fff; padding: 0.48rem 0.95rem; border-radius: 8px; font-size: 0.78rem; font-weight: 800; cursor: pointer; }
 
-    .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); background: rgba(2, 6, 23, 0.4); border-bottom: 1px solid var(--border-gray); padding: 0.85rem 2rem; gap: 1rem; }
+    .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); background: rgba(2, 6, 23, 0.4); border-bottom: 1px solid var(--border-gray); padding: 0.85rem 2rem; gap: 1rem; }
     .stat-item { display: flex; flex-direction: column; }
     .stat-label { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
-    .stat-val { font-size: 1.1rem; font-weight: 800; color: var(--text-main); }
+    .stat-val { font-size: 1.08rem; font-weight: 800; color: var(--text-main); }
 
     .form-wrapper { padding: 1.75rem 2rem; }
     .section-title { font-size: 0.92rem; font-weight: 800; color: var(--laser-cyan); text-transform: uppercase; letter-spacing: 0.5px; padding-bottom: 0.4rem; border-bottom: 1px solid var(--card-border); margin-bottom: 1.25rem; }
@@ -48,6 +48,7 @@
     .col-8 { grid-column: span 8; }
     .col-6 { grid-column: span 6; }
     .col-4 { grid-column: span 4; }
+    .col-3 { grid-column: span 3; }
     .col-2 { grid-column: span 2; }
     .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
     label { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); }
@@ -77,7 +78,7 @@
     .toast-error { background: rgba(239, 68, 68, 0.15); color: var(--laser-red); border: 1px solid var(--laser-red); }
 
     @media (max-width: 850px) {
-      .col-8, .col-6, .col-4, .col-2 { grid-column: span 12; }
+      .col-8, .col-6, .col-4, .col-3, .col-2 { grid-column: span 12; }
     }
   </style>
 </head>
@@ -89,12 +90,12 @@
 <div class="container">
   <div class="govt-header">
     <div>
-      <div class="govt-title">MOINUFLIX QUICK INGESTION (KODI BRACKET SCHEMA)</div>
-      <div class="govt-sub">No Fake Language • Raw Untouched • [Movie] / [TV Series] / [Song] Tags for Kodi &amp; TMDb</div>
+      <div class="govt-title">MOINUFLIX QUICK MOVIE INGESTION — PLAN A</div>
+      <div class="govt-sub">Exact Schema • Auto TG/GD • Kids vs General OTT Separation • Zero Fake Data</div>
     </div>
 
     <div class="nav-links-box">
-      <button type="button" class="btn-trigger" onclick="promptTriggerAndLoad()">⚡ Trigger Queue (GD / TG / Import)</button>
+      <button type="button" class="btn-trigger" onclick="promptTriggerAndLoad()">⚡ Trigger (GD / TG / Import)</button>
       <a href="pending.html" class="btn-nav-link">📥 Pending Queue</a>
       <a href="series.html" class="btn-nav-link">📺 Web Series</a>
       <a href="admin.html" class="btn-nav-link">🎬 Library Manager</a>
@@ -104,20 +105,20 @@
 
   <div class="stats-bar">
     <div class="stat-item">
-      <span class="stat-label">Live Movies Total</span>
+      <span class="stat-label">General Movies</span>
       <span class="stat-val" id="stat-catalog-count">Loading...</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Kids Movies</span>
+      <span class="stat-val" id="stat-kids-count" style="color:var(--laser-gold);">Loading...</span>
     </div>
     <div class="stat-item">
       <span class="stat-label">Source</span>
       <span class="stat-val" id="stat-active-source" style="color:var(--laser-cyan);">GD</span>
     </div>
     <div class="stat-item">
-      <span class="stat-label">Detected Lang (Real)</span>
-      <span class="stat-val" id="stat-detected-lang" style="color:var(--laser-gold);">—</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-label">Kodi Type Bracket</span>
-      <span class="stat-val" id="stat-kodi-cat" style="color:var(--laser-green);">[Movie]</span>
+      <span class="stat-label">Target File</span>
+      <span class="stat-val" id="stat-target-file" style="color:var(--laser-green);">movies.json</span>
     </div>
   </div>
 
@@ -135,7 +136,7 @@
     <form id="media-ingest-form" onsubmit="handleFormSubmission(event)">
       <input type="hidden" id="tmdb-id" value="">
 
-      <div class="section-title">Source, ID, Category &amp; Raw File</div>
+      <div class="section-title">Source, OTT Audience (Kids / General), ID &amp; Raw File</div>
 
       <div class="form-grid">
         <div class="form-group col-2">
@@ -147,32 +148,39 @@
         </div>
 
         <div class="form-group col-2">
-          <label>Kodi Category</label>
-          <select id="kodi-category-select" onchange="onCategoryChange()">
-            <option value="Movie">[Movie]</option>
-            <option value="TV Series">[TV Series]</option>
-            <option value="Song">[Song]</option>
+          <label>OTT Audience</label>
+          <select id="audience-select" onchange="onAudienceChange()">
+            <option value="general">general (Normal)</option>
+            <option value="kids">kids (Kids OTT)</option>
           </select>
         </div>
 
-        <div class="form-group col-4">
+        <div class="form-group col-2">
+          <label>Save Target</label>
+          <select id="save-target-select" onchange="updateTargetLabel()">
+            <option value="movies.json">movies.json</option>
+            <option value="kids_movies.json">kids_movies.json</option>
+          </select>
+        </div>
+
+        <div class="form-group col-3">
           <label>File ID / Link / Msg ID <span class="required">*</span></label>
           <input type="text" id="drive-file-id" placeholder="Drive ID/Link or TG Msg ID..." required oninput="autoDetectSourceFromInput()">
         </div>
 
-        <div class="form-group col-4">
+        <div class="form-group col-3">
           <label>TMDb ID (Auto / Manual)</label>
           <input type="text" id="tmdb-id-visible" placeholder="TMDb ID" oninput="document.getElementById('tmdb-id').value=this.value; fetchTmdbPreview(this.value);">
         </div>
 
         <div class="form-group col-12">
-          <label>Raw Release File Name (Kept As-Is in old_name) <span class="required">*</span></label>
-          <input type="text" id="raw-filename" placeholder="Paste exact raw filename..." required oninput="autoDetectSourceFromInput(); parseRawWithoutFakeData(this.value)">
+          <label>Raw Release File Name (Saved as-is in name_registry.json) <span class="required">*</span></label>
+          <input type="text" id="raw-filename" placeholder="Paste exact raw filename..." required oninput="autoDetectSourceFromInput(); parseRawCleanly(this.value)">
         </div>
 
         <div class="form-group col-8">
-          <label>Clean Title for Kodi/TMDb</label>
-          <input type="text" id="token-movie-title" placeholder="Title" required oninput="updateDashPreview()">
+          <label>Clean Name (clean_name)</label>
+          <input type="text" id="token-movie-title" placeholder="Movie Title" required oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-2">
@@ -182,32 +190,32 @@
 
         <div class="form-group col-2">
           <label>Size</label>
-          <input type="text" id="token-size" placeholder="e.g. 9 GB" oninput="updateDashPreview()">
+          <input type="text" id="token-size" placeholder="e.g. 10GB" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-3">
           <label>Resolution</label>
-          <input type="text" id="token-resolution" placeholder="1080p / 2160p 4K / 720p" oninput="updateDashPreview()">
+          <input type="text" id="token-resolution" placeholder="2160p / 1080p / 720p" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-3">
-          <label>Source / Platform</label>
-          <input type="text" id="token-platform" placeholder="WEB-DL / BluRay / DVDRip" oninput="updateDashPreview()">
+          <label>Platform / Source</label>
+          <input type="text" id="token-platform" placeholder="Prime Video / WEB-DL / BluRay" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-3">
           <label>Video Codec</label>
-          <input type="text" id="token-videocodec" placeholder="AVC / x264 / x265 HEVC" oninput="updateDashPreview()">
+          <input type="text" id="token-videocodec" placeholder="10bit x265 / AVC / x264" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-3">
-          <label>Extra Tag (Optional)</label>
-          <input type="text" id="token-extra" placeholder="e.g. ESub / 10bit" oninput="updateDashPreview()">
+          <label>Audio / Codec Tag</label>
+          <input type="text" id="token-audio-codec" placeholder="e.g. DDP 5.1 Atmos" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-12">
-          <label style="color:var(--laser-gold);">Real Language &amp; Audio Found in Raw (No Fake Default)</label>
-          <input type="text" id="token-audio-spec" placeholder="Leave blank if none in raw — only real language/audio from raw" oninput="updateDashPreview()">
+          <label style="color:var(--laser-gold);">Languages in Bracket (Only real languages found — no fake default)</label>
+          <input type="text" id="token-langs" placeholder="e.g. Tamil + Telugu + Hindi + Malayalam" oninput="updateDashPreview()">
         </div>
 
         <div class="form-group col-12" id="candidates-box" style="display:none;">
@@ -226,14 +234,14 @@
         </div>
 
         <div class="form-group col-12">
-          <label>Final Kodi Bracket Name Preview (new_name)</label>
+          <label>Final Standard Name Preview (new_name)</label>
           <div class="smart-dash-preview" id="dash-name-preview">Awaiting input...</div>
         </div>
       </div>
 
       <div class="button-row">
         <button type="reset" class="btn btn-govt-secondary" onclick="resetForm()">Reset</button>
-        <button type="submit" id="btn-submit" class="btn btn-govt-green">🚀 Commit to movies.json &amp; name_registry.json</button>
+        <button type="submit" id="btn-submit" class="btn btn-govt-green">🚀 Commit Movie (Plan A Schema)</button>
       </div>
     </form>
   </div>
@@ -245,11 +253,18 @@
   const GH_BRANCH = "main";
 
   let cachedMoviesList = [];
+  let cachedKidsList = [];
   let cachedTmdbMeta = null;
   let sourceManuallySet = false;
-  let categoryManuallySet = false;
+  let audienceManuallySet = false;
   let fullLoadedQueue = [];
   let tmdbDebounce = null;
+
+  const LANG_CODE_TO_NAME = {
+    en: "English", hi: "Hindi", ta: "Tamil", te: "Telugu",
+    ml: "Malayalam", kn: "Kannada", ko: "Korean", ja: "Japanese",
+    bn: "Bengali", mr: "Marathi", pa: "Punjabi", es: "Spanish", fr: "French"
+  };
 
   function getToken() {
     return (localStorage.getItem("moinuflix_gh_token") || localStorage.getItem("mf_tg_gh") || "").trim();
@@ -282,6 +297,40 @@
     setTimeout(() => { el.style.display = "none"; }, 6000);
   }
 
+  function updateTargetLabel() {
+    document.getElementById("stat-target-file").textContent = document.getElementById("save-target-select").value;
+  }
+
+  function setAudienceValue(aud, isAuto = false) {
+    const clean = String(aud || "general").toLowerCase() === "kids" ? "kids" : "general";
+    document.getElementById("audience-select").value = clean;
+    if (!isAuto) {
+      audienceManuallySet = true;
+      document.getElementById("save-target-select").value = clean === "kids" ? "kids_movies.json" : "movies.json";
+      updateTargetLabel();
+    } else if (!audienceManuallySet) {
+      document.getElementById("save-target-select").value = clean === "kids" ? "kids_movies.json" : "movies.json";
+      updateTargetLabel();
+    }
+    updateDashPreview();
+  }
+
+  function onAudienceChange() {
+    setAudienceValue(document.getElementById("audience-select").value, false);
+  }
+
+  function detectKidsAudience(text, genres = []) {
+    const s = String(text || "").toLowerCase();
+    const gStr = Array.isArray(genres) ? genres.join(" ").toLowerCase() : String(genres || "").toLowerCase();
+    if (/\b(kids|children|cartoon|toon|chhota bheem|motu patlu|doraemon|shinchan|oggy|peppa|paw patrol)\b/i.test(s)) {
+      return "kids";
+    }
+    if (/\b(animation|family)\b/i.test(gStr) && /\b(kids|cartoon|animated|children|junior)\b/i.test(s)) {
+      return "kids";
+    }
+    return "general";
+  }
+
   function setSourceValue(src, isAuto = false) {
     const clean = String(src || "gd").toLowerCase() === "tg" ? "tg" : "gd";
     document.getElementById("source-type-select").value = clean;
@@ -309,30 +358,6 @@
     setSourceValue("gd", true);
   }
 
-  function setCategoryValue(cat, isAuto = false) {
-    const valid = ["Movie", "TV Series", "Song"].includes(cat) ? cat : "Movie";
-    document.getElementById("kodi-category-select").value = valid;
-    document.getElementById("stat-kodi-cat").textContent = `[${valid}]`;
-    if (!isAuto) categoryManuallySet = true;
-    updateDashPreview();
-  }
-
-  function onCategoryChange() {
-    setCategoryValue(document.getElementById("kodi-category-select").value, false);
-  }
-
-  function detectCategoryFromText(text, item = {}) {
-    const s = String(text || "");
-    if (item.cat) {
-      const c = String(item.cat).toUpperCase();
-      if (c.includes("SERIES") || c.includes("TV")) return "TV Series";
-      if (c.includes("SONG") || c.includes("AUDIO") || c.includes("MUSIC")) return "Song";
-    }
-    if (/\bS\d{1,2}\s*E\d{1,3}\b|\bSeason\s*\d+\b|\bEpisode\s*\d+\b/i.test(s)) return "TV Series";
-    if (/\.(mp3|flac|wav|m4a|ogg)\b|\b(song|official\s*video|lyric\s*video|album)\b/i.test(s)) return "Song";
-    return "Movie";
-  }
-
   function downloadJsonFile(dataObj, filename) {
     const blob = new Blob([JSON.stringify(dataObj, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
@@ -354,12 +379,11 @@
 
   async function promptTriggerAndLoad() {
     const choice = (prompt(
-      "Kaunsa trigger/queue load karna hai?\nType:\n1 = GDrive (pending_movies.json)\n2 = TG (tg/step1_pending.json)\n3 = Import (Local JSON file)\n4 = All (GD + TG)",
+      "Kaunsa trigger/queue load karna hai?\n1 = GDrive (pending_movies.json)\n2 = TG (tg/step1_pending.json)\n3 = Import (Local JSON file)\n4 = All (GD + TG)",
       "1"
     ) || "").trim().toLowerCase();
 
     if (!choice) return;
-
     if (choice === "3" || choice === "import") {
       document.getElementById("import-json-picker").click();
       return;
@@ -410,7 +434,15 @@
       } catch (_) {}
     }
 
-    finalizeLoadedQueue(list, choice);
+    fullLoadedQueue = list;
+    renderLoadedQueueBar(list, choice);
+    if (list.length > 5) {
+      const stamp = new Date().toISOString().slice(0, 10);
+      downloadJsonFile(list, `moinuflix_${choice}_${stamp}.json`);
+      showToast(`Loaded ${list.length} items (>5) — saved to local JSON!`);
+    } else {
+      showToast(`Loaded ${list.length} items!`);
+    }
   }
 
   function handleLocalJsonImported(ev) {
@@ -421,25 +453,21 @@
       try {
         const parsed = JSON.parse(String(reader.result || "[]"));
         const arr = Array.isArray(parsed) ? parsed : (Array.isArray(parsed.items) ? parsed.items : []);
-        finalizeLoadedQueue(arr.map(x => ({ ...x, _queueSource: x.source || "gd" })), "import");
+        fullLoadedQueue = arr.map(x => ({ ...x, _queueSource: x.source || "gd" }));
+        renderLoadedQueueBar(fullLoadedQueue, "import");
+        if (fullLoadedQueue.length > 5) {
+          const stamp = new Date().toISOString().slice(0, 10);
+          downloadJsonFile(fullLoadedQueue, `moinuflix_import_${stamp}.json`);
+          showToast(`Imported ${fullLoadedQueue.length} items (>5) — saved to local JSON!`);
+        } else {
+          showToast(`Imported ${fullLoadedQueue.length} items!`);
+        }
       } catch (err) {
-        showToast("Invalid JSON file: " + err.message, true);
+        showToast("Invalid JSON: " + err.message, true);
       }
       ev.target.value = "";
     };
     reader.readAsText(file);
-  }
-
-  function finalizeLoadedQueue(items, label) {
-    fullLoadedQueue = items;
-    renderLoadedQueueBar(items, label);
-    if (items.length > 5) {
-      const stamp = new Date().toISOString().slice(0, 10);
-      downloadJsonFile(items, `moinuflix_${label}_${stamp}.json`);
-      showToast(`Loaded ${items.length} items (>5) — saved to local JSON!`);
-    } else {
-      showToast(`Loaded ${items.length} items!`);
-    }
   }
 
   function renderLoadedQueueBar(items, label = "") {
@@ -466,7 +494,7 @@
 
   function loadQueueItemIntoForm(pItem) {
     sourceManuallySet = false;
-    categoryManuallySet = false;
+    audienceManuallySet = false;
 
     const isTg = pItem._queueSource === "tg" || String(pItem.source || "").toLowerCase() === "tg" || Boolean(pItem.tg_msg_id);
     setSourceValue(isTg ? "tg" : "gd", true);
@@ -478,11 +506,14 @@
     const rawVal = pItem.old_name || pItem.original_filename || pItem.new_name || "";
     document.getElementById("raw-filename").value = rawVal;
 
-    setCategoryValue(detectCategoryFromText(rawVal, pItem), true);
-    parseRawWithoutFakeData(rawVal, Boolean(pItem.tmdb_id || pItem.selected_tmdb_id));
+    setAudienceValue(pItem.audience || detectKidsAudience(rawVal, pItem.genres), true);
+    parseRawCleanly(rawVal, Boolean(pItem.tmdb_id || pItem.selected_tmdb_id));
 
     const szVal = pItem.file_size_gb || pItem.size || pItem.size_gb || "";
-    if (szVal) document.getElementById("token-size").value = String(szVal).trim();
+    if (szVal) {
+      const cleanSz = /^\d+(\.\d+)?$/.test(String(szVal).trim()) ? `${String(szVal).trim()}GB` : String(szVal).trim();
+      document.getElementById("token-size").value = cleanSz;
+    }
 
     const tmdbVal = pItem.selected_tmdb_id || pItem.tmdb_id || (pItem.tmdb_candidates && pItem.tmdb_candidates[0]?.tmdb_id) || "";
     if (tmdbVal) {
@@ -493,116 +524,82 @@
     updateDashPreview();
   }
 
-  function parseRawWithoutFakeData(raw, skipSearch = false) {
+  function parseRawCleanly(raw, skipSearch = false) {
     const s = String(raw || "").trim();
     if (!s) return;
 
-    if (!categoryManuallySet) {
-      setCategoryValue(detectCategoryFromText(s), true);
+    if (!audienceManuallySet) {
+      setAudienceValue(detectKidsAudience(s), true);
     }
 
-    // Extract year if present (1900-2099), else leave blank (no fake year)
     const yearMatch = s.match(/\b(19\d\d|20\d\d)\b/);
     const yearStr = yearMatch ? yearMatch[1] : "";
     document.getElementById("token-year").value = yearStr;
 
-    // Extract title before year or first delimiter/bracket
-    let titleCandidate = yearMatch ? s.slice(0, yearMatch.index) : s.split("[")[0].split("(")[0].split(" - ")[0];
-    titleCandidate = titleCandidate
+    let titlePart = yearMatch ? s.slice(0, yearMatch.index) : s.split("[")[0].split("(")[0].split(" - ")[0];
+    titlePart = titlePart
       .replace(/^\[[^\]]+\]\s*/g, "")
-      .replace(/\.(mkv|mp4|avi|ts|m4v|webm|mp3|flac)$/i, "")
+      .replace(/\.(mkv|mp4|avi|ts|m4v|webm)$/i, "")
       .replace(/[-_]+/g, " ")
       .replace(/\s{2,}/g, " ")
       .trim();
-    if (titleCandidate) {
-      document.getElementById("token-movie-title").value = titleCandidate;
-    }
+    if (titlePart) document.getElementById("token-movie-title").value = titlePart;
 
-    // Resolution (only if present)
     let res = "";
-    if (/2160p|\b4k\b|uhd/i.test(s)) res = "2160p 4K";
+    if (/2160p|\b4k\b|uhd/i.test(s)) res = "2160p";
     else if (/1080p/i.test(s)) res = "1080p";
     else if (/720p/i.test(s)) res = "720p";
     document.getElementById("token-resolution").value = res;
 
-    // Source / Platform (only if present)
     let plat = "";
-    if (/web-?dl|webrip/i.test(s)) plat = "WEB-DL";
+    if (/prime\s*video|amzn/i.test(s)) plat = "Prime Video";
+    else if (/netflix|\bnf\b/i.test(s)) plat = "Netflix";
+    else if (/sunnxt|sun\s*nxt/i.test(s)) plat = "SunNXT";
+    else if (/jiohotstar|hotstar/i.test(s)) plat = "JioHotstar";
+    else if (/zee5/i.test(s)) plat = "Zee5";
     else if (/bluray|bdrip|remux/i.test(s)) plat = "BluRay";
     else if (/dvdrip|dvd/i.test(s)) plat = "DVDRip";
-    else if (/sunnxt|sun\s*nxt/i.test(s)) plat = "SunNXT";
-    else if (/amzn|amazon/i.test(s)) plat = "AMZN";
-    else if (/\bnf\b|netflix/i.test(s)) plat = "Netflix";
-    else if (/zee5/i.test(s)) plat = "Zee5";
-    else if (/hotstar|jiohotstar/i.test(s)) plat = "Hotstar";
+    else if (/web-?dl|webrip/i.test(s)) plat = "WEB-DL";
     document.getElementById("token-platform").value = plat;
 
-    // Codec (only if present)
+    const has10bit = /\b10bit\b/i.test(s);
     let codec = "";
-    if (/x265|hevc|h\.?265/i.test(s)) codec = "x265 HEVC";
+    if (/x265|hevc|h\.?265/i.test(s)) codec = has10bit ? "10bit x265" : "x265";
+    else if (/x264/i.test(s)) codec = has10bit ? "10bit x264" : "x264";
     else if (/\bavc\b|h\.?264/i.test(s)) codec = "AVC";
-    else if (/x264/i.test(s)) codec = "x264";
     document.getElementById("token-videocodec").value = codec;
 
-    // Size (only if present)
     const szMatch = s.match(/(\d+(?:\.\d+)?)\s*(gb|mb)\b/i);
-    if (szMatch) {
-      document.getElementById("token-size").value = `${szMatch[1]} ${szMatch[2].toUpperCase()}`;
-    }
+    if (szMatch) document.getElementById("token-size").value = `${szMatch[1]}${szMatch[2].toUpperCase()}`;
 
-    // Extra tag (only if present, e.g. ESub)
-    const extras = [];
-    if (/\b10bit\b/i.test(s)) extras.push("10bit");
-    if (/\bESubs?\b/i.test(s)) extras.push("ESub");
-    else if (/\bMSubs?\b/i.test(s)) extras.push("MSub");
-    document.getElementById("token-extra").value = extras.join(" ");
-
-    // Real Language + Audio only (NO FAKE "Hindi 5.1")
     const langs = [];
-    const langPatterns = [
+    for (const [label, rx] of [
       ["Tamil", /\btamil\b/i],
       ["Telugu", /\btelugu\b/i],
       ["Hindi", /\bhindi\b/i],
       ["Malayalam", /\bmalayalam\b/i],
       ["Kannada", /\bkannada\b/i],
-      ["English", /\benglish\b/i],
-      ["Korean", /\bkorean\b/i],
-      ["Japanese", /\bjapanese\b/i]
-    ];
-    for (const [label, rx] of langPatterns) {
+      ["English", /\benglish\b/i]
+    ]) {
       if (rx.test(s)) langs.push(label);
     }
+    document.getElementById("token-langs").value = langs.join(" + ");
 
-    const audioSpecs = [];
-    const parenAudio = s.match(/\(([^)]*(?:DD\+|DD|DTS|AAC|AC3|Atmos|TrueHD|5\.1|2\.0|Kbps)[^)]*)\)/i);
-    if (parenAudio && parenAudio[1]) {
-      audioSpecs.push(parenAudio[1].trim());
-    } else {
-      const bracketAudio = s.match(/\[([^\]]*(?:DD\+|DD|DTS|AAC|AC3|Atmos|TrueHD|5\.1|2\.0|Tamil|Telugu|Hindi|Malayalam|Kannada|English)[^\]]*)\]/i);
-      if (bracketAudio && bracketAudio[1]) audioSpecs.push(bracketAudio[1].trim());
-    }
-
-    const realAudioParts = [];
-    if (langs.length) realAudioParts.push(langs.join(" + "));
-    if (audioSpecs.length) realAudioParts.push(audioSpecs.join(" "));
-    const realAudioStr = realAudioParts.join(" ").trim();
-    document.getElementById("token-audio-spec").value = realAudioStr;
-    document.getElementById("stat-detected-lang").textContent = langs.length ? langs.join(", ") : "—";
+    const audioMatch = s.match(/\b(DDP\s*5\.1\s*Atmos|DD\+\s*5\.1|DD\s*5\.1|DD\+\s*2\.0|DD\s*2\.0|DTS-HD\s*MA|DTS|Atmos|TrueHD|AAC)\b/i);
+    document.getElementById("token-audio-codec").value = audioMatch ? audioMatch[0].trim() : "";
 
     updateDashPreview();
 
-    if (!skipSearch && titleCandidate.length > 1) {
+    if (!skipSearch && titlePart.length > 1) {
       clearTimeout(tmdbDebounce);
-      tmdbDebounce = setTimeout(() => searchTmdb(titleCandidate, yearStr), 350);
+      tmdbDebounce = setTimeout(() => searchTmdb(titlePart, yearStr), 350);
     }
   }
 
   async function searchTmdb(title, year) {
-    const cat = document.getElementById("kodi-category-select").value;
-    const endpoint = cat === "TV Series" ? "tv" : "movie";
     const yrParam = year ? `&year=${encodeURIComponent(year)}` : "";
     try {
-      const res = await fetch(`https://api.themoviedb.org/3/search/${endpoint}?api_key=${TMDB_KEY}&query=${encodeURIComponent(title)}${yrParam}&include_adult=false`);
+      const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(title)}${yrParam}&include_adult=false`);
       if (!res.ok) return;
       const data = await res.json();
       const results = (data.results || []).slice(0, 4);
@@ -614,12 +611,11 @@
         return;
       }
       results.forEach(item => {
-        const nm = item.title || item.name || title;
-        const yr = (item.release_date || item.first_air_date || "").slice(0, 4);
+        const yr = (item.release_date || "").slice(0, 4);
         const pill = document.createElement("button");
         pill.type = "button";
         pill.className = "candidate-pill";
-        pill.textContent = `${nm}${yr ? ` (${yr})` : ""} [ID: ${item.id}]`;
+        pill.textContent = `${item.title}${yr ? ` (${yr})` : ""} [ID: ${item.id}]`;
         pill.onclick = () => {
           document.getElementById("tmdb-id").value = item.id;
           document.getElementById("tmdb-id-visible").value = item.id;
@@ -633,36 +629,35 @@
 
   async function fetchTmdbPreview(id) {
     if (!id) return;
-    const cat = document.getElementById("kodi-category-select").value;
-    const endpoint = cat === "TV Series" ? "tv" : "movie";
     try {
-      const res = await fetch(`https://api.themoviedb.org/3/${endpoint}/${id}?api_key=${TMDB_KEY}&append_to_response=images`);
+      const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_KEY}&append_to_response=images`);
       if (!res.ok) return;
       const d = await res.json();
-      const officialTitle = d.title || d.name || "";
-      const yr = (d.release_date || d.first_air_date || "").slice(0, 4);
-      const origLang = (d.original_language || "").toLowerCase();
+      const officialTitle = d.title || "";
+      const yr = (d.release_date || "").slice(0, 4);
+      const code = (d.original_language || "").toLowerCase();
+      const langFull = LANG_CODE_TO_NAME[code] || (code ? code.toUpperCase() : "");
+      const genres = (d.genres || []).map(g => g.name);
 
       if (officialTitle) document.getElementById("token-movie-title").value = officialTitle;
       if (yr) document.getElementById("token-year").value = yr;
 
-      // Only show real TMDb original language if raw had no explicit language
-      const curAudio = document.getElementById("token-audio-spec").value.trim();
-      if (!curAudio && origLang) {
-        document.getElementById("token-audio-spec").value = origLang.toUpperCase();
+      if (!document.getElementById("token-langs").value.trim() && langFull) {
+        document.getElementById("token-langs").value = langFull;
       }
-      document.getElementById("stat-detected-lang").textContent = (curAudio || origLang.toUpperCase() || "—");
+
+      if (!audienceManuallySet) {
+        setAudienceValue(detectKidsAudience(`${officialTitle} ${document.getElementById("raw-filename").value}`, genres), true);
+      }
 
       const logos = d.images?.logos || [];
       const logoObj = logos.find(l => l.file_path && l.file_path.endsWith(".png")) || logos[0];
 
       cachedTmdbMeta = {
         clean_name: officialTitle || document.getElementById("token-movie-title").value.trim(),
-        original_title: d.original_title || d.original_name || officialTitle,
         year: parseInt(yr, 10) || parseInt(document.getElementById("token-year").value, 10) || 0,
-        orig_lang: origLang,
-        rating: d.vote_average ? parseFloat(d.vote_average.toFixed(1)) : 0,
-        genres: (d.genres || []).map(g => g.name),
+        lang: langFull,
+        genres: genres,
         plot: d.overview || "",
         poster: d.poster_path ? `https://image.tmdb.org/t/p/original${d.poster_path}` : "",
         fanart: d.backdrop_path ? `https://image.tmdb.org/t/p/original${d.backdrop_path}` : "",
@@ -675,7 +670,7 @@
       if (d.poster_path) {
         document.getElementById("mini-poster-img").src = `https://image.tmdb.org/t/p/w185${d.poster_path}`;
         document.getElementById("mini-match-title").textContent = `${officialTitle}${yr ? ` (${yr})` : ""}`;
-        document.getElementById("mini-match-sub").textContent = `TMDb #${id} • Orig Lang: ${origLang.toUpperCase() || "N/A"}`;
+        document.getElementById("mini-match-sub").textContent = `TMDb #${id} • Lang: ${langFull || "N/A"} • ${genres.join(", ")}`;
         document.getElementById("match-preview-box").style.display = "block";
       }
 
@@ -683,45 +678,40 @@
     } catch (_) {}
   }
 
+  function buildAudioBracketText() {
+    const langs = document.getElementById("token-langs").value.trim().replace(/^\[|\]$/g, "");
+    const audioCodec = document.getElementById("token-audio-codec").value.trim().replace(/^\[|\]$/g, "");
+    return [langs, audioCodec].filter(Boolean).join(" ").trim();
+  }
+
   function updateDashPreview() {
     const title = document.getElementById("token-movie-title").value.trim() || "Title";
     const year = document.getElementById("token-year").value.trim();
-    const cat = document.getElementById("kodi-category-select").value || "Movie";
-    const res = document.getElementById("token-resolution").value.trim();
-    const plat = document.getElementById("token-platform").value.trim();
-    const codec = document.getElementById("token-videocodec").value.trim();
-    const audio = document.getElementById("token-audio-spec").value.trim();
-    const extra = document.getElementById("token-extra").value.trim();
-    const size = document.getElementById("token-size").value.trim();
+    const res = document.getElementById("token-resolution").value.trim().replace(/^\[|\]$/g, "");
+    const plat = document.getElementById("token-platform").value.trim().replace(/^\[|\]$/g, "");
+    const codec = document.getElementById("token-videocodec").value.trim().replace(/^\[|\]$/g, "");
+    const audioBr = buildAudioBracketText();
+    const sz = document.getElementById("token-size").value.trim().replace(/^\[|\]$/g, "");
 
     const head = year ? `${title} (${year})` : title;
     const parts = [
       head,
-      `[${cat}]`,
-      res ? `[${res.replace(/^\[|\]$/g, "")}]` : "",
-      plat ? `[${plat.replace(/^\[|\]$/g, "")}]` : "",
-      codec ? `[${codec.replace(/^\[|\]$/g, "")}]` : "",
-      audio ? `[${audio.replace(/^\[|\]$/g, "")}]` : ""
+      res ? `[${res}]` : "",
+      plat ? `[${plat}]` : "",
+      codec ? `[${codec}]` : "",
+      audioBr ? `[${audioBr}]` : "",
+      sz ? `[${sz}]` : ""
     ];
 
-    if (extra) {
-      extra.split(/\s+/).filter(Boolean).forEach(t => parts.push(`[${t.replace(/^\[|\]$/g, "")}]`));
-    }
-    if (size) {
-      parts.push(`[${size.replace(/^\[|\]$/g, "")}]`);
-    }
-
-    const ext = cat === "Song" ? ".mp3" : ".mkv";
-    document.getElementById("dash-name-preview").textContent = parts.filter(Boolean).join(" ") + ext;
+    document.getElementById("dash-name-preview").textContent = parts.filter(Boolean).join(" ") + ".mkv";
   }
 
   function resetForm() {
     sourceManuallySet = false;
-    categoryManuallySet = false;
+    audienceManuallySet = false;
     cachedTmdbMeta = null;
     setSourceValue("gd", true);
-    setCategoryValue("Movie", true);
-    document.getElementById("stat-detected-lang").textContent = "—";
+    setAudienceValue("general", true);
     document.getElementById("match-preview-box").style.display = "none";
     document.getElementById("candidates-box").style.display = "none";
     document.getElementById("dash-name-preview").textContent = "Awaiting input...";
@@ -730,13 +720,32 @@
   async function loadInitialStats() {
     checkTokenStatus();
     try {
-      const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/movies.json?t=${Date.now()}`);
-      if (res.ok) {
-        const parsed = await res.json();
-        cachedMoviesList = Array.isArray(parsed) ? parsed : [];
+      const [mRes, kRes] = await Promise.all([
+        fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/movies.json?t=${Date.now()}`),
+        fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/kids_movies.json?t=${Date.now()}`)
+      ]);
+      if (mRes.ok) {
+        const pm = await mRes.json();
+        cachedMoviesList = Array.isArray(pm) ? pm : [];
         document.getElementById("stat-catalog-count").textContent = `${cachedMoviesList.length} Movies`;
       }
+      if (kRes.ok) {
+        const pk = await kRes.json();
+        cachedKidsList = Array.isArray(pk) ? pk : [];
+        document.getElementById("stat-kids-count").textContent = `${cachedKidsList.length} Kids`;
+      } else {
+        document.getElementById("stat-kids-count").textContent = "0 Kids";
+      }
     } catch (_) {}
+  }
+
+  function nextPadId(arr) {
+    let maxN = 0;
+    for (const item of arr) {
+      const n = parseInt(String(item.id || ""), 10);
+      if (!isNaN(n) && n > maxN) maxN = n;
+    }
+    return String(maxN + 1).padStart(3, "0");
   }
 
   async function handleFormSubmission(e) {
@@ -745,76 +754,79 @@
     if (!token) return alert("GitHub Token missing! Click 'Set PAT' first.");
 
     const srcCode = document.getElementById("source-type-select").value === "tg" ? "tg" : "gd";
-    const catLabel = document.getElementById("kodi-category-select").value;
+    const audience = document.getElementById("audience-select").value === "kids" ? "kids" : "general";
+    const targetPath = document.getElementById("save-target-select").value;
     const rawIdInput = document.getElementById("drive-file-id").value.trim().replace(/\s+/g, "");
-    const fileId = srcCode === "tg" ? rawIdInput : (rawIdInput.match(/[-\w]{25,}/) || [rawIdInput])[0];
-    if (!fileId) return alert("Missing File ID!");
+    const itemId = srcCode === "tg" ? rawIdInput : (rawIdInput.match(/[-\w]{25,}/) || [rawIdInput])[0];
+    if (!itemId) return alert("Missing File ID!");
 
     const rawName = document.getElementById("raw-filename").value.trim();
     const finalName = document.getElementById("dash-name-preview").textContent.trim();
     const title = (cachedTmdbMeta?.clean_name || document.getElementById("token-movie-title").value.trim());
     const year = parseInt(document.getElementById("token-year").value, 10) || cachedTmdbMeta?.year || 0;
     const tmdbId = parseInt(document.getElementById("tmdb-id").value.trim(), 10) || 0;
-    const sz = document.getElementById("token-size").value.trim();
-    const szMatch = sz.match(/(\d+(?:\.\d+)?)\s*(GB|MB)/i);
-    const sizeGbNum = szMatch ? parseFloat((parseFloat(szMatch[1]) / (szMatch[2].toUpperCase() === "MB" ? 1024 : 1)).toFixed(2)) : 0;
+    const resVal = document.getElementById("token-resolution").value.trim().replace(/^\[|\]$/g, "");
+    const audioVal = document.getElementById("token-audio-codec").value.trim().replace(/^\[|\]$/g, "");
+    const sizeVal = document.getElementById("token-size").value.trim().replace(/^\[|\]$/g, "");
+    const langVal = cachedTmdbMeta?.lang || document.getElementById("token-langs").value.trim();
 
     const versionObj = {
-      file_id: fileId,
       source: srcCode,
+      id: itemId,
       new_name: finalName,
-      size: sz,
-      size_gb: sizeGbNum
+      resolution: resVal,
+      audio: audioVal,
+      size: sizeVal
     };
 
     document.getElementById("btn-submit").disabled = true;
-    document.getElementById("btn-submit").textContent = "Committing...";
+    document.getElementById("btn-submit").textContent = `Committing to ${targetPath}...`;
 
     try {
-      let moviesArr = [], mSha;
-      const mGet = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/movies.json?t=${Date.now()}`, {
+      let arr = [], sha;
+      const gRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${targetPath}?t=${Date.now()}`, {
         headers: { "Authorization": `token ${token}` }
       });
-      if (mGet.ok) {
-        const mj = await mGet.json();
-        mSha = mj.sha;
-        const parsedM = JSON.parse(decodeURIComponent(escape(atob(mj.content))));
-        moviesArr = Array.isArray(parsedM) ? parsedM : [];
+      if (gRes.ok) {
+        const gj = await gRes.json();
+        sha = gj.sha;
+        const parsed = JSON.parse(decodeURIComponent(escape(atob(gj.content))));
+        arr = Array.isArray(parsed) ? parsed : [];
       }
 
-      const mIdx = moviesArr.findIndex(m => (tmdbId && Number(m.tmdb_id) === tmdbId) || String(m.file_id || m.id) === fileId);
-      if (mIdx >= 0) {
-        moviesArr[mIdx].versions = moviesArr[mIdx].versions || [];
-        const vIdx = moviesArr[mIdx].versions.findIndex(v => String(v.file_id || v.id) === fileId);
-        if (vIdx >= 0) moviesArr[mIdx].versions[vIdx] = versionObj;
-        else moviesArr[mIdx].versions.push(versionObj);
-        moviesArr[mIdx].added_at = new Date().toISOString();
+      const idx = arr.findIndex(m =>
+        (tmdbId && Number(m.tmdb_id) === tmdbId) ||
+        (Array.isArray(m.versions) && m.versions.some(v => String(v.id) === itemId))
+      );
+
+      if (idx >= 0) {
+        arr[idx].audience = audience;
+        arr[idx].versions = arr[idx].versions || [];
+        const vIdx = arr[idx].versions.findIndex(v => String(v.id) === itemId);
+        if (vIdx >= 0) arr[idx].versions[vIdx] = versionObj;
+        else arr[idx].versions.push(versionObj);
+        arr[idx].new_name = finalName;
       } else {
-        moviesArr.push({
-          file_id: fileId,
-          source: srcCode,
+        arr.push({
+          id: nextPadId(arr),
           tmdb_id: tmdbId,
+          audience: audience,
           clean_name: title,
-          title: title,
-          original_title: cachedTmdbMeta?.original_title || title,
-          new_name: finalName,
           year: year,
-          orig_lang: cachedTmdbMeta?.orig_lang || "",
-          rating: cachedTmdbMeta?.rating || 0,
+          lang: langVal,
           genres: cachedTmdbMeta?.genres || [],
           plot: cachedTmdbMeta?.plot || "",
-          size: sz,
-          size_gb: sizeGbNum,
+          new_name: finalName,
           poster: cachedTmdbMeta?.poster || "",
           fanart: cachedTmdbMeta?.fanart || "",
           clearlogo: cachedTmdbMeta?.clearlogo || "",
-          added_at: new Date().toISOString(),
           versions: [versionObj]
         });
       }
 
-      await commitDirectToGithub("movies.json", moviesArr, `Add/Update (${srcCode}): ${title}`, mSha, token);
+      await commitDirectToGithub(targetPath, arr, `Add/Update (${audience}/${srcCode}): ${title}`, sha, token);
 
+      // Update name_registry.json preserving raw old_name
       let regArr = [], rSha;
       const rGet = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/name_registry.json?t=${Date.now()}`, {
         headers: { "Authorization": `token ${token}` }
@@ -828,29 +840,29 @@
 
       const regEntry = {
         source: srcCode,
-        file_id: fileId,
+        audience: audience,
+        file_id: itemId,
         tmdb_id: tmdbId,
-        cat: catLabel.toUpperCase(),
+        cat: audience === "kids" ? "KIDS_MOVIE" : "MOVIE",
         old_name: rawName,
         new_name: finalName,
-        size_gb: sizeGbNum,
         approved_at: new Date().toISOString()
       };
 
-      const rIdx = regArr.findIndex(r => String(r.file_id) === fileId);
+      const rIdx = regArr.findIndex(r => String(r.file_id) === itemId);
       if (rIdx >= 0) regArr[rIdx] = regEntry;
       else regArr.unshift(regEntry);
 
-      await commitDirectToGithub("name_registry.json", regArr, `Registry (${srcCode}): ${title} (${fileId})`, rSha, token);
+      await commitDirectToGithub("name_registry.json", regArr, `Registry (${audience}/${srcCode}): ${title} (${itemId})`, rSha, token);
 
-      showToast(`Saved "${finalName}" (${srcCode.toUpperCase()}) to movies.json & name_registry.json!`);
+      showToast(`Saved "${title}" [${audience}] to ${targetPath} & name_registry.json!`);
       loadInitialStats();
     } catch (err) {
       showToast("Save Failed: " + err.message, true);
     }
 
     document.getElementById("btn-submit").disabled = false;
-    document.getElementById("btn-submit").textContent = "🚀 Commit to movies.json & name_registry.json";
+    document.getElementById("btn-submit").textContent = "🚀 Commit Movie (Plan A Schema)";
   }
 
   async function commitDirectToGithub(path, data, msg, sha, token) {
