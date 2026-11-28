@@ -435,15 +435,17 @@
     "id": "013",
     "tmdb_id": 115049,
     "audience": "general",
-    "clean_name": "@ThamizhBlasters Thuppakki",
+    "clean_name": "Akihabara Geeks",
     "year": 2012,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Documentary"
+    ],
+    "plot": "Akihabara is a neighborhood of Tokyo, Japan known as \"Electric Town\" for its rows of one-meter wide discount computer and electronics stores. In more recent years, Akihabara has evolved into a full-blown Mecca for computer enthusiasts, anime and manga fans, doll or \"figure\" collectors, video gamers and \"Otaku\" of all kinds. Because Akihabara caters to interests outside of mainstream Japanese society, it captivates an entire subculture of devotees. Join us as we peruse the shops, streets and Maid Cafes to present an engrossing day in the life view of Akihabara, and focus on the unique people who are passionately plugged into this town.",
     "new_name": "Thuppakki (2012) [2160p 4K] [SDR] [10bit] [BRRip] [x265 HEVC] [DTS] [ESub] [11 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/vQtN47XOfnV55nX2ayFQSx1Q1PB.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/4fCrJtTEVCgD7lRA3y1cjamcidW.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/rc1JnnD6Y1BrXjRpdZooKLqtcAO.png",
     "versions": [
       {
         "source": "gd",
@@ -454,7 +456,10 @@
         "audio": "DTS",
         "size": "11 GB"
       }
-    ]
+    ],
+    "title": "Akihabara Geeks",
+    "orig_lang": "en",
+    "rating": 5.8
   },
   {
     "id": "014",
@@ -463,12 +468,15 @@
     "clean_name": "Jailer",
     "year": 2023,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Comedy"
+    ],
+    "plot": "Muthuvel Pandian, a retired, stern yet compassionate jailer lives a peaceful life with his family, but trouble knocks his door when his cop son’s tryst with an antique mafia gang goes awry and forces Muthu to step back into a dark world he had voluntarily took a break from.",
     "new_name": "Jailer (2023) [2160p 4K] [x265 HEVC] [DTS 5.1 - 1509Kbps] [ESub] [19 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/pTmMxAHqX4vsIDE6HPPxOR0Q6TN.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/ownDZBS9ecoPbWjW5V5L8jknGF.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/b2gG5OorQLWGhz8TTA6TYsfImzL.png",
     "versions": [
       {
         "source": "gd",
@@ -479,21 +487,27 @@
         "audio": "DTS 5.1 - 1509Kbps",
         "size": "19 GB"
       }
-    ]
+    ],
+    "title": "Jailer",
+    "orig_lang": "ta",
+    "rating": 6.6
   },
   {
     "id": "015",
     "tmdb_id": 47940,
     "audience": "general",
-    "clean_name": "Padayappa (",
+    "clean_name": "Padayappa",
     "year": 1999,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Drama",
+      "Action"
+    ],
+    "plot": "Padayappa, a mechanical engineer whose father gives up his property to his foster brother, and then dies of shock soon after. Neelambari initially loves Padayappa, but plans to humiliate him after his family humiliates her father. The rest of the plot deals with Padayappa overcoming all the obstacles placed by Neelambari.",
     "new_name": "Padayappa (1999) [1080p] [WEB-DL] [AMZN] [x264] [1080p-Tamil - DDP2.0 (224Kbps)] [ESub] [11.5 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/8PSYF0AtpLbSlTDneCUo7zP4qL1.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/c4GW20T51X7xxBlCuJPSzxXuLTp.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/7U50yGaT3xqq7Yx6jkBizwFjpXk.png",
     "versions": [
       {
         "source": "gd",
@@ -504,21 +518,27 @@
         "audio": "DDP2.0",
         "size": "12 GB"
       }
-    ]
+    ],
+    "title": "Padayappa",
+    "orig_lang": "ta",
+    "rating": 7.4
   },
   {
     "id": "016",
     "tmdb_id": 1235877,
     "audience": "general",
-    "clean_name": "Jana Nayagan (",
+    "clean_name": "Jana Nayagan",
     "year": 2026,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "plot": "A clash of ideologies. One stands for the people, the other feeds on control. Their paths collided once before. Years later, a child’s silent fear ignites the past, drawing a former police officer into a battle far bigger than personal revenge.",
     "new_name": "Jana Nayagan (2026) [1080p] [AVC] [DTS-HD Master Audio DD 5.1 (4536Kbps] [ESub] [10 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/jt8pfSIdi47YpFMMWVRr8w5u2S0.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/v3lNH2gCojWYXVuXcT9FZLBxcSq.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/fDOECszTh7wpI0d4JOVPTAOjvZg.png",
     "versions": [
       {
         "source": "gd",
@@ -529,21 +549,28 @@
         "audio": "DTS + DD 5.1",
         "size": "7 GB"
       }
-    ]
+    ],
+    "title": "Jana Nayagan",
+    "orig_lang": "ta",
+    "rating": 5
   },
   {
     "id": "017",
     "tmdb_id": 1359490,
     "audience": "general",
-    "clean_name": "Mad Square (",
+    "clean_name": "MAD 2",
     "year": 2025,
     "lang": "Tamil + Telugu + Hindi + Malayalam + Kannada",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Drama",
+      "Romance",
+      "Comedy"
+    ],
+    "plot": "After his wedding turns into a disaster, Laddu and his pals — Manoj, Ashok and Damodar — find themselves traveling to Goa for another wild adventure.",
     "new_name": "Mad Square (2025) [2160p 4K] [SDR] [WEB-DL] [x265 HEVC] [Tam+Tel+Hin+Mal+Kan] [ESub] [16 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/cYGNd3oMRYsvM9gW4i0bzAclOUb.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/j2H2ldJ5Z8Reo8mKJo9K3idBhOg.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/ngszWdYjMVkG5hYU4A83NvRyr8m.png",
     "versions": [
       {
         "source": "gd",
@@ -554,21 +581,28 @@
         "audio": "DD+5.1 - 640Kbps",
         "size": "16 GB"
       }
-    ]
+    ],
+    "title": "MAD 2",
+    "orig_lang": "te",
+    "rating": 6.2
   },
   {
     "id": "018",
     "tmdb_id": 1424217,
     "audience": "general",
-    "clean_name": "Court State vs A Nobody (",
+    "clean_name": "Court: State vs. A Nobody",
     "year": 2025,
     "lang": "Tamil + Telugu + Hindi + Malayalam + Kannada",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Drama",
+      "Romance",
+      "Crime"
+    ],
+    "plot": "A determined lawyer takes on a high-stakes case to defend a 19-year-old boy, challenging a system that has already branded him guilty.",
     "new_name": "Court State vs A Nobody (2025) [1080p] [HQ] [WEB-DL] [Tam+Tel+Hin+Mal+Kan] [8.5 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/4pEX67LJd7ZIqYWtksBtOgQEGcQ.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/efMmUfbqfMTtheqjcWiHDtxcXbA.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/gWvacLzupLUy4jkZ3yxnC4wre45.png",
     "versions": [
       {
         "source": "gd",
@@ -588,21 +622,29 @@
         "audio": "DD+5.1 - 640k + AAC 2.0",
         "size": "9 GB"
       }
-    ]
+    ],
+    "title": "Court: State vs. A Nobody",
+    "orig_lang": "te",
+    "rating": 7.4
   },
   {
     "id": "019",
     "tmdb_id": 432139,
     "audience": "general",
-    "clean_name": "Vikram Vedha (",
+    "clean_name": "Vikram Vedha",
     "year": 2017,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Thriller",
+      "Crime",
+      "Adventure"
+    ],
+    "plot": "A notorious gangster Vedha surrenders himself to encounter specialist Vikram whom he challenges every step of the way by narrating his life events in the form of riddles that needs to be solved in order to capture him.",
     "new_name": "Vikram Vedha (2017) [1080p] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [9 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/se12m3uffluDlkTTZncOzsWKIkg.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/5bm6sq3eunj3It6pqacFrpRQYoy.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/f7DkTvZxJ8TrAfarNtyT6mNEPf.png",
     "versions": [
       {
         "source": "gd",
@@ -613,21 +655,28 @@
         "audio": "DD+5.1 - 640Kbps + AAC 2.0",
         "size": "9 GB"
       }
-    ]
+    ],
+    "title": "Vikram Vedha",
+    "orig_lang": "ta",
+    "rating": 7.2
   },
   {
     "id": "020",
     "tmdb_id": 1398359,
     "audience": "general",
-    "clean_name": "Tourist Family (",
+    "clean_name": "Tourist Family",
     "year": 2025,
     "lang": "Tamil + Telugu + Hindi + Malayalam + Kannada",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Family"
+    ],
+    "plot": "A quirky Sri Lankan family seeking a fresh start in India transforms a disconnected neighborhood into a vibrant community with their infectious love and kindness.",
     "new_name": "Tourist Family (2025) [1080p] [HQ] [AVC] [Tam+Tel+Hin+Mal+Kan] [4 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/rEffPihtdQXiXfRdfq7pPM5JDqa.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/9aecROz2WTJVxO0MMKrMDQsx7F6.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/louyX0yw9g4zqgj2KaLg676AWBi.png",
     "versions": [
       {
         "source": "gd",
@@ -647,21 +696,28 @@
         "audio": "DD+5.1 - 192k + AAC 2.0",
         "size": "4 GB"
       }
-    ]
+    ],
+    "title": "Tourist Family",
+    "orig_lang": "ta",
+    "rating": 7.8
   },
   {
     "id": "021",
     "tmdb_id": 1265827,
     "audience": "general",
-    "clean_name": "Retro (",
+    "clean_name": "Retro",
     "year": 2025,
     "lang": "Tamil + Telugu + Hindi + Malayalam + Kannada",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance",
+      "Action",
+      "Drama"
+    ],
+    "plot": "A man with a violent past seeks a fresh start, but the life he left behind resurfaces, forcing him to face old conflicts and redefine his future.",
     "new_name": "Retro (2025) [1080p] [HQ] [WEB-DL] [AVC] [Tam+Tel+Hin+Mal+Kan] [ESub] [10 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/yGv62UIUfjrEUlItYPJXb1zU0lB.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/rGcZhLzwOLz3OWWpYrelgP4HUIQ.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/7WEy4UGLzRjB8kUZ1GK8tfMXRlT.png",
     "versions": [
       {
         "source": "gd",
@@ -672,21 +728,27 @@
         "audio": "DD+5.1 + ATMOS - 768Kbps",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "Retro",
+    "orig_lang": "ta",
+    "rating": 6.2
   },
   {
     "id": "022",
     "tmdb_id": 1411454,
     "audience": "general",
-    "clean_name": "Yamakaathaghi (",
+    "clean_name": "Yamakaathaghi",
     "year": 2025,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Horror",
+      "Drama"
+    ],
+    "plot": "A young girl's spirit lingers at a rural funeral home, unwilling to depart. Her mysterious death sparks an unsettling supernatural investigation.",
     "new_name": "Yamakaathaghi (2025) [1080p] [DD+5.1 - 192Kbps & AAC 2.0] [ESub] [1.6 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/kSIDeFZZG1JACozVAnHX4RdXN07.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/lSqOtz1YBYtLOORa54sc0iNHm75.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/9LaHeZi5X0OLvZ34VrNHvNI1HxL.png",
     "versions": [
       {
         "source": "gd",
@@ -697,19 +759,24 @@
         "audio": "DD+5.1 - 192Kbps + AAC 2.0",
         "size": "2 GB"
       }
-    ]
+    ],
+    "title": "Yamakaathaghi",
+    "orig_lang": "ta",
+    "rating": 6
   },
   {
     "id": "023",
     "tmdb_id": 78857,
     "audience": "general",
-    "clean_name": "Dharmam Vellum (",
+    "clean_name": "Dharmam Vellum",
     "year": 1989,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Drama"
+    ],
+    "plot": "Saradha, a single mother, kills 13 people in an abandoned circuit house and is sentenced to death. Her son, Vijay, grows up to be a police officer and sets out to solve the mystery behind her actions.",
     "new_name": "Dharmam Vellum (1989) [1080p] [WEB-DL] [AVC] [DD+2.0 - 224Kbps & AAC] [ESub] [9 GB].mkv",
-    "poster": "",
+    "poster": "https://image.tmdb.org/t/p/original/yngR0FPaWCvEVMIW7yMlF4QbQFX.jpg",
     "fanart": "",
     "clearlogo": "",
     "versions": [
@@ -722,20 +789,26 @@
         "audio": "DD+2.0 - 224Kbps + AAC",
         "size": "9 GB"
       }
-    ]
+    ],
+    "title": "Dharmam Vellum",
+    "orig_lang": "ta",
+    "rating": 10
   },
   {
     "id": "024",
     "tmdb_id": 69513,
     "audience": "general",
-    "clean_name": "Padikkathavan (",
+    "clean_name": "Padikathavan",
     "year": 2009,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "plot": "Rocky is looked down upon by his father and spends all his time in a mechanic shop. Problems arise in his life after he falls in love with Gayathri.",
     "new_name": "Padikkathavan (2009) [1080p] [AVC] [DD+5.1 - 192Kbps & AAC 2.0] [8.9 GB].mkv",
-    "poster": "",
-    "fanart": "",
+    "poster": "https://image.tmdb.org/t/p/original/3G8JAGuM6JeSCpV3TeJ6fM69bfd.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/2J9igN4jtltZG5kuSvcDKN2GyDo.jpg",
     "clearlogo": "",
     "versions": [
       {
@@ -747,21 +820,26 @@
         "audio": "DD+5.1 - 192Kbps + AAC 2.0",
         "size": "9 GB"
       }
-    ]
+    ],
+    "title": "Padikathavan",
+    "orig_lang": "ta",
+    "rating": 4
   },
   {
     "id": "025",
     "tmdb_id": 1398967,
     "audience": "general",
-    "clean_name": "Once Upon a Time in Madras (",
+    "clean_name": "Once Upon a Time in Madras",
     "year": 2024,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Thriller"
+    ],
+    "plot": "In Chennai, along the Koovam River, 9-year-old Dinesh's life ends tragically when he's shot by retired army officer Krishnaraja in a fit of rage. Confusion ensues as the police investigation fails to identify the shooter. Krishnaraja disposes of the gun in the river, but its discoveries by a few people sets off a chain of events with unforeseen consequences.",
     "new_name": "Once Upon a Time in Madras (2024) [1080p] [WEB-DL] [DD+5.1 - 192Kbps & AAC 2.0] [ESub] [1.8 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/waJePev0h6x1zORqCm4A54rfS8p.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/vWkfGnXTaRCrwL60GTarwImLOuQ.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/acmdRgmGOZPDpy20Bct65TU6dTB.png",
     "versions": [
       {
         "source": "gd",
@@ -772,21 +850,29 @@
         "audio": "DD+5.1 - 192Kbps + AAC 2.0",
         "size": "2 GB"
       }
-    ]
+    ],
+    "title": "Once Upon a Time in Madras",
+    "orig_lang": "ta",
+    "rating": 7.5
   },
   {
     "id": "026",
     "tmdb_id": 1014214,
     "audience": "general",
-    "clean_name": "Singham Again (",
+    "clean_name": "Singham Again",
     "year": 2024,
     "lang": "Tamil + Telugu + Hindi",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Drama",
+      "Thriller",
+      "Crime"
+    ],
+    "plot": "The cop universe expands with newer additions while the old ones return led by Bajirao Singham. Singham Again interweaves the mythological epic Ramayana's good vs evil narrative when his wife Avni Kamath gets abducted by Danger Lanka setting Bajirao and his gang of Sangram Bhalerao and Veer Sooryavanshi along with Satya and Shakti Shetty on a mission to rescue her.",
     "new_name": "Singham Again (2024) [1080p] [HQ] [WEB-DL] [Tamil+Telugu+Hindi] [6.7 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/mgmBqb0Wc6x6r0SXk0YbeeaPne2.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/yLKkuYMcibmNEvb97I4t6eDSSwk.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/bF2j00avThWYemMmAVth3wDQaq0.png",
     "versions": [
       {
         "source": "gd",
@@ -797,21 +883,29 @@
         "audio": "DD+5.1 - 640Kbps + AAC 2.0",
         "size": "7 GB"
       }
-    ]
+    ],
+    "title": "Singham Again",
+    "orig_lang": "hi",
+    "rating": 4.8
   },
   {
     "id": "027",
     "tmdb_id": 942386,
     "audience": "general",
-    "clean_name": "The Smile Man (",
+    "clean_name": "The Smile Man",
     "year": 2024,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Crime",
+      "Mystery",
+      "Thriller",
+      "Drama"
+    ],
+    "plot": "A police officer who is diagnosed with Alzheimer's disease must solve one last case before he loses all his memories. He must run against time to catch the notorious serial killer who he believes has a mysterious role in his own personal life.",
     "new_name": "The Smile Man (2024) [1080p] [DD+5.1 - 192Kbps & AAC 2.0] [ESub] [2.7 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/p8J4IroY8tzRrtEckuetnMKLc42.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/r1xx1HzUxlSozLFjlewPmMirgNc.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/afaWclwm1tWa5opdbx4iDFqb14l.png",
     "versions": [
       {
         "source": "gd",
@@ -822,20 +916,26 @@
         "audio": "DD+5.1 - 192Kbps + AAC 2.0",
         "size": "3 GB"
       }
-    ]
+    ],
+    "title": "The Smile Man",
+    "orig_lang": "ta"
   },
   {
     "id": "028",
     "tmdb_id": 1114668,
     "audience": "general",
-    "clean_name": "Soodhu Kavvum 2 (",
+    "clean_name": "Soodhu Kavvum 2: Nadum Naatu Makkalum...",
     "year": 2024,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Thriller"
+    ],
+    "plot": "A gang of kidnappers find they have bitten off more than they can chew.",
     "new_name": "Soodhu Kavvum 2 (2024) [1080p] [WEB-DL] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [6.5 GB].mkv",
-    "poster": "",
-    "fanart": "",
+    "poster": "https://image.tmdb.org/t/p/original/bGf8gAI99KDm53Buwb9hf3ygf4o.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/7v0o4NcYDovpecRp7VA9OKiYiEQ.jpg",
     "clearlogo": "",
     "versions": [
       {
@@ -847,21 +947,27 @@
         "audio": "DD+5.1 - 640Kbps + AAC 2.0",
         "size": "7 GB"
       }
-    ]
+    ],
+    "title": "Soodhu Kavvum 2: Nadum Naatu Makkalum...",
+    "orig_lang": "ta",
+    "rating": 3.5
   },
   {
     "id": "029",
     "tmdb_id": 1351991,
     "audience": "general",
-    "clean_name": "Miss You (",
+    "clean_name": "Miss You",
     "year": 2024,
     "lang": "Tamil + Telugu",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance",
+      "Comedy"
+    ],
+    "plot": "What happens when a guy falls in love with the girl he thought he hated the most? Why does her simple `no` mean so much more than it seems?.",
     "new_name": "Miss You (2024) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps] [ESub] [7.5 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/rahqMPwCY3rLnNFp7fuvwCNO2XF.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/yH3TEMFWrxbo2tL5Aw8i6eBuDpJ.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/rpdgykYyLioiaI2dVRUS1c60cXS.png",
     "versions": [
       {
         "source": "gd",
@@ -872,21 +978,27 @@
         "audio": "DD+5.1 - 640Kbps",
         "size": "8 GB"
       }
-    ]
+    ],
+    "title": "Miss You",
+    "orig_lang": "ta",
+    "rating": 5.9
   },
   {
     "id": "030",
     "tmdb_id": 69664,
     "audience": "general",
-    "clean_name": "Gemini (",
+    "clean_name": "Gemini",
     "year": 2002,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Drama",
+      "Action"
+    ],
+    "plot": "Gemini, a gangster, falls for Manisha who reciprocates his love without knowing his truth. After getting arrested and completing his term, he tries to convince his lover that he is a changed man.",
     "new_name": "Gemini (2002) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [11 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/xNB30KsiQENcq1VTFm2qqCcb2nB.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/iMbVeRGaPGnoELlCioglhT6Hnjz.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/xQpxmJyhwAsJN646VOiKYdtbs24.png",
     "versions": [
       {
         "source": "gd",
@@ -897,21 +1009,27 @@
         "audio": "DD+5.1 - 640Kbps + AAC 2.0",
         "size": "11 GB"
       }
-    ]
+    ],
+    "title": "Gemini",
+    "orig_lang": "ta",
+    "rating": 5.9
   },
   {
     "id": "031",
     "tmdb_id": 63641,
     "audience": "general",
-    "clean_name": "Sachein (",
+    "clean_name": "Sachein",
     "year": 2005,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "plot": "A happy-go-lucky college student falls in love with a beautiful young woman at first sight, but decides to use a unique approach to get close to her, as she has many admirers in the college. How will their relationship evolve?",
     "new_name": "Sachein (2005) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [10.9 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/9AUF9tuykPsiAkjqewliulPNT4y.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/lPjDk0AwYul5Qy0ce8nODW3j7UE.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/waa6BFK6o5rG8OuycLttMhLEJSx.png",
     "versions": [
       {
         "source": "gd",
@@ -922,20 +1040,25 @@
         "audio": "DD+5.1 - 640Kbps + AAC 2.0",
         "size": "11 GB"
       }
-    ]
+    ],
+    "title": "Sachein",
+    "orig_lang": "ta",
+    "rating": 6.7
   },
   {
     "id": "032",
     "tmdb_id": 78686,
     "audience": "general",
-    "clean_name": "Thaandavam (",
+    "clean_name": "Thaandavam",
     "year": 2012,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action"
+    ],
+    "plot": "A blind man with his 'Echolocation' power takes on a revenge mission.",
     "new_name": "Thaandavam (2012) [1080p] [HQ] [BluRay] [x264] [DTS5.1 - 1509Kbps & AAC] [ESub] [15.3 GB].mkv",
-    "poster": "",
-    "fanart": "",
+    "poster": "https://image.tmdb.org/t/p/original/tCUGqY1zN8JX7Vg5iK4oDUD3FBn.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/q3hJe22wXjoHV0K3qUGfcgHgx6r.jpg",
     "clearlogo": "",
     "versions": [
       {
@@ -947,21 +1070,28 @@
         "audio": "DTS5.1 - 1509Kbps + AAC",
         "size": "15 GB"
       }
-    ]
+    ],
+    "title": "Thaandavam",
+    "orig_lang": "ta",
+    "rating": 5.8
   },
   {
     "id": "033",
     "tmdb_id": 329134,
     "audience": "general",
-    "clean_name": "Massu Engira Masilamani (",
+    "clean_name": "Massu Engira Masilamani",
     "year": 2015,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Comedy",
+      "Thriller",
+      "Horror"
+    ],
+    "plot": "A conman gains the power to see and communicate with ghosts and decides to use it to make money. His happy-go-lucky lifestyle goes for a toss when a ghost who is his look-alike approaches him with an offer.",
     "new_name": "Massu Engira Masilamani (2015) [1080p] [WEB-DL] [DD+5.1 - 640Kbps & AAC 2.0] [10.3 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/qXJTn2ZMhrbs4TawcZfoI2Ifwws.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/6kDSk9rv4csmLTBtNJdmhnZ6cnT.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/cnjrz4Qh7cUhlFApOK511cMeIXO.png",
     "versions": [
       {
         "source": "gd",
@@ -972,21 +1102,26 @@
         "audio": "DD+5.1 - 640Kbps + AAC 2.0",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "Massu Engira Masilamani",
+    "orig_lang": "ta",
+    "rating": 5.1
   },
   {
     "id": "034",
     "tmdb_id": 922360,
     "audience": "general",
-    "clean_name": "Nirangal Moondru (",
+    "clean_name": "Nirangal Moondru",
     "year": 2024,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Thriller"
+    ],
+    "plot": "On a trippy day, the fates of 3 people - Vetri an aspiring filmmaker, Vasanth a reputed teacher and Selvam a corrupt and crooked cop collide, leading to various revelations, where Shree, an anxious youngster discovers that his girlfriend Parvathy has gone missing under mysterious circumstances, gives them the lead.",
     "new_name": "Nirangal Moondru (2024) [1080p] [WEB-DL] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [7.1 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/sGzSgkWpNIXooUaiXRObhKqdtaN.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/5wr1g2g4cj5lkEDmAbEbT92sU8t.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/vwxN1Y4M5AUoyAUzBKvTI5UPKa2.png",
     "versions": [
       {
         "source": "gd",
@@ -997,20 +1132,26 @@
         "audio": "DD+5.1 - 640Kbps + AAC 2.0",
         "size": "7 GB"
       }
-    ]
+    ],
+    "title": "Nirangal Moondru",
+    "orig_lang": "ta",
+    "rating": 5.7
   },
   {
     "id": "035",
     "tmdb_id": 63821,
     "audience": "general",
-    "clean_name": "Deepavali (",
+    "clean_name": "Deepavali",
     "year": 2007,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "plot": "Susi, who suffers from post traumatic event disorder, falls in love with Billu. After Susi undergoes the treatment for her cure, she is unable to recognize Billu..",
     "new_name": "Deepavali (2007) [1080p] [WEB-DL] [AVC] [DD+5.1 - 192Kbps & AAC 2.0] [8.3 GB].mkv",
-    "poster": "",
-    "fanart": "",
+    "poster": "https://image.tmdb.org/t/p/original/lTalxE0qHzsAYb85hVysWs6UNaU.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/yK5ftR1Vw8f3yElGMbCBGVmBuUx.jpg",
     "clearlogo": "",
     "versions": [
       {
@@ -1022,19 +1163,25 @@
         "audio": "DD+5.1 - 192Kbps + AAC 2.0",
         "size": "8 GB"
       }
-    ]
+    ],
+    "title": "Deepavali",
+    "orig_lang": "ta",
+    "rating": 5.1
   },
   {
     "id": "036",
     "tmdb_id": 69415,
     "audience": "general",
-    "clean_name": "Aanjaneya (",
+    "clean_name": "Anjaneya",
     "year": 2003,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "plot": "DCP Paramaguru is an efficient police officer who fights with the scum of the society. He later masquerades as a thief to infiltrate into the underworld. The bad guys are surprised to find that Paramguru is the DCP, out to get them. So they all gang up against him. In this process a thrilling encounter takes place between the good and the evil. Paramaguru is helped in his fight against injustice by Divya who falls in love with him.",
     "new_name": "Aanjaneya (2003) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [13.5 GB].mkv",
-    "poster": "",
+    "poster": "https://image.tmdb.org/t/p/original/jn3eXGEkAMDo3ufmlTWl0TFcGCg.jpg",
     "fanart": "",
     "clearlogo": "",
     "versions": [
@@ -1047,21 +1194,28 @@
         "audio": "DD+5.1 - 640Kbps + AAC 2.0",
         "size": "14 GB"
       }
-    ]
+    ],
+    "title": "Anjaneya",
+    "orig_lang": "ta",
+    "rating": 2.5
   },
   {
     "id": "037",
     "tmdb_id": 387252,
     "audience": "general",
-    "clean_name": "Kadhalum Kadanthu Pogum (",
+    "clean_name": "Kadhalum Kadanthu Pogum",
     "year": 2016,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "plot": "A small-time rowdy fresh out of prison and a runaway woman seeking a new life in Chennai become unexpected neighbors. Bound by loneliness, they form an unusual bond—one that teeters between friendship and love. As they navigate their struggles together, their lives take a heartwarming turn in this charming romantic comedy-drama.",
     "new_name": "Kadhalum Kadanthu Pogum (2016) [1080p] [WEB-DL] [DD5.1 - 512Kbps & AAC 2.0] [7.9 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/4kg3MYk5u5FNRowZypXON1qR1Ji.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/xvd8CMAoAY88MEKVe5L31dM3fge.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/1reawU9PTVOerIHEUetIfjBdOkH.png",
     "versions": [
       {
         "source": "gd",
@@ -1072,20 +1226,26 @@
         "audio": "DD5.1 - 512Kbps + AAC 2.0",
         "size": "8 GB"
       }
-    ]
+    ],
+    "title": "Kadhalum Kadanthu Pogum",
+    "orig_lang": "ta",
+    "rating": 7.4
   },
   {
     "id": "038",
     "tmdb_id": 66274,
     "audience": "general",
-    "clean_name": "Naan Sigappu Manithan (",
+    "clean_name": "Naan Sigappu Manithan",
     "year": 1985,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "plot": "A young man turns into a vigilante to fight injustice after his loved ones are killed.",
     "new_name": "Naan Sigappu Manithan (1985) [1080p] [WEB-DL] [AVC] [DD+2.0 - 224Kbps & AAC] [6.7 GB].mkv",
-    "poster": "",
-    "fanart": "",
+    "poster": "https://image.tmdb.org/t/p/original/yeXqE0aLqmdSwfCutMwiJFzTboe.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/kKe7T9dKmvXtvSlGfGnuvRBXWTW.jpg",
     "clearlogo": "",
     "versions": [
       {
@@ -1097,21 +1257,28 @@
         "audio": "DD+2.0 - 224Kbps + AAC",
         "size": "7 GB"
       }
-    ]
+    ],
+    "title": "Naan Sigappu Manithan",
+    "orig_lang": "ta",
+    "rating": 6.4
   },
   {
     "id": "039",
     "tmdb_id": 362045,
     "audience": "general",
-    "clean_name": "Bajirao Mastani (",
+    "clean_name": "Bajirao Mastani",
     "year": 2015,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "History",
+      "Romance",
+      "Drama"
+    ],
+    "plot": "Peshwa Bajirao married to Kashibai, falls in love with Mastani, a warrior princess in distress. They struggle to make their love triumph amid opposition from his conservative family.",
     "new_name": "Bajirao Mastani (2015) [1080p] [DD+2.0 - 224Kbps & AAC 2.0] [ESub] [9.5 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/eXKHjELZAbF7cVd9fzYMhvSsXDI.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/wqe6GXolmOtRTYxImtZQkKH35EA.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/hrfr3DuxSbIpEoQNtQ9W4O9xrC3.png",
     "versions": [
       {
         "source": "gd",
@@ -1122,21 +1289,27 @@
         "audio": "DD+2.0 - 224Kbps + AAC 2.0",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "Bajirao Mastani",
+    "orig_lang": "hi",
+    "rating": 7.2
   },
   {
     "id": "040",
     "tmdb_id": 247504,
     "audience": "general",
-    "clean_name": "Veeram (",
+    "clean_name": "Veeram",
     "year": 2014,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Comedy"
+    ],
+    "plot": "A straightforward man, who uses violence to settle disputes, decides to mend his ways for the sake of his lover, but when he learns that her family is in danger, he decides to save them at all cost.",
     "new_name": "Veeram (2014) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [11 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/tLeL3TODjce9mC6KxpP45EPxZjm.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/4wTcPRyHlWdpCpIUmfPDrMvMBZ6.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/doPGQZ7pyKdMN0MGwW7uSTwwkU5.png",
     "versions": [
       {
         "source": "gd",
@@ -1147,21 +1320,28 @@
         "audio": "DD+5.1 - 640Kbps + AAC 2.0",
         "size": "11 GB"
       }
-    ]
+    ],
+    "title": "Veeram",
+    "orig_lang": "ta",
+    "rating": 5.3
   },
   {
     "id": "041",
     "tmdb_id": 1259024,
     "audience": "general",
-    "clean_name": "Good Bad Ugly (",
+    "clean_name": "Good Bad Ugly",
     "year": 2025,
     "lang": "Tamil + Telugu + Hindi + Malayalam + Kannada",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Crime",
+      "Comedy"
+    ],
+    "plot": "AK, a powerful gangster, surrenders to the police, in hopes that his wife and son will live a peaceful life. When he is released 17 years later, he learns that his son is falsely accused of serious crimes. To protect him, he is forced to go back to his old ways, facing enemies, both old and new.",
     "new_name": "Good Bad Ugly (2025) [1080p] [HQ] [Tam+Tel+Hin+Mal+Kan] [8 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/8DbYYluzdiGDAZzsaP7DWGbwfLd.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/16tXEu1C3GCZZ0uPcA91DlWINbj.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/5ROih2dwnVjSxmeEl3sn2DG46sP.png",
     "versions": [
       {
         "source": "gd",
@@ -1172,21 +1352,27 @@
         "audio": "DD+5.1 - 640Kbps",
         "size": "8 GB"
       }
-    ]
+    ],
+    "title": "Good Bad Ugly",
+    "orig_lang": "ta",
+    "rating": 5.7
   },
   {
     "id": "042",
     "tmdb_id": 1465245,
     "audience": "general",
-    "clean_name": "Ten Hours (",
+    "clean_name": "Ten Hours",
     "year": 2025,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "plot": "A bus murder investigation unfolds, revealing possible scenarios and suspects. As everyone undergoes questioning, hidden layers of the case begin to surface.",
     "new_name": "Ten Hours (2025) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC] [ESub] [6.2 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/5dYmfe3UtKyWZs4GNlLPS4pweEa.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/1GbJDREvDhpaAs6BJXLbY3X5Gsw.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/bSKXhyvfCnn1VUfK3jwAhbtKcoB.png",
     "versions": [
       {
         "source": "gd",
@@ -1197,21 +1383,27 @@
         "audio": "DD+5.1 - 640Kbps + AAC",
         "size": "6 GB"
       }
-    ]
+    ],
+    "title": "Ten Hours",
+    "orig_lang": "ta",
+    "rating": 7.6
   },
   {
     "id": "043",
     "tmdb_id": 76975,
     "audience": "general",
-    "clean_name": "Samar (",
+    "clean_name": "Samar",
     "year": 2013,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "plot": "Shakthi, a trekking guide, goes to Bangkok after he receives a patch-up invitation from his lover Roopa, who had broken up with him. En route, he strikes up a friendship Maya. When Roopa doesn’t arrive for the rendezvous, Shakthi decides to return to India but gets embroiled in a mystery where he is taken for a millionaire businessman. Pretty soon, even Shakthi starts doubting his own identity. Can he get out of this conundrum?",
     "new_name": "Samar (2013) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [10 GB].mkv",
-    "poster": "",
+    "poster": "https://image.tmdb.org/t/p/original/7PRFLHgDXDv7IMmfAdmjfPdBSvE.jpg",
     "fanart": "",
-    "clearlogo": "",
+    "clearlogo": "https://image.tmdb.org/t/p/original/5Rp7AZ1kKLUOAGvrStS6bF8Vs6K.png",
     "versions": [
       {
         "source": "gd",
@@ -1222,21 +1414,27 @@
         "audio": "DD+5.1 - 640Kbps + AAC 2.0",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "Samar",
+    "orig_lang": "ta",
+    "rating": 5
   },
   {
     "id": "044",
     "tmdb_id": 811945,
     "audience": "general",
-    "clean_name": "HIT: The Second Case (",
+    "clean_name": "HIT: The 2nd Case",
     "year": 2022,
     "lang": "Tamil + Telugu",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "plot": "Krishna Dev aka KD, a laidback cop working in Andhra Pradesh State HIT, takes on a gruesome murder case. As KD unravels the layers of the crime, the stakes rise unbelievably high and the threat comes unusually close.",
     "new_name": "HIT: The Second Case (2022) [1080p] [HQ] [Untouched] [AVC] [Tamil+Telugu] [2.9 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/tidXGOilCSa5sch1KGiEXrWeYCf.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/aHtZFBjUCSpghKWl2rU7zP6FhRQ.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/oIqdSxM3q8Su5HKs60mxVcTVb8E.png",
     "versions": [
       {
         "source": "gd",
@@ -1247,21 +1445,28 @@
         "audio": "AAC",
         "size": "3 GB"
       }
-    ]
+    ],
+    "title": "HIT: The 2nd Case",
+    "orig_lang": "te",
+    "rating": 6.8
   },
   {
     "id": "045",
     "tmdb_id": 678391,
     "audience": "general",
-    "clean_name": "HIT (",
+    "clean_name": "HIT: The First Case",
     "year": 2020,
     "lang": "Tamil + Telugu",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Crime",
+      "Thriller",
+      "Action"
+    ],
+    "plot": "Vikram Rudraraju is a 30-year-old cop working for the Telangana State Police. While Vikram is battling with his own traumatic past, the stakes get high when a girl called Preethi mysteriously disappears in Hyderabad and Vikram has to solve the case at any cost.",
     "new_name": "HIT (2020) [1080p] [Untouched] [WEB-DL] [AVC] [Tamil (Org) + Telugu] [ESub] [2.8 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/dMxentLHEJPBMQCPXHrUKluODpe.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/A45uq2S4JHBVLGaMWrtawOLp08i.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/j0qVO1A7WjSbFEAETeyJaUGUP5o.png",
     "versions": [
       {
         "source": "gd",
@@ -1272,20 +1477,23 @@
         "audio": "",
         "size": "3 GB"
       }
-    ]
+    ],
+    "title": "HIT: The First Case",
+    "orig_lang": "te",
+    "rating": 6.7
   },
   {
     "id": "046",
     "tmdb_id": 280148,
     "audience": "general",
-    "clean_name": "Vanmam (",
+    "clean_name": "Vanmam",
     "year": 2014,
     "lang": "Tamil",
     "genres": [],
-    "plot": "",
+    "plot": "Two friends turn bitter foes after a fall out and their enmity is exploited by a man who has scores to settle.",
     "new_name": "Vanmam (2014) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [9 GB].mkv",
-    "poster": "",
-    "fanart": "",
+    "poster": "https://image.tmdb.org/t/p/original/boEVtgGCeQCum1H3dHMdOsj0poi.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/mBp62fok2IERhhG1ldQaz84JCLM.jpg",
     "clearlogo": "",
     "versions": [
       {
@@ -1297,21 +1505,27 @@
         "audio": "DD+5.1 - 640Kbps + AAC 2.0",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "Vanmam",
+    "orig_lang": "ta",
+    "rating": 4.8
   },
   {
     "id": "047",
     "tmdb_id": 49074,
     "audience": "general",
-    "clean_name": "Baashha (",
+    "clean_name": "Baasha",
     "year": 1995,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Crime"
+    ],
+    "plot": "Auto rickshaw driver Manickam avoids violence at all costs. When some thugs begin to intimidate Manickam's family, it triggers the revival of Manickam's old self.",
     "new_name": "Baashha (1995) [1080p] [WEB-DL] [AVC] [DD5.1 - 448Kbps & AAC 2.0] [ESub] [10 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/xPSw9PLzYFKTVphw9ErZcBPKUsd.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/hh2bBmgqzJEY1J7enMKqTsziVRO.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/ljEkWhughQjvWP81WhgCRRM8bWG.png",
     "versions": [
       {
         "source": "gd",
@@ -1322,19 +1536,26 @@
         "audio": "DD5.1 - 448Kbps + AAC 2.0",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "Baasha",
+    "orig_lang": "ta",
+    "rating": 7.6
   },
   {
     "id": "048",
     "tmdb_id": 391059,
     "audience": "general",
-    "clean_name": "Vetrivel (",
+    "clean_name": "Vetrivel",
     "year": 2016,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Family"
+    ],
+    "plot": "A brother attempts to get his younger brother married to the girl he loves by kidnapping her, but the plan goes so wrong and results in messy situations...",
     "new_name": "Vetrivel (2016) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [8.6 GB].mkv",
-    "poster": "",
+    "poster": "https://image.tmdb.org/t/p/original/ewSPmhF6ICIN58DgfZlkqs5I14p.jpg",
     "fanart": "",
     "clearlogo": "",
     "versions": [
@@ -1347,20 +1568,27 @@
         "audio": "DD+5.1 - 640Kbps + AAC 2.0",
         "size": "9 GB"
       }
-    ]
+    ],
+    "title": "Vetrivel",
+    "orig_lang": "ta",
+    "rating": 5
   },
   {
     "id": "049",
     "tmdb_id": 329591,
     "audience": "general",
-    "clean_name": "Nannbenda (",
+    "clean_name": "Nannbenda",
     "year": 2015,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance",
+      "Comedy",
+      "Drama"
+    ],
+    "plot": "Sathya falls in love with Ramya at first sight and starts wooing her. But how will he take the revelations of his girlfriend's past?",
     "new_name": "Nannbenda (2015) [1080p] [WEB-DL] [AVC] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [10 GB].mkv",
-    "poster": "",
-    "fanart": "",
+    "poster": "https://image.tmdb.org/t/p/original/6wK0Iqx0ksSfzuCeiQBt1JV7MCA.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/5xGSmanCjgp5o0T5IRbWGp7pBH4.jpg",
     "clearlogo": "",
     "versions": [
       {
@@ -1372,21 +1600,27 @@
         "audio": "DD+5.1 - 640Kbps + AAC 2.0",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "Nannbenda",
+    "orig_lang": "ta",
+    "rating": 4
   },
   {
     "id": "050",
     "tmdb_id": 1310134,
     "audience": "general",
-    "clean_name": "Nesippaya (",
+    "clean_name": "Nesippaya",
     "year": 2025,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Romance"
+    ],
+    "plot": "Two lovers, separated by life's circumstances, are reunited by a tragic fate—a murder. Arjun, driven by his love for Diya, defies all odds, crosses boundaries, and braves the unknown to uncover the truth behind her tragic fate.",
     "new_name": "Nesippaya (2025) [1080p] [WEB-DL] [DD+5.1 - 192Kbps & AAC 2.0] [ESub] [4 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/5yDCpURWEXpT7PtKTfYwx0GASTd.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/jS03ey82GpT2avLyme8gBn8SQ87.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/osxCkD2HRzEmCf6l49DXgoIAplp.png",
     "versions": [
       {
         "source": "gd",
@@ -1397,21 +1631,27 @@
         "audio": "DD+5.1 - 192Kbps + AAC 2.0",
         "size": "4 GB"
       }
-    ]
+    ],
+    "title": "Nesippaya",
+    "orig_lang": "ta",
+    "rating": 7
   },
   {
     "id": "051",
     "tmdb_id": 404711,
     "audience": "general",
-    "clean_name": "Dhilluku Dhuddu (",
+    "clean_name": "Dhilluku Dhuddu",
     "year": 2016,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Comedy",
+      "Horror"
+    ],
+    "plot": "A rich man decides to do away with the middle-class guy whom his daughter loves by inviting the guy's family to a palatial house on the pretence of marriage. What he doesn't know is that the place is haunted by a fearsome ghost.",
     "new_name": "Dhilluku Dhuddu (2016) [1080p] [DD+5.1 - 192Kbps & AAC 2.0] [ESub] [7.4 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/2Ki35UB8yxJz51P0OpJrzQDELmV.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/uYDi1q4OXOOCCTutJAGKLMEi3TV.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/3fJnILDPegcaBdAx7mKz58gT38L.png",
     "versions": [
       {
         "source": "gd",
@@ -1422,21 +1662,27 @@
         "audio": "DD+5.1 - 192Kbps + AAC 2.0",
         "size": "7 GB"
       }
-    ]
+    ],
+    "title": "Dhilluku Dhuddu",
+    "orig_lang": "ta",
+    "rating": 5.2
   },
   {
     "id": "052",
     "tmdb_id": 579417,
     "audience": "general",
-    "clean_name": "Dhilluku Dhuddu 2 (",
+    "clean_name": "Dhilluku Dhuddu 2",
     "year": 2019,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Comedy",
+      "Horror"
+    ],
+    "plot": "A happy-go-lucky guy has to recover his lady love from the ghostly spirit who accompanies her always.",
     "new_name": "Dhilluku Dhuddu 2 (2019) [1080p] [WEB-DL] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [7.8 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/tPXDp3RPjtqh8I6wz76Lev5vOa5.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/oTsNgeRYIyws9V0ydeinEN6DYJ5.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/oaeZs6rakKrBWkiR8ITTAhe2CQH.png",
     "versions": [
       {
         "source": "gd",
@@ -1447,21 +1693,27 @@
         "audio": "DD+5.1 - 640Kbps + AAC 2.0",
         "size": "8 GB"
       }
-    ]
+    ],
+    "title": "Dhilluku Dhuddu 2",
+    "orig_lang": "ta",
+    "rating": 4.7
   },
   {
     "id": "053",
     "tmdb_id": 1153886,
     "audience": "general",
-    "clean_name": "DD Returns (",
+    "clean_name": "DD Returns",
     "year": 2023,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Comedy",
+      "Horror"
+    ],
+    "plot": "Madhi and his friends hides a bag full of money and jewels in a haunted bungalow to ditch the police. When he goes to retrieve the bag, a ghost makes him play a survival game in order to leave with the bag.",
     "new_name": "DD Returns (2023) [1080p] [WEB-DL] [DD+5.1 - 384Kbps & AAC 2.0] [ESub] [2 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/aautnOfweBUF74nmwRI2iSf8VdL.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/vKqru6n1UWyd9469tozlASwJ7vb.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/1FRKkohQV9FcANlklyVxwEtp9xr.png",
     "versions": [
       {
         "source": "gd",
@@ -1472,21 +1724,27 @@
         "audio": "DD + DD+5.1 - 384Kbps + AAC 2.0",
         "size": "2 GB"
       }
-    ]
+    ],
+    "title": "DD Returns",
+    "orig_lang": "ta",
+    "rating": 6.2
   },
   {
     "id": "054",
     "tmdb_id": 408921,
     "audience": "general",
-    "clean_name": "Bogan (",
+    "clean_name": "Bogan",
     "year": 2017,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Crime"
+    ],
+    "plot": "A criminal swaps his body with that of the cop who is hunting him.​",
     "new_name": "Bogan (2017) [1080p] [WEB-DL] [DD+5.1 - 192Kbps & AAC 2.0] [ESub] [7.7 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/myj2yLj5yEoRipdfohp9BsAxu6P.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/nCZB8JWc57z6LbX6bfFUAaJaEvu.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/52m735oWf6iB4u9D9EenRYbDaaf.png",
     "versions": [
       {
         "source": "gd",
@@ -1497,21 +1755,29 @@
         "audio": "DD+5.1 - 192Kbps + AAC 2.0",
         "size": "8 GB"
       }
-    ]
+    ],
+    "title": "Bogan",
+    "orig_lang": "ta",
+    "rating": 6.3
   },
   {
     "id": "055",
     "tmdb_id": 30086,
     "audience": "general",
-    "clean_name": "Jeans (",
+    "clean_name": "Jeans",
     "year": 1998,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance",
+      "Music"
+    ],
+    "plot": "The father of twin brothers wants to get them married to only twin sisters. But one of the brothers falls in love with a woman does not have a twin sister.",
     "new_name": "Jeans (1998) [1080p] [WEB-DL] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [12.2 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/uICyDD1FuQIjAm0M0gL6wq5RgPZ.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/fQZXSRTvK2vd8WMOhP6VrjWPPdD.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/aqmijl4K7nYnaSmb0INudpbXym5.png",
     "versions": [
       {
         "source": "gd",
@@ -1522,20 +1788,26 @@
         "audio": "DD+5.1 - 640Kbps + AAC 2.0",
         "size": "12 GB"
       }
-    ]
+    ],
+    "title": "Jeans",
+    "orig_lang": "ta",
+    "rating": 6.3
   },
   {
     "id": "056",
     "tmdb_id": 69566,
     "audience": "general",
-    "clean_name": "Peranmai (",
+    "clean_name": "Peranmai",
     "year": 2009,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "plot": "A communist forest ranger from a tribal community is tasked with whipping five spoiled female cadets into shape. Their bonding trip into the woods turns deadly when they come across foreign mercenaries plotting to sabotage a government satellite launch.",
     "new_name": "Peranmai (2009) [1080p] [BluRay] [x264] [DTS5.1 - 1509Kbps & AAC] [ESub] [14.4 GB].mkv",
-    "poster": "",
-    "fanart": "",
+    "poster": "https://image.tmdb.org/t/p/original/gP2CMKlkiIociCaP3MwsXA3Fm0S.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/wyZjYHYHnBIs10v7BNsVipW2Mnz.jpg",
     "clearlogo": "",
     "versions": [
       {
@@ -1547,21 +1819,27 @@
         "audio": "DTS5.1 - 1509Kbps + AAC",
         "size": "14 GB"
       }
-    ]
+    ],
+    "title": "Peranmai",
+    "orig_lang": "ta",
+    "rating": 6.4
   },
   {
     "id": "057",
     "tmdb_id": 191121,
     "audience": "general",
-    "clean_name": "Ambikapathy (",
+    "clean_name": "Raanjhanaa",
     "year": 2013,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "plot": "A small-town boy needs to break through the class divide to gain acceptance from his childhood sweetheart who is in love with big city ideals.",
     "new_name": "Ambikapathy (2013) [1080p] [WEB-DL] [DD5.1 - 448Kbps & AAC 2.0] [ESub] [11.6 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/54CjAPWZczqfAMhQ926KqBgpLWN.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/lnB3JiuzIjaHIwvsF0O7pVsTFro.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/er6r9F6AVygxxK1giuKMZWV0KRE.png",
     "versions": [
       {
         "source": "gd",
@@ -1572,21 +1850,28 @@
         "audio": "DD5.1 - 448Kbps + AAC 2.0",
         "size": "12 GB"
       }
-    ]
+    ],
+    "title": "Raanjhanaa",
+    "orig_lang": "hi",
+    "rating": 6.7
   },
   {
     "id": "058",
     "tmdb_id": 224330,
     "audience": "general",
-    "clean_name": "Raja Rani (",
+    "clean_name": "Raja Rani",
     "year": 2013,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance",
+      "Comedy",
+      "Drama"
+    ],
+    "plot": "John and Regina, who dislike each other, are forced to get married and lead troubled lives. However, things take a turn when the couple suffers a sudden tragedy.",
     "new_name": "Raja Rani (2013) [1080p] [HQ] [BluRay] [DTS5.1 - 1509Kbps & AAC] [ESub] [15.5 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/szdy0Tmyc5zrz025JSTWx6EYICR.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/bGupHntcldWhH1gUWAV3sjjhGE6.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/uwH4jMxENxXd7lEIG28ead4XoSZ.png",
     "versions": [
       {
         "source": "gd",
@@ -1597,21 +1882,28 @@
         "audio": "DTS5.1 - 1509Kbps + AAC",
         "size": "16 GB"
       }
-    ]
+    ],
+    "title": "Raja Rani",
+    "orig_lang": "ta",
+    "rating": 7.2
   },
   {
     "id": "059",
     "tmdb_id": 1008633,
     "audience": "general",
-    "clean_name": "Brother (",
+    "clean_name": "Brother",
     "year": 2024,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Drama",
+      "Family",
+      "Comedy"
+    ],
+    "plot": "Karthik, an unwavering idealist, goes on a journey to restore harmony in the fractured family and prove himself, when his pursuit of justice inadvertently clashes with family loyalty.",
     "new_name": "Brother (2024) [1080p] [WEB-DL] [DD+5.1 - 192Kbps & AAC 2.0] [ESub] [2.3 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/hTVmE8Hou72Es4XQnTR9CDkJgq4.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/azukzBMEcJGrSR0ZxOFTSdNM1Mq.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/HNm1RenBC5O4AQ5elaffl9ZbB2.png",
     "versions": [
       {
         "source": "gd",
@@ -1622,19 +1914,25 @@
         "audio": "DD+5.1 - 192Kbps + AAC 2.0",
         "size": "2 GB"
       }
-    ]
+    ],
+    "title": "Brother",
+    "orig_lang": "ta",
+    "rating": 6.5
   },
   {
     "id": "060",
     "tmdb_id": 66275,
     "audience": "general",
-    "clean_name": "Thambikku Entha Ooru (",
+    "clean_name": "Thambikku Entha Ooru",
     "year": 1984,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance",
+      "Comedy"
+    ],
+    "plot": "Seeing Balu's spendthrift and carefree attitude, his father sends him to his friend's house in a village to get reformed. Things get complicated when he gets entangled in a love triangle.",
     "new_name": "Thambikku Entha Ooru (1984) [1080p] [Untouched] [x264] [Tamil- 1080p HD AVC UNTOUCHED-x264-AAC- 4.7GB-ESub] [ESub] [4.7 GB].mkv",
-    "poster": "",
+    "poster": "https://image.tmdb.org/t/p/original/wNoMLQy2uRegvOK6rUWJfEmJ9vn.jpg",
     "fanart": "",
     "clearlogo": "",
     "versions": [
@@ -1647,21 +1945,29 @@
         "audio": "AAC",
         "size": "5 GB"
       }
-    ]
+    ],
+    "title": "Thambikku Entha Ooru",
+    "orig_lang": "ta",
+    "rating": 7
   },
   {
     "id": "061",
     "tmdb_id": 63647,
     "audience": "general",
-    "clean_name": "Ghilli (",
+    "clean_name": "Ghilli",
     "year": 2004,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Family",
+      "Romance"
+    ],
+    "plot": "Muthu Pandi, a village strongman, decides to marry Dhanalakshmi, and begins his quest by eliminating everyone who opposes their union - starting with both her brothers. In desperation, Dhanalakshmi decides to escape from the village, and in the process is unwittingly assisted by a university Kabaddi player Velu.",
     "new_name": "Ghilli (2004) [1080p] [WEB-DL] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [12.2 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/aUvUohnBgX5sbuMKNyKDAPAoVNc.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/wSFbFtoEmb9vziQVatktYi585gf.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/fnoMkdQyQmxxC1vkeQdcwqJHEYb.png",
     "versions": [
       {
         "source": "gd",
@@ -1672,21 +1978,27 @@
         "audio": "DD+5.1 - 640Kbps + AAC 2.0",
         "size": "12 GB"
       }
-    ]
+    ],
+    "title": "Ghilli",
+    "orig_lang": "ta",
+    "rating": 7.1
   },
   {
     "id": "062",
     "tmdb_id": 17888,
     "audience": "general",
-    "clean_name": "Dasavathaaram (",
+    "clean_name": "Dasavatharam",
     "year": 2008,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "plot": "Bio-technologist Govind K Somaiyya sets about on a precarious journey to India to retrieve a vial containing a deadly virus and prevent it from reaching the wrong hands of an ex-CIA agent and deadly assassins.",
     "new_name": "Dasavathaaram (2008) [1080p] [DD+5.1 - 640Kbps & AAC 2.0] [ESub] [13.5 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/6JVJEJmFb0cL7r7p00BvNDeC70Y.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/sVImmZxxflmCxhsMEgWyoPWoTTe.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/dKgiWU3ex9AqMWCPEh3HbWLBJmX.png",
     "versions": [
       {
         "source": "gd",
@@ -1697,21 +2009,28 @@
         "audio": "DD+5.1 - 640Kbps + AAC 2.0",
         "size": "14 GB"
       }
-    ]
+    ],
+    "title": "Dasavatharam",
+    "orig_lang": "ta",
+    "rating": 6.7
   },
   {
     "id": "063",
     "tmdb_id": 1060046,
     "audience": "general",
-    "clean_name": "HIT: The Third Case (",
+    "clean_name": "HIT: The Third Case",
     "year": 2025,
     "lang": "Tamil + Telugu + Hindi + Malayalam + Kannada",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Crime",
+      "Thriller",
+      "Action"
+    ],
+    "plot": "The Homicide Intervention Team (HIT) sends ruthless police officer Arjun Sarkaar to find a group of killers and stop their grisly murder spree.",
     "new_name": "HIT: The Third Case (2025) [Tam+Tel+Hin+Mal+Kan] [10 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/wT9tGyFol4RBwkjESXUWeBdnLJn.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/xzpXvyetmrdR3NSRN9uy0xO3lR1.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/qCGDcbfUBsZq95kx6ulCPqvlInu.png",
     "versions": [
       {
         "source": "gd",
@@ -1722,21 +2041,28 @@
         "audio": "DD+5.1 + ATMOS - 768k + AAC 2.0",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "HIT: The Third Case",
+    "orig_lang": "te",
+    "rating": 6.7
   },
   {
     "id": "064",
     "tmdb_id": 297802,
     "audience": "general",
-    "clean_name": "Aquaman (",
+    "clean_name": "Aquaman",
     "year": 2018,
     "lang": "Tamil + Telugu + Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "plot": "Half-human, half-Atlantean Arthur Curry is taken on the journey of his lifetime to discover if he is worth of being a king.",
     "new_name": "Aquaman (2018) [1080p] [AMZN] [11.4 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/ufl63EFcc5XpByEV2Ecdw6WJZAI.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/9QusGjxcYvfPD1THg6oW3RLeNn7.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/qGDxrxbTNhwDQXTPjp700l0Rm2U.png",
     "versions": [
       {
         "source": "gd",
@@ -1756,21 +2082,28 @@
         "audio": "",
         "size": "11 GB"
       }
-    ]
+    ],
+    "title": "Aquaman",
+    "orig_lang": "en",
+    "rating": 6.9
   },
   {
     "id": "065",
     "tmdb_id": 27205,
     "audience": "general",
-    "clean_name": "Inception (",
+    "clean_name": "Inception",
     "year": 2010,
     "lang": "Tamil + Telugu + Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Science Fiction",
+      "Crime"
+    ],
+    "plot": "Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: \"inception\", the implantation of another person's idea into a target's subconscious.",
     "new_name": "Inception (2010) [1080p] [BluRay] [x265 HEVC] [Telugu (DD+2.0 - 224k) + Eng + Tam + Hin] [ESub] [4 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/8ZTVqvKDQ8emSGUEMjsS4yHAwrp.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/eS5TjZsO30LTfZISyBbPiXshAKd.png",
     "versions": [
       {
         "source": "gd",
@@ -1781,21 +2114,27 @@
         "audio": "DD+2.0 - 224k",
         "size": "4 GB"
       }
-    ]
+    ],
+    "title": "Inception",
+    "orig_lang": "en",
+    "rating": 8.4
   },
   {
     "id": "066",
     "tmdb_id": 1241624,
     "audience": "general",
-    "clean_name": "Ghost.Train.",
+    "clean_name": "Ghost Train",
     "year": 2025,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "plot": "Da-kyung, a horror YouTuber desperate for views, uploads a video about the eerie urban legends surrounding Gwanglim Station—the site of the highest number of missing person cases in the country. The video goes viral overnight. Despite everyone's warnings, Da-kyung's thirst for views only grows stronger. But as she digs deeper, she uncovers a shocking secret behind the station…",
     "new_name": "Ghost Train (2025) [1080p] [AMZN] [x264] [7 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/rOTXYy5ScOHdaC2YMQowVwQex5s.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/tIelKFZsCHcL9s9JY0M6b0FfYiX.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/e42fonus69wUlTgqmtW0QKPTwxG.png",
     "versions": [
       {
         "source": "gd",
@@ -1806,21 +2145,27 @@
         "audio": "DDP",
         "size": "7 GB"
       }
-    ]
+    ],
+    "title": "Ghost Train",
+    "orig_lang": "ko",
+    "rating": 7.2
   },
   {
     "id": "067",
     "tmdb_id": 574475,
     "audience": "general",
-    "clean_name": "Final Destination Bloodlines (",
+    "clean_name": "Final Destination Bloodlines",
     "year": 2025,
     "lang": "Tamil + Telugu + Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "plot": "Plagued by a violent recurring nightmare, college student Stefanie heads home to track down the one person who might be able to break the cycle and save her family from the grisly demise that inevitably awaits them all.",
     "new_name": "Final Destination - Bloodlines (2025) [1080p] [BluRay] [AMZN] [AMZN Hin-Tam-Tel DDP 5.1 - 640k + Eng TrueHD Atmos 7.1] [15 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/6WxhEvFsauuACfv8HyoVX6mZKFj.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/uIpJPDNFoeX0TVml9smPrs9KUVx.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/v1qnIVyG8wvMOsJyHCLrGJwqvlX.png",
     "versions": [
       {
         "source": "gd",
@@ -1831,21 +2176,27 @@
         "audio": "DDP 5.1 - 640k + TrueHD Atmos",
         "size": "15 GB"
       }
-    ]
+    ],
+    "title": "Final Destination Bloodlines",
+    "orig_lang": "en",
+    "rating": 7
   },
   {
     "id": "068",
     "tmdb_id": 1304313,
     "audience": "general",
-    "clean_name": "Lee.Cronins.The.Mummy.",
+    "clean_name": "Lee Cronin's The Mummy",
     "year": 2026,
     "lang": "Tamil + Telugu + Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "plot": "The young daughter of a journalist disappears into the desert without a trace—eight years later, the broken family is shocked when she is returned to them, as what should be a joyful reunion turns into a living nightmare.",
     "new_name": "Lee Cronins The Mummy (2026) [1080p] [WEB-DL] [x264] [DDP5.1] [9 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/1q308iixueCU4pFtSYugNOevtNx.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/xugEpZk9YQ0DIz1aFvH5HGkqpZK.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/c03UF3dIm6Wl6hFYPmL2N4X2gxQ.png",
     "versions": [
       {
         "source": "gd",
@@ -1856,21 +2207,28 @@
         "audio": "DDP5.1 + Atmos",
         "size": "9 GB"
       }
-    ]
+    ],
+    "title": "Lee Cronin's The Mummy",
+    "orig_lang": "en",
+    "rating": 7.8
   },
   {
     "id": "069",
     "tmdb_id": 570670,
     "audience": "general",
-    "clean_name": "The Invisible Man (",
+    "clean_name": "The Invisible Man",
     "year": 2020,
     "lang": "Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Thriller",
+      "Science Fiction",
+      "Horror"
+    ],
+    "plot": "When Cecilia's abusive ex takes his own life and leaves her his fortune, she suspects his death was a hoax. As a series of coincidences turn lethal, Cecilia works to prove that she is being hunted by someone nobody can see.",
     "new_name": "The Invisible Man (2020) [1080p] [BluRay] [x265 HEVC] [Org Hindi BD DDP 7.1 - 768Kbps + English AAC 7.1] [ESub] [4 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/5EufsDwXdY2CVttYOk2WtYhgKpa.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/tweDJNQzBGgsWVF5MC8JhSAk07p.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/uhCrTWK0SiZ1XkuW7ruUuzTJGhh.png",
     "versions": [
       {
         "source": "gd",
@@ -1881,21 +2239,28 @@
         "audio": "DDP 7.1 - 768Kbps + AAC 7.1",
         "size": "4 GB"
       }
-    ]
+    ],
+    "title": "The Invisible Man",
+    "orig_lang": "en",
+    "rating": 7.1
   },
   {
     "id": "070",
     "tmdb_id": 563309,
     "audience": "general",
-    "clean_name": "Whistle.",
+    "clean_name": "Bigil",
     "year": 2025,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Drama",
+      "Action",
+      "Family"
+    ],
+    "plot": "A do-gooder don wants his footballer son to uplift the life of his people by becoming a champion, but fate draws the youngster into a life of violence. Will he be able to fulfill his father’s dream when an opportunity comes his way seven years later?",
     "new_name": "Whistle (2025) [1080p] [10bit] [DS4K] [AMZN] [x265 HEVC] [DDP5.1 - 640kbps] [ESub] [6 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/bk6x3PHpTC3zpVHedGFfygHxbll.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/cc14e095w0ri6ppoLxSEl7iUqHs.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/aM2kG7tlA7LFJA1I3nUwc7k4RHc.png",
     "versions": [
       {
         "source": "gd",
@@ -1906,21 +2271,28 @@
         "audio": "DDP5.1 - 640kbps",
         "size": "6 GB"
       }
-    ]
+    ],
+    "title": "Bigil",
+    "orig_lang": "ta",
+    "rating": 6.3
   },
   {
     "id": "071",
     "tmdb_id": 45612,
     "audience": "general",
-    "clean_name": "Source Code (",
+    "clean_name": "Source Code",
     "year": 2011,
     "lang": "Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Thriller",
+      "Science Fiction",
+      "Mystery"
+    ],
+    "plot": "When decorated soldier Captain Colter Stevens wakes up in the body of an unknown man, he discovers he's part of a mission to find the bomber of a Chicago commuter train.",
     "new_name": "Source Code (2011) [1080p] [60FPS] [10bit] [BluRay] [x265 HEVC] [Hindi + English] [4 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/nTr0lvAzeQmUjgSgDEHTJpnrxTz.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/mDb4uku4zEElsITXDpbir4fR0HW.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/r1W9g22WCyIMbCDVNgbUsnPEQ1D.png",
     "versions": [
       {
         "source": "gd",
@@ -1931,21 +2303,30 @@
         "audio": "",
         "size": "4 GB"
       }
-    ]
+    ],
+    "title": "Source Code",
+    "orig_lang": "en",
+    "rating": 7.3
   },
   {
     "id": "072",
     "tmdb_id": 1495,
     "audience": "general",
-    "clean_name": "Kingdom Of Heaven (",
+    "clean_name": "Kingdom of Heaven",
     "year": 2005,
     "lang": "Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Drama",
+      "Action",
+      "Adventure",
+      "History",
+      "War"
+    ],
+    "plot": "After his wife dies, a blacksmith named Balian is thrust into royalty, political intrigue and bloody holy wars during the Crusades.",
     "new_name": "Kingdom Of Heaven (2005) [1080p] [Extended Cut] [BluRay] [Hindi DD 2.0 - 384k + English AAC 5.1] [5 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/2NaFdWy9hkM35vZB1hkqsnTcms8.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/kP8rK9dGS1pr0HrnmXfIi2heWjo.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/vRbEzqmny2vy5xKSDexxixA2My6.png",
     "versions": [
       {
         "source": "gd",
@@ -1956,21 +2337,28 @@
         "audio": "DD 2.0 - 384k + AAC 5.1",
         "size": "5 GB"
       }
-    ]
+    ],
+    "title": "Kingdom of Heaven",
+    "orig_lang": "en",
+    "rating": 7.1
   },
   {
     "id": "073",
     "tmdb_id": 157336,
     "audience": "general",
-    "clean_name": "Interstellar (",
+    "clean_name": "Interstellar",
     "year": 2014,
     "lang": "Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Science Fiction"
+    ],
+    "plot": "The adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
     "new_name": "Interstellar (2014) [1080p] [AMZN] [x265 HEVC] [DD+5.1] [5.5 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/8sNiAPPYU14PUepFNeSNGUTiHW.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/4Hu4w5p0mwL2Wvyk3gqu2JRDGHl.png",
     "versions": [
       {
         "source": "gd",
@@ -1990,21 +2378,27 @@
         "audio": "DD+5.1",
         "size": "5.5 GB"
       }
-    ]
+    ],
+    "title": "Interstellar",
+    "orig_lang": "en",
+    "rating": 8.5
   },
   {
     "id": "074",
     "tmdb_id": 1232546,
     "audience": "general",
-    "clean_name": "Until Dawn (",
+    "clean_name": "Until Dawn",
     "year": 2025,
     "lang": "Tamil + Telugu + Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "plot": "One year after her sister Melanie mysteriously disappeared, Clover and her friends head into the remote valley where she vanished in search of answers. Exploring an abandoned visitor center, they find themselves stalked by a masked killer and horrifically murdered one by one...only to wake up and find themselves back at the beginning of the same evening.",
     "new_name": "Until Dawn (2025) [1080p] [BluRay] [AMZN] [x265 HEVC] [AMZN Hin-Tam-Tel DDP 5.1 - 640k + Eng DDP 7.1] [ESub] [8 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/bLY5yN4MKVynZ2HMZWElTOGBgBe.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/3xKJ0nyUTlySmMBCpOcsuSnFPI1.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/uOKq9fQUttyJ75JgxFqdLBqFMMZ.png",
     "versions": [
       {
         "source": "gd",
@@ -2015,21 +2409,27 @@
         "audio": "DDP 5.1 - 640k + DDP 7.1",
         "size": "8 GB"
       }
-    ]
+    ],
+    "title": "Until Dawn",
+    "orig_lang": "en",
+    "rating": 6.2
   },
   {
     "id": "075",
     "tmdb_id": 1637,
     "audience": "general",
-    "clean_name": "Speed (",
+    "clean_name": "Speed",
     "year": 1994,
     "lang": "Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "plot": "Tensions run high when a crazed bomber rigs a Los Angeles bus with a device that will kill everyone on board if the vehicle's speed dips below fifty miles per hour.",
     "new_name": "Speed (1994) [2160p 4K] [HDR10] [BluRay] [Org VCD Hindi DD 2.0 - 224k + Eng DTS-HDMA 5.1] [10 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/82PkCE4R95KhHICUDF7G4Ly2z3l.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/lywmuPU5Hr1Mnpb9UGeDbILmkTx.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/5Vg8h9dix8oTCJ8ToCSnSTCxdmU.png",
     "versions": [
       {
         "source": "gd",
@@ -2040,21 +2440,28 @@
         "audio": "DD 2.0 - 224k + DTS-HDMA 5.1",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "Speed",
+    "orig_lang": "en",
+    "rating": 7.2
   },
   {
     "id": "076",
     "tmdb_id": 564,
     "audience": "general",
-    "clean_name": "The Mummy (",
+    "clean_name": "The Mummy",
     "year": 1999,
     "lang": "Tamil + Telugu + Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Adventure",
+      "Action",
+      "Fantasy"
+    ],
+    "plot": "Dashing legionnaire Rick O'Connell stumbles upon the hidden ruins of Hamunaptra while in the midst of a battle to claim the area in 1920s Egypt. It has been over three thousand years since former High Priest Imhotep suffered a fate worse than death as a punishment for a forbidden love—along with a curse that guarantees eternal doom upon the world if he is ever awoken.",
     "new_name": "The Mummy (1999) [1080p] [BluRay] [Netflix] [x264] [Org NF Hin-Tam-Tel DDP 5.1 - 640k + Eng DTS-X 7.1] [17 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/yhIsVvcUm7QxzLfT6HW2wLf5ajY.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/8zLS8p1tRyWFLRFfmgQq0j5WE6z.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/3UGycN6SP7PPmB5ZWIf9bphm2UM.png",
     "versions": [
       {
         "source": "gd",
@@ -2065,21 +2472,26 @@
         "audio": "DDP 5.1 - 640k + DTS",
         "size": "17 GB"
       }
-    ]
+    ],
+    "title": "The Mummy",
+    "orig_lang": "en",
+    "rating": 7
   },
   {
     "id": "077",
     "tmdb_id": 1038392,
     "audience": "general",
-    "clean_name": "The Conjuring Last Rites (",
+    "clean_name": "The Conjuring: Last Rites",
     "year": 2025,
     "lang": "Tamil + Telugu + Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Horror"
+    ],
+    "plot": "Paranormal investigators Ed and Lorraine Warren take on one last terrifying case involving mysterious entities they must confront.",
     "new_name": "The Conjuring-Last Rites (2025) [1080p] [IMAX] [AMZN] [AMZN Hin-Tam-Tel DDP 5.1 - 640k + Eng TrueHD Atmos 7.1] [18 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/umvkcIb0XAk486TEmx1V5aVzhbm.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/i8MupUe4xgmYXoRNAQMYvuoexSU.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/6TO2hgAcc7FoWExNX6I6IgXtp9Q.png",
     "versions": [
       {
         "source": "gd",
@@ -2090,21 +2502,28 @@
         "audio": "DDP 5.1 - 640k + TrueHD Atmos",
         "size": "18 GB"
       }
-    ]
+    ],
+    "title": "The Conjuring: Last Rites",
+    "orig_lang": "en",
+    "rating": 7
   },
   {
     "id": "078",
     "tmdb_id": 49026,
     "audience": "general",
-    "clean_name": "The Dark Knight Rises (",
+    "clean_name": "The Dark Knight Rises",
     "year": 2012,
     "lang": "Tamil + Telugu + Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "plot": "Following the death of District Attorney Harvey Dent, Batman assumes responsibility for Dent's crimes to protect the late attorney's reputation and is subsequently hunted by the Gotham City Police Department. Eight years later, Batman encounters the mysterious Selina Kyle and the villainous Bane, a new terrorist leader who overwhelms Gotham's finest. The Dark Knight resurfaces to protect a city that has branded him an enemy.",
     "new_name": "The Dark Knight Rises (2012) [1080p] [IMAX] [AMZN] [AMZN (Tam+Tel+Hin) DDP 5.1 - 640k + Eng DDP 5.1] [16 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/hr0L2aueqlP2BYUblTTjmtn0hw4.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/c3OHQncTAnKFhdOTX7D3LTW6son.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/A0QGz3heDFbLT3YCXa2jUKfWnbx.png",
     "versions": [
       {
         "source": "gd",
@@ -2115,21 +2534,28 @@
         "audio": "DDP 5.1 - 640k + DDP 5.1",
         "size": "16 GB"
       }
-    ]
+    ],
+    "title": "The Dark Knight Rises",
+    "orig_lang": "en",
+    "rating": 7.8
   },
   {
     "id": "079",
     "tmdb_id": 155,
     "audience": "general",
-    "clean_name": "The Dark Knight (",
+    "clean_name": "The Dark Knight",
     "year": 2008,
     "lang": "Tamil + Telugu + Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Thriller",
+      "Crime"
+    ],
+    "plot": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
     "new_name": "The Dark Knight (2008) [1080p] [IMAX] [AMZN] [AMZN (Tam+Tel+Hin) DDP 2.0 - 224k + Eng DDP 5.1] [19 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/cfT29Im5VDvjE0RpyKOSdCKZal7.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/nO5Uix3Qr4WjOyU1BMPv0okyNWm.png",
     "versions": [
       {
         "source": "gd",
@@ -2140,21 +2566,29 @@
         "audio": "DDP 2.0 - 224k + DDP 5.1",
         "size": "19 GB"
       }
-    ]
+    ],
+    "title": "The Dark Knight",
+    "orig_lang": "en",
+    "rating": 8.5
   },
   {
     "id": "080",
     "tmdb_id": 26842,
     "audience": "general",
-    "clean_name": "The Message (",
+    "clean_name": "The Message",
     "year": 1977,
     "lang": "Tamil + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Action",
+      "History"
+    ],
+    "plot": "In sixth-century Mecca, Prophet Muhammad receives his first revelation from God as a messenger. Three years later, he's not alone in his quest and publicly declares his prophecy. Muhammad is fought by Abu Sufian and his wife Hind, rulers of Mecca. Muhammad's followers are hunted and tortured but he continues his calling.",
     "new_name": "The Message (1977) [1080p] [BluRay] [x264] [Tamil AAC 2.0 + English DTS 5.1] [11 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/qVCBMg4ZuLPnWhIWJHD9IP4nIuY.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/rqODzehgQ8Hl0tcUd7qIcy8Pc9Z.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/nQw5RqheL5COxotHDzt29xf6JfR.png",
     "versions": [
       {
         "source": "gd",
@@ -2165,21 +2599,28 @@
         "audio": "AAC 2.0 + DTS 5.1",
         "size": "11 GB"
       }
-    ]
+    ],
+    "title": "The Message",
+    "orig_lang": "en",
+    "rating": 7.1
   },
   {
     "id": "081",
     "tmdb_id": 353486,
     "audience": "general",
-    "clean_name": "Jumanji Welcome to the Jungle (",
+    "clean_name": "Jumanji: Welcome to the Jungle",
     "year": 2017,
     "lang": "Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Fantasy"
+    ],
+    "plot": "Four teenagers in detention discover an old video game console with a game they’ve never heard of. When they decide to play, they are immediately sucked into the jungle world of Jumanji in the bodies of their avatars. They’ll have to complete the adventure of their lives filled with fun, thrills and danger or be stuck in the game forever!",
     "new_name": "Jumanji Welcome to the Jungle (2017) [1080p] [AMZN] [AMZN Hindi DDP 5.1 - 640k + Eng DTS-HDMA 5.1] [9 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/pSgXKPU5h6U89ipF7HBYajvYt7j.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/zZKmEmRDc7ZjFucPm2UGNgDRlDc.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/A5R94rW4L9HUruWbw3ra5xFQaKB.png",
     "versions": [
       {
         "source": "gd",
@@ -2190,21 +2631,28 @@
         "audio": "DDP 5.1 - 640k + DTS-HDMA 5.1",
         "size": "9 GB"
       }
-    ]
+    ],
+    "title": "Jumanji: Welcome to the Jungle",
+    "orig_lang": "en",
+    "rating": 6.8
   },
   {
     "id": "082",
     "tmdb_id": 575265,
     "audience": "general",
-    "clean_name": "Mission Impossible The Final Reckoning (",
+    "clean_name": "Mission: Impossible - The Final Reckoning",
     "year": 2025,
     "lang": "Tamil + Telugu + Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Thriller",
+      "Adventure"
+    ],
+    "plot": "Ethan Hunt and team continue their search for the terrifying AI known as the Entity — which has infiltrated intelligence networks all over the globe — with the world's governments and a mysterious ghost from Hunt's past on their trail. Joined by new allies and armed with the means to shut the Entity down for good, Hunt is in a race against time to prevent the world as we know it from changing forever.",
     "new_name": "Mission Impossible The Final Reckoning (2025) [IMAX] [(Tam+Tel+Hin) DDP 5.1 - 640k + Eng DDP 7.1] [16 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/iKPsC9EFUafRP9SrUznI61getVP.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/538U9snNc2fpnOmYXAPUh3zn31H.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/7yXEfWFDGpqIfq9wdpMOHcHbi8g.png",
     "versions": [
       {
         "source": "gd",
@@ -2215,21 +2663,29 @@
         "audio": "DDP 5.1 - 640k + DDP 7.1",
         "size": "16 GB"
       }
-    ]
+    ],
+    "title": "Mission: Impossible - The Final Reckoning",
+    "orig_lang": "en",
+    "rating": 7.2
   },
   {
     "id": "083",
     "tmdb_id": 135397,
     "audience": "general",
-    "clean_name": "Jurassic World (",
+    "clean_name": "Jurassic World",
     "year": 2015,
     "lang": "Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Adventure",
+      "Science Fiction",
+      "Thriller",
+      "Action"
+    ],
+    "plot": "Twenty-two years after the events of Jurassic Park, Isla Nublar now features a fully functioning dinosaur theme park, Jurassic World, as originally envisioned by John Hammond.",
     "new_name": "Jurassic World (2015) [1080p] [BluRay] [Org Hindi BD DTS 5.1 - 768k + AAC 7.1 English] [6.7 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/bkXjL03yWPmiuFqxWEp4zSYVZBY.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/dF6FjTZzRTENfB4R17HDN20jLT2.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/vleUbBFlEGdxaazvzBMoZ5dHDoY.png",
     "versions": [
       {
         "source": "gd",
@@ -2240,21 +2696,29 @@
         "audio": "DTS 5.1 - 768k + AAC 7.1",
         "size": "6.7 GB"
       }
-    ]
+    ],
+    "title": "Jurassic World",
+    "orig_lang": "en",
+    "rating": 6.7
   },
   {
     "id": "084",
     "tmdb_id": 10137,
     "audience": "general",
-    "clean_name": "Stuart Little (",
+    "clean_name": "Stuart Little",
     "year": 1999,
     "lang": "Tamil + Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Family",
+      "Fantasy",
+      "Comedy",
+      "Adventure"
+    ],
+    "plot": "When the Littles adopt Stuart, the mouse, George is initially unwelcoming to his new brother, and the family cat, Snowbell, is even less enthusiastic. Stuart resolves to face these difficulties with as much pluck and courage as he can muster.",
     "new_name": "Stuart Little (1999) [1080p] [BluRay] [Old Dub (Tamil+Hindi) MP3 2.0 + Eng DDP 5.1] [4 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/362lcwTJlNyAhitTlp2UraECISR.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/dECKGAenue36W50HYhd3Jh1OJs.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/h2E3gejtNhlqsH8gPn3InA0kbdB.png",
     "versions": [
       {
         "source": "gd",
@@ -2265,21 +2729,28 @@
         "audio": "DDP 5.1",
         "size": "4 GB"
       }
-    ]
+    ],
+    "title": "Stuart Little",
+    "orig_lang": "en",
+    "rating": 6.1
   },
   {
     "id": "085",
     "tmdb_id": 24428,
     "audience": "general",
-    "clean_name": "The Avengers (",
+    "clean_name": "The Avengers",
     "year": 2012,
     "lang": "Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Science Fiction",
+      "Action",
+      "Adventure"
+    ],
+    "plot": "When an unexpected enemy emerges and threatens global safety and security, Nick Fury, director of the international peacekeeping agency known as S.H.I.E.L.D., finds himself in need of a team to pull the world back from the brink of disaster. Spanning the globe, a daring recruitment effort begins!",
     "new_name": "The Avengers (2012) [1080p] [BluRay] [x264] [Org Hindi BD 5.1 - 640Kbps + Eng DTS- HDMA 7.1] [16 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/9BBTo63ANSmhC4e6r62OJFuK2GL.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/2VLCNzMOGayRGdiSGyaOD0MzA3Y.png",
     "versions": [
       {
         "source": "gd",
@@ -2290,21 +2761,28 @@
         "audio": "DTS",
         "size": "16 GB"
       }
-    ]
+    ],
+    "title": "The Avengers",
+    "orig_lang": "en",
+    "rating": 8.1
   },
   {
     "id": "086",
     "tmdb_id": 1734,
     "audience": "general",
-    "clean_name": "The Mummy Returns (",
+    "clean_name": "The Mummy Returns",
     "year": 2001,
     "lang": "Tamil + Telugu + Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Adventure",
+      "Action",
+      "Fantasy"
+    ],
+    "plot": "Rick and Evelyn O’Connell, along with their 8-year-old son Alex, discover the key to the legendary Scorpion King’s might: the fabled Bracelet of Anubis. Unfortunately, a newly resurrected Imhotep has designs on the bracelet as well, and isn’t above kidnapping its new bearer, Alex, to gain control of Anubis’s otherworldly army.",
     "new_name": "The Mummy Returns (2001) [1080p] [BluRay] [Netflix] [Org NF Hin-Tam-Tel DDP 5.1 - 640k + Eng DTS-X 7.1] [18 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/kdJsW7hcy1lrj7tdMPycTAQPAiR.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/7s7WkAFPBsMTprYMbqbgKoppQsR.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/8q4Bm79S8gRdcyYP3NKquIvC0UM.png",
     "versions": [
       {
         "source": "gd",
@@ -2315,21 +2793,27 @@
         "audio": "DDP 5.1 - 640k + DTS",
         "size": "18 GB"
       }
-    ]
+    ],
+    "title": "The Mummy Returns",
+    "orig_lang": "en",
+    "rating": 6.4
   },
   {
     "id": "087",
     "tmdb_id": 857598,
     "audience": "general",
-    "clean_name": "Pushpa.2.The.Rule.Reloaded.Version",
+    "clean_name": "Pushpa 2 - The Rule",
     "year": 2025,
     "lang": "Tamil + Telugu + Hindi + Malayalam + Kannada",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Drama",
+      "Action"
+    ],
+    "plot": "As his smuggling empire grows, a brazen Pushpa longs for power and respect on his vengeful journey, while facing old rivals and new.",
     "new_name": "Pushpa 2 The Rule Reloaded Version (2025) [1080p] [WEB-DL] [Netflix] [HIN-TAM-TEL- KAN-MAL DDP5.1] [13 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/1T21FblunT0y8fz7YaW8JMYgUKm.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/7jGItf7idJsBm9QTNoTNTU3KiGe.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/cCNpEDPa6QA8VfDS4UTAEKnNDwc.png",
     "versions": [
       {
         "source": "gd",
@@ -2349,7 +2833,10 @@
         "audio": "DDP5.1",
         "size": "13 GB"
       }
-    ]
+    ],
+    "title": "Pushpa 2 - The Rule",
+    "orig_lang": "te",
+    "rating": 6.2
   },
   {
     "id": "088",
@@ -2358,12 +2845,15 @@
     "clean_name": "Peddi",
     "year": 2026,
     "lang": "Tamil + Telugu + Hindi + Malayalam + Kannada",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "plot": "In a village that doesn't officially exist, a laborer's unmatched athletic talent becomes his weapon to fight for his people's right to be recognized.",
     "new_name": "Peddi (2026) [1080p] [DS4K] [HQ] [Netflix] [x265 HEVC] [HIN DDP 2.0 - TAM-TEL-KAN-MAL DDP 5.1] [ESub] [12 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/kJAJNNBYlbqAcpTDxBNnaILSMTy.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/oPsRr7AfNLw6XaPuMpvkWK0bIUA.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/2WDyVZ2JJqMNWEUXewc0olRsguN.png",
     "versions": [
       {
         "source": "gd",
@@ -2374,21 +2864,28 @@
         "audio": "DDP 2.0 + DDP 5.1",
         "size": "12 GB"
       }
-    ]
+    ],
+    "title": "Peddi",
+    "orig_lang": "te",
+    "rating": 5.7
   },
   {
     "id": "089",
     "tmdb_id": 1290190,
     "audience": "general",
-    "clean_name": "Lokah Chapter 1 Chandra",
+    "clean_name": "Lokah Chapter 1: Chandra",
     "year": 2025,
     "lang": "Tamil + Telugu + Hindi + Malayalam + Kannada",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "plot": "The story follows Chandra, a mysterious, goth-influenced woman who has just moved to Bangalore and begins working night shifts at a café. Across the road from her apartment live Sunny and Venu, two aimless bachelors. Sunny becomes infatuated with Chandra, observing her odd routines, strange visitors, and reclusive nature. Their dynamic changes when Sunny gets a glimpse of Chandra in her act.",
     "new_name": "Lokah Chapter 1 Chandra (2025) [2160p 4K] [DoVi] [WEB-DL] [Tel+Hin+Tam+Kan+Mal+Ben+Mar DDP5.1 DoVi] [16 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/nRn6is4m5sikO1rSoCoRT2rYtXB.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/tkRZ8BpIlvQIFBQWwEHuAlxczyb.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/eFZ3xMTtJfWBVdAukb2EHV2R3yY.png",
     "versions": [
       {
         "source": "gd",
@@ -2399,21 +2896,28 @@
         "audio": "DDP5.1",
         "size": "16 GB"
       }
-    ]
+    ],
+    "title": "Lokah Chapter 1: Chandra",
+    "orig_lang": "ml",
+    "rating": 7.3
   },
   {
     "id": "090",
     "tmdb_id": 1083637,
     "audience": "general",
-    "clean_name": "Kantara A Legend Chapter 1 (",
+    "clean_name": "Kantara - A Legend: Chapter 1",
     "year": 2025,
     "lang": "Tamil + Telugu + Malayalam + Kannada",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Drama",
+      "Fantasy"
+    ],
+    "plot": "While exploring Kantara's mystical forest, Bangra's King Vijayendra dies during the Kadamba reign. Rajashekara seals their realm. Prince Kulashekara massacres to reopen it. Berme, seeking wealth, crosses the divide.",
     "new_name": "Kantara A Legend Chapter-1 (2025) [1080p] [AMZN] [x264] [Tel+Tam+Kan+Mal (DDP5.1 - 640Kbps)] [MSub] [14 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/hCxdcaRK6jmwnwjitYRejVCU1P0.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/w57nxiBIODAYHLRs1xmrCY9zEFe.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/87YZCesQfWEwPwJUuDzspzNbXVG.png",
     "versions": [
       {
         "source": "gd",
@@ -2424,21 +2928,28 @@
         "audio": "DDP5.1 - 640Kbps",
         "size": "14 GB"
       }
-    ]
+    ],
+    "title": "Kantara - A Legend: Chapter 1",
+    "orig_lang": "kn",
+    "rating": 7.3
   },
   {
     "id": "091",
     "tmdb_id": 858485,
     "audience": "general",
-    "clean_name": "Kantara A Legend",
+    "clean_name": "Kantara",
     "year": 2022,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Thriller"
+    ],
+    "plot": "Shiva, a tribal vagabond lives with his mother in hamlet, stays away from the traditional Daivaradhane and Bhoota Kola legacy due to an unforgettable childhood incident. He is happy loafing around with his friends and doing petty jobs for his landlord. When Forest officer Murali enters the scene, it gives a fresh dimension to the man-vs-nature fight. Can Shiva save the forest from Murali? Or is Murali just a dummy bait cast by bigger fish?",
     "new_name": "Kantara A Legend (2022) [1080p] [60FPS] [10bit] [WEBRip] [AMZN] [x265 HEVC] [Multi DDP 5.1] [ESub] [12 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/jIsKmkxMzdCZ0Ux1GVSnu8m6Na6.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/kXElm7wt2kAXEVwJqW4cFhP43nW.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/1982HIBOM8J6rag7UsvMZojjhpb.png",
     "versions": [
       {
         "source": "gd",
@@ -2449,20 +2960,26 @@
         "audio": "DDP 5.1",
         "size": "12 GB"
       }
-    ]
+    ],
+    "title": "Kantara",
+    "orig_lang": "kn",
+    "rating": 7.1
   },
   {
     "id": "092",
     "tmdb_id": 587412,
     "audience": "general",
-    "clean_name": "KGF Chapter 2 (",
+    "clean_name": "K.G.F: Chapter 2",
     "year": 2022,
     "lang": "Tamil + Telugu + Hindi + Malayalam + Kannada",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "plot": "The blood-soaked land of Kolar Gold Fields (KGF) has a new overlord now - Rocky, whose name strikes fear in the heart of his foes. His allies look up to Rocky as their Savior, the government sees him as a threat to law and order; enemies are clamoring for revenge and conspiring for his downfall. Bloodier battles and darker days await as Rocky continues on his quest for unchallenged supremacy.",
     "new_name": "KGF Chapter 2 (2022) [1080p] [AMZN] [AMZN (Tam+Tel+Mal+Hin) DDP 5.1 - 640k + Kan DDP 5.1 - 768k] [12 GB].mkv",
-    "poster": "",
-    "fanart": "",
+    "poster": "https://image.tmdb.org/t/p/original/khNVygolU0TxLIDWff5tQlAhZ23.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/nsV5Mfi9FAV4w8eDsdr7uqVswOk.jpg",
     "clearlogo": "",
     "versions": [
       {
@@ -2474,21 +2991,26 @@
         "audio": "DDP 5.1 - 640k + DDP 5.1 - 768k",
         "size": "12 GB"
       }
-    ]
+    ],
+    "title": "K.G.F: Chapter 2",
+    "orig_lang": "kn",
+    "rating": 7.4
   },
   {
     "id": "093",
     "tmdb_id": 540468,
     "audience": "general",
-    "clean_name": "Geetha Govindam (",
+    "clean_name": "Geetha Govindam",
     "year": 2018,
     "lang": "Telugu + Hindi",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance"
+    ],
+    "plot": "Vijay Govind, a young college lecturer who dreams of marriage falls for Geetha, a level-headed woman who's wary of strangers and isn't easy to convince. While things seem to go smoothly, Vijay makes a terrible mistake which not only derails any hope for his love story, but also potential repercussions with his family.",
     "new_name": "Geetha Govindam (2018) [2160p 4K] [ZEE5] [x265 HEVC] [Tel + Hin (DDP5.1 - 192Kbps)] [ESub] [3 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/4pPnvasj2vwcs8EMmUPUUBhNycT.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/2pJ9xW1mA7zRfrg9On9e8AekrQM.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/yu2jKIs19g5ptImsK1JpLBQfZMd.png",
     "versions": [
       {
         "source": "gd",
@@ -2499,21 +3021,27 @@
         "audio": "DDP5.1 - 192Kbps",
         "size": "3 GB"
       }
-    ]
+    ],
+    "title": "Geetha Govindam",
+    "orig_lang": "te",
+    "rating": 6.9
   },
   {
     "id": "094",
     "tmdb_id": 256040,
     "audience": "general",
-    "clean_name": "Baahubali The Beginning (",
+    "clean_name": "Bāhubali: The Beginning",
     "year": 2015,
     "lang": "Tamil + Telugu + Hindi + Malayalam",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "plot": "The young Shivudu is left as a foundling in a small village by his mother. By the time he’s grown up, it has become apparent that he possesses exceptional gifts. He meets the beautiful warrior princess Avanthika and learns that her queen has been held captive for the last 25 years. Shividu sets off to rescue her, discovering his own origins in the process.",
     "new_name": "Bāhubali: The Beginning (2015) [1080p] [BluRay] [Dolby Atmos] [15 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/9BAjt8nSSms62uOVYn1t3C3dVto.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/e9ZEuHGHZ06AToHlfN1L7nejJ7W.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/cw4i9YEzAP9X2rSOrcmrYHb1CCg.png",
     "versions": [
       {
         "source": "gd",
@@ -2533,21 +3061,29 @@
         "audio": "Atmos",
         "size": "15 GB"
       }
-    ]
+    ],
+    "title": "Bāhubali: The Beginning",
+    "orig_lang": "te",
+    "rating": 7.6
   },
   {
     "id": "095",
     "tmdb_id": 904557,
     "audience": "general",
-    "clean_name": "Thunivu.",
+    "clean_name": "Thunivu",
     "year": 2023,
     "lang": "Hindi",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller",
+      "Comedy"
+    ],
+    "plot": "A gang goes to rob a bank only to find that there's already a criminal mastermind holding it for ransom, but his identities and motives behind the heist remains mysterious. As they plan to collect the bounty and disappear without a trace, their crimes and their past slowly catches up with them.",
     "new_name": "Thunivu (2023) [1080p] [10bit] [DS4K] [WEBRip] [Netflix] [x265 HEVC] [DDP5.1] [5.5 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/5Cdi9MFxEGsfphvDxV4TyY4znP6.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/oeqw3D9a8qyrSNtkZIK1QaCxBMe.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/bh7BoaKrStP500uotmaSFH6Os0V.png",
     "versions": [
       {
         "source": "gd",
@@ -2558,7 +3094,10 @@
         "audio": "DDP5.1",
         "size": "5.5 GB"
       }
-    ]
+    ],
+    "title": "Thunivu",
+    "orig_lang": "ta",
+    "rating": 5.7
   },
   {
     "id": "096",
@@ -2567,12 +3106,15 @@
     "clean_name": "Thamma",
     "year": 2025,
     "lang": "Telugu + Hindi",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Horror",
+      "Comedy"
+    ],
+    "plot": "Two destined lovers battle supernatural forces, family ties, and nature itself to defend their forbidden romance in a mystical world where ancient powers and prophecies threaten to keep them apart.",
     "new_name": "Thamma (2025) [1080p] [WEB-DL] [AMZN] [x264] [HIN-TEL DDP5.1] [8 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/udkbDwBbysCGEydt0FHnl9dVO2k.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/e5bFtChejaGio218NejT0jXgSux.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/mO5B3zAx54qxl716CmkLp7oGEQu.png",
     "versions": [
       {
         "source": "gd",
@@ -2583,21 +3125,27 @@
         "audio": "DDP5.1",
         "size": "8 GB"
       }
-    ]
+    ],
+    "title": "Thamma",
+    "orig_lang": "hi",
+    "rating": 6.5
   },
   {
     "id": "097",
     "tmdb_id": 1142921,
     "audience": "general",
-    "clean_name": "Tere Ishk.Mein.",
+    "clean_name": "Tere Ishk Mein",
     "year": 2025,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "plot": "A psychology student attempts to rehabilitate a volatile young man, before evolving into a doomed romance.",
     "new_name": "Tere Ishk Mein (2025) [1080p] [Netflix] [x264] [DDP5.1] [8 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/7FsHlW9z7gDhDE4EXAE2WcXUVQj.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/3FgFKX1gW21LzjT0Yniflaqmhpr.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/mVAPQB033NXoB7yVyAlQHRalN56.png",
     "versions": [
       {
         "source": "gd",
@@ -2608,20 +3156,25 @@
         "audio": "DDP5.1",
         "size": "8 GB"
       }
-    ]
+    ],
+    "title": "Tere Ishk Mein",
+    "orig_lang": "hi",
+    "rating": 5.3
   },
   {
     "id": "098",
     "tmdb_id": 214041,
     "audience": "general",
-    "clean_name": "Vadhandhi.The.Fable.of.Velonie.",
+    "clean_name": "Under the Sign of Scorpio",
     "year": 2026,
     "lang": "Tamil + Telugu + Hindi",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Drama"
+    ],
+    "plot": "An island has been decimated by a volcanic eruption and the few survivors escape to a nearby island. Led by Rutolo, they know that their new home is equally susceptible to such a catastrophe via its own volcano, but they are unable to convince the current inhabitants of Island #2 to flee with them to a mainland.",
     "new_name": "Vadhandhi The Fable of Velonie (2026) [1080p] [AMZN] [DDP5.1] [3.4 GB].mkv",
-    "poster": "",
-    "fanart": "",
+    "poster": "https://image.tmdb.org/t/p/original/oJs6lDZTuin9FYE3JUWYmUvObxA.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/cQUkhWHcuaguVALhgFPYZW2b5AY.jpg",
     "clearlogo": "",
     "versions": [
       {
@@ -2696,21 +3249,28 @@
         "audio": "DDP5.1 + Atmos",
         "size": "3.4 GB"
       }
-    ]
+    ],
+    "title": "Under the Sign of Scorpio",
+    "orig_lang": "it",
+    "rating": 5.7
   },
   {
     "id": "099",
     "tmdb_id": 1209511,
     "audience": "general",
-    "clean_name": "Aura 10/10 Music Video | Meesaya Murukku 2 (",
+    "clean_name": "Love Insurance Kompany",
     "year": 2026,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance",
+      "Science Fiction",
+      "Comedy"
+    ],
+    "plot": "In 2040, an app premised on ensuring romance for all is used widely by the population. When the voice behind the app's AI realizes its misconception to true love, he embarks on a quest to prove that love does not come from a screen.",
     "new_name": "Aura 10/10-Music Video | Meesaya Murukku 2 (2026) [DOLBY ATMOS DVD5.1 AC3-448k + DTSHDMA 5.1- 4132k] [105 MB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/pOWlTPQtU7sBHaNyQtQS4pwLGuf.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/woos7rldBAKG99HmcbNZNpMjwNk.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/lUzWC2xODc7C4n1iLyWEYLeIk7B.png",
     "versions": [
       {
         "source": "gd",
@@ -2721,21 +3281,28 @@
         "audio": "ATMOS + AC3-448k",
         "size": "105 MB"
       }
-    ]
+    ],
+    "title": "Love Insurance Kompany",
+    "orig_lang": "ta",
+    "rating": 4
   },
   {
     "id": "100",
     "tmdb_id": 62883,
     "audience": "general",
-    "clean_name": "Hum Saath Saath Hain (",
+    "clean_name": "Hum Saath Saath Hain",
     "year": 1999,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance",
+      "Family",
+      "Drama"
+    ],
+    "plot": "A wealthy businessman's traditional family celebrate their togetherness when his three sons get married, but slowly find themselves growing apart after a misunderstanding.",
     "new_name": "Hum Saath Saath Hain (1999) [1080p] [Netflix] [Dolby Atmos] [10 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/lEAEzpAfSyBZc5sw1NBnWr5TeZU.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/91f8iV55g4k9GzE1DRmBfJ1deYY.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/qciPQEDEzDhMVdbTBT6ojxx5wBE.png",
     "versions": [
       {
         "source": "gd",
@@ -2746,21 +3313,27 @@
         "audio": "Atmos",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "Hum Saath Saath Hain",
+    "orig_lang": "hi",
+    "rating": 6.1
   },
   {
     "id": "101",
     "tmdb_id": 1601310,
     "audience": "general",
-    "clean_name": "Eesha (",
+    "clean_name": "Eesha",
     "year": 2025,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "plot": "Four friends set out to challenge blind beliefs, only to be drawn into a mysterious spiritual encounter that changes their lives forever.",
     "new_name": "Eesha (2025) [1080p] [WEB-DL] [Dolby Atmos] [10 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/87MhKILHPwcForDY0HxzII4tPvA.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/s9KTqzmvfdGwWKTT46MmcIoPpI3.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/b1ONpdk3QBqWPsMdBRw0pCVRqmJ.png",
     "versions": [
       {
         "source": "gd",
@@ -2771,21 +3344,28 @@
         "audio": "Atmos",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "Eesha",
+    "orig_lang": "te",
+    "rating": 2.5
   },
   {
     "id": "102",
     "tmdb_id": 205022,
     "audience": "general",
-    "clean_name": "Chennai Express (",
+    "clean_name": "Chennai Express",
     "year": 2013,
     "lang": "Tamil + Telugu + Hindi + Malayalam",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance",
+      "Comedy",
+      "Action"
+    ],
+    "plot": "Rahul embarks on a journey to a small town in Tamil Nadu to fulfill the last wish of his grandfather: to have his ashes immersed in the Holy water of Rameshwaram. En route, he meets a woman hailing from a unique family down South. As they find love through this journey in the exuberant lands of South India, an unanticipated drive awaits them.",
     "new_name": "Chennai Express (2013) [1080p] [BluRay] [Hindi Only] [12 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/9j7XfhBJKNfidMCa8JsNbqU1waV.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/6JpbbREGqdEtePnCwxJRcTNX2jZ.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/1Ch5mF02b7uu9OX38NjpQhQIjfQ.png",
     "versions": [
       {
         "source": "gd",
@@ -2805,21 +3385,28 @@
         "audio": "",
         "size": "12 GB"
       }
-    ]
+    ],
+    "title": "Chennai Express",
+    "orig_lang": "hi",
+    "rating": 6.5
   },
   {
     "id": "103",
     "tmdb_id": 12,
     "audience": "general",
-    "clean_name": "Finding Nemo (",
+    "clean_name": "Finding Nemo",
     "year": 2003,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Animation",
+      "Family",
+      "Adventure"
+    ],
+    "plot": "Nemo, an adventurous young clownfish, is unexpectedly taken from his Great Barrier Reef home to a dentist's office aquarium. It's up to his worrisome father Marlin and a friendly but forgetful fish Dory to bring Nemo home -- meeting vegetarian sharks, surfer dude turtles, hypnotic jellyfish, hungry seagulls, and more along the way.",
     "new_name": "Finding Nemo (2003) [1080p] [AMZN] [x264] [DD+ 5.1] [3 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/eCynaAOgYYiw5yN5lBwz3IxqvaW.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/gRweHvOoM7hKg3q8iExsXzAhsBv.png",
     "versions": [
       {
         "source": "gd",
@@ -2839,21 +3426,26 @@
         "audio": "DD+ 5.1",
         "size": "3 GB"
       }
-    ]
+    ],
+    "title": "Finding Nemo",
+    "orig_lang": "en",
+    "rating": 7.8
   },
   {
     "id": "104",
     "tmdb_id": 968051,
     "audience": "general",
-    "clean_name": "The Nun II (",
+    "clean_name": "The Nun II",
     "year": 2023,
     "lang": "Tamil + Telugu + Hindi",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Horror"
+    ],
+    "plot": "In 1956 France, a priest is violently murdered, and Sister Irene begins to investigate. She once again comes face-to-face with a powerful evil.",
     "new_name": "The Nun II (2023) [1080p] [WEB-DL] [10 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/5gzzkR7y3hnY8AD1wXjCnVlHba5.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/27jtaS1oCiLK5Y7P6iOXG2yj1Nc.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/ocIyH3eMVU1BBajc0YHENjYzqCL.png",
     "versions": [
       {
         "source": "gd",
@@ -2864,21 +3456,26 @@
         "audio": "",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "The Nun II",
+    "orig_lang": "en",
+    "rating": 6.6
   },
   {
     "id": "105",
     "tmdb_id": 439079,
     "audience": "general",
-    "clean_name": "The Nun (",
+    "clean_name": "The Nun",
     "year": 2018,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Horror"
+    ],
+    "plot": "A priest with a dark past and a novice nearing her final vows are sent by the Vatican to Romania to investigate a nun's death and face a demonic force.",
     "new_name": "The Nun (2018) [1080p] [AMZN] [20.5 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/sFC1ElvoKGdHJIWRpNB3xWJ9lJA.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/cMnVmutb5mVgIBeiMOncAbwNjvG.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/8Lm3hGwh9x0Sgpk8cgxWXGMvkmR.png",
     "versions": [
       {
         "source": "gd",
@@ -2889,21 +3486,27 @@
         "audio": "",
         "size": "20.5 GB"
       }
-    ]
+    ],
+    "title": "The Nun",
+    "orig_lang": "en",
+    "rating": 5.9
   },
   {
     "id": "106",
     "tmdb_id": 616896,
     "audience": "general",
-    "clean_name": "Petromax (",
+    "clean_name": "Petromax",
     "year": 2019,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Comedy",
+      "Horror"
+    ],
+    "plot": "A man struggles to sell his house that is haunted so he arranges four people to live in the house for a few days to prove that there are no ghosts.",
     "new_name": "Petromax (2019) [1080p] [AMZN] [Dolby Atmos] [18 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/m8LQrSxh3I8FDZ2erJsqK4cGnyI.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/9wRa2155bUWhvugNaFPDF2wiuNu.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/qeqrIiJyWW5pYTECYUuI6DnZKaZ.png",
     "versions": [
       {
         "source": "gd",
@@ -2914,21 +3517,28 @@
         "audio": "Atmos",
         "size": "18 GB"
       }
-    ]
+    ],
+    "title": "Petromax",
+    "orig_lang": "ta",
+    "rating": 6
   },
   {
     "id": "107",
     "tmdb_id": 330418,
     "audience": "general",
-    "clean_name": "Indru Netru Naalai (",
+    "clean_name": "Indru Netru Naalai",
     "year": 2015,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Comedy",
+      "Science Fiction",
+      "Thriller"
+    ],
+    "plot": "Elango and his astrologer friend Pulivetti Arumugam come in possession of a time machine and start profiting from it. However, their meddling with time prevents the death of a gangster, who begins to wreck havoc in their lives.",
     "new_name": "Indru Netru Naalai (2015) [1080p] [AMZN] [Dolby Atmos] [07 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/ArHCLV73pRLxRQbdYYh9tLOeLUe.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/sQYXs0FyAPhQf6UUas9YBgq64qh.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/7xZ7KDu5bHdnqMQCTltaLrhYKxJ.png",
     "versions": [
       {
         "source": "gd",
@@ -2939,21 +3549,27 @@
         "audio": "Atmos",
         "size": "7 GB"
       }
-    ]
+    ],
+    "title": "Indru Netru Naalai",
+    "orig_lang": "ta",
+    "rating": 7.7
   },
   {
     "id": "108",
     "tmdb_id": 1291595,
     "audience": "general",
-    "clean_name": "Insidious: Out of the Further (",
+    "clean_name": "Insidious: Out of the Further",
     "year": 2026,
     "lang": "Tamil + Telugu + Hindi + Malayalam",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "plot": "Gemma, a young mother raising her daughter in the house she grew up in, discovers she can travel into The Further, where she possesses an ability to bring what lives there back to the real world.",
     "new_name": "Insidious: Out of the Further (2026) [1080p] [WEB-DL] [DDP Multi Tam+Tel+Hin+Mal] [11 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/4tTrW9dXCByS5wt2pXVWb58zNjz.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/p40lmrdI4blcAPZQMTPaiy5v5Ym.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/f65DhAYFi98FsRi4RWHTKkFtChu.png",
     "versions": [
       {
         "source": "gd",
@@ -2964,21 +3580,27 @@
         "audio": "DDP",
         "size": "11 GB"
       }
-    ]
+    ],
+    "title": "Insidious: Out of the Further",
+    "orig_lang": "en",
+    "rating": 7.7
   },
   {
     "id": "109",
     "tmdb_id": 1465943,
     "audience": "general",
-    "clean_name": "Mandaadi (",
+    "clean_name": "Mandaadi",
     "year": 2026,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "plot": "A fishing captain applies his maritime knowledge in a traditional boat race along Tamil Nadu's coast during a festival, leading a six-person team against other crews.",
     "new_name": "Mandaadi (2026) [1080p] [Netflix] [Dolby Atmos] [6 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/jLVMvJAmnVRo2lzbqtGiecLzPLy.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/xO0YZ1zKFSSpM7dIsvssWKabp6J.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/kXaaWpt4CBm0PNlYVF2uV4jcL11.png",
     "versions": [
       {
         "source": "gd",
@@ -2989,20 +3611,26 @@
         "audio": "Atmos",
         "size": "6 GB"
       }
-    ]
+    ],
+    "title": "Mandaadi",
+    "orig_lang": "ta",
+    "rating": 7.6
   },
   {
     "id": "110",
     "tmdb_id": 160647,
     "audience": "general",
-    "clean_name": "3 Day Test (",
+    "clean_name": "3 Day Test",
     "year": 2012,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Family",
+      "Comedy"
+    ],
+    "plot": "Convinced the family needs to reconnect, Martin surprises the wife and kids with a little experiment - he locks them in their own home with no power, no heat, no running water, and absolutely no contact with the world outside!",
     "new_name": "3 Day Test (2012) [1080p] [AMZN] [x264] [DD+ 5.1] [3 GB].mkv",
-    "poster": "",
-    "fanart": "",
+    "poster": "https://image.tmdb.org/t/p/original/tU92SyvB0YKjgkZx3qW6iu89BQq.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/bh2CduWQt6Kw1ZG9t5OshZ5SWVb.jpg",
     "clearlogo": "",
     "versions": [
       {
@@ -3014,21 +3642,28 @@
         "audio": "DD+ 5.1",
         "size": "3 GB"
       }
-    ]
+    ],
+    "title": "3 Day Test",
+    "orig_lang": "en",
+    "rating": 5.3
   },
   {
     "id": "111",
     "tmdb_id": 584,
     "audience": "general",
-    "clean_name": "2 Fast 2 Furious (",
+    "clean_name": "2 Fast 2 Furious",
     "year": 2003,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "plot": "It's a major double-cross when former police officer Brian O'Conner teams up with his ex-con buddy Roman Pearce to transport a shipment of \"dirty\" money for shady Miami-based import-export dealer Carter Verone. But the guys are actually working with undercover agent Monica Fuentes to bring Verone down.",
     "new_name": "2 Fast 2 Furious (2003) [1080p] [AMZN] [x264] [DD+ 5.1] [3 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/6nDZExrDKIXvSAghsFKVFRVJuSf.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/90ooE5SbUEO0OVJHewNO7pgySb6.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/bwJyzbmiVoNMkAcGOdwLHph5cZ8.png",
     "versions": [
       {
         "source": "gd",
@@ -3039,21 +3674,28 @@
         "audio": "DD+ 5.1",
         "size": "3 GB"
       }
-    ]
+    ],
+    "title": "2 Fast 2 Furious",
+    "orig_lang": "en",
+    "rating": 6.5
   },
   {
     "id": "112",
     "tmdb_id": 9799,
     "audience": "general",
-    "clean_name": "The Fast and the Furious (",
+    "clean_name": "The Fast and the Furious",
     "year": 2001,
     "lang": "Tamil + Telugu + Hindi + Malayalam + Kannada + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "plot": "Dominic Toretto is a Los Angeles street racer suspected of masterminding a series of big-rig hijackings. When undercover cop Brian O'Conner infiltrates Toretto's iconoclastic crew, he falls for Toretto's sister and must choose a side: the gang or the LAPD.",
     "new_name": "The Fast and the Furious (2001) [1080p] [AMZN] [Tam+Hin+Tel+Eng+Mal+Kan] [DD+ 5.1] [10 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/gqY0ITBgT7A82poL9jv851qdnIb.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/jY9ef5nqY4xIIMu3yzW3qamUCoi.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/kf17mvLnyFitDBoCm6ymISDfkxF.png",
     "versions": [
       {
         "source": "gd",
@@ -3064,21 +3706,28 @@
         "audio": "DD+ 5.1",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "The Fast and the Furious",
+    "orig_lang": "en",
+    "rating": 7
   },
   {
     "id": "113",
     "tmdb_id": 1508168,
     "audience": "general",
-    "clean_name": "Bethlehem Kudumba Unit (",
+    "clean_name": "Bethlehem Kudumba Unit",
     "year": 2026,
     "lang": "Malayalam",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance",
+      "Comedy",
+      "Drama"
+    ],
+    "plot": "Ashley's homecoming from abroad takes an emotional turn when a wedding next door stirs memories of her first love, Justin.",
     "new_name": "Bethlehem Kudumba Unit (2026) [1080p] [WEB-DL] [Malayalam] [Dolby Atmos + AAC 2.0] [6 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/uaSZiH6yoGaVJcqzKtrfSkqDuHX.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/zms3m4kVz7RXmobU1B0nhrvUEmP.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/iCsnh0rgqjtBMY1dPd2sBhdkXZ7.png",
     "versions": [
       {
         "source": "gd",
@@ -3089,21 +3738,26 @@
         "audio": "Atmos + AAC 2.0",
         "size": "6 GB"
       }
-    ]
+    ],
+    "title": "Bethlehem Kudumba Unit",
+    "orig_lang": "ml",
+    "rating": 8.4
   },
   {
     "id": "114",
     "tmdb_id": 1212763,
     "audience": "general",
-    "clean_name": "Evil Dead Burn (",
+    "clean_name": "Evil Dead Burn",
     "year": 2026,
     "lang": "Tamil + Telugu + Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Horror"
+    ],
+    "plot": "After her husband's abrupt death, Alice seeks solace with his remaining family — descendants of a leading researcher on demonic possession. As her in-laws transform one by one into creatures that feed on fear, she comes to discover that the vows she took in life survive even in death.",
     "new_name": "Evil Dead Burn (2026) [1080p] [AMZN] [x264] [Tamil+Hindi+Telugu+English] [Dolby Atmos] [7 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/uRxrNXQWkHoENm3nwVOZDYSCx2F.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/o0jkkpcN81QqSl8DMLScBCXyUH9.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/kl8vB2c5XMs68dtP9gjDGUP9Tsj.png",
     "versions": [
       {
         "source": "gd",
@@ -3114,21 +3768,28 @@
         "audio": "Atmos",
         "size": "7 GB"
       }
-    ]
+    ],
+    "title": "Evil Dead Burn",
+    "orig_lang": "en",
+    "rating": 7.5
   },
   {
     "id": "115",
     "tmdb_id": 346364,
     "audience": "general",
-    "clean_name": "It (",
+    "clean_name": "It",
     "year": 2017,
     "lang": "Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Horror",
+      "Thriller",
+      "Drama"
+    ],
+    "plot": "In a small town in Maine, seven children known as The Losers Club come face to face with life problems, bullies and a monster that takes the shape of a clown called Pennywise.",
     "new_name": "It (2017) [1080p] [AMZN] [MoviesAnywhere] [x264] [Hindi + English] [DTS-HD MA] [13 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/9E2y5Q7WlCVNEhP5GiVTjhEhx1o.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/tcheoA2nPATCm2vvXw2hVQoaEFD.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/cPiNTussFYDw6O3IUjpZdvPSuZa.png",
     "versions": [
       {
         "source": "gd",
@@ -3139,21 +3800,27 @@
         "audio": "DTS-HD MA",
         "size": "13 GB"
       }
-    ]
+    ],
+    "title": "It",
+    "orig_lang": "en",
+    "rating": 7.2
   },
   {
     "id": "116",
     "tmdb_id": 538858,
     "audience": "general",
-    "clean_name": "Tumbbad (",
+    "clean_name": "Tumbbad",
     "year": 2018,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Fantasy",
+      "Horror"
+    ],
+    "plot": "India, 1918. On the outskirts of Tumbbad, a cursed village where it always rains, Vinayak, along with his mother and his brother, care of a mysterious old woman who keeps the secret of an ancestral treasure that Vinayak gets obsessed with.",
     "new_name": "Tumbbad (2018) [1080p] [AMZN] [AVC] [Tamil] [DD+ 5.1] [7 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/z1xOCxw780WFJC5uCTMfCkQ4Agi.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/l0YKBu3LaehIFzBNjseLjx7MbaN.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/tRv8HkqgbWoPltMsN2hDSES2ny1.png",
     "versions": [
       {
         "source": "gd",
@@ -3164,21 +3831,27 @@
         "audio": "DD+ 5.1",
         "size": "7 GB"
       }
-    ]
+    ],
+    "title": "Tumbbad",
+    "orig_lang": "hi",
+    "rating": 7.6
   },
   {
     "id": "117",
     "tmdb_id": 1317872,
     "audience": "general",
-    "clean_name": "Sardar 2 (",
+    "clean_name": "Sardar 2",
     "year": 2026,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "plot": "When the mysterious Black Dagger threatens national security, Inspector Vijay embarks on his most dangerous mission yet. As the battle unfolds, the extraordinary origin of legendary spy Sardar is finally revealed, uncovering the sacrifices that forged a legend and the secrets that could shape the future.",
     "new_name": "Sardar 2 (2026) [1080p] [WEB-DL] [AAC 2.0] [19 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/muGsRtsNrG1gnlF2fPYrBa4TGlr.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/i39M5xz57fEkPLtuiAXqWwMNMyN.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/lgoNRSccUyZdLBaWaqI93mkrVE3.png",
     "versions": [
       {
         "source": "gd",
@@ -3207,21 +3880,29 @@
         "audio": "AAC 2.0",
         "size": "19 GB"
       }
-    ]
+    ],
+    "title": "Sardar 2",
+    "orig_lang": "ta",
+    "rating": 5
   },
   {
     "id": "118",
     "tmdb_id": 927342,
     "audience": "general",
-    "clean_name": "Amaran (",
+    "clean_name": "Amaran",
     "year": 2024,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Drama",
+      "Adventure",
+      "War"
+    ],
+    "plot": "A heroic true story of Major Mukund Varadarajan, an Indian Army officer who displayed extraordinary bravery during a counterterrorism mission in Kashmir’s Shopian district. The film captures his courage in protecting his nation and the devotion of his wife Indhu Rebecaa Varghese.",
     "new_name": "Amaran (2024) [1080p] [Netflix] [x264] [Tamil] [DD+ 5.1] [7 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/kcspKUpofalIuPgAndZOMJz0hwg.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/7cNE2qydew1c8fqnlhWjkE3DHc2.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/7TbIRD06EKOwVhWSSH763kMjQLH.png",
     "versions": [
       {
         "source": "gd",
@@ -3232,21 +3913,26 @@
         "audio": "DD+ 5.1",
         "size": "7 GB"
       }
-    ]
+    ],
+    "title": "Amaran",
+    "orig_lang": "ta",
+    "rating": 7.4
   },
   {
     "id": "119",
     "tmdb_id": 1321821,
     "audience": "general",
-    "clean_name": "Pechi (",
+    "clean_name": "Pechi",
     "year": 2024,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Horror"
+    ],
+    "plot": "Five young trekkers and their tour guide embark on a weekend adventure in the Kollimalai hills. Despite warnings, they venture into a restricted area, unknowingly entering the domain of a malevolent spirit, which is hell bent on wreaking havoc in their lives. Did they survive the relentless onslaught and harrowing encounter with the supernatural force in the haunted woods?",
     "new_name": "Pechi (2024) [1080p] [AMZN] [AVC] [Tamil] [DD+ 5.1] [6 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/6Pla6xHgD0kep7S9z6KfXzi6B4l.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/cAwBPZDaDjllk1Geicgj21cDZTS.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/a1GVJENCVklomsoj8bV0aslrgxe.png",
     "versions": [
       {
         "source": "gd",
@@ -3257,21 +3943,28 @@
         "audio": "DD+ 5.1",
         "size": "6 GB"
       }
-    ]
+    ],
+    "title": "Pechi",
+    "orig_lang": "ta",
+    "rating": 7.5
   },
   {
     "id": "120",
     "tmdb_id": 743563,
     "audience": "general",
-    "clean_name": "Vikram (",
+    "clean_name": "Vikram",
     "year": 2022,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "plot": "Amar is assigned to investigate a case of serial killings. When Amar investigates the case, he realizes it is not what it seems to be and following down this path will lead to nothing but war between everyone involved.",
     "new_name": "Vikram (2022) [1080p] [x265 HEVC] [Dolby Atmos 7.1] [10 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/774UV1aCURb4s4JfEFg3IEMu5Zj.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/dkIX4dSMuVqjfrPGunBJUR7K3LQ.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/803y6O9H2q2Jj5SkbRTysZ2zlmx.png",
     "versions": [
       {
         "source": "gd",
@@ -3300,21 +3993,27 @@
         "audio": "Atmos 7.1",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "Vikram",
+    "orig_lang": "ta",
+    "rating": 7.6
   },
   {
     "id": "121",
     "tmdb_id": 1032627,
     "audience": "general",
-    "clean_name": "Love Today (",
+    "clean_name": "Love Today",
     "year": 2022,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "plot": "A young couple is made to exchange their phones for a day. What follows is a hilarious and emotional sequence of events that puts their lives in misery.",
     "new_name": "Love Today (2022) [1080p] [AMZN] [AVC] [Tamil] [DD+ 5.1] [6 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/iRfIti4RhDFZ11UyCmz5Mk5wtGI.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/tLYTWKiSHoR0yVz8ScrQDa1Youu.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/shcyXNkrDd5eR1ThvfT6DWy5u4y.png",
     "versions": [
       {
         "source": "gd",
@@ -3325,21 +4024,27 @@
         "audio": "DD+ 5.1",
         "size": "6 GB"
       }
-    ]
+    ],
+    "title": "Love Today",
+    "orig_lang": "ta",
+    "rating": 6.9
   },
   {
     "id": "122",
     "tmdb_id": 263475,
     "audience": "general",
-    "clean_name": "Kaththi (",
+    "clean_name": "Kaththi",
     "year": 2014,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "plot": "A case of mistaken identity embroils an escaped convict in a fight against a large corporation intent on seizing a village's land.",
     "new_name": "Kaththi (2014) [1080p] [BluRay] [AVC] [Tamil] [DTS 5.1 - 1509k] [14 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/y8hvai0Y96Fz1yqyvtAG0hnATuZ.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/iOnnXN8XPMWrh7flteI1mCftYBZ.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/nz7YYmh691KgfceHOHHpXThuYJN.png",
     "versions": [
       {
         "source": "gd",
@@ -3350,21 +4055,28 @@
         "audio": "DTS 5.1 - 1509k",
         "size": "14 GB"
       }
-    ]
+    ],
+    "title": "Kaththi",
+    "orig_lang": "ta",
+    "rating": 6.8
   },
   {
     "id": "123",
     "tmdb_id": 71676,
     "audience": "general",
-    "clean_name": "Ghost Rider: Spirit of Vengeance (",
+    "clean_name": "Ghost Rider: Spirit of Vengeance",
     "year": 2011,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Fantasy",
+      "Thriller"
+    ],
+    "plot": "When the devil resurfaces with aims to take over the world in human form, Johnny Blaze reluctantly comes out of hiding to transform into the flame-spewing supernatural hero Ghost Rider -- and rescue a 10-year-old boy from an unsavory end.",
     "new_name": "Ghost Rider: Spirit of Vengeance (2011) [1080p] [BluRay] [DTS 5.1] [12 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/xEoBT6lYfQNpSpTm8gJMTrQytiw.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/ebNcAJfWsSbbv7VhboAvpUdOduJ.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/6rIQU19Zl1VbiyXWPEQUcpqEen6.png",
     "versions": [
       {
         "source": "gd",
@@ -3375,21 +4087,28 @@
         "audio": "DTS 5.1",
         "size": "12 GB"
       }
-    ]
+    ],
+    "title": "Ghost Rider: Spirit of Vengeance",
+    "orig_lang": "en",
+    "rating": 5
   },
   {
     "id": "124",
     "tmdb_id": 20049,
     "audience": "general",
-    "clean_name": "Ayan (",
+    "clean_name": "Ayan",
     "year": 2009,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Romance",
+      "Comedy"
+    ],
+    "plot": "Deva works for Arumugam, a smuggler, who has taken care of him for many years. However, when his best friend gets killed, Deva decides to help the police to nab a dangerous drug lord.",
     "new_name": "Ayan (2009) [1080p] [BluRay] [Dolby Atmos] [11 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/49UwEe5U1GuRC6W7difviwCgde2.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/j6QRBOCh2hc1XUQ16E5hwF0xIOI.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/9AaQolqRUKcp14zwsL8iIqFRUsD.png",
     "versions": [
       {
         "source": "gd",
@@ -3400,21 +4119,28 @@
         "audio": "Atmos",
         "size": "11 GB"
       }
-    ]
+    ],
+    "title": "Ayan",
+    "orig_lang": "ta",
+    "rating": 7
   },
   {
     "id": "125",
     "tmdb_id": 631843,
     "audience": "general",
-    "clean_name": "Old (",
+    "clean_name": "Old",
     "year": 2021,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Thriller",
+      "Mystery",
+      "Horror"
+    ],
+    "plot": "A group of families on a tropical holiday discover that the secluded beach where they are staying is somehow causing them to age rapidly – reducing their entire lives into a single day.",
     "new_name": "Old (2021) [1080p] [WEB-DL] [Dolby Atmos] [10 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/vclShucpUmPhdAOmKgf3B3Z4POD.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/32yqxyLlWcO81UCx51Jfq9aeJdA.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/9kPKvQBeOGY31QymseoLZ3Sp5gn.png",
     "versions": [
       {
         "source": "gd",
@@ -3425,21 +4151,27 @@
         "audio": "Atmos",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "Old",
+    "orig_lang": "en",
+    "rating": 6.3
   },
   {
     "id": "126",
     "tmdb_id": 23767,
     "audience": "general",
-    "clean_name": "Billa (",
+    "clean_name": "Billa",
     "year": 2007,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "plot": "The intertwined stories of an international Don in Malaysia, David Billa, chased by the cops, an Indian police officer, a woman who wants to avenge the death of her brother, and a lowly thief, Velu who shares with Billa, an unusual connection.",
     "new_name": "Billa (2007) [1080p] [AMZN] [x264] [Tamil] [DD+ 5.1] [10 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/g9skD62F7y6VJR5nPZOgpz1ckso.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/42eShFAK1UPPVCey7mcLJjZrXgX.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/tn0zsh0otI155mgmvWMFhl9QcQy.png",
     "versions": [
       {
         "source": "gd",
@@ -3450,21 +4182,27 @@
         "audio": "DD+ 5.1",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "Billa",
+    "orig_lang": "ta",
+    "rating": 6.6
   },
   {
     "id": "127",
     "tmdb_id": 869140,
     "audience": "general",
-    "clean_name": "Thalaivar Thambi Thalaimaiyil (",
+    "clean_name": "Thalaivar Thambi Thalaimaiyil",
     "year": 2026,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "plot": "A village official attending a wedding becomes entangled in an escalating family dispute over power and old resentments, testing his leadership as he tries to contain the situation.",
     "new_name": "Thalaivar Thambi Thalaimaiyil (2026) [2160p 4K] [WEB-DL] [Netflix] [Tam+Tel+Mal+Kan (DD+ 5.1 - 640k)] [14 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/wqofJvDrFv65QgyVmNI4loi9jZZ.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/cpOUDK8BBJyvrUuLN8YTRttXEab.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/kWbHwLjbMeMtFNPldEnBJRhjPxn.png",
     "versions": [
       {
         "source": "gd",
@@ -3484,21 +4222,27 @@
         "audio": "DD+ 5.1 - 640k",
         "size": "14 GB"
       }
-    ]
+    ],
+    "title": "Thalaivar Thambi Thalaimaiyil",
+    "orig_lang": "ta",
+    "rating": 6.9
   },
   {
     "id": "128",
     "tmdb_id": 280165,
     "audience": "general",
-    "clean_name": "Thani Oruvan (",
+    "clean_name": "Thani Oruvan",
     "year": 2015,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Thriller",
+      "Action"
+    ],
+    "plot": "An idealistic cop and an ambitious scientist-businessman indulge in a high-stake battle of wits.",
     "new_name": "Thani Oruvan (2015) [1080p] [WEB-DL] [Dolby Atmos] [8.7 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/90ZpZw1qZlt0RUVByJATFVUEeEm.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/aRB5UvDflR0A4qDFxjOpiiLD7bf.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/dQXBnkzbJbFPVnZ097guDMXRMhQ.png",
     "versions": [
       {
         "source": "gd",
@@ -3509,21 +4253,27 @@
         "audio": "Atmos",
         "size": "9 GB"
       }
-    ]
+    ],
+    "title": "Thani Oruvan",
+    "orig_lang": "ta",
+    "rating": 7.5
   },
   {
     "id": "129",
     "tmdb_id": 1590380,
     "audience": "general",
-    "clean_name": "Ram and Leela (",
+    "clean_name": "Ram and Leela",
     "year": 2026,
     "lang": "Tamil + Telugu + Hindi + Malayalam",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance",
+      "Comedy"
+    ],
+    "plot": "A repeatedly unlucky man finally finds the woman of his dreams, only for an unexpected twist to challenge his understanding of love and commitment.",
     "new_name": "Ram and Leela (2026) [1080p] [AMZN] [DDP 5.1 Tam+Tel+Hin+Mal] [10.2 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/j1X0t57PguWBcaa8LAOaAHGyjcK.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/w0hg42XRWiaWlGPvQI8Defwn5En.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/znZh9KZuqKTR8m67PvBoa2YIllj.png",
     "versions": [
       {
         "source": "gd",
@@ -3534,21 +4284,28 @@
         "audio": "DDP 5.1",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "Ram and Leela",
+    "orig_lang": "ta",
+    "rating": 6
   },
   {
     "id": "130",
     "tmdb_id": 76341,
     "audience": "general",
-    "clean_name": "Mad Max: Fury Road (",
+    "clean_name": "Mad Max: Fury Road",
     "year": 2015,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Science Fiction"
+    ],
+    "plot": "An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken, and most everyone is crazed fighting for the necessities of life. Within this world exist two rebels on the run who just might be able to restore order.",
     "new_name": "Mad Max: Fury Road (2015) [1080p] [AMZN] [Dolby Atmos] [9.9 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/ulcAi4dKpAjHwYGS08vNyx9H6I9.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/uT895WNwm0aIJRtGizcQhrejWUo.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/uiXCDDtRTsB18nIes9IEyZglP3m.png",
     "versions": [
       {
         "source": "gd",
@@ -3559,21 +4316,28 @@
         "audio": "Atmos",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "Mad Max: Fury Road",
+    "orig_lang": "en",
+    "rating": 7.6
   },
   {
     "id": "131",
     "tmdb_id": 1450599,
     "audience": "general",
-    "clean_name": "K.O. (",
+    "clean_name": "K.O.",
     "year": 2025,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Drama",
+      "Adventure"
+    ],
+    "plot": "A former fighter must find the missing son of an opponent he accidentally killed years ago, taking on a brutally violent crime gang in Marseille.",
     "new_name": "K O (2025) [1080p] [BluRay] [Dolby Atmos] [450 MB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/qcM2sUiAeP4zXwx4ADSvgc9S58k.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/rU9kRB3rBU5O7AMReZCiuIy7zmE.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/qXIHcpVXLNmGZhf0k5SLBMiezl7.png",
     "versions": [
       {
         "source": "gd",
@@ -3584,21 +4348,28 @@
         "audio": "Atmos",
         "size": "500 MB"
       }
-    ]
+    ],
+    "title": "K.O.",
+    "orig_lang": "fr",
+    "rating": 6.5
   },
   {
     "id": "132",
     "tmdb_id": 37645,
     "audience": "general",
-    "clean_name": "22 Bullets (",
+    "clean_name": "22 Bullets",
     "year": 2010,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Drama",
+      "Crime",
+      "Thriller"
+    ],
+    "plot": "A retired mobster goes on a revenge spree after being left for dead with 22 bullets in his body by his former childhood friend.",
     "new_name": "22 Bullets (2010) [1080p] [AMZN] [Dolby Atmos] [7.7 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/4spRV4Qw0YGaWBHYJ6enu84sR81.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/ulv4h7NglaqDl68RZKnpvOPqT2t.jpg",
+    "clearlogo": "https://assets.fanart.tv/fanart/22-bullets-558350b920603.png",
     "versions": [
       {
         "source": "gd",
@@ -3609,21 +4380,27 @@
         "audio": "Atmos",
         "size": "8 GB"
       }
-    ]
+    ],
+    "title": "22 Bullets",
+    "orig_lang": "fr",
+    "rating": 6.7
   },
   {
     "id": "133",
     "tmdb_id": 1506833,
     "audience": "general",
-    "clean_name": "Magudam (",
+    "clean_name": "Magudam",
     "year": 2026,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "plot": "Peaceful medical representative and shipping harbor worker Linga's life changes because of betrayal and conflict in a coastal community.",
     "new_name": "Magudam (2026) [1080p] [AMZN] [x265 HEVC] [Dolby Atmos x265] [10.6 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/oM0daQezJfdK8ADtwi1SMCy1BJA.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/p5LmNUM4T9xLqbeu7nBY47VUh3W.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/AtR4zoLxOMXsCWQmHj8uXhR1MOm.png",
     "versions": [
       {
         "source": "gd",
@@ -3643,21 +4420,27 @@
         "audio": "Atmos",
         "size": "11 GB"
       }
-    ]
+    ],
+    "title": "Magudam",
+    "orig_lang": "ta",
+    "rating": 4
   },
   {
     "id": "134",
     "tmdb_id": 63654,
     "audience": "general",
-    "clean_name": "Ko (",
+    "clean_name": "Ko",
     "year": 2011,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "plot": "Ashwin is a photographer, covering the upcoming elections for a newspaper. His life gets entangled with politics when one of his published photographs upsets a corrupt political party.",
     "new_name": "Ko (2011) [1080p] [Netflix] [Dolby Atmos] [9 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/oe91RGQkLROh0rTNoStnse1p0qw.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/19pGxP79ciHgdQ20bzc0KCM1Ogg.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/aACozPqHe4czFbnJuvTSuogz5Eq.png",
     "versions": [
       {
         "source": "gd",
@@ -3668,21 +4451,27 @@
         "audio": "Atmos",
         "size": "8 GB"
       }
-    ]
+    ],
+    "title": "Ko",
+    "orig_lang": "ta",
+    "rating": 7.2
   },
   {
     "id": "135",
     "tmdb_id": 402778,
     "audience": "general",
-    "clean_name": "Remo (",
+    "clean_name": "Remo",
     "year": 2016,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "plot": "An aspiring actor dresses up as a female nurse to bag a role in a film, and more importantly, woo the love of his life.",
     "new_name": "Remo (2016) [1080p] [Netflix] [Dolby Atmos] [9 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/bhnpnKHsurKVtqbUGAVqB28Jqqr.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/t1VDCUayWT128fU6AWOSc6P8jIC.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/6ZfkkpokYnSyWp0VscpGTSs2Trx.png",
     "versions": [
       {
         "source": "gd",
@@ -3693,20 +4482,27 @@
         "audio": "Atmos",
         "size": "9 GB"
       }
-    ]
+    ],
+    "title": "Remo",
+    "orig_lang": "ta",
+    "rating": 5.7
   },
   {
     "id": "136",
     "tmdb_id": 280142,
     "audience": "general",
-    "clean_name": "Yaan (",
+    "clean_name": "Yaan",
     "year": 2014,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance",
+      "Action",
+      "Thriller"
+    ],
+    "plot": "Chandru, a jobless man, vows to get a job after the father of his girlfriend opposes their relationship. His joy on getting a job in an Islamic nation ends when he is nabbed there for carrying drugs.",
     "new_name": "Yaan (2014) [1080p] [Netflix] [Dolby Atmos] [327 MB].mkv",
-    "poster": "",
-    "fanart": "",
+    "poster": "https://image.tmdb.org/t/p/original/2nuHMinkBUUnrrH0db1nJJX47hs.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/AnIE41cj6VDemX0wh6Nc8iHdBhj.jpg",
     "clearlogo": "",
     "versions": [
       {
@@ -3718,21 +4514,29 @@
         "audio": "Atmos",
         "size": "400 MB"
       }
-    ]
+    ],
+    "title": "Yaan",
+    "orig_lang": "ta",
+    "rating": 5
   },
   {
     "id": "137",
     "tmdb_id": 14194,
     "audience": "general",
-    "clean_name": "Dhoom 2 (",
+    "clean_name": "Dhoom 2",
     "year": 2006,
     "lang": "Hindi",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Drama",
+      "Action",
+      "Thriller",
+      "Crime"
+    ],
+    "plot": "Jai and Ali return, this time on the trail of an international thief who steals priceless artifacts and has chosen Mumbai as his next target.",
     "new_name": "Dhoom 2 (2006) [1080p] [Netflix] [Dolby Atmos] [11.1 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/3zJLnrP9g9LSMpX5C1wau49gGUv.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/5vWEcjru7dUIuTgMbwOVfuGMU60.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/nW8WSMHPee3Bs1DFN7th56DqWju.png",
     "versions": [
       {
         "source": "gd",
@@ -3752,21 +4556,27 @@
         "audio": "Atmos",
         "size": "11 GB"
       }
-    ]
+    ],
+    "title": "Dhoom 2",
+    "orig_lang": "hi",
+    "rating": 6.6
   },
   {
     "id": "138",
     "tmdb_id": 912378,
     "audience": "general",
-    "clean_name": "Dridam (",
+    "clean_name": "Dridam",
     "year": 2026,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "plot": "A police officer arrives at a seemingly peaceful station but faces pressure when human remains are discovered. Given only a week to solve the murder, he must navigate demands from his department and an anxious public seeking swift justice.",
     "new_name": "Dridam (2026) [2160p 4K] [Netflix] [Dolby Atmos] [9 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/9JqWaizfeplMDEZGuJAZZUO4Xtp.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/sRVg5yfJJQ2emGhl6XPYJssilu.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/esPR0hSqoyuAiiFq0qpu2KsIgSe.png",
     "versions": [
       {
         "source": "gd",
@@ -3777,21 +4587,27 @@
         "audio": "Atmos",
         "size": "9 GB"
       }
-    ]
+    ],
+    "title": "Dridam",
+    "orig_lang": "ml",
+    "rating": 5.6
   },
   {
     "id": "139",
     "tmdb_id": 44977,
     "audience": "general",
-    "clean_name": "Dhoom 3 (",
+    "clean_name": "Dhoom 3",
     "year": 2013,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Crime"
+    ],
+    "plot": "To avenge his father's death, a circus entertainer trained in magic and acrobatics robs banks to take down a corrupt bank owner. Two cops from Mumbai are assigned to the case.",
     "new_name": "Dhoom 3 (2013) [1080p] [Netflix] [Dolby Atmos] [8 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/rUVTM5EQUQ2I0fcfE46AkvBYWae.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/asmCFd6BnqPkwIj0jHzcJXgNJvi.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/mkb2ac5FnIUePucH9B3v7A41gVz.png",
     "versions": [
       {
         "source": "gd",
@@ -3802,21 +4618,29 @@
         "audio": "Atmos",
         "size": "8 GB"
       }
-    ]
+    ],
+    "title": "Dhoom 3",
+    "orig_lang": "hi",
+    "rating": 6
   },
   {
     "id": "140",
     "tmdb_id": 17478,
     "audience": "general",
-    "clean_name": "Dhoom (",
+    "clean_name": "Dhoom",
     "year": 2004,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "plot": "A gang of bikers headed by the cool-headed and arrogant Kabir is on a robbing spree in Mumbai.  ACP Jai Dixit is put in charge of the case and he recruits a bumbling bike mechanic and racer to help Jai nab them.",
     "new_name": "Dhoom (2004) [1080p] [BluRay] [DTS-HD Master / 1509k DTS] [13 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/A3GBoQROHP0WjU9RXzlDU0iG3be.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/7XkAU2MTHV1ifbINbcSS3P1mwG2.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/gSdYoccc6EIN4OadKFUNt9BQa6J.png",
     "versions": [
       {
         "source": "gd",
@@ -3827,21 +4651,28 @@
         "audio": "DTS",
         "size": "13 GB"
       }
-    ]
+    ],
+    "title": "Dhoom",
+    "orig_lang": "hi",
+    "rating": 6.2
   },
   {
     "id": "141",
     "tmdb_id": 1685882,
     "audience": "general",
-    "clean_name": "Modha Rathri (",
+    "clean_name": "Modha Rathri",
     "year": 2026,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Family"
+    ],
+    "plot": "Two strangers are brought together at an unusual wedding where, in one night, too many surprises unfold and several lies are told, spiraling into chaos that changes everything.",
     "new_name": "Modha Rathri (2026) [1080p] [Netflix] [Dolby Atmos] [5.6 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/3VuNFeniljhEe9MDW12MnDbETgH.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/aT8Uk5uQKBJ3Syt63SNdlPUwqI9.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/wgQxSo5TER4exYbRzi5xQxSbjpq.png",
     "versions": [
       {
         "source": "gd",
@@ -3861,21 +4692,28 @@
         "audio": "Atmos",
         "size": "6 GB"
       }
-    ]
+    ],
+    "title": "Modha Rathri",
+    "orig_lang": "ta",
+    "rating": 7.6
   },
   {
     "id": "142",
     "tmdb_id": 1241634,
     "audience": "general",
-    "clean_name": "Saiyaara (",
+    "clean_name": "Saiyaara",
     "year": 2025,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance",
+      "Drama",
+      "Music"
+    ],
+    "plot": "Two artistic souls find harmony through music despite their contrasting worlds. As feelings deepen, age and circumstances challenge their undeniable bond.",
     "new_name": "Saiyaara (2025) [1080p] [WEB-DL] [Dolby Atmos] [5.9 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/hQBIsi3ZfBYEayMc3GhcEmJVkss.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/mguy0nefEUY7NKruffpLO3Stj3d.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/qnJ0VhbFAeu7YUPpEB3AZ3d1bAI.png",
     "versions": [
       {
         "source": "gd",
@@ -3895,19 +4733,22 @@
         "audio": "Atmos",
         "size": "6 GB"
       }
-    ]
+    ],
+    "title": "Saiyaara",
+    "orig_lang": "hi",
+    "rating": 6.4
   },
   {
     "id": "143",
     "tmdb_id": 1047826,
     "audience": "general",
-    "clean_name": "Dolby Presents: Amaze (",
+    "clean_name": "Dolby Presents: Amaze",
     "year": 2014,
     "lang": "",
     "genres": [],
-    "plot": "",
+    "plot": "Enter a new world of sound with Dolby Atmos®. A leap forward from surround sound, it transports you into the story with moving audio that fills the cinema and flows all around you — even overhead — to deliver the premier sound of entertainment. You’ll feel like you’re inside the action as the sounds of people, places, things, and music come alive with breathtaking realism and move throughout the space. Immersive and emotive, Dolby Atmos is sound you can feel — sound that creates a powerfully moving entertainment experience.",
     "new_name": "Dolby Presents: Amaze (2014) [2160p 4K] [WEB-DL] [Dolby Atmos] [2 GB].mkv",
-    "poster": "",
+    "poster": "https://image.tmdb.org/t/p/original/1durwQj4FvYnI7mAtjI3HzkknuO.jpg",
     "fanart": "",
     "clearlogo": "",
     "versions": [
@@ -3929,21 +4770,27 @@
         "audio": "Atmos",
         "size": "2 GB"
       }
-    ]
+    ],
+    "title": "Dolby Presents: Amaze",
+    "orig_lang": "en"
   },
   {
     "id": "144",
     "tmdb_id": 202616,
     "audience": "general",
-    "clean_name": "Thalaivaa (",
+    "clean_name": "Thalaivaa",
     "year": 2013,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Drama",
+      "Thriller"
+    ],
+    "plot": "Vishwa runs a small business in Sydney, unaware that his father is a gangster in Mumbai. When his father is killed by a rival, Vishwa takes over his crime syndicate with revenge on his mind.",
     "new_name": "Thalaivaa (2013) [1080p] [BluRay] [DTS- HD Master / 1509k DTS] [15 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/5h2SfwKTbbp0T21kjrOPU3QMaHn.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/hQ0XzOn6dYLtGKiddS9kRbkAIdf.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/mctXcpR1lgp0Yx0C8s0hYclIr8v.png",
     "versions": [
       {
         "source": "gd",
@@ -3954,21 +4801,27 @@
         "audio": "DTS",
         "size": "15 GB"
       }
-    ]
+    ],
+    "title": "Thalaivaa",
+    "orig_lang": "ta",
+    "rating": 5.5
   },
   {
     "id": "145",
     "tmdb_id": 438731,
     "audience": "general",
-    "clean_name": "Vivegam (",
+    "clean_name": "Vivegam",
     "year": 2017,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "plot": "A group of counter-terrorism agents are brought in to track down a man who was once the head of their squad, and is believed to have gone rogue.",
     "new_name": "Vivegam (2017) [1080p] [WEB-DL] [Dolby Atmos] [5.3 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/o31Fh66VeAmLWQ3HNObzTjbrWMH.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/hp4PssT8aYm7EMSvZ07bklF657w.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/lONt2i8lqFG6FFZN4iMJgO6O6h5.png",
     "versions": [
       {
         "source": "gd",
@@ -3979,21 +4832,27 @@
         "audio": "Atmos",
         "size": "5.3 GB"
       }
-    ]
+    ],
+    "title": "Vivegam",
+    "orig_lang": "ta",
+    "rating": 4.9
   },
   {
     "id": "146",
     "tmdb_id": 26910,
     "audience": "general",
-    "clean_name": "Anbe Sivam (",
+    "clean_name": "Anbe Sivam",
     "year": 2003,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "plot": "Anbarasu, an arrogant advertisement director, and Nallasivam, a physically deformed social activist, meet while waiting for a flight in Bhubaneswar. Both men are desperate to reach Chennai: the former has to attend his upcoming wedding, and the latter has to deliver a ₹32 lakh compensation to a group of union workers. Heavy rainfall causes total flight cancellations and floods the city, leaving Anbarasu with no choice but to share a hotel room with Sivam for the night, and soon, the pair find themselves embarking on a journey to Chennai together.",
     "new_name": "Anbe Sivam (2003) [1080p] [AMZN] [Dolby Atmos] [11 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/6T5bfP1OQMLyoW5Bxgr2Z8z0Y8b.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/9QaebfA43SkffIy6sDFje5q0jdk.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/qUxXWsQ6ZAjjJLBkg4YoSNG7CgP.png",
     "versions": [
       {
         "source": "gd",
@@ -4004,21 +4863,27 @@
         "audio": "Atmos",
         "size": "11 GB"
       }
-    ]
+    ],
+    "title": "Anbe Sivam",
+    "orig_lang": "ta",
+    "rating": 7.7
   },
   {
     "id": "147",
     "tmdb_id": 1579405,
     "audience": "general",
-    "clean_name": "Love Oh Love (",
+    "clean_name": "Love Oh Love",
     "year": 2026,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance",
+      "Comedy"
+    ],
+    "plot": "A couple is in love. One partner's excessive spending pushes the other into debt. When the burdened partner decides to seek a divorce, the other files a police complaint through the leader of a women's association. As they begin living together, they gradually understand each other's struggles. Eventually, they reconcile and choose to continue their life together.",
     "new_name": "Love Oh Love (2026) [2160p 4K] [AMZN] [9.5 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/o6O7sNFE59Zd3LIS2T45e1mt4Q9.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/fEUJSGa6MZFEl32Gx83UXwEy98L.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/sN2cAPHnAg2vqtdC3O31XXDnHJh.png",
     "versions": [
       {
         "source": "gd",
@@ -4029,21 +4894,28 @@
         "audio": "",
         "size": "9.5 GB"
       }
-    ]
+    ],
+    "title": "Love Oh Love",
+    "orig_lang": "ta",
+    "rating": 8
   },
   {
     "id": "148",
     "tmdb_id": 1479832,
     "audience": "general",
-    "clean_name": "DC (",
+    "clean_name": "DC",
     "year": 2026,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance",
+      "Action",
+      "Drama"
+    ],
+    "plot": "From avenging his mother’s murder to battling police corruption, Das becomes a fugitive after a deadly heist. Amid a trail of bloodshed and loss, he frees Chandra from a life of exploitation, and she gives him a reason to seek a life beyond violence.",
     "new_name": "DC (2026) [1080p] [HQ] [AVC] [15.3 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/8k71CD24GIAmEFgHYRhqFvwbXH8.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/v7kqufGRDotShPCw53SM7m8t6oc.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/cL2WmBrFKs1jGLtb915zzQsPNO.png",
     "versions": [
       {
         "source": "gd",
@@ -4063,21 +4935,28 @@
         "audio": "AAC",
         "size": "15 GB"
       }
-    ]
+    ],
+    "title": "DC",
+    "orig_lang": "ta",
+    "rating": 7.7
   },
   {
     "id": "149",
     "tmdb_id": 572802,
     "audience": "general",
-    "clean_name": "Aquaman and the Lost Kingdom (",
+    "clean_name": "Aquaman and the Lost Kingdom",
     "year": 2023,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "plot": "Black Manta seeks revenge on Aquaman for his father's death. Wielding the Black Trident's power, he becomes a formidable foe. To defend Atlantis, Arthur (Aquaman) forges an alliance with his imprisoned brother. They must protect the kingdom.",
     "new_name": "Aquaman and the Lost Kingdom (2023) [1080p] [BluRay] [Dolby Atmos] [15 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/7lTnXOy0iNtBAdRP3TZvaKJ77F6.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/bckxSN9ueOgm0gJpVJmPQrecWul.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/zkB0olBwq8ZrrYHThaNCDuE6j6A.png",
     "versions": [
       {
         "source": "gd",
@@ -4088,21 +4967,26 @@
         "audio": "Atmos",
         "size": "15 GB"
       }
-    ]
+    ],
+    "title": "Aquaman and the Lost Kingdom",
+    "orig_lang": "en",
+    "rating": 6.5
   },
   {
     "id": "150",
     "tmdb_id": 1303331,
     "audience": "general",
-    "clean_name": "Dhamaal 4 (",
+    "clean_name": "Dhamaal 4",
     "year": 2026,
     "lang": "Hindi",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Comedy"
+    ],
+    "plot": "The Dhamaal boys are back for another treasure hunt, facing hilarious challenges in their quest for the Treasure of Life.",
     "new_name": "Dhamaal 4 (2026) [2160p 4K] [Netflix] [Dolby Digital Plus Hindi] [8 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/qUkP6Njgg1RQGMkmNcfsnmFET1e.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/95sjD0dRajtU6SKD6Gq6PtrGoGY.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/wXQzxJdXWIPCfhJrf2FCMckpMPc.png",
     "versions": [
       {
         "source": "gd",
@@ -4113,21 +4997,28 @@
         "audio": "",
         "size": "8 GB"
       }
-    ]
+    ],
+    "title": "Dhamaal 4",
+    "orig_lang": "hi",
+    "rating": 3.9
   },
   {
     "id": "151",
     "tmdb_id": 1771,
     "audience": "general",
-    "clean_name": "Captain America: The First Avenger (",
+    "clean_name": "Captain America: The First Avenger",
     "year": 2011,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Science Fiction"
+    ],
+    "plot": "During World War II, Steve Rogers is a sickly man from Brooklyn who's transformed into super-soldier Captain America to aid in the war effort. Rogers must stop the Red Skull – Adolf Hitler's ruthless head of weaponry, and the leader of an organization that intends to use a mysterious device of untold powers for world domination.",
     "new_name": "Captain America: The First Avenger (2011) [1080p] [BluRay] [Dolby Atmos] [10 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/vSNxAJTlD0r02V9sPYpOjqDZXUK.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/yFuKvT4Vm3sKHdFY4eG6I4ldAnn.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/1GPeoEcMOUvkgwRXY76s9zE57I9.png",
     "versions": [
       {
         "source": "gd",
@@ -4138,21 +5029,28 @@
         "audio": "Atmos",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "Captain America: The First Avenger",
+    "orig_lang": "en",
+    "rating": 7
   },
   {
     "id": "152",
     "tmdb_id": 1434580,
     "audience": "general",
-    "clean_name": "Thalaivan Thalaivii (",
+    "clean_name": "Thalaivan Thalaivii",
     "year": 2025,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance",
+      "Comedy",
+      "Drama"
+    ],
+    "plot": "Two headstrong lovers navigate a turbulent relationship where passion and conflict intertwine, creating an intense emotional bond through their shared journey.",
     "new_name": "Thalaivan Thalaivii (2025) [1080p] [AMZN] [Dolby Atmos] [10 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/jfN2iQLfhvziz9YlR9WbB4VVQvk.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/pwrVIBSrjeIiutfa1KvI5e1UdAZ.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/omq6utZUnZwv9ZYSzvvJAtSeXMW.png",
     "versions": [
       {
         "source": "gd",
@@ -4163,21 +5061,28 @@
         "audio": "Atmos",
         "size": "10 GB"
       }
-    ]
+    ],
+    "title": "Thalaivan Thalaivii",
+    "orig_lang": "ta",
+    "rating": 6.5
   },
   {
     "id": "153",
     "tmdb_id": 330420,
     "audience": "general",
-    "clean_name": "Puli (",
+    "clean_name": "Puli",
     "year": 2015,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Fantasy",
+      "Action",
+      "Adventure"
+    ],
+    "plot": "A virtuous soldier Magadheera aka Puli (Tiger) vows to save his people from the rule of a cruel queen and her treacherous Marshal. Does good triumph over evil?",
     "new_name": "Puli (2015) [2160p 4K] [WEB-DL] [12.9 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/stSvPGauOU75qO17xh1TNpwZPyb.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/ntHGUdeosYWniQbYc13Gm2jAL3c.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/es66zSGOE3kPjOOIusyDpIb2xBN.png",
     "versions": [
       {
         "source": "gd",
@@ -4197,20 +5102,25 @@
         "audio": "",
         "size": "13 GB"
       }
-    ]
+    ],
+    "title": "Puli",
+    "orig_lang": "ta",
+    "rating": 4.1
   },
   {
     "id": "154",
     "tmdb_id": 453068,
     "audience": "general",
-    "clean_name": "Sketch (",
+    "clean_name": "Sketch",
     "year": 2018,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action"
+    ],
+    "plot": "The fate of four friends, who work at a garage, witness drastic changes after they lock horns with a dreaded gangster in town",
     "new_name": "Sketch (2018) [1080p] [AMZN] [Dolby Atmos] [9 GB].mkv",
-    "poster": "",
-    "fanart": "",
+    "poster": "https://image.tmdb.org/t/p/original/meJjODI5tTJAvyxhmnDyW8qLPRj.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/81FtdZvwNqbEpSZdtlkAYscoIQG.jpg",
     "clearlogo": "",
     "versions": [
       {
@@ -4222,20 +5132,27 @@
         "audio": "Atmos",
         "size": "9 GB"
       }
-    ]
+    ],
+    "title": "Sketch",
+    "orig_lang": "ta",
+    "rating": 5.1
   },
   {
     "id": "155",
     "tmdb_id": 63810,
     "audience": "general",
-    "clean_name": "Engeyum Kadhal (",
+    "clean_name": "Engeyum Kadhal",
     "year": 2011,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance",
+      "Action",
+      "Drama"
+    ],
+    "plot": "Kamal, a young billionaire, doesn't believe in love; his philosophy is simple: No love, no commitments = no disappointments. He works hard for 11 months and takes a month's break from all the work related commitments. Cute violinist Kayalvizhi alias Kayal believes in true love and is highly fascinated with Indian culture. Kayal's father Rajasekhar runs a small detective agency in France and Kayal often reads her father's case files for interesting stories. One day, Rajasekhar gets a new client who wants to know about his girlfriend's mystery man. After a brief investigation, Rajasekhar finds that his client's girlfriend is dating Kamal. Sonu gets angry and decides to kill his girlfriend and Kamal.",
     "new_name": "Engeyum Kadhal (2011) [1080p] [BluRay] [Dolby Atmos] [12.1 GB].mkv",
-    "poster": "",
-    "fanart": "",
+    "poster": "https://image.tmdb.org/t/p/original/z5pwxRWdViCo9dLmvH9ejku7eyZ.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/mAfSLGz4nZswqiwgJiXt0gqZtEr.jpg",
     "clearlogo": "",
     "versions": [
       {
@@ -4247,21 +5164,26 @@
         "audio": "Atmos",
         "size": "12 GB"
       }
-    ]
+    ],
+    "title": "Engeyum Kadhal",
+    "orig_lang": "ta",
+    "rating": 5.3
   },
   {
     "id": "156",
     "tmdb_id": 1473603,
     "audience": "general",
-    "clean_name": "LURK (",
+    "clean_name": "LURK",
     "year": 2026,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Thriller"
+    ],
+    "plot": "Man-animal conflict, exploring who the real predator is, man or animal, with inspiration from real incidents and forest life.",
     "new_name": "LURK (2026) [2160p 4K] [WEB-DL] [8.3 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/a8YUKtD4zNRGY5OpZVg1M2gLlMW.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/9rF3CfdH7tXyeaiWp5POgfOpctU.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/2vebbt8GJaSn0w9zC8ZpGzVP3OQ.png",
     "versions": [
       {
         "source": "gd",
@@ -4272,20 +5194,25 @@
         "audio": "",
         "size": "8.3 GB"
       }
-    ]
+    ],
+    "title": "LURK",
+    "orig_lang": "ml"
   },
   {
     "id": "157",
     "tmdb_id": 77013,
     "audience": "general",
-    "clean_name": "Perazhagan (",
+    "clean_name": "Perazhagan",
     "year": 2004,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Comedy",
+      "Thriller"
+    ],
+    "plot": "A hunchbacked phone booth operator loves a blind street dancer and wants to help her regain her sight. His lookalike is a constable in love with the commissioner's daughter.",
     "new_name": "Perazhagan (2004) [1080p] [WEB-DL] [Dolby Atmos] [10.8 GB].mkv",
-    "poster": "",
-    "fanart": "",
+    "poster": "https://image.tmdb.org/t/p/original/kjVa2WukH3MGLiDVFMuPuiYOzjN.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/oMuOoatSWwGDtCzFmuKeIOLUdOa.jpg",
     "clearlogo": "",
     "versions": [
       {
@@ -4297,20 +5224,26 @@
         "audio": "Atmos",
         "size": "11 GB"
       }
-    ]
+    ],
+    "title": "Perazhagan",
+    "orig_lang": "ta",
+    "rating": 6.3
   },
   {
     "id": "158",
     "tmdb_id": 69654,
     "audience": "general",
-    "clean_name": "Kushi (",
+    "clean_name": "Kushi",
     "year": 2000,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "plot": "College friends Jenny and Shiva part ways due to a misunderstanding. Although they are in love and realize they cannot live without each other, their egos prevent them from uniting.",
     "new_name": "Kushi (2000) [1080p] [WEB-DL] [Dolby Atmos] [4.5 GB].mkv",
-    "poster": "",
-    "fanart": "",
+    "poster": "https://image.tmdb.org/t/p/original/n0bz0nX3GqPKfoXY8kH8QFTyWCs.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/10qih3joKDNsiMQrAkfNhJDejRP.jpg",
     "clearlogo": "",
     "versions": [
       {
@@ -4322,21 +5255,27 @@
         "audio": "Atmos",
         "size": "4.5 GB"
       }
-    ]
+    ],
+    "title": "Kushi",
+    "orig_lang": "ta",
+    "rating": 7.1
   },
   {
     "id": "159",
     "tmdb_id": 626392,
     "audience": "general",
-    "clean_name": "Master (",
+    "clean_name": "Master",
     "year": 2021,
     "lang": "Tamil + Telugu + Hindi + Malayalam",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "plot": "An alcoholic professor is sent to a juvenile school, where he clashes with a gangster, who uses the children of the school for criminal activities.",
     "new_name": "Master (2021) [1080p] [AMZN] [DDP 5.1 Multi Tam+Tel+Hin+Mal] [12.2 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/wjbOlovDadOdPKkSAMohLCjbIsc.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/x1I63Mm5KU2DXjL4HdBy6JaGTms.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/17NolIknKarowUAbXkUYsjBXzrR.png",
     "versions": [
       {
         "source": "gd",
@@ -4347,21 +5286,28 @@
         "audio": "DDP 5.1",
         "size": "12 GB"
       }
-    ]
+    ],
+    "title": "Master",
+    "orig_lang": "ta",
+    "rating": 6.6
   },
   {
     "id": "160",
     "tmdb_id": 949229,
     "audience": "general",
-    "clean_name": "Thamarai Poovukum LEO 1080P 60FPS .mkv",
+    "clean_name": "Leo",
     "year": 0,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "plot": "Parthiban, a cafe owner, lives with his family in Himachal Pradesh. Things take an absurd turn for him when he gets in the way of a drug cartel.",
     "new_name": "Karu Karu Karupayi LEO 1080P 60FPS mkv (2026) [1080p] [Dolby 5.1 Surround] [285 MB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/2XUHC4lp3tDsgfFLFygNZ2x2Um9.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/vBVYYc5PgXCICNlBmS7cCvxOc3H.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/spap9Ql11ETN9TlJlKzzksZmAVb.png",
     "versions": [
       {
         "source": "gd",
@@ -4381,21 +5327,28 @@
         "audio": "",
         "size": "285 MB"
       }
-    ]
+    ],
+    "title": "Leo",
+    "orig_lang": "ta",
+    "rating": 6.8
   },
   {
     "id": "161",
     "tmdb_id": 497814,
     "audience": "general",
-    "clean_name": "Rowdy Baby 8K UltraHD Dhanush SaiP allavi DTS",
+    "clean_name": "Breaking In",
     "year": 0,
     "lang": "",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Crime",
+      "Thriller"
+    ],
+    "plot": "Shaun Russell takes her son and daughter on a weekend getaway to her late father's secluded, high-tech vacation home in the countryside. The family soon gets an unwelcome surprise when four men break into the house to find hidden money. After managing to escape, Shaun must now figure out a way to turn the tables on the desperate thieves and save her captive children.",
     "new_name": "Rowdy Baby 8K UltraHD Dhanush SaiP allavi DTS mkv (2026) [1.2 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/nuCxJwcQOEKYoiHTgcf4em8TxWv.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/mQ0sJ3X3OwxYTBPvCLZPLIp5VGD.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/e7H7QQMLugFL1qmovENDxMc5YWq.png",
     "versions": [
       {
         "source": "gd",
@@ -4406,21 +5359,28 @@
         "audio": "",
         "size": "1.2 GB"
       }
-    ]
+    ],
+    "title": "Breaking In",
+    "orig_lang": "en",
+    "rating": 6
   },
   {
     "id": "162",
     "tmdb_id": 1318308,
     "audience": "general",
-    "clean_name": "Aaryan (",
+    "clean_name": "Aaryan",
     "year": 2025,
     "lang": "Tamil + Telugu",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Thriller",
+      "Crime"
+    ],
+    "plot": "A struggling writer announces he'll commit the perfect crime, sparking a tense pursuit as police try to prevent his methodically planned killing spree.",
     "new_name": "Aaryan (2025) [1080p] [WEB-DL] [AMZN] [Tamil DDP 5.1 - 640Kbps + Telugu DDP 5.1 - 640Kbps] [7.5 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/rRjh3zumdW89fNMe4tdjmALB1xG.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/mRyCfbc3vZblB8slswmwovrEhTR.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/8AWpSkrr5ANTTSZvxWmnazUNJJf.png",
     "versions": [
       {
         "source": "gd",
@@ -4431,21 +5391,27 @@
         "audio": "DDP 5.1 - 640Kbps",
         "size": "7.5 GB"
       }
-    ]
+    ],
+    "title": "Aaryan",
+    "orig_lang": "ta",
+    "rating": 5.4
   },
   {
     "id": "163",
     "tmdb_id": 1257957,
     "audience": "general",
-    "clean_name": "Bison Kaalamaadan (",
+    "clean_name": "Bison Kaalamaadan",
     "year": 2025,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Drama",
+      "Action"
+    ],
+    "plot": "A young man fights to overcome violence plaguing his village and succeed as a professional kabaddi player.",
     "new_name": "Bison Kaalamaadan (2025) [1080p] [WEB-DL] [Netflix] [Tamil DDP 5.1 - 640Kbps] [9.5 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/5IPFJ2XFbYjdIw4912ZufCMolX.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/6xEk8ZbqCgmicmeICyYGospXU7R.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/4aiOzNzUej2sYDVytYNnfPOIbiM.png",
     "versions": [
       {
         "source": "gd",
@@ -4456,21 +5422,30 @@
         "audio": "DDP 5.1 - 640Kbps",
         "size": "9.5 GB"
       }
-    ]
+    ],
+    "title": "Bison Kaalamaadan",
+    "orig_lang": "ta",
+    "rating": 7.5
   },
   {
     "id": "164",
     "tmdb_id": 949716,
     "audience": "general",
-    "clean_name": "Vidaamuyarchi (",
+    "clean_name": "Vidaamuyarchi",
     "year": 2025,
     "lang": "Tamil + Telugu + Hindi + Malayalam + Kannada",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Drama",
+      "Mystery",
+      "Thriller",
+      "Crime"
+    ],
+    "plot": "While struggling with his broken marriage, Arjun is pulled into a desperate search for his wife, Kayal, when she goes missing during a road trip.",
     "new_name": "Vidaamuyarchi (2025) [2160p 4K] [WEB-DL] [Netflix] [Tam+Tel+Hin+Kan+Mal DDP 5.1 - 640Kbps] [15.2 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/yx7AYFLoupzBfdfEAlDFuOiei2A.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/k4cFld0vF83NSCWICwQpBKE0d34.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/iM3IqzbKRuchR3F39kWiF3bqUSM.png",
     "versions": [
       {
         "source": "gd",
@@ -4481,21 +5456,28 @@
         "audio": "DDP 5.1 - 640Kbps",
         "size": "15.2 GB"
       }
-    ]
+    ],
+    "title": "Vidaamuyarchi",
+    "orig_lang": "ta",
+    "rating": 6.1
   },
   {
     "id": "165",
     "tmdb_id": 295693,
     "audience": "general",
-    "clean_name": "The Boss Baby (",
+    "clean_name": "The Boss Baby",
     "year": 2017,
     "lang": "Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Animation",
+      "Comedy",
+      "Family"
+    ],
+    "plot": "A story about how a new baby's arrival impacts a family, told from the point of view of a delightfully unreliable narrator, a wildly imaginative 7 year old named Tim.",
     "new_name": "The Boss Baby (2017) [1080p] [BluRay] [x264] [Hindi DD 2.0 - 224Kbps + English DTS-HDMA 7.1] [4 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/9MsQJKe4cUAGxc7R2NGaFQLqOPc.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/8280R0bDR1FusPyThAOmAcSC4nu.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/4ClQ9oVQzTIaOp0twxhXrrIGWap.png",
     "versions": [
       {
         "source": "gd",
@@ -4506,21 +5488,27 @@
         "audio": "DD 2.0 - 224Kbps + DTS-HDMA 7.1",
         "size": "4 GB"
       }
-    ]
+    ],
+    "title": "The Boss Baby",
+    "orig_lang": "en",
+    "rating": 6.4
   },
   {
     "id": "166",
     "tmdb_id": 1196348,
     "audience": "general",
-    "clean_name": "The Girlfriend (",
+    "clean_name": "The Girlfriend",
     "year": 2025,
     "lang": "Tamil + Telugu + Hindi + Malayalam",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "plot": "A college literature student falls for a charming man with a domineering streak, forcing her to confront the toxic truth of his desire.",
     "new_name": "The Girlfriend (2025) [1080p] [AMZN] [Tel+Tam+Hin+Mal DDP 5.1 Atmos - 768k] [5.4 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/bP6n6t2toFPAc615iMw26OAHDFJ.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/eI3IR2OVtAcgwwmE4gphZ8539Kx.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/7wlpqBt8dOZgsxMyGs3T7StYijU.png",
     "versions": [
       {
         "source": "gd",
@@ -4531,21 +5519,27 @@
         "audio": "DDP 5.1 + Atmos - 768k",
         "size": "5.4 GB"
       }
-    ]
+    ],
+    "title": "The Girlfriend",
+    "orig_lang": "te",
+    "rating": 6.3
   },
   {
     "id": "167",
     "tmdb_id": 1080365,
     "audience": "general",
-    "clean_name": "They Call Him OG (",
+    "clean_name": "They Call Him OG",
     "year": 2025,
     "lang": "Tamil + Telugu + Hindi",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "plot": "Trained to fight in Japan, a man's peaceful life in exile abruptly ends when trouble pulls him back to Mumbai to help those he swore to protect.",
     "new_name": "They Call Him OG (2025) [1080p] [WEB-DL] [AMZN] [Telugu DDP 5.1 Atmos - 768k + Tamil 5.1 - 640k + Hindi 5.1 - 640k] [18.4 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/oWOJ4VMyF92IEcTmrQO0xFDqeyk.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/lBJR69jrQ8I84irRexFfO70v0EA.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/f8GSAhAQlCwPBcPIutkV8lABeAu.png",
     "versions": [
       {
         "source": "gd",
@@ -4556,21 +5550,27 @@
         "audio": "DDP 5.1 + Atmos - 768k",
         "size": "18.4 GB"
       }
-    ]
+    ],
+    "title": "They Call Him OG",
+    "orig_lang": "te",
+    "rating": 5.7
   },
   {
     "id": "168",
     "tmdb_id": 1112564,
     "audience": "general",
-    "clean_name": "Vaa Vaathiyaar (",
+    "clean_name": "Vaa Vaathiyaar",
     "year": 2026,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Comedy",
+      "Action"
+    ],
+    "plot": "After being raised as the reincarnation of a famous actor, a man finds himself clashing with his grandfather's expectations of him.",
     "new_name": "Vaa Vaathiyaar (2026) [1080p] [WEB-DL] [AMZN] [Tamil DDP 5.1 - 640Kbps] [8.5 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/hb1YWskm1H2YwNj2KF2BGWgLA58.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/qPNIwdR3y965KMsiweyuXdjDRXR.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/xHDfKJpsQeVpQIQsqThjMJ0G8ji.png",
     "versions": [
       {
         "source": "gd",
@@ -4581,21 +5581,27 @@
         "audio": "DDP 5.1 - 640Kbps",
         "size": "8.5 GB"
       }
-    ]
+    ],
+    "title": "Vaa Vaathiyaar",
+    "orig_lang": "ta",
+    "rating": 4.8
   },
   {
     "id": "169",
     "tmdb_id": 1487142,
     "audience": "general",
-    "clean_name": "Sirai (",
+    "clean_name": "Sirai",
     "year": 2025,
     "lang": "Tamil + Telugu",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "plot": "As he transfers a young convict from prison to court, a police officer learns about the chain of events that led to the young man's conviction for violence.",
     "new_name": "Sirai (2025) [2160p 4K] [WEB-DL] [ZEE5] [Tamil DDP 5.1 - 640Kbps + Telugu DDP 5.1 - 640Kbps] [5.4 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/mltVJD7mBayiw1BubwUL0cx6T1c.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/jlX42iJ6JB1C2TqxALYyc4mIcXa.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/6D8SvamhkUJGtTBw2ShIuZY0IN2.png",
     "versions": [
       {
         "source": "gd",
@@ -4606,21 +5612,29 @@
         "audio": "DDP 5.1 - 640Kbps",
         "size": "5.4 GB"
       }
-    ]
+    ],
+    "title": "Sirai",
+    "orig_lang": "ta",
+    "rating": 6.8
   },
   {
     "id": "170",
     "tmdb_id": 965483,
     "audience": "general",
-    "clean_name": "Parasakthi (",
+    "clean_name": "Parasakthi",
     "year": 2026,
     "lang": "Tamil + Telugu + Hindi + Malayalam + Kannada",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "History",
+      "Drama",
+      "Action",
+      "Romance"
+    ],
+    "plot": "In a time of civil disobedience in the erstwhile Madras state, a ruthless intelligent officer turns up with a duty to track down rebels. Chezhian and his brother Chinndurai are of different personalities, one a hardworking fireman, the other a rebel. A deadly game of cat and mouse ensues as Chezhian is forced to abandon his peaceful ways to protect his people and takes on the mighty forces, culminating in a fierce battle for justice.",
     "new_name": "Parasakthi (2026) [1080p] [WEB-DL] [Netflix] [Tam+Tel+Hin+Kan+Mal DDP 5.1 - 640k] [2.6 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/cpKJGYU8Z1iSXzkgDl8vhazk5EQ.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/yMgpIzfqHZXbEN8ar9EAHJvdYJj.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/qovyfxWaF7Gh1iW2cxtgOlxP6ub.png",
     "versions": [
       {
         "source": "gd",
@@ -4631,21 +5645,28 @@
         "audio": "DDP 5.1 - 640k",
         "size": "2.6 GB"
       }
-    ]
+    ],
+    "title": "Parasakthi",
+    "orig_lang": "ta",
+    "rating": 6.1
   },
   {
     "id": "171",
     "tmdb_id": 10996,
     "audience": "general",
-    "clean_name": "Stuart Little 2 (",
+    "clean_name": "Stuart Little 2",
     "year": 2002,
     "lang": "Tamil + Hindi + English",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Family",
+      "Adventure",
+      "Comedy"
+    ],
+    "plot": "Stuart, an adorable white mouse, still lives happily with his adoptive family, the Littles, on the east side of Manhattan's Central Park. More crazy mouse adventures are in store as Stuart, his human brother, George, and their mischievous cat, Snowbell, set out to rescue a friend.",
     "new_name": "Stuart Little 2 (2002) [1080p] [BluRay] [Tamil 2.0 - 192k + Hindi 2.0 - 192k + English DTS 5.1 - 1509k] [3.5 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/1vdPKC35IOjEAJEr9Y2rjEeyCcW.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/iZJGLOk1I2mGXavJHnUuhzR48G4.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/jH2rEe3vU9u09ksybXILkiimSoV.png",
     "versions": [
       {
         "source": "gd",
@@ -4656,21 +5677,28 @@
         "audio": "DTS 5.1 - 1509k",
         "size": "3.5 GB"
       }
-    ]
+    ],
+    "title": "Stuart Little 2",
+    "orig_lang": "en",
+    "rating": 5.8
   },
   {
     "id": "172",
     "tmdb_id": 69399,
     "audience": "general",
-    "clean_name": "Citizen (",
+    "clean_name": "Citizen",
     "year": 2001,
     "lang": "Tamil",
-    "genres": [],
-    "plot": "",
+    "genres": [
+      "Drama",
+      "Action",
+      "Crime"
+    ],
+    "plot": "Anthony assumes several identities and kidnaps three government officials in order to succeed in his secret mission. However, Sarojini, a CBI officer sets out to find the real identity of the kidnapper.",
     "new_name": "Citizen (2001) [REMUX] [Untouched] [Ayngaran] [DD 5.1] [6.6 GB].mkv",
-    "poster": "",
-    "fanart": "",
-    "clearlogo": "",
+    "poster": "https://image.tmdb.org/t/p/original/A7OYNRIbsDA91PIE3EgzfyA1Swb.jpg",
+    "fanart": "https://image.tmdb.org/t/p/original/yTGmGjAd0gfpVK0ezoqWgx7AJkp.jpg",
+    "clearlogo": "https://image.tmdb.org/t/p/original/p7U20WU1gizZd9C77arpOJPzy9X.png",
     "versions": [
       {
         "source": "gd",
@@ -4681,6 +5709,9 @@
         "audio": "DD 5.1",
         "size": "6.6 GB"
       }
-    ]
+    ],
+    "title": "Citizen",
+    "orig_lang": "ta",
+    "rating": 6.3
   }
 ]
