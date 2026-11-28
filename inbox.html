@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MoinuFlix — OTT Stage &amp; 1-Time Batch Uploader</title>
+  <title>MoinuFlix — Missing &amp; Corruption Trigger Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -84,8 +84,16 @@
       transition: 0.18s ease;
     }
     .pill-btn:hover { background: var(--cyan); color: #040916; border-color: var(--cyan); }
-    .pill-purple { border-color: rgba(168, 85, 247, 0.65); color: #e9d5ff; }
-    .pill-purple:hover { background: var(--purple); color: #fff; }
+    .pill-trigger {
+      background: linear-gradient(135deg, var(--purple), #7e22ce);
+      border: 1px solid #e9d5ff;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
 
     .kpi-strip {
       display: grid;
@@ -124,7 +132,7 @@
       margin-bottom: 0.65rem;
     }
     .drawer-list {
-      max-height: 210px;
+      max-height: 220px;
       overflow-y: auto;
       font-family: monospace;
       font-size: 0.78rem;
@@ -173,6 +181,15 @@
       font-size: 0.7rem;
       font-weight: 800;
     }
+    .warn-badge {
+      background: rgba(245, 158, 11, 0.16);
+      color: var(--gold);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 800;
+    }
 
     .section-hdr {
       font-size: 0.85rem;
@@ -187,7 +204,6 @@
 
     .grid-12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0.9rem; }
     .c12 { grid-column: span 12; }
-    .c8 { grid-column: span 8; }
     .c6 { grid-column: span 6; }
     .c4 { grid-column: span 4; }
     .c3 { grid-column: span 3; }
@@ -219,17 +235,6 @@
       word-break: break-all;
       line-height: 1.5;
     }
-
-    .match-card {
-      display: none;
-      gap: 12px;
-      align-items: center;
-      background: rgba(4, 9, 22, 0.75);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 0.75rem 1rem;
-    }
-    .match-poster { width: 48px; height: 70px; border-radius: 6px; object-fit: cover; background: #020611; }
 
     .cand-wrap { display: none; gap: 7px; flex-wrap: wrap; }
     .cand-chip {
@@ -300,25 +305,26 @@
     .toast-err { background: rgba(239, 68, 68, 0.15); border: 1px solid var(--red); color: var(--red); }
 
     @media (max-width: 860px) {
-      .c8, .c6, .c4, .c3, .c2 { grid-column: span 12; }
+      .c6, .c4, .c3, .c2 { grid-column: span 12; }
     }
   </style>
 </head>
 <body>
 
 <div id="dynamic-bg"></div>
-<input type="file" id="json-file-input" accept=".json,application/json" style="display:none;" onchange="onJsonFileSelected(event)">
+<input type="file" id="old-json-input" accept=".json,application/json" style="display:none;" onchange="onOldJsonUploaded(event)">
 
 <div class="app-shell">
   <div class="studio-header">
     <div>
-      <div class="studio-title">MOINUFLIX STAGE &amp; 1-TIME BATCH UPLOADER</div>
-      <div class="studio-sub">Stage Many → Upload Once at Finish • Auto Route: Movies / Kids / Series / Songs / Registry</div>
+      <div class="studio-title">MOINUFLIX MISSING &amp; CORRUPTION STUDIO</div>
+      <div class="studio-sub">1 Trigger Scan &amp; Repair • Upload Old JSON • Local Save + Confirm → 1-Click Target Sync</div>
     </div>
 
     <div class="chain-nav">
-      <button type="button" class="pill-btn pill-purple" onclick="openTriggerPrompt()">⚡ Trigger (GD/TG/Import)</button>
-      <button type="button" class="pill-btn" onclick="toggleGitHubDataDrawer()">📚 Show GitHub Data</button>
+      <button type="button" class="pill-trigger" onclick="runSingleMissingCorruptionTrigger()">⚡ Scan Missing &amp; Fix Corruption</button>
+      <button type="button" class="pill-btn" onclick="document.getElementById('old-json-input').click()">📂 Upload Old JSON</button>
+      <button type="button" class="pill-btn" onclick="toggleGitHubViewer()">📚 GitHub Data</button>
       <a href="series.html" class="pill-btn">📺 Series</a>
       <a href="songs.html" class="pill-btn">🎵 Songs</a>
       <a href="pending.html" class="pill-btn">📥 Pending</a>
@@ -329,57 +335,38 @@
 
   <div class="kpi-strip">
     <div class="kpi-box">
-      <div class="kpi-lbl">Staged (Unsaved)</div>
+      <div class="kpi-lbl">Staged (Local)</div>
       <div class="kpi-val" id="kpi-staged" style="color:var(--gold);">0</div>
     </div>
     <div class="kpi-box">
-      <div class="kpi-lbl">Auto Route Target</div>
-      <div class="kpi-val" id="kpi-auto-route" style="color:var(--cyan);">movies.json</div>
+      <div class="kpi-lbl">Missing / Fixed</div>
+      <div class="kpi-val" id="kpi-audit" style="color:var(--cyan);">0 / 0</div>
     </div>
     <div class="kpi-box">
-      <div class="kpi-lbl">General Movies</div>
-      <div class="kpi-val" id="kpi-movies" style="color:var(--green);">0</div>
+      <div class="kpi-lbl">Movies / Kids</div>
+      <div class="kpi-val" id="kpi-movies-kids" style="color:var(--green);">0 / 0</div>
     </div>
     <div class="kpi-box">
-      <div class="kpi-lbl">Kids Movies</div>
-      <div class="kpi-val" id="kpi-kids" style="color:#e9d5ff;">0</div>
+      <div class="kpi-lbl">Auto Target</div>
+      <div class="kpi-val" id="kpi-target" style="color:#e9d5ff;">movies.json</div>
     </div>
   </div>
 
   <div class="body-pad">
     <div id="toast"></div>
 
-    <!-- NUMBERED GITHUB VIEWER (NO DELETE) -->
-    <div class="drawer-card" id="gh-drawer">
+    <div class="drawer-card" id="audit-drawer">
       <div class="drawer-head">
-        <span style="font-size:0.84rem; font-weight:800; color:var(--cyan);" id="gh-drawer-title">GitHub Index (Numbered)</span>
-        <div style="display:flex; gap:8px; flex-wrap:wrap;">
-          <button type="button" class="pill-btn" onclick="refreshGitHubIndex('movies.json')">movies.json</button>
-          <button type="button" class="pill-btn" onclick="refreshGitHubIndex('kids_movies.json')">kids_movies.json</button>
-          <button type="button" class="pill-btn" onclick="refreshGitHubIndex('series.json')">series.json</button>
-          <button type="button" class="pill-btn" onclick="refreshGitHubIndex('songs.json')">songs.json</button>
-          <button type="button" class="pill-btn" onclick="document.getElementById('gh-drawer').style.display='none'">✕ Close</button>
-        </div>
+        <span style="font-size:0.84rem; font-weight:800; color:var(--cyan);" id="audit-drawer-title">Missing &amp; Corruption Audit Report</span>
+        <button type="button" class="pill-btn" onclick="document.getElementById('audit-drawer').style.display='none'">✕ Close</button>
       </div>
-      <div class="drawer-list" id="gh-drawer-content">Click "Show GitHub Data" to inspect numbered entries...</div>
+      <div class="drawer-list" id="audit-drawer-body"></div>
     </div>
 
-    <!-- TRIGGERED / IMPORTED QUEUE DRAWER -->
-    <div class="drawer-card" id="queue-drawer" style="border-color:rgba(168, 85, 247, 0.45);">
-      <div class="drawer-head">
-        <span style="font-size:0.84rem; font-weight:800; color:#e9d5ff;" id="queue-drawer-title">Loaded Queue Items</span>
-        <div style="display:flex; gap:8px; flex-wrap:wrap;">
-          <button type="button" class="pill-btn" onclick="downloadJsonFile(drawerItems, 'moinuflix_queue.json')">💾 Save JSON</button>
-          <button type="button" class="pill-btn" onclick="document.getElementById('queue-drawer').style.display='none'">✕ Close</button>
-        </div>
-      </div>
-      <div id="queue-chips" style="display:flex; gap:7px; flex-wrap:wrap;"></div>
-    </div>
-
-    <form id="ingest-form" onsubmit="onStageItemSubmit(event)">
+    <form id="ingest-form" onsubmit="onStageSingleSubmit(event)">
       <input type="hidden" id="tmdb-id" value="">
 
-      <div class="section-hdr">1. Source, Bucket Routing, ID &amp; Raw Filename</div>
+      <div class="section-hdr">1. Source, Target Bucket, ID &amp; Raw Filename</div>
 
       <div class="grid-12">
         <div class="field c2">
@@ -391,13 +378,13 @@
         </div>
 
         <div class="field c3">
-          <label>Bucket / Type (Auto)</label>
+          <label>Target Bucket (Auto)</label>
           <select id="bucket-select" onchange="onBucketChange()">
             <option value="auto">✨ Auto (Movie/Kids/Series/Song)</option>
-            <option value="movies.json">🎬 General Movie (movies.json)</option>
-            <option value="kids_movies.json">🧸 Kids Movie (kids_movies.json)</option>
-            <option value="series.json">📺 Series (series.json)</option>
-            <option value="songs.json">🎵 Song (songs.json)</option>
+            <option value="movies.json">🎬 movies.json</option>
+            <option value="kids_movies.json">🧸 kids_movies.json</option>
+            <option value="series.json">📺 series.json</option>
+            <option value="songs.json">🎵 songs.json</option>
           </select>
         </div>
 
@@ -407,12 +394,12 @@
         </div>
 
         <div class="field c4">
-          <label>TMDb Search / ID (Optional — Safe Match)</label>
-          <input type="text" id="tmdb-visible" placeholder="TMDb ID or search title..." oninput="onTmdbInput(this.value)">
+          <label>TMDb ID (Safe Match)</label>
+          <input type="text" id="tmdb-visible" placeholder="TMDb ID..." oninput="onTmdbInput(this.value)">
         </div>
 
         <div class="field c12">
-          <label>Raw Release File Name (Kept As-Is in name_registry.json) <span class="req">*</span></label>
+          <label>Raw Release File Name (Kept Untouched in name_registry.json) <span class="req">*</span></label>
           <input type="text" id="raw-name-input" placeholder="Paste raw filename..." required oninput="autoDetectSrc(); parseRawInput(this.value)">
         </div>
 
@@ -489,7 +476,7 @@
 
         <div class="field c6">
           <label style="color:var(--gold);">Languages (Only Real Detected — No Fake Default)</label>
-          <input type="text" id="langs-input" placeholder="e.g. Tamil + Telugu + Hindi + Malayalam" oninput="onMetaFieldEdit()">
+          <input type="text" id="langs-input" placeholder="e.g. Tamil + Telugu + Hindi" oninput="onMetaFieldEdit()">
         </div>
 
         <div class="field c6">
@@ -498,19 +485,11 @@
         </div>
 
         <div class="field c12">
-          <label style="color:var(--cyan);">Rename / Custom Final Name Box (Optional Override — Raw Kept Safe)</label>
-          <input type="text" id="rename-input" placeholder="Optional custom final name; leave blank to use auto-built name..." oninput="onRenameEdit()">
+          <label style="color:var(--cyan);">Rename / Custom Final Name Box (Optional Override)</label>
+          <input type="text" id="rename-input" placeholder="Optional custom final name..." oninput="onRenameEdit()">
         </div>
 
         <div class="field c12 cand-wrap" id="cand-wrap"></div>
-
-        <div class="field c12 match-card" id="match-card">
-          <img id="match-poster" class="match-poster" src="" alt="">
-          <div>
-            <div id="match-title" style="font-weight:800; font-size:0.92rem;"></div>
-            <div id="match-sub" style="font-size:0.76rem; color:var(--cyan); margin-top:2px;"></div>
-          </div>
-        </div>
 
         <div class="field c12">
           <label>Final Standard Name (new_name)</label>
@@ -519,21 +498,20 @@
       </div>
 
       <div class="action-bar">
-        <button type="button" class="btn-ghost" onclick="resetAllFields()">Clear Form</button>
-        <button type="submit" class="btn-stage">➕ Save to Stage (No GitHub Commit Yet)</button>
+        <button type="button" class="btn-ghost" onclick="resetForm()">Clear Form</button>
+        <button type="submit" class="btn-stage">➕ Save to Local Stage</button>
         <button type="button" id="upload-once-btn" class="btn-upload-once" onclick="finishAndUploadAllOnce()">🚀 Finish &amp; Upload All Once</button>
       </div>
     </form>
 
-    <!-- STAGED ITEMS LIST -->
     <div class="stage-panel">
       <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
         <span style="font-size:0.86rem; font-weight:800; color:var(--green);">
-          📦 Staged Batch (<span id="stage-count-label">0</span> items — uploaded once when you click "Finish &amp; Upload All Once")
+          📦 Staged Batch (<span id="stage-count-label">0</span> items)
         </span>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
-          <button type="button" class="pill-btn" onclick="downloadJsonFile(stagedItems, 'moinuflix_staged_' + new Date().toISOString().slice(0,10) + '.json')">💾 Backup JSON</button>
-          <button type="button" class="pill-btn" onclick="clearStagedList()">🗑️ Clear Stage</button>
+          <button type="button" class="pill-btn" onclick="downloadJsonFile(stagedItems, 'moinuflix_staged_' + new Date().toISOString().slice(0,10) + '.json')">💾 Save Local JSON</button>
+          <button type="button" class="pill-btn" onclick="clearStage()">🗑️ Clear Stage</button>
         </div>
       </div>
       <div class="stage-list" id="stage-list"></div>
@@ -545,18 +523,14 @@
   const TMDB_KEY = "051ccf72e026820cb53b8b8531b6a2ba";
   const GH_REPO = "Moinuflix/My-Movies";
   const GH_BRANCH = "main";
-  const STAGE_STORAGE_KEY = "moinuflix_staged_batch_v1";
+  const STAGE_KEY = "moinuflix_staged_v2";
 
   const LANG_MAP = {
     en: "English", hi: "Hindi", ta: "Tamil", te: "Telugu",
-    ml: "Malayalam", kn: "Kannada", ko: "Korean", ja: "Japanese",
-    bn: "Bengali", mr: "Marathi", pa: "Punjabi"
+    ml: "Malayalam", kn: "Kannada", ko: "Korean", ja: "Japanese"
   };
 
-  let moviesCache = [];
-  let kidsCache = [];
   let stagedItems = [];
-  let drawerItems = [];
   let tmdbCache = null;
   let srcLocked = false;
   let bucketLocked = false;
@@ -567,7 +541,7 @@
     return (localStorage.getItem("moinuflix_gh_token") || localStorage.getItem("mf_tg_gh") || "").trim();
   }
 
-  function refreshTokenBadge() {
+  function refreshBadge() {
     const el = document.getElementById("pat-badge");
     if (!el) return;
     const ok = Boolean(getToken());
@@ -576,10 +550,10 @@
   }
 
   function setTokenPrompt() {
-    const val = prompt("Enter GitHub PAT:", getToken());
-    if (val !== null) {
-      localStorage.setItem("moinuflix_gh_token", val.trim());
-      refreshTokenBadge();
+    const v = prompt("Enter GitHub PAT:", getToken());
+    if (v !== null) {
+      localStorage.setItem("moinuflix_gh_token", v.trim());
+      refreshBadge();
       showToast("Token updated!");
     }
   }
@@ -596,43 +570,32 @@
   function detectAutoBucket(rawText, titleText, genres = []) {
     const comb = `${rawText || ""} ${titleText || ""}`.trim();
     const gStr = Array.isArray(genres) ? genres.join(" ") : String(genres || "");
-
-    if (/\.(mp3|flac|wav|m4a|ogg|aac)\b|\b(song|audio\s*track|lyric\s*video|album)\b/i.test(comb)) {
-      return "songs.json";
-    }
-    if (/\bS\d{1,2}\s*E\d{1,3}\b|\bSeason\s*\d+\b|\bEpisode\s*\d+\b|\bWeb\s*Series\b/i.test(comb)) {
-      return "series.json";
-    }
+    if (/\.(mp3|flac|wav|m4a|ogg|aac)\b|\b(song|audio\s*track|lyric\s*video|album)\b/i.test(comb)) return "songs.json";
+    if (/\bS\d{1,2}\s*E\d{1,3}\b|\bSeason\s*\d+\b|\bEpisode\s*\d+\b|\bWeb\s*Series\b/i.test(comb)) return "series.json";
     if (/\b(kids|children|cartoon|toon|chhota bheem|motu patlu|doraemon|shinchan|oggy|peppa)\b/i.test(comb) ||
-        (/\b(animation|family)\b/i.test(gStr) && /\b(kids|cartoon|children|junior)\b/i.test(comb))) {
-      return "kids_movies.json";
-    }
+        (/\b(animation|family)\b/i.test(gStr) && /\b(kids|cartoon|children|junior)\b/i.test(comb))) return "kids_movies.json";
     return "movies.json";
   }
 
-  function resolveTargetBucket() {
+  function resolveBucket() {
     const sel = document.getElementById("bucket-select").value;
     if (sel !== "auto") return sel;
-    return detectAutoBucket(
-      document.getElementById("raw-name-input").value,
-      document.getElementById("clean-name-input").value,
-      tmdbCache?.genres || []
-    );
+    return detectAutoBucket(document.getElementById("raw-name-input").value, document.getElementById("clean-name-input").value, tmdbCache?.genres || []);
   }
 
-  function updateAutoRouteBadge() {
-    const tgt = resolveTargetBucket();
-    document.getElementById("kpi-auto-route").textContent = tgt;
+  function updateTargetKpi() {
+    document.getElementById("kpi-target").textContent = resolveBucket();
   }
 
   function onBucketChange() {
     bucketLocked = document.getElementById("bucket-select").value !== "auto";
-    updateAutoRouteBadge();
+    updateTargetKpi();
+    updateNamePreview();
   }
 
-  function setSrc(val, auto = false) {
-    const v = String(val || "gd").toLowerCase() === "tg" ? "tg" : "gd";
-    document.getElementById("src-select").value = v;
+  function setSrc(v, auto = false) {
+    const clean = String(v || "gd").toLowerCase() === "tg" ? "tg" : "gd";
+    document.getElementById("src-select").value = clean;
     if (!auto) srcLocked = true;
   }
 
@@ -642,126 +605,84 @@
     if (srcLocked) return;
     const idStr = document.getElementById("file-id-input").value.trim();
     const rawStr = document.getElementById("raw-name-input").value.trim();
-    if (/drive\.google\.com|docs\.google\.com/i.test(idStr) || /[-\w]{25,}/.test(idStr)) {
-      setSrc("gd", true);
-      return;
-    }
-    if (/^\d+$/.test(idStr) || /\bt\.me\b|\btelegram\b|u-t-s-/i.test(idStr + " " + rawStr)) {
-      setSrc("tg", true);
-      return;
-    }
+    if (/drive\.google\.com|docs\.google\.com/i.test(idStr) || /[-\w]{25,}/.test(idStr)) return setSrc("gd", true);
+    if (/^\d+$/.test(idStr) || /\bt\.me\b|\btelegram\b|u-t-s-/i.test(idStr + " " + rawStr)) return setSrc("tg", true);
     setSrc("gd", true);
   }
 
-  function loadStageFromStorage() {
+  function loadStage() {
     try {
-      const raw = localStorage.getItem(STAGE_STORAGE_KEY);
-      const parsed = raw ? JSON.parse(raw) : [];
-      if (Array.isArray(parsed)) stagedItems = parsed;
+      const p = JSON.parse(localStorage.getItem(STAGE_KEY) || "[]");
+      if (Array.isArray(p)) stagedItems = p;
     } catch (_) { stagedItems = []; }
-    renderStageList();
+    renderStage();
   }
 
-  function saveStageToStorage() {
-    try { localStorage.setItem(STAGE_STORAGE_KEY, JSON.stringify(stagedItems)); } catch (_) {}
-    renderStageList();
-    if (stagedItems.length > 5) {
+  function saveStage(autoBackup = true) {
+    try { localStorage.setItem(STAGE_KEY, JSON.stringify(stagedItems)); } catch (_) {}
+    renderStage();
+    if (autoBackup && stagedItems.length > 5) {
       downloadJsonFile(stagedItems, `moinuflix_stage_backup_${new Date().toISOString().slice(0, 10)}.json`);
     }
   }
 
-  function renderStageList() {
+  function renderStage() {
     document.getElementById("kpi-staged").textContent = String(stagedItems.length);
     document.getElementById("stage-count-label").textContent = String(stagedItems.length);
-    const box = document.getElementById("stage-list");
-    box.innerHTML = "";
+    const list = document.getElementById("stage-list");
+    list.innerHTML = "";
     if (!stagedItems.length) {
-      box.innerHTML = `<div style="color:var(--muted); font-size:0.78rem;">No staged items yet. Fill the form and click "Save to Stage".</div>`;
+      list.innerHTML = `<div style="color:var(--muted); font-size:0.78rem;">No items in stage yet.</div>`;
       return;
     }
     stagedItems.forEach((st, idx) => {
       const row = document.createElement("div");
       row.className = "stage-row";
+      const missingNotes = Array.isArray(st._issues) && st._issues.length
+        ? `<span class="warn-badge">Missing: ${esc(st._issues.join(", "))}</span>`
+        : "";
       row.innerHTML = `
         <div>
           <span class="tag-badge">#${String(idx + 1).padStart(3, "0")}</span>
-          <span class="tag-badge">${st.source.toUpperCase()}</span>
-          <span class="tag-badge" style="color:var(--gold); border-color:rgba(245,158,11,0.4);">${st.targetBucket}</span>
-          <strong style="margin-left:6px;">${escapeHtml(st.new_name)}</strong>
+          <span class="tag-badge">${esc(st.source.toUpperCase())}</span>
+          <span class="tag-badge" style="color:var(--gold); border-color:rgba(245,158,11,0.4);">${esc(st.targetBucket)}</span>
+          ${missingNotes}
+          <strong style="margin-left:6px;">${esc(st.new_name)}</strong>
         </div>
-        <button type="button" class="pill-btn" onclick="removeStagedAt(${idx})">✕</button>
+        <button type="button" class="pill-btn" onclick="removeStaged(${idx})">✕</button>
       `;
-      box.appendChild(row);
+      list.appendChild(row);
     });
   }
 
-  function escapeHtml(s) {
+  function esc(s) {
     return String(s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   }
 
-  function removeStagedAt(idx) {
-    stagedItems.splice(idx, 1);
-    saveStageToStorage();
+  function removeStaged(i) {
+    stagedItems.splice(i, 1);
+    saveStage(false);
   }
 
-  function clearStagedList() {
-    if (!stagedItems.length) return;
-    if (!confirm("Clear all staged items?")) return;
+  function clearStage() {
+    if (!stagedItems.length || !confirm("Clear stage?")) return;
     stagedItems = [];
-    saveStageToStorage();
+    saveStage(false);
   }
 
-  async function loadCounts() {
-    refreshTokenBadge();
-    loadStageFromStorage();
-    updateAutoRouteBadge();
+  async function loadStats() {
+    refreshBadge();
+    loadStage();
+    updateTargetKpi();
     try {
       const [mR, kR] = await Promise.all([
         fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/movies.json?t=${Date.now()}`),
         fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/kids_movies.json?t=${Date.now()}`)
       ]);
-      if (mR.ok) {
-        const md = await mR.json();
-        moviesCache = Array.isArray(md) ? md : [];
-        document.getElementById("kpi-movies").textContent = String(moviesCache.length);
-      }
-      if (kR.ok) {
-        const kd = await kR.json();
-        kidsCache = Array.isArray(kd) ? kd : [];
-        document.getElementById("kpi-kids").textContent = String(kidsCache.length);
-      }
+      const mCnt = mR.ok && Array.isArray(await mR.clone().json()) ? (await mR.json()).length : 0;
+      const kCnt = kR.ok && Array.isArray(await kR.clone().json()) ? (await kR.json()).length : 0;
+      document.getElementById("kpi-movies-kids").textContent = `${mCnt} / ${kCnt}`;
     } catch (_) {}
-  }
-
-  async function toggleGitHubDataDrawer() {
-    document.getElementById("gh-drawer").style.display = "block";
-    await refreshGitHubIndex("movies.json");
-  }
-
-  async function refreshGitHubIndex(fileName) {
-    document.getElementById("gh-drawer-title").textContent = `Existing ${fileName} (Numbered — Zero Delete)`;
-    document.getElementById("gh-drawer-content").textContent = "Loading...";
-    try {
-      const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${fileName}?t=${Date.now()}`);
-      if (!res.ok) {
-        document.getElementById("gh-drawer-content").textContent = `${fileName} not created yet on GitHub.`;
-        return;
-      }
-      const arr = await res.json();
-      if (!Array.isArray(arr) || !arr.length) {
-        document.getElementById("gh-drawer-content").textContent = `${fileName} is empty.`;
-        return;
-      }
-      const lines = arr.map((m, i) => {
-        const idxStr = String(i + 1).padStart(3, "0");
-        const title = m.clean_name || m.title || m.name || "Untitled";
-        const yr = m.year || "-";
-        return `#${idxStr} [id:${m.id || idxStr} | tmdb:${m.tmdb_id || "-"}] ${title} (${yr})`;
-      });
-      document.getElementById("gh-drawer-content").textContent = `Total: ${arr.length}\n\n` + lines.join("\n");
-    } catch (e) {
-      document.getElementById("gh-drawer-content").textContent = "Error: " + e.message;
-    }
   }
 
   function downloadJsonFile(obj, fname) {
@@ -776,133 +697,157 @@
     URL.revokeObjectURL(url);
   }
 
-  async function openTriggerPrompt() {
-    const pick = (prompt(
-      "Trigger / Queue Source:\n1 = GDrive (pending_movies.json)\n2 = TG (tg/step1_pending.json)\n3 = Import JSON file\n4 = All (GD + TG)",
-      "1"
-    ) || "").trim().toLowerCase();
-    if (!pick) return;
-
-    if (pick === "3" || pick === "import") {
-      document.getElementById("json-file-input").click();
+  // 1-Click Trigger: uploads/scans old JSON (or queue), repairs corruption, flags missing, saves locally & confirms upload
+  async function runSingleMissingCorruptionTrigger() {
+    if (!stagedItems.length) {
+      document.getElementById("old-json-input").click();
       return;
     }
-
-    const token = getToken();
-    const collected = [];
-
-    if (["1", "gd", "gdrive", "4", "all"].includes(pick)) {
-      if (token) {
-        try {
-          await fetch(`https://api.github.com/repos/${GH_REPO}/actions/workflows/scan_drive.yml/dispatches`, {
-            method: "POST",
-            headers: { "Authorization": `Bearer ${token}`, "Accept": "application/vnd.github.v3+json", "Content-Type": "application/json" },
-            body: JSON.stringify({ ref: GH_BRANCH })
-          });
-        } catch (_) {}
-      }
-      try {
-        const r = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/pending_movies.json?t=${Date.now()}`);
-        if (r.ok) {
-          let t = await r.text();
-          if (t && t.trim()) {
-            t = t.replace(/\\\[/g, "[").replace(/\\\]/g, "]");
-            const arr = JSON.parse(t);
-            if (Array.isArray(arr)) arr.forEach(x => collected.push({ ...x, _src: "gd" }));
-          }
-        }
-      } catch (_) {}
-    }
-
-    if (["2", "tg", "telegram", "4", "all"].includes(pick)) {
-      if (token) {
-        try {
-          await fetch(`https://api.github.com/repos/${GH_REPO}/actions/workflows/tg_vault_sync.yml/dispatches`, {
-            method: "POST",
-            headers: { "Authorization": `Bearer ${token}`, "Accept": "application/vnd.github.v3+json", "Content-Type": "application/json" },
-            body: JSON.stringify({ ref: GH_BRANCH })
-          });
-        } catch (_) {}
-      }
-      try {
-        const r = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/tg/step1_pending.json?t=${Date.now()}`);
-        if (r.ok) {
-          const arr = await r.json();
-          if (Array.isArray(arr)) arr.forEach(x => collected.push({ ...x, _src: "tg" }));
-        }
-      } catch (_) {}
-    }
-
-    presentDrawerItems(collected, `Trigger (${pick})`);
+    await scanAndConfirmBatch(stagedItems, "Current Stage");
   }
 
-  function onJsonFileSelected(ev) {
+  function onOldJsonUploaded(ev) {
     const f = ev.target.files?.[0];
     if (!f) return;
     const reader = new FileReader();
-    reader.onload = () => {
+    reader.onload = async () => {
       try {
-        const raw = JSON.parse(String(reader.result || "[]"));
-        const arr = Array.isArray(raw) ? raw : (Array.isArray(raw.items) ? raw.items : []);
-        presentDrawerItems(arr.map(x => ({ ...x, _src: x.source || "gd" })), "Imported JSON");
+        const parsed = JSON.parse(String(reader.result || "[]"));
+        const arr = Array.isArray(parsed) ? parsed : (Array.isArray(parsed.items) ? parsed.items : []);
+        if (!arr.length) return showToast("Old JSON mein koi item nahi mila.", true);
+        await scanAndConfirmBatch(arr, f.name);
       } catch (err) {
-        showToast("JSON Error: " + err.message, true);
+        showToast("JSON Parse Error: " + err.message, true);
       }
       ev.target.value = "";
     };
     reader.readAsText(f);
   }
 
-  function presentDrawerItems(items, label) {
-    drawerItems = Array.isArray(items) ? items : [];
-    const drawer = document.getElementById("queue-drawer");
-    const chips = document.getElementById("queue-chips");
-    document.getElementById("queue-drawer-title").textContent = `${label} — ${drawerItems.length} Items`;
-    chips.innerHTML = "";
-    drawerItems.slice(0, 60).forEach((it, idx) => {
-      const b = document.createElement("button");
-      b.type = "button";
-      b.className = "cand-chip";
-      const txt = it.old_name || it.original_filename || it.new_name || it.clean_name || `Item ${idx + 1}`;
-      b.textContent = `#${idx + 1} ${txt.slice(0, 40)}`;
-      b.onclick = () => fillFormFromObject(it);
-      chips.appendChild(b);
-    });
-    drawer.style.display = "block";
-    if (drawerItems.length > 5) {
-      downloadJsonFile(drawerItems, `moinuflix_loaded_${new Date().toISOString().slice(0, 10)}.json`);
-      showToast(`Loaded ${drawerItems.length} items (>5) — saved to local JSON!`);
-    }
+  function sanitizeCorruptedText(val) {
+    return String(val || "")
+      .replace(/[\x00-\x1F\x7F]/g, " ")
+      .replace(/\\\[/g, "[")
+      .replace(/\\\]/g, "]")
+      .replace(/\[\s*\]/g, "")
+      .replace(/\s{2,}/g, " ")
+      .trim();
   }
 
-  function fillFormFromObject(it) {
-    srcLocked = false;
-    bucketLocked = false;
-    renameLocked = false;
-    tmdbCache = null;
-    document.getElementById("tmdb-id").value = "";
-    document.getElementById("rename-input").value = "";
-    document.getElementById("bucket-select").value = "auto";
+  function repairAndAuditItem(rawObj, index) {
+    const it = (rawObj && typeof rawObj === "object") ? rawObj : {};
+    const firstVer = Array.isArray(it.versions) && it.versions[0] ? it.versions[0] : {};
+    const rawName = sanitizeCorruptedText(it.old_name || it.original_filename || firstVer.new_name || it.new_name || it.clean_name || it.title || "");
 
-    const isTg = it._src === "tg" || String(it.source || "").toLowerCase() === "tg" || Boolean(it.tg_msg_id);
-    setSrc(isTg ? "tg" : "gd", true);
-    srcLocked = true;
+    const rawSrc = String(it.source || firstVer.source || (it.tg_msg_id ? "tg" : "gd")).toLowerCase();
+    const src = rawSrc === "tg" ? "tg" : "gd";
 
-    const fid = isTg ? (it.tg_msg_id || it.file_id || "") : (it.gdrive_id || it.file_id || "");
-    if (fid) document.getElementById("file-id-input").value = String(fid);
-
-    const raw = it.old_name || it.original_filename || it.new_name || "";
-    document.getElementById("raw-name-input").value = raw;
-    parseRawInput(raw, true);
-
-    const tmdb = it.selected_tmdb_id || it.tmdb_id || it.tmdb_candidates?.[0]?.tmdb_id || "";
-    if (tmdb) {
-      document.getElementById("tmdb-id").value = tmdb;
-      document.getElementById("tmdb-visible").value = tmdb;
-      fetchTmdbById(tmdb);
+    let rawId = sanitizeCorruptedText(firstVer.id || it.file_id || it.gdrive_id || it.tg_msg_id || it.id || "");
+    if (src === "gd") {
+      const m = rawId.match(/[-\w]{25,}/);
+      if (m) rawId = m[0];
     }
-    updateAutoRouteBadge();
-    updateNamePreview();
+
+    const ym = rawName.match(/\b(19\d\d|20\d\d)\b/);
+    let yr = parseInt(it.year || (ym ? ym[1] : 0), 10) || 0;
+    if (yr < 1900 || yr > 2099) yr = 0;
+
+    let title = sanitizeCorruptedText(it.clean_name || it.title || "");
+    if (!title && rawName) {
+      const base = ym ? rawName.slice(0, ym.index) : rawName.split("[")[0].split("(")[0].split(" - ")[0];
+      title = sanitizeCorruptedText(base.replace(/^\[[^\]]+\]\s*/g, "").replace(/\.(mkv|mp4|avi|ts|m4v|webm|mp3|flac)$/i, "").replace(/[-_]+/g, " "));
+    }
+
+    let res = sanitizeCorruptedText(firstVer.resolution || it.resolution || "");
+    if (!res) {
+      if (/\bds4k\b/i.test(rawName)) res = "DS4K";
+      else if (/2160p|\b4k\b|uhd/i.test(rawName)) res = "2160p";
+      else if (/1080p/i.test(rawName)) res = "1080p";
+      else if (/720p/i.test(rawName)) res = "720p";
+    }
+
+    const ott = detectOtt22(rawName);
+    const fmt = detectFormat(rawName);
+    const langs = extractLangs(rawName).join(" + ") || sanitizeCorruptedText(it.lang || "");
+    const audio = sanitizeCorruptedText(firstVer.audio || it.audio || extractAudio(rawName));
+    const sz = sanitizeCorruptedText(firstVer.size || it.size || (rawName.match(/(\d+(?:\.\d+)?)\s*(gb|mb)\b/i)?.[0] || ""));
+
+    const targetBucket = detectAutoBucket(rawName, title, it.genres || []);
+    const ext = targetBucket === "songs.json" ? ".mp3" : ".mkv";
+    const srcCombo = [ott, fmt].filter(Boolean).join(" ");
+    const audioCombo = [langs, audio].filter(Boolean).join(" ").trim();
+
+    let newName = sanitizeCorruptedText(it.new_name || firstVer.new_name || "");
+    if (!newName || /\[\s*\]/.test(newName)) {
+      newName = [
+        yr ? `${title} (${yr})` : title,
+        res ? `[${res}]` : "",
+        srcCombo ? `[${srcCombo}]` : "",
+        audioCombo ? `[${audioCombo}]` : "",
+        sz ? `[${sz}]` : ""
+      ].filter(Boolean).join(" ") + ext;
+    }
+
+    const issues = [];
+    if (!rawId) issues.push("file_id");
+    if (!parseInt(it.tmdb_id || 0, 10)) issues.push("tmdb_id");
+    if (!yr) issues.push("year");
+    if (!res) issues.push("resolution");
+    if (!sz) issues.push("size");
+
+    return {
+      source: src,
+      id: rawId || `missing_${index + 1}`,
+      targetBucket,
+      tmdb_id: parseInt(it.tmdb_id || 0, 10) || 0,
+      clean_name: title || `Item_${index + 1}`,
+      year: yr,
+      lang: langs,
+      genres: Array.isArray(it.genres) ? it.genres : [],
+      plot: it.plot || "",
+      poster: it.poster || "",
+      fanart: it.fanart || "",
+      clearlogo: it.clearlogo || "",
+      old_name: rawName,
+      new_name: newName,
+      resolution: res,
+      audio,
+      size: sz,
+      _issues: issues
+    };
+  }
+
+  async function scanAndConfirmBatch(rawList, sourceLabel) {
+    const cleaned = rawList.map((item, idx) => repairAndAuditItem(item, idx));
+    const missingCount = cleaned.filter(x => x._issues.length > 0).length;
+    const repairedCount = cleaned.length;
+
+    stagedItems = cleaned;
+    saveStage(true);
+    document.getElementById("kpi-audit").textContent = `${missingCount} / ${repairedCount}`;
+
+    const drawer = document.getElementById("audit-drawer");
+    document.getElementById("audit-drawer-title").textContent = `Audit (${sourceLabel}) — ${cleaned.length} scanned, ${missingCount} with missing fields`;
+    document.getElementById("audit-drawer-body").textContent = cleaned
+      .slice(0, 50)
+      .map((x, i) => `#${String(i + 1).padStart(3, "0")} [${x.targetBucket}] ${x.new_name}` + (x._issues.length ? `  <-- MISSING: ${x._issues.join(", ")}` : "  [OK]"))
+      .join("\n");
+    drawer.style.display = "block";
+
+    const ok = confirm(
+      `Scan Complete (${sourceLabel}):\n` +
+      `• Total Scanned & Repaired: ${cleaned.length}\n` +
+      `• Items With Missing Fields: ${missingCount}\n` +
+      `• Local JSON saved automatically.\n\n` +
+      `Confirm karein: Kya sabhi ${cleaned.length} items ko 1 batch mein GitHub targets par upload kar dein?`
+    );
+
+    if (!ok) {
+      showToast(`Local mein ${cleaned.length} repaired items save hain. Jab chahein Finish & Upload All Once dabayein.`);
+      return;
+    }
+
+    await finishAndUploadAllOnce();
   }
 
   function detectOtt22(s) {
@@ -959,11 +904,11 @@
       ["Korean", /\b(?:kor|korean)\b/i],
       ["Japanese", /\b(?:jpn|japanese)\b/i]
     ];
-    const found = [];
-    for (const [label, rx] of defs) {
-      if (rx.test(s) && !found.includes(label)) found.push(label);
+    const out = [];
+    for (const [lbl, rx] of defs) {
+      if (rx.test(s) && !out.includes(lbl)) out.push(lbl);
     }
-    return found;
+    return out;
   }
 
   function extractAudio(s) {
@@ -973,7 +918,7 @@
   }
 
   function parseRawInput(raw, skipSearch = false) {
-    const s = String(raw || "").trim();
+    const s = sanitizeCorruptedText(raw);
     if (!s) return;
 
     const ym = s.match(/\b(19\d\d|20\d\d)\b/);
@@ -981,7 +926,7 @@
     document.getElementById("year-input").value = yr;
 
     let title = ym ? s.slice(0, ym.index) : s.split("[")[0].split("(")[0].split(" - ")[0];
-    title = title.replace(/^\[[^\]]+\]\s*/g, "").replace(/\.(mkv|mp4|avi|ts|m4v|webm|mp3|flac)$/i, "").replace(/[-_]+/g, " ").replace(/\s{2,}/g, " ").trim();
+    title = sanitizeCorruptedText(title.replace(/^\[[^\]]+\]\s*/g, "").replace(/\.(mkv|mp4|avi|ts|m4v|webm|mp3|flac)$/i, "").replace(/[-_]+/g, " "));
     if (title) document.getElementById("clean-name-input").value = title;
 
     let res = "";
@@ -991,11 +936,8 @@
     else if (/720p/i.test(s)) res = "720p";
     document.getElementById("res-input").value = res;
 
-    const ott = detectOtt22(s);
-    document.getElementById("ott-select").value = ott;
-
-    const fmt = detectFormat(s);
-    document.getElementById("format-select").value = fmt;
+    document.getElementById("ott-select").value = detectOtt22(s);
+    document.getElementById("format-select").value = detectFormat(s);
 
     const has10 = /\b10bit\b/i.test(s);
     let codec = "";
@@ -1010,7 +952,7 @@
     document.getElementById("langs-input").value = extractLangs(s).join(" + ");
     document.getElementById("audio-input").value = extractAudio(s);
 
-    updateAutoRouteBadge();
+    updateTargetKpi();
     updateNamePreview();
 
     if (!skipSearch && title.length > 1) {
@@ -1023,19 +965,18 @@
     const clean = String(val || "").trim();
     if (/^\d+$/.test(clean)) {
       document.getElementById("tmdb-id").value = clean;
-      fetchTmdbById(clean);
+      fetchTmdb(clean);
     } else {
       document.getElementById("tmdb-id").value = "";
     }
   }
 
-  // Safe TMDb search: only shows clickable candidates so nothing wrong is auto-forced silently
   async function searchTmdbSafe(title, yr) {
-    const cleanQ = String(title || "").replace(/\b(1080p|720p|2160p|4k|ds4k|bluray|web-?dl|dvd9|x264|x265|hevc|avc)\b/gi, "").trim();
-    if (cleanQ.length < 2) return;
+    const q = String(title || "").replace(/\b(1080p|720p|2160p|4k|ds4k|bluray|web-?dl|dvd9|x264|x265|hevc|avc)\b/gi, "").trim();
+    if (q.length < 2) return;
     const qYr = yr ? `&year=${encodeURIComponent(yr)}` : "";
     try {
-      const r = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(cleanQ)}${qYr}&include_adult=false`);
+      const r = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(q)}${qYr}&include_adult=false`);
       if (!r.ok) return;
       const d = await r.json();
       const list = (d.results || []).slice(0, 4);
@@ -1051,7 +992,7 @@
         btn.onclick = () => {
           document.getElementById("tmdb-id").value = item.id;
           document.getElementById("tmdb-visible").value = String(item.id);
-          fetchTmdbById(item.id);
+          fetchTmdb(item.id);
         };
         wrap.appendChild(btn);
       });
@@ -1059,7 +1000,7 @@
     } catch (_) {}
   }
 
-  async function fetchTmdbById(id) {
+  async function fetchTmdb(id) {
     try {
       const r = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_KEY}&append_to_response=images`);
       if (!r.ok) return;
@@ -1089,17 +1030,10 @@
         fanart: d.backdrop_path ? `https://image.tmdb.org/t/p/original${d.backdrop_path}` : "",
         clearlogo: logo?.file_path ? `https://image.tmdb.org/t/p/original${logo.file_path}` : ""
       };
-
       if (tmdbCache.fanart) {
         document.getElementById("dynamic-bg").style.backgroundImage = `url('${tmdbCache.fanart}')`;
       }
-      if (d.poster_path) {
-        document.getElementById("match-poster").src = `https://image.tmdb.org/t/p/w185${d.poster_path}`;
-        document.getElementById("match-title").textContent = `${title}${yr ? ` (${yr})` : ""}`;
-        document.getElementById("match-sub").textContent = `TMDb #${id} • ${langFull || "N/A"} • ${genres.join(", ")}`;
-        document.getElementById("match-card").style.display = "flex";
-      }
-      updateAutoRouteBadge();
+      updateTargetKpi();
       updateNamePreview();
     } catch (_) {}
   }
@@ -1110,7 +1044,7 @@
   }
 
   function onMetaFieldEdit() {
-    updateAutoRouteBadge();
+    updateTargetKpi();
     if (!renameLocked) updateNamePreview();
   }
 
@@ -1133,8 +1067,7 @@
 
     const srcCombo = [ott, fmt].filter(Boolean).join(" ");
     const audioCombo = [langs, audio].filter(Boolean).join(" ").trim();
-    const tgt = resolveTargetBucket();
-    const ext = tgt === "songs.json" ? ".mp3" : ".mkv";
+    const ext = resolveBucket() === "songs.json" ? ".mp3" : ".mkv";
 
     const parts = [
       yr ? `${title} (${yr})` : title,
@@ -1148,7 +1081,7 @@
     document.getElementById("name-preview").textContent = parts.filter(Boolean).join(" ") + ext;
   }
 
-  function resetAllFields() {
+  function resetForm() {
     srcLocked = false;
     bucketLocked = false;
     renameLocked = false;
@@ -1157,14 +1090,13 @@
     document.getElementById("tmdb-visible").value = "";
     document.getElementById("rename-input").value = "";
     document.getElementById("bucket-select").value = "auto";
-    document.getElementById("match-card").style.display = "none";
     document.getElementById("cand-wrap").style.display = "none";
     setSrc("gd", true);
-    updateAutoRouteBadge();
+    updateTargetKpi();
     document.getElementById("name-preview").textContent = "Awaiting input...";
   }
 
-  function onStageItemSubmit(e) {
+  function onStageSingleSubmit(e) {
     e.preventDefault();
     const src = document.getElementById("src-select").value === "tg" ? "tg" : "gd";
     const rawId = document.getElementById("file-id-input").value.trim().replace(/\s+/g, "");
@@ -1180,12 +1112,11 @@
     const audio = document.getElementById("audio-input").value.trim().replace(/^\[|\]$/g, "");
     const sz = document.getElementById("size-input").value.trim().replace(/^\[|\]$/g, "");
     const lang = tmdbCache?.lang || document.getElementById("langs-input").value.trim();
-    const targetBucket = resolveTargetBucket();
+    const targetBucket = resolveBucket();
 
-    stagedItems.push({
+    const entry = repairAndAuditItem({
       source: src,
       id: itemId,
-      targetBucket,
       tmdb_id: tmdbId,
       clean_name: title,
       year: yr,
@@ -1200,10 +1131,12 @@
       resolution: res,
       audio,
       size: sz
-    });
+    }, stagedItems.length);
+    entry.targetBucket = targetBucket;
 
-    saveStageToStorage();
-    showToast(`Staged #${String(stagedItems.length).padStart(3, "0")} → ${targetBucket} (not uploaded yet)`);
+    stagedItems.push(entry);
+    saveStage(true);
+    showToast(`Staged → ${targetBucket} (1-click upload on Finish)`);
   }
 
   function nextPadId(arr) {
@@ -1215,28 +1148,22 @@
     return String(maxN + 1).padStart(3, "0");
   }
 
-  // Single-commit per affected target file at Finish
   async function finishAndUploadAllOnce() {
-    if (!stagedItems.length) return alert("Stage is empty! Save items to stage first.");
+    if (!stagedItems.length) return alert("Stage is empty!");
     const token = getToken();
-    if (!token) return alert("GitHub PAT missing! Click PAT button first.");
+    if (!token) return alert("GitHub PAT missing! Click PAT first.");
 
     const btn = document.getElementById("upload-once-btn");
     btn.disabled = true;
-    btn.textContent = "Uploading Once...";
+    btn.textContent = "Uploading Batch Once...";
 
     try {
       const buckets = [...new Set(stagedItems.map(x => x.targetBucket))];
-      const loadedFiles = {};
+      const loaded = {};
 
       for (const b of buckets) {
         const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${b}?t=${Date.now()}`);
-        if (res.ok) {
-          const parsed = await res.json();
-          loadedFiles[b] = Array.isArray(parsed) ? parsed : [];
-        } else {
-          loadedFiles[b] = [];
-        }
+        loaded[b] = res.ok && Array.isArray(await res.clone().json()) ? await res.json() : [];
       }
 
       let regArr = [];
@@ -1247,36 +1174,18 @@
       }
 
       for (const st of stagedItems) {
-        const arr = loadedFiles[st.targetBucket];
+        const arr = loaded[st.targetBucket];
 
         if (st.targetBucket === "songs.json") {
           const sIdx = arr.findIndex(x => String(x.id) === st.id || String(x.title || "").toLowerCase() === st.clean_name.toLowerCase());
-          const songObj = {
-            id: sIdx >= 0 ? arr[sIdx].id : nextPadId(arr),
-            title: st.clean_name,
-            year: st.year,
-            lang: st.lang,
-            new_name: st.new_name,
-            source: st.source,
-            file_id: st.id,
-            size: st.size
-          };
+          const songObj = { id: sIdx >= 0 ? arr[sIdx].id : nextPadId(arr), title: st.clean_name, year: st.year, lang: st.lang, new_name: st.new_name, source: st.source, file_id: st.id, size: st.size };
           if (sIdx >= 0) arr[sIdx] = { ...arr[sIdx], ...songObj };
           else arr.push(songObj);
         } else if (st.targetBucket === "series.json") {
-          const seMatch = st.old_name.match(/S(\d{1,2})\s*E(\d{1,3})/i);
-          const sNum = seMatch ? parseInt(seMatch[1], 10) : 1;
-          const eNum = seMatch ? parseInt(seMatch[2], 10) : 1;
-          const epObj = {
-            source: st.source,
-            id: st.id,
-            season: sNum,
-            episode: eNum,
-            new_name: st.new_name,
-            resolution: st.resolution,
-            audio: st.audio,
-            size: st.size
-          };
+          const se = st.old_name.match(/S(\d{1,2})\s*E(\d{1,3})/i);
+          const sNum = se ? parseInt(se[1], 10) : 1;
+          const eNum = se ? parseInt(se[2], 10) : 1;
+          const epObj = { source: st.source, id: st.id, season: sNum, episode: eNum, new_name: st.new_name, resolution: st.resolution, audio: st.audio, size: st.size };
           let serIdx = arr.findIndex(x => (st.tmdb_id && Number(x.tmdb_id) === st.tmdb_id) || String(x.clean_name || x.title || "").toLowerCase() === st.clean_name.toLowerCase());
           if (serIdx >= 0) {
             arr[serIdx].episodes = Array.isArray(arr[serIdx].episodes) ? arr[serIdx].episodes : [];
@@ -1284,36 +1193,12 @@
             if (eIdx >= 0) arr[serIdx].episodes[eIdx] = epObj;
             else arr[serIdx].episodes.push(epObj);
           } else {
-            arr.push({
-              id: nextPadId(arr),
-              tmdb_id: st.tmdb_id,
-              clean_name: st.clean_name,
-              year: st.year,
-              lang: st.lang,
-              genres: st.genres,
-              plot: st.plot,
-              new_name: st.new_name,
-              poster: st.poster,
-              fanart: st.fanart,
-              clearlogo: st.clearlogo,
-              episodes: [epObj]
-            });
+            arr.push({ id: nextPadId(arr), tmdb_id: st.tmdb_id, clean_name: st.clean_name, year: st.year, lang: st.lang, genres: st.genres, plot: st.plot, new_name: st.new_name, poster: st.poster, fanart: st.fanart, clearlogo: st.clearlogo, episodes: [epObj] });
           }
         } else {
-          // movies.json or kids_movies.json
           const aud = st.targetBucket === "kids_movies.json" ? "kids" : "general";
-          const verObj = {
-            source: st.source,
-            id: st.id,
-            new_name: st.new_name,
-            resolution: st.resolution,
-            audio: st.audio,
-            size: st.size
-          };
-          const mIdx = arr.findIndex(m =>
-            (st.tmdb_id && Number(m.tmdb_id) === st.tmdb_id) ||
-            (Array.isArray(m.versions) && m.versions.some(v => String(v.id) === st.id))
-          );
+          const verObj = { source: st.source, id: st.id, new_name: st.new_name, resolution: st.resolution, audio: st.audio, size: st.size };
+          const mIdx = arr.findIndex(m => (st.tmdb_id && Number(m.tmdb_id) === st.tmdb_id) || (Array.isArray(m.versions) && m.versions.some(v => String(v.id) === st.id)));
           if (mIdx >= 0) {
             arr[mIdx].versions = Array.isArray(arr[mIdx].versions) ? arr[mIdx].versions : [];
             const vIdx = arr[mIdx].versions.findIndex(v => String(v.id) === st.id);
@@ -1321,55 +1206,29 @@
             else arr[mIdx].versions.push(verObj);
             arr[mIdx].new_name = st.new_name;
           } else {
-            arr.push({
-              id: nextPadId(arr),
-              tmdb_id: st.tmdb_id,
-              audience: aud,
-              clean_name: st.clean_name,
-              year: st.year,
-              lang: st.lang,
-              genres: st.genres,
-              plot: st.plot,
-              new_name: st.new_name,
-              poster: st.poster,
-              fanart: st.fanart,
-              clearlogo: st.clearlogo,
-              versions: [verObj]
-            });
+            arr.push({ id: nextPadId(arr), tmdb_id: st.tmdb_id, audience: aud, clean_name: st.clean_name, year: st.year, lang: st.lang, genres: st.genres, plot: st.plot, new_name: st.new_name, poster: st.poster, fanart: st.fanart, clearlogo: st.clearlogo, versions: [verObj] });
           }
         }
 
-        const catCode = st.targetBucket === "kids_movies.json"
-          ? "KIDS_MOVIE"
-          : (st.targetBucket === "series.json" ? "SERIES" : (st.targetBucket === "songs.json" ? "SONG" : "MOVIE"));
-
-        const regRow = {
-          source: st.source,
-          file_id: st.id,
-          tmdb_id: st.tmdb_id,
-          cat: catCode,
-          old_name: st.old_name,
-          new_name: st.new_name,
-          approved_at: new Date().toISOString()
-        };
+        const catCode = st.targetBucket === "kids_movies.json" ? "KIDS_MOVIE" : (st.targetBucket === "series.json" ? "SERIES" : (st.targetBucket === "songs.json" ? "SONG" : "MOVIE"));
+        const regRow = { source: st.source, file_id: st.id, tmdb_id: st.tmdb_id, cat: catCode, old_name: st.old_name, new_name: st.new_name, approved_at: new Date().toISOString() };
         const rIdx = regArr.findIndex(r => String(r.file_id) === st.id);
         if (rIdx >= 0) regArr[rIdx] = regRow;
         else regArr.unshift(regRow);
       }
 
-      // 1 commit per affected target file + 1 commit for name_registry.json
       for (const b of buckets) {
-        await putGitHubJson(b, loadedFiles[b], `Batch Sync (${stagedItems.length} staged) → ${b}`, token);
+        await putGitHubJson(b, loaded[b], `Batch Sync (${stagedItems.length} items) → ${b}`, token);
       }
-      await putGitHubJson("name_registry.json", regArr, `Registry Sync (${stagedItems.length} staged)`, token);
+      await putGitHubJson("name_registry.json", regArr, `Registry Sync (${stagedItems.length} items)`, token);
 
-      const uploadedCount = stagedItems.length;
+      const countDone = stagedItems.length;
       stagedItems = [];
-      saveStageToStorage();
-      await loadCounts();
-      showToast(`Uploaded ${uploadedCount} staged items in 1 batch across ${buckets.join(", ")} + name_registry.json!`);
+      saveStage(false);
+      await loadStats();
+      showToast(`Uploaded ${countDone} items in 1 batch to ${buckets.join(", ")} + name_registry.json!`);
     } catch (err) {
-      showToast("Batch Upload Error: " + err.message, true);
+      showToast("Upload Error: " + err.message, true);
     }
 
     btn.disabled = false;
@@ -1378,32 +1237,54 @@
 
   async function putGitHubJson(path, data, msg, token) {
     const apiUrl = `https://api.github.com/repos/${GH_REPO}/contents/${path}`;
-    let sha = undefined;
-    try {
-      const cur = await fetch(`${apiUrl}?ref=${GH_BRANCH}&t=${Date.now()}`, {
-        headers: { "Authorization": `token ${token}`, "Accept": "application/vnd.github.v3+json" }
-      });
-      if (cur.ok) sha = (await cur.json()).sha;
-    } catch (_) {}
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
 
-    const jsonStr = JSON.stringify(data, null, 2);
-    const encoded = btoa(unescape(encodeURIComponent(jsonStr)));
-    const res = await fetch(apiUrl, {
-      method: "PUT",
-      headers: {
-        "Authorization": `token ${token}`,
-        "Accept": "application/vnd.github.v3+json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ message: msg, content: encoded, branch: GH_BRANCH, sha })
-    });
-    if (!res.ok) {
-      const err = await res.json();
-      throw new Error(err.message || "GitHub PUT failed");
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      let sha = undefined;
+      try {
+        const cur = await fetch(`${apiUrl}?ref=${GH_BRANCH}&t=${Date.now()}`, {
+          headers: { "Authorization": `token ${token}`, "Accept": "application/vnd.github.v3+json" }
+        });
+        if (cur.ok) sha = (await cur.json()).sha;
+      } catch (_) {}
+
+      const res = await fetch(apiUrl, {
+        method: "PUT",
+        headers: {
+          "Authorization": `token ${token}`,
+          "Accept": "application/vnd.github.v3+json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message: msg, content: encoded, branch: GH_BRANCH, sha })
+      });
+
+      if (res.ok) return;
+      const err = await res.json().catch(() => ({}));
+      if (attempt < 3 && [409, 429, 500, 502, 503].includes(res.status)) {
+        await new Promise(r => setTimeout(r, 800 * attempt));
+        continue;
+      }
+      throw new Error(err.message || `GitHub PUT failed (${res.status})`);
     }
   }
 
-  window.addEventListener("DOMContentLoaded", loadCounts);
+  async function toggleGitHubViewer() {
+    const d = document.getElementById("audit-drawer");
+    d.style.display = "block";
+    document.getElementById("audit-drawer-title").textContent = "GitHub movies.json Summary";
+    document.getElementById("audit-drawer-body").textContent = "Loading...";
+    try {
+      const r = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/movies.json?t=${Date.now()}`);
+      const arr = r.ok ? await r.json() : [];
+      document.getElementById("audit-drawer-body").textContent = Array.isArray(arr)
+        ? arr.map((m, i) => `#${String(i + 1).padStart(3, "0")} [${m.id || "-"}] ${m.clean_name || m.title || "Untitled"} (${m.year || "-"})`).join("\n")
+        : "Empty";
+    } catch (e) {
+      document.getElementById("audit-drawer-body").textContent = e.message;
+    }
+  }
+
+  window.addEventListener("DOMContentLoaded", loadStats);
 </script>
 </body>
 </html>
