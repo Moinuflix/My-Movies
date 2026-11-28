@@ -90,36 +90,6 @@
     "approval_status": "pending"
   },
   {
-    "gdrive_id": "1Y8_i0niVynmCVyqWI6KNP4i7BubM_p_s",
-    "original_filename": "Finding Nemo (2003) 1080p BluRay x264 AVC [Org Hindi BD 5.1 ~ 640Kbps + English TrueHD Atmos 7.1] ESub ~PiR8.mkv",
-    "file_size_bytes": 14021147184,
-    "file_size_gb": "13 GB",
-    "mime_type": "video/x-matroska",
-    "detected_at": "2026-10-17T07:55:38.703Z",
-    "parsed": {
-      "title": "Finding Nemo (",
-      "year": 2003,
-      "resolution": "1080p",
-      "source": "BluRay",
-      "codec": "x264",
-      "telegram_tag": "",
-      "standard_filename": "Finding Nemo ( (2003) [1080p] [BluRay] [Org Hindi BD 5.1 - 640Kbps + English TrueHD Atmos 7.1] [13 GB].mkv"
-    },
-    "match_status": "matched",
-    "tmdb_candidates": [
-      {
-        "tmdb_id": 12,
-        "title": "Finding Nemo",
-        "year": "2003",
-        "poster": "https://image.tmdb.org/t/p/w500/eHuGQ10FUzK1mdOY69wF5pGgEf5.jpg",
-        "fanart": "https://image.tmdb.org/t/p/original/eCynaAOgYYiw5yN5lBwz3IxqvaW.jpg",
-        "rating": 7.8
-      }
-    ],
-    "selected_tmdb_id": 12,
-    "approval_status": "pending"
-  },
-  {
     "gdrive_id": "1gH3Ftgg6LuXam2YWd8fVrMSb9EGbVb-6",
     "original_filename": "Race.3.2018.1080p.AMZN.WEB-DL.DDP5.1.H.264-Telly.mkv",
     "file_size_bytes": 10050460230,
