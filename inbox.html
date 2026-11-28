@@ -3,250 +3,485 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MoinuFlix — Quick Movie Ingestion (Plan A • OTT Kids & General)</title>
+  <title>MoinuFlix — OTT Studio Ingestion (22 OTT • DVD9 • PDF→JSON • Chain)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #080d1a;
-      --card-bg: rgba(15, 23, 42, 0.92);
-      --card-border: rgba(56, 189, 248, 0.25);
-      --laser-cyan: #38bdf8;
-      --laser-green: #10b981;
-      --laser-gold: #f59e0b;
-      --laser-red: #ef4444;
-      --laser-purple: #a855f7;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --input-bg: rgba(2, 6, 23, 0.85);
-      --border-gray: rgba(148, 163, 184, 0.25);
-      --dash-bg: rgba(2, 6, 23, 0.85);
+      --bg-dark: #060913;
+      --panel-bg: rgba(13, 20, 38, 0.92);
+      --card-bg: rgba(20, 30, 56, 0.78);
+      --border: rgba(56, 189, 248, 0.22);
+      --cyan: #38bdf8;
+      --green: #10b981;
+      --gold: #f59e0b;
+      --purple: #a855f7;
+      --red: #ef4444;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --input-bg: rgba(4, 9, 22, 0.88);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
-    body { background-color: var(--bg-dark); color: var(--text-main); padding: 1.5rem; min-height: 100vh; position: relative; overflow-x: hidden; }
-    #dynamic-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-size: cover; background-position: center; filter: blur(28px) brightness(0.22); transform: scale(1.05); z-index: -1; transition: background-image 0.8s ease-in-out; }
-    .container { max-width: 1180px; margin: 0 auto; background: var(--card-bg); backdrop-filter: blur(20px); border: 1px solid var(--card-border); border-radius: 18px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35); overflow: hidden; }
-    .govt-header { background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 58, 138, 0.85)); border-bottom: 2px solid var(--laser-cyan); padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .govt-title { font-size: 1.25rem; font-weight: 800; color: #fff; }
-    .govt-sub { font-size: 0.8rem; color: #38bdf8; margin-top: 3px; font-weight: 600; }
-    .nav-links-box { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .btn-nav-link { background: rgba(56, 189, 248, 0.12); border: 1px solid #38bdf8; color: #fff; padding: 0.45rem 0.9rem; border-radius: 8px; font-size: 0.78rem; font-weight: 700; text-decoration: none; cursor: pointer; }
-    .btn-nav-link:hover { background: #38bdf8; color: #020617; }
-    .btn-trigger { background: linear-gradient(135deg, var(--laser-purple), #7e22ce); border: 1px solid #d8b4fe; color: #fff; padding: 0.48rem 0.95rem; border-radius: 8px; font-size: 0.78rem; font-weight: 800; cursor: pointer; }
 
-    .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); background: rgba(2, 6, 23, 0.4); border-bottom: 1px solid var(--border-gray); padding: 0.85rem 2rem; gap: 1rem; }
-    .stat-item { display: flex; flex-direction: column; }
-    .stat-label { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
-    .stat-val { font-size: 1.08rem; font-weight: 800; color: var(--text-main); }
+    body {
+      background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.12), transparent 40%),
+                  radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.10), transparent 40%),
+                  var(--bg-dark);
+      color: var(--text);
+      padding: 1.25rem;
+      min-height: 100vh;
+    }
 
-    .form-wrapper { padding: 1.75rem 2rem; }
-    .section-title { font-size: 0.92rem; font-weight: 800; color: var(--laser-cyan); text-transform: uppercase; letter-spacing: 0.5px; padding-bottom: 0.4rem; border-bottom: 1px solid var(--card-border); margin-bottom: 1.25rem; }
-    .form-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; }
-    .col-12 { grid-column: span 12; }
-    .col-8 { grid-column: span 8; }
-    .col-6 { grid-column: span 6; }
-    .col-4 { grid-column: span 4; }
-    .col-3 { grid-column: span 3; }
-    .col-2 { grid-column: span 2; }
-    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
-    label { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); }
-    .required { color: var(--laser-red); }
-    input, select { padding: 0.72rem 0.9rem; border: 1px solid var(--border-gray); border-radius: 10px; font-size: 0.88rem; color: var(--text-main); background-color: var(--input-bg); outline: none; }
-    input:focus, select:focus { border-color: var(--laser-cyan); box-shadow: 0 0 12px rgba(56, 189, 248, 0.25); }
-    .smart-dash-preview { background: var(--dash-bg); border: 1px dashed var(--laser-cyan); padding: 0.85rem 1.2rem; font-family: monospace; font-size: 0.85rem; color: var(--laser-green); word-break: break-all; border-radius: 10px; line-height: 1.5; }
+    #dynamic-bg {
+      position: fixed; inset: 0;
+      background-size: cover; background-position: center;
+      filter: blur(30px) brightness(0.2);
+      transform: scale(1.06);
+      z-index: -1;
+    }
 
-    .loaded-queue-bar { display: none; background: rgba(2, 6, 23, 0.75); border: 1px solid rgba(168, 85, 247, 0.45); border-radius: 12px; padding: 0.85rem 1.1rem; margin-bottom: 1.25rem; }
-    .loaded-queue-items { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; max-height: 120px; overflow-y: auto; }
-    .queue-pick-chip { background: rgba(56, 189, 248, 0.14); border: 1px solid rgba(56, 189, 248, 0.35); color: #fff; padding: 4px 10px; border-radius: 8px; font-size: 0.74rem; font-weight: 700; cursor: pointer; }
-    .queue-pick-chip:hover { background: var(--laser-cyan); color: #020617; }
+    .app-shell {
+      max-width: 1240px;
+      margin: 0 auto;
+      background: var(--panel-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+    }
 
-    .candidate-strip { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
-    .candidate-pill { background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); padding: 4px 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; color: #fff; cursor: pointer; }
-    .candidate-pill:hover { background: var(--laser-cyan); color: #020617; }
+    .studio-header {
+      background: linear-gradient(120deg, rgba(15, 23, 42, 0.98), rgba(29, 78, 216, 0.45), rgba(88, 28, 135, 0.35));
+      border-bottom: 1px solid var(--border);
+      padding: 1.2rem 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
 
-    .match-preview-strip { display: flex; gap: 14px; align-items: center; background: rgba(2, 6, 23, 0.65); border: 1px solid var(--card-border); border-radius: 12px; padding: 10px 14px; }
-    .mini-poster { width: 52px; height: 76px; border-radius: 6px; object-fit: cover; background: #020617; border: 1px solid var(--laser-cyan); flex-shrink: 0; }
+    .studio-title { font-size: 1.25rem; font-weight: 800; letter-spacing: 0.2px; }
+    .studio-sub { font-size: 0.78rem; color: var(--cyan); margin-top: 3px; font-weight: 600; }
 
-    .button-row { display: flex; justify-content: flex-end; gap: 1rem; border-top: 1px solid var(--border-gray); padding-top: 1.25rem; margin-top: 1.25rem; }
-    .btn { padding: 0.8rem 1.8rem; font-size: 0.85rem; font-weight: 800; border-radius: 10px; cursor: pointer; border: 1px solid transparent; text-transform: uppercase; }
-    .btn-govt-secondary { background: rgba(56, 189, 248, 0.1); color: var(--laser-cyan); border-color: var(--card-border); }
-    .btn-govt-green { background: linear-gradient(135deg, var(--laser-green), #059669); color: #fff; }
-    #toast-msg { padding: 0.85rem 1.25rem; margin-bottom: 1.25rem; border-radius: 10px; font-size: 0.85rem; font-weight: 700; display: none; }
-    .toast-success { background: rgba(16, 185, 129, 0.15); color: var(--laser-green); border: 1px solid var(--laser-green); }
-    .toast-error { background: rgba(239, 68, 68, 0.15); color: var(--laser-red); border: 1px solid var(--laser-red); }
+    .chain-nav { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 
-    @media (max-width: 850px) {
-      .col-8, .col-6, .col-4, .col-3, .col-2 { grid-column: span 12; }
+    .pill-btn {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: var(--text);
+      padding: 0.45rem 0.85rem;
+      border-radius: 10px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: 0.18s ease;
+    }
+    .pill-btn:hover { background: var(--cyan); color: #040916; border-color: var(--cyan); }
+    .pill-purple { border-color: rgba(168, 85, 247, 0.6); color: #e9d5ff; }
+    .pill-purple:hover { background: var(--purple); color: #fff; }
+    .pill-gold { border-color: rgba(245, 158, 11, 0.65); color: #fde68a; }
+    .pill-gold:hover { background: var(--gold); color: #040916; }
+
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.85rem;
+      padding: 0.9rem 1.75rem;
+      background: rgba(2, 6, 23, 0.55);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .kpi-box {
+      background: var(--card-bg);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 12px;
+      padding: 0.65rem 0.9rem;
+    }
+    .kpi-lbl { font-size: 0.68rem; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+    .kpi-val { font-size: 1.05rem; font-weight: 800; margin-top: 2px; }
+
+    .body-pad { padding: 1.5rem 1.75rem; }
+
+    .drawer-card {
+      display: none;
+      background: rgba(4, 9, 22, 0.88);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 14px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.25rem;
+    }
+    .drawer-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 0.65rem;
+    }
+    .drawer-list {
+      max-height: 220px;
+      overflow-y: auto;
+      font-family: monospace;
+      font-size: 0.78rem;
+      background: #020611;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 10px;
+      padding: 0.75rem;
+      white-space: pre-wrap;
+      line-height: 1.45;
+      color: #cbd5e1;
+    }
+
+    .section-hdr {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--cyan);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.45rem;
+      margin: 1.1rem 0 0.95rem;
+    }
+
+    .grid-12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: 0.9rem; }
+    .c12 { grid-column: span 12; }
+    .c8 { grid-column: span 8; }
+    .c6 { grid-column: span 6; }
+    .c4 { grid-column: span 4; }
+    .c3 { grid-column: span 3; }
+    .c2 { grid-column: span 2; }
+
+    .field { display: flex; flex-direction: column; gap: 0.32rem; }
+    label { font-size: 0.74rem; font-weight: 700; color: var(--muted); }
+    .req { color: var(--red); }
+
+    input, select {
+      background: var(--input-bg);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      color: var(--text);
+      padding: 0.68rem 0.85rem;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      outline: none;
+    }
+    input:focus, select:focus { border-color: var(--cyan); }
+
+    .preview-box {
+      background: #030712;
+      border: 1px dashed var(--cyan);
+      border-radius: 12px;
+      padding: 0.85rem 1.1rem;
+      font-family: monospace;
+      font-size: 0.84rem;
+      color: var(--green);
+      word-break: break-all;
+      line-height: 1.5;
+    }
+
+    .match-card {
+      display: none;
+      gap: 12px;
+      align-items: center;
+      background: rgba(4, 9, 22, 0.75);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+    }
+    .match-poster { width: 48px; height: 70px; border-radius: 6px; object-fit: cover; background: #020611; }
+
+    .cand-wrap { display: none; gap: 7px; flex-wrap: wrap; }
+    .cand-chip {
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .cand-chip:hover { background: var(--cyan); color: #040916; }
+
+    .action-bar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+      padding-top: 1.1rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green), #059669);
+      color: #fff;
+      border: none;
+      padding: 0.78rem 1.5rem;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .btn-ghost {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--cyan);
+      border: 1px solid var(--border);
+      padding: 0.78rem 1.25rem;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    #toast {
+      display: none;
+      padding: 0.8rem 1.1rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+    .toast-ok { background: rgba(16, 185, 129, 0.15); border: 1px solid var(--green); color: var(--green); }
+    .toast-err { background: rgba(239, 68, 68, 0.15); border: 1px solid var(--red); color: var(--red); }
+
+    @media (max-width: 860px) {
+      .c8, .c6, .c4, .c3, .c2 { grid-column: span 12; }
     }
   </style>
 </head>
 <body>
 
 <div id="dynamic-bg"></div>
-<input type="file" id="import-json-picker" accept=".json,application/json" style="display:none;" onchange="handleLocalJsonImported(event)">
+<input type="file" id="json-file-input" accept=".json,application/json" style="display:none;" onchange="onJsonFileSelected(event)">
+<input type="file" id="pdf-file-input" accept=".pdf,application/pdf" style="display:none;" onchange="onPdfFileSelected(event)">
 
-<div class="container">
-  <div class="govt-header">
+<div class="app-shell">
+  <div class="studio-header">
     <div>
-      <div class="govt-title">MOINUFLIX QUICK MOVIE INGESTION — PLAN A</div>
-      <div class="govt-sub">Exact Schema • Auto TG/GD • Kids vs General OTT Separation • Zero Data Loss</div>
+      <div class="studio-title">MOINUFLIX OTT INGESTION STUDIO</div>
+      <div class="studio-sub">22 OTT Platforms • DVD9 &amp; Disc/Web Sources • PDF → JSON • GitHub Index Viewer • Chain</div>
     </div>
 
-    <div class="nav-links-box">
-      <button type="button" class="btn-trigger" onclick="promptTriggerAndLoad()">⚡ Trigger (GD / TG / Import)</button>
-      <a href="pending.html" class="btn-nav-link">📥 Pending Queue</a>
-      <a href="series.html" class="btn-nav-link">📺 Web Series</a>
-      <a href="admin.html" class="btn-nav-link">🎬 Library Manager</a>
-      <button type="button" class="btn-nav-link" onclick="configureToken()">⚙️ Set PAT (<span id="pat-status-indicator">Check</span>)</button>
+    <div class="chain-nav">
+      <button type="button" class="pill-btn pill-purple" onclick="openTriggerPrompt()">⚡ Trigger (GD/TG/Import)</button>
+      <button type="button" class="pill-btn pill-gold" onclick="document.getElementById('pdf-file-input').click()">📄 PDF → JSON</button>
+      <button type="button" class="pill-btn" onclick="toggleGitHubDataDrawer()">📚 Show GitHub Data</button>
+      <a href="series.html" class="pill-btn">📺 Series</a>
+      <a href="songs.html" class="pill-btn">🎵 Songs</a>
+      <a href="pending.html" class="pill-btn">📥 Pending</a>
+      <a href="admin.html" class="pill-btn">🗂️ Library</a>
+      <button type="button" class="pill-btn" onclick="setTokenPrompt()">🔑 PAT (<span id="pat-badge">?</span>)</button>
     </div>
   </div>
 
-  <div class="stats-bar">
-    <div class="stat-item">
-      <span class="stat-label">General Movies</span>
-      <span class="stat-val" id="stat-catalog-count">Loading...</span>
+  <div class="kpi-strip">
+    <div class="kpi-box">
+      <div class="kpi-lbl">General Movies</div>
+      <div class="kpi-val" id="kpi-movies" style="color:var(--cyan);">0</div>
     </div>
-    <div class="stat-item">
-      <span class="stat-label">Kids Movies</span>
-      <span class="stat-val" id="stat-kids-count" style="color:var(--laser-gold);">Loading...</span>
+    <div class="kpi-box">
+      <div class="kpi-lbl">Kids Movies</div>
+      <div class="kpi-val" id="kpi-kids" style="color:var(--gold);">0</div>
     </div>
-    <div class="stat-item">
-      <span class="stat-label">Source</span>
-      <span class="stat-val" id="stat-active-source" style="color:var(--laser-cyan);">GD</span>
+    <div class="kpi-box">
+      <div class="kpi-lbl">Next Safe ID #</div>
+      <div class="kpi-val" id="kpi-next-id" style="color:var(--green);">001</div>
     </div>
-    <div class="stat-item">
-      <span class="stat-label">Target File</span>
-      <span class="stat-val" id="stat-target-file" style="color:var(--laser-green);">movies.json</span>
+    <div class="kpi-box">
+      <div class="kpi-lbl">Source / Target</div>
+      <div class="kpi-val" id="kpi-target" style="color:#e9d5ff;">GD → movies.json</div>
     </div>
   </div>
 
-  <div class="form-wrapper">
-    <div id="toast-msg"></div>
+  <div class="body-pad">
+    <div id="toast"></div>
 
-    <div class="loaded-queue-bar" id="loaded-queue-bar">
-      <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
-        <span style="font-size:0.82rem; font-weight:800; color:var(--laser-purple);" id="loaded-queue-summary">Loaded items</span>
-        <button type="button" class="btn-nav-link" onclick="downloadCurrentLoadedJson()">💾 Save JSON</button>
+    <!-- EXISTING GITHUB DATA VIEWER (SHOWS NUMBERS WITHOUT DELETING ANYTHING) -->
+    <div class="drawer-card" id="gh-drawer">
+      <div class="drawer-head">
+        <span style="font-size:0.84rem; font-weight:800; color:var(--cyan);" id="gh-drawer-title">Existing GitHub Items (Numbered View)</span>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button type="button" class="pill-btn" onclick="refreshGitHubIndex('movies.json')">movies.json</button>
+          <button type="button" class="pill-btn" onclick="refreshGitHubIndex('kids_movies.json')">kids_movies.json</button>
+          <button type="button" class="pill-btn" onclick="copyGitHubIndexText()">📋 Copy List</button>
+          <button type="button" class="pill-btn" onclick="document.getElementById('gh-drawer').style.display='none'">✕ Close</button>
+        </div>
       </div>
-      <div class="loaded-queue-items" id="loaded-queue-items"></div>
+      <div class="drawer-list" id="gh-drawer-content">Click "Show GitHub Data" to load numbered items...</div>
     </div>
 
-    <form id="media-ingest-form" onsubmit="handleFormSubmission(event)">
+    <!-- PDF -> JSON / LOADED QUEUE DRAWER -->
+    <div class="drawer-card" id="queue-drawer" style="border-color:rgba(168, 85, 247, 0.45);">
+      <div class="drawer-head">
+        <span style="font-size:0.84rem; font-weight:800; color:#e9d5ff;" id="queue-drawer-title">Parsed / Loaded Items</span>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button type="button" class="pill-btn pill-gold" onclick="downloadDrawerJson()">💾 Download JSON</button>
+          <button type="button" class="pill-btn" onclick="document.getElementById('queue-drawer').style.display='none'">✕ Close</button>
+        </div>
+      </div>
+      <div id="queue-chips" style="display:flex; gap:7px; flex-wrap:wrap; margin-bottom:8px;"></div>
+      <div class="drawer-list" id="queue-json-preview"></div>
+    </div>
+
+    <form id="ingest-form" onsubmit="onSubmitForm(event)">
       <input type="hidden" id="tmdb-id" value="">
 
-      <div class="section-title">Source, OTT Audience (Kids / General), ID &amp; Raw File</div>
+      <div class="section-hdr">1. Source, OTT Audience, ID &amp; Raw Filename</div>
 
-      <div class="form-grid">
-        <div class="form-group col-2">
+      <div class="grid-12">
+        <div class="field c2">
           <label>Source (Auto)</label>
-          <select id="source-type-select" onchange="onManualSourceChange()">
+          <select id="src-select" onchange="onSrcChange()">
             <option value="gd">📁 GD</option>
             <option value="tg">⚡ TG</option>
           </select>
         </div>
 
-        <div class="form-group col-2">
-          <label>OTT Audience</label>
-          <select id="audience-select" onchange="onAudienceChange()">
-            <option value="general">general (Normal)</option>
-            <option value="kids">kids (Kids OTT)</option>
+        <div class="field c2">
+          <label>Audience</label>
+          <select id="aud-select" onchange="onAudChange()">
+            <option value="general">general</option>
+            <option value="kids">kids</option>
           </select>
         </div>
 
-        <div class="form-group col-2">
-          <label>Save Target</label>
-          <select id="save-target-select" onchange="updateTargetLabel()">
+        <div class="field c2">
+          <label>Target File</label>
+          <select id="target-select" onchange="updateKpiTarget()">
             <option value="movies.json">movies.json</option>
             <option value="kids_movies.json">kids_movies.json</option>
           </select>
         </div>
 
-        <div class="form-group col-3">
-          <label>File ID / Link / Msg ID <span class="required">*</span></label>
-          <input type="text" id="drive-file-id" placeholder="Drive ID/Link or TG Msg ID..." required oninput="autoDetectSourceFromInput()">
+        <div class="field c3">
+          <label>File ID / Link / TG Msg ID <span class="req">*</span></label>
+          <input type="text" id="file-id-input" placeholder="Drive ID/Link or TG Msg ID..." required oninput="autoDetectSrc()">
         </div>
 
-        <div class="form-group col-3">
-          <label>TMDb ID (Auto / Manual)</label>
-          <input type="text" id="tmdb-id-visible" placeholder="TMDb ID" oninput="document.getElementById('tmdb-id').value=this.value; fetchTmdbPreview(this.value);">
+        <div class="field c3">
+          <label>TMDb ID</label>
+          <input type="text" id="tmdb-visible" placeholder="Auto / Manual TMDb ID" oninput="syncTmdbId(this.value)">
         </div>
 
-        <div class="form-group col-12">
-          <label>Raw Release File Name (Saved as-is in name_registry.json) <span class="required">*</span></label>
-          <input type="text" id="raw-filename" placeholder="Paste exact raw filename..." required oninput="autoDetectSourceFromInput(); parseRawCleanly(this.value)">
+        <div class="field c12">
+          <label>Raw Release File Name (Preserved As-Is in name_registry.json) <span class="req">*</span></label>
+          <input type="text" id="raw-name-input" placeholder="Paste raw filename (e.g. Movie (2025) 1080p DVD9 ...mkv)" required oninput="autoDetectSrc(); parseRawInput(this.value)">
         </div>
 
-        <div class="form-group col-8">
+        <div class="section-hdr c12">2. Metadata, 22 OTT Platforms, DVD9 / Source &amp; Audio</div>
+
+        <div class="field c6">
           <label>Clean Name (clean_name)</label>
-          <input type="text" id="token-movie-title" placeholder="Movie Title" required oninput="onAutoFieldsEdited()">
+          <input type="text" id="clean-name-input" placeholder="Title" required oninput="onMetaFieldEdit()">
         </div>
 
-        <div class="form-group col-2">
+        <div class="field c2">
           <label>Year</label>
-          <input type="text" id="token-year" placeholder="YYYY" oninput="onAutoFieldsEdited()">
+          <input type="text" id="year-input" placeholder="YYYY" oninput="onMetaFieldEdit()">
         </div>
 
-        <div class="form-group col-2">
-          <label>Size</label>
-          <input type="text" id="token-size" placeholder="e.g. 10GB" oninput="onAutoFieldsEdited()">
-        </div>
-
-        <div class="form-group col-3">
+        <div class="field c2">
           <label>Resolution</label>
-          <input type="text" id="token-resolution" placeholder="2160p / 1080p / 720p" oninput="onAutoFieldsEdited()">
+          <input type="text" id="res-input" placeholder="2160p / 1080p / 720p" oninput="onMetaFieldEdit()">
         </div>
 
-        <div class="form-group col-3">
-          <label>Platform / Source</label>
-          <input type="text" id="token-platform" placeholder="Prime Video / WEB-DL / BluRay" oninput="onAutoFieldsEdited()">
+        <div class="field c2">
+          <label>Size</label>
+          <input type="text" id="size-input" placeholder="e.g. 10GB" oninput="onMetaFieldEdit()">
         </div>
 
-        <div class="form-group col-3">
+        <div class="field c4">
+          <label>OTT Platform (22 Platforms — No Confusion)</label>
+          <select id="ott-select" onchange="onMetaFieldEdit()">
+            <option value="">— None / Disc —</option>
+            <option value="Netflix">Netflix</option>
+            <option value="Prime Video">Prime Video</option>
+            <option value="JioHotstar">JioHotstar</option>
+            <option value="Disney+ Hotstar">Disney+ Hotstar</option>
+            <option value="SonyLIV">SonyLIV</option>
+            <option value="ZEE5">ZEE5</option>
+            <option value="Sun NXT">Sun NXT</option>
+            <option value="Aha">Aha</option>
+            <option value="Hoichoi">Hoichoi</option>
+            <option value="Lionsgate Play">Lionsgate Play</option>
+            <option value="Apple TV+">Apple TV+</option>
+            <option value="MX Player">MX Player</option>
+            <option value="Ullu">Ullu</option>
+            <option value="ALTBalaji">ALTBalaji</option>
+            <option value="Discovery+">Discovery+</option>
+            <option value="BookMyShow Stream">BookMyShow Stream</option>
+            <option value="MUBI">MUBI</option>
+            <option value="Crunchyroll">Crunchyroll</option>
+            <option value="Eros Now">Eros Now</option>
+            <option value="Chaupal">Chaupal</option>
+            <option value="Stage">Stage</option>
+            <option value="DocuBay">DocuBay</option>
+          </select>
+        </div>
+
+        <div class="field c4">
+          <label>Source / Disc Format (Includes DVD9)</label>
+          <select id="format-select" onchange="onMetaFieldEdit()">
+            <option value="">— Auto / None —</option>
+            <option value="WEB-DL">WEB-DL</option>
+            <option value="WEBRip">WEBRip</option>
+            <option value="BluRay">BluRay</option>
+            <option value="REMUX">REMUX</option>
+            <option value="DVD9">DVD9</option>
+            <option value="DVD5">DVD5</option>
+            <option value="DVDRip">DVDRip</option>
+            <option value="HDRip">HDRip</option>
+          </select>
+        </div>
+
+        <div class="field c4">
           <label>Video Codec</label>
-          <input type="text" id="token-videocodec" placeholder="10bit x265 / AVC / x264" oninput="onAutoFieldsEdited()">
+          <input type="text" id="codec-input" placeholder="10bit x265 / x264 / AVC" oninput="onMetaFieldEdit()">
         </div>
 
-        <div class="form-group col-3">
-          <label>Audio / Codec Tag (All Extracted)</label>
-          <input type="text" id="token-audio-codec" placeholder="e.g. DDP 7.1 - 768Kbps + AAC 7.1" oninput="onAutoFieldsEdited()">
+        <div class="field c6">
+          <label style="color:var(--gold);">Languages (Only Real Detected — No Fake Default)</label>
+          <input type="text" id="langs-input" placeholder="e.g. Tamil + Telugu + Hindi + Malayalam" oninput="onMetaFieldEdit()">
         </div>
 
-        <div class="form-group col-12">
-          <label style="color:var(--laser-gold);">Languages in Bracket (All real languages found — no fake default)</label>
-          <input type="text" id="token-langs" placeholder="e.g. Tam + Tel + Hin + Eng" oninput="onAutoFieldsEdited()">
+        <div class="field c6">
+          <label style="color:var(--gold);">Audio / Codec Detail (Preserved)</label>
+          <input type="text" id="audio-input" placeholder="e.g. DDP 5.1 Atmos / DDP 7.1" oninput="onMetaFieldEdit()">
         </div>
 
-        <div class="form-group col-12">
-          <label style="color:var(--laser-cyan);">Rename / Custom Final Name Box (Optional — type here to override final new_name without losing raw)</label>
-          <input type="text" id="custom-rename-input" placeholder="Leave blank for auto-built name, or type custom final name..." oninput="onCustomRenameInput()">
+        <div class="field c12">
+          <label style="color:var(--cyan);">Rename / Custom Final Name Box (Optional Override — Raw Kept Safe)</label>
+          <input type="text" id="rename-input" placeholder="Optional custom final name; leave blank to use auto-built name..." oninput="onRenameEdit()">
         </div>
 
-        <div class="form-group col-12" id="candidates-box" style="display:none;">
-          <label style="color:var(--laser-gold);">🎯 TMDb Matches (Click to Select):</label>
-          <div class="candidate-strip" id="candidate-strip-inner"></div>
-        </div>
+        <div class="field c12 cand-wrap" id="cand-wrap"></div>
 
-        <div class="form-group col-12" id="match-preview-box" style="display:none;">
-          <div class="match-preview-strip">
-            <img id="mini-poster-img" class="mini-poster" src="" alt="">
-            <div>
-              <div id="mini-match-title" style="font-weight:800; font-size:0.95rem; color:#fff;">...</div>
-              <div id="mini-match-sub" style="font-size:0.78rem; color:var(--laser-cyan); margin-top:3px;">...</div>
-            </div>
+        <div class="field c12 match-card" id="match-card">
+          <img id="match-poster" class="match-poster" src="" alt="">
+          <div>
+            <div id="match-title" style="font-weight:800; font-size:0.92rem;"></div>
+            <div id="match-sub" style="font-size:0.76rem; color:var(--cyan); margin-top:2px;"></div>
           </div>
         </div>
 
-        <div class="form-group col-12">
-          <label>Final Standard Name Preview (new_name)</label>
-          <div class="smart-dash-preview" id="dash-name-preview">Awaiting input...</div>
+        <div class="field c12">
+          <label>Final Standard Name (new_name)</label>
+          <div class="preview-box" id="name-preview">Awaiting input...</div>
         </div>
       </div>
 
-      <div class="button-row">
-        <button type="reset" class="btn btn-govt-secondary" onclick="resetForm()">Reset</button>
-        <button type="submit" id="btn-submit" class="btn btn-govt-green">🚀 Commit Movie (Plan A Schema)</button>
+      <div class="action-bar">
+        <button type="button" class="btn-ghost" onclick="resetAllFields()">Reset</button>
+        <button type="submit" id="submit-btn" class="btn-primary">🚀 Commit (Append / Merge Only)</button>
       </div>
     </form>
   </div>
@@ -257,148 +492,209 @@
   const GH_REPO = "Moinuflix/My-Movies";
   const GH_BRANCH = "main";
 
-  let cachedMoviesList = [];
-  let cachedKidsList = [];
-  let cachedTmdbMeta = null;
-  let sourceManuallySet = false;
-  let audienceManuallySet = false;
-  let customRenameManuallySet = false;
-  let fullLoadedQueue = [];
-  let tmdbDebounce = null;
-
-  const LANG_CODE_TO_NAME = {
+  const LANG_MAP = {
     en: "English", hi: "Hindi", ta: "Tamil", te: "Telugu",
     ml: "Malayalam", kn: "Kannada", ko: "Korean", ja: "Japanese",
-    bn: "Bengali", mr: "Marathi", pa: "Punjabi", es: "Spanish", fr: "French"
+    bn: "Bengali", mr: "Marathi", pa: "Punjabi"
   };
+
+  let moviesCache = [];
+  let kidsCache = [];
+  let tmdbCache = null;
+  let drawerItems = [];
+  let srcLocked = false;
+  let audLocked = false;
+  let renameLocked = false;
+  let searchTimer = null;
 
   function getToken() {
     return (localStorage.getItem("moinuflix_gh_token") || localStorage.getItem("mf_tg_gh") || "").trim();
   }
 
-  function configureToken() {
-    const cur = getToken();
-    const input = prompt("Enter GitHub Personal Access Token (PAT):", cur);
-    if (input !== null) {
-      localStorage.setItem("moinuflix_gh_token", input.trim());
-      checkTokenStatus();
-      showToast("Token saved!");
+  function refreshTokenBadge() {
+    const el = document.getElementById("pat-badge");
+    if (!el) return;
+    const ok = Boolean(getToken());
+    el.textContent = ok ? "OK" : "Set";
+    el.style.color = ok ? "var(--green)" : "var(--gold)";
+  }
+
+  function setTokenPrompt() {
+    const val = prompt("Enter GitHub PAT:", getToken());
+    if (val !== null) {
+      localStorage.setItem("moinuflix_gh_token", val.trim());
+      refreshTokenBadge();
+      showToast("Token updated!");
     }
   }
 
-  function checkTokenStatus() {
-    const ind = document.getElementById("pat-status-indicator");
-    if (!ind) return;
-    const t = getToken();
-    ind.textContent = t ? "Active ✅" : "Missing ❌";
-    ind.style.color = t ? "var(--laser-green)" : "var(--laser-red)";
-  }
-
-  function showToast(msg, isError = false) {
-    const el = document.getElementById("toast-msg");
-    el.className = isError ? "toast-error" : "toast-success";
-    el.textContent = (isError ? "❌ " : "✅ ") + msg;
+  function showToast(msg, isErr = false) {
+    const el = document.getElementById("toast");
+    el.className = isErr ? "toast-err" : "toast-ok";
+    el.textContent = (isErr ? "❌ " : "✅ ") + msg;
     el.style.display = "block";
     window.scrollTo({ top: 0, behavior: "smooth" });
     setTimeout(() => { el.style.display = "none"; }, 6000);
   }
 
-  function updateTargetLabel() {
-    document.getElementById("stat-target-file").textContent = document.getElementById("save-target-select").value;
+  function updateKpiTarget() {
+    const src = document.getElementById("src-select").value.toUpperCase();
+    const tgt = document.getElementById("target-select").value;
+    document.getElementById("kpi-target").textContent = `${src} → ${tgt}`;
   }
 
-  function setAudienceValue(aud, isAuto = false) {
-    const clean = String(aud || "general").toLowerCase() === "kids" ? "kids" : "general";
-    document.getElementById("audience-select").value = clean;
-    if (!isAuto) {
-      audienceManuallySet = true;
-      document.getElementById("save-target-select").value = clean === "kids" ? "kids_movies.json" : "movies.json";
-      updateTargetLabel();
-    } else if (!audienceManuallySet) {
-      document.getElementById("save-target-select").value = clean === "kids" ? "kids_movies.json" : "movies.json";
-      updateTargetLabel();
-    }
-    updateDashPreview();
+  function setSrc(val, auto = false) {
+    const v = String(val || "gd").toLowerCase() === "tg" ? "tg" : "gd";
+    document.getElementById("src-select").value = v;
+    if (!auto) srcLocked = true;
+    updateKpiTarget();
   }
 
-  function onAudienceChange() {
-    setAudienceValue(document.getElementById("audience-select").value, false);
-  }
+  function onSrcChange() { setSrc(document.getElementById("src-select").value, false); }
 
-  function detectKidsAudience(text, genres = []) {
-    const s = String(text || "").toLowerCase();
-    const gStr = Array.isArray(genres) ? genres.join(" ").toLowerCase() : String(genres || "").toLowerCase();
-    if (/\b(kids|children|cartoon|toon|chhota bheem|motu patlu|doraemon|shinchan|oggy|peppa|paw patrol)\b/i.test(s)) {
-      return "kids";
-    }
-    if (/\b(animation|family)\b/i.test(gStr) && /\b(kids|cartoon|animated|children|junior)\b/i.test(s)) {
-      return "kids";
-    }
-    return "general";
-  }
-
-  function setSourceValue(src, isAuto = false) {
-    const clean = String(src || "gd").toLowerCase() === "tg" ? "tg" : "gd";
-    document.getElementById("source-type-select").value = clean;
-    document.getElementById("stat-active-source").textContent = clean.toUpperCase();
-    document.getElementById("stat-active-source").style.color = clean === "tg" ? "var(--laser-purple)" : "var(--laser-cyan)";
-    if (!isAuto) sourceManuallySet = true;
-  }
-
-  function onManualSourceChange() {
-    setSourceValue(document.getElementById("source-type-select").value, false);
-  }
-
-  function autoDetectSourceFromInput() {
-    if (sourceManuallySet) return;
-    const idVal = document.getElementById("drive-file-id").value.trim();
-    const rawVal = document.getElementById("raw-filename").value.trim();
-    if (/drive\.google\.com|docs\.google\.com/i.test(idVal) || /[-\w]{25,}/.test(idVal)) {
-      setSourceValue("gd", true);
+  function autoDetectSrc() {
+    if (srcLocked) return;
+    const idStr = document.getElementById("file-id-input").value.trim();
+    const rawStr = document.getElementById("raw-name-input").value.trim();
+    if (/drive\.google\.com|docs\.google\.com/i.test(idStr) || /[-\w]{25,}/.test(idStr)) {
+      setSrc("gd", true);
       return;
     }
-    if (/^\d+$/.test(idVal) || /\bt\.me\b|\btelegram\b|u-t-s-/i.test(idVal + " " + rawVal)) {
-      setSourceValue("tg", true);
+    if (/^\d+$/.test(idStr) || /\bt\.me\b|\btelegram\b|u-t-s-/i.test(idStr + " " + rawStr)) {
+      setSrc("tg", true);
       return;
     }
-    setSourceValue("gd", true);
+    setSrc("gd", true);
   }
 
-  function downloadJsonFile(dataObj, filename) {
-    const blob = new Blob([JSON.stringify(dataObj, null, 2)], { type: "application/json" });
+  function setAud(val, auto = false) {
+    const v = String(val || "general").toLowerCase() === "kids" ? "kids" : "general";
+    document.getElementById("aud-select").value = v;
+    if (!auto || !audLocked) {
+      document.getElementById("target-select").value = v === "kids" ? "kids_movies.json" : "movies.json";
+    }
+    if (!auto) audLocked = true;
+    updateNextIdKpi();
+    updateKpiTarget();
+  }
+
+  function onAudChange() { setAud(document.getElementById("aud-select").value, false); }
+
+  function calcNextId(arr) {
+    let maxNum = 0;
+    for (const row of (arr || [])) {
+      const n = parseInt(String(row.id || ""), 10);
+      if (!isNaN(n) && n > maxNum) maxNum = n;
+    }
+    return String(maxNum + 1).padStart(3, "0");
+  }
+
+  function updateNextIdKpi() {
+    const tgt = document.getElementById("target-select").value;
+    const arr = tgt === "kids_movies.json" ? kidsCache : moviesCache;
+    document.getElementById("kpi-next-id").textContent = calcNextId(arr);
+  }
+
+  async function loadCounts() {
+    refreshTokenBadge();
+    updateKpiTarget();
+    try {
+      const [mR, kR] = await Promise.all([
+        fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/movies.json?t=${Date.now()}`),
+        fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/kids_movies.json?t=${Date.now()}`)
+      ]);
+      if (mR.ok) {
+        const md = await mR.json();
+        moviesCache = Array.isArray(md) ? md : [];
+        document.getElementById("kpi-movies").textContent = String(moviesCache.length);
+      }
+      if (kR.ok) {
+        const kd = await kR.json();
+        kidsCache = Array.isArray(kd) ? kd : [];
+        document.getElementById("kpi-kids").textContent = String(kidsCache.length);
+      }
+      updateNextIdKpi();
+    } catch (_) {}
+  }
+
+  async function toggleGitHubDataDrawer() {
+    const drawer = document.getElementById("gh-drawer");
+    drawer.style.display = "block";
+    await refreshGitHubIndex(document.getElementById("target-select").value);
+  }
+
+  async function refreshGitHubIndex(fileName) {
+    const target = fileName || "movies.json";
+    document.getElementById("gh-drawer-title").textContent = `Existing ${target} (Numbered — No Delete)`;
+    document.getElementById("gh-drawer-content").textContent = "Loading...";
+    try {
+      const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${target}?t=${Date.now()}`);
+      if (!res.ok) {
+        document.getElementById("gh-drawer-content").textContent = `${target} not found yet on GitHub (starts at #001).`;
+        return;
+      }
+      const arr = await res.json();
+      if (!Array.isArray(arr) || !arr.length) {
+        document.getElementById("gh-drawer-content").textContent = `${target} is empty (next ID: 001).`;
+        return;
+      }
+      const lines = arr.map((m, idx) => {
+        const num = String(idx + 1).padStart(3, "0");
+        const recId = m.id || num;
+        const tmdb = m.tmdb_id || "-";
+        const title = m.clean_name || m.title || "Untitled";
+        const yr = m.year || "-";
+        const vCount = Array.isArray(m.versions) ? m.versions.length : 0;
+        return `#${num} [id:${recId} | tmdb:${tmdb} | v:${vCount}] ${title} (${yr})`;
+      });
+      document.getElementById("gh-drawer-content").textContent =
+        `Total: ${arr.length} | Next ID: ${calcNextId(arr)}\n\n` + lines.join("\n");
+    } catch (e) {
+      document.getElementById("gh-drawer-content").textContent = "Error: " + e.message;
+    }
+  }
+
+  function copyGitHubIndexText() {
+    const txt = document.getElementById("gh-drawer-content").textContent || "";
+    if (!txt) return;
+    navigator.clipboard?.writeText(txt);
+    showToast("Numbered GitHub list copied!");
+  }
+
+  function downloadJsonFile(obj, fname) {
+    const blob = new Blob([JSON.stringify(obj, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = filename;
+    a.download = fname;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   }
 
-  function downloadCurrentLoadedJson() {
-    if (!fullLoadedQueue.length) return showToast("No items loaded to save!", true);
-    const stamp = new Date().toISOString().slice(0, 10);
-    downloadJsonFile(fullLoadedQueue, `moinuflix_queue_${stamp}.json`);
-    showToast(`Saved ${fullLoadedQueue.length} items to local JSON!`);
+  function downloadDrawerJson() {
+    if (!drawerItems.length) return showToast("No items to export!", true);
+    downloadJsonFile(drawerItems, `moinuflix_export_${new Date().toISOString().slice(0, 10)}.json`);
+    showToast(`Exported ${drawerItems.length} items as JSON!`);
   }
 
-  async function promptTriggerAndLoad() {
-    const choice = (prompt(
-      "Kaunsa trigger/queue load karna hai?\n1 = GDrive (pending_movies.json)\n2 = TG (tg/step1_pending.json)\n3 = Import (Local JSON file)\n4 = All (GD + TG)",
+  async function openTriggerPrompt() {
+    const pick = (prompt(
+      "Trigger / Queue Source:\n1 = GDrive (pending_movies.json)\n2 = TG (tg/step1_pending.json)\n3 = Import JSON file\n4 = All (GD + TG)",
       "1"
     ) || "").trim().toLowerCase();
+    if (!pick) return;
 
-    if (!choice) return;
-    if (choice === "3" || choice === "import") {
-      document.getElementById("import-json-picker").click();
+    if (pick === "3" || pick === "import") {
+      document.getElementById("json-file-input").click();
       return;
     }
 
     const token = getToken();
-    const list = [];
+    const collected = [];
 
-    if (choice === "1" || choice === "gd" || choice === "gdrive" || choice === "4" || choice === "all") {
+    if (["1", "gd", "gdrive", "4", "all"].includes(pick)) {
       if (token) {
         try {
           await fetch(`https://api.github.com/repos/${GH_REPO}/actions/workflows/scan_drive.yml/dispatches`, {
@@ -409,19 +705,19 @@
         } catch (_) {}
       }
       try {
-        const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/pending_movies.json?t=${Date.now()}`);
-        if (res.ok) {
-          let txt = await res.text();
-          if (txt && txt.trim()) {
-            txt = txt.replace(/\\\[/g, '[').replace(/\\\]/g, ']');
-            const arr = JSON.parse(txt);
-            if (Array.isArray(arr)) arr.forEach(x => list.push({ ...x, _queueSource: "gd" }));
+        const r = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/pending_movies.json?t=${Date.now()}`);
+        if (r.ok) {
+          let t = await r.text();
+          if (t && t.trim()) {
+            t = t.replace(/\\\[/g, "[").replace(/\\\]/g, "]");
+            const arr = JSON.parse(t);
+            if (Array.isArray(arr)) arr.forEach(x => collected.push({ ...x, _src: "gd" }));
           }
         }
       } catch (_) {}
     }
 
-    if (choice === "2" || choice === "tg" || choice === "telegram" || choice === "4" || choice === "all") {
+    if (["2", "tg", "telegram", "4", "all"].includes(pick)) {
       if (token) {
         try {
           await fetch(`https://api.github.com/repos/${GH_REPO}/actions/workflows/tg_vault_sync.yml/dispatches`, {
@@ -432,421 +728,430 @@
         } catch (_) {}
       }
       try {
-        const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/tg/step1_pending.json?t=${Date.now()}`);
-        if (res.ok) {
-          const arr = await res.json();
-          if (Array.isArray(arr)) arr.forEach(x => list.push({ ...x, _queueSource: "tg" }));
+        const r = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/tg/step1_pending.json?t=${Date.now()}`);
+        if (r.ok) {
+          const arr = await r.json();
+          if (Array.isArray(arr)) arr.forEach(x => collected.push({ ...x, _src: "tg" }));
         }
       } catch (_) {}
     }
 
-    fullLoadedQueue = list;
-    renderLoadedQueueBar(list, choice);
-    if (list.length > 5) {
-      const stamp = new Date().toISOString().slice(0, 10);
-      downloadJsonFile(list, `moinuflix_${choice}_${stamp}.json`);
-      showToast(`Loaded ${list.length} items (>5) — saved to local JSON!`);
-    } else {
-      showToast(`Loaded ${list.length} items!`);
-    }
+    presentDrawerItems(collected, `Trigger (${pick})`);
   }
 
-  function handleLocalJsonImported(ev) {
-    const file = ev.target.files?.[0];
-    if (!file) return;
+  function onJsonFileSelected(ev) {
+    const f = ev.target.files?.[0];
+    if (!f) return;
     const reader = new FileReader();
     reader.onload = () => {
       try {
-        const parsed = JSON.parse(String(reader.result || "[]"));
-        const arr = Array.isArray(parsed) ? parsed : (Array.isArray(parsed.items) ? parsed.items : []);
-        fullLoadedQueue = arr.map(x => ({ ...x, _queueSource: x.source || "gd" }));
-        renderLoadedQueueBar(fullLoadedQueue, "import");
-        if (fullLoadedQueue.length > 5) {
-          const stamp = new Date().toISOString().slice(0, 10);
-          downloadJsonFile(fullLoadedQueue, `moinuflix_import_${stamp}.json`);
-          showToast(`Imported ${fullLoadedQueue.length} items (>5) — saved to local JSON!`);
-        } else {
-          showToast(`Imported ${fullLoadedQueue.length} items!`);
-        }
+        const raw = JSON.parse(String(reader.result || "[]"));
+        const arr = Array.isArray(raw) ? raw : (Array.isArray(raw.items) ? raw.items : []);
+        presentDrawerItems(arr.map(x => ({ ...x, _src: x.source || "gd" })), "Imported JSON");
       } catch (err) {
-        showToast("Invalid JSON: " + err.message, true);
+        showToast("JSON Error: " + err.message, true);
       }
       ev.target.value = "";
     };
-    reader.readAsText(file);
+    reader.readAsText(f);
   }
 
-  function renderLoadedQueueBar(items, label = "") {
-    const bar = document.getElementById("loaded-queue-bar");
-    const listEl = document.getElementById("loaded-queue-items");
-    const sumEl = document.getElementById("loaded-queue-summary");
-    listEl.innerHTML = "";
-    if (!items || !items.length) {
-      bar.style.display = "none";
-      return;
-    }
-    sumEl.textContent = `Loaded ${items.length} items [${label.toUpperCase()}] (Click any to fill):`;
-    items.forEach((it, i) => {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "queue-pick-chip";
-      const nm = it.old_name || it.original_filename || it.new_name || `Item ${i + 1}`;
-      btn.textContent = `[${(it._queueSource || it.source || "gd").toUpperCase()}] ${nm.slice(0, 44)}`;
-      btn.onclick = () => loadQueueItemIntoForm(it);
-      listEl.appendChild(btn);
-    });
-    bar.style.display = "block";
-  }
+  // Extract readable lines from PDF bytes and build JSON objects
+  function onPdfFileSelected(ev) {
+    const f = ev.target.files?.[0];
+    if (!f) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const bytes = new Uint8Array(reader.result);
+        const latin = new TextDecoder("latin1").decode(bytes);
+        const chunks = [];
 
-  function loadQueueItemIntoForm(pItem) {
-    sourceManuallySet = false;
-    audienceManuallySet = false;
-    customRenameManuallySet = false;
-    document.getElementById("custom-rename-input").value = "";
+        // Extract text inside PDF (...) literals
+        const litMatches = latin.matchAll(/\(([^()\\]{2,200})\)/g);
+        for (const m of litMatches) {
+          const cleaned = m[1].replace(/[^\x20-\x7E]/g, " ").replace(/\s+/g, " ").trim();
+          if (cleaned.length >= 3 && !/^[0-9.\-\s]+$/.test(cleaned)) {
+            chunks.push(cleaned);
+          }
+        }
 
-    const isTg = pItem._queueSource === "tg" || String(pItem.source || "").toLowerCase() === "tg" || Boolean(pItem.tg_msg_id);
-    setSourceValue(isTg ? "tg" : "gd", true);
-    sourceManuallySet = true;
+        const uniqueLines = [...new Set(chunks)];
+        const builtJson = uniqueLines.map((line, idx) => {
+          const ym = line.match(/\b(19\d\d|20\d\d)\b/);
+          const yr = ym ? parseInt(ym[1], 10) : 0;
+          const title = (ym ? line.slice(0, ym.index) : line.split("[")[0])
+            .replace(/[-_]+/g, " ").replace(/\s{2,}/g, " ").trim() || line;
+          const isKids = /\b(kids|cartoon|animation|family)\b/i.test(line);
+          return {
+            id: String(idx + 1).padStart(3, "0"),
+            audience: isKids ? "kids" : "general",
+            clean_name: title,
+            year: yr,
+            raw_line: line,
+            source_pdf: f.name
+          };
+        });
 
-    const idVal = isTg ? (pItem.tg_msg_id || pItem.file_id || pItem.id || "") : (pItem.gdrive_id || pItem.file_id || pItem.id || "");
-    document.getElementById("drive-file-id").value = String(idVal);
-
-    const rawVal = pItem.old_name || pItem.original_filename || pItem.new_name || "";
-    document.getElementById("raw-filename").value = rawVal;
-
-    setAudienceValue(pItem.audience || detectKidsAudience(rawVal, pItem.genres), true);
-    parseRawCleanly(rawVal, Boolean(pItem.tmdb_id || pItem.selected_tmdb_id));
-
-    const szVal = pItem.file_size_gb || pItem.size || pItem.size_gb || "";
-    if (szVal) {
-      const cleanSz = /^\d+(\.\d+)?$/.test(String(szVal).trim()) ? `${String(szVal).trim()}GB` : String(szVal).trim();
-      document.getElementById("token-size").value = cleanSz;
-    }
-
-    const tmdbVal = pItem.selected_tmdb_id || pItem.tmdb_id || (pItem.tmdb_candidates && pItem.tmdb_candidates[0]?.tmdb_id) || "";
-    if (tmdbVal) {
-      document.getElementById("tmdb-id").value = tmdbVal;
-      document.getElementById("tmdb-id-visible").value = tmdbVal;
-      fetchTmdbPreview(tmdbVal);
-    }
-    updateDashPreview();
-  }
-
-  function extractAllLanguages(s) {
-    const found = [];
-    const rules = [
-      ["Tam", /\b(?:tam|tamil)\b/i],
-      ["Tel", /\b(?:tel|telugu)\b/i],
-      ["Hin", /\b(?:hin|hindi)\b/i],
-      ["Mal", /\b(?:mal|malayalam)\b/i],
-      ["Kan", /\b(?:kan|kannada)\b/i],
-      ["Eng", /\b(?:eng|english)\b/i],
-      ["Kor", /\b(?:kor|korean)\b/i],
-      ["Jpn", /\b(?:jpn|japanese)\b/i],
-      ["Ben", /\b(?:ben|bengali)\b/i]
-    ];
-    for (const [shortLabel, rx] of rules) {
-      if (rx.test(s) && !found.includes(shortLabel)) {
-        found.push(shortLabel);
+        presentDrawerItems(builtJson, `PDF → JSON (${f.name})`);
+        if (builtJson.length > 5) {
+          downloadJsonFile(builtJson, `${f.name.replace(/\.pdf$/i, "")}.json`);
+          showToast(`PDF se ${builtJson.length} items JSON mein ban gaye aur download ho gaye!`);
+        }
+      } catch (err) {
+        showToast("PDF Parse Error: " + err.message, true);
       }
+      ev.target.value = "";
+    };
+    reader.readAsArrayBuffer(f);
+  }
+
+  function presentDrawerItems(items, label) {
+    drawerItems = Array.isArray(items) ? items : [];
+    const drawer = document.getElementById("queue-drawer");
+    const chips = document.getElementById("queue-chips");
+    const preview = document.getElementById("queue-json-preview");
+    document.getElementById("queue-drawer-title").textContent = `${label} — ${drawerItems.length} Items`;
+    chips.innerHTML = "";
+
+    drawerItems.slice(0, 60).forEach((it, idx) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "cand-chip";
+      const txt = it.clean_name || it.old_name || it.original_filename || it.new_name || it.raw_line || `Item ${idx + 1}`;
+      b.textContent = `#${idx + 1} ${txt.slice(0, 38)}`;
+      b.onclick = () => fillFormFromObject(it);
+      chips.appendChild(b);
+    });
+
+    preview.textContent = JSON.stringify(drawerItems.slice(0, 25), null, 2) +
+      (drawerItems.length > 25 ? `\n... (${drawerItems.length - 25} more items in JSON)` : "");
+    drawer.style.display = "block";
+
+    if (drawerItems.length > 5) {
+      downloadJsonFile(drawerItems, `moinuflix_list_${new Date().toISOString().slice(0, 10)}.json`);
+      showToast(`Loaded ${drawerItems.length} items (>5) — saved to local JSON!`);
+    }
+  }
+
+  function fillFormFromObject(it) {
+    srcLocked = false;
+    audLocked = false;
+    renameLocked = false;
+    document.getElementById("rename-input").value = "";
+
+    const isTg = it._src === "tg" || String(it.source || "").toLowerCase() === "tg" || Boolean(it.tg_msg_id);
+    setSrc(isTg ? "tg" : "gd", true);
+    srcLocked = true;
+
+    const fid = isTg ? (it.tg_msg_id || it.file_id || "") : (it.gdrive_id || it.file_id || "");
+    if (fid) document.getElementById("file-id-input").value = String(fid);
+
+    const raw = it.old_name || it.original_filename || it.raw_line || it.new_name || "";
+    document.getElementById("raw-name-input").value = raw;
+
+    const isKids = it.audience === "kids" || /\b(kids|cartoon|animation|family)\b/i.test(raw);
+    setAud(isKids ? "kids" : "general", true);
+
+    parseRawInput(raw, Boolean(it.tmdb_id || it.selected_tmdb_id));
+    if (it.clean_name) document.getElementById("clean-name-input").value = it.clean_name;
+    if (it.year) document.getElementById("year-input").value = String(it.year);
+
+    const tmdb = it.selected_tmdb_id || it.tmdb_id || it.tmdb_candidates?.[0]?.tmdb_id || "";
+    if (tmdb) syncTmdbId(tmdb);
+    updateNamePreview();
+  }
+
+  function detectOtt22(s) {
+    const map = [
+      ["Netflix", /\b(?:netflix|\bnf\b)\b/i],
+      ["Prime Video", /\b(?:prime\s*video|amazon\s*prime|\bamzn\b)\b/i],
+      ["JioHotstar", /\b(?:jiohotstar|jio\s*hotstar|\bjhs\b)\b/i],
+      ["Disney+ Hotstar", /\b(?:disney\+?\s*hotstar|hotstar|\bdsnp\b)\b/i],
+      ["SonyLIV", /\b(?:sonyliv|sony\s*liv)\b/i],
+      ["ZEE5", /\bzee5\b/i],
+      ["Sun NXT", /\b(?:sun\s*nxt|sunnxt)\b/i],
+      ["Aha", /\baha\b/i],
+      ["Hoichoi", /\bhoichoi\b/i],
+      ["Lionsgate Play", /\b(?:lionsgate\s*play|lionsgate)\b/i],
+      ["Apple TV+", /\b(?:apple\s*tv\+?|appletv)\b/i],
+      ["MX Player", /\b(?:mx\s*player|mxplayer)\b/i],
+      ["Ullu", /\bullu\b/i],
+      ["ALTBalaji", /\baltbalaji\b/i],
+      ["Discovery+", /\b(?:discovery\+?|discovery\s*plus)\b/i],
+      ["BookMyShow Stream", /\bbookmyshow\b/i],
+      ["MUBI", /\bmubi\b/i],
+      ["Crunchyroll", /\bcrunchyroll\b/i],
+      ["Eros Now", /\beros\s*now\b/i],
+      ["Chaupal", /\bchaupal\b/i],
+      ["Stage", /\bstage\b/i],
+      ["DocuBay", /\bdocubay\b/i]
+    ];
+    for (const [name, rx] of map) {
+      if (rx.test(s)) return name;
+    }
+    return "";
+  }
+
+  function detectFormat(s) {
+    if (/\bdvd9\b/i.test(s)) return "DVD9";
+    if (/\bdvd5\b/i.test(s)) return "DVD5";
+    if (/\bremux\b/i.test(s)) return "REMUX";
+    if (/\b(?:bluray|bdrip)\b/i.test(s)) return "BluRay";
+    if (/\bdvdrip\b/i.test(s)) return "DVDRip";
+    if (/\bweb-?dl\b/i.test(s)) return "WEB-DL";
+    if (/\bwebrip\b/i.test(s)) return "WEBRip";
+    if (/\bhdrip\b/i.test(s)) return "HDRip";
+    return "";
+  }
+
+  function extractLangs(s) {
+    const defs = [
+      ["Tamil", /\b(?:tam|tamil)\b/i],
+      ["Telugu", /\b(?:tel|telugu)\b/i],
+      ["Hindi", /\b(?:hin|hindi)\b/i],
+      ["Malayalam", /\b(?:mal|malayalam)\b/i],
+      ["Kannada", /\b(?:kan|kannada)\b/i],
+      ["English", /\b(?:eng|english)\b/i],
+      ["Korean", /\b(?:kor|korean)\b/i],
+      ["Japanese", /\b(?:jpn|japanese)\b/i]
+    ];
+    const found = [];
+    for (const [label, rx] of defs) {
+      if (rx.test(s) && !found.includes(label)) found.push(label);
     }
     return found;
   }
 
-  function extractAllAudioSpecs(s) {
-    const specs = [];
+  function extractAudio(s) {
     const rx = /\b(?:DDP|DD\+|DD|DTS-HD\s*MA|DTS|TrueHD|Atmos|AAC|AC3|FLAC)(?:\s*\+?\s*(?:5\.1|7\.1|2\.0|Atmos|MA))?(?:\s*-\s*\d+\s*(?:Kbps|k|Mbps))?\b/gi;
-    const matches = s.match(rx) || [];
-    for (const m of matches) {
-      const cleaned = m.replace(/\s+/g, " ").trim();
-      if (cleaned && !specs.some(existing => existing.toLowerCase() === cleaned.toLowerCase())) {
-        specs.push(cleaned);
-      }
-    }
-    if (/\bESubs?\b/i.test(s) && !specs.includes("ESub")) specs.push("ESub");
-    else if (/\bMSubs?\b/i.test(s) && !specs.includes("MSub")) specs.push("MSub");
-    return specs;
+    const m = s.match(rx) || [];
+    return [...new Set(m.map(x => x.replace(/\s+/g, " ").trim()))].join(" + ");
   }
 
-  function parseRawCleanly(raw, skipSearch = false) {
+  function parseRawInput(raw, skipSearch = false) {
     const s = String(raw || "").trim();
     if (!s) return;
 
-    if (!audienceManuallySet) {
-      setAudienceValue(detectKidsAudience(s), true);
+    if (!audLocked) {
+      const isKids = /\b(kids|cartoon|animation|family)\b/i.test(s);
+      setAud(isKids ? "kids" : "general", true);
     }
 
-    const yearMatch = s.match(/\b(19\d\d|20\d\d)\b/);
-    const yearStr = yearMatch ? yearMatch[1] : "";
-    document.getElementById("token-year").value = yearStr;
+    const ym = s.match(/\b(19\d\d|20\d\d)\b/);
+    const yr = ym ? ym[1] : "";
+    document.getElementById("year-input").value = yr;
 
-    let titlePart = yearMatch ? s.slice(0, yearMatch.index) : s.split("[")[0].split("(")[0].split(" - ")[0];
-    titlePart = titlePart
-      .replace(/^\[[^\]]+\]\s*/g, "")
-      .replace(/\.(mkv|mp4|avi|ts|m4v|webm)$/i, "")
-      .replace(/[-_]+/g, " ")
-      .replace(/\s{2,}/g, " ")
-      .trim();
-    if (titlePart) document.getElementById("token-movie-title").value = titlePart;
+    let title = ym ? s.slice(0, ym.index) : s.split("[")[0].split("(")[0].split(" - ")[0];
+    title = title.replace(/^\[[^\]]+\]\s*/g, "").replace(/\.(mkv|mp4|avi|ts|m4v|webm)$/i, "").replace(/[-_]+/g, " ").replace(/\s{2,}/g, " ").trim();
+    if (title) document.getElementById("clean-name-input").value = title;
 
     let res = "";
     if (/2160p|\b4k\b|uhd/i.test(s)) res = "2160p";
     else if (/1080p/i.test(s)) res = "1080p";
     else if (/720p/i.test(s)) res = "720p";
-    document.getElementById("token-resolution").value = res;
+    document.getElementById("res-input").value = res;
 
-    let plat = "";
-    if (/prime\s*video|amzn/i.test(s)) plat = "Prime Video";
-    else if (/netflix|\bnf\b/i.test(s)) plat = "Netflix";
-    else if (/sunnxt|sun\s*nxt/i.test(s)) plat = "SunNXT";
-    else if (/jiohotstar|hotstar/i.test(s)) plat = "JioHotstar";
-    else if (/zee5/i.test(s)) plat = "Zee5";
-    else if (/bluray|bdrip|remux/i.test(s)) plat = "BluRay";
-    else if (/dvdrip|dvd/i.test(s)) plat = "DVDRip";
-    else if (/web-?dl|webrip/i.test(s)) plat = "WEB-DL";
-    document.getElementById("token-platform").value = plat;
+    const ott = detectOtt22(s);
+    if (ott) document.getElementById("ott-select").value = ott;
 
-    const has10bit = /\b10bit\b/i.test(s);
+    const fmt = detectFormat(s);
+    if (fmt) document.getElementById("format-select").value = fmt;
+
+    const has10 = /\b10bit\b/i.test(s);
     let codec = "";
-    if (/x265|hevc|h\.?265/i.test(s)) codec = has10bit ? "10bit x265" : "x265";
-    else if (/x264/i.test(s)) codec = has10bit ? "10bit x264" : "x264";
+    if (/x265|hevc|h\.?265/i.test(s)) codec = has10 ? "10bit x265" : "x265";
+    else if (/x264/i.test(s)) codec = has10 ? "10bit x264" : "x264";
     else if (/\bavc\b|h\.?264/i.test(s)) codec = "AVC";
-    document.getElementById("token-videocodec").value = codec;
+    document.getElementById("codec-input").value = codec;
 
-    const szMatch = s.match(/(\d+(?:\.\d+)?)\s*(gb|mb)\b/i);
-    if (szMatch) document.getElementById("token-size").value = `${szMatch[1]}${szMatch[2].toUpperCase()}`;
+    const sz = s.match(/(\d+(?:\.\d+)?)\s*(gb|mb)\b/i);
+    if (sz) document.getElementById("size-input").value = `${sz[1]}${sz[2].toUpperCase()}`;
 
-    const langs = extractAllLanguages(s);
-    document.getElementById("token-langs").value = langs.join(" + ");
+    document.getElementById("langs-input").value = extractLangs(s).join(" + ");
+    document.getElementById("audio-input").value = extractAudio(s);
 
-    const audioSpecs = extractAllAudioSpecs(s);
-    document.getElementById("token-audio-codec").value = audioSpecs.join(" + ");
+    updateNamePreview();
 
-    updateDashPreview();
-
-    if (!skipSearch && titlePart.length > 1) {
-      clearTimeout(tmdbDebounce);
-      tmdbDebounce = setTimeout(() => searchTmdb(titlePart, yearStr), 350);
+    if (!skipSearch && title.length > 1) {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => searchTmdb(title, yr), 350);
     }
   }
 
-  async function searchTmdb(title, year) {
-    const yrParam = year ? `&year=${encodeURIComponent(year)}` : "";
+  function syncTmdbId(val) {
+    document.getElementById("tmdb-id").value = val;
+    document.getElementById("tmdb-visible").value = val;
+    if (val) fetchTmdb(val);
+  }
+
+  async function searchTmdb(title, yr) {
+    const qYr = yr ? `&year=${encodeURIComponent(yr)}` : "";
     try {
-      const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(title)}${yrParam}&include_adult=false`);
-      if (!res.ok) return;
-      const data = await res.json();
-      const results = (data.results || []).slice(0, 4);
-      const box = document.getElementById("candidates-box");
-      const strip = document.getElementById("candidate-strip-inner");
-      strip.innerHTML = "";
-      if (!results.length) {
-        box.style.display = "none";
-        return;
-      }
-      results.forEach(item => {
-        const yr = (item.release_date || "").slice(0, 4);
-        const pill = document.createElement("button");
-        pill.type = "button";
-        pill.className = "candidate-pill";
-        pill.textContent = `${item.title}${yr ? ` (${yr})` : ""} [ID: ${item.id}]`;
-        pill.onclick = () => {
-          document.getElementById("tmdb-id").value = item.id;
-          document.getElementById("tmdb-id-visible").value = item.id;
-          fetchTmdbPreview(item.id);
-        };
-        strip.appendChild(pill);
+      const r = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(title)}${qYr}&include_adult=false`);
+      if (!r.ok) return;
+      const d = await r.json();
+      const list = (d.results || []).slice(0, 4);
+      const wrap = document.getElementById("cand-wrap");
+      wrap.innerHTML = "";
+      if (!list.length) { wrap.style.display = "none"; return; }
+      list.forEach(item => {
+        const y = (item.release_date || "").slice(0, 4);
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "cand-chip";
+        btn.textContent = `${item.title}${y ? ` (${y})` : ""} [${item.id}]`;
+        btn.onclick = () => syncTmdbId(item.id);
+        wrap.appendChild(btn);
       });
-      box.style.display = "block";
+      wrap.style.display = "flex";
     } catch (_) {}
   }
 
-  async function fetchTmdbPreview(id) {
-    if (!id) return;
+  async function fetchTmdb(id) {
     try {
-      const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_KEY}&append_to_response=images`);
-      if (!res.ok) return;
-      const d = await res.json();
-      const officialTitle = d.title || "";
+      const r = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_KEY}&append_to_response=images`);
+      if (!r.ok) return;
+      const d = await r.json();
+      const title = d.title || "";
       const yr = (d.release_date || "").slice(0, 4);
       const code = (d.original_language || "").toLowerCase();
-      const langFull = LANG_CODE_TO_NAME[code] || (code ? code.toUpperCase() : "");
+      const langFull = LANG_MAP[code] || (code ? code.toUpperCase() : "");
       const genres = (d.genres || []).map(g => g.name);
 
-      if (officialTitle) document.getElementById("token-movie-title").value = officialTitle;
-      if (yr) document.getElementById("token-year").value = yr;
-
-      if (!document.getElementById("token-langs").value.trim() && langFull) {
-        document.getElementById("token-langs").value = langFull;
+      if (title) document.getElementById("clean-name-input").value = title;
+      if (yr) document.getElementById("year-input").value = yr;
+      if (!document.getElementById("langs-input").value.trim() && langFull) {
+        document.getElementById("langs-input").value = langFull;
       }
-
-      if (!audienceManuallySet) {
-        setAudienceValue(detectKidsAudience(`${officialTitle} ${document.getElementById("raw-filename").value}`, genres), true);
+      if (!audLocked && genres.some(g => /animation|family/i.test(g)) && /\b(kids|cartoon|children)\b/i.test(document.getElementById("raw-name-input").value)) {
+        setAud("kids", true);
       }
 
       const logos = d.images?.logos || [];
-      const logoObj = logos.find(l => l.file_path && l.file_path.endsWith(".png")) || logos[0];
+      const logo = logos.find(l => l.file_path && l.file_path.endsWith(".png")) || logos[0];
 
-      cachedTmdbMeta = {
-        clean_name: officialTitle || document.getElementById("token-movie-title").value.trim(),
-        year: parseInt(yr, 10) || parseInt(document.getElementById("token-year").value, 10) || 0,
+      tmdbCache = {
+        clean_name: title || document.getElementById("clean-name-input").value.trim(),
+        year: parseInt(yr, 10) || parseInt(document.getElementById("year-input").value, 10) || 0,
         lang: langFull,
-        genres: genres,
+        genres,
         plot: d.overview || "",
         poster: d.poster_path ? `https://image.tmdb.org/t/p/original${d.poster_path}` : "",
         fanart: d.backdrop_path ? `https://image.tmdb.org/t/p/original${d.backdrop_path}` : "",
-        clearlogo: logoObj?.file_path ? `https://image.tmdb.org/t/p/original${logoObj.file_path}` : ""
+        clearlogo: logo?.file_path ? `https://image.tmdb.org/t/p/original${logo.file_path}` : ""
       };
 
-      if (cachedTmdbMeta.fanart) {
-        document.getElementById("dynamic-bg").style.backgroundImage = `url('${cachedTmdbMeta.fanart}')`;
+      if (tmdbCache.fanart) {
+        document.getElementById("dynamic-bg").style.backgroundImage = `url('${tmdbCache.fanart}')`;
       }
       if (d.poster_path) {
-        document.getElementById("mini-poster-img").src = `https://image.tmdb.org/t/p/w185${d.poster_path}`;
-        document.getElementById("mini-match-title").textContent = `${officialTitle}${yr ? ` (${yr})` : ""}`;
-        document.getElementById("mini-match-sub").textContent = `TMDb #${id} • Lang: ${langFull || "N/A"} • ${genres.join(", ")}`;
-        document.getElementById("match-preview-box").style.display = "block";
+        document.getElementById("match-poster").src = `https://image.tmdb.org/t/p/w185${d.poster_path}`;
+        document.getElementById("match-title").textContent = `${title}${yr ? ` (${yr})` : ""}`;
+        document.getElementById("match-sub").textContent = `TMDb #${id} • ${langFull || "N/A"} • ${genres.join(", ")}`;
+        document.getElementById("match-card").style.display = "flex";
       }
-
-      updateDashPreview();
+      updateNamePreview();
     } catch (_) {}
   }
 
-  function buildAudioBracketText() {
-    const langs = document.getElementById("token-langs").value.trim().replace(/^\[|\]$/g, "");
-    const audioCodec = document.getElementById("token-audio-codec").value.trim().replace(/^\[|\]$/g, "");
-    return [langs, audioCodec].filter(Boolean).join(" ").trim();
+  function onRenameEdit() {
+    renameLocked = Boolean(document.getElementById("rename-input").value.trim());
+    updateNamePreview();
   }
 
-  function onCustomRenameInput() {
-    const val = document.getElementById("custom-rename-input").value;
-    customRenameManuallySet = Boolean(val.trim());
-    updateDashPreview();
+  function onMetaFieldEdit() {
+    if (!renameLocked) updateNamePreview();
   }
 
-  function onAutoFieldsEdited() {
-    if (!customRenameManuallySet) {
-      updateDashPreview();
-    }
-  }
-
-  function updateDashPreview() {
-    const customRename = document.getElementById("custom-rename-input").value.trim();
-    if (customRenameManuallySet && customRename) {
-      const normalized = /\.[a-z0-9]{2,4}$/i.test(customRename) ? customRename : `${customRename}.mkv`;
-      document.getElementById("dash-name-preview").textContent = normalized;
+  function updateNamePreview() {
+    const custom = document.getElementById("rename-input").value.trim();
+    if (renameLocked && custom) {
+      document.getElementById("name-preview").textContent = /\.[a-z0-9]{2,4}$/i.test(custom) ? custom : `${custom}.mkv`;
       return;
     }
 
-    const title = document.getElementById("token-movie-title").value.trim() || "Title";
-    const year = document.getElementById("token-year").value.trim();
-    const res = document.getElementById("token-resolution").value.trim().replace(/^\[|\]$/g, "");
-    const plat = document.getElementById("token-platform").value.trim().replace(/^\[|\]$/g, "");
-    const codec = document.getElementById("token-videocodec").value.trim().replace(/^\[|\]$/g, "");
-    const audioBr = buildAudioBracketText();
-    const sz = document.getElementById("token-size").value.trim().replace(/^\[|\]$/g, "");
+    const title = document.getElementById("clean-name-input").value.trim() || "Title";
+    const yr = document.getElementById("year-input").value.trim();
+    const res = document.getElementById("res-input").value.trim().replace(/^\[|\]$/g, "");
+    const ott = document.getElementById("ott-select").value.trim();
+    const fmt = document.getElementById("format-select").value.trim();
+    const codec = document.getElementById("codec-input").value.trim().replace(/^\[|\]$/g, "");
+    const langs = document.getElementById("langs-input").value.trim().replace(/^\[|\]$/g, "");
+    const audio = document.getElementById("audio-input").value.trim().replace(/^\[|\]$/g, "");
+    const sz = document.getElementById("size-input").value.trim().replace(/^\[|\]$/g, "");
 
-    const head = year ? `${title} (${year})` : title;
+    const srcCombo = [ott, fmt].filter(Boolean).join(" ");
+    const audioCombo = [langs, audio].filter(Boolean).join(" ").trim();
+
     const parts = [
-      head,
+      yr ? `${title} (${yr})` : title,
       res ? `[${res}]` : "",
-      plat ? `[${plat}]` : "",
+      srcCombo ? `[${srcCombo}]` : "",
       codec ? `[${codec}]` : "",
-      audioBr ? `[${audioBr}]` : "",
+      audioCombo ? `[${audioCombo}]` : "",
       sz ? `[${sz}]` : ""
     ];
 
-    document.getElementById("dash-name-preview").textContent = parts.filter(Boolean).join(" ") + ".mkv";
+    document.getElementById("name-preview").textContent = parts.filter(Boolean).join(" ") + ".mkv";
   }
 
-  function resetForm() {
-    sourceManuallySet = false;
-    audienceManuallySet = false;
-    customRenameManuallySet = false;
-    cachedTmdbMeta = null;
-    document.getElementById("custom-rename-input").value = "";
-    setSourceValue("gd", true);
-    setAudienceValue("general", true);
-    document.getElementById("match-preview-box").style.display = "none";
-    document.getElementById("candidates-box").style.display = "none";
-    document.getElementById("dash-name-preview").textContent = "Awaiting input...";
+  function resetAllFields() {
+    srcLocked = false;
+    audLocked = false;
+    renameLocked = false;
+    tmdbCache = null;
+    document.getElementById("tmdb-id").value = "";
+    document.getElementById("tmdb-visible").value = "";
+    document.getElementById("rename-input").value = "";
+    document.getElementById("match-card").style.display = "none";
+    document.getElementById("cand-wrap").style.display = "none";
+    setSrc("gd", true);
+    setAud("general", true);
+    document.getElementById("name-preview").textContent = "Awaiting input...";
   }
 
-  async function loadInitialStats() {
-    checkTokenStatus();
-    try {
-      const [mRes, kRes] = await Promise.all([
-        fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/movies.json?t=${Date.now()}`),
-        fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/kids_movies.json?t=${Date.now()}`)
-      ]);
-      if (mRes.ok) {
-        const pm = await mRes.json();
-        cachedMoviesList = Array.isArray(pm) ? pm : [];
-        document.getElementById("stat-catalog-count").textContent = `${cachedMoviesList.length} Movies`;
-      }
-      if (kRes.ok) {
-        const pk = await kRes.json();
-        cachedKidsList = Array.isArray(pk) ? pk : [];
-        document.getElementById("stat-kids-count").textContent = `${cachedKidsList.length} Kids`;
-      } else {
-        document.getElementById("stat-kids-count").textContent = "0 Kids";
-      }
-    } catch (_) {}
-  }
-
-  function nextPadId(arr) {
-    let maxN = 0;
-    for (const item of arr) {
-      const n = parseInt(String(item.id || ""), 10);
-      if (!isNaN(n) && n > maxN) maxN = n;
-    }
-    return String(maxN + 1).padStart(3, "0");
-  }
-
-  async function handleFormSubmission(e) {
+  async function onSubmitForm(e) {
     e.preventDefault();
     const token = getToken();
-    if (!token) return alert("GitHub Token missing! Click 'Set PAT' first.");
+    if (!token) return alert("GitHub PAT missing! Click PAT button first.");
 
-    const srcCode = document.getElementById("source-type-select").value === "tg" ? "tg" : "gd";
-    const audience = document.getElementById("audience-select").value === "kids" ? "kids" : "general";
-    const targetPath = document.getElementById("save-target-select").value;
-    const rawIdInput = document.getElementById("drive-file-id").value.trim().replace(/\s+/g, "");
-    const itemId = srcCode === "tg" ? rawIdInput : (rawIdInput.match(/[-\w]{25,}/) || [rawIdInput])[0];
-    if (!itemId) return alert("Missing File ID!");
+    const src = document.getElementById("src-select").value === "tg" ? "tg" : "gd";
+    const aud = document.getElementById("aud-select").value === "kids" ? "kids" : "general";
+    const tgt = document.getElementById("target-select").value;
+    const rawId = document.getElementById("file-id-input").value.trim().replace(/\s+/g, "");
+    const itemId = src === "tg" ? rawId : (rawId.match(/[-\w]{25,}/) || [rawId])[0];
+    if (!itemId) return alert("File ID required!");
 
-    const rawName = document.getElementById("raw-filename").value.trim();
-    const finalName = document.getElementById("dash-name-preview").textContent.trim();
-    const title = (cachedTmdbMeta?.clean_name || document.getElementById("token-movie-title").value.trim());
-    const year = parseInt(document.getElementById("token-year").value, 10) || cachedTmdbMeta?.year || 0;
+    const rawName = document.getElementById("raw-name-input").value.trim();
+    const finalName = document.getElementById("name-preview").textContent.trim();
+    const title = tmdbCache?.clean_name || document.getElementById("clean-name-input").value.trim();
+    const yr = parseInt(document.getElementById("year-input").value, 10) || tmdbCache?.year || 0;
     const tmdbId = parseInt(document.getElementById("tmdb-id").value.trim(), 10) || 0;
-    const resVal = document.getElementById("token-resolution").value.trim().replace(/^\[|\]$/g, "");
-    const audioVal = document.getElementById("token-audio-codec").value.trim().replace(/^\[|\]$/g, "");
-    const sizeVal = document.getElementById("token-size").value.trim().replace(/^\[|\]$/g, "");
-    const langVal = cachedTmdbMeta?.lang || document.getElementById("token-langs").value.trim();
+    const res = document.getElementById("res-input").value.trim().replace(/^\[|\]$/g, "");
+    const audio = document.getElementById("audio-input").value.trim().replace(/^\[|\]$/g, "");
+    const sz = document.getElementById("size-input").value.trim().replace(/^\[|\]$/g, "");
+    const lang = tmdbCache?.lang || document.getElementById("langs-input").value.trim();
 
-    const versionObj = {
-      source: srcCode,
+    const verObj = {
+      source: src,
       id: itemId,
       new_name: finalName,
-      resolution: resVal,
-      audio: audioVal,
-      size: sizeVal
+      resolution: res,
+      audio: audio,
+      size: sz
     };
 
-    document.getElementById("btn-submit").disabled = true;
-    document.getElementById("btn-submit").textContent = `Committing to ${targetPath}...`;
+    const btn = document.getElementById("submit-btn");
+    btn.disabled = true;
+    btn.textContent = `Saving to ${tgt}...`;
 
     try {
-      let arr = [], sha;
-      const gRes = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${targetPath}?t=${Date.now()}`, {
-        headers: { "Authorization": `token ${token}` }
-      });
+      let arr = [];
+      const gRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/${tgt}?t=${Date.now()}`);
       if (gRes.ok) {
-        const gj = await gRes.json();
-        sha = gj.sha;
-        const parsed = JSON.parse(decodeURIComponent(escape(atob(gj.content))));
-        arr = Array.isArray(parsed) ? parsed : [];
+        const parsed = await gRes.json();
+        if (Array.isArray(parsed)) arr = parsed;
       }
 
       const idx = arr.findIndex(m =>
@@ -855,90 +1160,93 @@
       );
 
       if (idx >= 0) {
-        arr[idx].audience = audience;
-        arr[idx].versions = arr[idx].versions || [];
+        arr[idx].versions = Array.isArray(arr[idx].versions) ? arr[idx].versions : [];
         const vIdx = arr[idx].versions.findIndex(v => String(v.id) === itemId);
-        if (vIdx >= 0) arr[idx].versions[vIdx] = versionObj;
-        else arr[idx].versions.push(versionObj);
+        if (vIdx >= 0) arr[idx].versions[vIdx] = verObj;
+        else arr[idx].versions.push(verObj);
         arr[idx].new_name = finalName;
       } else {
         arr.push({
-          id: nextPadId(arr),
+          id: calcNextId(arr),
           tmdb_id: tmdbId,
-          audience: audience,
+          audience: aud,
           clean_name: title,
-          year: year,
-          lang: langVal,
-          genres: cachedTmdbMeta?.genres || [],
-          plot: cachedTmdbMeta?.plot || "",
+          year: yr,
+          lang: lang,
+          genres: tmdbCache?.genres || [],
+          plot: tmdbCache?.plot || "",
           new_name: finalName,
-          poster: cachedTmdbMeta?.poster || "",
-          fanart: cachedTmdbMeta?.fanart || "",
-          clearlogo: cachedTmdbMeta?.clearlogo || "",
-          versions: [versionObj]
+          poster: tmdbCache?.poster || "",
+          fanart: tmdbCache?.fanart || "",
+          clearlogo: tmdbCache?.clearlogo || "",
+          versions: [verObj]
         });
       }
 
-      await commitDirectToGithub(targetPath, arr, `Add/Update (${audience}/${srcCode}): ${title}`, sha, token);
+      await putGitHubJson(tgt, arr, `Ingest (${aud}/${src}): ${title}`, token);
 
-      let regArr = [], rSha;
-      const rGet = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/name_registry.json?t=${Date.now()}`, {
-        headers: { "Authorization": `token ${token}` }
-      });
-      if (rGet.ok) {
-        const rj = await rGet.json();
-        rSha = rj.sha;
-        const parsedR = JSON.parse(decodeURIComponent(escape(atob(rj.content))));
-        regArr = Array.isArray(parsedR) ? parsedR : [];
+      // Update name_registry.json preserving raw old_name without deleting anything
+      let regArr = [];
+      const rRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/name_registry.json?t=${Date.now()}`);
+      if (rRes.ok) {
+        const pr = await rRes.json();
+        if (Array.isArray(pr)) regArr = pr;
       }
 
       const regEntry = {
-        source: srcCode,
-        audience: audience,
+        source: src,
+        audience: aud,
         file_id: itemId,
         tmdb_id: tmdbId,
-        cat: audience === "kids" ? "KIDS_MOVIE" : "MOVIE",
+        cat: aud === "kids" ? "KIDS_MOVIE" : "MOVIE",
         old_name: rawName,
         new_name: finalName,
         approved_at: new Date().toISOString()
       };
-
       const rIdx = regArr.findIndex(r => String(r.file_id) === itemId);
       if (rIdx >= 0) regArr[rIdx] = regEntry;
       else regArr.unshift(regEntry);
 
-      await commitDirectToGithub("name_registry.json", regArr, `Registry (${audience}/${srcCode}): ${title} (${itemId})`, rSha, token);
+      await putGitHubJson("name_registry.json", regArr, `Registry (${aud}/${src}): ${title} (${itemId})`, token);
 
-      showToast(`Saved "${title}" [${audience}] to ${targetPath} & name_registry.json!`);
-      loadInitialStats();
+      showToast(`Saved "${title}" to ${tgt} & name_registry.json (existing items untouched)!`);
+      await loadCounts();
     } catch (err) {
-      showToast("Save Failed: " + err.message, true);
+      showToast("Error: " + err.message, true);
     }
 
-    document.getElementById("btn-submit").disabled = false;
-    document.getElementById("btn-submit").textContent = "🚀 Commit Movie (Plan A Schema)";
+    btn.disabled = false;
+    btn.textContent = "🚀 Commit (Append / Merge Only)";
   }
 
-  async function commitDirectToGithub(path, data, msg, sha, token) {
-    const url = `https://api.github.com/repos/${GH_REPO}/contents/${path}`;
+  async function putGitHubJson(path, data, msg, token) {
+    const apiUrl = `https://api.github.com/repos/${GH_REPO}/contents/${path}`;
+    let sha = undefined;
+    try {
+      const cur = await fetch(`${apiUrl}?ref=${GH_BRANCH}&t=${Date.now()}`, {
+        headers: { "Authorization": `token ${token}`, "Accept": "application/vnd.github.v3+json" }
+      });
+      if (cur.ok) sha = (await cur.json()).sha;
+    } catch (_) {}
+
     const jsonStr = JSON.stringify(data, null, 2);
     const encoded = btoa(unescape(encodeURIComponent(jsonStr)));
-    const res = await fetch(url, {
+    const res = await fetch(apiUrl, {
       method: "PUT",
       headers: {
         "Authorization": `token ${token}`,
         "Accept": "application/vnd.github.v3+json",
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ message: msg, content: encoded, branch: GH_BRANCH, sha: sha })
+      body: JSON.stringify({ message: msg, content: encoded, branch: GH_BRANCH, sha })
     });
     if (!res.ok) {
       const err = await res.json();
-      throw new Error(err.message || "GitHub API Error");
+      throw new Error(err.message || "GitHub PUT failed");
     }
   }
 
-  window.addEventListener("DOMContentLoaded", loadInitialStats);
+  window.addEventListener("DOMContentLoaded", loadCounts);
 </script>
 </body>
 </html>
