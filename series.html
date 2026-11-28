@@ -147,20 +147,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 0.8rem;
     }
     .lang-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: var(--laser-cyan);
       background: rgba(56, 189, 248, 0.1);
       border: 1px solid rgba(56, 189, 248, 0.3);
-      padding: 4px 12px;
+      padding: 4px 10px;
       border-radius: 20px;
     }
 
@@ -168,25 +168,26 @@
       background: var(--bg-card);
       backdrop-filter: blur(25px);
       border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 1.6rem 2rem;
-      margin-bottom: 1.75rem;
+      border-radius: 18px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 1.35rem;
       box-shadow: 0 14px 45px rgba(0,0,0,0.55);
     }
 
     .part-title {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 800;
       color: var(--laser-cyan);
-      letter-spacing: 0.8px;
+      letter-spacing: 0.7px;
       text-transform: uppercase;
-      margin-bottom: 1.15rem;
+      margin-bottom: 1rem;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 8px;
+      cursor: pointer;
     }
-    .part-title::after {
-      content: '';
+    .part-title-line {
       flex: 1;
       height: 1px;
       background: linear-gradient(90deg, rgba(56, 189, 248, 0.4), transparent);
@@ -195,30 +196,33 @@
     .form-row {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: 0.9rem;
-      margin-bottom: 0.9rem;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
     }
     .col-12 { grid-column: span 12; }
     .col-8 { grid-column: span 8; }
+    .col-6 { grid-column: span 6; }
+    .col-4 { grid-column: span 4; }
+    .col-3 { grid-column: span 3; }
     .col-2 { grid-column: span 2; }
 
-    .field { display: flex; flex-direction: column; gap: 0.35rem; position: relative; }
-    label { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); }
+    .field { display: flex; flex-direction: column; gap: 0.3rem; position: relative; }
+    label { font-size: 0.74rem; font-weight: 700; color: var(--text-muted); }
     .req { color: var(--laser-red); }
 
-    input {
+    input, textarea {
       background: var(--bg-input);
       border: 1px solid rgba(56, 189, 248, 0.2);
       border-radius: 10px;
-      padding: 0.72rem 0.9rem;
+      padding: 0.65rem 0.8rem;
       color: var(--text-main);
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       outline: none;
       font-family: var(--font-stack);
       width: 100%;
       transition: all 0.2s ease;
     }
-    input:focus {
+    input:focus, textarea:focus {
       border-color: var(--laser-cyan);
       box-shadow: 0 0 14px var(--laser-cyan-glow);
     }
@@ -233,9 +237,9 @@
       background: #060b17;
       border: 1px dashed rgba(56, 189, 248, 0.35);
       border-radius: 10px;
-      padding: 0.85rem 1rem;
+      padding: 0.75rem 0.9rem;
       font-family: var(--font-mono);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--laser-green);
       word-break: break-all;
     }
@@ -244,16 +248,16 @@
     .match-strip {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       background: rgba(2, 6, 23, 0.65);
       border: 1px solid rgba(56, 189, 248, 0.28);
       border-radius: 12px;
-      padding: 10px 14px;
-      margin-bottom: 0.9rem;
+      padding: 8px 12px;
+      margin-bottom: 0.8rem;
     }
     .match-poster {
-      width: 54px;
-      height: 78px;
+      width: 48px;
+      height: 70px;
       border-radius: 6px;
       object-fit: cover;
       background: #070d1e;
@@ -287,71 +291,104 @@
     .tmdb-item:hover { background: #132247; border-color: var(--laser-cyan); }
     .tmdb-thumb { width: 38px; height: 50px; border-radius: 6px; object-fit: cover; background: #070d1e; flex-shrink: 0; }
 
-    /* EPISODE SLOTS MANAGER */
+    /* QUICK RANGE + BATCH PASTE BAR */
+    .quick-range-bar {
+      background: rgba(168, 85, 247, 0.08);
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      border-radius: 12px;
+      padding: 0.85rem;
+      margin-bottom: 0.9rem;
+    }
+    .quick-range-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 0.6rem;
+      align-items: end;
+    }
+    .batch-drawer {
+      display: none;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed rgba(56, 189, 248, 0.25);
+    }
+
+    /* EPISODE SLOTS 2-COLUMN COMPACT GRID */
     .episodes-bundle-container {
       background: #060b18;
       border: 1px solid rgba(56, 189, 248, 0.25);
       border-radius: 14px;
-      padding: 1.25rem;
+      padding: 1rem;
     }
     .bundle-header-actions {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
       flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 0.6rem;
     }
-    .ep-slot-row {
+    .ep-slots-grid {
       display: grid;
-      grid-template-columns: 80px 1fr 185px auto;
-      gap: 0.75rem;
-      align-items: center;
-      background: rgba(13, 24, 48, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+    }
+    .ep-slot-card {
+      background: rgba(13, 24, 48, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 10px;
-      padding: 0.6rem 0.85rem;
-      margin-bottom: 0.5rem;
+      padding: 0.55rem 0.65rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
       transition: all 0.2s;
     }
-    .ep-slot-row.exists {
-      border-color: rgba(16, 185, 129, 0.4);
-      background: rgba(16, 185, 129, 0.06);
+    .ep-slot-card.exists {
+      border-color: rgba(16, 185, 129, 0.45);
+      background: rgba(16, 185, 129, 0.07);
+    }
+    .ep-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4px;
     }
     .slot-id-badge {
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 800;
       color: #fff;
-      background: rgba(255, 255, 255, 0.08);
-      padding: 4px 8px;
+      background: rgba(56, 189, 248, 0.16);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 2px 7px;
       border-radius: 6px;
-      text-align: center;
       font-family: var(--font-mono);
     }
     .slot-status-pill {
-      font-size: 0.72rem;
+      font-size: 0.66rem;
       font-weight: 800;
-      padding: 4px 8px;
-      border-radius: 6px;
-      text-align: center;
-      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 5px;
     }
-    .status-done { background: rgba(16, 185, 129, 0.2); color: var(--laser-green); border: 1px solid var(--laser-green); }
-    .status-empty { background: rgba(148, 163, 184, 0.1); color: var(--text-muted); border: 1px solid rgba(148, 163, 184, 0.25); }
+    .status-done { background: rgba(16, 185, 129, 0.2); color: var(--laser-green); }
+    .status-empty { background: rgba(148, 163, 184, 0.12); color: var(--text-muted); }
+    .ep-link-input {
+      padding: 0.48rem 0.6rem !important;
+      font-size: 0.8rem !important;
+      border-radius: 8px !important;
+    }
 
     .btn-main-action {
       background: linear-gradient(135deg, var(--laser-cyan), var(--electric-blue));
       color: #030712;
       border: none;
-      padding: 0.95rem 1.8rem;
+      padding: 0.9rem 1.4rem;
       border-radius: 12px;
       font-weight: 800;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
       box-shadow: 0 0 20px var(--laser-cyan-glow);
       transition: all 0.2s ease;
       width: 100%;
@@ -362,44 +399,55 @@
       background: rgba(56, 189, 248, 0.12);
       border: 1px solid rgba(56, 189, 248, 0.3);
       color: var(--laser-cyan);
-      padding: 0.45rem 0.85rem;
+      padding: 0.45rem 0.75rem;
       border-radius: 8px;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
     }
     .btn-sub:hover { background: var(--laser-cyan); color: #030712; }
+    .btn-purple {
+      background: linear-gradient(135deg, var(--neon-purple), #7e22ce);
+      border: 1px solid #e9d5ff;
+      color: #fff;
+      padding: 0.58rem 0.85rem;
+      border-radius: 9px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+    }
 
     /* LIBRARY CARDS */
-    .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+    .movies-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-top: 1.2rem; }
     .series-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 16px;
+      border-radius: 14px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
     }
-    .series-card-poster { width: 100%; height: 250px; object-fit: cover; background: #070d1e; }
-    .series-card-content { padding: 1.1rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .series-card-poster { width: 100%; height: 220px; object-fit: cover; background: #070d1e; }
+    .series-card-content { padding: 0.95rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
 
     #laser-toast {
       position: fixed;
-      top: 20px; right: 20px;
+      top: 16px; right: 16px;
       background: rgba(13, 22, 42, 0.96);
       border: 1px solid var(--laser-cyan);
       box-shadow: 0 0 25px var(--laser-cyan-glow);
       color: #fff;
-      padding: 0.9rem 1.4rem;
+      padding: 0.8rem 1.2rem;
       border-radius: 12px;
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       font-weight: 700;
       display: none;
       z-index: 300;
-      max-width: 90%;
+      max-width: 92%;
     }
 
     @media (max-width: 900px) {
@@ -407,16 +455,22 @@
       aside {
         width: 100%; height: auto; position: sticky; top: 0;
         border-right: none; border-bottom: 1px solid var(--border-color);
-        padding: 0.75rem 1rem;
+        padding: 0.65rem 0.85rem;
       }
       .brand { padding-bottom: 0.4rem; margin-bottom: 0.4rem; }
-      .nav-list { flex-direction: row; overflow-x: auto; }
-      .nav-btn { white-space: nowrap; font-size: 0.8rem; padding: 0.45rem 0.75rem; }
+      .brand-logo { width: 34px; height: 34px; font-size: 1.05rem; }
+      .brand-text { font-size: 1.1rem; }
+      .nav-list { flex-direction: row; overflow-x: auto; gap: 0.35rem; }
+      .nav-btn { white-space: nowrap; font-size: 0.78rem; padding: 0.42rem 0.68rem; }
       .sidebar-footer { display: none; }
-      main { margin-left: 0; width: 100%; padding: 1.25rem 1rem 6rem; }
-      .form-box { padding: 1.3rem 1rem; }
-      .ep-slot-row { grid-template-columns: 1fr; gap: 0.5rem; }
-      .col-12, .col-8, .col-2 { grid-column: span 12; }
+      main { margin-left: 0; width: 100%; padding: 1rem 0.85rem 5rem; }
+      .form-box { padding: 1rem 0.9rem; border-radius: 14px; }
+      .col-12 { grid-column: span 12; }
+      .col-8 { grid-column: span 12; }
+      .col-6, .col-4, .col-3, .col-2 { grid-column: span 6; }
+      .ep-slots-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+      .quick-range-grid { grid-template-columns: 1fr 1fr; }
+      .quick-range-grid .btn-purple { grid-column: span 2; width: 100%; }
     }
   </style>
 </head>
@@ -433,24 +487,29 @@
     <ul class="nav-list">
       <li>
         <a href="inbox.html" class="nav-btn">
-          <span>🎬 Movies Form ➔</span>
+          <span>🎬 Movies</span>
         </a>
       </li>
       <li>
         <a href="pending.html" class="nav-btn">
-          <span>📥 Pending Queue ➔</span>
+          <span>📥 Pending</span>
         </a>
       </li>
       <li>
         <button class="nav-btn active">
-          <span>📺 Web Series</span>
+          <span>📺 Series</span>
           <span class="nav-badge" id="badge-series-count">0</span>
         </button>
       </li>
       <li>
         <a href="admin.html" class="nav-btn">
-          <span>🗂️ Library Manager ➔</span>
+          <span>🗂️ Library</span>
         </a>
+      </li>
+      <li>
+        <button type="button" class="nav-btn" onclick="configureGithubToken()">
+          <span id="mobile-token-lbl">🔑 Token</span>
+        </button>
       </li>
     </ul>
 
@@ -465,11 +524,11 @@
   <main>
     <div class="top-header-row">
       <div>
-        <h1 style="font-size: 1.7rem; font-weight: 800; letter-spacing: -0.5px;">📺 Web Series Quick Studio</h1>
-        <p style="color: var(--text-muted); font-size: 0.86rem; margin-top: 4px;">Clean ID-Only Schema • Direct Commit to <code>series.json</code> &amp; <code>name_registry.json</code></p>
+        <h1 style="font-size: 1.35rem; font-weight: 800; letter-spacing: -0.4px;">📺 Web Series Quick Studio</h1>
+        <p style="color: var(--text-muted); font-size: 0.78rem; margin-top: 2px;">Mobile 2-Col Compact • Quick Range +1 • Direct <code>series.json</code> Sync</p>
       </div>
-      <div style="display: flex; gap: 0.6rem; align-items: center;">
-        <span class="lang-badge" id="detected-lang-badge">Auto Lang (hi) 🌐</span>
+      <div style="display: flex; gap: 0.5rem; align-items: center;">
+        <span class="lang-badge" id="detected-lang-badge">Lang: HI 🌐</span>
         <button class="btn-sub" onclick="loadSeriesData()">🔄 Refresh</button>
       </div>
     </div>
@@ -478,117 +537,146 @@
     <form id="series-full-form" onsubmit="handleFormCommit(event)">
 
       <div class="form-box">
-        <div class="part-title">RELEASE TOKENS &amp; AUTO-TMDB MATCH</div>
-
-        <div class="form-row">
-          <div class="field col-12">
-            <label>Raw Release File Name <span class="req">* (Instant Auto-Fill &amp; TMDb Sync)</span></label>
-            <input type="text" id="raw-filename-input" class="input-smart" placeholder="Paste raw filename, e.g. Dead.End.Job.S01.2160p.NF.WEB-DL.x265.HEVC.HIN.TAM.TEL.ENG.mkv" oninput="parseRawReleaseFilename(this.value)">
-            <div id="tmdb-dropdown" class="tmdb-results-box"></div>
-          </div>
+        <div class="part-title" onclick="toggleMetaSection()">
+          <span>1. RELEASE TOKENS &amp; TMDB MATCH</span>
+          <span class="part-title-line"></span>
+          <span id="meta-toggle-lbl" style="font-size:0.72rem; color:var(--neon-gold);">▼ Collapse</span>
         </div>
 
-        <div class="form-row">
-          <div class="field col-8">
-            <label>Series Title (Editable) <span class="req">*</span></label>
-            <input type="text" id="token-series-title" placeholder="Series Title" required oninput="updateDashPreview()">
+        <div id="meta-collapsible-body">
+          <div class="form-row">
+            <div class="field col-12">
+              <label>Raw Release File Name <span class="req">* (Instant Auto-Fill)</span></label>
+              <input type="text" id="raw-filename-input" class="input-smart" placeholder="Paste raw filename, e.g. Wednesday.S01.2160p.NF.WEB-DL.x265..." oninput="parseRawReleaseFilename(this.value)">
+              <div id="tmdb-dropdown" class="tmdb-results-box"></div>
+            </div>
           </div>
-          <div class="field col-2">
-            <label>TMDb TV ID <span class="req">*</span></label>
-            <input type="number" id="meta-tmdb-id" placeholder="e.g. 289517" required oninput="fetchTmdbTvDetails(this.value)">
-          </div>
-          <div class="field col-2">
-            <label>Total Episodes</label>
-            <input type="number" id="meta-total-eps" placeholder="8" value="8" oninput="rebuildEpisodeSlots()">
-          </div>
-        </div>
 
-        <div class="form-row">
-          <div class="field col-2">
-            <label>Year</label>
-            <input type="number" id="token-year" placeholder="2026" oninput="updateDashPreview()">
+          <div class="form-row">
+            <div class="field col-8">
+              <label>Series Title <span class="req">*</span></label>
+              <input type="text" id="token-series-title" placeholder="Series Title" required oninput="updateDashPreview()">
+            </div>
+            <div class="field col-2">
+              <label>TMDb TV ID <span class="req">*</span></label>
+              <input type="number" id="meta-tmdb-id" placeholder="119051" required oninput="fetchTmdbTvDetails(this.value)">
+            </div>
+            <div class="field col-2">
+              <label>Total Eps</label>
+              <input type="number" id="meta-total-eps" placeholder="8" value="8" oninput="rebuildEpisodeSlots()">
+            </div>
           </div>
-          <div class="field col-2">
-            <label>Season</label>
-            <input type="text" id="token-season" placeholder="Season 1" value="Season 1" oninput="onSeasonChange(); updateDashPreview()">
-          </div>
-          <div class="field col-2">
-            <label>Resolution</label>
-            <input type="text" id="token-res" placeholder="2160p 4K" value="1080p" oninput="updateDashPreview()">
-          </div>
-          <div class="field col-2">
-            <label>Platform / Source</label>
-            <input type="text" id="token-source" placeholder="Netflix" value="WEB-DL" oninput="updateDashPreview()">
-          </div>
-          <div class="field col-2">
-            <label>Video Codec</label>
-            <input type="text" id="token-codec" placeholder="x265 HEVC" value="x264" oninput="updateDashPreview()">
-          </div>
-          <div class="field col-2">
-            <label>Extra / Subtitles</label>
-            <input type="text" id="token-ripper" placeholder="10bit ESub" value="" oninput="updateDashPreview()">
-          </div>
-        </div>
 
-        <div class="form-row">
-          <div class="field col-12">
-            <label>Languages &amp; Multi-Audio Specification</label>
-            <input type="text" id="token-audio" placeholder="[Hindi + Tamil + Telugu + English 5.1]" value="[Hindi 5.1]" oninput="updateDashPreview()">
+          <div class="form-row">
+            <div class="field col-2">
+              <label>Year</label>
+              <input type="number" id="token-year" placeholder="2026" oninput="updateDashPreview()">
+            </div>
+            <div class="field col-2">
+              <label>Season</label>
+              <input type="text" id="token-season" placeholder="Season 1" value="Season 1" oninput="onSeasonChange(); updateDashPreview()">
+            </div>
+            <div class="field col-2">
+              <label>Resolution</label>
+              <input type="text" id="token-res" placeholder="2160p 4K" value="1080p" oninput="updateDashPreview()">
+            </div>
+            <div class="field col-2">
+              <label>Platform</label>
+              <input type="text" id="token-source" placeholder="Netflix" value="WEB-DL" oninput="updateDashPreview()">
+            </div>
+            <div class="field col-2">
+              <label>Codec</label>
+              <input type="text" id="token-codec" placeholder="x265 HEVC" value="x264" oninput="updateDashPreview()">
+            </div>
+            <div class="field col-2">
+              <label>Subtitles/Extra</label>
+              <input type="text" id="token-ripper" placeholder="ESub" value="" oninput="updateDashPreview()">
+            </div>
           </div>
-        </div>
 
-        <!-- COMPACT TMDB PREVIEW STRIP -->
-        <div class="match-strip" id="match-preview-strip" style="display:none;">
-          <img id="match-poster-img" class="match-poster" src="" alt="">
-          <div>
-            <div id="match-title-txt" style="font-weight:800; font-size:0.98rem; color:#fff;">...</div>
-            <div id="match-sub-txt" style="font-size:0.78rem; color:var(--laser-cyan); margin-top:3px;">...</div>
+          <div class="form-row">
+            <div class="field col-12">
+              <label>Languages &amp; Multi-Audio</label>
+              <input type="text" id="token-audio" placeholder="[Hindi + Tamil + Telugu + English 5.1]" value="[Hindi 5.1]" oninput="updateDashPreview()">
+            </div>
           </div>
-        </div>
 
-        <div class="form-row" style="margin-bottom:0;">
-          <div class="field col-12">
-            <label>Standard Kodi Episode Name Preview (new_name)</label>
-            <div class="preview-dash-box" id="preview-dash-text">Awaiting input...</div>
+          <!-- COMPACT TMDB PREVIEW STRIP -->
+          <div class="match-strip" id="match-preview-strip" style="display:none;">
+            <img id="match-poster-img" class="match-poster" src="" alt="">
+            <div>
+              <div id="match-title-txt" style="font-weight:800; font-size:0.92rem; color:#fff;">...</div>
+              <div id="match-sub-txt" style="font-size:0.74rem; color:var(--laser-cyan); margin-top:2px;">...</div>
+            </div>
+          </div>
+
+          <div class="form-row" style="margin-bottom:0;">
+            <div class="field col-12">
+              <label>Standard Kodi Name Preview (new_name)</label>
+              <div class="preview-dash-box" id="preview-dash-text">Awaiting input...</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- EPISODE SLOTS -->
+      <!-- EPISODE SLOTS (MOBILE 2-COL + QUICK RANGE) -->
       <div class="form-box">
-        <div class="part-title">SEASON &amp; EPISODE BUNDLE MATRIX</div>
+        <div class="part-title" style="cursor:default;">
+          <span>2. EPISODE IDS (MOBILE 2-COL GRID)</span>
+          <span class="part-title-line"></span>
+          <span id="slots-count-label" style="font-size: 0.72rem; color: var(--laser-green);">0 / 8 Linked</span>
+        </div>
 
-        <div class="episodes-bundle-container">
-          <div class="bundle-header-actions">
-            <div>
-              <span style="font-weight: 700; color: #fff; font-size: 0.9rem;">Episode File IDs (GDrive ID or TG Msg ID):</span>
-              <span id="slots-count-label" style="font-size: 0.78rem; color: var(--laser-cyan); margin-left: 8px;"></span>
+        <!-- QUICK START +1 RANGE & MULTI-LINE PASTE -->
+        <div class="quick-range-bar">
+          <div class="quick-range-grid">
+            <div class="field">
+              <label style="color:#e9d5ff;">Start TG/Msg ID (e.g. 134)</label>
+              <input type="number" id="quick-start-id" class="input-smart" placeholder="134">
             </div>
-            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-              <button type="button" class="btn-sub" onclick="autoLoadExistingEpisodes()">⚡ Pull Existing</button>
-              <button type="button" class="btn-sub" onclick="pasteBatchLinks()">📋 Paste Batch Links</button>
-              <button type="button" class="btn-sub" onclick="addSingleEpisodeSlot()">➕ Add Next Slot</button>
+            <div class="field">
+              <label style="color:#e9d5ff;">Start From Slot (Ep #)</label>
+              <input type="number" id="quick-from-ep" class="input-smart" value="1" min="1">
             </div>
+            <button type="button" class="btn-purple" onclick="applyQuickRangeFill()">⚡ Auto-Fill +1</button>
           </div>
 
-          <div id="episodes-slots-list"></div>
+          <div style="display:flex; gap:0.45rem; flex-wrap:wrap; margin-top:0.65rem;">
+            <button type="button" class="btn-sub" onclick="toggleBatchDrawer()">📋 Multi-Line Paste</button>
+            <button type="button" class="btn-sub" onclick="autoLoadExistingEpisodes()">⚡ Pull Existing</button>
+            <button type="button" class="btn-sub" onclick="addSingleEpisodeSlot()">➕ +1 Slot</button>
+            <button type="button" class="btn-sub" style="color:var(--laser-red); border-color:rgba(239,68,68,0.35);" onclick="clearAllSlots()">🗑️ Clear IDs</button>
+          </div>
+
+          <div class="batch-drawer" id="batch-drawer">
+            <label style="color:var(--laser-cyan); display:block; margin-bottom:4px;">Paste IDs or Drive Links (1 per line — keeps exact order):</label>
+            <textarea id="batch-paste-area" rows="4" class="input-smart" placeholder="134&#10;135&#10;136&#10;137&#10;138&#10;139&#10;140&#10;141"></textarea>
+            <div style="display:flex; gap:0.5rem; margin-top:0.5rem;">
+              <button type="button" class="btn-purple" onclick="applyBatchTextarea()">✅ Apply Lines to Slots</button>
+              <button type="button" class="btn-sub" onclick="toggleBatchDrawer()">Close</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="episodes-bundle-container">
+          <div class="ep-slots-grid" id="episodes-slots-list"></div>
         </div>
       </div>
 
       <button type="submit" class="btn-main-action" id="btn-save-series">
-        🚀 COMMIT TV PACK TO SERIES.JSON &amp; NAME_REGISTRY.JSON
+        🚀 COMMIT TV PACK TO SERIES.JSON &amp; REGISTRY
       </button>
 
     </form>
 
     <!-- LIBRARY SECTION -->
-    <div style="margin-top: 3rem;">
+    <div style="margin-top: 2.25rem;">
       <div class="top-header-row">
         <div>
-          <h2 style="font-size: 1.35rem; font-weight: 800;">📚 Existing Series in series.json</h2>
-          <p style="color: var(--text-muted); font-size: 0.84rem;">One clean card per TV Show</p>
+          <h2 style="font-size: 1.2rem; font-weight: 800;">📚 Existing Series in series.json</h2>
+          <p style="color: var(--text-muted); font-size: 0.78rem;">Tap Edit to load episodes</p>
         </div>
-        <input type="text" id="filter-series-box" placeholder="Search series in library..." style="max-width: 260px;" oninput="filterSeriesList()">
+        <input type="text" id="filter-series-box" placeholder="Search series..." style="max-width: 220px;" oninput="filterSeriesList()">
       </div>
 
       <div class="movies-grid" id="series-grid"></div>
@@ -623,14 +711,28 @@
 
     function updateTokenBadge() {
       const lbl = document.getElementById('token-status-label');
-      if (!lbl) return;
-      if (getStoredToken()) {
-        lbl.textContent = 'Token: Active ✅';
-        lbl.style.color = 'var(--laser-green)';
-      } else {
-        lbl.textContent = '⚙️ GitHub Token';
-        lbl.style.color = 'var(--laser-cyan)';
+      const mLbl = document.getElementById('mobile-token-lbl');
+      const has = Boolean(getStoredToken());
+      if (lbl) {
+        lbl.textContent = has ? 'Token: Active ✅' : '⚙️ GitHub Token';
+        lbl.style.color = has ? 'var(--laser-green)' : 'var(--laser-cyan)';
       }
+      if (mLbl) {
+        mLbl.textContent = has ? '🔑 PAT ✅' : '🔑 Token';
+      }
+    }
+
+    function toggleMetaSection() {
+      const body = document.getElementById('meta-collapsible-body');
+      const lbl = document.getElementById('meta-toggle-lbl');
+      const isHidden = body.style.display === 'none';
+      body.style.display = isHidden ? 'block' : 'none';
+      lbl.textContent = isHidden ? '▼ Collapse' : '▶ Expand';
+    }
+
+    function toggleBatchDrawer() {
+      const d = document.getElementById('batch-drawer');
+      d.style.display = d.style.display === 'block' ? 'none' : 'block';
     }
 
     function showLaserToast(msg, isErr = false) {
@@ -651,6 +753,62 @@
       return clean;
     }
 
+    function applyQuickRangeFill() {
+      const startVal = parseInt(document.getElementById('quick-start-id').value.trim(), 10);
+      const fromEp = Math.max(1, parseInt(document.getElementById('quick-from-ep').value.trim(), 10) || 1);
+      if (isNaN(startVal)) {
+        return showLaserToast('Start ID number enter karein (e.g. 134)', true);
+      }
+
+      const inputs = [...document.querySelectorAll('.ep-link-input')];
+      let curId = startVal;
+      let count = 0;
+
+      inputs.forEach(inp => {
+        const epNum = parseInt(inp.getAttribute('data-ep'), 10);
+        if (epNum >= fromEp) {
+          inp.value = String(curId);
+          checkRowState(inp, epNum);
+          curId += 1;
+          count += 1;
+        }
+      });
+
+      showLaserToast(`Filled ${count} slots: ${startVal} → ${curId - 1}`);
+    }
+
+    function applyBatchTextarea() {
+      const raw = document.getElementById('batch-paste-area').value;
+      const lines = raw.split(/?
+/).map(l => l.trim()).filter(Boolean);
+      if (!lines.length) return showLaserToast('Paste box khali hai!', true);
+
+      const totalNeeded = Math.max(parseInt(document.getElementById('meta-total-eps').value, 10) || 8, lines.length);
+      if (lines.length > document.querySelectorAll('.ep-link-input').length) {
+        document.getElementById('meta-total-eps').value = totalNeeded;
+        rebuildEpisodeSlots();
+      }
+
+      const inputs = [...document.querySelectorAll('.ep-link-input')];
+      let applied = 0;
+      for (let i = 0; i < lines.length && i < inputs.length; i++) {
+        const fid = extractMediaId(lines[i]);
+        inputs[i].value = fid;
+        checkRowState(inputs[i], inputs[i].getAttribute('data-ep'));
+        applied++;
+      }
+      document.getElementById('batch-drawer').style.display = 'none';
+      showLaserToast(`Applied ${applied} exact IDs to EP 01–EP ${String(applied).padStart(2, '0')}`);
+    }
+
+    function clearAllSlots() {
+      document.querySelectorAll('.ep-link-input').forEach(inp => {
+        inp.value = '';
+        checkRowState(inp, inp.getAttribute('data-ep'));
+      });
+      showLaserToast('All episode slots cleared.');
+    }
+
     function parseRawReleaseFilename(rawName) {
       if (!rawName || !rawName.trim()) {
         document.getElementById('tmdb-dropdown').style.display = 'none';
@@ -659,9 +817,9 @@
 
       let raw = rawName.replace(/^(@[\w.-]+|\[[^\]]+\])\s*[-–:]\s*/g, '').replace(/\.(mkv|mp4|avi|ts)$/i, '').replace(/[\._\-]/g, ' ');
 
-      const seMatch = raw.match(/\bS(\d+)\s*E(\d+)\b/i);
-      const sOnlyMatch = raw.match(/\bS(\d+)\b/i);
-      const yMatch = raw.match(/\b(19\d\d|20\d\d)\b/);
+      const seMatch = raw.match(/S(\d+)\s*E(\d+)/i);
+      const sOnlyMatch = raw.match(/S(\d+)/i);
+      const yMatch = raw.match(/(19\d\d|20\d\d)/);
 
       let seasonNum = seMatch ? parseInt(seMatch[1], 10) : (sOnlyMatch ? parseInt(sOnlyMatch[1], 10) : 1);
       let year = yMatch ? yMatch[1] : '';
@@ -671,7 +829,7 @@
       else if (sOnlyMatch && sOnlyMatch.index < cutIdx) cutIdx = sOnlyMatch.index;
       else if (yMatch && yMatch.index < cutIdx) cutIdx = yMatch.index;
 
-      const tagCutMatch = raw.match(/\b(DS4K|4K|2160p|1080p|720p|SDR|HDR|NF|WEBRip|WEB-DL|BluRay)\b/i);
+      const tagCutMatch = raw.match(/(DS4K|4K|2160p|1080p|720p|SDR|HDR|NF|WEBRip|WEB-DL|BluRay)/i);
       if (tagCutMatch && tagCutMatch.index < cutIdx) cutIdx = tagCutMatch.index;
 
       let cleanTitle = raw.substring(0, cutIdx).trim();
@@ -679,7 +837,7 @@
       document.getElementById('token-season').value = `Season ${seasonNum}`;
       if (year) document.getElementById('token-year').value = year;
 
-      if (/DS4K|2160p|\b4K\b|UHD/i.test(rawName)) {
+      if (/DS4K|2160p|4K|UHD/i.test(rawName)) {
         document.getElementById('token-res').value = '2160p 4K';
       } else if (/720p/i.test(rawName)) {
         document.getElementById('token-res').value = '720p';
@@ -688,7 +846,7 @@
       }
 
       let sourceStr = 'WEB-DL';
-      if (/\bNF\b|Netflix/i.test(rawName)) sourceStr = 'Netflix';
+      if (/NF|Netflix/i.test(rawName)) sourceStr = 'Netflix';
       else if (/Prime|AMZN/i.test(rawName)) sourceStr = 'AMZN';
       else if (/Hotstar|DSNP/i.test(rawName)) sourceStr = 'Hotstar';
       else if (/JHS|JioHotstar/i.test(rawName)) sourceStr = 'JioHotstar';
@@ -700,15 +858,15 @@
 
       let codecStr = 'x264';
       if (/x265|hevc|h\.?265/i.test(rawName)) codecStr = 'x265 HEVC';
-      else if (/\bavc\b/i.test(rawName)) codecStr = 'AVC';
+      else if (/avc/i.test(rawName)) codecStr = 'AVC';
       document.getElementById('token-codec').value = codecStr;
 
       let extraTags = [];
-      if (/\b10bit\b/i.test(rawName)) extraTags.push('10bit');
-      if (/\bHDR10\b/i.test(rawName)) extraTags.push('HDR10');
-      if (/\bDoVi\b|Dolby[\s._-]*Vision/i.test(rawName)) extraTags.push('DoVi');
-      if (/\bMSubs?\b/i.test(rawName)) extraTags.push('MSub');
-      else if (/\bESubs?\b/i.test(rawName)) extraTags.push('ESub');
+      if (/10bit/i.test(rawName)) extraTags.push('10bit');
+      if (/HDR10/i.test(rawName)) extraTags.push('HDR10');
+      if (/DoVi|Dolby[\s._-]*Vision/i.test(rawName)) extraTags.push('DoVi');
+      if (/MSubs?/i.test(rawName)) extraTags.push('MSub');
+      else if (/ESubs?/i.test(rawName)) extraTags.push('ESub');
       document.getElementById('token-ripper').value = extraTags.join(' ');
 
       let audioLangs = [];
@@ -856,7 +1014,7 @@
         if (d.poster_path) {
           document.getElementById('match-poster-img').src = `https://image.tmdb.org/t/p/w185${d.poster_path}`;
           document.getElementById('match-title-txt').textContent = `${officialTitle} (${yearVal})`;
-          document.getElementById('match-sub-txt').textContent = `TMDb #${tmdbId} • Language: ${origLang.toUpperCase()} • Rating: ${cachedTvMeta.rating} • ${(cachedTvMeta.genres || []).join(', ')}`;
+          document.getElementById('match-sub-txt').textContent = `TMDb #${tmdbId} • Lang: ${origLang.toUpperCase()} • ★ ${cachedTvMeta.rating}`;
           document.getElementById('match-preview-strip').style.display = 'flex';
         }
 
@@ -938,27 +1096,23 @@
     function renderSlotRow(epNum, existingVal = '') {
       const list = document.getElementById('episodes-slots-list');
       const isDone = !!existingVal;
-      const row = document.createElement('div');
-      row.className = `ep-slot-row ${isDone ? 'exists' : ''}`;
-      row.id = `slot-row-${epNum}`;
-      row.innerHTML = `
-        <div class="slot-id-badge">EP ${String(epNum).padStart(2, '0')}</div>
-        <div>
-          <input type="text" class="input-smart ep-link-input" data-ep="${epNum}" 
-                 placeholder="Paste GDrive Link/ID or Telegram Msg ID for Episode ${epNum}..." 
-                 value="${escapeHtml(existingVal)}" 
-                 oninput="checkRowState(this, ${epNum})">
-        </div>
-        <div style="text-align:center;">
+      const card = document.createElement('div');
+      card.className = `ep-slot-card ${isDone ? 'exists' : ''}`;
+      card.id = `slot-row-${epNum}`;
+      card.innerHTML = `
+        <div class="ep-card-top">
+          <span class="slot-id-badge">E${String(epNum).padStart(2, '0')}</span>
           <span class="slot-status-pill ${isDone ? 'status-done' : 'status-empty'}" id="status-pill-${epNum}">
-            ${isDone ? `🟢 Linked (Ep ${epNum})` : `⚪ Missing / Empty`}
+            ${isDone ? `🟢 Linked` : `⚪ Empty`}
           </span>
+          <button type="button" style="background:transparent; border:none; color:var(--laser-red); cursor:pointer; font-size:0.95rem; font-weight:800;" onclick="clearSlot(${epNum})">✕</button>
         </div>
-        <div>
-          <button type="button" style="background:transparent; border:none; color:var(--laser-red); cursor:pointer; font-size:1.1rem;" onclick="clearSlot(${epNum})">✕</button>
-        </div>
+        <input type="text" class="input-smart ep-link-input" data-ep="${epNum}" 
+               placeholder="ID / TG Msg..." 
+               value="${escapeHtml(existingVal)}" 
+               oninput="checkRowState(this, ${epNum})">
       `;
-      list.appendChild(row);
+      list.appendChild(card);
     }
 
     function checkRowState(input, epNum) {
@@ -969,11 +1123,11 @@
         const isTg = /^\d+$/.test(extractMediaId(val));
         row.classList.add('exists');
         pill.className = 'slot-status-pill status-done';
-        pill.textContent = isTg ? `🟣 TG Ready (Ep ${epNum})` : `🟢 GD Ready (Ep ${epNum})`;
+        pill.textContent = isTg ? `🟣 TG` : `🟢 GD`;
       } else {
         row.classList.remove('exists');
         pill.className = 'slot-status-pill status-empty';
-        pill.textContent = `⚪ Missing / Empty`;
+        pill.textContent = `⚪ Empty`;
       }
       updateSlotsLabel();
     }
@@ -998,27 +1152,7 @@
       const all = document.querySelectorAll('.ep-link-input');
       let filled = 0;
       all.forEach(inp => { if (inp.value.trim()) filled++; });
-      document.getElementById('slots-count-label').textContent = `${filled} of ${all.length} Episodes Linked`;
-    }
-
-    function pasteBatchLinks() {
-      const raw = prompt('Paste Google Drive links/IDs or TG Msg IDs (1 per line):');
-      if (!raw || !raw.trim()) return;
-
-      const lines = raw.split('\n').map(l => l.trim()).filter(l => l.length > 0);
-      const inputs = document.querySelectorAll('.ep-link-input');
-
-      let lIdx = 0;
-      inputs.forEach(inp => {
-        if (!inp.value.trim() && lIdx < lines.length) {
-          const fileId = extractMediaId(lines[lIdx]);
-          inp.value = fileId;
-          const ep = inp.getAttribute('data-ep');
-          checkRowState(inp, ep);
-          lIdx++;
-        }
-      });
-      showLaserToast(`Auto-assigned ${lIdx} episode links!`);
+      document.getElementById('slots-count-label').textContent = `${filled} / ${all.length} Linked`;
     }
 
     function editSeriesInForm(groupKey) {
@@ -1052,11 +1186,10 @@
       showLaserToast(`Loaded "${base.clean_name || base.title}" for editing!`);
     }
 
-    /* COMMIT TO series.json & name_registry.json (ULTRA-CLEAN ID-ONLY SCHEMA) */
     async function handleFormCommit(e) {
       e.preventDefault();
       const token = getStoredToken();
-      if (!token) return showLaserToast('GitHub Token required! Click ⚙️ Token.', true);
+      if (!token) return showLaserToast('GitHub Token required! Click 🔑 Token.', true);
 
       const tmdbId = parseInt(document.getElementById('meta-tmdb-id').value.trim(), 10) || 0;
       if (tmdbId && (!cachedTvMeta || cachedTvMeta.clean_name !== document.getElementById('token-series-title').value.trim())) {
@@ -1114,7 +1247,6 @@
           }
           const finalEpDashName = nameParts.filter(Boolean).join(' ') + '.mkv';
 
-          // CLEAN EPISODE RECORD (NO STREAM_URL, NO OLD_NAME, NO SPECS BLOAT)
           episodesList.push({
             file_id: fileId,
             source: srcCode,
@@ -1127,7 +1259,6 @@
             fanart: fanart || poster
           });
 
-          // MASTER REGISTRY ENTRY (CAT: SERIES, NO ADDED_FROM)
           registryEntries.push({
             source: srcCode,
             file_id: fileId,
@@ -1149,7 +1280,6 @@
       document.getElementById('btn-save-series').textContent = 'Saving to series.json & name_registry.json...';
 
       try {
-        // 1. FETCH & MERGE INTO series.json
         let currentSeries = [];
         try {
           const sRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/series.json?t=${Date.now()}`);
@@ -1194,7 +1324,6 @@
 
         await commitFileDirect('series.json', currentSeries, `Series Pack: ${title} S${sNum} (${episodesList.length} Eps)`, token);
 
-        // 2. LOG EPISODES TO name_registry.json
         let regArr = [];
         try {
           const rRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/name_registry.json?t=${Date.now()}`);
@@ -1220,7 +1349,7 @@
       }
 
       document.getElementById('btn-save-series').disabled = false;
-      document.getElementById('btn-save-series').textContent = '🚀 COMMIT TV PACK TO SERIES.JSON & NAME_REGISTRY.JSON';
+      document.getElementById('btn-save-series').textContent = '🚀 COMMIT TV PACK TO SERIES.JSON & REGISTRY';
     }
 
     async function commitFileDirect(filePath, arrayData, message, token) {
@@ -1292,11 +1421,11 @@
           <img src="${item.poster || ''}" class="series-card-poster" loading="lazy" alt="">
           <div class="series-card-content">
             <div>
-              <div style="font-weight:700; font-size:1rem; color:#fff; margin-bottom:4px;">${escapeHtml(title)} (${item.year || ''})</div>
-              <div style="font-size:0.78rem; color:var(--laser-cyan); font-weight:700;">🟢 ${epCount} Episodes • Lang: ${(item.orig_lang || 'hi').toUpperCase()}</div>
+              <div style="font-weight:700; font-size:0.95rem; color:#fff; margin-bottom:4px;">${escapeHtml(title)} (${item.year || ''})</div>
+              <div style="font-size:0.74rem; color:var(--laser-cyan); font-weight:700;">🟢 ${epCount} Eps • ${(item.orig_lang || 'hi').toUpperCase()}</div>
             </div>
-            <div style="margin-top:1rem; display:flex; gap:0.5rem;">
-              <button type="button" class="btn-sub" style="flex:1; justify-content:center;" onclick="editSeriesInForm('${key}')">✏️ Edit &amp; Add Episodes</button>
+            <div style="margin-top:0.85rem; display:flex; gap:0.5rem;">
+              <button type="button" class="btn-sub" style="flex:1; justify-content:center;" onclick="editSeriesInForm('${key}')">✏️ Edit Episodes</button>
             </div>
           </div>
         `;
