@@ -16,6 +16,7 @@
       --laser-green: #10b981;
       --laser-gold: #f59e0b;
       --laser-red: #ef4444;
+      --laser-purple: #a855f7;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --input-bg: rgba(2, 6, 23, 0.85);
@@ -33,6 +34,9 @@
     .nav-links-box { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .btn-nav-link { background: rgba(56, 189, 248, 0.12); border: 1px solid #38bdf8; color: #fff; padding: 0.45rem 0.9rem; border-radius: 8px; font-size: 0.78rem; font-weight: 700; text-decoration: none; cursor: pointer; }
     .btn-nav-link:hover { background: #38bdf8; color: #020617; }
+    .btn-trigger { background: linear-gradient(135deg, var(--laser-purple), #7e22ce); border: 1px solid #d8b4fe; color: #fff; padding: 0.48rem 0.95rem; border-radius: 8px; font-size: 0.78rem; font-weight: 800; cursor: pointer; }
+    .btn-trigger:hover { filter: brightness(1.12); }
+
     .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); background: rgba(2, 6, 23, 0.4); border-bottom: 1px solid var(--border-gray); padding: 0.85rem 2rem; gap: 1rem; }
     .stat-item { display: flex; flex-direction: column; }
     .stat-label { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
@@ -43,14 +47,43 @@
     .col-12 { grid-column: span 12; }
     .col-10 { grid-column: span 10; }
     .col-6 { grid-column: span 6; }
+    .col-4 { grid-column: span 4; }
     .col-2 { grid-column: span 2; }
     .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
     label { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); }
     .required { color: var(--laser-red); }
-    input { padding: 0.72rem 0.9rem; border: 1px solid var(--border-gray); border-radius: 10px; font-size: 0.88rem; color: var(--text-main); background-color: var(--input-bg); outline: none; transition: all 0.2s ease; }
-    input:focus { border-color: var(--laser-cyan); box-shadow: 0 0 12px rgba(56, 189, 248, 0.25); }
+    input, select { padding: 0.72rem 0.9rem; border: 1px solid var(--border-gray); border-radius: 10px; font-size: 0.88rem; color: var(--text-main); background-color: var(--input-bg); outline: none; transition: all 0.2s ease; }
+    input:focus, select:focus { border-color: var(--laser-cyan); box-shadow: 0 0 12px rgba(56, 189, 248, 0.25); }
     .smart-dash-preview { background: var(--dash-bg); border: 1px dashed var(--laser-cyan); padding: 0.85rem 1.2rem; font-family: monospace; font-size: 0.85rem; color: var(--laser-green); word-break: break-all; border-radius: 10px; line-height: 1.5; }
-    
+
+    .loaded-queue-bar {
+      display: none;
+      background: rgba(2, 6, 23, 0.75);
+      border: 1px solid rgba(168, 85, 247, 0.45);
+      border-radius: 12px;
+      padding: 0.85rem 1.1rem;
+      margin-bottom: 1.25rem;
+    }
+    .loaded-queue-items {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+      max-height: 120px;
+      overflow-y: auto;
+    }
+    .queue-pick-chip {
+      background: rgba(56, 189, 248, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .queue-pick-chip:hover { background: var(--laser-cyan); color: #020617; }
+
     .match-preview-strip {
       display: flex;
       gap: 14px;
@@ -95,7 +128,7 @@
     .toast-error { background: rgba(239, 68, 68, 0.15); color: var(--laser-red); border: 1px solid var(--laser-red); }
 
     @media (max-width: 850px) {
-      .col-6, .col-2, .col-10 { grid-column: span 12; }
+      .col-6, .col-4, .col-2, .col-10 { grid-column: span 12; }
     }
   </style>
 </head>
@@ -107,10 +140,11 @@
   <div class="govt-header">
     <div>
       <div class="govt-title">MOINUFLIX QUICK MOVIE INGESTION (PHASE 1)</div>
-      <div class="govt-sub">Clean ID-Only Schema • Auto-TMDb Background Fetch • movies.json &amp; name_registry.json</div>
+      <div class="govt-sub">Clean ID-Only Schema • Auto TG/GD Detection • movies.json &amp; name_registry.json</div>
     </div>
-    
+
     <div class="nav-links-box">
+      <button type="button" class="btn-trigger" onclick="triggerAndLoadFullList()">⚡ Trigger &amp; Load All</button>
       <a href="pending.html" class="btn-nav-link">📥 Pending Queue</a>
       <a href="series.html" class="btn-nav-link">📺 Web Series</a>
       <a href="admin.html" class="btn-nav-link">🎬 Library Manager</a>
@@ -124,8 +158,8 @@
       <span class="stat-val" id="stat-catalog-count">Loading...</span>
     </div>
     <div class="stat-item">
-      <span class="stat-label">Target Master File</span>
-      <span class="stat-val" style="color:var(--laser-cyan);">movies.json</span>
+      <span class="stat-label">Active Source</span>
+      <span class="stat-val" id="stat-active-source" style="color:var(--laser-purple);">GD</span>
     </div>
     <div class="stat-item">
       <span class="stat-label">Detected Language</span>
@@ -140,22 +174,38 @@
   <div class="form-wrapper">
     <div id="toast-msg"></div>
 
+    <div class="loaded-queue-bar" id="loaded-queue-bar">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
+        <span style="font-size:0.82rem; font-weight:800; color:var(--laser-purple);" id="loaded-queue-summary">Loaded items</span>
+        <button type="button" class="btn-nav-link" onclick="downloadCurrentLoadedJson()">💾 Save JSON Now</button>
+      </div>
+      <div class="loaded-queue-items" id="loaded-queue-items"></div>
+    </div>
+
     <form id="media-ingest-form" onsubmit="handleFormSubmission(event)">
       <input type="hidden" id="tmdb-id" value="">
 
       <div class="section-title">
-        <span>Google Drive ID &amp; Bracketed Release Tokens</span>
+        <span>Source (TG / GD), ID &amp; Bracketed Release Tokens</span>
       </div>
 
       <div class="form-grid">
-        <div class="form-group col-6">
-          <label>Google Drive File ID or Link <span class="required">*</span></label>
-          <input type="text" id="drive-file-id" placeholder="Paste Google Drive File ID or Share URL..." required>
+        <div class="form-group col-2">
+          <label>Source (Auto)</label>
+          <select id="source-type-select" onchange="onManualSourceChange()">
+            <option value="gd">📁 GD (Drive)</option>
+            <option value="tg">⚡ TG (Telegram)</option>
+          </select>
+        </div>
+
+        <div class="form-group col-4">
+          <label id="id-field-label">File ID or Link <span class="required">*</span></label>
+          <input type="text" id="drive-file-id" placeholder="Paste Drive ID/Link or TG Msg ID (e.g. 45)..." required oninput="autoDetectSourceFromInput()">
         </div>
 
         <div class="form-group col-6">
           <label>Raw Release File Name (for name_registry.json) <span class="required">*</span></label>
-          <input type="text" id="raw-filename" placeholder="Full raw filename..." required oninput="handleInstantRawIngest(this.value)">
+          <input type="text" id="raw-filename" placeholder="Full raw filename..." required oninput="autoDetectSourceFromInput(); handleInstantRawIngest(this.value)">
         </div>
 
         <div class="form-group col-10">
@@ -254,6 +304,8 @@
   let cachedTmdbMeta = null;
   let isMergeMode = false;
   let targetMergeMovie = null;
+  let sourceManuallySet = false;
+  let fullLoadedQueue = [];
 
   function getToken() { return (localStorage.getItem("moinuflix_gh_token") || localStorage.getItem("mf_tg_gh") || "").trim(); }
 
@@ -284,7 +336,171 @@
     setTimeout(() => { el.style.display = "none"; }, 6000);
   }
 
+  function setSourceValue(src, fromAuto = false) {
+    const cleanSrc = String(src || "gd").toLowerCase() === "tg" ? "tg" : "gd";
+    document.getElementById("source-type-select").value = cleanSrc;
+    document.getElementById("stat-active-source").textContent = cleanSrc.toUpperCase();
+    document.getElementById("stat-active-source").style.color = cleanSrc === "tg" ? "var(--laser-purple)" : "var(--laser-cyan)";
+    document.getElementById("id-field-label").innerHTML = cleanSrc === "tg"
+      ? 'Telegram Msg ID / Stealth ID <span class="required">*</span>'
+      : 'Google Drive File ID or Link <span class="required">*</span>';
+    if (!fromAuto) sourceManuallySet = true;
+  }
+
+  function onManualSourceChange() {
+    setSourceValue(document.getElementById("source-type-select").value, false);
+  }
+
+  function autoDetectSourceFromInput() {
+    if (sourceManuallySet) return;
+    const idVal = document.getElementById("drive-file-id").value.trim();
+    const rawVal = document.getElementById("raw-filename").value.trim();
+
+    if (/drive\.google\.com|docs\.google\.com/i.test(idVal) || /[-\w]{25,}/.test(idVal)) {
+      setSourceValue("gd", true);
+      return;
+    }
+    if (/^\d+$/.test(idVal) || /\bt\.me\b|\btelegram\b|u-t-s-/i.test(idVal + " " + rawVal)) {
+      setSourceValue("tg", true);
+      return;
+    }
+    setSourceValue("gd", true);
+  }
+
+  function downloadJsonFile(dataObj, filename) {
+    const blob = new Blob([JSON.stringify(dataObj, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function downloadCurrentLoadedJson() {
+    if (!fullLoadedQueue.length) return showToast("No loaded items to save!", true);
+    const stamp = new Date().toISOString().slice(0, 10);
+    downloadJsonFile(fullLoadedQueue, `moinuflix_pending_${stamp}.json`);
+    showToast(`Saved ${fullLoadedQueue.length} items to local JSON file!`);
+  }
+
+  async function triggerAndLoadFullList() {
+    const token = getToken();
+    showToast("⚡ Triggering & loading full pending list...");
+
+    if (token) {
+      for (const wf of ["tg_vault_sync.yml", "scan_drive.yml"]) {
+        try {
+          await fetch(`https://api.github.com/repos/${GH_REPO}/actions/workflows/${wf}/dispatches`, {
+            method: "POST",
+            headers: {
+              "Authorization": `Bearer ${token}`,
+              "Accept": "application/vnd.github.v3+json",
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ ref: GH_BRANCH })
+          });
+        } catch (_) {}
+      }
+    }
+
+    const combined = [];
+    try {
+      const gdRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/resources/data/pending_movies.json?t=${Date.now()}`);
+      if (gdRes.ok) {
+        let txt = await gdRes.text();
+        if (txt && txt.trim()) {
+          txt = txt.replace(/\\\[/g, '[').replace(/\\\]/g, ']');
+          const gdArr = JSON.parse(txt);
+          if (Array.isArray(gdArr)) {
+            gdArr.forEach(x => combined.push({ ...x, _source: x.source || "gd" }));
+          }
+        }
+      }
+    } catch (_) {}
+
+    try {
+      const tgRes = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/tg/step1_pending.json?t=${Date.now()}`);
+      if (tgRes.ok) {
+        const tgArr = await tgRes.json();
+        if (Array.isArray(tgArr)) {
+          tgArr.forEach(x => combined.push({ ...x, _source: "tg" }));
+        }
+      }
+    } catch (_) {}
+
+    fullLoadedQueue = combined;
+    renderLoadedQueueBar(combined);
+
+    if (combined.length > 5) {
+      const stamp = new Date().toISOString().slice(0, 10);
+      downloadJsonFile(combined, `moinuflix_pending_${stamp}.json`);
+      showToast(`Loaded ${combined.length} items (>5) — full list saved to local JSON!`);
+    } else {
+      showToast(`Loaded ${combined.length} items into quick selector!`);
+    }
+  }
+
+  function renderLoadedQueueBar(items) {
+    const bar = document.getElementById("loaded-queue-bar");
+    const listEl = document.getElementById("loaded-queue-items");
+    const sumEl = document.getElementById("loaded-queue-summary");
+    listEl.innerHTML = "";
+
+    if (!items || !items.length) {
+      bar.style.display = "none";
+      return;
+    }
+
+    sumEl.textContent = `⚡ Loaded ${items.length} Pending Items (Click any item to fill form):`;
+    items.forEach((it, idx) => {
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.className = "queue-pick-chip";
+      const srcTag = it._source === "tg" ? "TG" : "GD";
+      const label = it.new_name || it.old_name || it.original_filename || it.parsed?.title || `Item ${idx + 1}`;
+      chip.textContent = `[${srcTag}] ${label.slice(0, 42)}`;
+      chip.onclick = () => applyQueueItemToForm(it);
+      listEl.appendChild(chip);
+    });
+    bar.style.display = "block";
+  }
+
+  function applyQueueItemToForm(pItem) {
+    sourceManuallySet = false;
+    const isTg = pItem._source === "tg" || String(pItem.source || "").toLowerCase() === "tg" || Boolean(pItem.tg_msg_id);
+    setSourceValue(isTg ? "tg" : "gd", true);
+    sourceManuallySet = true;
+
+    const idVal = isTg ? (pItem.tg_msg_id || pItem.file_id || pItem.id || "") : (pItem.gdrive_id || pItem.file_id || pItem.id || "");
+    document.getElementById("drive-file-id").value = String(idVal);
+
+    const rawVal = isTg ? (pItem.old_name || pItem.original_filename || pItem.new_name || "") : (pItem.original_filename || pItem.old_name || pItem.new_name || "");
+    document.getElementById("raw-filename").value = rawVal;
+
+    const candId = pItem.selected_tmdb_id || pItem.tmdb_id || (pItem.tmdb_candidates && pItem.tmdb_candidates[0]?.tmdb_id);
+    handleInstantRawIngest(rawVal, Boolean(candId));
+
+    if (pItem.new_name) document.getElementById("dash-name-preview").textContent = pItem.new_name;
+    if (pItem.file_size_gb || pItem.size || pItem.size_gb) {
+      document.getElementById("token-size").value = String(pItem.file_size_gb || pItem.size || pItem.size_gb).trim();
+    }
+    if (pItem.tmdb_candidates && pItem.tmdb_candidates.length > 0) {
+      renderTopCandidates(pItem.tmdb_candidates);
+    }
+    if (candId) {
+      document.getElementById("tmdb-id").value = candId;
+      document.getElementById("tmdb-id-visible").value = candId;
+      fetchTmdbPreview(candId);
+    }
+    updateDashPreview();
+  }
+
   function resetQuickForm() {
+    sourceManuallySet = false;
+    setSourceValue("gd", true);
     cancelMergeMode();
     cachedTmdbMeta = null;
     document.getElementById("match-preview-box").style.display = "none";
@@ -294,6 +510,7 @@
 
   async function loadInitialStats() {
     checkTokenStatus();
+    setSourceValue("gd", true);
     try {
       const res = await fetch(`https://raw.githubusercontent.com/${GH_REPO}/${GH_BRANCH}/movies.json?t=${Date.now()}`);
       if (res.ok) {
@@ -317,29 +534,7 @@
     if (pendingSaved && window.location.search.includes("load_pending")) {
       const pItem = JSON.parse(pendingSaved);
       sessionStorage.removeItem("moinuflix_edit_pending");
-
-      document.getElementById("drive-file-id").value = pItem.gdrive_id || pItem.file_id || pItem.id || "";
-      const rawVal = pItem.original_filename || pItem.old_name || pItem.new_name || "";
-      document.getElementById("raw-filename").value = rawVal;
-
-      const candId = pItem.selected_tmdb_id || pItem.tmdb_id || (pItem.tmdb_candidates && pItem.tmdb_candidates[0]?.tmdb_id);
-      handleInstantRawIngest(rawVal, Boolean(candId));
-
-      if (pItem.new_name) {
-        document.getElementById("dash-name-preview").textContent = pItem.new_name;
-      }
-      if (pItem.file_size_gb || pItem.size) {
-        document.getElementById("token-size").value = String(pItem.file_size_gb || pItem.size).trim();
-      }
-      if (pItem.tmdb_candidates && pItem.tmdb_candidates.length > 0) {
-        renderTopCandidates(pItem.tmdb_candidates);
-      }
-      if (candId) {
-        document.getElementById("tmdb-id").value = candId;
-        document.getElementById("tmdb-id-visible").value = candId;
-        fetchTmdbPreview(candId);
-      }
-
+      applyQueueItemToForm(pItem);
       showToast("Loaded from Pending Queue!");
     }
   }
@@ -353,7 +548,7 @@
 
       document.getElementById("ingest-mode-status").textContent = "⚡ MERGE MODE";
       document.getElementById("ingest-mode-status").style.color = "var(--laser-gold)";
-      
+
       const btn = document.getElementById("btn-submit");
       btn.className = "btn btn-govt-gold";
       btn.textContent = `⚡ MERGE AS NEW VERSION INTO "${existing.title}"`;
@@ -378,7 +573,7 @@
       item.innerHTML = `
         <div>
           <strong style="color:var(--laser-cyan);">V${idx + 1}:</strong> ${v.new_name || v.name || 'Version'}
-          <div style="font-size:0.72rem; color:var(--text-muted);">${v.size || ''}</div>
+          <div style="font-size:0.72rem; color:var(--text-muted);">${v.size || ''} [${(v.source || 'gd').toUpperCase()}]</div>
         </div>
         <span style="font-size:0.75rem; color:var(--laser-green); font-weight:700;">Saved ✅</span>
       `;
@@ -394,7 +589,7 @@
     targetMergeMovie = null;
     document.getElementById("ingest-mode-status").textContent = "Standard Ingest";
     document.getElementById("ingest-mode-status").style.color = "var(--laser-green)";
-    
+
     const btn = document.getElementById("btn-submit");
     btn.className = "btn btn-govt-green";
     btn.textContent = "🚀 Commit Movie to movies.json & name_registry.json";
@@ -404,6 +599,7 @@
   }
 
   function populateFormForEditing(m) {
+    setSourceValue(m.source || "gd", true);
     document.getElementById("drive-file-id").value = m.file_id || m.id || "";
     document.getElementById("raw-filename").value = m.new_name || "";
     document.getElementById("tmdb-id").value = m.tmdb_id || "";
@@ -448,7 +644,7 @@
     const year = ym ? ym[1] : "2026";
     let titlePart = ym ? clean.substring(0, ym.index).trim() : clean.split("[")[0].trim();
     titlePart = titlePart.replace(/[-_.()\[\]]+/g, ' ').replace(/\s+/g, ' ').trim();
-    
+
     document.getElementById("token-movie-title").value = titlePart;
     document.getElementById("token-year").value = year;
 
@@ -629,15 +825,15 @@
     } catch (_) {}
   }
 
-  /* COMMIT TO movies.json & name_registry.json (ULTRA-CLEAN ID-ONLY SCHEMA) */
   async function handleFormSubmission(e) {
     e.preventDefault();
     const token = getToken();
     if (!token) return alert("GitHub Token missing! Please click 'Set PAT' at top right.");
 
-    let rawDrive = document.getElementById("drive-file-id").value.trim().replace(/\s+/g, '');
-    const fileId = (rawDrive.match(/[-\w]{25,}/) || [rawDrive])[0];
-    if (!fileId) return alert("Missing Google Drive File ID!");
+    const srcCode = document.getElementById("source-type-select").value === "tg" ? "tg" : "gd";
+    let rawId = document.getElementById("drive-file-id").value.trim().replace(/\s+/g, '');
+    const fileId = srcCode === "tg" ? rawId : (rawId.match(/[-\w]{25,}/) || [rawId])[0];
+    if (!fileId) return alert("Missing File ID!");
 
     const tmdbId = parseInt(document.getElementById("tmdb-id").value.trim(), 10) || 0;
     if (tmdbId && (!cachedTmdbMeta || cachedTmdbMeta.clean_name !== document.getElementById("token-movie-title").value.trim())) {
@@ -661,10 +857,9 @@
     const szMatch = sz.match(/(\d+(?:\.\d+)?)\s*(GB|MB)/i);
     const sizeGbNum = szMatch ? parseFloat((parseFloat(szMatch[1]) / (szMatch[2].toUpperCase() === "MB" ? 1024 : 1)).toFixed(2)) : 5.0;
 
-    // CLEAN VERSION OBJECT (NO STREAM_URL, NO OLD_NAME, NO SPECS BLOAT)
     const newVersionObj = {
       file_id: fileId,
-      source: "gd",
+      source: srcCode,
       new_name: finalDashName,
       size: sz,
       size_gb: sizeGbNum
@@ -695,7 +890,7 @@
       } else {
         moviesArr.push({
           file_id: fileId,
-          source: "gd",
+          source: srcCode,
           tmdb_id: tmdbId,
           clean_name: title,
           title: title,
@@ -716,9 +911,8 @@
         });
       }
 
-      await commitDirectToGithub("movies.json", moviesArr, `${isMergeMode ? 'Merge' : 'Add'} Movie: ${title} (${origLang})`, mSha, token);
+      await commitDirectToGithub("movies.json", moviesArr, `${isMergeMode ? 'Merge' : 'Add'} Movie (${srcCode}): ${title} (${origLang})`, mSha, token);
 
-      // MASTER REGISTRY ENTRY (CAT: MOVIE, OLD_NAME + NEW_NAME)
       let regArr = [], rSha;
       const rGet = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/name_registry.json?t=${Date.now()}`, {
         headers: { "Authorization": `token ${token}` }
@@ -731,7 +925,7 @@
       }
 
       const regEntry = {
-        source: "gd",
+        source: srcCode,
         file_id: fileId,
         tmdb_id: tmdbId,
         cat: "MOVIE",
@@ -746,9 +940,9 @@
       if (rIdx >= 0) regArr[rIdx] = regEntry;
       else regArr.unshift(regEntry);
 
-      await commitDirectToGithub("name_registry.json", regArr, `Registry: ${title} (${fileId})`, rSha, token);
+      await commitDirectToGithub("name_registry.json", regArr, `Registry (${srcCode}): ${title} (${fileId})`, rSha, token);
 
-      showToast(`🎉 SUCCESS: "${title}" saved to movies.json & name_registry.json!`);
+      showToast(`SUCCESS: "${title}" [${srcCode.toUpperCase()}] saved to movies.json & name_registry.json!`);
       cancelMergeMode();
       loadInitialStats();
     } catch (err) {
