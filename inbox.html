@@ -91,7 +91,7 @@
   <div class="govt-header">
     <div>
       <div class="govt-title">MOINUFLIX QUICK MOVIE INGESTION — PLAN A</div>
-      <div class="govt-sub">Exact Schema • Auto TG/GD • Kids vs General OTT Separation • Zero Fake Data</div>
+      <div class="govt-sub">Exact Schema • Auto TG/GD • Kids vs General OTT Separation • Zero Data Loss</div>
     </div>
 
     <div class="nav-links-box">
@@ -180,42 +180,47 @@
 
         <div class="form-group col-8">
           <label>Clean Name (clean_name)</label>
-          <input type="text" id="token-movie-title" placeholder="Movie Title" required oninput="updateDashPreview()">
+          <input type="text" id="token-movie-title" placeholder="Movie Title" required oninput="onAutoFieldsEdited()">
         </div>
 
         <div class="form-group col-2">
           <label>Year</label>
-          <input type="text" id="token-year" placeholder="YYYY" oninput="updateDashPreview()">
+          <input type="text" id="token-year" placeholder="YYYY" oninput="onAutoFieldsEdited()">
         </div>
 
         <div class="form-group col-2">
           <label>Size</label>
-          <input type="text" id="token-size" placeholder="e.g. 10GB" oninput="updateDashPreview()">
+          <input type="text" id="token-size" placeholder="e.g. 10GB" oninput="onAutoFieldsEdited()">
         </div>
 
         <div class="form-group col-3">
           <label>Resolution</label>
-          <input type="text" id="token-resolution" placeholder="2160p / 1080p / 720p" oninput="updateDashPreview()">
+          <input type="text" id="token-resolution" placeholder="2160p / 1080p / 720p" oninput="onAutoFieldsEdited()">
         </div>
 
         <div class="form-group col-3">
           <label>Platform / Source</label>
-          <input type="text" id="token-platform" placeholder="Prime Video / WEB-DL / BluRay" oninput="updateDashPreview()">
+          <input type="text" id="token-platform" placeholder="Prime Video / WEB-DL / BluRay" oninput="onAutoFieldsEdited()">
         </div>
 
         <div class="form-group col-3">
           <label>Video Codec</label>
-          <input type="text" id="token-videocodec" placeholder="10bit x265 / AVC / x264" oninput="updateDashPreview()">
+          <input type="text" id="token-videocodec" placeholder="10bit x265 / AVC / x264" oninput="onAutoFieldsEdited()">
         </div>
 
         <div class="form-group col-3">
-          <label>Audio / Codec Tag</label>
-          <input type="text" id="token-audio-codec" placeholder="e.g. DDP 5.1 Atmos" oninput="updateDashPreview()">
+          <label>Audio / Codec Tag (All Extracted)</label>
+          <input type="text" id="token-audio-codec" placeholder="e.g. DDP 7.1 - 768Kbps + AAC 7.1" oninput="onAutoFieldsEdited()">
         </div>
 
         <div class="form-group col-12">
-          <label style="color:var(--laser-gold);">Languages in Bracket (Only real languages found — no fake default)</label>
-          <input type="text" id="token-langs" placeholder="e.g. Tamil + Telugu + Hindi + Malayalam" oninput="updateDashPreview()">
+          <label style="color:var(--laser-gold);">Languages in Bracket (All real languages found — no fake default)</label>
+          <input type="text" id="token-langs" placeholder="e.g. Tam + Tel + Hin + Eng" oninput="onAutoFieldsEdited()">
+        </div>
+
+        <div class="form-group col-12">
+          <label style="color:var(--laser-cyan);">Rename / Custom Final Name Box (Optional — type here to override final new_name without losing raw)</label>
+          <input type="text" id="custom-rename-input" placeholder="Leave blank for auto-built name, or type custom final name..." oninput="onCustomRenameInput()">
         </div>
 
         <div class="form-group col-12" id="candidates-box" style="display:none;">
@@ -257,6 +262,7 @@
   let cachedTmdbMeta = null;
   let sourceManuallySet = false;
   let audienceManuallySet = false;
+  let customRenameManuallySet = false;
   let fullLoadedQueue = [];
   let tmdbDebounce = null;
 
@@ -495,6 +501,8 @@
   function loadQueueItemIntoForm(pItem) {
     sourceManuallySet = false;
     audienceManuallySet = false;
+    customRenameManuallySet = false;
+    document.getElementById("custom-rename-input").value = "";
 
     const isTg = pItem._queueSource === "tg" || String(pItem.source || "").toLowerCase() === "tg" || Boolean(pItem.tg_msg_id);
     setSourceValue(isTg ? "tg" : "gd", true);
@@ -522,6 +530,42 @@
       fetchTmdbPreview(tmdbVal);
     }
     updateDashPreview();
+  }
+
+  function extractAllLanguages(s) {
+    const found = [];
+    const rules = [
+      ["Tam", /\b(?:tam|tamil)\b/i],
+      ["Tel", /\b(?:tel|telugu)\b/i],
+      ["Hin", /\b(?:hin|hindi)\b/i],
+      ["Mal", /\b(?:mal|malayalam)\b/i],
+      ["Kan", /\b(?:kan|kannada)\b/i],
+      ["Eng", /\b(?:eng|english)\b/i],
+      ["Kor", /\b(?:kor|korean)\b/i],
+      ["Jpn", /\b(?:jpn|japanese)\b/i],
+      ["Ben", /\b(?:ben|bengali)\b/i]
+    ];
+    for (const [shortLabel, rx] of rules) {
+      if (rx.test(s) && !found.includes(shortLabel)) {
+        found.push(shortLabel);
+      }
+    }
+    return found;
+  }
+
+  function extractAllAudioSpecs(s) {
+    const specs = [];
+    const rx = /\b(?:DDP|DD\+|DD|DTS-HD\s*MA|DTS|TrueHD|Atmos|AAC|AC3|FLAC)(?:\s*\+?\s*(?:5\.1|7\.1|2\.0|Atmos|MA))?(?:\s*-\s*\d+\s*(?:Kbps|k|Mbps))?\b/gi;
+    const matches = s.match(rx) || [];
+    for (const m of matches) {
+      const cleaned = m.replace(/\s+/g, " ").trim();
+      if (cleaned && !specs.some(existing => existing.toLowerCase() === cleaned.toLowerCase())) {
+        specs.push(cleaned);
+      }
+    }
+    if (/\bESubs?\b/i.test(s) && !specs.includes("ESub")) specs.push("ESub");
+    else if (/\bMSubs?\b/i.test(s) && !specs.includes("MSub")) specs.push("MSub");
+    return specs;
   }
 
   function parseRawCleanly(raw, skipSearch = false) {
@@ -572,21 +616,11 @@
     const szMatch = s.match(/(\d+(?:\.\d+)?)\s*(gb|mb)\b/i);
     if (szMatch) document.getElementById("token-size").value = `${szMatch[1]}${szMatch[2].toUpperCase()}`;
 
-    const langs = [];
-    for (const [label, rx] of [
-      ["Tamil", /\btamil\b/i],
-      ["Telugu", /\btelugu\b/i],
-      ["Hindi", /\bhindi\b/i],
-      ["Malayalam", /\bmalayalam\b/i],
-      ["Kannada", /\bkannada\b/i],
-      ["English", /\benglish\b/i]
-    ]) {
-      if (rx.test(s)) langs.push(label);
-    }
+    const langs = extractAllLanguages(s);
     document.getElementById("token-langs").value = langs.join(" + ");
 
-    const audioMatch = s.match(/\b(DDP\s*5\.1\s*Atmos|DD\+\s*5\.1|DD\s*5\.1|DD\+\s*2\.0|DD\s*2\.0|DTS-HD\s*MA|DTS|Atmos|TrueHD|AAC)\b/i);
-    document.getElementById("token-audio-codec").value = audioMatch ? audioMatch[0].trim() : "";
+    const audioSpecs = extractAllAudioSpecs(s);
+    document.getElementById("token-audio-codec").value = audioSpecs.join(" + ");
 
     updateDashPreview();
 
@@ -684,7 +718,26 @@
     return [langs, audioCodec].filter(Boolean).join(" ").trim();
   }
 
+  function onCustomRenameInput() {
+    const val = document.getElementById("custom-rename-input").value;
+    customRenameManuallySet = Boolean(val.trim());
+    updateDashPreview();
+  }
+
+  function onAutoFieldsEdited() {
+    if (!customRenameManuallySet) {
+      updateDashPreview();
+    }
+  }
+
   function updateDashPreview() {
+    const customRename = document.getElementById("custom-rename-input").value.trim();
+    if (customRenameManuallySet && customRename) {
+      const normalized = /\.[a-z0-9]{2,4}$/i.test(customRename) ? customRename : `${customRename}.mkv`;
+      document.getElementById("dash-name-preview").textContent = normalized;
+      return;
+    }
+
     const title = document.getElementById("token-movie-title").value.trim() || "Title";
     const year = document.getElementById("token-year").value.trim();
     const res = document.getElementById("token-resolution").value.trim().replace(/^\[|\]$/g, "");
@@ -709,7 +762,9 @@
   function resetForm() {
     sourceManuallySet = false;
     audienceManuallySet = false;
+    customRenameManuallySet = false;
     cachedTmdbMeta = null;
+    document.getElementById("custom-rename-input").value = "";
     setSourceValue("gd", true);
     setAudienceValue("general", true);
     document.getElementById("match-preview-box").style.display = "none";
@@ -826,7 +881,6 @@
 
       await commitDirectToGithub(targetPath, arr, `Add/Update (${audience}/${srcCode}): ${title}`, sha, token);
 
-      // Update name_registry.json preserving raw old_name
       let regArr = [], rSha;
       const rGet = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/name_registry.json?t=${Date.now()}`, {
         headers: { "Authorization": `token ${token}` }
